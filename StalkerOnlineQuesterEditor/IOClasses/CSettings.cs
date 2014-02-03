@@ -7,22 +7,24 @@ using System.IO;
 
 namespace StalkerOnlineQuesterEditor
 {
-
+    //! Класс настроек проекта - задается в форме OperatorSettings и хранит все данные в settings.xml
     public class CSettings
     {
 
         MainForm parent;
+        //! Номер оператора (???) 
         int iNumOperator;
+        //! Режим - обычный (MODE_SIMPLE) или перевод (MODE_LOCALIZATION)
         int mode = 0;
 
+        //! Список все локализаций ENG, GER etc.
         List<string> locales = new List<string>();
+        //! Текущая локализация. Пока хранит 0 - видимо для русского языка
         int currentLocale = 0;
 
 
         public int MODE_SIMPLE = 0;
-        public int MODE_LOCALIZATION = 1;
-
-        
+        public int MODE_LOCALIZATION = 1;       
 
         string SETTINGS_PATH = "settings/";
         string SETTING_FILE = "Settings.xml";
@@ -76,15 +78,17 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        //! Проверяет режим, и задает соответствующую надпись на главной форме
         public void checkMode()
         {
-            if (getMode() == 1)
-                parent.Text = "SourceEditor@madcat Режим перевода:" + getCurrentLocale();
+            if (getMode() == MODE_LOCALIZATION)
+                parent.Text = "QuestEditor@SO_Team Режим перевода:" + getCurrentLocale();
             else
-                parent.Text = "SourceEditor@madcat";
+                parent.Text = "QuestEditor@SO_Team";
             parent.onChangeMode();
         }
 
+        //! Создает папку для хранения файлов локализации, если таковой еще нет
         private void createLocalesFolder()
         {
 
@@ -96,6 +100,7 @@ namespace StalkerOnlineQuesterEditor
                 }
         }
 
+        //! Возврщает номер оператора
         public int getOperatorNumber()
         {
             return this.iNumOperator;
@@ -112,6 +117,7 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        //! Возвращает все локали в строке через запятую
         public string getLocales()
         {
             string ret = "";
@@ -124,17 +130,19 @@ namespace StalkerOnlineQuesterEditor
             return ret;
         }
 
+        //! Возвращает список всех локалей в виде списка строк
         public List<string> getListLocales()
         {
             return locales;
         }
 
-
+        //! Задает номер оператора
         public void setOperatorNumber(int iNumOperator)
         {
             this.iNumOperator = iNumOperator;
         }
 
+        //! Сохраняет все настройки в файл settings.xml
         public void saveSettings()
         {
             XDocument resultDoc = new XDocument(new XElement("root"));
@@ -165,11 +173,13 @@ namespace StalkerOnlineQuesterEditor
             return this.dialogXML;
         }
 
-        public string getCurrentLocalePapth()
+        //! Возвращает путь к папке с текущей локалью
+        public string getCurrentLocalePath()
         {
             return "locales\\" + this.locales[currentLocale];
         }
 
+        //! Устанавливает текущую локализацию по номеру в спике и возвращает true в случае успеха
         public bool setLocale(int index_locale)
         {
             try
@@ -188,6 +198,7 @@ namespace StalkerOnlineQuesterEditor
             
         }
 
+        //! Устанавливает Обычный режим (корректировка текстов)
         public void setSimple()
         {
             this.mode = this.MODE_SIMPLE;

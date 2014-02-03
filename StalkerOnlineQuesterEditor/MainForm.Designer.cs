@@ -329,7 +329,7 @@ namespace StalkerOnlineQuesterEditor
             this.bSaveDialogs.Name = "bSaveDialogs";
             this.bSaveDialogs.Size = new System.Drawing.Size(173, 23);
             this.bSaveDialogs.TabIndex = 3;
-            this.bSaveDialogs.Text = "Сохарнить изменения";
+            this.bSaveDialogs.Text = "Сохранить изменения";
             this.bSaveDialogs.UseVisualStyleBackColor = true;
             this.bSaveDialogs.Click += new System.EventHandler(this.bSaveDialogs_Click);
             // 

@@ -728,7 +728,7 @@ namespace StalkerOnlineQuesterEditor
 
         public void saveLocales(string fileName)
         {
-            fileName = parent.settings.getCurrentLocalePapth() + '\\' + fileName;
+            fileName = parent.settings.getCurrentLocalePath() + '\\' + fileName;
             this.save(fileName, this.locales[parent.settings.getCurrentLocale()]);
         }
 

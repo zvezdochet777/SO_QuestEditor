@@ -1620,12 +1620,14 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        //! Создает примеры диалогов и квестов
         public void createExamples()
         {
             dialogs.createExamples();
             quests.createExamples();
         }
 
+        //! Создает результаты работы над диалогами и квестами
         public void createResults()
         {
             dialogs.createResults();

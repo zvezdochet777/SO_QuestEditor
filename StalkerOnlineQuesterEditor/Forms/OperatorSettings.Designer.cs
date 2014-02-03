@@ -38,13 +38,14 @@
             this.localeComboBox = new System.Windows.Forms.ComboBox();
             this.bLocaleRefresh = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bCreateExamples = new System.Windows.Forms.Button();
             this.bCreateResult = new System.Windows.Forms.Button();
+            this.bCreateExamples = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // operatorSelectComboBox
             // 
+            this.operatorSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.operatorSelectComboBox.FormattingEnabled = true;
             this.operatorSelectComboBox.Location = new System.Drawing.Point(99, 6);
             this.operatorSelectComboBox.Name = "operatorSelectComboBox";
@@ -110,6 +111,7 @@
             // 
             // localeComboBox
             // 
+            this.localeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.localeComboBox.Enabled = false;
             this.localeComboBox.FormattingEnabled = true;
             this.localeComboBox.Location = new System.Drawing.Point(6, 67);
@@ -143,16 +145,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Локализация";
             // 
-            // bCreateExamples
-            // 
-            this.bCreateExamples.Location = new System.Drawing.Point(6, 94);
-            this.bCreateExamples.Name = "bCreateExamples";
-            this.bCreateExamples.Size = new System.Drawing.Size(130, 23);
-            this.bCreateExamples.TabIndex = 10;
-            this.bCreateExamples.Text = "Создать заготовки";
-            this.bCreateExamples.UseVisualStyleBackColor = true;
-            this.bCreateExamples.Click += new System.EventHandler(this.bCreateExamples_Click);
-            // 
             // bCreateResult
             // 
             this.bCreateResult.Location = new System.Drawing.Point(6, 123);
@@ -162,6 +154,16 @@
             this.bCreateResult.Text = "Выгрузить результат";
             this.bCreateResult.UseVisualStyleBackColor = true;
             this.bCreateResult.Click += new System.EventHandler(this.bCreateResult_Click);
+            // 
+            // bCreateExamples
+            // 
+            this.bCreateExamples.Location = new System.Drawing.Point(6, 94);
+            this.bCreateExamples.Name = "bCreateExamples";
+            this.bCreateExamples.Size = new System.Drawing.Size(130, 23);
+            this.bCreateExamples.TabIndex = 10;
+            this.bCreateExamples.Text = "Создать заготовки";
+            this.bCreateExamples.UseVisualStyleBackColor = true;
+            this.bCreateExamples.Click += new System.EventHandler(this.bCreateExamples_Click);
             // 
             // OperatorSettings
             // 

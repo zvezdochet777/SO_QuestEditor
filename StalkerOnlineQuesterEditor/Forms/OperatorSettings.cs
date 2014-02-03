@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Форма настроек редактора
     public partial class OperatorSettings : Form
     {
         MainForm parent;
@@ -44,15 +45,11 @@ namespace StalkerOnlineQuesterEditor
             foreach (string locale in localesTextBox.Text.Split(','))
                 localeComboBox.Items.Add(locale);
 
-
             if (parent.settings.getMode() == 1)
             {
                 localizeCheckBox.Checked = true;
                 localeComboBox.SelectedIndex = parent.settings.getCurrentIndexLocale();
             }
-
-
-
         }
 
         private void operatorSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,6 +60,7 @@ namespace StalkerOnlineQuesterEditor
             //    this.bOperatorChanged = true;
         }
 
+        //! Нажатие ОК - магические действия с номером оператора и выход на главную
         private void bOK_Click(object sender, EventArgs e)
         {
             //operator settings
@@ -99,6 +97,7 @@ namespace StalkerOnlineQuesterEditor
             this.Close();
         }
 
+        //! Обновляет список локалей из xml файла и записывает их в комбо-бокс
         private void bLocaleRefresh_Click(object sender, EventArgs e)
         {
             localeComboBox.Items.Clear();
@@ -109,25 +108,28 @@ namespace StalkerOnlineQuesterEditor
                 localeComboBox.Items.Add(locale);
         }
 
+        //! Клик по чекбоксу "локализация"
         private void localizeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (parent.settings.getLocales() == "")
                 localizeCheckBox.Checked = false;
             localeComboBox.Enabled = localizeCheckBox.Checked;
-
         }
 
+        //! Закрытие формы настроек
         private void OperatorSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
             parent.Enabled = true;
             parent.Visible = true;
         }
 
+        //! Вызывает функцию родителя CreateExamples
         private void bCreateExamples_Click(object sender, EventArgs e)
         {
             parent.createExamples();
         }
 
+        //1 Вызывает функцию родителя CreateResult
         private void bCreateResult_Click(object sender, EventArgs e)
         {
             parent.createResults();
