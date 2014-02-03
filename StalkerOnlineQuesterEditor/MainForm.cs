@@ -741,7 +741,6 @@ namespace StalkerOnlineQuesterEditor
 
         private void bDelNPC_Click(object sender, EventArgs e)
         {
-
             graphs.Clear();
             treeDialogs.Nodes.Clear();
             DialogShower.Layer.RemoveAllChildren();

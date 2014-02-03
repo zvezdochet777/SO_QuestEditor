@@ -12,19 +12,26 @@ namespace StalkerOnlineQuesterEditor
 {
     using ListOfQuests = List<int>;
 
+    //! Словарь <DialogID, CDialog>
     using NPCDialogDict = Dictionary<int, CDialog>;
+    //! Словарь <NPCName, <DialogID, CDialog>>
     using NPCDicts = Dictionary<string, Dictionary<int, CDialog>>;
+    //! Словарь <LocaleName, <NPCName, <DialogID, CDialog>>>
     using NPCLocales = Dictionary<string, Dictionary<string, Dictionary<int, CDialog>>>;
     
-
+    //! Класс обработки диалогов
     public class CDialogs
     {
         Common common = new Common();
         MainForm parent;
+        //! XML файл диалогов для хранения информации
         XDocument doc = new XDocument();
+        //! Словарь диалогов: < Имя NPC, <DialogID,  CDialog> >
         public NPCDicts dialogs = new Dictionary<string, Dictionary<int, CDialog>>();
+        //! Словарь локалей
         public NPCLocales locales = new NPCLocales();
 
+        //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
         public CDialogs(MainForm parent)
         {
             this.parent = parent;
@@ -37,10 +44,9 @@ namespace StalkerOnlineQuesterEditor
                     locales.Add(locale, new Dictionary<string, Dictionary<int, CDialog>>());
                 parseDialogsFile(DialogsXMLFile, this.locales[locale]);
             }
-
-
         }
 
+        //! Парсер xml - файла диалогов
         private void parseDialogsFile(String DialogsXMLFile, Dictionary<string, Dictionary<int, CDialog>> target)
         {
             if (!File.Exists(DialogsXMLFile))
@@ -198,12 +204,14 @@ namespace StalkerOnlineQuesterEditor
                     File.Move(oldName, name);
         }
 
-
+        //! Сохранить все диалоги в xml файл
         public void saveDialogs(string fileName)
         {
             save(fileName, this.dialogs);
         }
 
+        /*
+        //! Трэшак со StartQuests
         bool isDialogRoot(int dialogID, string holder)
         {
             NPCDialogDict npc_dialogs = this.dialogs[holder];
@@ -217,7 +225,10 @@ namespace StalkerOnlineQuesterEditor
             }
             return false;
         }
+        */
 
+
+        //! Сохранение всех диалогов в xml файл
         private void save(string fileName, Dictionary<string, Dictionary<int, CDialog>> target)
         {
             string newOldName = (fileName.Replace(".xml","") + "_" + DateTime.UtcNow.ToString() + ".xml").Replace(':','_');
@@ -290,7 +301,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-
+        //! Возвращает список как строку из элементов через запятую
         string getListAsString(List<int> list)
         {
             string str = "";
@@ -304,6 +315,7 @@ namespace StalkerOnlineQuesterEditor
             return str;
         }
 
+        //! Возвращает булевское значение строкой: "1" или ""
         string getBoolAsString(bool bbool)
         {
             if (bbool)
@@ -312,6 +324,7 @@ namespace StalkerOnlineQuesterEditor
                 return "";
         }
 
+        //! Возвращает целое как строку: "123" или "" в случае нуля
         string getIntAsString(int someInt)
         {
             if (someInt==0)
@@ -321,6 +334,7 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        //! Возвращает список всех NPC
         public List<string> getListOfNPC()
         {
             List<string> npc = new List<string>();
@@ -331,6 +345,8 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //--------------------------locale dialogs-------------------------------------------------------
+
+        //! Возвращает CDialog по заданной локали, имени NPC и ID диалога
         public CDialog getLocaleDialog(int dialogID, string locale, string npcName)
         {
             if (this.locales.Keys.Contains(locale))
@@ -338,9 +354,9 @@ namespace StalkerOnlineQuesterEditor
                     if (this.locales[locale][npcName].Keys.Contains(dialogID))
                         return locales[locale][npcName][dialogID];
             return null;
-
         }
 
+        //! Добавить диалог к локали
         public void addLocaleDialog(CDialog dialog, string locale)
         {
                if (!this.locales.Keys.Contains(locale))
@@ -358,6 +374,7 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        //! Сохраняет локали в файл (пока непонятно, в какой)
         public void saveLocales(string fileName)
         {
             fileName = parent.settings.getCurrentLocalePath() + '\\' + fileName;

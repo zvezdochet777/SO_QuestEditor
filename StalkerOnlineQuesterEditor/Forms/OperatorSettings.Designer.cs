@@ -49,7 +49,7 @@
             this.operatorSelectComboBox.FormattingEnabled = true;
             this.operatorSelectComboBox.Location = new System.Drawing.Point(99, 6);
             this.operatorSelectComboBox.Name = "operatorSelectComboBox";
-            this.operatorSelectComboBox.Size = new System.Drawing.Size(115, 21);
+            this.operatorSelectComboBox.Size = new System.Drawing.Size(127, 21);
             this.operatorSelectComboBox.TabIndex = 0;
             this.operatorSelectComboBox.SelectedIndexChanged += new System.EventHandler(this.operatorSelectComboBox_SelectedIndexChanged);
             // 
@@ -68,7 +68,7 @@
             this.bOK.Name = "bOK";
             this.bOK.Size = new System.Drawing.Size(75, 23);
             this.bOK.TabIndex = 2;
-            this.bOK.Text = "Ok";
+            this.bOK.Text = "OK";
             this.bOK.UseVisualStyleBackColor = true;
             this.bOK.Click += new System.EventHandler(this.bOK_Click);
             // 
@@ -123,7 +123,7 @@
             // 
             this.bLocaleRefresh.Location = new System.Drawing.Point(142, 16);
             this.bLocaleRefresh.Name = "bLocaleRefresh";
-            this.bLocaleRefresh.Size = new System.Drawing.Size(52, 23);
+            this.bLocaleRefresh.Size = new System.Drawing.Size(72, 23);
             this.bLocaleRefresh.TabIndex = 9;
             this.bLocaleRefresh.Text = "Обновить";
             this.bLocaleRefresh.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             this.groupBox1.Controls.Add(this.localesTextBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(204, 173);
+            this.groupBox1.Size = new System.Drawing.Size(224, 173);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Локализация";
@@ -169,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(226, 251);
+            this.ClientSize = new System.Drawing.Size(250, 251);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bCancel);

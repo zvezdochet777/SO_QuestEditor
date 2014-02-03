@@ -19,7 +19,7 @@ namespace StalkerOnlineQuesterEditor
         {
             this.parent = parent;
             this.fraction = new Dictionary<int, CBalanceFractions>();
-            parseXML(parent.settings.getBalanceName());
+            parseXML(parent.settings.getBalancePath());
         }
 
         private void parseXML(string xml_name)
@@ -64,7 +64,7 @@ namespace StalkerOnlineQuesterEditor
 
         public void save()
         {
-            saveMXL(parent.settings.getBalanceName());
+            saveMXL(parent.settings.getBalancePath());
         }
 
         public void saveMXL(string fileName)

@@ -158,27 +158,6 @@ namespace StalkerOnlineQuesterEditor
             resultDoc.Save(SETTINGS_PATH + SETTING_FILE);
         }
 
-        public string getQuestsPath()
-        {
-            return this.questXML;
-        }
-
-        public string getStartQuestsPath()
-        {
-            return this.startQuestXML;
-        }
-
-        public string getDialogsPath()
-        {
-            return this.dialogXML;
-        }
-
-        //! Возвращает путь к папке с текущей локалью
-        public string getCurrentLocalePath()
-        {
-            return "locales\\" + this.locales[currentLocale];
-        }
-
         //! Устанавливает текущую локализацию по номеру в спике и возвращает true в случае успеха
         public bool setLocale(int index_locale)
         {
@@ -205,25 +184,52 @@ namespace StalkerOnlineQuesterEditor
             checkMode();
         }
 
+        //! Возвращает текущий режим (Simple или Localization)
         public int getMode()
         {
             //System.Console.WriteLine("CSettings::getMode " + mode.ToString());
             return mode;
         }
 
+        //! Возвращает порядковый номер текущей локали
         public int getCurrentIndexLocale()
         {
             return currentLocale;
         }
 
+        //! Возвращает название текущей локали
         public string getCurrentLocale()
         {
             return locales[currentLocale];
         }
 
-        public string getBalanceName()
+        //! Возвращает путь к файлу с балансом
+        public string getBalancePath()
         {
             return balanceXML;
+        }
+        //! Возвращает путь к папке с текущей локалью
+        public string getCurrentLocalePath()
+        {
+            return "locales\\" + this.locales[currentLocale];
+        }
+
+        //! Возвращает путь к xml файлу с квестами
+        public string getQuestsPath()
+        {
+            return this.questXML;
+        }
+
+        //! Возвращает путь к xml файлу со стартовыми квестами 
+        public string getStartQuestsPath()
+        {
+            return this.startQuestXML;
+        }
+
+        //! Возвращает путь к xml файлу с диалогами
+        public string getDialogsPath()
+        {
+            return this.dialogXML;
         }
 
     }

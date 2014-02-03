@@ -151,6 +151,7 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    //! Класс диалога (одна ветка в xml файле)
     public class CDialog
     {
         public int DialogID;

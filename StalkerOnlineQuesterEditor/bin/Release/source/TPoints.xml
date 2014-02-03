@@ -1,0 +1,499 @@
+<root>
+    <tp>
+        <id>test</id>
+        <name>Тест</name>
+    </tp>
+	 <tp>
+        <id>noob_prison_buy</id>
+        <name>Выход из тюрьмы за деньги</name>
+    </tp>
+	<tp>
+        <id>noob_tunel_l</id>
+        <name>Выход из туннеля левый</name>
+    </tp>
+	<tp>
+        <id>noob_tunel_r</id>
+        <name>Выход из туннеля правый</name>
+    </tp>
+	<tp>
+        <id>vezuv_uchenie</id>
+        <name>Лагерь ученых на везувии</name>
+    </tp>
+	<tp>
+        <id>noob_cave_underwater</id>
+        <name>Нубсити подводная пещера</name>
+    </tp>
+	<tp>
+        <id>nz_start</id>
+        <name>Новая земля старт</name>
+    </tp>
+	<tp>
+        <id>nz_PKstart</id>
+        <name>Новая земля старт для ПК</name>
+    </tp>
+	<tp>
+        <id>lab_noob</id>
+        <name>Лаба_выход на поверхность</name>
+    </tp>
+	<tp>
+        <id>noob_lab</id>
+        <name>Лаба вход в подземелье</name>
+    </tp>
+	<tp>
+        <id>noob_bazapochta</id>
+        <name>База на почте</name>
+    </tp>
+	<tp>
+        <id>bazapochta_noob</id>
+        <name>Выход из Базы на почте</name>
+    </tp>
+	<tp>
+        <id>vezuv_crossroads</id>
+        <name>перекресток между радиовышкой и военной базой на везувии</name>
+    </tp>
+	<tp>
+        <id>noob_dkpodval</id>
+        <name>подвал под ДК</name>
+    </tp>
+	<tp>
+        <id>noob_poleartov</id>
+        <name>Поле артефактов</name>
+    </tp>
+	<tp>
+        <id>noob_l3</id>
+        <name>Костер в Л3-4</name>
+    </tp>
+	<tp>
+        <id>nz1</id>
+        <name>Новая земля маяк</name>
+    </tp>
+	<tp>
+        <id>nz_lab_in</id>
+        <name>Нз лаба внутри</name>
+    </tp>
+	<tp>
+        <id>nz_lab_out</id>
+        <name>Нз лаба снаружи</name>
+    </tp>
+	<tp>
+        <id>noob_swamp</id>
+        <name>Дом на болоте</name>
+    </tp>
+	<tp>
+        <id>start_game</id>
+        <name>Вокзал_старт</name>
+    </tp>
+	<tp>
+        <id>start_game_outlands</id>
+        <name>Начало_лес</name>
+    </tp>
+	<tp>
+        <id>noob_outland_3</id>
+        <name>ворота в городе 3</name>
+    </tp>
+	<tp>
+        <id>noob_outland_2</id>
+        <name>ворота в городе 2</name>
+    </tp>
+	<tp>
+        <id>noob_outland_1</id>
+        <name>ворота в городе 1</name>
+    </tp>
+	<tp>
+        <id>outland_noob_3</id>
+        <name>ворота за городом 3</name>
+    </tp>
+	<tp>
+        <id>outland_noob_2</id>
+        <name>ворота за городом 2</name>
+    </tp>
+	<tp>
+        <id>outland_noob_1</id>
+        <name>ворота за городом 1</name>
+    </tp>
+	<tp>
+        <id>noob_baza_serpimolot</id>
+        <name>база серп и молот внутри</name>
+    </tp>
+	<tp>
+        <id>noob_baza_serpimolot_out</id>
+        <name>база серп и молот снаружи</name>
+    </tp>
+	<tp>
+        <id>noob_gurman</id>
+        <name>Лагерь Гурмана</name>
+    </tp>
+	<tp>
+        <id>noob_swamp</id>
+        <name>Лагерь на болоте</name>
+    </tp>
+	<tp>
+        <id>out_baza_detsad</id>
+        <name>база детсад внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_detsad_out</id>
+        <name>база детсад снаружи</name>
+    </tp>
+	<tp>
+        <id>out_baza_detsad2</id>
+        <name>база детсад2 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_detsad2_out</id>
+        <name>база детсад2 снаружи</name>
+    </tp>
+	<tp>
+        <id>out_baza_vertolet</id>
+        <name>база Вертолет внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_vertolet_out</id>
+        <name>база Вертолет снаружи</name>
+    </tp>
+	<tp>
+        <id>city_vokzal</id>
+        <name>Любеч вокзал телепорт</name>
+    </tp>
+	<tp>
+        <id>base_redcross</id>
+        <name>база КрасныйКрест внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_RedCross_out</id>
+        <name>база КрасныйКрест снаружи</name>
+    </tp>
+	<tp>
+        <id>base_Gurman1</id>
+        <name>база Гурман внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman1_out</id>
+        <name>база Гурман снаружи</name>
+    </tp>
+	<tp>
+        <id>baza_Noob_Dog1_in</id>
+        <name>база НубДог1 внутри</name>
+    </tp>
+	<tp>
+        <id>baza_NoobDog1_out</id>
+        <name>база НубДог1 снаружи</name>
+    </tp>
+	<tp>
+        <id>nz_center</id>
+        <name>НЗ центр</name>
+    </tp>
+	<tp>
+        <id>tunguska_start</id>
+        <name>Тунгуска старт</name>
+    </tp>
+	<tp>
+        <id>baza_gurman-pop_in</id>
+        <name>база гурман-поп внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_gurman-pop_out</id>
+        <name>база гурман-поп снаружи</name>
+    </tp>
+	<tp>
+        <id>baza_gurman-pop2_in</id>
+        <name>база гурман-поп2 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_gurman-pop2_out</id>
+        <name>база гурман-поп2 снаружи</name>
+    </tp>
+	<tp>
+        <id>baza_serpimolot2_in</id>
+        <name>база серп и молот2 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_serpimolot2_out</id>
+        <name>база серп и молот2 снаружи</name>
+    </tp>
+	<tp>
+        <id>base_serpimolot3_in</id>
+        <name>база серп и молот3 внутри</name>
+    </tp>
+	<tp>
+        <id>out_base_serpimolot3_out</id>
+        <name>база серп и молот3 снаружи</name>
+    </tp>
+	<tp>
+        <id>baza_brockenBus_in</id>
+        <name>база бАвтобус внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_brockenBus_out</id>
+        <name>база бАвтобус снаружи</name>
+    </tp>
+	<tp>
+        <id>base_Gurman2_in</id>
+        <name>база Гурман2 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman2_out</id>
+        <name>база Гурман2 снаружи</name>
+    </tp>
+	<tp>
+        <id>base_Gurman3_in</id>
+        <name>база Гурман3 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman3_out</id>
+        <name>база Гурман3 снаружи</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman4_in</id>
+        <name>база Гурман4 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman4_out</id>
+        <name>база Гурман4 снаружи</name>
+    </tp>
+	<tp>
+        <id>baza_brockenBus2_in</id>
+        <name>база бАвтобус2 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_brockenBus2_out</id>
+        <name>база бАвтобус2 снаружи</name>
+    </tp>
+	<tp>
+        <id>admin_donat_2</id>
+        <name>база админ внутри</name>
+    </tp>
+	<tp>
+        <id>admin_donat_1</id>
+        <name>база админ снаружи</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman5_in</id>
+        <name>база Гурман5 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman5_out</id>
+        <name>база Гурман5 снаружи</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman6_in</id>
+        <name>база Гурман6 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman6_out</id>
+        <name>база Гурман6 снаружи</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman7_in</id>
+        <name>база Гурман7 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman7_out</id>
+        <name>база Гурман7 снаружи</name>
+    </tp>
+	<tp>
+        <id>baza_Gurman8_in</id>
+        <name>база Гурман8 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman8_out</id>
+        <name>база Гурман8 снаружи</name>
+    </tp>
+	<tp>
+        <id>baza_Gurman9_in</id>
+        <name>база Гурман9 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gurman9_out</id>
+        <name>база Гурман9 снаружи</name>
+    </tp>
+	<tp>
+        <id>base_Gdom1</id>
+        <name>база Г-дом1 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gdom1_out</id>
+        <name>база Г-дом1 снаружи</name>
+    </tp>
+	<tp>
+        <id>noob_baza_univermag_out</id>
+        <name>база универмаг снаружи</name>
+    </tp>
+	<tp>
+        <id>noob_baza_univermag_in</id>
+        <name>база универмаг внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_stadion_out</id>
+        <name>база стадион снаружи</name>
+    </tp>
+	<tp>
+        <id>out_baza_stadion_in</id>
+        <name>база стадион внутри</name>
+    </tp>
+	<tp>
+        <id>baza_vertolet2_in</id>
+        <name>база Вертолет2 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_vertolet2_out</id>
+        <name>база Вертолет2 снаружи</name>
+    </tp>
+	<tp>
+        <id>base_Gdom2_in</id>
+        <name>база Г-дом2 внутри</name>
+    </tp>
+	<tp>
+        <id>out_baza_Gdom2_out</id>
+        <name>база Г-дом2 снаружи</name>
+    </tp>
+	<tp>
+        <id>nz_bearcave</id>
+        <name>НЗ_пещера медведя</name>
+    </tp>
+	<tp>
+        <id>20km_west_bad</id>
+        <name>20 км запад плохие</name>
+    </tp>
+	<tp>
+        <id>20km_west_neutral</id>
+        <name>20 км запад нетрал</name>
+    </tp>
+	<tp>
+        <id>20km_west_good</id>
+        <name>20 км запад хорошие</name>
+    </tp>
+	<tp>
+        <id>20km_east_bad</id>
+        <name>20 км вост плохие</name>
+    </tp>
+	<tp>
+        <id>20km_east_neutral</id>
+        <name>20 км вост нетрал</name>
+    </tp>
+	<tp>
+        <id>20km_east_good</id>
+        <name>20 км вост хорошие</name>
+    </tp>
+	<tp>
+        <id>20LB</id>
+        <name>400км лево низ</name>
+    </tp>
+	<tp>
+        <id>20LU</id>
+        <name>400км лево верх</name>
+    </tp>
+	<tp>
+        <id>20MID</id>
+        <name>400км центр</name>
+    </tp>
+	<tp>
+        <id>20RB</id>
+        <name>400км право низ</name>
+    </tp>
+	<tp>
+        <id>20RU</id>
+        <name>400км право верх</name>
+    </tp>
+	<tp>
+        <id>aut_v_20km_neutral</id>
+        <name>аутленд из 20км нетрал</name>
+    </tp>
+	<tp>
+        <id>aut_v_20km_good</id>
+        <name>аутленд из 20км хорошие</name>
+    </tp>
+	<tp>
+        <id>aut_v_20km_bad</id>
+        <name>аутленд из 20км плохие</name>
+    </tp>
+	<tp>
+        <id>tun_v_20km_neutral</id>
+        <name>тунгус из 20км нетрал</name>
+    </tp>
+	<tp>
+        <id>tun_v_20km_good</id>
+        <name>тунгус из 20км хорошие</name>
+    </tp>
+	<tp>
+        <id>tun_v_20km_bad</id>
+        <name>тунгус из 20км плохие</name>
+    </tp>
+	<tp>
+        <id>ves_v_20km_neutral</id>
+        <name>везув из 20км нетрал</name>
+    </tp>
+	<tp>
+        <id>ves_v_20km_good</id>
+        <name>везув из 20км хорошие</name>
+    </tp>
+	<tp>
+        <id>ves_v_20km_bad</id>
+        <name>везув из 20км плохие</name>
+    </tp>
+	
+	<tp>
+        <id>base_Farvilage01_in</id>
+        <name>база дДеревня1 внутри</name>
+    </tp>
+	<tp>
+        <id>out_base_Farvilage01_out</id>
+        <name>база дДеревня1 снаружи</name>
+    </tp>
+	<tp>
+        <id>PrisonAndAeroOut</id>
+        <name>Тюрьма_Аэропорт выход_вход</name>
+    </tp>
+	<tp>
+        <id>vesuv_nz</id>
+        <name>Везувий с Новой Земли</name>
+    </tp>
+	<tp>
+        <id>nz_vesuv</id>
+        <name>Новая Земля с Везувия</name>
+    </tp>
+	<tp>
+        <id>to_airport</id>
+        <name>В Аэропорт на самолете</name>
+    </tp>
+	<tp>
+        <id>nz_airport</id>
+        <name>Новая Земля из Аэропорта</name>
+    </tp>
+	<tp>
+        <id>tung_air</id>
+        <name>Тунгуска из Аэропорта</name>
+    </tp>
+	<tp>
+        <id>outlands_airport</id>
+        <name>Аутлэндс из Аэропорта</name>
+    </tp>
+	<tp>
+        <id>out_air</id>
+        <name>Аэропорт из Аутлэндса</name>
+    </tp>
+	<tp>
+        <id>caravan_west</id>
+        <name>Караван из Аутлэндса</name>
+    </tp>
+	<tp>
+        <id>tp_pk_prison</id>
+        <name>Тюрьма вход</name>
+    </tp>
+	<tp>
+        <id>Teleport_Islands</id>
+        <name>Остров Караван</name>
+    </tp>
+	<tp>
+        <id>Teleport_Diogen</id>
+        <name>Диоген</name>
+    </tp>
+	<tp>
+        <id>Teleport_caravan_2</id>
+        <name>Караван Озеро</name>
+    </tp>
+	<tp>
+        <id>outland_caravan_2</id>
+        <name>Аунлэнд ЛЭП</name>
+    </tp>
+</root>
