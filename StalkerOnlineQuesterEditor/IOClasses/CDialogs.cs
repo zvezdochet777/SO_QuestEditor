@@ -381,6 +381,7 @@ namespace StalkerOnlineQuesterEditor
             this.save(fileName, this.locales[parent.settings.getCurrentLocale()]);
         }
 
+        //! @todo исправлять это говнище, все затирает
         public void createExamples()
         {
             foreach (var npc in dialogs.Values)
@@ -392,7 +393,7 @@ namespace StalkerOnlineQuesterEditor
             saveDialogs(parent.settings.dialogXML);
         }
 
-
+        //! Возвращает словарь из разностей версий диалогов
         public Dictionary<string, Dictionary<int, CDifference>> getDialogDifference(string locale)
         {
             //System.Console.WriteLine("CDialogs::getDialogDifference");
@@ -428,6 +429,7 @@ namespace StalkerOnlineQuesterEditor
             return ret;
         }
 
+        //! @todo исправлять это говнище!!!
         public void createResults()
         {
             NPCDicts results = new Dictionary<string, Dictionary<int, CDialog>>();

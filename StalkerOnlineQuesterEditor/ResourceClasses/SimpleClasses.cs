@@ -696,6 +696,7 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    //! Класс различий - версии не совпадают
     public class CDifference
     {
         public int cur_version;
