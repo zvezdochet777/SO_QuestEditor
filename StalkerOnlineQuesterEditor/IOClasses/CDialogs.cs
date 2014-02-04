@@ -394,7 +394,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Возвращает словарь из разностей версий диалогов
-        public Dictionary<string, Dictionary<int, CDifference>> getDialogDifference(string locale)
+        public Dictionary<string, Dictionary<int, CDifference>> getDialogDifference(string locale, FindType findType)
         {
             //System.Console.WriteLine("CDialogs::getDialogDifference");
             Dictionary<string, Dictionary<int, CDifference>> ret = new Dictionary<string, Dictionary<int, CDifference>>();
@@ -411,11 +411,21 @@ namespace StalkerOnlineQuesterEditor
                         if (locale_dialogs.Keys.Contains(dialog.DialogID))
                             locale_version = locale_dialogs[dialog.DialogID].version;
 
-                        if (dialog.version != locale_version)
-                        {
-                            if (!ret.Keys.Contains(npc_name))
-                                ret.Add(npc_name, new Dictionary<int, CDifference>());
-                            ret[npc_name].Add(dialog.DialogID, new CDifference(dialog.version, locale_version));
+                        if (!ret.Keys.Contains(npc_name))
+                            ret.Add(npc_name, new Dictionary<int, CDifference>());
+                        switch (findType)
+                        { 
+                            case FindType.all:
+                                ret[npc_name].Add(dialog.DialogID, new CDifference(dialog.version, locale_version));
+                                break;
+                            case FindType.outdatedOnly:
+                                if (dialog.version != locale_version)
+                                    ret[npc_name].Add(dialog.DialogID, new CDifference(dialog.version, locale_version));
+                                break;
+                            case FindType.actualOnly:
+                                if (dialog.version == locale_version)
+                                    ret[npc_name].Add(dialog.DialogID, new CDifference(dialog.version, locale_version));
+                                break;
                         }
                     }
                 }

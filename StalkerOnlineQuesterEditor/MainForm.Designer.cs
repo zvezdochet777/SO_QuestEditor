@@ -127,6 +127,10 @@ namespace StalkerOnlineQuesterEditor
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.OutdatedCheckBox = new System.Windows.Forms.CheckBox();
+            this.ActualCheckBox = new System.Windows.Forms.CheckBox();
+            this.bSaveLocale = new System.Windows.Forms.Button();
+            this.labelOuput = new System.Windows.Forms.Label();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.splitDialogs.Panel1.SuspendLayout();
@@ -806,10 +810,10 @@ namespace StalkerOnlineQuesterEditor
             this.cur_ver,
             this.new_ver});
             this.diffGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.diffGridView.Location = new System.Drawing.Point(0, 39);
+            this.diffGridView.Location = new System.Drawing.Point(0, 57);
             this.diffGridView.Name = "diffGridView";
             this.diffGridView.ReadOnly = true;
-            this.diffGridView.Size = new System.Drawing.Size(906, 501);
+            this.diffGridView.Size = new System.Drawing.Size(906, 483);
             this.diffGridView.TabIndex = 1;
             this.diffGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.diffGridView_CellDoubleClick);
             // 
@@ -845,17 +849,21 @@ namespace StalkerOnlineQuesterEditor
             // 
             // panel_diff_locale
             // 
+            this.panel_diff_locale.Controls.Add(this.labelOuput);
+            this.panel_diff_locale.Controls.Add(this.bSaveLocale);
+            this.panel_diff_locale.Controls.Add(this.ActualCheckBox);
+            this.panel_diff_locale.Controls.Add(this.OutdatedCheckBox);
             this.panel_diff_locale.Controls.Add(this.bFindQuestDifference);
             this.panel_diff_locale.Controls.Add(this.bFindDialogDifference);
             this.panel_diff_locale.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_diff_locale.Location = new System.Drawing.Point(0, 0);
             this.panel_diff_locale.Name = "panel_diff_locale";
-            this.panel_diff_locale.Size = new System.Drawing.Size(906, 39);
+            this.panel_diff_locale.Size = new System.Drawing.Size(906, 57);
             this.panel_diff_locale.TabIndex = 0;
             // 
             // bFindQuestDifference
             // 
-            this.bFindQuestDifference.Location = new System.Drawing.Point(165, 3);
+            this.bFindQuestDifference.Location = new System.Drawing.Point(195, 9);
             this.bFindQuestDifference.Name = "bFindQuestDifference";
             this.bFindQuestDifference.Size = new System.Drawing.Size(154, 23);
             this.bFindQuestDifference.TabIndex = 1;
@@ -865,7 +873,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // bFindDialogDifference
             // 
-            this.bFindDialogDifference.Location = new System.Drawing.Point(5, 3);
+            this.bFindDialogDifference.Location = new System.Drawing.Point(35, 9);
             this.bFindDialogDifference.Name = "bFindDialogDifference";
             this.bFindDialogDifference.Size = new System.Drawing.Size(154, 23);
             this.bFindDialogDifference.TabIndex = 0;
@@ -1108,6 +1116,44 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
             // 
+            // OutdatedCheckBox
+            // 
+            this.OutdatedCheckBox.AutoSize = true;
+            this.OutdatedCheckBox.Location = new System.Drawing.Point(359, 32);
+            this.OutdatedCheckBox.Name = "OutdatedCheckBox";
+            this.OutdatedCheckBox.Size = new System.Drawing.Size(89, 17);
+            this.OutdatedCheckBox.TabIndex = 2;
+            this.OutdatedCheckBox.Text = "Устаревшие";
+            this.OutdatedCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // ActualCheckBox
+            // 
+            this.ActualCheckBox.AutoSize = true;
+            this.ActualCheckBox.Location = new System.Drawing.Point(359, 9);
+            this.ActualCheckBox.Name = "ActualCheckBox";
+            this.ActualCheckBox.Size = new System.Drawing.Size(87, 17);
+            this.ActualCheckBox.TabIndex = 3;
+            this.ActualCheckBox.Text = "Актуальные";
+            this.ActualCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // bSaveLocale
+            // 
+            this.bSaveLocale.Location = new System.Drawing.Point(802, 8);
+            this.bSaveLocale.Name = "bSaveLocale";
+            this.bSaveLocale.Size = new System.Drawing.Size(88, 40);
+            this.bSaveLocale.TabIndex = 4;
+            this.bSaveLocale.Text = "Сохранить";
+            this.bSaveLocale.UseVisualStyleBackColor = true;
+            this.bSaveLocale.Click += new System.EventHandler(this.bSaveLocale_Click);
+            // 
+            // labelOuput
+            // 
+            this.labelOuput.AutoSize = true;
+            this.labelOuput.Location = new System.Drawing.Point(693, 19);
+            this.labelOuput.Name = "labelOuput";
+            this.labelOuput.Size = new System.Drawing.Size(0, 13);
+            this.labelOuput.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1145,6 +1191,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabTranslate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.diffGridView)).EndInit();
             this.panel_diff_locale.ResumeLayout(false);
+            this.panel_diff_locale.PerformLayout();
             this.tabBalance.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.balanceTabControl.ResumeLayout(false);
@@ -1259,6 +1306,10 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn cat_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn cat_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cat_3;
+        private System.Windows.Forms.CheckBox ActualCheckBox;
+        private System.Windows.Forms.CheckBox OutdatedCheckBox;
+        private System.Windows.Forms.Button bSaveLocale;
+        private System.Windows.Forms.Label labelOuput;
 
 
     }

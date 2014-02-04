@@ -764,7 +764,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
 
-        public Dictionary<string, Dictionary<int, CDifference>> getQuestDifference(string locale)
+        public Dictionary<string, Dictionary<int, CDifference>> getQuestDifference(string locale, FindType findType)
         {
             //System.Console.WriteLine("CQuests::getQuestDifference");
             Dictionary<string, Dictionary<int, CQuest>> sorted_locale = new Dictionary<string, Dictionary<int, CQuest>>();
@@ -787,21 +787,27 @@ namespace StalkerOnlineQuesterEditor
                     locale_quest.Version = 0;
 
                     if (sorted_locale[cur_quest.Additional.Holder].Keys.Contains(cur_quest.QuestID))
-                    {
                         locale_quest.Version = sorted_locale[cur_quest.Additional.Holder][cur_quest.QuestID].Version;
-                    }
-                    if (cur_quest.Version != locale_quest.Version)
-                    {
-                        if (!ret.Keys.Contains(cur_quest.Additional.Holder))
-                            ret.Add(cur_quest.Additional.Holder, new Dictionary<int, CDifference>());
-                        ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version));
-                    }
 
+                    if (!ret.Keys.Contains(cur_quest.Additional.Holder))
+                        ret.Add(cur_quest.Additional.Holder, new Dictionary<int, CDifference>());
+                    switch (findType)
+                    { 
+                        case FindType.all:
+                            ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version));
+                            break;
+                        case FindType.outdatedOnly:
+                            if (cur_quest.Version != locale_quest.Version)
+                                ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version)); 
+                            break;
+                        case FindType.actualOnly:
+                            if (cur_quest.Version == locale_quest.Version)
+                                ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version));
+                            break;
+
+                    }
                 }
-
             }
-
-
 
             //foreach (var locale_npc_name in sorted_locale.Keys)
             //{
@@ -818,16 +824,15 @@ namespace StalkerOnlineQuesterEditor
             //        }
             //    }
             //}
-
+            /*
             foreach (var name in ret.Keys)
             {
                 System.Console.WriteLine("npc:" + name);
                 foreach (var quest_id in ret[name].Keys)
                     System.Console.WriteLine("id:" + quest_id.ToString());
             }
-
+            */
             return ret;
-
         }
     }
 }

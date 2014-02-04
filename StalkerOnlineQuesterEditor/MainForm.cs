@@ -308,6 +308,7 @@ namespace StalkerOnlineQuesterEditor
                 fillDialogTree(rootDialog, this.dialogs.dialogs[currentNPC]);
         }
 
+        //! Старует эмулятор (attention!)
         public void startEmulator(int dialogID)//, bool isHandle)
         {
             CDialog rootDialog = getDialogOnDialogID(dialogID);
@@ -695,7 +696,6 @@ namespace StalkerOnlineQuesterEditor
 
         private void bSaveDialogs_Click(object sender, EventArgs e)
         {
-
                 this.saveData();
         }
 
@@ -1633,12 +1633,17 @@ namespace StalkerOnlineQuesterEditor
             quests.createResults();
         }
 
+        //! Выодит диалоги для локализации. В зависимости от помеченных чекбоксов. актуальные или устаревшие
         private void bFindDialogDifference_Click(object sender, EventArgs e)
         {
+            int actual = (ActualCheckBox.Checked) ? (1) : (0);
+            int outdated = (OutdatedCheckBox.Checked) ? (1) : (0);
+            FindType findType = (FindType)(actual + (outdated << 1) );
             this.translate_checker = 1;
             diffGridView.Rows.Clear();
-            var diff = dialogs.getDialogDifference(settings.getCurrentLocale());
+            var diff = dialogs.getDialogDifference(settings.getCurrentLocale(), findType);
             var type = "Диалог";
+            int count = 0;
 
             foreach (var name in diff.Keys)
             {
@@ -1646,8 +1651,11 @@ namespace StalkerOnlineQuesterEditor
                 {
                     object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version };
                     diffGridView.Rows.Add(row);
+                    count++;
                 }
             }
+            labelOuput.Text = "Выведено: "+ count.ToString();
+            labelOuput.Update();
         }
 
         int translate_checker = 0;
@@ -1671,10 +1679,14 @@ namespace StalkerOnlineQuesterEditor
 
         private void bFindQuestDifference_Click(object sender, EventArgs e)
         {
-            diffGridView.Rows.Clear();
+            int actual = (ActualCheckBox.Checked) ? (1) : (0);
+            int outdated = (OutdatedCheckBox.Checked) ? (1) : (0);
+            FindType findType = (FindType)(actual + (outdated << 1));
             this.translate_checker = 2;
-            var diff = quests.getQuestDifference(settings.getCurrentLocale());
+            diffGridView.Rows.Clear();
+            var diff = quests.getQuestDifference(settings.getCurrentLocale(), findType);
             var type = "Квест";
+            int count = 0;
 
             foreach (var name in diff.Keys)
             {
@@ -1682,8 +1694,11 @@ namespace StalkerOnlineQuesterEditor
                 {
                     object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version };
                     diffGridView.Rows.Add(row);
+                    count++;
                 }
             }
+            labelOuput.Text = "Выведено: " + count.ToString();
+            labelOuput.Update();
         }
 
         private void fillFractionBalance()
@@ -1782,6 +1797,11 @@ namespace StalkerOnlineQuesterEditor
         }
 
         private void bSaveQuests_Click_1(object sender, EventArgs e)
+        {
+            this.saveData();
+        }
+
+        private void bSaveLocale_Click(object sender, EventArgs e)
         {
             this.saveData();
         }

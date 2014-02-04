@@ -696,7 +696,7 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
-    //! Класс различий - версии не совпадают
+    //! Класс различий - содержит текущую и устаревшую версию
     public class CDifference
     {
         public int cur_version;
@@ -710,9 +710,6 @@ namespace StalkerOnlineQuesterEditor
             this.old_version = old_version;
             //this.npc_name = npc_name;
             //this.id = id;
-
-
-            
         }
     }
 
