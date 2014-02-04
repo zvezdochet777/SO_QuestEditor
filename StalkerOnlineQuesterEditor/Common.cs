@@ -6,8 +6,8 @@ using System.Text;
 namespace StalkerOnlineQuesterEditor
 {
     //! Перечисление типов посика при локализации
-    public enum FindType { none = 0, actualOnly = 1, outdatedOnly = 2, all = 3 };
-    //! Класс для кодировки значений \n, \p в <n> и <p>
+    public enum FindType { none = 0, actualOnly = 1, outdatedOnly = 2, all = 3 }; 
+    //! Класс для кодировки значений \\n, \\p в <n> и <p>
     class Common
     {
         Dictionary<string, string> rep;

@@ -24,6 +24,7 @@ namespace StalkerOnlineQuesterEditor
 {
     using NPCQuestDict = Dictionary<int, CDialog>;
     using StalkerOnlineQuesterEditor.Forms;
+    //! Главная форма программы, туча строк кода
     public partial class MainForm : Form
     {
 
@@ -32,6 +33,7 @@ namespace StalkerOnlineQuesterEditor
         int STARTTALKQUESTS = 2500;
         int ENDTALKQUESTS = 3500;
 
+        //! Текущий выбранный NPC (в комбобоксе вверху)
         public string currentNPC="";
         CDialogs dialogs;
         CQuests quests;
@@ -114,6 +116,7 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        //! Очищает данные о квестах - дерево квестов, комбобокс, подквесты
         void clearQuestTab()
         {
             treeQuest.Nodes.Clear();
@@ -121,9 +124,9 @@ namespace StalkerOnlineQuesterEditor
             QuestBox.Items.Clear();
         }
 
+        //! Сменили NPC в комбобоксе выбора персонажа
         private void NPCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (!NPCBox.SelectedItem.ToString().Equals(currentNPC))
             {
                 clearQuestTab();
@@ -208,7 +211,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bRemoveDialog_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == 0)
+            if (settings.getMode() == settings.MODE_EDITOR)
             {
                 if (Listener.curNode != null)
                     removeNodeFromDialogGraphView(getDialogIDOnNode(Listener.curNode));
@@ -242,9 +245,6 @@ namespace StalkerOnlineQuesterEditor
                     deselectSubNodesDialogGraphView();
                     if (treeDialogs.SelectedNode.Parent.Text == "Active")
                     {
-                        
-
-
                         foreach (PNode node in DialogShower.Layer.AllNodes)
                             if (getDialogIDOnNode(node).Equals(treeID))
                                 Listener.setCurrentNode(treeID);
@@ -254,15 +254,13 @@ namespace StalkerOnlineQuesterEditor
                         onSelectNode(treeID);
                         Listener.setCurrentNode(0);
                     }
-
-
                 }
             }
         }
 
         private void bAddDialog_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == 0)
+            if (settings.getMode() == settings.MODE_EDITOR)
             {
                 if (!treeDialogs.SelectedNode.ToString().Equals("Recycle") && !treeDialogs.SelectedNode.ToString().Equals("Active"))
                 {
@@ -282,7 +280,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bEditDialog_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == 0)
+            if (settings.getMode() == settings.MODE_EDITOR)
             {
                 EditDialogForm editDialogForm = new EditDialogForm(false, this, int.Parse(treeDialogs.SelectedNode.Text));
                 editDialogForm.Visible = true;
@@ -311,12 +309,12 @@ namespace StalkerOnlineQuesterEditor
         //! Старует эмулятор (attention!)
         public void startEmulator(int dialogID)//, bool isHandle)
         {
-            CDialog rootDialog = getDialogOnDialogID(dialogID);
+            CDialog rootDialog = getDialogOnIDConditional(dialogID);
             EmulatorsplitContainer.Panel2.Controls.Clear();
             titles = new Dictionary<LinkLabel,int>();
             Label NPCText = new Label();
             NPCText.Text = rootDialog.Text;
-            NPCText.AutoSize = true;
+            NPCText.AutoSize = true;            
             //NPCText.Size = new Size(30, 30);
             NPCText.Dock = DockStyle.Top;
 
@@ -349,7 +347,8 @@ namespace StalkerOnlineQuesterEditor
                     actionResult = "(" + actionResult + ")";
 
 
-                dialogLink.Text = dialog + ". " + dialogs.dialogs[currentNPC][dialog].Title + actionResult;
+                //dialogLink.Text = dialog + ". " + dialogs.dialogs[currentNPC][dialog].Title + actionResult;
+                dialogLink.Text = dialog + ". " + getDialogOnIDConditional(dialog).Title + actionResult;
                 dialogLink.AutoSize = true;
                 dialogLink.Dock = DockStyle.Top;
                 dialogLink.Links.Add(0, 0, dialog);
@@ -477,16 +476,24 @@ namespace StalkerOnlineQuesterEditor
         {
 
         }
-
+        //! Устанавливает доступность компонентов формы
+        private void SetControlsAbility(bool enable)
+        {
+            NPCBox.Enabled = enable;
+            bAddNPC.Enabled = enable;
+            bDelNPC.Enabled = enable;
+            QuestBox.Enabled = enable;
+            bRemoveQuest.Enabled = enable;
+            bAddQuest.Enabled = enable;
+        }
+        //! Блокировка компонентов и обновление данных при смене вкладки на форме
         private void onSelectTab(object sender, EventArgs e)
         {
             bCopyEvents.Enabled = false;
 
             if (CentralDock.SelectedIndex == 0)
             {
-                NPCBox.Enabled = true;
-                bAddNPC.Enabled = true;
-                bDelNPC.Enabled = true;
+                SetControlsAbility(true);
                 if (!currentNPC.Equals(""))
                 {
                     QuestBox.Items.Clear();
@@ -500,34 +507,20 @@ namespace StalkerOnlineQuesterEditor
             else if (CentralDock.SelectedIndex == 1)
             {
                 //System.Console.WriteLine("SelectQueststab");
-                NPCBox.Enabled = true;
-                bAddNPC.Enabled = true;
-                bDelNPC.Enabled = true;
-                QuestBox.Enabled = true;
+                SetControlsAbility(true);
                 bRemoveQuest.Enabled = false;
-                bAddQuest.Enabled = true;
                 QuestBox.Items.Clear();
                 fillQuestChangeBox(false);
                 QuestBox.Text = "Пожалуйста, выберите квест.";
             }
             else if (CentralDock.SelectedIndex == 2)
             {
-                NPCBox.Enabled = false;
-                QuestBox.Enabled = false;
-                bAddNPC.Enabled = false;
-                bDelNPC.Enabled = false;
-                bAddQuest.Enabled = false;
-                bRemoveQuest.Enabled = false;
+                SetControlsAbility(false);
                 fillNPCLinkView();
             }
             else if (CentralDock.SelectedIndex == 3)
             {
-                NPCBox.Enabled = false;
-                QuestBox.Enabled = false;
-                bAddNPC.Enabled = false;
-                bDelNPC.Enabled = false;
-                bAddQuest.Enabled = false;
-                bRemoveQuest.Enabled = false;
+                SetControlsAbility(false);
                 calcStatistic();
             }
             else if (CentralDock.SelectedIndex == 4)
@@ -839,7 +832,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bEditEvent_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == 0)
+            if (settings.getMode() == settings.MODE_EDITOR)
             {
                 if (getQuestOnQuestID(currentQuest).Additional.IsSubQuest == 0)
                 {
@@ -867,7 +860,7 @@ namespace StalkerOnlineQuesterEditor
         void saveData()
         {
                 this.Enabled = false;
-                if (settings.getMode() == 0)
+                if (settings.getMode() == settings.MODE_EDITOR)
                 {
                     quests.saveQuests(settings.questXML);
                     quests.saveStartQuests(settings.startQuestXML);
@@ -1581,12 +1574,10 @@ namespace StalkerOnlineQuesterEditor
         {
             //System.Console.WriteLine("MainForm::onChangeMode");
             //System.Console.WriteLine("mode:" + settings.getMode().ToString());
-
-            if (settings.getMode() == 1)
+            if (settings.getMode() == settings.MODE_LOCALIZATION)
             {
-             //   CentralDock.TabPages[4].CanFocus = false;
-             //   CentralDock.TabPages[6].CanSelect = false;
-/*
+                CentralDock.TabPages[4].Visible = false;
+                CentralDock.Update();
                 for (int i = 2; i < CentralDock.TabPages.Count; i++)
                 {
                     if (CentralDock.TabPages[i].Name != "tabTranslate")
@@ -1594,20 +1585,18 @@ namespace StalkerOnlineQuesterEditor
                     else
                         CentralDock.TabPages[i].Enabled = true;
                 }
- */
             }
             else
             {
-               // CentralDock.TabPages[5].CanSelect = false;
-/*
-                for (int i = 1; i < CentralDock.TabPages.Count; i++)
+                CentralDock.TabPages[5].Visible = false;
+                CentralDock.Update();
+                for (int i = 2; i < CentralDock.TabPages.Count; i++)
                 {
                     if (CentralDock.TabPages[i].Name == "tabTranslate")
                         CentralDock.TabPages[i].Enabled = false;
                     else
                         CentralDock.TabPages[i].Enabled = true;
                 }
- */ 
             }
         }
 

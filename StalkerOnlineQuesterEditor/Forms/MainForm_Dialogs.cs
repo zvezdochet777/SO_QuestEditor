@@ -85,6 +85,7 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        //! Возвращает экземпляр диалога по ID (всегда по-русски)
         public CDialog getDialogOnDialogID(int dialogID)
         {
             if (dialogID != 0)
@@ -93,14 +94,28 @@ namespace StalkerOnlineQuesterEditor
                 return null;
         }
 
+        //! Возвращает диалог по ID, если он принадлежит этому NPC (всегда по-русски)
         public CDialog getDialogOnDialogID(string npc_name, int dialogID)
         {
-            if ( dialogs.dialogs.Keys.Contains(npc_name) &&(dialogID != 0) && dialogs.dialogs[npc_name].Keys.Contains(dialogID))
+            if (dialogs.dialogs.Keys.Contains(npc_name) && (dialogID != 0) && dialogs.dialogs[npc_name].Keys.Contains(dialogID))
                 return dialogs.dialogs[npc_name][dialogID];
             else
                 return null;
         }
 
+        //! Возвращает диалог по ID в зависимости от режима и локализации
+        public CDialog getDialogOnIDConditional(int dialogID)
+        {
+            if (dialogID != 0)
+            {
+                if (settings.getMode() == 0)
+                    return dialogs.dialogs[currentNPC][dialogID];
+                else
+                    return dialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC);
+            }
+            else
+                return null;
+        }
 
         public int getDialogsNewID()
         {

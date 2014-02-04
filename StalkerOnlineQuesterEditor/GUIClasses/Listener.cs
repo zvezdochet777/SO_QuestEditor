@@ -119,13 +119,13 @@ namespace StalkerOnlineQuesterEditor
         {
             if (curNode != null)
                 if (!getCurDialogID().Equals(dialogID))
-            {
-                if (form.isRoot(form.getDialogIDOnNode(curNode)))
-                    curNode.Brush = Brushes.Green;
-                else
-                    curNode.Brush = Brushes.White;
-                prevNode = curNode;
-            }
+                {
+                    if (form.isRoot(form.getDialogIDOnNode(curNode)))
+                        curNode.Brush = Brushes.Green;
+                    else
+                        curNode.Brush = Brushes.White;
+                    prevNode = curNode;
+                }
             if (!getCurDialogID().Equals(dialogID))
             {
                 form.onDeselectNode();

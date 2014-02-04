@@ -23,7 +23,7 @@ namespace StalkerOnlineQuesterEditor
         int currentLocale = 0;
 
 
-        public int MODE_SIMPLE = 0;
+        public int MODE_EDITOR = 0;
         public int MODE_LOCALIZATION = 1;       
 
         string SETTINGS_PATH = "settings/";
@@ -178,9 +178,9 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Устанавливает Обычный режим (корректировка текстов)
-        public void setSimple()
+        public void setEditorMode()
         {
-            this.mode = this.MODE_SIMPLE;
+            this.mode = this.MODE_EDITOR;
             checkMode();
         }
 

@@ -84,9 +84,7 @@ namespace StalkerOnlineQuesterEditor
                     localizeCheckBox.Enabled = false;
             }
             else
-                parent.settings.setSimple();
-            
-            
+                parent.settings.setEditorMode();          
             
             parent.settings.saveSettings();
             this.Close();
