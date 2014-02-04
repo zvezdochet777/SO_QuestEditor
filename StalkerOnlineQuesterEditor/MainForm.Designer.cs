@@ -207,11 +207,12 @@ namespace StalkerOnlineQuesterEditor
             this.CentralDock.Controls.Add(this.tabTranslate);
             this.CentralDock.Controls.Add(this.tabBalance);
             this.CentralDock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CentralDock.HotTrack = true;
             this.CentralDock.Location = new System.Drawing.Point(0, 53);
             this.CentralDock.Name = "CentralDock";
             this.CentralDock.SelectedIndex = 0;
             this.CentralDock.Size = new System.Drawing.Size(914, 566);
-            this.CentralDock.TabIndex = 0;
+            this.CentralDock.TabIndex = 2;
             this.CentralDock.SelectedIndexChanged += new System.EventHandler(this.onSelectTab);
             // 
             // tabDialogs
@@ -1212,7 +1213,6 @@ namespace StalkerOnlineQuesterEditor
 
         private System.Windows.Forms.ComboBox NPCBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl CentralDock;
         private System.Windows.Forms.TabPage tabDialogs;
         private System.Windows.Forms.TabPage tabQuests;
         private PCanvas DialogShower;
@@ -1310,6 +1310,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.CheckBox OutdatedCheckBox;
         private System.Windows.Forms.Button bSaveLocale;
         private System.Windows.Forms.Label labelOuput;
+        public System.Windows.Forms.TabControl CentralDock;
 
 
     }

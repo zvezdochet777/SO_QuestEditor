@@ -44,8 +44,8 @@
             this.textBoxNPCReactionLocale = new System.Windows.Forms.TextBox();
             this.lHello = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bOk = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
+            this.bOk = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -64,6 +64,7 @@
             this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Приветствие NPC:";
+            this.label1.Visible = false;
             // 
             // panel1
             // 
@@ -212,6 +213,7 @@
             this.lHello.Size = new System.Drawing.Size(35, 13);
             this.lHello.TabIndex = 1;
             this.lHello.Text = "label2";
+            this.lHello.Visible = false;
             // 
             // panel2
             // 
@@ -222,16 +224,6 @@
             this.panel2.Size = new System.Drawing.Size(620, 34);
             this.panel2.TabIndex = 2;
             // 
-            // bOk
-            // 
-            this.bOk.Location = new System.Drawing.Point(461, 3);
-            this.bOk.Name = "bOk";
-            this.bOk.Size = new System.Drawing.Size(75, 23);
-            this.bOk.TabIndex = 0;
-            this.bOk.Text = "Ок";
-            this.bOk.UseVisualStyleBackColor = true;
-            this.bOk.Click += new System.EventHandler(this.bOk_Click);
-            // 
             // bCancel
             // 
             this.bCancel.Location = new System.Drawing.Point(542, 3);
@@ -241,6 +233,16 @@
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = true;
             this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            // 
+            // bOk
+            // 
+            this.bOk.Location = new System.Drawing.Point(461, 3);
+            this.bOk.Name = "bOk";
+            this.bOk.Size = new System.Drawing.Size(75, 23);
+            this.bOk.TabIndex = 0;
+            this.bOk.Text = "Ок";
+            this.bOk.UseVisualStyleBackColor = true;
+            this.bOk.Click += new System.EventHandler(this.bOk_Click);
             // 
             // LocaleDialogForm
             // 

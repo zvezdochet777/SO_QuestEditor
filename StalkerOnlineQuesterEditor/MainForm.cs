@@ -1584,38 +1584,30 @@ namespace StalkerOnlineQuesterEditor
 
             if (settings.getMode() == 1)
             {
-
+             //   CentralDock.TabPages[4].CanFocus = false;
+             //   CentralDock.TabPages[6].CanSelect = false;
+/*
                 for (int i = 2; i < CentralDock.TabPages.Count; i++)
                 {
-
                     if (CentralDock.TabPages[i].Name != "tabTranslate")
-                    {
-                        //System.Console.WriteLine("tab:" + CentralDock.TabPages[i].Name + ":false");
                         CentralDock.TabPages[i].Enabled = false;
-                    }
                     else
-                    {
-                        //System.Console.WriteLine("tab:" + CentralDock.TabPages[i].Name + ":true");
                         CentralDock.TabPages[i].Enabled = true;
-                    }
                 }
+ */
             }
             else
             {
+               // CentralDock.TabPages[5].CanSelect = false;
+/*
                 for (int i = 1; i < CentralDock.TabPages.Count; i++)
                 {
-
                     if (CentralDock.TabPages[i].Name == "tabTranslate")
-                    {
-                        //System.Console.WriteLine("tab:" + CentralDock.TabPages[i].Name + ":false");
                         CentralDock.TabPages[i].Enabled = false;
-                    }
                     else
-                    {
-                        //System.Console.WriteLine("tab:" + CentralDock.TabPages[i].Name + ":true");
                         CentralDock.TabPages[i].Enabled = true;
-                    }
                 }
+ */ 
             }
         }
 
