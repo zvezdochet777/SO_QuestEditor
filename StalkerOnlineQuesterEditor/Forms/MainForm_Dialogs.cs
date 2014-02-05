@@ -108,10 +108,20 @@ namespace StalkerOnlineQuesterEditor
         {
             if (dialogID != 0)
             {
-                if (settings.getMode() == 0)
+                if (settings.getMode() == settings.MODE_EDITOR)
                     return dialogs.dialogs[currentNPC][dialogID];
                 else
-                    return dialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC);
+                {
+                    CDialog d = dialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC);
+                    if (d != null)
+                        return dialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC);
+                    else
+                    {
+                        d = dialogs.dialogs[currentNPC][dialogID];
+                        d.version = 0;
+                        return d;
+                    }
+                }
             }
             else
                 return null;

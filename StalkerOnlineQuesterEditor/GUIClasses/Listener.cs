@@ -84,23 +84,17 @@ namespace StalkerOnlineQuesterEditor
             base.OnDrag(sender, e);
             if (e.PickedNode.Tag != null)
             {
-
                 ArrayList edges = (ArrayList)e.PickedNode.Tag;
                 foreach (Object edge in edges)
 //                    if (edge.GetType().ToString().Equals("System.String"))
 //                        System.Console.WriteLine("hello");
                    /* else*/ if (edge.GetType().ToString().Equals("UMD.HCIL.Piccolo.Nodes.PPath"))
                         MainForm.updateEdge((PPath)edge);
-
-
             }
         }
 
-
-
         public int getCurDialogID()
         {
-
             if (curNode != null)
                 return form.getDialogIDOnNode(curNode);
             else
@@ -111,8 +105,6 @@ namespace StalkerOnlineQuesterEditor
                         return int.Parse(((PText)node).Text);
             }
             return 0;*/
-
-
         }
 
         public void setCurrentNode(int dialogID)

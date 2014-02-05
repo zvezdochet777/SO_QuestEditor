@@ -306,18 +306,21 @@ namespace StalkerOnlineQuesterEditor
                 fillDialogTree(rootDialog, this.dialogs.dialogs[currentNPC]);
         }
 
-        //! Старует эмулятор (attention!)
+        //! Старует эмулятор диалога (язык диалога зависит от режима, не переведенные фрагменты помечаются красным)
         public void startEmulator(int dialogID)//, bool isHandle)
         {
+            // получаем фразу NPC
             CDialog rootDialog = getDialogOnIDConditional(dialogID);
             EmulatorsplitContainer.Panel2.Controls.Clear();
             titles = new Dictionary<LinkLabel,int>();
             Label NPCText = new Label();
             NPCText.Text = rootDialog.Text;
-            NPCText.AutoSize = true;            
+            NPCText.ForeColor = (rootDialog.version != 0) ? (Color.Black) : (Color.Red);
+            NPCText.AutoSize = false;
+            NPCText.AutoEllipsis = true;
+            
             //NPCText.Size = new Size(30, 30);
             NPCText.Dock = DockStyle.Top;
-
             
             foreach (int dialog in rootDialog.Nodes)
             {
@@ -348,7 +351,9 @@ namespace StalkerOnlineQuesterEditor
 
 
                 //dialogLink.Text = dialog + ". " + dialogs.dialogs[currentNPC][dialog].Title + actionResult;
-                dialogLink.Text = dialog + ". " + getDialogOnIDConditional(dialog).Title + actionResult;
+                CDialog answer = getDialogOnIDConditional(dialog);
+                dialogLink.Text = dialog + ". " + answer.Title + actionResult;
+                dialogLink.BackColor = (answer.version != 0) ? (Color.FromKnownColor(KnownColor.Transparent)) : (Color.FromArgb(0x7FAA45E0));             
                 dialogLink.AutoSize = true;
                 dialogLink.Dock = DockStyle.Top;
                 dialogLink.Links.Add(0, 0, dialog);
@@ -1786,8 +1791,6 @@ namespace StalkerOnlineQuesterEditor
         {
             this.saveData();
         }
-
-
     }
 }
  

@@ -181,6 +181,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             // NPCBox
             // 
+            this.NPCBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.NPCBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.NPCBox.FormattingEnabled = true;
             this.NPCBox.Location = new System.Drawing.Point(96, 3);
             this.NPCBox.Name = "NPCBox";
@@ -238,10 +240,12 @@ namespace StalkerOnlineQuesterEditor
             this.splitDialogs.Panel1.BackColor = System.Drawing.SystemColors.Window;
             this.splitDialogs.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.splitDialogs.Panel1.Controls.Add(this.DialogsEditor);
+            this.splitDialogs.Panel1MinSize = 10;
             // 
             // splitDialogs.Panel2
             // 
             this.splitDialogs.Panel2.Controls.Add(this.EmulatorGroupBox);
+            this.splitDialogs.Panel2MinSize = 10;
             this.splitDialogs.Size = new System.Drawing.Size(900, 534);
             this.splitDialogs.SplitterDistance = 422;
             this.splitDialogs.TabIndex = 1;
@@ -393,7 +397,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.EmulatorsplitContainer.Panel2.AutoScroll = true;
             this.EmulatorsplitContainer.Size = new System.Drawing.Size(894, 89);
-            this.EmulatorsplitContainer.SplitterDistance = 297;
+            this.EmulatorsplitContainer.SplitterDistance = 150;
             this.EmulatorsplitContainer.TabIndex = 0;
             // 
             // tabQuests

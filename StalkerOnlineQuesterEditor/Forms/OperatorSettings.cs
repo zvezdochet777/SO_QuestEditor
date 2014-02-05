@@ -45,7 +45,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (string locale in localesTextBox.Text.Split(','))
                 localeComboBox.Items.Add(locale);
 
-            if (parent.settings.getMode() == 1)
+            if (parent.settings.getMode() == parent.settings.MODE_LOCALIZATION)
             {
                 localizeCheckBox.Checked = true;
                 localeComboBox.SelectedIndex = parent.settings.getCurrentIndexLocale();
