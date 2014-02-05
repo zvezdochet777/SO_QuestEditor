@@ -55,8 +55,10 @@ namespace StalkerOnlineQuesterEditor
             // e.CanvasPosition.X, e.CanvasPosition.Y
             float x = e.PickedNode.GlobalFullBounds.X;
             float y = e.PickedNode.GlobalFullBounds.Y;
+            float w = e.PickedNode.GlobalFullBounds.Width;
+            float h = e.PickedNode.GlobalFullBounds.Height;
 
-            form.setXYCoordinates(x, y);
+            form.setXYCoordinates(x, y, w ,h);
             
             if (e.PickedNode.Tag != null)
                 e.PickedNode.MoveToFront();

@@ -416,10 +416,12 @@ namespace StalkerOnlineQuesterEditor
             }
             
         }
-        public void setXYCoordinates(float X, float Y)
+        public void setXYCoordinates(float X, float Y, float w, float h)
         {
-            this.labelXNode.Text = X.ToString();
-            this.labelYNode.Text = Y.ToString();
+            this.labelXNode.Text = "X=" + X.ToString();
+            this.labelYNode.Text = "Y=" + Y.ToString();
+            this.labelXNode.Text += " w=" + w.ToString();
+            this.labelYNode.Text += " h=" + h.ToString();
         }
 
         //! Вовзаращает список как строку со значениями через запятую

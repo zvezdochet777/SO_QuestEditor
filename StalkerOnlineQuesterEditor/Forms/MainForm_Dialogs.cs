@@ -20,7 +20,7 @@ namespace StalkerOnlineQuesterEditor
     {
         //DIALOGS
         //******************SETTERS/GETTERS****************************
-
+        //! Возвращает вершину графа диалогов - корневую фразу у заданного NPC
         public CDialog getRootDialog(string npc_name)
         {
             NPCQuestDict dialogs = this.dialogs.dialogs[npc_name];
@@ -37,6 +37,7 @@ namespace StalkerOnlineQuesterEditor
             return null;
         }
 
+        //! Возвращает вершину графа диалогов - корневую фразу
         CDialog getRootDialog()
         {            
             CDialog ret_dial = getRootDialog(currentNPC);
@@ -60,6 +61,7 @@ namespace StalkerOnlineQuesterEditor
             //return null;
         }
 
+        //! Возвращает Узел по изветсному ID диалога
         public PNode getNodeOnDialogID(int dialogID)
         {
             return GraphProperties.findNodeOnID(graphs, dialogID);
@@ -175,12 +177,13 @@ namespace StalkerOnlineQuesterEditor
             // Show root node
             float rootx = (float)(this.ClientSize.Width / 5);
             float rooty = (float)(this.ClientSize.Height / 5);
-            PNode rootNode = PPath.CreateEllipse(rootx, rooty, 50, 30);
+            SizeF size = CalcEllipsisSizeForNode(root.DialogID);
+            PNode rootNode = PPath.CreateEllipse(rootx, rooty, size.Width, size.Height);
             rootNode.Brush = Brushes.Green;
 
             PText rootText = new PText(root.DialogID.ToString());
             rootText.Pickable = false;
-            rootText.X = rootNode.X + 20;
+            rootText.X = rootNode.X + 15;
             rootText.Y = rootNode.Y + 10;
             rootNode.Tag = new ArrayList();
 
@@ -253,11 +256,11 @@ namespace StalkerOnlineQuesterEditor
 
                     if (node == null)
                     {
-                        node = PPath.CreateEllipse(x, y, 50, 30);
-                        
+                        SizeF size = CalcEllipsisSizeForNode(subdialogs);
+                        node = PPath.CreateEllipse(x, y, size.Width, size.Height);
                         PText text = new PText(subdialogs.ToString());
                         text.Pickable = false;
-                        text.X = node.X + 20;
+                        text.X = node.X + 15;
                         text.Y = node.Y + 10;
                         node.Tag = new ArrayList();
                         //((CMainDialog)node).DialogID = subdialogs;
@@ -300,10 +303,11 @@ namespace StalkerOnlineQuesterEditor
             float y = new float();
             y = parentDialog.Y + 10;
 
-            PNode newDialog = PPath.CreateEllipse(x, y, 50, 30);
+            SizeF size = CalcEllipsisSizeForNode(DialogID);
+            PNode newDialog = PPath.CreateEllipse(x, y, size.Width, size.Height);
             PText text = new PText(dialogID.ToString());
             text.Pickable = false;
-            text.X = newDialog.X + 20;
+            text.X = newDialog.X + 15;
             text.Y = newDialog.Y + 10;
             newDialog.Tag = new ArrayList();
             newDialog.AddChild(text);
@@ -332,10 +336,8 @@ namespace StalkerOnlineQuesterEditor
                 edgeLayer.AddChild(edgeT);
             }
 
-
             updateEdge(edge);
             DialogShower.Layer.AddChildren(nodeLayer);
-
 
             if (!graphs.Keys.Contains(newDialog))
                 graphs.Add(newDialog, new GraphProperties(dialogID));
@@ -345,8 +347,17 @@ namespace StalkerOnlineQuesterEditor
                     addNodeOnDialogGraphView(subdialog, dialogID);
 
             DialogSelected(false);
+        }
 
-
+        //! Возвращает размер эллипса для Узла диалога по заданному ID диалога (дли широких надписей размер больше)
+        SizeF CalcEllipsisSizeForNode(int dialogId)
+        {
+            SizeF size = new SizeF(0,0);
+            if (dialogId / 1000 == 0)
+                size = new SizeF(50, 30);
+            else if (dialogId / 1000 > 0)
+                size = new SizeF(60, 40);
+            return size;
         }
 
         //! Создает линии - связи между узлами на графе диалогов
