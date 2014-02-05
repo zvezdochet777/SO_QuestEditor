@@ -23,6 +23,8 @@ namespace StalkerOnlineQuesterEditor.Forms
             //System.Console.WriteLine("LocaleDialogForm::__init__ " + dialog);
             NPCReactiontextBox.Text = dialog.Text;
             textBoxAnswer.Text = dialog.Title;
+            lViewNpcName.Text = dialog.Holder;
+            lViewDialogId.Text = dialog.DialogID.ToString();
             this.originalDialog = dialog;
             var localeDialog = parent.getLocaleDialog(dialog.DialogID, dialog.Holder);
 

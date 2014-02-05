@@ -33,7 +33,7 @@ namespace StalkerOnlineQuesterEditor
         {
             this.DialogShower = new UMD.HCIL.Piccolo.PCanvas();
             this.NPCBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelChosenNPC = new System.Windows.Forms.Label();
             this.CentralDock = new System.Windows.Forms.TabControl();
             this.tabDialogs = new System.Windows.Forms.TabPage();
             this.splitDialogs = new System.Windows.Forms.SplitContainer();
@@ -124,13 +124,16 @@ namespace StalkerOnlineQuesterEditor
             this.bDelNPC = new System.Windows.Forms.Button();
             this.bAddNPC = new System.Windows.Forms.Button();
             this.QuestBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelChosenQuest = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выборОператораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.labelXNode = new System.Windows.Forms.Label();
+            this.labelYNode = new System.Windows.Forms.Label();
+            this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.splitDialogs.Panel1.SuspendLayout();
@@ -190,14 +193,14 @@ namespace StalkerOnlineQuesterEditor
             this.NPCBox.TabIndex = 3;
             this.NPCBox.SelectedIndexChanged += new System.EventHandler(this.NPCBox_SelectedIndexChanged);
             // 
-            // label1
+            // labelChosenNPC
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Выбранный NPC";
+            this.labelChosenNPC.AutoSize = true;
+            this.labelChosenNPC.Location = new System.Drawing.Point(3, 6);
+            this.labelChosenNPC.Name = "labelChosenNPC";
+            this.labelChosenNPC.Size = new System.Drawing.Size(91, 13);
+            this.labelChosenNPC.TabIndex = 4;
+            this.labelChosenNPC.Text = "Выбранный NPC";
             // 
             // CentralDock
             // 
@@ -322,6 +325,9 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.DialogActions.AutoSize = true;
             this.DialogActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
+            this.DialogActions.Controls.Add(this.labelYNode);
+            this.DialogActions.Controls.Add(this.labelXNode);
             this.DialogActions.Controls.Add(this.bSaveDialogs);
             this.DialogActions.Controls.Add(this.bRemoveDialog);
             this.DialogActions.Controls.Add(this.bEditDialog);
@@ -897,6 +903,8 @@ namespace StalkerOnlineQuesterEditor
             // OutdatedCheckBox
             // 
             this.OutdatedCheckBox.AutoSize = true;
+            this.OutdatedCheckBox.Checked = true;
+            this.OutdatedCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.OutdatedCheckBox.Location = new System.Drawing.Point(359, 32);
             this.OutdatedCheckBox.Name = "OutdatedCheckBox";
             this.OutdatedCheckBox.Size = new System.Drawing.Size(89, 17);
@@ -1040,8 +1048,8 @@ namespace StalkerOnlineQuesterEditor
             this.SelectNPC.Controls.Add(this.bDelNPC);
             this.SelectNPC.Controls.Add(this.bAddNPC);
             this.SelectNPC.Controls.Add(this.QuestBox);
-            this.SelectNPC.Controls.Add(this.label2);
-            this.SelectNPC.Controls.Add(this.label1);
+            this.SelectNPC.Controls.Add(this.labelChosenQuest);
+            this.SelectNPC.Controls.Add(this.labelChosenNPC);
             this.SelectNPC.Controls.Add(this.NPCBox);
             this.SelectNPC.Dock = System.Windows.Forms.DockStyle.Top;
             this.SelectNPC.Location = new System.Drawing.Point(0, 24);
@@ -1101,14 +1109,14 @@ namespace StalkerOnlineQuesterEditor
             this.QuestBox.TabIndex = 6;
             this.QuestBox.SelectedIndexChanged += new System.EventHandler(this.QuestBox_SelectedIndexChanged);
             // 
-            // label2
+            // labelChosenQuest
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(403, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Выбранный квест";
+            this.labelChosenQuest.AutoSize = true;
+            this.labelChosenQuest.Location = new System.Drawing.Point(403, 5);
+            this.labelChosenQuest.Name = "labelChosenQuest";
+            this.labelChosenQuest.Size = new System.Drawing.Size(98, 13);
+            this.labelChosenQuest.TabIndex = 5;
+            this.labelChosenQuest.Text = "Выбранный квест";
             // 
             // menuStrip1
             // 
@@ -1159,6 +1167,34 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
             // 
+            // labelXNode
+            // 
+            this.labelXNode.AutoSize = true;
+            this.labelXNode.Location = new System.Drawing.Point(26, 316);
+            this.labelXNode.Name = "labelXNode";
+            this.labelXNode.Size = new System.Drawing.Size(35, 13);
+            this.labelXNode.TabIndex = 4;
+            this.labelXNode.Text = "label3";
+            // 
+            // labelYNode
+            // 
+            this.labelYNode.AutoSize = true;
+            this.labelYNode.Location = new System.Drawing.Point(26, 352);
+            this.labelYNode.Name = "labelYNode";
+            this.labelYNode.Size = new System.Drawing.Size(35, 13);
+            this.labelYNode.TabIndex = 5;
+            this.labelYNode.Text = "label4";
+            // 
+            // bCenterizeDialogShower
+            // 
+            this.bCenterizeDialogShower.Location = new System.Drawing.Point(7, 242);
+            this.bCenterizeDialogShower.Name = "bCenterizeDialogShower";
+            this.bCenterizeDialogShower.Size = new System.Drawing.Size(172, 23);
+            this.bCenterizeDialogShower.TabIndex = 6;
+            this.bCenterizeDialogShower.Text = "Отцентрировать";
+            this.bCenterizeDialogShower.UseVisualStyleBackColor = true;
+            this.bCenterizeDialogShower.Click += new System.EventHandler(this.bCenterizeDialogShower_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1180,6 +1216,7 @@ namespace StalkerOnlineQuesterEditor
             this.GrafAndAllQuests.Panel2.ResumeLayout(false);
             this.GrafAndAllQuests.ResumeLayout(false);
             this.DialogActions.ResumeLayout(false);
+            this.DialogActions.PerformLayout();
             this.EmulatorGroupBox.ResumeLayout(false);
             this.EmulatorsplitContainer.ResumeLayout(false);
             this.tabQuests.ResumeLayout(false);
@@ -1216,7 +1253,7 @@ namespace StalkerOnlineQuesterEditor
         #endregion
 
         private System.Windows.Forms.ComboBox NPCBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelChosenNPC;
         private System.Windows.Forms.TabPage tabDialogs;
         private System.Windows.Forms.TabPage tabQuests;
         private PCanvas DialogShower;
@@ -1235,7 +1272,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.TreeView treeQuest;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox QuestBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelChosenQuest;
         private System.Windows.Forms.Button bDelNPC;
         private System.Windows.Forms.Button bAddNPC;
         private System.Windows.Forms.Button bRemoveQuest;
@@ -1315,6 +1352,9 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bSaveLocale;
         private System.Windows.Forms.Label labelOuput;
         public System.Windows.Forms.TabControl CentralDock;
+        private System.Windows.Forms.Label labelYNode;
+        private System.Windows.Forms.Label labelXNode;
+        private System.Windows.Forms.Button bCenterizeDialogShower;
 
 
     }

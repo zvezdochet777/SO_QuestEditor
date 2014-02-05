@@ -52,6 +52,12 @@ namespace StalkerOnlineQuesterEditor
         {
             base.OnStartDrag(sender, e);
             e.Handled = true;
+            // e.CanvasPosition.X, e.CanvasPosition.Y
+            float x = e.PickedNode.GlobalFullBounds.X;
+            float y = e.PickedNode.GlobalFullBounds.Y;
+
+            form.setXYCoordinates(x, y);
+            
             if (e.PickedNode.Tag != null)
                 e.PickedNode.MoveToFront();
         }
@@ -107,6 +113,7 @@ namespace StalkerOnlineQuesterEditor
             return 0;*/
         }
 
+        //! Пользователь выделил конкретный узел - красим его в красный, потомков - в желтый
         public void setCurrentNode(int dialogID)
         {
             if (curNode != null)

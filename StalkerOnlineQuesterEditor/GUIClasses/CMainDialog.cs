@@ -9,8 +9,10 @@ using UMD.HCIL.Piccolo.Event;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Вспомогательный класс для сопоставления ID диалога и узла графа
     public class GraphProperties
     {
+        //! ID диалога для сопоставления узлу графа
         int DialogID;
 
 
@@ -30,6 +32,7 @@ namespace StalkerOnlineQuesterEditor
             return DialogID;
         }
 
+        //! Возвращает нужный узел по словарю <PNode, DialogID> и нужному ID диалога
         public static PNode findNodeOnID(Dictionary<PNode,GraphProperties> source, int properties)
         {
             foreach (KeyValuePair<PNode, GraphProperties> pair in source)

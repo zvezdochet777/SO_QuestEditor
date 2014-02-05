@@ -146,6 +146,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        //! Заполнение итемов в комбобоксе NPC
         void fillNPCBOX()
         {
             this.NPCBox.Items.Clear();
@@ -306,7 +307,7 @@ namespace StalkerOnlineQuesterEditor
                 fillDialogTree(rootDialog, this.dialogs.dialogs[currentNPC]);
         }
 
-        //! Старует эмулятор диалога (язык диалога зависит от режима, не переведенные фрагменты помечаются красным)
+        //! Старует эмулятор диалога (язык диалога зависит от режима, непереведенные фрагменты помечаются красным)
         public void startEmulator(int dialogID)//, bool isHandle)
         {
             // получаем фразу NPC
@@ -371,6 +372,7 @@ namespace StalkerOnlineQuesterEditor
             return false;
         }
 
+        //! Отработка клика по ответу в эмуляторе диалогов, вывод результатов в статусбар и переход к след диалогу
         private void dialogLink_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
             int choosenDialogID = (int)e.Link.LinkData;
@@ -414,7 +416,13 @@ namespace StalkerOnlineQuesterEditor
             }
             
         }
+        public void setXYCoordinates(float X, float Y)
+        {
+            this.labelXNode.Text = X.ToString();
+            this.labelYNode.Text = Y.ToString();
+        }
 
+        //! Вовзаращает список как строку со значениями через запятую
         string getListAsString(List<int> list)
         {
             string str = "";
@@ -1574,7 +1582,7 @@ namespace StalkerOnlineQuesterEditor
             this.quests.addLocaleQuest(quest, locale);
         }
 
-
+        //! Изменения на форме при смене режима (Editor <-> Localization)
         public void onChangeMode()
         {
             //System.Console.WriteLine("MainForm::onChangeMode");
@@ -1790,6 +1798,19 @@ namespace StalkerOnlineQuesterEditor
         private void bSaveLocale_Click(object sender, EventArgs e)
         {
             this.saveData();
+        }
+
+        private void bCenterizeDialogShower_Click(object sender, EventArgs e)
+        {
+            // важное место - ставим зум на 1
+            DialogShower.Camera.ViewScale = 1;
+            // сдвиг ставим на 0 -камера возвращается в исходное положение
+            DialogShower.Camera.SetViewOffset(0, 0);
+
+            //RectangleF rect = DialogShower.Camera.ViewBounds;
+            //SizeF sizes = DialogShower.Camera.ViewBounds.Size;
+            //labelXNode.Text = "X= " + rect.X.ToString() + " w=" + sizes.Width.ToString();
+            //labelYNode.Text = "Y = " + rect.Y.ToString() + " h=" + sizes.Height.ToString();
         }
     }
 }

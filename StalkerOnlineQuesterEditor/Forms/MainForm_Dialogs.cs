@@ -38,8 +38,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         CDialog getRootDialog()
-        {
-            
+        {            
             CDialog ret_dial = getRootDialog(currentNPC);
             if (ret_dial==null)
                 System.Console.WriteLine("MainForm::getRootDialog null");
@@ -162,6 +161,7 @@ namespace StalkerOnlineQuesterEditor
             this.treeDialogs.ExpandAll();
         }
 
+        //! Заполняет граф диалога нужными узлами
         void fillDialogGraphView(CDialog root)
         {
             // Initialize, and create a layer for the edges (always underneath the nodes)
@@ -193,6 +193,13 @@ namespace StalkerOnlineQuesterEditor
             this.DialogShower.Layer.AddChildren(nodeLayer);
         }
 
+        //! @brief Отображает все дочерние узлы на графе диалогов 
+        //! @param root Старший диалог, экземпляр CDialog
+        //! @param rootNode Старший узел, экземпляр PNode
+        //! @param level Уровень наследования узлов
+        //! @param edgeLayer
+        //! @param nodeLayer
+        //! @param stopAfterThat
         void fillDialogSubgraphView(CDialog root, PNode rootNode, float level, ref PLayer edgeLayer, ref PNodeList nodeLayer, bool stopAfterThat)//, PLayer main,  PLayer edge)
         {
             float ix = rootNode.X;
@@ -247,6 +254,7 @@ namespace StalkerOnlineQuesterEditor
                     if (node == null)
                     {
                         node = PPath.CreateEllipse(x, y, 50, 30);
+                        
                         PText text = new PText(subdialogs.ToString());
                         text.Pickable = false;
                         text.X = node.X + 20;
@@ -341,7 +349,7 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
-
+        //! Создает линии - связи между узлами на графе диалогов
         public static void updateEdge(PPath edge)
         {
             // Note that the node's "FullBounds" must be used (instead of just the "Bound") 
