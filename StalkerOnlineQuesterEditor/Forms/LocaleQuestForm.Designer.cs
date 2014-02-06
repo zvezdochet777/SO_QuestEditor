@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.questInformationBox = new System.Windows.Forms.GroupBox();
+            this.lViewQuestID = new System.Windows.Forms.Label();
+            this.labelQuestID = new System.Windows.Forms.Label();
+            this.lViewNpcName = new System.Windows.Forms.Label();
+            this.labelNpcName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,8 +52,8 @@
             this.lQuestRules = new System.Windows.Forms.GroupBox();
             this.bItemQuestRules = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bCancel = new System.Windows.Forms.Button();
+            this.bOK = new System.Windows.Forms.Button();
             this.questInformationBox.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
             this.lQuestRules.SuspendLayout();
@@ -59,6 +63,10 @@
             // questInformationBox
             // 
             this.questInformationBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.questInformationBox.Controls.Add(this.lViewQuestID);
+            this.questInformationBox.Controls.Add(this.labelQuestID);
+            this.questInformationBox.Controls.Add(this.lViewNpcName);
+            this.questInformationBox.Controls.Add(this.labelNpcName);
             this.questInformationBox.Controls.Add(this.label3);
             this.questInformationBox.Controls.Add(this.label2);
             this.questInformationBox.Controls.Add(this.label1);
@@ -76,15 +84,51 @@
             this.questInformationBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.questInformationBox.Location = new System.Drawing.Point(0, 0);
             this.questInformationBox.Name = "questInformationBox";
-            this.questInformationBox.Size = new System.Drawing.Size(884, 198);
+            this.questInformationBox.Size = new System.Drawing.Size(884, 281);
             this.questInformationBox.TabIndex = 1;
             this.questInformationBox.TabStop = false;
             this.questInformationBox.Text = "Информация";
             // 
+            // lViewQuestID
+            // 
+            this.lViewQuestID.AutoSize = true;
+            this.lViewQuestID.Location = new System.Drawing.Point(694, 20);
+            this.lViewQuestID.Name = "lViewQuestID";
+            this.lViewQuestID.Size = new System.Drawing.Size(21, 13);
+            this.lViewQuestID.TabIndex = 21;
+            this.lViewQuestID.Text = "lab";
+            // 
+            // labelQuestID
+            // 
+            this.labelQuestID.AutoSize = true;
+            this.labelQuestID.Location = new System.Drawing.Point(633, 19);
+            this.labelQuestID.Name = "labelQuestID";
+            this.labelQuestID.Size = new System.Drawing.Size(52, 13);
+            this.labelQuestID.TabIndex = 20;
+            this.labelQuestID.Text = "Quest ID:";
+            // 
+            // lViewNpcName
+            // 
+            this.lViewNpcName.AutoSize = true;
+            this.lViewNpcName.Location = new System.Drawing.Point(83, 20);
+            this.lViewNpcName.Name = "lViewNpcName";
+            this.lViewNpcName.Size = new System.Drawing.Size(21, 13);
+            this.lViewNpcName.TabIndex = 19;
+            this.lViewNpcName.Text = "lab";
+            // 
+            // labelNpcName
+            // 
+            this.labelNpcName.AutoSize = true;
+            this.labelNpcName.Location = new System.Drawing.Point(19, 20);
+            this.labelNpcName.Name = "labelNpcName";
+            this.labelNpcName.Size = new System.Drawing.Size(57, 13);
+            this.labelNpcName.TabIndex = 18;
+            this.labelNpcName.Text = "Имя NPC:";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(589, 31);
+            this.label3.Location = new System.Drawing.Point(600, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 17;
@@ -93,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(204, 31);
+            this.label2.Location = new System.Drawing.Point(215, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 16;
@@ -102,7 +146,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 47);
+            this.label1.Location = new System.Drawing.Point(14, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 13);
             this.label1.TabIndex = 15;
@@ -110,7 +154,7 @@
             // 
             // localeDescriptionTextBox
             // 
-            this.localeDescriptionTextBox.Location = new System.Drawing.Point(427, 71);
+            this.localeDescriptionTextBox.Location = new System.Drawing.Point(438, 100);
             this.localeDescriptionTextBox.Multiline = true;
             this.localeDescriptionTextBox.Name = "localeDescriptionTextBox";
             this.localeDescriptionTextBox.Size = new System.Drawing.Size(407, 62);
@@ -118,21 +162,21 @@
             // 
             // localeOnFailedTextBox
             // 
-            this.localeOnFailedTextBox.Location = new System.Drawing.Point(427, 169);
+            this.localeOnFailedTextBox.Location = new System.Drawing.Point(438, 198);
             this.localeOnFailedTextBox.Name = "localeOnFailedTextBox";
             this.localeOnFailedTextBox.Size = new System.Drawing.Size(407, 20);
             this.localeOnFailedTextBox.TabIndex = 13;
             // 
             // localeOnWonTextBox
             // 
-            this.localeOnWonTextBox.Location = new System.Drawing.Point(427, 143);
+            this.localeOnWonTextBox.Location = new System.Drawing.Point(438, 172);
             this.localeOnWonTextBox.Name = "localeOnWonTextBox";
             this.localeOnWonTextBox.Size = new System.Drawing.Size(407, 20);
             this.localeOnWonTextBox.TabIndex = 11;
             // 
             // localeLitleTextBox
             // 
-            this.localeLitleTextBox.Location = new System.Drawing.Point(427, 47);
+            this.localeLitleTextBox.Location = new System.Drawing.Point(438, 76);
             this.localeLitleTextBox.Name = "localeLitleTextBox";
             this.localeLitleTextBox.Size = new System.Drawing.Size(407, 20);
             this.localeLitleTextBox.TabIndex = 12;
@@ -140,7 +184,7 @@
             // lFailed
             // 
             this.lFailed.AutoSize = true;
-            this.lFailed.Location = new System.Drawing.Point(5, 172);
+            this.lFailed.Location = new System.Drawing.Point(16, 201);
             this.lFailed.Name = "lFailed";
             this.lFailed.Size = new System.Drawing.Size(60, 13);
             this.lFailed.TabIndex = 10;
@@ -149,7 +193,7 @@
             // lWin
             // 
             this.lWin.AutoSize = true;
-            this.lWin.Location = new System.Drawing.Point(5, 150);
+            this.lWin.Location = new System.Drawing.Point(16, 179);
             this.lWin.Name = "lWin";
             this.lWin.Size = new System.Drawing.Size(55, 13);
             this.lWin.TabIndex = 9;
@@ -157,7 +201,7 @@
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Location = new System.Drawing.Point(72, 71);
+            this.descriptionTextBox.Location = new System.Drawing.Point(83, 100);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(349, 62);
@@ -166,7 +210,7 @@
             // lDescription
             // 
             this.lDescription.AutoSize = true;
-            this.lDescription.Location = new System.Drawing.Point(3, 74);
+            this.lDescription.Location = new System.Drawing.Point(14, 103);
             this.lDescription.Name = "lDescription";
             this.lDescription.Size = new System.Drawing.Size(60, 13);
             this.lDescription.TabIndex = 2;
@@ -174,21 +218,21 @@
             // 
             // onFailedTextBox
             // 
-            this.onFailedTextBox.Location = new System.Drawing.Point(72, 169);
+            this.onFailedTextBox.Location = new System.Drawing.Point(83, 198);
             this.onFailedTextBox.Name = "onFailedTextBox";
             this.onFailedTextBox.Size = new System.Drawing.Size(349, 20);
             this.onFailedTextBox.TabIndex = 1;
             // 
             // onWonTextBox
             // 
-            this.onWonTextBox.Location = new System.Drawing.Point(72, 143);
+            this.onWonTextBox.Location = new System.Drawing.Point(83, 172);
             this.onWonTextBox.Name = "onWonTextBox";
             this.onWonTextBox.Size = new System.Drawing.Size(349, 20);
             this.onWonTextBox.TabIndex = 1;
             // 
             // titleTextBox
             // 
-            this.titleTextBox.Location = new System.Drawing.Point(72, 47);
+            this.titleTextBox.Location = new System.Drawing.Point(83, 76);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(349, 20);
             this.titleTextBox.TabIndex = 1;
@@ -197,8 +241,7 @@
             // 
             this.rewardGroupBox.AutoSize = true;
             this.rewardGroupBox.Controls.Add(this.bItemReward);
-            this.rewardGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rewardGroupBox.Location = new System.Drawing.Point(0, 250);
+            this.rewardGroupBox.Location = new System.Drawing.Point(0, 353);
             this.rewardGroupBox.Name = "rewardGroupBox";
             this.rewardGroupBox.Size = new System.Drawing.Size(884, 61);
             this.rewardGroupBox.TabIndex = 6;
@@ -219,8 +262,7 @@
             // lQuestRules
             // 
             this.lQuestRules.Controls.Add(this.bItemQuestRules);
-            this.lQuestRules.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lQuestRules.Location = new System.Drawing.Point(0, 198);
+            this.lQuestRules.Location = new System.Drawing.Point(0, 295);
             this.lQuestRules.Name = "lQuestRules";
             this.lQuestRules.Size = new System.Drawing.Size(884, 52);
             this.lQuestRules.TabIndex = 5;
@@ -242,34 +284,33 @@
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 311);
+            this.groupBox1.Controls.Add(this.bCancel);
+            this.groupBox1.Controls.Add(this.bOK);
+            this.groupBox1.Location = new System.Drawing.Point(0, 420);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(884, 61);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
-            // button1
+            // bCancel
             // 
-            this.button1.Location = new System.Drawing.Point(797, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bCancel.Location = new System.Drawing.Point(797, 19);
+            this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(75, 23);
+            this.bCancel.TabIndex = 8;
+            this.bCancel.Text = "Отмена";
+            this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
-            // button3
+            // bOK
             // 
-            this.button3.Location = new System.Drawing.Point(694, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "OK";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.bOK.Location = new System.Drawing.Point(694, 19);
+            this.bOK.Name = "bOK";
+            this.bOK.Size = new System.Drawing.Size(75, 23);
+            this.bOK.TabIndex = 7;
+            this.bOK.Text = "OK";
+            this.bOK.UseVisualStyleBackColor = true;
+            this.bOK.Click += new System.EventHandler(this.bOK_Click);
             // 
             // LocaleQuestForm
             // 
@@ -314,9 +355,13 @@
         private System.Windows.Forms.GroupBox lQuestRules;
         private System.Windows.Forms.Button bItemQuestRules;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bCancel;
+        private System.Windows.Forms.Button bOK;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lViewQuestID;
+        private System.Windows.Forms.Label labelQuestID;
+        private System.Windows.Forms.Label lViewNpcName;
+        private System.Windows.Forms.Label labelNpcName;
     }
 }

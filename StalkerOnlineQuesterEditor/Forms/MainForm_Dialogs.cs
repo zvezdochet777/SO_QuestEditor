@@ -303,7 +303,7 @@ namespace StalkerOnlineQuesterEditor
             float y = new float();
             y = parentDialog.Y + 10;
 
-            SizeF size = CalcEllipsisSizeForNode(DialogID);
+            SizeF size = CalcEllipsisSizeForNode(dialogID);
             PNode newDialog = PPath.CreateEllipse(x, y, size.Width, size.Height);
             PText text = new PText(dialogID.ToString());
             text.Pickable = false;

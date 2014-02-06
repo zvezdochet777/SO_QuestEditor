@@ -9,11 +9,13 @@ using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor.Forms
 {
+    //! Форма локализации диалога, вопрос NPC и ответ героя.
     public partial class LocaleDialogForm : Form
     {
         MainForm parent;
         CDialog originalDialog;
 
+        //! Конструктор, заполняет поля переводов
         public LocaleDialogForm(MainForm parent, int selectedDialogID)
         {
             InitializeComponent();
@@ -36,17 +38,17 @@ namespace StalkerOnlineQuesterEditor.Forms
 
 
         }
-
+        //! Закрытие формы
         private void LocaleDialogForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.parent.Enabled = true;
         }
-
+        //! Нажатие Отмена на форме - ничего не сохраняем
         private void bCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        //! Нажатие ОК - сохраняем все данные
         private void bOk_Click(object sender, EventArgs e)
         {
             CDialog newDialog = new CDialog();
@@ -56,6 +58,9 @@ namespace StalkerOnlineQuesterEditor.Forms
             newDialog.Holder = originalDialog.Holder;
             newDialog.version = originalDialog.version;
             newDialog.Nodes = originalDialog.Nodes;
+            newDialog.Precondition = originalDialog.Precondition;
+            newDialog.Actions = originalDialog.Actions;
+            newDialog.QuestDialog = originalDialog.QuestDialog;
             parent.addLocaleDialog(newDialog);
             this.Close();
         }

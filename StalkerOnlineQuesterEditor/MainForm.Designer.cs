@@ -43,6 +43,9 @@ namespace StalkerOnlineQuesterEditor
             this.bZoomIn = new System.Windows.Forms.Button();
             this.bZoomOut = new System.Windows.Forms.Button();
             this.DialogActions = new System.Windows.Forms.Panel();
+            this.bCenterizeDialogShower = new System.Windows.Forms.Button();
+            this.labelYNode = new System.Windows.Forms.Label();
+            this.labelXNode = new System.Windows.Forms.Label();
             this.bSaveDialogs = new System.Windows.Forms.Button();
             this.bRemoveDialog = new System.Windows.Forms.Button();
             this.bEditDialog = new System.Windows.Forms.Button();
@@ -131,9 +134,6 @@ namespace StalkerOnlineQuesterEditor
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
-            this.labelXNode = new System.Windows.Forms.Label();
-            this.labelYNode = new System.Windows.Forms.Label();
-            this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.splitDialogs.Panel1.SuspendLayout();
@@ -337,6 +337,34 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions.Name = "DialogActions";
             this.DialogActions.Size = new System.Drawing.Size(183, 403);
             this.DialogActions.TabIndex = 1;
+            // 
+            // bCenterizeDialogShower
+            // 
+            this.bCenterizeDialogShower.Location = new System.Drawing.Point(7, 242);
+            this.bCenterizeDialogShower.Name = "bCenterizeDialogShower";
+            this.bCenterizeDialogShower.Size = new System.Drawing.Size(172, 23);
+            this.bCenterizeDialogShower.TabIndex = 6;
+            this.bCenterizeDialogShower.Text = "Отцентрировать";
+            this.bCenterizeDialogShower.UseVisualStyleBackColor = true;
+            this.bCenterizeDialogShower.Click += new System.EventHandler(this.bCenterizeDialogShower_Click);
+            // 
+            // labelYNode
+            // 
+            this.labelYNode.AutoSize = true;
+            this.labelYNode.Location = new System.Drawing.Point(26, 352);
+            this.labelYNode.Name = "labelYNode";
+            this.labelYNode.Size = new System.Drawing.Size(35, 13);
+            this.labelYNode.TabIndex = 5;
+            this.labelYNode.Text = "label4";
+            // 
+            // labelXNode
+            // 
+            this.labelXNode.AutoSize = true;
+            this.labelXNode.Location = new System.Drawing.Point(26, 316);
+            this.labelXNode.Name = "labelXNode";
+            this.labelXNode.Size = new System.Drawing.Size(35, 13);
+            this.labelXNode.TabIndex = 4;
+            this.labelXNode.Text = "label3";
             // 
             // bSaveDialogs
             // 
@@ -1166,34 +1194,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.SizingGrip = false;
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
-            // 
-            // labelXNode
-            // 
-            this.labelXNode.AutoSize = true;
-            this.labelXNode.Location = new System.Drawing.Point(26, 316);
-            this.labelXNode.Name = "labelXNode";
-            this.labelXNode.Size = new System.Drawing.Size(35, 13);
-            this.labelXNode.TabIndex = 4;
-            this.labelXNode.Text = "label3";
-            // 
-            // labelYNode
-            // 
-            this.labelYNode.AutoSize = true;
-            this.labelYNode.Location = new System.Drawing.Point(26, 352);
-            this.labelYNode.Name = "labelYNode";
-            this.labelYNode.Size = new System.Drawing.Size(35, 13);
-            this.labelYNode.TabIndex = 5;
-            this.labelYNode.Text = "label4";
-            // 
-            // bCenterizeDialogShower
-            // 
-            this.bCenterizeDialogShower.Location = new System.Drawing.Point(7, 242);
-            this.bCenterizeDialogShower.Name = "bCenterizeDialogShower";
-            this.bCenterizeDialogShower.Size = new System.Drawing.Size(172, 23);
-            this.bCenterizeDialogShower.TabIndex = 6;
-            this.bCenterizeDialogShower.Text = "Отцентрировать";
-            this.bCenterizeDialogShower.UseVisualStyleBackColor = true;
-            this.bCenterizeDialogShower.Click += new System.EventHandler(this.bCenterizeDialogShower_Click);
             // 
             // MainForm
             // 
