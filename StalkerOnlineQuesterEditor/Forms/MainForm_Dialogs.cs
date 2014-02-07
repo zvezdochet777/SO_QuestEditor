@@ -418,8 +418,6 @@ namespace StalkerOnlineQuesterEditor
             TreeNode treeNodes = treeDialogs.Nodes["Recycle"];
             foreach (TreeNode treeNode in treeNodes.Nodes)
                 removeNodeFromDialogGraphView(int.Parse(treeNode.Text));
-
-
         }
 
         public void selectSubNodesDialogGraphView(int dialogID)
@@ -444,7 +442,6 @@ namespace StalkerOnlineQuesterEditor
             if (subNodes.Any())
                 foreach (PNode subNode in subNodes)
                     subNode.Brush = Brushes.Yellow;
-
         }
 
         public void deselectSubNodesDialogGraphView()
@@ -463,8 +460,6 @@ namespace StalkerOnlineQuesterEditor
             //this.NPCDialogs[currentNPC].Add(dialog);
             dialogs.dialogs[currentNPC][parentID].Nodes.Add(newID);
             addNodeOnDialogGraphView(newID, parentID);
-
-
         }
         public void addPassiveDialog(int parentID, int dialogID)
         {

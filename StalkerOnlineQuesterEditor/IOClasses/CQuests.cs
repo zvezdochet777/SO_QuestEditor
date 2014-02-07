@@ -13,17 +13,17 @@ using System.IO;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Словарь...
     using NPCQuestDict = Dictionary<int, CQuest>;
 
     //using NPCDicts = Dictionary<string, Dictionary<int, CQuest>>;
+    //! Словарь ...
     using QuestLocales = Dictionary<string, Dictionary<int, CQuest>>;
 
+    //! Класс обработки квестов
     public class CQuests
     {
         Common common = new Common();
-
-
-
         public int SHOW_MESSAGE_TAKE = 1;
         public int SHOW_MESSAGE_CLOSE = 2;
         public int SHOW_MESSAGE_PROGRESS = 4;
@@ -38,7 +38,6 @@ namespace StalkerOnlineQuesterEditor
         XDocument startQuestsDoc = new XDocument();
         public List<int> startQuests = new List<int>();
         MainForm parent;
-
 
         public int bufferTop = 0;
 
@@ -63,7 +62,6 @@ namespace StalkerOnlineQuesterEditor
                     locales.Add(locale, new Dictionary<int, CQuest>());
                 parseQuestsFile(QuestsXMLFile, this.locales[locale]);
             }
-
         }
 
         public bool isStartQuest(int quest_id)

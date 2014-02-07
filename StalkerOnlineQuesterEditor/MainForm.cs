@@ -27,7 +27,6 @@ namespace StalkerOnlineQuesterEditor
     //! Главная форма программы, туча строк кода
     public partial class MainForm : Form
     {
-
         bool inSaving = false;
 
         int STARTTALKQUESTS = 2500;
@@ -35,7 +34,9 @@ namespace StalkerOnlineQuesterEditor
 
         //! Текущий выбранный NPC (в комбобоксе вверху)
         public string currentNPC="";
+        //! Ссылка на экземпляр класса CDialogs, хранит все данные и функции по работе с диалогами
         CDialogs dialogs;
+        //! Ссылка на экземпляр класса CQuests
         CQuests quests;
         NodeDragHandler Listener;
         MapNodeDragHandler MapListener;
@@ -54,8 +55,6 @@ namespace StalkerOnlineQuesterEditor
         List<int> protectedTreeNode;
         Dictionary<LinkLabel,int> titles;
 
-
-
         public СQuestConstants questConst;
         public CItemConstants itemConst;
         public CNPCConstants npcConst;
@@ -71,7 +70,10 @@ namespace StalkerOnlineQuesterEditor
         public CEffectConstants effects;
         public CBalance balances;
 
+        //! Дичайший костыль, хранит rootDialog, но называется CurrentQuestDialog
         int currentQuestDialog;
+        //! Дичайший костыль, держит стартовые квесты в себе
+        public string startQuests;
         public int currentQuest;
 
         public MainForm()
@@ -135,15 +137,51 @@ namespace StalkerOnlineQuesterEditor
                 if (CentralDock.SelectedIndex == 0)
                 {
                     fillQuestChangeBox(true);
-                    QuestBox.SelectedIndex = 0;
                     QuestBox.Enabled = false;
                     bAddQuest.Enabled = false;
                     bRemoveQuest.Enabled = false;
+                    
+                    currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
+                    DialogSelected(true);
                 }
                 else if (CentralDock.SelectedIndex == 1)
                     fillQuestChangeBox(false);
-
             }
+        }
+        //! Супер-мега костыль от мудаков. СтартКвест == RootDialog для персонажа
+        void fillQuestChangeBox(bool onlyDialogs)
+        {
+            QuestBox.SelectedItem = null;
+            QuestBox.Items.Clear();
+            startQuests = "";
+            foreach (CQuest quest in quests.getQuestAndTitleOnNPCName(currentNPC))
+            {
+                if (!onlyDialogs)
+                {
+                    if (quest.QuestID < STARTTALKQUESTS || quest.QuestID > ENDTALKQUESTS)
+                        //QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
+                        startQuests += quest.QuestID + ": ";
+                }
+                else if (quest.QuestID >= STARTTALKQUESTS && quest.QuestID < ENDTALKQUESTS)
+                    //QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
+                    startQuests += quest.QuestID + ": ";
+            }
+        }
+
+        //! Что за хуйня здесь
+        private void QuestBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            splitQuestsContainer.Panel2.Controls.Clear();
+            treeQuest.Nodes.Clear();
+
+            if (CentralDock.SelectedIndex == 1)
+            {
+                //this.currentQuestDialog = int.Parse(QuestBox.SelectedItem.ToString().Split(':')[0].Trim());
+                currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
+                addNodeOnTreeQuest(this.currentQuestDialog);
+                bRemoveQuest.Enabled = true;
+            }
+            treeQuest.ExpandAll();
         }
 
         //! Заполнение итемов в комбобоксе NPC
@@ -179,13 +217,9 @@ namespace StalkerOnlineQuesterEditor
                     //System.Console.WriteLine("Write dialog:" + subdialog.ToString());
                     if (!treeNode.Nodes.ContainsKey(subdialog.ToString()))
                         treeNode.Nodes.Add(subdialog.ToString(), subdialog.ToString());
-
                 }
-
                 this.fillNPCBoxSubquests(this.dialogs.dialogs[currentNPC][subdialog]);
-
             }
-
         }
 
         internal void onSelectNode(int dialogID)
@@ -291,10 +325,7 @@ namespace StalkerOnlineQuesterEditor
                 LocaleDialogForm editLocaleDialogForm = new LocaleDialogForm(this, int.Parse(treeDialogs.SelectedNode.Text));
                 editLocaleDialogForm.Visible = true;
             }
-
-            
         }
-
 
         void removeDialog(int dialogID)
         {
@@ -443,45 +474,6 @@ namespace StalkerOnlineQuesterEditor
             toolStripStatusLabel.Text = "";
         }
 
-        void fillQuestChangeBox(bool onlyDialogs)
-        {
-            QuestBox.SelectedItem = null;
-            QuestBox.Items.Clear();
-            foreach (CQuest quest in quests.getQuestAndTitleOnNPCName(currentNPC))
-            {
-                if (!onlyDialogs)
-                {
-                    if (quest.QuestID < 2500 || quest.QuestID > 3500)
-                     QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
-                }
-                else if (quest.QuestID >= 2500 && quest.QuestID < 3500)
-                    QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
-            }
-        }
-
-        private void QuestBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            splitQuestsContainer.Panel2.Controls.Clear();
-            treeQuest.Nodes.Clear();
-
-            if (CentralDock.SelectedIndex == 0)
-            {
-                if (!QuestBox.SelectedItem.ToString().Equals(""))
-                {
-                    this.currentQuestDialog = int.Parse(QuestBox.SelectedItem.ToString().Split(':')[0].Trim());
-                    DialogSelected(true);
-                }
-
-            }       
-            else if (CentralDock.SelectedIndex == 1)
-            {
-                this.currentQuestDialog = int.Parse(QuestBox.SelectedItem.ToString().Split(':')[0].Trim());
-                addNodeOnTreeQuest(this.currentQuestDialog);
-                bRemoveQuest.Enabled = true;
-            }
-            treeQuest.ExpandAll();
-        }
-
         private void bZoomIn_Click(object sender, EventArgs e)
         {
    
@@ -516,7 +508,7 @@ namespace StalkerOnlineQuesterEditor
                     QuestBox.Enabled = false;
                     bRemoveQuest.Enabled = false;
                     bAddQuest.Enabled = false;
-                    QuestBox.SelectedIndex = 0;
+                    //QuestBox.SelectedIndex = 0;
                 }
             }
             else if (CentralDock.SelectedIndex == 1)
@@ -587,8 +579,6 @@ namespace StalkerOnlineQuesterEditor
 
         void createQuestPanels(int questID)
         {
-
-
             CQuest quest = getQuestOnQuestID(questID);
 
             Panel questPanel = new Panel();
@@ -608,7 +598,6 @@ namespace StalkerOnlineQuesterEditor
             questBox.Controls.Add(eventLabel);
             questBox.Controls.SetChildIndex(eventLabel,3);
 
-
             GroupBox infoBox = new GroupBox();
             infoBox.AutoSize = true;
             infoBox.Text = "Информация";
@@ -624,10 +613,8 @@ namespace StalkerOnlineQuesterEditor
             descriptionLabel.Dock = DockStyle.Top;
             infoBox.Controls.Add(descriptionLabel);
 
-
             questBox.Controls.Add(infoBox);
             questBox.Controls.SetChildIndex(infoBox,0);
-
 
             questPanel.Controls.Add(questBox);
 
@@ -637,8 +624,6 @@ namespace StalkerOnlineQuesterEditor
             if (quest.Additional.ListOfSubQuest.Any())
                 foreach (int subquest in quest.Additional.ListOfSubQuest)
                     createQuestPanels(subquest);
-
-
         }
 
         private void treeQuestSelected(object sender, EventArgs e)
@@ -721,7 +706,7 @@ namespace StalkerOnlineQuesterEditor
         int getStartQuestDialogsID()
         {
             //int iFirstDialogID = 0;
-            //while (iFirstDialogID < 2500)
+            //while (iFirstDialogID < STARTTALKQUESTS)
             int iFirstDialogID = 2500 + (this.settings.getOperatorNumber() * 20);
 
             for (int startQuest = iFirstDialogID; ; startQuest++)
@@ -757,7 +742,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (CQuest quest in quests.quest.Values)
                 if (quest.Additional.Holder.Equals(currentNPC))
                 {
-                    if (quest.QuestID >= 2500 && quest.QuestID < 3500)
+                    if (quest.QuestID >= STARTTALKQUESTS && quest.QuestID < ENDTALKQUESTS)
                         quests.startQuests.Remove(quest.QuestID);
                     removedItems.Add(quest.QuestID);
                 }

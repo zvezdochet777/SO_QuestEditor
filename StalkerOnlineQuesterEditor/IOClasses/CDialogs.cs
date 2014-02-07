@@ -18,6 +18,8 @@ namespace StalkerOnlineQuesterEditor
     using NPCDicts = Dictionary<string, Dictionary<int, CDialog>>;
     //! Словарь <LocaleName, <NPCName, <DialogID, CDialog>>>
     using NPCLocales = Dictionary<string, Dictionary<string, Dictionary<int, CDialog>>>;
+    //! Словарь <NPCName, <DialogID, CDifference>>
+    using DifferenceDict = Dictionary<string, Dictionary<int, CDifference>>;
 
     //! Класс обработки диалогов
     public class CDialogs
@@ -41,7 +43,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 DialogsXMLFile = "locales\\" + locale + "\\" + parent.settings.dialogXML;
                 if (!locales.Keys.Contains(locale))
-                    locales.Add(locale, new Dictionary<string, Dictionary<int, CDialog>>());
+                    locales.Add(locale, new NPCDicts());
                 parseDialogsFile(DialogsXMLFile, this.locales[locale]);
             }
         }
@@ -348,7 +350,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if (!this.locales.Keys.Contains(locale))
             {
-                this.locales.Add(locale, new Dictionary<string, Dictionary<int, CDialog>>());
+                this.locales.Add(locale, new NPCDicts());
             }
             if (!this.locales[locale].Keys.Contains(dialog.Holder))
             {
@@ -380,10 +382,10 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Возвращает словарь из разностей версий диалогов
-        public Dictionary<string, Dictionary<int, CDifference>> getDialogDifference(string locale, FindType findType)
+        public DifferenceDict getDialogDifference(string locale, FindType findType)
         {
             //System.Console.WriteLine("CDialogs::getDialogDifference");
-            Dictionary<string, Dictionary<int, CDifference>> ret = new Dictionary<string, Dictionary<int, CDifference>>();
+            DifferenceDict ret = new DifferenceDict();
             if (this.locales.Keys.Contains(locale))
             {
                 var cur_locale_info = this.locales[locale];
@@ -446,7 +448,7 @@ namespace StalkerOnlineQuesterEditor
 
 
 
-
+/*
         //! ВРЕМНЕНОЕ Сохранение всех диалогов в xml файл
         private void saveLocaleTemp(string fileName, NPCDicts target)
         {
@@ -520,7 +522,7 @@ namespace StalkerOnlineQuesterEditor
                 resultDoc.Save(w);
             }
         }
-
+*/
 
     }
 }
