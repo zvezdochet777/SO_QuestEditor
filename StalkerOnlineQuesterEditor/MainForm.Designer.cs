@@ -130,8 +130,8 @@ namespace StalkerOnlineQuesterEditor
             this.labelChosenQuest = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выборОператораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
             this.CentralDock.SuspendLayout();
@@ -1157,25 +1157,25 @@ namespace StalkerOnlineQuesterEditor
             // менюToolStripMenuItem
             // 
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выборОператораToolStripMenuItem,
-            this.выходToolStripMenuItem});
+            this.SettingsToolStripMenuItem,
+            this.ExitToolStripMenuItem});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.менюToolStripMenuItem.Text = "Меню";
             // 
-            // выборОператораToolStripMenuItem
+            // SettingsToolStripMenuItem
             // 
-            this.выборОператораToolStripMenuItem.Name = "выборОператораToolStripMenuItem";
-            this.выборОператораToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.выборОператораToolStripMenuItem.Text = "Настройка оператора";
-            this.выборОператораToolStripMenuItem.Click += new System.EventHandler(this.выборОператораToolStripMenuItem_Click);
+            this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
+            this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.SettingsToolStripMenuItem.Text = "Настройка оператора";
+            this.SettingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
-            // выходToolStripMenuItem
+            // ExitToolStripMenuItem
             // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.ExitToolStripMenuItem.Text = "Выход";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // toolStripStatusLabel
             // 
@@ -1286,8 +1286,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bQuestUp;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выборОператораToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.TabPage npcLinksTabPage;
         private PCanvas npcLinkShower;
         private System.Windows.Forms.TabPage tabStatistics;

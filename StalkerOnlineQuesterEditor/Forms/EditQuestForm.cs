@@ -112,10 +112,8 @@ namespace StalkerOnlineQuesterEditor
 
         void fillForm()
         {
-
             //bItemQuestRules.ImageKey = "";
             //bItemQuestRules.ImageKey = "but_indicate";
-
             foreach (СQuestType eventDescription in parent.questConst.getListQuests())
                 eventComboBox.Items.Add(eventDescription.getDescription());
 
@@ -613,17 +611,14 @@ namespace StalkerOnlineQuesterEditor
             //    else
             //        listRewardOfAttrsMaskedTextBox.Text += ("," + item.ToString());
             //}
-            //if (quest.Reward.Expirience.Count == 3)
-            //{
-            //    tExpirience.Text = quest.Reward.Expirience[0].ToString();
-            //    tSurvivalSkills.Text = quest.Reward.Expirience[1].ToString();
-            //    tOtherSkills.Text = quest.Reward.Expirience[2].ToString();
-            //}
-            tExpirience.Text = quest.Reward.Expirience.ToString();
+            if (quest.Reward.Expirience.Count == 3)
+            {
+                tExperience.Text = quest.Reward.Expirience[0].ToString();
+                tSurvival.Text = quest.Reward.Expirience[1].ToString();
+                tSupport.Text = quest.Reward.Expirience[2].ToString();
+            }
             creditsTextBox.Text = quest.Reward.Credits.ToString();
             textBoxKarmaPK.Text = quest.Reward.KarmaPK.ToString();
-
-
         }
 
         public CQuest getQuest()
@@ -778,21 +773,21 @@ namespace StalkerOnlineQuesterEditor
             foreach (string item in scenariosTextBox.Text.Split(','))
                 if (!item.Equals(""))
                     rules.Scenarios.Add(int.Parse(item));
-
-            if (tExpirience.Text.Equals(""))
-                reward.Expirience = 0;
+            
+            if (tExperience.Text.Equals(""))
+                reward.Expirience.Add(0);
             else
-                reward.Expirience = int.Parse(tExpirience.Text);
+                reward.Expirience.Add(int.Parse(tExperience.Text));
+            
+            if (tSurvival.Text.Equals(""))
+                reward.Expirience.Add(0);
+            else 
+                reward.Expirience.Add(int.Parse(tSurvival.Text));
 
-            //if (tSurvivalSkills.Text.Equals(""))
-            //    reward.Expirience.Add(0);
-            //else 
-            //    reward.Expirience.Add(int.Parse(tSurvivalSkills.Text));
-
-            //if (tOtherSkills.Text.Equals(""))
-            //    reward.Expirience.Add(0);
-            //else 
-            //    reward.Expirience.Add(int.Parse(tOtherSkills.Text));
+            if (tSupport.Text.Equals(""))
+                reward.Expirience.Add(0);
+            else 
+                reward.Expirience.Add(int.Parse(tSupport.Text));
 
             if (!creditsTextBox.Text.Equals(""))
                 reward.Credits = int.Parse(creditsTextBox.Text);
@@ -1155,7 +1150,7 @@ namespace StalkerOnlineQuesterEditor
                 lCredits.Visible = false;
                 creditsTextBox.Visible = false;
                 lCombatSkills.Visible = false;
-                tExpirience.Visible = false;
+                tExperience.Visible = false;
                 //lSurvivalSkills.Visible = false;
                 //tSurvivalSkills.Visible = false;
                 //lOtherSkills.Visible = false;
@@ -1190,7 +1185,7 @@ namespace StalkerOnlineQuesterEditor
                 lCredits.Visible = true;
                 creditsTextBox.Visible = true;
                 lCombatSkills.Visible = true;
-                tExpirience.Visible = true;
+                tExperience.Visible = true;
                 //lSurvivalSkills.Visible = true;
                 //tSurvivalSkills.Visible = true;
                 //lOtherSkills.Visible = true;

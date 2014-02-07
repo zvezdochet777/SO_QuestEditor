@@ -179,7 +179,7 @@ namespace StalkerOnlineQuesterEditor
 
             if (CentralDock.SelectedIndex == 1)
             {
-                currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
+                currentQuestDialog = int.Parse(startQuests.Split(':')[QuestBox.SelectedIndex].Trim());
                 addNodeOnTreeQuest(this.currentQuestDialog);
                 bRemoveQuest.Enabled = true;
             }
@@ -945,77 +945,59 @@ namespace StalkerOnlineQuesterEditor
         {
             quests.setClan(questID, ClanState);
         }
-
-        private void выборОператораToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OperatorSettings fOperator = new OperatorSettings(this);
-            this.Enabled = false;
-            fOperator.Show();
-        }
-
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        //! Заполняет статистику для вкладки Статистика
         void calcStatistic()
         {
             string str = "";
             
             float Credits = new float();
             int countOfQuests = 0;
-
-            int countOfEx0Quests = 0;
-            int countOfEx1Quests = 0;
-            int countOfEx2Quests = 0;
             int countOfAmountGold = 0;
-            
-
-            List<int> lExpirience = new List<int>(3);
-            lExpirience.Add(0); lExpirience.Add(0); lExpirience.Add(0);
+            int NpcDialogs = NPCBox.Items.Count;
+            const int NumExp = 3;
+            int[] countOfExQuests = { 0, 0, 0 };
+            List<int> lExperience = new List<int>(3);
+            float[] averageExp = { 0, 0, 0 };
+            lExperience.Add(0); lExperience.Add(0); lExperience.Add(0);
             foreach (CQuest quest in quests.quest.Values)
             {
                 if (quest.Additional.IsSubQuest == 0)
                 {
                     countOfQuests++;
-                    //if (quest.Reward.Expirience.Any())
-                    //{
-                    //    if (quest.Reward.Expirience[0] != 0)
-                    //        countOfEx0Quests++;
-                    //    if (quest.Reward.Expirience[1] != 0)
-                    //        countOfEx1Quests++;
-                    //    if (quest.Reward.Expirience[2] != 0)
-                    //        countOfEx2Quests++;
-                    //}
+                    if (quest.Reward.Expirience.Any())
+                    {
+                        for (int i = 0; i < NumExp; i++)
+                            if (quest.Reward.Expirience[i] != 0)
+                                countOfExQuests[i]++;
+                    }
                     if (quest.Reward.Credits != 0)
                         countOfAmountGold++;
                 }
                 Credits += quest.Reward.Credits;
-                //if (quest.Reward.Expirience.Any())
-                //{
-                //    lExpirience[0] += quest.Reward.Expirience[0];
-                //    lExpirience[1] += quest.Reward.Expirience[1];
-                //    lExpirience[2] += quest.Reward.Expirience[2];
-                //}
+                
+                if (quest.Reward.Expirience.Any())
+                    for (int i = 0; i < NumExp; i++)
+                        lExperience[i] += quest.Reward.Expirience[i];                
             }
+            for (int i = 0; i < NumExp; i++)
+                averageExp[i] = lExperience[i] / countOfExQuests[i];
 
+            str += "Общее кол-во NPC: " + NpcDialogs.ToString() + "\n";
             str += "Общее количество квестов:        " + countOfQuests.ToString() +"\n\n";
             str += "По наградам:\n";
             str += "   Общее количество денег:         ";
-            str += (Credits.ToString() + "руб." + "   Среднее:" + (Credits / countOfAmountGold).ToString() + "руб.\n");
+            str += (Credits.ToString() + " руб." + "   Среднее: " + (Credits / countOfAmountGold).ToString() + " руб.\n");
             str += "   Общее количество опыта:\n";
-            str += "      Боевого:         ";
-            if (countOfEx0Quests != 0 || lExpirience[0]!=0)
-                str += (lExpirience[0].ToString() + "   Среднее:" + (lExpirience[0] / countOfEx0Quests).ToString() + "\n");
-
-            str += "      Сурайвального:         ";
-            if (countOfEx1Quests != 0 || lExpirience[1] != 0)
-            str += (lExpirience[1].ToString() + "   Среднее:" + (lExpirience[1] / countOfEx1Quests).ToString() + "\n");
-            str += "      Поддержка.:         ";
-            if (countOfEx2Quests != 0 || lExpirience[2] != 0)
-            str += (lExpirience[2].ToString() + "   Среднее:" + (lExpirience[2] / countOfEx2Quests).ToString() + "\n");
+            str += "\aБоевого:         ";
+            if (countOfExQuests[0] != 0 || lExperience[0] != 0)
+                str += (lExperience[0].ToString() + "   Среднее: " + averageExp[0].ToString() + "\n");
+            str += "\aВыживания:         ";
+            if (countOfExQuests[1] != 0 || lExperience[1] != 0)
+                str += (lExperience[1].ToString() + "   Среднее: " + averageExp[1].ToString() + "\n");
+            str += "\aПоддержка:         ";
+            if (countOfExQuests[2] != 0 || lExperience[2] != 0)
+                str += (lExperience[2].ToString() + "   Среднее: " + averageExp[2].ToString() + "\n");
             lStatistic.Text = str;
-
         }
 
         List<CQuest> getTreeItemIDs(int questID)
@@ -1713,7 +1695,7 @@ namespace StalkerOnlineQuesterEditor
             balances.save();
 
         }
-
+        //! Нажатие на кнопку Отцентрировать - приводит DialogShower к исходному виду
         private void bCenterizeDialogShower_Click(object sender, EventArgs e)
         {
             // важное место - ставим зум на 1
@@ -1725,6 +1707,18 @@ namespace StalkerOnlineQuesterEditor
             //SizeF sizes = DialogShower.Camera.ViewBounds.Size;
             //labelXNode.Text = "X= " + rect.X.ToString() + " w=" + sizes.Width.ToString();
             //labelYNode.Text = "Y = " + rect.Y.ToString() + " h=" + sizes.Height.ToString();
+        }
+        //! Пункт главного меню - Настройки
+        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OperatorSettings fOperator = new OperatorSettings(this);
+            this.Enabled = false;
+            fOperator.Show();
+        }
+        //! Пункт главного меню - Выход
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

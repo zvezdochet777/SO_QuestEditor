@@ -45,7 +45,7 @@
             this.bHideReward = new System.Windows.Forms.Button();
             this.creditsTextBox = new System.Windows.Forms.TextBox();
             this.lCredits = new System.Windows.Forms.Label();
-            this.tExpirience = new System.Windows.Forms.TextBox();
+            this.tExperience = new System.Windows.Forms.TextBox();
             this.lCombatSkills = new System.Windows.Forms.Label();
             this.lQuestRules = new System.Windows.Forms.GroupBox();
             this.bItemQuestRules = new System.Windows.Forms.Button();
@@ -104,6 +104,10 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
+            this.tSurvival = new System.Windows.Forms.TextBox();
+            this.tSupport = new System.Windows.Forms.TextBox();
+            this.lSurvivalSkills = new System.Windows.Forms.Label();
+            this.lSupportSkills = new System.Windows.Forms.Label();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -125,7 +129,7 @@
             this.QuestPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.QuestPanel.Location = new System.Drawing.Point(0, 0);
             this.QuestPanel.Name = "QuestPanel";
-            this.QuestPanel.Size = new System.Drawing.Size(626, 828);
+            this.QuestPanel.Size = new System.Drawing.Size(626, 863);
             this.QuestPanel.TabIndex = 0;
             // 
             // groupQuestBox
@@ -137,7 +141,7 @@
             this.groupQuestBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupQuestBox.Location = new System.Drawing.Point(0, 0);
             this.groupQuestBox.Name = "groupQuestBox";
-            this.groupQuestBox.Size = new System.Drawing.Size(626, 828);
+            this.groupQuestBox.Size = new System.Drawing.Size(626, 863);
             this.groupQuestBox.TabIndex = 0;
             this.groupQuestBox.TabStop = false;
             this.groupQuestBox.Text = "Событие ID ";
@@ -155,7 +159,7 @@
             this.filedIFtContentBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filedIFtContentBox.Location = new System.Drawing.Point(3, 50);
             this.filedIFtContentBox.Name = "filedIFtContentBox";
-            this.filedIFtContentBox.Size = new System.Drawing.Size(620, 775);
+            this.filedIFtContentBox.Size = new System.Drawing.Size(620, 810);
             this.filedIFtContentBox.TabIndex = 2;
             this.filedIFtContentBox.TabStop = false;
             this.filedIFtContentBox.Text = "Содержание";
@@ -169,7 +173,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 745);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(614, 27);
+            this.panel1.Size = new System.Drawing.Size(614, 62);
             this.panel1.TabIndex = 7;
             // 
             // okButton
@@ -195,6 +199,10 @@
             // rewardGroupBox
             // 
             this.rewardGroupBox.AutoSize = true;
+            this.rewardGroupBox.Controls.Add(this.lSupportSkills);
+            this.rewardGroupBox.Controls.Add(this.lSurvivalSkills);
+            this.rewardGroupBox.Controls.Add(this.tSupport);
+            this.rewardGroupBox.Controls.Add(this.tSurvival);
             this.rewardGroupBox.Controls.Add(this.label1);
             this.rewardGroupBox.Controls.Add(this.difficultyComboBox);
             this.rewardGroupBox.Controls.Add(this.bRewardEffects);
@@ -205,7 +213,7 @@
             this.rewardGroupBox.Controls.Add(this.bHideReward);
             this.rewardGroupBox.Controls.Add(this.creditsTextBox);
             this.rewardGroupBox.Controls.Add(this.lCredits);
-            this.rewardGroupBox.Controls.Add(this.tExpirience);
+            this.rewardGroupBox.Controls.Add(this.tExperience);
             this.rewardGroupBox.Controls.Add(this.lCombatSkills);
             this.rewardGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.rewardGroupBox.Location = new System.Drawing.Point(3, 611);
@@ -310,21 +318,21 @@
             this.lCredits.TabIndex = 14;
             this.lCredits.Text = "Кредиты";
             // 
-            // tExpirience
+            // tExperience
             // 
-            this.tExpirience.Location = new System.Drawing.Point(119, 67);
-            this.tExpirience.Name = "tExpirience";
-            this.tExpirience.Size = new System.Drawing.Size(47, 20);
-            this.tExpirience.TabIndex = 9;
+            this.tExperience.Location = new System.Drawing.Point(119, 67);
+            this.tExperience.Name = "tExperience";
+            this.tExperience.Size = new System.Drawing.Size(47, 20);
+            this.tExperience.TabIndex = 9;
             // 
             // lCombatSkills
             // 
             this.lCombatSkills.AutoSize = true;
             this.lCombatSkills.Location = new System.Drawing.Point(7, 67);
             this.lCombatSkills.Name = "lCombatSkills";
-            this.lCombatSkills.Size = new System.Drawing.Size(34, 13);
+            this.lCombatSkills.Size = new System.Drawing.Size(76, 13);
             this.lCombatSkills.TabIndex = 8;
-            this.lCombatSkills.Text = "Опыт";
+            this.lCombatSkills.Text = "Опыт боевой:";
             // 
             // lQuestRules
             // 
@@ -934,6 +942,38 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
+            // tSurvival
+            // 
+            this.tSurvival.Location = new System.Drawing.Point(247, 67);
+            this.tSurvival.Name = "tSurvival";
+            this.tSurvival.Size = new System.Drawing.Size(42, 20);
+            this.tSurvival.TabIndex = 37;
+            // 
+            // tSupport
+            // 
+            this.tSupport.Location = new System.Drawing.Point(369, 67);
+            this.tSupport.Name = "tSupport";
+            this.tSupport.Size = new System.Drawing.Size(54, 20);
+            this.tSupport.TabIndex = 38;
+            // 
+            // lSurvivalSkills
+            // 
+            this.lSurvivalSkills.AutoSize = true;
+            this.lSurvivalSkills.Location = new System.Drawing.Point(172, 67);
+            this.lSurvivalSkills.Name = "lSurvivalSkills";
+            this.lSurvivalSkills.Size = new System.Drawing.Size(69, 13);
+            this.lSurvivalSkills.TabIndex = 39;
+            this.lSurvivalSkills.Text = "Выживания:";
+            // 
+            // lSupportSkills
+            // 
+            this.lSupportSkills.AutoSize = true;
+            this.lSupportSkills.Location = new System.Drawing.Point(295, 67);
+            this.lSupportSkills.Name = "lSupportSkills";
+            this.lSupportSkills.Size = new System.Drawing.Size(68, 13);
+            this.lSupportSkills.TabIndex = 40;
+            this.lSupportSkills.Text = "Поддержки:";
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -942,7 +982,7 @@
             this.AutoScrollMargin = new System.Drawing.Size(5, 5);
             this.AutoScrollMinSize = new System.Drawing.Size(5, 5);
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(626, 828);
+            this.ClientSize = new System.Drawing.Size(626, 863);
             this.Controls.Add(this.QuestPanel);
             this.MinimumSize = new System.Drawing.Size(636, 850);
             this.Name = "EditQuestForm";
@@ -997,7 +1037,7 @@
         private System.Windows.Forms.GroupBox lQuestRules;
         private System.Windows.Forms.GroupBox rewardGroupBox;
         private System.Windows.Forms.Label lCombatSkills;
-        private System.Windows.Forms.TextBox tExpirience;
+        private System.Windows.Forms.TextBox tExperience;
         private System.Windows.Forms.TextBox creditsTextBox;
         private System.Windows.Forms.Label lCredits;
         private System.Windows.Forms.Button cancelButton;
@@ -1052,5 +1092,9 @@
         private System.Windows.Forms.Button bRewardEffects;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox difficultyComboBox;
+        private System.Windows.Forms.TextBox tSupport;
+        private System.Windows.Forms.TextBox tSurvival;
+        private System.Windows.Forms.Label lSupportSkills;
+        private System.Windows.Forms.Label lSurvivalSkills;
     }
 }

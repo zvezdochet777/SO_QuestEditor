@@ -188,6 +188,7 @@ namespace StalkerOnlineQuesterEditor
                 reward.TeleportTo = item.Element("Reward").Element("TeleportTo").Value.ToString();
 
                 string text_rew_exp = item.Element("Reward").Element("Expirience").Value;
+                /*
                 reward.Expirience = 0;
                 if (!text_rew_exp.Equals(""))
                 {
@@ -200,6 +201,11 @@ namespace StalkerOnlineQuesterEditor
                     else
                         reward.Expirience = int.Parse(text_rew_exp);
                 }
+                 */
+
+                if (!item.Element("Reward").Element("Expirience").Value.Equals(""))
+                    foreach (string itemNum in item.Element("Reward").Element("Expirience").Value.Split(','))
+                        reward.Expirience.Add(int.Parse(itemNum));
 
                 if (!item.Element("Reward").Element("NumOfItems").Value.Equals(""))
                     foreach (string itemNum in item.Element("Reward").Element("NumOfItems").Value.Split(','))
@@ -452,7 +458,7 @@ namespace StalkerOnlineQuesterEditor
 
                     new XElement("Reward",
                         new XElement("TeleportTo", ""),
-                        new XElement("Expirience", getIntAsString(questValue.Reward.Expirience)),
+                        new XElement("Expirience", getListAsString(questValue.Reward.Expirience)),
                         new XElement("TypeOfItems", getListAsString(questValue.Reward.TypeOfItems)),
                         new XElement("NumOfItems", getListAsString(questValue.Reward.NumOfItems)),
                         new XElement("AttrOfItems", getListAsString(questValue.Reward.AttrOfItems)),

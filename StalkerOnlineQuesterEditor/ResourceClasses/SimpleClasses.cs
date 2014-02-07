@@ -476,7 +476,7 @@ namespace StalkerOnlineQuesterEditor
 
     public class CQuestReward : ICloneable
     {
-        public int Expirience;
+        public List<int> Expirience;
         public List<int> TypeOfItems;
         public List<int> NumOfItems;
         public List<int> AttrOfItems;
@@ -508,16 +508,12 @@ namespace StalkerOnlineQuesterEditor
             copy.Fractions = this.Fractions;
             copy.Difficulty = this.Difficulty;
             copy.Unlimited = this.Unlimited;
-
-
-
-
             return copy;
         }
 
         public CQuestReward()
         {
-            this.Expirience = new int();
+            this.Expirience = new List<int>();
             this.TypeOfItems = new List<int>();
             this.NumOfItems = new List<int>();
             this.AttrOfItems = new List<int>();
