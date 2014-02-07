@@ -16,9 +16,10 @@ namespace StalkerOnlineQuesterEditor
     //! Словарь...
     using NPCQuestDict = Dictionary<int, CQuest>;
 
-    //using NPCDicts = Dictionary<string, Dictionary<int, CQuest>>;
-    //! Словарь ...
+    //! Словарь локализаций квестов <LocaleName, <QuestID, CQuest>>
     using QuestLocales = Dictionary<string, Dictionary<int, CQuest>>;
+    //! Словарь из разностей версий диалогов русской версии и локализации
+    using DifferenceDict = Dictionary<string, Dictionary<int, CDifference>>;
 
     //! Класс обработки квестов
     public class CQuests
@@ -30,6 +31,7 @@ namespace StalkerOnlineQuesterEditor
         public int SHOW_JOURNAL = 8;
 
         //public Dictionary<string, NPCQuestDict> quest;
+        //! Словарь <QuestID, CQuest> - основной, содержащий все квесты
         public Dictionary<int, CQuest> quest;
         public QuestLocales locales = new QuestLocales();
         public Dictionary<int, CQuest> buffer = new Dictionary<int, CQuest>();
@@ -42,6 +44,8 @@ namespace StalkerOnlineQuesterEditor
         public int bufferTop = 0;
 
         //public CQuests(string QuestsXMLFile, string StartQuestsXMLFile)
+
+        //! Конструктор, заполняет словарь quest, startQuests, парсит файлы
         public CQuests(MainForm form)
         {
             parent = form;
@@ -64,11 +68,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        public bool isStartQuest(int quest_id)
-        {
-            return startQuests.Contains(quest_id);
-        }
-
+        //! Парсит файл квестов и заносит результат в target
         void parseQuestsFile(string sPath, NPCQuestDict variable_target)
         {
             if (!File.Exists(sPath))
@@ -81,8 +81,6 @@ namespace StalkerOnlineQuesterEditor
                 int Version = new int();
                 Version = int.Parse(item.Element("Version").Value);
 
-
-
                 CQuestInformation information = new CQuestInformation();
                 CQuestTarget target = new CQuestTarget();
                 CQuestPrecondition precondition = new CQuestPrecondition();
@@ -93,11 +91,10 @@ namespace StalkerOnlineQuesterEditor
 
                 information.Description = common.decode(item.Element("QuestInformation").Element("Description").Value.Trim());
                 information.Title = common.decode(item.Element("QuestInformation").Element("Title").Value.Trim());
-
-                additional.Holder = item.Element("Additional").Element("Holder").Value.Trim();
-
                 information.onWin = item.Element("QuestInformation").Element("onWin").Value.Trim();
                 information.onFailed = item.Element("QuestInformation").Element("onFailed").Value.Trim();
+
+                additional.Holder = item.Element("Additional").Element("Holder").Value.Trim();
 
                 foreach (XElement qitem in item.Element("QuestInformation").Element("Items").Elements())
                 {
@@ -130,7 +127,6 @@ namespace StalkerOnlineQuesterEditor
                 else
                     target.onFin = 1;
 
-
                 if (!item.Element("Target").Element("AreaName").Value.Equals(""))
                     target.AreaName = item.Element("Target").Element("AreaName").Value;
 
@@ -141,7 +137,6 @@ namespace StalkerOnlineQuesterEditor
                     target.IsGroup = int.Parse(item.Element("Target").Element("IsGroup").Value);
                 else
                     target.IsGroup = 0;
-
 
                 if (!item.Element("Target").Element("IsClan").Value.Equals(""))
                     target.IsClan = false;
@@ -192,14 +187,12 @@ namespace StalkerOnlineQuesterEditor
                         questRules.Scenarios.Add(int.Parse(itemType));
                 reward.TeleportTo = item.Element("Reward").Element("TeleportTo").Value.ToString();
 
-
                 string text_rew_exp = item.Element("Reward").Element("Expirience").Value;
                 reward.Expirience = 0;
                 if (!text_rew_exp.Equals(""))
                 {
                     if (text_rew_exp.Contains(','))
                     {
-
                         //After change from three skills role play
                         foreach (string element_rew_exp in text_rew_exp.Split(','))
                             reward.Expirience += int.Parse(element_rew_exp);
@@ -215,10 +208,8 @@ namespace StalkerOnlineQuesterEditor
                     foreach (string itemType in item.Element("Reward").Element("TypeOfItems").Value.Split(','))
                         reward.TypeOfItems.Add(int.Parse(itemType));
 
-
                 if (!item.Element("Reward").Element("AttrOfItems").Value.Equals(""))
                     foreach (string itemType in item.Element("Reward").Element("AttrOfItems").Value.Split(','))
-                        reward.AttrOfItems.Add(int.Parse(itemType));
 
 
                 if (!item.Element("Reward").Element("Credits").Value.Equals(""))
@@ -262,13 +253,11 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Element("Reward").Element("KarmaPK").Value.Equals(""))
                     reward.KarmaPK = int.Parse(item.Element("Reward").Element("KarmaPK").Value);
 
-
                 foreach (XElement effect in item.Element("Reward").Element("Effects").Elements())
                 {
                     reward.Effects.Add(new CEffect(int.Parse(effect.Element("id").Value.ToString()),
                         int.Parse(effect.Element("stack").Value.ToString())));
                 }
-
                 
                 if (!item.Element("Additional").Element("ShowProgress").Value.ToString().Equals(""))
                     additional.ShowProgress = int.Parse(item.Element("Additional").Element("ShowProgress").Value.ToString());
@@ -281,7 +270,7 @@ namespace StalkerOnlineQuesterEditor
                     foreach (string quest in item.Element("Additional").Element("ListOfSubQuest").Value.Split(','))
                         additional.ListOfSubQuest.Add(int.Parse(quest));
 
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1Penalty
+                // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Penalty
                 string text_pen_exp = item.Element("Penalty").Element("Expirience").Value;
 
                     penalty.Expirience = 0;
@@ -307,32 +296,36 @@ namespace StalkerOnlineQuesterEditor
                     if (!item.Element("Penalty").Element("Credits").Value.Equals(""))
                         penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value);
 
-
                 //foreach (string fraction in item.Element("Penalty").Element("Reputation").Value.Split(','))
                 //    if (!fraction.Equals(""))
                 //        reward.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Penalty
-
-
-
+                // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Penalty
 
                 if (!variable_target.ContainsKey(QuestID))
                     variable_target.Add(QuestID, new CQuest(QuestID, Version, information, precondition, questRules, reward, additional, target, penalty));
-        }
+            }
         }
 
+        //! Возращает список квестов (без вложенных Subquest) для конкретного NPC
         public List<CQuest> getQuestAndTitleOnNPCName(string NPCName)
         {
-         List<CQuest> retQuests = new List<CQuest>();
-         foreach (CQuest quest in this.quest.Values)
-         {
-             //System.Console.WriteLine(NPCName + "vs" + quest.QuestInformation.NameOfHolder);
-             if (quest.Additional.Holder.Equals(NPCName) && (quest.Additional.IsSubQuest==0))
-                 retQuests.Add(quest);
-         }
-         return retQuests;
+            List<CQuest> retQuests = new List<CQuest>();
+            foreach (CQuest quest in this.quest.Values)
+            {
+                 //System.Console.WriteLine(NPCName + "vs" + quest.QuestInformation.NameOfHolder);
+                 if (quest.Additional.Holder.Equals(NPCName) && (quest.Additional.IsSubQuest==0))
+                     retQuests.Add(quest);
+            }
+            return retQuests;
+        }
+        //! Возвращает число квестов у заданного NPC 
+        public int getCountOfQuests(string NPCName)
+        { 
+            List<CQuest> quests = getQuestAndTitleOnNPCName(NPCName);
+            return quests.Count;        
         }
 
+        //! @todo выжигать каленым железом
         public void saveStartQuests(string fileName)
         {
             string newOldName = (parent.settings.startQuestXML.Replace(".xml","")+"_" + DateTime.UtcNow.ToString() + ".xml").Replace(':', '_');
@@ -355,6 +348,7 @@ namespace StalkerOnlineQuesterEditor
             //resultDoc2.Save(fileName);
         }
 
+        //! Сохраняет данные по квестам в xml файл
         public void saveQuests(string fileName)
         {
             save(fileName, this.quest);
@@ -380,9 +374,9 @@ namespace StalkerOnlineQuesterEditor
         //    }
         //}
 
+        //! Сохраняет данные по квестам в xml файл
         public void save(string fileName, Dictionary<int, CQuest> target)
         {
-
             string newOldName = (fileName.Replace(".xml", "") + "_" + DateTime.UtcNow.ToString() + ".xml").Replace(':', '_');
             replaceOldQuestsFile(0, newOldName, fileName);
 
@@ -391,117 +385,114 @@ namespace StalkerOnlineQuesterEditor
                 new XElement("root")
                 );
             XElement element;
-
             //resultDoc.Root = new XElement("root");
 
-
             foreach (CQuest questValue in target.Values)
+            {
+                List<XElement> ItemsXE = getItemElements(questValue.QuestInformation.Items);
+                List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
+                XElement Items;
+                XElement Effects;
+                if (ItemsXE.Any())
                 {
-                    List<XElement> ItemsXE = getItemElements(questValue.QuestInformation.Items);
-                    List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
-                    XElement Items;
-                    XElement Effects;
-                    if (ItemsXE.Any())
-                    {
-                        Items = new XElement("Items", ItemsXE);
-                    }
-                    else
-                    {
-                        Items = new XElement("Items", "");
-                    }
-                    if (EffectsXE.Any())
-                    {
-                        Effects = new XElement("Effects", EffectsXE);
-                    }
-                    else
-                    {
-                        Effects = new XElement("Effects", "");
-                    }
-
-                    element = new XElement("quest",
-                       new XElement("QuestID", questValue.QuestID),
-                       new XElement("Version", questValue.Version),
-                       new XElement("QuestInformation",
-                           new XElement("Title", common.encode(questValue.QuestInformation.Title)),
-                           new XElement("Description", common.encode(questValue.QuestInformation.Description)),
-                           //new XElement("TypeOfHolder", questValue.QuestInformation.TypeOfHolder),
-                           //new XElement("NameOfHolder", questValue.QuestInformation.NameOfHolder),
-                           new XElement("onWin", questValue.QuestInformation.onWin),
-                           new XElement("onFailed", questValue.QuestInformation.onFailed),
-                           Items
-                           ),
-                        new XElement("Target",
-                            new XElement("onFin", questValue.Target.onFin),
-                            new XElement("QuestType", questValue.Target.QuestType),
-                            new XElement("ObjectType", getIntAsString(questValue.Target.ObjectType)),
-                            new XElement("ObjectAttr", questValue.Target.ObjectAttr),
-                            new XElement("NumOfObjects", getIntAsString(questValue.Target.NumOfObjects)),
-                            new XElement("ObjectName", questValue.Target.ObjectName),
-                            new XElement("AObjectAttrs", getListAsString(questValue.Target.AObjectAttrs)),
-                            new XElement("AreaName", questValue.Target.AreaName),
-                            new XElement("IsGroup", questValue.Target.IsGroup.ToString()),
-                            new XElement("IsClan", getBoolAsString(questValue.Target.IsClan)),
-                            new XElement("Time", questValue.Target.Time.ToString())),
-                        new XElement("Precondition",
-                            new XElement("TakenPeriod", questValue.Precondition.TakenPeriod.ToString()),
-                            new XElement("Repeat", getIntAsString(questValue.Precondition.Repeat))),
-                        new XElement("QuestRules",
-                            new XElement("Scenarios", getListAsString(questValue.QuestRules.Scenarios)),
-                            new XElement("TeleportTo", questValue.QuestRules.TeleportTo),
-                            new XElement("Reputation", ""),
-                            new XElement("TypeOfItems", getListAsString(questValue.QuestRules.TypeOfItems)),
-                            new XElement("NumOfItems", getListAsString(questValue.QuestRules.NumOfItems)),
-                            new XElement("AttrOfItems", getListAsString(questValue.QuestRules.AttrOfItems)),
-                            new XElement("MinGroup", getIntAsString(questValue.QuestRules.MinGroup)),
-                            new XElement("MaxGroup", getIntAsString(questValue.QuestRules.MaxGroup)),
-                            new XElement("MinMember", getIntAsString(questValue.QuestRules.MinMember)),
-                            new XElement("MaxMember", getIntAsString(questValue.QuestRules.MaxMember))
-                            ),
-
-                        new XElement("Reward",
-                            new XElement("TeleportTo", ""),
-                            new XElement("Expirience", getIntAsString(questValue.Reward.Expirience)),
-                            new XElement("TypeOfItems", getListAsString(questValue.Reward.TypeOfItems)),
-                            new XElement("NumOfItems", getListAsString(questValue.Reward.NumOfItems)),
-                            new XElement("AttrOfItems", getListAsString(questValue.Reward.AttrOfItems)),
-                            new XElement("Credits", questValue.Reward.Credits),
-                            new XElement("EventCodes", getListAsString(questValue.Reward.EventCodes)),
-                            new XElement("Reputation", ""),
-                            new XElement ("Fractions", getListAsString(questValue.Reward.Fractions)),
-                            new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()),
-                            new XElement("Unlimited", questValue.Reward.Unlimited.ToString()),
-                            new XElement("Difficulty", questValue.Reward.Difficulty.ToString()),
-                            Effects
-                                ),
-                        new XElement("Penalty",
-                            new XElement("TeleportTo", ""),
-                            new XElement("Expirience", getIntAsString(questValue.QuestPenalty.Expirience)),
-                            new XElement("TypeOfItems", getListAsString(questValue.QuestPenalty.TypeOfItems)),
-                            new XElement("NumOfItems", getListAsString(questValue.QuestPenalty.NumOfItems)),
-                            new XElement("Credits", questValue.QuestPenalty.Credits),
-                            new XElement("Reputation", "")
-                            ),
-                        new XElement("Additional",
-                            new XElement("IsSubQuest", getIntAsString(questValue.Additional.IsSubQuest)),
-                            new XElement("ListOfSubQuest", getListAsString(questValue.Additional.ListOfSubQuest)),
-                            new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()),
-                            new XElement("Holder",questValue.Additional.Holder)
-
-                            )
-                       );
-                    resultDoc.Root.Add(element);
+                    Items = new XElement("Items", ItemsXE);
+                }
+                else
+                {
+                    Items = new XElement("Items", "");
+                }
+                if (EffectsXE.Any())
+                {
+                    Effects = new XElement("Effects", EffectsXE);
+                }
+                else
+                {
+                    Effects = new XElement("Effects", "");
                 }
 
-                System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
-                settings.Encoding = new UTF8Encoding(false);
-                settings.Indent = true;
-                settings.OmitXmlDeclaration = true;
-                settings.NewLineOnAttributes = true;
-                using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
-                {
-                    resultDoc.Save(w);
-                }
+                element = new XElement("quest",
+                   new XElement("QuestID", questValue.QuestID),
+                   new XElement("Version", questValue.Version),
+                   new XElement("QuestInformation",
+                       new XElement("Title", common.encode(questValue.QuestInformation.Title)),
+                       new XElement("Description", common.encode(questValue.QuestInformation.Description)),
+                       //new XElement("TypeOfHolder", questValue.QuestInformation.TypeOfHolder),
+                       //new XElement("NameOfHolder", questValue.QuestInformation.NameOfHolder),
+                       new XElement("onWin", questValue.QuestInformation.onWin),
+                       new XElement("onFailed", questValue.QuestInformation.onFailed),
+                       Items
+                       ),
+                    new XElement("Target",
+                        new XElement("onFin", questValue.Target.onFin),
+                        new XElement("QuestType", questValue.Target.QuestType),
+                        new XElement("ObjectType", getIntAsString(questValue.Target.ObjectType)),
+                        new XElement("ObjectAttr", questValue.Target.ObjectAttr),
+                        new XElement("NumOfObjects", getIntAsString(questValue.Target.NumOfObjects)),
+                        new XElement("ObjectName", questValue.Target.ObjectName),
+                        new XElement("AObjectAttrs", getListAsString(questValue.Target.AObjectAttrs)),
+                        new XElement("AreaName", questValue.Target.AreaName),
+                        new XElement("IsGroup", questValue.Target.IsGroup.ToString()),
+                        new XElement("IsClan", getBoolAsString(questValue.Target.IsClan)),
+                        new XElement("Time", questValue.Target.Time.ToString())),
+                    new XElement("Precondition",
+                        new XElement("TakenPeriod", questValue.Precondition.TakenPeriod.ToString()),
+                        new XElement("Repeat", getIntAsString(questValue.Precondition.Repeat))),
+                    new XElement("QuestRules",
+                        new XElement("Scenarios", getListAsString(questValue.QuestRules.Scenarios)),
+                        new XElement("TeleportTo", questValue.QuestRules.TeleportTo),
+                        new XElement("Reputation", ""),
+                        new XElement("TypeOfItems", getListAsString(questValue.QuestRules.TypeOfItems)),
+                        new XElement("NumOfItems", getListAsString(questValue.QuestRules.NumOfItems)),
+                        new XElement("AttrOfItems", getListAsString(questValue.QuestRules.AttrOfItems)),
+                        new XElement("MinGroup", getIntAsString(questValue.QuestRules.MinGroup)),
+                        new XElement("MaxGroup", getIntAsString(questValue.QuestRules.MaxGroup)),
+                        new XElement("MinMember", getIntAsString(questValue.QuestRules.MinMember)),
+                        new XElement("MaxMember", getIntAsString(questValue.QuestRules.MaxMember))
+                        ),
 
+                    new XElement("Reward",
+                        new XElement("TeleportTo", ""),
+                        new XElement("Expirience", getIntAsString(questValue.Reward.Expirience)),
+                        new XElement("TypeOfItems", getListAsString(questValue.Reward.TypeOfItems)),
+                        new XElement("NumOfItems", getListAsString(questValue.Reward.NumOfItems)),
+                        new XElement("AttrOfItems", getListAsString(questValue.Reward.AttrOfItems)),
+                        new XElement("Credits", questValue.Reward.Credits),
+                        new XElement("EventCodes", getListAsString(questValue.Reward.EventCodes)),
+                        new XElement("Reputation", ""),
+                        new XElement ("Fractions", getListAsString(questValue.Reward.Fractions)),
+                        new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()),
+                        new XElement("Unlimited", questValue.Reward.Unlimited.ToString()),
+                        new XElement("Difficulty", questValue.Reward.Difficulty.ToString()),
+                        Effects
+                            ),
+                    new XElement("Penalty",
+                        new XElement("TeleportTo", ""),
+                        new XElement("Expirience", getIntAsString(questValue.QuestPenalty.Expirience)),
+                        new XElement("TypeOfItems", getListAsString(questValue.QuestPenalty.TypeOfItems)),
+                        new XElement("NumOfItems", getListAsString(questValue.QuestPenalty.NumOfItems)),
+                        new XElement("Credits", questValue.QuestPenalty.Credits),
+                        new XElement("Reputation", "")
+                        ),
+                    new XElement("Additional",
+                        new XElement("IsSubQuest", getIntAsString(questValue.Additional.IsSubQuest)),
+                        new XElement("ListOfSubQuest", getListAsString(questValue.Additional.ListOfSubQuest)),
+                        new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()),
+                        new XElement("Holder",questValue.Additional.Holder)
+
+                        )
+                   );
+                resultDoc.Root.Add(element);
+            }
+
+            System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
+            settings.Encoding = new UTF8Encoding(false);
+            settings.Indent = true;
+            settings.OmitXmlDeclaration = true;
+            settings.NewLineOnAttributes = true;
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
+            {
+                resultDoc.Save(w);
+            }
         }
 
         List<XElement> getEffectElements(List<CEffect> effects)
@@ -540,6 +531,7 @@ namespace StalkerOnlineQuesterEditor
         //    }
         //}
 
+        //! Возвращает список как строку аргументов через запятую
         string getListAsString(List<int> list)
         {
             string str = "";
@@ -552,7 +544,7 @@ namespace StalkerOnlineQuesterEditor
             }
             return str;
         }
-
+        //! Возвращает bool строкой "1" или ""
         string getBoolAsString(bool bbool)
         {
             if (bbool)
@@ -560,7 +552,7 @@ namespace StalkerOnlineQuesterEditor
             else
                 return "";
         }
-
+        //! Конвертит целое в строку, если целое = 0 -> вернет пустую строку
         string getIntAsString(int someInt)
         {
             if (someInt == 0)
@@ -569,17 +561,6 @@ namespace StalkerOnlineQuesterEditor
                 return someInt.ToString();
 
         }
-
-        public void setGroup(int questID, bool IsGroup)
-        {
-            CQuest curQuest = getQuest(questID);
-//            curQuest.Target.IsGroup = IsGroup;
-
-            if (curQuest.Additional.ListOfSubQuest.Any())
-                foreach(int subQuestID in curQuest.Additional.ListOfSubQuest)
-                    setGroup(subQuestID, IsGroup);
-        }
-
 
         public CQuest getQuest(int questID)
         {
@@ -598,9 +579,8 @@ namespace StalkerOnlineQuesterEditor
             if (curQuest.Additional.ListOfSubQuest.Any())
                 foreach (int subQuestID in curQuest.Additional.ListOfSubQuest)
                     setClan(subQuestID, IsClan);
-
-
         }
+
         public string getRootTitle(int questID)
         {
             string ret = "";
@@ -612,9 +592,7 @@ namespace StalkerOnlineQuesterEditor
                     ret += getRootTitle(quest.Additional.IsSubQuest);
                 else
                     ret += quest.QuestInformation.Title;
-
             }
-
             return ret;
         }
 
@@ -685,7 +663,6 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int qID in quest.Additional.ListOfSubQuest)
                     setTutorial(qID, isTutor);
             }
-
         }
 
         public void createExamples()
@@ -710,7 +687,6 @@ namespace StalkerOnlineQuesterEditor
             if (this.locales.Keys.Contains(locale) && this.locales[locale].Keys.Contains(questID))
                 return this.locales[locale][questID];
             return null;
-
         }
 
         public void addLocaleQuest(CQuest quest, string locale)
@@ -761,11 +737,11 @@ namespace StalkerOnlineQuesterEditor
             this.save(parent.settings.questXML, results);
         }
 
-
-        public Dictionary<string, Dictionary<int, CDifference>> getQuestDifference(string locale, FindType findType)
+        //! Возвращает словарь из квестов для локализации (устаревшие, актуальные или все)
+        public DifferenceDict getQuestDifference(string locale, FindType findType)
         {
             //System.Console.WriteLine("CQuests::getQuestDifference");
-            Dictionary<string, Dictionary<int, CQuest>> sorted_locale = new Dictionary<string, Dictionary<int, CQuest>>();
+            QuestLocales sorted_locale = new QuestLocales();
             if (this.locales.Keys.Contains(locale))
             {
                 foreach (var locale_quest in this.locales[locale].Values)
@@ -776,7 +752,7 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
 
-            Dictionary<string, Dictionary<int, CDifference>> ret = new Dictionary<string, Dictionary<int, CDifference>>();
+            DifferenceDict ret = new DifferenceDict();
             foreach (var cur_quest in quest.Values)
             {
                 if (sorted_locale.Keys.Contains(cur_quest.Additional.Holder))
@@ -809,7 +785,6 @@ namespace StalkerOnlineQuesterEditor
 
             //foreach (var locale_npc_name in sorted_locale.Keys)
             //{
-
             //    foreach (var locale_quest in sorted_locale[locale_npc_name].Values)
             //    {
             //        var locale_version = locale_quest.Version;

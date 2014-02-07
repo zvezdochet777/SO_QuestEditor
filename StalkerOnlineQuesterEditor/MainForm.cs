@@ -27,7 +27,7 @@ namespace StalkerOnlineQuesterEditor
     //! Главная форма программы, туча строк кода
     public partial class MainForm : Form
     {
-        bool inSaving = false;
+        //bool inSaving = false;
 
         int STARTTALKQUESTS = 2500;
         int ENDTALKQUESTS = 3500;
@@ -142,6 +142,8 @@ namespace StalkerOnlineQuesterEditor
                     bRemoveQuest.Enabled = false;
                     
                     currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
+                    //! @todo костыль - вычитаем 1 StartQuest. Выкурить нахер
+                    QuestBox.Text = "Число квестов: " + (quests.getCountOfQuests(currentNPC)-1);
                     DialogSelected(true);
                 }
                 else if (CentralDock.SelectedIndex == 1)
@@ -159,16 +161,17 @@ namespace StalkerOnlineQuesterEditor
                 if (!onlyDialogs)
                 {
                     if (quest.QuestID < STARTTALKQUESTS || quest.QuestID > ENDTALKQUESTS)
-                        //QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
+                    {
+                        QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
                         startQuests += quest.QuestID + ": ";
+                    }
                 }
                 else if (quest.QuestID >= STARTTALKQUESTS && quest.QuestID < ENDTALKQUESTS)
-                    //QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
                     startQuests += quest.QuestID + ": ";
             }
         }
 
-        //! Что за хуйня здесь
+        //! Что за хуйня здесь ????
         private void QuestBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             splitQuestsContainer.Panel2.Controls.Clear();
@@ -176,7 +179,6 @@ namespace StalkerOnlineQuesterEditor
 
             if (CentralDock.SelectedIndex == 1)
             {
-                //this.currentQuestDialog = int.Parse(QuestBox.SelectedItem.ToString().Split(':')[0].Trim());
                 currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
                 addNodeOnTreeQuest(this.currentQuestDialog);
                 bRemoveQuest.Enabled = true;
@@ -205,7 +207,6 @@ namespace StalkerOnlineQuesterEditor
                     foreach (int subquest in quest.Nodes)
                         protectNPCBoxQuest(getDialogOnDialogID(subquest));
             }
-
         }
 
         void fillNPCBoxSubquests(CDialog sub)
@@ -235,7 +236,6 @@ namespace StalkerOnlineQuesterEditor
             //treeDialogs.Focus();
             foreach (TreeNode node in treeDialogs.Nodes.Find(dialogID.ToString(), true))
                 treeDialogs.SelectedNode = node;
-            
         }
 
         internal void onDeselectNode()
@@ -257,7 +257,6 @@ namespace StalkerOnlineQuesterEditor
                 bEditDialog.Enabled = false;
             }
         }
-
 
         public bool isRoot(int dialogID)
         {
@@ -447,6 +446,7 @@ namespace StalkerOnlineQuesterEditor
             }
             
         }
+        //! Выводит координаты узла как прямоугольника. Для отладки.
         public void setXYCoordinates(float X, float Y, float w, float h)
         {
             this.labelXNode.Text = "X=" + X.ToString();
@@ -474,15 +474,6 @@ namespace StalkerOnlineQuesterEditor
             toolStripStatusLabel.Text = "";
         }
 
-        private void bZoomIn_Click(object sender, EventArgs e)
-        {
-   
-        }
-
-        private void bZoomOut_Click(object sender, EventArgs e)
-        {
-
-        }
         //! Устанавливает доступность компонентов формы
         private void SetControlsAbility(bool enable)
         {
@@ -508,12 +499,11 @@ namespace StalkerOnlineQuesterEditor
                     QuestBox.Enabled = false;
                     bRemoveQuest.Enabled = false;
                     bAddQuest.Enabled = false;
-                    //QuestBox.SelectedIndex = 0;
+                    QuestBox.Text = "Число квестов: " + (quests.getCountOfQuests(currentNPC) - 1);
                 }
             }
             else if (CentralDock.SelectedIndex == 1)
             {
-                //System.Console.WriteLine("SelectQueststab");
                 SetControlsAbility(true);
                 bRemoveQuest.Enabled = false;
                 QuestBox.Items.Clear();
@@ -540,7 +530,6 @@ namespace StalkerOnlineQuesterEditor
         {
             return quests.getQuest(questID);
         }
-
 
         void addNodeOnTreeQuest(int currentQuest)
         {
@@ -570,11 +559,10 @@ namespace StalkerOnlineQuesterEditor
                     treeQuest.Nodes[lastIndex].BackColor = Color.Red;
             }
                 //if (!questConst.isSimple(curQuest.Target.QuestType) && (curQuest.Additional.ListOfSubQuest.Any()))
-            if ((!questConst.isSimple(curQuest.Target.QuestType) || settings.getMode() == settings.MODE_LOCALIZATION)  && (curQuest.Additional.ListOfSubQuest.Any()))
+            if ( (!questConst.isSimple(curQuest.Target.QuestType) || settings.getMode() == settings.MODE_LOCALIZATION)
+                    && ( curQuest.Additional.ListOfSubQuest.Any() ) )
                     foreach (int subquest in curQuest.Additional.ListOfSubQuest)
-                        
                         addNodeOnTreeQuest(subquest);
-                   
         }
 
         void createQuestPanels(int questID)
@@ -664,7 +652,6 @@ namespace StalkerOnlineQuesterEditor
         {
 
             bCopyEvents.Enabled = true;
-
             //this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
             //System.Console.WriteLine("Clicked on quest: "+currentQuest);
             if (getQuestOnQuestID(currentQuest).Additional.IsSubQuest == 0)
@@ -674,27 +661,26 @@ namespace StalkerOnlineQuesterEditor
                 questEditor.Visible = true;
                 this.Enabled = false;
             }
-
             else
             {
                 EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 3);
                 questEditor.Visible = true;
                 this.Enabled = false;
             }
-
-
-
         }
 
-
+        //! Сохранение - почему-то общее для всех.
         private void bSaveDialogs_Click(object sender, EventArgs e)
         {
-                this.saveData();
+            this.saveData();
         }
-
         private void bSaveQuests_Click(object sender, EventArgs e)
         {
-                this.saveData();
+            this.saveData();
+        }
+        private void bSaveLocale_Click(object sender, EventArgs e)
+        {
+            this.saveData();
         }
 
         private void bAddNPC_Click(object sender, EventArgs e)
@@ -729,7 +715,6 @@ namespace StalkerOnlineQuesterEditor
             NPCBox.SelectedIndex = NPCBox.Items.Count - 1;
 
             npcConst.NPCs.Add(Name, new CNPCDescription(Name));
-
         }
 
         private void bDelNPC_Click(object sender, EventArgs e)
@@ -759,9 +744,7 @@ namespace StalkerOnlineQuesterEditor
             if (questConst.isSimple(questType))// && getQuestOnQuestID(questID).Additional.ListOfSubQuest.Any())
                 bAddEvent.Enabled = false;
             else
-            {
                 bAddEvent.Enabled = true;
-            }
 
             if (getQuestOnQuestID(questID).Additional.IsSubQuest.Equals(0) || (!questConst.isSimple(questType) && getQuestOnQuestID(questID).Additional.ListOfSubQuest.Any()))
                 bRemoveEvent.Enabled = false;
@@ -785,7 +768,6 @@ namespace StalkerOnlineQuesterEditor
                         bQuestUp.Enabled = true;
                 }
             }
-            
         }
 
         public int getQuestNewID()
@@ -859,21 +841,21 @@ namespace StalkerOnlineQuesterEditor
 
         void saveData()
         {
-                this.Enabled = false;
-                if (settings.getMode() == settings.MODE_EDITOR)
-                {
-                    quests.saveQuests(settings.questXML);
-                    quests.saveStartQuests(settings.startQuestXML);
-                    dialogs.saveDialogs(settings.dialogXML);
-                }
-                else
-                {
-                    dialogs.saveLocales(settings.dialogXML);
-                    quests.saveLocales(settings.questXML);
-                }
-                Thread.Sleep(1000);
-                toolStripStatusLabel.Text = "Данные успешно сохранены.";
-                this.Enabled = true;
+            this.Enabled = false;
+            if (settings.getMode() == settings.MODE_EDITOR)
+            {
+                quests.saveQuests(settings.questXML);
+                quests.saveStartQuests(settings.startQuestXML);
+                dialogs.saveDialogs(settings.dialogXML);
+            }
+            else
+            {
+                dialogs.saveLocales(settings.dialogXML);
+                quests.saveLocales(settings.questXML);
+            }
+            Thread.Sleep(1000);
+            toolStripStatusLabel.Text = "Данные успешно сохранены.";
+            this.Enabled = true;
         }
 
         private void bRemoveEvent_Click(object sender, EventArgs e)
@@ -881,19 +863,15 @@ namespace StalkerOnlineQuesterEditor
             this.removeQuest(currentQuest);
         }
 
-
         void removeQuest(int questID)
         {
             foreach (int subquest in getQuestOnQuestID(questID).Additional.ListOfSubQuest)
                 removeQuest(subquest);
 
             if (getQuestOnQuestID(questID).Additional.IsSubQuest!=0)
-            {
                 quests.quest[getQuestOnQuestID(questID).Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
-            }
             treeQuest.Nodes.Find(questID.ToString(), true)[0].Remove();
             quests.quest.Remove(questID);
-
         }
 
         private void bQuestUp_Click(object sender, EventArgs e)
@@ -915,9 +893,6 @@ namespace StalkerOnlineQuesterEditor
 
                     break;
                 }
-
-
-
         }
 
         private void bQuestDown_Click(object sender, EventArgs e)
@@ -938,7 +913,6 @@ namespace StalkerOnlineQuesterEditor
                     findAndSelectNodeOnTreeQuest(currentQuest);
                     break;
                 }
-
         }
 
         void findAndSelectNodeOnTreeQuest(int questID)
@@ -966,12 +940,7 @@ namespace StalkerOnlineQuesterEditor
             QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
             QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
         }
-
-        public void setQuestISGroup(int questID, bool GroupState)
-        {
-            quests.setGroup(questID, GroupState);
-        }
-
+ 
         public void setQuestISClan(int questID, bool ClanState)
         {
             quests.setClan(questID, ClanState);
@@ -1085,9 +1054,8 @@ namespace StalkerOnlineQuesterEditor
             }
             return ret;
         }
-
-
-
+        
+        //! Заполняет вкладку Управление
         void FillTabManage()
         {
             manageGridView.Rows.Clear();
@@ -1096,7 +1064,6 @@ namespace StalkerOnlineQuesterEditor
             ((DataGridViewComboBoxColumn)manageGridView.Columns[18]).Items.Add("Да.");
             ((DataGridViewComboBoxColumn)manageGridView.Columns[18]).Items.Add("Нет.");
             ((DataGridViewComboBoxColumn)manageGridView.Columns[18]).Items.Add("Правка.");
-
 
             foreach (string npcName in npcConst.NPCs.Keys)
                 foreach (CQuest quest in quests.quest.Values)
@@ -1176,7 +1143,6 @@ namespace StalkerOnlineQuesterEditor
                                 sWorked = "Правка.";
                         }   
 
-
                         //NPC dialog statistic
                         foreach (KeyValuePair<string, Dictionary<int, CDialog>> dialogNPC in dialogs.dialogs)
                         {
@@ -1210,7 +1176,6 @@ namespace StalkerOnlineQuesterEditor
                         }
 
                         //rewardItem
-
                         
                         foreach (int type in rewardItems.Keys)
                         {
@@ -1221,9 +1186,7 @@ namespace StalkerOnlineQuesterEditor
                                 sRewardItem += itemName + ":" + count.ToString();
                             else
                                 sRewardItem += "\n" + itemName + ":" + count.ToString();
-
                         }
-
                         object[] row = { id, subIDs, title, description, npcNe, npcLinks, getDialogs, srewardExpBattle, srewardSurvival, srewardExpSupport, srewardCredits, sRewardItem, sPkStatus, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
                         manageGridView.Rows.Add(row);
                     }
@@ -1321,8 +1284,6 @@ namespace StalkerOnlineQuesterEditor
             quests.buffer.Clear();
 
             List<CQuest> buffer = new List<CQuest>(selectQuestsOnID(currentQuest));
-            
-
 
             buffer[0].Additional.IsSubQuest = 0;
             foreach (CQuest quest in buffer)
@@ -1356,7 +1317,6 @@ namespace StalkerOnlineQuesterEditor
 
         void addNodeOnTreeBuffer(int currentQuest)
         {
-
             CQuest curQuest = getQuestOnQuestID(currentQuest);
 
             if (!curQuest.Additional.IsSubQuest.Equals(0))
@@ -1385,7 +1345,6 @@ namespace StalkerOnlineQuesterEditor
             if (!questConst.isSimple(curQuest.Target.QuestType) && (curQuest.Additional.ListOfSubQuest.Any()))
                 foreach (int subquest in curQuest.Additional.ListOfSubQuest)
                     addNodeOnTreeBuffer(subquest);
-
         }
 
         private void treeQuestBuffer_DoubleClick(object sender, EventArgs e)
@@ -1436,7 +1395,6 @@ namespace StalkerOnlineQuesterEditor
 
         private void bPasteEvents_Click(object sender, EventArgs e)
         {
-
             //System.Console.WriteLine("MainForm::bPasteEvents_Click");
             var quest = getQuestOnQuestID(currentQuest);
             if (quest != null)
@@ -1453,7 +1411,6 @@ namespace StalkerOnlineQuesterEditor
                     replaceBuffer();
             }
         }
-
 
         private void pasteBuffer()
         {
@@ -1476,8 +1433,6 @@ namespace StalkerOnlineQuesterEditor
 
         private void replaceBuffer()
         {
-
-
             //System.Console.WriteLine("MainForm::replaceBuffer");
             var quest = getQuestOnQuestID(currentQuest);
             if (quest.Additional.IsSubQuest == 0)
@@ -1491,7 +1446,6 @@ namespace StalkerOnlineQuesterEditor
                 buffer[0].QuestID = questID;
                 foreach (var subQuest in buffer)
                 {
-
                     if (buffer[0].Additional.ListOfSubQuest.Contains(subQuest.QuestID))
                     {
                         subQuest.Additional.IsSubQuest = questID;
@@ -1527,10 +1481,7 @@ namespace StalkerOnlineQuesterEditor
                 treeQuest.Nodes.Clear();
                 addNodeOnTreeQuest(root);
                 treeQuest.ExpandAll();
-
-
             }
-
         }
 
         private void treeQuestBuffer_AfterSelect(object sender, TreeViewEventArgs e)
@@ -1572,12 +1523,8 @@ namespace StalkerOnlineQuesterEditor
         //! Изменения на форме при смене режима (Editor <-> Localization)
         public void onChangeMode()
         {
-            //System.Console.WriteLine("MainForm::onChangeMode");
-            //System.Console.WriteLine("mode:" + settings.getMode().ToString());
             if (settings.getMode() == settings.MODE_LOCALIZATION)
             {
-                CentralDock.TabPages[4].Visible = false;
-                CentralDock.Update();
                 for (int i = 2; i < CentralDock.TabPages.Count; i++)
                 {
                     if (CentralDock.TabPages[i].Name != "tabTranslate")
@@ -1588,8 +1535,6 @@ namespace StalkerOnlineQuesterEditor
             }
             else
             {
-                CentralDock.TabPages[5].Visible = false;
-                CentralDock.Update();
                 for (int i = 2; i < CentralDock.TabPages.Count; i++)
                 {
                     if (CentralDock.TabPages[i].Name == "tabTranslate")
@@ -1654,7 +1599,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 LocaleQuestForm editLocaleQuestform = new LocaleQuestForm(this, id);
                 editLocaleQuestform.Visible = true;
-
             }
         }
 
@@ -1733,9 +1677,7 @@ namespace StalkerOnlineQuesterEditor
                         fractionBalanceDataGridView.Rows.Add(sub_row);
                     }
                 }
-
             }
-
         }
 
         private void bSaveBalance_Click(object sender, EventArgs e)
@@ -1770,21 +1712,6 @@ namespace StalkerOnlineQuesterEditor
             }
             balances.save();
 
-        }
-
-        public bool isStartQuest(int quest_id)
-        {
-            return quests.isStartQuest(quest_id);
-        }
-
-        private void bSaveQuests_Click_1(object sender, EventArgs e)
-        {
-            this.saveData();
-        }
-
-        private void bSaveLocale_Click(object sender, EventArgs e)
-        {
-            this.saveData();
         }
 
         private void bCenterizeDialogShower_Click(object sender, EventArgs e)

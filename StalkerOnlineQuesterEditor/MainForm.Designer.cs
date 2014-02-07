@@ -305,7 +305,6 @@ namespace StalkerOnlineQuesterEditor
             this.bZoomIn.Text = "+";
             this.bZoomIn.UseVisualStyleBackColor = true;
             this.bZoomIn.Visible = false;
-            this.bZoomIn.Click += new System.EventHandler(this.bZoomIn_Click);
             // 
             // bZoomOut
             // 
@@ -319,7 +318,6 @@ namespace StalkerOnlineQuesterEditor
             this.bZoomOut.Text = "-";
             this.bZoomOut.UseVisualStyleBackColor = true;
             this.bZoomOut.Visible = false;
-            this.bZoomOut.Click += new System.EventHandler(this.bZoomOut_Click);
             // 
             // DialogActions
             // 
@@ -514,7 +512,7 @@ namespace StalkerOnlineQuesterEditor
             this.bSaveQuests.TabIndex = 3;
             this.bSaveQuests.Text = "Сохранить изменения";
             this.bSaveQuests.UseVisualStyleBackColor = true;
-            this.bSaveQuests.Click += new System.EventHandler(this.bSaveQuests_Click_1);
+            this.bSaveQuests.Click += new System.EventHandler(this.bSaveQuests_Click);
             // 
             // bRemoveEvent
             // 

@@ -86,7 +86,7 @@ namespace StalkerOnlineQuesterEditor.Forms
             this.Enabled = false;
 
         }
-        //! Нажатие ОК - сохраняем данныео переводе
+        //! Нажатие ОК - сохраняем данные о переводе
         private void bOK_Click(object sender, EventArgs e)
         {
             cur_locale_quest.QuestInformation.Title = localeLitleTextBox.Text;

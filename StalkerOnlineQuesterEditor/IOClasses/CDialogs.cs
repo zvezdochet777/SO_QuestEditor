@@ -381,7 +381,7 @@ namespace StalkerOnlineQuesterEditor
             saveDialogs(parent.settings.dialogXML);
         }
 
-        //! Возвращает словарь из разностей версий диалогов
+        //! Возвращает словарь из диалогов для локализации (устаревшие, актуальные или все)
         public DifferenceDict getDialogDifference(string locale, FindType findType)
         {
             //System.Console.WriteLine("CDialogs::getDialogDifference");

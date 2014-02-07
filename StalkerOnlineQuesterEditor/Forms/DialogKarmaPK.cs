@@ -9,14 +9,21 @@ using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Форма заполнения КармыПК для диалогов.
     public partial class DialogKarmaPK : Form
     {
         EditDialogForm form;
+        //! Конструктор - заполняет поля формы значениями кармы ПК
         public DialogKarmaPK(EditDialogForm form)
         {
             this.form = form;
             InitializeComponent();
-            label2.Text = "от 500 до 400 (включительно) – Законопослушный.\nот 399 до 250 (включительно) – Нейтральный.\nот 249 до 100 (включительно) – Вне закона.\nот 99 и ниже – Убийца";
+            labelDescription.Text = "Задаются пороги Кармы A,B такие, что A < Karma < B \n" +
+                "Игрок начинает игру с Кармой ПК = 0. \n" +
+                "За каждое ПК убийство Карма увеличивается на 100. \n" +
+                "После превышения Кармой 500 жизнь осложняется: \n" +
+                "Дроп выше, NPC не разговаривают, ник подсвечен красным";
+
             List<int> karma = form.editKarmaPK;
             if (karma.Any())
             {
@@ -29,9 +36,9 @@ namespace StalkerOnlineQuesterEditor
                     bTextBox.Text = karma[2].ToString();
                 }
             }
-
         }
 
+        //! Нажатие ОК - сохранение типа проверки кармы, порогов a,b
         private void bOK_Click(object sender, EventArgs e)
         {
             form.editKarmaPK.Clear();
@@ -65,12 +72,12 @@ namespace StalkerOnlineQuesterEditor
 
             this.Close();
         }
-
+        //! Нажатие Отмена - выход без сохранения
         private void bCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        //! Закрытие формы
         private void DialogKarmaPK_FormClosing(object sender, FormClosingEventArgs e)
         {
             form.Enabled = true;
