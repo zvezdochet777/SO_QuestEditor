@@ -330,7 +330,6 @@ namespace StalkerOnlineQuesterEditor
             foreach (string key in dialogs.Keys)
                 npc.Add(key);
             return npc;
-
         }
 
         //--------------------------locale dialogs-------------------------------------------------------

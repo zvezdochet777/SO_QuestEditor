@@ -328,7 +328,8 @@ namespace StalkerOnlineQuesterEditor
         public int getCountOfQuests(string NPCName)
         { 
             List<CQuest> quests = getQuestAndTitleOnNPCName(NPCName);
-            return quests.Count;        
+            //! @todo костыль - вычитаем 1 StartQuest. Выкурить нахер
+            return (quests.Count - 1);
         }
 
         //! @todo выжигать каленым железом

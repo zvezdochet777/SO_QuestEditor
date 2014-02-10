@@ -142,8 +142,8 @@ namespace StalkerOnlineQuesterEditor
                     bRemoveQuest.Enabled = false;
                     
                     currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
-                    //! @todo костыль - вычитаем 1 StartQuest. Выкурить нахер
-                    QuestBox.Text = "Число квестов: " + (quests.getCountOfQuests(currentNPC)-1);
+                    
+                    QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
                     DialogSelected(true);
                 }
                 else if (CentralDock.SelectedIndex == 1)
@@ -499,7 +499,7 @@ namespace StalkerOnlineQuesterEditor
                     QuestBox.Enabled = false;
                     bRemoveQuest.Enabled = false;
                     bAddQuest.Enabled = false;
-                    QuestBox.Text = "Число квестов: " + (quests.getCountOfQuests(currentNPC) - 1);
+                    QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
                 }
             }
             else if (CentralDock.SelectedIndex == 1)
@@ -1668,9 +1668,25 @@ namespace StalkerOnlineQuesterEditor
         //! Пункт главного меню - статистика
         private void StatisticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // fuck here
             StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests);
             sf.Show();
+        }
+        //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
+        private void bFindNPC_Click(object sender, EventArgs e)
+        {
+            gridViewReview.Rows.Clear();
+            bool checkDialog = cbNumDialogs.Checked;
+            bool checkQuest = cbNumQuests.Checked;
+            foreach (string npc in dialogs.dialogs.Keys)
+            {
+                int d_num = dialogs.dialogs[npc].Count;
+                int q_num = quests.getCountOfQuests(npc);
+                if( (checkDialog && d_num > numDialogs.Value) || (checkQuest && q_num < numQuests.Value) )
+                {
+                    object[] row = { npc, d_num, q_num };
+                    gridViewReview.Rows.Add( row );
+                }
+            }
         }
     }
 }

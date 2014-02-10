@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Форма отображения статистики по квестам и персонажам
     public partial class StatisticsForm : Form
     {
         //! Ссылка на родительскую главную форму
@@ -18,6 +19,7 @@ namespace StalkerOnlineQuesterEditor
         //! Экземпляр класса CQuests, хранящий всю инфу по квестам
         CQuests quests;
 
+        //! Конструктор, получает элементы от главной формы
         public StatisticsForm(MainForm parent, int _NPCCount, CQuests _quests)
         {
             InitializeComponent();

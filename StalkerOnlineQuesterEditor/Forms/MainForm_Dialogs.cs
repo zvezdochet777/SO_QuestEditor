@@ -61,7 +61,7 @@ namespace StalkerOnlineQuesterEditor
             //return null;
         }
 
-        //! Возвращает Узел по изветсному ID диалога
+        //! Возвращает Узел по известному ID диалога
         public PNode getNodeOnDialogID(int dialogID)
         {
             return GraphProperties.findNodeOnID(graphs, dialogID);
