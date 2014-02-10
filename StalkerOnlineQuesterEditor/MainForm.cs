@@ -518,7 +518,6 @@ namespace StalkerOnlineQuesterEditor
             else if (CentralDock.SelectedIndex == 3)
             {
                 SetControlsAbility(false);
-                calcStatistic();
             }
             else if (CentralDock.SelectedIndex == 4)
             {
@@ -944,60 +943,6 @@ namespace StalkerOnlineQuesterEditor
         public void setQuestISClan(int questID, bool ClanState)
         {
             quests.setClan(questID, ClanState);
-        }
-        //! Заполняет статистику для вкладки Статистика
-        void calcStatistic()
-        {
-            string str = "";
-            
-            float Credits = new float();
-            int countOfQuests = 0;
-            int countOfAmountGold = 0;
-            int NpcDialogs = NPCBox.Items.Count;
-            const int NumExp = 3;
-            int[] countOfExQuests = { 0, 0, 0 };
-            List<int> lExperience = new List<int>(3);
-            float[] averageExp = { 0, 0, 0 };
-            lExperience.Add(0); lExperience.Add(0); lExperience.Add(0);
-            foreach (CQuest quest in quests.quest.Values)
-            {
-                if (quest.Additional.IsSubQuest == 0)
-                {
-                    countOfQuests++;
-                    if (quest.Reward.Expirience.Any())
-                    {
-                        for (int i = 0; i < NumExp; i++)
-                            if (quest.Reward.Expirience[i] != 0)
-                                countOfExQuests[i]++;
-                    }
-                    if (quest.Reward.Credits != 0)
-                        countOfAmountGold++;
-                }
-                Credits += quest.Reward.Credits;
-                
-                if (quest.Reward.Expirience.Any())
-                    for (int i = 0; i < NumExp; i++)
-                        lExperience[i] += quest.Reward.Expirience[i];                
-            }
-            for (int i = 0; i < NumExp; i++)
-                averageExp[i] = lExperience[i] / countOfExQuests[i];
-
-            str += "Общее кол-во NPC: " + NpcDialogs.ToString() + "\n";
-            str += "Общее количество квестов:        " + countOfQuests.ToString() +"\n\n";
-            str += "По наградам:\n";
-            str += "   Общее количество денег:         ";
-            str += (Credits.ToString() + " руб." + "   Среднее: " + (Credits / countOfAmountGold).ToString() + " руб.\n");
-            str += "   Общее количество опыта:\n";
-            str += "\aБоевого:         ";
-            if (countOfExQuests[0] != 0 || lExperience[0] != 0)
-                str += (lExperience[0].ToString() + "   Среднее: " + averageExp[0].ToString() + "\n");
-            str += "\aВыживания:         ";
-            if (countOfExQuests[1] != 0 || lExperience[1] != 0)
-                str += (lExperience[1].ToString() + "   Среднее: " + averageExp[1].ToString() + "\n");
-            str += "\aПоддержка:         ";
-            if (countOfExQuests[2] != 0 || lExperience[2] != 0)
-                str += (lExperience[2].ToString() + "   Среднее: " + averageExp[2].ToString() + "\n");
-            lStatistic.Text = str;
         }
 
         List<CQuest> getTreeItemIDs(int questID)
@@ -1541,7 +1486,7 @@ namespace StalkerOnlineQuesterEditor
             quests.createResults();
         }
 
-        //! Выодит диалоги для локализации. В зависимости от помеченных чекбоксов. актуальные или устаревшие
+        //! Выводит диалоги для локализации. В зависимости от помеченных чекбоксов - актуальные или устаревшие
         private void bFindDialogDifference_Click(object sender, EventArgs e)
         {
             int actual = (ActualCheckBox.Checked) ? (1) : (0);
@@ -1583,7 +1528,7 @@ namespace StalkerOnlineQuesterEditor
                 editLocaleQuestform.Visible = true;
             }
         }
-
+        //! Выводит квесты для локализации
         private void bFindQuestDifference_Click(object sender, EventArgs e)
         {
             int actual = (ActualCheckBox.Checked) ? (1) : (0);
@@ -1719,6 +1664,13 @@ namespace StalkerOnlineQuesterEditor
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        //! Пункт главного меню - статистика
+        private void StatisticsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // fuck here
+            StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests);
+            sf.Show();
         }
     }
 }

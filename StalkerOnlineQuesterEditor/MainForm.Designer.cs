@@ -69,8 +69,7 @@ namespace StalkerOnlineQuesterEditor
             this.labelBuffer = new System.Windows.Forms.Label();
             this.npcLinksTabPage = new System.Windows.Forms.TabPage();
             this.npcLinkShower = new UMD.HCIL.Piccolo.PCanvas();
-            this.tabStatistics = new System.Windows.Forms.TabPage();
-            this.lStatistic = new System.Windows.Forms.Label();
+            this.tabReview = new System.Windows.Forms.TabPage();
             this.tabManage = new System.Windows.Forms.TabPage();
             this.manageGridView = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,6 +133,7 @@ namespace StalkerOnlineQuesterEditor
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.splitDialogs.Panel1.SuspendLayout();
@@ -151,7 +151,6 @@ namespace StalkerOnlineQuesterEditor
             this.splitQuestsContainer.Panel1.SuspendLayout();
             this.splitQuestsContainer.SuspendLayout();
             this.npcLinksTabPage.SuspendLayout();
-            this.tabStatistics.SuspendLayout();
             this.tabManage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.manageGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -207,7 +206,7 @@ namespace StalkerOnlineQuesterEditor
             this.CentralDock.Controls.Add(this.tabDialogs);
             this.CentralDock.Controls.Add(this.tabQuests);
             this.CentralDock.Controls.Add(this.npcLinksTabPage);
-            this.CentralDock.Controls.Add(this.tabStatistics);
+            this.CentralDock.Controls.Add(this.tabReview);
             this.CentralDock.Controls.Add(this.tabManage);
             this.CentralDock.Controls.Add(this.tabTranslate);
             this.CentralDock.Controls.Add(this.tabBalance);
@@ -635,24 +634,14 @@ namespace StalkerOnlineQuesterEditor
             this.npcLinkShower.TabIndex = 1;
             this.npcLinkShower.Text = "8";
             // 
-            // tabStatistics
+            // tabReview
             // 
-            this.tabStatistics.Controls.Add(this.lStatistic);
-            this.tabStatistics.Location = new System.Drawing.Point(4, 22);
-            this.tabStatistics.Name = "tabStatistics";
-            this.tabStatistics.Size = new System.Drawing.Size(906, 540);
-            this.tabStatistics.TabIndex = 3;
-            this.tabStatistics.Text = "Статистика";
-            this.tabStatistics.UseVisualStyleBackColor = true;
-            // 
-            // lStatistic
-            // 
-            this.lStatistic.AutoSize = true;
-            this.lStatistic.Location = new System.Drawing.Point(3, 0);
-            this.lStatistic.Name = "lStatistic";
-            this.lStatistic.Size = new System.Drawing.Size(46, 13);
-            this.lStatistic.TabIndex = 0;
-            this.lStatistic.Text = "lStatistic";
+            this.tabReview.Location = new System.Drawing.Point(4, 22);
+            this.tabReview.Name = "tabReview";
+            this.tabReview.Size = new System.Drawing.Size(906, 540);
+            this.tabReview.TabIndex = 3;
+            this.tabReview.Text = "Проверки";
+            this.tabReview.UseVisualStyleBackColor = true;
             // 
             // tabManage
             // 
@@ -1147,7 +1136,8 @@ namespace StalkerOnlineQuesterEditor
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.менюToolStripMenuItem});
+            this.менюToolStripMenuItem,
+            this.StatisticsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(914, 24);
@@ -1193,6 +1183,13 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
             // 
+            // StatisticsToolStripMenuItem
+            // 
+            this.StatisticsToolStripMenuItem.Name = "StatisticsToolStripMenuItem";
+            this.StatisticsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.StatisticsToolStripMenuItem.Text = "Статистика";
+            this.StatisticsToolStripMenuItem.Click += new System.EventHandler(this.StatisticsToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1223,8 +1220,6 @@ namespace StalkerOnlineQuesterEditor
             this.splitQuestsContainer.Panel1.PerformLayout();
             this.splitQuestsContainer.ResumeLayout(false);
             this.npcLinksTabPage.ResumeLayout(false);
-            this.tabStatistics.ResumeLayout(false);
-            this.tabStatistics.PerformLayout();
             this.tabManage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.manageGridView)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -1290,8 +1285,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.TabPage npcLinksTabPage;
         private PCanvas npcLinkShower;
-        private System.Windows.Forms.TabPage tabStatistics;
-        private System.Windows.Forms.Label lStatistic;
+        private System.Windows.Forms.TabPage tabReview;
         private System.Windows.Forms.TabPage tabManage;
         private System.Windows.Forms.DataGridView manageGridView;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
@@ -1353,6 +1347,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label labelYNode;
         private System.Windows.Forms.Label labelXNode;
         private System.Windows.Forms.Button bCenterizeDialogShower;
+        private System.Windows.Forms.ToolStripMenuItem StatisticsToolStripMenuItem;
 
 
     }
