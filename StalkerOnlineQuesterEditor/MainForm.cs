@@ -1681,7 +1681,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 int d_num = dialogs.dialogs[npc].Count;
                 int q_num = quests.getCountOfQuests(npc);
-                if( (checkDialog && d_num > numDialogs.Value) || (checkQuest && q_num < numQuests.Value) )
+                if( (checkDialog && d_num < numDialogs.Value) || (checkQuest && q_num < numQuests.Value) )
                 {
                     object[] row = { npc, d_num, q_num };
                     gridViewReview.Rows.Add( row );

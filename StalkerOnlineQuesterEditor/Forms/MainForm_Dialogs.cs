@@ -15,9 +15,13 @@ using System.Xml.Linq;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Словарь <DialogID, CDialog> - используется для диалогов 1 персонажа NPC
     using NPCQuestDict = Dictionary<int, CDialog>;
+    //! Словарь <уровень в иерархии, список узлов>
+    using levelDict = Dictionary<int, List<int>>;
     public partial class MainForm : Form
     {
+        public levelDict nodesOnLevel;
         //DIALOGS
         //******************SETTERS/GETTERS****************************
         //! Возвращает вершину графа диалогов - корневую фразу у заданного NPC
@@ -192,8 +196,9 @@ namespace StalkerOnlineQuesterEditor
             nodeLayer.Add(rootNode);
             if (!graphs.Keys.Contains(rootNode))
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
-            this.fillDialogSubgraphView(root, rootNode, 1, ref edgeLayer, ref nodeLayer, false);//, rootNode, edgeLayer);
+            this.fillDialogSubgraphView(root, rootNode, 1, ref edgeLayer, ref nodeLayer, false);
             this.DialogShower.Layer.AddChildren(nodeLayer);
+            CalcNodesOnLevel(root);
         }
 
         //! @brief Отображает все дочерние узлы на графе диалогов 
@@ -203,8 +208,9 @@ namespace StalkerOnlineQuesterEditor
         //! @param edgeLayer
         //! @param nodeLayer
         //! @param stopAfterThat
-        void fillDialogSubgraphView(CDialog root, PNode rootNode, float level, ref PLayer edgeLayer, ref PNodeList nodeLayer, bool stopAfterThat)//, PLayer main,  PLayer edge)
+        void fillDialogSubgraphView(CDialog root, PNode rootNode, float level, ref PLayer edgeLayer, ref PNodeList nodeLayer, bool stopAfterThat)
         {
+            //System.Console.WriteLine("subgraph: dialogID: " + root.DialogID.ToString() + ", level: " + level.ToString());
             float ix = rootNode.X;
             float iy = rootNode.Y;
             float i = 1;//Number of elements in string
@@ -219,31 +225,19 @@ namespace StalkerOnlineQuesterEditor
                     System.Console.WriteLine("Node is miss.");
                 else
                 {
-                    PPath edge = new PPath();
-                    edge.Pickable = false;
-                    ((ArrayList)toDialogNode.Tag).Add(edge);
-                    ((ArrayList)rootNode.Tag).Add(edge);
-                    edge.Tag = new ArrayList();
-                    ((ArrayList)edge.Tag).Add(toDialogNode);
-                    ((ArrayList)edge.Tag).Add(rootNode);
-                    edgeLayer.AddChild(edge);
-                    updateEdge(edge);
+                    PrepareNodesForEdge(toDialogNode, rootNode, ref edgeLayer);
                     nodeLayer.Add(toDialogNode);
                     if (!stopAfterThat)
                     {
                         if (!isRoot(root.Actions.ToDialog))
                         {
-                            if (this.dialogs.dialogs[currentNPC][root.Actions.ToDialog].Nodes.Any())
-                            {
-                                localLevel++;
-                                this.fillDialogSubgraphView(this.dialogs.dialogs[currentNPC][root.Actions.ToDialog], toDialogNode, localLevel, ref edgeLayer, ref nodeLayer, false);
-                            }
-                            else if (this.dialogs.dialogs[currentNPC][root.Actions.ToDialog].Actions.ToDialog != 0)
+                            if ( dialogs.dialogs[currentNPC][root.Actions.ToDialog].Nodes.Any() )
+                                this.fillDialogSubgraphView(this.dialogs.dialogs[currentNPC][root.Actions.ToDialog], toDialogNode, localLevel + 1, ref edgeLayer, ref nodeLayer, false);
+                            else if ( dialogs.dialogs[currentNPC][root.Actions.ToDialog].Actions.ToDialog != 0 )
                                 this.fillDialogSubgraphView(this.dialogs.dialogs[currentNPC][root.Actions.ToDialog], toDialogNode, localLevel, ref edgeLayer, ref nodeLayer, true);
                         }
                     }
                 }
-
             }
             else
                 foreach (int subdialogs in root.Nodes)
@@ -251,8 +245,8 @@ namespace StalkerOnlineQuesterEditor
                     PNode node = getNodeOnDialogID(subdialogs);
 
                     i++;
-                    float x = (float)(ix) + (120 * i) - 40 * root.Nodes.Count - 100 * level;
-                    float y = (float)(iy + 60) + 100 * level;
+                    float x = (float)(ix) + (120 * i) - 80 * root.Nodes.Count - 40 * level;
+                    float y = (float)(iy + 60) + 50 * level;
 
                     if (node == null)
                     {
@@ -267,29 +261,18 @@ namespace StalkerOnlineQuesterEditor
                         //((ArrayList)node.Tag).Add(subdialogs);
                         node.AddChild(text);
                     }
-
-                    PPath edge = new PPath();
-                    edge.Pickable = false;
-                    ((ArrayList)node.Tag).Add(edge);
-                    ((ArrayList)rootNode.Tag).Add(edge);
-                    edge.Tag = new ArrayList();
-                    ((ArrayList)edge.Tag).Add(node);
-                    ((ArrayList)edge.Tag).Add(rootNode);
-                    edgeLayer.AddChild(edge);
-                    updateEdge(edge);
+                    
+                    PrepareNodesForEdge( node, rootNode, ref edgeLayer);
                     nodeLayer.Add(node);
                     if (!graphs.Keys.Contains(node))
                         graphs.Add(node, new GraphProperties(subdialogs));
                     if (!stopAfterThat)
                     {
 
-                        if (this.dialogs.dialogs[currentNPC][subdialogs].Nodes.Any())
-                        {
-                            localLevel++;
-                            this.fillDialogSubgraphView(this.dialogs.dialogs[currentNPC][subdialogs], node, localLevel, ref edgeLayer, ref nodeLayer, false);
-                        }
-                        else if (this.dialogs.dialogs[currentNPC][subdialogs].Actions.ToDialog != 0)
-                            this.fillDialogSubgraphView(this.dialogs.dialogs[currentNPC][subdialogs], node, localLevel, ref edgeLayer, ref nodeLayer, true);
+                        if ( dialogs.dialogs[currentNPC][subdialogs].Nodes.Any() )
+                            this.fillDialogSubgraphView(dialogs.dialogs[currentNPC][subdialogs], node, localLevel + 1, ref edgeLayer, ref nodeLayer, false);
+                        else if ( dialogs.dialogs[currentNPC][subdialogs].Actions.ToDialog != 0 )
+                            this.fillDialogSubgraphView(dialogs.dialogs[currentNPC][subdialogs], node, localLevel, ref edgeLayer, ref nodeLayer, true);
                     }
                 }
         }
@@ -311,32 +294,16 @@ namespace StalkerOnlineQuesterEditor
             text.Y = newDialog.Y + 10;
             newDialog.Tag = new ArrayList();
             newDialog.AddChild(text);
-
-            PPath edge = new PPath();
-            edge.Pickable = false;
-            ((ArrayList)newDialog.Tag).Add(edge);
-            ((ArrayList)parentDialog.Tag).Add(edge);
-            edge.Tag = new ArrayList();
-            ((ArrayList)edge.Tag).Add(newDialog);
-            ((ArrayList)edge.Tag).Add(parentDialog);
+            PrepareNodesForEdge(newDialog, parentDialog, ref edgeLayer);
             nodeLayer.Add(newDialog);
-            edgeLayer.AddChild(edge);
 
             if ((!getDialogOnDialogID(dialogID).Actions.Exit) && (getDialogOnDialogID(dialogID).Actions.ToDialog != 0))
             {
                 PNode target = getNodeOnDialogID(getDialogOnDialogID(dialogID).Actions.ToDialog);
-
-                PPath edgeT = new PPath();
-                edgeT.Pickable = false;
-                ((ArrayList)newDialog.Tag).Add(edgeT);
-                ((ArrayList)target.Tag).Add(edgeT);
-                edgeT.Tag = new ArrayList();
-                ((ArrayList)edgeT.Tag).Add(newDialog);
-                ((ArrayList)edgeT.Tag).Add(target);
-                edgeLayer.AddChild(edgeT);
+                PrepareNodesForEdge(newDialog, target, ref edgeLayer);
             }
 
-            updateEdge(edge);
+            //updateEdge(edge);
             DialogShower.Layer.AddChildren(nodeLayer);
 
             if (!graphs.Keys.Contains(newDialog))
@@ -360,6 +327,20 @@ namespace StalkerOnlineQuesterEditor
             return size;
         }
 
+        //! Добавляем в теги узлов данные о гранях, в теги граней - данные об узлах
+        void PrepareNodesForEdge(PNode node1, PNode node2, ref PLayer edgeLayer)
+        {
+            PPath edge = new PPath();
+            edge.Pickable = false;
+            ((ArrayList)node1.Tag).Add(edge);
+            ((ArrayList)node2.Tag).Add(edge);
+            edge.Tag = new ArrayList();
+            ((ArrayList)edge.Tag).Add(node1);
+            ((ArrayList)edge.Tag).Add(node2);
+            edgeLayer.AddChild(edge);
+            updateEdge(edge);
+        }
+
         //! Создает линии - связи между узлами на графе диалогов
         public static void updateEdge(PPath edge)
         {
@@ -374,7 +355,40 @@ namespace StalkerOnlineQuesterEditor
             edge.Reset();
             edge.AddLine(start.X, start.Y, end.X, end.Y);
         }
+        
+        
+        void CalcNodesOnLevel(CDialog root)
+        {
+            // словарь level - nodes list
+            levelDict nodesOnLevel = new levelDict();
+            List<int> nodes = new List<int>();
+            System.Console.WriteLine("*****NodesOnLevel*******");
 
+            AddNodesToLevel(root, 1, ref nodesOnLevel);
+
+            // вывод в консоль
+            for (int i = 1; i <= nodesOnLevel.Count; i++)
+            {
+                System.Console.WriteLine("\nLevel " + i.ToString() + ":  (totally:" + nodesOnLevel[i].Count.ToString() +")"); 
+                for (int k = 0; k < nodesOnLevel[i].Count; k++)
+                    System.Console.Write(" " + nodesOnLevel[i][k]);
+            }
+            //************
+        }
+
+        void AddNodesToLevel(CDialog root, int level, ref levelDict dict)
+        {
+            List<int> temp = new List<int>();
+            if (!dict.Keys.Contains(level))
+                dict.Add(level, temp);
+            foreach (int node in root.Nodes)
+            {
+                dict[level].Add(node);
+                CDialog dialogT = getDialogOnDialogID(node);
+                AddNodesToLevel(dialogT, level + 1, ref dict);
+            }
+        }
+        
 
         void removeNodeFromDialogGraphView(int node)
         {
