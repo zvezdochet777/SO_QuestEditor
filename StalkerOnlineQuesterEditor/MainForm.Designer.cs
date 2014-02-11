@@ -115,7 +115,7 @@ namespace StalkerOnlineQuesterEditor
             this.cur_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.new_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_diff_locale = new System.Windows.Forms.Panel();
-            this.labelOuput = new System.Windows.Forms.Label();
+            this.labelLocalizeOuput = new System.Windows.Forms.Label();
             this.bSaveLocale = new System.Windows.Forms.Button();
             this.ActualCheckBox = new System.Windows.Forms.CheckBox();
             this.OutdatedCheckBox = new System.Windows.Forms.CheckBox();
@@ -148,6 +148,7 @@ namespace StalkerOnlineQuesterEditor
             this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.labelReviewOutputed = new System.Windows.Forms.Label();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.splitDialogs.Panel1.SuspendLayout();
@@ -358,11 +359,11 @@ namespace StalkerOnlineQuesterEditor
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(52, 202);
+            this.button1.Location = new System.Drawing.Point(29, 213);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(116, 23);
             this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
+            this.button1.Text = "Пробежать все";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -710,6 +711,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // panelReviewButtons
             // 
+            this.panelReviewButtons.Controls.Add(this.labelReviewOutputed);
             this.panelReviewButtons.Controls.Add(this.gbNPC);
             this.panelReviewButtons.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelReviewButtons.Location = new System.Drawing.Point(0, 0);
@@ -1042,7 +1044,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // panel_diff_locale
             // 
-            this.panel_diff_locale.Controls.Add(this.labelOuput);
+            this.panel_diff_locale.Controls.Add(this.labelLocalizeOuput);
             this.panel_diff_locale.Controls.Add(this.bSaveLocale);
             this.panel_diff_locale.Controls.Add(this.ActualCheckBox);
             this.panel_diff_locale.Controls.Add(this.OutdatedCheckBox);
@@ -1054,13 +1056,13 @@ namespace StalkerOnlineQuesterEditor
             this.panel_diff_locale.Size = new System.Drawing.Size(906, 57);
             this.panel_diff_locale.TabIndex = 0;
             // 
-            // labelOuput
+            // labelLocalizeOuput
             // 
-            this.labelOuput.AutoSize = true;
-            this.labelOuput.Location = new System.Drawing.Point(693, 19);
-            this.labelOuput.Name = "labelOuput";
-            this.labelOuput.Size = new System.Drawing.Size(0, 13);
-            this.labelOuput.TabIndex = 5;
+            this.labelLocalizeOuput.AutoSize = true;
+            this.labelLocalizeOuput.Location = new System.Drawing.Point(693, 19);
+            this.labelLocalizeOuput.Name = "labelLocalizeOuput";
+            this.labelLocalizeOuput.Size = new System.Drawing.Size(0, 13);
+            this.labelLocalizeOuput.TabIndex = 5;
             // 
             // bSaveLocale
             // 
@@ -1357,6 +1359,14 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
             // 
+            // labelReviewOutputed
+            // 
+            this.labelReviewOutputed.AutoSize = true;
+            this.labelReviewOutputed.Location = new System.Drawing.Point(782, 83);
+            this.labelReviewOutputed.Name = "labelReviewOutputed";
+            this.labelReviewOutputed.Size = new System.Drawing.Size(0, 13);
+            this.labelReviewOutputed.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1390,6 +1400,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabReview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).EndInit();
             this.panelReviewButtons.ResumeLayout(false);
+            this.panelReviewButtons.PerformLayout();
             this.gbNPC.ResumeLayout(false);
             this.gbNPC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuests)).EndInit();
@@ -1515,7 +1526,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.CheckBox ActualCheckBox;
         private System.Windows.Forms.CheckBox OutdatedCheckBox;
         private System.Windows.Forms.Button bSaveLocale;
-        private System.Windows.Forms.Label labelOuput;
+        private System.Windows.Forms.Label labelLocalizeOuput;
         public System.Windows.Forms.TabControl CentralDock;
         private System.Windows.Forms.Label labelYNode;
         private System.Windows.Forms.Label labelXNode;
@@ -1536,6 +1547,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn сolDialogsNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn сolQuestsNum;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelReviewOutputed;
 
 
     }

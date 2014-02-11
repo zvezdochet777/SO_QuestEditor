@@ -238,14 +238,6 @@ namespace StalkerOnlineQuesterEditor
                 foreach (CDialog dialog in Dictdialog.Values)
                 {
                     toCompleteQuest = dialog.QuestDialog;
-                    /*
-                    PNode node = parent.getNodeOnDialogID(dialog.DialogID);
-                    NodeCoordinates coord;
-                    if (node == null)
-                        coord = new NodeCoordinates();
-                    else
-                        coord = new NodeCoordinates((int)node.FullBounds.X, (int)node.FullBounds.Y, false);
-                    */
                     element = new XElement("dialog",
                        new XElement("DialogID", dialog.DialogID.ToString()),
                        new XElement("Version", dialog.version.ToString()),
@@ -376,7 +368,7 @@ namespace StalkerOnlineQuesterEditor
             this.locales[locale][dialog.Holder].Add(dialog.DialogID, dialog);
         }
 
-        //! Сохраняет локали в файл (пока непонятно, в какой)
+        //! Сохраняет текущую локализацию в файл
         public void saveLocales(string fileName)
         {
             fileName = parent.settings.getCurrentLocalePath() + '\\' + fileName;
@@ -461,84 +453,5 @@ namespace StalkerOnlineQuesterEditor
                 }
             this.save(parent.settings.dialogXML, results);
         }
-
-
-
-/*
-        //! ВРЕМНЕНОЕ Сохранение всех диалогов в xml файл
-        private void saveLocaleTemp(string fileName, NPCDicts target)
-        {
-            string newOldName = (fileName.Replace(".xml", "") + "_" + DateTime.UtcNow.ToString() + ".xml").Replace(':', '_');
-            replaceOldDialogsFile(0, newOldName, fileName);
-
-            XDocument resultDoc = new XDocument(new XElement("root"));
-            XElement element;
-
-            int toCompleteQuest;
-
-            foreach (NPCDialogDict Dictdialog in target.Values)
-                foreach (CDialog dialog in Dictdialog.Values)
-                {
-                    parent.currentNPC = dialog.Holder;
-                    CDialog rusDialog = parent.getDialogOnDialogID(dialog.DialogID);
-
-                    toCompleteQuest = rusDialog.QuestDialog;
-
-                    element = new XElement("dialog",
-                       new XElement("DialogID", rusDialog.DialogID.ToString()),
-                       new XElement("Version", rusDialog.version.ToString()),
-                       new XElement("Holder", rusDialog.Holder.ToString()),
-                       new XElement("Title", dialog.Title.ToString()),
-                       new XElement("QuestDialog",
-                        //new XElement("toCompleteQuest", isDialogRoot(rusDialog.DialogID, rusDialog.Holder)? getIntAsString(toCompleteQuest) : "")),
-                           new XElement("toCompleteQuest", rusDialog.QuestDialog.ToString())),
-                       new XElement("Precondition",
-                           new XElement("ListOfNecessaryQuests",
-                               new XElement("listOfCompletedQuests",
-                                       getListAsString(rusDialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)),
-                               new XElement("listOfOpenedQuests",
-                                       getListAsString(rusDialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)),
-                               new XElement("listOfOnTestQuests",
-                                       getListAsString(rusDialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)),
-                                new XElement("listOfFailedQuests",
-                                       getListAsString(rusDialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests))),
-                           new XElement("ListOfMustNoQuests",
-                               new XElement("listOfCompletedQuests",
-                                       getListAsString(rusDialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)),
-                               new XElement("listOfOpenedQuests",
-                                       getListAsString(rusDialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)),
-                               new XElement("listOfOnTestQuests",
-                                       getListAsString(rusDialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)),
-                               new XElement("listOfFailedQuests",
-                                       getListAsString(rusDialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests))),
-                           new XElement("tests", getListAsString(rusDialog.Precondition.tests)),
-                           new XElement("Reputation", rusDialog.Precondition.getReputation()),
-                           new XElement("KarmaPK", getListAsString(rusDialog.Precondition.KarmaPK))
-                           ),
-                       new XElement("Text", dialog.Text),
-                       new XElement("Actions",
-                           new XElement("Exit", getBoolAsString(rusDialog.Actions.Exit)),
-                           new XElement("ToDialog", getIntAsString(rusDialog.Actions.ToDialog)),
-                           new XElement("Data", rusDialog.Actions.Data),
-                           new XElement("Event", rusDialog.Actions.Event.ToString()),
-                           new XElement("GetQuest", getListAsString(rusDialog.Actions.GetQuests)),
-                           new XElement("CompleteQuest", getListAsString(rusDialog.Actions.CompleteQuests))),
-                       new XElement("Nodes", getListAsString(rusDialog.Nodes))
-                       );
-                    resultDoc.Root.Add(element);
-                }
-
-            System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
-            settings.Encoding = new UTF8Encoding(false);
-            settings.Indent = true;
-            settings.OmitXmlDeclaration = true;
-            settings.NewLineOnAttributes = true;
-            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
-            {
-                resultDoc.Save(w);
-            }
-        }
-*/
-
     }
 }

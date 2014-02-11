@@ -82,12 +82,9 @@ namespace StalkerOnlineQuesterEditor
         {
             List<CDialog> ret = new List<CDialog>();
             foreach (CDialog dialog in dialogs.dialogs[currentNPC].Values)
-
                 if (dialog.Nodes.Contains(dialogID))
                     ret.Add(dialog);
-
             return ret;
-
         }
 
         //! Возвращает экземпляр диалога по ID (всегда по-русски)
@@ -196,7 +193,7 @@ namespace StalkerOnlineQuesterEditor
             nodeLayer.Add(rootNode);
             if (!graphs.Keys.Contains(rootNode))
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
-            SaveCoordinates(root, rootNode);
+            //SaveCoordinates(root, rootNode);
             this.fillDialogSubgraphView(root, rootNode, 1, ref edgeLayer, ref nodeLayer, false);
             this.DialogShower.Layer.AddChildren(nodeLayer);
             //CalcNodesOnLevel(root);
@@ -244,10 +241,15 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int subdialogs in root.Nodes)
                 {
                     PNode node = getNodeOnDialogID(subdialogs);
+                    float x = dialogs.dialogs[currentNPC][subdialogs].coordinates.X;
+                    float y = dialogs.dialogs[currentNPC][subdialogs].coordinates.Y;
 
-                    i++;
-                    float x = (float)(ix) + (120 * i) - 80 * root.Nodes.Count - 40 * level;
-                    float y = (float)(iy + 60) + 50 * level;
+                    if (x == 0 && y == 0)
+                    {
+                        i++;
+                        x = (float)(ix) + (120 * i) - 80 * root.Nodes.Count - 40 * level;
+                        y = (float)(iy + 60) + 50 * level;
+                    }
 
                     if (node == null)
                     {
@@ -262,7 +264,7 @@ namespace StalkerOnlineQuesterEditor
                         //((ArrayList)node.Tag).Add(subdialogs);
                         node.AddChild(text);
                     }
-                    SaveCoordinates( dialogs.dialogs[currentNPC][subdialogs], node);
+                    //SaveCoordinates( dialogs.dialogs[currentNPC][subdialogs], node);
                     
                     PrepareNodesForEdge( node, rootNode, ref edgeLayer);
                     nodeLayer.Add(node);
@@ -359,7 +361,7 @@ namespace StalkerOnlineQuesterEditor
         }
         
         //! Сохраняет координаты узла 
-        void SaveCoordinates(CDialog dialog, PNode node)
+        public void SaveCoordinates(CDialog dialog, PNode node)
         {
             dialog.coordinates.X = (int) node.FullBounds.X;
             dialog.coordinates.Y = (int) node.FullBounds.Y;

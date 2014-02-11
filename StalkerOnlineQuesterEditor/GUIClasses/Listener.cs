@@ -47,22 +47,31 @@ namespace StalkerOnlineQuesterEditor
             //e.PickedNode.Brush = Brushes.White;
 
         }
-
+        //! Начало перетаскивания узлов диалога
         protected override void OnStartDrag(object sender, PInputEventArgs e)
         {
             base.OnStartDrag(sender, e);
             e.Handled = true;
-            // e.CanvasPosition.X, e.CanvasPosition.Y
+            
+            if (e.PickedNode.Tag != null)
+                e.PickedNode.MoveToFront();
+        }
+        //! Закончили перетаскивать узел диалога
+        protected override void OnEndDrag(object sender, PInputEventArgs e)
+        {
+            base.OnEndDrag(sender, e);
             float x = e.PickedNode.GlobalFullBounds.X;
             float y = e.PickedNode.GlobalFullBounds.Y;
             float w = e.PickedNode.GlobalFullBounds.Width;
             float h = e.PickedNode.GlobalFullBounds.Height;
 
-            form.setXYCoordinates(x, y, w ,h);
-            
-            if (e.PickedNode.Tag != null)
-                e.PickedNode.MoveToFront();
+            int dialogID = form.getDialogIDOnNode(e.PickedNode);
+            CDialog dialog = form.getDialogOnDialogID(dialogID);
+            form.SaveCoordinates(dialog, e.PickedNode);
+            form.setXYCoordinates(x, y, w, h);
         }
+
+        //! Клик мыши по узлу диалога - выделяем его и потомков цветом
         public override void OnClick(object sender, PInputEventArgs e)
         {
             //System.Console.WriteLine("i have "+form.graphs.Count+" graphs");
@@ -72,10 +81,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 setCurrentNode(form.getDialogIDOnNode(e.PickedNode));
             }
-
-
         }
-
 
         string getStringFromnode(PText node){
             return "";

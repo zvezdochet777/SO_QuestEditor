@@ -1507,8 +1507,8 @@ namespace StalkerOnlineQuesterEditor
                     count++;
                 }
             }
-            labelOuput.Text = "Выведено: "+ count.ToString();
-            labelOuput.Update();
+            labelLocalizeOuput.Text = "Выведено: "+ count.ToString();
+            labelLocalizeOuput.Update();
         }
 
         int translate_checker = 0;
@@ -1549,8 +1549,8 @@ namespace StalkerOnlineQuesterEditor
                     count++;
                 }
             }
-            labelOuput.Text = "Выведено: " + count.ToString();
-            labelOuput.Update();
+            labelLocalizeOuput.Text = "Выведено: " + count.ToString();
+            labelLocalizeOuput.Update();
         }
 
         private void fillFractionBalance()
@@ -1687,6 +1687,7 @@ namespace StalkerOnlineQuesterEditor
                     gridViewReview.Rows.Add( row );
                 }
             }
+            labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
