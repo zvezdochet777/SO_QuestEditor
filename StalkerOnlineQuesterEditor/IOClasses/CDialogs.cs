@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using System.IO;
-
-
+using UMD.HCIL.Piccolo;
 
 
 namespace StalkerOnlineQuesterEditor
@@ -150,6 +149,11 @@ namespace StalkerOnlineQuesterEditor
                 int Version = 0;
                 if (!item.Element("Version").Value.Equals(""))
                     Version = int.Parse(item.Element("Version").Value);
+                NodeCoordinates nodeCoord = new NodeCoordinates();
+                if (!item.Element("NodeCoordinates").Element("X").Value.Equals(""))
+                    nodeCoord.X = int.Parse(item.Element("NodeCoordinates").Element("X").Value);
+                if (!item.Element("NodeCoordinates").Element("Y").Value.Equals(""))
+                    nodeCoord.Y = int.Parse(item.Element("NodeCoordinates").Element("Y").Value);
 
                 foreach (string el in item.Element("Precondition").Element("Reputation").Value.Split(';'))
                 {
@@ -175,12 +179,12 @@ namespace StalkerOnlineQuesterEditor
                     if (target.Keys.Contains(holder))
                     {
                         if (!target[holder].Keys.Contains(DialogID))
-                            target[holder].Add(DialogID, new CDialog(holder, Title, Text, QuestDialog, Precondition, Actions, Nodes, DialogID, Version));
+                            target[holder].Add(DialogID, new CDialog(holder, Title, Text, QuestDialog, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
                     }
                     else
                     {
                         target.Add(holder, new Dictionary<int, CDialog>());
-                        target[holder].Add(DialogID, new CDialog(holder, Title, Text, QuestDialog, Precondition, Actions, Nodes, DialogID, Version));
+                        target[holder].Add(DialogID, new CDialog(holder, Title, Text, QuestDialog, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
                     }
                 }
             }
@@ -234,7 +238,14 @@ namespace StalkerOnlineQuesterEditor
                 foreach (CDialog dialog in Dictdialog.Values)
                 {
                     toCompleteQuest = dialog.QuestDialog;
-
+                    /*
+                    PNode node = parent.getNodeOnDialogID(dialog.DialogID);
+                    NodeCoordinates coord;
+                    if (node == null)
+                        coord = new NodeCoordinates();
+                    else
+                        coord = new NodeCoordinates((int)node.FullBounds.X, (int)node.FullBounds.Y, false);
+                    */
                     element = new XElement("dialog",
                        new XElement("DialogID", dialog.DialogID.ToString()),
                        new XElement("Version", dialog.version.ToString()),
@@ -274,7 +285,11 @@ namespace StalkerOnlineQuesterEditor
                            new XElement("Event", dialog.Actions.Event.ToString()),
                            new XElement("GetQuest", getListAsString(dialog.Actions.GetQuests)),
                            new XElement("CompleteQuest", getListAsString(dialog.Actions.CompleteQuests))),
-                       new XElement("Nodes", getListAsString(dialog.Nodes))
+                       new XElement("Nodes", getListAsString(dialog.Nodes)),
+                       new XElement("NodeCoordinates",
+                           new XElement("X", getIntAsString(dialog.coordinates.X)),         // coord.X
+                           new XElement("Y", getIntAsString(dialog.coordinates.Y)),
+                           new XElement("Root", getBoolAsString(dialog.coordinates.RootDialog)))
                        );
                     resultDoc.Root.Add(element);
                 }
@@ -439,7 +454,9 @@ namespace StalkerOnlineQuesterEditor
                     {
                         if (!results.Keys.Contains(npc_name))
                             results.Add(npc_name, new Dictionary<int, CDialog>());
-                        results[npc_name].Add(dialog.DialogID, new CDialog(dialog.Holder, locale_dialog.Title, locale_dialog.Text, dialog.QuestDialog, dialog.Precondition, dialog.Actions, dialog.Nodes, dialog.DialogID, dialog.version));
+                        results[npc_name].Add(dialog.DialogID, new CDialog(dialog.Holder, locale_dialog.Title,
+                            locale_dialog.Text, dialog.QuestDialog, dialog.Precondition, dialog.Actions, dialog.Nodes, 
+                            dialog.DialogID, dialog.version, dialog.coordinates));
                     }
                 }
             this.save(parent.settings.dialogXML, results);

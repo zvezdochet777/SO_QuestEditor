@@ -35,6 +35,10 @@
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.rewardGroupBox = new System.Windows.Forms.GroupBox();
+            this.lSupportSkills = new System.Windows.Forms.Label();
+            this.lSurvivalSkills = new System.Windows.Forms.Label();
+            this.tSupport = new System.Windows.Forms.TextBox();
+            this.tSurvival = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.difficultyComboBox = new System.Windows.Forms.ComboBox();
             this.bRewardEffects = new System.Windows.Forms.Button();
@@ -104,10 +108,6 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
-            this.tSurvival = new System.Windows.Forms.TextBox();
-            this.tSupport = new System.Windows.Forms.TextBox();
-            this.lSurvivalSkills = new System.Windows.Forms.Label();
-            this.lSupportSkills = new System.Windows.Forms.Label();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -222,6 +222,38 @@
             this.rewardGroupBox.TabIndex = 4;
             this.rewardGroupBox.TabStop = false;
             this.rewardGroupBox.Text = "Награда";
+            // 
+            // lSupportSkills
+            // 
+            this.lSupportSkills.AutoSize = true;
+            this.lSupportSkills.Location = new System.Drawing.Point(295, 67);
+            this.lSupportSkills.Name = "lSupportSkills";
+            this.lSupportSkills.Size = new System.Drawing.Size(68, 13);
+            this.lSupportSkills.TabIndex = 40;
+            this.lSupportSkills.Text = "Поддержки:";
+            // 
+            // lSurvivalSkills
+            // 
+            this.lSurvivalSkills.AutoSize = true;
+            this.lSurvivalSkills.Location = new System.Drawing.Point(172, 67);
+            this.lSurvivalSkills.Name = "lSurvivalSkills";
+            this.lSurvivalSkills.Size = new System.Drawing.Size(69, 13);
+            this.lSurvivalSkills.TabIndex = 39;
+            this.lSurvivalSkills.Text = "Выживания:";
+            // 
+            // tSupport
+            // 
+            this.tSupport.Location = new System.Drawing.Point(369, 67);
+            this.tSupport.Name = "tSupport";
+            this.tSupport.Size = new System.Drawing.Size(54, 20);
+            this.tSupport.TabIndex = 38;
+            // 
+            // tSurvival
+            // 
+            this.tSurvival.Location = new System.Drawing.Point(247, 67);
+            this.tSurvival.Name = "tSurvival";
+            this.tSurvival.Size = new System.Drawing.Size(42, 20);
+            this.tSurvival.TabIndex = 37;
             // 
             // label1
             // 
@@ -941,38 +973,6 @@
             this.eventLabel.Size = new System.Drawing.Size(75, 13);
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
-            // 
-            // tSurvival
-            // 
-            this.tSurvival.Location = new System.Drawing.Point(247, 67);
-            this.tSurvival.Name = "tSurvival";
-            this.tSurvival.Size = new System.Drawing.Size(42, 20);
-            this.tSurvival.TabIndex = 37;
-            // 
-            // tSupport
-            // 
-            this.tSupport.Location = new System.Drawing.Point(369, 67);
-            this.tSupport.Name = "tSupport";
-            this.tSupport.Size = new System.Drawing.Size(54, 20);
-            this.tSupport.TabIndex = 38;
-            // 
-            // lSurvivalSkills
-            // 
-            this.lSurvivalSkills.AutoSize = true;
-            this.lSurvivalSkills.Location = new System.Drawing.Point(172, 67);
-            this.lSurvivalSkills.Name = "lSurvivalSkills";
-            this.lSurvivalSkills.Size = new System.Drawing.Size(69, 13);
-            this.lSurvivalSkills.TabIndex = 39;
-            this.lSurvivalSkills.Text = "Выживания:";
-            // 
-            // lSupportSkills
-            // 
-            this.lSupportSkills.AutoSize = true;
-            this.lSupportSkills.Location = new System.Drawing.Point(295, 67);
-            this.lSupportSkills.Name = "lSupportSkills";
-            this.lSupportSkills.Size = new System.Drawing.Size(68, 13);
-            this.lSupportSkills.TabIndex = 40;
-            this.lSupportSkills.Text = "Поддержки:";
             // 
             // EditQuestForm
             // 

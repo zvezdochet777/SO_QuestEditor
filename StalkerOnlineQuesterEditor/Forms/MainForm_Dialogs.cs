@@ -196,9 +196,10 @@ namespace StalkerOnlineQuesterEditor
             nodeLayer.Add(rootNode);
             if (!graphs.Keys.Contains(rootNode))
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
+            SaveCoordinates(root, rootNode);
             this.fillDialogSubgraphView(root, rootNode, 1, ref edgeLayer, ref nodeLayer, false);
             this.DialogShower.Layer.AddChildren(nodeLayer);
-            CalcNodesOnLevel(root);
+            //CalcNodesOnLevel(root);
         }
 
         //! @brief Отображает все дочерние узлы на графе диалогов 
@@ -222,7 +223,7 @@ namespace StalkerOnlineQuesterEditor
                 PNode toDialogNode = getNodeOnDialogID(root.Actions.ToDialog);
 
                 if (toDialogNode == null)
-                    System.Console.WriteLine("Node is miss.");
+                    System.Console.WriteLine("Node is miss, dialogID = " + root.Actions.ToDialog.ToString());
                 else
                 {
                     PrepareNodesForEdge(toDialogNode, rootNode, ref edgeLayer);
@@ -261,6 +262,7 @@ namespace StalkerOnlineQuesterEditor
                         //((ArrayList)node.Tag).Add(subdialogs);
                         node.AddChild(text);
                     }
+                    SaveCoordinates( dialogs.dialogs[currentNPC][subdialogs], node);
                     
                     PrepareNodesForEdge( node, rootNode, ref edgeLayer);
                     nodeLayer.Add(node);
@@ -356,7 +358,15 @@ namespace StalkerOnlineQuesterEditor
             edge.AddLine(start.X, start.Y, end.X, end.Y);
         }
         
-        
+        //! Сохраняет координаты узла 
+        void SaveCoordinates(CDialog dialog, PNode node)
+        {
+            dialog.coordinates.X = (int) node.FullBounds.X;
+            dialog.coordinates.Y = (int) node.FullBounds.Y;
+            dialog.coordinates.RootDialog = false;
+        }
+
+        //! Считает число нодов в каждом уровне. Можно убрать, оставив рекурсивный вызов AddNodesToLevel
         void CalcNodesOnLevel(CDialog root)
         {
             // словарь level - nodes list
@@ -375,7 +385,7 @@ namespace StalkerOnlineQuesterEditor
             }
             //************
         }
-
+        //! рекурсивно считает число нодов на каждом уровне и сохраняет в словарь
         void AddNodesToLevel(CDialog root, int level, ref levelDict dict)
         {
             List<int> temp = new List<int>();

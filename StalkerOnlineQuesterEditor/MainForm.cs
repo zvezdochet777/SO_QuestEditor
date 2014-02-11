@@ -704,7 +704,7 @@ namespace StalkerOnlineQuesterEditor
             int newNPCID = getStartQuestDialogsID();
             Dictionary<int,CDialog> firstDialog = new Dictionary<int,CDialog>();
             int dialogID = getDialogsNewID();
-            firstDialog.Add(dialogID,new CDialog(Name,"","",newNPCID,new CDialogPrecondition(),new Actions(),new List<int>(),dialogID, 0));
+            firstDialog.Add(dialogID,new CDialog(Name,"","",newNPCID,new CDialogPrecondition(),new Actions(),new List<int>(),dialogID, 0, new NodeCoordinates()));
 
             dialogs.dialogs.Add(Name, firstDialog);
             quests.quest.Add(newNPCID, new CQuest(newNPCID, 0, new CQuestInformation(), new CQuestPrecondition(), new CQuestRules(), new CQuestReward(), new CQuestAdditional(Name), new CQuestTarget(1), new CQuestPenalty()));
@@ -1687,6 +1687,12 @@ namespace StalkerOnlineQuesterEditor
                     gridViewReview.Rows.Add( row );
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < NPCBox.Items.Count; i++ )
+                NPCBox.SelectedIndex = i;
         }
     }
 }

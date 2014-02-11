@@ -59,6 +59,9 @@
             this.CheckClanCheckBox = new System.Windows.Forms.CheckBox();
             this.CheckClanIDcheckBox = new System.Windows.Forms.CheckBox();
             this.QuestConditiongroupBox = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tShouldntHaveFailedQuests = new System.Windows.Forms.MaskedTextBox();
+            this.tMustHaveFailedQuests = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,9 +78,6 @@
             this.NPCReactionText = new System.Windows.Forms.Label();
             this.MustPanel = new System.Windows.Forms.Panel();
             this.textGroupBox = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tShouldntHaveFailedQuests = new System.Windows.Forms.MaskedTextBox();
-            this.tMustHaveFailedQuests = new System.Windows.Forms.MaskedTextBox();
             this.actionsBox.SuspendLayout();
             this.PreconditionBox.SuspendLayout();
             this.QuestConditiongroupBox.SuspendLayout();
@@ -423,6 +423,29 @@
             this.QuestConditiongroupBox.TabStop = false;
             this.QuestConditiongroupBox.Text = "Состояния квестов";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 119);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Проваленные квесты";
+            // 
+            // tShouldntHaveFailedQuests
+            // 
+            this.tShouldntHaveFailedQuests.Location = new System.Drawing.Point(234, 119);
+            this.tShouldntHaveFailedQuests.Name = "tShouldntHaveFailedQuests";
+            this.tShouldntHaveFailedQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveFailedQuests.TabIndex = 12;
+            // 
+            // tMustHaveFailedQuests
+            // 
+            this.tMustHaveFailedQuests.Location = new System.Drawing.Point(128, 119);
+            this.tMustHaveFailedQuests.Name = "tMustHaveFailedQuests";
+            this.tMustHaveFailedQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveFailedQuests.TabIndex = 11;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -518,7 +541,7 @@
             this.bEditDialogOk.TabIndex = 3;
             this.bEditDialogOk.Text = "Ok";
             this.bEditDialogOk.UseVisualStyleBackColor = true;
-            this.bEditDialogOk.Click += new System.EventHandler(this.button2_Click);
+            this.bEditDialogOk.Click += new System.EventHandler(this.bEditDialogOk_Click);
             // 
             // bEditDialogCancel
             // 
@@ -566,29 +589,6 @@
             this.textGroupBox.Size = new System.Drawing.Size(588, 227);
             this.textGroupBox.TabIndex = 15;
             this.textGroupBox.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 119);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Проваленные квесты";
-            // 
-            // tShouldntHaveFailedQuests
-            // 
-            this.tShouldntHaveFailedQuests.Location = new System.Drawing.Point(234, 119);
-            this.tShouldntHaveFailedQuests.Name = "tShouldntHaveFailedQuests";
-            this.tShouldntHaveFailedQuests.Size = new System.Drawing.Size(100, 20);
-            this.tShouldntHaveFailedQuests.TabIndex = 12;
-            // 
-            // tMustHaveFailedQuests
-            // 
-            this.tMustHaveFailedQuests.Location = new System.Drawing.Point(128, 119);
-            this.tMustHaveFailedQuests.Name = "tMustHaveFailedQuests";
-            this.tMustHaveFailedQuests.Size = new System.Drawing.Size(100, 20);
-            this.tMustHaveFailedQuests.TabIndex = 11;
             // 
             // EditDialogForm
             // 

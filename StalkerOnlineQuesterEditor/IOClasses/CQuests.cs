@@ -187,7 +187,7 @@ namespace StalkerOnlineQuesterEditor
                         questRules.Scenarios.Add(int.Parse(itemType));
                 reward.TeleportTo = item.Element("Reward").Element("TeleportTo").Value.ToString();
 
-                string text_rew_exp = item.Element("Reward").Element("Expirience").Value;
+                //string text_rew_exp = item.Element("Reward").Element("Expirience").Value;
                 /*
                 reward.Expirience = 0;
                 if (!text_rew_exp.Equals(""))
@@ -216,11 +216,10 @@ namespace StalkerOnlineQuesterEditor
 
                 if (!item.Element("Reward").Element("AttrOfItems").Value.Equals(""))
                     foreach (string itemType in item.Element("Reward").Element("AttrOfItems").Value.Split(','))
-
+                        reward.AttrOfItems.Add(int.Parse(itemType));
 
                 if (!item.Element("Reward").Element("Credits").Value.Equals(""))
                     reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value);
-
 
                 if (!item.Element("Reward").Element("EventCodes").Value.Equals(""))
                     foreach (string events in item.Element("Reward").Element("EventCodes").Value.Split(','))

@@ -43,6 +43,7 @@ namespace StalkerOnlineQuesterEditor
             this.bZoomIn = new System.Windows.Forms.Button();
             this.bZoomOut = new System.Windows.Forms.Button();
             this.DialogActions = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.labelYNode = new System.Windows.Forms.Label();
             this.labelXNode = new System.Windows.Forms.Label();
@@ -69,6 +70,20 @@ namespace StalkerOnlineQuesterEditor
             this.labelBuffer = new System.Windows.Forms.Label();
             this.npcLinksTabPage = new System.Windows.Forms.TabPage();
             this.npcLinkShower = new UMD.HCIL.Piccolo.PCanvas();
+            this.tabReview = new System.Windows.Forms.TabPage();
+            this.gridViewReview = new System.Windows.Forms.DataGridView();
+            this.colNPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.сolDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.сolQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelReviewButtons = new System.Windows.Forms.Panel();
+            this.gbNPC = new System.Windows.Forms.GroupBox();
+            this.numQuests = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbNumQuests = new System.Windows.Forms.CheckBox();
+            this.numDialogs = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbNumDialogs = new System.Windows.Forms.CheckBox();
+            this.bFindNPC = new System.Windows.Forms.Button();
             this.tabManage = new System.Windows.Forms.TabPage();
             this.manageGridView = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,23 +145,9 @@ namespace StalkerOnlineQuesterEditor
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
-            this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabReview = new System.Windows.Forms.TabPage();
-            this.panelReviewButtons = new System.Windows.Forms.Panel();
-            this.gbNPC = new System.Windows.Forms.GroupBox();
-            this.bFindNPC = new System.Windows.Forms.Button();
-            this.cbNumDialogs = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numDialogs = new System.Windows.Forms.NumericUpDown();
-            this.gridViewReview = new System.Windows.Forms.DataGridView();
-            this.cbNumQuests = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numQuests = new System.Windows.Forms.NumericUpDown();
-            this.colNPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.сolDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.сolQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.splitDialogs.Panel1.SuspendLayout();
@@ -164,6 +165,12 @@ namespace StalkerOnlineQuesterEditor
             this.splitQuestsContainer.Panel1.SuspendLayout();
             this.splitQuestsContainer.SuspendLayout();
             this.npcLinksTabPage.SuspendLayout();
+            this.tabReview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).BeginInit();
+            this.panelReviewButtons.SuspendLayout();
+            this.gbNPC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDialogs)).BeginInit();
             this.tabManage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.manageGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -178,12 +185,6 @@ namespace StalkerOnlineQuesterEditor
             this.SelectNPC.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusDialogStrip.SuspendLayout();
-            this.tabReview.SuspendLayout();
-            this.panelReviewButtons.SuspendLayout();
-            this.gbNPC.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numDialogs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numQuests)).BeginInit();
             this.SuspendLayout();
             // 
             // DialogShower
@@ -341,6 +342,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.DialogActions.AutoSize = true;
             this.DialogActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DialogActions.Controls.Add(this.button1);
             this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
             this.DialogActions.Controls.Add(this.labelYNode);
             this.DialogActions.Controls.Add(this.labelXNode);
@@ -353,6 +355,16 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions.Name = "DialogActions";
             this.DialogActions.Size = new System.Drawing.Size(183, 403);
             this.DialogActions.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(52, 202);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // bCenterizeDialogShower
             // 
@@ -652,6 +664,151 @@ namespace StalkerOnlineQuesterEditor
             this.npcLinkShower.Size = new System.Drawing.Size(906, 540);
             this.npcLinkShower.TabIndex = 1;
             this.npcLinkShower.Text = "8";
+            // 
+            // tabReview
+            // 
+            this.tabReview.Controls.Add(this.gridViewReview);
+            this.tabReview.Controls.Add(this.panelReviewButtons);
+            this.tabReview.Location = new System.Drawing.Point(4, 22);
+            this.tabReview.Name = "tabReview";
+            this.tabReview.Size = new System.Drawing.Size(906, 540);
+            this.tabReview.TabIndex = 3;
+            this.tabReview.Text = "Проверки";
+            this.tabReview.UseVisualStyleBackColor = true;
+            // 
+            // gridViewReview
+            // 
+            this.gridViewReview.AllowUserToAddRows = false;
+            this.gridViewReview.AllowUserToDeleteRows = false;
+            this.gridViewReview.AllowUserToOrderColumns = true;
+            this.gridViewReview.AllowUserToResizeRows = false;
+            this.gridViewReview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewReview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colNPCName,
+            this.сolDialogsNum,
+            this.сolQuestsNum});
+            this.gridViewReview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridViewReview.Location = new System.Drawing.Point(0, 104);
+            this.gridViewReview.Name = "gridViewReview";
+            this.gridViewReview.Size = new System.Drawing.Size(906, 436);
+            this.gridViewReview.TabIndex = 1;
+            // 
+            // colNPCName
+            // 
+            this.colNPCName.HeaderText = "Имя NPC";
+            this.colNPCName.Name = "colNPCName";
+            // 
+            // сolDialogsNum
+            // 
+            this.сolDialogsNum.HeaderText = "Диалоги";
+            this.сolDialogsNum.Name = "сolDialogsNum";
+            // 
+            // сolQuestsNum
+            // 
+            this.сolQuestsNum.HeaderText = "Квесты";
+            this.сolQuestsNum.Name = "сolQuestsNum";
+            // 
+            // panelReviewButtons
+            // 
+            this.panelReviewButtons.Controls.Add(this.gbNPC);
+            this.panelReviewButtons.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelReviewButtons.Location = new System.Drawing.Point(0, 0);
+            this.panelReviewButtons.Name = "panelReviewButtons";
+            this.panelReviewButtons.Size = new System.Drawing.Size(906, 104);
+            this.panelReviewButtons.TabIndex = 0;
+            // 
+            // gbNPC
+            // 
+            this.gbNPC.Controls.Add(this.numQuests);
+            this.gbNPC.Controls.Add(this.label2);
+            this.gbNPC.Controls.Add(this.cbNumQuests);
+            this.gbNPC.Controls.Add(this.numDialogs);
+            this.gbNPC.Controls.Add(this.label1);
+            this.gbNPC.Controls.Add(this.cbNumDialogs);
+            this.gbNPC.Controls.Add(this.bFindNPC);
+            this.gbNPC.Location = new System.Drawing.Point(3, 4);
+            this.gbNPC.Name = "gbNPC";
+            this.gbNPC.Size = new System.Drawing.Size(272, 100);
+            this.gbNPC.TabIndex = 0;
+            this.gbNPC.TabStop = false;
+            this.gbNPC.Text = "NPC";
+            // 
+            // numQuests
+            // 
+            this.numQuests.Location = new System.Drawing.Point(175, 72);
+            this.numQuests.Name = "numQuests";
+            this.numQuests.Size = new System.Drawing.Size(62, 20);
+            this.numQuests.TabIndex = 6;
+            this.numQuests.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(118, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "меньше";
+            // 
+            // cbNumQuests
+            // 
+            this.cbNumQuests.AutoSize = true;
+            this.cbNumQuests.Location = new System.Drawing.Point(7, 72);
+            this.cbNumQuests.Name = "cbNumQuests";
+            this.cbNumQuests.Size = new System.Drawing.Size(102, 17);
+            this.cbNumQuests.TabIndex = 4;
+            this.cbNumQuests.Text = "Число квестов";
+            this.cbNumQuests.UseVisualStyleBackColor = true;
+            // 
+            // numDialogs
+            // 
+            this.numDialogs.Location = new System.Drawing.Point(175, 48);
+            this.numDialogs.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numDialogs.Name = "numDialogs";
+            this.numDialogs.Size = new System.Drawing.Size(62, 20);
+            this.numDialogs.TabIndex = 3;
+            this.numDialogs.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(117, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "меньше";
+            // 
+            // cbNumDialogs
+            // 
+            this.cbNumDialogs.AutoSize = true;
+            this.cbNumDialogs.Location = new System.Drawing.Point(7, 49);
+            this.cbNumDialogs.Name = "cbNumDialogs";
+            this.cbNumDialogs.Size = new System.Drawing.Size(108, 17);
+            this.cbNumDialogs.TabIndex = 1;
+            this.cbNumDialogs.Text = "Число диалогов";
+            this.cbNumDialogs.UseVisualStyleBackColor = true;
+            // 
+            // bFindNPC
+            // 
+            this.bFindNPC.Location = new System.Drawing.Point(7, 19);
+            this.bFindNPC.Name = "bFindNPC";
+            this.bFindNPC.Size = new System.Drawing.Size(98, 23);
+            this.bFindNPC.TabIndex = 0;
+            this.bFindNPC.Text = "Найти NPC";
+            this.bFindNPC.UseVisualStyleBackColor = true;
+            this.bFindNPC.Click += new System.EventHandler(this.bFindNPC_Click);
             // 
             // tabManage
             // 
@@ -1177,6 +1334,13 @@ namespace StalkerOnlineQuesterEditor
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
+            // StatisticsToolStripMenuItem
+            // 
+            this.StatisticsToolStripMenuItem.Name = "StatisticsToolStripMenuItem";
+            this.StatisticsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.StatisticsToolStripMenuItem.Text = "Статистика";
+            this.StatisticsToolStripMenuItem.Click += new System.EventHandler(this.StatisticsToolStripMenuItem_Click);
+            // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
@@ -1192,153 +1356,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.SizingGrip = false;
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
-            // 
-            // StatisticsToolStripMenuItem
-            // 
-            this.StatisticsToolStripMenuItem.Name = "StatisticsToolStripMenuItem";
-            this.StatisticsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.StatisticsToolStripMenuItem.Text = "Статистика";
-            this.StatisticsToolStripMenuItem.Click += new System.EventHandler(this.StatisticsToolStripMenuItem_Click);
-            // 
-            // tabReview
-            // 
-            this.tabReview.Controls.Add(this.gridViewReview);
-            this.tabReview.Controls.Add(this.panelReviewButtons);
-            this.tabReview.Location = new System.Drawing.Point(4, 22);
-            this.tabReview.Name = "tabReview";
-            this.tabReview.Size = new System.Drawing.Size(906, 540);
-            this.tabReview.TabIndex = 3;
-            this.tabReview.Text = "Проверки";
-            this.tabReview.UseVisualStyleBackColor = true;
-            // 
-            // panelReviewButtons
-            // 
-            this.panelReviewButtons.Controls.Add(this.gbNPC);
-            this.panelReviewButtons.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelReviewButtons.Location = new System.Drawing.Point(0, 0);
-            this.panelReviewButtons.Name = "panelReviewButtons";
-            this.panelReviewButtons.Size = new System.Drawing.Size(906, 104);
-            this.panelReviewButtons.TabIndex = 0;
-            // 
-            // gbNPC
-            // 
-            this.gbNPC.Controls.Add(this.numQuests);
-            this.gbNPC.Controls.Add(this.label2);
-            this.gbNPC.Controls.Add(this.cbNumQuests);
-            this.gbNPC.Controls.Add(this.numDialogs);
-            this.gbNPC.Controls.Add(this.label1);
-            this.gbNPC.Controls.Add(this.cbNumDialogs);
-            this.gbNPC.Controls.Add(this.bFindNPC);
-            this.gbNPC.Location = new System.Drawing.Point(3, 4);
-            this.gbNPC.Name = "gbNPC";
-            this.gbNPC.Size = new System.Drawing.Size(272, 100);
-            this.gbNPC.TabIndex = 0;
-            this.gbNPC.TabStop = false;
-            this.gbNPC.Text = "NPC";
-            // 
-            // bFindNPC
-            // 
-            this.bFindNPC.Location = new System.Drawing.Point(7, 19);
-            this.bFindNPC.Name = "bFindNPC";
-            this.bFindNPC.Size = new System.Drawing.Size(98, 23);
-            this.bFindNPC.TabIndex = 0;
-            this.bFindNPC.Text = "Найти NPC";
-            this.bFindNPC.UseVisualStyleBackColor = true;
-            this.bFindNPC.Click += new System.EventHandler(this.bFindNPC_Click);
-            // 
-            // cbNumDialogs
-            // 
-            this.cbNumDialogs.AutoSize = true;
-            this.cbNumDialogs.Location = new System.Drawing.Point(7, 49);
-            this.cbNumDialogs.Name = "cbNumDialogs";
-            this.cbNumDialogs.Size = new System.Drawing.Size(108, 17);
-            this.cbNumDialogs.TabIndex = 1;
-            this.cbNumDialogs.Text = "Число диалогов";
-            this.cbNumDialogs.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(117, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "меньше";
-            // 
-            // numDialogs
-            // 
-            this.numDialogs.Location = new System.Drawing.Point(175, 48);
-            this.numDialogs.Name = "numDialogs";
-            this.numDialogs.Size = new System.Drawing.Size(62, 20);
-            this.numDialogs.TabIndex = 3;
-            this.numDialogs.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // gridViewReview
-            // 
-            this.gridViewReview.AllowUserToAddRows = false;
-            this.gridViewReview.AllowUserToDeleteRows = false;
-            this.gridViewReview.AllowUserToOrderColumns = true;
-            this.gridViewReview.AllowUserToResizeRows = false;
-            this.gridViewReview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridViewReview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colNPCName,
-            this.сolDialogsNum,
-            this.сolQuestsNum});
-            this.gridViewReview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridViewReview.Location = new System.Drawing.Point(0, 104);
-            this.gridViewReview.Name = "gridViewReview";
-            this.gridViewReview.Size = new System.Drawing.Size(906, 436);
-            this.gridViewReview.TabIndex = 1;
-            // 
-            // cbNumQuests
-            // 
-            this.cbNumQuests.AutoSize = true;
-            this.cbNumQuests.Location = new System.Drawing.Point(7, 72);
-            this.cbNumQuests.Name = "cbNumQuests";
-            this.cbNumQuests.Size = new System.Drawing.Size(102, 17);
-            this.cbNumQuests.TabIndex = 4;
-            this.cbNumQuests.Text = "Число квестов";
-            this.cbNumQuests.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(118, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "меньше";
-            // 
-            // numQuests
-            // 
-            this.numQuests.Location = new System.Drawing.Point(175, 72);
-            this.numQuests.Name = "numQuests";
-            this.numQuests.Size = new System.Drawing.Size(62, 20);
-            this.numQuests.TabIndex = 6;
-            this.numQuests.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            // 
-            // colNPCName
-            // 
-            this.colNPCName.HeaderText = "Имя NPC";
-            this.colNPCName.Name = "colNPCName";
-            // 
-            // сolDialogsNum
-            // 
-            this.сolDialogsNum.HeaderText = "Диалоги";
-            this.сolDialogsNum.Name = "сolDialogsNum";
-            // 
-            // сolQuestsNum
-            // 
-            this.сolQuestsNum.HeaderText = "Квесты";
-            this.сolQuestsNum.Name = "сolQuestsNum";
             // 
             // MainForm
             // 
@@ -1370,6 +1387,13 @@ namespace StalkerOnlineQuesterEditor
             this.splitQuestsContainer.Panel1.PerformLayout();
             this.splitQuestsContainer.ResumeLayout(false);
             this.npcLinksTabPage.ResumeLayout(false);
+            this.tabReview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).EndInit();
+            this.panelReviewButtons.ResumeLayout(false);
+            this.gbNPC.ResumeLayout(false);
+            this.gbNPC.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDialogs)).EndInit();
             this.tabManage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.manageGridView)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -1388,13 +1412,6 @@ namespace StalkerOnlineQuesterEditor
             this.menuStrip1.PerformLayout();
             this.statusDialogStrip.ResumeLayout(false);
             this.statusDialogStrip.PerformLayout();
-            this.tabReview.ResumeLayout(false);
-            this.panelReviewButtons.ResumeLayout(false);
-            this.gbNPC.ResumeLayout(false);
-            this.gbNPC.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numDialogs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numQuests)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1518,6 +1535,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
         private System.Windows.Forms.DataGridViewTextBoxColumn сolDialogsNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn сolQuestsNum;
+        private System.Windows.Forms.Button button1;
 
 
     }

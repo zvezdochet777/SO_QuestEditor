@@ -257,225 +257,8 @@ namespace StalkerOnlineQuesterEditor
 
         ~EditDialogForm()
         {
-         
-            
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            int newID;
-            Actions actions = new Actions();
-            CDialogPrecondition precondition = new CDialogPrecondition();
-            List<int> nodes = new List<int>();
-            int questDialog = parent.getDialogOnDialogID(dialogID).QuestDialog;
-            //List<string> holder = new List<string>();
-            string holder;
 
 
-            //holder.Add(parent.currentNPC);
-            holder = parent.currentNPC;
-
-
-
-            if (!tSubDialogsTextBox.Text.Equals(""))
-                foreach (string node in tSubDialogsTextBox.Text.Split(','))
-                    nodes.Add(int.Parse(node));
-            if (actionsCheckBox.Checked)
-            {
-                actions.Exit = ExitcheckBox.Checked;
-                if (toTradeCheckBox.Checked)
-                    actions.Event = 1;
-                if (changeCheckBox.Checked)
-                    actions.Event = 2;
-                if (ToDialogCheckBox1.Checked)
-                    actions.ToDialog = int.Parse(ToDialogComboBox.SelectedItem.ToString());
-                if (toRepairCheckBox.Checked)
-                    actions.Event = 4;
-                if (tleportCheckBox.Checked && !teleportComboBox.SelectedItem.ToString().Equals(""))
-                {
-                    actions.Event = 5;
-                    actions.Data = parent.tpConst.getTtID(teleportComboBox.SelectedItem.ToString());
-                }
-                if (toComplexRapairCheckBox.Checked)
-                    actions.Event = 6;
-                if (barterCheckBox.Checked)
-                    actions.Event = 7;
-
-                if (GetQuestsCheckBox.Checked)
-                    foreach (string quest in GetQuestsTextBox.Text.Split(','))
-                        actions.GetQuests.Add(int.Parse(quest));
-                if (CompleteQuestsCheckBox.Checked)
-                    foreach (string quest in CompleteQuetsTextBox.Text.Split(','))
-                        actions.CompleteQuests.Add(int.Parse(quest));
-
-            }
-
-            if (!tMustHaveOpenQuests.Text.Equals(""))
-                foreach (string quest in tMustHaveOpenQuests.Text.Split(','))
-                    precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Add(int.Parse(quest));
-            if (!tMustHaveQuestsOnTest.Text.Equals(""))
-                foreach (string quest in tMustHaveQuestsOnTest.Text.Split(','))
-                    precondition.ListOfNecessaryQuests.ListOfOnTestQuests.Add(int.Parse(quest));
-            if (!tMustHaveCompletedQuests.Text.Equals(""))
-                foreach (string quest in tMustHaveCompletedQuests.Text.Split(','))
-                    precondition.ListOfNecessaryQuests.ListOfCompletedQuests.Add(int.Parse(quest));
-            if (!tMustHaveFailedQuests.Text.Equals(""))
-                foreach (string quest in tMustHaveFailedQuests.Text.Split(','))
-                    precondition.ListOfNecessaryQuests.ListOfFailedQuests.Add(int.Parse(quest));
-
-            if (!tShouldntHaveOpenQuests.Text.Equals(""))
-                foreach (string quest in tShouldntHaveOpenQuests.Text.Split(','))
-                    precondition.ListOfMustNoQuests.ListOfOpenedQuests.Add(int.Parse(quest));
-            if (!tShouldntHaveQuestsOnTest.Text.Equals(""))
-                foreach (string quest in tShouldntHaveQuestsOnTest.Text.Split(','))
-                    precondition.ListOfMustNoQuests.ListOfOnTestQuests.Add(int.Parse(quest));
-            if (!tShouldntHaveCompletedQuests.Text.Equals(""))
-                foreach (string quest in tShouldntHaveCompletedQuests.Text.Split(','))
-                    precondition.ListOfMustNoQuests.ListOfCompletedQuests.Add(int.Parse(quest));
-            if (!tShouldntHaveFailedQuests.Text.Equals(""))
-                foreach (string quest in tShouldntHaveFailedQuests.Text.Split(','))
-                    precondition.ListOfMustNoQuests.ListOfFailedQuests.Add(int.Parse(quest));
-
-            precondition.tests.Clear();
-            if (CheckClanIDcheckBox.Checked)
-                precondition.tests.Add(1);
-            if (CheckClanCheckBox.Checked)
-                precondition.tests.Add(0);
-            if (CheckLonerCheckBox.Checked)
-                precondition.tests.Add(2);
-
-            //if (!reputationTextBox01.Text.Equals("") || !reputationTextBox0.Text.Equals(""))
-            //{
-            //    precondition.Reputation.Add(0, new List<int>());
-            //    if (!reputationTextBox01.Text.Equals("") && !reputationTextBox0.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[0].Add(0);
-            //        precondition.Reputation[0].Add(int.Parse(reputationTextBox01.Text));
-            //        precondition.Reputation[0].Add(int.Parse(reputationTextBox0.Text));
-            //    }
-            //    else if (!reputationTextBox01.Text.Equals("") && reputationTextBox0.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[0].Add(1);
-            //        precondition.Reputation[0].Add(int.Parse(reputationTextBox01.Text));
-            //        precondition.Reputation[0].Add(0);
-            //    }
-            //    else if (reputationTextBox01.Text.Equals("") && !reputationTextBox0.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[0].Add(2);
-            //        precondition.Reputation[0].Add(0);
-            //        precondition.Reputation[0].Add(int.Parse(reputationTextBox0.Text));
-            //    }
-                
-            //}
-            //if (!reputationTextBox11.Text.Equals("") || !reputationTextBox1.Text.Equals(""))
-            //{
-            //    precondition.Reputation.Add(1, new List<int>());
-            //    if (!reputationTextBox11.Text.Equals("") && !reputationTextBox1.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[1].Add(0);
-            //        precondition.Reputation[1].Add(int.Parse(reputationTextBox11.Text));
-            //        precondition.Reputation[1].Add(int.Parse(reputationTextBox1.Text));
-            //    }
-            //    else if (!reputationTextBox11.Text.Equals("") && reputationTextBox1.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[1].Add(1);
-            //        precondition.Reputation[1].Add(int.Parse(reputationTextBox11.Text));
-            //        precondition.Reputation[1].Add(0);
-            //    }
-            //    else if (reputationTextBox11.Text.Equals("") && !reputationTextBox1.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[1].Add(2);
-            //        precondition.Reputation[1].Add(0);
-            //        precondition.Reputation[1].Add(int.Parse(reputationTextBox1.Text));
-            //    }
-
-            //}
-            //if (!reputationTextBox21.Text.Equals("") || !reputationTextBox2.Text.Equals(""))
-            //{
-            //    precondition.Reputation.Add(2, new List<int>());
-            //    if (!reputationTextBox21.Text.Equals("") && !reputationTextBox2.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[2].Add(0);
-            //        precondition.Reputation[2].Add(int.Parse(reputationTextBox21.Text));
-            //        precondition.Reputation[2].Add(int.Parse(reputationTextBox2.Text));
-            //    }
-            //    else if (!reputationTextBox21.Text.Equals("") && reputationTextBox2.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[2].Add(1);
-            //        precondition.Reputation[2].Add(int.Parse(reputationTextBox21.Text));
-            //        precondition.Reputation[2].Add(0);
-            //    }
-            //    else if (reputationTextBox21.Text.Equals("") && !reputationTextBox2.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[2].Add(2);
-            //        precondition.Reputation[2].Add(0);
-            //        precondition.Reputation[2].Add(int.Parse(reputationTextBox2.Text));
-            //    }
-            //}
-            //if (!reputationTextBox31.Text.Equals("") || !reputationTextBox3.Text.Equals(""))
-            //{
-            //    precondition.Reputation.Add(3, new List<int>());
-            //    if (!reputationTextBox21.Text.Equals("") && !reputationTextBox2.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[3].Add(0);
-            //        precondition.Reputation[3].Add(int.Parse(reputationTextBox31.Text));
-            //        precondition.Reputation[3].Add(int.Parse(reputationTextBox3.Text));
-            //    }
-            //    else if (!reputationTextBox31.Text.Equals("") && reputationTextBox3.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[3].Add(1);
-            //        precondition.Reputation[3].Add(int.Parse(reputationTextBox31.Text));
-            //        precondition.Reputation[3].Add(0);
-            //    }
-            //    else if (reputationTextBox31.Text.Equals("") && !reputationTextBox3.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[3].Add(2);
-            //        precondition.Reputation[3].Add(0);
-            //        precondition.Reputation[3].Add(int.Parse(reputationTextBox3.Text));
-            //    }
-            //}
-            //if (!reputationTextBox41.Text.Equals("") || !reputationTextBox4.Text.Equals(""))
-            //{
-            //    precondition.Reputation.Add(4, new List<int>());
-            //    if (!reputationTextBox41.Text.Equals("") && !reputationTextBox4.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[4].Add(0);
-            //        precondition.Reputation[4].Add(int.Parse(reputationTextBox41.Text));
-            //        precondition.Reputation[4].Add(int.Parse(reputationTextBox4.Text));
-            //    }
-            //    else if (!reputationTextBox41.Text.Equals("") && reputationTextBox4.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[4].Add(1);
-            //        precondition.Reputation[4].Add(int.Parse(reputationTextBox41.Text));
-            //        precondition.Reputation[4].Add(0);
-            //    }
-            //    else if (reputationTextBox41.Text.Equals("") && !reputationTextBox4.Text.Equals(""))
-            //    {
-            //        precondition.Reputation[4].Add(2);
-            //        precondition.Reputation[4].Add(0);
-            //        precondition.Reputation[4].Add(int.Parse(reputationTextBox4.Text));
-            //    }
-            //}
-
-            //if (editPrecondition.Reputation.Any())
-                precondition.Reputation = editPrecondition.Reputation;
-                precondition.KarmaPK = editKarmaPK;
-                
-
-
-            if (isAdd)
-            {
-
-                newID = parent.getDialogsNewID();
-                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text, questDialog, precondition, actions, nodes, newID, 1), dialogID);
-            }
-            else
-            {
-                parent.replaceDialog(new CDialog(holder
-                    , tPlayerText.Text, tNPCReactiontextBox.Text, questDialog, precondition, actions, nodes, dialogID, (curDialog.version + 1) ), dialogID);
-            }
-            parent.Enabled = true;
-            this.Close();
         }
 
         private void bEditDialogCancel_Click(object sender, EventArgs e)
@@ -732,6 +515,218 @@ namespace StalkerOnlineQuesterEditor
             {
                 unlockOtherEvent();
             }
+        }
+
+        private void bEditDialogOk_Click(object sender, EventArgs e)
+        {
+            int newID;
+            Actions actions = new Actions();
+            CDialogPrecondition precondition = new CDialogPrecondition();
+            List<int> nodes = new List<int>();
+            int questDialog = parent.getDialogOnDialogID(dialogID).QuestDialog;
+            //List<string> holder = new List<string>();
+            string holder;
+
+            //holder.Add(parent.currentNPC);
+            holder = parent.currentNPC;
+
+            if (!tSubDialogsTextBox.Text.Equals(""))
+                foreach (string node in tSubDialogsTextBox.Text.Split(','))
+                    nodes.Add(int.Parse(node));
+            if (actionsCheckBox.Checked)
+            {
+                actions.Exit = ExitcheckBox.Checked;
+                if (toTradeCheckBox.Checked)
+                    actions.Event = 1;
+                if (changeCheckBox.Checked)
+                    actions.Event = 2;
+                if (ToDialogCheckBox1.Checked)
+                    actions.ToDialog = int.Parse(ToDialogComboBox.SelectedItem.ToString());
+                if (toRepairCheckBox.Checked)
+                    actions.Event = 4;
+                if (tleportCheckBox.Checked && !teleportComboBox.SelectedItem.ToString().Equals(""))
+                {
+                    actions.Event = 5;
+                    actions.Data = parent.tpConst.getTtID(teleportComboBox.SelectedItem.ToString());
+                }
+                if (toComplexRapairCheckBox.Checked)
+                    actions.Event = 6;
+                if (barterCheckBox.Checked)
+                    actions.Event = 7;
+
+                if (GetQuestsCheckBox.Checked)
+                    foreach (string quest in GetQuestsTextBox.Text.Split(','))
+                        actions.GetQuests.Add(int.Parse(quest));
+                if (CompleteQuestsCheckBox.Checked)
+                    foreach (string quest in CompleteQuetsTextBox.Text.Split(','))
+                        actions.CompleteQuests.Add(int.Parse(quest));
+            }
+
+            if (!tMustHaveOpenQuests.Text.Equals(""))
+                foreach (string quest in tMustHaveOpenQuests.Text.Split(','))
+                    precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Add(int.Parse(quest));
+            if (!tMustHaveQuestsOnTest.Text.Equals(""))
+                foreach (string quest in tMustHaveQuestsOnTest.Text.Split(','))
+                    precondition.ListOfNecessaryQuests.ListOfOnTestQuests.Add(int.Parse(quest));
+            if (!tMustHaveCompletedQuests.Text.Equals(""))
+                foreach (string quest in tMustHaveCompletedQuests.Text.Split(','))
+                    precondition.ListOfNecessaryQuests.ListOfCompletedQuests.Add(int.Parse(quest));
+            if (!tMustHaveFailedQuests.Text.Equals(""))
+                foreach (string quest in tMustHaveFailedQuests.Text.Split(','))
+                    precondition.ListOfNecessaryQuests.ListOfFailedQuests.Add(int.Parse(quest));
+
+            if (!tShouldntHaveOpenQuests.Text.Equals(""))
+                foreach (string quest in tShouldntHaveOpenQuests.Text.Split(','))
+                    precondition.ListOfMustNoQuests.ListOfOpenedQuests.Add(int.Parse(quest));
+            if (!tShouldntHaveQuestsOnTest.Text.Equals(""))
+                foreach (string quest in tShouldntHaveQuestsOnTest.Text.Split(','))
+                    precondition.ListOfMustNoQuests.ListOfOnTestQuests.Add(int.Parse(quest));
+            if (!tShouldntHaveCompletedQuests.Text.Equals(""))
+                foreach (string quest in tShouldntHaveCompletedQuests.Text.Split(','))
+                    precondition.ListOfMustNoQuests.ListOfCompletedQuests.Add(int.Parse(quest));
+            if (!tShouldntHaveFailedQuests.Text.Equals(""))
+                foreach (string quest in tShouldntHaveFailedQuests.Text.Split(','))
+                    precondition.ListOfMustNoQuests.ListOfFailedQuests.Add(int.Parse(quest));
+
+            precondition.tests.Clear();
+            if (CheckClanIDcheckBox.Checked)
+                precondition.tests.Add(1);
+            if (CheckClanCheckBox.Checked)
+                precondition.tests.Add(0);
+            if (CheckLonerCheckBox.Checked)
+                precondition.tests.Add(2);
+
+            //if (!reputationTextBox01.Text.Equals("") || !reputationTextBox0.Text.Equals(""))
+            //{
+            //    precondition.Reputation.Add(0, new List<int>());
+            //    if (!reputationTextBox01.Text.Equals("") && !reputationTextBox0.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[0].Add(0);
+            //        precondition.Reputation[0].Add(int.Parse(reputationTextBox01.Text));
+            //        precondition.Reputation[0].Add(int.Parse(reputationTextBox0.Text));
+            //    }
+            //    else if (!reputationTextBox01.Text.Equals("") && reputationTextBox0.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[0].Add(1);
+            //        precondition.Reputation[0].Add(int.Parse(reputationTextBox01.Text));
+            //        precondition.Reputation[0].Add(0);
+            //    }
+            //    else if (reputationTextBox01.Text.Equals("") && !reputationTextBox0.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[0].Add(2);
+            //        precondition.Reputation[0].Add(0);
+            //        precondition.Reputation[0].Add(int.Parse(reputationTextBox0.Text));
+            //    }
+
+            //}
+            //if (!reputationTextBox11.Text.Equals("") || !reputationTextBox1.Text.Equals(""))
+            //{
+            //    precondition.Reputation.Add(1, new List<int>());
+            //    if (!reputationTextBox11.Text.Equals("") && !reputationTextBox1.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[1].Add(0);
+            //        precondition.Reputation[1].Add(int.Parse(reputationTextBox11.Text));
+            //        precondition.Reputation[1].Add(int.Parse(reputationTextBox1.Text));
+            //    }
+            //    else if (!reputationTextBox11.Text.Equals("") && reputationTextBox1.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[1].Add(1);
+            //        precondition.Reputation[1].Add(int.Parse(reputationTextBox11.Text));
+            //        precondition.Reputation[1].Add(0);
+            //    }
+            //    else if (reputationTextBox11.Text.Equals("") && !reputationTextBox1.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[1].Add(2);
+            //        precondition.Reputation[1].Add(0);
+            //        precondition.Reputation[1].Add(int.Parse(reputationTextBox1.Text));
+            //    }
+
+            //}
+            //if (!reputationTextBox21.Text.Equals("") || !reputationTextBox2.Text.Equals(""))
+            //{
+            //    precondition.Reputation.Add(2, new List<int>());
+            //    if (!reputationTextBox21.Text.Equals("") && !reputationTextBox2.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[2].Add(0);
+            //        precondition.Reputation[2].Add(int.Parse(reputationTextBox21.Text));
+            //        precondition.Reputation[2].Add(int.Parse(reputationTextBox2.Text));
+            //    }
+            //    else if (!reputationTextBox21.Text.Equals("") && reputationTextBox2.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[2].Add(1);
+            //        precondition.Reputation[2].Add(int.Parse(reputationTextBox21.Text));
+            //        precondition.Reputation[2].Add(0);
+            //    }
+            //    else if (reputationTextBox21.Text.Equals("") && !reputationTextBox2.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[2].Add(2);
+            //        precondition.Reputation[2].Add(0);
+            //        precondition.Reputation[2].Add(int.Parse(reputationTextBox2.Text));
+            //    }
+            //}
+            //if (!reputationTextBox31.Text.Equals("") || !reputationTextBox3.Text.Equals(""))
+            //{
+            //    precondition.Reputation.Add(3, new List<int>());
+            //    if (!reputationTextBox21.Text.Equals("") && !reputationTextBox2.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[3].Add(0);
+            //        precondition.Reputation[3].Add(int.Parse(reputationTextBox31.Text));
+            //        precondition.Reputation[3].Add(int.Parse(reputationTextBox3.Text));
+            //    }
+            //    else if (!reputationTextBox31.Text.Equals("") && reputationTextBox3.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[3].Add(1);
+            //        precondition.Reputation[3].Add(int.Parse(reputationTextBox31.Text));
+            //        precondition.Reputation[3].Add(0);
+            //    }
+            //    else if (reputationTextBox31.Text.Equals("") && !reputationTextBox3.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[3].Add(2);
+            //        precondition.Reputation[3].Add(0);
+            //        precondition.Reputation[3].Add(int.Parse(reputationTextBox3.Text));
+            //    }
+            //}
+            //if (!reputationTextBox41.Text.Equals("") || !reputationTextBox4.Text.Equals(""))
+            //{
+            //    precondition.Reputation.Add(4, new List<int>());
+            //    if (!reputationTextBox41.Text.Equals("") && !reputationTextBox4.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[4].Add(0);
+            //        precondition.Reputation[4].Add(int.Parse(reputationTextBox41.Text));
+            //        precondition.Reputation[4].Add(int.Parse(reputationTextBox4.Text));
+            //    }
+            //    else if (!reputationTextBox41.Text.Equals("") && reputationTextBox4.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[4].Add(1);
+            //        precondition.Reputation[4].Add(int.Parse(reputationTextBox41.Text));
+            //        precondition.Reputation[4].Add(0);
+            //    }
+            //    else if (reputationTextBox41.Text.Equals("") && !reputationTextBox4.Text.Equals(""))
+            //    {
+            //        precondition.Reputation[4].Add(2);
+            //        precondition.Reputation[4].Add(0);
+            //        precondition.Reputation[4].Add(int.Parse(reputationTextBox4.Text));
+            //    }
+            //}
+
+            //if (editPrecondition.Reputation.Any())
+            precondition.Reputation = editPrecondition.Reputation;
+            precondition.KarmaPK = editKarmaPK;
+
+            NodeCoordinates nodeC = new NodeCoordinates();
+            if (isAdd)
+            {
+                //! @todo разбираться с созданием диалога
+                newID = parent.getDialogsNewID();
+                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text, questDialog, precondition, actions, nodes, newID, 1, nodeC), dialogID);
+            }
+            else
+            {
+                parent.replaceDialog(new CDialog(holder
+                    , tPlayerText.Text, tNPCReactiontextBox.Text, questDialog, precondition, actions, nodes, dialogID, (curDialog.version + 1), nodeC), dialogID);
+            }
+            parent.Enabled = true;
+            this.Close();
         }
     }
 }

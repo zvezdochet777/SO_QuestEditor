@@ -151,6 +151,25 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class NodeCoordinates
+    {
+        public int X;
+        public int Y;
+        public bool RootDialog;
+        public NodeCoordinates()
+        {
+            X = 0;
+            Y = 0;
+            RootDialog = false;
+        }
+        public NodeCoordinates(int x, int y, bool root)
+        {
+            X = x;
+            Y = y;
+            RootDialog = root;
+        }
+    }
+
     //! Класс диалога (одна ветка в xml файле)
     public class CDialog
     {
@@ -165,8 +184,11 @@ namespace StalkerOnlineQuesterEditor
         public Actions Actions;
         public ListOfQuests Nodes;
         public int version;
+        public NodeCoordinates coordinates;
 
-        public CDialog(string Holder, string Title, string Text , int QuestDialog, CDialogPrecondition Precondition, Actions Actions, ListOfQuests Nodes,int DialogID, int version)
+        public CDialog(string Holder, string Title, string Text , int QuestDialog, 
+                        CDialogPrecondition Precondition, Actions Actions, ListOfQuests Nodes,int DialogID,
+                        int version, NodeCoordinates Coordinates)
         {
             this.Holder = Holder;
             this.Title = Title;
@@ -177,6 +199,7 @@ namespace StalkerOnlineQuesterEditor
             this.Nodes = Nodes;
             this.DialogID = DialogID;
             this.version = version;
+            this.coordinates = Coordinates;
         }
         public CDialog()
         {
@@ -190,6 +213,7 @@ namespace StalkerOnlineQuesterEditor
             this.Nodes = new List<int>();
             this.DialogID = new int();
             this.version = new int();
+            coordinates = new NodeCoordinates();
         }
      
     }
