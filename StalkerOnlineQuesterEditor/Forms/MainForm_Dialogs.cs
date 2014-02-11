@@ -241,8 +241,8 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int subdialogs in root.Nodes)
                 {
                     PNode node = getNodeOnDialogID(subdialogs);
-                    float x = dialogs.dialogs[currentNPC][subdialogs].coordinates.X;
-                    float y = dialogs.dialogs[currentNPC][subdialogs].coordinates.Y;
+                    float x = getDialogOnIDConditional(subdialogs).coordinates.X;
+                    float y = getDialogOnIDConditional(subdialogs).coordinates.Y;
 
                     if (x == 0 && y == 0)
                     {

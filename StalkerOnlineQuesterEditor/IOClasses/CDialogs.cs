@@ -279,7 +279,7 @@ namespace StalkerOnlineQuesterEditor
                            new XElement("CompleteQuest", getListAsString(dialog.Actions.CompleteQuests))),
                        new XElement("Nodes", getListAsString(dialog.Nodes)),
                        new XElement("NodeCoordinates",
-                           new XElement("X", getIntAsString(dialog.coordinates.X)),         // coord.X
+                           new XElement("X", getIntAsString(dialog.coordinates.X)),
                            new XElement("Y", getIntAsString(dialog.coordinates.Y)),
                            new XElement("Root", getBoolAsString(dialog.coordinates.RootDialog)))
                        );
