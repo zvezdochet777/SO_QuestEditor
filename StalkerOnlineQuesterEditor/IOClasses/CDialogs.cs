@@ -149,11 +149,17 @@ namespace StalkerOnlineQuesterEditor
                 int Version = 0;
                 if (!item.Element("Version").Value.Equals(""))
                     Version = int.Parse(item.Element("Version").Value);
+
                 NodeCoordinates nodeCoord = new NodeCoordinates();
                 if (!item.Element("NodeCoordinates").Element("X").Value.Equals(""))
                     nodeCoord.X = int.Parse(item.Element("NodeCoordinates").Element("X").Value);
                 if (!item.Element("NodeCoordinates").Element("Y").Value.Equals(""))
                     nodeCoord.Y = int.Parse(item.Element("NodeCoordinates").Element("Y").Value);
+
+                if (item.Element("NodeCoordinates").Element("RootDialog").Value.Equals("1"))
+                    nodeCoord.RootDialog = true;
+                else
+                    nodeCoord.RootDialog = false;
 
                 foreach (string el in item.Element("Precondition").Element("Reputation").Value.Split(';'))
                 {
@@ -281,7 +287,7 @@ namespace StalkerOnlineQuesterEditor
                        new XElement("NodeCoordinates",
                            new XElement("X", getIntAsString(dialog.coordinates.X)),
                            new XElement("Y", getIntAsString(dialog.coordinates.Y)),
-                           new XElement("Root", getBoolAsString(dialog.coordinates.RootDialog)))
+                           new XElement("RootDialog", getBoolAsString(dialog.coordinates.RootDialog)))
                        );
                     resultDoc.Root.Add(element);
                 }

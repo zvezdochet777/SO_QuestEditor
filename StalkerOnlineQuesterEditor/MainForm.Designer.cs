@@ -76,6 +76,7 @@ namespace StalkerOnlineQuesterEditor
             this.сolDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сolQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
+            this.labelReviewOutputed = new System.Windows.Forms.Label();
             this.gbNPC = new System.Windows.Forms.GroupBox();
             this.numQuests = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -148,7 +149,6 @@ namespace StalkerOnlineQuesterEditor
             this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
-            this.labelReviewOutputed = new System.Windows.Forms.Label();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.splitDialogs.Panel1.SuspendLayout();
@@ -718,6 +718,14 @@ namespace StalkerOnlineQuesterEditor
             this.panelReviewButtons.Name = "panelReviewButtons";
             this.panelReviewButtons.Size = new System.Drawing.Size(906, 104);
             this.panelReviewButtons.TabIndex = 0;
+            // 
+            // labelReviewOutputed
+            // 
+            this.labelReviewOutputed.AutoSize = true;
+            this.labelReviewOutputed.Location = new System.Drawing.Point(782, 83);
+            this.labelReviewOutputed.Name = "labelReviewOutputed";
+            this.labelReviewOutputed.Size = new System.Drawing.Size(0, 13);
+            this.labelReviewOutputed.TabIndex = 1;
             // 
             // gbNPC
             // 
@@ -1358,14 +1366,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.SizingGrip = false;
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
-            // 
-            // labelReviewOutputed
-            // 
-            this.labelReviewOutputed.AutoSize = true;
-            this.labelReviewOutputed.Location = new System.Drawing.Point(782, 83);
-            this.labelReviewOutputed.Name = "labelReviewOutputed";
-            this.labelReviewOutputed.Size = new System.Drawing.Size(0, 13);
-            this.labelReviewOutputed.TabIndex = 1;
             // 
             // MainForm
             // 

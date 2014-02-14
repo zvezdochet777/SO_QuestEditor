@@ -16,7 +16,7 @@ using System.Xml.Linq;
 namespace StalkerOnlineQuesterEditor
 {
     //! Словарь <DialogID, CDialog> - используется для диалогов 1 персонажа NPC
-    using NPCQuestDict = Dictionary<int, CDialog>;
+    using DialogDict = Dictionary<int, CDialog>;
     //! Словарь <уровень в иерархии, список узлов>
     using levelDict = Dictionary<int, List<int>>;
     public partial class MainForm : Form
@@ -27,7 +27,7 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает вершину графа диалогов - корневую фразу у заданного NPC
         public CDialog getRootDialog(string npc_name)
         {
-            NPCQuestDict dialogs = this.dialogs.dialogs[npc_name];
+            DialogDict dialogs = this.dialogs.dialogs[npc_name];
             foreach (CDialog dialog in dialogs.Values)
             {
                 //System.Console.WriteLine(dialog.QuestDialog.ToString() + " vs " + currentQuestDialog.ToString());
@@ -70,7 +70,7 @@ namespace StalkerOnlineQuesterEditor
         {
             return GraphProperties.findNodeOnID(graphs, dialogID);
         }
-
+        //! Возвращает DialogID по известному узлу графа
         public int getDialogIDOnNode(PNode node)
         {
             if (graphs.Keys.Contains(node))
@@ -116,7 +116,7 @@ namespace StalkerOnlineQuesterEditor
                 {
                     CDialog d = dialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC);
                     if (d != null)
-                        return dialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC);
+                        return d;
                     else
                     {
                         d = dialogs.dialogs[currentNPC][dialogID];
@@ -127,6 +127,20 @@ namespace StalkerOnlineQuesterEditor
             }
             else
                 return null;
+        }
+
+        //! Возвращает словарь диалогов одного NPC в зависимости от локализации
+        public DialogDict getDialogDictionary(string NPCName)
+        {
+            if (settings.getMode() == settings.MODE_EDITOR)
+                return dialogs.dialogs[NPCName];
+            else
+            { 
+                if (dialogs.locales[ settings.getCurrentLocale() ].ContainsKey( NPCName ) )
+                    return dialogs.locales[ settings.getCurrentLocale() ][NPCName];
+                else
+                    return dialogs.dialogs[NPCName];
+            }
         }
 
         public int getDialogsNewID()
@@ -146,7 +160,7 @@ namespace StalkerOnlineQuesterEditor
         }
         //**********************WORK WITH FORM
 
-        void fillDialogTree(CDialog root, NPCQuestDict dialogs)
+        void fillDialogTree(CDialog root, DialogDict dialogs)
         {
             this.treeDialogs.Nodes.Clear();//tree clear
             this.treeDialogs.Nodes.Add("Active", "Active");
@@ -193,7 +207,7 @@ namespace StalkerOnlineQuesterEditor
             nodeLayer.Add(rootNode);
             if (!graphs.Keys.Contains(rootNode))
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
-            //SaveCoordinates(root, rootNode);
+            SaveCoordinates(root, rootNode, true);
             this.fillDialogSubgraphView(root, rootNode, 1, ref edgeLayer, ref nodeLayer, false);
             this.DialogShower.Layer.AddChildren(nodeLayer);
             //CalcNodesOnLevel(root);
@@ -361,11 +375,27 @@ namespace StalkerOnlineQuesterEditor
         }
         
         //! Сохраняет координаты узла 
-        public void SaveCoordinates(CDialog dialog, PNode node)
+        public void SaveCoordinates(CDialog dialog, PNode node, bool isRoot)
         {
             dialog.coordinates.X = (int) node.FullBounds.X;
             dialog.coordinates.Y = (int) node.FullBounds.Y;
-            dialog.coordinates.RootDialog = false;
+            dialog.coordinates.RootDialog = isRoot;
+            //! костылек
+            if (settings.getMode() == settings.MODE_LOCALIZATION)
+            {
+                string locale = settings.getCurrentLocale();
+                if (dialogs.locales[settings.getCurrentLocale()].ContainsKey(dialog.Holder))
+                {
+                    string npc = dialog.Holder;
+                    if ( dialogs.locales[locale][npc].ContainsKey(dialog.DialogID) )
+                     dialogs.locales[locale][npc][dialog.DialogID].coordinates.RootDialog = isRoot;
+                }
+            }
+        }
+        //! Сохраняет координаты узла со значением false для параметра isRoot
+        public void SaveCoordinates(CDialog dialog, PNode node)
+        {
+            SaveCoordinates(dialog, node, false);
         }
 
         //! Считает число нодов в каждом уровне. Можно убрать, оставив рекурсивный вызов AddNodesToLevel
@@ -497,8 +527,9 @@ namespace StalkerOnlineQuesterEditor
         {
             bAddDialog.Enabled = true;
             CDialog root = new CDialog();
-            NPCQuestDict dialogs = this.dialogs.dialogs[currentNPC];
+            DialogDict dialogs = getDialogDictionary(currentNPC);
             root = getRootDialog();
+            root = getDialogOnIDConditional( root.DialogID );
             fillDialogTree(root, dialogs);
             if (withGraph)
             {
