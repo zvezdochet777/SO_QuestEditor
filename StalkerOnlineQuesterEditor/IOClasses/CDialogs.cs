@@ -151,15 +151,18 @@ namespace StalkerOnlineQuesterEditor
                     Version = int.Parse(item.Element("Version").Value);
 
                 NodeCoordinates nodeCoord = new NodeCoordinates();
-                if (!item.Element("NodeCoordinates").Element("X").Value.Equals(""))
-                    nodeCoord.X = int.Parse(item.Element("NodeCoordinates").Element("X").Value);
-                if (!item.Element("NodeCoordinates").Element("Y").Value.Equals(""))
-                    nodeCoord.Y = int.Parse(item.Element("NodeCoordinates").Element("Y").Value);
+                if ( item.Descendants("NodeCoordinates").ToList().Count > 0 )
+                {
+                    if (!item.Element("NodeCoordinates").Element("X").Value.Equals(""))
+                        nodeCoord.X = int.Parse(item.Element("NodeCoordinates").Element("X").Value);
+                    if (!item.Element("NodeCoordinates").Element("Y").Value.Equals(""))
+                        nodeCoord.Y = int.Parse(item.Element("NodeCoordinates").Element("Y").Value);
 
-                if (item.Element("NodeCoordinates").Element("RootDialog").Value.Equals("1"))
-                    nodeCoord.RootDialog = true;
-                else
-                    nodeCoord.RootDialog = false;
+                    if (item.Element("NodeCoordinates").Element("RootDialog").Value.Equals("1"))
+                        nodeCoord.RootDialog = true;
+                    else
+                        nodeCoord.RootDialog = false;
+                }
 
                 foreach (string el in item.Element("Precondition").Element("Reputation").Value.Split(';'))
                 {

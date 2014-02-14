@@ -278,7 +278,7 @@ namespace StalkerOnlineQuesterEditor
                         //((ArrayList)node.Tag).Add(subdialogs);
                         node.AddChild(text);
                     }
-                    //SaveCoordinates( dialogs.dialogs[currentNPC][subdialogs], node);
+                    SaveCoordinates( dialogs.dialogs[currentNPC][subdialogs], node);
                     
                     PrepareNodesForEdge( node, rootNode, ref edgeLayer);
                     nodeLayer.Add(node);
@@ -430,7 +430,6 @@ namespace StalkerOnlineQuesterEditor
                 AddNodesToLevel(dialogT, level + 1, ref dict);
             }
         }
-        
 
         void removeNodeFromDialogGraphView(int node)
         {
@@ -537,6 +536,5 @@ namespace StalkerOnlineQuesterEditor
                 this.fillDialogGraphView(root);
             }
         }
-        
     }
 }
