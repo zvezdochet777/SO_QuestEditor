@@ -140,14 +140,15 @@ namespace StalkerOnlineQuesterEditor
                     QuestBox.Enabled = false;
                     bAddQuest.Enabled = false;
                     bRemoveQuest.Enabled = false;
-                    
                     currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
-                    
                     QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
                     DialogSelected(true);
                 }
                 else if (CentralDock.SelectedIndex == 1)
+                {
                     fillQuestChangeBox(false);
+                    QuestBox.Text = "Пожалуйста, выберите квест";
+                }
             }
         }
         //! Супер-мега костыль от мудаков. СтартКвест == RootDialog для персонажа
@@ -508,7 +509,7 @@ namespace StalkerOnlineQuesterEditor
                 bRemoveQuest.Enabled = false;
                 QuestBox.Items.Clear();
                 fillQuestChangeBox(false);
-                QuestBox.Text = "Пожалуйста, выберите квест.";
+                QuestBox.Text = "Пожалуйста, выберите квест";
             }
             else if (CentralDock.SelectedIndex == 2)
             {
@@ -937,6 +938,7 @@ namespace StalkerOnlineQuesterEditor
         {
             quests.quest.Add(newQuest.QuestID, newQuest);
             QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
+            startQuests += newQuest.QuestID.ToString() + ": ";
             QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
         }
  

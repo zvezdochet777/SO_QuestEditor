@@ -295,14 +295,15 @@ namespace StalkerOnlineQuesterEditor
                 }
         }
 
+        //! Добавляет узел на граф
         void addNodeOnDialogGraphView(int dialogID, int parentDialogID)
         {
             PNode parentDialog = getNodeOnDialogID(parentDialogID);
 
             float x = new float();
-            x = parentDialog.X + 10;
+            x = parentDialog.X - 60;
             float y = new float();
-            y = parentDialog.Y + 10;
+            y = parentDialog.Y + 60;
 
             SizeF size = CalcEllipsisSizeForNode(dialogID);
             PNode newDialog = PPath.CreateEllipse(x, y, size.Width, size.Height);

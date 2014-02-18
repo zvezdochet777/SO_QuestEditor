@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Форма правки диалога и всех его опций
     public partial class EditDialogForm : Form
     {
         public MainForm parent;
@@ -18,7 +19,7 @@ namespace StalkerOnlineQuesterEditor
 
         int dialogID;
         bool isAdd;
-
+        //! Максимальная длина ответа ГГ, при превышении которого выводится сообщение
         int MAX_SYMBOL_ANSWER = 24;
 
         public EditDialogForm(bool isAdd, MainForm parent, int selectedDialogID)
@@ -31,6 +32,7 @@ namespace StalkerOnlineQuesterEditor
 
 
             CDialog curDialog = parent.getDialogOnDialogID(dialogID);
+            lAttention.Text = "";
             if (curDialog.Precondition.Reputation.Any())
             {
                 editPrecondition = curDialog.Precondition;
@@ -43,7 +45,6 @@ namespace StalkerOnlineQuesterEditor
 
             if (parent.isRoot(selectedDialogID) && (!isAdd))
             {
-    
                 NPCReactionText.Text = "Приветствие:";
             }
 
@@ -104,7 +105,7 @@ namespace StalkerOnlineQuesterEditor
                 actionsCheckBox.Checked = true;
                 if (curDialog.Actions.ToDialog != 0)
                 {
-                    ToDialogCheckBox1.Checked = true;
+                    ToDialogCheckBox.Checked = true;
                     int neededDialog = ToDialogComboBox.FindStringExact(curDialog.Actions.ToDialog.ToString());
                     ToDialogComboBox.SelectedIndex = neededDialog;
                 }
@@ -116,17 +117,17 @@ namespace StalkerOnlineQuesterEditor
                 if (curDialog.Actions.Event == 4)
                     toRepairCheckBox.Checked = true;
                 if (curDialog.Actions.Event == 6)
-                    toComplexRapairCheckBox.Checked = true;
+                    toComplexRepairCheckBox.Checked = true;
                 if (curDialog.Actions.Event == 5)
                 {
                     System.Console.WriteLine("curDialog.Actions.Event == 5");
-                    tleportCheckBox.Checked = true;
+                    teleportCheckBox.Checked = true;
                     string key = parent.tpConst.getName(curDialog.Actions.Data);
                     teleportComboBox.SelectedItem = key;
                 }
                 if (curDialog.Actions.Event == 7)
                     barterCheckBox.Checked = true;
-                ExitcheckBox.Checked = curDialog.Actions.Exit;
+                ExitCheckBox.Checked = curDialog.Actions.Exit;
 
 
 
@@ -255,229 +256,87 @@ namespace StalkerOnlineQuesterEditor
             calcSymbolMaxAnswer();
         }
 
-        ~EditDialogForm()
-        {
-
-
-        }
-
+        //! Нажатие Отмена - выход без сохранения
         private void bEditDialogCancel_Click(object sender, EventArgs e)
         {
             parent.Enabled = true;
             this.Close();
         }
-
+        //! Чекбокс действия - возможность добавить действия к узлу диалога
         private void actionsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (actionsCheckBox.Checked)
-            {
-                actionsBox.Enabled = true;
-                //NPCReactionText.Enabled = false;
-                //tNPCReactiontextBox.Enabled = false;
-            }
-            else
-            {
-                actionsBox.Enabled = false;
-                //NPCReactionText.Enabled = true;
-                //tNPCReactiontextBox.Enabled = true;
-            }
+            actionsBox.Enabled = actionsCheckBox.Checked;
         }
-
-
+        //! Блокировка комбобокса при клике на соответствующий чекбокс 
         private void GetQuestsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (GetQuestsCheckBox.Checked)
-                GetQuestsTextBox.Enabled = true;
-            else
-                GetQuestsTextBox.Enabled = false;
-
+            GetQuestsTextBox.Enabled = GetQuestsCheckBox.Checked;
         }
-
+        //! Блокировка комбобокса при клике на соответствующий чекбокс 
         private void CompleteQuestsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (CompleteQuestsCheckBox.Checked)
-                CompleteQuetsTextBox.Enabled = true;
-            else
-                CompleteQuetsTextBox.Enabled = false;
+            CompleteQuetsTextBox.Enabled = CompleteQuestsCheckBox.Checked;
         }
-
+        //! Блокировка других действий при выборе
+        private void AnyActionCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((CheckBox)sender).Checked)
+                lockOtherEvent();
+            else
+                unlockOtherEvent();
+        }
+        //! Блокировка других компонентов при выборе опции "переход на диалог № xxx"
         private void ToDialogCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-
-            if (ToDialogCheckBox1.Checked)
-            {
+            ToDialogComboBox.Enabled = ToDialogCheckBox.Checked;
+            if (ToDialogCheckBox.Checked)
                 lockOtherEvent();
-                ToDialogComboBox.Enabled = true;
-            }
             else
-            {
-                ToDialogComboBox.Enabled = false;
                 unlockOtherEvent();
-                
-            }
-
-            
-
         }
 
-        private void toTradeCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (toTradeCheckBox.Checked)
-            {
-
-                lockOtherEvent();
-            }
-            else
-            {
-                unlockOtherEvent();
-            }
-        }
-
-        private void ExitcheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ExitcheckBox.Checked)
-            {
-                lockOtherEvent();
-            }
-            else
-            {
-                unlockOtherEvent();
-            }
-
-            
-        }
-
-        private void changeCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (changeCheckBox.Checked)
-            {
-                lockOtherEvent();
-            }
-            else
-            {
-                unlockOtherEvent();
-            }
-
-            
-        }
-
-        private void toRepairCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (toRepairCheckBox.Checked)
-            {
-                lockOtherEvent();
-            }
-            else
-            {
-                unlockOtherEvent();
-            }
-        }
-
+        //! Блокирует контролы на форме
         private void lockOtherEvent()
         {
-            //System.Console.WriteLine("lockOtherEvent");
-            //System.Console.WriteLine(self);
-            if (!ExitcheckBox.Checked)
+            if (!ExitCheckBox.Checked)
             {
-                if (!ToDialogCheckBox1.Checked)
-                {
-                    ExitcheckBox.Checked = true;
-                    ExitcheckBox.Enabled = false;
-                }
-                else
-                {
-                    ExitcheckBox.Enabled = false;
-                }
+                if (!ToDialogCheckBox.Checked)
+                    ExitCheckBox.Checked = true;
+                ExitCheckBox.Enabled = false;
             }
-            if (!toTradeCheckBox.Checked)
-            {
-                toTradeCheckBox.Enabled = false;
-            }
-            if (!changeCheckBox.Checked)
-            {
-                changeCheckBox.Enabled = false;
-            }
-            if (!toRepairCheckBox.Checked)
-            {
-                toRepairCheckBox.Enabled = false;
-            }
-            if (!toComplexRapairCheckBox.Checked)
-            {
-                toComplexRapairCheckBox.Enabled = false;
-            }
-            if (!ToDialogCheckBox1.Checked)
-            {
-                ToDialogCheckBox1.Enabled = false;
-            }
-            if (!tleportCheckBox.Checked)
-            {
-                tleportCheckBox.Enabled = false;
-            }
-            if (!barterCheckBox.Checked)
-            {
-                barterCheckBox.Enabled = false;
-            }
+            toTradeCheckBox.Enabled = toTradeCheckBox.Checked;
+            changeCheckBox.Enabled = changeCheckBox.Checked;
+            toRepairCheckBox.Enabled = toRepairCheckBox.Checked;
+            toComplexRepairCheckBox.Enabled = toComplexRepairCheckBox.Checked;
+            ToDialogCheckBox.Enabled = ToDialogCheckBox.Checked;
+            teleportCheckBox.Enabled = teleportCheckBox.Checked;
+            barterCheckBox.Enabled = barterCheckBox.Checked;
         }
-
+        //! Разблокирует контролы на форме
         private void unlockOtherEvent()
         {
-                ExitcheckBox.Checked = false;
-                ExitcheckBox.Enabled = true;
-                toTradeCheckBox.Enabled = true;
-                changeCheckBox.Enabled = true;
-                toRepairCheckBox.Enabled = true;
-                toComplexRapairCheckBox.Enabled = true;
-                ToDialogCheckBox1.Enabled = true;
-                tleportCheckBox.Enabled = true;
-                barterCheckBox.Enabled = true;
+            ExitCheckBox.Checked = false;
+            ExitCheckBox.Enabled = true;
+            toTradeCheckBox.Enabled = true;
+            changeCheckBox.Enabled = true;
+            toRepairCheckBox.Enabled = true;
+            toComplexRepairCheckBox.Enabled = true;
+            ToDialogCheckBox.Enabled = true;
+            teleportCheckBox.Enabled = true;
+            barterCheckBox.Enabled = true;
         }
-
-        private void tleportCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            teleportComboBox.Items.Add("");
-            foreach (string key in parent.tpConst.getKeys())
-                teleportComboBox.Items.Add(key);
-
-            if (tleportCheckBox.Checked)
-            {
-                lockOtherEvent();
-            }
-            else
-            {
-                unlockOtherEvent();
-            }
-            teleportComboBox.Enabled = !teleportComboBox.Enabled;
-            
-        }
-
-        private void actionsBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        //! При наборе текста проверяем число символов в строке
         private void tPlayerText_KeyPress(object sender, KeyPressEventArgs e)
         {
             calcSymbolMaxAnswer();
         }
+        //! Считает число символов в строке ответа ГГ и выводит предупреждение
         private void calcSymbolMaxAnswer()
         {
             lAttention.Text = "";
-            int tLenth = tPlayerText.Text.Length;
-            if (tLenth > this.MAX_SYMBOL_ANSWER)
+            int length = tPlayerText.Text.Length;
+            if (length > this.MAX_SYMBOL_ANSWER)
                 lAttention.Text = "Внимание: Текст более 24 символов!";
-            
-        }
-
-        private void toComplexRapairCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (toComplexRapairCheckBox.Checked)
-            {
-                lockOtherEvent();
-            }
-            else
-            {
-                unlockOtherEvent();
-            }
         }
 
         private void EditDialogForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -504,17 +363,18 @@ namespace StalkerOnlineQuesterEditor
             dialogKarma.Visible = true;
             this.Enabled = false;
         }
-
-        private void barterCheckBox_CheckedChanged(object sender, EventArgs e)
+        //! Чекбокс телепорта - заполняем возможные локации
+        private void teleportCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (barterCheckBox.Checked)
-            {
+            teleportComboBox.Items.Add("");
+            foreach (string key in parent.tpConst.getKeys())
+                teleportComboBox.Items.Add(key);
+
+            if (teleportCheckBox.Checked)
                 lockOtherEvent();
-            }
             else
-            {
                 unlockOtherEvent();
-            }
+            teleportComboBox.Enabled = !teleportComboBox.Enabled;
         }
 
         private void bEditDialogOk_Click(object sender, EventArgs e)
@@ -535,21 +395,21 @@ namespace StalkerOnlineQuesterEditor
                     nodes.Add(int.Parse(node));
             if (actionsCheckBox.Checked)
             {
-                actions.Exit = ExitcheckBox.Checked;
+                actions.Exit = ExitCheckBox.Checked;
                 if (toTradeCheckBox.Checked)
                     actions.Event = 1;
                 if (changeCheckBox.Checked)
                     actions.Event = 2;
-                if (ToDialogCheckBox1.Checked)
+                if (ToDialogCheckBox.Checked)
                     actions.ToDialog = int.Parse(ToDialogComboBox.SelectedItem.ToString());
                 if (toRepairCheckBox.Checked)
                     actions.Event = 4;
-                if (tleportCheckBox.Checked && !teleportComboBox.SelectedItem.ToString().Equals(""))
+                if (teleportCheckBox.Checked && !teleportComboBox.SelectedItem.ToString().Equals(""))
                 {
                     actions.Event = 5;
                     actions.Data = parent.tpConst.getTtID(teleportComboBox.SelectedItem.ToString());
                 }
-                if (toComplexRapairCheckBox.Checked)
+                if (toComplexRepairCheckBox.Checked)
                     actions.Event = 6;
                 if (barterCheckBox.Checked)
                     actions.Event = 7;

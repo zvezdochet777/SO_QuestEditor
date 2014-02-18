@@ -35,19 +35,19 @@
             this.lAttention = new System.Windows.Forms.Label();
             this.actionsBox = new System.Windows.Forms.GroupBox();
             this.barterCheckBox = new System.Windows.Forms.CheckBox();
-            this.toComplexRapairCheckBox = new System.Windows.Forms.CheckBox();
+            this.toComplexRepairCheckBox = new System.Windows.Forms.CheckBox();
             this.teleportComboBox = new System.Windows.Forms.ComboBox();
-            this.tleportCheckBox = new System.Windows.Forms.CheckBox();
+            this.teleportCheckBox = new System.Windows.Forms.CheckBox();
             this.toRepairCheckBox = new System.Windows.Forms.CheckBox();
             this.changeCheckBox = new System.Windows.Forms.CheckBox();
             this.CompleteQuetsTextBox = new System.Windows.Forms.MaskedTextBox();
             this.GetQuestsTextBox = new System.Windows.Forms.MaskedTextBox();
             this.ToDialogComboBox = new System.Windows.Forms.ComboBox();
-            this.ExitcheckBox = new System.Windows.Forms.CheckBox();
+            this.ExitCheckBox = new System.Windows.Forms.CheckBox();
             this.toTradeCheckBox = new System.Windows.Forms.CheckBox();
             this.CompleteQuestsCheckBox = new System.Windows.Forms.CheckBox();
             this.GetQuestsCheckBox = new System.Windows.Forms.CheckBox();
-            this.ToDialogCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.ToDialogCheckBox = new System.Windows.Forms.CheckBox();
             this.actionsCheckBox = new System.Windows.Forms.CheckBox();
             this.tNPCReactiontextBox = new System.Windows.Forms.TextBox();
             this.tSubDialogsTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -90,7 +90,7 @@
             this.tPlayerText.Location = new System.Drawing.Point(103, 171);
             this.tPlayerText.Name = "tPlayerText";
             this.tPlayerText.Size = new System.Drawing.Size(479, 20);
-            this.tPlayerText.TabIndex = 0;
+            this.tPlayerText.TabIndex = 1;
             this.tPlayerText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tPlayerText_KeyPress);
             // 
             // lAnswerText
@@ -126,26 +126,26 @@
             this.lAttention.ForeColor = System.Drawing.Color.DarkRed;
             this.lAttention.Location = new System.Drawing.Point(100, 155);
             this.lAttention.Name = "lAttention";
-            this.lAttention.Size = new System.Drawing.Size(35, 13);
+            this.lAttention.Size = new System.Drawing.Size(51, 13);
             this.lAttention.TabIndex = 13;
-            this.lAttention.Text = "label6";
+            this.lAttention.Text = "lAttention";
             // 
             // actionsBox
             // 
             this.actionsBox.Controls.Add(this.barterCheckBox);
-            this.actionsBox.Controls.Add(this.toComplexRapairCheckBox);
+            this.actionsBox.Controls.Add(this.toComplexRepairCheckBox);
             this.actionsBox.Controls.Add(this.teleportComboBox);
-            this.actionsBox.Controls.Add(this.tleportCheckBox);
+            this.actionsBox.Controls.Add(this.teleportCheckBox);
             this.actionsBox.Controls.Add(this.toRepairCheckBox);
             this.actionsBox.Controls.Add(this.changeCheckBox);
             this.actionsBox.Controls.Add(this.CompleteQuetsTextBox);
             this.actionsBox.Controls.Add(this.GetQuestsTextBox);
             this.actionsBox.Controls.Add(this.ToDialogComboBox);
-            this.actionsBox.Controls.Add(this.ExitcheckBox);
+            this.actionsBox.Controls.Add(this.ExitCheckBox);
             this.actionsBox.Controls.Add(this.toTradeCheckBox);
             this.actionsBox.Controls.Add(this.CompleteQuestsCheckBox);
             this.actionsBox.Controls.Add(this.GetQuestsCheckBox);
-            this.actionsBox.Controls.Add(this.ToDialogCheckBox1);
+            this.actionsBox.Controls.Add(this.ToDialogCheckBox);
             this.actionsBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.actionsBox.Enabled = false;
             this.actionsBox.Location = new System.Drawing.Point(0, 500);
@@ -153,7 +153,6 @@
             this.actionsBox.Size = new System.Drawing.Size(588, 115);
             this.actionsBox.TabIndex = 8;
             this.actionsBox.TabStop = false;
-            this.actionsBox.Enter += new System.EventHandler(this.actionsBox_Enter);
             // 
             // barterCheckBox
             // 
@@ -161,21 +160,21 @@
             this.barterCheckBox.Location = new System.Drawing.Point(6, 83);
             this.barterCheckBox.Name = "barterCheckBox";
             this.barterCheckBox.Size = new System.Drawing.Size(62, 17);
-            this.barterCheckBox.TabIndex = 14;
+            this.barterCheckBox.TabIndex = 21;
             this.barterCheckBox.Text = "Бартер";
             this.barterCheckBox.UseVisualStyleBackColor = true;
-            this.barterCheckBox.CheckedChanged += new System.EventHandler(this.barterCheckBox_CheckedChanged);
+            this.barterCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
-            // toComplexRapairCheckBox
+            // toComplexRepairCheckBox
             // 
-            this.toComplexRapairCheckBox.AutoSize = true;
-            this.toComplexRapairCheckBox.Location = new System.Drawing.Point(117, 62);
-            this.toComplexRapairCheckBox.Name = "toComplexRapairCheckBox";
-            this.toComplexRapairCheckBox.Size = new System.Drawing.Size(139, 17);
-            this.toComplexRapairCheckBox.TabIndex = 13;
-            this.toComplexRapairCheckBox.Text = "Комплексная починка";
-            this.toComplexRapairCheckBox.UseVisualStyleBackColor = true;
-            this.toComplexRapairCheckBox.CheckedChanged += new System.EventHandler(this.toComplexRapairCheckBox_CheckedChanged);
+            this.toComplexRepairCheckBox.AutoSize = true;
+            this.toComplexRepairCheckBox.Location = new System.Drawing.Point(117, 62);
+            this.toComplexRepairCheckBox.Name = "toComplexRepairCheckBox";
+            this.toComplexRepairCheckBox.Size = new System.Drawing.Size(139, 17);
+            this.toComplexRepairCheckBox.TabIndex = 23;
+            this.toComplexRepairCheckBox.Text = "Комплексная починка";
+            this.toComplexRepairCheckBox.UseVisualStyleBackColor = true;
+            this.toComplexRepairCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
             // teleportComboBox
             // 
@@ -184,18 +183,18 @@
             this.teleportComboBox.Location = new System.Drawing.Point(379, 83);
             this.teleportComboBox.Name = "teleportComboBox";
             this.teleportComboBox.Size = new System.Drawing.Size(100, 21);
-            this.teleportComboBox.TabIndex = 12;
+            this.teleportComboBox.TabIndex = 30;
             // 
-            // tleportCheckBox
+            // teleportCheckBox
             // 
-            this.tleportCheckBox.AutoSize = true;
-            this.tleportCheckBox.Location = new System.Drawing.Point(266, 85);
-            this.tleportCheckBox.Name = "tleportCheckBox";
-            this.tleportCheckBox.Size = new System.Drawing.Size(74, 17);
-            this.tleportCheckBox.TabIndex = 11;
-            this.tleportCheckBox.Text = "Телепорт";
-            this.tleportCheckBox.UseVisualStyleBackColor = true;
-            this.tleportCheckBox.CheckedChanged += new System.EventHandler(this.tleportCheckBox_CheckedChanged);
+            this.teleportCheckBox.AutoSize = true;
+            this.teleportCheckBox.Location = new System.Drawing.Point(266, 85);
+            this.teleportCheckBox.Name = "teleportCheckBox";
+            this.teleportCheckBox.Size = new System.Drawing.Size(74, 17);
+            this.teleportCheckBox.TabIndex = 29;
+            this.teleportCheckBox.Text = "Телепорт";
+            this.teleportCheckBox.UseVisualStyleBackColor = true;
+            this.teleportCheckBox.CheckedChanged += new System.EventHandler(this.teleportCheckBox_CheckedChanged);
             // 
             // toRepairCheckBox
             // 
@@ -203,10 +202,10 @@
             this.toRepairCheckBox.Location = new System.Drawing.Point(117, 41);
             this.toRepairCheckBox.Name = "toRepairCheckBox";
             this.toRepairCheckBox.Size = new System.Drawing.Size(69, 17);
-            this.toRepairCheckBox.TabIndex = 10;
+            this.toRepairCheckBox.TabIndex = 22;
             this.toRepairCheckBox.Text = "Починка";
             this.toRepairCheckBox.UseVisualStyleBackColor = true;
-            this.toRepairCheckBox.CheckedChanged += new System.EventHandler(this.toRepairCheckBox_CheckedChanged);
+            this.toRepairCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
             // changeCheckBox
             // 
@@ -214,10 +213,10 @@
             this.changeCheckBox.Location = new System.Drawing.Point(6, 62);
             this.changeCheckBox.Name = "changeCheckBox";
             this.changeCheckBox.Size = new System.Drawing.Size(60, 17);
-            this.changeCheckBox.TabIndex = 9;
+            this.changeCheckBox.TabIndex = 20;
             this.changeCheckBox.Text = "Обмен";
             this.changeCheckBox.UseVisualStyleBackColor = true;
-            this.changeCheckBox.CheckedChanged += new System.EventHandler(this.changeCheckBox_CheckedChanged);
+            this.changeCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
             // CompleteQuetsTextBox
             // 
@@ -225,7 +224,7 @@
             this.CompleteQuetsTextBox.Location = new System.Drawing.Point(379, 39);
             this.CompleteQuetsTextBox.Name = "CompleteQuetsTextBox";
             this.CompleteQuetsTextBox.Size = new System.Drawing.Size(100, 20);
-            this.CompleteQuetsTextBox.TabIndex = 8;
+            this.CompleteQuetsTextBox.TabIndex = 28;
             // 
             // GetQuestsTextBox
             // 
@@ -233,7 +232,7 @@
             this.GetQuestsTextBox.Location = new System.Drawing.Point(379, 16);
             this.GetQuestsTextBox.Name = "GetQuestsTextBox";
             this.GetQuestsTextBox.Size = new System.Drawing.Size(100, 20);
-            this.GetQuestsTextBox.TabIndex = 7;
+            this.GetQuestsTextBox.TabIndex = 26;
             // 
             // ToDialogComboBox
             // 
@@ -242,18 +241,18 @@
             this.ToDialogComboBox.Location = new System.Drawing.Point(117, 19);
             this.ToDialogComboBox.Name = "ToDialogComboBox";
             this.ToDialogComboBox.Size = new System.Drawing.Size(100, 21);
-            this.ToDialogComboBox.TabIndex = 6;
+            this.ToDialogComboBox.TabIndex = 18;
             // 
-            // ExitcheckBox
+            // ExitCheckBox
             // 
-            this.ExitcheckBox.AutoSize = true;
-            this.ExitcheckBox.Location = new System.Drawing.Point(117, 83);
-            this.ExitcheckBox.Name = "ExitcheckBox";
-            this.ExitcheckBox.Size = new System.Drawing.Size(141, 17);
-            this.ExitcheckBox.TabIndex = 5;
-            this.ExitcheckBox.Text = "Закрыть окно диалога";
-            this.ExitcheckBox.UseVisualStyleBackColor = true;
-            this.ExitcheckBox.CheckedChanged += new System.EventHandler(this.ExitcheckBox_CheckedChanged);
+            this.ExitCheckBox.AutoSize = true;
+            this.ExitCheckBox.Location = new System.Drawing.Point(117, 83);
+            this.ExitCheckBox.Name = "ExitCheckBox";
+            this.ExitCheckBox.Size = new System.Drawing.Size(141, 17);
+            this.ExitCheckBox.TabIndex = 24;
+            this.ExitCheckBox.Text = "Закрыть окно диалога";
+            this.ExitCheckBox.UseVisualStyleBackColor = true;
+            this.ExitCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
             // toTradeCheckBox
             // 
@@ -261,10 +260,10 @@
             this.toTradeCheckBox.Location = new System.Drawing.Point(6, 42);
             this.toTradeCheckBox.Name = "toTradeCheckBox";
             this.toTradeCheckBox.Size = new System.Drawing.Size(79, 17);
-            this.toTradeCheckBox.TabIndex = 4;
+            this.toTradeCheckBox.TabIndex = 19;
             this.toTradeCheckBox.Text = "Торговать";
             this.toTradeCheckBox.UseVisualStyleBackColor = true;
-            this.toTradeCheckBox.CheckedChanged += new System.EventHandler(this.toTradeCheckBox_CheckedChanged);
+            this.toTradeCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
             // CompleteQuestsCheckBox
             // 
@@ -272,7 +271,7 @@
             this.CompleteQuestsCheckBox.Location = new System.Drawing.Point(266, 42);
             this.CompleteQuestsCheckBox.Name = "CompleteQuestsCheckBox";
             this.CompleteQuestsCheckBox.Size = new System.Drawing.Size(119, 17);
-            this.CompleteQuestsCheckBox.TabIndex = 3;
+            this.CompleteQuestsCheckBox.TabIndex = 27;
             this.CompleteQuestsCheckBox.Text = "Закончить квесты";
             this.CompleteQuestsCheckBox.UseVisualStyleBackColor = true;
             this.CompleteQuestsCheckBox.CheckedChanged += new System.EventHandler(this.CompleteQuestsCheckBox_CheckedChanged);
@@ -283,21 +282,21 @@
             this.GetQuestsCheckBox.Location = new System.Drawing.Point(266, 17);
             this.GetQuestsCheckBox.Name = "GetQuestsCheckBox";
             this.GetQuestsCheckBox.Size = new System.Drawing.Size(96, 17);
-            this.GetQuestsCheckBox.TabIndex = 2;
+            this.GetQuestsCheckBox.TabIndex = 25;
             this.GetQuestsCheckBox.Text = "Взять квесты";
             this.GetQuestsCheckBox.UseVisualStyleBackColor = true;
             this.GetQuestsCheckBox.CheckedChanged += new System.EventHandler(this.GetQuestsCheckBox_CheckedChanged);
             // 
-            // ToDialogCheckBox1
+            // ToDialogCheckBox
             // 
-            this.ToDialogCheckBox1.AutoSize = true;
-            this.ToDialogCheckBox1.Location = new System.Drawing.Point(6, 19);
-            this.ToDialogCheckBox1.Name = "ToDialogCheckBox1";
-            this.ToDialogCheckBox1.Size = new System.Drawing.Size(114, 17);
-            this.ToDialogCheckBox1.TabIndex = 1;
-            this.ToDialogCheckBox1.Text = "Переход на диал.";
-            this.ToDialogCheckBox1.UseVisualStyleBackColor = true;
-            this.ToDialogCheckBox1.CheckedChanged += new System.EventHandler(this.ToDialogCheckBox1_CheckedChanged);
+            this.ToDialogCheckBox.AutoSize = true;
+            this.ToDialogCheckBox.Location = new System.Drawing.Point(6, 19);
+            this.ToDialogCheckBox.Name = "ToDialogCheckBox";
+            this.ToDialogCheckBox.Size = new System.Drawing.Size(114, 17);
+            this.ToDialogCheckBox.TabIndex = 17;
+            this.ToDialogCheckBox.Text = "Переход на диал.";
+            this.ToDialogCheckBox.UseVisualStyleBackColor = true;
+            this.ToDialogCheckBox.CheckedChanged += new System.EventHandler(this.ToDialogCheckBox1_CheckedChanged);
             // 
             // actionsCheckBox
             // 
@@ -305,7 +304,7 @@
             this.actionsCheckBox.Location = new System.Drawing.Point(6, 498);
             this.actionsCheckBox.Name = "actionsCheckBox";
             this.actionsCheckBox.Size = new System.Drawing.Size(76, 17);
-            this.actionsCheckBox.TabIndex = 0;
+            this.actionsCheckBox.TabIndex = 16;
             this.actionsCheckBox.Text = "Действия";
             this.actionsCheckBox.UseVisualStyleBackColor = true;
             this.actionsCheckBox.CheckedChanged += new System.EventHandler(this.actionsCheckBox_CheckedChanged);
@@ -316,14 +315,14 @@
             this.tNPCReactiontextBox.Multiline = true;
             this.tNPCReactiontextBox.Name = "tNPCReactiontextBox";
             this.tNPCReactiontextBox.Size = new System.Drawing.Size(479, 75);
-            this.tNPCReactiontextBox.TabIndex = 7;
+            this.tNPCReactiontextBox.TabIndex = 0;
             // 
             // tSubDialogsTextBox
             // 
             this.tSubDialogsTextBox.Location = new System.Drawing.Point(103, 197);
             this.tSubDialogsTextBox.Name = "tSubDialogsTextBox";
             this.tSubDialogsTextBox.Size = new System.Drawing.Size(479, 20);
-            this.tSubDialogsTextBox.TabIndex = 10;
+            this.tSubDialogsTextBox.TabIndex = 2;
             // 
             // subDialogsLabel
             // 
@@ -356,7 +355,7 @@
             this.CheckLonerCheckBox.Location = new System.Drawing.Point(392, 78);
             this.CheckLonerCheckBox.Name = "CheckLonerCheckBox";
             this.CheckLonerCheckBox.Size = new System.Drawing.Size(134, 17);
-            this.CheckLonerCheckBox.TabIndex = 48;
+            this.CheckLonerCheckBox.TabIndex = 15;
             this.CheckLonerCheckBox.Text = "Только для одиночек";
             this.CheckLonerCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -386,7 +385,7 @@
             this.CheckClanCheckBox.Location = new System.Drawing.Point(392, 54);
             this.CheckClanCheckBox.Name = "CheckClanCheckBox";
             this.CheckClanCheckBox.Size = new System.Drawing.Size(162, 17);
-            this.CheckClanCheckBox.TabIndex = 8;
+            this.CheckClanCheckBox.TabIndex = 14;
             this.CheckClanCheckBox.Text = "Только для имеющих клан";
             this.CheckClanCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -396,7 +395,7 @@
             this.CheckClanIDcheckBox.Location = new System.Drawing.Point(392, 30);
             this.CheckClanIDcheckBox.Name = "CheckClanIDcheckBox";
             this.CheckClanIDcheckBox.Size = new System.Drawing.Size(147, 17);
-            this.CheckClanIDcheckBox.TabIndex = 7;
+            this.CheckClanIDcheckBox.TabIndex = 13;
             this.CheckClanIDcheckBox.Text = "Только для соклановца";
             this.CheckClanIDcheckBox.UseVisualStyleBackColor = true;
             // 
@@ -437,14 +436,14 @@
             this.tShouldntHaveFailedQuests.Location = new System.Drawing.Point(234, 119);
             this.tShouldntHaveFailedQuests.Name = "tShouldntHaveFailedQuests";
             this.tShouldntHaveFailedQuests.Size = new System.Drawing.Size(100, 20);
-            this.tShouldntHaveFailedQuests.TabIndex = 12;
+            this.tShouldntHaveFailedQuests.TabIndex = 10;
             // 
             // tMustHaveFailedQuests
             // 
             this.tMustHaveFailedQuests.Location = new System.Drawing.Point(128, 119);
             this.tMustHaveFailedQuests.Name = "tMustHaveFailedQuests";
             this.tMustHaveFailedQuests.Size = new System.Drawing.Size(100, 20);
-            this.tMustHaveFailedQuests.TabIndex = 11;
+            this.tMustHaveFailedQuests.TabIndex = 6;
             // 
             // label5
             // 
@@ -496,49 +495,49 @@
             this.tMustHaveQuestsOnTest.Location = new System.Drawing.Point(128, 66);
             this.tMustHaveQuestsOnTest.Name = "tMustHaveQuestsOnTest";
             this.tMustHaveQuestsOnTest.Size = new System.Drawing.Size(100, 20);
-            this.tMustHaveQuestsOnTest.TabIndex = 1;
+            this.tMustHaveQuestsOnTest.TabIndex = 4;
             // 
             // tShouldntHaveCompletedQuests
             // 
             this.tShouldntHaveCompletedQuests.Location = new System.Drawing.Point(234, 92);
             this.tShouldntHaveCompletedQuests.Name = "tShouldntHaveCompletedQuests";
             this.tShouldntHaveCompletedQuests.Size = new System.Drawing.Size(100, 20);
-            this.tShouldntHaveCompletedQuests.TabIndex = 5;
+            this.tShouldntHaveCompletedQuests.TabIndex = 9;
             // 
             // tMustHaveOpenQuests
             // 
             this.tMustHaveOpenQuests.Location = new System.Drawing.Point(128, 40);
             this.tMustHaveOpenQuests.Name = "tMustHaveOpenQuests";
             this.tMustHaveOpenQuests.Size = new System.Drawing.Size(100, 20);
-            this.tMustHaveOpenQuests.TabIndex = 0;
+            this.tMustHaveOpenQuests.TabIndex = 3;
             // 
             // tShouldntHaveQuestsOnTest
             // 
             this.tShouldntHaveQuestsOnTest.Location = new System.Drawing.Point(234, 66);
             this.tShouldntHaveQuestsOnTest.Name = "tShouldntHaveQuestsOnTest";
             this.tShouldntHaveQuestsOnTest.Size = new System.Drawing.Size(100, 20);
-            this.tShouldntHaveQuestsOnTest.TabIndex = 4;
+            this.tShouldntHaveQuestsOnTest.TabIndex = 8;
             // 
             // tShouldntHaveOpenQuests
             // 
             this.tShouldntHaveOpenQuests.Location = new System.Drawing.Point(234, 40);
             this.tShouldntHaveOpenQuests.Name = "tShouldntHaveOpenQuests";
             this.tShouldntHaveOpenQuests.Size = new System.Drawing.Size(100, 20);
-            this.tShouldntHaveOpenQuests.TabIndex = 3;
+            this.tShouldntHaveOpenQuests.TabIndex = 7;
             // 
             // tMustHaveCompletedQuests
             // 
             this.tMustHaveCompletedQuests.Location = new System.Drawing.Point(128, 92);
             this.tMustHaveCompletedQuests.Name = "tMustHaveCompletedQuests";
             this.tMustHaveCompletedQuests.Size = new System.Drawing.Size(100, 20);
-            this.tMustHaveCompletedQuests.TabIndex = 2;
+            this.tMustHaveCompletedQuests.TabIndex = 5;
             // 
             // bEditDialogOk
             // 
             this.bEditDialogOk.Location = new System.Drawing.Point(426, 3);
             this.bEditDialogOk.Name = "bEditDialogOk";
             this.bEditDialogOk.Size = new System.Drawing.Size(75, 23);
-            this.bEditDialogOk.TabIndex = 3;
+            this.bEditDialogOk.TabIndex = 11;
             this.bEditDialogOk.Text = "Ok";
             this.bEditDialogOk.UseVisualStyleBackColor = true;
             this.bEditDialogOk.Click += new System.EventHandler(this.bEditDialogOk_Click);
@@ -548,7 +547,7 @@
             this.bEditDialogCancel.Location = new System.Drawing.Point(507, 3);
             this.bEditDialogCancel.Name = "bEditDialogCancel";
             this.bEditDialogCancel.Size = new System.Drawing.Size(75, 23);
-            this.bEditDialogCancel.TabIndex = 2;
+            this.bEditDialogCancel.TabIndex = 12;
             this.bEditDialogCancel.Text = "Отмена";
             this.bEditDialogCancel.UseVisualStyleBackColor = true;
             this.bEditDialogCancel.Click += new System.EventHandler(this.bEditDialogCancel_Click);
@@ -626,19 +625,19 @@
         private System.Windows.Forms.Label NPCSaid;
         private System.Windows.Forms.Label lAttention;
         private System.Windows.Forms.GroupBox actionsBox;
-        private System.Windows.Forms.CheckBox toComplexRapairCheckBox;
+        private System.Windows.Forms.CheckBox toComplexRepairCheckBox;
         private System.Windows.Forms.ComboBox teleportComboBox;
-        private System.Windows.Forms.CheckBox tleportCheckBox;
+        private System.Windows.Forms.CheckBox teleportCheckBox;
         private System.Windows.Forms.CheckBox toRepairCheckBox;
         private System.Windows.Forms.CheckBox changeCheckBox;
         private System.Windows.Forms.MaskedTextBox CompleteQuetsTextBox;
         private System.Windows.Forms.MaskedTextBox GetQuestsTextBox;
         private System.Windows.Forms.ComboBox ToDialogComboBox;
-        private System.Windows.Forms.CheckBox ExitcheckBox;
+        private System.Windows.Forms.CheckBox ExitCheckBox;
         private System.Windows.Forms.CheckBox toTradeCheckBox;
         private System.Windows.Forms.CheckBox CompleteQuestsCheckBox;
         private System.Windows.Forms.CheckBox GetQuestsCheckBox;
-        private System.Windows.Forms.CheckBox ToDialogCheckBox1;
+        private System.Windows.Forms.CheckBox ToDialogCheckBox;
         private System.Windows.Forms.TextBox tNPCReactiontextBox;
         private System.Windows.Forms.MaskedTextBox tSubDialogsTextBox;
         private System.Windows.Forms.Label subDialogsLabel;
