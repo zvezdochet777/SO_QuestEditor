@@ -16,6 +16,8 @@ namespace StalkerOnlineQuesterEditor
         int iNumOperator;
         //! Режим - обычный (MODE_SIMPLE) или перевод (MODE_LOCALIZATION)
         int mode = 0;
+        //! Путь, по которому копировать файлы результата - Dialogs.xml, Quests.xml etc.
+        public string pathToCopyFiles;
 
         //! Список все локализаций ENG, GER etc.
         List<string> locales = new List<string>();
@@ -44,9 +46,7 @@ namespace StalkerOnlineQuesterEditor
             try
             {
                 foreach (string locale in doc.Root.Element("locales").Value.ToString().Split(','))
-                {
                     locales.Add(locale);
-                }
                 createLocalesFolder();
             }
             catch
@@ -59,12 +59,10 @@ namespace StalkerOnlineQuesterEditor
             {
                 this.mode = int.Parse(doc.Root.Element("mode").Value.ToString());
                 System.Console.WriteLine("The mode is: " + mode.ToString());
-
             }
             catch
             {
                 System.Console.WriteLine("Can't parse mode");
-
             }
 
             try
@@ -75,7 +73,14 @@ namespace StalkerOnlineQuesterEditor
             {
 
             }
-
+            try
+            {
+                pathToCopyFiles = doc.Root.Element("pathToCopyFiles").Value;
+            }
+            catch
+            { 
+            
+            }
         }
 
         //! Проверяет режим, и задает соответствующую надпись на главной форме
@@ -91,13 +96,10 @@ namespace StalkerOnlineQuesterEditor
         //! Создает папку для хранения файлов локализации, если таковой еще нет
         private void createLocalesFolder()
         {
-
             //System.Console.WriteLine("CSettings::createLocalesFolder");
             foreach(string locale in this.locales)
                 if (!Directory.Exists(LOCALES_PATH + locale))
-                {
                     Directory.CreateDirectory(LOCALES_PATH + locale);
-                }
         }
 
         //! Возврщает номер оператора
@@ -114,7 +116,6 @@ namespace StalkerOnlineQuesterEditor
             foreach (string locale in locales.Split(','))
                 this.locales.Add(locale.Trim());
             createLocalesFolder();
-
         }
 
         //! Возвращает все локали в строке через запятую
@@ -150,11 +151,13 @@ namespace StalkerOnlineQuesterEditor
             XElement loc = new XElement("locales", getLocales());
             XElement mode = new XElement("mode", this.mode.ToString());
             XElement current_locale = new XElement("current_locale", this.currentLocale.ToString());
+            XElement path = new XElement("pathToCopyFiles", this.pathToCopyFiles);
 
             resultDoc.Root.Add(oper);
             resultDoc.Root.Add(loc);
             resultDoc.Root.Add(mode);
             resultDoc.Root.Add(current_locale);
+            resultDoc.Root.Add(path);
             resultDoc.Save(SETTINGS_PATH + SETTING_FILE);
         }
 
@@ -168,13 +171,11 @@ namespace StalkerOnlineQuesterEditor
                 this.currentLocale = index_locale;
                 checkMode();
                 return true;
-
             }
             catch
             {
                 return false;
             }
-            
         }
 
         //! Устанавливает Обычный режим (корректировка текстов)

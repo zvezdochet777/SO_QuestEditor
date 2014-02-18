@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.IO;
 using UMD.HCIL.Piccolo;
-
+using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor
 {
@@ -199,45 +199,15 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        void replaceOldDialogsFile(int start, string name, string oldName)
-        {
-            name = name.Replace('/', '.');//for eng date format
-            if (File.Exists(name + start.ToString()))
-                replaceOldDialogsFile((start + 1), (name + "_" + start), name);
-            else if (File.Exists(oldName))
-                File.Move(oldName, name);
-        }
-
         //! Сохранить все диалоги в xml файл
         public void saveDialogs(string fileName)
         {
             save(fileName, this.dialogs);
         }
 
-        /*
-        //! Трэшак со StartQuests
-        bool isDialogRoot(int dialogID, string holder)
-        {
-            NPCDialogDict npc_dialogs = this.dialogs[holder];
-            foreach (CDialog dialog in npc_dialogs.Values)
-            {
-                //System.Console.WriteLine(dialog.QuestDialog.ToString() + " vs " + currentQuestDialog.ToString());
-                if ((parent.isStartQuest(dialog.QuestDialog)) && (dialog.DialogID == dialogID))
-                    return true;
-                else
-                    return false;
-            }
-            return false;
-        }
-        */
-
-
         //! Сохранение всех диалогов в xml файл
         private void save(string fileName, NPCDicts target)
         {
-            string newOldName = (fileName.Replace(".xml", "") + "_" + DateTime.UtcNow.ToString() + ".xml").Replace(':', '_');
-            replaceOldDialogsFile(0, newOldName, fileName);
-
             XDocument resultDoc = new XDocument(new XElement("root"));
             XElement element;
 
@@ -303,6 +273,22 @@ namespace StalkerOnlineQuesterEditor
             using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
             {
                 resultDoc.Save(w);
+            }
+            copyResultFile(fileName);
+        }
+        //! Копирование получившегося файла в директорию игры (она задается в настройках)
+        void copyResultFile(string filename)
+        {
+            string destPath = parent.settings.pathToCopyFiles + filename;
+            string srcPath = filename;
+            try
+            {
+                File.Copy(srcPath, destPath, true);
+            }
+            catch 
+            {
+                MessageBox.Show("Невозможно скопировать файл результата! Проверьте путь в настройках программы.", "Ошибка",
+                                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

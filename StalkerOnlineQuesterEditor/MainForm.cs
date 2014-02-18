@@ -140,6 +140,9 @@ namespace StalkerOnlineQuesterEditor
                     QuestBox.Enabled = false;
                     bAddQuest.Enabled = false;
                     bRemoveQuest.Enabled = false;
+                    bAddDialog.Enabled = false;
+                    bEditDialog.Enabled = false;
+                    bRemoveDialog.Enabled = false;
                     currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
                     QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
                     DialogSelected(true);
@@ -226,11 +229,11 @@ namespace StalkerOnlineQuesterEditor
 
         internal void onSelectNode(int dialogID)
         {
+            bAddDialog.Enabled = true;
             bEditDialog.Enabled = true;
             if (!isRoot(dialogID))
                 bRemoveDialog.Enabled = true;
         }
-
 
         public void selectNodeOnDialogTree(int dialogID)
         {

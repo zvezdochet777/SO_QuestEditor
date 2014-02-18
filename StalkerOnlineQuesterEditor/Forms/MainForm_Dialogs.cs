@@ -525,7 +525,6 @@ namespace StalkerOnlineQuesterEditor
         //-------------------------------------------------
         void DialogSelected(bool withGraph)
         {
-            bAddDialog.Enabled = true;
             CDialog root = new CDialog();
             DialogDict dialogs = getDialogDictionary(currentNPC);
             root = getRootDialog();

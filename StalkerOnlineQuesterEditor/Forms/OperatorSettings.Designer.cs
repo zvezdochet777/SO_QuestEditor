@@ -40,6 +40,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bCreateResult = new System.Windows.Forms.Button();
             this.bCreateExamples = new System.Windows.Forms.Button();
+            this.tbAddressToCopyFiles = new System.Windows.Forms.TextBox();
+            this.labelAddressToCopy = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +66,7 @@
             // 
             // bOK
             // 
-            this.bOK.Location = new System.Drawing.Point(58, 212);
+            this.bOK.Location = new System.Drawing.Point(42, 290);
             this.bOK.Name = "bOK";
             this.bOK.Size = new System.Drawing.Size(75, 23);
             this.bOK.TabIndex = 2;
@@ -74,7 +76,7 @@
             // 
             // bCancel
             // 
-            this.bCancel.Location = new System.Drawing.Point(141, 212);
+            this.bCancel.Location = new System.Drawing.Point(125, 290);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
             this.bCancel.TabIndex = 4;
@@ -147,6 +149,7 @@
             // 
             // bCreateResult
             // 
+            this.bCreateResult.Enabled = false;
             this.bCreateResult.Location = new System.Drawing.Point(6, 123);
             this.bCreateResult.Name = "bCreateResult";
             this.bCreateResult.Size = new System.Drawing.Size(130, 23);
@@ -157,6 +160,7 @@
             // 
             // bCreateExamples
             // 
+            this.bCreateExamples.Enabled = false;
             this.bCreateExamples.Location = new System.Drawing.Point(6, 94);
             this.bCreateExamples.Name = "bCreateExamples";
             this.bCreateExamples.Size = new System.Drawing.Size(130, 23);
@@ -165,12 +169,30 @@
             this.bCreateExamples.UseVisualStyleBackColor = true;
             this.bCreateExamples.Click += new System.EventHandler(this.bCreateExamples_Click);
             // 
+            // tbAddressToCopyFiles
+            // 
+            this.tbAddressToCopyFiles.Location = new System.Drawing.Point(12, 255);
+            this.tbAddressToCopyFiles.Name = "tbAddressToCopyFiles";
+            this.tbAddressToCopyFiles.Size = new System.Drawing.Size(224, 20);
+            this.tbAddressToCopyFiles.TabIndex = 11;
+            // 
+            // labelAddressToCopy
+            // 
+            this.labelAddressToCopy.AutoSize = true;
+            this.labelAddressToCopy.Location = new System.Drawing.Point(15, 230);
+            this.labelAddressToCopy.Name = "labelAddressToCopy";
+            this.labelAddressToCopy.Size = new System.Drawing.Size(169, 13);
+            this.labelAddressToCopy.TabIndex = 12;
+            this.labelAddressToCopy.Text = "Адрес для копирования файлов";
+            // 
             // OperatorSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 251);
+            this.ClientSize = new System.Drawing.Size(250, 325);
             this.ControlBox = false;
+            this.Controls.Add(this.labelAddressToCopy);
+            this.Controls.Add(this.tbAddressToCopyFiles);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bOK);
@@ -202,5 +224,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button bCreateExamples;
         private System.Windows.Forms.Button bCreateResult;
+        private System.Windows.Forms.TextBox tbAddressToCopyFiles;
+        private System.Windows.Forms.Label labelAddressToCopy;
     }
 }

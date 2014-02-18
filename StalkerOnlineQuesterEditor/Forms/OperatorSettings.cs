@@ -50,6 +50,7 @@ namespace StalkerOnlineQuesterEditor
                 localizeCheckBox.Checked = true;
                 localeComboBox.SelectedIndex = parent.settings.getCurrentIndexLocale();
             }
+            tbAddressToCopyFiles.Text = parent.settings.pathToCopyFiles;
         }
 
         private void operatorSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,11 +73,9 @@ namespace StalkerOnlineQuesterEditor
                 else
                     operatorIndex = operatorSelectComboBox.SelectedIndex;
                 parent.settings.setOperatorNumber(operatorIndex);
-                
-
             }
-            //locales settings
 
+            //locales settings
             parent.settings.setLocales(localesTextBox.Text);
             if (localizeCheckBox.Checked)
             {
@@ -84,8 +83,9 @@ namespace StalkerOnlineQuesterEditor
                     localizeCheckBox.Enabled = false;
             }
             else
-                parent.settings.setEditorMode();          
-            
+                parent.settings.setEditorMode();
+
+            parent.settings.pathToCopyFiles = tbAddressToCopyFiles.Text;
             parent.settings.saveSettings();
             this.Close();
         }

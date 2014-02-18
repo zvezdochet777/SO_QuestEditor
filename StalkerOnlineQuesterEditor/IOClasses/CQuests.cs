@@ -1,14 +1,10 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using System.IO;
-
-
-
-
+using System.Windows.Forms;
 
 
 namespace StalkerOnlineQuesterEditor
@@ -334,9 +330,6 @@ namespace StalkerOnlineQuesterEditor
         //! @todo выжигать каленым железом
         public void saveStartQuests(string fileName)
         {
-            string newOldName = (parent.settings.startQuestXML.Replace(".xml","")+"_" + DateTime.UtcNow.ToString() + ".xml").Replace(':', '_');
-            replaceOldQuestsFile(0, newOldName, fileName);
-            //replaceOldStartQuestsFile(0, newOldName);
             XDocument resultDoc2 = new XDocument(new XElement("root"));
             XElement element = new XElement("quests", getListAsString(startQuests));
             resultDoc2.Root.Add(element);
@@ -351,7 +344,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 resultDoc2.Save(w);
             }
-            //resultDoc2.Save(fileName);
+            copyResultFile(fileName);
         }
 
         //! Сохраняет данные по квестам в xml файл
@@ -360,32 +353,9 @@ namespace StalkerOnlineQuesterEditor
             save(fileName, this.quest);
         }
 
-        void replaceOldQuestsFile(int start, string name, string oldName)
-        {
-            name = name.Replace('/', '.');//for eng date format
-            if (File.Exists(name + start.ToString()))
-                replaceOldQuestsFile((start + 1), (name + "_" + start), name);
-            else if (File.Exists(oldName))
-                File.Move(oldName, name);
-        }
-
-
-        //void replaceOldQuestsFile(int start, string name)
-        //{
-        //    if (File.Exists(name + start.ToString()))
-        //        replaceOldQuestsFile((start + 1), (name + "_" + start));
-        //    else
-        //    {
-        //        File.Move(parent.settings.questXML, name);
-        //    }
-        //}
-
         //! Сохраняет данные по квестам в xml файл
         public void save(string fileName, Dictionary<int, CQuest> target)
         {
-            string newOldName = (fileName.Replace(".xml", "") + "_" + DateTime.UtcNow.ToString() + ".xml").Replace(':', '_');
-            replaceOldQuestsFile(0, newOldName, fileName);
-
             XDocument resultDoc = new XDocument(
                 new XDeclaration("1.0","utf-8",null),
                 new XElement("root")
@@ -499,6 +469,23 @@ namespace StalkerOnlineQuesterEditor
             {
                 resultDoc.Save(w);
             }
+            copyResultFile(fileName);
+        }
+
+        //! Копирование получившегося файла в директорию игры (она задается в настройках)
+        void copyResultFile(string filename)
+        {
+            string destPath = parent.settings.pathToCopyFiles + filename;
+            string srcPath = filename;
+            try
+            {
+                File.Copy(srcPath, destPath, true);
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно скопировать файл результата! Проверьте путь в настройках программы.", "Ошибка",
+                                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         List<XElement> getEffectElements(List<CEffect> effects)
@@ -565,7 +552,6 @@ namespace StalkerOnlineQuesterEditor
                 return "";
             else
                 return someInt.ToString();
-
         }
 
         public CQuest getQuest(int questID)
@@ -714,8 +700,6 @@ namespace StalkerOnlineQuesterEditor
 
         public void createResults()
         {
-            //System.Console.WriteLine("CQuests::createResults");
-
             if (!this.locales.Keys.Contains(parent.settings.getCurrentLocale()))
                 return;
             Dictionary<int, CQuest> results = new Dictionary<int, CQuest>();
