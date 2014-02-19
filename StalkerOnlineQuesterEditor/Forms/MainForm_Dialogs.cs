@@ -190,8 +190,13 @@ namespace StalkerOnlineQuesterEditor
             this.DialogShower.Camera.AddLayer(0, edgeLayer);
 
             // Show root node
-            float rootx = (float)(this.ClientSize.Width / 5);
-            float rooty = (float)(this.ClientSize.Height / 5);
+            float rootx = root.coordinates.X;
+            float rooty = root.coordinates.Y;
+            if (rootx == 0 && rooty == 0)
+            {
+                rootx = (float)(this.ClientSize.Width / 5);
+                rooty = (float)(this.ClientSize.Height / 5);
+            }
             SizeF size = CalcEllipsisSizeForNode(root.DialogID);
             PNode rootNode = PPath.CreateEllipse(rootx, rooty, size.Width, size.Height);
             rootNode.Brush = Brushes.Green;
@@ -523,7 +528,7 @@ namespace StalkerOnlineQuesterEditor
             addNodeOnDialogGraphView(dialogID, parentID);
         }
         //-------------------------------------------------
-        void DialogSelected(bool withGraph)
+        public void DialogSelected(bool withGraph)
         {
             CDialog root = new CDialog();
             DialogDict dialogs = getDialogDictionary(currentNPC);
