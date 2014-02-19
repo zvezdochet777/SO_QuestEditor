@@ -18,14 +18,17 @@ namespace StalkerOnlineQuesterEditor
         int NPCCount = 0;
         //! Экземпляр класса CQuests, хранящий всю инфу по квестам
         CQuests quests;
+        //! Экземпляр класса CDialogs, хранящий всю инфу по диалогам
+        CDialogs dialogs;
 
         //! Конструктор, получает элементы от главной формы
-        public StatisticsForm(MainForm parent, int _NPCCount, CQuests _quests)
+        public StatisticsForm(MainForm parent, int _NPCCount, CQuests _quests, CDialogs _dialogs)
         {
             InitializeComponent();
             this.parent = parent;
             NPCCount = _NPCCount;
             quests = _quests;
+            dialogs = _dialogs;
             calcStatistic();
         }
 
@@ -37,6 +40,11 @@ namespace StalkerOnlineQuesterEditor
             float Credits = new float();
             int countOfQuests = 0;
             int countOfAmountGold = 0;
+            int countOfDialogs = 0;
+            int countOfTitleLetters = 0;
+            int countOfTextLetters = 0;
+            int countOfTitleNoSpaces = 0;
+            int countOfTextNoSpaces = 0;
             int NpcDialogs = NPCCount;//parent.NPCBox.Items.Count;
             const int NumExp = 3;
             int[] countOfExQuests = { 0, 0, 0 };
@@ -66,8 +74,25 @@ namespace StalkerOnlineQuesterEditor
             for (int i = 0; i < NumExp; i++)
                 averageExp[i] = lExperience[i] / countOfExQuests[i];
 
+            foreach (string npc in dialogs.dialogs.Keys)
+            {
+                foreach (int id in dialogs.dialogs[npc].Keys)
+                {
+                    countOfDialogs++;
+                    countOfTextLetters += dialogs.dialogs[npc][id].Text.Length;
+                    countOfTitleLetters += dialogs.dialogs[npc][id].Title.Length;
+                    countOfTextNoSpaces += dialogs.dialogs[npc][id].Text.Replace(" ", "").Length;
+                    countOfTitleNoSpaces += dialogs.dialogs[npc][id].Title.Replace(" ", "").Length;
+                }
+            }
+
             str += "Общее количество NPC:        " + NpcDialogs.ToString() + "\n";
-            str += "Общее количество квестов:    " + countOfQuests.ToString() + "\n\n";
+            str += "Общее количество квестов:    " + countOfQuests.ToString() + "\n";
+            str += "Общее количество диалогов:   " + countOfDialogs.ToString() + "\n";
+            str += "Общее количество знаков в словах NPC:   " + countOfTextLetters.ToString() + 
+                                            ", без пробелов: " + countOfTextNoSpaces.ToString() + "\n";
+            str += "Общее количество знаков в словах ГГ:   " + countOfTitleLetters.ToString() +
+                                            ", без пробелов: " + countOfTitleNoSpaces.ToString() + "\n\n";
             str += "По наградам:\n";
             str += "Общее количество денег:         ";
             str += (Credits.ToString() + " руб." + "   Среднее: " + (Credits / countOfAmountGold).ToString() + " руб.\n");

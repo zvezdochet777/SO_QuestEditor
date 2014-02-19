@@ -1673,7 +1673,7 @@ namespace StalkerOnlineQuesterEditor
         //! Пункт главного меню - статистика
         private void StatisticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests);
+            StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests, dialogs);
             sf.Show();
         }
         //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
