@@ -19,6 +19,8 @@ namespace StalkerOnlineQuesterEditor
     using NPCLocales = Dictionary<string, Dictionary<string, Dictionary<int, CDialog>>>;
     //! Словарь <NPCName, <DialogID, CDifference>>
     using DifferenceDict = Dictionary<string, Dictionary<int, CDifference>>;
+    //! Словарь местоенахождения npc
+    using NPCLocationDict = Dictionary<string,string>;
 
     //! Класс обработки диалогов
     public class CDialogs
@@ -31,6 +33,8 @@ namespace StalkerOnlineQuesterEditor
         public NPCDicts dialogs = new NPCDicts();
         //! Словарь локалей
         public NPCLocales locales = new NPCLocales();
+        //! Словарь местонахождения NPC
+        public NPCLocationDict location = new NPCLocationDict();
 
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
         public CDialogs(MainForm parent)
@@ -45,6 +49,7 @@ namespace StalkerOnlineQuesterEditor
                     locales.Add(locale, new NPCDicts());
                 parseDialogsFile(DialogsXMLFile, this.locales[locale]);
             }
+            parseNpcLocationFile("npc_stat.xml",location);
         }
 
         //! Парсер xml - файла диалогов, записывает результат в target
@@ -276,6 +281,23 @@ namespace StalkerOnlineQuesterEditor
             }
             copyResultFile(fileName);
         }
+
+        //! Парсит файл с местонахождением NPC
+        void parseNpcLocationFile(string fileName, NPCLocationDict target)
+        {
+            if (!File.Exists(fileName))
+                return;
+
+            doc = XDocument.Load(fileName);
+            foreach (XElement location in doc.Root.Elements())
+            {
+                string name = location.Attribute("name").Value.ToString();
+                string map = location.Attribute("maps").Value.ToString();
+                if ( !target.ContainsKey(name) )
+                    target.Add(name, map);                
+            }
+        }
+
         //! Копирование получившегося файла в директорию игры (она задается в настройках)
         void copyResultFile(string filename)
         {

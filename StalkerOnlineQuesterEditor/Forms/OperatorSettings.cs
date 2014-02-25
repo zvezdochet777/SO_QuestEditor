@@ -112,6 +112,7 @@ namespace StalkerOnlineQuesterEditor
             if (parent.settings.getLocales() == "")
                 localizeCheckBox.Checked = false;
             localeComboBox.Enabled = localizeCheckBox.Checked;
+            localeComboBox.SelectedIndex = 0;
         }
 
         //! Закрытие формы настроек
@@ -127,7 +128,7 @@ namespace StalkerOnlineQuesterEditor
             parent.createExamples();
         }
 
-        //1 Вызывает функцию родителя CreateResult
+        //! Вызывает функцию родителя CreateResult
         private void bCreateResult_Click(object sender, EventArgs e)
         {
             parent.createResults();

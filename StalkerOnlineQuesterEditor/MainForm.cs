@@ -1686,9 +1686,10 @@ namespace StalkerOnlineQuesterEditor
             {
                 int d_num = dialogs.dialogs[npc].Count;
                 int q_num = quests.getCountOfQuests(npc);
+                string location = (dialogs.location.ContainsKey(npc))?(dialogs.location[npc]):("нет имени");
                 if( (checkDialog && d_num < numDialogs.Value) || (checkQuest && q_num < numQuests.Value) )
                 {
-                    object[] row = { npc, d_num, q_num, 0 };
+                    object[] row = { npc, d_num, q_num, location };
                     gridViewReview.Rows.Add( row );
                 }
             }

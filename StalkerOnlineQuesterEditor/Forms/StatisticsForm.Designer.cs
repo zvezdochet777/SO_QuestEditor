@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.bOK = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelInfo = new System.Windows.Forms.Panel();
             this.labelInfo = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.panelInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // bOK
@@ -44,13 +44,13 @@
             this.bOK.UseVisualStyleBackColor = true;
             this.bOK.Click += new System.EventHandler(this.bOK_Click);
             // 
-            // panel1
+            // panelInfo
             // 
-            this.panel1.Controls.Add(this.labelInfo);
-            this.panel1.Location = new System.Drawing.Point(17, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(545, 332);
-            this.panel1.TabIndex = 1;
+            this.panelInfo.Controls.Add(this.labelInfo);
+            this.panelInfo.Location = new System.Drawing.Point(17, 21);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(545, 332);
+            this.panelInfo.TabIndex = 1;
             // 
             // labelInfo
             // 
@@ -66,12 +66,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 416);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelInfo);
             this.Controls.Add(this.bOK);
             this.Name = "StatisticsForm";
             this.Text = "Статистика квестов и диалогов";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelInfo.ResumeLayout(false);
+            this.panelInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -79,7 +79,7 @@
         #endregion
 
         private System.Windows.Forms.Button bOK;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelInfo;
         private System.Windows.Forms.Label labelInfo;
     }
 }

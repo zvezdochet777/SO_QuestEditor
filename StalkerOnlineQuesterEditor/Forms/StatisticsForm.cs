@@ -164,22 +164,22 @@ namespace StalkerOnlineQuesterEditor
             str += "Общее количество NPC:        " + NPCCount.ToString() + "\n";
             str += "Общее количество квестов:    " + countOfQuests.ToString() + "\n";
             str += "Общее количество диалогов:   " + countOfDialogs.ToString() + "\n";
-            str += "Общее количество знаков в словах NPC:   " + countOfTextLetters.ToString() +
-                                            ", без пробелов: " + countOfTextNoSpaces.ToString() + "\n";
-            str += "Общее количество знаков в словах ГГ:   " + countOfTitleLetters.ToString() +
-                                            ", без пробелов: " + countOfTitleNoSpaces.ToString() + "\n";
-            str += "Общее количество знаков в описаниях квестов:   " + countOfQuestTexts.ToString() +
-                                            ", без пробелов: " + countOfQuestSpaceless.ToString() + "\n\n";
+            str += "Общее количество знаков в словах NPC:   " + countOfTextLetters.ToString() + "\n";
+                                            //", без пробелов: " + countOfTextNoSpaces.ToString() + "\n";
+            str += "Общее количество знаков в словах ГГ:   " + countOfTitleLetters.ToString() + "\n";
+                                            //", без пробелов: " + countOfTitleNoSpaces.ToString() + "\n";
+            str += "Общее количество знаков в описаниях квестов:   " + countOfQuestTexts.ToString() + "\n\n";
+                                            //", без пробелов: " + countOfQuestSpaceless.ToString() + "\n\n";
 
             str += "ОСТАЛОСЬ ЛОКАЛИЗОВАТЬ: \n";
             str += "Диалогов:   " + locDialogs.ToString() + "\n";
-            str += "Знаков в словах NPC:   " + locText.ToString() +
-                                            ", без пробелов: " + locTextSpaceless.ToString() + "\n";
-            str += "Знаков в словах ГГ:   " + locTitle.ToString() +
-                                            ", без пробелов: " + locTitleSpaceless.ToString() + "\n";
+            str += "Знаков в словах NPC:   " + locText.ToString() + "\n";
+                                            //", без пробелов: " + locTextSpaceless.ToString() + "\n";
+            str += "Знаков в словах ГГ:   " + locTitle.ToString() + "\n";
+                                            //", без пробелов: " + locTitleSpaceless.ToString() + "\n";
             str += "Квестов:   " + locQuestCount.ToString() + "\n";
-            str += "Знаков в названиях и описаниях квестов:   " + locQuestText.ToString() +
-                                            ", без пробелов: " + locQuestSpaceless.ToString() + "\n\n";
+            str += "Знаков в названиях и описаниях квестов:   " + locQuestText.ToString() + "\n\n";
+                                            //", без пробелов: " + locQuestSpaceless.ToString() + "\n\n";
 
             str += "По наградам:\n";
             str += "Общее количество денег:         ";
