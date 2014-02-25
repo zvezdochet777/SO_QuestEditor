@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor
 {
-    //! Словарь...
+    //! Словарь <QuestID, CQuest>
     using NPCQuestDict = Dictionary<int, CQuest>;
 
     //! Словарь локализаций квестов <LocaleName, <QuestID, CQuest>>

@@ -2,7 +2,7 @@
 <root>
   <operator>0</operator>
   <locales>ENG,GER</locales>
-  <mode>0</mode>
+  <mode>1</mode>
   <current_locale>0</current_locale>
-  <pathToCopyFiles>D:\StalkerOnline\res\scripts\server_common\data\</pathToCopyFiles>
+  <pathToCopyFiles>D:\temp</pathToCopyFiles>
 </root>

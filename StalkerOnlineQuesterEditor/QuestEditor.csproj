@@ -302,7 +302,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ResourceClasses\Bitmap1.bmp" />
     <Content Include="QuestEditor.sdm" />
     <None Include="res\but_indicate.png" />
   </ItemGroup>

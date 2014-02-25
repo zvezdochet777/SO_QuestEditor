@@ -36,7 +36,7 @@
             // 
             // bOK
             // 
-            this.bOK.Location = new System.Drawing.Point(255, 286);
+            this.bOK.Location = new System.Drawing.Point(251, 381);
             this.bOK.Name = "bOK";
             this.bOK.Size = new System.Drawing.Size(75, 23);
             this.bOK.TabIndex = 0;
@@ -47,9 +47,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.labelInfo);
-            this.panel1.Location = new System.Drawing.Point(21, 26);
+            this.panel1.Location = new System.Drawing.Point(17, 21);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(545, 254);
+            this.panel1.Size = new System.Drawing.Size(545, 332);
             this.panel1.TabIndex = 1;
             // 
             // labelInfo
@@ -65,7 +65,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 343);
+            this.ClientSize = new System.Drawing.Size(578, 416);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bOK);
             this.Name = "StatisticsForm";

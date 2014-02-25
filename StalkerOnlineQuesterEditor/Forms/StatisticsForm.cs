@@ -21,6 +21,31 @@ namespace StalkerOnlineQuesterEditor
         //! Экземпляр класса CDialogs, хранящий всю инфу по диалогам
         CDialogs dialogs;
 
+        float Credits;
+        int countOfQuests;
+        int countOfAmountGold;
+        int[] countOfExQuests = { 0, 0, 0 };
+        List<int> lExperience;
+        float[] averageExp = { 0, 0, 0 };
+
+        int countOfDialogs;
+        int countOfTitleLetters;
+        int countOfTextLetters;
+        int countOfTitleNoSpaces;
+        int countOfTextNoSpaces;
+        int countOfQuestTexts;
+        int countOfQuestSpaceless;
+        Dictionary<string, Dictionary<int, CDialog>> loc = new Dictionary<string, Dictionary<int, CDialog>>();
+        int locDialogs;
+        int locTitle;
+        int locText;
+        int locTitleSpaceless;
+        int locTextSpaceless;
+        Dictionary<int, CQuest> locQuests = new Dictionary<int,CQuest>();
+        int locQuestCount;
+        int locQuestText;
+        int locQuestSpaceless;
+
         //! Конструктор, получает элементы от главной формы
         public StatisticsForm(MainForm parent, int _NPCCount, CQuests _quests, CDialogs _dialogs)
         {
@@ -30,49 +55,59 @@ namespace StalkerOnlineQuesterEditor
             quests = _quests;
             dialogs = _dialogs;
             calcStatistic();
+            showOnScreen();
         }
 
         //! Заполняет статистику для формы
         void calcStatistic()
         {
-            string str = "";
-
-            float Credits = new float();
-            int countOfQuests = 0;
-            int countOfAmountGold = 0;
-            int countOfDialogs = 0;
-            int countOfTitleLetters = 0;
-            int countOfTextLetters = 0;
-            int countOfTitleNoSpaces = 0;
-            int countOfTextNoSpaces = 0;
-            int NpcDialogs = NPCCount;//parent.NPCBox.Items.Count;
+            calcRewards();
+            calcSymbolsInDialogs();
+            calcSymbolsInQuests();
+        }
+        //! Считает денежные вознагражлдения и опыт
+        void calcRewards()
+        {
             const int NumExp = 3;
-            int[] countOfExQuests = { 0, 0, 0 };
-            List<int> lExperience = new List<int>(3);
-            float[] averageExp = { 0, 0, 0 };
+            Credits = new float();
+            countOfQuests = 0;
+            countOfAmountGold = 0;
+            lExperience = new List<int>(3);
             lExperience.Add(0); lExperience.Add(0); lExperience.Add(0);
             foreach (CQuest quest in quests.quest.Values)
             {
-                if (quest.Additional.IsSubQuest == 0)
-                {
-                    countOfQuests++;
-                    if (quest.Reward.Expirience.Any())
-                    {
-                        for (int i = 0; i < NumExp; i++)
-                            if (quest.Reward.Expirience[i] != 0)
-                                countOfExQuests[i]++;
-                    }
-                    if (quest.Reward.Credits != 0)
-                        countOfAmountGold++;
-                }
-                Credits += quest.Reward.Credits;
-
+                countOfQuests++;
                 if (quest.Reward.Expirience.Any())
+                {
                     for (int i = 0; i < NumExp; i++)
+                    {
                         lExperience[i] += quest.Reward.Expirience[i];
+                        if (quest.Reward.Expirience[i] != 0)
+                            countOfExQuests[i]++;
+                    }
+                }
+                //if (quest.Reward.Credits != 0)
+                    countOfAmountGold++;
+                Credits += quest.Reward.Credits;
             }
             for (int i = 0; i < NumExp; i++)
-                averageExp[i] = lExperience[i] / countOfExQuests[i];
+                averageExp[i] = lExperience[i] / countOfExQuests[i];        
+        }
+        //! Считает число символов в диалогах и квестах (для расчета стоимости услуг локализации)
+        private void calcSymbolsInDialogs()
+        {
+            countOfTitleLetters = 0;
+            countOfTextLetters = 0;
+            countOfTitleNoSpaces = 0;
+            countOfTextNoSpaces = 0;
+            countOfDialogs = 0;
+
+            loc = dialogs.locales[parent.settings.getCurrentLocale()];
+            locDialogs = 0;
+            locTitle = 0;
+            locText = 0;
+            locTitleSpaceless = 0;
+            locTextSpaceless = 0;
 
             foreach (string npc in dialogs.dialogs.Keys)
             {
@@ -83,16 +118,69 @@ namespace StalkerOnlineQuesterEditor
                     countOfTitleLetters += dialogs.dialogs[npc][id].Title.Length;
                     countOfTextNoSpaces += dialogs.dialogs[npc][id].Text.Replace(" ", "").Length;
                     countOfTitleNoSpaces += dialogs.dialogs[npc][id].Title.Replace(" ", "").Length;
+                
+                    if ( !loc.ContainsKey(npc) || !loc[npc].ContainsKey(id) || loc[npc][id].version < dialogs.dialogs[npc][id].version)
+                    {
+                        locDialogs++;
+                        locTitle += dialogs.dialogs[npc][id].Title.Length;
+                        locText += dialogs.dialogs[npc][id].Text.Length;
+                        locTitleSpaceless += dialogs.dialogs[npc][id].Title.Replace(" ", "").Length;
+                        locTextSpaceless += dialogs.dialogs[npc][id].Text.Replace(" ", "").Length;                        
+                    }
                 }
             }
+        }
+        //! Считает число символов для перевода в квестах
+        void calcSymbolsInQuests()
+        {
+            countOfQuestTexts = 0;
+            countOfQuestSpaceless = 0;
+            locQuestCount = 0;
+            locQuestText = 0;
+            locQuestSpaceless = 0;
+            locQuests = quests.locales[parent.settings.getCurrentLocale()];
+            foreach (CQuest quest in quests.quest.Values)
+            {
+                countOfQuestTexts += quest.QuestInformation.Title.Length;
+                countOfQuestTexts += quest.QuestInformation.Description.Length;
+                countOfQuestSpaceless += quest.QuestInformation.Title.Replace(" ","").Length;
+                countOfQuestSpaceless += quest.QuestInformation.Description.Replace(" ", "").Length;
 
-            str += "Общее количество NPC:        " + NpcDialogs.ToString() + "\n";
+                if (!locQuests.ContainsKey(quest.QuestID) || locQuests[quest.QuestID].Version < quest.Version)
+                {
+                    locQuestCount++;
+                    locQuestText += quest.QuestInformation.Title.Length;
+                    locQuestText += quest.QuestInformation.Description.Length;
+                    locQuestSpaceless += quest.QuestInformation.Title.Replace(" ", "").Length;
+                    locQuestSpaceless += quest.QuestInformation.Description.Replace(" ", "").Length;
+                }
+            }        
+        }
+
+        //! Показывает результаты на экране
+        void showOnScreen()
+        {
+            string str = "";
+            str += "Общее количество NPC:        " + NPCCount.ToString() + "\n";
             str += "Общее количество квестов:    " + countOfQuests.ToString() + "\n";
             str += "Общее количество диалогов:   " + countOfDialogs.ToString() + "\n";
-            str += "Общее количество знаков в словах NPC:   " + countOfTextLetters.ToString() + 
+            str += "Общее количество знаков в словах NPC:   " + countOfTextLetters.ToString() +
                                             ", без пробелов: " + countOfTextNoSpaces.ToString() + "\n";
             str += "Общее количество знаков в словах ГГ:   " + countOfTitleLetters.ToString() +
-                                            ", без пробелов: " + countOfTitleNoSpaces.ToString() + "\n\n";
+                                            ", без пробелов: " + countOfTitleNoSpaces.ToString() + "\n";
+            str += "Общее количество знаков в описаниях квестов:   " + countOfQuestTexts.ToString() +
+                                            ", без пробелов: " + countOfQuestSpaceless.ToString() + "\n\n";
+
+            str += "ОСТАЛОСЬ ЛОКАЛИЗОВАТЬ: \n";
+            str += "Диалогов:   " + locDialogs.ToString() + "\n";
+            str += "Знаков в словах NPC:   " + locText.ToString() +
+                                            ", без пробелов: " + locTextSpaceless.ToString() + "\n";
+            str += "Знаков в словах ГГ:   " + locTitle.ToString() +
+                                            ", без пробелов: " + locTitleSpaceless.ToString() + "\n";
+            str += "Квестов:   " + locQuestCount.ToString() + "\n";
+            str += "Знаков в названиях и описаниях квестов:   " + locQuestText.ToString() +
+                                            ", без пробелов: " + locQuestSpaceless.ToString() + "\n\n";
+
             str += "По наградам:\n";
             str += "Общее количество денег:         ";
             str += (Credits.ToString() + " руб." + "   Среднее: " + (Credits / countOfAmountGold).ToString() + " руб.\n");
@@ -106,7 +194,7 @@ namespace StalkerOnlineQuesterEditor
             str += "\aПоддержка:         ";
             if (countOfExQuests[2] != 0 || lExperience[2] != 0)
                 str += (lExperience[2].ToString() + "   Среднее: " + averageExp[2].ToString() + "\n");
-            labelInfo.Text = str;
+            labelInfo.Text = str;        
         }
 
         //! Нажатие ОК - закрытие формы

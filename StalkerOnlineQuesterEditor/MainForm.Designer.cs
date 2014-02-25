@@ -75,6 +75,7 @@ namespace StalkerOnlineQuesterEditor
             this.colNPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сolDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сolQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
             this.labelReviewOutputed = new System.Windows.Forms.Label();
             this.gbNPC = new System.Windows.Forms.GroupBox();
@@ -687,7 +688,8 @@ namespace StalkerOnlineQuesterEditor
             this.gridViewReview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNPCName,
             this.сolDialogsNum,
-            this.сolQuestsNum});
+            this.сolQuestsNum,
+            this.colLocation});
             this.gridViewReview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridViewReview.Location = new System.Drawing.Point(0, 104);
             this.gridViewReview.Name = "gridViewReview";
@@ -708,6 +710,11 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.сolQuestsNum.HeaderText = "Квесты";
             this.сolQuestsNum.Name = "сolQuestsNum";
+            // 
+            // colLocation
+            // 
+            this.colLocation.HeaderText = "Карта";
+            this.colLocation.Name = "colLocation";
             // 
             // panelReviewButtons
             // 
@@ -1543,11 +1550,12 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.NumericUpDown numQuests;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbNumQuests;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelReviewOutputed;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
         private System.Windows.Forms.DataGridViewTextBoxColumn сolDialogsNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn сolQuestsNum;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label labelReviewOutputed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
 
 
     }
