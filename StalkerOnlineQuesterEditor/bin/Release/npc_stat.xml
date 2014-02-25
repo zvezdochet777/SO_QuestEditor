@@ -1,0 +1,744 @@
+<root>
+  <NPC chunk="fff5ffffo" coord="&#9;98.383240 2.218098 16.948044&#9;" maps="vesuvius" name="Ahmed_Fan_Blan"/>
+  <NPC chunk="fff5ffffo" coord="&#9;96.170654 2.216433 21.306908&#9;" maps="vesuvius" name="Aibolit"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-12.557106 5.198951 -4.501539&#9;" maps="city_lubech" name="Aid_trader"/>
+  <NPC chunk="c38c9275i" coord="&#9;-34.292610 0.518776 6.054764&#9;" maps="city_lubech" name="Aid_trader"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-12.557106 5.198951 -4.501539&#9;" maps="city_lubech_winter" name="Aid_trader"/>
+  <NPC chunk="c38c9275i" coord="&#9;-34.292610 0.518776 6.054764&#9;" maps="city_lubech_winter" name="Aid_trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;39.902294 0.000001 76.049278&#9;" maps="main" name="Aid_trader"/>
+  <NPC chunk="000cfffco" coord="&#9;78.689331 0.206055 8.344086&#9;" maps="outlands" name="Aid_trader"/>
+  <NPC chunk="fffcfffdo" coord="&#9;51.055603 4.885669 85.377441&#9;" maps="outlands" name="Aid_trader"/>
+  <NPC chunk="fffffff9o" coord="&#9;24.888031 6.620758 67.712524&#9;" maps="steppe" name="Aid_trader"/>
+  <NPC chunk="fffb0005o" coord="&#9;77.874908 45.032219 67.393402&#9;" maps="tunguska" name="Aid_trader"/>
+  <NPC chunk="00000000o" coord="&#9;27.548000 0.000000 37.789997&#9;" maps="zoo" name="Aid_trader"/>
+  <NPC chunk="00000000o" coord="&#9;29.080000 0.000000 37.690998&#9;" maps="zoo" name="Aid_trader"/>
+  <NPC chunk="00000000o" coord="&#9;24.811628 0.000000 37.889065&#9;" maps="zoo" name="Aid_trader"/>
+  <NPC chunk="00000000o" coord="&#9;30.749996 0.007083 37.721989&#9;" maps="zoo" name="Aid_trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;7.240799 0.000000 85.591415&#9;" maps="zoo" name="Aid_trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;7.189476 -0.000001 92.951584&#9;" maps="zoo" name="Aid_trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;7.148262 0.000812 88.069984&#9;" maps="zoo" name="Aid_trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;7.148094 0.000024 90.560913&#9;" maps="zoo" name="Aid_trader"/>
+  <NPC chunk="00000000o" coord="&#9;31.535917 4.863288 55.869156&#9;" maps="mm_space" name="Aid_trader_noob"/>
+  <NPC chunk="00000000o" coord="&#9;31.535917 4.863288 55.869156&#9;" maps="so_origins" name="Aid_trader_noob"/>
+  <NPC chunk="8826e2a3i" coord="&#9;35.451248 0.496497 11.602554&#9;" maps="city_lubech" name="Ammo_trader"/>
+  <NPC chunk="97dc02e3i" coord="&#9;-12.886505 1.566010 9.106567&#9;" maps="city_lubech_apartments" name="Ammo_trader"/>
+  <NPC chunk="8826e2a3i" coord="&#9;35.451248 0.496497 11.602554&#9;" maps="city_lubech_winter" name="Ammo_trader"/>
+  <NPC chunk="0000fff9o" coord="&#9;30.535791 0.001953 5.513184&#9;" maps="dm_outlands_village" name="Ammo_trader"/>
+  <NPC chunk="fffefffao" coord="&#9;44.032272 -0.015625 33.845825&#9;" maps="dm_outlands_village" name="Ammo_trader"/>
+  <NPC chunk="00010002o" coord="&#9;97.734161 0.141602 17.572708&#9;" maps="dm_rocks" name="Ammo_trader"/>
+  <NPC chunk="fffeffffo" coord="&#9;90.065109 0.400391 29.250702&#9;" maps="dm_rocks" name="Ammo_trader"/>
+  <NPC chunk="fffe0002o" coord="&#9;74.311905 -0.040039 26.268341&#9;" maps="dm_ryabinushka" name="Ammo_trader"/>
+  <NPC chunk="fffffffdo" coord="&#9;18.257332 2.019531 50.506027&#9;" maps="dm_ryabinushka" name="Ammo_trader"/>
+  <NPC chunk="00020002o" coord="&#9;28.330307 2.881835 31.657364&#9;" maps="dm_snowland" name="Ammo_trader"/>
+  <NPC chunk="fffeffffo" coord="&#9;89.867279 3.539062 3.420906&#9;" maps="dm_snowland" name="Ammo_trader"/>
+  <NPC chunk="fffc0000o" coord="&#9;6.921661 40.000156 71.993492&#9;" maps="novaya" name="Ammo_trader"/>
+  <NPC chunk="0007fffdo" coord="&#9;27.988281 8.825291 45.353027&#9;" maps="outlands" name="Ammo_trader"/>
+  <NPC chunk="000cfffco" coord="&#9;80.507080 0.362459 4.620544&#9;" maps="outlands" name="Ammo_trader"/>
+  <NPC chunk="fffcfffdo" coord="&#9;64.765900 1.284870 41.023315&#9;" maps="outlands" name="Ammo_trader"/>
+  <NPC chunk="d4164a10i" coord="&#9;8.829071 3.493525 2.271606&#9;" maps="outlands" name="Ammo_trader"/>
+  <NPC chunk="fffbffffo" coord="&#9;27.788788 -5.857992 4.958206&#9;" maps="outlands_airport" name="Ammo_trader"/>
+  <NPC chunk="fffffffao" coord="&#9;39.680550 6.555421 0.110413&#9;" maps="steppe" name="Ammo_trader"/>
+  <NPC chunk="fffb0005o" coord="&#9;72.957214 40.336906 89.415253&#9;" maps="tunguska" name="Ammo_trader"/>
+  <NPC chunk="00000006o" coord="&#9;15.342083 19.914616 13.104126&#9;" maps="vesuvius" name="Ammo_trader"/>
+  <NPC chunk="00090006o" coord="&#9;66.550537 6.851512 63.438049&#9;" maps="vesuvius" name="Ammo_trader"/>
+  <NPC chunk="b45fd048i" coord="&#9;3.871399 0.000000 -4.516235&#9;" maps="vesuvius" name="Ammo_trader"/>
+  <NPC chunk="0000ffffo" coord="&#9;9.965224 0.000002 71.962990&#9;" maps="zoo" name="Ammo_trader"/>
+  <NPC chunk="351d135ci" coord="&#9;59.677101 0.007399 -12.831787&#9;" maps="outlands" name="Ammo_trader_bandit"/>
+  <NPC chunk="12dc1c7ei" coord="&#9;51.808826 -0.479759 -15.567993&#9;" maps="outlands" name="Ammo_trader_bandit"/>
+  <NPC chunk="00000000o" coord="&#9;36.468750 4.862829 72.075844&#9;" maps="mm_space" name="Ammo_trader_noob"/>
+  <NPC chunk="00000000o" coord="&#9;36.468750 4.862829 72.075844&#9;" maps="so_origins" name="Ammo_trader_noob"/>
+  <NPC chunk="8826e2a3i" coord="&#9;36.178982 0.495839 4.345921&#9;" maps="city_lubech" name="Armor_trader"/>
+  <NPC chunk="8826e2a3i" coord="&#9;36.178982 0.495839 4.345921&#9;" maps="city_lubech_winter" name="Armor_trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;37.286186 -0.000071 76.141106&#9;" maps="main" name="Armor_trader"/>
+  <NPC chunk="351d135ci" coord="&#9;60.031273 0.000000 -9.688232&#9;" maps="outlands" name="Armor_trader"/>
+  <NPC chunk="fffcfffdo" coord="&#9;68.091125 1.443217 34.072021&#9;" maps="outlands" name="Armor_trader"/>
+  <NPC chunk="12dc1c7ei" coord="&#9;49.222687 -0.553274 -16.552002&#9;" maps="outlands" name="Armor_trader"/>
+  <NPC chunk="d4164a10i" coord="&#9;7.566040 -0.000196 7.734009&#9;" maps="outlands" name="Armor_trader"/>
+  <NPC chunk="fffffff9o" coord="&#9;14.136597 7.045008 95.051392&#9;" maps="steppe" name="Armor_trader"/>
+  <NPC chunk="00000006o" coord="&#9;15.224906 19.914509 15.064331&#9;" maps="vesuvius" name="Armor_trader"/>
+  <NPC chunk="00090006o" coord="&#9;63.332520 6.849786 52.056274&#9;" maps="vesuvius" name="Armor_trader"/>
+  <NPC chunk="76bf2f77i" coord="&#9;3.525160 0.000002 -0.290283&#9;" maps="vesuvius" name="Armor_trader"/>
+  <NPC chunk="00000000o" coord="&#9;43.522152 4.862927 71.771774&#9;" maps="mm_space" name="Armor_trader_noob"/>
+  <NPC chunk="00000000o" coord="&#9;43.522152 4.862927 71.771774&#9;" maps="so_origins" name="Armor_trader_noob"/>
+  <NPC chunk="0007fffdo" coord="&#9;23.294678 8.762693 43.083221&#9;" maps="outlands" name="Army_guardian"/>
+  <NPC chunk="00050005o" coord="&#9;45.416016 10.434319 27.616211&#9;" maps="steppe_dust" name="Army_guardian"/>
+  <NPC chunk="0007fff9o" coord="&#9;34.983826 8.431358 48.024719&#9;" maps="vesuvius" name="Army_guardian"/>
+  <NPC chunk="0007fff9o" coord="&#9;27.649536 9.570001 72.199890&#9;" maps="vesuvius" name="Army_guardian"/>
+  <NPC chunk="0007fffao" coord="&#9;42.761902 9.463865 2.413635&#9;" maps="vesuvius" name="Army_guardian"/>
+  <NPC chunk="fffffffeo" coord="&#9;70.909798 0.061253 23.548721&#9;" maps="city_lubech" name="Arthur"/>
+  <NPC chunk="fffffffeo" coord="&#9;70.909798 0.061253 23.548721&#9;" maps="city_lubech_winter" name="Arthur"/>
+  <NPC chunk="0007fffdo" coord="&#9;17.469421 8.260417 68.604370&#9;" maps="outlands" name="Bank_Imarek"/>
+  <NPC chunk="00000001o" coord="&#9;47.230301 40.017570 58.558495&#9;" maps="novaya" name="Bank_NZ"/>
+  <NPC chunk="00000006o" coord="&#9;46.640240 15.914083 6.513977&#9;" maps="vesuvius" name="Bank_Naemnik"/>
+  <NPC chunk="00000006o" coord="&#9;16.683321 19.914633 9.618103&#9;" maps="vesuvius" name="Bank_RadioTower"/>
+  <NPC chunk="c38c9275i" coord="&#9;-20.142910 0.519090 -2.283562&#9;" maps="city_lubech" name="Bank_SZ"/>
+  <NPC chunk="c38c9275i" coord="&#9;-22.117456 0.519065 -2.210047&#9;" maps="city_lubech" name="Bank_SZ"/>
+  <NPC chunk="c38c9275i" coord="&#9;-23.921425 0.519094 -2.314665&#9;" maps="city_lubech" name="Bank_SZ"/>
+  <NPC chunk="c38c9275i" coord="&#9;-20.142910 0.519090 -2.283562&#9;" maps="city_lubech_winter" name="Bank_SZ"/>
+  <NPC chunk="c38c9275i" coord="&#9;-22.117456 0.519065 -2.210047&#9;" maps="city_lubech_winter" name="Bank_SZ"/>
+  <NPC chunk="c38c9275i" coord="&#9;-23.921425 0.519094 -2.314665&#9;" maps="city_lubech_winter" name="Bank_SZ"/>
+  <NPC chunk="fffcfffdo" coord="&#9;72.390686 3.071519 66.561172&#9;" maps="outlands" name="Bank_SZ"/>
+  <NPC chunk="00000000o" coord="&#9;27.302252 -0.000001 55.511520&#9;" maps="zoo" name="Bank_SZ"/>
+  <NPC chunk="000cfffco" coord="&#9;94.369873 -1.509765 27.539917&#9;" maps="outlands" name="Bank_Swamp"/>
+  <NPC chunk="00000000o" coord="&#9;32.241932 -0.000001 55.902351&#9;" maps="zoo" name="Bank_Swamp"/>
+  <NPC chunk="fffffff9o" coord="&#9;54.404015 0.000000 57.940247&#9;" maps="outlands" name="Bank_Thief"/>
+  <NPC chunk="fffb0005o" coord="&#9;77.345306 45.031403 81.973602&#9;" maps="tunguska" name="Bank_Tunguska"/>
+  <NPC chunk="210a2804i" coord="&#9;3.794029 0.001000 -2.039063&#9;" maps="outlands" name="Bank_tunnel"/>
+  <NPC chunk="351d135ci" coord="&#9;68.014114 0.006435 -16.368774&#9;" maps="outlands" name="Bank_tunnel"/>
+  <NPC chunk="12dc1c7ei" coord="&#9;56.379410 -0.496811 -15.676758&#9;" maps="outlands" name="Bank_tunnel"/>
+  <NPC chunk="0007fff9o" coord="&#9;24.194275 9.570307 80.936279&#9;" maps="vesuvius" name="Bank_vezuv_uchenie"/>
+  <NPC chunk="00000000o" coord="&#9;29.880938 -0.000001 56.170174&#9;" maps="zoo" name="Bank_vezuv_uchenie"/>
+  <NPC chunk="76bf2f77i" coord="&#9;-4.125176 0.000067 -7.492004&#9;" maps="vesuvius" name="Barmen_LVZ"/>
+  <NPC chunk="ffff0002o" coord="&#9;64.751221 0.000000 99.890915&#9;" maps="city_lubech" name="Basmach"/>
+  <NPC chunk="ffff0002o" coord="&#9;64.751221 0.000000 99.890915&#9;" maps="city_lubech_winter" name="Basmach"/>
+  <NPC chunk="000cfffco" coord="&#9;79.384766 3.352330 5.203278&#9;" maps="outlands" name="Bolotnik"/>
+  <NPC chunk="0009fff8o" coord="&#9;39.900024 48.156250 65.900024&#9;" maps="outlands" name="Buch"/>
+  <NPC chunk="ffff0000o" coord="&#9;58.905975 0.596382 68.698235&#9;" maps="pk_prison01" name="Bugor"/>
+  <NPC chunk="00100002o" coord="&#9;48.069458 -6.521510 99.505966&#9;" maps="outlands" name="Cap_Bljdad"/>
+  <NPC chunk="663cddd8i" coord="&#9;-2.027485 3.400260 6.333279&#9;" maps="base02" name="CaptureBase_Sklad"/>
+  <NPC chunk="1c6506d0i" coord="&#9;-2.027485 3.400260 6.333279&#9;" maps="base03" name="CaptureBase_Sklad"/>
+  <NPC chunk="95ecc6a2i" coord="&#9;-5.361248 -0.000109 0.127659&#9;" maps="base04" name="CaptureBase_Sklad"/>
+  <NPC chunk="68e36801i" coord="&#9;-5.540993 0.000020 0.353920&#9;" maps="base05" name="CaptureBase_Sklad"/>
+  <NPC chunk="50afd269i" coord="&#9;-5.500095 0.000028 0.143391&#9;" maps="base06" name="CaptureBase_Sklad"/>
+  <NPC chunk="7804a63di" coord="&#9;-2.027485 3.400260 6.333279&#9;" maps="base_adom" name="CaptureBase_Sklad"/>
+  <NPC chunk="ed01c9e9i" coord="&#9;-5.381203 -0.000243 0.144302&#9;" maps="base_citadel" name="CaptureBase_Sklad"/>
+  <NPC chunk="f68b3614i" coord="&#9;-2.027485 3.400260 6.333279&#9;" maps="base_dark_angels" name="CaptureBase_Sklad"/>
+  <NPC chunk="4ac45f20i" coord="&#9;-5.439175 0.000012 0.073181&#9;" maps="base_dolg" name="CaptureBase_Sklad"/>
+  <NPC chunk="adbb3178i" coord="&#9;-2.288241 3.373735 6.381268&#9;" maps="base_kuvalda" name="CaptureBase_Sklad"/>
+  <NPC chunk="ec4e7eeei" coord="&#9;-2.027485 3.400260 6.333279&#9;" maps="base_SILENCE" name="CaptureBase_Sklad"/>
+  <NPC chunk="eb38de8bi" coord="&#9;-5.364964 -0.000009 0.133312&#9;" maps="base_sindikat" name="CaptureBase_Sklad"/>
+  <NPC chunk="9c2fce3di" coord="&#9;-2.306288 3.373723 6.260986&#9;" maps="base_soyuz_mutaboev" name="CaptureBase_Sklad"/>
+  <NPC chunk="e6a4dc41i" coord="&#9;-2.027485 3.400260 6.333279&#9;" maps="base_steel_brothers" name="CaptureBase_Sklad"/>
+  <NPC chunk="fba7d32ei" coord="&#9;-2.169277 3.373676 6.295551&#9;" maps="base_ussr" name="CaptureBase_Sklad"/>
+  <NPC chunk="9c2fce3di" coord="&#9;-2.306288 3.373723 6.260986&#9;" maps="base_vesuvius_lep" name="CaptureBase_Sklad"/>
+  <NPC chunk="71be2386i" coord="&#9;-5.377915 0.000040 0.136990&#9;" maps="base_voenstal" name="CaptureBase_Sklad"/>
+  <NPC chunk="f1d600b1i" coord="&#9;-5.491535 -0.000000 0.146461&#9;" maps="base_vzvod45" name="CaptureBase_Sklad"/>
+  <NPC chunk="4efd38eci" coord="&#9;-2.027485 3.400260 6.333279&#9;" maps="base_zaria" name="CaptureBase_Sklad"/>
+  <NPC chunk="8d4b0130i" coord="&#9;-2.027485 3.400260 6.333279&#9;" maps="base__inquisition" name="CaptureBase_Sklad"/>
+  <NPC chunk="0001ffffo" coord="&#9;72.570000 0.000001 83.603477&#9;" maps="zoo2" name="CaptureBase_Sklad"/>
+  <NPC chunk="0007fff9o" coord="&#9;31.736206 9.569991 79.645508&#9;" maps="vesuvius" name="Chereshnikov"/>
+  <NPC chunk="1bda2d34i" coord="&#9;7.490364 -3.961283 13.571564&#9;" maps="city_lubech" name="Clan_manager"/>
+  <NPC chunk="1bda2d34i" coord="&#9;7.490364 -3.961283 13.571564&#9;" maps="city_lubech_winter" name="Clan_manager"/>
+  <NPC chunk="ffff0000o" coord="&#9;48.271549 0.000002 35.736126&#9;" maps="main" name="Clan_manager"/>
+  <NPC chunk="00000000o" coord="&#9;54.156116 0.000571 64.609627&#9;" maps="zoo" name="Clan_manager"/>
+  <NPC chunk="00090006o" coord="&#9;59.477661 6.849607 54.284851&#9;" maps="vesuvius" name="Collector"/>
+  <NPC chunk="959742b8i" coord="&#9;3.384247 -0.000004 -0.640060&#9;" maps="novaya" name="Dark_Stalker"/>
+  <NPC chunk="00000000o" coord="&#9;36.917839 4.862776 59.997379&#9;" maps="mm_space" name="Dejurnyi"/>
+  <NPC chunk="00000000o" coord="&#9;33.210709 4.863017 68.646736&#9;" maps="so_origins" name="Dejurnyi"/>
+  <NPC chunk="0000ffffo" coord="&#9;84.992294 0.000092 84.367538&#9;" maps="city_lubech" name="Dima_golova"/>
+  <NPC chunk="0000ffffo" coord="&#9;84.992294 0.000092 84.367538&#9;" maps="city_lubech_winter" name="Dima_golova"/>
+  <NPC chunk="ffdefffco" coord="&#9;71.579102 -10.778465 56.519379&#9;" maps="outlands_caravan" name="Diogen"/>
+  <NPC chunk="00000005o" coord="&#9;34.032490 23.007532 32.812225&#9;" maps="vesuvius" name="Dipol"/>
+  <NPC chunk="0007fff9o" coord="&#9;0.377563 59.702148 31.217041&#9;" maps="outlands" name="Dirty_Iuriy"/>
+  <NPC chunk="0007fff9o" coord="&#9;28.534607 9.570307 85.631348&#9;" maps="vesuvius" name="Doc_Home"/>
+  <NPC chunk="fffe0000o" coord="&#9;44.543396 0.000000 11.670530&#9;" maps="city_lubech" name="Dog_hunter"/>
+  <NPC chunk="fffe0000o" coord="&#9;44.543396 0.000000 11.670530&#9;" maps="city_lubech_winter" name="Dog_hunter"/>
+  <NPC chunk="ffff0000o" coord="&#9;47.298458 -0.000001 54.087921&#9;" maps="main" name="Dr.Eizenshtein"/>
+  <NPC chunk="0009fff8o" coord="&#9;44.962341 48.295891 59.528625&#9;" maps="outlands" name="Dr_Eizenshtein"/>
+  <NPC chunk="fff5ffffo" coord="&#9;88.153137 2.000000 30.085007&#9;" maps="vesuvius" name="Dumpster"/>
+  <NPC chunk="ffff0000o" coord="&#9;38.127430 0.000000 55.523369&#9;" maps="main" name="Efreitor Druz"/>
+  <NPC chunk="ffff0000o" coord="&#9;33.569290 0.000001 55.644539&#9;" maps="main" name="Efreitor Kazakov"/>
+  <NPC chunk="ffff0000o" coord="&#9;42.251965 -0.000001 54.381802&#9;" maps="main" name="Efreitor Kvashnia"/>
+  <NPC chunk="fffe0003o" coord="&#9;87.095612 0.000000 51.171448&#9;" maps="city_lubech" name="Efreitor_Druz"/>
+  <NPC chunk="fffe0003o" coord="&#9;87.095612 0.000000 51.171448&#9;" maps="city_lubech_winter" name="Efreitor_Druz"/>
+  <NPC chunk="fffe0002o" coord="&#9;16.008102 0.003906 96.434616&#9;" maps="city_lubech" name="Efreitor_Kazakov"/>
+  <NPC chunk="fffe0002o" coord="&#9;16.008102 0.003906 96.434616&#9;" maps="city_lubech_winter" name="Efreitor_Kazakov"/>
+  <NPC chunk="fffd0001o" coord="&#9;16.409607 0.000055 3.949280&#9;" maps="city_lubech" name="Efreitor_Kvashnia"/>
+  <NPC chunk="fffd0001o" coord="&#9;16.409607 0.000055 3.949280&#9;" maps="city_lubech_winter" name="Efreitor_Kvashnia"/>
+  <NPC chunk="fffafff9o" coord="&#9;29.223206 15.331195 39.342773&#9;" maps="vesuvius" name="Engineer"/>
+  <NPC chunk="ffff0000o" coord="&#9;33.239037 0.000000 67.804840&#9;" maps="main" name="ExPolkovnik"/>
+  <NPC chunk="fffb0006o" coord="&#9;86.028534 45.010330 5.438293&#9;" maps="tunguska" name="ExPolkovnik"/>
+  <NPC chunk="0000ffffo" coord="&#9;89.099350 -0.000001 87.999985&#9;" maps="city_lubech" name="Fedor"/>
+  <NPC chunk="0000ffffo" coord="&#9;89.099350 -0.000001 87.999985&#9;" maps="city_lubech_winter" name="Fedor"/>
+  <NPC chunk="fffe0002o" coord="&#9;84.183083 0.000000 80.933075&#9;" maps="city_lubech" name="Fedya_Prorok"/>
+  <NPC chunk="ffff0002o" coord="&#9;23.980949 0.000000 85.253586&#9;" maps="city_lubech_winter" name="Fedya_Prorok"/>
+  <NPC chunk="fff7fffao" coord="&#9;91.773132 1.401778 24.793579&#9;" maps="outlands" name="Fifer"/>
+  <NPC chunk="fff5ffffo" coord="&#9;98.919922 2.217364 21.640717&#9;" maps="vesuvius" name="Fin"/>
+  <NPC chunk="fffefff6o" coord="&#9;14.439743 0.001953 3.128723&#9;" maps="outlands" name="GateGuardian1"/>
+  <NPC chunk="fffffff7o" coord="&#9;14.653214 0.003906 96.296814&#9;" maps="outlands" name="GateGuardian2"/>
+  <NPC chunk="fffffff8o" coord="&#9;87.358421 0.000000 52.100891&#9;" maps="outlands" name="GateGuardian3"/>
+  <NPC chunk="fffcfffdo" coord="&#9;55.415680 0.049545 13.879028&#9;" maps="outlands" name="Grandpa_Moroz_2"/>
+  <NPC chunk="1bda2d34i" coord="&#9;-8.932343 -0.016743 14.213596&#9;" maps="city_lubech" name="Greek"/>
+  <NPC chunk="1bda2d34i" coord="&#9;-8.932343 -0.016743 14.213596&#9;" maps="city_lubech_winter" name="Greek"/>
+  <NPC chunk="0002fff8o" coord="&#9;43.097473 -5.254882 3.165344&#9;" maps="outlands" name="Grishkovec"/>
+  <NPC chunk="fffcfffdo" coord="&#9;67.970459 1.860351 44.912201&#9;" maps="outlands" name="Gurman"/>
+  <NPC chunk="8605d9a4i" coord="&#9;3.537773 0.005444 -3.373153&#9;" maps="city_lubech" name="Hatter"/>
+  <NPC chunk="8605d9a4i" coord="&#9;3.537773 0.005444 -3.373153&#9;" maps="city_lubech_winter" name="Hatter"/>
+  <NPC chunk="000cfffco" coord="&#9;87.246948 -0.377798 9.635010&#9;" maps="outlands" name="Hitrec"/>
+  <NPC chunk="00000006o" coord="&#9;43.871891 15.697264 16.818176&#9;" maps="vesuvius" name="Hunter"/>
+  <NPC chunk="0007fffdo" coord="&#9;36.444946 8.796525 34.152069&#9;" maps="outlands" name="Imarek"/>
+  <NPC chunk="00070008o" coord="&#9;45.923584 27.847725 5.004272&#9;" maps="tunguska" name="Item_Converter"/>
+  <NPC chunk="00000000o" coord="&#9;55.662994 1.046232 58.322144&#9;" maps="zoo" name="Item_Converter"/>
+  <NPC chunk="0007fff9o" coord="&#9;37.758484 9.569990 89.030457&#9;" maps="vesuvius" name="Jivoderov"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-3.782921 5.198789 -2.162165&#9;" maps="city_lubech" name="Jora_Karas"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-3.782921 5.198789 -2.162165&#9;" maps="city_lubech_winter" name="Jora_Karas"/>
+  <NPC chunk="fffcfff5o" coord="&#9;90.293762 0.178528 47.995361&#9;" maps="outlands" name="Jura_Barabashka"/>
+  <NPC chunk="0000ffffo" coord="&#9;90.629288 0.000037 86.910141&#9;" maps="city_lubech" name="Kashtan"/>
+  <NPC chunk="0000ffffo" coord="&#9;90.629288 0.000037 86.910141&#9;" maps="city_lubech_winter" name="Kashtan"/>
+  <NPC chunk="0009fff8o" coord="&#9;40.299988 48.285156 63.099976&#9;" maps="outlands" name="Kich"/>
+  <NPC chunk="fffcfffdo" coord="&#9;62.828186 0.522344 25.159485&#9;" maps="outlands" name="Kolia_Tesla"/>
+  <NPC chunk="ffff0000o" coord="&#9;42.004974 0.000006 36.890568&#9;" maps="main" name="Kolja Kislii"/>
+  <NPC chunk="969c96fbi" coord="&#9;-0.991006 0.515301 3.094013&#9;" maps="city_lubech" name="Kolja_Kislii"/>
+  <NPC chunk="969c96fbi" coord="&#9;-0.991006 0.515301 3.094013&#9;" maps="city_lubech_winter" name="Kolja_Kislii"/>
+  <NPC chunk="00100001o" coord="&#9;16.250732 -6.739223 56.138176&#9;" maps="outlands" name="Korobochka"/>
+  <NPC chunk="ffff0000o" coord="&#9;31.374542 0.000000 37.226185&#9;" maps="main" name="Kosmatii"/>
+  <NPC chunk="0010fffco" coord="&#9;2.826660 -0.863281 77.495605&#9;" maps="outlands" name="Kosmatii"/>
+  <NPC chunk="00100001o" coord="&#9;37.690918 -7.072263 23.696068&#9;" maps="outlands" name="Krendel"/>
+  <NPC chunk="00100001o" coord="&#9;26.723145 -7.021483 25.951225&#9;" maps="outlands" name="Krol"/>
+  <NPC chunk="ffff0002o" coord="&#9;5.517792 0.000000 25.190063&#9;" maps="city_lubech" name="Kyrier"/>
+  <NPC chunk="ffff0002o" coord="&#9;5.517792 0.000000 25.190063&#9;" maps="city_lubech_winter" name="Kyrier"/>
+  <NPC chunk="fffffffdo" coord="&#9;88.033852 1.726856 53.204727&#9;" maps="city_lubech" name="Kyznec"/>
+  <NPC chunk="fffffffdo" coord="&#9;88.033852 1.726856 53.204727&#9;" maps="city_lubech_winter" name="Kyznec"/>
+  <NPC chunk="ffff0000o" coord="&#9;36.720211 0.000002 36.661060&#9;" maps="main" name="Kyznec"/>
+  <NPC chunk="ffff0000o" coord="&#9;38.516640 -0.000001 62.388725&#9;" maps="main" name="Kyznec"/>
+  <NPC chunk="000bfff2o" coord="&#9;5.827759 0.507113 98.382690&#9;" maps="outlands" name="Lisiy"/>
+  <NPC chunk="fffefff6o" coord="&#9;8.594376 0.000000 2.700928&#9;" maps="outlands" name="Lovchiy"/>
+  <NPC chunk="000afff1o" coord="&#9;59.800049 -0.528320 16.000000&#9;" maps="outlands" name="Maslenkov"/>
+  <NPC chunk="0007fffdo" coord="&#9;30.880676 8.740232 36.601318&#9;" maps="outlands" name="Maslov"/>
+  <NPC chunk="fffb0005o" coord="&#9;65.927429 40.289902 99.153778&#9;" maps="tunguska" name="Meniala1"/>
+  <NPC chunk="210a2804i" coord="&#9;3.892971 0.001000 0.369995&#9;" maps="outlands" name="Meniala_RavenWood"/>
+  <NPC chunk="351d135ci" coord="&#9;59.312546 0.000021 -7.881592&#9;" maps="outlands" name="Meniala_Standart"/>
+  <NPC chunk="12dc1c7ei" coord="&#9;55.086723 -0.488758 -16.958740&#9;" maps="outlands" name="Meniala_Standart"/>
+  <NPC chunk="00090006o" coord="&#9;67.173828 6.849850 54.067261&#9;" maps="vesuvius" name="Meniala_Standart"/>
+  <NPC chunk="000cfffco" coord="&#9;72.477417 -0.170700 5.853607&#9;" maps="outlands" name="Meniala_Swamp"/>
+  <NPC chunk="8605d9a4i" coord="&#9;10.777679 0.005476 -4.281047&#9;" maps="city_lubech" name="Metrofan"/>
+  <NPC chunk="8605d9a4i" coord="&#9;10.777679 0.005476 -4.281047&#9;" maps="city_lubech_winter" name="Metrofan"/>
+  <NPC chunk="ffff0000o" coord="&#9;45.799995 0.000000 62.199997&#9;" maps="main" name="Metrofan"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-0.362984 0.005336 -10.622540&#9;" maps="city_lubech" name="Mikulo"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-0.362984 0.005336 -10.622540&#9;" maps="city_lubech_winter" name="Mikulo"/>
+  <NPC chunk="0000fffdo" coord="&#9;17.840679 1.720515 48.735870&#9;" maps="city_lubech" name="Misha_ohotnik"/>
+  <NPC chunk="0000fffdo" coord="&#9;17.840679 1.720515 48.735870&#9;" maps="city_lubech_winter" name="Misha_ohotnik"/>
+  <NPC chunk="fffb0005o" coord="&#9;59.139069 41.069321 73.621094&#9;" maps="tunguska" name="Mitka"/>
+  <NPC chunk="ff13db75i" coord="&#9;4.803942 -0.014484 -2.003174&#9;" maps="outlands" name="Mokruh"/>
+  <NPC chunk="00000005o" coord="&#9;34.322845 23.007549 35.664276&#9;" maps="vesuvius" name="Morse"/>
+  <NPC chunk="ffff0000o" coord="&#9;37.322712 0.000002 45.801910&#9;" maps="main" name="Muhomor"/>
+  <NPC chunk="00100001o" coord="&#9;11.871460 -6.807753 28.987389&#9;" maps="outlands" name="Muhomor"/>
+  <NPC chunk="fffc0000o" coord="&#9;0.755615 30.081070 15.930740&#9;" maps="novaya" name="NZ_Provodnik1"/>
+  <NPC chunk="00030000o" coord="&#9;22.069458 49.115219 33.273388&#9;" maps="novaya" name="NZ_Provodnik2"/>
+  <NPC chunk="00000001o" coord="&#9;47.576530 39.999992 53.235130&#9;" maps="novaya" name="NZ_guard"/>
+  <NPC chunk="00030000o" coord="&#9;24.412781 50.866398 31.754704&#9;" maps="novaya" name="NZ_guard"/>
+  <NPC chunk="fffb0000o" coord="&#9;99.905762 30.080225 17.446440&#9;" maps="novaya" name="NZ_guard"/>
+  <NPC chunk="fffc0000o" coord="&#9;10.968384 39.999992 76.642868&#9;" maps="novaya" name="NZ_guard"/>
+  <NPC chunk="fffc0000o" coord="&#9;14.193024 47.305599 70.755623&#9;" maps="novaya" name="NZ_guard"/>
+  <NPC chunk="fffc0000o" coord="&#9;16.575714 46.917664 95.184570&#9;" maps="novaya" name="NZ_guard"/>
+  <NPC chunk="fffffffeo" coord="&#9;35.573952 -28.300442 11.413071&#9;" maps="outlands_airport" name="Nishtyak"/>
+  <NPC chunk="0002fffbo" coord="&#9;28.877991 50.106430 4.735352&#9;" maps="tunguska" name="Nishtyak_Son"/>
+  <NPC chunk="fff60008o" coord="&#9;93.234924 0.861717 48.828674&#9;" maps="vesuvius" name="Otshelnik_Timoha"/>
+  <NPC chunk="308d8a42i" coord="&#9;4.495377 -0.000008 0.194580&#9;" maps="novaya" name="PK_Trader_NZ01"/>
+  <NPC chunk="fffe0000o" coord="&#9;81.902725 1.314214 39.060806&#9;" maps="city_lubech" name="Palka"/>
+  <NPC chunk="fffe0000o" coord="&#9;81.902725 1.314214 39.060806&#9;" maps="city_lubech_winter" name="Palka"/>
+  <NPC chunk="fff6000eo" coord="&#9;1.720825 3.199010 91.257202&#9;" maps="outlands" name="Palych"/>
+  <NPC chunk="0006fffbo" coord="&#9;43.189087 11.036131 52.673950&#9;" maps="vesuvius" name="Patisson"/>
+  <NPC chunk="fffffffdo" coord="&#9;95.176041 0.941045 12.303589&#9;" maps="city_lubech" name="Pavel_Privokzalov"/>
+  <NPC chunk="fffffffdo" coord="&#9;95.176041 0.941045 12.303589&#9;" maps="city_lubech_winter" name="Pavel_Privokzalov"/>
+  <NPC chunk="0000fffdo" coord="&#9;23.187670 0.720003 96.538834&#9;" maps="city_lubech" name="Pechkin"/>
+  <NPC chunk="0000fffdo" coord="&#9;23.187670 0.720003 96.538834&#9;" maps="city_lubech_winter" name="Pechkin"/>
+  <NPC chunk="c38c9275i" coord="&#9;-18.978081 0.503814 11.268572&#9;" maps="city_lubech" name="Plyuch"/>
+  <NPC chunk="c38c9275i" coord="&#9;-18.978081 0.503814 11.268572&#9;" maps="city_lubech_winter" name="Plyuch"/>
+  <NPC chunk="fffafff9o" coord="&#9;13.099487 8.010000 26.234009&#9;" maps="vesuvius" name="Podmasterie"/>
+  <NPC chunk="fffffffdo" coord="&#9;59.910507 0.000000 8.902344&#9;" maps="outlands" name="Priest"/>
+  <NPC chunk="00000000o" coord="&#9;6.198321 0.613134 47.702534&#9;" maps="pk_prison01" name="Prisone_Trade_Food"/>
+  <NPC chunk="fffffffdo" coord="&#9;98.321320 0.783848 18.463623&#9;" maps="city_lubech" name="Prohor_puteichik"/>
+  <NPC chunk="fffffffdo" coord="&#9;98.321320 0.783848 18.463623&#9;" maps="city_lubech_winter" name="Prohor_puteichik"/>
+  <NPC chunk="00020004o" coord="&#9;1.034012 3.430000 7.617004&#9;" maps="outlands_airport" name="Provodnik_Airport"/>
+  <NPC chunk="0004fff8o" coord="&#9;31.829071 -5.737651 89.118469&#9;" maps="outlands_airport" name="Provodnik_Airport_Outlands"/>
+  <NPC chunk="ffd2fffbo" coord="&#9;99.398926 -8.542001 2.489990&#9;" maps="outlands_caravan" name="Provodnik_Caravan_Outlands"/>
+  <NPC chunk="0023fffco" coord="&#9;58.173828 25.950813 87.734039&#9;" maps="outlands_caravan" name="Provodnik_Caravan_Outlands_Ozero"/>
+  <NPC chunk="fffe0001o" coord="&#9;15.179535 39.999981 6.764488&#9;" maps="novaya" name="Provodnik_NZ_Airport"/>
+  <NPC chunk="00000001o" coord="&#9;50.992481 40.247181 57.922241&#9;" maps="novaya" name="Provodnik_NZ_Tungus"/>
+  <NPC chunk="ffffffffo" coord="&#9;65.044853 31.992247 93.601555&#9;" maps="novaya" name="Provodnik_NZ_Vesuv"/>
+  <NPC chunk="00000001o" coord="&#9;82.483299 3.844726 0.315712&#9;" maps="mm_space" name="Provodnik_Noob"/>
+  <NPC chunk="00020002o" coord="&#9;2.583801 3.844709 30.098282&#9;" maps="so_origins" name="Provodnik_Noob"/>
+  <NPC chunk="fff6fff8o" coord="&#9;99.466064 9.999999 28.395935&#9;" maps="outlands" name="Provodnik_Outlands_Airport"/>
+  <NPC chunk="ffeffffco" coord="&#9;56.278076 10.067353 3.010071&#9;" maps="outlands" name="Provodnik_Outlands_Caravan"/>
+  <NPC chunk="ffeeffffo" coord="&#9;57.737427 4.486795 98.819832&#9;" maps="outlands" name="Provodnik_Outlands_Caravan_LEP"/>
+  <NPC chunk="fffcfffdo" coord="&#9;63.252014 2.859375 63.380249&#9;" maps="outlands" name="Provodnik_PvP_DM_Vilage"/>
+  <NPC chunk="fffeffffo" coord="&#9;88.217583 0.400391 25.978836&#9;" maps="dm_rocks" name="Provodnik_PvP_Green_Rock"/>
+  <NPC chunk="00010002o" coord="&#9;96.279228 0.141602 14.110138&#9;" maps="dm_rocks" name="Provodnik_PvP_Red_Rock"/>
+  <NPC chunk="00000003o" coord="&#9;25.027519 3.429688 48.661987&#9;" maps="outlands_airport" name="Provodnik_PvP_Rock"/>
+  <NPC chunk="fff40001o" coord="&#9;54.114868 2.000000 14.876648&#9;" maps="vesuvius" name="Provodnik_PvP_Ryab"/>
+  <NPC chunk="fffe0002o" coord="&#9;72.424332 -0.258789 23.292099&#9;" maps="dm_ryabinushka" name="Provodnik_PvP_Ryab_green"/>
+  <NPC chunk="fffffffdo" coord="&#9;16.287148 1.871094 47.111221&#9;" maps="dm_ryabinushka" name="Provodnik_PvP_Ryab_red"/>
+  <NPC chunk="fffc0000o" coord="&#9;2.894684 40.000000 96.775009&#9;" maps="novaya" name="Provodnik_PvP_Snow"/>
+  <NPC chunk="fffeffffo" coord="&#9;88.128746 3.494140 0.229362&#9;" maps="dm_snowland" name="Provodnik_PvP_Snow_green"/>
+  <NPC chunk="00020002o" coord="&#9;26.708237 2.847656 28.342819&#9;" maps="dm_snowland" name="Provodnik_PvP_Snow_red"/>
+  <NPC chunk="fffefffao" coord="&#9;41.037598 -0.063477 32.760925&#9;" maps="dm_outlands_village" name="Provodnik_PvP_Vilage_green"/>
+  <NPC chunk="0000fff9o" coord="&#9;28.677895 0.000000 2.485352&#9;" maps="dm_outlands_village" name="Provodnik_PvP_Vilage_red"/>
+  <NPC chunk="00070003o" coord="&#9;44.129028 24.678732 20.420807&#9;" maps="tunguska" name="Provodnik_Tungus_Airport"/>
+  <NPC chunk="fffb0006o" coord="&#9;51.177979 39.962070 4.407837&#9;" maps="tunguska" name="Provodnik_Tungus_NZ"/>
+  <NPC chunk="00050003o" coord="&#9;32.444397 -1.789768 13.923279&#9;" maps="vesuvius" name="Provodnik_Vesuv_NZ"/>
+  <NPC chunk="000bfff2o" coord="&#9;5.564819 0.472682 97.032959&#9;" maps="outlands" name="Rabbit"/>
+  <NPC chunk="fffb0005o" coord="&#9;99.567200 41.626450 89.899628&#9;" maps="tunguska" name="Radius_Guard"/>
+  <NPC chunk="fffb0005o" coord="&#9;97.266357 41.605446 82.429535&#9;" maps="tunguska" name="Radius_Guard"/>
+  <NPC chunk="fffb0005o" coord="&#9;79.854828 45.031818 79.245331&#9;" maps="tunguska" name="Radius_Guard"/>
+  <NPC chunk="fffb0006o" coord="&#9;37.291534 39.657452 17.765076&#9;" maps="tunguska" name="Radius_Guard"/>
+  <NPC chunk="fffb0006o" coord="&#9;85.541962 45.010864 9.342468&#9;" maps="tunguska" name="Radius_Guard"/>
+  <NPC chunk="1bda2d34i" coord="&#9;-8.062813 -3.961282 12.782059&#9;" maps="city_lubech" name="Rashid"/>
+  <NPC chunk="1bda2d34i" coord="&#9;-8.062813 -3.961282 12.782059&#9;" maps="city_lubech_winter" name="Rashid"/>
+  <NPC chunk="1bda2d34i" coord="&#9;8.803276 -0.016758 3.845314&#9;" maps="city_lubech" name="Rashid_New"/>
+  <NPC chunk="1bda2d34i" coord="&#9;8.803276 -0.016758 3.845314&#9;" maps="city_lubech_winter" name="Rashid_New"/>
+  <NPC chunk="351d135ci" coord="&#9;60.244659 0.000010 -20.685547&#9;" maps="outlands" name="Repair_bandit"/>
+  <NPC chunk="12dc1c7ei" coord="&#9;52.991657 -0.426611 -17.109985&#9;" maps="outlands" name="Repair_bandit"/>
+  <NPC chunk="8605d9a4i" coord="&#9;14.882095 5.199048 -4.039920&#9;" maps="city_lubech" name="Repairman"/>
+  <NPC chunk="b359bbaci" coord="&#9;-1.991638 -1.568512 -2.495183&#9;" maps="city_lubech_apartments" name="Repairman"/>
+  <NPC chunk="8605d9a4i" coord="&#9;14.882095 5.199048 -4.039920&#9;" maps="city_lubech_winter" name="Repairman"/>
+  <NPC chunk="ffff0000o" coord="&#9;32.521698 0.000000 75.959221&#9;" maps="main" name="Repairman"/>
+  <NPC chunk="fffc0000o" coord="&#9;6.912811 40.199810 97.204903&#9;" maps="novaya" name="Repairman"/>
+  <NPC chunk="000cfffco" coord="&#9;88.033813 -1.225586 28.934265&#9;" maps="outlands" name="Repairman"/>
+  <NPC chunk="fffcfffdo" coord="&#9;46.021912 0.947150 34.467651&#9;" maps="outlands" name="Repairman"/>
+  <NPC chunk="d4164a10i" coord="&#9;9.119965 -0.000053 4.428101&#9;" maps="outlands" name="Repairman"/>
+  <NPC chunk="e610d3b3i" coord="&#9;-1.417629 0.405942 -2.786377&#9;" maps="outlands_airport" name="Repairman"/>
+  <NPC chunk="0000fffao" coord="&#9;18.772707 14.868936 34.442261&#9;" maps="steppe" name="Repairman"/>
+  <NPC chunk="00000006o" coord="&#9;18.609797 19.914553 14.175415&#9;" maps="vesuvius" name="Repairman"/>
+  <NPC chunk="00000000o" coord="&#9;27.329626 4.862790 59.747375&#9;" maps="mm_space" name="Repairman_Noob"/>
+  <NPC chunk="00000000o" coord="&#9;27.329626 4.862790 59.747375&#9;" maps="so_origins" name="Repairman_Noob"/>
+  <NPC chunk="00000003o" coord="&#9;73.653473 3.554302 77.562256&#9;" maps="outlands_airport" name="Salnikov"/>
+  <NPC chunk="ffff0002o" coord="&#9;67.182770 0.000000 99.548569&#9;" maps="city_lubech" name="Sanek_Bivaliy"/>
+  <NPC chunk="ffff0002o" coord="&#9;67.182770 0.000000 99.548569&#9;" maps="city_lubech_winter" name="Sanek_Bivaliy"/>
+  <NPC chunk="ffff0000o" coord="&#9;30.550560 0.000003 75.965767&#9;" maps="main" name="Science_trader"/>
+  <NPC chunk="0009fff8o" coord="&#9;32.900024 48.600002 36.000000&#9;" maps="outlands" name="Science_trader"/>
+  <NPC chunk="0007fff9o" coord="&#9;32.024414 9.570307 85.503357&#9;" maps="vesuvius" name="Science_trader"/>
+  <NPC chunk="fffefffeo" coord="&#9;95.219963 39.999992 2.267731&#9;" maps="novaya" name="Selectevich"/>
+  <NPC chunk="ffff0000o" coord="&#9;34.741821 0.000002 62.184067&#9;" maps="main" name="Sergeant Dibenko"/>
+  <NPC chunk="ffff0000o" coord="&#9;30.276764 0.000004 28.661894&#9;" maps="main" name="Sergeant Drachuk"/>
+  <NPC chunk="bb31c2c7i" coord="&#9;0.477753 4.740003 -9.294044&#9;" maps="city_lubech" name="Sergeant_Dibenko"/>
+  <NPC chunk="bb31c2c7i" coord="&#9;0.477753 4.740003 -9.294044&#9;" maps="city_lubech_winter" name="Sergeant_Dibenko"/>
+  <NPC chunk="ffff0000o" coord="&#9;34.300003 0.000000 43.500000&#9;" maps="city_lubech" name="Sergeant_Drachuk"/>
+  <NPC chunk="ffff0000o" coord="&#9;34.300003 0.000000 43.500000&#9;" maps="city_lubech_winter" name="Sergeant_Drachuk"/>
+  <NPC chunk="00000000o" coord="&#9;29.620123 4.862888 56.547829&#9;" maps="mm_space" name="Seryi"/>
+  <NPC chunk="00000000o" coord="&#9;29.620123 4.862888 56.547829&#9;" maps="so_origins" name="Seryi"/>
+  <NPC chunk="bc118fcai" coord="&#9;-1.997570 0.083481 -0.345333&#9;" maps="outlands_airport" name="Shepelev"/>
+  <NPC chunk="b9abb929i" coord="&#9;1.115639 0.037529 -0.495972&#9;" maps="novaya" name="Shepeleva"/>
+  <NPC chunk="fffefffdo" coord="&#9;93.097610 39.999992 99.704025&#9;" maps="novaya" name="Sherstnov"/>
+  <NPC chunk="0009fff8o" coord="&#9;34.172424 48.332939 51.332520&#9;" maps="outlands" name="Shperling"/>
+  <NPC chunk="1bda2d34i" coord="&#9;0.494453 -3.948396 9.457413&#9;" maps="city_lubech" name="Shtaket"/>
+  <NPC chunk="1bda2d34i" coord="&#9;0.494453 -3.948396 9.457413&#9;" maps="city_lubech_winter" name="Shtaket"/>
+  <NPC chunk="ffff0000o" coord="&#9;41.999996 0.000000 62.799995&#9;" maps="main" name="Shtaket"/>
+  <NPC chunk="fffbffffo" coord="&#9;22.380524 -5.855990 3.465370&#9;" maps="outlands_airport" name="Sibiryak"/>
+  <NPC chunk="fffdffffo" coord="&#9;51.784653 0.824219 97.318329&#9;" maps="city_lubech" name="Sizif"/>
+  <NPC chunk="fffdffffo" coord="&#9;51.784653 0.824219 97.318329&#9;" maps="city_lubech_winter" name="Sizif"/>
+  <NPC chunk="ffff0000o" coord="&#9;28.138977 0.000000 67.525505&#9;" maps="main" name="Sizif"/>
+  <NPC chunk="ffffffffo" coord="&#9;42.895180 3.710000 44.635208&#9;" maps="mm_space" name="Soldat_Noob"/>
+  <NPC chunk="ffff0000o" coord="&#9;38.816437 -2.261713 84.919914&#9;" maps="so_origins" name="Soldat_Noob"/>
+  <NPC chunk="00000001o" coord="&#9;44.884132 40.456047 60.524986&#9;" maps="novaya" name="Special_trader"/>
+  <NPC chunk="fff40001o" coord="&#9;48.135620 2.184781 10.241989&#9;" maps="vesuvius" name="Special_trader"/>
+  <NPC chunk="00000000o" coord="&#9;55.334248 0.678782 62.076229&#9;" maps="zoo" name="Special_trader"/>
+  <NPC chunk="fffefffeo" coord="&#9;22.726578 0.000002 82.639702&#9;" maps="zoo2" name="Special_trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;41.585278 0.000000 67.757233&#9;" maps="main" name="Stalker Bomzh"/>
+  <NPC chunk="ffff0000o" coord="&#9;21.904030 0.000000 68.350563&#9;" maps="main" name="Stalker Bomzh_3"/>
+  <NPC chunk="0000fffdo" coord="&#9;9.488504 0.873478 42.036377&#9;" maps="city_lubech" name="Stalker_Bomzh"/>
+  <NPC chunk="0000fffdo" coord="&#9;9.488504 0.873478 42.036377&#9;" maps="city_lubech_winter" name="Stalker_Bomzh"/>
+  <NPC chunk="fffefff7o" coord="&#9;18.299423 0.000000 67.963867&#9;" maps="outlands" name="Stalker_Bomzh_2"/>
+  <NPC chunk="0000fffdo" coord="&#9;17.847759 0.893771 22.781494&#9;" maps="city_lubech" name="Stalker_Bomzh_3"/>
+  <NPC chunk="0000fffdo" coord="&#9;17.847759 0.893771 22.781494&#9;" maps="city_lubech_winter" name="Stalker_Bomzh_3"/>
+  <NPC chunk="fffefff7o" coord="&#9;9.604462 0.000002 57.445007&#9;" maps="outlands" name="Stalker_Bomzh_3"/>
+  <NPC chunk="fffffffdo" coord="&#9;96.701012 0.865311 50.011780&#9;" maps="city_lubech" name="Stalker_Bomzh_4"/>
+  <NPC chunk="fffffffdo" coord="&#9;96.701012 0.865311 50.011780&#9;" maps="city_lubech_winter" name="Stalker_Bomzh_4"/>
+  <NPC chunk="fffefff7o" coord="&#9;16.532333 0.000000 63.630493&#9;" maps="outlands" name="Stalker_Bomzh_4"/>
+  <NPC chunk="00000003o" coord="&#9;29.007290 3.429676 53.019012&#9;" maps="outlands_airport" name="Stalker_Bomzh_5"/>
+  <NPC chunk="0000fffdo" coord="&#9;14.049814 0.873481 40.959717&#9;" maps="city_lubech" name="Stalker_Bomzh_Domovoi"/>
+  <NPC chunk="0000fffdo" coord="&#9;14.049814 0.873481 40.959717&#9;" maps="city_lubech_winter" name="Stalker_Bomzh_Domovoi"/>
+  <NPC chunk="969c96fbi" coord="&#9;-12.572048 0.496495 10.795126&#9;" maps="city_lubech" name="Staryi_stalker"/>
+  <NPC chunk="969c96fbi" coord="&#9;-12.572048 0.496495 10.795126&#9;" maps="city_lubech_winter" name="Staryi_stalker"/>
+  <NPC chunk="8605d9a4i" coord="&#9;9.281525 0.300305 -1.495951&#9;" maps="city_lubech" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;6.102837 0.005323 -1.505696&#9;" maps="city_lubech" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;4.960579 0.005325 -10.427700&#9;" maps="city_lubech" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;3.381714 0.005324 -9.929106&#9;" maps="city_lubech" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;6.945137 0.005323 -12.089956&#9;" maps="city_lubech" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;9.391708 0.000234 -5.475624&#9;" maps="city_lubech" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;9.281525 0.300305 -1.495951&#9;" maps="city_lubech_winter" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;6.102837 0.005323 -1.505696&#9;" maps="city_lubech_winter" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;4.960579 0.005325 -10.427700&#9;" maps="city_lubech_winter" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;3.381714 0.005324 -9.929106&#9;" maps="city_lubech_winter" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;6.945137 0.005323 -12.089956&#9;" maps="city_lubech_winter" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;9.391708 0.000234 -5.475624&#9;" maps="city_lubech_winter" name="Statist"/>
+  <NPC chunk="fffbfffeo" coord="&#9;16.288269 -5.073010 98.418518&#9;" maps="outlands_airport" name="Statist"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-8.547531 5.198829 -0.860089&#9;" maps="city_lubech" name="Stepan_Brodyaga"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-8.547531 5.198829 -0.860089&#9;" maps="city_lubech_winter" name="Stepan_Brodyaga"/>
+  <NPC chunk="ffff0000o" coord="&#9;37.097023 0.000000 68.183197&#9;" maps="main" name="Suhar"/>
+  <NPC chunk="ffff0000o" coord="&#9;65.820618 0.000000 39.678776&#9;" maps="pk_prison01" name="Suhar"/>
+  <NPC chunk="ffff0000o" coord="&#9;48.355350 0.000001 44.091152&#9;" maps="main" name="Svetlii Nastavnik Mihail"/>
+  <NPC chunk="d4164a10i" coord="&#9;-3.214722 3.373683 2.085693&#9;" maps="outlands" name="Svetlii_Nastavnik_Mihail"/>
+  <NPC chunk="000cfffco" coord="&#9;67.046509 -1.034179 15.289856&#9;" maps="outlands" name="Swamp_Trader"/>
+  <NPC chunk="000cfffco" coord="&#9;77.912476 -0.205560 17.671265&#9;" maps="outlands" name="Tatarin"/>
+  <NPC chunk="0009fff8o" coord="&#9;41.000000 48.177734 41.200012&#9;" maps="outlands" name="Teklberry"/>
+  <NPC chunk="0000fffdo" coord="&#9;29.656862 1.728842 84.419144&#9;" maps="city_lubech" name="Temych"/>
+  <NPC chunk="0000fffdo" coord="&#9;29.656862 1.728842 84.419144&#9;" maps="city_lubech_winter" name="Temych"/>
+  <NPC chunk="00100003o" coord="&#9;40.760254 -6.894911 23.848267&#9;" maps="outlands" name="Timka"/>
+  <NPC chunk="1bda2d34i" coord="&#9;2.900780 -3.933583 4.028572&#9;" maps="city_lubech" name="Trader"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-11.307816 0.005121 -2.237116&#9;" maps="city_lubech" name="Trader"/>
+  <NPC chunk="1bda2d34i" coord="&#9;2.900780 -3.933583 4.028572&#9;" maps="city_lubech_winter" name="Trader"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-11.307816 0.005121 -2.237116&#9;" maps="city_lubech_winter" name="Trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;30.363274 0.000001 62.154560&#9;" maps="main" name="Trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;54.230446 7.614426 12.266930&#9;" maps="main" name="Trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;34.849274 -0.000002 75.909103&#9;" maps="main" name="Trader"/>
+  <NPC chunk="0007fffdo" coord="&#9;36.237305 8.796528 41.919342&#9;" maps="outlands" name="Trader"/>
+  <NPC chunk="fffcfffdo" coord="&#9;79.766205 3.977409 91.108734&#9;" maps="outlands" name="Trader"/>
+  <NPC chunk="fffffff9o" coord="&#9;56.824051 0.039386 53.840698&#9;" maps="outlands" name="Trader"/>
+  <NPC chunk="fffffffao" coord="&#9;69.104393 15.953123 94.835815&#9;" maps="steppe" name="Trader"/>
+  <NPC chunk="fffb0005o" coord="&#9;47.514526 41.271717 88.368500&#9;" maps="tunguska" name="Trader"/>
+  <NPC chunk="fff6000eo" coord="&#9;14.361938 3.032591 93.311646&#9;" maps="outlands" name="Trader_All_01"/>
+  <NPC chunk="00000000o" coord="&#9;43.384422 4.862894 65.273033&#9;" maps="mm_space" name="Trader_Noob"/>
+  <NPC chunk="00000000o" coord="&#9;43.384422 4.862894 65.273033&#9;" maps="so_origins" name="Trader_Noob"/>
+  <NPC chunk="76bf2f77i" coord="&#9;-2.249983 0.000000 2.505005&#9;" maps="vesuvius" name="Tunnel_provodnik_NZ"/>
+  <NPC chunk="351d135ci" coord="&#9;69.300148 -0.000004 -11.599854&#9;" maps="outlands" name="Tunnel_provodnik_NZ2"/>
+  <NPC chunk="12dc1c7ei" coord="&#9;62.114323 -0.438206 -8.212158&#9;" maps="outlands" name="Tunnel_provodnik_NZ2"/>
+  <NPC chunk="ffff0002o" coord="&#9;28.794563 0.000000 98.443207&#9;" maps="city_lubech" name="Valera"/>
+  <NPC chunk="ffff0002o" coord="&#9;28.794563 0.000000 98.443207&#9;" maps="city_lubech_winter" name="Valera"/>
+  <NPC chunk="0007fffdo" coord="&#9;12.447510 8.157225 64.619293&#9;" maps="outlands" name="Vasiatka"/>
+  <NPC chunk="000afff4o" coord="&#9;10.831909 15.778448 62.818359&#9;" maps="vesuvius" name="Vatman"/>
+  <NPC chunk="00000006o" coord="&#9;14.803896 19.914598 10.989990&#9;" maps="vesuvius" name="Vesuvius_Trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;42.520580 0.000000 44.793182&#9;" maps="main" name="Veterinar"/>
+  <NPC chunk="00100000o" coord="&#9;30.935669 -6.519040 99.958916&#9;" maps="outlands" name="Veterinar"/>
+  <NPC chunk="b52716e7i" coord="&#9;8.446991 18.583126 -1.754791&#9;" maps="outlands_airport" name="Vetrichenko"/>
+  <NPC chunk="ffff0000o" coord="&#9;32.212875 0.000001 45.430088&#9;" maps="main" name="Voronin"/>
+  <NPC chunk="000afff0o" coord="&#9;84.645935 1.093316 72.849609&#9;" maps="outlands" name="Voronin"/>
+  <NPC chunk="fffe0000o" coord="&#9;83.667366 0.000000 15.126089&#9;" maps="fukushima" name="Vozvrat"/>
+  <NPC chunk="fffe0000o" coord="&#9;83.765083 0.000000 1.241041&#9;" maps="fukushima" name="Vozvrat"/>
+  <NPC chunk="fffeffffo" coord="&#9;84.206696 0.000000 97.600761&#9;" maps="fukushima" name="Vozvrat"/>
+  <NPC chunk="fffeffffo" coord="&#9;86.412285 -0.000019 98.140800&#9;" maps="fukushima" name="Vozvrat"/>
+  <NPC chunk="0000fff9o" coord="&#9;4.878031 10.709997 95.064636&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="0000fffao" coord="&#9;34.967396 14.887948 7.300171&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="0000fffao" coord="&#9;26.311758 14.865808 14.567993&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="0000fffao" coord="&#9;2.384893 14.861799 77.986084&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="0000fffao" coord="&#9;33.840561 15.015512 22.693237&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="0000fffao" coord="&#9;37.166187 14.953901 20.948853&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="0000fffao" coord="&#9;5.035783 19.645388 3.669800&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="00020006o" coord="&#9;99.748520 -134.360962 59.544861&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="00030005o" coord="&#9;23.699890 -112.049263 41.552673&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="075c27afi" coord="&#9;0.655487 0.216721 5.372028&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="3f36bb4fi" coord="&#9;-2.628357 0.000008 -0.976031&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="fffcfffao" coord="&#9;80.123871 7.033064 5.920044&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="fffdffffo" coord="&#9;94.256332 7.749998 90.918137&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="fffeffffo" coord="&#9;31.813126 12.351237 3.863708&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="fffeffffo" coord="&#9;47.136917 7.034203 36.344215&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="fffffff9o" coord="&#9;8.257561 6.962458 73.981628&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="fffffffao" coord="&#9;99.159447 14.834414 74.252319&#9;" maps="steppe" name="Vozvrat"/>
+  <NPC chunk="ffffffffo" coord="&#9;87.012047 0.000000 56.519905&#9;" maps="anomaly" name="Weapon_trader"/>
+  <NPC chunk="8826e2a3i" coord="&#9;36.051491 0.495774 7.859134&#9;" maps="city_lubech" name="Weapon_trader"/>
+  <NPC chunk="8826e2a3i" coord="&#9;36.051491 0.495774 7.859134&#9;" maps="city_lubech_winter" name="Weapon_trader"/>
+  <NPC chunk="36d53603i" coord="&#9;-0.049194 0.015579 4.213177&#9;" maps="lubech_uderground" name="Weapon_trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;28.558876 0.000001 76.080727&#9;" maps="main" name="Weapon_trader"/>
+  <NPC chunk="ffff0000o" coord="&#9;26.707581 0.000002 76.083542&#9;" maps="main" name="Weapon_trader"/>
+  <NPC chunk="fffcfffdo" coord="&#9;63.386169 1.443749 36.841583&#9;" maps="outlands" name="Weapon_trader"/>
+  <NPC chunk="d4164a10i" coord="&#9;-2.618317 3.473191 7.461670&#9;" maps="outlands" name="Weapon_trader"/>
+  <NPC chunk="fffbffffo" coord="&#9;28.111237 -5.741066 9.166656&#9;" maps="outlands_airport" name="Weapon_trader"/>
+  <NPC chunk="0000fffao" coord="&#9;40.010292 14.859987 12.360535&#9;" maps="steppe" name="Weapon_trader"/>
+  <NPC chunk="fffb0005o" coord="&#9;70.751404 40.364517 90.742523&#9;" maps="tunguska" name="Weapon_trader"/>
+  <NPC chunk="00000005o" coord="&#9;49.007809 16.206936 99.723724&#9;" maps="vesuvius" name="Weapon_trader"/>
+  <NPC chunk="00090006o" coord="&#9;66.746582 6.849712 57.851196&#9;" maps="vesuvius" name="Weapon_trader"/>
+  <NPC chunk="fffefff7o" coord="&#9;9.707489 0.000008 62.802063&#9;" maps="outlands" name="Yashka_Beast"/>
+  <NPC chunk="00000006o" coord="&#9;18.445280 19.914574 15.980774&#9;" maps="vesuvius" name="Zelenkin"/>
+  <NPC chunk="ffffffffo" coord="&#9;24.017250 3.709959 22.608604&#9;" maps="mm_space" name="Zevaka"/>
+  <NPC chunk="ffff0001o" coord="&#9;31.300446 -1.515625 17.424316&#9;" maps="so_origins" name="Zevaka"/>
+  <NPC chunk="0001ffffo" coord="&#9;72.503319 -0.000001 85.121391&#9;" maps="zoo2" name="admin_donat_doorman2"/>
+  <NPC chunk="000f0001o" coord="&#9;99.142944 -6.740550 34.297485&#9;" maps="outlands" name="bandit_guard"/>
+  <NPC chunk="351d135ci" coord="&#9;67.258606 -0.000006 -1.297852&#9;" maps="outlands" name="bandit_guard"/>
+  <NPC chunk="eba6f480i" coord="&#9;7.104652 0.000002 0.509888&#9;" maps="outlands" name="bandit_guard"/>
+  <NPC chunk="12dc1c7ei" coord="&#9;55.049988 -0.462318 -4.140259&#9;" maps="outlands" name="bandit_guard"/>
+  <NPC chunk="00100001o" coord="&#9;36.864258 -7.072265 27.463364&#9;" maps="outlands" name="bandit_guard"/>
+  <NPC chunk="00100001o" coord="&#9;37.368408 -6.823241 34.078545&#9;" maps="outlands" name="bandit_guard"/>
+  <NPC chunk="000cfffco" coord="&#9;71.569214 -1.053621 19.865692&#9;" maps="outlands" name="bandit_guardian"/>
+  <NPC chunk="000cfffco" coord="&#9;89.469360 -0.951172 16.763336&#9;" maps="outlands" name="bandit_guardian"/>
+  <NPC chunk="e6c5175bi" coord="&#9;1.071655 0.002369 -3.124084&#9;" maps="vesuvius" name="bar_guardian"/>
+  <NPC chunk="b45fd048i" coord="&#9;5.734009 0.000000 1.314575&#9;" maps="vesuvius" name="bd_Palach"/>
+  <NPC chunk="44379446i" coord="&#9;5.373970 0.000000 2.259834&#9;" maps="base_citadel" name="clan_Donat_Bankir"/>
+  <NPC chunk="0124fd28i" coord="&#9;4.777348 0.000000 2.657017&#9;" maps="base_dolg" name="clan_Donat_Bankir"/>
+  <NPC chunk="db880817i" coord="&#9;-2.268420 3.373682 6.433701&#9;" maps="base_gdom2" name="clan_Donat_Bankir"/>
+  <NPC chunk="f960f01fi" coord="&#9;5.260143 0.000020 2.372101&#9;" maps="base_sindikat" name="clan_Donat_Bankir"/>
+  <NPC chunk="9c2fce3di" coord="&#9;-3.633355 3.372990 4.004383&#9;" maps="base_soyuz_mutaboev" name="clan_Donat_Bankir"/>
+  <NPC chunk="9c2fce3di" coord="&#9;-3.633355 3.372990 4.004383&#9;" maps="base_vesuvius_lep" name="clan_Donat_Bankir"/>
+  <NPC chunk="3ccbbff0i" coord="&#9;-5.453305 -0.000292 1.898117&#9;" maps="base_voenstal" name="clan_Donat_Bankir"/>
+  <NPC chunk="988760dbi" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base__inquisition" name="clan_Gdom1_doorman2"/>
+  <NPC chunk="7efaf1bci" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_gdom2" name="clan_Gdom2_doorman2"/>
+  <NPC chunk="69de2af1i" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base02" name="clan_Gurman1_doorman2"/>
+  <NPC chunk="a88c7650i" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base03" name="clan_Gurman1_doorman2"/>
+  <NPC chunk="828c5dc7i" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_gurman6" name="clan_Gurman1_doorman2"/>
+  <NPC chunk="c7df9280i" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_SILENCE" name="clan_Gurman1_doorman2"/>
+  <NPC chunk="a30a1f08i" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base04" name="clan_Gurman3_doorman2"/>
+  <NPC chunk="83b19cd4i" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base05" name="clan_Gurman3_doorman2"/>
+  <NPC chunk="8b559cf1i" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base06" name="clan_Gurman3_doorman2"/>
+  <NPC chunk="f960f01fi" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base_sindikat" name="clan_Gurman3_doorman2"/>
+  <NPC chunk="e30aefdci" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_adom" name="clan_Gurman4_doorman2"/>
+  <NPC chunk="907f9b2ci" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_zaria" name="clan_Gurman5_doorman2"/>
+  <NPC chunk="0124fd28i" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base_dolg" name="clan_NoobDog1_doorman2"/>
+  <NPC chunk="00000000o" coord="&#9;31.767574 0.003104 16.698425&#9;" maps="zoo" name="clan_base_trader"/>
+  <NPC chunk="97e66822i" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_dark_angels" name="clan_brockenBus2_doorman2"/>
+  <NPC chunk="b588ed80i" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_kuvalda" name="clan_brockenBus_doorman2"/>
+  <NPC chunk="129cb7eci" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base_detsad2" name="clan_detsad2_doorman2"/>
+  <NPC chunk="4432b4fai" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base_shtorm" name="clan_detsad_doorman2"/>
+  <NPC chunk="fb5bddeai" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_soyuz_mutaboev" name="clan_gurman_pop_doorman2"/>
+  <NPC chunk="42e17498i" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_ussr" name="clan_pochta_doorman_exit"/>
+  <NPC chunk="ec4e7eeei" coord="&#9;-1.939489 3.400256 6.220722&#9;" maps="base_redkross" name="clan_pochta_repairman"/>
+  <NPC chunk="663cddd8i" coord="&#9;7.829101 3.386341 6.533310&#9;" maps="base02" name="clan_pochta_trader"/>
+  <NPC chunk="1c6506d0i" coord="&#9;7.829101 3.386341 6.533310&#9;" maps="base03" name="clan_pochta_trader"/>
+  <NPC chunk="a30a1f08i" coord="&#9;-3.975796 -0.000133 -7.291327&#9;" maps="base04" name="clan_pochta_trader"/>
+  <NPC chunk="83b19cd4i" coord="&#9;-3.975796 -0.000133 -7.291327&#9;" maps="base05" name="clan_pochta_trader"/>
+  <NPC chunk="8b559cf1i" coord="&#9;-3.975796 -0.000133 -7.291327&#9;" maps="base06" name="clan_pochta_trader"/>
+  <NPC chunk="7804a63di" coord="&#9;7.829101 3.386341 6.533310&#9;" maps="base_adom" name="clan_pochta_trader"/>
+  <NPC chunk="44379446i" coord="&#9;-4.021133 -0.000134 -7.291595&#9;" maps="base_citadel" name="clan_pochta_trader"/>
+  <NPC chunk="f68b3614i" coord="&#9;7.829101 3.386341 6.533310&#9;" maps="base_dark_angels" name="clan_pochta_trader"/>
+  <NPC chunk="0124fd28i" coord="&#9;-3.975796 -0.000133 -7.291327&#9;" maps="base_dolg" name="clan_pochta_trader"/>
+  <NPC chunk="db880817i" coord="&#9;7.834911 3.386392 6.724249&#9;" maps="base_gdom2" name="clan_pochta_trader"/>
+  <NPC chunk="adbb3178i" coord="&#9;7.826177 3.386315 6.437355&#9;" maps="base_kuvalda" name="clan_pochta_trader"/>
+  <NPC chunk="ec4e7eeei" coord="&#9;7.198443 3.400001 6.148842&#9;" maps="base_redkross" name="clan_pochta_trader"/>
+  <NPC chunk="8f1c44e8i" coord="&#9;-3.975796 -0.000133 -7.291327&#9;" maps="base_rgd_upiry" name="clan_pochta_trader"/>
+  <NPC chunk="4432b4fai" coord="&#9;-3.975796 -0.000133 -7.291327&#9;" maps="base_shtorm" name="clan_pochta_trader"/>
+  <NPC chunk="ec4e7eeei" coord="&#9;7.829101 3.386341 6.533310&#9;" maps="base_SILENCE" name="clan_pochta_trader"/>
+  <NPC chunk="f960f01fi" coord="&#9;-3.975796 -0.000133 -7.291327&#9;" maps="base_sindikat" name="clan_pochta_trader"/>
+  <NPC chunk="9c2fce3di" coord="&#9;7.827409 3.386326 6.477810&#9;" maps="base_soyuz_mutaboev" name="clan_pochta_trader"/>
+  <NPC chunk="e6a4dc41i" coord="&#9;7.829101 3.386341 6.533310&#9;" maps="base_steel_brothers" name="clan_pochta_trader"/>
+  <NPC chunk="fba7d32ei" coord="&#9;7.831018 3.386358 6.596306&#9;" maps="base_ussr" name="clan_pochta_trader"/>
+  <NPC chunk="53eec7aai" coord="&#9;7.829101 3.386341 6.533310&#9;" maps="base_vertolet2" name="clan_pochta_trader"/>
+  <NPC chunk="9c2fce3di" coord="&#9;7.827409 3.386326 6.477810&#9;" maps="base_vesuvius_lep" name="clan_pochta_trader"/>
+  <NPC chunk="3ccbbff0i" coord="&#9;-3.975796 -0.000133 -7.291327&#9;" maps="base_voenstal" name="clan_pochta_trader"/>
+  <NPC chunk="5decb049i" coord="&#9;-3.975796 -0.000133 -7.291327&#9;" maps="base_vzvod45" name="clan_pochta_trader"/>
+  <NPC chunk="4efd38eci" coord="&#9;7.829101 3.386341 6.533310&#9;" maps="base_zaria" name="clan_pochta_trader"/>
+  <NPC chunk="8d4b0130i" coord="&#9;7.829101 3.386341 6.533310&#9;" maps="base__inquisition" name="clan_pochta_trader"/>
+  <NPC chunk="00000000o" coord="&#9;51.384781 0.000000 65.611549&#9;" maps="zoo" name="clan_pochta_trader"/>
+  <NPC chunk="0000ffffo" coord="&#9;5.236769 0.000000 95.863716&#9;" maps="zoo2" name="clan_pochta_trader"/>
+  <NPC chunk="0001ffffo" coord="&#9;72.661095 -0.012462 86.630165&#9;" maps="zoo2" name="clan_pochta_trader"/>
+  <NPC chunk="fffefffeo" coord="&#9;22.572372 0.000004 81.364349&#9;" maps="zoo2" name="clan_pochta_trader"/>
+  <NPC chunk="fffefffeo" coord="&#9;22.374466 -0.000001 79.656776&#9;" maps="zoo2" name="clan_pochta_trader"/>
+  <NPC chunk="c7df9280i" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_redkross" name="clan_redcross_doorman2"/>
+  <NPC chunk="44379446i" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base_citadel" name="clan_serp2_doorman2"/>
+  <NPC chunk="8f1c44e8i" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base_rgd_upiry" name="clan_serp_doorman2"/>
+  <NPC chunk="5decb049i" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base_vzvod45" name="clan_stadion_doorman2"/>
+  <NPC chunk="2e029c81i" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_steel_brothers" name="clan_univermag_doorman2"/>
+  <NPC chunk="a42b695ei" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_vertolet2" name="clan_vertolet2_doorman2"/>
+  <NPC chunk="3ccbbff0i" coord="&#9;1.239502 0.171282 -9.556796&#9;" maps="base_voenstal" name="clan_vertolet_doorman2"/>
+  <NPC chunk="1bda2d34i" coord="&#9;5.708916 -0.016686 14.287704&#9;" maps="city_lubech" name="doc_Zinoviev"/>
+  <NPC chunk="1bda2d34i" coord="&#9;5.708916 -0.016686 14.287704&#9;" maps="city_lubech_winter" name="doc_Zinoviev"/>
+  <NPC chunk="fb5bddeai" coord="&#9;0.834685 0.010517 0.419708&#9;" maps="base_vesuvius_lep" name="doorman_base_vesuvius_lep2"/>
+  <NPC chunk="0006fff9o" coord="&#9;94.883911 9.688319 52.521362&#9;" maps="vesuvius" name="fs_Ryjei"/>
+  <NPC chunk="0007fff9o" coord="&#9;21.102722 9.569996 71.231689&#9;" maps="vesuvius" name="fs_Shpricev"/>
+  <NPC chunk="ffff0001o" coord="&#9;38.393410 2.002929 59.412560&#9;" maps="so_origins" name="guardian"/>
+  <NPC chunk="0000fffdo" coord="&#9;33.848518 5.856088 82.717926&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="00010001o" coord="&#9;4.593704 0.000000 40.293396&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-9.644470 1.234655 -12.026442&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="8605d9a4i" coord="&#9;12.144989 5.198959 -8.552353&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="969c96fbi" coord="&#9;8.866068 5.720502 3.243266&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="969c96fbi" coord="&#9;-8.466451 5.720503 4.273505&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="969c96fbi" coord="&#9;-0.526659 5.734280 18.546440&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffd0001o" coord="&#9;20.613892 0.060547 8.974342&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;77.943924 0.000001 16.415768&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;65.300003 0.000000 27.799923&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;68.139038 0.000002 52.105705&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;43.420242 0.000004 12.324949&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;47.601883 0.000000 9.385045&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;85.736038 1.314286 36.028931&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0001o" coord="&#9;84.657188 0.000000 86.716537&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;92.084053 0.000000 95.444550&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;35.720123 0.000000 5.211487&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;91.278069 6.508185 19.885925&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;32.624878 0.000000 0.978333&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;89.545761 0.000000 57.151276&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;98.702759 1.313741 21.040527&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;18.818542 0.002930 91.987228&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffe0003o" coord="&#9;96.975822 0.000000 38.761871&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="ffff0000o" coord="&#9;30.618225 0.000000 51.140862&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="ffff0000o" coord="&#9;28.696228 0.000000 34.849197&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="ffff0001o" coord="&#9;45.760063 0.000000 75.214409&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="ffff0001o" coord="&#9;74.612511 -0.000001 84.181145&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="ffff0002o" coord="&#9;81.815269 0.000000 17.547333&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="ffff0003o" coord="&#9;71.430367 0.000000 0.028564&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="fffffffdo" coord="&#9;83.632347 0.865305 45.498718&#9;" maps="city_lubech" name="lubech_guardian"/>
+  <NPC chunk="0000fffdo" coord="&#9;33.848518 5.856088 82.717926&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="00010001o" coord="&#9;4.593704 0.000000 40.293396&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="8605d9a4i" coord="&#9;-9.644470 1.234655 -12.026442&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="8605d9a4i" coord="&#9;12.144989 5.198959 -8.552353&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="969c96fbi" coord="&#9;8.866068 5.720502 3.243266&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="969c96fbi" coord="&#9;-8.466451 5.720503 4.273505&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="969c96fbi" coord="&#9;-0.526659 5.734280 18.546440&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffd0001o" coord="&#9;20.613892 0.060547 8.974342&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;77.943924 0.000001 16.415768&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;65.300003 0.000000 27.799923&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;68.139038 0.000002 52.105705&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;43.420242 0.000004 12.324949&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;47.601883 0.000000 9.385045&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0000o" coord="&#9;85.736038 1.314286 36.028931&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0001o" coord="&#9;84.657188 0.000000 86.716537&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;35.720123 0.000000 5.211487&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;91.278069 6.508185 19.885925&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;32.624878 0.000000 0.978333&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;89.545761 0.000000 57.151276&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;98.702759 1.313741 21.040527&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0002o" coord="&#9;18.818542 0.002930 91.987228&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffe0003o" coord="&#9;96.975822 0.000000 38.761871&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="ffff0000o" coord="&#9;30.618225 0.000000 51.140862&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="ffff0000o" coord="&#9;28.696228 0.000000 34.849197&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="ffff0001o" coord="&#9;45.760063 0.000000 75.214409&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="ffff0001o" coord="&#9;74.612511 -0.000001 84.181145&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="ffff0002o" coord="&#9;81.815269 0.000000 17.547333&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="ffff0002o" coord="&#9;14.303574 0.000000 81.064987&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="ffff0003o" coord="&#9;71.430367 0.000000 0.028564&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffffffdo" coord="&#9;83.632347 0.865305 45.498718&#9;" maps="city_lubech_winter" name="lubech_guardian"/>
+  <NPC chunk="fffcfffdo" coord="&#9;47.618073 0.163086 20.674408&#9;" maps="outlands" name="lubech_guardian"/>
+  <NPC chunk="fffcfffdo" coord="&#9;45.113861 5.782064 63.535126&#9;" maps="outlands" name="lubech_guardian"/>
+  <NPC chunk="fffcfffdo" coord="&#9;58.684570 9.072803 11.565063&#9;" maps="outlands" name="lubech_guardian"/>
+  <NPC chunk="fffcfffeo" coord="&#9;28.943726 0.081310 41.603607&#9;" maps="outlands" name="lubech_guardian"/>
+  <NPC chunk="fffcfffeo" coord="&#9;53.707214 2.709867 5.944153&#9;" maps="outlands" name="lubech_guardian"/>
+  <NPC chunk="fffdfffdo" coord="&#9;14.895691 5.018554 94.907059&#9;" maps="outlands" name="lubech_guardian"/>
+  <NPC chunk="fffefff6o" coord="&#9;16.754288 0.014648 6.729126&#9;" maps="outlands" name="lubech_guardian"/>
+  <NPC chunk="fffffff7o" coord="&#9;13.724365 0.004883 99.855225&#9;" maps="outlands" name="lubech_guardian"/>
+  <NPC chunk="fffffff8o" coord="&#9;91.613770 0.000000 53.501953&#9;" maps="outlands" name="lubech_guardian"/>
+  <NPC chunk="00000003o" coord="&#9;11.147309 11.900215 47.865326&#9;" maps="outlands_airport" name="lubech_guardian"/>
+  <NPC chunk="00000003o" coord="&#9;27.760521 19.281151 69.137024&#9;" maps="outlands_airport" name="lubech_guardian"/>
+  <NPC chunk="00000003o" coord="&#9;32.467129 3.430000 53.930939&#9;" maps="outlands_airport" name="lubech_guardian"/>
+  <NPC chunk="00030000o" coord="&#9;48.847015 12.868001 57.324001&#9;" maps="outlands_airport" name="lubech_guardian"/>
+  <NPC chunk="fffefff7o" coord="&#9;13.798828 0.000000 59.205750&#9;" maps="outlands" name="lubech_merc"/>
+  <NPC chunk="fffffff9o" coord="&#9;56.809414 0.000000 59.098206&#9;" maps="outlands" name="lubech_merc"/>
+  <NPC chunk="0009fff8o" coord="&#9;26.783630 48.263657 55.861816&#9;" maps="outlands" name="merc_guard"/>
+  <NPC chunk="00000005o" coord="&#9;49.879829 18.546993 81.248627&#9;" maps="vesuvius" name="merc_guard"/>
+  <NPC chunk="00000005o" coord="&#9;25.952852 19.874695 95.333954&#9;" maps="vesuvius" name="merc_guard"/>
+  <NPC chunk="00000005o" coord="&#9;31.708256 23.100256 46.885681&#9;" maps="vesuvius" name="merc_guard"/>
+  <NPC chunk="00000006o" coord="&#9;86.124008 8.157543 46.394165&#9;" maps="vesuvius" name="merc_guard"/>
+  <NPC chunk="00000006o" coord="&#9;64.270477 15.255162 10.643372&#9;" maps="vesuvius" name="merc_guard"/>
+  <NPC chunk="00090006o" coord="&#9;60.098450 6.848785 65.500610&#9;" maps="vesuvius" name="merc_guard"/>
+  <NPC chunk="07813652i" coord="&#9;9.504669 -0.048828 12.983784&#9;" maps="steppe" name="noname"/>
+  <NPC chunk="07813652i" coord="&#9;-21.401367 -0.048889 17.800152&#9;" maps="steppe" name="noname"/>
+  <NPC chunk="07813652i" coord="&#9;20.422516 3.901794 22.166515&#9;" maps="steppe" name="noname"/>
+  <NPC chunk="07813652i" coord="&#9;-17.176575 5.968567 5.119801&#9;" maps="steppe" name="noname"/>
+  <NPC chunk="3f36bb4fi" coord="&#9;-3.437256 3.959541 10.827117&#9;" maps="steppe" name="noname"/>
+  <NPC chunk="c6c0f2dbi" coord="&#9;-17.586546 -0.002533 2.437866&#9;" maps="steppe" name="noname"/>
+  <NPC chunk="e407feabi" coord="&#9;-1.894012 3.959518 10.934319&#9;" maps="steppe" name="noname"/>
+  <NPC chunk="00000000o" coord="&#9;34.060238 3.650130 41.712879&#9;" maps="mm_space" name="noob_guardian"/>
+  <NPC chunk="00000000o" coord="&#9;25.746662 3.710000 47.375576&#9;" maps="mm_space" name="noob_guardian"/>
+  <NPC chunk="00000000o" coord="&#9;33.385460 4.862893 69.701172&#9;" maps="mm_space" name="noob_guardian"/>
+  <NPC chunk="00000000o" coord="&#9;81.704208 3.685162 90.938950&#9;" maps="mm_space" name="noob_guardian"/>
+  <NPC chunk="ffffffffo" coord="&#9;28.038582 2.792968 13.197151&#9;" maps="mm_space" name="noob_guardian"/>
+  <NPC chunk="00000000o" coord="&#9;33.658142 2.036132 76.151039&#9;" maps="so_origins" name="noob_guardian"/>
+  <NPC chunk="00000000o" coord="&#9;36.886612 3.747232 48.131889&#9;" maps="so_origins" name="noob_guardian"/>
+  <NPC chunk="00000000o" coord="&#9;41.358917 4.862491 72.882210&#9;" maps="so_origins" name="noob_guardian"/>
+  <NPC chunk="00000000o" coord="&#9;47.874039 3.854960 72.801270&#9;" maps="so_origins" name="noob_guardian"/>
+  <NPC chunk="fffcfffdo" coord="&#9;57.011871 0.244534 19.849030&#9;" maps="outlands" name="prapNicheporenko"/>
+  <NPC chunk="00000000o" coord="&#9;25.736710 8.934339 26.147635&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;27.931282 8.916193 80.850227&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="0000ffffo" coord="&#9;81.110947 0.000000 72.786362&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="0000ffffo" coord="&#9;18.990618 2.740543 66.820221&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="0000ffffo" coord="&#9;22.901457 8.919455 18.377304&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="0000ffffo" coord="&#9;40.038757 0.000002 79.061264&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="0000ffffo" coord="&#9;25.429926 0.000000 72.179497&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="0000ffffo" coord="&#9;44.291759 8.921885 88.194839&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="fffeffffo" coord="&#9;85.773849 0.000000 73.219604&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="fffeffffo" coord="&#9;87.505264 0.000000 84.844749&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="ffff0000o" coord="&#9;41.742233 8.823728 78.972679&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="fffffffeo" coord="&#9;75.908264 11.253706 83.433647&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="fffffffeo" coord="&#9;74.875809 11.243388 83.427925&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="ffffffffo" coord="&#9;37.501530 8.935694 59.931442&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="ffffffffo" coord="&#9;38.702946 8.951633 16.836044&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="ffffffffo" coord="&#9;37.920570 9.028533 91.394783&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="ffffffffo" coord="&#9;37.765320 0.000000 69.369492&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="ffffffffo" coord="&#9;37.883732 0.000004 83.936958&#9;" maps="pk_prison01" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;9.086936 0.000000 27.424456&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;8.649440 0.000000 29.084021&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;6.868758 0.000000 26.974188&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;5.103876 0.000000 25.900978&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;6.242382 0.000000 28.241812&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;8.848722 0.000000 26.765087&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;9.633483 0.000000 28.334253&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;9.922728 0.000000 31.082823&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;8.398372 0.000000 30.333206&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;6.868495 0.000000 28.000608&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;10.979818 0.000000 26.150503&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;11.252421 0.000000 28.301830&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;11.103732 0.000000 30.107815&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;9.318095 0.000000 29.208946&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;5.376174 0.000000 26.809057&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;6.804370 0.000000 29.263018&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;9.922346 0.000000 31.832310&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;8.166728 0.000000 30.830717&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;8.913749 0.000000 28.762798&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;8.706153 0.000000 25.946718&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="00000000o" coord="&#9;9.657420 0.000000 32.836197&#9;" maps="zoo" name="prison_guard"/>
+  <NPC chunk="0009fff8o" coord="&#9;45.221191 48.288078 55.760193&#9;" maps="outlands" name="profShleimovich"/>
+  <NPC chunk="ffff0000o" coord="&#9;93.489967 0.000000 14.364765&#9;" maps="pk_prison01" name="sergeant_kojemiaka"/>
+  <NPC chunk="fff5ffffo" coord="&#9;97.951660 2.023047 15.358170&#9;" maps="vesuvius" name="stalker_guard"/>
+  <NPC chunk="ffffffffo" coord="&#9;90.382835 0.000000 73.736107&#9;" maps="pk_prison01" name="stoneman_1"/>
+  <NPC chunk="fffffffeo" coord="&#9;85.159966 4.150390 97.417473&#9;" maps="pk_prison01" name="stoneman_2"/>
+  <NPC chunk="000c0012o" coord="&#9;3.627808 20.301754 36.798462&#9;" maps="outlands" name="teleport_v_20km_bad"/>
+  <NPC chunk="ffecfffco" coord="&#9;83.394531 0.011929 90.647491&#9;" maps="outlands" name="teleport_v_20km_good"/>
+  <NPC chunk="ffef000bo" coord="&#9;38.709229 7.443358 87.947998&#9;" maps="outlands" name="teleport_v_20km_neutral"/>
+  <NPC chunk="ffff0000o" coord="&#9;25.616180 0.000000 62.040993&#9;" maps="main" name="test"/>
+  <NPC chunk="ffff0000o" coord="&#9;96.880302 -0.000004 28.519989&#9;" maps="zoo" name="testman"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Krokodil"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Mail_Pilot"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_farvillage_trader"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_redcross_aid"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_vertolet2_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="CaptureBase_Tunguska_trader2"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Trup_Toliana1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Kolokol_Island"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Mail_Whites"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Vitek_Skorohod"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="pvp_npc"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_vertolet_Guard"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="teleporter_noob_tunnelL2"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman1_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_gurman_pop2_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Machinist"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Kamil"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_redcross_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_gurman_pop2_doorman2"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_serp_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="teleporter_nob_tunelR"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman3_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="CaptureBase_Tunguska_trader1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman6_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_sanatoriy_trader"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Provodnik_NZ_uchenie"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Master"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_stounhedzh_trader"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="doorman_base_vesuvius_lep"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Donat_provodnik"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Eger"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_brockenBus2_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_serp2_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gdom2_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_stadion_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman7_doorman2"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman2_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Diplomat_Island"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="20km_Provodnik1_westgood"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman6_doorman2"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman2_doorman2"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_detsad2_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_pochta_doorman"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_detsad_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="20km_Provodnik1_westneutral"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="UkrepTrader"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_vertolet_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_radiotower_trader"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_brockenBus_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Real_Hunter"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_dom-na-holme_trader"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Provodnik_Dust_Airport"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="20km_Provodnik1_westbad"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Haron_Corpse"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="redcross_guardian"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_gurman_pop_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Dead_Stalker_Swamp"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Farmacevt"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Olg"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="PVP_Traider"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Kolya_Kaskader"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman5_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_NoobDog1_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Haron_cache"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Provodnik_Bandit"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="quests_cleaner"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="20km_Provodnik1_eastbad"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman7_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="20km_Provodnik1_eastneutral"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_chemical_trader"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Haron"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Zuy"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="20km_Provodnik1_eastgood"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="Bono"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="400km_Provodnik"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_psyho_trader"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="CaptureBase_provodnik"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gurman4_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_univermag_doorman1"/>
+  <NPC chunk="notfound" coord="notfound" maps="notfound" name="clan_Gdom1_doorman1"/>
+</root>
