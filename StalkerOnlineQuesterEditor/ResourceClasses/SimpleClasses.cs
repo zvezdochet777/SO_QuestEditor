@@ -171,7 +171,7 @@ namespace StalkerOnlineQuesterEditor
     }
 
     //! Класс диалога (одна ветка в xml файле)
-    public class CDialog
+    public class CDialog : ICloneable
     {
         public int DialogID;
         //public List<string> Holder;
@@ -215,6 +215,21 @@ namespace StalkerOnlineQuesterEditor
             this.version = new int();
             coordinates = new NodeCoordinates();
         }
+        public object Clone()
+        {
+            CDialog copy = new CDialog();
+            copy.Actions = this.Actions;
+            copy.coordinates = this.coordinates;
+            copy.DialogID = this.DialogID;
+            copy.Holder = this.Holder;
+            copy.Nodes = this.Nodes;
+            copy.Precondition = this.Precondition;
+            copy.QuestDialog = this.QuestDialog;
+            copy.Text = this.Text;
+            copy.Title = this.Title;
+            copy.version = this.version;
+            return copy;
+        }
      
     }
 
@@ -244,7 +259,6 @@ namespace StalkerOnlineQuesterEditor
             copy.Additional = (CQuestAdditional)this.Additional.Clone();
             copy.Target = (CQuestTarget)this.Target.Clone();
             return copy;
-
         }
 
         public CQuest()
@@ -258,7 +272,6 @@ namespace StalkerOnlineQuesterEditor
             this.QuestPenalty = new CQuestPenalty();
             this.Additional = new CQuestAdditional();
             this.Target = new CQuestTarget();
-
         }
 
         public CQuest(int questID,int Version, CQuestInformation questInformation,CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional,CQuestTarget target, CQuestPenalty penalty)
@@ -272,11 +285,7 @@ namespace StalkerOnlineQuesterEditor
             this.Additional = additional;
             this.Target = target;
             this.QuestPenalty = penalty;
-
-
-
         }
-
     }
 
     public class CQuestInformation : ICloneable
@@ -303,7 +312,6 @@ namespace StalkerOnlineQuesterEditor
                 foreach (KeyValuePair<int, QuestItemInfo> item in this.Items)
                     copy.Items.Add(item.Key, (QuestItemInfo)item.Value.Clone());
                 return copy;
-
             }
             
             public CQuestInformation()
@@ -336,8 +344,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 this.Items.Add(itemID, new QuestItemInfo(title, description, activation));
             }
-
-
     }
 
     public class CQuestTarget : ICloneable
@@ -370,8 +376,6 @@ namespace StalkerOnlineQuesterEditor
                 copy.IsGroup = this.IsGroup;
                 copy.IsClan = this.IsClan;
                 copy.onFin = this.onFin;
-
-
                 return copy;
             }
 
@@ -450,10 +454,6 @@ namespace StalkerOnlineQuesterEditor
             copy.MinGroup = this.MinGroup;
             copy.MaxMember = this.MaxMember;
             copy.MinMember = this.MinMember;
-
-
-
-
             return copy;
         }
 
@@ -468,7 +468,6 @@ namespace StalkerOnlineQuesterEditor
             this.MaxGroup = new int();
             this.MinGroup = new int();
             this.TeleportTo = "";
-
         }
     }
 
@@ -589,8 +588,6 @@ namespace StalkerOnlineQuesterEditor
             copy.TeleportTo = (string)this.TeleportTo.Clone();
             copy.Credits = this.Credits;
             //copy.Reputation = this.Reputation;
-
-
             return copy;
         }
 

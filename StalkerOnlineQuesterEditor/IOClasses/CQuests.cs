@@ -475,8 +475,13 @@ namespace StalkerOnlineQuesterEditor
         //! Копирование получившегося файла в директорию игры (она задается в настройках)
         void copyResultFile(string filename)
         {
+            if (parent.settings.pathToCopyFiles == "")
+                return;
+            if (!parent.settings.pathToCopyFiles.EndsWith("\\"))
+                parent.settings.pathToCopyFiles += "\\";
             string destPath = parent.settings.pathToCopyFiles + filename;
             string srcPath = filename;
+            
             try
             {
                 File.Copy(srcPath, destPath, true);

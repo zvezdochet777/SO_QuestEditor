@@ -952,8 +952,6 @@ namespace StalkerOnlineQuesterEditor
                     ltargetResult.Text = "Зоны:";
                 else if (this.QuestType == 6)
                     ltargetResult.Text = "Триггеры:";
-
-
             }
             else
             {
@@ -1032,8 +1030,6 @@ namespace StalkerOnlineQuesterEditor
                 bHideInformation.Text = "Показать";
                 iInformationHeight = questInformationBox.Height;
                 questInformationBox.Height = 35;
-                
-
             }
             else
             {
@@ -1048,12 +1044,10 @@ namespace StalkerOnlineQuesterEditor
                 bHideInformation.Text = "Скрыть";
                 questInformationBox.Height = iInformationHeight;
             }
-
         }
 
         private void bHideTarget_Click(object sender, EventArgs e)
         {
-
             if (ltargetResult.Visible)
             {
                 ltargetResult.Visible = false;
@@ -1074,7 +1068,6 @@ namespace StalkerOnlineQuesterEditor
                 bHideTarget.Text = "Показать";
                 iTargetHeight = targetBox.Height;
                 targetBox.Height = 35;
-
             }
             else
             {
@@ -1096,8 +1089,6 @@ namespace StalkerOnlineQuesterEditor
                 bHideTarget.Text = "Скрыть";
                 targetBox.Height = iTargetHeight;
             }
-
-            
         }
 
         private void bHideRules_Click(object sender, EventArgs e)
@@ -1215,7 +1206,6 @@ namespace StalkerOnlineQuesterEditor
             itemDialog.Enabled = true;
             itemDialog.Visible = true;
             this.Enabled = false;
-
         }
 
         private void bItemQuestRules_Click(object sender, EventArgs e)
@@ -1235,7 +1225,6 @@ namespace StalkerOnlineQuesterEditor
         {
             SelectQuestItem selectQItem = new SelectQuestItem(this, this.QuestID);
             this.Enabled = false;
-
         }
 
         private void bRewardFractions_Click(object sender, EventArgs e)
@@ -1243,7 +1232,6 @@ namespace StalkerOnlineQuesterEditor
             RewardFractions formFractions = new RewardFractions(this);
             formFractions.Visible = true;
             this.Enabled = false;
-            
         }
 
         private void tutorialCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -1255,8 +1243,8 @@ namespace StalkerOnlineQuesterEditor
             }
             else
             {
-                    showJournalCheckBox.Checked = true;
-                    showJournalCheckBox.Enabled = true;
+                showJournalCheckBox.Checked = true;
+                showJournalCheckBox.Enabled = true;
             }
         }
 

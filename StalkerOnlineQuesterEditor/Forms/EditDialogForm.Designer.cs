@@ -178,11 +178,14 @@
             // 
             // teleportComboBox
             // 
+            this.teleportComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.teleportComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.teleportComboBox.DropDownWidth = 250;
             this.teleportComboBox.Enabled = false;
             this.teleportComboBox.FormattingEnabled = true;
             this.teleportComboBox.Location = new System.Drawing.Point(379, 83);
             this.teleportComboBox.Name = "teleportComboBox";
-            this.teleportComboBox.Size = new System.Drawing.Size(100, 21);
+            this.teleportComboBox.Size = new System.Drawing.Size(147, 21);
             this.teleportComboBox.TabIndex = 30;
             // 
             // teleportCheckBox
@@ -223,7 +226,7 @@
             this.CompleteQuetsTextBox.Enabled = false;
             this.CompleteQuetsTextBox.Location = new System.Drawing.Point(379, 39);
             this.CompleteQuetsTextBox.Name = "CompleteQuetsTextBox";
-            this.CompleteQuetsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CompleteQuetsTextBox.Size = new System.Drawing.Size(147, 20);
             this.CompleteQuetsTextBox.TabIndex = 28;
             // 
             // GetQuestsTextBox
@@ -231,7 +234,7 @@
             this.GetQuestsTextBox.Enabled = false;
             this.GetQuestsTextBox.Location = new System.Drawing.Point(379, 16);
             this.GetQuestsTextBox.Name = "GetQuestsTextBox";
-            this.GetQuestsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.GetQuestsTextBox.Size = new System.Drawing.Size(147, 20);
             this.GetQuestsTextBox.TabIndex = 26;
             // 
             // ToDialogComboBox

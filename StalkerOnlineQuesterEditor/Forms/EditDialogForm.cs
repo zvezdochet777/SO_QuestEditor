@@ -30,7 +30,6 @@ namespace StalkerOnlineQuesterEditor
             this.parent = parent;
             this.parent.Enabled = false;
 
-
             CDialog curDialog = parent.getDialogOnDialogID(dialogID);
             lAttention.Text = "";
             if (curDialog.Precondition.Reputation.Any())
@@ -63,15 +62,12 @@ namespace StalkerOnlineQuesterEditor
 
         void fillDialogEditForm(int dialogID)
         {
-
             //reputationLabel0.Text = "< Военные Любеча <";
             //reputationLabel1.Text = "< Ученые Любеча <";
             //reputationLabel2.Text = "< Законопослушные <";
             //reputationLabel3.Text = "< Отступники <";
             //reputationLabel4.Text = "< ЛВЗ <";
-
             //System.Console.WriteLine("fillDialogEditForm");
-
             foreach (CDialog dialog in parent.getDialogsWithDialogIDInNodes(dialogID))
                     NPCSaidIs.Text+=(dialog.DialogID.ToString()+":\n"+dialog.Text);
 
@@ -128,8 +124,6 @@ namespace StalkerOnlineQuesterEditor
                 if (curDialog.Actions.Event == 7)
                     barterCheckBox.Checked = true;
                 ExitCheckBox.Checked = curDialog.Actions.Exit;
-
-
 
                 if (curDialog.Actions.CompleteQuests.Any())
                 {

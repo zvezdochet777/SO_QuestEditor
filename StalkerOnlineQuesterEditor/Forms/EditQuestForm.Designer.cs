@@ -595,6 +595,7 @@
             // 
             // targetAttributeComboBox2
             // 
+            this.targetAttributeComboBox2.DropDownWidth = 200;
             this.targetAttributeComboBox2.Enabled = false;
             this.targetAttributeComboBox2.FormattingEnabled = true;
             this.targetAttributeComboBox2.Location = new System.Drawing.Point(103, 93);
@@ -666,6 +667,7 @@
             // 
             // targetAttributeComboBox
             // 
+            this.targetAttributeComboBox.DropDownWidth = 121;
             this.targetAttributeComboBox.Enabled = false;
             this.targetAttributeComboBox.FormattingEnabled = true;
             this.targetAttributeComboBox.Location = new System.Drawing.Point(103, 66);
@@ -733,6 +735,7 @@
             // 
             // targetComboBox
             // 
+            this.targetComboBox.DropDownWidth = 250;
             this.targetComboBox.Enabled = false;
             this.targetComboBox.FormattingEnabled = true;
             this.targetComboBox.Location = new System.Drawing.Point(103, 39);

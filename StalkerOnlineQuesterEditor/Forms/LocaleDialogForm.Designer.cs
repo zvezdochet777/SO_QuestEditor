@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.labelNameOfNPC = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lRussian2 = new System.Windows.Forms.Label();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.lViewDialogId = new System.Windows.Forms.Label();
+            this.labelDialogID = new System.Windows.Forms.Label();
             this.lRussian1 = new System.Windows.Forms.Label();
-            this.lLocalization2 = new System.Windows.Forms.Label();
-            this.lAnswer = new System.Windows.Forms.Label();
             this.lLocalization1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.textBoxAnswer = new System.Windows.Forms.TextBox();
@@ -43,19 +42,22 @@
             this.NPCReactiontextBox = new System.Windows.Forms.TextBox();
             this.textBoxNPCReactionLocale = new System.Windows.Forms.TextBox();
             this.lViewNpcName = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelButtons = new System.Windows.Forms.Panel();
             this.bCancel = new System.Windows.Forms.Button();
             this.bOk = new System.Windows.Forms.Button();
-            this.labelDialogID = new System.Windows.Forms.Label();
-            this.lViewDialogId = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.panelLabels2 = new System.Windows.Forms.Panel();
+            this.lRussian2 = new System.Windows.Forms.Label();
+            this.lLocalization2 = new System.Windows.Forms.Label();
+            this.lAnswer = new System.Windows.Forms.Label();
+            this.panelMain.SuspendLayout();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelButtons.SuspendLayout();
+            this.panelLabels2.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNameOfNPC
@@ -67,65 +69,55 @@
             this.labelNameOfNPC.TabIndex = 0;
             this.labelNameOfNPC.Text = "Имя NPC:";
             // 
-            // panel1
+            // panelMain
             // 
-            this.panel1.Controls.Add(this.lViewDialogId);
-            this.panel1.Controls.Add(this.labelDialogID);
-            this.panel1.Controls.Add(this.lRussian2);
-            this.panel1.Controls.Add(this.lRussian1);
-            this.panel1.Controls.Add(this.lLocalization2);
-            this.panel1.Controls.Add(this.lAnswer);
-            this.panel1.Controls.Add(this.lLocalization1);
-            this.panel1.Controls.Add(this.splitContainer2);
-            this.panel1.Controls.Add(this.lNpcReaction);
-            this.panel1.Controls.Add(this.splitContainer1);
-            this.panel1.Controls.Add(this.lViewNpcName);
-            this.panel1.Controls.Add(this.labelNameOfNPC);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(620, 345);
-            this.panel1.TabIndex = 1;
+            this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMain.Controls.Add(this.splitContainer1);
+            this.panelMain.Controls.Add(this.panelLabels2);
+            this.panelMain.Controls.Add(this.lViewDialogId);
+            this.panelMain.Controls.Add(this.labelDialogID);
+            this.panelMain.Controls.Add(this.lRussian1);
+            this.panelMain.Controls.Add(this.lLocalization1);
+            this.panelMain.Controls.Add(this.splitContainer2);
+            this.panelMain.Controls.Add(this.lNpcReaction);
+            this.panelMain.Controls.Add(this.lViewNpcName);
+            this.panelMain.Controls.Add(this.labelNameOfNPC);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(0, 0);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(663, 390);
+            this.panelMain.TabIndex = 1;
             // 
-            // lRussian2
+            // lViewDialogId
             // 
-            this.lRussian2.AutoSize = true;
-            this.lRussian2.Location = new System.Drawing.Point(76, 212);
-            this.lRussian2.Name = "lRussian2";
-            this.lRussian2.Size = new System.Drawing.Size(49, 13);
-            this.lRussian2.TabIndex = 5;
-            this.lRussian2.Text = "Русский";
+            this.lViewDialogId.AutoSize = true;
+            this.lViewDialogId.Location = new System.Drawing.Point(518, 10);
+            this.lViewDialogId.Name = "lViewDialogId";
+            this.lViewDialogId.Size = new System.Drawing.Size(0, 13);
+            this.lViewDialogId.TabIndex = 7;
+            // 
+            // labelDialogID
+            // 
+            this.labelDialogID.AutoSize = true;
+            this.labelDialogID.Location = new System.Drawing.Point(461, 10);
+            this.labelDialogID.Name = "labelDialogID";
+            this.labelDialogID.Size = new System.Drawing.Size(51, 13);
+            this.labelDialogID.TabIndex = 6;
+            this.labelDialogID.Text = "DialogID:";
             // 
             // lRussian1
             // 
             this.lRussian1.AutoSize = true;
-            this.lRussian1.Location = new System.Drawing.Point(76, 62);
+            this.lRussian1.Location = new System.Drawing.Point(76, 51);
             this.lRussian1.Name = "lRussian1";
             this.lRussian1.Size = new System.Drawing.Size(49, 13);
             this.lRussian1.TabIndex = 5;
             this.lRussian1.Text = "Русский";
             // 
-            // lLocalization2
-            // 
-            this.lLocalization2.AutoSize = true;
-            this.lLocalization2.Location = new System.Drawing.Point(362, 212);
-            this.lLocalization2.Name = "lLocalization2";
-            this.lLocalization2.Size = new System.Drawing.Size(75, 13);
-            this.lLocalization2.TabIndex = 3;
-            this.lLocalization2.Text = "Локализация";
-            // 
-            // lAnswer
-            // 
-            this.lAnswer.AutoSize = true;
-            this.lAnswer.Location = new System.Drawing.Point(202, 194);
-            this.lAnswer.Name = "lAnswer";
-            this.lAnswer.Size = new System.Drawing.Size(86, 13);
-            this.lAnswer.TabIndex = 4;
-            this.lAnswer.Text = "Вариант ответа";
-            // 
             // lLocalization1
             // 
             this.lLocalization1.AutoSize = true;
-            this.lLocalization1.Location = new System.Drawing.Point(362, 62);
+            this.lLocalization1.Location = new System.Drawing.Point(357, 51);
             this.lLocalization1.Name = "lLocalization1";
             this.lLocalization1.Size = new System.Drawing.Size(75, 13);
             this.lLocalization1.TabIndex = 3;
@@ -133,7 +125,8 @@
             // 
             // splitContainer2
             // 
-            this.splitContainer2.Location = new System.Drawing.Point(1, 228);
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 265);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -143,8 +136,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.textBoxAnswerLocale);
-            this.splitContainer2.Size = new System.Drawing.Size(594, 100);
-            this.splitContainer2.SplitterDistance = 198;
+            this.splitContainer2.Size = new System.Drawing.Size(661, 123);
+            this.splitContainer2.SplitterDistance = 216;
             this.splitContainer2.TabIndex = 2;
             // 
             // textBoxAnswer
@@ -153,7 +146,7 @@
             this.textBoxAnswer.Location = new System.Drawing.Point(0, 0);
             this.textBoxAnswer.Multiline = true;
             this.textBoxAnswer.Name = "textBoxAnswer";
-            this.textBoxAnswer.Size = new System.Drawing.Size(198, 100);
+            this.textBoxAnswer.Size = new System.Drawing.Size(216, 123);
             this.textBoxAnswer.TabIndex = 0;
             // 
             // textBoxAnswerLocale
@@ -162,7 +155,7 @@
             this.textBoxAnswerLocale.Location = new System.Drawing.Point(0, 0);
             this.textBoxAnswerLocale.Multiline = true;
             this.textBoxAnswerLocale.Name = "textBoxAnswerLocale";
-            this.textBoxAnswerLocale.Size = new System.Drawing.Size(392, 100);
+            this.textBoxAnswerLocale.Size = new System.Drawing.Size(441, 123);
             this.textBoxAnswerLocale.TabIndex = 0;
             // 
             // lNpcReaction
@@ -176,7 +169,8 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(1, 78);
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 78);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -186,8 +180,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.textBoxNPCReactionLocale);
-            this.splitContainer1.Size = new System.Drawing.Size(594, 100);
-            this.splitContainer1.SplitterDistance = 198;
+            this.splitContainer1.Size = new System.Drawing.Size(661, 123);
+            this.splitContainer1.SplitterDistance = 220;
             this.splitContainer1.TabIndex = 2;
             // 
             // NPCReactiontextBox
@@ -196,7 +190,7 @@
             this.NPCReactiontextBox.Location = new System.Drawing.Point(0, 0);
             this.NPCReactiontextBox.Multiline = true;
             this.NPCReactiontextBox.Name = "NPCReactiontextBox";
-            this.NPCReactiontextBox.Size = new System.Drawing.Size(198, 100);
+            this.NPCReactiontextBox.Size = new System.Drawing.Size(220, 123);
             this.NPCReactiontextBox.TabIndex = 0;
             // 
             // textBoxNPCReactionLocale
@@ -205,7 +199,7 @@
             this.textBoxNPCReactionLocale.Location = new System.Drawing.Point(0, 0);
             this.textBoxNPCReactionLocale.Multiline = true;
             this.textBoxNPCReactionLocale.Name = "textBoxNPCReactionLocale";
-            this.textBoxNPCReactionLocale.Size = new System.Drawing.Size(392, 100);
+            this.textBoxNPCReactionLocale.Size = new System.Drawing.Size(437, 123);
             this.textBoxNPCReactionLocale.TabIndex = 0;
             // 
             // lViewNpcName
@@ -216,18 +210,20 @@
             this.lViewNpcName.Size = new System.Drawing.Size(0, 13);
             this.lViewNpcName.TabIndex = 1;
             // 
-            // panel2
+            // panelButtons
             // 
-            this.panel2.Controls.Add(this.bCancel);
-            this.panel2.Controls.Add(this.bOk);
-            this.panel2.Location = new System.Drawing.Point(12, 363);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(620, 34);
-            this.panel2.TabIndex = 2;
+            this.panelButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelButtons.Controls.Add(this.bCancel);
+            this.panelButtons.Controls.Add(this.bOk);
+            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelButtons.Location = new System.Drawing.Point(0, 390);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(663, 52);
+            this.panelButtons.TabIndex = 2;
             // 
             // bCancel
             // 
-            this.bCancel.Location = new System.Drawing.Point(542, 3);
+            this.bCancel.Location = new System.Drawing.Point(542, 12);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
             this.bCancel.TabIndex = 1;
@@ -237,7 +233,7 @@
             // 
             // bOk
             // 
-            this.bOk.Location = new System.Drawing.Point(461, 3);
+            this.bOk.Location = new System.Drawing.Point(461, 12);
             this.bOk.Name = "bOk";
             this.bOk.Size = new System.Drawing.Size(75, 23);
             this.bOk.TabIndex = 0;
@@ -245,35 +241,56 @@
             this.bOk.UseVisualStyleBackColor = true;
             this.bOk.Click += new System.EventHandler(this.bOk_Click);
             // 
-            // labelDialogID
+            // panelLabels2
             // 
-            this.labelDialogID.AutoSize = true;
-            this.labelDialogID.Location = new System.Drawing.Point(461, 10);
-            this.labelDialogID.Name = "labelDialogID";
-            this.labelDialogID.Size = new System.Drawing.Size(51, 13);
-            this.labelDialogID.TabIndex = 6;
-            this.labelDialogID.Text = "DialogID:";
+            this.panelLabels2.Controls.Add(this.lRussian2);
+            this.panelLabels2.Controls.Add(this.lLocalization2);
+            this.panelLabels2.Controls.Add(this.lAnswer);
+            this.panelLabels2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelLabels2.Location = new System.Drawing.Point(0, 201);
+            this.panelLabels2.Name = "panelLabels2";
+            this.panelLabels2.Size = new System.Drawing.Size(661, 64);
+            this.panelLabels2.TabIndex = 8;
             // 
-            // lViewDialogId
+            // lRussian2
             // 
-            this.lViewDialogId.AutoSize = true;
-            this.lViewDialogId.Location = new System.Drawing.Point(518, 10);
-            this.lViewDialogId.Name = "lViewDialogId";
-            this.lViewDialogId.Size = new System.Drawing.Size(0, 13);
-            this.lViewDialogId.TabIndex = 7;
+            this.lRussian2.AutoSize = true;
+            this.lRussian2.Location = new System.Drawing.Point(71, 35);
+            this.lRussian2.Name = "lRussian2";
+            this.lRussian2.Size = new System.Drawing.Size(49, 13);
+            this.lRussian2.TabIndex = 8;
+            this.lRussian2.Text = "Русский";
+            // 
+            // lLocalization2
+            // 
+            this.lLocalization2.AutoSize = true;
+            this.lLocalization2.Location = new System.Drawing.Point(357, 35);
+            this.lLocalization2.Name = "lLocalization2";
+            this.lLocalization2.Size = new System.Drawing.Size(75, 13);
+            this.lLocalization2.TabIndex = 6;
+            this.lLocalization2.Text = "Локализация";
+            // 
+            // lAnswer
+            // 
+            this.lAnswer.AutoSize = true;
+            this.lAnswer.Location = new System.Drawing.Point(197, 17);
+            this.lAnswer.Name = "lAnswer";
+            this.lAnswer.Size = new System.Drawing.Size(86, 13);
+            this.lAnswer.TabIndex = 7;
+            this.lAnswer.Text = "Вариант ответа";
             // 
             // LocaleDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 427);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(663, 442);
+            this.Controls.Add(this.panelMain);
+            this.Controls.Add(this.panelButtons);
             this.Name = "LocaleDialogForm";
             this.Text = "Локализация диалога";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LocaleDialogForm_FormClosing);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelMain.ResumeLayout(false);
+            this.panelMain.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -284,7 +301,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             this.splitContainer1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.panelButtons.ResumeLayout(false);
+            this.panelLabels2.ResumeLayout(false);
+            this.panelLabels2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -292,16 +311,13 @@
         #endregion
 
         private System.Windows.Forms.Label labelNameOfNPC;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Label lViewNpcName;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelButtons;
         private System.Windows.Forms.Label lNpcReaction;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label lLocalization1;
-        private System.Windows.Forms.Label lAnswer;
         private System.Windows.Forms.Label lRussian1;
-        private System.Windows.Forms.Label lRussian2;
-        private System.Windows.Forms.Label lLocalization2;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TextBox NPCReactiontextBox;
         private System.Windows.Forms.TextBox textBoxNPCReactionLocale;
@@ -311,5 +327,9 @@
         private System.Windows.Forms.Button bOk;
         private System.Windows.Forms.Label lViewDialogId;
         private System.Windows.Forms.Label labelDialogID;
+        private System.Windows.Forms.Panel panelLabels2;
+        private System.Windows.Forms.Label lRussian2;
+        private System.Windows.Forms.Label lLocalization2;
+        private System.Windows.Forms.Label lAnswer;
     }
 }
