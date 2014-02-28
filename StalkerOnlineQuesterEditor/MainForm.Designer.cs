@@ -150,6 +150,9 @@ namespace StalkerOnlineQuesterEditor
             this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.pNpcLinkControls = new System.Windows.Forms.Panel();
+            this.bNpcLinkExecute = new System.Windows.Forms.Button();
+            this.lAdviceNpcLink = new System.Windows.Forms.Label();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.splitDialogs.Panel1.SuspendLayout();
@@ -187,6 +190,7 @@ namespace StalkerOnlineQuesterEditor
             this.SelectNPC.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusDialogStrip.SuspendLayout();
+            this.pNpcLinkControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // DialogShower
@@ -646,6 +650,7 @@ namespace StalkerOnlineQuesterEditor
             // npcLinksTabPage
             // 
             this.npcLinksTabPage.Controls.Add(this.npcLinkShower);
+            this.npcLinksTabPage.Controls.Add(this.pNpcLinkControls);
             this.npcLinksTabPage.Location = new System.Drawing.Point(4, 22);
             this.npcLinksTabPage.Name = "npcLinksTabPage";
             this.npcLinksTabPage.Size = new System.Drawing.Size(906, 540);
@@ -660,10 +665,10 @@ namespace StalkerOnlineQuesterEditor
             this.npcLinkShower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.npcLinkShower.Dock = System.Windows.Forms.DockStyle.Fill;
             this.npcLinkShower.GridFitText = false;
-            this.npcLinkShower.Location = new System.Drawing.Point(0, 0);
+            this.npcLinkShower.Location = new System.Drawing.Point(0, 52);
             this.npcLinkShower.Name = "npcLinkShower";
             this.npcLinkShower.RegionManagement = true;
-            this.npcLinkShower.Size = new System.Drawing.Size(906, 540);
+            this.npcLinkShower.Size = new System.Drawing.Size(906, 488);
             this.npcLinkShower.TabIndex = 1;
             this.npcLinkShower.Text = "8";
             // 
@@ -1374,6 +1379,36 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
             // 
+            // pNpcLinkControls
+            // 
+            this.pNpcLinkControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pNpcLinkControls.Controls.Add(this.lAdviceNpcLink);
+            this.pNpcLinkControls.Controls.Add(this.bNpcLinkExecute);
+            this.pNpcLinkControls.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pNpcLinkControls.Location = new System.Drawing.Point(0, 0);
+            this.pNpcLinkControls.Name = "pNpcLinkControls";
+            this.pNpcLinkControls.Size = new System.Drawing.Size(906, 52);
+            this.pNpcLinkControls.TabIndex = 2;
+            // 
+            // bNpcLinkExecute
+            // 
+            this.bNpcLinkExecute.Location = new System.Drawing.Point(261, 15);
+            this.bNpcLinkExecute.Name = "bNpcLinkExecute";
+            this.bNpcLinkExecute.Size = new System.Drawing.Size(107, 23);
+            this.bNpcLinkExecute.TabIndex = 0;
+            this.bNpcLinkExecute.Text = "Посмотреть";
+            this.bNpcLinkExecute.UseVisualStyleBackColor = true;
+            this.bNpcLinkExecute.Click += new System.EventHandler(this.bNpcLinkExecute_Click);
+            // 
+            // lAdviceNpcLink
+            // 
+            this.lAdviceNpcLink.AutoSize = true;
+            this.lAdviceNpcLink.Location = new System.Drawing.Point(7, 20);
+            this.lAdviceNpcLink.Name = "lAdviceNpcLink";
+            this.lAdviceNpcLink.Size = new System.Drawing.Size(250, 13);
+            this.lAdviceNpcLink.TabIndex = 1;
+            this.lAdviceNpcLink.Text = "Выберете NPC в комбобоксе вверху и нажмите";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1430,6 +1465,8 @@ namespace StalkerOnlineQuesterEditor
             this.menuStrip1.PerformLayout();
             this.statusDialogStrip.ResumeLayout(false);
             this.statusDialogStrip.PerformLayout();
+            this.pNpcLinkControls.ResumeLayout(false);
+            this.pNpcLinkControls.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1556,6 +1593,9 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn сolDialogsNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn сolQuestsNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
+        private System.Windows.Forms.Panel pNpcLinkControls;
+        private System.Windows.Forms.Button bNpcLinkExecute;
+        private System.Windows.Forms.Label lAdviceNpcLink;
 
 
     }

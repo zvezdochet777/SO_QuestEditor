@@ -19,7 +19,72 @@ namespace StalkerOnlineQuesterEditor
 
     public partial class MainForm : Form
     {
+        //! Верхнее или нижнее положение говнографа
+        bool bNumOfIter;
+        //! Координата X для текущего узла
+        float rootx;
+        //! Координата Y для текущего узла
+        float rooty;
+        //! Слой для ребер графа связей NPC
+        PLayer edgeNPClinkLayer;
+        //! Слой для узлов графа связей NPC
+        PNodeList nodeNPClinkLayer;
+        //! Словарь графов (?)
+        Dictionary<string, PNode> mapGraphs = new Dictionary<string, PNode>();
 
+
+        //! Нажатие на кнопку, выводит связи всех NPC с выбранным персонажем NPC
+        private void bNpcLinkExecute_Click(object sender, EventArgs e)
+        {
+            if (NPCBox.SelectedIndex == -1)
+                return;
+            string npcName = NPCBox.SelectedItem.ToString();
+
+            // очищаем поле графа
+            bNumOfIter = true;
+            rootx = (float)(this.ClientSize.Width / 5);
+            rooty = (float)(this.ClientSize.Height / 5);
+            this.npcLinkShower.Layer.RemoveAllChildren();
+            mapGraphs.Clear();
+            nodeNPClinkLayer = new PNodeList();
+            edgeNPClinkLayer = new PLayer();
+            // создаем уезл головного (выбранного) персонажа
+            this.npcLinkShower.Root.AddChild(edgeNPClinkLayer);
+            this.npcLinkShower.Camera.AddLayer(0, edgeNPClinkLayer);            
+            PNode node = new PNode();
+            addNodeToNpcLink(ref node, npcName);
+            nodeNPClinkLayer.Add(node);
+
+            // ищем все связи персонажа, т.е. квесты, которые он завершает от других NPC 
+            foreach (CDialog dialog in dialogs.dialogs[npcName].Values)
+            {
+                List<int> list = dialog.Actions.CompleteQuests.ToList();
+                list.AddRange(dialog.Actions.GetQuests.ToList());
+                foreach (int questID in list)
+                {
+                    //! @todo это пиздец, делать проверку целостности
+                    if (!quests.quest.ContainsKey(questID))
+                        continue;
+                    if (quests.quest[questID].Additional.Holder != npcName)
+                    {
+                        PNode new_node = new PNode();
+                        string new_npc = quests.quest[questID].Additional.Holder;
+                        if (mapGraphs.Keys.Contains(new_npc))
+                            new_node = mapGraphs[new_npc];
+                        else
+                            addNodeToNpcLink(ref new_node, new_npc);
+
+                        addEdgeToNpcLink(ref node, ref new_node);
+                        if (!nodeNPClinkLayer.Contains(new_node))
+                            nodeNPClinkLayer.Add(new_node);
+                    }
+                }            
+            }
+            npcLinkShower.Layer.AddChildren(nodeNPClinkLayer);
+
+        }
+
+        //! Заполняет граф связей по старой уёбищной схеме
         void fillNPCLinkView()
         {
             // Initialize, and create a layer for the edges (always underneath the nodes)
@@ -30,11 +95,10 @@ namespace StalkerOnlineQuesterEditor
             this.npcLinkShower.Root.AddChild(edgeNPClinkLayer);
             this.npcLinkShower.Camera.AddLayer(0, edgeNPClinkLayer);
             //////Image iBackground = Image.FromFile("source/map.jpg");
-
             //////this.npcLinkShower.BackgroundImage = iBackground;
-            bool bNumOfIter = false;
-            float rootx = (float)(this.ClientSize.Width / 5);
-            float rooty = (float)(this.ClientSize.Height / 5);
+            bNumOfIter = false;
+            rootx = (float)(this.ClientSize.Width / 5);
+            rooty = (float)(this.ClientSize.Height / 5);
 
             foreach (KeyValuePair<int, CQuest> quest in quests.quest)
                 foreach (Dictionary<int, CDialog> dialog in dialogs.dialogs.Values)
@@ -42,82 +106,23 @@ namespace StalkerOnlineQuesterEditor
                         if (dial.Value.Actions.CompleteQuests.Contains(quest.Key) && !dial.Value.Holder.Equals(quest.Value.Additional.Holder)
                             && !dial.Value.Holder.Equals("") && !quest.Value.Additional.Holder.Equals(""))
                         {
-                            //System.Console.WriteLine("------");
-                            //System.Console.WriteLine(dial.Value.Holder);
-                            //System.Console.WriteLine(quest.Value.QuestInformation.NameOfHolder);
-                            //System.Console.WriteLine("------");
-
                             string sQuestHolder = quest.Value.Additional.Holder;
                             string sDialogHolder = dial.Value.Holder;
-
-                            PNode dialogHolder;
-                            PNode questHolder;
-
+                            PNode dialogHolder = new PNode();
+                            PNode questHolder = new PNode();
+                            
                             if (mapGraphs.Keys.Contains(sQuestHolder))
-                            {
                                 questHolder = mapGraphs[sQuestHolder];
-                            }
                             else
-                            {
-                                questHolder = PPath.CreateRectangle(rootx, rooty, 180, 33);
-                                if (bNumOfIter)
-                                {
-                                    rootx += 120.0f;
-                                    rooty += 120.0f;
-                                    bNumOfIter = false;
-                                }
-                                else
-                                {
-                                    rootx += 120.0f;
-                                    rooty -= 120.0f;
-                                    bNumOfIter = true;
-                                }
-                                PText rootText = new PText(sQuestHolder);
-                                rootText.Pickable = false;
-                                rootText.X = questHolder.X;
-                                rootText.Y = questHolder.Y;
-                                questHolder.AddChild(rootText);
-                                questHolder.Tag = new ArrayList();
-                                mapGraphs.Add(sQuestHolder, questHolder);
-                            }
+                                addNodeToNpcLink(ref questHolder, sQuestHolder);
 
                             if (mapGraphs.Keys.Contains(sDialogHolder))
-                            {
                                 dialogHolder = mapGraphs[sDialogHolder];
-                            }
                             else
-                            {
-                                dialogHolder = PPath.CreateRectangle(rootx, rooty, 180, 33);
-                                if (bNumOfIter)
-                                {
-                                    rootx += 120.0f;
-                                    rooty += 120.0f;
-                                    bNumOfIter = false;
-                                }
-                                else
-                                {
-                                    rootx += 120.0f;
-                                    rooty -= 120.0f;
-                                    bNumOfIter = true;
-                                }
-                                PText rootText = new PText(sDialogHolder);
-                                rootText.Pickable = false;
-                                rootText.X = dialogHolder.X;
-                                rootText.Y = dialogHolder.Y;
-                                dialogHolder.AddChild(rootText);
-                                dialogHolder.Tag = new ArrayList();
-                                mapGraphs.Add(sDialogHolder, dialogHolder);
-                            }
+                                addNodeToNpcLink(ref dialogHolder, sDialogHolder);
 
-                            PPath edge = new PPath();
-                            edge.Pickable = false;
-                            ((ArrayList)dialogHolder.Tag).Add(edge);
-                            ((ArrayList)questHolder.Tag).Add(edge);
-                            edge.Tag = new ArrayList();
-                            ((ArrayList)edge.Tag).Add(dialogHolder);
-                            ((ArrayList)edge.Tag).Add(questHolder);
-                            edgeNPClinkLayer.AddChild(edge);
-                            updateEdge(edge);
+                            addEdgeToNpcLink(ref questHolder, ref dialogHolder);
+
                             if (!nodeNPClinkLayer.Contains(dialogHolder))
                                 nodeNPClinkLayer.Add(dialogHolder);
                             if (!nodeNPClinkLayer.Contains(questHolder))
@@ -126,5 +131,45 @@ namespace StalkerOnlineQuesterEditor
                         }
             npcLinkShower.Layer.AddChildren(nodeNPClinkLayer);
         }
+
+        //! Добавляет узел на граф связей NPC между собой
+        void addNodeToNpcLink(ref PNode Holder, string name)
+        {
+            Holder = PPath.CreateRectangle(rootx, rooty, 180, 33);
+            if (bNumOfIter)
+            {
+                rootx += 120.0f;
+                rooty += 120.0f;
+                bNumOfIter = false;
+            }
+            else
+            {
+                rootx += 120.0f;
+                rooty -= 120.0f;
+                bNumOfIter = true;
+            }
+            PText rootText = new PText(name);
+            rootText.Pickable = false;
+            rootText.X = Holder.X + 30;
+            rootText.Y = Holder.Y + 5;
+            Holder.AddChild(rootText);
+            Holder.Tag = new ArrayList();
+            mapGraphs.Add(name, Holder);
+        }
+
+        //! Добавляет ребро на граф связей NPC
+        void addEdgeToNpcLink(ref PNode node1, ref PNode node2)
+        {
+            PPath edge = new PPath();
+            edge.Pickable = false;
+            ((ArrayList)node1.Tag).Add(edge);
+            ((ArrayList)node2.Tag).Add(edge);
+            edge.Tag = new ArrayList();
+            ((ArrayList)edge.Tag).Add(node1);
+            ((ArrayList)edge.Tag).Add(node2);
+            edgeNPClinkLayer.AddChild(edge);
+            updateEdge(edge);
+        }
+
     }
 }

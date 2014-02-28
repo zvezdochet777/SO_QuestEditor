@@ -42,11 +42,8 @@ namespace StalkerOnlineQuesterEditor
         MapNodeDragHandler MapListener;
         PLayer edgeLayer;
         PNodeList nodeLayer;
-        PLayer edgeNPClinkLayer;
-        PNodeList nodeNPClinkLayer;
 
         Dictionary<PNode, GraphProperties> graphs = new Dictionary<PNode, GraphProperties>();
-        Dictionary<string, PNode> mapGraphs = new Dictionary<string, PNode>();
         Dictionary<Panel, int> panels = new Dictionary<Panel, int>();
 
         List<int> rootElements = new List<int>();
@@ -86,8 +83,6 @@ namespace StalkerOnlineQuesterEditor
             dialogs = new CDialogs(this);
             quests = new CQuests(this);
             tpConst = new CTPConstants();
-            
-            
 
             tree = treeDialogs;
             currentQuestDialog = new int();
@@ -108,14 +103,12 @@ namespace StalkerOnlineQuesterEditor
             fillFractionBalance();
             DialogShower.AddInputEventListener(Listener);
 
-
             foreach (string name in dialogs.getListOfNPC())
                 if (!npcConst.NPCs.Keys.Contains(name))
                  npcConst.NPCs.Add(name, new CNPCDescription(name));
 
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstatnts();
-
         }
 
         //! Очищает данные о квестах - дерево квестов, комбобокс, подквесты
@@ -492,40 +485,39 @@ namespace StalkerOnlineQuesterEditor
         private void onSelectTab(object sender, EventArgs e)
         {
             bCopyEvents.Enabled = false;
-
-            if (CentralDock.SelectedIndex == 0)
+            int index = CentralDock.SelectedIndex;
+            switch (index)
             {
-                SetControlsAbility(true);
-                if (!currentNPC.Equals(""))
-                {
-                    QuestBox.Items.Clear();
-                    fillQuestChangeBox(true);
-                    QuestBox.Enabled = false;
+                case 0:         // вкладка Диалоги
+                    SetControlsAbility(true);
+                    if (!currentNPC.Equals(""))
+                    {
+                        QuestBox.Items.Clear();
+                        fillQuestChangeBox(true);
+                        QuestBox.Enabled = false;
+                        bRemoveQuest.Enabled = false;
+                        bAddQuest.Enabled = false;
+                        QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
+                    }
+                    break;
+                case 1:         // вкладка Квесты
+                    SetControlsAbility(true);
                     bRemoveQuest.Enabled = false;
-                    bAddQuest.Enabled = false;
-                    QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
-                }
-            }
-            else if (CentralDock.SelectedIndex == 1)
-            {
-                SetControlsAbility(true);
-                bRemoveQuest.Enabled = false;
-                QuestBox.Items.Clear();
-                fillQuestChangeBox(false);
-                QuestBox.Text = "Пожалуйста, выберите квест";
-            }
-            else if (CentralDock.SelectedIndex == 2)
-            {
-                SetControlsAbility(false);
-                fillNPCLinkView();
-            }
-            else if (CentralDock.SelectedIndex == 3)
-            {
-                SetControlsAbility(false);
-            }
-            else if (CentralDock.SelectedIndex == 4)
-            {
-                FillTabManage();
+                    QuestBox.Items.Clear();
+                    fillQuestChangeBox(false);
+                    QuestBox.Text = "Пожалуйста, выберите квест";
+                    break;                    
+                case 2:         // Вкладка Связи NPC 
+                    SetControlsAbility(false);
+                    NPCBox.Enabled = true;
+                    fillNPCLinkView();
+                    break;                
+                case 3: case 5: case 6:     // Вкладки Проверка, Перевод, Баланс
+                    SetControlsAbility(false);
+                    break;
+                case 4:         // Вкладка Управление (квестами)
+                    FillTabManage();
+                    break;
             }
         }
 
@@ -1457,7 +1449,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if (settings.getMode() == settings.MODE_LOCALIZATION)
             {
-                for (int i = 2; i < CentralDock.TabPages.Count; i++)
+                for (int i = 4; i < CentralDock.TabPages.Count; i++)
                 {
                     if (CentralDock.TabPages[i].Name != "tabTranslate")
                         CentralDock.TabPages[i].Enabled = false;
@@ -1557,7 +1549,7 @@ namespace StalkerOnlineQuesterEditor
             labelLocalizeOuput.Text = "Выведено: " + count.ToString();
             labelLocalizeOuput.Update();
         }
-
+        //! Заполняет раздел Баланс Фракций (пока не изведано)
         private void fillFractionBalance()
         {
             foreach (KeyValuePair<int, string> pair in fractions.getListOfFractions())
@@ -1611,7 +1603,7 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
         }
-
+        //! Сохраняет Баланс фракций
         private void bSaveBalance_Click(object sender, EventArgs e)
         {
             balances.fraction.Clear();
@@ -1652,11 +1644,6 @@ namespace StalkerOnlineQuesterEditor
             DialogShower.Camera.ViewScale = 1;
             // сдвиг ставим на 0 -камера возвращается в исходное положение
             DialogShower.Camera.SetViewOffset(0, 0);
-
-            //RectangleF rect = DialogShower.Camera.ViewBounds;
-            //SizeF sizes = DialogShower.Camera.ViewBounds.Size;
-            //labelXNode.Text = "X= " + rect.X.ToString() + " w=" + sizes.Width.ToString();
-            //labelYNode.Text = "Y = " + rect.Y.ToString() + " h=" + sizes.Height.ToString();
         }
         //! Пункт главного меню - Настройки
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1701,6 +1688,8 @@ namespace StalkerOnlineQuesterEditor
             for (int i = 0; i < NPCBox.Items.Count; i++ )
                 NPCBox.SelectedIndex = i;
         }
+
+
     }
 }
  
