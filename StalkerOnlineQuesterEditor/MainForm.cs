@@ -1499,7 +1499,8 @@ namespace StalkerOnlineQuesterEditor
             {
                 foreach (var id in diff[name].Keys)
                 {
-                    object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version };
+                    string location = (dialogs.location.ContainsKey(name)) ? (dialogs.location[name]) : ("НЕТ ИМЕНИ");
+                    object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location };
                     diffGridView.Rows.Add(row);
                     count++;
                 }
@@ -1541,7 +1542,8 @@ namespace StalkerOnlineQuesterEditor
             {
                 foreach (var id in diff[name].Keys)
                 {
-                    object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version };
+                    string location = (dialogs.location.ContainsKey(name)) ? (dialogs.location[name]) : ("НЕТ ИМЕНИ");
+                    object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location };
                     diffGridView.Rows.Add(row);
                     count++;
                 }
@@ -1673,7 +1675,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 int d_num = dialogs.dialogs[npc].Count;
                 int q_num = quests.getCountOfQuests(npc);
-                string location = (dialogs.location.ContainsKey(npc))?(dialogs.location[npc]):("нет имени");
+                string location = (dialogs.location.ContainsKey(npc))?(dialogs.location[npc]):("НЕТ ИМЕНИ");
                 if( (checkDialog && d_num < numDialogs.Value) || (checkQuest && q_num < numQuests.Value) )
                 {
                     object[] row = { npc, d_num, q_num, location };

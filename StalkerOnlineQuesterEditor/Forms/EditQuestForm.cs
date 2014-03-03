@@ -1253,7 +1253,21 @@ namespace StalkerOnlineQuesterEditor
             EditDialogEffect edit_effect = new EditDialogEffect(this.parent, this, this.QuestID);
             edit_effect.Visible = true;
             this.Enabled = false;
-        }       
+        }
+
+        private void descriptionTextBox_DoubleClick(object sender, EventArgs e)
+        {
+            radMarkupDialog.Value = descriptionTextBox.Text;
+            DialogResult dr = radMarkupDialog.ShowDialog();
+            if (dr == DialogResult.OK)
+                descriptionTextBox.Text = removeHtmlTags(radMarkupDialog.Value);
+        }
+        private string removeHtmlTags(string str)
+        {
+            str = str.Substring(6);
+            str = str.Remove(str.Length-7,7);
+            return str;
+        }
         
     }
 }

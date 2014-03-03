@@ -108,6 +108,7 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
+            this.radMarkupDialog = new Telerik.WinControls.UI.RadMarkupDialog();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -916,6 +917,7 @@
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(407, 62);
             this.descriptionTextBox.TabIndex = 3;
+            this.descriptionTextBox.DoubleClick += new System.EventHandler(this.descriptionTextBox_DoubleClick);
             // 
             // lDescription
             // 
@@ -1099,5 +1101,6 @@
         private System.Windows.Forms.TextBox tSurvival;
         private System.Windows.Forms.Label lSupportSkills;
         private System.Windows.Forms.Label lSurvivalSkills;
+        private Telerik.WinControls.UI.RadMarkupDialog radMarkupDialog;
     }
 }
