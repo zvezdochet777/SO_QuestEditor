@@ -1690,8 +1690,6 @@ namespace StalkerOnlineQuesterEditor
             for (int i = 0; i < NPCBox.Items.Count; i++ )
                 NPCBox.SelectedIndex = i;
         }
-
-
     }
 }
  

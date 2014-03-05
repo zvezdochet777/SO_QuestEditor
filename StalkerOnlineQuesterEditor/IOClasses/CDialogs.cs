@@ -19,7 +19,7 @@ namespace StalkerOnlineQuesterEditor
     using NPCLocales = Dictionary<string, Dictionary<string, Dictionary<int, CDialog>>>;
     //! Словарь <NPCName, <DialogID, CDifference>>
     using DifferenceDict = Dictionary<string, Dictionary<int, CDifference>>;
-    //! Словарь местоенахождения npc
+    //! Словарь местонахождения NPC
     using NPCLocationDict = Dictionary<string,string>;
 
     //! Класс обработки диалогов
@@ -419,7 +419,12 @@ namespace StalkerOnlineQuesterEditor
                 foreach (var npc_name in dialogs.Keys)
                 {
                     if (!cur_locale_info.Keys.Contains(npc_name))
-                        continue;
+                    {
+                        //NPCDialogDict dict = parent.getDialogDictionary(npc_name);
+                        NPCDialogDict dict = new NPCDialogDict();
+                        dict.Add(dialogs[npc_name].First().Key, new CDialog() );
+                        cur_locale_info.Add(npc_name, dict);
+                    }
                     var locale_dialogs = cur_locale_info[npc_name];
                     foreach (var dialog in dialogs[npc_name].Values)
                     {

@@ -27,7 +27,7 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает вершину графа диалогов - корневую фразу у заданного NPC
         public CDialog getRootDialog(string npc_name)
         {
-            DialogDict dialogs = this.dialogs.dialogs[npc_name];
+            DialogDict dialogs = getDialogDictionary(currentNPC); //this.dialogs.dialogs[npc_name];
             foreach (CDialog dialog in dialogs.Values)
             {
                 //System.Console.WriteLine(dialog.QuestDialog.ToString() + " vs " + currentQuestDialog.ToString());
@@ -455,7 +455,6 @@ namespace StalkerOnlineQuesterEditor
 
             if (removedNode != null)
             {
-
                 foreach (PNode path in edgeLayer.AllNodes)
                     if (((ArrayList)path.Tag) != null)
                         if (((ArrayList)path.Tag).Contains(removedNode))

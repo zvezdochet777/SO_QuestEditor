@@ -30,6 +30,13 @@
         {
             this.labelNameOfNPC = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.NPCReactiontextBox = new System.Windows.Forms.TextBox();
+            this.textBoxNPCReactionLocale = new System.Windows.Forms.TextBox();
+            this.panelLabels2 = new System.Windows.Forms.Panel();
+            this.lRussian2 = new System.Windows.Forms.Label();
+            this.lLocalization2 = new System.Windows.Forms.Label();
+            this.lAnswer = new System.Windows.Forms.Label();
             this.lViewDialogId = new System.Windows.Forms.Label();
             this.labelDialogID = new System.Windows.Forms.Label();
             this.lRussian1 = new System.Windows.Forms.Label();
@@ -38,26 +45,20 @@
             this.textBoxAnswer = new System.Windows.Forms.TextBox();
             this.textBoxAnswerLocale = new System.Windows.Forms.TextBox();
             this.lNpcReaction = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.NPCReactiontextBox = new System.Windows.Forms.TextBox();
-            this.textBoxNPCReactionLocale = new System.Windows.Forms.TextBox();
             this.lViewNpcName = new System.Windows.Forms.Label();
             this.panelButtons = new System.Windows.Forms.Panel();
             this.bCancel = new System.Windows.Forms.Button();
             this.bOk = new System.Windows.Forms.Button();
-            this.panelLabels2 = new System.Windows.Forms.Panel();
-            this.lRussian2 = new System.Windows.Forms.Label();
-            this.lLocalization2 = new System.Windows.Forms.Label();
-            this.lAnswer = new System.Windows.Forms.Label();
+            this.cbNotFinal = new System.Windows.Forms.CheckBox();
             this.panelMain.SuspendLayout();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panelButtons.SuspendLayout();
             this.panelLabels2.SuspendLayout();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.panelButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNameOfNPC
@@ -87,6 +88,79 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(663, 390);
             this.panelMain.TabIndex = 1;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 78);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.NPCReactiontextBox);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.textBoxNPCReactionLocale);
+            this.splitContainer1.Size = new System.Drawing.Size(661, 123);
+            this.splitContainer1.SplitterDistance = 220;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // NPCReactiontextBox
+            // 
+            this.NPCReactiontextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NPCReactiontextBox.Location = new System.Drawing.Point(0, 0);
+            this.NPCReactiontextBox.Multiline = true;
+            this.NPCReactiontextBox.Name = "NPCReactiontextBox";
+            this.NPCReactiontextBox.Size = new System.Drawing.Size(220, 123);
+            this.NPCReactiontextBox.TabIndex = 0;
+            // 
+            // textBoxNPCReactionLocale
+            // 
+            this.textBoxNPCReactionLocale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxNPCReactionLocale.Location = new System.Drawing.Point(0, 0);
+            this.textBoxNPCReactionLocale.Multiline = true;
+            this.textBoxNPCReactionLocale.Name = "textBoxNPCReactionLocale";
+            this.textBoxNPCReactionLocale.Size = new System.Drawing.Size(437, 123);
+            this.textBoxNPCReactionLocale.TabIndex = 0;
+            // 
+            // panelLabels2
+            // 
+            this.panelLabels2.Controls.Add(this.lRussian2);
+            this.panelLabels2.Controls.Add(this.lLocalization2);
+            this.panelLabels2.Controls.Add(this.lAnswer);
+            this.panelLabels2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelLabels2.Location = new System.Drawing.Point(0, 201);
+            this.panelLabels2.Name = "panelLabels2";
+            this.panelLabels2.Size = new System.Drawing.Size(661, 64);
+            this.panelLabels2.TabIndex = 8;
+            // 
+            // lRussian2
+            // 
+            this.lRussian2.AutoSize = true;
+            this.lRussian2.Location = new System.Drawing.Point(71, 35);
+            this.lRussian2.Name = "lRussian2";
+            this.lRussian2.Size = new System.Drawing.Size(49, 13);
+            this.lRussian2.TabIndex = 8;
+            this.lRussian2.Text = "Русский";
+            // 
+            // lLocalization2
+            // 
+            this.lLocalization2.AutoSize = true;
+            this.lLocalization2.Location = new System.Drawing.Point(357, 35);
+            this.lLocalization2.Name = "lLocalization2";
+            this.lLocalization2.Size = new System.Drawing.Size(75, 13);
+            this.lLocalization2.TabIndex = 6;
+            this.lLocalization2.Text = "Локализация";
+            // 
+            // lAnswer
+            // 
+            this.lAnswer.AutoSize = true;
+            this.lAnswer.Location = new System.Drawing.Point(197, 17);
+            this.lAnswer.Name = "lAnswer";
+            this.lAnswer.Size = new System.Drawing.Size(86, 13);
+            this.lAnswer.TabIndex = 7;
+            this.lAnswer.Text = "Вариант ответа";
             // 
             // lViewDialogId
             // 
@@ -167,41 +241,6 @@
             this.lNpcReaction.TabIndex = 3;
             this.lNpcReaction.Text = "Реация NPC";
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 78);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.NPCReactiontextBox);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.textBoxNPCReactionLocale);
-            this.splitContainer1.Size = new System.Drawing.Size(661, 123);
-            this.splitContainer1.SplitterDistance = 220;
-            this.splitContainer1.TabIndex = 2;
-            // 
-            // NPCReactiontextBox
-            // 
-            this.NPCReactiontextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NPCReactiontextBox.Location = new System.Drawing.Point(0, 0);
-            this.NPCReactiontextBox.Multiline = true;
-            this.NPCReactiontextBox.Name = "NPCReactiontextBox";
-            this.NPCReactiontextBox.Size = new System.Drawing.Size(220, 123);
-            this.NPCReactiontextBox.TabIndex = 0;
-            // 
-            // textBoxNPCReactionLocale
-            // 
-            this.textBoxNPCReactionLocale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxNPCReactionLocale.Location = new System.Drawing.Point(0, 0);
-            this.textBoxNPCReactionLocale.Multiline = true;
-            this.textBoxNPCReactionLocale.Name = "textBoxNPCReactionLocale";
-            this.textBoxNPCReactionLocale.Size = new System.Drawing.Size(437, 123);
-            this.textBoxNPCReactionLocale.TabIndex = 0;
-            // 
             // lViewNpcName
             // 
             this.lViewNpcName.AutoSize = true;
@@ -213,6 +252,7 @@
             // panelButtons
             // 
             this.panelButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelButtons.Controls.Add(this.cbNotFinal);
             this.panelButtons.Controls.Add(this.bCancel);
             this.panelButtons.Controls.Add(this.bOk);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -241,43 +281,15 @@
             this.bOk.UseVisualStyleBackColor = true;
             this.bOk.Click += new System.EventHandler(this.bOk_Click);
             // 
-            // panelLabels2
+            // cbNotFinal
             // 
-            this.panelLabels2.Controls.Add(this.lRussian2);
-            this.panelLabels2.Controls.Add(this.lLocalization2);
-            this.panelLabels2.Controls.Add(this.lAnswer);
-            this.panelLabels2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelLabels2.Location = new System.Drawing.Point(0, 201);
-            this.panelLabels2.Name = "panelLabels2";
-            this.panelLabels2.Size = new System.Drawing.Size(661, 64);
-            this.panelLabels2.TabIndex = 8;
-            // 
-            // lRussian2
-            // 
-            this.lRussian2.AutoSize = true;
-            this.lRussian2.Location = new System.Drawing.Point(71, 35);
-            this.lRussian2.Name = "lRussian2";
-            this.lRussian2.Size = new System.Drawing.Size(49, 13);
-            this.lRussian2.TabIndex = 8;
-            this.lRussian2.Text = "Русский";
-            // 
-            // lLocalization2
-            // 
-            this.lLocalization2.AutoSize = true;
-            this.lLocalization2.Location = new System.Drawing.Point(357, 35);
-            this.lLocalization2.Name = "lLocalization2";
-            this.lLocalization2.Size = new System.Drawing.Size(75, 13);
-            this.lLocalization2.TabIndex = 6;
-            this.lLocalization2.Text = "Локализация";
-            // 
-            // lAnswer
-            // 
-            this.lAnswer.AutoSize = true;
-            this.lAnswer.Location = new System.Drawing.Point(197, 17);
-            this.lAnswer.Name = "lAnswer";
-            this.lAnswer.Size = new System.Drawing.Size(86, 13);
-            this.lAnswer.TabIndex = 7;
-            this.lAnswer.Text = "Вариант ответа";
+            this.cbNotFinal.AutoSize = true;
+            this.cbNotFinal.Location = new System.Drawing.Point(278, 16);
+            this.cbNotFinal.Name = "cbNotFinal";
+            this.cbNotFinal.Size = new System.Drawing.Size(164, 17);
+            this.cbNotFinal.TabIndex = 2;
+            this.cbNotFinal.Text = "Предварительный перевод";
+            this.cbNotFinal.UseVisualStyleBackColor = true;
             // 
             // LocaleDialogForm
             // 
@@ -291,19 +303,20 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LocaleDialogForm_FormClosing);
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel1.PerformLayout();
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
-            this.splitContainer2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             this.splitContainer1.ResumeLayout(false);
-            this.panelButtons.ResumeLayout(false);
             this.panelLabels2.ResumeLayout(false);
             this.panelLabels2.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            this.splitContainer2.ResumeLayout(false);
+            this.panelButtons.ResumeLayout(false);
+            this.panelButtons.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -331,5 +344,6 @@
         private System.Windows.Forms.Label lRussian2;
         private System.Windows.Forms.Label lLocalization2;
         private System.Windows.Forms.Label lAnswer;
+        private System.Windows.Forms.CheckBox cbNotFinal;
     }
 }

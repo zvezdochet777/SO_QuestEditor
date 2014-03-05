@@ -35,8 +35,6 @@ namespace StalkerOnlineQuesterEditor.Forms
                 textBoxNPCReactionLocale.Text = localeDialog.Text;
                 textBoxAnswerLocale.Text = localeDialog.Title;
             }
-
-
         }
         //! Закрытие формы
         private void LocaleDialogForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -61,6 +59,8 @@ namespace StalkerOnlineQuesterEditor.Forms
             newDialog.Precondition = originalDialog.Precondition;
             newDialog.Actions = originalDialog.Actions;
             newDialog.QuestDialog = originalDialog.QuestDialog;
+            if (cbNotFinal.Checked)
+                newDialog.version --;
             parent.addLocaleDialog(newDialog);
             this.Close();
         }

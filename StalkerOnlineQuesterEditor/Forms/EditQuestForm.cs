@@ -1257,10 +1257,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void descriptionTextBox_DoubleClick(object sender, EventArgs e)
         {
-            radMarkupDialog.Value = descriptionTextBox.Text;
-            DialogResult dr = radMarkupDialog.ShowDialog();
-            if (dr == DialogResult.OK)
-                descriptionTextBox.Text = removeHtmlTags(radMarkupDialog.Value);
+
         }
         private string removeHtmlTags(string str)
         {

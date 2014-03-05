@@ -29,9 +29,8 @@ namespace StalkerOnlineQuesterEditor
         PLayer edgeNPClinkLayer;
         //! Слой для узлов графа связей NPC
         PNodeList nodeNPClinkLayer;
-        //! Словарь графов (?)
+        //! Словарь графов <Имя NPC, Узел на графе>
         Dictionary<string, PNode> mapGraphs = new Dictionary<string, PNode>();
-
 
         //! Нажатие на кнопку, выводит связи всех NPC с выбранным персонажем NPC
         private void bNpcLinkExecute_Click(object sender, EventArgs e)
@@ -74,14 +73,13 @@ namespace StalkerOnlineQuesterEditor
                         else
                             addNodeToNpcLink(ref new_node, new_npc);
 
-                        addEdgeToNpcLink(ref node, ref new_node);
+                        PrepareNodesForEdge(node, new_node, ref edgeNPClinkLayer);
                         if (!nodeNPClinkLayer.Contains(new_node))
                             nodeNPClinkLayer.Add(new_node);
                     }
                 }            
             }
             npcLinkShower.Layer.AddChildren(nodeNPClinkLayer);
-
         }
 
         //! Заполняет граф связей по старой уёбищной схеме
@@ -121,7 +119,7 @@ namespace StalkerOnlineQuesterEditor
                             else
                                 addNodeToNpcLink(ref dialogHolder, sDialogHolder);
 
-                            addEdgeToNpcLink(ref questHolder, ref dialogHolder);
+                            PrepareNodesForEdge(questHolder, dialogHolder, ref edgeNPClinkLayer);
 
                             if (!nodeNPClinkLayer.Contains(dialogHolder))
                                 nodeNPClinkLayer.Add(dialogHolder);
@@ -156,20 +154,5 @@ namespace StalkerOnlineQuesterEditor
             Holder.Tag = new ArrayList();
             mapGraphs.Add(name, Holder);
         }
-
-        //! Добавляет ребро на граф связей NPC
-        void addEdgeToNpcLink(ref PNode node1, ref PNode node2)
-        {
-            PPath edge = new PPath();
-            edge.Pickable = false;
-            ((ArrayList)node1.Tag).Add(edge);
-            ((ArrayList)node2.Tag).Add(edge);
-            edge.Tag = new ArrayList();
-            ((ArrayList)edge.Tag).Add(node1);
-            ((ArrayList)edge.Tag).Add(node2);
-            edgeNPClinkLayer.AddChild(edge);
-            updateEdge(edge);
-        }
-
     }
 }
