@@ -77,12 +77,12 @@ namespace StalkerOnlineQuesterEditor
             foreach (CQuest quest in quests.quest.Values)
             {
                 countOfQuests++;
-                if (quest.Reward.Expirience.Any())
+                if (quest.Reward.Experience.Any())
                 {
                     for (int i = 0; i < NumExp; i++)
                     {
-                        lExperience[i] += quest.Reward.Expirience[i];
-                        if (quest.Reward.Expirience[i] != 0)
+                        lExperience[i] += quest.Reward.Experience[i];
+                        if (quest.Reward.Experience[i] != 0)
                             countOfExQuests[i]++;
                     }
                 }

@@ -611,11 +611,11 @@ namespace StalkerOnlineQuesterEditor
             //    else
             //        listRewardOfAttrsMaskedTextBox.Text += ("," + item.ToString());
             //}
-            if (quest.Reward.Expirience.Count == 3)
+            if (quest.Reward.Experience.Count == 3)
             {
-                tExperience.Text = quest.Reward.Expirience[0].ToString();
-                tSurvival.Text = quest.Reward.Expirience[1].ToString();
-                tSupport.Text = quest.Reward.Expirience[2].ToString();
+                tExperience.Text = quest.Reward.Experience[0].ToString();
+                tSurvival.Text = quest.Reward.Experience[1].ToString();
+                tSupport.Text = quest.Reward.Experience[2].ToString();
             }
             creditsTextBox.Text = quest.Reward.Credits.ToString();
             textBoxKarmaPK.Text = quest.Reward.KarmaPK.ToString();
@@ -775,19 +775,19 @@ namespace StalkerOnlineQuesterEditor
                     rules.Scenarios.Add(int.Parse(item));
             
             if (tExperience.Text.Equals(""))
-                reward.Expirience.Add(0);
+                reward.Experience.Add(0);
             else
-                reward.Expirience.Add(int.Parse(tExperience.Text));
+                reward.Experience.Add(int.Parse(tExperience.Text));
             
             if (tSurvival.Text.Equals(""))
-                reward.Expirience.Add(0);
+                reward.Experience.Add(0);
             else 
-                reward.Expirience.Add(int.Parse(tSurvival.Text));
+                reward.Experience.Add(int.Parse(tSurvival.Text));
 
             if (tSupport.Text.Equals(""))
-                reward.Expirience.Add(0);
+                reward.Experience.Add(0);
             else 
-                reward.Expirience.Add(int.Parse(tSupport.Text));
+                reward.Experience.Add(int.Parse(tSupport.Text));
 
             if (!creditsTextBox.Text.Equals(""))
                 reward.Credits = int.Parse(creditsTextBox.Text);

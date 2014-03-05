@@ -10,7 +10,6 @@ namespace StalkerOnlineQuesterEditor
     //! Класс настроек проекта - задается в форме OperatorSettings и хранит все данные в settings.xml
     public class CSettings
     {
-
         MainForm parent;
         //! Номер оператора (???) 
         int iNumOperator;
@@ -23,7 +22,6 @@ namespace StalkerOnlineQuesterEditor
         List<string> locales = new List<string>();
         //! Текущая локализация. Пока хранит 0 - видимо для русского языка
         int currentLocale = 0;
-
 
         public int MODE_EDITOR = 0;
         public int MODE_LOCALIZATION = 1;       
@@ -53,7 +51,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 System.Console.WriteLine("Can't parse locales");
             }
-
 
             try
             {

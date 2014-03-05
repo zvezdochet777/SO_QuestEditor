@@ -200,7 +200,7 @@ namespace StalkerOnlineQuesterEditor
 
                 if (!item.Element("Reward").Element("Expirience").Value.Equals(""))
                     foreach (string itemNum in item.Element("Reward").Element("Expirience").Value.Split(','))
-                        reward.Expirience.Add(int.Parse(itemNum));
+                        reward.Experience.Add(int.Parse(itemNum));
 
                 if (!item.Element("Reward").Element("NumOfItems").Value.Equals(""))
                     foreach (string itemNum in item.Element("Reward").Element("NumOfItems").Value.Split(','))
@@ -273,7 +273,7 @@ namespace StalkerOnlineQuesterEditor
                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Penalty
                 string text_pen_exp = item.Element("Penalty").Element("Expirience").Value;
 
-                    penalty.Expirience = 0;
+                    penalty.Experience = 0;
                     if (!text_pen_exp.Equals(""))
                     {
                         if (text_pen_exp.Contains(','))
@@ -281,10 +281,10 @@ namespace StalkerOnlineQuesterEditor
 
                             //After change from three skills role play
                             foreach (string element_pen_exp in text_pen_exp.Split(','))
-                                penalty.Expirience += int.Parse(element_pen_exp);
+                                penalty.Experience += int.Parse(element_pen_exp);
                         }
                         else
-                            penalty.Expirience = int.Parse(text_pen_exp);
+                            penalty.Experience = int.Parse(text_pen_exp);
                     }
 
                     if (!item.Element("Penalty").Element("NumOfItems").Value.Equals(""))
@@ -427,7 +427,7 @@ namespace StalkerOnlineQuesterEditor
 
                     new XElement("Reward",
                         new XElement("TeleportTo", ""),
-                        new XElement("Expirience", getListAsString(questValue.Reward.Expirience)),
+                        new XElement("Expirience", getListAsString(questValue.Reward.Experience)),
                         new XElement("TypeOfItems", getListAsString(questValue.Reward.TypeOfItems)),
                         new XElement("NumOfItems", getListAsString(questValue.Reward.NumOfItems)),
                         new XElement("AttrOfItems", getListAsString(questValue.Reward.AttrOfItems)),
@@ -442,7 +442,7 @@ namespace StalkerOnlineQuesterEditor
                             ),
                     new XElement("Penalty",
                         new XElement("TeleportTo", ""),
-                        new XElement("Expirience", getIntAsString(questValue.QuestPenalty.Expirience)),
+                        new XElement("Expirience", getIntAsString(questValue.QuestPenalty.Experience)),
                         new XElement("TypeOfItems", getListAsString(questValue.QuestPenalty.TypeOfItems)),
                         new XElement("NumOfItems", getListAsString(questValue.QuestPenalty.NumOfItems)),
                         new XElement("Credits", questValue.QuestPenalty.Credits),

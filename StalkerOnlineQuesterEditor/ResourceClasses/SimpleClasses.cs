@@ -18,10 +18,10 @@ namespace StalkerOnlineQuesterEditor
 
         public CDialogPreconditionQuests()
         {
-            this.ListOfCompletedQuests = new List<int>();
-            this.ListOfOpenedQuests = new List<int>();
-            this.ListOfOnTestQuests = new List<int>();
-            this.ListOfFailedQuests = new List<int>();
+            this.ListOfCompletedQuests = new ListOfQuests();
+            this.ListOfOpenedQuests = new ListOfQuests();
+            this.ListOfOnTestQuests = new ListOfQuests();
+            this.ListOfFailedQuests = new ListOfQuests();
 
         }
 
@@ -55,7 +55,6 @@ namespace StalkerOnlineQuesterEditor
         public List<int> tests;
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
         public List<int> KarmaPK = new List<int>();
-
 
         public object Clone()
         {
@@ -114,15 +113,15 @@ namespace StalkerOnlineQuesterEditor
             return ret;
         }
     }
-
+    //! Действия диалога - торговля, починка, телепортация, окончание разговора и т.д.
     public class Actions //: ICloneable
     {
         public bool Exit;
         //public bool Trade;
         public int Event;
         public int ToDialog;
-        public List<int> CompleteQuests;
-        public List<int> GetQuests;
+        public ListOfQuests CompleteQuests;
+        public ListOfQuests GetQuests;
         public string Data;
 
         //public object Clone()
@@ -134,10 +133,7 @@ namespace StalkerOnlineQuesterEditor
         //    copy.CompleteQuests = this.CompleteQuests;
         //    copy.GetQuests = this.GetQuests;
         //    copy.Data = this.Data;
-
-
         //    return copy;
-
         //}
 
         public Actions()
@@ -145,12 +141,12 @@ namespace StalkerOnlineQuesterEditor
             this.Exit = new bool();
             this.Event = new int();
             //this.Trade = new bool();
-            this.CompleteQuests = new List<int>();
-            this.GetQuests = new List<int>();
+            this.CompleteQuests = new ListOfQuests();
+            this.GetQuests = new ListOfQuests();
             this.Data = "";
         }
     }
-
+    //! Класс параметров узла диалога на графе - координаты и флаг "корневой"
     public class NodeCoordinates
     {
         public int X;
@@ -182,12 +178,12 @@ namespace StalkerOnlineQuesterEditor
         public CDialogPrecondition Precondition;
         //public List<int> Actions;
         public Actions Actions;
-        public ListOfQuests Nodes;
+        public List<int> Nodes;
         public int version;
         public NodeCoordinates coordinates;
 
-        public CDialog(string Holder, string Title, string Text , int QuestDialog, 
-                        CDialogPrecondition Precondition, Actions Actions, ListOfQuests Nodes,int DialogID,
+        public CDialog(string Holder, string Title, string Text , int QuestDialog,
+                        CDialogPrecondition Precondition, Actions Actions, List<int> Nodes, int DialogID,
                         int version, NodeCoordinates Coordinates)
         {
             this.Holder = Holder;
@@ -232,7 +228,7 @@ namespace StalkerOnlineQuesterEditor
         }
      
     }
-
+    //! Класс квест - все параметры получения, выполнения и вознаграждения за квест
     public class CQuest : ICloneable
     {
         public int QuestID;
@@ -287,28 +283,22 @@ namespace StalkerOnlineQuesterEditor
             this.QuestPenalty = penalty;
         }
     }
-
+    //! Класс текстовой информации о квесте - название, описание, надписи на победу и проигрыш
     public class CQuestInformation : ICloneable
     {
         	public string Title;
 			public string Description;
-            //public string TypeOfHolder;
-            //public string NameOfHolder;
             public string onWin;
             public string onFailed;
             public Dictionary<int,QuestItemInfo> Items;
-            //public string Trigger;
 
             public object Clone()
             {
                 CQuestInformation copy = new CQuestInformation();
                 copy.Title = (string)this.Title.Clone();
                 copy.Description = (string)this.Description.Clone();
-                //copy.TypeOfHolder = (string)this.TypeOfHolder.Clone();
-                //copy.NameOfHolder = (string)this.NameOfHolder.Clone();
                 copy.onWin = (string)this.onWin.Clone();
                 copy.onFailed = (string)this.onFailed.Clone();
-                //copy.Trigger = (string)this.Trigger.Clone();
                 foreach (KeyValuePair<int, QuestItemInfo> item in this.Items)
                     copy.Items.Add(item.Key, (QuestItemInfo)item.Value.Clone());
                 return copy;
@@ -318,23 +308,10 @@ namespace StalkerOnlineQuesterEditor
             {
                 this.Title = "";
                 this.Description = "";
-                //this.TypeOfHolder = "";
-                //this.NameOfHolder = "";
                 this.onFailed = "";
                 this.onWin = "";
-                //this.Trigger = "";
                 this.Items = new Dictionary<int, QuestItemInfo>();
             }
-
-            //public CQuestInformation()
-            //{
-            //    this.Title = "";
-            //    this.Description = "";
-            //    //this.TypeOfHolder = "Trader";
-            //    //this.NameOfHolder = NameOfHolder;
-            //    //this.Trigger = "";
-            //    this.Items = new Dictionary<int, QuestItemInfo>();
-            //}
 
             public Dictionary<int, QuestItemInfo> getItems()
             {
@@ -499,7 +476,7 @@ namespace StalkerOnlineQuesterEditor
 
     public class CQuestReward : ICloneable
     {
-        public List<int> Expirience;
+        public List<int> Experience;
         public List<int> TypeOfItems;
         public List<int> NumOfItems;
         public List<int> AttrOfItems;
@@ -516,7 +493,7 @@ namespace StalkerOnlineQuesterEditor
         public object Clone()
         {
             CQuestReward copy = new CQuestReward();
-            copy.Expirience = this.Expirience;
+            copy.Experience = this.Experience;
             copy.TypeOfItems = this.TypeOfItems;
             copy.NumOfItems = this.NumOfItems;
             copy.AttrOfItems = this.AttrOfItems;
@@ -536,7 +513,7 @@ namespace StalkerOnlineQuesterEditor
 
         public CQuestReward()
         {
-            this.Expirience = new List<int>();
+            this.Experience = new List<int>();
             this.TypeOfItems = new List<int>();
             this.NumOfItems = new List<int>();
             this.AttrOfItems = new List<int>();
@@ -571,7 +548,7 @@ namespace StalkerOnlineQuesterEditor
 
     public class CQuestPenalty : ICloneable
     {
-        public int Expirience;
+        public int Experience;
         public List<int> TypeOfItems;
         public List<int> NumOfItems;
         //public List<int> EventCodes;
@@ -582,7 +559,7 @@ namespace StalkerOnlineQuesterEditor
         public object Clone()
         {
             CQuestPenalty copy = new CQuestPenalty();
-            copy.Expirience = this.Expirience;
+            copy.Experience = this.Experience;
             copy.TypeOfItems = this.TypeOfItems;
             copy.NumOfItems = this.NumOfItems;
             copy.TeleportTo = (string)this.TeleportTo.Clone();
@@ -593,7 +570,7 @@ namespace StalkerOnlineQuesterEditor
 
         public CQuestPenalty()
         {
-            this.Expirience = new int();
+            this.Experience = new int();
             this.TypeOfItems = new List<int>();
             this.NumOfItems = new List<int>();
             this.Credits = new float();
