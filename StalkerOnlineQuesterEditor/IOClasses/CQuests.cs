@@ -11,7 +11,6 @@ namespace StalkerOnlineQuesterEditor
 {
     //! Словарь <QuestID, CQuest>
     using NPCQuestDict = Dictionary<int, CQuest>;
-
     //! Словарь локализаций квестов <LocaleName, <QuestID, CQuest>>
     using QuestLocales = Dictionary<string, Dictionary<int, CQuest>>;
     //! Словарь из разностей версий диалогов русской версии и локализации
@@ -28,9 +27,9 @@ namespace StalkerOnlineQuesterEditor
 
         //public Dictionary<string, NPCQuestDict> quest;
         //! Словарь <QuestID, CQuest> - основной, содержащий все квесты
-        public Dictionary<int, CQuest> quest;
+        public NPCQuestDict quest;
         public QuestLocales locales = new QuestLocales();
-        public Dictionary<int, CQuest> buffer = new Dictionary<int, CQuest>();
+        public NPCQuestDict buffer = new NPCQuestDict();
 
         XDocument doc = new XDocument();
         XDocument startQuestsDoc = new XDocument();
@@ -52,14 +51,14 @@ namespace StalkerOnlineQuesterEditor
             foreach (string sQuest in startQuestsDoc.Root.Element("quests").Value.ToString().Split(','))
                 if (sQuest!="")
                     startQuests.Add(int.Parse(sQuest));
-            this.quest = new Dictionary<int, CQuest>();
+            this.quest = new NPCQuestDict();
             parseQuestsFile(QuestsXMLFile, quest);
 
             foreach (var locale in parent.settings.getListLocales())
             {
                 QuestsXMLFile = "locales\\" + locale + "\\" + parent.settings.questXML;
                 if (!locales.Keys.Contains(locale))
-                    locales.Add(locale, new Dictionary<int, CQuest>());
+                    locales.Add(locale, new NPCQuestDict());
                 parseQuestsFile(QuestsXMLFile, this.locales[locale]);
             }
         }
@@ -354,7 +353,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Сохраняет данные по квестам в xml файл
-        public void save(string fileName, Dictionary<int, CQuest> target)
+        public void save(string fileName, NPCQuestDict target)
         {
             XDocument resultDoc = new XDocument(
                 new XDeclaration("1.0","utf-8",null),
@@ -690,7 +689,7 @@ namespace StalkerOnlineQuesterEditor
         {
                if (!this.locales.Keys.Contains(locale))
                {
-                   this.locales.Add(locale, new Dictionary<int, CQuest>());
+                   this.locales.Add(locale, new NPCQuestDict());
                }
                if (this.locales[locale].Keys.Contains(quest.QuestID))
                     this.locales[locale].Remove(quest.QuestID);
@@ -707,7 +706,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if (!this.locales.Keys.Contains(parent.settings.getCurrentLocale()))
                 return;
-            Dictionary<int, CQuest> results = new Dictionary<int, CQuest>();
+            NPCQuestDict results = new NPCQuestDict();
             CQuest cur_quest;
             foreach (var loc_quest in this.locales[parent.settings.getCurrentLocale()].Values)
             {
@@ -727,7 +726,6 @@ namespace StalkerOnlineQuesterEditor
                 CQuest start_quest = getQuest(start_quest_id);
                 if (start_quest != null && !results.Keys.Contains(start_quest_id))
                     results.Add(start_quest.QuestID, start_quest);
-
             }
             this.save(parent.settings.questXML, results);
         }
@@ -742,39 +740,41 @@ namespace StalkerOnlineQuesterEditor
                 foreach (var locale_quest in this.locales[locale].Values)
                 {
                     if (!sorted_locale.Keys.Contains(locale_quest.Additional.Holder))
-                        sorted_locale.Add(locale_quest.Additional.Holder, new Dictionary<int, CQuest>());
+                        sorted_locale.Add(locale_quest.Additional.Holder, new NPCQuestDict());
                     sorted_locale[locale_quest.Additional.Holder].Add(locale_quest.QuestID, locale_quest);
                 }
             }
-
             DifferenceDict ret = new DifferenceDict();
             foreach (var cur_quest in quest.Values)
             {
-                if (sorted_locale.Keys.Contains(cur_quest.Additional.Holder))
-                {
-                    CQuest locale_quest = new CQuest();
-                    locale_quest.Version = 0;
+                if (!sorted_locale.Keys.Contains(cur_quest.Additional.Holder))
+                { 
+                    NPCQuestDict dict = new NPCQuestDict();
+                    dict.Add(cur_quest.QuestID, cur_quest);
+                    sorted_locale.Add(cur_quest.Additional.Holder,dict);
+                }
+                CQuest locale_quest = new CQuest();
+                locale_quest.Version = 0;
 
-                    if (sorted_locale[cur_quest.Additional.Holder].Keys.Contains(cur_quest.QuestID))
-                        locale_quest.Version = sorted_locale[cur_quest.Additional.Holder][cur_quest.QuestID].Version;
+                if (sorted_locale[cur_quest.Additional.Holder].Keys.Contains(cur_quest.QuestID))
+                    locale_quest.Version = sorted_locale[cur_quest.Additional.Holder][cur_quest.QuestID].Version;
 
-                    if (!ret.Keys.Contains(cur_quest.Additional.Holder))
-                        ret.Add(cur_quest.Additional.Holder, new Dictionary<int, CDifference>());
-                    switch (findType)
-                    { 
-                        case FindType.all:
+                if (!ret.Keys.Contains(cur_quest.Additional.Holder))
+                    ret.Add(cur_quest.Additional.Holder, new Dictionary<int, CDifference>());
+                switch (findType)
+                { 
+                    case FindType.all:
+                        ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version));
+                        break;
+                    case FindType.outdatedOnly:
+                        if (cur_quest.Version != locale_quest.Version)
+                            ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version)); 
+                        break;
+                    case FindType.actualOnly:
+                        if (cur_quest.Version == locale_quest.Version)
                             ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version));
-                            break;
-                        case FindType.outdatedOnly:
-                            if (cur_quest.Version != locale_quest.Version)
-                                ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version)); 
-                            break;
-                        case FindType.actualOnly:
-                            if (cur_quest.Version == locale_quest.Version)
-                                ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version));
-                            break;
+                        break;
 
-                    }
                 }
             }
 
