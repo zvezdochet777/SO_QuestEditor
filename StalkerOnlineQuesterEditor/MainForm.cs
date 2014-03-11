@@ -410,26 +410,21 @@ namespace StalkerOnlineQuesterEditor
             if (choosenDialog.Actions.GetQuests.Any())
                 toolStripStatusLabel.Text += " Взятые: " + getListAsString(choosenDialog.Actions.GetQuests);
 
-            if (choosenDialog.Actions.Event == 1)
-            {
-                toolStripStatusLabel.Text += " Торговля. Выход.";
-                EmulatorsplitContainer.Panel2.Controls.Clear();
-                Listener.setCurrentNode(choosenDialogID);
-                //Listener.setCurrentNode(0);
-            }
-            else if (choosenDialog.Actions.Event == 2)
-            {
-                toolStripStatusLabel.Text += " Обмен. Выход.";
-                EmulatorsplitContainer.Panel2.Controls.Clear();
-                Listener.setCurrentNode(choosenDialogID);
-            }
+            if (choosenDialog.Actions.Event == (int) DialogEvents.trade)
+                addActionTextToEmulator(" Торговля. Выход.", choosenDialogID);
+            else if (choosenDialog.Actions.Event == (int) DialogEvents.change)
+                addActionTextToEmulator(" Обмен. Выход.", choosenDialogID);
+            else if (choosenDialog.Actions.Event ==(int) DialogEvents.repair)
+                addActionTextToEmulator(" Починка. Выход.", choosenDialogID);
+            else if (choosenDialog.Actions.Event == (int)DialogEvents.complex_repair)
+                addActionTextToEmulator(" Комплексная починка. Выход.", choosenDialogID);
+            else if (choosenDialog.Actions.Event == (int)DialogEvents.teleport)
+                addActionTextToEmulator(" Телепорт. Выход.", choosenDialogID);
+            else if (choosenDialog.Actions.Event == (int)DialogEvents.clan_base)
+                addActionTextToEmulator(" Телепорт на базу. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Exit)
-            {
-                toolStripStatusLabel.Text += " Выход.";
-                EmulatorsplitContainer.Panel2.Controls.Clear();
-                Listener.setCurrentNode(choosenDialogID);
+                addActionTextToEmulator(" Выход.", choosenDialogID);
 
-            }
             else if (choosenDialog.Actions.ToDialog != 0)
             {
                 toolStripStatusLabel.Text += " Переход на диал.: " + choosenDialog.Actions.ToDialog.ToString();
@@ -440,8 +435,14 @@ namespace StalkerOnlineQuesterEditor
             {
                 //startEmulator(choosenDialogID,false);
                 Listener.setCurrentNode(choosenDialogID);
-            }
-            
+            }            
+        }
+        //! Антиговнокод - добавлние примечания к фразе диалога с действием
+        void addActionTextToEmulator(string text, int dialogID)
+        {
+            toolStripStatusLabel.Text += text;
+            EmulatorsplitContainer.Panel2.Controls.Clear();
+            Listener.setCurrentNode(dialogID);
         }
         //! Выводит координаты узла как прямоугольника. Для отладки.
         public void setXYCoordinates(float X, float Y, float w, float h)

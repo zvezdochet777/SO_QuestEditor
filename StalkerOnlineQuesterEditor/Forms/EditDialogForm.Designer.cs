@@ -40,7 +40,7 @@
             this.teleportCheckBox = new System.Windows.Forms.CheckBox();
             this.toRepairCheckBox = new System.Windows.Forms.CheckBox();
             this.changeCheckBox = new System.Windows.Forms.CheckBox();
-            this.CompleteQuetsTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.CompleteQuestsTextBox = new System.Windows.Forms.MaskedTextBox();
             this.GetQuestsTextBox = new System.Windows.Forms.MaskedTextBox();
             this.ToDialogComboBox = new System.Windows.Forms.ComboBox();
             this.ExitCheckBox = new System.Windows.Forms.CheckBox();
@@ -78,6 +78,7 @@
             this.NPCReactionText = new System.Windows.Forms.Label();
             this.MustPanel = new System.Windows.Forms.Panel();
             this.textGroupBox = new System.Windows.Forms.GroupBox();
+            this.ToClanBaseCheckBox = new System.Windows.Forms.CheckBox();
             this.actionsBox.SuspendLayout();
             this.PreconditionBox.SuspendLayout();
             this.QuestConditiongroupBox.SuspendLayout();
@@ -132,13 +133,14 @@
             // 
             // actionsBox
             // 
+            this.actionsBox.Controls.Add(this.ToClanBaseCheckBox);
             this.actionsBox.Controls.Add(this.barterCheckBox);
             this.actionsBox.Controls.Add(this.toComplexRepairCheckBox);
             this.actionsBox.Controls.Add(this.teleportComboBox);
             this.actionsBox.Controls.Add(this.teleportCheckBox);
             this.actionsBox.Controls.Add(this.toRepairCheckBox);
             this.actionsBox.Controls.Add(this.changeCheckBox);
-            this.actionsBox.Controls.Add(this.CompleteQuetsTextBox);
+            this.actionsBox.Controls.Add(this.CompleteQuestsTextBox);
             this.actionsBox.Controls.Add(this.GetQuestsTextBox);
             this.actionsBox.Controls.Add(this.ToDialogComboBox);
             this.actionsBox.Controls.Add(this.ExitCheckBox);
@@ -183,7 +185,7 @@
             this.teleportComboBox.DropDownWidth = 250;
             this.teleportComboBox.Enabled = false;
             this.teleportComboBox.FormattingEnabled = true;
-            this.teleportComboBox.Location = new System.Drawing.Point(379, 83);
+            this.teleportComboBox.Location = new System.Drawing.Point(379, 60);
             this.teleportComboBox.Name = "teleportComboBox";
             this.teleportComboBox.Size = new System.Drawing.Size(147, 21);
             this.teleportComboBox.TabIndex = 30;
@@ -191,7 +193,7 @@
             // teleportCheckBox
             // 
             this.teleportCheckBox.AutoSize = true;
-            this.teleportCheckBox.Location = new System.Drawing.Point(266, 85);
+            this.teleportCheckBox.Location = new System.Drawing.Point(266, 62);
             this.teleportCheckBox.Name = "teleportCheckBox";
             this.teleportCheckBox.Size = new System.Drawing.Size(74, 17);
             this.teleportCheckBox.TabIndex = 29;
@@ -221,13 +223,13 @@
             this.changeCheckBox.UseVisualStyleBackColor = true;
             this.changeCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
-            // CompleteQuetsTextBox
+            // CompleteQuestsTextBox
             // 
-            this.CompleteQuetsTextBox.Enabled = false;
-            this.CompleteQuetsTextBox.Location = new System.Drawing.Point(379, 39);
-            this.CompleteQuetsTextBox.Name = "CompleteQuetsTextBox";
-            this.CompleteQuetsTextBox.Size = new System.Drawing.Size(147, 20);
-            this.CompleteQuetsTextBox.TabIndex = 28;
+            this.CompleteQuestsTextBox.Enabled = false;
+            this.CompleteQuestsTextBox.Location = new System.Drawing.Point(379, 39);
+            this.CompleteQuestsTextBox.Name = "CompleteQuestsTextBox";
+            this.CompleteQuestsTextBox.Size = new System.Drawing.Size(147, 20);
+            this.CompleteQuestsTextBox.TabIndex = 28;
             // 
             // GetQuestsTextBox
             // 
@@ -592,6 +594,17 @@
             this.textGroupBox.TabIndex = 15;
             this.textGroupBox.TabStop = false;
             // 
+            // ToClanBaseCheckBox
+            // 
+            this.ToClanBaseCheckBox.AutoSize = true;
+            this.ToClanBaseCheckBox.Location = new System.Drawing.Point(266, 83);
+            this.ToClanBaseCheckBox.Name = "ToClanBaseCheckBox";
+            this.ToClanBaseCheckBox.Size = new System.Drawing.Size(115, 17);
+            this.ToClanBaseCheckBox.TabIndex = 31;
+            this.ToClanBaseCheckBox.Text = "Телепорт на базу";
+            this.ToClanBaseCheckBox.UseVisualStyleBackColor = true;
+            this.ToClanBaseCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -633,7 +646,7 @@
         private System.Windows.Forms.CheckBox teleportCheckBox;
         private System.Windows.Forms.CheckBox toRepairCheckBox;
         private System.Windows.Forms.CheckBox changeCheckBox;
-        private System.Windows.Forms.MaskedTextBox CompleteQuetsTextBox;
+        private System.Windows.Forms.MaskedTextBox CompleteQuestsTextBox;
         private System.Windows.Forms.MaskedTextBox GetQuestsTextBox;
         private System.Windows.Forms.ComboBox ToDialogComboBox;
         private System.Windows.Forms.CheckBox ExitCheckBox;
@@ -672,5 +685,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveFailedQuests;
         private System.Windows.Forms.MaskedTextBox tMustHaveFailedQuests;
+        private System.Windows.Forms.CheckBox ToClanBaseCheckBox;
     }
 }

@@ -1343,6 +1343,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // QuestBox
             // 
+            this.QuestBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
             this.QuestBox.Enabled = false;
             this.QuestBox.FormattingEnabled = true;
             this.QuestBox.Location = new System.Drawing.Point(507, 2);

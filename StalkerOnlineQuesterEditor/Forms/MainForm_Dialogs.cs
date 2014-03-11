@@ -19,6 +19,18 @@ namespace StalkerOnlineQuesterEditor
     using DialogDict = Dictionary<int, CDialog>;
     //! Словарь <уровень в иерархии, список узлов>
     using levelDict = Dictionary<int, List<int>>;
+    //! Перечисление событий в диалогах, строго соответствует scripts/common/Dialog.py
+    enum DialogEvents
+    {
+        trade = 1,
+        change = 2,
+        createclan = 3,
+        repair = 4,
+        teleport = 5,
+        complex_repair = 6,
+        barter = 7,
+        clan_base = 8
+    };
     public partial class MainForm : Form
     {
         public levelDict nodesOnLevel;

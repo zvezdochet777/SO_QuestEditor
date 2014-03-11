@@ -22,6 +22,7 @@ namespace StalkerOnlineQuesterEditor
         //! Максимальная длина ответа ГГ, при превышении которого выводится сообщение
         int MAX_SYMBOL_ANSWER = 24;
 
+        //! Конструктор
         public EditDialogForm(bool isAdd, MainForm parent, int selectedDialogID)
         {
             InitializeComponent();
@@ -60,17 +61,12 @@ namespace StalkerOnlineQuesterEditor
             this.Text += "   Версия: " + curDialog.version;
         }
 
+        //! Заполняет всю форму данными из CDialog
         void fillDialogEditForm(int dialogID)
         {
-            //reputationLabel0.Text = "< Военные Любеча <";
-            //reputationLabel1.Text = "< Ученые Любеча <";
-            //reputationLabel2.Text = "< Законопослушные <";
-            //reputationLabel3.Text = "< Отступники <";
-            //reputationLabel4.Text = "< ЛВЗ <";
-            //System.Console.WriteLine("fillDialogEditForm");
             foreach (CDialog dialog in parent.getDialogsWithDialogIDInNodes(dialogID))
                     NPCSaidIs.Text+=(dialog.DialogID.ToString()+":\n"+dialog.Text);
-
+            // заполнение текста речевки и ответа ГГ
             curDialog = parent.getDialogOnDialogID(dialogID);
             tPlayerText.Text = curDialog.Title.Normalize();
             tNPCReactiontextBox.Text = curDialog.Text;
@@ -78,16 +74,16 @@ namespace StalkerOnlineQuesterEditor
             foreach (TreeNode active in parent.tree.Nodes.Find("Active",true))
                 foreach (TreeNode node in active.Nodes)
                     ToDialogComboBox.Items.Add(node.Text);
-
+            // заполнение текстбокса "Поддиалоги" (Nodes)
             if (curDialog.Nodes.Any())
                 foreach (int dialog in curDialog.Nodes)
                 {
-                    System.Console.WriteLine(dialog.ToString());
                     if (tSubDialogsTextBox.Text.Equals(""))
                         tSubDialogsTextBox.Text += dialog.ToString();
                     else
                         tSubDialogsTextBox.Text += ("," + dialog.ToString());
                 }
+            // какой-то пиздец
             if (curDialog.Precondition.tests.Contains(1))
                 CheckClanIDcheckBox.Checked = true;
             if (curDialog.Precondition.tests.Contains(0))
@@ -105,149 +101,79 @@ namespace StalkerOnlineQuesterEditor
                     int neededDialog = ToDialogComboBox.FindStringExact(curDialog.Actions.ToDialog.ToString());
                     ToDialogComboBox.SelectedIndex = neededDialog;
                 }
-                if (curDialog.Actions.Event == 1)
+                else if (curDialog.Actions.Event == (int) DialogEvents.trade)
                     toTradeCheckBox.Checked = true;
-
-                if (curDialog.Actions.Event == 2)
+                else if (curDialog.Actions.Event == (int) DialogEvents.change)
                     changeCheckBox.Checked = true;
-                if (curDialog.Actions.Event == 4)
+                else if (curDialog.Actions.Event == (int) DialogEvents.repair)
                     toRepairCheckBox.Checked = true;
-                if (curDialog.Actions.Event == 6)
+                else if (curDialog.Actions.Event == (int) DialogEvents.complex_repair)
                     toComplexRepairCheckBox.Checked = true;
-                if (curDialog.Actions.Event == 5)
+                else if (curDialog.Actions.Event == (int) DialogEvents.teleport)
                 {
-                    System.Console.WriteLine("curDialog.Actions.Event == 5");
                     teleportCheckBox.Checked = true;
                     string key = parent.tpConst.getName(curDialog.Actions.Data);
                     teleportComboBox.SelectedItem = key;
                 }
-                if (curDialog.Actions.Event == 7)
+                else if (curDialog.Actions.Event == (int) DialogEvents.barter)
                     barterCheckBox.Checked = true;
+                else if (curDialog.Actions.Event == (int) DialogEvents.clan_base)
+                    ToClanBaseCheckBox.Checked = true;
                 ExitCheckBox.Checked = curDialog.Actions.Exit;
 
                 if (curDialog.Actions.CompleteQuests.Any())
                 {
                     CompleteQuestsCheckBox.Checked = true;
                     foreach (int completeQuest in curDialog.Actions.CompleteQuests)
-                    {
-
-                        if (CompleteQuetsTextBox.Text == "")
-                            CompleteQuetsTextBox.Text += completeQuest.ToString();
-                        else
-                            CompleteQuetsTextBox.Text += ("," + completeQuest.ToString());
-                    }
+                        addItemToTextBox(completeQuest.ToString(), CompleteQuestsTextBox);
                 }
 
                 if (curDialog.Actions.GetQuests.Any())
                 {
                     GetQuestsCheckBox.Checked = true;
                     foreach (int getQuest in curDialog.Actions.GetQuests)
-                    {
-                        if (GetQuestsTextBox.Text == "")
-                            GetQuestsTextBox.Text += getQuest.ToString();
-                        else
-                            GetQuestsTextBox.Text += ("," + getQuest.ToString());
-                    }
+                        addItemToTextBox(getQuest.ToString(), GetQuestsTextBox);
                 }
             }
 
+            // заполнение условий для открытия диалога - список открытых, завершенных, заваленных квестов
             if (curDialog.Precondition.Any())
             {
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)
-                    if (tShouldntHaveCompletedQuests.Text.Equals(""))
-                        tShouldntHaveCompletedQuests.Text += quest.ToString();
-                    else
-                        tShouldntHaveCompletedQuests.Text += (","+quest.ToString());
+                    addItemToTextBox(quest.ToString(), tShouldntHaveCompletedQuests);
 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)
-                    if (tShouldntHaveOpenQuests.Text.Equals(""))
-                        tShouldntHaveOpenQuests.Text += quest.ToString();
-                    else
-                        tShouldntHaveOpenQuests.Text += ("," + quest.ToString());
+                    addItemToTextBox(quest.ToString(), tShouldntHaveOpenQuests);
 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)
-                    if (tShouldntHaveQuestsOnTest.Text.Equals(""))
-                        tShouldntHaveQuestsOnTest.Text += quest.ToString();
-                    else
-                        tShouldntHaveQuestsOnTest.Text += ("," + quest.ToString());
+                    addItemToTextBox(quest.ToString(), tShouldntHaveQuestsOnTest);
 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests)
-                    if (tShouldntHaveFailedQuests.Text.Equals(""))
-                        tShouldntHaveFailedQuests.Text += quest.ToString();
-                    else
-                        tShouldntHaveFailedQuests.Text += ("," + quest.ToString());
+                    addItemToTextBox(quest.ToString(), tShouldntHaveFailedQuests);
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)
-                    if (tMustHaveCompletedQuests.Text.Equals(""))
-                        tMustHaveCompletedQuests.Text += quest.ToString();
-                    else
-                        tMustHaveCompletedQuests.Text += ("," + quest.ToString());
+                    addItemToTextBox(quest.ToString(), tMustHaveCompletedQuests);
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)
-                    if (tMustHaveQuestsOnTest.Text.Equals(""))
-                        tMustHaveQuestsOnTest.Text += quest.ToString();
-                    else
-                        tMustHaveQuestsOnTest.Text += ("," + quest.ToString());
+                    addItemToTextBox(quest.ToString(), tMustHaveQuestsOnTest);
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)
-                    if (tMustHaveOpenQuests.Text.Equals(""))
-                        tMustHaveOpenQuests.Text += quest.ToString();
-                    else
-                        tMustHaveOpenQuests.Text += ("," + quest.ToString());
+                    addItemToTextBox(quest.ToString(), tMustHaveOpenQuests);
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)
-                    if (tMustHaveFailedQuests.Text.Equals(""))
-                        tMustHaveFailedQuests.Text += quest.ToString();
-                    else
-                        tMustHaveFailedQuests.Text += ("," + quest.ToString());
+                    addItemToTextBox(quest.ToString(), tMustHaveFailedQuests);
             }
-
-            //foreach (int key in curDialog.Precondition.Reputation.Keys)
-            //{
-            //    if (curDialog.Precondition.Reputation[key].Any())
-            //    {
-            //        if (key == 0)
-            //        {
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 1)
-            //                reputationTextBox01.Text = curDialog.Precondition.Reputation[key][1].ToString();
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 2)
-            //                reputationTextBox0.Text = curDialog.Precondition.Reputation[key][2].ToString();
-            //        }
-            //        if (key == 1)
-            //        {
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 1)
-            //                reputationTextBox11.Text = curDialog.Precondition.Reputation[key][1].ToString();
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 2)
-            //                reputationTextBox1.Text = curDialog.Precondition.Reputation[key][2].ToString();
-            //        }
-            //        if (key == 2)
-            //        {
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 1)
-            //                reputationTextBox21.Text = curDialog.Precondition.Reputation[key][1].ToString();
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 2)
-            //                reputationTextBox2.Text = curDialog.Precondition.Reputation[key][2].ToString();
-            //        }
-            //        if (key == 3)
-            //        {
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 1)
-            //                reputationTextBox31.Text = curDialog.Precondition.Reputation[key][1].ToString();
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 2)
-            //                reputationTextBox3.Text = curDialog.Precondition.Reputation[key][2].ToString();
-            //        }
-            //        if (key == 4)
-            //        {
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 1)
-            //                reputationTextBox41.Text = curDialog.Precondition.Reputation[key][1].ToString();
-            //            if (curDialog.Precondition.Reputation[key][0] == 0 || curDialog.Precondition.Reputation[key][0] == 2)
-            //                reputationTextBox4.Text = curDialog.Precondition.Reputation[key][2].ToString();
-            //        }
-            //    }
-
-            //}
-
             curDialog.QuestDialog = parent.getDialogOnDialogID(dialogID).QuestDialog;
-
             calcSymbolMaxAnswer();
+        }
+
+        //! Антиговнокод-функция, добавление номера квеста в текстбокс
+        private void addItemToTextBox(string item, MaskedTextBox textBox)
+        {
+            if (textBox.Text.Equals(""))
+                textBox.Text += item;
+            else
+                textBox.Text += ("," + item);
         }
 
         //! Нажатие Отмена - выход без сохранения
@@ -269,7 +195,7 @@ namespace StalkerOnlineQuesterEditor
         //! Блокировка комбобокса при клике на соответствующий чекбокс 
         private void CompleteQuestsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            CompleteQuetsTextBox.Enabled = CompleteQuestsCheckBox.Checked;
+            CompleteQuestsTextBox.Enabled = CompleteQuestsCheckBox.Checked;
         }
         //! Блокировка других действий при выборе
         private void AnyActionCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -305,6 +231,7 @@ namespace StalkerOnlineQuesterEditor
             ToDialogCheckBox.Enabled = ToDialogCheckBox.Checked;
             teleportCheckBox.Enabled = teleportCheckBox.Checked;
             barterCheckBox.Enabled = barterCheckBox.Checked;
+            ToClanBaseCheckBox.Enabled = ToClanBaseCheckBox.Checked;
         }
         //! Разблокирует контролы на форме
         private void unlockOtherEvent()
@@ -318,6 +245,7 @@ namespace StalkerOnlineQuesterEditor
             ToDialogCheckBox.Enabled = true;
             teleportCheckBox.Enabled = true;
             barterCheckBox.Enabled = true;
+            ToClanBaseCheckBox.Enabled = true;
         }
         //! При наборе текста проверяем число символов в строке
         private void tPlayerText_KeyPress(object sender, KeyPressEventArgs e)
@@ -360,7 +288,7 @@ namespace StalkerOnlineQuesterEditor
         //! Чекбокс телепорта - заполняем возможные локации
         private void teleportCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            teleportComboBox.Items.Add("");
+            //teleportComboBox.Items.Add("");
             foreach (string key in parent.tpConst.getKeys())
                 teleportComboBox.Items.Add(key);
 
@@ -392,28 +320,30 @@ namespace StalkerOnlineQuesterEditor
             {
                 actions.Exit = ExitCheckBox.Checked;
                 if (toTradeCheckBox.Checked)
-                    actions.Event = 1;
-                if (changeCheckBox.Checked)
-                    actions.Event = 2;
-                if (ToDialogCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.trade;
+                else if (changeCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.change;
+                else if (ToDialogCheckBox.Checked)
                     actions.ToDialog = int.Parse(ToDialogComboBox.SelectedItem.ToString());
-                if (toRepairCheckBox.Checked)
-                    actions.Event = 4;
-                if (teleportCheckBox.Checked && !teleportComboBox.SelectedItem.ToString().Equals(""))
+                else if (toRepairCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.repair;
+                else if (teleportCheckBox.Checked && !teleportComboBox.SelectedItem.ToString().Equals(""))
                 {
-                    actions.Event = 5;
+                    actions.Event = (int)DialogEvents.teleport;
                     actions.Data = parent.tpConst.getTtID(teleportComboBox.SelectedItem.ToString());
                 }
-                if (toComplexRepairCheckBox.Checked)
-                    actions.Event = 6;
-                if (barterCheckBox.Checked)
-                    actions.Event = 7;
+                else if (toComplexRepairCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.complex_repair;
+                else if (barterCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.barter;
+                else if (ToClanBaseCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.clan_base;
 
                 if (GetQuestsCheckBox.Checked)
                     foreach (string quest in GetQuestsTextBox.Text.Split(','))
                         actions.GetQuests.Add(int.Parse(quest));
                 if (CompleteQuestsCheckBox.Checked)
-                    foreach (string quest in CompleteQuetsTextBox.Text.Split(','))
+                    foreach (string quest in CompleteQuestsTextBox.Text.Split(','))
                         actions.CompleteQuests.Add(int.Parse(quest));
             }
 
