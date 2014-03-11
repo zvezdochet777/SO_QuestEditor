@@ -139,7 +139,7 @@
     <Compile Include="ResourceClasses\CSpacesConstants.cs" />
     <Compile Include="ResourceClasses\CTPConstants.cs" />
     <Compile Include="ResourceClasses\CTriggerConstants.cs" />
-    <Compile Include="ResourceClasses\CZoneConstatnts.cs" />
+    <Compile Include="ResourceClasses\CZoneConstants.cs" />
     <Compile Include="Forms\DialogKarmaPK.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -33,6 +33,10 @@ namespace StalkerOnlineQuesterEditor
 
             CDialog curDialog = parent.getDialogOnDialogID(dialogID);
             lAttention.Text = "";
+            teleportComboBox.Items.Clear();
+            foreach (string key in parent.tpConst.getKeys())
+                teleportComboBox.Items.Add(key);
+
             if (curDialog.Precondition.Reputation.Any())
             {
                 editPrecondition = curDialog.Precondition;
@@ -288,10 +292,6 @@ namespace StalkerOnlineQuesterEditor
         //! Чекбокс телепорта - заполняем возможные локации
         private void teleportCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            //teleportComboBox.Items.Add("");
-            foreach (string key in parent.tpConst.getKeys())
-                teleportComboBox.Items.Add(key);
-
             if (teleportCheckBox.Checked)
                 lockOtherEvent();
             else

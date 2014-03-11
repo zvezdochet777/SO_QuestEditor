@@ -56,7 +56,7 @@ namespace StalkerOnlineQuesterEditor
         public CItemConstants itemConst;
         public CNPCConstants npcConst;
         public CMobConstants mobConst;
-        public CZoneConstatnts zoneConst;
+        public CZoneConstants zoneConst;
         public CSpacesConstants spacesConst;
         public CTriggerConstants triggerConst;
         public CTPConstants tpConst;
@@ -108,7 +108,7 @@ namespace StalkerOnlineQuesterEditor
                  npcConst.NPCs.Add(name, new CNPCDescription(name));
 
             this.mobConst = new CMobConstants();
-            this.zoneConst = new CZoneConstatnts();
+            this.zoneConst = new CZoneConstants();
         }
 
         //! Очищает данные о квестах - дерево квестов, комбобокс, подквесты
