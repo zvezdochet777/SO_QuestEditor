@@ -110,9 +110,15 @@ namespace StalkerOnlineQuesterEditor
             locTextSpaceless = 0;
 
             foreach (string npc in dialogs.dialogs.Keys)
-            {
+            {                
+                if (!dialogs.location.ContainsKey(npc) || dialogs.location[npc] == "notfound")
+                    continue;
+
                 foreach (int id in dialogs.dialogs[npc].Keys)
                 {
+                    if (!dialogs.dialogs[npc][id].coordinates.Active)
+                        continue;
+
                     countOfDialogs++;
                     countOfTextLetters += dialogs.dialogs[npc][id].Text.Length;
                     countOfTitleLetters += dialogs.dialogs[npc][id].Title.Length;

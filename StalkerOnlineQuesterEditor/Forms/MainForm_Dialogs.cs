@@ -40,6 +40,7 @@ namespace StalkerOnlineQuesterEditor
         public CDialog getRootDialog(string npc_name)
         {
             DialogDict dialogs = getDialogDictionary(currentNPC); //this.dialogs.dialogs[npc_name];
+            CDialog backup = null;
             foreach (CDialog dialog in dialogs.Values)
             {
                 //System.Console.WriteLine(dialog.QuestDialog.ToString() + " vs " + currentQuestDialog.ToString());
@@ -47,10 +48,19 @@ namespace StalkerOnlineQuesterEditor
                 {
                     rootElements.Add(dialog.DialogID);
                     return dialog;
-
                 }
+                if (dialog.coordinates.RootDialog)
+                    backup = dialog;
             }
-            return null;
+            return backup;
+            /*
+            foreach (CDialog dialog in dialog.Values)
+            {
+                if (dialog.coordinates.RootDialog)
+                    return dialog;
+            }
+            */
+            //return null;
         }
 
         //! Возвращает вершину графа диалогов - корневую фразу
@@ -63,18 +73,6 @@ namespace StalkerOnlineQuesterEditor
                 System.Console.WriteLine("MainForm::getRootDialog " + ret_dial.DialogID.ToString());
 
             return ret_dial;
-            //NPCQuestDict dialogs = this.dialogs.dialogs[currentNPC];
-            //foreach (CDialog dialog in dialogs.Values)
-            //{
-            //    //System.Console.WriteLine(dialog.QuestDialog.ToString() + " vs " + currentQuestDialog.ToString());
-            //    if (dialog.QuestDialog == currentQuestDialog)
-            //    {
-            //        rootElements.Add(dialog.DialogID);
-            //        return dialog;
-
-            //    }
-            //}
-            //return null;
         }
 
         //! Возвращает Узел по известному ID диалога

@@ -434,10 +434,15 @@ namespace StalkerOnlineQuesterEditor
                     var locale_dialogs = cur_locale_info[npc_name];
                     foreach (var dialog in dialogs[npc_name].Values)
                     {
+                        if (!dialog.coordinates.Active)
+                            continue;
+                        if (!location.ContainsKey(npc_name) || location[npc_name] == "notfound")
+                            continue;
+
                         var locale_version = 0;
                         if (locale_dialogs.Keys.Contains(dialog.DialogID))
                             locale_version = locale_dialogs[dialog.DialogID].version;
-
+                        
                         if (!ret.Keys.Contains(npc_name))
                             ret.Add(npc_name, new Dictionary<int, CDifference>());
                         switch (findType)
