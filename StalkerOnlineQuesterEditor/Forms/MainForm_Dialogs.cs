@@ -187,7 +187,10 @@ namespace StalkerOnlineQuesterEditor
             TreeNode treeRecycleNode = this.treeDialogs.Nodes.Find("Recycle", true)[0];
             foreach (CDialog dialog in dialogs.Values)
                 if (!treeActiveNode.Nodes.ContainsKey(dialog.DialogID.ToString()))
+                {
                     treeRecycleNode.Nodes.Add(dialog.DialogID.ToString(), dialog.DialogID.ToString());
+                    dialog.coordinates.Active = false;
+                }
 
             this.treeDialogs.ExpandAll();
         }

@@ -152,17 +152,20 @@ namespace StalkerOnlineQuesterEditor
         public int X;
         public int Y;
         public bool RootDialog;
+        public bool Active;
         public NodeCoordinates()
         {
             X = 0;
             Y = 0;
             RootDialog = false;
+            Active = true;
         }
-        public NodeCoordinates(int x, int y, bool root)
+        public NodeCoordinates(int x, int y, bool root, bool active)
         {
             X = x;
             Y = y;
             RootDialog = root;
+            Active = active;
         }
     }
 

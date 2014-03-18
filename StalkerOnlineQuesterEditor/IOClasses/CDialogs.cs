@@ -167,6 +167,11 @@ namespace StalkerOnlineQuesterEditor
                         nodeCoord.RootDialog = true;
                     else
                         nodeCoord.RootDialog = false;
+                    
+                    if (item.Element("NodeCoordinates").Element("Active").Value.Equals("1"))
+                        nodeCoord.Active = true;
+                    else
+                        nodeCoord.Active = false;
                 }
 
                 foreach (string el in item.Element("Precondition").Element("Reputation").Value.Split(';'))
@@ -265,7 +270,8 @@ namespace StalkerOnlineQuesterEditor
                        new XElement("NodeCoordinates",
                            new XElement("X", getIntAsString(dialog.coordinates.X)),
                            new XElement("Y", getIntAsString(dialog.coordinates.Y)),
-                           new XElement("RootDialog", getBoolAsString(dialog.coordinates.RootDialog)))
+                           new XElement("RootDialog", getBoolAsString(dialog.coordinates.RootDialog)),
+                           new XElement("Active", getBoolAsString(dialog.coordinates.Active)))
                        );
                     resultDoc.Root.Add(element);
                 }

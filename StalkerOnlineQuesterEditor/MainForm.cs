@@ -214,7 +214,10 @@ namespace StalkerOnlineQuesterEditor
                 {
                     //System.Console.WriteLine("Write dialog:" + subdialog.ToString());
                     if (!treeNode.Nodes.ContainsKey(subdialog.ToString()))
+                    {
                         treeNode.Nodes.Add(subdialog.ToString(), subdialog.ToString());
+                        dialogs.dialogs[currentNPC][subdialog].coordinates.Active = true;
+                    }
                 }
                 this.fillNPCBoxSubquests(this.dialogs.dialogs[currentNPC][subdialog]);
             }
@@ -499,6 +502,8 @@ namespace StalkerOnlineQuesterEditor
                         bRemoveQuest.Enabled = false;
                         bAddQuest.Enabled = false;
                         QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
+                        currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
+                        DialogSelected(true);
                     }
                     break;
                 case 1:         // вкладка Квесты
@@ -819,7 +824,6 @@ namespace StalkerOnlineQuesterEditor
                     questEditor.Visible = true;
                     this.Enabled = false;
                 }
-
                 else
                 {
                     EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 3);
