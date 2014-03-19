@@ -25,7 +25,6 @@ namespace StalkerOnlineQuesterEditor
         int EDIT_SUB = 3;
         int ADD_SUB = 4;
 
-
         int ITEM_REWARD = 0;
         int ITEM_QUESTRULES = 1;
         int ITEM_LOCALIZATION = 2;
@@ -40,26 +39,20 @@ namespace StalkerOnlineQuesterEditor
 
         Dictionary<int, string> dReputation = new Dictionary<int, string>();
 
+        public CQuestTarget editTarget = new CQuestTarget();
+        public CQuestRules editQuestRules = new CQuestRules();
+        public CQuestReward editQuestReward = new CQuestReward();
+        public CQuestInformation editInformation = new CQuestInformation();
+        public MainForm parent;
+        public CQuest quest;
+        int iState;
 
-       public CQuestTarget editTarget = new CQuestTarget();
-       public CQuestRules editQuestRules = new CQuestRules();
-       public CQuestReward editQuestReward = new CQuestReward();
-       public CQuestInformation editInformation = new CQuestInformation();
-
-
-       public MainForm parent;
-       public CQuest quest;
-       int iState;
-       public EditQuestForm(MainForm parent, int currentQuest, int iState)
+        public EditQuestForm(MainForm parent, int currentQuest, int iState)
         {
-            //System.Console.WriteLine("EditQuestForm::init");
-            //System.Console.WriteLine("EditQuestForm:currentQuest" + currentQuest.ToString());
-
             InitializeComponent();
             this.parent = parent;
             this.iState = iState;
             this.QuestID = currentQuest;
-
 
             if (iState != ADD_NEW)
                 this.quest = parent.getQuestOnQuestID(currentQuest);
@@ -72,8 +65,7 @@ namespace StalkerOnlineQuesterEditor
                 showCloseCheckBox.Checked = false;
                 showTakeCheckBox.Enabled = false;
                 showTakeCheckBox.Checked = false;
-                tutorialCheckBox.Enabled = false;
-               
+                tutorialCheckBox.Enabled = false;              
             }
 
             if (iState == ADD_SUB)
@@ -82,7 +74,6 @@ namespace StalkerOnlineQuesterEditor
                 if (parent_quest != null)
                     quest.Reward.Difficulty = parent_quest.Reward.Difficulty;
             }
-
 
             if (iState == EDIT || iState == EDIT_SUB)
             {
@@ -96,11 +87,11 @@ namespace StalkerOnlineQuesterEditor
             fillForm();
         }
 
-       void setDefaultTargetState()
-       {
+        void setDefaultTargetState()
+        {
            foreach (Control control in targetBox.Controls)
                control.Enabled = false;
-       }
+        }
 
         void clearTargetContent()
         {
@@ -108,7 +99,6 @@ namespace StalkerOnlineQuesterEditor
             //targetComboBox.SelectedText = "";
 //          repeatComboBox.Items.Clear();
         }
-
 
         void fillForm()
         {
@@ -142,7 +132,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 if ((quest.Additional.ShowProgress & this.SHOW_TUTORIAL) > 0)
                 {
-                    System.Console.WriteLine("iState != ADD_NEW set tutorial true");
+                    //System.Console.WriteLine("iState != ADD_NEW set tutorial true");
                     tutorialCheckBox.Checked = true;
                 }
                 else
@@ -212,7 +202,6 @@ namespace StalkerOnlineQuesterEditor
             repeatComboBox.SelectedIndex = 1;
             if (iState == ADD_SUB || iState == EDIT_SUB)
                 takenPeriodTextBox.Enabled = false;
-
         }
 
         void fillPrecondition()
@@ -235,7 +224,7 @@ namespace StalkerOnlineQuesterEditor
 
             lTargetAttr1.Enabled = false;
             targetAttributeComboBox2.Enabled = false;
-            lTargetAttr1.Text = "Аттрибут2";
+            lTargetAttr1.Text = "Атрибут2";
             ltargetResult.Text = "Результат";
 
             if (parent.questConst.isSimple(QuestType))
@@ -379,8 +368,6 @@ namespace StalkerOnlineQuesterEditor
                 lNameObject.Enabled = false;
                 lQuantity.Enabled = false;
                 quantityUpDown.Enabled = false;
-
-
             }
 
             //System.Console.WriteLine("Group par: " + quest.Target.IsGroup);
@@ -483,21 +470,13 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedItem = parent.gui.getDescriptionOnID(quest.Target.ObjectType);
                 targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
             }
-
-
         }   
 
         void fillQuestRulesForm()
         {
-
-                //listQuestRulesOfItemAttrMaskedTextBox.Items.Add("Провал, если смерть.");
-                //listQuestRulesOfItemAttrMaskedTextBox.Items.Add("Нет провала.");    
-                //listQuestRulesOfItemAttrMaskedTextBox.SelectedIndex = 1;
-
-                foreach (string space in parent.spacesConst.getSpacesDescription())
-                    instanceComboBox.Items.Add(space);
+            foreach (string space in parent.spacesConst.getSpacesDescription())
+                instanceComboBox.Items.Add(space);
         }
-
 
         void fillQuestRules()
         {
@@ -573,44 +552,7 @@ namespace StalkerOnlineQuesterEditor
                 difficultyComboBox.SelectedItem = quest.Reward.Difficulty.ToString();
             else
                 difficultyComboBox.SelectedItem = "1";
-            //foreach (int key in quest.Reward.Reputation.Keys)
-            //{
-            //    string value = quest.Reward.Reputation[key].ToString();
-            //    if (key == 0)
-            //        reputationTextBox0.Text = value;
-            //    else if (key == 1)
-            //        reputationTextBox1.Text = value;
-            //    else if (key == 2)
-            //        reputationTextBox2.Text = value;
-            //    else if (key == 3)
-            //        reputationTextBox3.Text = value;
-            //    else if (key == 4)
-            //        reputationTextBox4.Text = value;
-            //}
 
-            //foreach(int item in quest.Reward.TypeOfItems)
-            //{
-            //    if (listRewardOfItemTypesMaskedTextBox.Text =="")
-            //        listRewardOfItemTypesMaskedTextBox.Text+=item.ToString();
-            //    else
-            //        listRewardOfItemTypesMaskedTextBox.Text+=("," + item.ToString());
-            //}
-
-            //foreach(int item in quest.Reward.NumOfItems)
-            //{
-            //    if (listRewardOfNumbersMaskedTextBox.Text == "")
-            //        listRewardOfNumbersMaskedTextBox.Text += item.ToString();
-            //    else
-            //        listRewardOfNumbersMaskedTextBox.Text += ("," + item.ToString());
-            //}
-
-            //foreach (int item in quest.Reward.AttrOfItems)
-            //{
-            //    if (listRewardOfAttrsMaskedTextBox.Text == "")
-            //        listRewardOfAttrsMaskedTextBox.Text += item.ToString();
-            //    else
-            //        listRewardOfAttrsMaskedTextBox.Text += ("," + item.ToString());
-            //}
             if (quest.Reward.Experience.Count == 3)
             {
                 tExperience.Text = quest.Reward.Experience[0].ToString();
@@ -623,7 +565,7 @@ namespace StalkerOnlineQuesterEditor
 
         public CQuest getQuest()
         {
-            System.Console.WriteLine("EditQuestForm::getQuest");
+            //System.Console.WriteLine("EditQuestForm::getQuest");
             CQuestAdditional additional = new CQuestAdditional();
             CQuestInformation information = new CQuestInformation();
             CQuestPrecondition precondition = new CQuestPrecondition();
@@ -631,7 +573,6 @@ namespace StalkerOnlineQuesterEditor
             CQuestRules rules = new CQuestRules();
             CQuestTarget target = new CQuestTarget();
             CQuestPenalty penalty = new CQuestPenalty();
-
 
             information.Description = descriptionTextBox.Text;
             information.Title = titleTextBox.Text;
@@ -761,7 +702,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 parent.setQuestISClan(quest.QuestID, target.IsClan);
                 //parent.setQuestISGroup(quest.QuestID, target.IsGroup);
-
             }
 
             if (repeatComboBox.SelectedItem.ToString().Equals("Повторное взятие квеста после его закрытия."))
@@ -795,17 +735,6 @@ namespace StalkerOnlineQuesterEditor
             if (difficultyComboBox.SelectedItem.ToString() != "")
                 reward.Difficulty = int.Parse(difficultyComboBox.SelectedItem.ToString());
 
-            //if (!reputationTextBox0.Text.Equals(""))
-            //    reward.Reputation[0] = int.Parse(reputationTextBox0.Text);
-            //if (!reputationTextBox1.Text.Equals(""))
-            //reward.Reputation[1] = int.Parse(reputationTextBox1.Text);
-            //if (!reputationTextBox2.Text.Equals(""))
-            //reward.Reputation[2] = int.Parse(reputationTextBox2.Text);
-            //if (!reputationTextBox3.Text.Equals(""))
-            //reward.Reputation[3] = int.Parse(reputationTextBox3.Text);
-            //if (!reputationTextBox4.Text.Equals(""))
-            //reward.Reputation[4] = int.Parse(reputationTextBox4.Text);
-
             if (!textBoxKarmaPK.Text.Equals(""))
                 reward.KarmaPK = int.Parse(textBoxKarmaPK.Text);
 
@@ -828,7 +757,6 @@ namespace StalkerOnlineQuesterEditor
                 iProgressResult |= this.SHOW_TUTORIAL;
             }
             additional.ShowProgress = iProgressResult;
-
 
             CQuest retQuest;
 
@@ -930,14 +858,6 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
-        private void IsGroupCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            //if (IsGroupCheckBox.Checked)
-            //    groupQuestRulesBox.Enabled = true;
-            //else
-            //    groupQuestRulesBox.Enabled = false;
-        }
-
         private void dynamicCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (dynamicCheckBox.Checked)
@@ -984,7 +904,6 @@ namespace StalkerOnlineQuesterEditor
                 str += parent.triggerConst.getIdOnKey(targetComboBox.SelectedItem.ToString());
             }
 
-
             if (resultextBox.Text.Equals(""))
                 resultextBox.Text += str;
             else
@@ -1001,6 +920,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void targetComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //! @todo впилить сюда что и было - выбор в комбобоксе уровня мобов
             if (this.QuestType == 2 || this.QuestType == 3)
             {
                 //targetAttributeComboBox2.Items.Clear();
@@ -1095,14 +1015,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if (labelScenarios.Visible)
             {
-                //lQuestRulesListOfItemID.Visible = false;
-                //listQuestRulesOfItemTypesMaskedTextBox.Visible = false;
-                //lQuestRulesListOfNumberOfType.Visible = false;
-                //listQuestRulesOfNumbersMaskedTextBox.Visible = false;
-                //lAttributes.Visible = false;
-                //listOfQuestRulesAttrMaskedTextBox.Visible = false;
-                //lFailedIF.Visible = false;
-                //listQuestRulesOfItemAttrMaskedTextBox.Visible = false;
+                bItemQuestRules.Visible = false;
                 labelScenarios.Visible = false;
                 scenariosTextBox.Visible = false;
                 groupQuestRulesBox.Visible = false;
@@ -1112,14 +1025,7 @@ namespace StalkerOnlineQuesterEditor
             }
             else
             {
-                //lQuestRulesListOfItemID.Visible = true;
-                //listQuestRulesOfItemTypesMaskedTextBox.Visible = true;
-                //lQuestRulesListOfNumberOfType.Visible = true;
-                //listQuestRulesOfNumbersMaskedTextBox.Visible = true;
-                //lAttributes.Visible = true;
-                //listOfQuestRulesAttrMaskedTextBox.Visible = true;
-                //lFailedIF.Visible = true;
-                //listQuestRulesOfItemAttrMaskedTextBox.Visible = true;
+                bItemQuestRules.Visible = true;
                 labelScenarios.Visible = true;
                 scenariosTextBox.Visible = true;
                 groupQuestRulesBox.Visible = true;
@@ -1132,80 +1038,39 @@ namespace StalkerOnlineQuesterEditor
         {
             if (lCredits.Visible)
             {
-                //lListTypeItem.Visible = false;
-                //listRewardOfItemTypesMaskedTextBox.Visible = false;
-                //lListCountItems.Visible = false;
-                //listRewardOfNumbersMaskedTextBox.Visible = false;
-                //lListAttributesItems.Visible = false;
-                //listRewardOfAttrsMaskedTextBox.Visible = false;
+                difficultyComboBox.Visible = false;
+                lDifficulty.Visible = false;
                 lCredits.Visible = false;
                 creditsTextBox.Visible = false;
                 lCombatSkills.Visible = false;
                 tExperience.Visible = false;
-                //lSurvivalSkills.Visible = false;
-                //tSurvivalSkills.Visible = false;
-                //lOtherSkills.Visible = false;
-                //tOtherSkills.Visible = false;
+                lSurvivalSkills.Visible = false;
+                tSurvival.Visible = false;
+                lSupportSkills.Visible = false;
+                tSupport.Visible = false;
                 lKarmaPK.Visible = false;
                 textBoxKarmaPK.Visible = false;
-
-                //reputationLabel1.Visible = false;
-                //reputationLabel0.Visible = false;
-                //reputationLabel2.Visible = false;
-                //reputationLabel3.Visible = false;
-                //reputationLabel4.Visible = false;
-                //reputationTextBox0.Visible = false;
-                //reputationTextBox1.Visible = false;
-                //reputationTextBox2.Visible = false;
-                //reputationTextBox3.Visible = false;
-                //reputationTextBox4.Visible = false;
-
                 bHideReward.Text = "Показать";
                 iRewardHeight = rewardGroupBox.Height;
                 rewardGroupBox.Height = 35;
-
             }
             else
             {
-                //lListTypeItem.Visible = true;
-                //listRewardOfItemTypesMaskedTextBox.Visible = true;
-                //lListCountItems.Visible = true;
-                //listRewardOfNumbersMaskedTextBox.Visible = true;
-                //lListAttributesItems.Visible = true;
-                //listRewardOfAttrsMaskedTextBox.Visible = true;
+                difficultyComboBox.Visible = true;
+                lDifficulty.Visible = true;
                 lCredits.Visible = true;
                 creditsTextBox.Visible = true;
                 lCombatSkills.Visible = true;
                 tExperience.Visible = true;
-                //lSurvivalSkills.Visible = true;
-                //tSurvivalSkills.Visible = true;
-                //lOtherSkills.Visible = true;
-                //tOtherSkills.Visible = true;
+                lSurvivalSkills.Visible = true;
+                tSurvival.Visible = true;
+                lSupportSkills.Visible = true;
+                tSupport.Visible = true;
                 lKarmaPK.Visible = true;
                 textBoxKarmaPK.Visible = true;
-
-                //reputationLabel1.Visible = true;
-                //reputationLabel0.Visible = true;
-                //reputationLabel2.Visible = true;
-                //reputationLabel3.Visible = true;
-                //reputationLabel4.Visible = true;
-                //reputationTextBox0.Visible = true;
-                //reputationTextBox1.Visible = true;
-                //reputationTextBox2.Visible = true;
-                //reputationTextBox3.Visible = true;
-                //reputationTextBox4.Visible = true;
-
                 bHideReward.Text = "Скрыть";
                 rewardGroupBox.Height = iRewardHeight;
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ItemDialog itemDialog = new ItemDialog(this.parent, this, null, quest.QuestID, this.ITEM_REWARD);
-            itemDialog.Enabled = true;
-            itemDialog.Visible = true;
-            this.Enabled = false;
         }
 
         private void bItemQuestRules_Click(object sender, EventArgs e)
@@ -1264,6 +1129,14 @@ namespace StalkerOnlineQuesterEditor
             str = str.Substring(6);
             str = str.Remove(str.Length-7,7);
             return str;
+        }
+
+        private void bItemReward_Click(object sender, EventArgs e)
+        {
+            ItemDialog itemDialog = new ItemDialog(this.parent, this, null, quest.QuestID, this.ITEM_REWARD);
+            itemDialog.Enabled = true;
+            itemDialog.Visible = true;
+            this.Enabled = false;
         }
         
     }

@@ -326,6 +326,17 @@ namespace StalkerOnlineQuesterEditor
             return (quests.Count - 1);
         }
 
+        //! Возвращает список ID квестов (для комбобокса)
+        public string[] getQuestsIDasString()
+        { 
+            int count = quest.Count;
+            int i = 0;
+            string[] array = new string[count];
+            foreach (int questID in quest.Keys)
+                array[i++] = questID.ToString();
+            return array;
+        }
+
         //! @todo выжигать каленым железом
         public void saveStartQuests(string fileName)
         {

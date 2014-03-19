@@ -39,7 +39,7 @@
             this.lSurvivalSkills = new System.Windows.Forms.Label();
             this.tSupport = new System.Windows.Forms.TextBox();
             this.tSurvival = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lDifficulty = new System.Windows.Forms.Label();
             this.difficultyComboBox = new System.Windows.Forms.ComboBox();
             this.bRewardEffects = new System.Windows.Forms.Button();
             this.bRewardFractions = new System.Windows.Forms.Button();
@@ -203,7 +203,7 @@
             this.rewardGroupBox.Controls.Add(this.lSurvivalSkills);
             this.rewardGroupBox.Controls.Add(this.tSupport);
             this.rewardGroupBox.Controls.Add(this.tSurvival);
-            this.rewardGroupBox.Controls.Add(this.label1);
+            this.rewardGroupBox.Controls.Add(this.lDifficulty);
             this.rewardGroupBox.Controls.Add(this.difficultyComboBox);
             this.rewardGroupBox.Controls.Add(this.bRewardEffects);
             this.rewardGroupBox.Controls.Add(this.bRewardFractions);
@@ -255,14 +255,14 @@
             this.tSurvival.Size = new System.Drawing.Size(42, 20);
             this.tSurvival.TabIndex = 37;
             // 
-            // label1
+            // lDifficulty
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(458, 67);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "Сложность";
+            this.lDifficulty.AutoSize = true;
+            this.lDifficulty.Location = new System.Drawing.Point(458, 67);
+            this.lDifficulty.Name = "lDifficulty";
+            this.lDifficulty.Size = new System.Drawing.Size(63, 13);
+            this.lDifficulty.TabIndex = 36;
+            this.lDifficulty.Text = "Сложность";
             // 
             // difficultyComboBox
             // 
@@ -305,7 +305,7 @@
             this.bItemReward.TabIndex = 32;
             this.bItemReward.Text = "Предметы";
             this.bItemReward.UseVisualStyleBackColor = true;
-            this.bItemReward.Click += new System.EventHandler(this.button1_Click);
+            this.bItemReward.Click += new System.EventHandler(this.bItemReward_Click);
             // 
             // textBoxKarmaPK
             // 
@@ -595,6 +595,8 @@
             // 
             // targetAttributeComboBox2
             // 
+            this.targetAttributeComboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.targetAttributeComboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.targetAttributeComboBox2.DropDownWidth = 200;
             this.targetAttributeComboBox2.Enabled = false;
             this.targetAttributeComboBox2.FormattingEnabled = true;
@@ -607,11 +609,11 @@
             // 
             this.lTargetAttr1.AutoSize = true;
             this.lTargetAttr1.Enabled = false;
-            this.lTargetAttr1.Location = new System.Drawing.Point(14, 93);
+            this.lTargetAttr1.Location = new System.Drawing.Point(14, 96);
             this.lTargetAttr1.Name = "lTargetAttr1";
-            this.lTargetAttr1.Size = new System.Drawing.Size(58, 13);
+            this.lTargetAttr1.Size = new System.Drawing.Size(53, 13);
             this.lTargetAttr1.TabIndex = 13;
-            this.lTargetAttr1.Text = "Аттрибут2";
+            this.lTargetAttr1.Text = "Атрибут2";
             // 
             // bTargetClearDynamic
             // 
@@ -667,6 +669,8 @@
             // 
             // targetAttributeComboBox
             // 
+            this.targetAttributeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.targetAttributeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.targetAttributeComboBox.DropDownWidth = 121;
             this.targetAttributeComboBox.Enabled = false;
             this.targetAttributeComboBox.FormattingEnabled = true;
@@ -680,11 +684,11 @@
             // 
             this.labelTargetAttr.AutoSize = true;
             this.labelTargetAttr.Enabled = false;
-            this.labelTargetAttr.Location = new System.Drawing.Point(14, 66);
+            this.labelTargetAttr.Location = new System.Drawing.Point(14, 69);
             this.labelTargetAttr.Name = "labelTargetAttr";
-            this.labelTargetAttr.Size = new System.Drawing.Size(52, 13);
+            this.labelTargetAttr.Size = new System.Drawing.Size(47, 13);
             this.labelTargetAttr.TabIndex = 6;
-            this.labelTargetAttr.Text = "Аттрибут";
+            this.labelTargetAttr.Text = "Атрибут";
             // 
             // isClanCheckBox
             // 
@@ -696,7 +700,6 @@
             this.isClanCheckBox.TabIndex = 5;
             this.isClanCheckBox.Text = "Клановый квест";
             this.isClanCheckBox.UseVisualStyleBackColor = true;
-            this.isClanCheckBox.CheckedChanged += new System.EventHandler(this.isClanCheckBox_CheckedChanged);
             // 
             // IsGroupCheckBox
             // 
@@ -708,7 +711,6 @@
             this.IsGroupCheckBox.TabIndex = 4;
             this.IsGroupCheckBox.Text = "Групповой квест";
             this.IsGroupCheckBox.UseVisualStyleBackColor = true;
-            this.IsGroupCheckBox.CheckedChanged += new System.EventHandler(this.IsGroupCheckBox_CheckedChanged);
             // 
             // lQuantity
             // 
@@ -735,6 +737,8 @@
             // 
             // targetComboBox
             // 
+            this.targetComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.targetComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.targetComboBox.DropDownWidth = 250;
             this.targetComboBox.Enabled = false;
             this.targetComboBox.FormattingEnabled = true;
@@ -749,7 +753,7 @@
             // 
             this.lNameObject.AutoSize = true;
             this.lNameObject.Enabled = false;
-            this.lNameObject.Location = new System.Drawing.Point(15, 43);
+            this.lNameObject.Location = new System.Drawing.Point(14, 43);
             this.lNameObject.Name = "lNameObject";
             this.lNameObject.Size = new System.Drawing.Size(42, 13);
             this.lNameObject.TabIndex = 0;
@@ -1093,7 +1097,7 @@
         private System.Windows.Forms.RadioButton winRButton;
         private System.Windows.Forms.CheckBox tutorialCheckBox;
         private System.Windows.Forms.Button bRewardEffects;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lDifficulty;
         private System.Windows.Forms.ComboBox difficultyComboBox;
         private System.Windows.Forms.TextBox tSupport;
         private System.Windows.Forms.TextBox tSurvival;

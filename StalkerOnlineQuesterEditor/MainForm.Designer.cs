@@ -1351,6 +1351,7 @@ namespace StalkerOnlineQuesterEditor
             this.QuestBox.Size = new System.Drawing.Size(293, 21);
             this.QuestBox.TabIndex = 6;
             this.QuestBox.SelectedIndexChanged += new System.EventHandler(this.QuestBox_SelectedIndexChanged);
+            this.QuestBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuestBox_KeyDown);
             // 
             // labelChosenQuest
             // 

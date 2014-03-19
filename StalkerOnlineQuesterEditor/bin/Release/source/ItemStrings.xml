@@ -1243,11 +1243,7 @@
 		<Description> Бинокль ночного видения. По умолчанию режим ночного видения активируется клавишей N </Description>
 	</item>
 
-	<item>
-		<id> 307 </id>
-		<Name>  </Name>
-		<Description> non </Description>
-	</item>
+
 
 	<item>
 		<id> 400 </id>
@@ -2010,25 +2006,6 @@
 		<Name> Приц.С.НАТО|Снайперский прицел 4-6-8х НАТО </Name>
 		<Description> non </Description>
 	</item>
-
-	<item>
-		<id> 540 </id>
-		<Name>  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 541 </id>
-		<Name>  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 542 </id>
-		<Name>  </Name>
-		<Description> non </Description>
-	</item>
-
 	<item>
 		<id> 600 </id>
 		<Name> 9x18 ПМ|Патроны 9x18 ПМ </Name>
@@ -2778,91 +2755,6 @@
 		<Name> Медальон ЗВ|Медальон зрячего Ведуна </Name>
 		<Description> Странный предмет, который слегка подрагивает в воздухе. </Description>
 	</item>
-
-	<item>
-		<id> 840 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 841 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 842 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 843 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 844 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 845 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 846 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 847 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 848 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 849 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 850 </id>
-		<Name>  |  </Name>
-		<Description> | </Description>
-	</item>
-
-	<item>
-		<id> 851 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 852 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 853 </id>
-		<Name>  |  </Name>
-		<Description> non </Description>
-	</item>
-
 	<item>
 		<id> 880 </id>
 		<Name> 20 з.р.|Вексель номиналом 20 золотых рублей </Name>
@@ -9128,6 +9020,21 @@
 	<id> 810163 </id>
 		<Name> _Спички|Спички.</Name>
 		<Description> Спички – обязательный элемент любого походного снаряжения. </Description>
+	</item>
+		<item>
+	<id> 410250 </id>
+		<Name> _АртКонтейнер П.|АртКонтейнер П.</Name>
+		<Description> Простой контейнер для хранения и переноски артефактов. </Description>
+	</item>
+	<item>
+	<id> 110280 </id>
+		<Name> _Куртка охотника.|Куртка охоника.</Name>
+		<Description> Маскировочная куртка охотника. </Description>
+	</item>
+	<item>
+	<id> 21 </id>
+		<Name> _Обрез.|Самодельный обрез из охотничего ружья.</Name>
+		<Description> Достоинством обреза являются малые размеры, позволяющие осуществлять скрытое ношение оружия и ведения огня с одной руки. </Description>
 	</item>
 	
 </root>

@@ -193,6 +193,10 @@ namespace StalkerOnlineQuesterEditor
                 this.NPCBox.Sorted = true;
             }
             this.NPCBox.Text = "Пожалуйста, выберите NPC.";
+                       
+            QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+            QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
         }
 
         void protectNPCBoxQuest(CDialog quest)
@@ -713,6 +717,7 @@ namespace StalkerOnlineQuesterEditor
             quests.startQuests.Add(newNPCID);
 
             NPCBox.Items.Add(Name);
+            //! выбирает левого NPC после создания нового - править
             NPCBox.SelectedIndex = NPCBox.Items.Count - 1;
 
             npcConst.NPCs.Add(Name, new CNPCDescription(Name));
@@ -1690,10 +1695,37 @@ namespace StalkerOnlineQuesterEditor
             labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
         }
 
+        //! Тeстовая фукция "пробежать", пробегает всех NPC (для заполнения полей в тестовом режиме)
         private void button1_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < NPCBox.Items.Count; i++ )
                 NPCBox.SelectedIndex = i;
+        }
+
+        //! Поиск по номеру квеста в комбобоксе квеста и вывод информации
+        private void QuestBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string text = QuestBox.Text;
+                int id;
+                if (int.TryParse(text, out id))
+                {
+                    CQuest quest = quests.getQuest(id);
+                    if (quest != null)
+                    {
+                        CQuest temp = quest;
+                        while (temp.Additional.IsSubQuest != 0)
+                            temp = quests.getQuest( temp.Additional.IsSubQuest);
+
+                        string qtext = temp.QuestID.ToString() + ": ";
+                        qtext += temp.QuestInformation.Title;
+                        NPCBox.SelectedItem = quest.Additional.Holder;
+                        QuestBox.SelectedItem = qtext;
+                    }
+                }
+          
+            }
         }
     }
 }
