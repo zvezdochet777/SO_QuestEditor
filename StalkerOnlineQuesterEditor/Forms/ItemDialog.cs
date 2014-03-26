@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 using StalkerOnlineQuesterEditor.Forms;
 
 namespace StalkerOnlineQuesterEditor
@@ -379,10 +380,10 @@ namespace StalkerOnlineQuesterEditor
         }
         //! Проверка, что в поле Вероятность ввели корректное число
         float checkFloatValue(string value)
-        {
+        {            
             float result;
-            value = value.Replace(".", ",");
-            if (!float.TryParse(value, out result))
+            value = value.Replace(",", ".");
+            if (!float.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
             {
                 MessageBox.Show("Поле вероятность содержит недопустимые символы","Ошибка!");
                 return -1.0f;

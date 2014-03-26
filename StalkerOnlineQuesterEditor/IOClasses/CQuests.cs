@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.IO;
 using System.Windows.Forms;
+using System.Globalization;
 
 
 namespace StalkerOnlineQuesterEditor
@@ -198,10 +199,12 @@ namespace StalkerOnlineQuesterEditor
                     foreach (string itemType in item.Element("Reward").Element("AttrOfItems").Value.Split(','))
                         reward.AttrOfItems.Add(int.Parse(itemType));
 
-                //if (item.Elements("Reward").Any(itm2 => item.Element("Reward").Elements("Probability").Contains(itm2)))
+                List<XElement> lst = item.Element("Reward").Descendants().ToList();
+                
+                if (item.Element("Reward").Descendants().Any(itm2 => itm2.Name == "Probability"))
                     if (!item.Element("Reward").Element("Probability").Value.Equals(""))
                         foreach (string itemType in item.Element("Reward").Element("Probability").Value.Split(';'))
-                            reward.Probability.Add(float.Parse(itemType));
+                            reward.Probability.Add(float.Parse(itemType, CultureInfo.InvariantCulture));
 
                 if (!item.Element("Reward").Element("Credits").Value.Equals(""))
                     reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value);
@@ -550,9 +553,9 @@ namespace StalkerOnlineQuesterEditor
             foreach (float element in list)
             {
                 if (str.Equals(""))
-                    str += element.ToString("0.000");
+                    str += element.ToString("0.000", CultureInfo.InvariantCulture);
                 else
-                    str += ";" + element.ToString("0.000");
+                    str += ";" + element.ToString("0.000", CultureInfo.InvariantCulture);
             }
             return str;
         }
