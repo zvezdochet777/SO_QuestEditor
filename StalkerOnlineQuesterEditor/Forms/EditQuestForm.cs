@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Форма для редактирования условий квеста
     public partial class EditQuestForm : Form
     {
         int SHOW_MESSAGE_TAKE = 1;
@@ -370,9 +371,6 @@ namespace StalkerOnlineQuesterEditor
                 quantityUpDown.Enabled = false;
             }
 
-            //System.Console.WriteLine("Group par: " + quest.Target.IsGroup);
-            //System.Console.WriteLine("Clan par: " + quest.Target.IsClan);
-
             if (iState != ADD_NEW)
             {
                 isClanCheckBox.Checked = quest.Target.IsClan;
@@ -480,44 +478,6 @@ namespace StalkerOnlineQuesterEditor
 
         void fillQuestRules()
         {
-            //checkQuestRulesIndicates();
-            //if (quest.QuestRules.FailedIf == 0)
-            //    listQuestRulesOfItemAttrMaskedTextBox.SelectedIndex = 1;
-            //else if (quest.QuestRules.FailedIf == 1)
-            //    listQuestRulesOfItemAttrMaskedTextBox.SelectedIndex = 0;
-
-            //foreach (int item in quest.QuestRules.TypeOfItems)
-            //{
-            //    if (listQuestRulesOfItemTypesMaskedTextBox.Text == "")
-            //        listQuestRulesOfItemTypesMaskedTextBox.Text += item.ToString();
-            //    else
-            //        listQuestRulesOfItemTypesMaskedTextBox.Text += ("," + item.ToString());
-            //}
-
-            //foreach (int item in quest.QuestRules.NumOfItems)
-            //{
-            //    if (listQuestRulesOfNumbersMaskedTextBox.Text == "")
-            //        listQuestRulesOfNumbersMaskedTextBox.Text += item.ToString();
-            //    else
-            //        listQuestRulesOfNumbersMaskedTextBox.Text += ("," + item.ToString());
-            //}
-
-            //foreach (int item in quest.QuestRules.AttrOfItems)
-            //{
-            //    if (listOfQuestRulesAttrMaskedTextBox.Text == "")
-            //        listOfQuestRulesAttrMaskedTextBox.Text += item.ToString();
-            //    else
-            //        listOfQuestRulesAttrMaskedTextBox.Text += ("," + item.ToString());
-            //}
-
-            //if (quest.Target.IsGroup)
-            //{
-            //    groupQuestRulesBox.Enabled = true;
-            //    numericMaxGroup.Value = quest.QuestRules.MaxGroup;
-            //    numericMinGroup.Value = quest.QuestRules.MinGroup;
-            //    instanceComboBox.SelectedItem = parent.spacesConst.getNameOnDir(quest.QuestRules.TeleportTo);
-            //}
-
             foreach (int item in quest.QuestRules.Scenarios)
             {
                 if (scenariosTextBox.Text == "")
@@ -525,7 +485,6 @@ namespace StalkerOnlineQuesterEditor
                 else
                     scenariosTextBox.Text += ("," + item.ToString());
             }
-
         }
 
         public void checkRewardIndicates()
@@ -594,11 +553,11 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (target.QuestType == 1)
             {
-                    string key = parent.npcConst.getKeyOnDescription(targetComboBox.SelectedItem.ToString());
-                    if (key.Equals(""))
-                        target.ObjectName = targetComboBox.SelectedItem.ToString();
-                    else
-                        target.ObjectName = key;
+                string key = parent.npcConst.getKeyOnDescription(targetComboBox.SelectedItem.ToString());
+                if (key.Equals(""))
+                    target.ObjectName = targetComboBox.SelectedItem.ToString();
+                else
+                    target.ObjectName = key;
             }
             else if ((target.QuestType == 2) || (target.QuestType == 3))
             {
@@ -665,7 +624,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 try
                 {
-
                     target.Time = float.Parse(resultextBox.Text.ToString());
                 }
                 catch
@@ -673,8 +631,7 @@ namespace StalkerOnlineQuesterEditor
                     return null;
                 }
             }
-            else if ((target.QuestType == 19) ||
-                     (target.QuestType == 20))
+            else if ((target.QuestType == 19) || (target.QuestType == 20))
             {
                 System.Console.WriteLine("QuestType == 19 || 20");
                 target.ObjectType = parent.itemConst.getIDOnDescription(targetComboBox.SelectedItem.ToString());
@@ -760,43 +717,19 @@ namespace StalkerOnlineQuesterEditor
 
             CQuest retQuest;
 
-            //That code because ItemDialog write in public parametr quest
+            reward.TypeOfItems = editQuestReward.TypeOfItems;
+            reward.NumOfItems = editQuestReward.NumOfItems;
+            reward.AttrOfItems = editQuestReward.AttrOfItems;
+            reward.Probability = editQuestReward.Probability;
+            reward.Fractions = editQuestReward.Fractions;
+            reward.Effects = editQuestReward.Effects;
 
-            //if (editQuestReward.TypeOfItems.Any())
-            //{
-                reward.TypeOfItems = editQuestReward.TypeOfItems;
-                reward.NumOfItems = editQuestReward.NumOfItems;
-                reward.AttrOfItems = editQuestReward.AttrOfItems;
-            //}
+            rules.TypeOfItems = editQuestRules.TypeOfItems;
+            rules.NumOfItems = editQuestRules.NumOfItems;
+            rules.AttrOfItems = editQuestRules.AttrOfItems;
+            information.Items = editInformation.Items;
 
-            //if (editQuestReward.Reputation.Any())
-            //{
-                //reward.Reputation = editQuestReward.Reputation;
-                reward.Fractions = editQuestReward.Fractions;
-
-                reward.Effects = editQuestReward.Effects;
-
-            //}
-            //if (editQuestRules.TypeOfItems.Any())
-            //{
-                rules.TypeOfItems = editQuestRules.TypeOfItems;
-                rules.NumOfItems = editQuestRules.NumOfItems;
-                rules.AttrOfItems = editQuestRules.AttrOfItems;
-            //}
-
-            //if (editInformation.Items.Any())
-            //{
-                information.Items = editInformation.Items;
-            //}
-            //That code because ItemDialog write in public parametr quest`
-
-
-            //That code because QItemDialog write in public parametr quest
-
-            //if (editTarget.AObjectAttrs.Any())
-            //{
-                target.AObjectAttrs = editTarget.AObjectAttrs;
-            //}
+            target.AObjectAttrs = editTarget.AObjectAttrs;
 
             if (iState == ADD_NEW || iState == ADD_SUB)
             {
@@ -829,28 +762,22 @@ namespace StalkerOnlineQuesterEditor
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-                CQuest result = getQuest();
-                System.Console.WriteLine("geted quest showprogress:" + result.Additional.ShowProgress.ToString());
-                if (result != null)
-                {
-                    if (iState == 1)
-                        parent.createNewQuest(result);
-                    else if (iState == 4)
-                        parent.addQuest(result, quest.QuestID);
-                    else
-                        parent.replaceQuest(result);
-
-                    if (result.Additional.IsSubQuest == 0)
-                        parent.setTutorial(result.QuestID, (((result.Additional.ShowProgress & this.SHOW_TUTORIAL) > 0)));
-
-                    parent.Enabled = true;
-                    this.Close();
-                }
+            CQuest result = getQuest();
+            if (result != null)
+            {
+                if (iState == 1)
+                    parent.createNewQuest(result);
+                else if (iState == 4)
+                    parent.addQuest(result, quest.QuestID);
                 else
-                {
-                }
+                    parent.replaceQuest(result);
+
+                if (result.Additional.IsSubQuest == 0)
+                    parent.setTutorial(result.QuestID, (((result.Additional.ShowProgress & this.SHOW_TUTORIAL) > 0)));
+
+                parent.Enabled = true;
+                this.Close();
+            }
         }
 
         private void isClanCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -934,151 +861,108 @@ namespace StalkerOnlineQuesterEditor
                 //}
             }
         }
-
+        //! Кнопка Скрыть информацию о квесте
         private void bHideInformation_Click(object sender, EventArgs e)
         {
+            lTitle.Visible = !lTitle.Visible;
+            titleTextBox.Visible = !titleTextBox.Visible;
+            lDescription.Visible = !lDescription.Visible;
+            descriptionTextBox.Visible = !descriptionTextBox.Visible;
+            showCloseCheckBox.Visible = !showCloseCheckBox.Visible;
+            showJournalCheckBox.Visible = !showJournalCheckBox.Visible;
+            showProgressCheckBox.Visible = !showProgressCheckBox.Visible;
+            showTakeCheckBox.Visible = !showTakeCheckBox.Visible;
+
             if (lTitle.Visible)
             {
-                lTitle.Visible = false;
-                titleTextBox.Visible = false;
-                lDescription.Visible = false;
-                descriptionTextBox.Visible = false;
-                showCloseCheckBox.Visible = false;
-                showJournalCheckBox.Visible = false;
-                showProgressCheckBox.Visible = false;
-                showTakeCheckBox.Visible = false;
                 bHideInformation.Text = "Показать";
                 iInformationHeight = questInformationBox.Height;
                 questInformationBox.Height = 35;
             }
             else
             {
-                lTitle.Visible = true;
-                titleTextBox.Visible = true;
-                lDescription.Visible = true;
-                descriptionTextBox.Visible = true;
-                showCloseCheckBox.Visible = true;
-                showJournalCheckBox.Visible = true;
-                showProgressCheckBox.Visible = true;
-                showTakeCheckBox.Visible = true;
                 bHideInformation.Text = "Скрыть";
                 questInformationBox.Height = iInformationHeight;
             }
         }
-
+        //! Кнопка Скрыть цели квеста
         private void bHideTarget_Click(object sender, EventArgs e)
         {
-            if (ltargetResult.Visible)
+            ltargetResult.Visible = !ltargetResult.Visible;
+            resultextBox.Visible = !resultextBox.Visible;
+            dynamicCheckBox.Visible = !dynamicCheckBox.Visible;
+            lQuantity.Visible = !lQuantity.Visible;
+            quantityUpDown.Visible = !quantityUpDown.Visible;
+            lNameObject.Visible = !lNameObject.Visible;
+            targetComboBox.Visible = !targetComboBox.Visible;
+            bTargetAddDynamic.Visible = !bTargetAddDynamic.Visible;
+            labelTargetAttr.Visible = !labelTargetAttr.Visible;
+            targetAttributeComboBox.Visible = !targetAttributeComboBox.Visible;
+            bTargetClearDynamic.Visible = !bTargetClearDynamic.Visible;
+            lTargetAttr1.Visible = !lTargetAttr1.Visible;
+            targetAttributeComboBox2.Visible = !targetAttributeComboBox2.Visible;
+            IsGroupCheckBox.Visible = !IsGroupCheckBox.Visible;
+            isClanCheckBox.Visible = !isClanCheckBox.Visible;
+
+            if (bHideTarget.Text == "Скрыть")
             {
-                ltargetResult.Visible = false;
-                resultextBox.Visible = false;
-                dynamicCheckBox.Visible = false;
-                lQuantity.Visible = false;
-                quantityUpDown.Visible = false;
-                lNameObject.Visible = false;
-                targetComboBox.Visible = false;
-                bTargetAddDynamic.Visible = false;
-                labelTargetAttr.Visible = false;
-                targetAttributeComboBox.Visible = false;
-                bTargetClearDynamic.Visible = false;
-                lTargetAttr1.Visible = false;
-                targetAttributeComboBox2.Visible = false;
-                IsGroupCheckBox.Visible = false;
-                isClanCheckBox.Visible = false;
                 bHideTarget.Text = "Показать";
                 iTargetHeight = targetBox.Height;
                 targetBox.Height = 35;
             }
             else
             {
-                ltargetResult.Visible = true;
-                resultextBox.Visible = true;
-                dynamicCheckBox.Visible = true;
-                lQuantity.Visible = true;
-                quantityUpDown.Visible = true;
-                lNameObject.Visible = true;
-                targetComboBox.Visible = true;
-                bTargetAddDynamic.Visible = true;
-                labelTargetAttr.Visible = true;
-                targetAttributeComboBox.Visible = true;
-                bTargetClearDynamic.Visible = true;
-                lTargetAttr1.Visible = true;
-                targetAttributeComboBox2.Visible = true;
-                IsGroupCheckBox.Visible = true;
-                isClanCheckBox.Visible = true;
                 bHideTarget.Text = "Скрыть";
                 targetBox.Height = iTargetHeight;
             }
         }
-
+        //! Кнопка Скрыть условия квеста
         private void bHideRules_Click(object sender, EventArgs e)
         {
-            if (labelScenarios.Visible)
+            bItemQuestRules.Visible = !bItemQuestRules.Visible;
+            labelScenarios.Visible = !labelScenarios.Visible;
+            scenariosTextBox.Visible = !scenariosTextBox.Visible;
+            groupQuestRulesBox.Visible = !groupQuestRulesBox.Visible;
+
+            if (bHideRules.Text == "Скрыть")
             {
-                bItemQuestRules.Visible = false;
-                labelScenarios.Visible = false;
-                scenariosTextBox.Visible = false;
-                groupQuestRulesBox.Visible = false;
                 bHideRules.Text = "Показать";
                 iRulesHeight = lQuestRules.Height;
                 lQuestRules.Height = 35;
             }
             else
             {
-                bItemQuestRules.Visible = true;
-                labelScenarios.Visible = true;
-                scenariosTextBox.Visible = true;
-                groupQuestRulesBox.Visible = true;
                 lQuestRules.Height = iRulesHeight;
                 bHideRules.Text = "Скрыть";
             }
         }
-
+        //! Кнопка Скрыть Награду квеста
         private void bHideReward_Click(object sender, EventArgs e)
         {
+            difficultyComboBox.Visible = !difficultyComboBox.Visible;
+            lDifficulty.Visible = !lDifficulty.Visible;
+            lCredits.Visible = !lCredits.Visible;
+            creditsTextBox.Visible = !creditsTextBox.Visible;
+            lCombatSkills.Visible = !lCombatSkills.Visible;
+            tExperience.Visible = !tExperience.Visible;
+            lSurvivalSkills.Visible = !lSurvivalSkills.Visible;
+            tSurvival.Visible = !tSurvival.Visible;
+            lSupportSkills.Visible = !lSupportSkills.Visible;
+            tSupport.Visible = !tSupport.Visible;
+            lKarmaPK.Visible = !lKarmaPK.Visible;
+            textBoxKarmaPK.Visible = !textBoxKarmaPK.Visible;
+
             if (lCredits.Visible)
             {
-                difficultyComboBox.Visible = false;
-                lDifficulty.Visible = false;
-                lCredits.Visible = false;
-                creditsTextBox.Visible = false;
-                lCombatSkills.Visible = false;
-                tExperience.Visible = false;
-                lSurvivalSkills.Visible = false;
-                tSurvival.Visible = false;
-                lSupportSkills.Visible = false;
-                tSupport.Visible = false;
-                lKarmaPK.Visible = false;
-                textBoxKarmaPK.Visible = false;
                 bHideReward.Text = "Показать";
                 iRewardHeight = rewardGroupBox.Height;
                 rewardGroupBox.Height = 35;
             }
             else
             {
-                difficultyComboBox.Visible = true;
-                lDifficulty.Visible = true;
-                lCredits.Visible = true;
-                creditsTextBox.Visible = true;
-                lCombatSkills.Visible = true;
-                tExperience.Visible = true;
-                lSurvivalSkills.Visible = true;
-                tSurvival.Visible = true;
-                lSupportSkills.Visible = true;
-                tSupport.Visible = true;
-                lKarmaPK.Visible = true;
-                textBoxKarmaPK.Visible = true;
                 bHideReward.Text = "Скрыть";
                 rewardGroupBox.Height = iRewardHeight;
             }
-        }
-
-        private void bItemQuestRules_Click(object sender, EventArgs e)
-        {
-            ItemDialog dialog = new ItemDialog(this.parent, this,null, quest.QuestID, this.ITEM_QUESTRULES);
-            dialog.Enabled = true;
-            dialog.Visible = true;
-            this.Enabled = false;
         }
             
         private void QuestEditForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -1098,19 +982,11 @@ namespace StalkerOnlineQuesterEditor
             formFractions.Visible = true;
             this.Enabled = false;
         }
-
+        //! Изменение состояния квеста - Туториал или нет
         private void tutorialCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (tutorialCheckBox.Checked)
-            {
-                showJournalCheckBox.Checked = false;
-                showJournalCheckBox.Enabled = false;
-            }
-            else
-            {
-                showJournalCheckBox.Checked = true;
-                showJournalCheckBox.Enabled = true;
-            }
+            showJournalCheckBox.Checked = !tutorialCheckBox.Checked;
+            showJournalCheckBox.Enabled = !tutorialCheckBox.Checked;
         }
 
         private void bRewardEffects_Click(object sender, EventArgs e)
@@ -1130,7 +1006,15 @@ namespace StalkerOnlineQuesterEditor
             str = str.Remove(str.Length-7,7);
             return str;
         }
-
+        //! Нажатие Предметы в правилах квеста - открывает форму с редактором предметов
+        private void bItemQuestRules_Click(object sender, EventArgs e)
+        {
+            ItemDialog itemDialog = new ItemDialog(this.parent, this, null, quest.QuestID, this.ITEM_QUESTRULES);
+            itemDialog.Enabled = true;
+            itemDialog.Visible = true;
+            this.Enabled = false;
+        }
+        //! Нажатие Предметы в наградах квеста - открывает форму с редактором предметов
         private void bItemReward_Click(object sender, EventArgs e)
         {
             ItemDialog itemDialog = new ItemDialog(this.parent, this, null, quest.QuestID, this.ITEM_REWARD);

@@ -28,25 +28,24 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        public string getDescriptionOnID(int typeID)
+        {
+            return items[typeID].getDescription();
+        }
 
-            public string getDescriptionOnID(int typeID)
-            {
-                return items[typeID].getDescription();
-            }
 
+        public Dictionary<int, CItem> getAllItems()
+        {
+            return items;
+        }
 
-            public Dictionary<int, CItem> getAllItems()
-            {
-                return items;
-            }
-
-            public int getIDOnDescription(string description)
-            {
-                foreach (int key in items.Keys)
-                    if (items[key].getDescription().Equals(description))
-                        return key;
-                return 1000000;
-            }
+        public int getIDOnDescription(string description)
+        {
+            foreach (int key in items.Keys)
+                if (items[key].getDescription().Equals(description))
+                    return key;
+            return 1000000;
+        }
     }
 
 

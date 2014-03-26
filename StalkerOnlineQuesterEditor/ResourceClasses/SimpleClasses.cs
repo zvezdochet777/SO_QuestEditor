@@ -289,98 +289,97 @@ namespace StalkerOnlineQuesterEditor
     //! Класс текстовой информации о квесте - название, описание, надписи на победу и проигрыш
     public class CQuestInformation : ICloneable
     {
-        	public string Title;
-			public string Description;
-            public string onWin;
-            public string onFailed;
-            public Dictionary<int,QuestItemInfo> Items;
+    	public string Title;
+		public string Description;
+        public string onWin;
+        public string onFailed;
+        public Dictionary<int,QuestItemInfo> Items;
 
-            public object Clone()
-            {
-                CQuestInformation copy = new CQuestInformation();
-                copy.Title = (string)this.Title.Clone();
-                copy.Description = (string)this.Description.Clone();
-                copy.onWin = (string)this.onWin.Clone();
-                copy.onFailed = (string)this.onFailed.Clone();
-                foreach (KeyValuePair<int, QuestItemInfo> item in this.Items)
-                    copy.Items.Add(item.Key, (QuestItemInfo)item.Value.Clone());
-                return copy;
-            }
-            
-            public CQuestInformation()
-            {
-                this.Title = "";
-                this.Description = "";
-                this.onFailed = "";
-                this.onWin = "";
-                this.Items = new Dictionary<int, QuestItemInfo>();
-            }
+        public object Clone()
+        {
+            CQuestInformation copy = new CQuestInformation();
+            copy.Title = (string)this.Title.Clone();
+            copy.Description = (string)this.Description.Clone();
+            copy.onWin = (string)this.onWin.Clone();
+            copy.onFailed = (string)this.onFailed.Clone();
+            foreach (KeyValuePair<int, QuestItemInfo> item in this.Items)
+                copy.Items.Add(item.Key, (QuestItemInfo)item.Value.Clone());
+            return copy;
+        }
+        
+        public CQuestInformation()
+        {
+            this.Title = "";
+            this.Description = "";
+            this.onFailed = "";
+            this.onWin = "";
+            this.Items = new Dictionary<int, QuestItemInfo>();
+        }
 
-            public Dictionary<int, QuestItemInfo> getItems()
-            {
-                return Items;
-            }
-            public void addItem(int itemID, string title, string description, string activation)
-            {
-                this.Items.Add(itemID, new QuestItemInfo(title, description, activation));
-            }
+        public Dictionary<int, QuestItemInfo> getItems()
+        {
+            return Items;
+        }
+        public void addItem(int itemID, string title, string description, string activation)
+        {
+            this.Items.Add(itemID, new QuestItemInfo(title, description, activation));
+        }
     }
 
     public class CQuestTarget : ICloneable
     {
-            public int QuestType;
-			public int ObjectType;
-			public int NumOfObjects;
-            public int ObjectAttr;
-            public List<int> AObjectAttrs;
-            public string AreaName;
-            public float Time;
-            public string ObjectName;
-            public int IsGroup;
-            public bool IsClan;
-            public int onFin;
+        public int QuestType;
+		public int ObjectType;
+		public int NumOfObjects;
+        public int ObjectAttr;
+        public List<int> AObjectAttrs;
+        public string AreaName;
+        public float Time;
+        public string ObjectName;
+        public int IsGroup;
+        public bool IsClan;
+        public int onFin;
 
+        public object Clone()
+        {
+            CQuestTarget copy = new CQuestTarget();
 
-            public object Clone()
-            {
-                CQuestTarget copy = new CQuestTarget();
+            copy.QuestType = this.QuestType;
+            copy.ObjectType = this.ObjectType;
+            copy.NumOfObjects = this.NumOfObjects;
+            copy.ObjectAttr = this.ObjectAttr;
+            copy.AObjectAttrs = this.AObjectAttrs;
+            copy.AreaName = (string)this.AreaName.Clone();
+            copy.Time = this.Time;
+            copy.ObjectName = (string)this.ObjectName.Clone();
+            copy.IsGroup = this.IsGroup;
+            copy.IsClan = this.IsClan;
+            copy.onFin = this.onFin;
+            return copy;
+        }
 
-                copy.QuestType = this.QuestType;
-                copy.ObjectType = this.ObjectType;
-                copy.NumOfObjects = this.NumOfObjects;
-                copy.ObjectAttr = this.ObjectAttr;
-                copy.AObjectAttrs = this.AObjectAttrs;
-                copy.AreaName = (string)this.AreaName.Clone();
-                copy.Time = this.Time;
-                copy.ObjectName = (string)this.ObjectName.Clone();
-                copy.IsGroup = this.IsGroup;
-                copy.IsClan = this.IsClan;
-                copy.onFin = this.onFin;
-                return copy;
-            }
-
-            public CQuestTarget()
-            {
-                this.QuestType = new int();
-                this.ObjectType = new int();
-                this.NumOfObjects = new int();
-                this.ObjectAttr = new int();
-                this.AreaName = "";
-                this.Time = 0.0f;
-                this.IsGroup = new int();
-                this.IsClan = new bool();
-                this.ObjectName = "";
-                this.AObjectAttrs = new List<int>();
-                this.onFin = new int();
-            }
-            public CQuestTarget(int QuestType)
-            {
-                this.QuestType = QuestType;
-                this.ObjectType = new int();
-                this.NumOfObjects = new int();
-                this.ObjectName = "";
-                this.AObjectAttrs = new List<int>();
-            }
+        public CQuestTarget()
+        {
+            this.QuestType = new int();
+            this.ObjectType = new int();
+            this.NumOfObjects = new int();
+            this.ObjectAttr = new int();
+            this.AreaName = "";
+            this.Time = 0.0f;
+            this.IsGroup = new int();
+            this.IsClan = new bool();
+            this.ObjectName = "";
+            this.AObjectAttrs = new List<int>();
+            this.onFin = new int();
+        }
+        public CQuestTarget(int QuestType)
+        {
+            this.QuestType = QuestType;
+            this.ObjectType = new int();
+            this.NumOfObjects = new int();
+            this.ObjectName = "";
+            this.AObjectAttrs = new List<int>();
+        }
     }
 
     public class CQuestPrecondition : CDialogPreconditionQuests
@@ -476,13 +475,19 @@ namespace StalkerOnlineQuesterEditor
             return this.stack;
         }
     }
-
+    //! Награда за успешное выполнение квеста
     public class CQuestReward : ICloneable
     {
+        //! Опыт: боевой, выживания, поддержки
         public List<int> Experience;
+        //! Тип предмета: ID предметов
         public List<int> TypeOfItems;
+        //! Кол-во предметов
         public List<int> NumOfItems;
+        //! Атрибут предметов: 0 - обычный, 1 - квестовый
         public List<int> AttrOfItems;
+        //! Вероятность выпадения предметов
+        public List<float> Probability;
         public List<int> EventCodes;
         public string TeleportTo;
         public float Credits;
@@ -500,6 +505,7 @@ namespace StalkerOnlineQuesterEditor
             copy.TypeOfItems = this.TypeOfItems;
             copy.NumOfItems = this.NumOfItems;
             copy.AttrOfItems = this.AttrOfItems;
+            copy.Probability = this.Probability;
             copy.EventCodes = this.EventCodes;
 
             copy.TeleportTo = (string)this.TeleportTo.Clone();
@@ -520,6 +526,7 @@ namespace StalkerOnlineQuesterEditor
             this.TypeOfItems = new List<int>();
             this.NumOfItems = new List<int>();
             this.AttrOfItems = new List<int>();
+            this.Probability = new List<float>();
             this.Credits = new float();
             this.EventCodes = new List<int>();
             //this.Reputation = new Dictionary<int, int>();
@@ -545,9 +552,7 @@ namespace StalkerOnlineQuesterEditor
             //}
         //    return ret;
         //}
-
     }
-
 
     public class CQuestPenalty : ICloneable
     {
@@ -598,39 +603,36 @@ namespace StalkerOnlineQuesterEditor
 
     public class CQuestAdditional : ICloneable
     {
-            public int IsSubQuest;
-            public List<int> ListOfSubQuest;
-            public int ShowProgress;
-            public string Holder;
+        public int IsSubQuest;
+        public List<int> ListOfSubQuest;
+        public int ShowProgress;
+        public string Holder;
 
+        public object Clone()
+        {
+            CQuestAdditional copy = new CQuestAdditional();
+            copy.IsSubQuest = this.IsSubQuest;
+            copy.ListOfSubQuest = this.ListOfSubQuest;
+            copy.ShowProgress = this.ShowProgress;
+            copy.Holder = this.Holder;
+            return copy;
+        }
 
-            public object Clone()
-            {
-                CQuestAdditional copy = new CQuestAdditional();
+        public CQuestAdditional()
+        {
+            this.IsSubQuest = new int();
+            this.ListOfSubQuest = new List<int>();
+            this.ShowProgress = new int();
+            this.Holder = "";
+        }
 
-                copy.IsSubQuest = this.IsSubQuest;
-                copy.ListOfSubQuest = this.ListOfSubQuest;
-                copy.ShowProgress = this.ShowProgress;
-                copy.Holder = this.Holder;
-
-                return copy;
-            }
-
-            public CQuestAdditional()
-            {
-                this.IsSubQuest = new int();
-                this.ListOfSubQuest = new List<int>();
-                this.ShowProgress = new int();
-                this.Holder = "";
-            }
-
-            public CQuestAdditional(string Holder)
-            {
-                this.IsSubQuest = new int();
-                this.ListOfSubQuest = new List<int>();
-                this.ShowProgress = new int();
-                this.Holder = Holder;
-            }
+        public CQuestAdditional(string Holder)
+        {
+            this.IsSubQuest = new int();
+            this.ListOfSubQuest = new List<int>();
+            this.ShowProgress = new int();
+            this.Holder = Holder;
+        }
     }
 
     //public class TriggerInfo : ICloneable
@@ -661,7 +663,6 @@ namespace StalkerOnlineQuesterEditor
 
     public class QuestItemInfo : ICloneable
     {
-        //public int itemID;
         public string title;
         public string description;
         public string activation;
@@ -678,15 +679,13 @@ namespace StalkerOnlineQuesterEditor
 
         public QuestItemInfo()
         {
-            //this.itemID = new int();
             this.title = "";
             this.description = "";
             this.activation = "";
         }
-        //public QuestItemInfo(int itemID, string title, string description)
+
         public QuestItemInfo(string title, string description, string activation)
         {
-            //this.itemID = itemID;
             this.title = title;
             this.description = description;
             this.activation = activation;
@@ -698,18 +697,13 @@ namespace StalkerOnlineQuesterEditor
     {
         public int cur_version;
         public int old_version;
-        //public string npc_name;
-        //public int id;
 
-        public CDifference(int cur_version, int old_version)//, string npc_name, int id)
+        public CDifference(int cur_version, int old_version)
         {
             this.cur_version = cur_version;
             this.old_version = old_version;
-            //this.npc_name = npc_name;
-            //this.id = id;
         }
     }
-
 
     public class CBalanceFractions
     {

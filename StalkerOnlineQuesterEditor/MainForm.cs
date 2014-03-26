@@ -33,7 +33,7 @@ namespace StalkerOnlineQuesterEditor
         int ENDTALKQUESTS = 3500;
 
         //! Текущий выбранный NPC (в комбобоксе вверху)
-        public string currentNPC="";
+        public string currentNPC = "";
         //! Ссылка на экземпляр класса CDialogs, хранит все данные и функции по работе с диалогами
         CDialogs dialogs;
         //! Ссылка на экземпляр класса CQuests
@@ -421,7 +421,7 @@ namespace StalkerOnlineQuesterEditor
                 addActionTextToEmulator(" Торговля. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Event == (int) DialogEvents.change)
                 addActionTextToEmulator(" Обмен. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event ==(int) DialogEvents.repair)
+            else if (choosenDialog.Actions.Event == (int) DialogEvents.repair)
                 addActionTextToEmulator(" Починка. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Event == (int)DialogEvents.complex_repair)
                 addActionTextToEmulator(" Комплексная починка. Выход.", choosenDialogID);
@@ -460,7 +460,7 @@ namespace StalkerOnlineQuesterEditor
             this.labelYNode.Text += " h=" + h.ToString();
         }
 
-        //! Вовзаращает список как строку со значениями через запятую
+        //! Возвращает список как строку со значениями через запятую
         string getListAsString(List<int> list)
         {
             string str = "";
@@ -722,7 +722,7 @@ namespace StalkerOnlineQuesterEditor
 
             npcConst.NPCs.Add(Name, new CNPCDescription(Name));
         }
-
+        //! Нажатие на кнопку Удаление Персонажа NPC
         private void bDelNPC_Click(object sender, EventArgs e)
         {
             graphs.Clear();
@@ -741,6 +741,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (int item in removedItems)
                 quests.quest.Remove(item);
             dialogs.dialogs.Remove(currentNPC);
+            currentNPC = "";
             fillNPCBOX();
         }
 

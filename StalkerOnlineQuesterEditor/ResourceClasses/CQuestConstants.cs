@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace StalkerOnlineQuesterEditor
 {
-    
+    //! Класс констант квеста - типов. Лучше бы переделывать.
     public class СQuestConstants
     {
         List<СQuestType> ierarchyQuestsType = new List<СQuestType>();
@@ -14,7 +14,6 @@ namespace StalkerOnlineQuesterEditor
 
         public СQuestConstants()
         {
-
             simpleQuestsType.Add(new СQuestType(0, "Собрать необходимое количество предметов."));
             simpleQuestsType.Add(new СQuestType(16, "Собрать необходимое количество предметов авто."));
             simpleQuestsType.Add(new СQuestType(1, "Поговорить."));
@@ -40,10 +39,6 @@ namespace StalkerOnlineQuesterEditor
             ierarchyQuestsType.Add(new СQuestType(14, "Выполнение всех по порядку со сдачей."));
             ierarchyQuestsType.Add(new СQuestType(15, "Выполнение на выбор со сдачей."));
             
-
-            
-
-
             //Туториал
             //simpleQuestsType.Add(new СQuestType(200, "_экипировка предмета."));
             simpleQuestsType.Add(new СQuestType(201, "_выстрел."));
@@ -51,7 +46,6 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(203, "_восстановление предмета."));
             simpleQuestsType.Add(new СQuestType(204, "_фонарик."));
             //simpleQuestsType.Add(new СQuestType(205, "_добавление предмета."));
-
             simpleQuestsType.Add(new СQuestType(206, "_событие ГУИ."));
         }
         public bool isSimple(int questType)

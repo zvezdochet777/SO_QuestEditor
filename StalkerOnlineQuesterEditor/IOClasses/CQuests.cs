@@ -180,23 +180,8 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Element("QuestRules").Element("Scenarios").Value.Equals(""))
                     foreach (string itemType in item.Element("QuestRules").Element("Scenarios").Value.Split(','))
                         questRules.Scenarios.Add(int.Parse(itemType));
-                reward.TeleportTo = item.Element("Reward").Element("TeleportTo").Value.ToString();
 
-                //string text_rew_exp = item.Element("Reward").Element("Expirience").Value;
-                /*
-                reward.Expirience = 0;
-                if (!text_rew_exp.Equals(""))
-                {
-                    if (text_rew_exp.Contains(','))
-                    {
-                        //After change from three skills role play
-                        foreach (string element_rew_exp in text_rew_exp.Split(','))
-                            reward.Expirience += int.Parse(element_rew_exp);
-                    }
-                    else
-                        reward.Expirience = int.Parse(text_rew_exp);
-                }
-                 */
+                reward.TeleportTo = item.Element("Reward").Element("TeleportTo").Value.ToString();
 
                 if (!item.Element("Reward").Element("Expirience").Value.Equals(""))
                     foreach (string itemNum in item.Element("Reward").Element("Expirience").Value.Split(','))
@@ -212,6 +197,11 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Element("Reward").Element("AttrOfItems").Value.Equals(""))
                     foreach (string itemType in item.Element("Reward").Element("AttrOfItems").Value.Split(','))
                         reward.AttrOfItems.Add(int.Parse(itemType));
+
+                //if (item.Elements("Reward").Any(itm2 => item.Element("Reward").Elements("Probability").Contains(itm2)))
+                    if (!item.Element("Reward").Element("Probability").Value.Equals(""))
+                        foreach (string itemType in item.Element("Reward").Element("Probability").Value.Split(';'))
+                            reward.Probability.Add(float.Parse(itemType));
 
                 if (!item.Element("Reward").Element("Credits").Value.Equals(""))
                     reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value);
@@ -442,10 +432,11 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("TypeOfItems", getListAsString(questValue.Reward.TypeOfItems)),
                         new XElement("NumOfItems", getListAsString(questValue.Reward.NumOfItems)),
                         new XElement("AttrOfItems", getListAsString(questValue.Reward.AttrOfItems)),
+                        new XElement("Probability", getListAsString(questValue.Reward.Probability)),
                         new XElement("Credits", questValue.Reward.Credits),
                         new XElement("EventCodes", getListAsString(questValue.Reward.EventCodes)),
                         new XElement("Reputation", ""),
-                        new XElement ("Fractions", getListAsString(questValue.Reward.Fractions)),
+                        new XElement("Fractions", getListAsString(questValue.Reward.Fractions)),
                         new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()),
                         new XElement("Unlimited", questValue.Reward.Unlimited.ToString()),
                         new XElement("Difficulty", questValue.Reward.Difficulty.ToString()),
@@ -549,6 +540,19 @@ namespace StalkerOnlineQuesterEditor
                     str += element.ToString();
                 else
                     str += "," + element.ToString();
+            }
+            return str;
+        }
+        //! Возвращает список как строку аргументов через запятую
+        string getListAsString(List<float> list)
+        {
+            string str = "";
+            foreach (float element in list)
+            {
+                if (str.Equals(""))
+                    str += element.ToString("0.000");
+                else
+                    str += ";" + element.ToString("0.000");
             }
             return str;
         }

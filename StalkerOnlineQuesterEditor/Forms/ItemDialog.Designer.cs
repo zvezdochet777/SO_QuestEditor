@@ -28,17 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemGridView = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.bTranslate = new System.Windows.Forms.Button();
+            this.bCancel = new System.Windows.Forms.Button();
+            this.bOk = new System.Windows.Forms.Button();
             this.itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemProbability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.bCancel = new System.Windows.Forms.Button();
-            this.bOk = new System.Windows.Forms.Button();
-            this.bTranslate = new System.Windows.Forms.Button();
+            this.itemActivation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -51,60 +53,37 @@
             this.itemType,
             this.itemAttr,
             this.itemQuantity,
+            this.itemProbability,
             this.itemTitle,
             this.itemDescription,
-            this.activation});
+            this.itemActivation});
             this.itemGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.itemGridView.Location = new System.Drawing.Point(0, 0);
             this.itemGridView.Name = "itemGridView";
-            this.itemGridView.Size = new System.Drawing.Size(708, 258);
+            this.itemGridView.Size = new System.Drawing.Size(813, 258);
             this.itemGridView.TabIndex = 0;
-            // 
-            // itemType
-            // 
-            this.itemType.HeaderText = "Тип";
-            this.itemType.Name = "itemType";
-            // 
-            // itemAttr
-            // 
-            this.itemAttr.HeaderText = "Аттрибут";
-            this.itemAttr.Items.AddRange(new object[] {
-            "Обычный",
-            "Квестовый"});
-            this.itemAttr.Name = "itemAttr";
-            // 
-            // itemQuantity
-            // 
-            this.itemQuantity.HeaderText = "Количество";
-            this.itemQuantity.Name = "itemQuantity";
-            this.itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // itemTitle
-            // 
-            this.itemTitle.HeaderText = "Название";
-            this.itemTitle.Name = "itemTitle";
-            // 
-            // itemDescription
-            // 
-            this.itemDescription.HeaderText = "Описание";
-            this.itemDescription.Name = "itemDescription";
-            // 
-            // activation
-            // 
-            this.activation.HeaderText = "Имя действия";
-            this.activation.Name = "activation";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.bTranslate);
             this.panel1.Controls.Add(this.bCancel);
             this.panel1.Controls.Add(this.bOk);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 258);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(708, 49);
+            this.panel1.Size = new System.Drawing.Size(813, 49);
             this.panel1.TabIndex = 1;
+            // 
+            // bTranslate
+            // 
+            this.bTranslate.Enabled = false;
+            this.bTranslate.Location = new System.Drawing.Point(12, 6);
+            this.bTranslate.Name = "bTranslate";
+            this.bTranslate.Size = new System.Drawing.Size(75, 23);
+            this.bTranslate.TabIndex = 2;
+            this.bTranslate.Text = "Перевод";
+            this.bTranslate.UseVisualStyleBackColor = true;
+            this.bTranslate.Click += new System.EventHandler(this.bTranslate_Click);
             // 
             // bCancel
             // 
@@ -124,24 +103,57 @@
             this.bOk.TabIndex = 0;
             this.bOk.Text = "Ок";
             this.bOk.UseVisualStyleBackColor = true;
-            this.bOk.Click += new System.EventHandler(this.button1_Click);
+            this.bOk.Click += new System.EventHandler(this.bOk_Click);
             // 
-            // bTranslate
+            // itemType
             // 
-            this.bTranslate.Enabled = false;
-            this.bTranslate.Location = new System.Drawing.Point(12, 6);
-            this.bTranslate.Name = "bTranslate";
-            this.bTranslate.Size = new System.Drawing.Size(75, 23);
-            this.bTranslate.TabIndex = 2;
-            this.bTranslate.Text = "Перевод";
-            this.bTranslate.UseVisualStyleBackColor = true;
-            this.bTranslate.Click += new System.EventHandler(this.bTranslate_Click);
+            this.itemType.HeaderText = "Тип";
+            this.itemType.Name = "itemType";
+            this.itemType.Width = 150;
+            // 
+            // itemAttr
+            // 
+            this.itemAttr.HeaderText = "Аттрибут";
+            this.itemAttr.Items.AddRange(new object[] {
+            "Обычный",
+            "Квестовый"});
+            this.itemAttr.Name = "itemAttr";
+            // 
+            // itemQuantity
+            // 
+            this.itemQuantity.HeaderText = "Количество";
+            this.itemQuantity.Name = "itemQuantity";
+            this.itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // itemProbability
+            // 
+            dataGridViewCellStyle1.Format = "N3";
+            dataGridViewCellStyle1.NullValue = "0";
+            this.itemProbability.DefaultCellStyle = dataGridViewCellStyle1;
+            this.itemProbability.HeaderText = "Вероятность";
+            this.itemProbability.Name = "itemProbability";
+            // 
+            // itemTitle
+            // 
+            this.itemTitle.HeaderText = "Название";
+            this.itemTitle.Name = "itemTitle";
+            // 
+            // itemDescription
+            // 
+            this.itemDescription.HeaderText = "Описание";
+            this.itemDescription.Name = "itemDescription";
+            // 
+            // itemActivation
+            // 
+            this.itemActivation.HeaderText = "Имя действия";
+            this.itemActivation.Name = "itemActivation";
             // 
             // ItemDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 307);
+            this.ClientSize = new System.Drawing.Size(813, 307);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.itemGridView);
             this.Name = "ItemDialog";
@@ -159,12 +171,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button bOk;
         private System.Windows.Forms.Button bCancel;
+        private System.Windows.Forms.Button bTranslate;
         private System.Windows.Forms.DataGridViewComboBoxColumn itemType;
         private System.Windows.Forms.DataGridViewComboBoxColumn itemAttr;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemProbability;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activation;
-        private System.Windows.Forms.Button bTranslate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemActivation;
     }
 }
