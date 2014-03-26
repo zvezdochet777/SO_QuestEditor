@@ -20,8 +20,6 @@ namespace StalkerOnlineQuesterEditor
             this.parent = parent;
             this.parentForm = parentForm;
 
-
-
             foreach (string effect_name in parent.effects.getAllDescriptions())
                 ((DataGridViewComboBoxColumn)dataGridEffects.Columns[0]).Items.Add(effect_name);
             ((DataGridViewComboBoxColumn)dataGridEffects.Columns[0]).Sorted = true;
@@ -34,7 +32,6 @@ namespace StalkerOnlineQuesterEditor
                 object[] row = { name, stack};
                 dataGridEffects.Rows.Add(row);
             }
-
         }
 
         private void EffectDialog_FormClosing(object sender, FormClosingEventArgs e)
@@ -61,7 +58,7 @@ namespace StalkerOnlineQuesterEditor
                     parentForm.editQuestReward.Effects.Add(new CEffect(id, stack));
                 }
             }
-
+            parentForm.checkRewardIndicates();
             this.Close();
         }
     }

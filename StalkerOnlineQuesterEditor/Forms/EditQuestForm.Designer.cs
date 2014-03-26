@@ -278,6 +278,7 @@
             // 
             // bRewardEffects
             // 
+            this.bRewardEffects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bRewardEffects.Location = new System.Drawing.Point(233, 19);
             this.bRewardEffects.Name = "bRewardEffects";
             this.bRewardEffects.Size = new System.Drawing.Size(94, 23);
@@ -288,6 +289,7 @@
             // 
             // bRewardFractions
             // 
+            this.bRewardFractions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bRewardFractions.Location = new System.Drawing.Point(119, 19);
             this.bRewardFractions.Name = "bRewardFractions";
             this.bRewardFractions.Size = new System.Drawing.Size(105, 23);

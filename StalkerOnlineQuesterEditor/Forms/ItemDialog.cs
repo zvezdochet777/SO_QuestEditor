@@ -80,7 +80,8 @@ namespace StalkerOnlineQuesterEditor
             {
 //                System.Console.WriteLine("formType::ITEM_REWARD");
                 this.Text += " Награда";
-                for (int i = 0; i< parentForm.editQuestReward.TypeOfItems.Count; ++i)
+                itemGridView.Columns["itemProbability"].Visible = true;
+                for (int i = 0; i < parentForm.editQuestReward.TypeOfItems.Count; ++i)
                 {
                     int typeID = parentForm.editQuestReward.TypeOfItems[i];
                     int quantity = parentForm.editQuestReward.NumOfItems[i];
@@ -100,7 +101,6 @@ namespace StalkerOnlineQuesterEditor
                     string title = "";
                     string description = "";
                     string activation = "";
-                    itemGridView.Columns["itemProbability"].Visible = true;
                     string probability = "1";
                     if (parentForm.quest.Reward.Probability.Count > 0)
                         probability = parentForm.quest.Reward.Probability[i].ToString();
@@ -117,8 +117,9 @@ namespace StalkerOnlineQuesterEditor
 
             else if (formType == this.ITEM_QUESTRULES)
             {
-                System.Console.WriteLine("formType::ITEM_QUESTRULES");
+//                System.Console.WriteLine("formType::ITEM_QUESTRULES");
                 this.Text += " Правила квеста";
+                itemGridView.Columns["itemProbability"].Visible = false;
                 for (int i = 0; i < parentForm.editQuestRules.TypeOfItems.Count; ++i)
                 {
                     int typeID = parentForm.editQuestRules.TypeOfItems[i];
@@ -130,7 +131,6 @@ namespace StalkerOnlineQuesterEditor
                     string title = "";
                     string description = "";
                     string activation = "";
-                    itemGridView.Columns["itemProbability"].Visible = false;
                     if (parentForm.quest.QuestInformation.Items.Keys.Contains(typeID))
                     {
                         title = parentForm.quest.QuestInformation.Items[typeID].title;
@@ -144,7 +144,7 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (formType == this.ITEM_LOCALIZATION_REWARD)
             {
-                System.Console.WriteLine("formType::ITEM_LOCALIZATION_REWARD");
+//                System.Console.WriteLine("formType::ITEM_LOCALIZATION_REWARD");
                 this.Text = "Локализация награды";
                 for (int i = 0; i < parentForm2.pub_quest.Reward.TypeOfItems.Count; ++i)
                 {

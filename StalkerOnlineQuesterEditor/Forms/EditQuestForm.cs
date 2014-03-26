@@ -485,13 +485,13 @@ namespace StalkerOnlineQuesterEditor
                 else
                     scenariosTextBox.Text += ("," + item.ToString());
             }
+            checkQuestRulesIndicates();
         }
 
         public void checkRewardIndicates()
         {
             if (editQuestReward.TypeOfItems.Any())
                 bItemReward.Image = Properties.Resources.but_indicate;
-            //if (editQuestReward.Reputation.Any())
             if (editQuestReward.Fractions.Any())
                 bRewardFractions.Image = Properties.Resources.but_indicate;
             if (editQuestReward.Effects.Any())
