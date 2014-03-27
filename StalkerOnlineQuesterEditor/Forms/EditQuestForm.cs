@@ -218,11 +218,8 @@ namespace StalkerOnlineQuesterEditor
         void fillTargetForm(int QuestType)
         {
             this.QuestType = QuestType;
-
-            setDefaultTargetState();
-            
+            setDefaultTargetState();            
             dynamicCheckBox.Enabled = false;
-
             lTargetAttr1.Enabled = false;
             targetAttributeComboBox2.Enabled = false;
             lTargetAttr1.Text = "Атрибут2";
@@ -293,11 +290,9 @@ namespace StalkerOnlineQuesterEditor
                     resultextBox.Enabled = true;
 
                     foreach (CMobDescription description in parent.mobConst.getAllDescriptions().Values)
-                    
                         targetComboBox.Items.Add(description.getName());
                     
                     lQuantity.Text = "Количество:";
-
                     labelTargetAttr.Text = "Зона:";
                     targetAttributeComboBox.Enabled = true;
                     targetAttributeComboBox.Items.Add("");
@@ -306,8 +301,6 @@ namespace StalkerOnlineQuesterEditor
                     targetAttributeComboBox.SelectedIndex = 0;
                     //targetAttributeComboBox2.SelectedIndex = 0;
                     dynamicCheckBox.Enabled = true;
-
-
                 }
                 else if ((QuestType == 4) || (QuestType == 8))
                 {
@@ -361,7 +354,6 @@ namespace StalkerOnlineQuesterEditor
                     targetAttributeComboBox.Items.Add("Скрыть.");
                     targetAttributeComboBox.SelectedIndex = 0;
                 }
-
             }
             else
             {
@@ -613,9 +605,7 @@ namespace StalkerOnlineQuesterEditor
             else if (target.QuestType == 6)
             {
                 if (dynamicCheckBox.Checked)
-                {
                     target.ObjectName = resultextBox.Text;
-                }
                 else
                     target.ObjectType = parent.triggerConst.getIdOnKey(targetComboBox.SelectedItem.ToString());
             }

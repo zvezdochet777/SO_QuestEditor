@@ -199,8 +199,6 @@ namespace StalkerOnlineQuesterEditor
                     foreach (string itemType in item.Element("Reward").Element("AttrOfItems").Value.Split(','))
                         reward.AttrOfItems.Add(int.Parse(itemType));
 
-                List<XElement> lst = item.Element("Reward").Descendants().ToList();
-                
                 if (item.Element("Reward").Descendants().Any(itm2 => itm2.Name == "Probability"))
                     if (!item.Element("Reward").Element("Probability").Value.Equals(""))
                         foreach (string itemType in item.Element("Reward").Element("Probability").Value.Split(';'))
@@ -265,29 +263,27 @@ namespace StalkerOnlineQuesterEditor
 
                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Penalty
                 string text_pen_exp = item.Element("Penalty").Element("Expirience").Value;
-
-                    penalty.Experience = 0;
-                    if (!text_pen_exp.Equals(""))
+                penalty.Experience = 0;
+                if (!text_pen_exp.Equals(""))
+                {
+                    if (text_pen_exp.Contains(','))
                     {
-                        if (text_pen_exp.Contains(','))
-                        {
-
-                            //After change from three skills role play
-                            foreach (string element_pen_exp in text_pen_exp.Split(','))
-                                penalty.Experience += int.Parse(element_pen_exp);
-                        }
-                        else
-                            penalty.Experience = int.Parse(text_pen_exp);
+                        //After change from three skills role play
+                        foreach (string element_pen_exp in text_pen_exp.Split(','))
+                            penalty.Experience += int.Parse(element_pen_exp);
                     }
+                    else
+                        penalty.Experience = int.Parse(text_pen_exp);
+                }
 
-                    if (!item.Element("Penalty").Element("NumOfItems").Value.Equals(""))
-                        foreach (string itemNum in item.Element("Penalty").Element("NumOfItems").Value.Split(','))
-                            penalty.NumOfItems.Add(int.Parse(itemNum));
-                    if (!item.Element("Penalty").Element("TypeOfItems").Value.Equals(""))
-                        foreach (string itemType in item.Element("Penalty").Element("TypeOfItems").Value.Split(','))
-                            penalty.TypeOfItems.Add(int.Parse(itemType));
-                    if (!item.Element("Penalty").Element("Credits").Value.Equals(""))
-                        penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value);
+                if (!item.Element("Penalty").Element("NumOfItems").Value.Equals(""))
+                    foreach (string itemNum in item.Element("Penalty").Element("NumOfItems").Value.Split(','))
+                        penalty.NumOfItems.Add(int.Parse(itemNum));
+                if (!item.Element("Penalty").Element("TypeOfItems").Value.Equals(""))
+                    foreach (string itemType in item.Element("Penalty").Element("TypeOfItems").Value.Split(','))
+                        penalty.TypeOfItems.Add(int.Parse(itemType));
+                if (!item.Element("Penalty").Element("Credits").Value.Equals(""))
+                    penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value);
 
                 //foreach (string fraction in item.Element("Penalty").Element("Reputation").Value.Split(','))
                 //    if (!fraction.Equals(""))
@@ -496,7 +492,6 @@ namespace StalkerOnlineQuesterEditor
                                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         List<XElement> getEffectElements(List<CEffect> effects)
         {
             List<XElement> ret = new List<XElement>();
@@ -508,7 +503,6 @@ namespace StalkerOnlineQuesterEditor
             }
             return ret;
         }
-
         List<XElement> getItemElements(Dictionary<int, QuestItemInfo> items)
         {
             List<XElement> ret = new List<XElement>();
@@ -522,17 +516,6 @@ namespace StalkerOnlineQuesterEditor
             }
             return ret;
         }
-
-        //void replaceOldStartQuestsFile(int start, string name)
-        //{
-        //    if (File.Exists(name + start.ToString()))
-        //        replaceOldQuestsFile((start + 1), (name + "_" + start));
-        //    else
-        //    {
-        //        File.Move(parent.settings.startQuestXML, name);
-        //    }
-        //}
-
         //! Возвращает список как строку аргументов через запятую
         string getListAsString(List<int> list)
         {
@@ -594,7 +577,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int subQuestID in curQuest.Additional.ListOfSubQuest)
                     setClan(subQuestID, IsClan);
         }
-
+        /*
         public string getRootTitle(int questID)
         {
             string ret = "";
@@ -609,13 +592,13 @@ namespace StalkerOnlineQuesterEditor
             }
             return ret;
         }
+        */
 
         public void setBuffer(List<CQuest> quests)
         {
             buffer.Clear();
             foreach (CQuest quest in quests)
-                buffer.Add(quest.QuestID, quest);
-            
+                buffer.Add(quest.QuestID, quest);            
         }
 
         public void replaceQuest(CQuest iQuest)
@@ -632,7 +615,7 @@ namespace StalkerOnlineQuesterEditor
             quest.Add(iQuest.QuestID, iQuest);
         }
 
-        public void remQuest(int questID)
+        public void removeQuest(int questID)
         {
             if (quest.Keys.Contains(questID))
                 quest.Remove(questID);
@@ -640,14 +623,12 @@ namespace StalkerOnlineQuesterEditor
                 buffer.Remove(questID);
         }
 
-        public void removeQuest(int questID)
+        public void removeQuestWithSubs(int questID)
         {
             var quest = getQuest(questID);
             foreach (int qID in quest.Additional.ListOfSubQuest)
-            {
-                removeQuest(qID);
-            }
-            remQuest(questID);
+                removeQuestWithSubs(qID);
+            removeQuest(questID);
         }
 
         public int getRoot(int questID)

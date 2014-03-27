@@ -256,8 +256,7 @@ namespace StalkerOnlineQuesterEditor
                                        getListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests))),
                            new XElement("tests", getListAsString(dialog.Precondition.tests)),
                            new XElement("Reputation", dialog.Precondition.getReputation()),
-                           new XElement("KarmaPK", getListAsString(dialog.Precondition.KarmaPK))
-                           ),
+                           new XElement("KarmaPK", getListAsString(dialog.Precondition.KarmaPK))),
                        new XElement("Text", dialog.Text),
                        new XElement("Actions",
                            new XElement("Exit", getBoolAsString(dialog.Actions.Exit)),

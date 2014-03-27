@@ -1377,7 +1377,7 @@ namespace StalkerOnlineQuesterEditor
                 buffer = replaceQuestsIDs(buffer);
                 var name = quest.Additional.Holder;
                 var questID = quest.QuestID;
-                quests.removeQuest(questID);
+                quests.removeQuestWithSubs(questID);
                 buffer[0].QuestID = questID;
                 foreach (var subQuest in buffer)
                 {
@@ -1401,7 +1401,7 @@ namespace StalkerOnlineQuesterEditor
                 var name = quest.Additional.Holder;
                 var questID = quest.QuestID;
                 var parentID = quest.Additional.IsSubQuest;
-                quests.removeQuest(questID);
+                quests.removeQuestWithSubs(questID);
                 var parentQuest = getQuestOnQuestID(parentID);
                 int index = parentQuest.Additional.ListOfSubQuest.IndexOf(questID);
                 parentQuest.Additional.ListOfSubQuest.Remove(questID);
@@ -1676,9 +1676,27 @@ namespace StalkerOnlineQuesterEditor
             StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests, dialogs);
             sf.Show();
         }
+        //! Устанавливает надписи в таблице вкладки Проверка для поиска нужны NPC
+        void setNPCCheckEnvironment()
+        {
+            gridViewReview.Columns[0].HeaderText = "Имя NPC";
+            gridViewReview.Columns[1].HeaderText = "Диалоги";
+            gridViewReview.Columns[2].HeaderText = "Квесты";
+            gridViewReview.Columns[3].HeaderText = "Карта";
+        }
+        //! Устанавливает надписи в таблице вкладки Проверка для поиска квестов
+        void setQuestCheckEnvironment()
+        {
+            gridViewReview.Columns[0].HeaderText = "Имя NPC";
+            gridViewReview.Columns[1].HeaderText = "Квест";
+            gridViewReview.Columns[2].HeaderText = "Открыт квест";
+            gridViewReview.Columns[3].HeaderText = "Закрыт квест";
+        }
+
         //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
         private void bFindNPC_Click(object sender, EventArgs e)
         {
+            setNPCCheckEnvironment();
             gridViewReview.Rows.Clear();
             bool checkDialog = cbNumDialogs.Checked;
             bool checkQuest = cbNumQuests.Checked;
@@ -1695,12 +1713,35 @@ namespace StalkerOnlineQuesterEditor
             }
             labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
         }
-
-        //! Тeстовая фукция "пробежать", пробегает всех NPC (для заполнения полей в тестовом режиме)
-        private void button1_Click(object sender, EventArgs e)
+        //! Нажатие "Найти квесты", выводит несоответствия в квестах (не открыт, не закрыт, не существует)
+        private void bFindQuest_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < NPCBox.Items.Count; i++ )
-                NPCBox.SelectedIndex = i;
+            setQuestCheckEnvironment();
+            gridViewReview.Rows.Clear();
+            foreach (CQuest quest in quests.quest.Values)
+            {
+                if (quests.startQuests.Contains(quest.QuestID))
+                    continue;
+                if (quest.Additional.IsSubQuest != 0)
+                    continue;
+
+                int questID = quest.QuestID;
+                int open = 0, close = 0;
+                foreach (string npc in dialogs.dialogs.Keys)
+                    foreach (CDialog dialog in dialogs.dialogs[npc].Values)
+                    { 
+                        if (dialog.Actions.GetQuests.Contains(questID))
+                            open = dialog.DialogID;
+                        if (dialog.Actions.CompleteQuests.Contains(questID))
+                            close = dialog.DialogID;
+                    }
+                if (open == 0 || close == 0)
+                {
+                    object[] row = { quest.Additional.Holder, questID, open, close };
+                    gridViewReview.Rows.Add(row);
+                }
+            }
+            labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
         }
 
         //! Поиск по номеру квеста в комбобоксе квеста и вывод информации
@@ -1727,6 +1768,13 @@ namespace StalkerOnlineQuesterEditor
                 }
           
             }
+        }
+
+        //! Тeстовая фукция "пробежать", пробегает всех NPC (для заполнения полей в тестовом режиме)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < NPCBox.Items.Count; i++)
+                NPCBox.SelectedIndex = i;
         }
     }
 }
