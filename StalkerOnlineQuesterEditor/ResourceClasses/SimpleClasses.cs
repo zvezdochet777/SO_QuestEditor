@@ -53,6 +53,7 @@ namespace StalkerOnlineQuesterEditor
         //public bool CheckClanID;
         //public bool CheckClan;
         public List<int> tests;
+        public int PlayerLevel;
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
         public List<int> KarmaPK = new List<int>();
 
@@ -67,6 +68,7 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfMustNoQuests = (CDialogPreconditionQuests)this.ListOfMustNoQuests.Clone();
             copy.Reputation = this.Reputation;
             copy.KarmaPK = this.KarmaPK;
+            copy.PlayerLevel = this.PlayerLevel;
             return copy;
         }
 
@@ -79,6 +81,7 @@ namespace StalkerOnlineQuesterEditor
             //this.CheckClan = false;
             this.Reputation = new Dictionary<int, List<double>>();
             this.KarmaPK = new List<int>();
+            this.PlayerLevel = 0;
         }
         public bool Any()
         {

@@ -36,7 +36,6 @@ namespace StalkerOnlineQuesterEditor
             if (form.editQuestReward.Unlimited == 1)
                 unlimitedCheckBox.Checked = true;
 
-
             //label1.Text = 
             //"торговцы(+100%)/военные(+20%)/наемники(+20%)/бандиты(-10%)/старые-сталкеры(-20%)/барыги(-30%)/охотники(-10%)\n"+
             //"барыги(+100%)/бандиты(+20%)/старые-сталкеры(+20%)/военные(-10%)/наемники(-20%)/торговцы(-30%)/охотники(+10%)\n" +
@@ -51,9 +50,7 @@ namespace StalkerOnlineQuesterEditor
 
             //"мутанты зоны(+100%)/военные(-10%)/бандиты(-10%)/торговцы(-20%)/барыги(-20%)/охотники(-30%)/старые-сталкеры(+10%)\n" +
             //"фракция группировок зоны(+100%)/военные(+5%)/бандиты(+5%)/наемники(-10%)/старые-сталкеры(-10%)/ученые(+5%)/охотники(-5%)";
-
         }
-
 
         private void RewardFractions_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -207,8 +204,6 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
         }
-
-
 
         private void dataFractions_LostFocus(object sender, EventArgs e)
         {

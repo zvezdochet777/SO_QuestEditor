@@ -422,9 +422,7 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("MinGroup", getIntAsString(questValue.QuestRules.MinGroup)),
                         new XElement("MaxGroup", getIntAsString(questValue.QuestRules.MaxGroup)),
                         new XElement("MinMember", getIntAsString(questValue.QuestRules.MinMember)),
-                        new XElement("MaxMember", getIntAsString(questValue.QuestRules.MaxMember))
-                        ),
-
+                        new XElement("MaxMember", getIntAsString(questValue.QuestRules.MaxMember))),
                     new XElement("Reward",
                         new XElement("TeleportTo", ""),
                         new XElement("Expirience", getListAsString(questValue.Reward.Experience)),
@@ -447,15 +445,12 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("TypeOfItems", getListAsString(questValue.QuestPenalty.TypeOfItems)),
                         new XElement("NumOfItems", getListAsString(questValue.QuestPenalty.NumOfItems)),
                         new XElement("Credits", questValue.QuestPenalty.Credits),
-                        new XElement("Reputation", "")
-                        ),
+                        new XElement("Reputation", "")),
                     new XElement("Additional",
                         new XElement("IsSubQuest", getIntAsString(questValue.Additional.IsSubQuest)),
                         new XElement("ListOfSubQuest", getListAsString(questValue.Additional.ListOfSubQuest)),
                         new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()),
-                        new XElement("Holder",questValue.Additional.Holder)
-
-                        )
+                        new XElement("Holder",questValue.Additional.Holder))
                    );
                 resultDoc.Root.Add(element);
             }

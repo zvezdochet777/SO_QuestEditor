@@ -146,6 +146,9 @@ namespace StalkerOnlineQuesterEditor
                 if (item.Element("Precondition").Element("KarmaPK").Value != "")
                     foreach (string karme_el in item.Element("Precondition").Element("KarmaPK").Value.Split(','))
                         Precondition.KarmaPK.Add(int.Parse(karme_el));
+                if (item.Element("Precondition").Descendants().Any(itm2 => itm2.Name == "PlayerLevel"))
+                    if (!item.Element("Precondition").Element("PlayerLevel").Value.Equals(""))
+                        Precondition.PlayerLevel = int.Parse(item.Element("Precondition").Element("PlayerLevel").Value);
 
                 if (item.Element("Precondition").Element("tests").Value != "")
                     foreach (string test in item.Element("Precondition").Element("tests").Value.Split(','))
@@ -256,6 +259,7 @@ namespace StalkerOnlineQuesterEditor
                                        getListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests))),
                            new XElement("tests", getListAsString(dialog.Precondition.tests)),
                            new XElement("Reputation", dialog.Precondition.getReputation()),
+                           new XElement("PlayerLevel", getIntAsString(dialog.Precondition.PlayerLevel)),
                            new XElement("KarmaPK", getListAsString(dialog.Precondition.KarmaPK))),
                        new XElement("Text", dialog.Text),
                        new XElement("Actions",

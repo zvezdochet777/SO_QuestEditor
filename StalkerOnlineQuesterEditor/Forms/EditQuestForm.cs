@@ -467,7 +467,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (string space in parent.spacesConst.getSpacesDescription())
                 instanceComboBox.Items.Add(space);
         }
-
+        //! Заполняет раздел Правила на форме - увроень игрока, сценарий... (???)
         void fillQuestRules()
         {
             foreach (int item in quest.QuestRules.Scenarios)
@@ -476,10 +476,10 @@ namespace StalkerOnlineQuesterEditor
                     scenariosTextBox.Text += item.ToString();
                 else
                     scenariosTextBox.Text += ("," + item.ToString());
-            }
+            }            
             checkQuestRulesIndicates();
         }
-
+        //! Создает индикацию зеленым светом в графе Награда, если выдаются предметы, эффекты, или статус
         public void checkRewardIndicates()
         {
             if (editQuestReward.TypeOfItems.Any())
@@ -489,13 +489,13 @@ namespace StalkerOnlineQuesterEditor
             if (editQuestReward.Effects.Any())
                 bRewardEffects.Image = Properties.Resources.but_indicate;
         }
-
+        //! Создает индиикацию кнопки Предметы в графе Правила квеста
         public void checkQuestRulesIndicates()
         {
             if (editQuestRules.TypeOfItems.Any())
                 bItemQuestRules.Image = Properties.Resources.but_indicate;
         }
-
+        //! Заполняет данные о награде - опыт, деньги, карму
         void fillReward()
         {
             checkRewardIndicates();
@@ -716,7 +716,7 @@ namespace StalkerOnlineQuesterEditor
 
             rules.TypeOfItems = editQuestRules.TypeOfItems;
             rules.NumOfItems = editQuestRules.NumOfItems;
-            rules.AttrOfItems = editQuestRules.AttrOfItems;
+            rules.AttrOfItems = editQuestRules.AttrOfItems;            
             information.Items = editInformation.Items;
 
             target.AObjectAttrs = editTarget.AObjectAttrs;

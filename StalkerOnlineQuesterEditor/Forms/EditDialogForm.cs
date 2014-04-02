@@ -167,6 +167,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveFailedQuests);
             }
+            mtbPlayerLevel.Text = curDialog.Precondition.PlayerLevel.ToString();
             curDialog.QuestDialog = parent.getDialogOnDialogID(dialogID).QuestDialog;
             calcSymbolMaxAnswer();
         }
@@ -373,7 +374,7 @@ namespace StalkerOnlineQuesterEditor
             if (!tShouldntHaveFailedQuests.Text.Equals(""))
                 foreach (string quest in tShouldntHaveFailedQuests.Text.Split(','))
                     precondition.ListOfMustNoQuests.ListOfFailedQuests.Add(int.Parse(quest));
-
+            
             precondition.tests.Clear();
             if (CheckClanIDcheckBox.Checked)
                 precondition.tests.Add(1);
@@ -382,6 +383,7 @@ namespace StalkerOnlineQuesterEditor
             if (CheckLonerCheckBox.Checked)
                 precondition.tests.Add(2);
 
+            precondition.PlayerLevel = int.Parse(mtbPlayerLevel.Text.ToString());
             precondition.Reputation = editPrecondition.Reputation;
             precondition.KarmaPK = editKarmaPK;
 

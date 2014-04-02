@@ -34,6 +34,7 @@
             this.NPCSaid = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.actionsBox = new System.Windows.Forms.GroupBox();
+            this.ToClanBaseCheckBox = new System.Windows.Forms.CheckBox();
             this.barterCheckBox = new System.Windows.Forms.CheckBox();
             this.toComplexRepairCheckBox = new System.Windows.Forms.CheckBox();
             this.teleportComboBox = new System.Windows.Forms.ComboBox();
@@ -78,7 +79,8 @@
             this.NPCReactionText = new System.Windows.Forms.Label();
             this.MustPanel = new System.Windows.Forms.Panel();
             this.textGroupBox = new System.Windows.Forms.GroupBox();
-            this.ToClanBaseCheckBox = new System.Windows.Forms.CheckBox();
+            this.mtbPlayerLevel = new System.Windows.Forms.MaskedTextBox();
+            this.lPlayerLevel = new System.Windows.Forms.Label();
             this.actionsBox.SuspendLayout();
             this.PreconditionBox.SuspendLayout();
             this.QuestConditiongroupBox.SuspendLayout();
@@ -155,6 +157,17 @@
             this.actionsBox.Size = new System.Drawing.Size(588, 115);
             this.actionsBox.TabIndex = 8;
             this.actionsBox.TabStop = false;
+            // 
+            // ToClanBaseCheckBox
+            // 
+            this.ToClanBaseCheckBox.AutoSize = true;
+            this.ToClanBaseCheckBox.Location = new System.Drawing.Point(266, 83);
+            this.ToClanBaseCheckBox.Name = "ToClanBaseCheckBox";
+            this.ToClanBaseCheckBox.Size = new System.Drawing.Size(115, 17);
+            this.ToClanBaseCheckBox.TabIndex = 31;
+            this.ToClanBaseCheckBox.Text = "Телепорт на базу";
+            this.ToClanBaseCheckBox.UseVisualStyleBackColor = true;
+            this.ToClanBaseCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
             // barterCheckBox
             // 
@@ -340,6 +353,8 @@
             // 
             // PreconditionBox
             // 
+            this.PreconditionBox.Controls.Add(this.mtbPlayerLevel);
+            this.PreconditionBox.Controls.Add(this.lPlayerLevel);
             this.PreconditionBox.Controls.Add(this.CheckLonerCheckBox);
             this.PreconditionBox.Controls.Add(this.bKarma);
             this.PreconditionBox.Controls.Add(this.bReputation);
@@ -594,16 +609,23 @@
             this.textGroupBox.TabIndex = 15;
             this.textGroupBox.TabStop = false;
             // 
-            // ToClanBaseCheckBox
+            // mtbPlayerLevel
             // 
-            this.ToClanBaseCheckBox.AutoSize = true;
-            this.ToClanBaseCheckBox.Location = new System.Drawing.Point(266, 83);
-            this.ToClanBaseCheckBox.Name = "ToClanBaseCheckBox";
-            this.ToClanBaseCheckBox.Size = new System.Drawing.Size(115, 17);
-            this.ToClanBaseCheckBox.TabIndex = 31;
-            this.ToClanBaseCheckBox.Text = "Телепорт на базу";
-            this.ToClanBaseCheckBox.UseVisualStyleBackColor = true;
-            this.ToClanBaseCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
+            this.mtbPlayerLevel.Location = new System.Drawing.Point(117, 215);
+            this.mtbPlayerLevel.Mask = "000";
+            this.mtbPlayerLevel.Name = "mtbPlayerLevel";
+            this.mtbPlayerLevel.PromptChar = ' ';
+            this.mtbPlayerLevel.Size = new System.Drawing.Size(100, 20);
+            this.mtbPlayerLevel.TabIndex = 49;
+            // 
+            // lPlayerLevel
+            // 
+            this.lPlayerLevel.AutoSize = true;
+            this.lPlayerLevel.Location = new System.Drawing.Point(13, 218);
+            this.lPlayerLevel.Name = "lPlayerLevel";
+            this.lPlayerLevel.Size = new System.Drawing.Size(92, 13);
+            this.lPlayerLevel.TabIndex = 48;
+            this.lPlayerLevel.Text = "Уровень игрока:";
             // 
             // EditDialogForm
             // 
@@ -686,5 +708,7 @@
         private System.Windows.Forms.MaskedTextBox tShouldntHaveFailedQuests;
         private System.Windows.Forms.MaskedTextBox tMustHaveFailedQuests;
         private System.Windows.Forms.CheckBox ToClanBaseCheckBox;
+        private System.Windows.Forms.MaskedTextBox mtbPlayerLevel;
+        private System.Windows.Forms.Label lPlayerLevel;
     }
 }
