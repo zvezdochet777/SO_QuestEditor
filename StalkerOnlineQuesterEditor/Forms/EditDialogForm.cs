@@ -43,19 +43,12 @@ namespace StalkerOnlineQuesterEditor
                 checkReputationIndicates();
             }
             if (curDialog.Precondition.KarmaPK.Any())
-            {
                 editKarmaPK = curDialog.Precondition.KarmaPK;
-            }
 
             if (parent.isRoot(selectedDialogID) && (!isAdd))
-            {
                 NPCReactionText.Text = "Приветствие:";
-            }
-
-            else if (parent.isRoot(selectedDialogID) && (isAdd))
-            {
-                //MustPanel.Location = new Point(5, 8);
-            }
+            if (isAdd)
+                mtbPlayerLevel.Text = "0";
             if (!isAdd)
             {
                 fillDialogEditForm(selectedDialogID);

@@ -27,11 +27,8 @@ namespace StalkerOnlineQuesterEditor
     //! Главная форма программы, туча строк кода
     public partial class MainForm : Form
     {
-        //bool inSaving = false;
-
         int STARTTALKQUESTS = 2500;
         int ENDTALKQUESTS = 3500;
-
         //! Текущий выбранный NPC (в комбобоксе вверху)
         public string currentNPC = "";
         //! Ссылка на экземпляр класса CDialogs, хранит все данные и функции по работе с диалогами
@@ -66,11 +63,6 @@ namespace StalkerOnlineQuesterEditor
         public CGUIConst gui;
         public CEffectConstants effects;
         public CBalance balances;
-
-        //! Дичайший костыль, хранит rootDialog, но называется CurrentQuestDialog
-        int currentQuestDialog;
-        //! Дичайший костыль, держит стартовые квесты в себе
-        public string startQuests;
         public int currentQuest;
 
         public MainForm()
@@ -85,7 +77,6 @@ namespace StalkerOnlineQuesterEditor
             tpConst = new CTPConstants();
 
             tree = treeDialogs;
-            currentQuestDialog = new int();
             protectedTreeNode = new List<int>();
             questConst = new СQuestConstants();
             itemConst = new CItemConstants();
@@ -136,7 +127,6 @@ namespace StalkerOnlineQuesterEditor
                     bAddDialog.Enabled = false;
                     bEditDialog.Enabled = false;
                     bRemoveDialog.Enabled = false;
-                    currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
                     QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
                     DialogSelected(true);
                 }
@@ -152,23 +142,20 @@ namespace StalkerOnlineQuesterEditor
         {
             QuestBox.SelectedItem = null;
             QuestBox.Items.Clear();
-            startQuests = "";
             foreach (CQuest quest in quests.getQuestAndTitleOnNPCName(currentNPC))
             {
                 if (!onlyDialogs)
                 {
+                    //! @todo думать выкуривать
                     if (quest.QuestID < STARTTALKQUESTS || quest.QuestID > ENDTALKQUESTS)
                     {
                         QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
-                        startQuests += quest.QuestID + ": ";
                     }
                 }
-                else if (quest.QuestID >= STARTTALKQUESTS && quest.QuestID < ENDTALKQUESTS)
-                    startQuests += quest.QuestID + ": ";
             }
         }
 
-        //! Что за хуйня здесь ????
+        //! Сменили квест в комбобоксе, выводим дерево всех подквестов
         private void QuestBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             splitQuestsContainer.Panel2.Controls.Clear();
@@ -176,12 +163,14 @@ namespace StalkerOnlineQuesterEditor
 
             if (CentralDock.SelectedIndex == 1)
             {
-                currentQuestDialog = int.Parse(startQuests.Split(':')[QuestBox.SelectedIndex].Trim());
-                addNodeOnTreeQuest(this.currentQuestDialog);
+                int index = QuestBox.SelectedItem.ToString().IndexOf(':');
+                string qID = QuestBox.SelectedItem.ToString().Substring(0, index);
+                int questID = int.Parse(qID);
+                addNodeOnTreeQuest(questID);
                 bRemoveQuest.Enabled = true;
             }
             treeQuest.ExpandAll();
-        }
+        } 
 
         //! Заполнение итемов в комбобоксе NPC
         void fillNPCBOX()
@@ -506,7 +495,6 @@ namespace StalkerOnlineQuesterEditor
                         bRemoveQuest.Enabled = false;
                         bAddQuest.Enabled = false;
                         QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
-                        currentQuestDialog = int.Parse(startQuests.Split(':')[0].Trim());
                         DialogSelected(true);
                     }
                     break;
@@ -694,27 +682,13 @@ namespace StalkerOnlineQuesterEditor
             newNPC.Visible = true;
         }
 
-        int getStartQuestDialogsID()
-        {
-            //int iFirstDialogID = 0;
-            //while (iFirstDialogID < STARTTALKQUESTS)
-            int iFirstDialogID = 2500 + (this.settings.getOperatorNumber() * 20);
-
-            for (int startQuest = iFirstDialogID; ; startQuest++)
-                if (!quests.startQuests.Contains(startQuest))
-                    return startQuest;
-        }
-
         public void addNewNPC(string Name)
         {
-            int newNPCID = getStartQuestDialogsID();
             Dictionary<int,CDialog> firstDialog = new Dictionary<int,CDialog>();
             int dialogID = getDialogsNewID();
-            firstDialog.Add(dialogID,new CDialog(Name,"","",newNPCID,new CDialogPrecondition(),new Actions(),new List<int>(),dialogID, 0, new NodeCoordinates()));
+            firstDialog.Add(dialogID,new CDialog(Name,"","",0,new CDialogPrecondition(),new Actions(),new List<int>(),dialogID, 0, new NodeCoordinates()));
 
             dialogs.dialogs.Add(Name, firstDialog);
-            quests.quest.Add(newNPCID, new CQuest(newNPCID, 0, new CQuestInformation(), new CQuestPrecondition(), new CQuestRules(), new CQuestReward(), new CQuestAdditional(Name), new CQuestTarget(1), new CQuestPenalty()));
-            quests.startQuests.Add(newNPCID);
 
             NPCBox.Items.Add(Name);
             //! выбирает левого NPC после создания нового - править
@@ -733,8 +707,6 @@ namespace StalkerOnlineQuesterEditor
             foreach (CQuest quest in quests.quest.Values)
                 if (quest.Additional.Holder.Equals(currentNPC))
                 {
-                    if (quest.QuestID >= STARTTALKQUESTS && quest.QuestID < ENDTALKQUESTS)
-                        quests.startQuests.Remove(quest.QuestID);
                     removedItems.Add(quest.QuestID);
                 }
 
@@ -851,7 +823,6 @@ namespace StalkerOnlineQuesterEditor
             if (settings.getMode() == settings.MODE_EDITOR)
             {
                 quests.saveQuests(settings.questXML);
-                quests.saveStartQuests(settings.startQuestXML);
                 dialogs.saveDialogs(settings.dialogXML);
             }
             else
@@ -944,7 +915,6 @@ namespace StalkerOnlineQuesterEditor
         {
             quests.quest.Add(newQuest.QuestID, newQuest);
             QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
-            startQuests += newQuest.QuestID.ToString() + ": ";
             QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
         }
  
@@ -1718,10 +1688,23 @@ namespace StalkerOnlineQuesterEditor
         {
             setQuestCheckEnvironment();
             gridViewReview.Rows.Clear();
+
             foreach (CQuest quest in quests.quest.Values)
             {
-                if (quests.startQuests.Contains(quest.QuestID))
-                    continue;
+                int questID = quest.QuestID;
+                if (questID >= STARTTALKQUESTS && questID <= ENDTALKQUESTS)
+                {
+                    object[] row = { quest.Additional.Holder, questID, 
+                                       quest.QuestInformation.Title, quest.QuestInformation.Description };
+                    gridViewReview.Rows.Add(row);                
+                }            
+            }
+
+            /*
+            foreach (CQuest quest in quests.quest.Values)
+            {
+                //if (quests.startQuests.Contains(quest.QuestID))
+                    //continue;
                 if (quest.Additional.IsSubQuest != 0)
                     continue;
 
@@ -1741,6 +1724,7 @@ namespace StalkerOnlineQuesterEditor
                     gridViewReview.Rows.Add(row);
                 }
             }
+             */ 
             labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
         }
 
@@ -1775,6 +1759,11 @@ namespace StalkerOnlineQuesterEditor
         {
             for (int i = 0; i < NPCBox.Items.Count; i++)
                 NPCBox.SelectedIndex = i;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

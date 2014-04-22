@@ -33,25 +33,16 @@ namespace StalkerOnlineQuesterEditor
         public NPCQuestDict buffer = new NPCQuestDict();
 
         XDocument doc = new XDocument();
-        XDocument startQuestsDoc = new XDocument();
-        public List<int> startQuests = new List<int>();
         MainForm parent;
 
         public int bufferTop = 0;
 
-        //public CQuests(string QuestsXMLFile, string StartQuestsXMLFile)
-
-        //! Конструктор, заполняет словарь quest, startQuests, парсит файлы
+        //! Конструктор, заполняет словарь quest, парсит файлы
         public CQuests(MainForm form)
         {
             parent = form;
             string QuestsXMLFile = parent.settings.getQuestsPath();
-            string StartQuestsXMLFile = parent.settings.getStartQuestsPath();
 
-            startQuestsDoc = XDocument.Load(StartQuestsXMLFile);
-            foreach (string sQuest in startQuestsDoc.Root.Element("quests").Value.ToString().Split(','))
-                if (sQuest!="")
-                    startQuests.Add(int.Parse(sQuest));
             this.quest = new NPCQuestDict();
             parseQuestsFile(QuestsXMLFile, quest);
 
@@ -324,26 +315,6 @@ namespace StalkerOnlineQuesterEditor
             foreach (int questID in quest.Keys)
                 array[i++] = questID.ToString();
             return array;
-        }
-
-        //! @todo выжигать каленым железом
-        public void saveStartQuests(string fileName)
-        {
-            XDocument resultDoc2 = new XDocument(new XElement("root"));
-            XElement element = new XElement("quests", getListAsString(startQuests));
-            resultDoc2.Root.Add(element);
-
-            System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
-            settings.Encoding = new UTF8Encoding(false);
-            settings.Indent = true;
-            settings.OmitXmlDeclaration = true;
-            settings.NewLineOnAttributes = true;
-
-            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
-            {
-                resultDoc2.Save(w);
-            }
-            copyResultFile(fileName);
         }
 
         //! Сохраняет данные по квестам в xml файл
@@ -655,12 +626,13 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        //! @todo понять, что они вообще хотели тут сделать
         public void createExamples()
         {
             List<int> rem = new List<int>();
-            foreach (var q in this.quest.Keys)
-                if (!startQuests.Contains(q))
-                    rem.Add(q);
+//            foreach (var q in this.quest.Keys)
+//                if (!startQuests.Contains(q))
+//                    rem.Add(q);
             foreach (var qId in rem)
             {
                 quest[qId].Target = new CQuestTarget();
@@ -714,13 +686,14 @@ namespace StalkerOnlineQuesterEditor
                     results.Add(cur_quest.QuestID, cur_quest);
                 }
             }
-
+/*
             foreach (var start_quest_id in this.startQuests)
             {
                 CQuest start_quest = getQuest(start_quest_id);
                 if (start_quest != null && !results.Keys.Contains(start_quest_id))
                     results.Add(start_quest.QuestID, start_quest);
             }
+ */ 
             this.save(parent.settings.questXML, results);
         }
 

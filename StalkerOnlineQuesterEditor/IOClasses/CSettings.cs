@@ -33,7 +33,6 @@ namespace StalkerOnlineQuesterEditor
 
         public System.String dialogXML = "Dialogs.xml";
         public System.String questXML = "Quests.xml";
-        public System.String startQuestXML = "StartQuests.xml";
         public System.String balanceXML = "Balance.xml";
 
         public CSettings(MainForm parent)
@@ -216,12 +215,6 @@ namespace StalkerOnlineQuesterEditor
         public string getQuestsPath()
         {
             return this.questXML;
-        }
-
-        //! Возвращает путь к xml файлу со стартовыми квестами 
-        public string getStartQuestsPath()
-        {
-            return this.startQuestXML;
         }
 
         //! Возвращает путь к xml файлу с диалогами

@@ -36,43 +36,20 @@ namespace StalkerOnlineQuesterEditor
         public levelDict nodesOnLevel;
         //DIALOGS
         //******************SETTERS/GETTERS****************************
-        //! Возвращает вершину графа диалогов - корневую фразу у заданного NPC
-        public CDialog getRootDialog(string npc_name)
-        {
-            DialogDict dialogs = getDialogDictionary(currentNPC); //this.dialogs.dialogs[npc_name];
-            CDialog backup = null;
-            foreach (CDialog dialog in dialogs.Values)
-            {
-                //System.Console.WriteLine(dialog.QuestDialog.ToString() + " vs " + currentQuestDialog.ToString());
-                if (dialog.QuestDialog == currentQuestDialog)
-                {
-                    rootElements.Add(dialog.DialogID);
-                    return dialog;
-                }
-                if (dialog.coordinates.RootDialog)
-                    backup = dialog;
-            }
-            return backup;
-            /*
-            foreach (CDialog dialog in dialog.Values)
-            {
-                if (dialog.coordinates.RootDialog)
-                    return dialog;
-            }
-            */
-            //return null;
-        }
-
         //! Возвращает вершину графа диалогов - корневую фразу
         CDialog getRootDialog()
-        {            
-            CDialog ret_dial = getRootDialog(currentNPC);
-            if (ret_dial==null)
-                System.Console.WriteLine("MainForm::getRootDialog null");
-            else
-                System.Console.WriteLine("MainForm::getRootDialog " + ret_dial.DialogID.ToString());
-
-            return ret_dial;
+        {
+            DialogDict dialogs = getDialogDictionary(currentNPC); //this.dialogs.dialogs[npc_name];
+            CDialog result = null;
+            foreach (CDialog dialog in dialogs.Values)
+            {
+                if (dialog.coordinates.RootDialog)
+                {
+                    rootElements.Add(dialog.DialogID);
+                    result = dialog;
+                }
+            }
+            return result;
         }
 
         //! Возвращает Узел по известному ID диалога
