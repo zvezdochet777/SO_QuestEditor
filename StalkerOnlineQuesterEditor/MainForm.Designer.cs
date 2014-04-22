@@ -156,7 +156,6 @@ namespace StalkerOnlineQuesterEditor
             this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
-            this.button2 = new System.Windows.Forms.Button();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.splitDialogs.Panel1.SuspendLayout();
@@ -758,7 +757,6 @@ namespace StalkerOnlineQuesterEditor
             // 
             // panelReviewButtons
             // 
-            this.panelReviewButtons.Controls.Add(this.button2);
             this.panelReviewButtons.Controls.Add(this.gbQuestCheck);
             this.panelReviewButtons.Controls.Add(this.labelReviewOutputed);
             this.panelReviewButtons.Controls.Add(this.gbNPCcheck);
@@ -1445,16 +1443,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(503, 23);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1646,7 +1634,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLocation;
         private System.Windows.Forms.GroupBox gbQuestCheck;
         private System.Windows.Forms.Button bFindQuest;
-        private System.Windows.Forms.Button button2;
 
 
     }

@@ -711,6 +711,30 @@
 		НЗ_ЛАБА_ВХОД
 		</description>
 	</area>
+	<area>
+		<mark>
+		tesla_salnikov
+		</mark>
+		<description>
+		Башня_Теслы
+		</description>
+	</area>
+	<area>
+		<mark>
+		zakat_salnikov
+		</mark>
+		<description>
+		Закат
+		</description>
+	</area>
+	<area>
+		<mark>
+		DO_quest
+		</mark>
+		<description>
+		ДО_квест
+		</description>
+	</area>
 
 
 </root>

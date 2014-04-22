@@ -496,4 +496,60 @@
         <id>outland_caravan_2</id>
         <name>Аунлэнд ЛЭП</name>
     </tp>
+	<tp>
+        <id>green_base_tp</id>
+        <name>Рокс Зеленая база</name>
+    </tp>
+	<tp>
+        <id>red_base_tp</id>
+        <name>Рокс Красная база</name>
+    </tp>
+	<tp>
+        <id>provodnik_gurman_pvp</id>
+        <name>Гурман на ПвП</name>
+    </tp>
+	<tp>
+        <id>provodnik_pvp_aeroport</id>
+        <name>Аэропорт_ПвП_Деревня</name>
+    </tp>
+	<tp>
+        <id>pvp_village_green</id>
+        <name>ПвП_Деревня_зел</name>
+    </tp>
+	<tp>
+        <id>pvp_village_red</id>
+        <name>ПвП_Деревня_крас</name>
+    </tp>
+	<tp>
+        <id>provodnik_pvp_ryab</id>
+        <name>Везув_ПвП_Рябина</name>
+    </tp>
+	<tp>
+        <id>pvp_ryab_red</id>
+        <name>ПвП_Рябина_крас</name>
+    </tp>
+	<tp>
+        <id>pvp_ryab_green</id>
+        <name>ПвП_Рябина_зел</name>
+    </tp>
+	<tp>
+        <id>provodnik_pvp_snow</id>
+        <name>Новая_ПвП_Снеж</name>
+    </tp>
+	<tp>
+        <id>pvp_snow_green</id>
+        <name>ПвП_Снеж_зел</name>
+    </tp>
+	<tp>
+        <id>pvp_snow_red</id>
+        <name>ПвП_Снеж_крас</name>
+    </tp>
+	<tp>
+        <id>base_vesuvius_lep_in</id>
+        <name>ДБ_Везув_внутр</name>
+    </tp>
+	<tp>
+        <id>base_vesuvius_lep_out</id>
+        <name>ДБ_Везув_наруж</name>
+    </tp>
 </root>

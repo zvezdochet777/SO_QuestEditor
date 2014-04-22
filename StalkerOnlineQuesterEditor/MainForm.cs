@@ -1691,18 +1691,6 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (CQuest quest in quests.quest.Values)
             {
-                int questID = quest.QuestID;
-                if (questID >= STARTTALKQUESTS && questID <= ENDTALKQUESTS)
-                {
-                    object[] row = { quest.Additional.Holder, questID, 
-                                       quest.QuestInformation.Title, quest.QuestInformation.Description };
-                    gridViewReview.Rows.Add(row);                
-                }            
-            }
-
-            /*
-            foreach (CQuest quest in quests.quest.Values)
-            {
                 //if (quests.startQuests.Contains(quest.QuestID))
                     //continue;
                 if (quest.Additional.IsSubQuest != 0)
@@ -1724,7 +1712,6 @@ namespace StalkerOnlineQuesterEditor
                     gridViewReview.Rows.Add(row);
                 }
             }
-             */ 
             labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
         }
 
@@ -1761,10 +1748,6 @@ namespace StalkerOnlineQuesterEditor
                 NPCBox.SelectedIndex = i;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
  

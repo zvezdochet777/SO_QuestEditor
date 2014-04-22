@@ -301,9 +301,8 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает число квестов у заданного NPC 
         public int getCountOfQuests(string NPCName)
         { 
-            List<CQuest> quests = getQuestAndTitleOnNPCName(NPCName);
-            //! @todo костыль - вычитаем 1 StartQuest. Выкурить нахер
-            return (quests.Count - 1);
+            List<CQuest> quests = getQuestAndTitleOnNPCName(NPCName);            
+            return (quests.Count);
         }
 
         //! Возвращает список ID квестов (для комбобокса)

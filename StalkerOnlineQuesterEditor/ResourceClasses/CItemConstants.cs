@@ -33,7 +33,6 @@ namespace StalkerOnlineQuesterEditor
             return items[typeID].getDescription();
         }
 
-
         public Dictionary<int, CItem> getAllItems()
         {
             return items;
@@ -47,7 +46,6 @@ namespace StalkerOnlineQuesterEditor
             return 1000000;
         }
     }
-
 
     public class CItem
     {

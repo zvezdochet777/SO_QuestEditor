@@ -136,7 +136,7 @@
 	<item>
 		<id> 24 </id>
 		<Name> Scorpion-VZ61|Пистолет-пулемет Scorpion VZ61 </Name>
-		<Description> non </Description>
+		<Description> Чешский пистолет-пулемёт. В сочетании с малыми размерами и небольшой отдачей, является весьма эффективным при действиях в закрытых пространствах и позволяет вести огонь с одной руки. </Description>
 	</item>
 
 	<item>
@@ -7398,133 +7398,6 @@
 		<Name> "Военстал М2"|Чертеж модификации бронекостюма "Военстал" </Name>
 		<Description> non </Description>
 	</item>
-
-	<item>
-		<id> 410021 </id>
-		<Name> "Сигма М2"|Чертеж модификации бронекостюма "Сигма" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410022 </id>
-		<Name> "Шторм М2"|Чертеж модификации бронекостюма "Шторм" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410023 </id>
-		<Name> "Маскиров М2"|Чертеж модификации бронекостюма "Маскировочный" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410024 </id>
-		<Name> "Страж М2"|Чертеж модификации бронекостюма "Страж" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410025 </id>
-		<Name> "Инквизитор М2"|Чертеж модификации бронекостюма "Инквизитор" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410026 </id>
-		<Name> "Хищник М2"|Чертеж модификации бронекостюма "Хищник" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410027 </id>
-		<Name> "Тишина М2"|Чертеж модификации бронекостюма "Тишина" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410028 </id>
-		<Name> "Химера М2"|Чертеж модификации бронекостюма "Химера" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410029 </id>
-		<Name> "Синдикат М2"|Чертеж модификации бронекостюма "Синдикат" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410030 </id>
-		<Name> "Одиночки М2"|Чертеж модификации бронекостюма "Одиночки" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410031 </id>
-		<Name> в."Военстал М2"|Чертеж восстановления бронекостюма "Военстал М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410032 </id>
-		<Name> в."Сигма М2"|Чертеж восстановления бронекостюма "Сигма М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410033 </id>
-		<Name> в."Страж М2"|Чертеж восстановления бронекостюма "Страж М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410034 </id>
-		<Name> в."Инквизит.М2"|Чертеж восстановления бронекостюма "Инквизитор М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410035 </id>
-		<Name> в."Хищник М2"|Чертеж восстановления бронекостюма "Хищник М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410036 </id>
-		<Name> в."Тишина М2"|Чертеж восстановления бронекостюма "Тишина М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410037 </id>
-		<Name> в."Одиночки М2"|Чертеж восстановления бронекостюма "Одиночки М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410038 </id>
-		<Name> в."Химера М2"|Чертеж восстановления бронекостюма "Химера М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410039 </id>
-		<Name> в."Синдикат М2"|Чертеж восстановления бронекостюма "Синдикат М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410040 </id>
-		<Name> в."Маскир.М2"|Чертеж восстановления бронекостюма "Маскировочный М2" </Name>
-		<Description> non </Description>
-	</item>
-
-	<item>
-		<id> 410041 </id>
-		<Name> в."Шторм М2"|Чертеж восстановления бронекостюма "Шторм М2" </Name>
-		<Description> non </Description>
-	</item>
-
 	<item>
 		<id> 410042 </id>
 		<Name> "Ф-1"|Чертеж сборки гранаты Ф-1 </Name>
@@ -8473,11 +8346,11 @@
 		<Description> Полезные свойства этого растения широко известны в народной медицине. </Description>
 	</item>
 
-	<item>
+	<!-- <item>
 		<id> 810086 </id>
 		<Name> Голубика|Ягоды Голубики </Name>
 		<Description> Полезные свойства этого растения широко известны в народной медицине. </Description>
-	</item>
+	</item> -->
 
 	<item>
 		<id> 810087 </id>
@@ -9036,5 +8909,59 @@
 		<Name> _Обрез.|Самодельный обрез из охотничего ружья.</Name>
 		<Description> Достоинством обреза являются малые размеры, позволяющие осуществлять скрытое ношение оружия и ведения огня с одной руки. </Description>
 	</item>
-	
+	<item>
+	<id> 110281 </id>
+		<Name> _Штаны охотника с ботинками.|Штаны охотника с ботинками.</Name>
+		<Description> Уникальные маскировочные штаны охотника с ботинками. Этот комплект одежды сделал Лешич своими руками.</Description>
+	</item>
+	<item>
+	<id> 110282 </id>
+		<Name> _Штаны охотника с болотниками.|Штаны охотника с болотниками.</Name>
+		<Description> Уникальные маскировочные штаны охотника с болотниками. Этот комплект одежды сделал Лешич своими руками.</Description>
+	</item>
+	<item>
+	<id> 110283 </id>
+		<Name> _Охотничья шапка.|Охотничья шапка.</Name>
+		<Description> Уникальная маскировочная шапка. Эту шапку сделал Лешич своими руками.</Description>
+	</item>
+	<item>
+	<id> 110284 </id>
+		<Name> _Охотничья шапка с козырьком.|Охотничья шапка с козырьком.</Name>
+		<Description> Уникальная маскировочная шапка с козырьком. Эту шапку сделал Лешич своими руками.</Description>
+	</item>
+	<item>
+	<id> 110287 </id>
+		<Name> _Охотничьи перчатки.|Охотничьи перчатки.</Name>
+		<Description> Уникальные охотничьи перчатки. Эти перчатки сделал Лешич своими руками.</Description>
+	</item>
+	<item>
+	<id> 110285 </id>
+		<Name> _Жилет охотника.|Жилет охотника.</Name>
+		<Description> Уникальный жилет охотника. Этот жилет сделал Лешич своими руками.</Description>
+	</item>
+	<item>
+	<id> 110286 </id>
+		<Name> _Сумка охотника.|Сумка охотника.</Name>
+		<Description> Уникальная сумка охотника. Эту сумку сделал Лешич своими руками.</Description>
+	</item>
+	<item>
+	<id> 1684 </id>
+		<Name> _Целебный бальзам.|Целебный бальзам.</Name>
+		<Description> Целебный бальзам от Зинаиды Фадеевны Шепелевой.</Description>
+	</item>
+	<item>
+	<id> 410339 </id>
+		<Name> "Сверток"|Рюкзак пропавшего сталкера</Name>
+		<Description> Сверток со случайными вещами</Description>
+	</item>
+	<item>
+		<id> 410021 </id>
+		<Name> Награда|Награда за квест 1 </Name>
+		<Description></Description>
+	</item>
+	<item>
+		<id> 410022 </id>
+		<Name> Награда|Награда за квест 2 </Name>
+		<Description></Description>
+	</item>	
 </root>
