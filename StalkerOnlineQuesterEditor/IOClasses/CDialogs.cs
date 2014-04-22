@@ -62,17 +62,12 @@ namespace StalkerOnlineQuesterEditor
             foreach (XElement item in doc.Root.Elements())
             {
                 int DialogID = int.Parse(item.Element("DialogID").Value);
-
                 string Title = item.Element("Title").Value.Trim();
                 string Text = item.Element("Text").Value.Trim();
                 List<string> Holder = new List<string>();
-                //int QuestDialog = new int();
                 List<int> Nodes = new List<int>();
                 Actions Actions = new Actions();
                 CDialogPrecondition Precondition = new CDialogPrecondition();
-
-                //if (item.Element("QuestDialog").Element("toCompleteQuest").Value != "")
-                    //QuestDialog = int.Parse(item.Element("QuestDialog").Element("toCompleteQuest").Value);
 
                 foreach (string holder in item.Element("Holder").Value.Split(','))
                     Holder.Add(holder.Trim());
@@ -201,12 +196,12 @@ namespace StalkerOnlineQuesterEditor
                     if (target.Keys.Contains(holder))
                     {
                         if (!target[holder].Keys.Contains(DialogID))
-                            target[holder].Add(DialogID, new CDialog(holder, Title, Text, 0, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
+                            target[holder].Add(DialogID, new CDialog(holder, Title, Text, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
                     }
                     else
                     {
                         target.Add(holder, new Dictionary<int, CDialog>());
-                        target[holder].Add(DialogID, new CDialog(holder, Title, Text, 0, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
+                        target[holder].Add(DialogID, new CDialog(holder, Title, Text, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
                     }
                 }
             }
@@ -224,20 +219,14 @@ namespace StalkerOnlineQuesterEditor
             XDocument resultDoc = new XDocument(new XElement("root"));
             XElement element;
 
-            int toCompleteQuest;
-
             foreach (NPCDialogDict Dictdialog in target.Values)
                 foreach (CDialog dialog in Dictdialog.Values)
                 {
-                    toCompleteQuest = dialog.QuestDialog;
                     element = new XElement("dialog",
                        new XElement("DialogID", dialog.DialogID.ToString()),
                        new XElement("Version", dialog.version.ToString()),
                        new XElement("Holder", dialog.Holder.ToString()),
                        new XElement("Title", dialog.Title.ToString()),
-                       //new XElement("QuestDialog",
-                        //new XElement("toCompleteQuest", isDialogRoot(dialog.DialogID, dialog.Holder)? getIntAsString(toCompleteQuest) : "")),
-                           //new XElement("toCompleteQuest", dialog.QuestDialog.ToString())),
                        new XElement("Precondition",
                            new XElement("ListOfNecessaryQuests",
                                new XElement("listOfCompletedQuests",
@@ -487,7 +476,7 @@ namespace StalkerOnlineQuesterEditor
                         if (!results.Keys.Contains(npc_name))
                             results.Add(npc_name, new Dictionary<int, CDialog>());
                         results[npc_name].Add(dialog.DialogID, new CDialog(dialog.Holder, locale_dialog.Title,
-                            locale_dialog.Text, dialog.QuestDialog, dialog.Precondition, dialog.Actions, dialog.Nodes, 
+                            locale_dialog.Text, dialog.Precondition, dialog.Actions, dialog.Nodes, 
                             dialog.DialogID, dialog.version, dialog.coordinates));
                     }
                 }

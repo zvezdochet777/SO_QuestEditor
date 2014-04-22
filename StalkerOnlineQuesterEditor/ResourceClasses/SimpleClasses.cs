@@ -180,7 +180,6 @@ namespace StalkerOnlineQuesterEditor
         public string Holder;
         public string Title;
         public string Text;
-        public int QuestDialog;
         public CDialogPrecondition Precondition;
         //public List<int> Actions;
         public Actions Actions;
@@ -188,14 +187,12 @@ namespace StalkerOnlineQuesterEditor
         public int version;
         public NodeCoordinates coordinates;
 
-        public CDialog(string Holder, string Title, string Text , int QuestDialog,
-                        CDialogPrecondition Precondition, Actions Actions, List<int> Nodes, int DialogID,
-                        int version, NodeCoordinates Coordinates)
+        public CDialog(string Holder, string Title, string Text , CDialogPrecondition Precondition, 
+                    Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates)
         {
             this.Holder = Holder;
             this.Title = Title;
             this.Text = Text;
-            this.QuestDialog = QuestDialog;
             this.Precondition = Precondition;
             this.Actions = Actions;
             this.Nodes = Nodes;
@@ -209,7 +206,6 @@ namespace StalkerOnlineQuesterEditor
             this.Holder = "";
             this.Title = "";
             this.Text = "";
-            this.QuestDialog = new int();
             this.Precondition = new CDialogPrecondition();
             this.Actions = new Actions();
             this.Nodes = new List<int>();
@@ -226,13 +222,11 @@ namespace StalkerOnlineQuesterEditor
             copy.Holder = this.Holder;
             copy.Nodes = this.Nodes;
             copy.Precondition = this.Precondition;
-            copy.QuestDialog = this.QuestDialog;
             copy.Text = this.Text;
             copy.Title = this.Title;
             copy.version = this.version;
             return copy;
-        }
-     
+        }     
     }
     //! Класс квест - все параметры получения, выполнения и вознаграждения за квест
     public class CQuest : ICloneable

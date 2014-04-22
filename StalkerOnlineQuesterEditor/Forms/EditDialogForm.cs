@@ -160,8 +160,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveFailedQuests);
             }
-            mtbPlayerLevel.Text = curDialog.Precondition.PlayerLevel.ToString();
-            curDialog.QuestDialog = parent.getDialogOnDialogID(dialogID).QuestDialog;
+            mtbPlayerLevel.Text = curDialog.Precondition.PlayerLevel.ToString();            
             calcSymbolMaxAnswer();
         }
 
@@ -301,7 +300,6 @@ namespace StalkerOnlineQuesterEditor
             CDialogPrecondition precondition = new CDialogPrecondition();
             NodeCoordinates coord = new NodeCoordinates();
             List<int> nodes = new List<int>();
-            int questDialog = parent.getDialogOnDialogID(dialogID).QuestDialog;
             //List<string> holder = new List<string>();
             string holder = parent.currentNPC;
 
@@ -383,7 +381,7 @@ namespace StalkerOnlineQuesterEditor
             if (isAdd)
             {
                 newID = parent.getDialogsNewID();
-                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text, questDialog, precondition, actions, nodes, newID, 1, coord), dialogID);
+                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text, precondition, actions, nodes, newID, 1, coord), dialogID);
             }
             else
             {
@@ -391,7 +389,7 @@ namespace StalkerOnlineQuesterEditor
                 coord.Y = curDialog.coordinates.Y;
                 coord.RootDialog = curDialog.coordinates.RootDialog;
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text,
-                    questDialog, precondition, actions, nodes, dialogID, (curDialog.version + 1), coord), dialogID);
+                    precondition, actions, nodes, dialogID, (curDialog.version + 1), coord), dialogID);
             }
             parent.Enabled = true;
             parent.DialogSelected(true);

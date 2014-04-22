@@ -58,7 +58,6 @@ namespace StalkerOnlineQuesterEditor.Forms
             newDialog.Nodes = originalDialog.Nodes;
             newDialog.Precondition = originalDialog.Precondition;
             newDialog.Actions = originalDialog.Actions;
-            newDialog.QuestDialog = originalDialog.QuestDialog;
             if (cbNotFinal.Checked)
                 newDialog.version --;
             parent.addLocaleDialog(newDialog);

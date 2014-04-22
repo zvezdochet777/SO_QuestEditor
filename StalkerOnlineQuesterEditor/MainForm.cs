@@ -685,7 +685,7 @@ namespace StalkerOnlineQuesterEditor
             Dictionary<int,CDialog> firstDialog = new Dictionary<int,CDialog>();
             int dialogID = getDialogsNewID();
             NodeCoordinates nc = new NodeCoordinates(179, 125, true, true);
-            firstDialog.Add(dialogID,new CDialog(Name, "", "", 0 ,new CDialogPrecondition(), new Actions() ,new List<int>(),
+            firstDialog.Add(dialogID,new CDialog(Name, "", "", new CDialogPrecondition(), new Actions() ,new List<int>(),
                     dialogID, 0, nc));
 
             dialogs.dialogs.Add(Name, firstDialog);
