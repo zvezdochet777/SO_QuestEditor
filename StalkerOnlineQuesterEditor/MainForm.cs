@@ -632,7 +632,6 @@ namespace StalkerOnlineQuesterEditor
             splitQuestsContainer.Panel2.Controls.SetChildIndex(Mpanel, getQuestOnQuestID(currentQuest).Additional.ListOfSubQuest.Count);
         }
 
-
         Panel getQuestPanelOnQuestID(int questID)
         {
             foreach (Panel panel in panels.Keys)
@@ -643,7 +642,6 @@ namespace StalkerOnlineQuesterEditor
 
         private void treeQuestClicked(object sender, EventArgs e)
         {
-
             bCopyEvents.Enabled = true;
             //this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
             //System.Console.WriteLine("Clicked on quest: "+currentQuest);
@@ -675,25 +673,25 @@ namespace StalkerOnlineQuesterEditor
         {
             this.saveData();
         }
-
+        //! Нажатие кнопки Добавить NPC - открывает форму с именем
         private void bAddNPC_Click(object sender, EventArgs e)
         {
             NewNPC newNPC = new NewNPC(this);
             newNPC.Visible = true;
         }
-
+        //! Добавляет нового NPC в систему
         public void addNewNPC(string Name)
         {
             Dictionary<int,CDialog> firstDialog = new Dictionary<int,CDialog>();
             int dialogID = getDialogsNewID();
-            firstDialog.Add(dialogID,new CDialog(Name,"","",0,new CDialogPrecondition(),new Actions(),new List<int>(),dialogID, 0, new NodeCoordinates()));
+            NodeCoordinates nc = new NodeCoordinates(179, 125, true, true);
+            firstDialog.Add(dialogID,new CDialog(Name, "", "", 0 ,new CDialogPrecondition(), new Actions() ,new List<int>(),
+                    dialogID, 0, nc));
 
             dialogs.dialogs.Add(Name, firstDialog);
 
             NPCBox.Items.Add(Name);
-            //! выбирает левого NPC после создания нового - править
-            NPCBox.SelectedIndex = NPCBox.Items.Count - 1;
-
+            NPCBox.SelectedItem = Name;
             npcConst.NPCs.Add(Name, new CNPCDescription(Name));
         }
         //! Нажатие на кнопку Удаление Персонажа NPC

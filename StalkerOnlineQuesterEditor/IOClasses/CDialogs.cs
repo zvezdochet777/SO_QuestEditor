@@ -66,13 +66,13 @@ namespace StalkerOnlineQuesterEditor
                 string Title = item.Element("Title").Value.Trim();
                 string Text = item.Element("Text").Value.Trim();
                 List<string> Holder = new List<string>();
-                int QuestDialog = new int();
+                //int QuestDialog = new int();
                 List<int> Nodes = new List<int>();
                 Actions Actions = new Actions();
                 CDialogPrecondition Precondition = new CDialogPrecondition();
 
-                if (item.Element("QuestDialog").Element("toCompleteQuest").Value != "")
-                    QuestDialog = int.Parse(item.Element("QuestDialog").Element("toCompleteQuest").Value);
+                //if (item.Element("QuestDialog").Element("toCompleteQuest").Value != "")
+                    //QuestDialog = int.Parse(item.Element("QuestDialog").Element("toCompleteQuest").Value);
 
                 foreach (string holder in item.Element("Holder").Value.Split(','))
                     Holder.Add(holder.Trim());
@@ -201,12 +201,12 @@ namespace StalkerOnlineQuesterEditor
                     if (target.Keys.Contains(holder))
                     {
                         if (!target[holder].Keys.Contains(DialogID))
-                            target[holder].Add(DialogID, new CDialog(holder, Title, Text, QuestDialog, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
+                            target[holder].Add(DialogID, new CDialog(holder, Title, Text, 0, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
                     }
                     else
                     {
                         target.Add(holder, new Dictionary<int, CDialog>());
-                        target[holder].Add(DialogID, new CDialog(holder, Title, Text, QuestDialog, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
+                        target[holder].Add(DialogID, new CDialog(holder, Title, Text, 0, Precondition, Actions, Nodes, DialogID, Version, nodeCoord));
                     }
                 }
             }
@@ -235,9 +235,9 @@ namespace StalkerOnlineQuesterEditor
                        new XElement("Version", dialog.version.ToString()),
                        new XElement("Holder", dialog.Holder.ToString()),
                        new XElement("Title", dialog.Title.ToString()),
-                       new XElement("QuestDialog",
+                       //new XElement("QuestDialog",
                         //new XElement("toCompleteQuest", isDialogRoot(dialog.DialogID, dialog.Holder)? getIntAsString(toCompleteQuest) : "")),
-                           new XElement("toCompleteQuest", dialog.QuestDialog.ToString())),
+                           //new XElement("toCompleteQuest", dialog.QuestDialog.ToString())),
                        new XElement("Precondition",
                            new XElement("ListOfNecessaryQuests",
                                new XElement("listOfCompletedQuests",
