@@ -44,7 +44,8 @@ namespace StalkerOnlineQuesterEditor
             parseDialogsFile(DialogsXMLFile, this.dialogs);
             foreach (var locale in parent.settings.getListLocales())
             {
-                DialogsXMLFile = "locales\\" + locale + "\\" + parent.settings.dialogXML;
+                //DialogsXMLFile = "locales\\" + locale + "\\" + parent.settings.dialogXML;
+                DialogsXMLFile = parent.settings.getDialogLocalePath();
                 if (!locales.Keys.Contains(locale))
                     locales.Add(locale, new NPCDicts());
                 parseDialogsFile(DialogsXMLFile, this.locales[locale]);
@@ -210,7 +211,15 @@ namespace StalkerOnlineQuesterEditor
         //! Сохранить все диалоги в xml файл
         public void saveDialogs(string fileName)
         {
+            //fileName = "RUS\\" + fileName; 
             save(fileName, this.dialogs);
+        }
+
+        //! Сохраняет текущую локализацию диалогов в файл
+        public void saveLocales(string fileName)
+        {
+            //fileName = parent.settings.getCurrentLocalePath() + '\\' + fileName;
+            this.save(fileName, this.locales[parent.settings.getCurrentLocale()]);
         }
 
         //! Сохранение всех диалогов в xml файл
@@ -277,7 +286,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 resultDoc.Save(w);
             }
-            copyResultFile(fileName);
+            //copyResultFile(fileName);
         }
 
         //! Парсит файл с местонахождением NPC
@@ -385,13 +394,6 @@ namespace StalkerOnlineQuesterEditor
             if (this.locales[locale][dialog.Holder].Keys.Contains(dialog.DialogID))
                 this.locales[locale][dialog.Holder].Remove(dialog.DialogID);
             this.locales[locale][dialog.Holder].Add(dialog.DialogID, dialog);
-        }
-
-        //! Сохраняет текущую локализацию в файл
-        public void saveLocales(string fileName)
-        {
-            fileName = parent.settings.getCurrentLocalePath() + '\\' + fileName;
-            this.save(fileName, this.locales[parent.settings.getCurrentLocale()]);
         }
 
         //! @todo исправлять это говнище, все затирает

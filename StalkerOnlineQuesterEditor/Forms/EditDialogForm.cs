@@ -20,7 +20,7 @@ namespace StalkerOnlineQuesterEditor
         int dialogID;
         bool isAdd;
         //! Максимальная длина ответа ГГ, при превышении которого выводится сообщение
-        int MAX_SYMBOL_ANSWER = 24;
+        int MAX_SYMBOL_ANSWER = 48;
 
         //! Конструктор
         public EditDialogForm(bool isAdd, MainForm parent, int selectedDialogID)
@@ -255,7 +255,7 @@ namespace StalkerOnlineQuesterEditor
             lAttention.Text = "";
             int length = tPlayerText.Text.Length;
             if (length > this.MAX_SYMBOL_ANSWER)
-                lAttention.Text = "Внимание: Текст более 24 символов!";
+                lAttention.Text = "Внимание: Текст более " + MAX_SYMBOL_ANSWER.ToString() + " символов!";
         }
 
         private void EditDialogForm_FormClosed(object sender, FormClosedEventArgs e)

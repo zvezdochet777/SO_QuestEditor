@@ -30,6 +30,7 @@ namespace StalkerOnlineQuesterEditor
         string SETTING_FILE = "Settings.xml";
 
         string LOCALES_PATH = "locales/";
+        string ORIGINAL_PATH = "RUS\\";
 
         public System.String dialogXML = "Dialogs.xml";
         public System.String questXML = "Quests.xml";
@@ -205,22 +206,50 @@ namespace StalkerOnlineQuesterEditor
         {
             return balanceXML;
         }
+
         //! Возвращает путь к папке с текущей локалью
-        public string getCurrentLocalePath()
+        /*public string getCurrentLocalePath()
         {
-            return "locales\\" + this.locales[currentLocale];
+            //return "locales\\" + this.locales[currentLocale];
+            return this.locales[currentLocale];
+        }
+         */ 
+
+        //! Возвращает адрес локализованного файла квестов
+        public string getQuestLocalePath()
+        {
+            string path = pathToCopyFiles;
+            path += getCurrentLocale() + "\\";
+            path += questXML;
+            return path;        
+        }
+
+        public string getDialogLocalePath()
+        {
+            string path = pathToCopyFiles;
+            path += getCurrentLocale() + "\\";
+            path += dialogXML;
+            return path;        
         }
 
         //! Возвращает путь к xml файлу с квестами
         public string getQuestsPath()
         {
-            return this.questXML;
+            string path = pathToCopyFiles;
+            path += ORIGINAL_PATH;
+            path += questXML;
+            return path;
+            //return this.questXML;
         }
 
         //! Возвращает путь к xml файлу с диалогами
         public string getDialogsPath()
         {
-            return this.dialogXML;
+            string path = pathToCopyFiles;
+            path += ORIGINAL_PATH;
+            path += dialogXML;
+            return path;
+            //return this.dialogXML;
         }
 
     }

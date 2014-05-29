@@ -820,13 +820,13 @@ namespace StalkerOnlineQuesterEditor
             this.Enabled = false;
             if (settings.getMode() == settings.MODE_EDITOR)
             {
-                quests.saveQuests(settings.questXML);
-                dialogs.saveDialogs(settings.dialogXML);
+                dialogs.saveDialogs(settings.getDialogsPath());  // settings.dialogXML
+                quests.saveQuests(settings.getQuestsPath());     // settings.questXML
             }
             else
             {
-                dialogs.saveLocales(settings.dialogXML);
-                quests.saveLocales(settings.questXML);
+                dialogs.saveLocales(settings.getDialogLocalePath());  // settings.dialogXML
+                quests.saveLocales(settings.getQuestLocalePath());    // settings.questXML
             }
             Thread.Sleep(1000);
             toolStripStatusLabel.Text = "Данные успешно сохранены.";
@@ -1743,9 +1743,54 @@ namespace StalkerOnlineQuesterEditor
         private void button1_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < NPCBox.Items.Count; i++)
+            {
                 NPCBox.SelectedIndex = i;
-        }
 
+                // костыль для локализации                        
+                string loc = settings.getCurrentLocale();
+                bool exist = true;
+                Dictionary<int, CDialog> Dialogs = this.dialogs.dialogs[currentNPC];
+                try
+                {
+                    Dictionary<int, CDialog> local = this.dialogs.locales[loc][currentNPC];
+                }
+                catch
+                {
+                    exist = false;
+                }
+                foreach (CDialog dialog in Dialogs.Values)
+                {
+                    if (!exist || !this.dialogs.locales[loc][currentNPC].ContainsKey(dialog.DialogID))
+                    {
+                        //rootElements.Add(dialog.DialogID);                    
+                        if (!dialogs.locales[loc].ContainsKey(currentNPC))
+                        {
+                            CDialog toadd = new CDialog();
+                            toadd = (CDialog)dialog.Clone();
+                            //toadd.Text = "";
+                            //toadd.Title = "";
+                            toadd.version = 0;
+                            //dialogs.locales[loc].Add(;
+                            Dictionary<int, CDialog> newdict = new Dictionary<int, CDialog>();
+                            newdict.Add(toadd.DialogID, toadd);
+                            dialogs.locales[loc].Add(currentNPC, newdict);
+                        }
+
+                        else if (!dialogs.locales[loc][currentNPC].ContainsKey(dialog.DialogID))
+                        {
+                            CDialog toadd = (CDialog)dialog.Clone();
+                            //toadd.Text = "";
+                            //toadd.Title = "";
+                            toadd.version = 0;
+                            dialogs.locales[loc][currentNPC].Add(toadd.DialogID, toadd);
+                        }
+                        //else
+                        //    dialogs.locales[settings.getCurrentLocale()][currentNPC][dialog.DialogID].coordinates.RootDialog = true;
+                        //result = dialog;                    
+                    }
+                }
+            }
+        }
     }
 }
  

@@ -17,8 +17,6 @@ namespace StalkerOnlineQuesterEditor
             InitializeComponent();
             parent.Enabled = false;
             this.parent = parent;
-
-
         }
 
         private void bOK_Click(object sender, EventArgs e)

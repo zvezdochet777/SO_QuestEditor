@@ -39,9 +39,9 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает вершину графа диалогов - корневую фразу
         CDialog getRootDialog()
         {
-            DialogDict dialogs = getDialogDictionary(currentNPC); //this.dialogs.dialogs[npc_name];
+            DialogDict Dialogs = getDialogDictionary(currentNPC); //this.dialogs.dialogs[currentNPC];
             CDialog result = null;
-            foreach (CDialog dialog in dialogs.Values)
+            foreach (CDialog dialog in Dialogs.Values)
             {
                 if (dialog.coordinates.RootDialog)
                 {
@@ -49,6 +49,45 @@ namespace StalkerOnlineQuesterEditor
                     result = dialog;
                 }
             }
+
+            // костыль для локализации
+            if (result == null)
+            {
+                Dialogs = this.dialogs.dialogs[currentNPC];
+                foreach (CDialog dialog in Dialogs.Values)
+                {
+                    if (dialog.coordinates.RootDialog)
+                    {
+                        rootElements.Add(dialog.DialogID);
+                            string loc = settings.getCurrentLocale();
+                            if (!dialogs.locales[loc].ContainsKey(currentNPC))
+                            {
+                                CDialog toadd = new CDialog();
+                                toadd = (CDialog)dialog.Clone();
+                                toadd.Text = "";
+                                toadd.Title = "";
+                                toadd.version = 0;
+                                //dialogs.locales[loc].Add(;
+                                Dictionary<int, CDialog> newdict = new Dictionary<int, CDialog>();
+                                newdict.Add(toadd.DialogID, toadd);
+                                dialogs.locales[loc].Add(currentNPC, newdict);
+                            }
+
+                            else if (!dialogs.locales[loc][currentNPC].ContainsKey(dialog.DialogID))
+                            {
+                                CDialog toadd = (CDialog)dialog.Clone();
+                                toadd.Text = "";
+                                toadd.Title = "";
+                                toadd.version = 0;
+                                dialogs.locales[settings.getCurrentLocale()][currentNPC].Add(toadd.DialogID, toadd);
+                            }
+                            else
+                                dialogs.locales[settings.getCurrentLocale()][currentNPC][dialog.DialogID].coordinates.RootDialog = true;
+                        result = dialog;
+                    }
+                }
+            }
+
             return result;
         }
 

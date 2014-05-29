@@ -48,7 +48,8 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (var locale in parent.settings.getListLocales())
             {
-                QuestsXMLFile = "locales\\" + locale + "\\" + parent.settings.questXML;
+                //QuestsXMLFile = "locales\\" + locale + "\\" + parent.settings.questXML;
+                QuestsXMLFile = parent.settings.getQuestLocalePath();
                 if (!locales.Keys.Contains(locale))
                     locales.Add(locale, new NPCQuestDict());
                 parseQuestsFile(QuestsXMLFile, this.locales[locale]);
@@ -319,7 +320,15 @@ namespace StalkerOnlineQuesterEditor
         //! Сохраняет данные по квестам в xml файл
         public void saveQuests(string fileName)
         {
+            //fileName = "RUS\\" + fileName;
             save(fileName, this.quest);
+        }
+
+        //! Сохраняет текущую локализацию квестов в файл
+        public void saveLocales(string fileName)
+        {
+            //fileName = parent.settings.getCurrentLocalePath() + '\\' + fileName;
+            this.save(fileName, this.locales[parent.settings.getCurrentLocale()]);
         }
 
         //! Сохраняет данные по квестам в xml файл
@@ -434,7 +443,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 resultDoc.Save(w);
             }
-            copyResultFile(fileName);
+            //copyResultFile(fileName);
         }
 
         //! Копирование получившегося файла в директорию игры (она задается в настройках)
@@ -659,12 +668,6 @@ namespace StalkerOnlineQuesterEditor
                if (this.locales[locale].Keys.Contains(quest.QuestID))
                     this.locales[locale].Remove(quest.QuestID);
                this.locales[locale].Add(quest.QuestID, quest);
-        }
-
-        public void saveLocales(string fileName)
-        {
-            fileName = parent.settings.getCurrentLocalePath() + '\\' + fileName;
-            this.save(fileName, this.locales[parent.settings.getCurrentLocale()]);
         }
 
         public void createResults()
