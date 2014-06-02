@@ -1742,6 +1742,7 @@ namespace StalkerOnlineQuesterEditor
         //! Тeстовая фукция "пробежать", пробегает всех NPC (для заполнения полей в тестовом режиме)
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             for (int i = 0; i < NPCBox.Items.Count; i++)
             {
                 NPCBox.SelectedIndex = i;
@@ -1788,6 +1789,27 @@ namespace StalkerOnlineQuesterEditor
                         //    dialogs.locales[settings.getCurrentLocale()][currentNPC][dialog.DialogID].coordinates.RootDialog = true;
                         //result = dialog;                    
                     }
+                }
+            }
+             */
+            foreach (CQuest quest in quests.quest.Values)
+            {
+                string loc = settings.getCurrentLocale();
+                bool exist = true;                
+                try
+                {
+                    CQuest local = this.quests.locales[loc][quest.QuestID];
+                }
+                catch
+                {
+                    exist = false;
+                }
+                if (!exist)
+                {
+                    CQuest toadd = new CQuest();
+                    toadd = (CQuest) quest.Clone();
+                    toadd.Version = 0;
+                    quests.locales[loc].Add(toadd.QuestID, toadd);
                 }
             }
         }

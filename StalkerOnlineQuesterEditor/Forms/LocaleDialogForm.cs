@@ -19,10 +19,8 @@ namespace StalkerOnlineQuesterEditor.Forms
         public LocaleDialogForm(MainForm parent, int selectedDialogID)
         {
             InitializeComponent();
-            this.parent = parent;
-            
-            var dialog = parent.getDialogOnDialogID(selectedDialogID);
-            //System.Console.WriteLine("LocaleDialogForm::__init__ " + dialog);
+            this.parent = parent;            
+            CDialog dialog = parent.getDialogOnDialogID(selectedDialogID);            
             NPCReactiontextBox.Text = dialog.Text;
             textBoxAnswer.Text = dialog.Title;
             lViewNpcName.Text = dialog.Holder;
@@ -32,8 +30,11 @@ namespace StalkerOnlineQuesterEditor.Forms
 
             if (localeDialog != null)
             {
-                textBoxNPCReactionLocale.Text = localeDialog.Text;
-                textBoxAnswerLocale.Text = localeDialog.Title;
+                if (localeDialog.Text != dialog.Text)
+                {
+                    textBoxNPCReactionLocale.Text = localeDialog.Text;
+                    textBoxAnswerLocale.Text = localeDialog.Title;
+                }
             }
         }
         //! Закрытие формы

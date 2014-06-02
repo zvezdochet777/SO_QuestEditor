@@ -58,11 +58,13 @@ namespace StalkerOnlineQuesterEditor.Forms
             onWonTextBox.Text = quest.QuestInformation.onWin;
             onFailedTextBox.Text = quest.QuestInformation.onFailed;
 
-            localeLitleTextBox.Text = locale_quest.QuestInformation.Title;
-            localeDescriptionTextBox.Text = locale_quest.QuestInformation.Description;
-            localeOnWonTextBox.Text = locale_quest.QuestInformation.onWin;
-            localeOnFailedTextBox.Text = locale_quest.QuestInformation.onFailed;
-
+            if (locale_quest.QuestInformation.Description != quest.QuestInformation.Description)
+            {
+                localeLitleTextBox.Text = locale_quest.QuestInformation.Title;
+                localeDescriptionTextBox.Text = locale_quest.QuestInformation.Description;
+                localeOnWonTextBox.Text = locale_quest.QuestInformation.onWin;
+                localeOnFailedTextBox.Text = locale_quest.QuestInformation.onFailed;
+            }
         }
         //! Закрытие формы
         private void LocaleQuestForm_FormClosing(object sender, FormClosingEventArgs e)
