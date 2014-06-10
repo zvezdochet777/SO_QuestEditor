@@ -215,6 +215,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.NPCBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.NPCBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.NPCBox.DropDownWidth = 280;
             this.NPCBox.FormattingEnabled = true;
             this.NPCBox.Location = new System.Drawing.Point(96, 3);
             this.NPCBox.Name = "NPCBox";

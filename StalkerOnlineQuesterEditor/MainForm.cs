@@ -178,7 +178,11 @@ namespace StalkerOnlineQuesterEditor
             this.NPCBox.Items.Clear();
             foreach (string holder in this.dialogs.dialogs.Keys)
             {
-                this.NPCBox.Items.Add(holder.ToString());
+                string npcName = holder;
+                if (dialogs.rusName.ContainsKey(holder))
+                    npcName += " (" + dialogs.rusName[holder] + ")";
+                this.NPCBox.Items.Add(npcName);
+                //this.NPCBox.Items.Add(holder.ToString());
                 this.NPCBox.Sorted = true;
             }
             this.NPCBox.Text = "Пожалуйста, выберите NPC.";

@@ -20,7 +20,7 @@ namespace StalkerOnlineQuesterEditor
     //! Словарь <NPCName, <DialogID, CDifference>>
     using DifferenceDict = Dictionary<string, Dictionary<int, CDifference>>;
     //! Словарь местонахождения NPC
-    using NPCLocationDict = Dictionary<string,string>;
+    using NPCDataDict = Dictionary<string,string>;
 
     //! Класс обработки диалогов
     public class CDialogs
@@ -34,7 +34,9 @@ namespace StalkerOnlineQuesterEditor
         //! Словарь локалей
         public NPCLocales locales = new NPCLocales();
         //! Словарь местонахождения NPC
-        public NPCLocationDict location = new NPCLocationDict();
+        public NPCDataDict location = new NPCDataDict();
+        //! Словарь имен NPC по-русски
+        public NPCDataDict rusName = new NPCDataDict();
 
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
         public CDialogs(MainForm parent)
@@ -50,7 +52,7 @@ namespace StalkerOnlineQuesterEditor
                     locales.Add(locale, new NPCDicts());
                 parseDialogsFile(DialogsXMLFile, this.locales[locale]);
             }
-            parseNpcLocationFile("npc_stat.xml",location);
+            parseNpcLocationFile("npc_stat.xml");
         }
 
         //! Парсер xml - файла диалогов, записывает результат в target
@@ -290,18 +292,21 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Парсит файл с местонахождением NPC
-        void parseNpcLocationFile(string fileName, NPCLocationDict target)
+        void parseNpcLocationFile(string fileName)
         {
             if (!File.Exists(fileName))
                 return;
 
             doc = XDocument.Load(fileName);
-            foreach (XElement location in doc.Root.Elements())
+            foreach (XElement item in doc.Root.Elements())
             {
-                string name = location.Attribute("name").Value.ToString();
-                string map = location.Attribute("maps").Value.ToString();
-                if ( !target.ContainsKey(name) )
-                    target.Add(name, map);                
+                string name = item.Element("Name").Value.ToString();
+                string map = item.Element("map").Value.ToString();
+                string localName = item.Element("npcLocal").Value.ToString();
+                if ( !location.ContainsKey(name) )
+                    location.Add(name, map);
+                if (!rusName.ContainsKey(name))
+                    rusName.Add(name, localName);
             }
         }
 
