@@ -24,11 +24,10 @@ namespace StalkerOnlineQuesterEditor
 {
     using NPCQuestDict = Dictionary<int, CDialog>;
     using StalkerOnlineQuesterEditor.Forms;
+
     //! Главная форма программы, туча строк кода
     public partial class MainForm : Form
     {
-        int STARTTALKQUESTS = 2500;
-        int ENDTALKQUESTS = 3500;
         //! Текущий выбранный NPC (в комбобоксе вверху)
         public string currentNPC = "";
         //! Ссылка на экземпляр класса CDialogs, хранит все данные и функции по работе с диалогами
@@ -48,6 +47,7 @@ namespace StalkerOnlineQuesterEditor
         List<PNode> subNodes = new List<PNode>();
         List<int> protectedTreeNode;
         Dictionary<LinkLabel,int> titles;
+        List<NPCNameDataSourceObject> npcNames = new List<NPCNameDataSourceObject>();
 
         public СQuestConstants questConst;
         public CItemConstants itemConst;
@@ -113,10 +113,12 @@ namespace StalkerOnlineQuesterEditor
         //! Сменили NPC в комбобоксе выбора персонажа
         private void NPCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!NPCBox.SelectedItem.ToString().Equals(currentNPC))
-            {
+            //if (!NPCBox.SelectedItem.ToString().Equals(currentNPC))
+            //{
                 clearQuestTab();
-                currentNPC = NPCBox.SelectedItem.ToString();
+                //currentNPC = NPCBox.SelectedItem.ToString();
+                currentNPC = NPCBox.SelectedValue.ToString();
+                //currentNPC = ((NPCNameDataSourceObject)(NPCBox.SelectedValue)).Value.ToString();
 
                 if (CentralDock.SelectedIndex == 0)
                 {
@@ -135,9 +137,9 @@ namespace StalkerOnlineQuesterEditor
                     fillQuestChangeBox(false);
                     QuestBox.Text = "Пожалуйста, выберите квест";
                 }
-            }
+            //}
         }
-        //! Супер-мега костыль от мудаков. СтартКвест == RootDialog для персонажа
+        //! Заполняет комбобокс со списком квестов у данного персонажа
         void fillQuestChangeBox(bool onlyDialogs)
         {
             QuestBox.SelectedItem = null;
@@ -145,13 +147,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (CQuest quest in quests.getQuestAndTitleOnNPCName(currentNPC))
             {
                 if (!onlyDialogs)
-                {
-                    //! @todo думать выкуривать
-                    if (quest.QuestID < STARTTALKQUESTS || quest.QuestID > ENDTALKQUESTS)
-                    {
-                        QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
-                    }
-                }
+                    QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
             }
         }
 
@@ -175,17 +171,23 @@ namespace StalkerOnlineQuesterEditor
         //! Заполнение итемов в комбобоксе NPC
         void fillNPCBOX()
         {
-            this.NPCBox.Items.Clear();
+            NPCBox.Items.Clear();
+            npcNames.Clear();
             foreach (string holder in this.dialogs.dialogs.Keys)
             {
                 string npcName = holder;
                 if (dialogs.rusName.ContainsKey(holder))
                     npcName += " (" + dialogs.rusName[holder] + ")";
-                this.NPCBox.Items.Add(npcName);
+                npcNames.Add ( new NPCNameDataSourceObject(holder, npcName));
+                //NPCBox.Items.Add(npcName);                
                 //this.NPCBox.Items.Add(holder.ToString());
-                this.NPCBox.Sorted = true;
             }
-            this.NPCBox.Text = "Пожалуйста, выберите NPC.";
+            npcNames.Sort();
+            NPCBox.DataSource = npcNames;
+            NPCBox.DisplayMember = "DisplayString";
+            NPCBox.ValueMember = "Value";
+
+            NPCBox.SelectedIndex = 1;
                        
             QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -974,7 +976,7 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (string npcName in npcConst.NPCs.Keys)
                 foreach (CQuest quest in quests.quest.Values)
-                    if (quest.Additional.Holder == npcName && (quest.Additional.IsSubQuest==0) && (quest.QuestID > ENDTALKQUESTS || quest.QuestID < STARTTALKQUESTS))
+                    if (quest.Additional.Holder == npcName && (quest.Additional.IsSubQuest==0) )
                     {
 
                         string id = quest.QuestID.ToString();
@@ -1655,6 +1657,7 @@ namespace StalkerOnlineQuesterEditor
             gridViewReview.Columns[1].HeaderText = "Диалоги";
             gridViewReview.Columns[2].HeaderText = "Квесты";
             gridViewReview.Columns[3].HeaderText = "Карта";
+            gridViewReview.Columns[4].HeaderText = "Русское имя";
         }
         //! Устанавливает надписи в таблице вкладки Проверка для поиска квестов
         void setQuestCheckEnvironment()
@@ -1663,6 +1666,7 @@ namespace StalkerOnlineQuesterEditor
             gridViewReview.Columns[1].HeaderText = "Квест";
             gridViewReview.Columns[2].HeaderText = "Открыт квест";
             gridViewReview.Columns[3].HeaderText = "Закрыт квест";
+            gridViewReview.Columns[4].HeaderText = "Русское имя";
         }
 
         //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
@@ -1677,9 +1681,10 @@ namespace StalkerOnlineQuesterEditor
                 int d_num = dialogs.dialogs[npc].Count;
                 int q_num = quests.getCountOfQuests(npc);
                 string location = (dialogs.location.ContainsKey(npc))?(dialogs.location[npc]):("НЕТ ИМЕНИ");
+                string rusname = (dialogs.rusName.ContainsKey(npc)) ? (dialogs.rusName[npc]) : ("НЕ ПЕРЕВЕДЕН");
                 if( (checkDialog && d_num < numDialogs.Value) || (checkQuest && q_num < numQuests.Value) )
                 {
-                    object[] row = { npc, d_num, q_num, location };
+                    object[] row = { npc, d_num, q_num, location, rusname };
                     gridViewReview.Rows.Add( row );
                 }
             }

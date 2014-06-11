@@ -79,6 +79,7 @@ namespace StalkerOnlineQuesterEditor
             this.сolDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сolQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
             this.gbQuestCheck = new System.Windows.Forms.GroupBox();
             this.bFindQuest = new System.Windows.Forms.Button();
@@ -729,7 +730,8 @@ namespace StalkerOnlineQuesterEditor
             this.colNPCName,
             this.сolDialogsNum,
             this.сolQuestsNum,
-            this.colLocation});
+            this.colLocation,
+            this.colRussianName});
             this.gridViewReview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridViewReview.Location = new System.Drawing.Point(0, 104);
             this.gridViewReview.Name = "gridViewReview";
@@ -755,6 +757,11 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.colLocation.HeaderText = "Карта";
             this.colLocation.Name = "colLocation";
+            // 
+            // colRussianName
+            // 
+            this.colRussianName.HeaderText = "Русское имя";
+            this.colRussianName.Name = "colRussianName";
             // 
             // panelReviewButtons
             // 
@@ -1620,10 +1627,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.CheckBox cbNumQuests;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelReviewOutputed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn сolDialogsNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn сolQuestsNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
         private System.Windows.Forms.Panel pNpcLinkControls;
         private System.Windows.Forms.Button bNpcLinkExecute;
         private System.Windows.Forms.Label lAdviceNpcLink;
@@ -1635,6 +1638,11 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLocation;
         private System.Windows.Forms.GroupBox gbQuestCheck;
         private System.Windows.Forms.Button bFindQuest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn сolDialogsNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn сolQuestsNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
 
 
     }

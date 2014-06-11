@@ -8963,5 +8963,10 @@
 		<id> 410022 </id>
 		<Name> Награда|Награда за квест 2 </Name>
 		<Description></Description>
-	</item>	
+	</item>
+	<item>
+		<id> 410023 </id>
+		<Name> Награда|Награда за квест 7437 </Name>
+		<Description></Description>
+	</item>
 </root>

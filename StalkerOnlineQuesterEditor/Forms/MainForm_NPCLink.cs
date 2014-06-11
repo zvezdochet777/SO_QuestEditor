@@ -37,7 +37,8 @@ namespace StalkerOnlineQuesterEditor
         {
             if (NPCBox.SelectedIndex == -1)
                 return;
-            string npcName = NPCBox.SelectedItem.ToString();
+            //string npcName = NPCBox.SelectedItem.ToString();
+            string npcName = NPCBox.SelectedValue.ToString();
 
             // очищаем поле графа
             bNumOfIter = true;
