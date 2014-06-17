@@ -638,9 +638,6 @@ namespace StalkerOnlineQuesterEditor
         public void createExamples()
         {
             List<int> rem = new List<int>();
-//            foreach (var q in this.quest.Keys)
-//                if (!startQuests.Contains(q))
-//                    rem.Add(q);
             foreach (var qId in rem)
             {
                 quest[qId].Target = new CQuestTarget();
@@ -688,14 +685,6 @@ namespace StalkerOnlineQuesterEditor
                     results.Add(cur_quest.QuestID, cur_quest);
                 }
             }
-/*
-            foreach (var start_quest_id in this.startQuests)
-            {
-                CQuest start_quest = getQuest(start_quest_id);
-                if (start_quest != null && !results.Keys.Contains(start_quest_id))
-                    results.Add(start_quest.QuestID, start_quest);
-            }
- */ 
             this.save(parent.settings.questXML, results);
         }
 

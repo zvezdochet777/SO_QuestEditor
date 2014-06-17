@@ -439,7 +439,7 @@ namespace StalkerOnlineQuesterEditor
                 Listener.setCurrentNode(choosenDialogID);
             }            
         }
-        //! Антиговнокод - добавлние примечания к фразе диалога с действием
+        //! Антиговнокод - добавление примечания к фразе диалога с действием
         void addActionTextToEmulator(string text, int dialogID)
         {
             toolStripStatusLabel.Text += text;
@@ -1698,8 +1698,6 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (CQuest quest in quests.quest.Values)
             {
-                //if (quests.startQuests.Contains(quest.QuestID))
-                    //continue;
                 if (quest.Additional.IsSubQuest != 0)
                     continue;
 
@@ -1739,12 +1737,11 @@ namespace StalkerOnlineQuesterEditor
                             temp = quests.getQuest( temp.Additional.IsSubQuest);
 
                         string qtext = temp.QuestID.ToString() + ": ";
-                        qtext += temp.QuestInformation.Title;
-                        NPCBox.SelectedItem = quest.Additional.Holder;
+                        qtext += temp.QuestInformation.Title;                        
+                        NPCBox.SelectedValue = quest.Additional.Holder;
                         QuestBox.SelectedItem = qtext;
                     }
-                }
-          
+                }          
             }
         }
 
@@ -1800,7 +1797,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
-             */
+             
             foreach (CQuest quest in quests.quest.Values)
             {
                 string loc = settings.getCurrentLocale();
@@ -1821,6 +1818,23 @@ namespace StalkerOnlineQuesterEditor
                     quests.locales[loc].Add(toadd.QuestID, toadd);
                 }
             }
+             */
+                
+            List<int> karma = new List<int>();
+            karma.Add(2);
+            karma.Add(500);
+            karma.Add(0);
+
+            foreach (string npc in dialogs.dialogs.Keys)
+            {
+                Dictionary<int, CDialog> Dialogs = this.dialogs.dialogs[npc];
+                foreach (CDialog dialog in Dialogs.Values)
+                {
+                    if (dialog.Actions.GetQuests.Count > 0)
+                        dialog.Precondition.KarmaPK = karma;
+                }
+            }
+
         }
     }
 }

@@ -168,11 +168,14 @@ namespace StalkerOnlineQuesterEditor
                         nodeCoord.RootDialog = true;
                     else
                         nodeCoord.RootDialog = false;
-                    
-                    if (item.Element("NodeCoordinates").Element("Active").Value.Equals("1"))
-                        nodeCoord.Active = true;
-                    else
-                        nodeCoord.Active = false;
+
+                    if (item.Element("NodeCoordinates").Descendants().Any(itm2 => itm2.Name == "Active"))
+                    {
+                        if (item.Element("NodeCoordinates").Element("Active").Value.Equals("1"))
+                            nodeCoord.Active = true;
+                        else
+                            nodeCoord.Active = false;
+                    }
                 }
 
                 foreach (string el in item.Element("Precondition").Element("Reputation").Value.Split(';'))
