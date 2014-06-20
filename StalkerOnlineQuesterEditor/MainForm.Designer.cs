@@ -43,6 +43,7 @@ namespace StalkerOnlineQuesterEditor
             this.bZoomIn = new System.Windows.Forms.Button();
             this.bZoomOut = new System.Windows.Forms.Button();
             this.DialogActions = new System.Windows.Forms.Panel();
+            this.bAddNoKarmaDialog = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.labelYNode = new System.Windows.Forms.Label();
@@ -354,6 +355,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.DialogActions.AutoSize = true;
             this.DialogActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DialogActions.Controls.Add(this.bAddNoKarmaDialog);
             this.DialogActions.Controls.Add(this.button1);
             this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
             this.DialogActions.Controls.Add(this.labelYNode);
@@ -368,9 +370,19 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions.Size = new System.Drawing.Size(183, 403);
             this.DialogActions.TabIndex = 1;
             // 
+            // bAddNoKarmaDialog
+            // 
+            this.bAddNoKarmaDialog.Location = new System.Drawing.Point(36, 206);
+            this.bAddNoKarmaDialog.Name = "bAddNoKarmaDialog";
+            this.bAddNoKarmaDialog.Size = new System.Drawing.Size(116, 23);
+            this.bAddNoKarmaDialog.TabIndex = 8;
+            this.bAddNoKarmaDialog.Text = "Добавить диалог";
+            this.bAddNoKarmaDialog.UseVisualStyleBackColor = true;
+            this.bAddNoKarmaDialog.Click += new System.EventHandler(this.bAddNoKarmaDialog_Click);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 213);
+            this.button1.Location = new System.Drawing.Point(36, 235);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 23);
             this.button1.TabIndex = 7;
@@ -380,7 +392,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // bCenterizeDialogShower
             // 
-            this.bCenterizeDialogShower.Location = new System.Drawing.Point(7, 242);
+            this.bCenterizeDialogShower.Location = new System.Drawing.Point(7, 264);
             this.bCenterizeDialogShower.Name = "bCenterizeDialogShower";
             this.bCenterizeDialogShower.Size = new System.Drawing.Size(172, 23);
             this.bCenterizeDialogShower.TabIndex = 6;
@@ -1643,6 +1655,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn сolQuestsNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
+        private System.Windows.Forms.Button bAddNoKarmaDialog;
 
 
     }

@@ -388,6 +388,7 @@ namespace StalkerOnlineQuesterEditor
                 coord.X = curDialog.coordinates.X;
                 coord.Y = curDialog.coordinates.Y;
                 coord.RootDialog = curDialog.coordinates.RootDialog;
+                coord.Active = curDialog.coordinates.Active;
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text,
                     precondition, actions, nodes, dialogID, (curDialog.version + 1), coord), dialogID);
             }

@@ -54,6 +54,8 @@
             this.tSubDialogsTextBox = new System.Windows.Forms.MaskedTextBox();
             this.subDialogsLabel = new System.Windows.Forms.Label();
             this.PreconditionBox = new System.Windows.Forms.GroupBox();
+            this.mtbPlayerLevel = new System.Windows.Forms.MaskedTextBox();
+            this.lPlayerLevel = new System.Windows.Forms.Label();
             this.CheckLonerCheckBox = new System.Windows.Forms.CheckBox();
             this.bKarma = new System.Windows.Forms.Button();
             this.bReputation = new System.Windows.Forms.Button();
@@ -79,8 +81,6 @@
             this.NPCReactionText = new System.Windows.Forms.Label();
             this.MustPanel = new System.Windows.Forms.Panel();
             this.textGroupBox = new System.Windows.Forms.GroupBox();
-            this.mtbPlayerLevel = new System.Windows.Forms.MaskedTextBox();
-            this.lPlayerLevel = new System.Windows.Forms.Label();
             this.actionsBox.SuspendLayout();
             this.PreconditionBox.SuspendLayout();
             this.QuestConditiongroupBox.SuspendLayout();
@@ -90,7 +90,7 @@
             // 
             // tPlayerText
             // 
-            this.tPlayerText.Location = new System.Drawing.Point(103, 171);
+            this.tPlayerText.Location = new System.Drawing.Point(103, 46);
             this.tPlayerText.Name = "tPlayerText";
             this.tPlayerText.Size = new System.Drawing.Size(479, 20);
             this.tPlayerText.TabIndex = 1;
@@ -99,7 +99,7 @@
             // lAnswerText
             // 
             this.lAnswerText.AutoSize = true;
-            this.lAnswerText.Location = new System.Drawing.Point(3, 171);
+            this.lAnswerText.Location = new System.Drawing.Point(3, 46);
             this.lAnswerText.Name = "lAnswerText";
             this.lAnswerText.Size = new System.Drawing.Size(86, 13);
             this.lAnswerText.TabIndex = 1;
@@ -127,7 +127,7 @@
             // 
             this.lAttention.AutoSize = true;
             this.lAttention.ForeColor = System.Drawing.Color.DarkRed;
-            this.lAttention.Location = new System.Drawing.Point(100, 155);
+            this.lAttention.Location = new System.Drawing.Point(107, 78);
             this.lAttention.Name = "lAttention";
             this.lAttention.Size = new System.Drawing.Size(51, 13);
             this.lAttention.TabIndex = 13;
@@ -329,10 +329,10 @@
             // 
             // tNPCReactiontextBox
             // 
-            this.tNPCReactiontextBox.Location = new System.Drawing.Point(103, 77);
+            this.tNPCReactiontextBox.Location = new System.Drawing.Point(103, 103);
             this.tNPCReactiontextBox.Multiline = true;
             this.tNPCReactiontextBox.Name = "tNPCReactiontextBox";
-            this.tNPCReactiontextBox.Size = new System.Drawing.Size(479, 75);
+            this.tNPCReactiontextBox.Size = new System.Drawing.Size(479, 88);
             this.tNPCReactiontextBox.TabIndex = 0;
             // 
             // tSubDialogsTextBox
@@ -368,6 +368,24 @@
             this.PreconditionBox.TabIndex = 4;
             this.PreconditionBox.TabStop = false;
             this.PreconditionBox.Text = "Условия активности узла";
+            // 
+            // mtbPlayerLevel
+            // 
+            this.mtbPlayerLevel.Location = new System.Drawing.Point(117, 215);
+            this.mtbPlayerLevel.Mask = "000";
+            this.mtbPlayerLevel.Name = "mtbPlayerLevel";
+            this.mtbPlayerLevel.PromptChar = ' ';
+            this.mtbPlayerLevel.Size = new System.Drawing.Size(100, 20);
+            this.mtbPlayerLevel.TabIndex = 49;
+            // 
+            // lPlayerLevel
+            // 
+            this.lPlayerLevel.AutoSize = true;
+            this.lPlayerLevel.Location = new System.Drawing.Point(13, 218);
+            this.lPlayerLevel.Name = "lPlayerLevel";
+            this.lPlayerLevel.Size = new System.Drawing.Size(92, 13);
+            this.lPlayerLevel.TabIndex = 48;
+            this.lPlayerLevel.Text = "Уровень игрока:";
             // 
             // CheckLonerCheckBox
             // 
@@ -575,7 +593,7 @@
             // NPCReactionText
             // 
             this.NPCReactionText.AutoSize = true;
-            this.NPCReactionText.Location = new System.Drawing.Point(3, 79);
+            this.NPCReactionText.Location = new System.Drawing.Point(3, 105);
             this.NPCReactionText.Name = "NPCReactionText";
             this.NPCReactionText.Size = new System.Drawing.Size(75, 13);
             this.NPCReactionText.TabIndex = 6;
@@ -608,24 +626,6 @@
             this.textGroupBox.Size = new System.Drawing.Size(588, 227);
             this.textGroupBox.TabIndex = 15;
             this.textGroupBox.TabStop = false;
-            // 
-            // mtbPlayerLevel
-            // 
-            this.mtbPlayerLevel.Location = new System.Drawing.Point(117, 215);
-            this.mtbPlayerLevel.Mask = "000";
-            this.mtbPlayerLevel.Name = "mtbPlayerLevel";
-            this.mtbPlayerLevel.PromptChar = ' ';
-            this.mtbPlayerLevel.Size = new System.Drawing.Size(100, 20);
-            this.mtbPlayerLevel.TabIndex = 49;
-            // 
-            // lPlayerLevel
-            // 
-            this.lPlayerLevel.AutoSize = true;
-            this.lPlayerLevel.Location = new System.Drawing.Point(13, 218);
-            this.lPlayerLevel.Name = "lPlayerLevel";
-            this.lPlayerLevel.Size = new System.Drawing.Size(92, 13);
-            this.lPlayerLevel.TabIndex = 48;
-            this.lPlayerLevel.Text = "Уровень игрока:";
             // 
             // EditDialogForm
             // 

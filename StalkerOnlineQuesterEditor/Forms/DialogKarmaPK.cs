@@ -29,11 +29,11 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (karma[0] == 0 || karma[0] == 1)
                 {
-                    aTextBox.Text = karma[1].ToString();
+                    aTextBox.Text = karma[2].ToString();    // костыль, похоже перепутаны значения
                 }
                 if (karma[0] == 0 || karma[0] == 2)
                 {
-                    bTextBox.Text = karma[2].ToString();
+                    bTextBox.Text = karma[1].ToString();    // костыль, похоже перепутаны значения
                 }
             }
         }
@@ -66,8 +66,8 @@ namespace StalkerOnlineQuesterEditor
                 }
 
                 form.editKarmaPK.Add(flag);
-                form.editKarmaPK.Add(a);
-                form.editKarmaPK.Add(b);
+                form.editKarmaPK.Add(b);        // тот же костыль
+                form.editKarmaPK.Add(a);        // тот же костыль
             }
 
             this.Close();

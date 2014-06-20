@@ -49,7 +49,7 @@ namespace StalkerOnlineQuesterEditor
                     result = dialog;
                 }
             }
-
+            /*
             // костыль для локализации
             if (result == null)
             {
@@ -87,6 +87,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
+            */
 
             return result;
         }

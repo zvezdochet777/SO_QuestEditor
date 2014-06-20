@@ -612,7 +612,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int subquest in quest.Additional.ListOfSubQuest)
                     createQuestPanels(subquest);
         }
-
+        //! Выделение квеста в дереве квестов
         private void treeQuestSelected(object sender, EventArgs e)
         {
             this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
@@ -620,7 +620,7 @@ namespace StalkerOnlineQuesterEditor
             checkQuestButton(getQuestOnQuestID(currentQuest).Target.QuestType, currentQuest);
             fillQuestPanel();
         }
-
+        //! Заполнение подквестов в виде списка в splitQuestsContainer
         void fillQuestPanel()
         {
             panels.Clear();
@@ -768,16 +768,16 @@ namespace StalkerOnlineQuesterEditor
                 if (!quests.quest.Keys.Contains(questi) && !quests.buffer.Keys.Contains(questi) && !iLists.Contains(questi))
                     return questi;
         }
-
+        //! Добавление квеста в дерево квестов, вызывается из окна редактирования EditQuestForm
         public void addQuest(CQuest quest, int parent)
         {
-            //System.Console.WriteLine("addQuest: "+ quest.QuestID);
             quests.quest[parent].Additional.ListOfSubQuest.Add(quest.QuestID);
             quests.quest.Add(quest.QuestID, quest);
             checkQuestButton(quest.Target.QuestType, quest.QuestID);
-
-            treeQuest.Nodes.Find(parent.ToString(), true)[0].Nodes.Add(quest.QuestID.ToString(), quest.QuestID.ToString());
+            
+            addNodeOnTreeQuest(quest.QuestID);
             treeQuest.ExpandAll();
+            fillQuestPanel();
         }
 
         public void replaceQuest(CQuest quest)
@@ -787,14 +787,14 @@ namespace StalkerOnlineQuesterEditor
             quests.replaceQuest(quest);
             checkQuestButton(quest.Target.QuestType, quest.QuestID);
         }
-
+        //! нажатиа на кнопку "Добавление квеста", вызов окна EditQuestForm
         private void bAddEvent_Click(object sender, EventArgs e)
         {
             EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 4);
             questEditor.Visible = true;
             this.Enabled = false;
         }
-
+        //! Правка квеста, в зависимости от режима вызывается окно правки или окно перевода
         private void bEditEvent_Click(object sender, EventArgs e)
         {
             if (settings.getMode() == settings.MODE_EDITOR)
@@ -937,7 +937,6 @@ namespace StalkerOnlineQuesterEditor
                 ret.AddRange(getTreeItemIDs(subquestID));
             return ret;
         }
-
 
         public List<CQuest> getTreesItemIDs(int questID)
         {
@@ -1825,15 +1824,95 @@ namespace StalkerOnlineQuesterEditor
             karma.Add(500);
             karma.Add(0);
 
+            List<int> badKarma = new List<int>();
+            badKarma.Add(1);
+            badKarma.Add(0);
+            badKarma.Add(500);
+
+
             foreach (string npc in dialogs.dialogs.Keys)
             {
+                if (npc == "Suhar" || npc == "Bugor" || npc == "stoneman_1" || npc == "stoneman_2"
+                    || npc == "Kamni_01" || npc == "Kamni_02" || npc == "Meniala_Standart"
+                    || npc == "Bank_Swamp" || npc == "Mokruh" || npc == "Repair_bandit"
+                    || npc == "Ammo_trader_bandit" || npc == "Tunnel_provodnik_NZ2" || npc == "prapNicheporenko"
+                    || npc == "donate_base_doorman_no_clan" || npc == "donate_base_doorman"
+                    || npc == "CaptureBase_Sklad" || npc == "clan_Donat_Bankir" || npc == "clan_pochta_trader")                                        
+                    continue;
+                currentNPC = npc;
+                NPCBox.SelectedValue = npc;
+                CDialog root = getRootDialog();
+                /*
                 Dictionary<int, CDialog> Dialogs = this.dialogs.dialogs[npc];
                 foreach (CDialog dialog in Dialogs.Values)
                 {
                     if (dialog.Actions.GetQuests.Count > 0)
                         dialog.Precondition.KarmaPK = karma;
                 }
+                */
+
+                List<int> subs = root.Nodes;
+                foreach (int id in subs)
+                {
+                    //CDialog dialog = dialogs.dialogs[npc][id];
+                    CDialog dialog = getDialogOnDialogID(npc, id);
+                    dialog.Precondition.KarmaPK = karma;
+                }
+
+                // добавляем фразу о невозможности поболтать
+                int NewId = getDialogsNewID();
+                int parentId = root.DialogID;
+                CDialog dial = new CDialog();
+                dial.DialogID = NewId;
+                dial.version = 1;
+                dial.Text = "Извини, с уголовниками не общаюсь";
+                dial.Title = "Есть минутка?";
+                dial.Holder = currentNPC;
+                dial.coordinates.RootDialog = false;
+                dial.coordinates.Active = true;
+                dial.Precondition.KarmaPK = badKarma;
+                addActiveDialog(NewId, dial, parentId);
+
+                int id2 = getDialogsNewID();
+                CDialog dial2 = new CDialog();
+                dial2.DialogID = id2;
+                dial2.version = 1;
+                dial2.Text = "";
+                dial2.Title = "Ладно";
+                dial2.Holder = currentNPC;
+                dial2.Actions.Exit = true;
+                dial2.coordinates.RootDialog = false;
+                dial2.coordinates.Active = true;
+                addActiveDialog(id2, dial2, NewId);
             }
+
+        }
+
+        private void bAddNoKarmaDialog_Click(object sender, EventArgs e)
+        {
+            int id = getDialogsNewID();
+            int parentId = getRootDialog().DialogID;
+            CDialog dial = new CDialog();
+            dial.DialogID = id;
+            dial.version = 1;
+            dial.Text = "Извини, с уголовниками не общаюсь";
+            dial.Title = "Есть минутка?";
+            dial.Holder = currentNPC;
+            dial.coordinates.RootDialog = false;
+            dial.coordinates.Active = true;
+            addActiveDialog(id, dial, parentId);
+
+            int id2 = getDialogsNewID();
+            CDialog dial2 = new CDialog();
+            dial2.DialogID = id2;
+            dial2.version = 1;
+            dial2.Text = "";
+            dial2.Title = "Ладно";
+            dial2.Holder = currentNPC;
+            dial2.Actions.Exit = true;
+            dial2.coordinates.RootDialog = false;
+            dial2.coordinates.Active = true;
+            addActiveDialog(id2, dial2, id);
 
         }
     }
