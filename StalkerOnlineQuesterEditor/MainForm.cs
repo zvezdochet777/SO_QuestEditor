@@ -90,7 +90,7 @@ namespace StalkerOnlineQuesterEditor
             balances = new CBalance(this);
 
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
-            fillNPCBOX();
+            fillNPCBox();
             fillFractionBalance();
             DialogShower.AddInputEventListener(Listener);
 
@@ -169,9 +169,8 @@ namespace StalkerOnlineQuesterEditor
         } 
 
         //! Заполнение итемов в комбобоксе NPC
-        void fillNPCBOX()
+        void fillNPCBox()
         {
-            NPCBox.Items.Clear();
             npcNames.Clear();
             foreach (string holder in this.dialogs.dialogs.Keys)
             {
@@ -179,13 +178,12 @@ namespace StalkerOnlineQuesterEditor
                 if (dialogs.rusName.ContainsKey(holder))
                     npcName += " (" + dialogs.rusName[holder] + ")";
                 npcNames.Add ( new NPCNameDataSourceObject(holder, npcName));
-                //NPCBox.Items.Add(npcName);                
-                //this.NPCBox.Items.Add(holder.ToString());
             }
             npcNames.Sort();
+            NPCBox.DataSource = null;       // костыль для обновления данных в кмобобоксе NPC при добавлении/удалении
             NPCBox.DataSource = npcNames;
             NPCBox.DisplayMember = "DisplayString";
-            NPCBox.ValueMember = "Value";
+            NPCBox.ValueMember = "Value";            
 
             NPCBox.SelectedIndex = 1;
                        
@@ -695,9 +693,9 @@ namespace StalkerOnlineQuesterEditor
                     dialogID, 0, nc));
 
             dialogs.dialogs.Add(Name, firstDialog);
-
-            NPCBox.Items.Add(Name);
-            NPCBox.SelectedItem = Name;
+            
+            fillNPCBox();                        
+            NPCBox.SelectedValue = Name;
             npcConst.NPCs.Add(Name, new CNPCDescription(Name));
         }
         //! Нажатие на кнопку Удаление Персонажа NPC
@@ -718,7 +716,7 @@ namespace StalkerOnlineQuesterEditor
                 quests.quest.Remove(item);
             dialogs.dialogs.Remove(currentNPC);
             currentNPC = "";
-            fillNPCBOX();
+            fillNPCBox();
         }
 
         public void checkQuestButton(int questType, int questID)
@@ -1834,7 +1832,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (npc == "Suhar" || npc == "Bugor" || npc == "stoneman_1" || npc == "stoneman_2"
                     || npc == "Kamni_01" || npc == "Kamni_02" || npc == "Meniala_Standart"
-                    || npc == "Bank_Swamp" || npc == "Mokruh" || npc == "Repair_bandit"
+                    || npc == "Bank_Tunnel" || npc == "Mokruh" || npc == "Repair_bandit"
                     || npc == "Ammo_trader_bandit" || npc == "Tunnel_provodnik_NZ2" || npc == "prapNicheporenko"
                     || npc == "donate_base_doorman_no_clan" || npc == "donate_base_doorman"
                     || npc == "CaptureBase_Sklad" || npc == "clan_Donat_Bankir" || npc == "clan_pochta_trader")                                        
