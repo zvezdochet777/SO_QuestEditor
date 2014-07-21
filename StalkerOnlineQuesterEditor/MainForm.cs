@@ -414,7 +414,9 @@ namespace StalkerOnlineQuesterEditor
                 addActionTextToEmulator(" Торговля. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Event == (int) DialogEvents.change)
                 addActionTextToEmulator(" Обмен. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int) DialogEvents.repair)
+            else if (choosenDialog.Actions.Event == (int)DialogEvents.barter)
+                addActionTextToEmulator(" Бартер. Выход.", choosenDialogID);
+            else if (choosenDialog.Actions.Event == (int)DialogEvents.repair)
                 addActionTextToEmulator(" Починка. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Event == (int)DialogEvents.complex_repair)
                 addActionTextToEmulator(" Комплексная починка. Выход.", choosenDialogID);
@@ -1745,7 +1747,8 @@ namespace StalkerOnlineQuesterEditor
         //! Тeстовая фукция "пробежать", пробегает всех NPC (для заполнения полей в тестовом режиме)
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
+            // копирование всех непереведенных частей из русского в английский
+            // копирование диалогов
             for (int i = 0; i < NPCBox.Items.Count; i++)
             {
                 NPCBox.SelectedIndex = i;
@@ -1766,15 +1769,11 @@ namespace StalkerOnlineQuesterEditor
                 {
                     if (!exist || !this.dialogs.locales[loc][currentNPC].ContainsKey(dialog.DialogID))
                     {
-                        //rootElements.Add(dialog.DialogID);                    
                         if (!dialogs.locales[loc].ContainsKey(currentNPC))
                         {
                             CDialog toadd = new CDialog();
                             toadd = (CDialog)dialog.Clone();
-                            //toadd.Text = "";
-                            //toadd.Title = "";
                             toadd.version = 0;
-                            //dialogs.locales[loc].Add(;
                             Dictionary<int, CDialog> newdict = new Dictionary<int, CDialog>();
                             newdict.Add(toadd.DialogID, toadd);
                             dialogs.locales[loc].Add(currentNPC, newdict);
@@ -1783,8 +1782,6 @@ namespace StalkerOnlineQuesterEditor
                         else if (!dialogs.locales[loc][currentNPC].ContainsKey(dialog.DialogID))
                         {
                             CDialog toadd = (CDialog)dialog.Clone();
-                            //toadd.Text = "";
-                            //toadd.Title = "";
                             toadd.version = 0;
                             dialogs.locales[loc][currentNPC].Add(toadd.DialogID, toadd);
                         }
@@ -1794,7 +1791,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
-             
+            // копирование квестов 
             foreach (CQuest quest in quests.quest.Values)
             {
                 string loc = settings.getCurrentLocale();
@@ -1815,8 +1812,11 @@ namespace StalkerOnlineQuesterEditor
                     quests.locales[loc].Add(toadd.QuestID, toadd);
                 }
             }
-             */
-                
+             
+
+            /*
+             * // добавление всем персонажам фразы про невозможность общатсья с уголовниками
+             * // переделать на инглиш
             List<int> karma = new List<int>();
             karma.Add(2);
             karma.Add(500);
@@ -1840,15 +1840,6 @@ namespace StalkerOnlineQuesterEditor
                 currentNPC = npc;
                 NPCBox.SelectedValue = npc;
                 CDialog root = getRootDialog();
-                /*
-                Dictionary<int, CDialog> Dialogs = this.dialogs.dialogs[npc];
-                foreach (CDialog dialog in Dialogs.Values)
-                {
-                    if (dialog.Actions.GetQuests.Count > 0)
-                        dialog.Precondition.KarmaPK = karma;
-                }
-                */
-
                 List<int> subs = root.Nodes;
                 foreach (int id in subs)
                 {
@@ -1883,6 +1874,7 @@ namespace StalkerOnlineQuesterEditor
                 dial2.coordinates.Active = true;
                 addActiveDialog(id2, dial2, NewId);
             }
+            */
 
         }
 

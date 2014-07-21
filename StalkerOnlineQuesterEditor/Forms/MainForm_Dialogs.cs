@@ -29,7 +29,9 @@ namespace StalkerOnlineQuesterEditor
         teleport = 5,
         complex_repair = 6,
         barter = 7,
-        clan_base = 8
+        clan_base = 8,
+        go_pvp_area = 9,
+        start_pvp = 10
     };
     public partial class MainForm : Form
     {
@@ -49,7 +51,7 @@ namespace StalkerOnlineQuesterEditor
                     result = dialog;
                 }
             }
-            /*
+            
             // костыль для локализации
             if (result == null)
             {
@@ -87,7 +89,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
-            */
+            
 
             return result;
         }
