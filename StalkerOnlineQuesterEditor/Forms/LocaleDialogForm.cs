@@ -14,6 +14,7 @@ namespace StalkerOnlineQuesterEditor.Forms
     {
         MainForm parent;
         CDialog originalDialog;
+        CDialog localeDialog;
 
         //! Конструктор, заполняет поля переводов
         public LocaleDialogForm(MainForm parent, int selectedDialogID)
@@ -26,7 +27,7 @@ namespace StalkerOnlineQuesterEditor.Forms
             lViewNpcName.Text = dialog.Holder;
             lViewDialogId.Text = dialog.DialogID.ToString();
             this.originalDialog = dialog;
-            var localeDialog = parent.getLocaleDialog(dialog.DialogID, dialog.Holder);
+            localeDialog = parent.getLocaleDialog(dialog.DialogID, dialog.Holder);
 
             if (localeDialog != null)
             {
@@ -59,6 +60,10 @@ namespace StalkerOnlineQuesterEditor.Forms
             newDialog.Nodes = originalDialog.Nodes;
             newDialog.Precondition = originalDialog.Precondition;
             newDialog.Actions = originalDialog.Actions;
+            if (localeDialog != null)
+                newDialog.coordinates = localeDialog.coordinates;
+            else
+                newDialog.coordinates = originalDialog.coordinates;
             if (cbNotFinal.Checked)
                 newDialog.version --;
             parent.addLocaleDialog(newDialog);

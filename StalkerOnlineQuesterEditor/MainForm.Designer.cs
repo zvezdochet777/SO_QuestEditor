@@ -43,6 +43,7 @@ namespace StalkerOnlineQuesterEditor
             this.bZoomIn = new System.Windows.Forms.Button();
             this.bZoomOut = new System.Windows.Forms.Button();
             this.DialogActions = new System.Windows.Forms.Panel();
+            this.bSync = new System.Windows.Forms.Button();
             this.bAddNoKarmaDialog = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
@@ -355,6 +356,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.DialogActions.AutoSize = true;
             this.DialogActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DialogActions.Controls.Add(this.bSync);
             this.DialogActions.Controls.Add(this.bAddNoKarmaDialog);
             this.DialogActions.Controls.Add(this.button1);
             this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
@@ -370,29 +372,42 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions.Size = new System.Drawing.Size(183, 403);
             this.DialogActions.TabIndex = 1;
             // 
+            // bSync
+            // 
+            this.bSync.Location = new System.Drawing.Point(36, 218);
+            this.bSync.Name = "bSync";
+            this.bSync.Size = new System.Drawing.Size(116, 23);
+            this.bSync.TabIndex = 9;
+            this.bSync.Text = "Синхронизировать";
+            this.bSync.UseVisualStyleBackColor = true;
+            this.bSync.Visible = false;
+            this.bSync.Click += new System.EventHandler(this.bSync_Click);
+            // 
             // bAddNoKarmaDialog
             // 
-            this.bAddNoKarmaDialog.Location = new System.Drawing.Point(36, 206);
+            this.bAddNoKarmaDialog.Location = new System.Drawing.Point(36, 247);
             this.bAddNoKarmaDialog.Name = "bAddNoKarmaDialog";
             this.bAddNoKarmaDialog.Size = new System.Drawing.Size(116, 23);
             this.bAddNoKarmaDialog.TabIndex = 8;
             this.bAddNoKarmaDialog.Text = "Добавить диалог";
             this.bAddNoKarmaDialog.UseVisualStyleBackColor = true;
+            this.bAddNoKarmaDialog.Visible = false;
             this.bAddNoKarmaDialog.Click += new System.EventHandler(this.bAddNoKarmaDialog_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(36, 235);
+            this.button1.Location = new System.Drawing.Point(36, 276);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 23);
             this.button1.TabIndex = 7;
             this.button1.Text = "Пробежать все";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // bCenterizeDialogShower
             // 
-            this.bCenterizeDialogShower.Location = new System.Drawing.Point(7, 264);
+            this.bCenterizeDialogShower.Location = new System.Drawing.Point(7, 305);
             this.bCenterizeDialogShower.Name = "bCenterizeDialogShower";
             this.bCenterizeDialogShower.Size = new System.Drawing.Size(172, 23);
             this.bCenterizeDialogShower.TabIndex = 6;
@@ -403,20 +418,20 @@ namespace StalkerOnlineQuesterEditor
             // labelYNode
             // 
             this.labelYNode.AutoSize = true;
-            this.labelYNode.Location = new System.Drawing.Point(26, 352);
+            this.labelYNode.Location = new System.Drawing.Point(26, 371);
             this.labelYNode.Name = "labelYNode";
-            this.labelYNode.Size = new System.Drawing.Size(35, 13);
+            this.labelYNode.Size = new System.Drawing.Size(62, 13);
             this.labelYNode.TabIndex = 5;
-            this.labelYNode.Text = "label4";
+            this.labelYNode.Text = "labelYNode";
             // 
             // labelXNode
             // 
             this.labelXNode.AutoSize = true;
-            this.labelXNode.Location = new System.Drawing.Point(26, 316);
+            this.labelXNode.Location = new System.Drawing.Point(26, 345);
             this.labelXNode.Name = "labelXNode";
-            this.labelXNode.Size = new System.Drawing.Size(35, 13);
+            this.labelXNode.Size = new System.Drawing.Size(62, 13);
             this.labelXNode.TabIndex = 4;
-            this.labelXNode.Text = "label3";
+            this.labelXNode.Text = "labelXNode";
             // 
             // bSaveDialogs
             // 
@@ -1656,6 +1671,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
         private System.Windows.Forms.Button bAddNoKarmaDialog;
+        private System.Windows.Forms.Button bSync;
 
 
     }

@@ -19,7 +19,7 @@
     <Name>Aid_trader</Name>
     <map>city_lubech</map>
     <chunk>8605d9a4i</chunk>
-    <coord>	-12.557106 5.198951 -4.501539	</coord>
+    <coord>	-12.587212 5.198951 -4.409715	</coord>
     <numberNPC>NPC78</numberNPC>
     <npcLocal>&#1040;&#1087;&#1090;&#1077;&#1082;&#1072;&#1088;&#1100;</npcLocal>
   </NPC>
@@ -59,7 +59,7 @@
     <Name>Aid_trader</Name>
     <map>outlands</map>
     <chunk>000cfffco</chunk>
-    <coord>	78.689331 0.206055 8.344086	</coord>
+    <coord>	70.226685 -0.062213 7.768433	</coord>
     <numberNPC>NPC78</numberNPC>
     <npcLocal>&#1040;&#1087;&#1090;&#1077;&#1082;&#1072;&#1088;&#1100;</npcLocal>
   </NPC>
@@ -83,7 +83,7 @@
     <Name>Aid_trader</Name>
     <map>tunguska</map>
     <chunk>fffb0005o</chunk>
-    <coord>	77.874908 45.032219 67.393402	</coord>
+    <coord>	89.586121 45.027721 65.848511	</coord>
     <numberNPC>NPC78</numberNPC>
     <npcLocal>&#1040;&#1087;&#1090;&#1077;&#1082;&#1072;&#1088;&#1100;</npcLocal>
   </NPC>
@@ -173,7 +173,7 @@
     <chunk>0000fffao</chunk>
     <coord>	37.166187 14.953901 20.948853	</coord>
     <numberNPC>NPC403</numberNPC>
-    <npcLocal>&#1040;&#1084;&#1080;&#1088;-&#1073;&#1077;&#1082;</npcLocal>
+    <npcLocal>&#1040;&#1084;&#1080;&#1088; &#1061;&#1077;&#1076;&#1078;&#1072;&#1079;&#1080;</npcLocal>
   </NPC>
   <NPC>
     <Name>Ammo_trader</Name>
@@ -202,6 +202,14 @@
   <NPC>
     <Name>Ammo_trader</Name>
     <map>dm_outlands_village</map>
+    <chunk>a3b966f7i</chunk>
+    <coord>	7.690717 3.373684 6.652061	</coord>
+    <numberNPC>NPC120</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1087;&#1072;&#1090;&#1088;&#1086;&#1085;&#1086;&#1074;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Ammo_trader</Name>
+    <map>dm_outlands_village_pvp</map>
     <chunk>0000fff9o</chunk>
     <coord>	30.535791 0.001953 5.513184	</coord>
     <numberNPC>NPC120</numberNPC>
@@ -209,7 +217,7 @@
   </NPC>
   <NPC>
     <Name>Ammo_trader</Name>
-    <map>dm_outlands_village</map>
+    <map>dm_outlands_village_pvp</map>
     <chunk>fffefffao</chunk>
     <coord>	44.032272 -0.015625 33.845825	</coord>
     <numberNPC>NPC120</numberNPC>
@@ -283,7 +291,7 @@
     <Name>Ammo_trader</Name>
     <map>outlands</map>
     <chunk>000cfffco</chunk>
-    <coord>	80.507080 0.362459 4.620544	</coord>
+    <coord>	72.259399 -0.048276 6.125122	</coord>
     <numberNPC>NPC120</numberNPC>
     <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1087;&#1072;&#1090;&#1088;&#1086;&#1085;&#1086;&#1074;</npcLocal>
   </NPC>
@@ -299,7 +307,7 @@
     <Name>Ammo_trader</Name>
     <map>outlands</map>
     <chunk>d4164a10i</chunk>
-    <coord>	8.829071 3.493525 2.271606	</coord>
+    <coord>	6.085022 3.373731 1.728516	</coord>
     <numberNPC>NPC120</numberNPC>
     <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1087;&#1072;&#1090;&#1088;&#1086;&#1085;&#1086;&#1074;</npcLocal>
   </NPC>
@@ -322,8 +330,8 @@
   <NPC>
     <Name>Ammo_trader</Name>
     <map>tunguska</map>
-    <chunk>fffb0005o</chunk>
-    <coord>	72.957214 40.336906 89.415253	</coord>
+    <chunk>fffb0006o</chunk>
+    <coord>	94.970520 41.908768 2.102722	</coord>
     <numberNPC>NPC120</numberNPC>
     <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1087;&#1072;&#1090;&#1088;&#1086;&#1085;&#1086;&#1074;</npcLocal>
   </NPC>
@@ -434,16 +442,8 @@
   <NPC>
     <Name>Armor_trader</Name>
     <map>outlands</map>
-    <chunk>12dc1c7ei</chunk>
-    <coord>	49.222687 -0.553274 -16.552002	</coord>
-    <numberNPC>NPC40</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1073;&#1088;&#1086;&#1085;&#1080;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>Armor_trader</Name>
-    <map>outlands</map>
     <chunk>d4164a10i</chunk>
-    <coord>	7.566040 -0.000196 7.734009	</coord>
+    <coord>	8.086945 -0.000147 6.226929	</coord>
     <numberNPC>NPC40</numberNPC>
     <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1073;&#1088;&#1086;&#1085;&#1080;</npcLocal>
   </NPC>
@@ -480,6 +480,14 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1073;&#1088;&#1086;&#1085;&#1080;</npcLocal>
   </NPC>
   <NPC>
+    <Name>Armor_trader_bandit</Name>
+    <map>outlands</map>
+    <chunk>12dc1c7ei</chunk>
+    <coord>	49.222687 -0.553274 -16.552002	</coord>
+    <numberNPC>NPC40</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1073;&#1088;&#1086;&#1085;&#1080;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>Armor_trader_noob</Name>
     <map>mm_space</map>
     <chunk>00000000o</chunk>
@@ -491,7 +499,7 @@
     <Name>Army_guardian</Name>
     <map>outlands</map>
     <chunk>0007fffdo</chunk>
-    <coord>	23.294678 8.762693 43.083221	</coord>
+    <coord>	23.275146 8.765154 43.008484	</coord>
     <numberNPC>NPC176</numberNPC>
     <npcLocal>&#1042;&#1086;&#1077;&#1085;&#1085;&#1072;&#1103; &#1086;&#1093;&#1088;&#1072;&#1085;&#1072;</npcLocal>
   </NPC>
@@ -531,7 +539,7 @@
     <Name>Arthur</Name>
     <map>city_lubech</map>
     <chunk>fffffffeo</chunk>
-    <coord>	70.909798 0.061253 23.548721	</coord>
+    <coord>	70.213402 0.133043 23.661362	</coord>
     <numberNPC>NPC258</numberNPC>
     <npcLocal>&#1040;&#1088;&#1090;&#1091;&#1088;</npcLocal>
   </NPC>
@@ -627,7 +635,7 @@
     <Name>Bank_SZ</Name>
     <map>outlands</map>
     <chunk>fffcfffdo</chunk>
-    <coord>	72.390686 3.071519 66.561172	</coord>
+    <coord>	71.937164 3.071540 66.616150	</coord>
     <numberNPC>NPC58</numberNPC>
     <npcLocal>&#1042;&#1086;&#1077;&#1085;&#1085;&#1099;&#1081; &#1082;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -643,7 +651,7 @@
     <Name>Bank_Swamp</Name>
     <map>outlands</map>
     <chunk>000cfffco</chunk>
-    <coord>	94.369873 -1.509765 27.539917	</coord>
+    <coord>	93.847168 -1.710001 29.343872	</coord>
     <numberNPC>NPC203</numberNPC>
     <npcLocal>&#1042;&#1086;&#1088;&#1086;&#1074;&#1072;&#1090;&#1099;&#1081; &#1082;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -666,8 +674,8 @@
   <NPC>
     <Name>Bank_Tunguska</Name>
     <map>tunguska</map>
-    <chunk>fffb0005o</chunk>
-    <coord>	77.345306 45.031403 81.973602	</coord>
+    <chunk>fffb0006o</chunk>
+    <coord>	65.772736 41.070293 11.409607	</coord>
     <numberNPC>NPC244</numberNPC>
     <npcLocal>&#1054;&#1093;&#1086;&#1090;&#1085;&#1080;&#1082; &#1082;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -739,7 +747,7 @@
     <Name>Bolotnik</Name>
     <map>outlands</map>
     <chunk>000cfffco</chunk>
-    <coord>	79.384766 3.352330 5.203278	</coord>
+    <coord>	82.865356 3.462540 6.327881	</coord>
     <numberNPC>NPC123</numberNPC>
     <npcLocal>&#1041;&#1086;&#1083;&#1086;&#1090;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -769,30 +777,6 @@
   </NPC>
   <NPC>
     <Name>CaptureBase_Sklad</Name>
-    <map>base02</map>
-    <chunk>663cddd8i</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base03</map>
-    <chunk>1c6506d0i</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base04</map>
-    <chunk>95ecc6a2i</chunk>
-    <coord>	-5.361248 -0.000109 0.127659	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
     <map>base05</map>
     <chunk>68e36801i</chunk>
     <coord>	-5.540993 0.000020 0.353920	</coord>
@@ -801,191 +785,7 @@
   </NPC>
   <NPC>
     <Name>CaptureBase_Sklad</Name>
-    <map>base06</map>
-    <chunk>50afd269i</chunk>
-    <coord>	-5.500095 0.000028 0.143391	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>006f884bi</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>03f0feadi</chunk>
-    <coord>	-5.364964 -0.000009 0.133312	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>0405ad41i</chunk>
-    <coord>	-2.027437 3.400260 6.333221	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>057f4929i</chunk>
-    <coord>	-5.439175 0.000012 0.073181	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>155fc151i</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>1f5973edi</chunk>
-    <coord>	-2.306288 3.373723 6.260986	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>2acf9a64i</chunk>
-    <coord>	-2.306288 3.373723 6.260986	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>2b7237bfi</chunk>
-    <coord>	-2.169287 3.373675 6.295593	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>360e89aai</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>3ae14929i</chunk>
-    <coord>	-2.306288 3.373723 6.260986	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>48311b7di</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>6aceef2fi</chunk>
-    <coord>	-5.361248 -0.000109 0.127659	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>706ec7afi</chunk>
-    <coord>	-5.491535 -0.000000 0.146461	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>a3c460d5i</chunk>
-    <coord>	-2.027463 3.400260 6.333252	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>a62f06adi</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>babc9a3fi</chunk>
-    <coord>	-2.288241 3.373735 6.381268	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>bbd76c9di</chunk>
-    <coord>	-5.381203 -0.000243 0.144302	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>bd1c0635i</chunk>
-    <coord>	-5.500095 0.000028 0.143391	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>c52d1c9fi</chunk>
-    <coord>	-5.377915 0.000040 0.136990	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>cb1aea49i</chunk>
-    <coord>	-5.540993 0.000020 0.353920	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>bases_premium</map>
-    <chunk>ff58c1d9i</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_adom</map>
-    <chunk>7804a63di</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_citadel</map>
+    <map>donate_base_big</map>
     <chunk>ed01c9e9i</chunk>
     <coord>	-5.381203 -0.000243 0.144302	</coord>
     <numberNPC>NPC196</numberNPC>
@@ -993,113 +793,9 @@
   </NPC>
   <NPC>
     <Name>CaptureBase_Sklad</Name>
-    <map>base_dark_angels</map>
-    <chunk>f68b3614i</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_dolg</map>
-    <chunk>4ac45f20i</chunk>
-    <coord>	-5.439175 0.000012 0.073181	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_kuvalda</map>
-    <chunk>adbb3178i</chunk>
-    <coord>	-2.288241 3.373735 6.381268	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_SILENCE</map>
-    <chunk>ec4e7eeei</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_sindikat</map>
-    <chunk>eb38de8bi</chunk>
-    <coord>	-5.364964 -0.000009 0.133312	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_soyuz_mutaboev</map>
-    <chunk>9c2fce3di</chunk>
-    <coord>	-2.306288 3.373723 6.260986	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_steel_brothers</map>
-    <chunk>e6a4dc41i</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_ussr</map>
-    <chunk>fba7d32ei</chunk>
-    <coord>	-2.169277 3.373676 6.295551	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_vesuvius_lep</map>
-    <chunk>9c2fce3di</chunk>
-    <coord>	-2.306288 3.373723 6.260986	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_voenstal</map>
-    <chunk>71be2386i</chunk>
-    <coord>	-5.377915 0.000040 0.136990	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_vzvod45</map>
-    <chunk>f1d600b1i</chunk>
-    <coord>	-5.491535 -0.000000 0.146461	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base_zaria</map>
-    <chunk>4efd38eci</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
-    <map>base__inquisition</map>
-    <chunk>8d4b0130i</chunk>
-    <coord>	-2.027485 3.400260 6.333279	</coord>
-    <numberNPC>NPC196</numberNPC>
-    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>CaptureBase_Sklad</Name>
     <map>donate_base_small</map>
     <chunk>9c2fce3di</chunk>
-    <coord>	-2.306288 3.373723 6.260986	</coord>
+    <coord>	-1.823359 3.373666 6.279129	</coord>
     <numberNPC>NPC196</numberNPC>
     <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; &#1082;&#1083;&#1072;&#1085;-&#1073;&#1072;&#1079;&#1099;</npcLocal>
   </NPC>
@@ -1123,7 +819,7 @@
     <Name>Clan_manager</Name>
     <map>city_lubech</map>
     <chunk>1bda2d34i</chunk>
-    <coord>	7.490364 -3.961283 13.571564	</coord>
+    <coord>	6.300652 -3.961282 13.668266	</coord>
     <numberNPC>NPC88</numberNPC>
     <npcLocal>&#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1090;&#1086;&#1088; &#1075;&#1088;&#1091;&#1087;&#1087;&#1080;&#1088;&#1086;&#1074;&#1086;&#1082;</npcLocal>
   </NPC>
@@ -1163,7 +859,7 @@
     <Name>Dark_Stalker</Name>
     <map>novaya</map>
     <chunk>959742b8i</chunk>
-    <coord>	3.384247 -0.000004 -0.640060	</coord>
+    <coord>	2.728638 0.000423 -2.534760	</coord>
     <numberNPC>NPC218</numberNPC>
     <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
   </NPC>
@@ -1235,7 +931,7 @@
     <Name>Dog_hunter</Name>
     <map>city_lubech</map>
     <chunk>fffe0000o</chunk>
-    <coord>	44.543396 0.000000 11.670530	</coord>
+    <coord>	46.901260 0.340865 13.758308	</coord>
     <numberNPC>NPC178</numberNPC>
     <npcLocal>&#1050;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1085;</npcLocal>
   </NPC>
@@ -1363,7 +1059,7 @@
     <Name>ExPolkovnik</Name>
     <map>tunguska</map>
     <chunk>fffb0006o</chunk>
-    <coord>	86.028534 45.010330 5.438293	</coord>
+    <coord>	47.961578 45.960636 2.049805	</coord>
     <numberNPC>NPC59</numberNPC>
     <npcLocal>&#1054;&#1090;&#1089;&#1090;&#1072;&#1074;&#1085;&#1086;&#1081; &#1055;&#1086;&#1083;&#1082;&#1086;&#1074;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -1372,8 +1068,8 @@
     <map>steppe</map>
     <chunk>fffdffffo</chunk>
     <coord>	94.256332 7.749998 90.918137	</coord>
-    <numberNPC>noname</numberNPC>
-    <npcLocal/>
+    <numberNPC>NPC406</numberNPC>
+    <npcLocal>&#1060;&#1072;&#1088;&#1080;&#1076;</npcLocal>
   </NPC>
   <NPC>
     <Name>Fedor</Name>
@@ -1459,7 +1155,7 @@
     <Name>Greek</Name>
     <map>city_lubech</map>
     <chunk>1bda2d34i</chunk>
-    <coord>	-8.932343 -0.016743 14.213596	</coord>
+    <coord>	-12.230591 -0.015498 12.957401	</coord>
     <numberNPC>NPC71</numberNPC>
     <npcLocal>&#1043;&#1088;&#1077;&#1082;</npcLocal>
   </NPC>
@@ -1507,7 +1203,7 @@
     <Name>Hitrec</Name>
     <map>outlands</map>
     <chunk>000cfffco</chunk>
-    <coord>	87.246948 -0.377798 9.635010	</coord>
+    <coord>	87.236084 -0.312625 9.591400	</coord>
     <numberNPC>NPC64</numberNPC>
     <npcLocal>&#1061;&#1080;&#1090;&#1088;&#1077;&#1094;</npcLocal>
   </NPC>
@@ -1524,14 +1220,14 @@
     <map>outlands_caravan</map>
     <chunk>0002fffdo</chunk>
     <coord>	45.389984 48.549988 47.089981	</coord>
-    <numberNPC>noname</numberNPC>
-    <npcLocal/>
+    <numberNPC>NPC410</numberNPC>
+    <npcLocal>&#1055;&#1077;&#1095;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; &#1089;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
   </NPC>
   <NPC>
     <Name>Imarek</Name>
     <map>outlands</map>
     <chunk>0007fffdo</chunk>
-    <coord>	36.444946 8.796525 34.152069	</coord>
+    <coord>	36.759949 8.938805 30.746887	</coord>
     <numberNPC>NPC145</numberNPC>
     <npcLocal>&#1048;&#1084;&#1072;&#1088;&#1077;&#1082;</npcLocal>
   </NPC>
@@ -1627,7 +1323,7 @@
     <Name>Kolja_Kislii</Name>
     <map>city_lubech</map>
     <chunk>969c96fbi</chunk>
-    <coord>	-0.991006 0.515301 3.094013	</coord>
+    <coord>	-0.045227 0.515301 2.135085	</coord>
     <numberNPC>NPC67</numberNPC>
     <npcLocal>&#1050;&#1086;&#1083;&#1103; &#1050;&#1080;&#1089;&#1083;&#1099;&#1081;</npcLocal>
   </NPC>
@@ -1643,7 +1339,7 @@
     <Name>Korobochka</Name>
     <map>outlands</map>
     <chunk>00100001o</chunk>
-    <coord>	11.569336 -6.736328 56.467422	</coord>
+    <coord>	11.887817 -6.731000 56.311096	</coord>
     <numberNPC>NPC41</numberNPC>
     <npcLocal>&#1050;&#1086;&#1088;&#1086;&#1073;&#1086;&#1095;&#1082;&#1072;</npcLocal>
   </NPC>
@@ -1667,7 +1363,7 @@
     <Name>Krendel</Name>
     <map>outlands</map>
     <chunk>00100001o</chunk>
-    <coord>	37.690918 -7.072263 23.696068	</coord>
+    <coord>	37.516724 -7.079634 27.611649	</coord>
     <numberNPC>NPC149</numberNPC>
     <npcLocal>&#1050;&#1088;&#1077;&#1085;&#1076;&#1077;&#1083;&#1100;</npcLocal>
   </NPC>
@@ -1732,8 +1428,8 @@
     <map>outlands_caravan</map>
     <chunk>fff9fffdo</chunk>
     <coord>	89.150696 50.065907 43.321320	</coord>
-    <numberNPC>noname</numberNPC>
-    <npcLocal/>
+    <numberNPC>NPC401</numberNPC>
+    <npcLocal>&#1051;&#1077;&#1096;&#1080;&#1095;</npcLocal>
   </NPC>
   <NPC>
     <Name>Lisiy</Name>
@@ -1747,7 +1443,7 @@
     <Name>Lovchiy</Name>
     <map>outlands</map>
     <chunk>fffefff6o</chunk>
-    <coord>	8.594376 0.000000 2.700928	</coord>
+    <coord>	7.638504 0.000000 2.110046	</coord>
     <numberNPC>NPC51</numberNPC>
     <npcLocal>&#1051;&#1086;&#1074;&#1095;&#1080;&#1081;</npcLocal>
   </NPC>
@@ -1772,14 +1468,14 @@
     <map>steppe</map>
     <chunk>00030005o</chunk>
     <coord>	23.699890 -112.049263 41.552673	</coord>
-    <numberNPC>noname</numberNPC>
-    <npcLocal/>
+    <numberNPC>NPC407</numberNPC>
+    <npcLocal>&#1052;&#1072;&#1082;&#1089; &#1042;&#1072;&#1082;&#1086;</npcLocal>
   </NPC>
   <NPC>
     <Name>Meniala1</Name>
     <map>tunguska</map>
-    <chunk>fffb0005o</chunk>
-    <coord>	65.927429 40.289902 99.153778	</coord>
+    <chunk>fffb0006o</chunk>
+    <coord>	66.840424 40.421642 0.057678	</coord>
     <numberNPC>NPC135</numberNPC>
     <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088; &#1064;&#1090;&#1086;&#1087;&#1086;&#1088;</npcLocal>
   </NPC>
@@ -1819,7 +1515,7 @@
     <Name>Meniala_Swamp</Name>
     <map>outlands</map>
     <chunk>000cfffco</chunk>
-    <coord>	72.477417 -0.170700 5.853607	</coord>
+    <coord>	97.881836 -1.756787 28.374268	</coord>
     <numberNPC>NPC138</numberNPC>
     <npcLocal>&#1041;&#1072;&#1088;&#1099;&#1075;&#1072;</npcLocal>
   </NPC>
@@ -1883,7 +1579,7 @@
     <Name>Mitka</Name>
     <map>tunguska</map>
     <chunk>fffb0005o</chunk>
-    <coord>	59.139069 41.069321 73.621094	</coord>
+    <coord>	51.145172 41.108761 78.135254	</coord>
     <numberNPC>NPC66</numberNPC>
     <npcLocal>&#1052;&#1080;&#1090;&#1100;&#1082;&#1072;</npcLocal>
   </NPC>
@@ -1915,7 +1611,7 @@
     <Name>Muhomor</Name>
     <map>outlands</map>
     <chunk>00100001o</chunk>
-    <coord>	11.871460 -6.807753 28.987389	</coord>
+    <coord>	9.527344 -6.232806 29.961838	</coord>
     <numberNPC>NPC111</numberNPC>
     <npcLocal>&#1052;&#1091;&#1093;&#1086;&#1084;&#1086;&#1088;</npcLocal>
   </NPC>
@@ -2172,8 +1868,8 @@
     <map>steppe</map>
     <chunk>fff80008o</chunk>
     <coord>	94.614258 6.482421 6.544495	</coord>
-    <numberNPC>noname</numberNPC>
-    <npcLocal/>
+    <numberNPC>NPC404</numberNPC>
+    <npcLocal>&#1055;&#1080;&#1083;&#1086;&#1090;</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_NZ_Airport</Name>
@@ -2240,20 +1936,12 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
-    <Name>Provodnik_PvP_DM_Vilage</Name>
-    <map>outlands</map>
-    <chunk>fffcfffdo</chunk>
-    <coord>	63.252014 2.859375 63.380249	</coord>
-    <numberNPC>NPC311</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
     <Name>Provodnik_PvP_Green_Rock</Name>
     <map>dm_rocks</map>
     <chunk>fffeffffo</chunk>
     <coord>	88.217583 0.400391 25.978836	</coord>
     <numberNPC>NPC308</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Red_Rock</Name>
@@ -2261,7 +1949,7 @@
     <chunk>00010002o</chunk>
     <coord>	96.279228 0.141602 14.110138	</coord>
     <numberNPC>NPC309</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Rock</Name>
@@ -2269,7 +1957,7 @@
     <chunk>00000003o</chunk>
     <coord>	25.029997 3.430000 48.660004	</coord>
     <numberNPC>NPC310</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Ryab</Name>
@@ -2277,7 +1965,7 @@
     <chunk>fff40001o</chunk>
     <coord>	54.114868 2.000000 14.876648	</coord>
     <numberNPC>NPC312</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Ryab_green</Name>
@@ -2285,7 +1973,7 @@
     <chunk>fffe0002o</chunk>
     <coord>	72.424332 -0.258789 23.292099	</coord>
     <numberNPC>NPC314</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Ryab_red</Name>
@@ -2293,7 +1981,7 @@
     <chunk>fffffffdo</chunk>
     <coord>	16.287148 1.871094 47.111221	</coord>
     <numberNPC>NPC313</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Snow</Name>
@@ -2301,7 +1989,7 @@
     <chunk>fffc0000o</chunk>
     <coord>	2.894684 40.000000 96.775009	</coord>
     <numberNPC>NPC317</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Snow_green</Name>
@@ -2309,7 +1997,7 @@
     <chunk>fffeffffo</chunk>
     <coord>	88.128746 3.494140 0.229362	</coord>
     <numberNPC>NPC316</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Snow_red</Name>
@@ -2317,23 +2005,23 @@
     <chunk>00020002o</chunk>
     <coord>	26.708237 2.847656 28.342819	</coord>
     <numberNPC>NPC315</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Vilage_green</Name>
-    <map>dm_outlands_village</map>
+    <map>dm_outlands_village_pvp</map>
     <chunk>fffefffao</chunk>
     <coord>	41.037598 -0.063477 32.760925	</coord>
     <numberNPC>NPC318</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_PvP_Vilage_red</Name>
-    <map>dm_outlands_village</map>
+    <map>dm_outlands_village_pvp</map>
     <chunk>0000fff9o</chunk>
     <coord>	28.677895 0.000000 2.485352	</coord>
     <numberNPC>NPC319</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_Tungus_Airport</Name>
@@ -2342,14 +2030,6 @@
     <coord>	44.129028 24.678732 20.420807	</coord>
     <numberNPC>NPC287</numberNPC>
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>Provodnik_Tungus_NZ</Name>
-    <map>tunguska</map>
-    <chunk>fffb0006o</chunk>
-    <coord>	51.177979 39.962070 4.407837	</coord>
-    <numberNPC>NPC205</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; &#1073;&#1072;&#1079;&#1099;</npcLocal>
   </NPC>
   <NPC>
     <Name>Provodnik_Vesuv_NZ</Name>
@@ -2371,23 +2051,7 @@
     <Name>Radius_Guard</Name>
     <map>tunguska</map>
     <chunk>fffb0005o</chunk>
-    <coord>	99.567200 41.626450 89.899628	</coord>
-    <numberNPC>NPC207</numberNPC>
-    <npcLocal>&#1054;&#1093;&#1086;&#1090;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>Radius_Guard</Name>
-    <map>tunguska</map>
-    <chunk>fffb0005o</chunk>
     <coord>	97.266357 41.605446 82.429535	</coord>
-    <numberNPC>NPC207</numberNPC>
-    <npcLocal>&#1054;&#1093;&#1086;&#1090;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>Radius_Guard</Name>
-    <map>tunguska</map>
-    <chunk>fffb0005o</chunk>
-    <coord>	79.854828 45.031818 79.245331	</coord>
     <numberNPC>NPC207</numberNPC>
     <npcLocal>&#1054;&#1093;&#1086;&#1090;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -2403,7 +2067,15 @@
     <Name>Radius_Guard</Name>
     <map>tunguska</map>
     <chunk>fffb0006o</chunk>
-    <coord>	85.541962 45.010864 9.342468	</coord>
+    <coord>	47.281128 45.937889 0.780579	</coord>
+    <numberNPC>NPC207</numberNPC>
+    <npcLocal>&#1054;&#1093;&#1086;&#1090;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Radius_Guard</Name>
+    <map>tunguska</map>
+    <chunk>fffc0005o</chunk>
+    <coord>	0.265167 41.626476 90.162598	</coord>
     <numberNPC>NPC207</numberNPC>
     <npcLocal>&#1054;&#1093;&#1086;&#1090;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -2411,7 +2083,7 @@
     <Name>Rashid</Name>
     <map>city_lubech</map>
     <chunk>1bda2d34i</chunk>
-    <coord>	-8.062813 -3.961282 12.782059	</coord>
+    <coord>	-9.906723 -3.960350 7.529961	</coord>
     <numberNPC>NPC103</numberNPC>
     <npcLocal>&#1056;&#1072;&#1096;&#1080;&#1076;</npcLocal>
   </NPC>
@@ -2427,7 +2099,7 @@
     <Name>Rashid_New</Name>
     <map>city_lubech</map>
     <chunk>1bda2d34i</chunk>
-    <coord>	8.803276 -0.016758 3.845314	</coord>
+    <coord>	9.384987 0.127085 1.624756	</coord>
     <numberNPC>NPC240</numberNPC>
     <npcLocal>&#1040;&#1083;&#1077;&#1082;&#1089;</npcLocal>
   </NPC>
@@ -2499,15 +2171,15 @@
     <Name>Repairman</Name>
     <map>outlands</map>
     <chunk>000cfffco</chunk>
-    <coord>	88.033813 -1.225586 28.934265	</coord>
+    <coord>	92.128174 -1.709961 33.547638	</coord>
     <numberNPC>NPC35</numberNPC>
     <npcLocal>&#1056;&#1077;&#1084;&#1086;&#1085;&#1090;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
     <Name>Repairman</Name>
     <map>outlands</map>
-    <chunk>fffcfffdo</chunk>
-    <coord>	46.021912 0.947150 34.467651	</coord>
+    <chunk>c8dbbde9i</chunk>
+    <coord>	-1.011589 0.405775 -1.417450	</coord>
     <numberNPC>NPC35</numberNPC>
     <npcLocal>&#1056;&#1077;&#1084;&#1086;&#1085;&#1090;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -2515,7 +2187,7 @@
     <Name>Repairman</Name>
     <map>outlands</map>
     <chunk>d4164a10i</chunk>
-    <coord>	9.119965 -0.000053 4.428101	</coord>
+    <coord>	-2.837677 -0.000284 6.335449	</coord>
     <numberNPC>NPC35</numberNPC>
     <npcLocal>&#1056;&#1077;&#1084;&#1086;&#1085;&#1090;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -2564,16 +2236,16 @@
     <map>outlands_airport</map>
     <chunk>fff90003o</chunk>
     <coord>	49.271423 -1.276998 22.174866	</coord>
-    <numberNPC>noname</numberNPC>
-    <npcLocal/>
+    <numberNPC>NPC402</numberNPC>
+    <npcLocal>&#1056;&#1099;&#1078;&#1080;&#1081;</npcLocal>
   </NPC>
   <NPC>
     <Name>Salah</Name>
     <map>steppe</map>
     <chunk>fffcfffao</chunk>
     <coord>	80.123871 7.033064 5.920044	</coord>
-    <numberNPC>noname</numberNPC>
-    <npcLocal/>
+    <numberNPC>NPC405</numberNPC>
+    <npcLocal>&#1057;&#1072;&#1083;&#1072;&#1093;</npcLocal>
   </NPC>
   <NPC>
     <Name>Salnikov</Name>
@@ -2651,7 +2323,7 @@
     <Name>Sergeant_Dibenko</Name>
     <map>city_lubech</map>
     <chunk>bb31c2c7i</chunk>
-    <coord>	0.477753 4.740003 -9.294044	</coord>
+    <coord>	1.950462 4.741565 2.531128	</coord>
     <numberNPC>NPC143</numberNPC>
     <npcLocal>&#1057;&#1077;&#1088;&#1078;&#1072;&#1085;&#1090; &#1044;&#1080;&#1073;&#1077;&#1085;&#1082;&#1086;</npcLocal>
   </NPC>
@@ -2723,7 +2395,7 @@
     <Name>Shperling</Name>
     <map>outlands</map>
     <chunk>0009fff8o</chunk>
-    <coord>	34.172424 48.332939 51.332520	</coord>
+    <coord>	24.990295 48.250538 49.975220	</coord>
     <numberNPC>NPC37</numberNPC>
     <npcLocal>&#1050;&#1072;&#1087;&#1080;&#1090;&#1072;&#1085; &#1064;&#1087;&#1077;&#1088;&#1083;&#1080;&#1085;&#1075;</npcLocal>
   </NPC>
@@ -2851,7 +2523,7 @@
     <Name>Stalker_Bomzh_2</Name>
     <map>outlands</map>
     <chunk>fffefff7o</chunk>
-    <coord>	18.299423 0.000000 67.963867	</coord>
+    <coord>	17.390121 0.025455 64.294373	</coord>
     <numberNPC>NPC30</numberNPC>
     <npcLocal>&#1052;&#1077;&#1089;&#1090;&#1085;&#1099;&#1081;</npcLocal>
   </NPC>
@@ -2875,7 +2547,7 @@
     <Name>Stalker_Bomzh_3</Name>
     <map>outlands</map>
     <chunk>fffefff7o</chunk>
-    <coord>	9.604462 0.000002 57.445007	</coord>
+    <coord>	13.333801 0.025454 58.988098	</coord>
     <numberNPC>NPC31</numberNPC>
     <npcLocal>&#1052;&#1077;&#1089;&#1090;&#1085;&#1099;&#1081;</npcLocal>
   </NPC>
@@ -2899,7 +2571,7 @@
     <Name>Stalker_Bomzh_4</Name>
     <map>outlands</map>
     <chunk>fffefff7o</chunk>
-    <coord>	16.532333 0.000000 63.630493	</coord>
+    <coord>	17.941940 0.080464 63.660034	</coord>
     <numberNPC>NPC33</numberNPC>
     <npcLocal>&#1052;&#1077;&#1089;&#1090;&#1085;&#1099;&#1081;</npcLocal>
   </NPC>
@@ -2947,22 +2619,6 @@
     <Name>Statist</Name>
     <map>city_lubech</map>
     <chunk>8605d9a4i</chunk>
-    <coord>	9.281525 0.300305 -1.495951	</coord>
-    <numberNPC>NPC109</numberNPC>
-    <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>Statist</Name>
-    <map>city_lubech</map>
-    <chunk>8605d9a4i</chunk>
-    <coord>	6.102837 0.005323 -1.505696	</coord>
-    <numberNPC>NPC109</numberNPC>
-    <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>Statist</Name>
-    <map>city_lubech</map>
-    <chunk>8605d9a4i</chunk>
     <coord>	4.960579 0.005325 -10.427700	</coord>
     <numberNPC>NPC109</numberNPC>
     <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
@@ -2987,7 +2643,31 @@
     <Name>Statist</Name>
     <map>city_lubech</map>
     <chunk>8605d9a4i</chunk>
-    <coord>	9.385864 0.000234 -5.604516	</coord>
+    <coord>	9.281525 0.300305 -1.495951	</coord>
+    <numberNPC>NPC109</numberNPC>
+    <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Statist</Name>
+    <map>city_lubech</map>
+    <chunk>8605d9a4i</chunk>
+    <coord>	6.102837 0.005323 -1.505696	</coord>
+    <numberNPC>NPC109</numberNPC>
+    <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Statist</Name>
+    <map>city_lubech</map>
+    <chunk>8605d9a4i</chunk>
+    <coord>	9.859589 1.067972 -3.720973	</coord>
+    <numberNPC>NPC109</numberNPC>
+    <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Statist</Name>
+    <map>city_lubech</map>
+    <chunk>ffff0002o</chunk>
+    <coord>	3.925072 1.280409 12.769974	</coord>
     <numberNPC>NPC109</numberNPC>
     <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
   </NPC>
@@ -3091,7 +2771,7 @@
     <Name>Svetlii_Nastavnik_Mihail</Name>
     <map>outlands</map>
     <chunk>d4164a10i</chunk>
-    <coord>	-3.214722 3.373683 2.085693	</coord>
+    <coord>	3.677399 -0.000396 6.541138	</coord>
     <numberNPC>NPC144</numberNPC>
     <npcLocal>&#1057;&#1074;&#1077;&#1090;&#1083;&#1099;&#1081; &#1053;&#1072;&#1089;&#1090;&#1072;&#1074;&#1085;&#1080;&#1082; &#1052;&#1080;&#1093;&#1072;&#1080;&#1083;</npcLocal>
   </NPC>
@@ -3116,8 +2796,8 @@
     <map>steppe</map>
     <chunk>075c27afi</chunk>
     <coord>	0.655487 0.216721 5.372028	</coord>
-    <numberNPC>noname</numberNPC>
-    <npcLocal/>
+    <numberNPC>NPC408</numberNPC>
+    <npcLocal>&#1054;&#1073;&#1085;&#1080;&#1085;&#1089;&#1082;&#1080;&#1081;</npcLocal>
   </NPC>
   <NPC>
     <Name>Teklberry</Name>
@@ -3155,7 +2835,7 @@
     <Name>Trader</Name>
     <map>city_lubech</map>
     <chunk>1bda2d34i</chunk>
-    <coord>	2.900780 -3.933583 4.028572	</coord>
+    <coord>	2.697342 -3.933572 3.942810	</coord>
     <numberNPC>NPC105</numberNPC>
     <npcLocal>&#1057;&#1082;&#1091;&#1087;&#1097;&#1080;&#1082; &#1093;&#1072;&#1073;&#1072;&#1088;&#1072;</npcLocal>
   </NPC>
@@ -3211,7 +2891,7 @@
     <Name>Trader</Name>
     <map>outlands</map>
     <chunk>0007fffdo</chunk>
-    <coord>	36.237305 8.796528 41.919342	</coord>
+    <coord>	35.989319 8.740234 42.220856	</coord>
     <numberNPC>NPC105</numberNPC>
     <npcLocal>&#1057;&#1082;&#1091;&#1087;&#1097;&#1080;&#1082; &#1093;&#1072;&#1073;&#1072;&#1088;&#1072;</npcLocal>
   </NPC>
@@ -3219,7 +2899,7 @@
     <Name>Trader</Name>
     <map>outlands</map>
     <chunk>fffcfffdo</chunk>
-    <coord>	79.766205 3.977409 91.108734	</coord>
+    <coord>	79.541748 3.977409 91.126968	</coord>
     <numberNPC>NPC105</numberNPC>
     <npcLocal>&#1057;&#1082;&#1091;&#1087;&#1097;&#1080;&#1082; &#1093;&#1072;&#1073;&#1072;&#1088;&#1072;</npcLocal>
   </NPC>
@@ -3243,7 +2923,7 @@
     <Name>Trader</Name>
     <map>tunguska</map>
     <chunk>fffb0005o</chunk>
-    <coord>	47.514526 41.271717 88.368500	</coord>
+    <coord>	47.613342 41.271744 88.558960	</coord>
     <numberNPC>NPC105</numberNPC>
     <npcLocal>&#1057;&#1082;&#1091;&#1087;&#1097;&#1080;&#1082; &#1093;&#1072;&#1073;&#1072;&#1088;&#1072;</npcLocal>
   </NPC>
@@ -3587,7 +3267,7 @@
     <Name>Weapon_trader</Name>
     <map>outlands</map>
     <chunk>d4164a10i</chunk>
-    <coord>	-2.618317 3.473191 7.461670	</coord>
+    <coord>	6.019501 3.373573 3.254517	</coord>
     <numberNPC>NPC119</numberNPC>
     <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1086;&#1088;&#1091;&#1078;&#1080;&#1103;</npcLocal>
   </NPC>
@@ -3604,14 +3284,6 @@
     <map>steppe</map>
     <chunk>0000fffao</chunk>
     <coord>	40.010292 14.859987 12.360535	</coord>
-    <numberNPC>NPC119</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1086;&#1088;&#1091;&#1078;&#1080;&#1103;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>Weapon_trader</Name>
-    <map>tunguska</map>
-    <chunk>fffb0005o</chunk>
-    <coord>	70.751404 40.364517 90.742523	</coord>
     <numberNPC>NPC119</numberNPC>
     <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1086;&#1088;&#1091;&#1078;&#1080;&#1103;</npcLocal>
   </NPC>
@@ -3636,14 +3308,14 @@
     <map>outlands_airport</map>
     <chunk>00000003o</chunk>
     <coord>	25.449997 3.370000 75.760010	</coord>
-    <numberNPC>noname</numberNPC>
-    <npcLocal/>
+    <numberNPC>NPC409</numberNPC>
+    <npcLocal>&#1042;&#1072;&#1076;&#1080;&#1084; &#1057;&#1090;&#1091;&#1087;&#1082;&#1072;</npcLocal>
   </NPC>
   <NPC>
     <Name>Yashka_Beast</Name>
     <map>outlands</map>
     <chunk>fffefff7o</chunk>
-    <coord>	9.707489 0.000008 62.802063	</coord>
+    <coord>	11.333527 1.473448 64.976501	</coord>
     <numberNPC>NPC87</numberNPC>
     <npcLocal>&#1071;&#1096;&#1082;&#1072;</npcLocal>
   </NPC>
@@ -3715,15 +3387,7 @@
     <Name>bandit_guard</Name>
     <map>outlands</map>
     <chunk>00100001o</chunk>
-    <coord>	36.864258 -7.072265 27.463364	</coord>
-    <numberNPC>NPC139</numberNPC>
-    <npcLocal>&#1041;&#1072;&#1085;&#1076;&#1080;&#1090;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>bandit_guard</Name>
-    <map>outlands</map>
-    <chunk>00100001o</chunk>
-    <coord>	37.368408 -6.823241 34.078545	</coord>
+    <coord>	37.574707 -6.729001 33.431152	</coord>
     <numberNPC>NPC139</numberNPC>
     <npcLocal>&#1041;&#1072;&#1085;&#1076;&#1080;&#1090;</npcLocal>
   </NPC>
@@ -3755,7 +3419,7 @@
     <Name>bandit_guardian</Name>
     <map>outlands</map>
     <chunk>000cfffco</chunk>
-    <coord>	71.569214 -1.053621 19.865692	</coord>
+    <coord>	89.469360 -0.951172 16.763336	</coord>
     <numberNPC>NPC202</numberNPC>
     <npcLocal>&#1041;&#1072;&#1085;&#1076;&#1080;&#1090;</npcLocal>
   </NPC>
@@ -3763,7 +3427,7 @@
     <Name>bandit_guardian</Name>
     <map>outlands</map>
     <chunk>000cfffco</chunk>
-    <coord>	89.469360 -0.951172 16.763336	</coord>
+    <coord>	71.569214 -1.053621 19.865692	</coord>
     <numberNPC>NPC202</numberNPC>
     <npcLocal>&#1041;&#1072;&#1085;&#1076;&#1080;&#1090;</npcLocal>
   </NPC>
@@ -3785,227 +3449,19 @@
   </NPC>
   <NPC>
     <Name>clan_Donat_Bankir</Name>
-    <map>bases_premium</map>
-    <chunk>1f1c0ec1i</chunk>
-    <coord>	-5.453305 -0.000292 1.898117	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>bases_premium</map>
-    <chunk>1f5973edi</chunk>
-    <coord>	-3.633355 3.372990 4.004383	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>bases_premium</map>
-    <chunk>37f90379i</chunk>
-    <coord>	4.777348 0.000000 2.657017	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>bases_premium</map>
-    <chunk>3ae14929i</chunk>
-    <coord>	-3.633355 3.372990 4.004383	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>bases_premium</map>
-    <chunk>4264880bi</chunk>
-    <coord>	5.260143 0.000020 2.372101	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>bases_premium</map>
-    <chunk>d9482440i</chunk>
-    <coord>	-2.268420 3.373682 6.433701	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>bases_premium</map>
-    <chunk>e0111b57i</chunk>
-    <coord>	5.373970 0.000000 2.259834	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>base_citadel</map>
+    <map>donate_base_big</map>
     <chunk>44379446i</chunk>
     <coord>	5.373970 0.000000 2.259834	</coord>
     <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>base_dolg</map>
-    <chunk>0124fd28i</chunk>
-    <coord>	4.777348 0.000000 2.657017	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>base_gdom2</map>
-    <chunk>db880817i</chunk>
-    <coord>	-2.268420 3.373682 6.433701	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>base_sindikat</map>
-    <chunk>f960f01fi</chunk>
-    <coord>	5.260143 0.000020 2.372101	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>base_soyuz_mutaboev</map>
-    <chunk>9c2fce3di</chunk>
-    <coord>	-3.633355 3.372990 4.004383	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>base_vesuvius_lep</map>
-    <chunk>9c2fce3di</chunk>
-    <coord>	-3.633355 3.372990 4.004383	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Donat_Bankir</Name>
-    <map>base_voenstal</map>
-    <chunk>3ccbbff0i</chunk>
-    <coord>	-5.453305 -0.000292 1.898117	</coord>
-    <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
+    <npcLocal>&#1041;&#1059;&#1044;&#1045;&#1058; &#1059;&#1044;&#1040;&#1051;&#1045;&#1053;. &#1042;&#1045;&#1065;&#1048; &#1047;&#1040;&#1041;&#1056;&#1040;&#1058;&#1068;!</npcLocal>
   </NPC>
   <NPC>
     <Name>clan_Donat_Bankir</Name>
     <map>donate_base_small</map>
     <chunk>9c2fce3di</chunk>
-    <coord>	-3.633355 3.372990 4.004383	</coord>
+    <coord>	-4.562783 3.373682 4.574886	</coord>
     <numberNPC>NPC219</numberNPC>
-    <npcLocal>&#1041;&#1099;&#1074;&#1096;. &#1089;&#1082;&#1083;&#1072;&#1076; &#1076;&#1086;&#1085;&#1072;&#1090;&#1085;&#1099;&#1093; &#1073;&#1072;&#1079;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gdom1_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>8855fc83i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC232</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gdom1_doorman2</Name>
-    <map>base__inquisition</map>
-    <chunk>988760dbi</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC232</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gdom2_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>defcc3b2i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC246</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gdom2_doorman2</Name>
-    <map>base_gdom2</map>
-    <chunk>7efaf1bci</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC246</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman1_doorman2</Name>
-    <map>base02</map>
-    <chunk>69de2af1i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC198</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman1_doorman2</Name>
-    <map>base03</map>
-    <chunk>a88c7650i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC198</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman1_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>5cb9ec59i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC198</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman1_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>a887ffd5i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC198</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman1_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>b7c21637i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC198</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman1_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>d1736dd3i</chunk>
-    <coord>	0.834689 0.010517 0.419647	</coord>
-    <numberNPC>NPC198</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman1_doorman2</Name>
-    <map>base_gurman6</map>
-    <chunk>828c5dc7i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC198</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman1_doorman2</Name>
-    <map>base_SILENCE</map>
-    <chunk>c7df9280i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC198</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman3_doorman2</Name>
-    <map>base04</map>
-    <chunk>a30a1f08i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC217</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+    <npcLocal>&#1041;&#1059;&#1044;&#1045;&#1058; &#1059;&#1044;&#1040;&#1051;&#1045;&#1053;. &#1042;&#1045;&#1065;&#1048; &#1047;&#1040;&#1041;&#1056;&#1040;&#1058;&#1068;!</npcLocal>
   </NPC>
   <NPC>
     <Name>clan_Gurman3_doorman2</Name>
@@ -4013,102 +3469,6 @@
     <chunk>83b19cd4i</chunk>
     <coord>	1.239502 0.171282 -9.556796	</coord>
     <numberNPC>NPC217</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman3_doorman2</Name>
-    <map>base06</map>
-    <chunk>8b559cf1i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC217</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman3_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>40e10811i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC217</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman3_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>4264880bi</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC217</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman3_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>65e22851i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC217</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman3_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>e5f596f2i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC217</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman3_doorman2</Name>
-    <map>base_sindikat</map>
-    <chunk>f960f01fi</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC217</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman4_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>7637fa15i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC221</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman4_doorman2</Name>
-    <map>base_adom</map>
-    <chunk>e30aefdci</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC221</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman5_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>910909c9i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC230</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_Gurman5_doorman2</Name>
-    <map>base_zaria</map>
-    <chunk>907f9b2ci</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC230</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_NoobDog1_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>37f90379i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC200</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_NoobDog1_doorman2</Name>
-    <map>base_dolg</map>
-    <chunk>0124fd28i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC200</numberNPC>
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
@@ -4136,142 +3496,6 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1041;&#1072;&#1079;</npcLocal>
   </NPC>
   <NPC>
-    <Name>clan_brockenBus2_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>6db5c977i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC223</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_brockenBus2_doorman2</Name>
-    <map>base_dark_angels</map>
-    <chunk>97e66822i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC223</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_brockenBus_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>9e0b1d85i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC211</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_brockenBus_doorman2</Name>
-    <map>base_kuvalda</map>
-    <chunk>b588ed80i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC211</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_detsad2_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>5735be47i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC257</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_detsad2_doorman2</Name>
-    <map>base_detsad2</map>
-    <chunk>129cb7eci</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC257</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_detsad_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>6a8ed0abi</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC172</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_detsad_doorman2</Name>
-    <map>base_shtorm</map>
-    <chunk>4432b4fai</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC172</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_gurman_pop_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>0eb518dbi</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC212</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_gurman_pop_doorman2</Name>
-    <map>base_soyuz_mutaboev</map>
-    <chunk>fb5bddeai</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC212</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_doorman_exit</Name>
-    <map>bases_premium</map>
-    <chunk>cd00cc04i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC167</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_doorman_exit</Name>
-    <map>base_ussr</map>
-    <chunk>42e17498i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC167</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_repairman</Name>
-    <map>bases_premium</map>
-    <chunk>975b4e1bi</chunk>
-    <coord>	-1.939489 3.400256 6.220722	</coord>
-    <numberNPC>NPC84</numberNPC>
-    <npcLocal>&#1056;&#1077;&#1084;&#1086;&#1085;&#1090;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_repairman</Name>
-    <map>base_redkross</map>
-    <chunk>ec4e7eeei</chunk>
-    <coord>	-1.939489 3.400256 6.220722	</coord>
-    <numberNPC>NPC84</numberNPC>
-    <npcLocal>&#1056;&#1077;&#1084;&#1086;&#1085;&#1090;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base02</map>
-    <chunk>663cddd8i</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base03</map>
-    <chunk>1c6506d0i</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base04</map>
-    <chunk>a30a1f08i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
     <Name>clan_pochta_trader</Name>
     <map>base05</map>
     <chunk>83b19cd4i</chunk>
@@ -4281,231 +3505,7 @@
   </NPC>
   <NPC>
     <Name>clan_pochta_trader</Name>
-    <map>base06</map>
-    <chunk>8b559cf1i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>006f884bi</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>0405ad41i</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>155fc151i</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>1f1c0ec1i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>1f5973edi</chunk>
-    <coord>	7.827409 3.386326 6.477810	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>2acf9a64i</chunk>
-    <coord>	7.827409 3.386326 6.477810	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>2b7237bfi</chunk>
-    <coord>	7.831024 3.386357 6.596344	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>32584e17i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>360e89aai</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>37f90379i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>3ae14929i</chunk>
-    <coord>	7.827409 3.386326 6.477810	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>3da8bcfci</chunk>
-    <coord>	7.829149 3.386341 6.533295	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>40e10811i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>4264880bi</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>48311b7di</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>65e22851i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>6a8ed0abi</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>975b4e1bi</chunk>
-    <coord>	7.198443 3.400001 6.148842	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>a3c460d5i</chunk>
-    <coord>	7.829157 3.386340 6.533264	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>a62f06adi</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>babc9a3fi</chunk>
-    <coord>	7.826177 3.386315 6.437355	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>d9482440i</chunk>
-    <coord>	7.834911 3.386392 6.724249	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>e0111b57i</chunk>
-    <coord>	-4.021133 -0.000134 -7.291595	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>e5f596f2i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>e9e5d4e5i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>bases_premium</map>
-    <chunk>ff58c1d9i</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_adom</map>
-    <chunk>7804a63di</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_citadel</map>
+    <map>donate_base_big</map>
     <chunk>44379446i</chunk>
     <coord>	-4.021133 -0.000134 -7.291595	</coord>
     <numberNPC>NPC96</numberNPC>
@@ -4513,153 +3513,9 @@
   </NPC>
   <NPC>
     <Name>clan_pochta_trader</Name>
-    <map>base_dark_angels</map>
-    <chunk>f68b3614i</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_dolg</map>
-    <chunk>0124fd28i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_gdom2</map>
-    <chunk>db880817i</chunk>
-    <coord>	7.834911 3.386392 6.724249	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_kuvalda</map>
-    <chunk>adbb3178i</chunk>
-    <coord>	7.826177 3.386315 6.437355	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_redkross</map>
-    <chunk>ec4e7eeei</chunk>
-    <coord>	7.198443 3.400001 6.148842	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_rgd_upiry</map>
-    <chunk>8f1c44e8i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_shtorm</map>
-    <chunk>4432b4fai</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_SILENCE</map>
-    <chunk>ec4e7eeei</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_sindikat</map>
-    <chunk>f960f01fi</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_soyuz_mutaboev</map>
-    <chunk>9c2fce3di</chunk>
-    <coord>	7.827409 3.386326 6.477810	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_steel_brothers</map>
-    <chunk>e6a4dc41i</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_ussr</map>
-    <chunk>fba7d32ei</chunk>
-    <coord>	7.831018 3.386358 6.596306	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_vertolet2</map>
-    <chunk>53eec7aai</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_vesuvius_lep</map>
-    <chunk>9c2fce3di</chunk>
-    <coord>	7.827409 3.386326 6.477810	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_voenstal</map>
-    <chunk>3ccbbff0i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_vzvod45</map>
-    <chunk>5decb049i</chunk>
-    <coord>	-3.975796 -0.000133 -7.291327	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base_zaria</map>
-    <chunk>4efd38eci</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
-    <map>base__inquisition</map>
-    <chunk>8d4b0130i</chunk>
-    <coord>	7.829101 3.386341 6.533310	</coord>
-    <numberNPC>NPC96</numberNPC>
-    <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_pochta_trader</Name>
     <map>donate_base_small</map>
     <chunk>9c2fce3di</chunk>
-    <coord>	7.827409 3.386326 6.477810	</coord>
+    <coord>	7.570493 3.386105 6.231224	</coord>
     <numberNPC>NPC96</numberNPC>
     <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
   </NPC>
@@ -4704,122 +3560,18 @@
     <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
   </NPC>
   <NPC>
-    <Name>clan_redcross_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>ab6f1541i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC193</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_redcross_doorman2</Name>
-    <map>base_redkross</map>
-    <chunk>c7df9280i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC193</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
     <Name>clan_serp2_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>e0111b57i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC213</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_serp2_doorman2</Name>
-    <map>base_citadel</map>
+    <map>donate_base_big</map>
     <chunk>44379446i</chunk>
     <coord>	1.239502 0.171282 -9.556796	</coord>
     <numberNPC>NPC213</numberNPC>
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
-    <Name>clan_serp_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>32584e17i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC170</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_serp_doorman2</Name>
-    <map>base_rgd_upiry</map>
-    <chunk>8f1c44e8i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC170</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_stadion_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>e9e5d4e5i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC239</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_stadion_doorman2</Name>
-    <map>base_vzvod45</map>
-    <chunk>5decb049i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC239</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_univermag_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>d8442bcbi</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC237</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_univermag_doorman2</Name>
-    <map>base_steel_brothers</map>
-    <chunk>2e029c81i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC237</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_vertolet2_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>166b5c85i</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC242</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_vertolet2_doorman2</Name>
-    <map>base_vertolet2</map>
-    <chunk>a42b695ei</chunk>
-    <coord>	0.834685 0.010517 0.419708	</coord>
-    <numberNPC>NPC242</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_vertolet_doorman2</Name>
-    <map>bases_premium</map>
-    <chunk>1f1c0ec1i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC173</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>clan_vertolet_doorman2</Name>
-    <map>base_voenstal</map>
-    <chunk>3ccbbff0i</chunk>
-    <coord>	1.239502 0.171282 -9.556796	</coord>
-    <numberNPC>NPC173</numberNPC>
-    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
-  </NPC>
-  <NPC>
     <Name>doc_Zinoviev</Name>
     <map>city_lubech</map>
-    <chunk>1bda2d34i</chunk>
-    <coord>	5.708916 -0.016686 14.287704	</coord>
+    <chunk>bb31c2c7i</chunk>
+    <coord>	-0.428284 0.793633 -8.587669	</coord>
     <numberNPC>NPC74</numberNPC>
     <npcLocal>&#1044;&#1086;&#1082;&#1090;&#1086;&#1088; &#1047;&#1080;&#1085;&#1086;&#1074;&#1100;&#1077;&#1074;</npcLocal>
   </NPC>
@@ -4874,8 +3626,8 @@
   <NPC>
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
-    <chunk>8605d9a4i</chunk>
-    <coord>	-9.644470 1.234655 -12.026442	</coord>
+    <chunk>969c96fbi</chunk>
+    <coord>	-0.526659 5.734280 18.546440	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -4898,32 +3650,8 @@
   <NPC>
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
-    <chunk>969c96fbi</chunk>
-    <coord>	-0.526659 5.734280 18.546440	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
     <chunk>fffd0001o</chunk>
     <coord>	20.613892 0.060547 8.974342	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
-    <chunk>fffe0000o</chunk>
-    <coord>	77.943924 0.000001 16.415768	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
-    <chunk>fffe0000o</chunk>
-    <coord>	65.300003 0.000000 27.799923	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -4939,23 +3667,23 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>fffe0000o</chunk>
-    <coord>	43.420242 0.000004 12.324949	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
-    <chunk>fffe0000o</chunk>
-    <coord>	47.601883 0.000000 9.385045	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
-    <chunk>fffe0000o</chunk>
     <coord>	85.736038 1.314286 36.028931	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>city_lubech</map>
+    <chunk>fffe0000o</chunk>
+    <coord>	76.760071 -0.000002 16.545370	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>city_lubech</map>
+    <chunk>fffe0000o</chunk>
+    <coord>	42.982895 0.677567 17.812599	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -4964,14 +3692,6 @@
     <map>city_lubech</map>
     <chunk>fffe0001o</chunk>
     <coord>	84.657188 0.000000 86.716537	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
-    <chunk>fffe0002o</chunk>
-    <coord>	92.084053 0.000000 95.444550	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5018,6 +3738,14 @@
   <NPC>
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
+    <chunk>fffe0002o</chunk>
+    <coord>	92.264198 -0.000003 95.461853	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>city_lubech</map>
     <chunk>fffe0003o</chunk>
     <coord>	96.975822 0.000000 38.761871	</coord>
     <numberNPC>NPC83</numberNPC>
@@ -5035,7 +3763,7 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>ffff0000o</chunk>
-    <coord>	28.696228 0.000000 34.849197	</coord>
+    <coord>	25.059258 0.123632 33.627831	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5051,7 +3779,7 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>ffff0001o</chunk>
-    <coord>	74.612511 -0.000001 84.181145	</coord>
+    <coord>	75.154160 0.000000 84.398468	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5323,6 +4051,14 @@
     <Name>lubech_guardian</Name>
     <map>outlands</map>
     <chunk>fffcfffdo</chunk>
+    <coord>	45.075775 5.763084 63.639786	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>outlands</map>
+    <chunk>fffcfffdo</chunk>
     <coord>	47.618073 0.163086 20.674408	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
@@ -5331,15 +4067,7 @@
     <Name>lubech_guardian</Name>
     <map>outlands</map>
     <chunk>fffcfffdo</chunk>
-    <coord>	45.113861 5.782064 63.535126	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>outlands</map>
-    <chunk>fffcfffdo</chunk>
-    <coord>	58.684570 9.072803 11.565063	</coord>
+    <coord>	59.012085 8.966360 11.760590	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5348,14 +4076,6 @@
     <map>outlands</map>
     <chunk>fffcfffeo</chunk>
     <coord>	28.943726 0.081310 41.603607	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>outlands</map>
-    <chunk>fffcfffeo</chunk>
-    <coord>	53.707214 2.709867 5.944153	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5427,7 +4147,7 @@
     <Name>lubech_merc</Name>
     <map>outlands</map>
     <chunk>fffefff7o</chunk>
-    <coord>	13.798828 0.000000 59.205750	</coord>
+    <coord>	12.657639 0.025455 58.361511	</coord>
     <numberNPC>NPC49</numberNPC>
     <npcLocal>&#1053;&#1072;&#1077;&#1084;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5443,7 +4163,15 @@
     <Name>merc_guard</Name>
     <map>outlands</map>
     <chunk>0009fff8o</chunk>
-    <coord>	26.783630 48.263657 55.861816	</coord>
+    <coord>	0.353943 51.324833 68.738403	</coord>
+    <numberNPC>NPC228</numberNPC>
+    <npcLocal>&#1054;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>merc_guard</Name>
+    <map>outlands</map>
+    <chunk>0009fff8o</chunk>
+    <coord>	20.709778 48.343292 49.188538	</coord>
     <numberNPC>NPC228</numberNPC>
     <npcLocal>&#1054;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5595,14 +4323,6 @@
     <Name>noob_guardian</Name>
     <map>so_origins</map>
     <chunk>00000000o</chunk>
-    <coord>	47.874039 3.854960 72.801270	</coord>
-    <numberNPC>NPC121</numberNPC>
-    <npcLocal>&#1054;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082; &#1089;&#1090;&#1072;&#1085;&#1094;&#1080;&#1080;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>noob_guardian</Name>
-    <map>so_origins</map>
-    <chunk>00000000o</chunk>
     <coord>	36.886612 3.747232 48.131889	</coord>
     <numberNPC>NPC121</numberNPC>
     <npcLocal>&#1054;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082; &#1089;&#1090;&#1072;&#1085;&#1094;&#1080;&#1080;</npcLocal>
@@ -5616,12 +4336,28 @@
     <npcLocal>&#1054;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082; &#1089;&#1090;&#1072;&#1085;&#1094;&#1080;&#1080;</npcLocal>
   </NPC>
   <NPC>
+    <Name>noob_guardian</Name>
+    <map>so_origins</map>
+    <chunk>00000000o</chunk>
+    <coord>	47.874039 3.854960 72.801270	</coord>
+    <numberNPC>NPC121</numberNPC>
+    <npcLocal>&#1054;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082; &#1089;&#1090;&#1072;&#1085;&#1094;&#1080;&#1080;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>prapNicheporenko</Name>
     <map>outlands</map>
     <chunk>fffcfffdo</chunk>
     <coord>	57.011871 0.244534 19.849030	</coord>
     <numberNPC>NPC124</numberNPC>
     <npcLocal>&#1055;&#1088;&#1072;&#1087;&#1086;&#1088;&#1097;&#1080;&#1082; &#1053;&#1080;&#1095;&#1077;&#1087;&#1086;&#1088;&#1077;&#1085;&#1082;&#1086;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>prapOsadchiy</Name>
+    <map>outlands</map>
+    <chunk>fffbfffdo</chunk>
+    <coord>	66.140015 11.879998 87.479980	</coord>
+    <numberNPC>NPC412</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1072;&#1087;&#1086;&#1088;&#1097;&#1080;&#1082; &#1054;&#1089;&#1072;&#1076;&#1095;&#1080;&#1081;</npcLocal>
   </NPC>
   <NPC>
     <Name>prison_guard</Name>
@@ -5643,7 +4379,7 @@
     <Name>prison_guard</Name>
     <map>pk_prison01</map>
     <chunk>0000ffffo</chunk>
-    <coord>	81.110947 0.000000 72.786362	</coord>
+    <coord>	18.990618 2.740543 66.820221	</coord>
     <numberNPC>NPC86</numberNPC>
     <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5651,7 +4387,7 @@
     <Name>prison_guard</Name>
     <map>pk_prison01</map>
     <chunk>0000ffffo</chunk>
-    <coord>	18.990618 2.740543 66.820221	</coord>
+    <coord>	25.429926 0.000000 72.179497	</coord>
     <numberNPC>NPC86</numberNPC>
     <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5675,7 +4411,7 @@
     <Name>prison_guard</Name>
     <map>pk_prison01</map>
     <chunk>0000ffffo</chunk>
-    <coord>	25.429926 0.000000 72.179497	</coord>
+    <coord>	81.110947 0.000000 72.786362	</coord>
     <numberNPC>NPC86</numberNPC>
     <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5691,7 +4427,7 @@
     <Name>prison_guard</Name>
     <map>pk_prison01</map>
     <chunk>fffeffffo</chunk>
-    <coord>	85.773849 0.000000 73.219604	</coord>
+    <coord>	87.505264 0.000000 84.844749	</coord>
     <numberNPC>NPC86</numberNPC>
     <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5699,7 +4435,7 @@
     <Name>prison_guard</Name>
     <map>pk_prison01</map>
     <chunk>fffeffffo</chunk>
-    <coord>	87.505264 0.000000 84.844749	</coord>
+    <coord>	85.773849 0.000000 73.219604	</coord>
     <numberNPC>NPC86</numberNPC>
     <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5747,14 +4483,6 @@
     <Name>prison_guard</Name>
     <map>pk_prison01</map>
     <chunk>ffffffffo</chunk>
-    <coord>	37.920570 9.028533 91.394783	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>pk_prison01</map>
-    <chunk>ffffffffo</chunk>
     <coord>	37.765320 0.000000 69.369492	</coord>
     <numberNPC>NPC86</numberNPC>
     <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
@@ -5764,6 +4492,14 @@
     <map>pk_prison01</map>
     <chunk>ffffffffo</chunk>
     <coord>	37.883732 0.000004 83.936958	</coord>
+    <numberNPC>NPC86</numberNPC>
+    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>prison_guard</Name>
+    <map>pk_prison01</map>
+    <chunk>ffffffffo</chunk>
+    <coord>	37.920570 9.028533 91.394783	</coord>
     <numberNPC>NPC86</numberNPC>
     <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -5944,6 +4680,14 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1092;&#1077;&#1089;&#1089;&#1086;&#1088; &#1064;&#1083;&#1077;&#1081;&#1084;&#1086;&#1074;&#1080;&#1095;</npcLocal>
   </NPC>
   <NPC>
+    <Name>pvp_npc</Name>
+    <map>outlands</map>
+    <chunk>fffcfffdo</chunk>
+    <coord>	63.252014 2.859375 63.380249	</coord>
+    <numberNPC>NPC22</numberNPC>
+    <npcLocal>&#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1090;&#1086;&#1088;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>sergeant_kojemiaka</Name>
     <map>pk_prison01</map>
     <chunk>ffff0000o</chunk>
@@ -6008,12 +4752,28 @@
     <npcLocal/>
   </NPC>
   <NPC>
+    <Name>test</Name>
+    <map>weapon_test</map>
+    <chunk>00000000o</chunk>
+    <coord>	67.677391 0.000004 61.127392	</coord>
+    <numberNPC>noname</numberNPC>
+    <npcLocal/>
+  </NPC>
+  <NPC>
     <Name>testman</Name>
     <map>zoo</map>
     <chunk>ffff0000o</chunk>
     <coord>	96.524994 0.000000 28.335999	</coord>
     <numberNPC>NPC276</numberNPC>
     <npcLocal>&#1052;&#1077;&#1085;&#1077;&#1076;&#1078;&#1077;&#1088; &#1073;&#1072;&#1079;&#1099;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Provodnik_PvP_DM_Vilage</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC311</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
   </NPC>
   <NPC>
     <Name>Krokodil</Name>
@@ -6068,8 +4828,8 @@
     <map>notfound</map>
     <chunk>notfound</chunk>
     <coord>notfound</coord>
-    <numberNPC>NPC306</numberNPC>
-    <npcLocal>&#1058;&#1088;&#1091;&#1087;</npcLocal>
+    <numberNPC>  </numberNPC>
+    <npcLocal/>
   </NPC>
   <NPC>
     <Name>Kolokol_Island</Name>
@@ -6078,6 +4838,14 @@
     <coord>notfound</coord>
     <numberNPC>NPC298</numberNPC>
     <npcLocal>&#1050;&#1086;&#1083;&#1086;&#1082;&#1086;&#1083;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_Gdom2_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC246</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
     <Name>Mail_Whites</Name>
@@ -6094,14 +4862,6 @@
     <coord>notfound</coord>
     <numberNPC>NPC19</numberNPC>
     <npcLocal>&#1050;&#1055;&#1050; &#1042;&#1080;&#1090;&#1100;&#1082;&#1080; &#1057;&#1082;&#1086;&#1088;&#1086;&#1093;&#1086;&#1076;&#1072;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>pvp_npc</Name>
-    <map>notfound</map>
-    <chunk>notfound</chunk>
-    <coord>notfound</coord>
-    <numberNPC>NPC22</numberNPC>
-    <npcLocal>&#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1090;&#1086;&#1088;</npcLocal>
   </NPC>
   <NPC>
     <Name>clan_vertolet_Guard</Name>
@@ -6128,11 +4888,27 @@
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
+    <Name>clan_Gurman1_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC198</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>clan_gurman_pop2_doorman1</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
     <coord>notfound</coord>
     <numberNPC>NPC248</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_brockenBus_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC211</numberNPC>
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
@@ -6142,6 +4918,14 @@
     <coord>notfound</coord>
     <numberNPC>NPC34</numberNPC>
     <npcLocal>&#1052;&#1072;&#1096;&#1080;&#1085;&#1080;&#1089;&#1090;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_serp_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC170</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
     <Name>Kamil</Name>
@@ -6160,6 +4944,14 @@
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
+    <Name>clan_redcross_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC193</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>clan_gurman_pop2_doorman2</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
@@ -6173,6 +4965,14 @@
     <chunk>notfound</chunk>
     <coord>notfound</coord>
     <numberNPC>NPC169</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_vertolet2_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC242</numberNPC>
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
@@ -6272,6 +5072,14 @@
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
+    <Name>clan_brockenBus2_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC223</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>clan_serp2_doorman1</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
@@ -6293,6 +5101,14 @@
     <chunk>notfound</chunk>
     <coord>notfound</coord>
     <numberNPC>NPC238</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_stadion_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC239</numberNPC>
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
@@ -6376,6 +5192,14 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
+    <Name>clan_detsad_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC172</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>UkrepTrader</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
@@ -6390,6 +5214,14 @@
     <coord>notfound</coord>
     <numberNPC>NPC174</numberNPC>
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Provodnik_Tungus_NZ</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC205</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; &#1073;&#1072;&#1079;&#1099;</npcLocal>
   </NPC>
   <NPC>
     <Name>clan_radiotower_trader</Name>
@@ -6408,12 +5240,28 @@
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
+    <Name>clan_pochta_repairman</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC84</numberNPC>
+    <npcLocal>&#1056;&#1077;&#1084;&#1086;&#1085;&#1090;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>Real_Hunter</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
     <coord>notfound</coord>
     <numberNPC>NPC90</numberNPC>
     <npcLocal>&#1064;&#1088;&#1072;&#1084;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_detsad2_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC257</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
     <Name>clan_dom-na-holme_trader</Name>
@@ -6456,6 +5304,22 @@
     <npcLocal>&#1054;&#1093;&#1088;&#1072;&#1085;&#1072;</npcLocal>
   </NPC>
   <NPC>
+    <Name>donate_base_doorman</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC283</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081; &#1041;&#1072;&#1079;&#1099;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_vertolet_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC173</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>clan_gurman_pop_doorman1</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
@@ -6478,6 +5342,14 @@
     <coord>notfound</coord>
     <numberNPC>NPC112</numberNPC>
     <npcLocal>&#1060;&#1072;&#1088;&#1084;&#1072;&#1094;&#1077;&#1074;&#1090;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_gurman_pop_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC212</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
     <Name>Olg</Name>
@@ -6608,6 +5480,14 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
+    <Name>clan_Gurman5_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC230</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>Bono</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
@@ -6622,6 +5502,14 @@
     <coord>notfound</coord>
     <numberNPC>NPC269</numberNPC>
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_pochta_doorman_exit</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC167</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
     <Name>clan_psyho_trader</Name>
@@ -6640,6 +5528,14 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
+    <Name>clan_Gurman4_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC221</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>clan_Gurman4_doorman1</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
@@ -6648,11 +5544,35 @@
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
+    <Name>clan_NoobDog1_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC200</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_univermag_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC237</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>clan_univermag_doorman1</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
     <coord>notfound</coord>
     <numberNPC>NPC236</numberNPC>
+    <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>clan_Gdom1_doorman2</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC232</numberNPC>
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>

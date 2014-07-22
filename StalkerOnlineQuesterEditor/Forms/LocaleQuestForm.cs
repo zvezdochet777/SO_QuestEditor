@@ -58,7 +58,10 @@ namespace StalkerOnlineQuesterEditor.Forms
             onWonTextBox.Text = quest.QuestInformation.onWin;
             onFailedTextBox.Text = quest.QuestInformation.onFailed;
 
-            if (locale_quest.QuestInformation.Description != quest.QuestInformation.Description)
+            // если заголовки и описание совпадают, это означает, что в локализации просто копия русских
+            // текстов (еще не готова и тупо скопирована) - значит ее не выводим на форму
+            if (locale_quest.QuestInformation.Description != quest.QuestInformation.Description ||
+                locale_quest.QuestInformation.Title != quest.QuestInformation.Title)
             {
                 localeLitleTextBox.Text = locale_quest.QuestInformation.Title;
                 localeDescriptionTextBox.Text = locale_quest.QuestInformation.Description;
