@@ -484,10 +484,16 @@ namespace StalkerOnlineQuesterEditor
         {
             if (editQuestReward.TypeOfItems.Any())
                 bItemReward.Image = Properties.Resources.but_indicate;
+            else
+                bItemReward.Image = null;
             if (editQuestReward.Fractions.Any())
                 bRewardFractions.Image = Properties.Resources.but_indicate;
+            else
+                bRewardFractions.Image = null;
             if (editQuestReward.Effects.Any())
                 bRewardEffects.Image = Properties.Resources.but_indicate;
+            else
+                bRewardEffects.Image = null;
         }
         //! Создает индиикацию кнопки Предметы в графе Правила квеста
         public void checkQuestRulesIndicates()

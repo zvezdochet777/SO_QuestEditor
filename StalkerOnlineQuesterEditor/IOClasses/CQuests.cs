@@ -542,6 +542,37 @@ namespace StalkerOnlineQuesterEditor
             else return null;
         }
 
+        //! Возвращает строку с описанием цели квеста в удобочитаемом виде
+        public string getTargetString(CQuest quest)
+        {
+            string result;
+            switch (quest.Target.QuestType)
+            { 
+                case 1:
+                    result = quest.Target.ObjectName;
+                    break;
+                case 2: case 3:
+                    result = parent.mobConst.getDescriptionOnType(quest.Target.ObjectType).getName();
+                    break;
+                case 4: case 8:
+                    result = "Зона " + parent.zoneConst.getDescriptionOnKey(quest.Target.ObjectName).getName();
+                    break;
+                case 5:
+                    result = quest.Target.NumOfObjects + " рублей";
+                    break;
+                case 6:
+                    result = "Триггер " + parent.triggerConst.getDescriptionOnId(quest.Target.ObjectType);
+                    break;
+                case 0: case 7: case 16: case 19: case 20:
+                    result = "Предмет " + parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
+                    break;
+                default:
+                    result = "";
+                    break;
+            }
+            return result;
+        }
+
         public void setClan(int questID, bool IsClan)
         {
             CQuest curQuest = getQuest(questID);

@@ -533,7 +533,7 @@ namespace StalkerOnlineQuesterEditor
         void addNodeOnTreeQuest(int currentQuest)
         {
             CQuest curQuest = getQuestOnQuestID(currentQuest);
-
+            treeQuest.BeginUpdate();
             if (!curQuest.Additional.IsSubQuest.Equals(0))
             {
                 TreeNode[] nodes = treeQuest.Nodes.Find(getQuestOnQuestID(curQuest.Additional.IsSubQuest).QuestID.ToString(), true);
@@ -562,8 +562,12 @@ namespace StalkerOnlineQuesterEditor
                     && ( curQuest.Additional.ListOfSubQuest.Any() ) )
                     foreach (int subquest in curQuest.Additional.ListOfSubQuest)
                         addNodeOnTreeQuest(subquest);
+            treeQuest.EndUpdate();
+            treeQuest.Refresh();
+            treeQuest.Update();
         }
 
+        //! Создает плашку с информацией о субквесте
         void createQuestPanels(int questID)
         {
             CQuest quest = getQuestOnQuestID(questID);
@@ -580,10 +584,19 @@ namespace StalkerOnlineQuesterEditor
             questBox.Dock = DockStyle.Top;
 
             Label eventLabel = new Label();
-            eventLabel.Text = "Событие: "  + questConst.getDescription(quest.Target.QuestType); ;
+            eventLabel.Text = "Событие: " + questConst.getDescription(quest.Target.QuestType);
             eventLabel.Dock = DockStyle.Top;
             questBox.Controls.Add(eventLabel);
-            questBox.Controls.SetChildIndex(eventLabel,3);
+            questBox.Controls.SetChildIndex(eventLabel, 1);
+
+            if (quests.getTargetString(quest) != "")
+            {
+                Label targetLabel = new Label();
+                targetLabel.Text = "Цель: " + quests.getTargetString(quest);
+                targetLabel.Dock = DockStyle.Top;
+                questBox.Controls.Add(targetLabel);
+                questBox.Controls.SetChildIndex(targetLabel, 1);
+            }
 
             GroupBox infoBox = new GroupBox();
             infoBox.AutoSize = true;
@@ -605,7 +618,7 @@ namespace StalkerOnlineQuesterEditor
 
             questPanel.Controls.Add(questBox);
 
-            questBox.Controls.SetChildIndex(eventLabel, 1);
+            questBox.Controls.SetChildIndex(eventLabel, 2);
             panels.Add(questPanel, questID);
 
             if (quest.Additional.ListOfSubQuest.Any())

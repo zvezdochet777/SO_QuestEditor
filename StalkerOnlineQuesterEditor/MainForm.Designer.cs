@@ -56,7 +56,12 @@ namespace StalkerOnlineQuesterEditor
             this.EmulatorGroupBox = new System.Windows.Forms.GroupBox();
             this.EmulatorsplitContainer = new System.Windows.Forms.SplitContainer();
             this.tabQuests = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.splitQuestsContainer = new System.Windows.Forms.SplitContainer();
+            this.treeQuest = new System.Windows.Forms.TreeView();
+            this.labelQuestTree = new System.Windows.Forms.Label();
+            this.treeQuestBuffer = new System.Windows.Forms.TreeView();
+            this.labelBuffer = new System.Windows.Forms.Label();
+            this.panelQuestTools = new System.Windows.Forms.Panel();
             this.bPasteEvents = new System.Windows.Forms.Button();
             this.bCopyEvents = new System.Windows.Forms.Button();
             this.bQuestDown = new System.Windows.Forms.Button();
@@ -65,11 +70,6 @@ namespace StalkerOnlineQuesterEditor
             this.bRemoveEvent = new System.Windows.Forms.Button();
             this.bEditEvent = new System.Windows.Forms.Button();
             this.bAddEvent = new System.Windows.Forms.Button();
-            this.splitQuestsContainer = new System.Windows.Forms.SplitContainer();
-            this.treeQuest = new System.Windows.Forms.TreeView();
-            this.labelQuestTree = new System.Windows.Forms.Label();
-            this.treeQuestBuffer = new System.Windows.Forms.TreeView();
-            this.labelBuffer = new System.Windows.Forms.Label();
             this.npcLinksTabPage = new System.Windows.Forms.TabPage();
             this.npcLinkShower = new UMD.HCIL.Piccolo.PCanvas();
             this.pNpcLinkControls = new System.Windows.Forms.Panel();
@@ -172,9 +172,9 @@ namespace StalkerOnlineQuesterEditor
             this.EmulatorGroupBox.SuspendLayout();
             this.EmulatorsplitContainer.SuspendLayout();
             this.tabQuests.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.splitQuestsContainer.Panel1.SuspendLayout();
             this.splitQuestsContainer.SuspendLayout();
+            this.panelQuestTools.SuspendLayout();
             this.npcLinksTabPage.SuspendLayout();
             this.pNpcLinkControls.SuspendLayout();
             this.tabReview.SuspendLayout();
@@ -503,8 +503,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             // tabQuests
             // 
-            this.tabQuests.Controls.Add(this.panel1);
             this.tabQuests.Controls.Add(this.splitQuestsContainer);
+            this.tabQuests.Controls.Add(this.panelQuestTools);
             this.tabQuests.Location = new System.Drawing.Point(4, 22);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
@@ -512,109 +512,6 @@ namespace StalkerOnlineQuesterEditor
             this.tabQuests.TabIndex = 1;
             this.tabQuests.Text = "Квесты";
             this.tabQuests.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.bPasteEvents);
-            this.panel1.Controls.Add(this.bCopyEvents);
-            this.panel1.Controls.Add(this.bQuestDown);
-            this.panel1.Controls.Add(this.bQuestUp);
-            this.panel1.Controls.Add(this.bSaveQuests);
-            this.panel1.Controls.Add(this.bRemoveEvent);
-            this.panel1.Controls.Add(this.bEditEvent);
-            this.panel1.Controls.Add(this.bAddEvent);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(703, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 534);
-            this.panel1.TabIndex = 0;
-            // 
-            // bPasteEvents
-            // 
-            this.bPasteEvents.Enabled = false;
-            this.bPasteEvents.Location = new System.Drawing.Point(4, 216);
-            this.bPasteEvents.Name = "bPasteEvents";
-            this.bPasteEvents.Size = new System.Drawing.Size(191, 23);
-            this.bPasteEvents.TabIndex = 7;
-            this.bPasteEvents.Text = "Вставить";
-            this.bPasteEvents.UseVisualStyleBackColor = true;
-            this.bPasteEvents.Click += new System.EventHandler(this.bPasteEvents_Click);
-            // 
-            // bCopyEvents
-            // 
-            this.bCopyEvents.Enabled = false;
-            this.bCopyEvents.Location = new System.Drawing.Point(4, 187);
-            this.bCopyEvents.Name = "bCopyEvents";
-            this.bCopyEvents.Size = new System.Drawing.Size(191, 23);
-            this.bCopyEvents.TabIndex = 6;
-            this.bCopyEvents.Text = "Копировать";
-            this.bCopyEvents.UseVisualStyleBackColor = true;
-            this.bCopyEvents.Click += new System.EventHandler(this.bCopyEvents_Click);
-            // 
-            // bQuestDown
-            // 
-            this.bQuestDown.Enabled = false;
-            this.bQuestDown.Location = new System.Drawing.Point(4, 120);
-            this.bQuestDown.Name = "bQuestDown";
-            this.bQuestDown.Size = new System.Drawing.Size(193, 23);
-            this.bQuestDown.TabIndex = 5;
-            this.bQuestDown.Text = "Вниз";
-            this.bQuestDown.UseVisualStyleBackColor = true;
-            this.bQuestDown.Click += new System.EventHandler(this.bQuestDown_Click);
-            // 
-            // bQuestUp
-            // 
-            this.bQuestUp.Enabled = false;
-            this.bQuestUp.Location = new System.Drawing.Point(4, 91);
-            this.bQuestUp.Name = "bQuestUp";
-            this.bQuestUp.Size = new System.Drawing.Size(193, 23);
-            this.bQuestUp.TabIndex = 4;
-            this.bQuestUp.Text = "Вверх";
-            this.bQuestUp.UseVisualStyleBackColor = true;
-            this.bQuestUp.Click += new System.EventHandler(this.bQuestUp_Click);
-            // 
-            // bSaveQuests
-            // 
-            this.bSaveQuests.Location = new System.Drawing.Point(7, 281);
-            this.bSaveQuests.Name = "bSaveQuests";
-            this.bSaveQuests.Size = new System.Drawing.Size(193, 23);
-            this.bSaveQuests.TabIndex = 3;
-            this.bSaveQuests.Text = "Сохранить изменения";
-            this.bSaveQuests.UseVisualStyleBackColor = true;
-            this.bSaveQuests.Click += new System.EventHandler(this.bSaveQuests_Click);
-            // 
-            // bRemoveEvent
-            // 
-            this.bRemoveEvent.Enabled = false;
-            this.bRemoveEvent.Location = new System.Drawing.Point(4, 62);
-            this.bRemoveEvent.Name = "bRemoveEvent";
-            this.bRemoveEvent.Size = new System.Drawing.Size(193, 23);
-            this.bRemoveEvent.TabIndex = 2;
-            this.bRemoveEvent.Text = "Удалить событие";
-            this.bRemoveEvent.UseVisualStyleBackColor = true;
-            this.bRemoveEvent.Click += new System.EventHandler(this.bRemoveEvent_Click);
-            // 
-            // bEditEvent
-            // 
-            this.bEditEvent.Enabled = false;
-            this.bEditEvent.Location = new System.Drawing.Point(3, 32);
-            this.bEditEvent.Name = "bEditEvent";
-            this.bEditEvent.Size = new System.Drawing.Size(194, 23);
-            this.bEditEvent.TabIndex = 1;
-            this.bEditEvent.Text = "Править событие";
-            this.bEditEvent.UseVisualStyleBackColor = true;
-            this.bEditEvent.Click += new System.EventHandler(this.bEditEvent_Click);
-            // 
-            // bAddEvent
-            // 
-            this.bAddEvent.Enabled = false;
-            this.bAddEvent.Location = new System.Drawing.Point(3, 3);
-            this.bAddEvent.Name = "bAddEvent";
-            this.bAddEvent.Size = new System.Drawing.Size(194, 23);
-            this.bAddEvent.TabIndex = 0;
-            this.bAddEvent.Text = "Добавить событие";
-            this.bAddEvent.UseVisualStyleBackColor = true;
-            this.bAddEvent.Click += new System.EventHandler(this.bAddEvent_Click);
             // 
             // splitQuestsContainer
             // 
@@ -633,16 +530,17 @@ namespace StalkerOnlineQuesterEditor
             // splitQuestsContainer.Panel2
             // 
             this.splitQuestsContainer.Panel2.AutoScroll = true;
-            this.splitQuestsContainer.Size = new System.Drawing.Size(900, 534);
-            this.splitQuestsContainer.SplitterDistance = 299;
+            this.splitQuestsContainer.Panel2.AutoScrollMargin = new System.Drawing.Size(10, 10);
+            this.splitQuestsContainer.Size = new System.Drawing.Size(700, 534);
+            this.splitQuestsContainer.SplitterDistance = 232;
             this.splitQuestsContainer.TabIndex = 0;
             // 
             // treeQuest
             // 
-            this.treeQuest.Dock = System.Windows.Forms.DockStyle.Top;
+            this.treeQuest.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeQuest.Location = new System.Drawing.Point(0, 192);
             this.treeQuest.Name = "treeQuest";
-            this.treeQuest.Size = new System.Drawing.Size(295, 530);
+            this.treeQuest.Size = new System.Drawing.Size(228, 338);
             this.treeQuest.TabIndex = 0;
             this.treeQuest.DoubleClick += new System.EventHandler(this.treeQuestClicked);
             this.treeQuest.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeQuest_AfterSelect);
@@ -664,7 +562,7 @@ namespace StalkerOnlineQuesterEditor
             this.treeQuestBuffer.Dock = System.Windows.Forms.DockStyle.Top;
             this.treeQuestBuffer.Location = new System.Drawing.Point(0, 13);
             this.treeQuestBuffer.Name = "treeQuestBuffer";
-            this.treeQuestBuffer.Size = new System.Drawing.Size(295, 166);
+            this.treeQuestBuffer.Size = new System.Drawing.Size(228, 166);
             this.treeQuestBuffer.TabIndex = 1;
             this.treeQuestBuffer.DoubleClick += new System.EventHandler(this.treeQuestBuffer_DoubleClick);
             this.treeQuestBuffer.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeQuestBuffer_AfterSelect);
@@ -679,6 +577,101 @@ namespace StalkerOnlineQuesterEditor
             this.labelBuffer.Size = new System.Drawing.Size(50, 13);
             this.labelBuffer.TabIndex = 2;
             this.labelBuffer.Text = "Буффер:";
+            // 
+            // panelQuestTools
+            // 
+            this.panelQuestTools.Controls.Add(this.bPasteEvents);
+            this.panelQuestTools.Controls.Add(this.bCopyEvents);
+            this.panelQuestTools.Controls.Add(this.bQuestDown);
+            this.panelQuestTools.Controls.Add(this.bQuestUp);
+            this.panelQuestTools.Controls.Add(this.bSaveQuests);
+            this.panelQuestTools.Controls.Add(this.bRemoveEvent);
+            this.panelQuestTools.Controls.Add(this.bEditEvent);
+            this.panelQuestTools.Controls.Add(this.bAddEvent);
+            this.panelQuestTools.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelQuestTools.Location = new System.Drawing.Point(703, 3);
+            this.panelQuestTools.Name = "panelQuestTools";
+            this.panelQuestTools.Size = new System.Drawing.Size(200, 534);
+            this.panelQuestTools.TabIndex = 2;
+            // 
+            // bPasteEvents
+            // 
+            this.bPasteEvents.Enabled = false;
+            this.bPasteEvents.Location = new System.Drawing.Point(4, 216);
+            this.bPasteEvents.Name = "bPasteEvents";
+            this.bPasteEvents.Size = new System.Drawing.Size(191, 23);
+            this.bPasteEvents.TabIndex = 7;
+            this.bPasteEvents.Text = "Вставить";
+            this.bPasteEvents.UseVisualStyleBackColor = true;
+            // 
+            // bCopyEvents
+            // 
+            this.bCopyEvents.Enabled = false;
+            this.bCopyEvents.Location = new System.Drawing.Point(4, 187);
+            this.bCopyEvents.Name = "bCopyEvents";
+            this.bCopyEvents.Size = new System.Drawing.Size(191, 23);
+            this.bCopyEvents.TabIndex = 6;
+            this.bCopyEvents.Text = "Копировать";
+            this.bCopyEvents.UseVisualStyleBackColor = true;
+            // 
+            // bQuestDown
+            // 
+            this.bQuestDown.Enabled = false;
+            this.bQuestDown.Location = new System.Drawing.Point(4, 120);
+            this.bQuestDown.Name = "bQuestDown";
+            this.bQuestDown.Size = new System.Drawing.Size(193, 23);
+            this.bQuestDown.TabIndex = 5;
+            this.bQuestDown.Text = "Вниз";
+            this.bQuestDown.UseVisualStyleBackColor = true;
+            // 
+            // bQuestUp
+            // 
+            this.bQuestUp.Enabled = false;
+            this.bQuestUp.Location = new System.Drawing.Point(4, 91);
+            this.bQuestUp.Name = "bQuestUp";
+            this.bQuestUp.Size = new System.Drawing.Size(193, 23);
+            this.bQuestUp.TabIndex = 4;
+            this.bQuestUp.Text = "Вверх";
+            this.bQuestUp.UseVisualStyleBackColor = true;
+            // 
+            // bSaveQuests
+            // 
+            this.bSaveQuests.Location = new System.Drawing.Point(7, 281);
+            this.bSaveQuests.Name = "bSaveQuests";
+            this.bSaveQuests.Size = new System.Drawing.Size(193, 23);
+            this.bSaveQuests.TabIndex = 3;
+            this.bSaveQuests.Text = "Сохранить изменения";
+            this.bSaveQuests.UseVisualStyleBackColor = true;
+            // 
+            // bRemoveEvent
+            // 
+            this.bRemoveEvent.Enabled = false;
+            this.bRemoveEvent.Location = new System.Drawing.Point(4, 62);
+            this.bRemoveEvent.Name = "bRemoveEvent";
+            this.bRemoveEvent.Size = new System.Drawing.Size(193, 23);
+            this.bRemoveEvent.TabIndex = 2;
+            this.bRemoveEvent.Text = "Удалить событие";
+            this.bRemoveEvent.UseVisualStyleBackColor = true;
+            // 
+            // bEditEvent
+            // 
+            this.bEditEvent.Enabled = false;
+            this.bEditEvent.Location = new System.Drawing.Point(3, 32);
+            this.bEditEvent.Name = "bEditEvent";
+            this.bEditEvent.Size = new System.Drawing.Size(194, 23);
+            this.bEditEvent.TabIndex = 1;
+            this.bEditEvent.Text = "Править событие";
+            this.bEditEvent.UseVisualStyleBackColor = true;
+            // 
+            // bAddEvent
+            // 
+            this.bAddEvent.Enabled = false;
+            this.bAddEvent.Location = new System.Drawing.Point(3, 3);
+            this.bAddEvent.Name = "bAddEvent";
+            this.bAddEvent.Size = new System.Drawing.Size(194, 23);
+            this.bAddEvent.TabIndex = 0;
+            this.bAddEvent.Text = "Добавить событие";
+            this.bAddEvent.UseVisualStyleBackColor = true;
             // 
             // npcLinksTabPage
             // 
@@ -1503,10 +1496,10 @@ namespace StalkerOnlineQuesterEditor
             this.EmulatorGroupBox.ResumeLayout(false);
             this.EmulatorsplitContainer.ResumeLayout(false);
             this.tabQuests.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.splitQuestsContainer.Panel1.ResumeLayout(false);
             this.splitQuestsContainer.Panel1.PerformLayout();
             this.splitQuestsContainer.ResumeLayout(false);
+            this.panelQuestTools.ResumeLayout(false);
             this.npcLinksTabPage.ResumeLayout(false);
             this.pNpcLinkControls.ResumeLayout(false);
             this.pNpcLinkControls.PerformLayout();
@@ -1562,7 +1555,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.SplitContainer EmulatorsplitContainer;
         private System.Windows.Forms.SplitContainer splitQuestsContainer;
         private System.Windows.Forms.TreeView treeQuest;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox QuestBox;
         private System.Windows.Forms.Label labelChosenQuest;
         private System.Windows.Forms.Button bDelNPC;
@@ -1572,12 +1564,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bZoomOut;
         private System.Windows.Forms.Button bZoomIn;
         private System.Windows.Forms.Button bSaveDialogs;
-        private System.Windows.Forms.Button bSaveQuests;
-        private System.Windows.Forms.Button bRemoveEvent;
-        private System.Windows.Forms.Button bEditEvent;
-        private System.Windows.Forms.Button bAddEvent;
-        private System.Windows.Forms.Button bQuestDown;
-        private System.Windows.Forms.Button bQuestUp;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
@@ -1610,10 +1596,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn Legend;
         private System.Windows.Forms.DataGridViewComboBoxColumn worked;
         private System.Windows.Forms.TreeView treeQuestBuffer;
-        private System.Windows.Forms.Button bCopyEvents;
         private System.Windows.Forms.Label labelQuestTree;
         private System.Windows.Forms.Label labelBuffer;
-        private System.Windows.Forms.Button bPasteEvents;
         private System.Windows.Forms.TabPage tabTranslate;
         private System.Windows.Forms.Panel panel_diff_locale;
         private System.Windows.Forms.Button bFindDialogDifference;
@@ -1672,6 +1656,15 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
         private System.Windows.Forms.Button bAddNoKarmaDialog;
         private System.Windows.Forms.Button bSync;
+        private System.Windows.Forms.Panel panelQuestTools;
+        private System.Windows.Forms.Button bPasteEvents;
+        private System.Windows.Forms.Button bCopyEvents;
+        private System.Windows.Forms.Button bQuestDown;
+        private System.Windows.Forms.Button bQuestUp;
+        private System.Windows.Forms.Button bSaveQuests;
+        private System.Windows.Forms.Button bRemoveEvent;
+        private System.Windows.Forms.Button bEditEvent;
+        private System.Windows.Forms.Button bAddEvent;
 
 
     }
