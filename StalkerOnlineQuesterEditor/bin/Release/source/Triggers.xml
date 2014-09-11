@@ -367,6 +367,36 @@
         <id>50003</id>
         <name>ящик тюряга1</name>
     </space>
-
-
+	<space>
+        <id>20100</id>
+        <name>ЛЭП 1 вышка</name>
+    </space>
+	<space>
+        <id>20101</id>
+        <name>ЛЭП 2 вышка</name>
+    </space>	<space>
+        <id>20102</id>
+        <name>ЛЭП 3 вышка</name>
+    </space>	<space>
+        <id>20103</id>
+        <name>ЛЭП 4 вышка</name>
+    </space>	<space>
+        <id>20104</id>
+        <name>ЛЭП 5 вышка</name>
+    </space>	<space>
+        <id>20105</id>
+        <name>ЛЭП 6 вышка</name>
+    </space>	<space>
+        <id>20106</id>
+        <name>ЛЭП 7 вышка</name>
+    </space>	<space>
+        <id>20107</id>
+        <name>ЛЭП 8 вышка</name>
+    </space>	<space>
+        <id>20108</id>
+        <name>ЛЭП 9 вышка</name>
+    </space>	<space>
+        <id>20109</id>
+        <name>ЛЭП 10 вышка</name>
+    </space>	
 </root>

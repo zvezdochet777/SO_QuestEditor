@@ -552,7 +552,8 @@ namespace StalkerOnlineQuesterEditor
                     result = quest.Target.ObjectName;
                     break;
                 case 2: case 3:
-                    result = parent.mobConst.getDescriptionOnType(quest.Target.ObjectType).getName();
+                    result = "Тип моба " + parent.mobConst.getDescriptionOnType(quest.Target.ObjectType).getName();
+                    result += ", " + quest.Target.NumOfObjects + " штук";
                     break;
                 case 4: case 8:
                     result = "Зона " + parent.zoneConst.getDescriptionOnKey(quest.Target.ObjectName).getName();
@@ -563,8 +564,12 @@ namespace StalkerOnlineQuesterEditor
                 case 6:
                     result = "Триггер " + parent.triggerConst.getDescriptionOnId(quest.Target.ObjectType);
                     break;
-                case 0: case 7: case 16: case 19: case 20:
+                case 7: case 19: case 20:
                     result = "Предмет " + parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
+                    break;
+                case 0: case 16:
+                    result = "Предмет " + parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
+                    result += ", " + quest.Target.NumOfObjects + " штук";
                     break;
                 default:
                     result = "";
