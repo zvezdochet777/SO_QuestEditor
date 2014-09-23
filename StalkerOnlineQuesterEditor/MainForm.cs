@@ -92,6 +92,7 @@ namespace StalkerOnlineQuesterEditor
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             fillNPCBox();
             fillFractionBalance();
+            fillLocationsBox();
             DialogShower.AddInputEventListener(Listener);
 
             foreach (string name in dialogs.getListOfNPC())
@@ -175,21 +176,29 @@ namespace StalkerOnlineQuesterEditor
             foreach (string holder in this.dialogs.dialogs.Keys)
             {
                 string npcName = holder;
-                if (dialogs.rusName.ContainsKey(holder))
-                    npcName += " (" + dialogs.rusName[holder] + ")";
+                if (dialogs.NpcData.ContainsKey(holder))
+                    npcName += " (" + dialogs.NpcData[holder].rusName + ")";
                 npcNames.Add ( new NPCNameDataSourceObject(holder, npcName));
             }
             npcNames.Sort();
             NPCBox.DataSource = null;       // костыль для обновления данных в кмобобоксе NPC при добавлении/удалении
             NPCBox.DataSource = npcNames;
             NPCBox.DisplayMember = "DisplayString";
-            NPCBox.ValueMember = "Value";            
+            NPCBox.ValueMember = "Value";
 
             NPCBox.SelectedIndex = 1;
                        
             QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
             QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
+        }
+
+        //! Заполнение итемов в комбобоксе выбора локации (во вкладке Проверка)
+        void fillLocationsBox()
+        {
+            cbLocation.Sorted = true;
+            cbLocation.DataSource = null;
+            cbLocation.DataSource = dialogs.locationNames;
         }
 
         void protectNPCBoxQuest(CDialog quest)
@@ -1496,7 +1505,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 foreach (var id in diff[name].Keys)
                 {
-                    string location = (dialogs.location.ContainsKey(name)) ? (dialogs.location[name]) : ("НЕТ ИМЕНИ");
+                    string location = (dialogs.NpcData.ContainsKey(name)) ? (dialogs.NpcData[name].location) : ("НЕТ ИМЕНИ");
                     object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location };
                     diffGridView.Rows.Add(row);
                     count++;
@@ -1539,7 +1548,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 foreach (var id in diff[name].Keys)
                 {
-                    string location = (dialogs.location.ContainsKey(name)) ? (dialogs.location[name]) : ("НЕТ ИМЕНИ");
+                    string location = (dialogs.NpcData.ContainsKey(name)) ? (dialogs.NpcData[name].location) : ("НЕТ ИМЕНИ");
                     object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location };
                     diffGridView.Rows.Add(row);
                     count++;
@@ -1669,7 +1678,10 @@ namespace StalkerOnlineQuesterEditor
             gridViewReview.Columns[1].HeaderText = "Диалоги";
             gridViewReview.Columns[2].HeaderText = "Квесты";
             gridViewReview.Columns[3].HeaderText = "Карта";
-            gridViewReview.Columns[4].HeaderText = "Русское имя";
+            gridViewReview.Columns[4].HeaderText = "Координаты";
+            gridViewReview.Columns[5].HeaderText = "Русское имя";
+            gridViewReview.Columns[4].Visible = true;
+            gridViewReview.Columns[5].Visible = true;
         }
         //! Устанавливает надписи в таблице вкладки Проверка для поиска квестов
         void setQuestCheckEnvironment()
@@ -1678,7 +1690,18 @@ namespace StalkerOnlineQuesterEditor
             gridViewReview.Columns[1].HeaderText = "Квест";
             gridViewReview.Columns[2].HeaderText = "Открыт квест";
             gridViewReview.Columns[3].HeaderText = "Закрыт квест";
-            gridViewReview.Columns[4].HeaderText = "Русское имя";
+            gridViewReview.Columns[4].Visible = false;
+            gridViewReview.Columns[5].Visible = false;
+        }
+        //! Устанавливает надписи в таблице вкладки Проверка для поиска NPC по локациям
+        void setLocationCheckEnvironment()
+        {
+            gridViewReview.Columns[0].HeaderText = "Имя NPC";
+            gridViewReview.Columns[1].HeaderText = "Локация";
+            gridViewReview.Columns[2].HeaderText = "Координаты";
+            gridViewReview.Columns[3].HeaderText = "Русское имя";
+            gridViewReview.Columns[4].Visible = false;
+            gridViewReview.Columns[5].Visible = false;        
         }
 
         //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
@@ -1692,11 +1715,12 @@ namespace StalkerOnlineQuesterEditor
             {
                 int d_num = dialogs.dialogs[npc].Count;
                 int q_num = quests.getCountOfQuests(npc);
-                string location = (dialogs.location.ContainsKey(npc))?(dialogs.location[npc]):("НЕТ ИМЕНИ");
-                string rusname = (dialogs.rusName.ContainsKey(npc)) ? (dialogs.rusName[npc]) : ("НЕ ПЕРЕВЕДЕН");
+                string location = (dialogs.NpcData.ContainsKey(npc)) ? (dialogs.NpcData[npc].location) : ("НЕТ ИМЕНИ");
+                string rusname = (dialogs.NpcData.ContainsKey(npc)) ? (dialogs.NpcData[npc].rusName) : ("НЕ ПЕРЕВЕДЕН");
+                string coord = (dialogs.NpcData.ContainsKey(npc)) ? (dialogs.NpcData[npc].coordinates) : ("НЕТ КООРДИНАТ");
                 if( (checkDialog && d_num < numDialogs.Value) || (checkQuest && q_num < numQuests.Value) )
                 {
-                    object[] row = { npc, d_num, q_num, location, rusname };
+                    object[] row = { npc, d_num, q_num, location, coord, rusname };
                     gridViewReview.Rows.Add( row );
                 }
             }
@@ -1726,6 +1750,24 @@ namespace StalkerOnlineQuesterEditor
                 if (open == 0 || close == 0)
                 {
                     object[] row = { quest.Additional.Holder, questID, open, close };
+                    gridViewReview.Rows.Add(row);
+                }
+            }
+            labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
+        }
+        private void bFindNpcOnLocation_Click(object sender, EventArgs e)
+        {
+            setLocationCheckEnvironment();
+            gridViewReview.Rows.Clear();
+            string neededLocation = cbLocation.Text;
+            foreach (string npc in dialogs.dialogs.Keys)
+            {
+                string location = (dialogs.NpcData.ContainsKey(npc)) ? (dialogs.NpcData[npc].location) : ("НЕТ ИМЕНИ");
+                if (location == neededLocation)
+                {
+                    string rusname = (dialogs.NpcData.ContainsKey(npc)) ? (dialogs.NpcData[npc].rusName) : ("НЕ ПЕРЕВЕДЕН");
+                    string coord = (dialogs.NpcData.ContainsKey(npc)) ? (dialogs.NpcData[npc].coordinates) : ("НЕТ КООРДИНАТ");
+                    object[] row = { npc, location, coord, rusname };
                     gridViewReview.Rows.Add(row);
                 }
             }
@@ -2061,6 +2103,7 @@ namespace StalkerOnlineQuesterEditor
             labelXNode.Text = "dupl = " + dupl.Count.ToString() + ", total=" + stup.ToString();
              */
         }
+
     }
 }
  

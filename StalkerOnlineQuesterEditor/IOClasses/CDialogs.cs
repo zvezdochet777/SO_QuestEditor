@@ -19,8 +19,20 @@ namespace StalkerOnlineQuesterEditor
     using NPCLocales = Dictionary<string, Dictionary<string, Dictionary<int, CDialog>>>;
     //! Словарь <NPCName, <DialogID, CDifference>>
     using DifferenceDict = Dictionary<string, Dictionary<int, CDifference>>;
-    //! Словарь местонахождения NPC
-    using NPCDataDict = Dictionary<string,string>;
+    
+    public struct npcData
+    {
+        public string rusName;
+        public string location;
+        public string coordinates;
+
+        public npcData(string rn, string loc, string cd)
+        {
+            rusName = rn;
+            location = loc;
+            coordinates = cd;
+        }
+    }
 
     //! Класс обработки диалогов
     public class CDialogs
@@ -33,10 +45,10 @@ namespace StalkerOnlineQuesterEditor
         public NPCDicts dialogs = new NPCDicts();
         //! Словарь локалей
         public NPCLocales locales = new NPCLocales();
-        //! Словарь местонахождения NPC
-        public NPCDataDict location = new NPCDataDict();
-        //! Словарь имен NPC по-русски
-        public NPCDataDict rusName = new NPCDataDict();
+        //! Словарь информации об NPC - локализованное имя, карта, координаты
+        public Dictionary<string, npcData> NpcData = new Dictionary<string, npcData>();
+        //! Список всех локаций
+        public List<string> locationNames = new List<string>();
 
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
         public CDialogs(MainForm parent)
@@ -306,10 +318,11 @@ namespace StalkerOnlineQuesterEditor
                 string name = item.Element("Name").Value.ToString();
                 string map = item.Element("map").Value.ToString();
                 string localName = item.Element("npcLocal").Value.ToString();
-                if ( !location.ContainsKey(name) )
-                    location.Add(name, map);
-                if (!rusName.ContainsKey(name))
-                    rusName.Add(name, localName);
+                string coord = item.Element("coord").Value.ToString();
+                if ( !NpcData.ContainsKey(name) )
+                    NpcData.Add(name, new npcData(localName, map, coord));
+                if (!locationNames.Contains(map))
+                    locationNames.Add( map );
             }
         }
 
@@ -438,7 +451,7 @@ namespace StalkerOnlineQuesterEditor
                     {
                         if (!dialog.coordinates.Active)
                             continue;
-                        if (!location.ContainsKey(npc_name) || location[npc_name] == "notfound")
+                        if (!NpcData.ContainsKey(npc_name) || NpcData[npc_name].location == "notfound")
                             continue;
 
                         var locale_version = 0;

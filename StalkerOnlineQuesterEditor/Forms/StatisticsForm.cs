@@ -110,8 +110,8 @@ namespace StalkerOnlineQuesterEditor
             locTextSpaceless = 0;
 
             foreach (string npc in dialogs.dialogs.Keys)
-            {                
-                if (!dialogs.location.ContainsKey(npc) || dialogs.location[npc] == "notfound")
+            {
+                if (!dialogs.NpcData.ContainsKey(npc) || dialogs.NpcData[npc].location == "notfound")
                     continue;
 
                 foreach (int id in dialogs.dialogs[npc].Keys)

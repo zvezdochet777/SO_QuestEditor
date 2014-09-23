@@ -81,8 +81,12 @@ namespace StalkerOnlineQuesterEditor
             this.сolDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сolQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
+            this.gbFindLocation = new System.Windows.Forms.GroupBox();
+            this.cbLocation = new System.Windows.Forms.ComboBox();
+            this.bFindNpcOnLocation = new System.Windows.Forms.Button();
             this.gbQuestCheck = new System.Windows.Forms.GroupBox();
             this.bFindQuest = new System.Windows.Forms.Button();
             this.labelReviewOutputed = new System.Windows.Forms.Label();
@@ -180,6 +184,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabReview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).BeginInit();
             this.panelReviewButtons.SuspendLayout();
+            this.gbFindLocation.SuspendLayout();
             this.gbQuestCheck.SuspendLayout();
             this.gbNPCcheck.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuests)).BeginInit();
@@ -603,6 +608,7 @@ namespace StalkerOnlineQuesterEditor
             this.bPasteEvents.TabIndex = 7;
             this.bPasteEvents.Text = "Вставить";
             this.bPasteEvents.UseVisualStyleBackColor = true;
+            this.bPasteEvents.Click += new System.EventHandler(this.bPasteEvents_Click);
             // 
             // bCopyEvents
             // 
@@ -613,6 +619,7 @@ namespace StalkerOnlineQuesterEditor
             this.bCopyEvents.TabIndex = 6;
             this.bCopyEvents.Text = "Копировать";
             this.bCopyEvents.UseVisualStyleBackColor = true;
+            this.bCopyEvents.Click += new System.EventHandler(this.bCopyEvents_Click);
             // 
             // bQuestDown
             // 
@@ -623,6 +630,7 @@ namespace StalkerOnlineQuesterEditor
             this.bQuestDown.TabIndex = 5;
             this.bQuestDown.Text = "Вниз";
             this.bQuestDown.UseVisualStyleBackColor = true;
+            this.bQuestDown.Click += new System.EventHandler(this.bQuestDown_Click);
             // 
             // bQuestUp
             // 
@@ -633,6 +641,7 @@ namespace StalkerOnlineQuesterEditor
             this.bQuestUp.TabIndex = 4;
             this.bQuestUp.Text = "Вверх";
             this.bQuestUp.UseVisualStyleBackColor = true;
+            this.bQuestUp.Click += new System.EventHandler(this.bQuestUp_Click);
             // 
             // bSaveQuests
             // 
@@ -642,6 +651,7 @@ namespace StalkerOnlineQuesterEditor
             this.bSaveQuests.TabIndex = 3;
             this.bSaveQuests.Text = "Сохранить изменения";
             this.bSaveQuests.UseVisualStyleBackColor = true;
+            this.bSaveQuests.Click += new System.EventHandler(this.bSaveQuests_Click);
             // 
             // bRemoveEvent
             // 
@@ -652,6 +662,7 @@ namespace StalkerOnlineQuesterEditor
             this.bRemoveEvent.TabIndex = 2;
             this.bRemoveEvent.Text = "Удалить событие";
             this.bRemoveEvent.UseVisualStyleBackColor = true;
+            this.bRemoveEvent.Click += new System.EventHandler(this.bRemoveEvent_Click);
             // 
             // bEditEvent
             // 
@@ -662,6 +673,7 @@ namespace StalkerOnlineQuesterEditor
             this.bEditEvent.TabIndex = 1;
             this.bEditEvent.Text = "Править событие";
             this.bEditEvent.UseVisualStyleBackColor = true;
+            this.bEditEvent.Click += new System.EventHandler(this.bEditEvent_Click);
             // 
             // bAddEvent
             // 
@@ -672,6 +684,7 @@ namespace StalkerOnlineQuesterEditor
             this.bAddEvent.TabIndex = 0;
             this.bAddEvent.Text = "Добавить событие";
             this.bAddEvent.UseVisualStyleBackColor = true;
+            this.bAddEvent.Click += new System.EventHandler(this.bAddEvent_Click);
             // 
             // npcLinksTabPage
             // 
@@ -751,6 +764,7 @@ namespace StalkerOnlineQuesterEditor
             this.сolDialogsNum,
             this.сolQuestsNum,
             this.colLocation,
+            this.colCoordinates,
             this.colRussianName});
             this.gridViewReview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridViewReview.Location = new System.Drawing.Point(0, 104);
@@ -778,13 +792,22 @@ namespace StalkerOnlineQuesterEditor
             this.colLocation.HeaderText = "Карта";
             this.colLocation.Name = "colLocation";
             // 
+            // colCoordinates
+            // 
+            this.colCoordinates.HeaderText = "Координаты";
+            this.colCoordinates.Name = "colCoordinates";
+            this.colCoordinates.ReadOnly = true;
+            this.colCoordinates.Width = 150;
+            // 
             // colRussianName
             // 
             this.colRussianName.HeaderText = "Русское имя";
             this.colRussianName.Name = "colRussianName";
+            this.colRussianName.Width = 150;
             // 
             // panelReviewButtons
             // 
+            this.panelReviewButtons.Controls.Add(this.gbFindLocation);
             this.panelReviewButtons.Controls.Add(this.gbQuestCheck);
             this.panelReviewButtons.Controls.Add(this.labelReviewOutputed);
             this.panelReviewButtons.Controls.Add(this.gbNPCcheck);
@@ -793,6 +816,35 @@ namespace StalkerOnlineQuesterEditor
             this.panelReviewButtons.Name = "panelReviewButtons";
             this.panelReviewButtons.Size = new System.Drawing.Size(906, 104);
             this.panelReviewButtons.TabIndex = 0;
+            // 
+            // gbFindLocation
+            // 
+            this.gbFindLocation.Controls.Add(this.cbLocation);
+            this.gbFindLocation.Controls.Add(this.bFindNpcOnLocation);
+            this.gbFindLocation.Location = new System.Drawing.Point(487, 4);
+            this.gbFindLocation.Name = "gbFindLocation";
+            this.gbFindLocation.Size = new System.Drawing.Size(200, 100);
+            this.gbFindLocation.TabIndex = 3;
+            this.gbFindLocation.TabStop = false;
+            this.gbFindLocation.Text = "Локация";
+            // 
+            // cbLocation
+            // 
+            this.cbLocation.FormattingEnabled = true;
+            this.cbLocation.Location = new System.Drawing.Point(16, 65);
+            this.cbLocation.Name = "cbLocation";
+            this.cbLocation.Size = new System.Drawing.Size(168, 21);
+            this.cbLocation.TabIndex = 1;
+            // 
+            // bFindNpcOnLocation
+            // 
+            this.bFindNpcOnLocation.Location = new System.Drawing.Point(16, 19);
+            this.bFindNpcOnLocation.Name = "bFindNpcOnLocation";
+            this.bFindNpcOnLocation.Size = new System.Drawing.Size(98, 23);
+            this.bFindNpcOnLocation.TabIndex = 0;
+            this.bFindNpcOnLocation.Text = "Найти NPC";
+            this.bFindNpcOnLocation.UseVisualStyleBackColor = true;
+            this.bFindNpcOnLocation.Click += new System.EventHandler(this.bFindNpcOnLocation_Click);
             // 
             // gbQuestCheck
             // 
@@ -1507,6 +1559,7 @@ namespace StalkerOnlineQuesterEditor
             ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).EndInit();
             this.panelReviewButtons.ResumeLayout(false);
             this.panelReviewButtons.PerformLayout();
+            this.gbFindLocation.ResumeLayout(false);
             this.gbQuestCheck.ResumeLayout(false);
             this.gbNPCcheck.ResumeLayout(false);
             this.gbNPCcheck.PerformLayout();
@@ -1649,11 +1702,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLocation;
         private System.Windows.Forms.GroupBox gbQuestCheck;
         private System.Windows.Forms.Button bFindQuest;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn сolDialogsNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn сolQuestsNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
         private System.Windows.Forms.Button bAddNoKarmaDialog;
         private System.Windows.Forms.Button bSync;
         private System.Windows.Forms.Panel panelQuestTools;
@@ -1665,6 +1713,15 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bRemoveEvent;
         private System.Windows.Forms.Button bEditEvent;
         private System.Windows.Forms.Button bAddEvent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn сolDialogsNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn сolQuestsNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCoordinates;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
+        private System.Windows.Forms.GroupBox gbFindLocation;
+        private System.Windows.Forms.ComboBox cbLocation;
+        private System.Windows.Forms.Button bFindNpcOnLocation;
 
 
     }

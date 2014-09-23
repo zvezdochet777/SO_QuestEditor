@@ -133,6 +133,7 @@
             this.itemProbability.DefaultCellStyle = dataGridViewCellStyle1;
             this.itemProbability.HeaderText = "Вероятность";
             this.itemProbability.Name = "itemProbability";
+            this.itemProbability.Visible = false;
             // 
             // itemTitle
             // 
