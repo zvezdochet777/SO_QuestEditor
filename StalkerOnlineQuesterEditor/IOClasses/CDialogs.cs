@@ -318,7 +318,7 @@ namespace StalkerOnlineQuesterEditor
                 string name = item.Element("Name").Value.ToString();
                 string map = item.Element("map").Value.ToString();
                 string localName = item.Element("npcLocal").Value.ToString();
-                string coord = item.Element("coord").Value.ToString();
+                string coord = item.Element("chunk").Value.ToString();
                 if ( !NpcData.ContainsKey(name) )
                     NpcData.Add(name, new npcData(localName, map, coord));
                 if (!locationNames.Contains(map))

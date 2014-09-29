@@ -4,7 +4,19 @@
     <name></name>
   </tp>
   <tp>
+    <id>10x2km</id>
+    <name></name>
+  </tp>
+  <tp>
     <id>20km_east_bad</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>20km_east_bad</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>20km_east_good</id>
     <name></name>
   </tp>
   <tp>
@@ -16,7 +28,19 @@
     <name></name>
   </tp>
   <tp>
+    <id>20km_east_neutral</id>
+    <name></name>
+  </tp>
+  <tp>
     <id>20km_west_bad</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>20km_west_bad</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>20km_west_neutral</id>
     <name></name>
   </tp>
   <tp>
@@ -260,10 +284,6 @@
     <name></name>
   </tp>
   <tp>
-    <id>5f_house03_pod1_outlands_hall</id>
-    <name></name>
-  </tp>
-  <tp>
     <id>5f_house03_pod3_lubech_exit</id>
     <name></name>
   </tp>
@@ -388,11 +408,11 @@
     <name></name>
   </tp>
   <tp>
-    <id>5f_house09_pod2_outlands_hall</id>
+    <id>5f_house09_pod2_outlands_exit</id>
     <name></name>
   </tp>
   <tp>
-    <id>5f_house09_pod3_outlands_exit</id>
+    <id>5f_house09_pod2_outlands_hall</id>
     <name></name>
   </tp>
   <tp>
@@ -592,11 +612,27 @@
     <name></name>
   </tp>
   <tp>
+    <id>TP_CaravanToTunguska</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>Teleport_Diogen</id>
+    <name></name>
+  </tp>
+  <tp>
     <id>Teleport_Diogen</id>
     <name></name>
   </tp>
   <tp>
     <id>Teleport_Islands</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>Teleport_Islands</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>Teleport_caravan_2</id>
     <name></name>
   </tp>
   <tp>
@@ -620,7 +656,15 @@
     <name></name>
   </tp>
   <tp>
+    <id>airport_2f_house01_exit</id>
+    <name></name>
+  </tp>
+  <tp>
     <id>airport_2f_house02_entrance</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>airport_2f_house02_exit</id>
     <name></name>
   </tp>
   <tp>
@@ -636,7 +680,15 @@
     <name></name>
   </tp>
   <tp>
+    <id>airport_2f_house03_exit</id>
+    <name></name>
+  </tp>
+  <tp>
     <id>airport_2f_house04_entrance</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>airport_2f_house04_exit</id>
     <name></name>
   </tp>
   <tp>
@@ -652,6 +704,10 @@
     <name></name>
   </tp>
   <tp>
+    <id>airport_2f_house05_exit</id>
+    <name></name>
+  </tp>
+  <tp>
     <id>airport_road</id>
     <name></name>
   </tp>
@@ -660,103 +716,7 @@
     <name></name>
   </tp>
   <tp>
-    <id>aut_v_20km_bad</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>aut_v_20km_good</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>aut_v_20km_neutral</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base02</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base02</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base03</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base03</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base04</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base04</id>
-    <name></name>
-  </tp>
-  <tp>
     <id>base05</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base05</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base06</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base06</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Farvilage01_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Farvilage01_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gdom1</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gdom1</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gdom2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gdom2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gurman1</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gurman1</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gurman2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gurman2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gurman3_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>base_Gurman3_in</id>
     <name></name>
   </tp>
   <tp>
@@ -764,27 +724,75 @@
     <name></name>
   </tp>
   <tp>
-    <id>base_redcross</id>
+    <id>base_outlands_belaya1_outside</id>
     <name></name>
   </tp>
   <tp>
-    <id>base_redcross</id>
+    <id>base_outlands_belaya2_outside</id>
     <name></name>
   </tp>
   <tp>
-    <id>base_serpimolot3_in</id>
+    <id>base_outlands_belaya3_outside</id>
     <name></name>
   </tp>
   <tp>
-    <id>base_serpimolot3_in</id>
+    <id>base_outlands_detsad1_outside</id>
     <name></name>
   </tp>
   <tp>
-    <id>base_vesuvius_lep</id>
+    <id>base_outlands_detsad2_outside</id>
     <name></name>
   </tp>
   <tp>
-    <id>base_vesuvius_lep_inside</id>
+    <id>base_outlands_helicopter_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb10_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb11_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb12_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb1_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb2_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb3_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb4_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb5_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb6_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb7_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb8_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_outlands_suburb9_outside</id>
     <name></name>
   </tp>
   <tp>
@@ -792,11 +800,15 @@
     <name></name>
   </tp>
   <tp>
-    <id>base_vesuvius_lep_outside</id>
+    <id>base_vesuvius_podgorny1_outside</id>
     <name></name>
   </tp>
   <tp>
-    <id>base_vesuvius_podgorny1_inside</id>
+    <id>base_vesuvius_podgorny2_outside</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>base_vesuvius_podgorny3_outside</id>
     <name></name>
   </tp>
   <tp>
@@ -804,83 +816,7 @@
     <name></name>
   </tp>
   <tp>
-    <id>baza_Gurman8_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_Gurman8_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_Gurman9_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_Gurman9_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_NoobDog1_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_Noob_Dog1_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_Noob_Dog1_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_brockenBus2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_brockenBus2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_brockenBus_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_brockenBus_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_gurman-pop2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_gurman-pop2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_gurman-pop_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_gurman-pop_in</id>
-    <name></name>
-  </tp>
-  <tp>
     <id>baza_serpimolot2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_serpimolot2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_vertolet2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>baza_vertolet2_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>bazapochta_noob</id>
     <name></name>
   </tp>
   <tp>
@@ -889,6 +825,10 @@
   </tp>
   <tp>
     <id>boka1</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>caravan_west</id>
     <name></name>
   </tp>
   <tp>
@@ -956,43 +896,7 @@
     <name></name>
   </tp>
   <tp>
-    <id>noname</id>
-    <name></name>
-  </tp>
-  <tp>
     <id>noob_banditcave</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>noob_baza_serpimolot</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>noob_baza_serpimolot</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>noob_baza_serpimolot_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>noob_baza_univermag_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>noob_baza_univermag_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>noob_baza_univermag_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>noob_bazapochta</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>noob_bazapochta</id>
     <name></name>
   </tp>
   <tp>
@@ -1172,163 +1076,7 @@
     <name></name>
   </tp>
   <tp>
-    <id>out_base_Farvilage01_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_base_serpimolot3_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gdom1_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gdom2_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman1_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman2_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman3_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman4_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman4_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman4_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman5_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman5_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman5_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman6_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman6_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman6_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman7_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman7_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman7_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman8_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_Gurman9_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_RedCross_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_brockenBus2_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_brockenBus_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_detsad</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_detsad</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_detsad2</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_detsad2</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_detsad2_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_detsad_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_gurman-pop2_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_gurman-pop_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_serpimolot2_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_stadion_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_stadion_in</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_stadion_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_vertolet</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_vertolet</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_vertolet2_out</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>out_baza_vertolet_out</id>
+    <id>out_air</id>
     <name></name>
   </tp>
   <tp>
@@ -1360,15 +1108,31 @@
     <name></name>
   </tp>
   <tp>
+    <id>phy</id>
+    <name></name>
+  </tp>
+  <tp>
     <id>porch_9f_1p</id>
     <name></name>
   </tp>
   <tp>
     <id>porch_9f_1p</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>pripyat</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>pripyat_demo</id>
     <name></name>
   </tp>
   <tp>
     <id>provodnik_gurman_pvp</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>provodnik_pvp_aeroport</id>
     <name></name>
   </tp>
   <tp>
@@ -1412,10 +1176,6 @@
     <name></name>
   </tp>
   <tp>
-    <id>road_lubech</id>
-    <name></name>
-  </tp>
-  <tp>
     <id>silvan01</id>
     <name></name>
   </tp>
@@ -1449,6 +1209,14 @@
   </tp>
   <tp>
     <id>test_o</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>test_physics</id>
+    <name></name>
+  </tp>
+  <tp>
+    <id>to_airport</id>
     <name></name>
   </tp>
   <tp>
@@ -1565,14 +1333,6 @@
   </tp>
   <tp>
     <id>vulkan_vezuv_4</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>weapon_test</id>
-    <name></name>
-  </tp>
-  <tp>
-    <id>wt</id>
     <name></name>
   </tp>
   <tp>

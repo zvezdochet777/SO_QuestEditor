@@ -67,7 +67,7 @@
     <Name>Aid_trader</Name>
     <map>outlands</map>
     <chunk>fffcfffdo</chunk>
-    <coord>	51.055603 4.885669 85.377441	</coord>
+    <coord>	45.831268 4.885665 89.944183	</coord>
     <numberNPC>NPC78</numberNPC>
     <npcLocal>&#1040;&#1087;&#1090;&#1077;&#1082;&#1072;&#1088;&#1100;</npcLocal>
   </NPC>
@@ -91,7 +91,7 @@
     <Name>Aid_trader</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	24.455999 0.000000 37.704998	</coord>
+    <coord>	44.691906 0.000000 57.094688	</coord>
     <numberNPC>NPC78</numberNPC>
     <npcLocal>&#1040;&#1087;&#1090;&#1077;&#1082;&#1072;&#1088;&#1100;</npcLocal>
   </NPC>
@@ -99,7 +99,7 @@
     <Name>Aid_trader</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	27.192999 0.000000 37.605999	</coord>
+    <coord>	42.950748 0.000000 57.075417	</coord>
     <numberNPC>NPC78</numberNPC>
     <npcLocal>&#1040;&#1087;&#1090;&#1077;&#1082;&#1072;&#1088;&#1100;</npcLocal>
   </NPC>
@@ -107,7 +107,7 @@
     <Name>Aid_trader</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	28.725000 0.000000 37.506996	</coord>
+    <coord>	41.416386 0.000000 57.126045	</coord>
     <numberNPC>NPC78</numberNPC>
     <npcLocal>&#1040;&#1087;&#1090;&#1077;&#1082;&#1072;&#1088;&#1100;</npcLocal>
   </NPC>
@@ -115,7 +115,7 @@
     <Name>Aid_trader</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	30.395000 0.000000 37.537998	</coord>
+    <coord>	39.748203 0.000000 57.042381	</coord>
     <numberNPC>NPC78</numberNPC>
     <npcLocal>&#1040;&#1087;&#1090;&#1077;&#1082;&#1072;&#1088;&#1100;</npcLocal>
   </NPC>
@@ -314,6 +314,14 @@
   <NPC>
     <Name>Ammo_trader</Name>
     <map>outlands_airport</map>
+    <chunk>fffbffffo</chunk>
+    <coord>	27.788788 -5.857992 4.958206	</coord>
+    <numberNPC>NPC120</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1087;&#1072;&#1090;&#1088;&#1086;&#1085;&#1086;&#1074;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Ammo_trader</Name>
+    <map>outlands_airport_old</map>
     <chunk>fffbffffo</chunk>
     <coord>	27.788788 -5.857992 4.958206	</coord>
     <numberNPC>NPC120</numberNPC>
@@ -563,7 +571,15 @@
     <Name>Bank_NZ</Name>
     <map>novaya</map>
     <chunk>00000001o</chunk>
-    <coord>	47.230301 40.017570 58.558495	</coord>
+    <coord>	47.230297 40.017567 58.558495	</coord>
+    <numberNPC>NPC10</numberNPC>
+    <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; [&#1085;&#1086;&#1074;&#1072;&#1103; &#1079;&#1077;&#1084;&#1083;&#1103;]</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Bank_NZ</Name>
+    <map>zoo</map>
+    <chunk>00000000o</chunk>
+    <coord>	53.271824 0.000000 72.707779	</coord>
     <numberNPC>NPC10</numberNPC>
     <npcLocal>&#1050;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082; [&#1085;&#1086;&#1074;&#1072;&#1103; &#1079;&#1077;&#1084;&#1083;&#1103;]</npcLocal>
   </NPC>
@@ -643,7 +659,7 @@
     <Name>Bank_SZ</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	26.946997 0.000000 55.326996	</coord>
+    <coord>	53.309822 0.000000 71.466774	</coord>
     <numberNPC>NPC58</numberNPC>
     <npcLocal>&#1042;&#1086;&#1077;&#1085;&#1085;&#1099;&#1081; &#1082;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -659,7 +675,7 @@
     <Name>Bank_Swamp</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	31.886997 0.000000 55.717995	</coord>
+    <coord>	53.403824 0.000000 69.115776	</coord>
     <numberNPC>NPC203</numberNPC>
     <npcLocal>&#1042;&#1086;&#1088;&#1086;&#1074;&#1072;&#1090;&#1099;&#1081; &#1082;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -715,7 +731,7 @@
     <Name>Bank_vezuv_uchenie</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	29.525997 0.000000 55.985996	</coord>
+    <coord>	53.383823 0.000000 70.329781	</coord>
     <numberNPC>NPC89</numberNPC>
     <npcLocal>&#1059;&#1095;&#1077;&#1085;&#1099;&#1081; &#1082;&#1083;&#1072;&#1076;&#1086;&#1074;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -818,8 +834,8 @@
   <NPC>
     <Name>Clan_manager</Name>
     <map>city_lubech</map>
-    <chunk>1bda2d34i</chunk>
-    <coord>	6.300652 -3.961282 13.668266	</coord>
+    <chunk>c52d38a4i</chunk>
+    <coord>	10.539848 1.275175 0.284264	</coord>
     <numberNPC>NPC88</numberNPC>
     <npcLocal>&#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1090;&#1086;&#1088; &#1075;&#1088;&#1091;&#1087;&#1087;&#1080;&#1088;&#1086;&#1074;&#1086;&#1082;</npcLocal>
   </NPC>
@@ -897,9 +913,17 @@
   </NPC>
   <NPC>
     <Name>Diogen</Name>
-    <map>outlands_caravan</map>
+    <map>outlands_caravan_old</map>
     <chunk>ffdefffco</chunk>
     <coord>	71.579102 -10.778465 56.519379	</coord>
+    <numberNPC>NPC296</numberNPC>
+    <npcLocal>&#1044;&#1080;&#1086;&#1075;&#1077;&#1085;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Diogen</Name>
+    <map>tunguska_caravan</map>
+    <chunk>ffdefffco</chunk>
+    <coord>	71.184326 -10.778466 57.569214	</coord>
     <numberNPC>NPC296</numberNPC>
     <npcLocal>&#1044;&#1080;&#1086;&#1075;&#1077;&#1085;</npcLocal>
   </NPC>
@@ -1057,6 +1081,14 @@
   </NPC>
   <NPC>
     <Name>ExPolkovnik</Name>
+    <map>pripyat</map>
+    <chunk>0006fff8o</chunk>
+    <coord>	39.823059 0.595231 69.798218	</coord>
+    <numberNPC>NPC59</numberNPC>
+    <npcLocal>&#1054;&#1090;&#1089;&#1090;&#1072;&#1074;&#1085;&#1086;&#1081; &#1055;&#1086;&#1083;&#1082;&#1086;&#1074;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>ExPolkovnik</Name>
     <map>tunguska</map>
     <chunk>fffb0006o</chunk>
     <coord>	47.961578 45.960636 2.049805	</coord>
@@ -1154,8 +1186,8 @@
   <NPC>
     <Name>Greek</Name>
     <map>city_lubech</map>
-    <chunk>1bda2d34i</chunk>
-    <coord>	-12.230591 -0.015498 12.957401	</coord>
+    <chunk>28c9cf2ai</chunk>
+    <coord>	-12.673027 5.118877 0.492836	</coord>
     <numberNPC>NPC71</numberNPC>
     <npcLocal>&#1043;&#1088;&#1077;&#1082;</npcLocal>
   </NPC>
@@ -1179,7 +1211,7 @@
     <Name>Gurman</Name>
     <map>outlands</map>
     <chunk>fffcfffdo</chunk>
-    <coord>	67.970459 1.860351 44.912201	</coord>
+    <coord>	70.238647 1.930664 44.784683	</coord>
     <numberNPC>NPC21</numberNPC>
     <npcLocal>&#1043;&#1091;&#1088;&#1084;&#1072;&#1085;</npcLocal>
   </NPC>
@@ -1217,9 +1249,17 @@
   </NPC>
   <NPC>
     <Name>Igor_Stupka</Name>
-    <map>outlands_caravan</map>
+    <map>outlands_caravan_old</map>
     <chunk>0002fffdo</chunk>
     <coord>	45.389984 48.549988 47.089981	</coord>
+    <numberNPC>NPC410</numberNPC>
+    <npcLocal>&#1055;&#1077;&#1095;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; &#1089;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Igor_Stupka</Name>
+    <map>tunguska_caravan</map>
+    <chunk>0002fffdo</chunk>
+    <coord>	44.188751 48.649803 44.003220	</coord>
     <numberNPC>NPC410</numberNPC>
     <npcLocal>&#1055;&#1077;&#1095;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; &#1089;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
   </NPC>
@@ -1259,7 +1299,7 @@
     <Name>Jora_Karas</Name>
     <map>city_lubech</map>
     <chunk>8605d9a4i</chunk>
-    <coord>	-3.782921 5.198789 -2.162165	</coord>
+    <coord>	-3.234497 5.193871 -4.907809	</coord>
     <numberNPC>NPC126</numberNPC>
     <npcLocal>&#1046;&#1086;&#1088;&#1072; &#1050;&#1072;&#1088;&#1072;&#1089;&#1100;</npcLocal>
   </NPC>
@@ -1425,9 +1465,17 @@
   </NPC>
   <NPC>
     <Name>Leshich</Name>
-    <map>outlands_caravan</map>
+    <map>outlands_caravan_old</map>
     <chunk>fff9fffdo</chunk>
     <coord>	89.150696 50.065907 43.321320	</coord>
+    <numberNPC>NPC401</numberNPC>
+    <npcLocal>&#1051;&#1077;&#1096;&#1080;&#1095;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Leshich</Name>
+    <map>tunguska_caravan</map>
+    <chunk>fff9fffdo</chunk>
+    <coord>	89.150696 49.688477 43.321320	</coord>
     <numberNPC>NPC401</numberNPC>
     <npcLocal>&#1051;&#1077;&#1096;&#1080;&#1095;</npcLocal>
   </NPC>
@@ -1547,7 +1595,7 @@
     <Name>Mikulo</Name>
     <map>city_lubech</map>
     <chunk>8605d9a4i</chunk>
-    <coord>	-0.362984 0.005336 -10.622540	</coord>
+    <coord>	1.030502 0.000240 -10.653996	</coord>
     <numberNPC>NPC50</numberNPC>
     <npcLocal>&#1052;&#1080;&#1082;&#1091;&#1083;&#1086;</npcLocal>
   </NPC>
@@ -1683,6 +1731,14 @@
     <Name>Nishtyak</Name>
     <map>outlands_airport</map>
     <chunk>fffffffeo</chunk>
+    <coord>	35.683128 -22.571810 11.430069	</coord>
+    <numberNPC>NPC299</numberNPC>
+    <npcLocal>&#1052;&#1080;&#1090;&#1100;&#1082;&#1072; &#1053;&#1080;&#1096;&#1090;&#1103;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Nishtyak</Name>
+    <map>outlands_airport_old</map>
+    <chunk>fffffffeo</chunk>
     <coord>	35.573952 -28.300442 11.413071	</coord>
     <numberNPC>NPC299</numberNPC>
     <npcLocal>&#1052;&#1080;&#1090;&#1100;&#1082;&#1072; &#1053;&#1080;&#1096;&#1090;&#1103;&#1082;</npcLocal>
@@ -1715,7 +1771,7 @@
     <Name>Palka</Name>
     <map>city_lubech</map>
     <chunk>fffe0000o</chunk>
-    <coord>	81.902725 1.314214 39.060806	</coord>
+    <coord>	81.494141 1.301914 39.782578	</coord>
     <numberNPC>NPC7</numberNPC>
     <npcLocal>&#1055;&#1072;&#1083;&#1082;&#1072;</npcLocal>
   </NPC>
@@ -1795,7 +1851,7 @@
     <Name>Podmasterie</Name>
     <map>vesuvius</map>
     <chunk>fffafff9o</chunk>
-    <coord>	13.099487 8.010000 26.234009	</coord>
+    <coord>	15.118835 8.010000 26.661560	</coord>
     <numberNPC>NPC70</numberNPC>
     <npcLocal>&#1055;&#1086;&#1076;&#1084;&#1072;&#1089;&#1090;&#1077;&#1088;&#1100;&#1077;</npcLocal>
   </NPC>
@@ -1840,8 +1896,24 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
+    <Name>Provodnik_Airport</Name>
+    <map>outlands_airport_old</map>
+    <chunk>00020004o</chunk>
+    <coord>	1.034012 3.430000 7.617004	</coord>
+    <numberNPC>NPC284</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>Provodnik_Airport_Outlands</Name>
     <map>outlands_airport</map>
+    <chunk>0006fff9o</chunk>
+    <coord>	36.255859 -17.480469 36.410583	</coord>
+    <numberNPC>NPC289</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Provodnik_Airport_Outlands</Name>
+    <map>outlands_airport_old</map>
     <chunk>0004fff8o</chunk>
     <coord>	31.829071 -5.737651 89.118469	</coord>
     <numberNPC>NPC289</numberNPC>
@@ -1849,7 +1921,15 @@
   </NPC>
   <NPC>
     <Name>Provodnik_Caravan_Outlands</Name>
-    <map>outlands_caravan</map>
+    <map>outlands_caravan_old</map>
+    <chunk>ffd2fffbo</chunk>
+    <coord>	99.398926 -8.542001 2.489990	</coord>
+    <numberNPC>NPC291</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Provodnik_Caravan_Outlands</Name>
+    <map>tunguska_caravan</map>
     <chunk>ffd2fffbo</chunk>
     <coord>	99.398926 -8.542001 2.489990	</coord>
     <numberNPC>NPC291</numberNPC>
@@ -1857,7 +1937,15 @@
   </NPC>
   <NPC>
     <Name>Provodnik_Caravan_Outlands_Ozero</Name>
-    <map>outlands_caravan</map>
+    <map>outlands_caravan_old</map>
+    <chunk>0023fffco</chunk>
+    <coord>	58.173828 25.950813 87.734039	</coord>
+    <numberNPC>NPC302</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Provodnik_Caravan_Outlands_Ozero</Name>
+    <map>tunguska_caravan</map>
     <chunk>0023fffco</chunk>
     <coord>	58.173828 25.950813 87.734039	</coord>
     <numberNPC>NPC302</numberNPC>
@@ -1928,14 +2016,6 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
-    <Name>Provodnik_Outlands_Caravan_LEP</Name>
-    <map>outlands</map>
-    <chunk>ffeeffffo</chunk>
-    <coord>	57.737427 4.486795 98.819832	</coord>
-    <numberNPC>NPC303</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
     <Name>Provodnik_PvP_Green_Rock</Name>
     <map>dm_rocks</map>
     <chunk>fffeffffo</chunk>
@@ -1954,6 +2034,14 @@
   <NPC>
     <Name>Provodnik_PvP_Rock</Name>
     <map>outlands_airport</map>
+    <chunk>00000003o</chunk>
+    <coord>	25.029997 3.430000 48.660004	</coord>
+    <numberNPC>NPC310</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; PvP</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Provodnik_PvP_Rock</Name>
+    <map>outlands_airport_old</map>
     <chunk>00000003o</chunk>
     <coord>	25.029997 3.430000 48.660004	</coord>
     <numberNPC>NPC310</numberNPC>
@@ -2032,6 +2120,30 @@
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
+    <Name>Provodnik_Tungus_NZ</Name>
+    <map>pripyat</map>
+    <chunk>0002fff9o</chunk>
+    <coord>	83.960754 3.448463 42.194885	</coord>
+    <numberNPC>NPC205</numberNPC>
+    <npcLocal>&#1050;&#1086;&#1083;&#1103; &#1041;&#1072;&#1088;&#1089;&#1091;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Provodnik_Tungus_NZ</Name>
+    <map>tunguska</map>
+    <chunk>fffb0006o</chunk>
+    <coord>	62.021667 44.318420 9.462219	</coord>
+    <numberNPC>NPC205</numberNPC>
+    <npcLocal>&#1050;&#1086;&#1083;&#1103; &#1041;&#1072;&#1088;&#1089;&#1091;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Provodnik_Tunguska_Caravan</Name>
+    <map>tunguska</map>
+    <chunk>fffafff7o</chunk>
+    <coord>	0.378784 31.582405 69.493408	</coord>
+    <numberNPC>NPC413</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>Provodnik_Vesuv_NZ</Name>
     <map>vesuvius</map>
     <chunk>00050003o</chunk>
@@ -2046,6 +2158,14 @@
     <coord>	5.564819 0.472682 97.032959	</coord>
     <numberNPC>NPC65</numberNPC>
     <npcLocal>&#1047;&#1072;&#1103;&#1094;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Radius_Guard</Name>
+    <map>pripyat</map>
+    <chunk>0006fff8o</chunk>
+    <coord>	40.670349 0.572514 71.069336	</coord>
+    <numberNPC>NPC207</numberNPC>
+    <npcLocal>&#1054;&#1093;&#1086;&#1090;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
     <Name>Radius_Guard</Name>
@@ -2067,7 +2187,7 @@
     <Name>Radius_Guard</Name>
     <map>tunguska</map>
     <chunk>fffb0006o</chunk>
-    <coord>	47.281128 45.937889 0.780579	</coord>
+    <coord>	47.207031 45.937897 0.721558	</coord>
     <numberNPC>NPC207</numberNPC>
     <npcLocal>&#1054;&#1093;&#1086;&#1090;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -2082,8 +2202,8 @@
   <NPC>
     <Name>Rashid</Name>
     <map>city_lubech</map>
-    <chunk>1bda2d34i</chunk>
-    <coord>	-9.906723 -3.960350 7.529961	</coord>
+    <chunk>28c9cf2ai</chunk>
+    <coord>	-9.752457 1.274799 -5.434433	</coord>
     <numberNPC>NPC103</numberNPC>
     <npcLocal>&#1056;&#1072;&#1096;&#1080;&#1076;</npcLocal>
   </NPC>
@@ -2098,8 +2218,8 @@
   <NPC>
     <Name>Rashid_New</Name>
     <map>city_lubech</map>
-    <chunk>1bda2d34i</chunk>
-    <coord>	9.384987 0.127085 1.624756	</coord>
+    <chunk>c52d38a4i</chunk>
+    <coord>	9.621605 5.253635 -10.760757	</coord>
     <numberNPC>NPC240</numberNPC>
     <npcLocal>&#1040;&#1083;&#1077;&#1082;&#1089;</npcLocal>
   </NPC>
@@ -2201,6 +2321,14 @@
   </NPC>
   <NPC>
     <Name>Repairman</Name>
+    <map>outlands_airport_old</map>
+    <chunk>e610d3b3i</chunk>
+    <coord>	-1.417629 0.405942 -2.786377	</coord>
+    <numberNPC>NPC35</numberNPC>
+    <npcLocal>&#1056;&#1077;&#1084;&#1086;&#1085;&#1090;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Repairman</Name>
     <map>steppe</map>
     <chunk>0000fffao</chunk>
     <coord>	18.772707 14.868936 34.442261	</coord>
@@ -2235,7 +2363,15 @@
     <Name>Ryzhij</Name>
     <map>outlands_airport</map>
     <chunk>fff90003o</chunk>
-    <coord>	49.271423 -1.276998 22.174866	</coord>
+    <coord>	49.295288 -1.276998 22.148193	</coord>
+    <numberNPC>NPC402</numberNPC>
+    <npcLocal>&#1056;&#1099;&#1078;&#1080;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Ryzhij</Name>
+    <map>outlands_airport_old</map>
+    <chunk>fff90003o</chunk>
+    <coord>	49.295288 -1.276998 22.148193	</coord>
     <numberNPC>NPC402</numberNPC>
     <npcLocal>&#1056;&#1099;&#1078;&#1080;&#1081;</npcLocal>
   </NPC>
@@ -2250,6 +2386,14 @@
   <NPC>
     <Name>Salnikov</Name>
     <map>outlands_airport</map>
+    <chunk>00000003o</chunk>
+    <coord>	73.653473 3.554302 77.562256	</coord>
+    <numberNPC>NPC295</numberNPC>
+    <npcLocal>&#1060;&#1105;&#1076;&#1086;&#1088; &#1057;&#1072;&#1083;&#1100;&#1085;&#1080;&#1082;&#1086;&#1074;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Salnikov</Name>
+    <map>outlands_airport_old</map>
     <chunk>00000003o</chunk>
     <coord>	73.653473 3.554302 77.562256	</coord>
     <numberNPC>NPC295</numberNPC>
@@ -2299,7 +2443,7 @@
     <Name>Selectevich</Name>
     <map>novaya</map>
     <chunk>fffefffeo</chunk>
-    <coord>	95.219963 39.999992 2.267731	</coord>
+    <coord>	96.352295 39.999992 2.853851	</coord>
     <numberNPC>NPC260</numberNPC>
     <npcLocal>&#1051;&#1080;&#1090;&#1072;&#1085; &#1057;&#1077;&#1083;&#1077;&#1082;&#1090;&#1077;&#1074;&#1080;&#1095;</npcLocal>
   </NPC>
@@ -2322,8 +2466,8 @@
   <NPC>
     <Name>Sergeant_Dibenko</Name>
     <map>city_lubech</map>
-    <chunk>bb31c2c7i</chunk>
-    <coord>	1.950462 4.741565 2.531128	</coord>
+    <chunk>6be8ae8bi</chunk>
+    <coord>	13.470993 5.130549 -0.856781	</coord>
     <numberNPC>NPC143</numberNPC>
     <npcLocal>&#1057;&#1077;&#1088;&#1078;&#1072;&#1085;&#1090; &#1044;&#1080;&#1073;&#1077;&#1085;&#1082;&#1086;</npcLocal>
   </NPC>
@@ -2339,7 +2483,7 @@
     <Name>Sergeant_Drachuk</Name>
     <map>city_lubech</map>
     <chunk>ffff0000o</chunk>
-    <coord>	34.300003 0.000000 43.500000	</coord>
+    <coord>	30.628021 0.000000 50.896378	</coord>
     <numberNPC>NPC132</numberNPC>
     <npcLocal>&#1057;&#1077;&#1088;&#1078;&#1072;&#1085;&#1090; &#1044;&#1088;&#1072;&#1095;&#1091;&#1082;</npcLocal>
   </NPC>
@@ -2371,6 +2515,14 @@
     <Name>Shepelev</Name>
     <map>outlands_airport</map>
     <chunk>bc118fcai</chunk>
+    <coord>	1.542414 0.034075 0.301092	</coord>
+    <numberNPC>NPC293</numberNPC>
+    <npcLocal>&#1064;&#1077;&#1087;&#1077;&#1083;&#1077;&#1074;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Shepelev</Name>
+    <map>outlands_airport_old</map>
+    <chunk>bc118fcai</chunk>
     <coord>	-1.997570 0.083481 -0.345333	</coord>
     <numberNPC>NPC293</numberNPC>
     <npcLocal>&#1064;&#1077;&#1087;&#1077;&#1083;&#1077;&#1074;</npcLocal>
@@ -2387,7 +2539,7 @@
     <Name>Sherstnov</Name>
     <map>novaya</map>
     <chunk>fffefffdo</chunk>
-    <coord>	93.097610 39.999992 99.704025	</coord>
+    <coord>	92.988571 39.999992 98.673813	</coord>
     <numberNPC>NPC259</numberNPC>
     <npcLocal>&#1044;&#1084;&#1080;&#1090;&#1088;&#1080;&#1081; &#1064;&#1077;&#1088;&#1089;&#1090;&#1085;&#1086;&#1074;</npcLocal>
   </NPC>
@@ -2402,8 +2554,8 @@
   <NPC>
     <Name>Shtaket</Name>
     <map>city_lubech</map>
-    <chunk>1bda2d34i</chunk>
-    <coord>	0.494453 -3.948396 9.457413	</coord>
+    <chunk>0b967688i</chunk>
+    <coord>	-0.031670 1.291713 -3.049026	</coord>
     <numberNPC>NPC155</numberNPC>
     <npcLocal>&#1064;&#1090;&#1072;&#1082;&#1077;&#1090;</npcLocal>
   </NPC>
@@ -2426,6 +2578,14 @@
   <NPC>
     <Name>Sibiryak</Name>
     <map>outlands_airport</map>
+    <chunk>fffbffffo</chunk>
+    <coord>	22.380524 -5.855990 3.465370	</coord>
+    <numberNPC>NPC305</numberNPC>
+    <npcLocal>&#1056;&#1086;&#1084;&#1072; &#1057;&#1080;&#1073;&#1080;&#1088;&#1103;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Sibiryak</Name>
+    <map>outlands_airport_old</map>
     <chunk>fffbffffo</chunk>
     <coord>	22.380524 -5.855990 3.465370	</coord>
     <numberNPC>NPC305</numberNPC>
@@ -2584,6 +2744,14 @@
     <npcLocal>&#1052;&#1077;&#1089;&#1090;&#1085;&#1099;&#1081;</npcLocal>
   </NPC>
   <NPC>
+    <Name>Stalker_Bomzh_5</Name>
+    <map>outlands_airport_old</map>
+    <chunk>00000003o</chunk>
+    <coord>	29.007290 3.429676 53.019012	</coord>
+    <numberNPC>NPC304</numberNPC>
+    <npcLocal>&#1052;&#1077;&#1089;&#1090;&#1085;&#1099;&#1081;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>Stalker_Bomzh_Domovoi</Name>
     <map>city_lubech</map>
     <chunk>0000fffdo</chunk>
@@ -2652,14 +2820,6 @@
     <map>city_lubech</map>
     <chunk>8605d9a4i</chunk>
     <coord>	6.102837 0.005323 -1.505696	</coord>
-    <numberNPC>NPC109</numberNPC>
-    <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>Statist</Name>
-    <map>city_lubech</map>
-    <chunk>8605d9a4i</chunk>
-    <coord>	9.859589 1.067972 -3.720973	</coord>
     <numberNPC>NPC109</numberNPC>
     <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
   </NPC>
@@ -2728,10 +2888,18 @@
     <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
   </NPC>
   <NPC>
+    <Name>Statist</Name>
+    <map>outlands_airport_old</map>
+    <chunk>fffbfffeo</chunk>
+    <coord>	16.288269 -5.073010 98.418518	</coord>
+    <numberNPC>NPC109</numberNPC>
+    <npcLocal>&#1057;&#1090;&#1072;&#1083;&#1082;&#1077;&#1088;</npcLocal>
+  </NPC>
+  <NPC>
     <Name>Stepan_Brodyaga</Name>
     <map>city_lubech</map>
     <chunk>8605d9a4i</chunk>
-    <coord>	-8.547531 5.198829 -0.860089	</coord>
+    <coord>	-2.918991 5.198829 -1.027214	</coord>
     <numberNPC>NPC114</numberNPC>
     <npcLocal>&#1057;&#1090;&#1077;&#1087;&#1072;&#1085; &#1041;&#1088;&#1086;&#1076;&#1103;&#1075;&#1072;</npcLocal>
   </NPC>
@@ -2834,16 +3002,16 @@
   <NPC>
     <Name>Trader</Name>
     <map>city_lubech</map>
-    <chunk>1bda2d34i</chunk>
-    <coord>	2.697342 -3.933572 3.942810	</coord>
+    <chunk>8605d9a4i</chunk>
+    <coord>	-11.307816 0.005121 -2.237101	</coord>
     <numberNPC>NPC105</numberNPC>
     <npcLocal>&#1057;&#1082;&#1091;&#1087;&#1097;&#1080;&#1082; &#1093;&#1072;&#1073;&#1072;&#1088;&#1072;</npcLocal>
   </NPC>
   <NPC>
     <Name>Trader</Name>
     <map>city_lubech</map>
-    <chunk>8605d9a4i</chunk>
-    <coord>	-11.307816 0.005121 -2.237116	</coord>
+    <chunk>c52d38a4i</chunk>
+    <coord>	4.073616 1.277934 -9.545265	</coord>
     <numberNPC>NPC105</numberNPC>
     <npcLocal>&#1057;&#1082;&#1091;&#1087;&#1097;&#1080;&#1082; &#1093;&#1072;&#1073;&#1072;&#1088;&#1072;</npcLocal>
   </NPC>
@@ -3034,6 +3202,14 @@
   <NPC>
     <Name>Vetrichenko</Name>
     <map>outlands_airport</map>
+    <chunk>b52716e7i</chunk>
+    <coord>	9.163391 18.583195 -2.066040	</coord>
+    <numberNPC>NPC292</numberNPC>
+    <npcLocal>&#1042;&#1077;&#1090;&#1088;&#1080;&#1095;&#1077;&#1085;&#1082;&#1086;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Vetrichenko</Name>
+    <map>outlands_airport_old</map>
     <chunk>b52716e7i</chunk>
     <coord>	8.446991 18.583126 -1.754791	</coord>
     <numberNPC>NPC292</numberNPC>
@@ -3281,6 +3457,14 @@
   </NPC>
   <NPC>
     <Name>Weapon_trader</Name>
+    <map>outlands_airport_old</map>
+    <chunk>fffbffffo</chunk>
+    <coord>	28.111237 -5.741066 9.166656	</coord>
+    <numberNPC>NPC119</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1076;&#1072;&#1074;&#1077;&#1094; &#1086;&#1088;&#1091;&#1078;&#1080;&#1103;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Weapon_trader</Name>
     <map>steppe</map>
     <chunk>0000fffao</chunk>
     <coord>	40.010292 14.859987 12.360535	</coord>
@@ -3306,6 +3490,14 @@
   <NPC>
     <Name>Weapon_trader_Stupka</Name>
     <map>outlands_airport</map>
+    <chunk>00000003o</chunk>
+    <coord>	25.271620 3.429688 75.564453	</coord>
+    <numberNPC>NPC409</numberNPC>
+    <npcLocal>&#1042;&#1072;&#1076;&#1080;&#1084; &#1057;&#1090;&#1091;&#1087;&#1082;&#1072;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Weapon_trader_Stupka</Name>
+    <map>outlands_airport_old</map>
     <chunk>00000003o</chunk>
     <coord>	25.449997 3.370000 75.760010	</coord>
     <numberNPC>NPC409</numberNPC>
@@ -3395,7 +3587,7 @@
     <Name>bandit_guard</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	51.066544 0.000000 69.195503	</coord>
+    <coord>	6.249458 0.000000 25.733074	</coord>
     <numberNPC>NPC139</numberNPC>
     <npcLocal>&#1041;&#1072;&#1085;&#1076;&#1080;&#1090;</npcLocal>
   </NPC>
@@ -3403,7 +3595,7 @@
     <Name>bandit_guard</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	49.862766 -0.000057 69.257248	</coord>
+    <coord>	5.017712 0.000000 25.733700	</coord>
     <numberNPC>NPC139</numberNPC>
     <npcLocal>&#1041;&#1072;&#1085;&#1076;&#1080;&#1090;</npcLocal>
   </NPC>
@@ -3411,7 +3603,7 @@
     <Name>bandit_guard</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	52.298290 -0.000046 69.194878	</coord>
+    <coord>	3.813936 0.000000 25.795444	</coord>
     <numberNPC>NPC139</numberNPC>
     <npcLocal>&#1041;&#1072;&#1085;&#1076;&#1080;&#1090;</npcLocal>
   </NPC>
@@ -3523,7 +3715,7 @@
     <Name>clan_pochta_trader</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	51.028999 0.000000 65.426994	</coord>
+    <coord>	53.412823 0.000000 67.789780	</coord>
     <numberNPC>NPC96</numberNPC>
     <npcLocal>&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1077;&#1094;</npcLocal>
   </NPC>
@@ -3570,8 +3762,8 @@
   <NPC>
     <Name>doc_Zinoviev</Name>
     <map>city_lubech</map>
-    <chunk>bb31c2c7i</chunk>
-    <coord>	-0.428284 0.793633 -8.587669	</coord>
+    <chunk>6be8ae8bi</chunk>
+    <coord>	14.993736 1.274833 -13.080078	</coord>
     <numberNPC>NPC74</numberNPC>
     <npcLocal>&#1044;&#1086;&#1082;&#1090;&#1086;&#1088; &#1047;&#1080;&#1085;&#1086;&#1074;&#1100;&#1077;&#1074;</npcLocal>
   </NPC>
@@ -3651,7 +3843,7 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>fffd0001o</chunk>
-    <coord>	20.613892 0.060547 8.974342	</coord>
+    <coord>	22.419891 9.036695 8.589661	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -3667,14 +3859,6 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>fffe0000o</chunk>
-    <coord>	85.736038 1.314286 36.028931	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
-    <chunk>fffe0000o</chunk>
     <coord>	76.760071 -0.000002 16.545370	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
@@ -3683,7 +3867,7 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>fffe0000o</chunk>
-    <coord>	42.982895 0.677567 17.812599	</coord>
+    <coord>	86.791023 1.275213 37.169983	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -3692,22 +3876,6 @@
     <map>city_lubech</map>
     <chunk>fffe0001o</chunk>
     <coord>	84.657188 0.000000 86.716537	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
-    <chunk>fffe0002o</chunk>
-    <coord>	35.720123 0.000000 5.211487	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
-    <chunk>fffe0002o</chunk>
-    <coord>	32.624878 0.000000 0.978333	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -3731,15 +3899,7 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>fffe0002o</chunk>
-    <coord>	18.818542 0.002930 91.987228	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>city_lubech</map>
-    <chunk>fffe0002o</chunk>
-    <coord>	92.264198 -0.000003 95.461853	</coord>
+    <coord>	33.835632 0.000000 2.277206	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -3754,8 +3914,8 @@
   <NPC>
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
-    <chunk>ffff0000o</chunk>
-    <coord>	30.618225 0.000000 51.140862	</coord>
+    <chunk>fffe0003o</chunk>
+    <coord>	16.813080 8.918509 1.470398	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -3763,7 +3923,7 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>ffff0000o</chunk>
-    <coord>	25.059258 0.123632 33.627831	</coord>
+    <coord>	30.352455 8.911678 32.725731	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -3787,7 +3947,7 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>ffff0002o</chunk>
-    <coord>	81.815269 0.000000 17.547333	</coord>
+    <coord>	74.001099 8.911673 6.271820	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -3795,7 +3955,7 @@
     <Name>lubech_guardian</Name>
     <map>city_lubech</map>
     <chunk>ffff0003o</chunk>
-    <coord>	71.430367 0.000000 0.028564	</coord>
+    <coord>	66.574471 8.911673 12.346832	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -4051,14 +4211,6 @@
     <Name>lubech_guardian</Name>
     <map>outlands</map>
     <chunk>fffcfffdo</chunk>
-    <coord>	45.075775 5.763084 63.639786	</coord>
-    <numberNPC>NPC83</numberNPC>
-    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>lubech_guardian</Name>
-    <map>outlands</map>
-    <chunk>fffcfffdo</chunk>
     <coord>	47.618073 0.163086 20.674408	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
@@ -4074,6 +4226,14 @@
   <NPC>
     <Name>lubech_guardian</Name>
     <map>outlands</map>
+    <chunk>fffcfffdo</chunk>
+    <coord>	45.394348 5.763083 71.040787	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>outlands</map>
     <chunk>fffcfffeo</chunk>
     <coord>	28.943726 0.081310 41.603607	</coord>
     <numberNPC>NPC83</numberNPC>
@@ -4083,7 +4243,7 @@
     <Name>lubech_guardian</Name>
     <map>outlands</map>
     <chunk>fffdfffdo</chunk>
-    <coord>	14.895691 5.018554 94.907059	</coord>
+    <coord>	9.069275 5.018548 97.926025	</coord>
     <numberNPC>NPC83</numberNPC>
     <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -4138,6 +4298,46 @@
   <NPC>
     <Name>lubech_guardian</Name>
     <map>outlands_airport</map>
+    <chunk>00030000o</chunk>
+    <coord>	48.847015 12.868001 57.324001	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>outlands_airport</map>
+    <chunk>00050006o</chunk>
+    <coord>	19.379883 -9.856884 35.400452	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>outlands_airport_old</map>
+    <chunk>00000003o</chunk>
+    <coord>	11.147309 11.900215 47.865326	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>outlands_airport_old</map>
+    <chunk>00000003o</chunk>
+    <coord>	32.467129 3.430000 53.930939	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>outlands_airport_old</map>
+    <chunk>00000003o</chunk>
+    <coord>	27.760521 19.281151 69.137024	</coord>
+    <numberNPC>NPC83</numberNPC>
+    <npcLocal>&#1043;&#1086;&#1088;&#1086;&#1076;&#1089;&#1082;&#1086;&#1081; &#1086;&#1093;&#1088;&#1072;&#1085;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>lubech_guardian</Name>
+    <map>outlands_airport_old</map>
     <chunk>00030000o</chunk>
     <coord>	48.847015 12.868001 57.324001	</coord>
     <numberNPC>NPC83</numberNPC>
@@ -4355,7 +4555,7 @@
     <Name>prapOsadchiy</Name>
     <map>outlands</map>
     <chunk>fffbfffdo</chunk>
-    <coord>	66.140015 11.879998 87.479980	</coord>
+    <coord>	75.213257 12.017574 97.323273	</coord>
     <numberNPC>NPC412</numberNPC>
     <npcLocal>&#1055;&#1088;&#1072;&#1087;&#1086;&#1088;&#1097;&#1080;&#1082; &#1054;&#1089;&#1072;&#1076;&#1095;&#1080;&#1081;</npcLocal>
   </NPC>
@@ -4507,7 +4707,7 @@
     <Name>prison_guard</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	4.749000 0.000000 25.716999	</coord>
+    <coord>	0.487820 0.000000 25.991379	</coord>
     <numberNPC>NPC86</numberNPC>
     <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -4515,159 +4715,7 @@
     <Name>prison_guard</Name>
     <map>zoo</map>
     <chunk>00000000o</chunk>
-    <coord>	5.021000 0.000000 26.625000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	6.513000 0.000000 26.789999	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	8.351000 0.000000 25.762999	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	5.887000 0.000000 28.057999	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	6.513000 0.000000 27.816999	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	8.492999 0.000000 26.580999	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	6.449000 0.000000 29.078999	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	8.731999 0.000000 27.240000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	10.625000 0.000000 25.966000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	8.558000 0.000000 28.578999	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	8.294000 0.000000 28.900000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	9.278000 0.000000 28.150000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	8.962999 0.000000 29.025000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	8.042999 0.000000 30.149000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	7.811000 0.000000 30.646999	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	6.225000 0.000000 31.761000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	10.896999 0.000000 28.118000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	9.566999 0.000000 30.899000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	10.747999 0.000000 29.924000	</coord>
-    <numberNPC>NPC86</numberNPC>
-    <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
-  </NPC>
-  <NPC>
-    <Name>prison_guard</Name>
-    <map>zoo</map>
-    <chunk>00000000o</chunk>
-    <coord>	9.566999 0.000000 31.647999	</coord>
+    <coord>	2.013971 0.000000 25.981733	</coord>
     <numberNPC>NPC86</numberNPC>
     <npcLocal>&#1058;&#1102;&#1088;&#1077;&#1084;&#1097;&#1080;&#1082;</npcLocal>
   </NPC>
@@ -4684,6 +4732,14 @@
     <map>outlands</map>
     <chunk>fffcfffdo</chunk>
     <coord>	63.252014 2.859375 63.380249	</coord>
+    <numberNPC>NPC22</numberNPC>
+    <npcLocal>&#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1090;&#1086;&#1088;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>pvp_npc</Name>
+    <map>zoo</map>
+    <chunk>00000000o</chunk>
+    <coord>	53.700066 0.000000 91.530762	</coord>
     <numberNPC>NPC22</numberNPC>
     <npcLocal>&#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1090;&#1086;&#1088;</npcLocal>
   </NPC>
@@ -4763,7 +4819,7 @@
     <Name>testman</Name>
     <map>zoo</map>
     <chunk>ffff0000o</chunk>
-    <coord>	96.524994 0.000000 28.335999	</coord>
+    <coord>	96.669235 0.190111 26.401871	</coord>
     <numberNPC>NPC276</numberNPC>
     <npcLocal>&#1052;&#1077;&#1085;&#1077;&#1076;&#1078;&#1077;&#1088; &#1073;&#1072;&#1079;&#1099;</npcLocal>
   </NPC>
@@ -5216,14 +5272,6 @@
     <npcLocal>&#1063;&#1072;&#1089;&#1086;&#1074;&#1086;&#1081;</npcLocal>
   </NPC>
   <NPC>
-    <Name>Provodnik_Tungus_NZ</Name>
-    <map>notfound</map>
-    <chunk>notfound</chunk>
-    <coord>notfound</coord>
-    <numberNPC>NPC205</numberNPC>
-    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082; &#1073;&#1072;&#1079;&#1099;</npcLocal>
-  </NPC>
-  <NPC>
     <Name>clan_radiotower_trader</Name>
     <map>notfound</map>
     <chunk>notfound</chunk>
@@ -5525,6 +5573,14 @@
     <chunk>notfound</chunk>
     <coord>notfound</coord>
     <numberNPC>NPC190</numberNPC>
+    <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
+  </NPC>
+  <NPC>
+    <Name>Provodnik_Outlands_Caravan_LEP</Name>
+    <map>notfound</map>
+    <chunk>notfound</chunk>
+    <coord>notfound</coord>
+    <numberNPC>NPC303</numberNPC>
     <npcLocal>&#1055;&#1088;&#1086;&#1074;&#1086;&#1076;&#1085;&#1080;&#1082;</npcLocal>
   </NPC>
   <NPC>
