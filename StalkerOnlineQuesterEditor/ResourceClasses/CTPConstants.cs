@@ -24,8 +24,6 @@ namespace StalkerOnlineQuesterEditor
             foreach (XElement item in allPoints.Root.Elements())
             {
                 string id = item.Element("id").Value;
-                //if (!tp.ContainsKey(id))
-                    //tp.Add(id, id);
                 realTeleports.Add(id);
             }
             
@@ -37,14 +35,20 @@ namespace StalkerOnlineQuesterEditor
                 if (realTeleports.Contains(tpID))
                     tp.Add(name, tpID);
                 else
+                {
                     tp.Add(name + " ОШИБКА", tpID);
+                    //item.RemoveAll();
+                    //item.RemoveNodes();
+                }
             }
 
             foreach (string real in realTeleports)
             {
                 if (!tp.ContainsValue(real))
-                    tp.Add(real + " тест", real);
+                    tp.Add(real, real);
             }
+            
+            //doc.Save("source/TPoints.xml");
             
         }
         //! Возвращает ID точки телепорта по названию

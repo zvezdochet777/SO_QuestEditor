@@ -45,7 +45,7 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions = new System.Windows.Forms.Panel();
             this.bSync = new System.Windows.Forms.Button();
             this.bAddNoKarmaDialog = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bRunThroughNPC = new System.Windows.Forms.Button();
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.labelYNode = new System.Windows.Forms.Label();
             this.labelXNode = new System.Windows.Forms.Label();
@@ -84,13 +84,12 @@ namespace StalkerOnlineQuesterEditor
             this.colCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
-            this.gbFindLocation = new System.Windows.Forms.GroupBox();
-            this.cbLocation = new System.Windows.Forms.ComboBox();
-            this.bFindNpcOnLocation = new System.Windows.Forms.Button();
             this.gbQuestCheck = new System.Windows.Forms.GroupBox();
             this.bFindQuest = new System.Windows.Forms.Button();
             this.labelReviewOutputed = new System.Windows.Forms.Label();
             this.gbNPCcheck = new System.Windows.Forms.GroupBox();
+            this.cbOnlyOnLocation = new System.Windows.Forms.CheckBox();
+            this.cbLocation = new System.Windows.Forms.ComboBox();
             this.numQuests = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.cbNumQuests = new System.Windows.Forms.CheckBox();
@@ -184,7 +183,6 @@ namespace StalkerOnlineQuesterEditor
             this.tabReview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).BeginInit();
             this.panelReviewButtons.SuspendLayout();
-            this.gbFindLocation.SuspendLayout();
             this.gbQuestCheck.SuspendLayout();
             this.gbNPCcheck.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuests)).BeginInit();
@@ -363,7 +361,7 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.DialogActions.Controls.Add(this.bSync);
             this.DialogActions.Controls.Add(this.bAddNoKarmaDialog);
-            this.DialogActions.Controls.Add(this.button1);
+            this.DialogActions.Controls.Add(this.bRunThroughNPC);
             this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
             this.DialogActions.Controls.Add(this.labelYNode);
             this.DialogActions.Controls.Add(this.labelXNode);
@@ -399,16 +397,16 @@ namespace StalkerOnlineQuesterEditor
             this.bAddNoKarmaDialog.Visible = false;
             this.bAddNoKarmaDialog.Click += new System.EventHandler(this.bAddNoKarmaDialog_Click);
             // 
-            // button1
+            // bRunThroughNPC
             // 
-            this.button1.Location = new System.Drawing.Point(36, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Пробежать все";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bRunThroughNPC.Location = new System.Drawing.Point(36, 276);
+            this.bRunThroughNPC.Name = "bRunThroughNPC";
+            this.bRunThroughNPC.Size = new System.Drawing.Size(116, 23);
+            this.bRunThroughNPC.TabIndex = 7;
+            this.bRunThroughNPC.Text = "Пробежать все";
+            this.bRunThroughNPC.UseVisualStyleBackColor = true;
+            this.bRunThroughNPC.Visible = false;
+            this.bRunThroughNPC.Click += new System.EventHandler(this.bRunThroughNPC_Click);
             // 
             // bCenterizeDialogShower
             // 
@@ -807,7 +805,6 @@ namespace StalkerOnlineQuesterEditor
             // 
             // panelReviewButtons
             // 
-            this.panelReviewButtons.Controls.Add(this.gbFindLocation);
             this.panelReviewButtons.Controls.Add(this.gbQuestCheck);
             this.panelReviewButtons.Controls.Add(this.labelReviewOutputed);
             this.panelReviewButtons.Controls.Add(this.gbNPCcheck);
@@ -817,39 +814,10 @@ namespace StalkerOnlineQuesterEditor
             this.panelReviewButtons.Size = new System.Drawing.Size(906, 104);
             this.panelReviewButtons.TabIndex = 0;
             // 
-            // gbFindLocation
-            // 
-            this.gbFindLocation.Controls.Add(this.cbLocation);
-            this.gbFindLocation.Controls.Add(this.bFindNpcOnLocation);
-            this.gbFindLocation.Location = new System.Drawing.Point(487, 4);
-            this.gbFindLocation.Name = "gbFindLocation";
-            this.gbFindLocation.Size = new System.Drawing.Size(200, 100);
-            this.gbFindLocation.TabIndex = 3;
-            this.gbFindLocation.TabStop = false;
-            this.gbFindLocation.Text = "Локация";
-            // 
-            // cbLocation
-            // 
-            this.cbLocation.FormattingEnabled = true;
-            this.cbLocation.Location = new System.Drawing.Point(16, 65);
-            this.cbLocation.Name = "cbLocation";
-            this.cbLocation.Size = new System.Drawing.Size(168, 21);
-            this.cbLocation.TabIndex = 1;
-            // 
-            // bFindNpcOnLocation
-            // 
-            this.bFindNpcOnLocation.Location = new System.Drawing.Point(16, 19);
-            this.bFindNpcOnLocation.Name = "bFindNpcOnLocation";
-            this.bFindNpcOnLocation.Size = new System.Drawing.Size(98, 23);
-            this.bFindNpcOnLocation.TabIndex = 0;
-            this.bFindNpcOnLocation.Text = "Найти NPC";
-            this.bFindNpcOnLocation.UseVisualStyleBackColor = true;
-            this.bFindNpcOnLocation.Click += new System.EventHandler(this.bFindNpcOnLocation_Click);
-            // 
             // gbQuestCheck
             // 
             this.gbQuestCheck.Controls.Add(this.bFindQuest);
-            this.gbQuestCheck.Location = new System.Drawing.Point(281, 4);
+            this.gbQuestCheck.Location = new System.Drawing.Point(428, 4);
             this.gbQuestCheck.Name = "gbQuestCheck";
             this.gbQuestCheck.Size = new System.Drawing.Size(200, 100);
             this.gbQuestCheck.TabIndex = 2;
@@ -876,6 +844,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             // gbNPCcheck
             // 
+            this.gbNPCcheck.Controls.Add(this.cbOnlyOnLocation);
+            this.gbNPCcheck.Controls.Add(this.cbLocation);
             this.gbNPCcheck.Controls.Add(this.numQuests);
             this.gbNPCcheck.Controls.Add(this.label2);
             this.gbNPCcheck.Controls.Add(this.cbNumQuests);
@@ -885,10 +855,28 @@ namespace StalkerOnlineQuesterEditor
             this.gbNPCcheck.Controls.Add(this.bFindNPC);
             this.gbNPCcheck.Location = new System.Drawing.Point(3, 4);
             this.gbNPCcheck.Name = "gbNPCcheck";
-            this.gbNPCcheck.Size = new System.Drawing.Size(272, 100);
+            this.gbNPCcheck.Size = new System.Drawing.Size(419, 100);
             this.gbNPCcheck.TabIndex = 0;
             this.gbNPCcheck.TabStop = false;
             this.gbNPCcheck.Text = "NPC";
+            // 
+            // cbOnlyOnLocation
+            // 
+            this.cbOnlyOnLocation.AutoSize = true;
+            this.cbOnlyOnLocation.Location = new System.Drawing.Point(253, 48);
+            this.cbOnlyOnLocation.Name = "cbOnlyOnLocation";
+            this.cbOnlyOnLocation.Size = new System.Drawing.Size(126, 17);
+            this.cbOnlyOnLocation.TabIndex = 8;
+            this.cbOnlyOnLocation.Text = "Только на локации:";
+            this.cbOnlyOnLocation.UseVisualStyleBackColor = true;
+            // 
+            // cbLocation
+            // 
+            this.cbLocation.FormattingEnabled = true;
+            this.cbLocation.Location = new System.Drawing.Point(253, 71);
+            this.cbLocation.Name = "cbLocation";
+            this.cbLocation.Size = new System.Drawing.Size(158, 21);
+            this.cbLocation.TabIndex = 7;
             // 
             // numQuests
             // 
@@ -1559,7 +1547,6 @@ namespace StalkerOnlineQuesterEditor
             ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).EndInit();
             this.panelReviewButtons.ResumeLayout(false);
             this.panelReviewButtons.PerformLayout();
-            this.gbFindLocation.ResumeLayout(false);
             this.gbQuestCheck.ResumeLayout(false);
             this.gbNPCcheck.ResumeLayout(false);
             this.gbNPCcheck.PerformLayout();
@@ -1689,7 +1676,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.NumericUpDown numQuests;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbNumQuests;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bRunThroughNPC;
         private System.Windows.Forms.Label labelReviewOutputed;
         private System.Windows.Forms.Panel pNpcLinkControls;
         private System.Windows.Forms.Button bNpcLinkExecute;
@@ -1719,9 +1706,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCoordinates;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
-        private System.Windows.Forms.GroupBox gbFindLocation;
         private System.Windows.Forms.ComboBox cbLocation;
-        private System.Windows.Forms.Button bFindNpcOnLocation;
+        private System.Windows.Forms.CheckBox cbOnlyOnLocation;
 
 
     }
