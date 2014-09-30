@@ -71,10 +71,10 @@ namespace StalkerOnlineQuesterEditor
             Listener = new NodeDragHandler(this);
             MapListener = new MapNodeDragHandler(this);
             settings = new CSettings(this);
-            settings.checkMode();
             dialogs = new CDialogs(this);
             quests = new CQuests(this);
             tpConst = new CTPConstants();
+            settings.checkMode();
 
             tree = treeDialogs;
             protectedTreeNode = new List<int>();
@@ -177,7 +177,12 @@ namespace StalkerOnlineQuesterEditor
             {
                 string npcName = holder;
                 if (dialogs.NpcData.ContainsKey(holder))
-                    npcName += " (" + dialogs.NpcData[holder].rusName + ")";
+                {
+                    if (settings.getMode() == settings.MODE_EDITOR)
+                        npcName += " (" + dialogs.NpcData[holder].rusName + ")";
+                    else if (settings.getMode() == settings.MODE_LOCALIZATION)
+                        npcName += " (" + dialogs.NpcData[holder].engName + ")";
+                }
                 npcNames.Add ( new NPCNameDataSourceObject(holder, npcName));
             }
             npcNames.Sort();
@@ -1473,6 +1478,7 @@ namespace StalkerOnlineQuesterEditor
                         CentralDock.TabPages[i].Enabled = true;
                 }
             }
+            fillNPCBox();
         }
 
         //! Создает примеры диалогов и квестов
@@ -1693,17 +1699,7 @@ namespace StalkerOnlineQuesterEditor
             gridViewReview.Columns[4].Visible = false;
             gridViewReview.Columns[5].Visible = false;
         }
-        //! Устанавливает надписи в таблице вкладки Проверка для поиска NPC по локациям
-        void setLocationCheckEnvironment()
-        {
-            gridViewReview.Columns[0].HeaderText = "Имя NPC";
-            gridViewReview.Columns[1].HeaderText = "Локация";
-            gridViewReview.Columns[2].HeaderText = "Координаты";
-            gridViewReview.Columns[3].HeaderText = "Русское имя";
-            gridViewReview.Columns[4].Visible = false;
-            gridViewReview.Columns[5].Visible = false;        
-        }
-
+ 
         //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
         private void bFindNPC_Click(object sender, EventArgs e)
         {

@@ -23,12 +23,14 @@ namespace StalkerOnlineQuesterEditor
     public struct npcData
     {
         public string rusName;
+        public string engName;
         public string location;
         public string coordinates;
 
-        public npcData(string rn, string loc, string cd)
+        public npcData(string rn, string en, string loc, string cd)
         {
             rusName = rn;
+            engName = en;
             location = loc;
             coordinates = cd;
         }
@@ -318,9 +320,10 @@ namespace StalkerOnlineQuesterEditor
                 string name = item.Element("Name").Value.ToString();
                 string map = item.Element("map").Value.ToString();
                 string localName = item.Element("npcLocal").Value.ToString();
+                string engName = item.Element("npcEngName").Value.ToString();
                 string coord = item.Element("chunk").Value.ToString();
                 if ( !NpcData.ContainsKey(name) )
-                    NpcData.Add(name, new npcData(localName, map, coord));
+                    NpcData.Add(name, new npcData(localName,engName, map, coord));
                 if (!locationNames.Contains(map))
                     locationNames.Add( map );
             }
