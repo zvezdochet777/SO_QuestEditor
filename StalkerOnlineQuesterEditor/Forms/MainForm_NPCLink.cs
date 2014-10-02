@@ -39,7 +39,7 @@ namespace StalkerOnlineQuesterEditor
                 return;
             //string npcName = NPCBox.SelectedItem.ToString();
             string npcName = NPCBox.SelectedValue.ToString();
-
+            npcData NpcData = dialogs.NpcData[npcName];
             // очищаем поле графа
             bNumOfIter = true;
             rootx = (float)(this.ClientSize.Width / 5);
@@ -52,7 +52,8 @@ namespace StalkerOnlineQuesterEditor
             this.npcLinkShower.Root.AddChild(edgeNPClinkLayer);
             this.npcLinkShower.Camera.AddLayer(0, edgeNPClinkLayer);            
             PNode node = new PNode();
-            addNodeToNpcLink(ref node, npcName);
+            addNodeToNpcLink(ref node, npcName, NpcData);
+            
             nodeNPClinkLayer.Add(node);
 
             // ищем все связи персонажа, т.е. квесты, которые он завершает от других NPC 
@@ -69,10 +70,11 @@ namespace StalkerOnlineQuesterEditor
                     {
                         PNode new_node = new PNode();
                         string new_npc = quests.quest[questID].Additional.Holder;
+                        npcData new_data = dialogs.NpcData[new_npc];
                         if (mapGraphs.Keys.Contains(new_npc))
                             new_node = mapGraphs[new_npc];
                         else
-                            addNodeToNpcLink(ref new_node, new_npc);
+                            addNodeToNpcLink(ref new_node, new_npc, new_data);
 
                         PrepareNodesForEdge(node, new_node, ref edgeNPClinkLayer);
                         if (!nodeNPClinkLayer.Contains(new_node))
@@ -113,12 +115,12 @@ namespace StalkerOnlineQuesterEditor
                             if (mapGraphs.Keys.Contains(sQuestHolder))
                                 questHolder = mapGraphs[sQuestHolder];
                             else
-                                addNodeToNpcLink(ref questHolder, sQuestHolder);
+                                addNodeToNpcLink(ref questHolder, sQuestHolder, new npcData());
 
                             if (mapGraphs.Keys.Contains(sDialogHolder))
                                 dialogHolder = mapGraphs[sDialogHolder];
                             else
-                                addNodeToNpcLink(ref dialogHolder, sDialogHolder);
+                                addNodeToNpcLink(ref dialogHolder, sDialogHolder, new npcData());
 
                             PrepareNodesForEdge(questHolder, dialogHolder, ref edgeNPClinkLayer);
 
@@ -132,7 +134,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Добавляет узел на граф связей NPC между собой
-        void addNodeToNpcLink(ref PNode Holder, string name)
+        void addNodeToNpcLink(ref PNode Holder, string name, npcData NpcData)
         {
             Holder = PPath.CreateRectangle(rootx, rooty, 180, 33);
             if (bNumOfIter)
@@ -148,10 +150,21 @@ namespace StalkerOnlineQuesterEditor
                 bNumOfIter = true;
             }
             PText rootText = new PText(name);
+            rootText.Text += "\n" + NpcData.location;
+            rootText.Text += ", " + NpcData.coordinates;
+            if (settings.getMode() == settings.MODE_EDITOR)
+                rootText.Text += "\n" + NpcData.rusName;
+            else if (settings.getMode() == settings.MODE_LOCALIZATION)
+                rootText.Text += "\n" + NpcData.engName;
             rootText.Pickable = false;
             rootText.X = Holder.X + 30;
             rootText.Y = Holder.Y + 5;
             Holder.AddChild(rootText);
+            Holder.Bounds = Holder.ComputeFullBounds();
+            
+            //RectangleF rect2 = rootText.ComputeFullBounds();
+            //rootText.RecomputeBounds();
+            
             Holder.Tag = new ArrayList();
             mapGraphs.Add(name, Holder);
         }

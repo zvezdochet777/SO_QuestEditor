@@ -70,7 +70,7 @@ namespace StalkerOnlineQuesterEditor
             this.bRemoveEvent = new System.Windows.Forms.Button();
             this.bEditEvent = new System.Windows.Forms.Button();
             this.bAddEvent = new System.Windows.Forms.Button();
-            this.npcLinksTabPage = new System.Windows.Forms.TabPage();
+            this.tabInfoNPC = new System.Windows.Forms.TabPage();
             this.npcLinkShower = new UMD.HCIL.Piccolo.PCanvas();
             this.pNpcLinkControls = new System.Windows.Forms.Panel();
             this.lAdviceNpcLink = new System.Windows.Forms.Label();
@@ -156,7 +156,7 @@ namespace StalkerOnlineQuesterEditor
             this.QuestBox = new System.Windows.Forms.ComboBox();
             this.labelChosenQuest = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -178,7 +178,7 @@ namespace StalkerOnlineQuesterEditor
             this.splitQuestsContainer.Panel1.SuspendLayout();
             this.splitQuestsContainer.SuspendLayout();
             this.panelQuestTools.SuspendLayout();
-            this.npcLinksTabPage.SuspendLayout();
+            this.tabInfoNPC.SuspendLayout();
             this.pNpcLinkControls.SuspendLayout();
             this.tabReview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).BeginInit();
@@ -219,8 +219,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // NPCBox
             // 
-            this.NPCBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.NPCBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.NPCBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
             this.NPCBox.DropDownWidth = 280;
             this.NPCBox.FormattingEnabled = true;
             this.NPCBox.Location = new System.Drawing.Point(96, 3);
@@ -228,6 +227,7 @@ namespace StalkerOnlineQuesterEditor
             this.NPCBox.Size = new System.Drawing.Size(196, 21);
             this.NPCBox.TabIndex = 3;
             this.NPCBox.SelectedIndexChanged += new System.EventHandler(this.NPCBox_SelectedIndexChanged);
+            this.NPCBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NPCBox_KeyDown);
             // 
             // labelChosenNPC
             // 
@@ -242,7 +242,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.CentralDock.Controls.Add(this.tabDialogs);
             this.CentralDock.Controls.Add(this.tabQuests);
-            this.CentralDock.Controls.Add(this.npcLinksTabPage);
+            this.CentralDock.Controls.Add(this.tabInfoNPC);
             this.CentralDock.Controls.Add(this.tabReview);
             this.CentralDock.Controls.Add(this.tabManage);
             this.CentralDock.Controls.Add(this.tabTranslate);
@@ -545,10 +545,10 @@ namespace StalkerOnlineQuesterEditor
             this.treeQuest.Name = "treeQuest";
             this.treeQuest.Size = new System.Drawing.Size(228, 338);
             this.treeQuest.TabIndex = 0;
-            this.treeQuest.DoubleClick += new System.EventHandler(this.treeQuestClicked);
             this.treeQuest.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeQuest_AfterSelect);
-            this.treeQuest.Leave += new System.EventHandler(this.treeQuest_Leave);
             this.treeQuest.Click += new System.EventHandler(this.treeQuest_Click);
+            this.treeQuest.DoubleClick += new System.EventHandler(this.treeQuestClicked);
+            this.treeQuest.Leave += new System.EventHandler(this.treeQuest_Leave);
             // 
             // labelQuestTree
             // 
@@ -567,9 +567,9 @@ namespace StalkerOnlineQuesterEditor
             this.treeQuestBuffer.Name = "treeQuestBuffer";
             this.treeQuestBuffer.Size = new System.Drawing.Size(228, 166);
             this.treeQuestBuffer.TabIndex = 1;
-            this.treeQuestBuffer.DoubleClick += new System.EventHandler(this.treeQuestBuffer_DoubleClick);
             this.treeQuestBuffer.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeQuestBuffer_AfterSelect);
             this.treeQuestBuffer.Click += new System.EventHandler(this.treeQuestBuffer_Click);
+            this.treeQuestBuffer.DoubleClick += new System.EventHandler(this.treeQuestBuffer_DoubleClick);
             // 
             // labelBuffer
             // 
@@ -684,16 +684,16 @@ namespace StalkerOnlineQuesterEditor
             this.bAddEvent.UseVisualStyleBackColor = true;
             this.bAddEvent.Click += new System.EventHandler(this.bAddEvent_Click);
             // 
-            // npcLinksTabPage
+            // tabInfoNPC
             // 
-            this.npcLinksTabPage.Controls.Add(this.npcLinkShower);
-            this.npcLinksTabPage.Controls.Add(this.pNpcLinkControls);
-            this.npcLinksTabPage.Location = new System.Drawing.Point(4, 22);
-            this.npcLinksTabPage.Name = "npcLinksTabPage";
-            this.npcLinksTabPage.Size = new System.Drawing.Size(906, 540);
-            this.npcLinksTabPage.TabIndex = 2;
-            this.npcLinksTabPage.Text = "Связи NPC";
-            this.npcLinksTabPage.UseVisualStyleBackColor = true;
+            this.tabInfoNPC.Controls.Add(this.npcLinkShower);
+            this.tabInfoNPC.Controls.Add(this.pNpcLinkControls);
+            this.tabInfoNPC.Location = new System.Drawing.Point(4, 22);
+            this.tabInfoNPC.Name = "tabInfoNPC";
+            this.tabInfoNPC.Size = new System.Drawing.Size(906, 540);
+            this.tabInfoNPC.TabIndex = 2;
+            this.tabInfoNPC.Text = "Инфо NPC";
+            this.tabInfoNPC.UseVisualStyleBackColor = true;
             // 
             // npcLinkShower
             // 
@@ -1457,7 +1457,7 @@ namespace StalkerOnlineQuesterEditor
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.менюToolStripMenuItem,
+            this.menuToolStripMenuItem,
             this.StatisticsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -1465,14 +1465,14 @@ namespace StalkerOnlineQuesterEditor
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // менюToolStripMenuItem
+            // menuToolStripMenuItem
             // 
-            this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SettingsToolStripMenuItem,
             this.ExitToolStripMenuItem});
-            this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
-            this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.менюToolStripMenuItem.Text = "Меню";
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.menuToolStripMenuItem.Text = "Меню";
             // 
             // SettingsToolStripMenuItem
             // 
@@ -1540,7 +1540,7 @@ namespace StalkerOnlineQuesterEditor
             this.splitQuestsContainer.Panel1.PerformLayout();
             this.splitQuestsContainer.ResumeLayout(false);
             this.panelQuestTools.ResumeLayout(false);
-            this.npcLinksTabPage.ResumeLayout(false);
+            this.tabInfoNPC.ResumeLayout(false);
             this.pNpcLinkControls.ResumeLayout(false);
             this.pNpcLinkControls.PerformLayout();
             this.tabReview.ResumeLayout(false);
@@ -1605,10 +1605,10 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bZoomIn;
         private System.Windows.Forms.Button bSaveDialogs;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
-        private System.Windows.Forms.TabPage npcLinksTabPage;
+        private System.Windows.Forms.TabPage tabInfoNPC;
         private PCanvas npcLinkShower;
         private System.Windows.Forms.TabPage tabManage;
         private System.Windows.Forms.DataGridView manageGridView;

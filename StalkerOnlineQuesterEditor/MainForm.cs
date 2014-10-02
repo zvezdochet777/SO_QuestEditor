@@ -114,32 +114,57 @@ namespace StalkerOnlineQuesterEditor
         //! Сменили NPC в комбобоксе выбора персонажа
         private void NPCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (!NPCBox.SelectedItem.ToString().Equals(currentNPC))
-            //{
-                clearQuestTab();
-                //currentNPC = NPCBox.SelectedItem.ToString();
-                currentNPC = NPCBox.SelectedValue.ToString();
-                //currentNPC = ((NPCNameDataSourceObject)(NPCBox.SelectedValue)).Value.ToString();
+            clearQuestTab();
+            currentNPC = NPCBox.SelectedValue.ToString();
 
-                if (CentralDock.SelectedIndex == 0)
-                {
-                    fillQuestChangeBox(true);
-                    QuestBox.Enabled = false;
-                    bAddQuest.Enabled = false;
-                    bRemoveQuest.Enabled = false;
-                    bAddDialog.Enabled = false;
-                    bEditDialog.Enabled = false;
-                    bRemoveDialog.Enabled = false;
-                    QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
-                    DialogSelected(true);
-                }
-                else if (CentralDock.SelectedIndex == 1)
-                {
-                    fillQuestChangeBox(false);
-                    QuestBox.Text = "Пожалуйста, выберите квест";
-                }
-            //}
+            if (CentralDock.SelectedIndex == 0)
+            {
+                fillQuestChangeBox(true);
+                QuestBox.Enabled = false;
+                bAddQuest.Enabled = false;
+                bRemoveQuest.Enabled = false;
+                bAddDialog.Enabled = false;
+                bEditDialog.Enabled = false;
+                bRemoveDialog.Enabled = false;
+                QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
+                DialogSelected(true);
+            }
+            else if (CentralDock.SelectedIndex == 1)
+            {
+                fillQuestChangeBox(false);
+                QuestBox.Text = "Пожалуйста, выберите квест";
+            }
         }
+
+        //! Поиск в комбобоксe NPC по имени общему, или локализованному руссокму, английскому
+        private void NPCBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string text = NPCBox.Text;
+                if (dialogs.dialogs.Keys.Contains(text) )
+                    return;
+                string name = "";
+                if (settings.getMode() == settings.MODE_EDITOR)
+                {
+                    if (dialogs.rusNamesToNPC.ContainsKey(text))
+                    {
+                        name = dialogs.rusNamesToNPC[text];
+                        NPCBox.SelectedValue = name;
+                    }
+                }
+                else if (settings.getMode() == settings.MODE_LOCALIZATION)
+                {
+                    if (dialogs.engNamesToNPC.ContainsKey(text))
+                    {
+                        name = dialogs.engNamesToNPC[text];
+                        NPCBox.SelectedValue = name;
+                    }
+                }
+            }
+
+        }
+
         //! Заполняет комбобокс со списком квестов у данного персонажа
         void fillQuestChangeBox(bool onlyDialogs)
         {
@@ -173,17 +198,23 @@ namespace StalkerOnlineQuesterEditor
         void fillNPCBox()
         {
             npcNames.Clear();
+            NPCBox.AutoCompleteCustomSource.Clear();
             foreach (string holder in this.dialogs.dialogs.Keys)
             {
                 string npcName = holder;
+                string localName = "";
                 if (dialogs.NpcData.ContainsKey(holder))
                 {
                     if (settings.getMode() == settings.MODE_EDITOR)
-                        npcName += " (" + dialogs.NpcData[holder].rusName + ")";
+                        localName = dialogs.NpcData[holder].rusName;
                     else if (settings.getMode() == settings.MODE_LOCALIZATION)
-                        npcName += " (" + dialogs.NpcData[holder].engName + ")";
+                        localName = dialogs.NpcData[holder].engName;
+
+                    NPCBox.AutoCompleteCustomSource.Add(localName);
+                    npcName += " (" + localName + ")";
                 }
                 npcNames.Add ( new NPCNameDataSourceObject(holder, npcName));
+                NPCBox.AutoCompleteCustomSource.Add(npcName);
             }
             npcNames.Sort();
             NPCBox.DataSource = null;       // костыль для обновления данных в кмобобоксе NPC при добавлении/удалении
@@ -192,6 +223,9 @@ namespace StalkerOnlineQuesterEditor
             NPCBox.ValueMember = "Value";
 
             NPCBox.SelectedIndex = 1;
+
+            NPCBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+            NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
                        
             QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -2089,8 +2123,6 @@ namespace StalkerOnlineQuesterEditor
             labelXNode.Text = "dupl = " + dupl.Count.ToString() + ", total=" + stup.ToString();
              */
         }
-
-
 
     }
 }
