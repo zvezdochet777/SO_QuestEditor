@@ -332,6 +332,7 @@
             this.tNPCReactiontextBox.Location = new System.Drawing.Point(103, 103);
             this.tNPCReactiontextBox.Multiline = true;
             this.tNPCReactiontextBox.Name = "tNPCReactiontextBox";
+            this.tNPCReactiontextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tNPCReactiontextBox.Size = new System.Drawing.Size(479, 88);
             this.tNPCReactiontextBox.TabIndex = 0;
             // 

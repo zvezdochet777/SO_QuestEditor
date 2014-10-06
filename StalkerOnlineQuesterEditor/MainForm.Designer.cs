@@ -62,6 +62,8 @@ namespace StalkerOnlineQuesterEditor
             this.treeQuestBuffer = new System.Windows.Forms.TreeView();
             this.labelBuffer = new System.Windows.Forms.Label();
             this.panelQuestTools = new System.Windows.Forms.Panel();
+            this.bClearBuffer = new System.Windows.Forms.Button();
+            this.bCutEvents = new System.Windows.Forms.Button();
             this.bPasteEvents = new System.Windows.Forms.Button();
             this.bCopyEvents = new System.Windows.Forms.Button();
             this.bQuestDown = new System.Windows.Forms.Button();
@@ -383,7 +385,6 @@ namespace StalkerOnlineQuesterEditor
             this.bSync.TabIndex = 9;
             this.bSync.Text = "Синхронизировать";
             this.bSync.UseVisualStyleBackColor = true;
-            this.bSync.Visible = false;
             this.bSync.Click += new System.EventHandler(this.bSync_Click);
             // 
             // bAddNoKarmaDialog
@@ -583,6 +584,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             // panelQuestTools
             // 
+            this.panelQuestTools.Controls.Add(this.bClearBuffer);
+            this.panelQuestTools.Controls.Add(this.bCutEvents);
             this.panelQuestTools.Controls.Add(this.bPasteEvents);
             this.panelQuestTools.Controls.Add(this.bCopyEvents);
             this.panelQuestTools.Controls.Add(this.bQuestDown);
@@ -597,10 +600,30 @@ namespace StalkerOnlineQuesterEditor
             this.panelQuestTools.Size = new System.Drawing.Size(200, 534);
             this.panelQuestTools.TabIndex = 2;
             // 
+            // bClearBuffer
+            // 
+            this.bClearBuffer.Location = new System.Drawing.Point(4, 278);
+            this.bClearBuffer.Name = "bClearBuffer";
+            this.bClearBuffer.Size = new System.Drawing.Size(191, 23);
+            this.bClearBuffer.TabIndex = 9;
+            this.bClearBuffer.Text = "Очистить буфер";
+            this.bClearBuffer.UseVisualStyleBackColor = true;
+            this.bClearBuffer.Click += new System.EventHandler(this.bClearBuffer_Click);
+            // 
+            // bCutEvents
+            // 
+            this.bCutEvents.Location = new System.Drawing.Point(4, 189);
+            this.bCutEvents.Name = "bCutEvents";
+            this.bCutEvents.Size = new System.Drawing.Size(191, 23);
+            this.bCutEvents.TabIndex = 8;
+            this.bCutEvents.Text = "Вырезать";
+            this.bCutEvents.UseVisualStyleBackColor = true;
+            this.bCutEvents.Click += new System.EventHandler(this.bCutEvents_Click);
+            // 
             // bPasteEvents
             // 
             this.bPasteEvents.Enabled = false;
-            this.bPasteEvents.Location = new System.Drawing.Point(4, 216);
+            this.bPasteEvents.Location = new System.Drawing.Point(4, 247);
             this.bPasteEvents.Name = "bPasteEvents";
             this.bPasteEvents.Size = new System.Drawing.Size(191, 23);
             this.bPasteEvents.TabIndex = 7;
@@ -611,7 +634,7 @@ namespace StalkerOnlineQuesterEditor
             // bCopyEvents
             // 
             this.bCopyEvents.Enabled = false;
-            this.bCopyEvents.Location = new System.Drawing.Point(4, 187);
+            this.bCopyEvents.Location = new System.Drawing.Point(4, 218);
             this.bCopyEvents.Name = "bCopyEvents";
             this.bCopyEvents.Size = new System.Drawing.Size(191, 23);
             this.bCopyEvents.TabIndex = 6;
@@ -624,7 +647,7 @@ namespace StalkerOnlineQuesterEditor
             this.bQuestDown.Enabled = false;
             this.bQuestDown.Location = new System.Drawing.Point(4, 120);
             this.bQuestDown.Name = "bQuestDown";
-            this.bQuestDown.Size = new System.Drawing.Size(193, 23);
+            this.bQuestDown.Size = new System.Drawing.Size(191, 23);
             this.bQuestDown.TabIndex = 5;
             this.bQuestDown.Text = "Вниз";
             this.bQuestDown.UseVisualStyleBackColor = true;
@@ -635,7 +658,7 @@ namespace StalkerOnlineQuesterEditor
             this.bQuestUp.Enabled = false;
             this.bQuestUp.Location = new System.Drawing.Point(4, 91);
             this.bQuestUp.Name = "bQuestUp";
-            this.bQuestUp.Size = new System.Drawing.Size(193, 23);
+            this.bQuestUp.Size = new System.Drawing.Size(191, 23);
             this.bQuestUp.TabIndex = 4;
             this.bQuestUp.Text = "Вверх";
             this.bQuestUp.UseVisualStyleBackColor = true;
@@ -643,9 +666,9 @@ namespace StalkerOnlineQuesterEditor
             // 
             // bSaveQuests
             // 
-            this.bSaveQuests.Location = new System.Drawing.Point(7, 281);
+            this.bSaveQuests.Location = new System.Drawing.Point(4, 336);
             this.bSaveQuests.Name = "bSaveQuests";
-            this.bSaveQuests.Size = new System.Drawing.Size(193, 23);
+            this.bSaveQuests.Size = new System.Drawing.Size(191, 23);
             this.bSaveQuests.TabIndex = 3;
             this.bSaveQuests.Text = "Сохранить изменения";
             this.bSaveQuests.UseVisualStyleBackColor = true;
@@ -656,7 +679,7 @@ namespace StalkerOnlineQuesterEditor
             this.bRemoveEvent.Enabled = false;
             this.bRemoveEvent.Location = new System.Drawing.Point(4, 62);
             this.bRemoveEvent.Name = "bRemoveEvent";
-            this.bRemoveEvent.Size = new System.Drawing.Size(193, 23);
+            this.bRemoveEvent.Size = new System.Drawing.Size(191, 23);
             this.bRemoveEvent.TabIndex = 2;
             this.bRemoveEvent.Text = "Удалить событие";
             this.bRemoveEvent.UseVisualStyleBackColor = true;
@@ -667,7 +690,7 @@ namespace StalkerOnlineQuesterEditor
             this.bEditEvent.Enabled = false;
             this.bEditEvent.Location = new System.Drawing.Point(3, 32);
             this.bEditEvent.Name = "bEditEvent";
-            this.bEditEvent.Size = new System.Drawing.Size(194, 23);
+            this.bEditEvent.Size = new System.Drawing.Size(192, 23);
             this.bEditEvent.TabIndex = 1;
             this.bEditEvent.Text = "Править событие";
             this.bEditEvent.UseVisualStyleBackColor = true;
@@ -676,9 +699,9 @@ namespace StalkerOnlineQuesterEditor
             // bAddEvent
             // 
             this.bAddEvent.Enabled = false;
-            this.bAddEvent.Location = new System.Drawing.Point(3, 3);
+            this.bAddEvent.Location = new System.Drawing.Point(4, 3);
             this.bAddEvent.Name = "bAddEvent";
-            this.bAddEvent.Size = new System.Drawing.Size(194, 23);
+            this.bAddEvent.Size = new System.Drawing.Size(191, 23);
             this.bAddEvent.TabIndex = 0;
             this.bAddEvent.Text = "Добавить событие";
             this.bAddEvent.UseVisualStyleBackColor = true;
@@ -1708,6 +1731,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
         private System.Windows.Forms.ComboBox cbLocation;
         private System.Windows.Forms.CheckBox cbOnlyOnLocation;
+        private System.Windows.Forms.Button bCutEvents;
+        private System.Windows.Forms.Button bClearBuffer;
 
 
     }
