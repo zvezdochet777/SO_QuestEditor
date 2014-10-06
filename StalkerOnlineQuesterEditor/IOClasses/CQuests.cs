@@ -533,6 +533,7 @@ namespace StalkerOnlineQuesterEditor
                 return someInt.ToString();
         }
 
+        //! Возвращает экземпляр класса CQuest с указанным ID
         public CQuest getQuest(int questID)
         {
             if (quest.Keys.Contains(questID))
@@ -540,6 +541,25 @@ namespace StalkerOnlineQuesterEditor
             else if (buffer.Keys.Contains(questID))
                 return buffer[questID];
             else return null;
+        }
+
+        //! Возвращает экземпляр CQuest  в зависимости от языка перевода
+        public CQuest getQuestLocalized(int questID)
+        {
+            if (parent.settings.getMode() == parent.settings.MODE_EDITOR)
+                return getQuest(questID);
+            else
+            {
+                string locale = parent.settings.getCurrentLocale();
+                if (locales[locale].ContainsKey(questID))
+                    return locales[locale][questID];
+                else
+                {
+                    CQuest quest = getQuest(questID);
+                    quest.Version = 0;
+                    return quest;
+                }
+            }
         }
 
         //! Возвращает строку с описанием цели квеста в удобочитаемом виде

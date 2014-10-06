@@ -170,10 +170,22 @@ namespace StalkerOnlineQuesterEditor
         {
             QuestBox.SelectedItem = null;
             QuestBox.Items.Clear();
-            foreach (CQuest quest in quests.getQuestAndTitleOnNPCName(currentNPC))
+            if (!onlyDialogs)
             {
-                if (!onlyDialogs)
-                    QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
+                if (settings.getMode() == settings.MODE_EDITOR)
+                {
+                    foreach (CQuest quest in quests.getQuestAndTitleOnNPCName(currentNPC))
+                        QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
+                }
+                else if (settings.getMode() == settings.MODE_LOCALIZATION)
+                {
+                    string locale = settings.getCurrentLocale();
+                    foreach (CQuest quest in quests.getQuestAndTitleOnNPCName(currentNPC))
+                    {
+                        int id = quest.QuestID;
+                        QuestBox.Items.Add(quest.QuestID + ": " + quests.locales[locale][id].QuestInformation.Title);
+                    }
+                }
             }
         }
 
@@ -618,7 +630,8 @@ namespace StalkerOnlineQuesterEditor
         //! Создает плашку с информацией о субквесте
         void createQuestPanels(int questID)
         {
-            CQuest quest = getQuestOnQuestID(questID);
+            //CQuest quest = getQuestOnQuestID(questID);
+            CQuest quest = quests.getQuestLocalized(questID);
 
             Panel questPanel = new Panel();
             questPanel.AutoSize = true;
@@ -653,11 +666,13 @@ namespace StalkerOnlineQuesterEditor
 
             Label titleLabel = new Label();
             titleLabel.Text = "Заголовок:" + quest.QuestInformation.Title;
+            titleLabel.BackColor = (quest.Version != 0) ? (Color.FromKnownColor(KnownColor.Transparent)) : (Color.FromArgb(0x7FAA45E0));
             titleLabel.Dock = DockStyle.Top;
             infoBox.Controls.Add(titleLabel);
 
             Label descriptionLabel = new Label();
             descriptionLabel.Text = "Описание:" + quest.QuestInformation.Description;
+            descriptionLabel.BackColor = (quest.Version != 0) ? (Color.FromKnownColor(KnownColor.Transparent)) : (Color.FromArgb(0x7FAA45E0));
             descriptionLabel.Dock = DockStyle.Top;
             infoBox.Controls.Add(descriptionLabel);
 
