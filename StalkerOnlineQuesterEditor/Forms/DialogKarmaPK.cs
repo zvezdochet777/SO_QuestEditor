@@ -69,6 +69,7 @@ namespace StalkerOnlineQuesterEditor
                 form.editKarmaPK.Add(b);        // тот же костыль
                 form.editKarmaPK.Add(a);        // тот же костыль
             }
+            form.checkKarmaIndicates();
 
             this.Close();
         }

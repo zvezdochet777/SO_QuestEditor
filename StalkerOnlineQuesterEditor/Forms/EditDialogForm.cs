@@ -43,7 +43,10 @@ namespace StalkerOnlineQuesterEditor
                 checkReputationIndicates();
             }
             if (curDialog.Precondition.KarmaPK.Any())
+            {
                 editKarmaPK = curDialog.Precondition.KarmaPK;
+                checkKarmaIndicates();
+            }
 
             if (parent.isRoot(selectedDialogID) && (!isAdd))
                 NPCReactionText.Text = "Приветствие:";
@@ -274,6 +277,16 @@ namespace StalkerOnlineQuesterEditor
         {
             if (editPrecondition.Reputation.Any())
                 bReputation.Image = Properties.Resources.but_indicate;
+            else
+                bReputation.Image = null;
+        }
+
+        public void checkKarmaIndicates()
+        {
+            if (editKarmaPK.Any())
+                bKarma.Image = Properties.Resources.but_indicate;
+            else
+                bKarma.Image = null;
         }
 
         private void bKarma_Click(object sender, EventArgs e)
