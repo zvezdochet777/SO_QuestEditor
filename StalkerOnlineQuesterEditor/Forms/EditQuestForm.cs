@@ -21,10 +21,10 @@ namespace StalkerOnlineQuesterEditor
         int SHOW_ONFAILED = 32;
         int SHOW_TUTORIAL = 64;
 
-        int ADD_NEW = 1;
-        int EDIT = 2;
-        int EDIT_SUB = 3;
-        int ADD_SUB = 4;
+        const int ADD_NEW = 1;
+        const int EDIT = 2;
+        const int EDIT_SUB = 3;
+        const int ADD_SUB = 4;
 
         int ITEM_REWARD = 0;
         int ITEM_QUESTRULES = 1;
@@ -761,9 +761,9 @@ namespace StalkerOnlineQuesterEditor
             CQuest result = getQuest();
             if (result != null)
             {
-                if (iState == 1)
+                if (iState == ADD_NEW)
                     parent.createNewQuest(result);
-                else if (iState == 4)
+                else if (iState == ADD_SUB)
                     parent.addQuest(result, quest.QuestID);
                 else
                     parent.replaceQuest(result);

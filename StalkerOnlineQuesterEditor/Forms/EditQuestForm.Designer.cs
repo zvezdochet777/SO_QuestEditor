@@ -181,7 +181,7 @@
             this.okButton.Location = new System.Drawing.Point(445, 2);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 5;
+            this.okButton.TabIndex = 37;
             this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
@@ -191,7 +191,7 @@
             this.cancelButton.Location = new System.Drawing.Point(526, 2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 6;
+            this.cancelButton.TabIndex = 38;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -246,14 +246,14 @@
             this.tSupport.Location = new System.Drawing.Point(369, 67);
             this.tSupport.Name = "tSupport";
             this.tSupport.Size = new System.Drawing.Size(54, 20);
-            this.tSupport.TabIndex = 38;
+            this.tSupport.TabIndex = 34;
             // 
             // tSurvival
             // 
             this.tSurvival.Location = new System.Drawing.Point(247, 67);
             this.tSurvival.Name = "tSurvival";
             this.tSurvival.Size = new System.Drawing.Size(42, 20);
-            this.tSurvival.TabIndex = 37;
+            this.tSurvival.TabIndex = 33;
             // 
             // lDifficulty
             // 
@@ -282,7 +282,7 @@
             this.bRewardEffects.Location = new System.Drawing.Point(233, 19);
             this.bRewardEffects.Name = "bRewardEffects";
             this.bRewardEffects.Size = new System.Drawing.Size(94, 23);
-            this.bRewardEffects.TabIndex = 34;
+            this.bRewardEffects.TabIndex = 30;
             this.bRewardEffects.Text = "Эффекты";
             this.bRewardEffects.UseVisualStyleBackColor = true;
             this.bRewardEffects.Click += new System.EventHandler(this.bRewardEffects_Click);
@@ -293,7 +293,7 @@
             this.bRewardFractions.Location = new System.Drawing.Point(119, 19);
             this.bRewardFractions.Name = "bRewardFractions";
             this.bRewardFractions.Size = new System.Drawing.Size(105, 23);
-            this.bRewardFractions.TabIndex = 33;
+            this.bRewardFractions.TabIndex = 29;
             this.bRewardFractions.Text = "Фракции";
             this.bRewardFractions.UseVisualStyleBackColor = true;
             this.bRewardFractions.Click += new System.EventHandler(this.bRewardFractions_Click);
@@ -304,7 +304,7 @@
             this.bItemReward.Location = new System.Drawing.Point(8, 19);
             this.bItemReward.Name = "bItemReward";
             this.bItemReward.Size = new System.Drawing.Size(104, 23);
-            this.bItemReward.TabIndex = 32;
+            this.bItemReward.TabIndex = 28;
             this.bItemReward.Text = "Предметы";
             this.bItemReward.UseVisualStyleBackColor = true;
             this.bItemReward.Click += new System.EventHandler(this.bItemReward_Click);
@@ -314,7 +314,7 @@
             this.textBoxKarmaPK.Location = new System.Drawing.Point(164, 95);
             this.textBoxKarmaPK.Name = "textBoxKarmaPK";
             this.textBoxKarmaPK.Size = new System.Drawing.Size(100, 20);
-            this.textBoxKarmaPK.TabIndex = 31;
+            this.textBoxKarmaPK.TabIndex = 36;
             // 
             // lKarmaPK
             // 
@@ -341,7 +341,7 @@
             this.creditsTextBox.Location = new System.Drawing.Point(119, 45);
             this.creditsTextBox.Name = "creditsTextBox";
             this.creditsTextBox.Size = new System.Drawing.Size(47, 20);
-            this.creditsTextBox.TabIndex = 15;
+            this.creditsTextBox.TabIndex = 31;
             // 
             // lCredits
             // 
@@ -357,7 +357,7 @@
             this.tExperience.Location = new System.Drawing.Point(119, 67);
             this.tExperience.Name = "tExperience";
             this.tExperience.Size = new System.Drawing.Size(47, 20);
-            this.tExperience.TabIndex = 9;
+            this.tExperience.TabIndex = 32;
             // 
             // lCombatSkills
             // 
@@ -390,7 +390,7 @@
             this.bItemQuestRules.Location = new System.Drawing.Point(10, 19);
             this.bItemQuestRules.Name = "bItemQuestRules";
             this.bItemQuestRules.Size = new System.Drawing.Size(102, 23);
-            this.bItemQuestRules.TabIndex = 11;
+            this.bItemQuestRules.TabIndex = 23;
             this.bItemQuestRules.Text = "Предметы";
             this.bItemQuestRules.UseVisualStyleBackColor = true;
             this.bItemQuestRules.Click += new System.EventHandler(this.bItemQuestRules_Click);
@@ -411,7 +411,7 @@
             this.scenariosTextBox.Location = new System.Drawing.Point(90, 49);
             this.scenariosTextBox.Name = "scenariosTextBox";
             this.scenariosTextBox.Size = new System.Drawing.Size(134, 20);
-            this.scenariosTextBox.TabIndex = 9;
+            this.scenariosTextBox.TabIndex = 24;
             // 
             // labelScenarios
             // 
@@ -444,7 +444,7 @@
             this.instanceComboBox.Location = new System.Drawing.Point(107, 63);
             this.instanceComboBox.Name = "instanceComboBox";
             this.instanceComboBox.Size = new System.Drawing.Size(121, 21);
-            this.instanceComboBox.TabIndex = 5;
+            this.instanceComboBox.TabIndex = 27;
             // 
             // labelTeleportTo
             // 
@@ -460,14 +460,14 @@
             this.numericMinGroup.Location = new System.Drawing.Point(162, 37);
             this.numericMinGroup.Name = "numericMinGroup";
             this.numericMinGroup.Size = new System.Drawing.Size(66, 20);
-            this.numericMinGroup.TabIndex = 3;
+            this.numericMinGroup.TabIndex = 26;
             // 
             // numericMaxGroup
             // 
             this.numericMaxGroup.Location = new System.Drawing.Point(162, 13);
             this.numericMaxGroup.Name = "numericMaxGroup";
             this.numericMaxGroup.Size = new System.Drawing.Size(66, 20);
-            this.numericMaxGroup.TabIndex = 2;
+            this.numericMaxGroup.TabIndex = 25;
             // 
             // labelMinGroup
             // 
@@ -517,7 +517,7 @@
             this.takenPeriodTextBox.Location = new System.Drawing.Point(363, 13);
             this.takenPeriodTextBox.Name = "takenPeriodTextBox";
             this.takenPeriodTextBox.Size = new System.Drawing.Size(52, 20);
-            this.takenPeriodTextBox.TabIndex = 3;
+            this.takenPeriodTextBox.TabIndex = 22;
             // 
             // lDaily
             // 
@@ -534,7 +534,7 @@
             this.repeatComboBox.Location = new System.Drawing.Point(90, 13);
             this.repeatComboBox.Name = "repeatComboBox";
             this.repeatComboBox.Size = new System.Drawing.Size(134, 21);
-            this.repeatComboBox.TabIndex = 1;
+            this.repeatComboBox.TabIndex = 21;
             // 
             // lRepeat
             // 
@@ -605,7 +605,7 @@
             this.targetAttributeComboBox2.Location = new System.Drawing.Point(103, 93);
             this.targetAttributeComboBox2.Name = "targetAttributeComboBox2";
             this.targetAttributeComboBox2.Size = new System.Drawing.Size(121, 21);
-            this.targetAttributeComboBox2.TabIndex = 14;
+            this.targetAttributeComboBox2.TabIndex = 18;
             // 
             // lTargetAttr1
             // 
@@ -646,7 +646,7 @@
             this.dynamicCheckBox.Location = new System.Drawing.Point(233, 13);
             this.dynamicCheckBox.Name = "dynamicCheckBox";
             this.dynamicCheckBox.Size = new System.Drawing.Size(102, 17);
-            this.dynamicCheckBox.TabIndex = 10;
+            this.dynamicCheckBox.TabIndex = 14;
             this.dynamicCheckBox.Text = "Динамический";
             this.dynamicCheckBox.UseVisualStyleBackColor = true;
             this.dynamicCheckBox.CheckedChanged += new System.EventHandler(this.dynamicCheckBox_CheckedChanged);
@@ -667,7 +667,7 @@
             this.resultextBox.Location = new System.Drawing.Point(103, 12);
             this.resultextBox.Name = "resultextBox";
             this.resultextBox.Size = new System.Drawing.Size(121, 20);
-            this.resultextBox.TabIndex = 8;
+            this.resultextBox.TabIndex = 13;
             // 
             // targetAttributeComboBox
             // 
@@ -679,7 +679,7 @@
             this.targetAttributeComboBox.Location = new System.Drawing.Point(103, 66);
             this.targetAttributeComboBox.Name = "targetAttributeComboBox";
             this.targetAttributeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.targetAttributeComboBox.TabIndex = 7;
+            this.targetAttributeComboBox.TabIndex = 17;
             this.targetAttributeComboBox.SelectedIndexChanged += new System.EventHandler(this.targetAttributeComboBox_SelectedIndexChanged);
             // 
             // labelTargetAttr
@@ -699,7 +699,7 @@
             this.isClanCheckBox.Location = new System.Drawing.Point(499, 111);
             this.isClanCheckBox.Name = "isClanCheckBox";
             this.isClanCheckBox.Size = new System.Drawing.Size(109, 17);
-            this.isClanCheckBox.TabIndex = 5;
+            this.isClanCheckBox.TabIndex = 20;
             this.isClanCheckBox.Text = "Клановый квест";
             this.isClanCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -710,7 +710,7 @@
             this.IsGroupCheckBox.Location = new System.Drawing.Point(499, 88);
             this.IsGroupCheckBox.Name = "IsGroupCheckBox";
             this.IsGroupCheckBox.Size = new System.Drawing.Size(111, 17);
-            this.IsGroupCheckBox.TabIndex = 4;
+            this.IsGroupCheckBox.TabIndex = 19;
             this.IsGroupCheckBox.Text = "Групповой квест";
             this.IsGroupCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -735,7 +735,7 @@
             0});
             this.quantityUpDown.Name = "quantityUpDown";
             this.quantityUpDown.Size = new System.Drawing.Size(60, 20);
-            this.quantityUpDown.TabIndex = 2;
+            this.quantityUpDown.TabIndex = 15;
             // 
             // targetComboBox
             // 
@@ -748,7 +748,7 @@
             this.targetComboBox.Name = "targetComboBox";
             this.targetComboBox.Size = new System.Drawing.Size(121, 21);
             this.targetComboBox.Sorted = true;
-            this.targetComboBox.TabIndex = 1;
+            this.targetComboBox.TabIndex = 16;
             this.targetComboBox.SelectedIndexChanged += new System.EventHandler(this.targetComboBox_SelectedIndexChanged);
             // 
             // lNameObject
@@ -797,7 +797,7 @@
             this.tutorialCheckBox.Location = new System.Drawing.Point(261, 143);
             this.tutorialCheckBox.Name = "tutorialCheckBox";
             this.tutorialCheckBox.Size = new System.Drawing.Size(81, 17);
-            this.tutorialCheckBox.TabIndex = 13;
+            this.tutorialCheckBox.TabIndex = 10;
             this.tutorialCheckBox.Text = "Туториал";
             this.tutorialCheckBox.UseVisualStyleBackColor = true;
             this.tutorialCheckBox.CheckedChanged += new System.EventHandler(this.tutorialCheckBox_CheckedChanged);
@@ -850,7 +850,7 @@
             this.bHideInformation.Location = new System.Drawing.Point(527, 9);
             this.bHideInformation.Name = "bHideInformation";
             this.bHideInformation.Size = new System.Drawing.Size(75, 23);
-            this.bHideInformation.TabIndex = 8;
+            this.bHideInformation.TabIndex = 15;
             this.bHideInformation.Text = "Скрыть";
             this.bHideInformation.UseVisualStyleBackColor = true;
             this.bHideInformation.Click += new System.EventHandler(this.bHideInformation_Click);
@@ -881,7 +881,7 @@
             this.showFailedCheckBox.Location = new System.Drawing.Point(261, 124);
             this.showFailedCheckBox.Name = "showFailedCheckBox";
             this.showFailedCheckBox.Size = new System.Drawing.Size(143, 17);
-            this.showFailedCheckBox.TabIndex = 5;
+            this.showFailedCheckBox.TabIndex = 9;
             this.showFailedCheckBox.Text = "Показывать проигрыш";
             this.showFailedCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -901,7 +901,7 @@
             this.showWinCheckBox.Location = new System.Drawing.Point(261, 105);
             this.showWinCheckBox.Name = "showWinCheckBox";
             this.showWinCheckBox.Size = new System.Drawing.Size(178, 17);
-            this.showWinCheckBox.TabIndex = 4;
+            this.showWinCheckBox.TabIndex = 8;
             this.showWinCheckBox.Text = "Показывать сообщ. выигрыш";
             this.showWinCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -938,14 +938,14 @@
             this.onFailedTextBox.Location = new System.Drawing.Point(72, 211);
             this.onFailedTextBox.Name = "onFailedTextBox";
             this.onFailedTextBox.Size = new System.Drawing.Size(407, 20);
-            this.onFailedTextBox.TabIndex = 1;
+            this.onFailedTextBox.TabIndex = 12;
             // 
             // onWonTextBox
             // 
             this.onWonTextBox.Location = new System.Drawing.Point(72, 185);
             this.onWonTextBox.Name = "onWonTextBox";
             this.onWonTextBox.Size = new System.Drawing.Size(407, 20);
-            this.onWonTextBox.TabIndex = 1;
+            this.onWonTextBox.TabIndex = 11;
             // 
             // titleTextBox
             // 

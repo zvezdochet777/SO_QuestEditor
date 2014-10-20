@@ -797,7 +797,7 @@ namespace StalkerOnlineQuesterEditor
             currentNPC = "";
             fillNPCBox();
         }
-
+        //! Устанавливает доступность средств работы с квестами
         public void checkQuestButton(int questType, int questID)
         {
             bEditEvent.Enabled = true;
@@ -850,18 +850,23 @@ namespace StalkerOnlineQuesterEditor
         {
             quests.quest[parent].Additional.ListOfSubQuest.Add(quest.QuestID);
             quests.quest.Add(quest.QuestID, quest);
-            checkQuestButton(quest.Target.QuestType, quest.QuestID);
-            
+
+            quests.locales[settings.getListLocales()[0]][parent].Additional.ListOfSubQuest.Add(quest.QuestID);
+            quests.locales[settings.getListLocales()[0]].Add(quest.QuestID, quest);
+
+            checkQuestButton(quest.Target.QuestType, quest.QuestID);            
             addNodeOnTreeQuest(quest.QuestID);
             treeQuest.ExpandAll();
             fillQuestPanel();
         }
-
+        //! Заменяет данные квеста при редактировании
         public void replaceQuest(CQuest quest)
         {
             //CQuest replacedQuest = quests.quest[quest.QuestID];
             //quests.quest[quest.QuestID] = quest;
             quests.replaceQuest(quest);
+            if (quests.quest.Keys.Contains(quest.QuestID))
+                quests.locales[settings.getListLocales()[0]][quest.QuestID].InsertNonTextData(quest);
             checkQuestButton(quest.Target.QuestType, quest.QuestID);
         }
         //! Нажатие на кнопку "Добавление квеста", вызов окна EditQuestForm
@@ -897,7 +902,7 @@ namespace StalkerOnlineQuesterEditor
                 this.Enabled = false;
             }
         }
-
+        //! Сохранение данных по диалогам и квестам (если режим редактора - то сохранение и локализаций)
         void saveData()
         {
             this.Enabled = false;
@@ -916,7 +921,7 @@ namespace StalkerOnlineQuesterEditor
             toolStripStatusLabel.Text = "Данные успешно сохранены.";
             this.Enabled = true;
         }
-
+        //! Нажатие на кнопку "Удаление квеста"
         private void bRemoveEvent_Click(object sender, EventArgs e)
         {
             this.removeQuest(currentQuest);
@@ -992,10 +997,12 @@ namespace StalkerOnlineQuesterEditor
             newQuest.Visible = true;
             this.Enabled = false;
         }
-
+        //! Срздает новый корневой квест у персонажа (не подквест, а именно новый)
         public void createNewQuest(CQuest newQuest)
         {
             quests.quest.Add(newQuest.QuestID, newQuest);
+            quests.locales[settings.getListLocales()[0]].Add(newQuest.QuestID, newQuest);
+
             QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
             QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
         }
