@@ -174,6 +174,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        //! Возвращает ID для нового диалога
         public int getDialogsNewID()
         {
             List<int> availableID = new List<int>();
@@ -185,7 +186,7 @@ namespace StalkerOnlineQuesterEditor
                     return i;
         }
 
-        //**********************WORK WITH FORM
+        //**********************WORK WITH FORM ****************************************************
 
         void fillDialogTree(CDialog root, DialogDict dialogs)
         {
@@ -208,7 +209,7 @@ namespace StalkerOnlineQuesterEditor
 
             this.treeDialogs.ExpandAll();
         }
-
+        //! Удаляет диалог из локализаций при его удалении из русской части диалогов
         void setNonActiveDialog(string holder, int id)
         {
             dialogs.locales[settings.getListLocales()[0]][holder][id].coordinates.Active = false;

@@ -770,6 +770,7 @@ namespace StalkerOnlineQuesterEditor
                     dialogID, 0, nc));
 
             dialogs.dialogs.Add(Name, firstDialog);
+            dialogs.locales[settings.getListLocales()[0]].Add(Name, firstDialog);
             
             fillNPCBox();                        
             NPCBox.SelectedValue = Name;
@@ -792,6 +793,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (int item in removedItems)
                 quests.quest.Remove(item);
             dialogs.dialogs.Remove(currentNPC);
+            dialogs.locales[settings.getListLocales()[0]].Remove(currentNPC);
             currentNPC = "";
             fillNPCBox();
         }
