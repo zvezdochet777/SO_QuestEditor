@@ -924,16 +924,27 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие на кнопку "Удаление квеста"
         private void bRemoveEvent_Click(object sender, EventArgs e)
         {
-            this.removeQuest(currentQuest);
+            this.removeQuest(currentQuest, false);
         }
 
-        void removeQuest(int questID)
+        void removeQuest(int questID, bool recursiveCall)
         {
-            foreach (int subquest in getQuestOnQuestID(questID).Additional.ListOfSubQuest)
-                removeQuest(subquest);
+            List<int> temp = getQuestOnQuestID(questID).Additional.ListOfSubQuest;
+            foreach (int subquest in temp ) //getQuestOnQuestID(questID).Additional.ListOfSubQuest)
+                removeQuest(subquest, true);
 
-            if (getQuestOnQuestID(questID).Additional.IsSubQuest!=0)
-                quests.quest[getQuestOnQuestID(questID).Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
+            if ( !recursiveCall )
+                if (getQuestOnQuestID(questID).Additional.IsSubQuest != 0)
+                    quests.quest[getQuestOnQuestID(questID).Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
+
+            // удаляем квест из локализаций
+            CQuest english = quests.locales[settings.getListLocales()[0]][questID];
+            foreach (int subquest in english.Additional.ListOfSubQuest)
+                removeQuest(subquest, true);
+            if (english.Additional.IsSubQuest != 0)
+                quests.locales[settings.getListLocales()[0]][english.Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
+            quests.locales[settings.getListLocales()[0]].Remove(questID);
+
             treeQuest.Nodes.Find(questID.ToString(), true)[0].Remove();
             quests.quest.Remove(questID);
         }
@@ -983,12 +994,12 @@ namespace StalkerOnlineQuesterEditor
         {
             treeQuest.SelectedNode = treeQuest.Nodes.Find(questID.ToString(), true)[0];
         }
-
+        //! Нажатие на кнопку "Удаление корневого квеста", т.е. удаляется корневой (не субквест) квест у персонажа
         private void bRemoveQuest_Click(object sender, EventArgs e)
         {
             int removedQuest = int.Parse(QuestBox.SelectedItem.ToString().Split(':')[0].Trim());
             QuestBox.Items.Remove(QuestBox.SelectedItem);
-            removeQuest(removedQuest);
+            removeQuest(removedQuest, false);
         }
 
         private void bAddQuest_Click(object sender, EventArgs e)
@@ -1300,7 +1311,7 @@ namespace StalkerOnlineQuesterEditor
 
             List<CQuest> buffer = new List<CQuest>(selectQuestsOnID(currentQuest));
 
-            removeQuest(currentQuest);
+            removeQuest(currentQuest, false);
 
             buffer[0].Additional.IsSubQuest = 0;
             foreach (CQuest quest in buffer)
