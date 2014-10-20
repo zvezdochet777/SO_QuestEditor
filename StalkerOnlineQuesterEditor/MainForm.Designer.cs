@@ -395,7 +395,6 @@ namespace StalkerOnlineQuesterEditor
             this.bAddNoKarmaDialog.TabIndex = 8;
             this.bAddNoKarmaDialog.Text = "Добавить диалог";
             this.bAddNoKarmaDialog.UseVisualStyleBackColor = true;
-            this.bAddNoKarmaDialog.Visible = false;
             this.bAddNoKarmaDialog.Click += new System.EventHandler(this.bAddNoKarmaDialog_Click);
             // 
             // bRunThroughNPC

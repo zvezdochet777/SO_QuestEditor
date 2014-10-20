@@ -45,7 +45,6 @@ namespace StalkerOnlineQuesterEditor
         List<int> rootElements = new List<int>();
         public TreeView tree;
         List<PNode> subNodes = new List<PNode>();
-        List<int> protectedTreeNode;
         Dictionary<LinkLabel,int> titles;
         List<NPCNameDataSourceObject> npcNames = new List<NPCNameDataSourceObject>();
 
@@ -77,7 +76,6 @@ namespace StalkerOnlineQuesterEditor
             settings.checkMode();
 
             tree = treeDialogs;
-            protectedTreeNode = new List<int>();
             questConst = new СQuestConstants();
             itemConst = new CItemConstants();
             npcConst = new CNPCConstants();
@@ -251,17 +249,8 @@ namespace StalkerOnlineQuesterEditor
             cbLocation.DataSource = null;
             cbLocation.DataSource = dialogs.locationNames;
         }
-
-        void protectNPCBoxQuest(CDialog quest)
-        {
-            if (!protectedTreeNode.Contains(quest.DialogID))
-            {
-                protectedTreeNode.Add(quest.DialogID);
-                if (quest.Nodes.Any())
-                    foreach (int subquest in quest.Nodes)
-                        protectNPCBoxQuest(getDialogOnDialogID(subquest));
-            }
-        }
+      
+// ************************ WORK WITH DIALOGS****************************************************
 
         void fillNPCBoxSubquests(CDialog sub)
         {
@@ -382,13 +371,19 @@ namespace StalkerOnlineQuesterEditor
                 editLocaleDialogForm.Visible = true;
             }
         }
-
+        //! Полностью удаляет диалог из эдитора (выбор в Recycled -> удаление)
         void removeDialog(int dialogID)
         {
             dialogs.dialogs[currentNPC].Remove(dialogID);
             foreach (CDialog dialog in dialogs.dialogs[currentNPC].Values)
                 if (dialog.Actions.ToDialog == dialogID)
                     dialog.Actions.ToDialog = 0;
+            // удаляем диалог из переводов
+            dialogs.locales[settings.getListLocales()[0]][currentNPC].Remove(dialogID);
+            foreach (CDialog dialog in dialogs.locales[settings.getListLocales()[0]][currentNPC].Values)
+                if (dialog.Actions.ToDialog == dialogID)
+                    dialog.Actions.ToDialog = 0;
+
             CDialog rootDialog = getRootDialog();
             if (rootDialog!= null)
                 fillDialogTree(rootDialog, this.dialogs.dialogs[currentNPC]);
@@ -515,6 +510,8 @@ namespace StalkerOnlineQuesterEditor
             this.labelYNode.Text += " h=" + h.ToString();
         }
 
+// ************************END DIALOGS BLOCK****************************************************
+
         //! Возвращает список как строку со значениями через запятую
         string getListAsString(List<int> list)
         {
@@ -585,6 +582,8 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+// ******************************* WORK WITH QUESTS ***************************************
+        //! Возвращает экземпляр CQuest по его ID
         public CQuest getQuestOnQuestID(int questID)
         {
             return quests.getQuest(questID);
@@ -905,11 +904,12 @@ namespace StalkerOnlineQuesterEditor
                 dialogs.saveDialogs(settings.getDialogsPath());  // settings.dialogXML
                 quests.saveQuests(settings.getQuestsPath());     // settings.questXML
             }
-            else
-            {
-                dialogs.saveLocales(settings.getDialogLocalePath());  // settings.dialogXML
-                quests.saveLocales(settings.getQuestLocalePath());    // settings.questXML
-            }
+            //else
+            //{
+            // сохраняем изменения в локализациях
+            dialogs.saveLocales(settings.getDialogLocalePath());  // settings.dialogXML
+            quests.saveLocales(settings.getQuestLocalePath());    // settings.questXML
+            //}
             Thread.Sleep(1000);
             toolStripStatusLabel.Text = "Данные успешно сохранены.";
             this.Enabled = true;
@@ -1422,6 +1422,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        //! Вставляет квесты из буфера обмена как подквест 
         private void pasteBuffer()
         {
             //System.Console.WriteLine("MainForm::pasteBuffer");
@@ -1444,6 +1445,7 @@ namespace StalkerOnlineQuesterEditor
                 clearQuestsBuffer();
         }
 
+        //! Заменяет выделенный квест на квесты из буфера обмена
         private void replaceBuffer()
         {
             var quest = getQuestOnQuestID(currentQuest);
@@ -2006,6 +2008,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void bAddNoKarmaDialog_Click(object sender, EventArgs e)
         {
+            /*
+             * // добавление диалога для НЕ общения NPC c PK-шниками 
             int id = getDialogsNewID();
             int parentId = getRootDialog().DialogID;
             CDialog dial = new CDialog();
@@ -2029,7 +2033,36 @@ namespace StalkerOnlineQuesterEditor
             dial2.coordinates.RootDialog = false;
             dial2.coordinates.Active = true;
             addActiveDialog(id2, dial2, id);
-
+            */
+            
+            // Перевод указанного выше диалога для всех NPC
+            string loc = settings.getCurrentLocale();
+            int count = 0;
+            foreach (string npc in dialogs.locales[loc].Keys)
+                foreach (CDialog dialog in dialogs.locales[loc][npc].Values)
+                { 
+                //<Title>Есть минутка?</Title>
+                //    <Text>Извини, с уголовниками не общаюсь</Text>
+                //        Nodes>6482</Nodes>
+                //            <Title>Ладно</Title>
+                    //Got a  minute? - I don't talkt to criminals. - Whatever.
+                    if (dialog.coordinates.Active && dialog.Title == "Есть минутка?" && dialog.Text == "Извини, с уголовниками не общаюсь")
+                    {
+                        int node = dialog.Nodes[0];
+                        CDialog son = dialogs.locales[loc][npc][node];
+                        if (son.Title == "Ладно")
+                        {
+                            dialog.Title = "Got a minute?";
+                            dialog.Text = "I don't talk to criminals.";
+                            dialog.version = dialogs.dialogs[npc][dialog.DialogID].version;
+                            son.Title = "Whatever";
+                            son.version = dialogs.dialogs[npc][son.DialogID].version;
+                            count++;
+                        }
+                    }
+                }
+            labelXNode.Text = "Изменено пар диалогов: " + count.ToString();
+             
         }
 
         private void bSync_Click(object sender, EventArgs e)

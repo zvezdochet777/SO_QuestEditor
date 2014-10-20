@@ -185,10 +185,6 @@ namespace StalkerOnlineQuesterEditor
                     return i;
         }
 
-        public void replaceDialog(CDialog dialog, int dialogID)
-        {
-            dialogs.dialogs[currentNPC][dialogID] = dialog;
-        }
         //**********************WORK WITH FORM
 
         void fillDialogTree(CDialog root, DialogDict dialogs)
@@ -207,9 +203,15 @@ namespace StalkerOnlineQuesterEditor
                 {
                     treeRecycleNode.Nodes.Add(dialog.DialogID.ToString(), dialog.DialogID.ToString());
                     dialog.coordinates.Active = false;
+                    setNonActiveDialog(dialog.Holder, dialog.DialogID);
                 }
 
             this.treeDialogs.ExpandAll();
+        }
+
+        void setNonActiveDialog(string holder, int id)
+        {
+            dialogs.locales[settings.getListLocales()[0]][holder][id].coordinates.Active = false;
         }
 
         //! Заполняет граф диалога нужными узлами
@@ -479,6 +481,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (KeyValuePair<int, CDialog> dial in dialogs.dialogs[currentNPC])
             {
                 dial.Value.Nodes.Remove(node);
+                dialogs.locales[settings.getListLocales()[0]][currentNPC][dial.Value.DialogID].Nodes.Remove(node);
             }
             //foreach (CDialog dial in this.NPCDialogs[NPCBox.SelectedItem.ToString()])
             //  dial.Nodes.Remove(node);
@@ -547,12 +550,19 @@ namespace StalkerOnlineQuesterEditor
                     subNode.Brush = Brushes.Green;
             subNodes = new List<PNode>();
         }
-
+        //! Заменяет диалог с dialogID на dialog (используется в форме редактирования диалогов)
+        public void replaceDialog(CDialog dialog, int dialogID)
+        {
+            dialogs.dialogs[currentNPC][dialogID] = dialog;
+            dialogs.locales[settings.getListLocales()[0]][currentNPC][dialogID].InsertNonTextData(dialog);
+        }
+        //! Добавляет диалог в ветку (используется при добавлении диалога в форме EditDialogForm)
         public void addActiveDialog(int newID, CDialog dialog, int parentID)
         {
             this.dialogs.dialogs[currentNPC].Add(newID, dialog);
-            //this.NPCDialogs[currentNPC].Add(dialog);
+            this.dialogs.locales[settings.getListLocales()[0]][currentNPC].Add(newID,dialog);
             dialogs.dialogs[currentNPC][parentID].Nodes.Add(newID);
+            dialogs.locales[settings.getListLocales()[0]][currentNPC][parentID].Nodes.Add(newID);
             addNodeOnDialogGraphView(newID, parentID);
         }
         public void addPassiveDialog(int parentID, int dialogID)

@@ -226,7 +226,21 @@ namespace StalkerOnlineQuesterEditor
             copy.Title = this.Title;
             copy.version = this.version;
             return copy;
-        }     
+        }
+        // Копирование всех нетекстовых полей (сделано для синхронизации данных, не изменяя перевода)
+        public void InsertNonTextData(CDialog source)
+        {
+            //this.Holder = Holder;
+            //this.Title = Title;
+            //this.Text = Text;
+            this.Precondition = source.Precondition;
+            this.Actions = source.Actions;
+            this.Nodes = source.Nodes;
+            //this.DialogID = DialogID;
+            //this.version = source.version;
+            this.coordinates.Active = source.coordinates.Active;
+            this.coordinates.RootDialog = source.coordinates.RootDialog;
+        }
     }
     //! Класс квест - все параметры получения, выполнения и вознаграждения за квест
     public class CQuest : ICloneable
@@ -281,6 +295,19 @@ namespace StalkerOnlineQuesterEditor
             this.Additional = additional;
             this.Target = target;
             this.QuestPenalty = penalty;
+        }
+
+        public void InsertNonTextData(CQuest source)
+        {
+            //this.QuestID = questID;
+            //this.Version = Version;
+            //this.QuestInformation. = source.QuestInformation;
+            this.Precondition = source.Precondition;
+            this.QuestRules = source.QuestRules;
+            this.Reward = source.Reward;
+            this.Additional = source.Additional;
+            this.Target = source.Target;
+            this.QuestPenalty = source.QuestPenalty;        
         }
     }
     //! Класс текстовой информации о квесте - название, описание, надписи на победу и проигрыш
