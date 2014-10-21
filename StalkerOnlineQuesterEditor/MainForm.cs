@@ -637,6 +637,7 @@ namespace StalkerOnlineQuesterEditor
             questPanel.Dock = DockStyle.Top;
             questPanel.Size = new Size(splitQuestsContainer.Panel2.Width - 5, 100);
             questPanel.BorderStyle = BorderStyle.FixedSingle;
+            questPanel.Click += questPanel_Click;
 
             GroupBox questBox = new GroupBox();
             questBox.AutoSize = true;
@@ -662,17 +663,23 @@ namespace StalkerOnlineQuesterEditor
             infoBox.AutoSize = true;
             infoBox.Text = "Информация";
             infoBox.Dock = DockStyle.Top;
+            infoBox.Click += questPanel_Click;
+            infoBox.Tag = questID;
 
             Label titleLabel = new Label();
             titleLabel.Text = "Заголовок:" + quest.QuestInformation.Title;
             titleLabel.BackColor = (quest.Version != 0) ? (Color.FromKnownColor(KnownColor.Transparent)) : (Color.FromArgb(0x7FAA45E0));
             titleLabel.Dock = DockStyle.Top;
+            titleLabel.Click += questPanel_Click;
+            titleLabel.Tag = questID;
             infoBox.Controls.Add(titleLabel);
 
             Label descriptionLabel = new Label();
             descriptionLabel.Text = "Описание:" + quest.QuestInformation.Description;
             descriptionLabel.BackColor = (quest.Version != 0) ? (Color.FromKnownColor(KnownColor.Transparent)) : (Color.FromArgb(0x7FAA45E0));
             descriptionLabel.Dock = DockStyle.Top;
+            descriptionLabel.Click += questPanel_Click;
+            descriptionLabel.Tag = questID;
             infoBox.Controls.Add(descriptionLabel);
 
             questBox.Controls.Add(infoBox);
@@ -686,6 +693,13 @@ namespace StalkerOnlineQuesterEditor
             if (quest.Additional.ListOfSubQuest.Any())
                 foreach (int subquest in quest.Additional.ListOfSubQuest)
                     createQuestPanels(subquest);
+        }
+
+        void questPanel_Click(object sender, EventArgs e)
+        {
+            currentQuest = (int)((Control)sender).Tag;
+            treeQuestClicked(sender, e);
+            //MessageBox.Show("It works! " + currentQuest.ToString());            
         }
         //! Выделение квеста в дереве квестов
         private void treeQuestSelected(object sender, EventArgs e)
@@ -720,24 +734,30 @@ namespace StalkerOnlineQuesterEditor
                     return panel;
             return null;
         }
-
+        //! Двойной клик по квесту в дереве квестов. Открытие окна редактирования или перевода квеста
         private void treeQuestClicked(object sender, EventArgs e)
         {
             bCopyEvents.Enabled = true;
-            //this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
-            //System.Console.WriteLine("Clicked on quest: "+currentQuest);
-            if (getQuestOnQuestID(currentQuest).Additional.IsSubQuest == 0)
+            if (settings.getMode() == settings.MODE_EDITOR)
             {
-                //openQuestEditForm(false);
-                EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 2);
-                questEditor.Visible = true;
-                this.Enabled = false;
+                if (getQuestOnQuestID(currentQuest).Additional.IsSubQuest == 0)
+                {
+                    //openQuestEditForm(false);
+                    EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 2);
+                    questEditor.Visible = true;
+                    this.Enabled = false;
+                }
+                else
+                {
+                    EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 3);
+                    questEditor.Visible = true;
+                    this.Enabled = false;
+                }
             }
             else
             {
-                EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 3);
-                questEditor.Visible = true;
-                this.Enabled = false;
+                LocaleQuestForm questForm = new LocaleQuestForm(this, currentQuest);
+                questForm.Show();
             }
         }
 
@@ -746,10 +766,12 @@ namespace StalkerOnlineQuesterEditor
         {
             this.saveData();
         }
+        //! Сохранение данных
         private void bSaveQuests_Click(object sender, EventArgs e)
         {
             this.saveData();
         }
+        //! Сохранение данных
         private void bSaveLocale_Click(object sender, EventArgs e)
         {
             this.saveData();
@@ -783,15 +805,16 @@ namespace StalkerOnlineQuesterEditor
             treeDialogs.Nodes.Clear();
             DialogShower.Layer.RemoveAllChildren();
 
-            List<int> removedItems = new List<int>();
+            List<int> removedQuests = new List<int>();
             foreach (CQuest quest in quests.quest.Values)
                 if (quest.Additional.Holder.Equals(currentNPC))
-                {
-                    removedItems.Add(quest.QuestID);
-                }
+                    removedQuests.Add(quest.QuestID);
 
-            foreach (int item in removedItems)
+            foreach (int item in removedQuests)
+            {
                 quests.quest.Remove(item);
+                quests.locales[settings.getListLocales()[0]].Remove(item);
+            }
             dialogs.dialogs.Remove(currentNPC);
             dialogs.locales[settings.getListLocales()[0]].Remove(currentNPC);
             currentNPC = "";
@@ -927,6 +950,7 @@ namespace StalkerOnlineQuesterEditor
             this.removeQuest(currentQuest, false);
         }
 
+        //! Удаляет квест и  все его подквесты
         void removeQuest(int questID, bool recursiveCall)
         {
             List<int> temp = getQuestOnQuestID(questID).Additional.ListOfSubQuest;
@@ -1001,14 +1025,14 @@ namespace StalkerOnlineQuesterEditor
             QuestBox.Items.Remove(QuestBox.SelectedItem);
             removeQuest(removedQuest, false);
         }
-
+        //! Создание нового корневого квеста у персонажа
         private void bAddQuest_Click(object sender, EventArgs e)
         {
             EditQuestForm newQuest = new EditQuestForm(this, getQuestNewID(), 1); //, true, true);
             newQuest.Visible = true;
             this.Enabled = false;
         }
-        //! Срздает новый корневой квест у персонажа (не подквест, а именно новый)
+        //! Создает новый корневой квест у персонажа (не подквест, а именно новый)
         public void createNewQuest(CQuest newQuest)
         {
             quests.quest.Add(newQuest.QuestID, newQuest);
@@ -1046,6 +1070,7 @@ namespace StalkerOnlineQuesterEditor
             }
             else return new List<CQuest>();
         }
+        //! Возвращает ID всех субквестов любой глубины вложенности (т.е субквесты субквеста и т.д.)
         public List<int> getSubIDs(int questID)
         {
             List<int> ret = new List<int>();
