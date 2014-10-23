@@ -48,6 +48,7 @@ namespace StalkerOnlineQuesterEditor
         public CQuest quest;
         int iState;
 
+        //! Конструктор, заполянет форму данными
         public EditQuestForm(MainForm parent, int currentQuest, int iState)
         {
             InitializeComponent();
@@ -100,7 +101,7 @@ namespace StalkerOnlineQuesterEditor
             //targetComboBox.SelectedText = "";
 //          repeatComboBox.Items.Clear();
         }
-
+        //! Заполняет форму данными о квесте
         void fillForm()
         {
             //bItemQuestRules.ImageKey = "";
@@ -195,7 +196,7 @@ namespace StalkerOnlineQuesterEditor
                 winRButton.Checked = true;
             }
         }
-
+        //! Заполняет форму условиями квеста (повторное взятие)
         void fillPreconditiomForm()
         {
             repeatComboBox.Items.Add("Повторное взятие квеста после его закрытия.");
@@ -204,7 +205,7 @@ namespace StalkerOnlineQuesterEditor
             if (iState == ADD_SUB || iState == EDIT_SUB)
                 takenPeriodTextBox.Enabled = false;
         }
-
+        //! Заполняет данные об условиях повторного взятия квеста
         void fillPrecondition()
         {
             if (quest.Precondition.Repeat == 1)
@@ -214,7 +215,7 @@ namespace StalkerOnlineQuesterEditor
 
             takenPeriodTextBox.Text = quest.Precondition.TakenPeriod.ToString();
         }       
-
+        //! Настраивает форму на определенный тип квеста
         void fillTargetForm(int QuestType)
         {
             this.QuestType = QuestType;
@@ -378,7 +379,7 @@ namespace StalkerOnlineQuesterEditor
                 //IsGroupCheckBox.Enabled = false;
             }
         }
-
+        //! Заполняет данные о целях квеста (о боги какой говнокод)
         void fillTarget()
         {
             if ((quest.Target.QuestType == 0) || (quest.Target.QuestType == 16) || (quest.Target.QuestType == 7))
@@ -467,7 +468,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (string space in parent.spacesConst.getSpacesDescription())
                 instanceComboBox.Items.Add(space);
         }
-        //! Заполняет раздел Правила на форме - увроень игрока, сценарий... (???)
+        //! Заполняет раздел Правила на форме - уровень игрока, сценарий... (???)
         void fillQuestRules()
         {
             foreach (int item in quest.QuestRules.Scenarios)
@@ -519,7 +520,7 @@ namespace StalkerOnlineQuesterEditor
             creditsTextBox.Text = quest.Reward.Credits.ToString();
             textBoxKarmaPK.Text = quest.Reward.KarmaPK.ToString();
         }
-
+        //! Собирает данные с формы, и возвращает экземпляр CQuest с этими данными
         public CQuest getQuest()
         {
             //System.Console.WriteLine("EditQuestForm::getQuest");
@@ -739,7 +740,7 @@ namespace StalkerOnlineQuesterEditor
             }
             return retQuest;
         }
-
+        //! Действия при смене типа кевеста
         private void eventComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedQuestType = parent.questConst.getQuestTypeOnDescription(eventComboBox.SelectedItem.ToString());
@@ -749,13 +750,13 @@ namespace StalkerOnlineQuesterEditor
                 fillTargetForm(selectedQuestType);
             //}
         }
-
+        //! Закрытие окна без сохранения
         private void cancelButton_Click(object sender, EventArgs e)
         {
             parent.Enabled = true;
             this.Close();
         }
-
+        //! Нажатие OK - сохранение квеста или создание нового
         private void okButton_Click(object sender, EventArgs e)
         {
             CQuest result = getQuest();
@@ -971,7 +972,7 @@ namespace StalkerOnlineQuesterEditor
             SelectQuestItem selectQItem = new SelectQuestItem(this, this.QuestID);
             this.Enabled = false;
         }
-
+        //! Открывает окно редактирования фракций
         private void bRewardFractions_Click(object sender, EventArgs e)
         {
             RewardFractions formFractions = new RewardFractions(this);
@@ -984,7 +985,7 @@ namespace StalkerOnlineQuesterEditor
             showJournalCheckBox.Checked = !tutorialCheckBox.Checked;
             showJournalCheckBox.Enabled = !tutorialCheckBox.Checked;
         }
-
+        //! Открывает окно редактирования эффектов (бафов)
         private void bRewardEffects_Click(object sender, EventArgs e)
         {
             EditDialogEffect edit_effect = new EditDialogEffect(this.parent, this, this.QuestID);
@@ -996,12 +997,7 @@ namespace StalkerOnlineQuesterEditor
         {
 
         }
-        private string removeHtmlTags(string str)
-        {
-            str = str.Substring(6);
-            str = str.Remove(str.Length-7,7);
-            return str;
-        }
+
         //! Нажатие Предметы в правилах квеста - открывает форму с редактором предметов
         private void bItemQuestRules_Click(object sender, EventArgs e)
         {

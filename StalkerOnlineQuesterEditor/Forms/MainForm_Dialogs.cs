@@ -560,10 +560,14 @@ namespace StalkerOnlineQuesterEditor
         //! Добавляет диалог в ветку (используется при добавлении диалога в форме EditDialogForm)
         public void addActiveDialog(int newID, CDialog dialog, int parentID)
         {
-            this.dialogs.dialogs[currentNPC].Add(newID, dialog);
-            this.dialogs.locales[settings.getListLocales()[0]][currentNPC].Add(newID,dialog);
+            // добавляем в русский словарь персонажей
+            dialogs.dialogs[currentNPC].Add(newID, dialog);
             dialogs.dialogs[currentNPC][parentID].Nodes.Add(newID);
+            // добавляем в английскую локаль
+            CDialog newDialog = (CDialog) dialog.Clone();
+            dialogs.locales[settings.getListLocales()[0]][currentNPC].Add(newID, newDialog);
             dialogs.locales[settings.getListLocales()[0]][currentNPC][parentID].Nodes.Add(newID);
+
             addNodeOnDialogGraphView(newID, parentID);
         }
         public void addPassiveDialog(int parentID, int dialogID)

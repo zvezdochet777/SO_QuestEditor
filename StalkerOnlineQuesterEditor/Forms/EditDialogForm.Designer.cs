@@ -93,7 +93,7 @@
             this.tPlayerText.Location = new System.Drawing.Point(103, 46);
             this.tPlayerText.Name = "tPlayerText";
             this.tPlayerText.Size = new System.Drawing.Size(479, 20);
-            this.tPlayerText.TabIndex = 1;
+            this.tPlayerText.TabIndex = 0;
             this.tPlayerText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tPlayerText_KeyPress);
             // 
             // lAnswerText
@@ -334,7 +334,7 @@
             this.tNPCReactiontextBox.Name = "tNPCReactiontextBox";
             this.tNPCReactiontextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tNPCReactiontextBox.Size = new System.Drawing.Size(479, 88);
-            this.tNPCReactiontextBox.TabIndex = 0;
+            this.tNPCReactiontextBox.TabIndex = 1;
             // 
             // tSubDialogsTextBox
             // 

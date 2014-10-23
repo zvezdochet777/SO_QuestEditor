@@ -220,7 +220,7 @@ namespace StalkerOnlineQuesterEditor
             copy.coordinates = this.coordinates;
             copy.DialogID = this.DialogID;
             copy.Holder = this.Holder;
-            copy.Nodes = this.Nodes;
+            copy.Nodes = new List<int>(this.Nodes);
             copy.Precondition = this.Precondition;
             copy.Text = this.Text;
             copy.Title = this.Title;
