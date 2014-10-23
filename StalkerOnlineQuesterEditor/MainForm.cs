@@ -872,14 +872,28 @@ namespace StalkerOnlineQuesterEditor
                 if (!quests.quest.Keys.Contains(questi) && !quests.buffer.Keys.Contains(questi) && !iLists.Contains(questi))
                     return questi;
         }
+        //! Создает новый корневой квест у персонажа (не подквест, а именно новый)
+        public void createNewQuest(CQuest newQuest)
+        {
+            quests.quest.Add(newQuest.QuestID, newQuest);
+            CQuest engQuest = new CQuest();
+            engQuest = (CQuest)newQuest.Clone();
+            quests.locales[settings.getListLocales()[0]].Add(engQuest.QuestID, engQuest);
+
+            QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
+            QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
+        }
+
         //! Добавление квеста в дерево квестов, вызывается из окна редактирования EditQuestForm
         public void addQuest(CQuest quest, int parent)
         {
             quests.quest[parent].Additional.ListOfSubQuest.Add(quest.QuestID);
             quests.quest.Add(quest.QuestID, quest);
 
-            quests.locales[settings.getListLocales()[0]][parent].Additional.ListOfSubQuest.Add(quest.QuestID);
-            quests.locales[settings.getListLocales()[0]].Add(quest.QuestID, quest);
+            CQuest engQuest = new CQuest();
+            engQuest = (CQuest)quest.Clone();
+            quests.locales[settings.getListLocales()[0]][parent].Additional.ListOfSubQuest.Add(engQuest.QuestID);
+            quests.locales[settings.getListLocales()[0]].Add(engQuest.QuestID, engQuest);
 
             checkQuestButton(quest.Target.QuestType, quest.QuestID);            
             addNodeOnTreeQuest(quest.QuestID);
@@ -1041,15 +1055,6 @@ namespace StalkerOnlineQuesterEditor
             EditQuestForm newQuest = new EditQuestForm(this, getQuestNewID(), 1); //, true, true);
             newQuest.Visible = true;
             this.Enabled = false;
-        }
-        //! Создает новый корневой квест у персонажа (не подквест, а именно новый)
-        public void createNewQuest(CQuest newQuest)
-        {
-            quests.quest.Add(newQuest.QuestID, newQuest);
-            quests.locales[settings.getListLocales()[0]].Add(newQuest.QuestID, newQuest);
-
-            QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
-            QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
         }
  
         public void setQuestISClan(int questID, bool ClanState)

@@ -372,7 +372,7 @@ namespace StalkerOnlineQuesterEditor
             copy.ObjectType = this.ObjectType;
             copy.NumOfObjects = this.NumOfObjects;
             copy.ObjectAttr = this.ObjectAttr;
-            copy.AObjectAttrs = this.AObjectAttrs;
+            copy.AObjectAttrs = new List<int>(this.AObjectAttrs);
             copy.AreaName = (string)this.AreaName.Clone();
             copy.Time = this.Time;
             copy.ObjectName = (string)this.ObjectName.Clone();
@@ -419,9 +419,9 @@ namespace StalkerOnlineQuesterEditor
         public object Clone()
         {
             CQuestPrecondition copy = new CQuestPrecondition();
-            copy.ListOfCompletedQuests = this.ListOfCompletedQuests;
-            copy.ListOfOpenedQuests = this.ListOfOpenedQuests;
-            copy.ListOfOnTestQuests = copy.ListOfOnTestQuests;
+            copy.ListOfCompletedQuests = new ListOfQuests(this.ListOfCompletedQuests);
+            copy.ListOfOpenedQuests = new ListOfQuests(this.ListOfOpenedQuests);
+            copy.ListOfOnTestQuests = new ListOfQuests(copy.ListOfOnTestQuests);
             copy.Repeat = this.Repeat;
             copy.TakenPeriod = this.TakenPeriod;
 
@@ -447,10 +447,10 @@ namespace StalkerOnlineQuesterEditor
         {
             CQuestRules copy = new CQuestRules();
 
-            copy.TypeOfItems = this.TypeOfItems;
-            copy.NumOfItems = this.NumOfItems;
-            copy.AttrOfItems = this.AttrOfItems;
-            copy.Scenarios = this.Scenarios;
+            copy.TypeOfItems = new List<int>(this.TypeOfItems);
+            copy.NumOfItems = new List<int>(this.NumOfItems);
+            copy.AttrOfItems = new List<int>(this.AttrOfItems);
+            copy.Scenarios = new List<int>(this.Scenarios);
             copy.TeleportTo = (string)this.TeleportTo.Clone();
             copy.FailedIf = this.FailedIf;
             copy.MaxGroup = this.MaxGroup;
@@ -525,20 +525,20 @@ namespace StalkerOnlineQuesterEditor
         public object Clone()
         {
             CQuestReward copy = new CQuestReward();
-            copy.Experience = this.Experience;
-            copy.TypeOfItems = this.TypeOfItems;
-            copy.NumOfItems = this.NumOfItems;
-            copy.AttrOfItems = this.AttrOfItems;
+            copy.Experience = new List<int>(this.Experience);
+            copy.TypeOfItems = new List<int>(this.TypeOfItems);
+            copy.NumOfItems = new List<int>(this.NumOfItems);
+            copy.AttrOfItems = new List<int>(this.AttrOfItems);
             copy.Probability = this.Probability;
-            copy.EventCodes = this.EventCodes;
+            copy.EventCodes = new List<int>(this.EventCodes);
 
             copy.TeleportTo = (string)this.TeleportTo.Clone();
             copy.Credits = this.Credits;
             //copy.Reputation = this.Reputation;
             copy.KarmaPK = this.KarmaPK;
-            copy.Effects = this.Effects;
+            copy.Effects = new List<CEffect>(this.Effects);
 
-            copy.Fractions = this.Fractions;
+            copy.Fractions = new List<int>(this.Fractions);
             copy.Difficulty = this.Difficulty;
             copy.Unlimited = this.Unlimited;
             return copy;
@@ -592,8 +592,8 @@ namespace StalkerOnlineQuesterEditor
         {
             CQuestPenalty copy = new CQuestPenalty();
             copy.Experience = this.Experience;
-            copy.TypeOfItems = this.TypeOfItems;
-            copy.NumOfItems = this.NumOfItems;
+            copy.TypeOfItems = new List<int>(this.TypeOfItems);
+            copy.NumOfItems = new List<int>(this.NumOfItems);
             copy.TeleportTo = (string)this.TeleportTo.Clone();
             copy.Credits = this.Credits;
             //copy.Reputation = this.Reputation;
@@ -636,7 +636,7 @@ namespace StalkerOnlineQuesterEditor
         {
             CQuestAdditional copy = new CQuestAdditional();
             copy.IsSubQuest = this.IsSubQuest;
-            copy.ListOfSubQuest = this.ListOfSubQuest;
+            copy.ListOfSubQuest = new List<int>(this.ListOfSubQuest);
             copy.ShowProgress = this.ShowProgress;
             copy.Holder = this.Holder;
             return copy;
