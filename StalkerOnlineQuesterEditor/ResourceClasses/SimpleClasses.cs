@@ -235,7 +235,7 @@ namespace StalkerOnlineQuesterEditor
             //this.Text = Text;
             this.Precondition = source.Precondition;
             this.Actions = source.Actions;
-            this.Nodes = source.Nodes;
+            this.Nodes = new List<int>(source.Nodes);
             //this.DialogID = DialogID;
             //this.version = source.version;
             this.coordinates.Active = source.coordinates.Active;
@@ -302,12 +302,12 @@ namespace StalkerOnlineQuesterEditor
             //this.QuestID = questID;
             //this.Version = Version;
             //this.QuestInformation. = source.QuestInformation;
-            this.Precondition = source.Precondition;
-            this.QuestRules = source.QuestRules;
-            this.Reward = source.Reward;
-            this.Additional = source.Additional;
-            this.Target = source.Target;
-            this.QuestPenalty = source.QuestPenalty;        
+            this.Precondition = (CQuestPrecondition) source.Precondition.Clone();
+            this.QuestRules = (CQuestRules) source.QuestRules.Clone();
+            this.Reward = (CQuestReward) source.Reward.Clone();
+            this.Additional = (CQuestAdditional) source.Additional.Clone();
+            this.Target = (CQuestTarget) source.Target.Clone();
+            this.QuestPenalty = (CQuestPenalty) source.QuestPenalty.Clone();        
         }
     }
     //! Класс текстовой информации о квесте - название, описание, надписи на победу и проигрыш

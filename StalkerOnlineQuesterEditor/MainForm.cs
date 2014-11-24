@@ -88,7 +88,7 @@ namespace StalkerOnlineQuesterEditor
             balances = new CBalance(this);
 
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
-            fillNPCBox();
+            //fillNPCBox();
             fillFractionBalance();
             fillLocationsBox();
             DialogShower.AddInputEventListener(Listener);
@@ -228,10 +228,9 @@ namespace StalkerOnlineQuesterEditor
             }
             npcNames.Sort();
             NPCBox.DataSource = null;       // костыль для обновления данных в кмобобоксе NPC при добавлении/удалении
-            NPCBox.DataSource = npcNames;
             NPCBox.DisplayMember = "DisplayString";
             NPCBox.ValueMember = "Value";
-
+            NPCBox.DataSource = npcNames;
             NPCBox.SelectedIndex = 1;
 
             NPCBox.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -1012,7 +1011,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
             int id = parent.QuestID;
-            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = parent.Additional.ListOfSubQuest;
+            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int> (parent.Additional.ListOfSubQuest);
         }
         //! Перемещение квеста вниз по дереву квестов
         private void bQuestDown_Click(object sender, EventArgs e)
@@ -1035,7 +1034,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
             int id = parent.QuestID;
-            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = parent.Additional.ListOfSubQuest;
+            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int> (parent.Additional.ListOfSubQuest);
         }
 
         void findAndSelectNodeOnTreeQuest(int questID)
