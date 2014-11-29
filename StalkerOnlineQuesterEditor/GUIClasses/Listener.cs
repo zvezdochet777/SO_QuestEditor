@@ -90,7 +90,9 @@ namespace StalkerOnlineQuesterEditor
         public override void OnDoubleClick(object sender, PInputEventArgs e)
         {
             e.Handled = true;
-            //System.Console.WriteLine("DoubleClick");
+            int node = form.getDialogIDOnNode(e.PickedNode);
+            //System.Console.WriteLine("DoubleClick on node " + node.ToString());
+            form.bEditDialog_Click(sender, new EventArgs() );
         }
 
         protected override void OnDrag(object sender, PInputEventArgs e)

@@ -357,7 +357,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
         //! Нажатие на кнопку "Редактирование диалогов" - открывает редактор или переводчик диалогов
-        private void bEditDialog_Click(object sender, EventArgs e)
+        public void bEditDialog_Click(object sender, EventArgs e)
         {
             if (settings.getMode() == settings.MODE_EDITOR)
             {
