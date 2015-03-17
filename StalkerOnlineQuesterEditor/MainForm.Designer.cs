@@ -44,7 +44,6 @@ namespace StalkerOnlineQuesterEditor
             this.bZoomOut = new System.Windows.Forms.Button();
             this.DialogActions = new System.Windows.Forms.Panel();
             this.bSync = new System.Windows.Forms.Button();
-            this.bAddNoKarmaDialog = new System.Windows.Forms.Button();
             this.bRunThroughNPC = new System.Windows.Forms.Button();
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.labelYNode = new System.Windows.Forms.Label();
@@ -366,7 +365,6 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions.AutoSize = true;
             this.DialogActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.DialogActions.Controls.Add(this.bSync);
-            this.DialogActions.Controls.Add(this.bAddNoKarmaDialog);
             this.DialogActions.Controls.Add(this.bRunThroughNPC);
             this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
             this.DialogActions.Controls.Add(this.labelYNode);
@@ -390,16 +388,6 @@ namespace StalkerOnlineQuesterEditor
             this.bSync.Text = "Синхронизировать";
             this.bSync.UseVisualStyleBackColor = true;
             this.bSync.Click += new System.EventHandler(this.bSync_Click);
-            // 
-            // bAddNoKarmaDialog
-            // 
-            this.bAddNoKarmaDialog.Location = new System.Drawing.Point(36, 247);
-            this.bAddNoKarmaDialog.Name = "bAddNoKarmaDialog";
-            this.bAddNoKarmaDialog.Size = new System.Drawing.Size(116, 23);
-            this.bAddNoKarmaDialog.TabIndex = 8;
-            this.bAddNoKarmaDialog.Text = "Добавить диалог";
-            this.bAddNoKarmaDialog.UseVisualStyleBackColor = true;
-            this.bAddNoKarmaDialog.Click += new System.EventHandler(this.bAddNoKarmaDialog_Click);
             // 
             // bRunThroughNPC
             // 
@@ -1719,7 +1707,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLocation;
         private System.Windows.Forms.GroupBox gbQuestCheck;
         private System.Windows.Forms.Button bFindQuest;
-        private System.Windows.Forms.Button bAddNoKarmaDialog;
         private System.Windows.Forms.Button bSync;
         private System.Windows.Forms.Panel panelQuestTools;
         private System.Windows.Forms.Button bPasteEvents;

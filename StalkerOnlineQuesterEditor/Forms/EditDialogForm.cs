@@ -402,8 +402,11 @@ namespace StalkerOnlineQuesterEditor
                 coord.Y = curDialog.coordinates.Y;
                 coord.RootDialog = curDialog.coordinates.RootDialog;
                 coord.Active = curDialog.coordinates.Active;
+                int version = curDialog.version;
+                if (tPlayerText.Text != curDialog.Title || tNPCReactiontextBox.Text != curDialog.Text)
+                    version++;
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text,
-                    precondition, actions, nodes, dialogID, (curDialog.version + 1), coord), dialogID);
+                    precondition, actions, nodes, dialogID, version , coord), dialogID);
             }
             parent.Enabled = true;
             parent.DialogSelected(true);

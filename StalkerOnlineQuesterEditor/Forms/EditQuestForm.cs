@@ -736,7 +736,12 @@ namespace StalkerOnlineQuesterEditor
             }
             else
             {
-                retQuest = new CQuest(quest.QuestID, quest.Version + 1, information, precondition, rules, reward, additional, target, penalty);
+                int version = quest.Version;
+                if (quest.QuestInformation.Title != information.Title || quest.QuestInformation.Description != information.Description 
+                        || quest.QuestInformation.onWin != information.onWin || quest.QuestInformation.onFailed != information.onFailed)
+                    version++;
+                 
+                retQuest = new CQuest(quest.QuestID, version, information, precondition, rules, reward, additional, target, penalty);
             }
             return retQuest;
         }

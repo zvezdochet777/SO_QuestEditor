@@ -2002,129 +2002,7 @@ namespace StalkerOnlineQuesterEditor
                     quests.locales[loc].Add(toadd.QuestID, toadd);
                 }
             }
-             
 
-            /*
-             * // добавление всем персонажам фразы про невозможность общатсья с уголовниками
-             * // переделать на инглиш
-            List<int> karma = new List<int>();
-            karma.Add(2);
-            karma.Add(500);
-            karma.Add(0);
-
-            List<int> badKarma = new List<int>();
-            badKarma.Add(1);
-            badKarma.Add(0);
-            badKarma.Add(500);
-
-
-            foreach (string npc in dialogs.dialogs.Keys)
-            {
-                if (npc == "Suhar" || npc == "Bugor" || npc == "stoneman_1" || npc == "stoneman_2"
-                    || npc == "Kamni_01" || npc == "Kamni_02" || npc == "Meniala_Standart"
-                    || npc == "Bank_Tunnel" || npc == "Mokruh" || npc == "Repair_bandit"
-                    || npc == "Ammo_trader_bandit" || npc == "Tunnel_provodnik_NZ2" || npc == "prapNicheporenko"
-                    || npc == "donate_base_doorman_no_clan" || npc == "donate_base_doorman"
-                    || npc == "CaptureBase_Sklad" || npc == "clan_Donat_Bankir" || npc == "clan_pochta_trader")                                        
-                    continue;
-                currentNPC = npc;
-                NPCBox.SelectedValue = npc;
-                CDialog root = getRootDialog();
-                List<int> subs = root.Nodes;
-                foreach (int id in subs)
-                {
-                    //CDialog dialog = dialogs.dialogs[npc][id];
-                    CDialog dialog = getDialogOnDialogID(npc, id);
-                    dialog.Precondition.KarmaPK = karma;
-                }
-
-                // добавляем фразу о невозможности поболтать
-                int NewId = getDialogsNewID();
-                int parentId = root.DialogID;
-                CDialog dial = new CDialog();
-                dial.DialogID = NewId;
-                dial.version = 1;
-                dial.Text = "Извини, с уголовниками не общаюсь";
-                dial.Title = "Есть минутка?";
-                dial.Holder = currentNPC;
-                dial.coordinates.RootDialog = false;
-                dial.coordinates.Active = true;
-                dial.Precondition.KarmaPK = badKarma;
-                addActiveDialog(NewId, dial, parentId);
-
-                int id2 = getDialogsNewID();
-                CDialog dial2 = new CDialog();
-                dial2.DialogID = id2;
-                dial2.version = 1;
-                dial2.Text = "";
-                dial2.Title = "Ладно";
-                dial2.Holder = currentNPC;
-                dial2.Actions.Exit = true;
-                dial2.coordinates.RootDialog = false;
-                dial2.coordinates.Active = true;
-                addActiveDialog(id2, dial2, NewId);
-            }
-            */
-
-        }
-
-        private void bAddNoKarmaDialog_Click(object sender, EventArgs e)
-        {
-            /*
-             * // добавление диалога для НЕ общения NPC c PK-шниками 
-            int id = getDialogsNewID();
-            int parentId = getRootDialog().DialogID;
-            CDialog dial = new CDialog();
-            dial.DialogID = id;
-            dial.version = 1;
-            dial.Text = "Извини, с уголовниками не общаюсь";
-            dial.Title = "Есть минутка?";
-            dial.Holder = currentNPC;
-            dial.coordinates.RootDialog = false;
-            dial.coordinates.Active = true;
-            addActiveDialog(id, dial, parentId);
-
-            int id2 = getDialogsNewID();
-            CDialog dial2 = new CDialog();
-            dial2.DialogID = id2;
-            dial2.version = 1;
-            dial2.Text = "";
-            dial2.Title = "Ладно";
-            dial2.Holder = currentNPC;
-            dial2.Actions.Exit = true;
-            dial2.coordinates.RootDialog = false;
-            dial2.coordinates.Active = true;
-            addActiveDialog(id2, dial2, id);
-            */
-            
-            // Перевод указанного выше диалога для всех NPC
-            string loc = settings.getCurrentLocale();
-            int count = 0;
-            foreach (string npc in dialogs.locales[loc].Keys)
-                foreach (CDialog dialog in dialogs.locales[loc][npc].Values)
-                { 
-                //<Title>Есть минутка?</Title>
-                //    <Text>Извини, с уголовниками не общаюсь</Text>
-                //        Nodes>6482</Nodes>
-                //            <Title>Ладно</Title>
-                    //Got a  minute? - I don't talkt to criminals. - Whatever.
-                    if (dialog.coordinates.Active && dialog.Title == "Есть минутка?" && dialog.Text == "Извини, с уголовниками не общаюсь")
-                    {
-                        int node = dialog.Nodes[0];
-                        CDialog son = dialogs.locales[loc][npc][node];
-                        if (son.Title == "Ладно")
-                        {
-                            dialog.Title = "Got a minute?";
-                            dialog.Text = "I don't talk to criminals.";
-                            dialog.version = dialogs.dialogs[npc][dialog.DialogID].version;
-                            son.Title = "Whatever";
-                            son.version = dialogs.dialogs[npc][son.DialogID].version;
-                            count++;
-                        }
-                    }
-                }
-            labelXNode.Text = "Изменено пар диалогов: " + count.ToString();
-             
         }
 
         private void bSync_Click(object sender, EventArgs e)
@@ -2199,6 +2077,7 @@ namespace StalkerOnlineQuesterEditor
             
             // синхронизация квестов            
             int empty = 0;
+            int title = 0, desc = 0;
             foreach (CQuest quest in quests.quest.Values)
             {                
                 bool exist = true;
@@ -2230,6 +2109,31 @@ namespace StalkerOnlineQuesterEditor
                     local.QuestRules = quest.QuestRules;
                     local.Reward = quest.Reward;
                     local.Target = quest.Target;
+                    // копирование русских строчек вместо пустых
+                    if (quest.QuestInformation.Title.Length > 0 && local.QuestInformation.Title.Length == 0)
+                    {
+                        local.QuestInformation.Title = quest.QuestInformation.Title;
+                        local.Version = quest.Version - 1;
+                        title++;
+                    }
+                    if (quest.QuestInformation.Description.Length > 0 && local.QuestInformation.Description.Length == 0)
+                    {
+                        local.QuestInformation.Description = quest.QuestInformation.Description;
+                        local.Version = quest.Version - 1;
+                        desc++;
+                    }
+                    if (quest.QuestInformation.onWin.Length > 0 && local.QuestInformation.onWin.Length == 0)
+                    {
+                        local.QuestInformation.onWin = quest.QuestInformation.onWin;
+                        local.Version = quest.Version - 1;
+                        title++;
+                    }
+                    if (quest.QuestInformation.onFailed.Length > 0 && local.QuestInformation.onFailed.Length == 0)
+                    {
+                        local.QuestInformation.onFailed = quest.QuestInformation.onFailed;
+                        local.Version = quest.Version - 1;
+                        desc++;
+                    }
                 }
             }
             
@@ -2246,7 +2150,7 @@ namespace StalkerOnlineQuesterEditor
             }
             foreach (int shit in trash)
                 quests.locales[loc].Remove(shit);
-            labelYNode.Text = "Q added = " + empty.ToString() +" del = " + trash.Count.ToString();
+            labelYNode.Text = "Q added = " + empty.ToString() + " del = " + trash.Count.ToString() + " title = " + title.ToString() + " desc = " + desc.ToString();
              
 
             /*
