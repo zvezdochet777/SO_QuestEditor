@@ -305,15 +305,33 @@ namespace StalkerOnlineQuesterEditor
             List<CQuest> quests = getQuestAndTitleOnNPCName(NPCName);            
             return (quests.Count);
         }
+        //! Возвращает число квестов верхнего уровня (без субквестов)
+        public int getCountTopLevelQuests()
+        { 
+            int total = 0;
+            foreach (int questID in quest.Keys)
+                if (quest[questID].Additional.IsSubQuest == 0)
+                    total++;
+            return total;
+        }
 
         //! Возвращает список ID квестов (для комбобокса)
         public string[] getQuestsIDasString()
-        { 
-            int count = quest.Count;
+        {
+            int count = quest.Count + getCountTopLevelQuests();
             int i = 0;
             string[] array = new string[count];
             foreach (int questID in quest.Keys)
+            {
                 array[i++] = questID.ToString();
+                if (quest[questID].Additional.IsSubQuest == 0)
+                {
+                    if (quest[questID].QuestInformation.Title != "")
+                        array[i++] = quest[questID].QuestInformation.Title;
+                    else
+                        array[i++] = "fuck";                    
+                }
+            }
             return array;
         }
 

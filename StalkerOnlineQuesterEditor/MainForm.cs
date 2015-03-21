@@ -113,8 +113,13 @@ namespace StalkerOnlineQuesterEditor
         private void NPCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             clearQuestTab();
-            currentNPC = NPCBox.SelectedValue.ToString();
-
+            try
+            {
+                currentNPC = NPCBox.SelectedValue.ToString();
+            }
+            catch {
+                return;
+            }
             if (CentralDock.SelectedIndex == 0)
             {
                 fillQuestChangeBox(true);
@@ -134,7 +139,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        //! Поиск в комбобоксe NPC по имени общему, или локализованному руссокму, английскому
+        //! Поиск в комбобоксe NPC по имени общему, или локализованному русскому, английскому
         private void NPCBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -1653,6 +1658,7 @@ namespace StalkerOnlineQuesterEditor
             FindType findType = (FindType)(actual + (outdated << 1) );
             this.translate_checker = 1;
             diffGridView.Rows.Clear();
+            string loc = settings.getCurrentLocale();
             var diff = dialogs.getDialogDifference(settings.getCurrentLocale(), findType);
             var type = "Диалог";
             int count = 0;
@@ -1662,7 +1668,9 @@ namespace StalkerOnlineQuesterEditor
                 foreach (var id in diff[name].Keys)
                 {
                     string location = (dialogs.NpcData.ContainsKey(name)) ? (dialogs.NpcData[name].location) : ("НЕТ ИМЕНИ");
-                    object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location };
+                    string rustext1 = dialogs.dialogs[name][id].Title;
+                    string engtext1 = dialogs.locales[loc][name][id].Title;
+                    object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location, rustext1, engtext1 };
                     diffGridView.Rows.Add(row);
                     count++;
                 }
@@ -1696,6 +1704,7 @@ namespace StalkerOnlineQuesterEditor
             FindType findType = (FindType)(actual + (outdated << 1));
             this.translate_checker = 2;
             diffGridView.Rows.Clear();
+            string loc = settings.getCurrentLocale();
             var diff = quests.getQuestDifference(settings.getCurrentLocale(), findType);
             var type = "Квест";
             int count = 0;
@@ -1705,7 +1714,9 @@ namespace StalkerOnlineQuesterEditor
                 foreach (var id in diff[name].Keys)
                 {
                     string location = (dialogs.NpcData.ContainsKey(name)) ? (dialogs.NpcData[name].location) : ("НЕТ ИМЕНИ");
-                    object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location };
+                    string rustext1 = quests.quest[id].QuestInformation.Title;
+                    string engtext1 = quests.locales[loc][id].QuestInformation.Title;
+                    object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location, rustext1, engtext1 };
                     diffGridView.Rows.Add(row);
                     count++;
                 }
@@ -1908,6 +1919,7 @@ namespace StalkerOnlineQuesterEditor
             }
             labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
         }
+//***************************END OF DATA CHECK - missed dialogs, quests, NPC and so on**************************
 
         //! Поиск по номеру квеста в комбобоксе квеста и вывод информации
         private void QuestBox_KeyDown(object sender, KeyEventArgs e)
@@ -1916,21 +1928,38 @@ namespace StalkerOnlineQuesterEditor
             {
                 string text = QuestBox.Text;
                 int id;
-                if (int.TryParse(text, out id))
+                if (int.TryParse(text, out id))     // вводят цифровой ID квеста
                 {
                     CQuest quest = quests.getQuest(id);
                     if (quest != null)
                     {
                         CQuest temp = quest;
                         while (temp.Additional.IsSubQuest != 0)
-                            temp = quests.getQuest( temp.Additional.IsSubQuest);
+                            temp = quests.getQuest(temp.Additional.IsSubQuest);
 
                         string qtext = temp.QuestID.ToString() + ": ";
-                        qtext += temp.QuestInformation.Title;                        
+                        qtext += temp.QuestInformation.Title;
                         NPCBox.SelectedValue = quest.Additional.Holder;
                         QuestBox.SelectedItem = qtext;
                     }
-                }          
+                }
+                else    // вводят название квеста
+                { 
+                    int questNum = 0;
+                    foreach (int questID in quests.quest.Keys)
+                        if (quests.quest[questID].QuestInformation.Title == text)
+                        {
+                            questNum = questID;
+                            break;
+                        }
+                    if (questNum != 0)
+                    {
+                        string qtext = questNum.ToString() + ": ";
+                        qtext += quests.quest[questNum].QuestInformation.Title;
+                        NPCBox.SelectedValue = quests.quest[questNum].Additional.Holder;
+                        QuestBox.SelectedItem = qtext;
+                    }
+                }
             }
         }
 

@@ -35,6 +35,7 @@ namespace StalkerOnlineQuesterEditor
         int countOfTextNoSpaces;
         int countOfQuestTexts;
         int countOfQuestSpaceless;
+        int topLevelQuests;
         Dictionary<string, Dictionary<int, CDialog>> loc = new Dictionary<string, Dictionary<int, CDialog>>();
         int locDialogs;
         int locTitle;
@@ -145,6 +146,7 @@ namespace StalkerOnlineQuesterEditor
             locQuestText = 0;
             locQuestSpaceless = 0;
             locQuests = quests.locales[parent.settings.getCurrentLocale()];
+            topLevelQuests = quests.getCountTopLevelQuests();
             foreach (CQuest quest in quests.quest.Values)
             {
                 countOfQuestTexts += quest.QuestInformation.Title.Length;
@@ -168,7 +170,7 @@ namespace StalkerOnlineQuesterEditor
         {
             string str = "";
             str += "Общее количество NPC:        " + NPCCount.ToString() + "\n";
-            str += "Общее количество квестов:    " + countOfQuests.ToString() + "\n";
+            str += "Общее количество квестов:    " + topLevelQuests.ToString() + " (c субквестами: " + countOfQuests.ToString() + ")\n";
             str += "Общее количество диалогов:   " + countOfDialogs.ToString() + "\n";
             str += "Общее количество знаков в словах NPC:   " + countOfTextLetters.ToString() + "\n";
                                             //", без пробелов: " + countOfTextNoSpaces.ToString() + "\n";

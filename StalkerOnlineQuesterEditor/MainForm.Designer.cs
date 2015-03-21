@@ -123,12 +123,6 @@ namespace StalkerOnlineQuesterEditor
             this.bSaveManage = new System.Windows.Forms.Button();
             this.tabTranslate = new System.Windows.Forms.TabPage();
             this.diffGridView = new System.Windows.Forms.DataGridView();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.npc_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.identif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cur_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.new_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_diff_locale = new System.Windows.Forms.Panel();
             this.labelLocalizeOuput = new System.Windows.Forms.Label();
             this.bSaveLocale = new System.Windows.Forms.Button();
@@ -163,6 +157,14 @@ namespace StalkerOnlineQuesterEditor
             this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.npc_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.identif = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cur_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.new_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RusText1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EngText1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -1161,7 +1163,9 @@ namespace StalkerOnlineQuesterEditor
             this.identif,
             this.cur_ver,
             this.new_ver,
-            this.ColumnLocation});
+            this.ColumnLocation,
+            this.RusText1,
+            this.EngText1});
             this.diffGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diffGridView.Location = new System.Drawing.Point(0, 57);
             this.diffGridView.Name = "diffGridView";
@@ -1169,42 +1173,6 @@ namespace StalkerOnlineQuesterEditor
             this.diffGridView.Size = new System.Drawing.Size(906, 483);
             this.diffGridView.TabIndex = 1;
             this.diffGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.diffGridView_CellDoubleClick);
-            // 
-            // type
-            // 
-            this.type.HeaderText = "Тип";
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
-            // 
-            // npc_name
-            // 
-            this.npc_name.HeaderText = "Имя NPC";
-            this.npc_name.Name = "npc_name";
-            this.npc_name.ReadOnly = true;
-            // 
-            // identif
-            // 
-            this.identif.HeaderText = "ID";
-            this.identif.Name = "identif";
-            this.identif.ReadOnly = true;
-            // 
-            // cur_ver
-            // 
-            this.cur_ver.HeaderText = "Текущая версия";
-            this.cur_ver.Name = "cur_ver";
-            this.cur_ver.ReadOnly = true;
-            // 
-            // new_ver
-            // 
-            this.new_ver.HeaderText = "Новая версия";
-            this.new_ver.Name = "new_ver";
-            this.new_ver.ReadOnly = true;
-            // 
-            // ColumnLocation
-            // 
-            this.ColumnLocation.HeaderText = "Локация";
-            this.ColumnLocation.Name = "ColumnLocation";
-            this.ColumnLocation.ReadOnly = true;
             // 
             // panel_diff_locale
             // 
@@ -1525,6 +1493,54 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
             // 
+            // type
+            // 
+            this.type.HeaderText = "Тип";
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            // 
+            // npc_name
+            // 
+            this.npc_name.HeaderText = "Имя NPC";
+            this.npc_name.Name = "npc_name";
+            this.npc_name.ReadOnly = true;
+            // 
+            // identif
+            // 
+            this.identif.HeaderText = "ID";
+            this.identif.Name = "identif";
+            this.identif.ReadOnly = true;
+            // 
+            // cur_ver
+            // 
+            this.cur_ver.HeaderText = "Текущая версия";
+            this.cur_ver.Name = "cur_ver";
+            this.cur_ver.ReadOnly = true;
+            // 
+            // new_ver
+            // 
+            this.new_ver.HeaderText = "Новая версия";
+            this.new_ver.Name = "new_ver";
+            this.new_ver.ReadOnly = true;
+            // 
+            // ColumnLocation
+            // 
+            this.ColumnLocation.HeaderText = "Локация";
+            this.ColumnLocation.Name = "ColumnLocation";
+            this.ColumnLocation.ReadOnly = true;
+            // 
+            // RusText1
+            // 
+            this.RusText1.HeaderText = "Русский1";
+            this.RusText1.Name = "RusText1";
+            this.RusText1.ReadOnly = true;
+            // 
+            // EngText1
+            // 
+            this.EngText1.HeaderText = "English1";
+            this.EngText1.Name = "EngText1";
+            this.EngText1.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1699,12 +1715,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Panel pNpcLinkControls;
         private System.Windows.Forms.Button bNpcLinkExecute;
         private System.Windows.Forms.Label lAdviceNpcLink;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn npc_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn identif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cur_ver;
-        private System.Windows.Forms.DataGridViewTextBoxColumn new_ver;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLocation;
         private System.Windows.Forms.GroupBox gbQuestCheck;
         private System.Windows.Forms.Button bFindQuest;
         private System.Windows.Forms.Button bSync;
@@ -1727,6 +1737,14 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.CheckBox cbOnlyOnLocation;
         private System.Windows.Forms.Button bCutEvents;
         private System.Windows.Forms.Button bClearBuffer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn npc_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn identif;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cur_ver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn new_ver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RusText1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EngText1;
 
 
     }
