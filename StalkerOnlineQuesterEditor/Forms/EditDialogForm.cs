@@ -17,7 +17,7 @@ namespace StalkerOnlineQuesterEditor
         public List<int> editKarmaPK = new List<int>();
         public CDialog curDialog;
 
-        int dialogID;
+        int currentDialogID;
         bool isAdd;
         //! Максимальная длина ответа ГГ, при превышении которого выводится сообщение
         int MAX_SYMBOL_ANSWER = 48;
@@ -26,12 +26,12 @@ namespace StalkerOnlineQuesterEditor
         public EditDialogForm(bool isAdd, MainForm parent, int selectedDialogID)
         {
             InitializeComponent();
-            dialogID = selectedDialogID;
+            currentDialogID = selectedDialogID;
             this.isAdd = isAdd;
             this.parent = parent;
             this.parent.Enabled = false;
 
-            CDialog curDialog = parent.getDialogOnDialogID(dialogID);
+            curDialog = parent.getDialogOnDialogID(currentDialogID);
             lAttention.Text = "";
             teleportComboBox.Items.Clear();
             foreach (string key in parent.tpConst.getKeys())
@@ -48,14 +48,14 @@ namespace StalkerOnlineQuesterEditor
                 checkKarmaIndicates();
             }
 
-            if (parent.isRoot(selectedDialogID) && (!isAdd))
+            if (parent.isRoot(currentDialogID) && (!isAdd))
                 NPCReactionText.Text = "Приветствие:";
             if (isAdd)
                 mtbPlayerLevel.Text = "0";
             if (!isAdd)
             {
-                fillDialogEditForm(selectedDialogID);
-                this.Text = "Добавление диалога в " + selectedDialogID + "";
+                fillDialogEditForm(currentDialogID);
+                this.Text = "Добавление диалога в " + currentDialogID + "";
             }
 
             this.Text += "   Версия: " + curDialog.version;
@@ -67,7 +67,6 @@ namespace StalkerOnlineQuesterEditor
             foreach (CDialog dialog in parent.getDialogsWithDialogIDInNodes(dialogID))
                     NPCSaidIs.Text+=(dialog.DialogID.ToString()+":\n"+dialog.Text);
             // заполнение текста речевки и ответа ГГ
-            curDialog = parent.getDialogOnDialogID(dialogID);
             tPlayerText.Text = curDialog.Title.Normalize();
             tNPCReactiontextBox.Text = curDialog.Text;
 
@@ -83,13 +82,14 @@ namespace StalkerOnlineQuesterEditor
                     else
                         tSubDialogsTextBox.Text += ("," + dialog.ToString());
                 }
-            // какой-то пиздец
+            // какой-то пиздец c кланами и одиночками
             if (curDialog.Precondition.tests.Contains(1))
-                CheckClanIDcheckBox.Checked = true;
+                cbSameClanOnly.Checked = true;
             if (curDialog.Precondition.tests.Contains(0))
-                CheckClanCheckBox.Checked = true;
+                cbAnyClanOnly.Checked = true;
             if (curDialog.Precondition.tests.Contains(2))
-                CheckLonerCheckBox.Checked = true;
+                cbLonerOnly.Checked = true;
+            ShowClanOptions();
 
             if (curDialog.Actions.CompleteQuests.Any() || curDialog.Actions.GetQuests.Any() ||
                 curDialog.Actions.Exit || curDialog.Actions.ToDialog!=0 || curDialog.Actions.Event != 0)
@@ -174,6 +174,26 @@ namespace StalkerOnlineQuesterEditor
                 textBox.Text += item;
             else
                 textBox.Text += ("," + item);
+        }
+        //! Скрывает опции кланов, если они не заполнены при открытии формы
+        private void ShowClanOptions()
+        {
+            if (cbSameClanOnly.Checked || cbAnyClanOnly.Checked || cbLonerOnly.Checked)
+                gbClanOptions.Visible = true;
+            else
+                gbClanOptions.Visible = false;
+        }
+
+        //! Клик по кнопке "показать клановые опции"
+        private void cbShowClanOptions_Click(object sender, EventArgs e)
+        {
+            gbClanOptions.Visible = !gbClanOptions.Visible;     // cbShowClanOptions.CheckState == CheckState.Checked;
+            if (!gbClanOptions.Visible && (cbSameClanOnly.Checked || cbAnyClanOnly.Checked || cbLonerOnly.Checked))
+                cbShowClanOptions.CheckState = CheckState.Indeterminate;
+            else if (gbClanOptions.Visible)
+                cbShowClanOptions.CheckState = CheckState.Checked;
+            else
+                cbShowClanOptions.CheckState = CheckState.Unchecked;
         }
 
         //! Нажатие Отмена - выход без сохранения
@@ -265,14 +285,21 @@ namespace StalkerOnlineQuesterEditor
         {
             this.parent.Enabled = true;
         }
-
+        //! Открытие окна выбора репутации
         private void bReputation_Click(object sender, EventArgs e)
         {
             DialogReputation reputationForm = new DialogReputation(this);
             reputationForm.Visible = true;
             this.Enabled = false;
         }
-
+        //! Открытие окна кармы
+        private void bKarma_Click(object sender, EventArgs e)
+        {
+            DialogKarmaPK dialogKarma = new DialogKarmaPK(this);
+            dialogKarma.Visible = true;
+            this.Enabled = false;
+        }
+        //! Задать цвет кнопки репутации, если репутация задана
         public void checkReputationIndicates()
         {
             if (editPrecondition.Reputation.Any())
@@ -280,7 +307,7 @@ namespace StalkerOnlineQuesterEditor
             else
                 bReputation.Image = null;
         }
-
+        //! Задать цвет кнопки кармы, если карма задана
         public void checkKarmaIndicates()
         {
             if (editKarmaPK.Any())
@@ -289,12 +316,6 @@ namespace StalkerOnlineQuesterEditor
                 bKarma.Image = null;
         }
 
-        private void bKarma_Click(object sender, EventArgs e)
-        {
-            DialogKarmaPK dialogKarma = new DialogKarmaPK(this);
-            dialogKarma.Visible = true;
-            this.Enabled = false;
-        }
         //! Чекбокс телепорта - заполняем возможные локации
         private void teleportCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -380,11 +401,11 @@ namespace StalkerOnlineQuesterEditor
                     precondition.ListOfMustNoQuests.ListOfFailedQuests.Add(int.Parse(quest));
             
             precondition.tests.Clear();
-            if (CheckClanIDcheckBox.Checked)
+            if (cbSameClanOnly.Checked)
                 precondition.tests.Add(1);
-            if (CheckClanCheckBox.Checked)
+            if (cbAnyClanOnly.Checked)
                 precondition.tests.Add(0);
-            if (CheckLonerCheckBox.Checked)
+            if (cbLonerOnly.Checked)
                 precondition.tests.Add(2);
 
             precondition.PlayerLevel = int.Parse(mtbPlayerLevel.Text.ToString());
@@ -394,7 +415,7 @@ namespace StalkerOnlineQuesterEditor
             if (isAdd)
             {
                 newID = parent.getDialogsNewID();
-                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text, precondition, actions, nodes, newID, 1, coord), dialogID);
+                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text, precondition, actions, nodes, newID, 1, coord), currentDialogID);
             }
             else
             {
@@ -406,11 +427,12 @@ namespace StalkerOnlineQuesterEditor
                 if (tPlayerText.Text != curDialog.Title || tNPCReactiontextBox.Text != curDialog.Text)
                     version++;
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text,
-                    precondition, actions, nodes, dialogID, version , coord), dialogID);
+                    precondition, actions, nodes, currentDialogID, version , coord), currentDialogID);
             }
             parent.Enabled = true;
             parent.DialogSelected(true);
             this.Close();
         }
+
     }
 }

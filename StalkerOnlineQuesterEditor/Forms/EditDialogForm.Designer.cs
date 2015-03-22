@@ -54,13 +54,15 @@
             this.tSubDialogsTextBox = new System.Windows.Forms.MaskedTextBox();
             this.subDialogsLabel = new System.Windows.Forms.Label();
             this.PreconditionBox = new System.Windows.Forms.GroupBox();
+            this.cbShowClanOptions = new System.Windows.Forms.CheckBox();
+            this.gbClanOptions = new System.Windows.Forms.GroupBox();
+            this.cbLonerOnly = new System.Windows.Forms.CheckBox();
+            this.cbAnyClanOnly = new System.Windows.Forms.CheckBox();
+            this.cbSameClanOnly = new System.Windows.Forms.CheckBox();
             this.mtbPlayerLevel = new System.Windows.Forms.MaskedTextBox();
             this.lPlayerLevel = new System.Windows.Forms.Label();
-            this.CheckLonerCheckBox = new System.Windows.Forms.CheckBox();
             this.bKarma = new System.Windows.Forms.Button();
             this.bReputation = new System.Windows.Forms.Button();
-            this.CheckClanCheckBox = new System.Windows.Forms.CheckBox();
-            this.CheckClanIDcheckBox = new System.Windows.Forms.CheckBox();
             this.QuestConditiongroupBox = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tShouldntHaveFailedQuests = new System.Windows.Forms.MaskedTextBox();
@@ -83,6 +85,7 @@
             this.textGroupBox = new System.Windows.Forms.GroupBox();
             this.actionsBox.SuspendLayout();
             this.PreconditionBox.SuspendLayout();
+            this.gbClanOptions.SuspendLayout();
             this.QuestConditiongroupBox.SuspendLayout();
             this.MustPanel.SuspendLayout();
             this.textGroupBox.SuspendLayout();
@@ -354,13 +357,12 @@
             // 
             // PreconditionBox
             // 
+            this.PreconditionBox.Controls.Add(this.cbShowClanOptions);
+            this.PreconditionBox.Controls.Add(this.gbClanOptions);
             this.PreconditionBox.Controls.Add(this.mtbPlayerLevel);
             this.PreconditionBox.Controls.Add(this.lPlayerLevel);
-            this.PreconditionBox.Controls.Add(this.CheckLonerCheckBox);
             this.PreconditionBox.Controls.Add(this.bKarma);
             this.PreconditionBox.Controls.Add(this.bReputation);
-            this.PreconditionBox.Controls.Add(this.CheckClanCheckBox);
-            this.PreconditionBox.Controls.Add(this.CheckClanIDcheckBox);
             this.PreconditionBox.Controls.Add(this.QuestConditiongroupBox);
             this.PreconditionBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.PreconditionBox.Location = new System.Drawing.Point(0, 227);
@@ -369,6 +371,60 @@
             this.PreconditionBox.TabIndex = 4;
             this.PreconditionBox.TabStop = false;
             this.PreconditionBox.Text = "Условия активности узла";
+            // 
+            // cbShowClanOptions
+            // 
+            this.cbShowClanOptions.AutoSize = true;
+            this.cbShowClanOptions.Location = new System.Drawing.Point(395, 29);
+            this.cbShowClanOptions.Name = "cbShowClanOptions";
+            this.cbShowClanOptions.Size = new System.Drawing.Size(110, 17);
+            this.cbShowClanOptions.TabIndex = 51;
+            this.cbShowClanOptions.Text = "Клановые опции";
+            this.cbShowClanOptions.UseVisualStyleBackColor = true;
+            this.cbShowClanOptions.Click += new System.EventHandler(this.cbShowClanOptions_Click);
+            // 
+            // gbClanOptions
+            // 
+            this.gbClanOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.gbClanOptions.Controls.Add(this.cbLonerOnly);
+            this.gbClanOptions.Controls.Add(this.cbAnyClanOnly);
+            this.gbClanOptions.Controls.Add(this.cbSameClanOnly);
+            this.gbClanOptions.Location = new System.Drawing.Point(376, 56);
+            this.gbClanOptions.Name = "gbClanOptions";
+            this.gbClanOptions.Size = new System.Drawing.Size(200, 100);
+            this.gbClanOptions.TabIndex = 50;
+            this.gbClanOptions.TabStop = false;
+            this.gbClanOptions.Text = "Клановые опции";
+            // 
+            // cbLonerOnly
+            // 
+            this.cbLonerOnly.AutoSize = true;
+            this.cbLonerOnly.Location = new System.Drawing.Point(19, 72);
+            this.cbLonerOnly.Name = "cbLonerOnly";
+            this.cbLonerOnly.Size = new System.Drawing.Size(134, 17);
+            this.cbLonerOnly.TabIndex = 18;
+            this.cbLonerOnly.Text = "Только для одиночек";
+            this.cbLonerOnly.UseVisualStyleBackColor = true;
+            // 
+            // cbAnyClanOnly
+            // 
+            this.cbAnyClanOnly.AutoSize = true;
+            this.cbAnyClanOnly.Location = new System.Drawing.Point(19, 48);
+            this.cbAnyClanOnly.Name = "cbAnyClanOnly";
+            this.cbAnyClanOnly.Size = new System.Drawing.Size(162, 17);
+            this.cbAnyClanOnly.TabIndex = 17;
+            this.cbAnyClanOnly.Text = "Только для имеющих клан";
+            this.cbAnyClanOnly.UseVisualStyleBackColor = true;
+            // 
+            // cbSameClanOnly
+            // 
+            this.cbSameClanOnly.AutoSize = true;
+            this.cbSameClanOnly.Location = new System.Drawing.Point(19, 24);
+            this.cbSameClanOnly.Name = "cbSameClanOnly";
+            this.cbSameClanOnly.Size = new System.Drawing.Size(147, 17);
+            this.cbSameClanOnly.TabIndex = 16;
+            this.cbSameClanOnly.Text = "Только для соклановца";
+            this.cbSameClanOnly.UseVisualStyleBackColor = true;
             // 
             // mtbPlayerLevel
             // 
@@ -387,16 +443,6 @@
             this.lPlayerLevel.Size = new System.Drawing.Size(92, 13);
             this.lPlayerLevel.TabIndex = 48;
             this.lPlayerLevel.Text = "Уровень игрока:";
-            // 
-            // CheckLonerCheckBox
-            // 
-            this.CheckLonerCheckBox.AutoSize = true;
-            this.CheckLonerCheckBox.Location = new System.Drawing.Point(392, 78);
-            this.CheckLonerCheckBox.Name = "CheckLonerCheckBox";
-            this.CheckLonerCheckBox.Size = new System.Drawing.Size(134, 17);
-            this.CheckLonerCheckBox.TabIndex = 15;
-            this.CheckLonerCheckBox.Text = "Только для одиночек";
-            this.CheckLonerCheckBox.UseVisualStyleBackColor = true;
             // 
             // bKarma
             // 
@@ -417,26 +463,6 @@
             this.bReputation.Text = "Репутация";
             this.bReputation.UseVisualStyleBackColor = true;
             this.bReputation.Click += new System.EventHandler(this.bReputation_Click);
-            // 
-            // CheckClanCheckBox
-            // 
-            this.CheckClanCheckBox.AutoSize = true;
-            this.CheckClanCheckBox.Location = new System.Drawing.Point(392, 54);
-            this.CheckClanCheckBox.Name = "CheckClanCheckBox";
-            this.CheckClanCheckBox.Size = new System.Drawing.Size(162, 17);
-            this.CheckClanCheckBox.TabIndex = 14;
-            this.CheckClanCheckBox.Text = "Только для имеющих клан";
-            this.CheckClanCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // CheckClanIDcheckBox
-            // 
-            this.CheckClanIDcheckBox.AutoSize = true;
-            this.CheckClanIDcheckBox.Location = new System.Drawing.Point(392, 30);
-            this.CheckClanIDcheckBox.Name = "CheckClanIDcheckBox";
-            this.CheckClanIDcheckBox.Size = new System.Drawing.Size(147, 17);
-            this.CheckClanIDcheckBox.TabIndex = 13;
-            this.CheckClanIDcheckBox.Text = "Только для соклановца";
-            this.CheckClanIDcheckBox.UseVisualStyleBackColor = true;
             // 
             // QuestConditiongroupBox
             // 
@@ -646,6 +672,8 @@
             this.actionsBox.PerformLayout();
             this.PreconditionBox.ResumeLayout(false);
             this.PreconditionBox.PerformLayout();
+            this.gbClanOptions.ResumeLayout(false);
+            this.gbClanOptions.PerformLayout();
             this.QuestConditiongroupBox.ResumeLayout(false);
             this.QuestConditiongroupBox.PerformLayout();
             this.MustPanel.ResumeLayout(false);
@@ -682,8 +710,6 @@
         private System.Windows.Forms.Label subDialogsLabel;
         private System.Windows.Forms.CheckBox actionsCheckBox;
         private System.Windows.Forms.GroupBox PreconditionBox;
-        private System.Windows.Forms.CheckBox CheckClanCheckBox;
-        private System.Windows.Forms.CheckBox CheckClanIDcheckBox;
         private System.Windows.Forms.GroupBox QuestConditiongroupBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -703,7 +729,6 @@
         private System.Windows.Forms.GroupBox textGroupBox;
         private System.Windows.Forms.Button bReputation;
         private System.Windows.Forms.Button bKarma;
-        private System.Windows.Forms.CheckBox CheckLonerCheckBox;
         private System.Windows.Forms.CheckBox barterCheckBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveFailedQuests;
@@ -711,5 +736,10 @@
         private System.Windows.Forms.CheckBox ToClanBaseCheckBox;
         private System.Windows.Forms.MaskedTextBox mtbPlayerLevel;
         private System.Windows.Forms.Label lPlayerLevel;
+        private System.Windows.Forms.CheckBox cbShowClanOptions;
+        private System.Windows.Forms.GroupBox gbClanOptions;
+        private System.Windows.Forms.CheckBox cbLonerOnly;
+        private System.Windows.Forms.CheckBox cbAnyClanOnly;
+        private System.Windows.Forms.CheckBox cbSameClanOnly;
     }
 }

@@ -123,6 +123,14 @@ namespace StalkerOnlineQuesterEditor
             this.bSaveManage = new System.Windows.Forms.Button();
             this.tabTranslate = new System.Windows.Forms.TabPage();
             this.diffGridView = new System.Windows.Forms.DataGridView();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.npc_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.identif = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cur_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.new_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RusText1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EngText1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_diff_locale = new System.Windows.Forms.Panel();
             this.labelLocalizeOuput = new System.Windows.Forms.Label();
             this.bSaveLocale = new System.Windows.Forms.Button();
@@ -157,14 +165,6 @@ namespace StalkerOnlineQuesterEditor
             this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.npc_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.identif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cur_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.new_ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RusText1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EngText1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -1174,6 +1174,54 @@ namespace StalkerOnlineQuesterEditor
             this.diffGridView.TabIndex = 1;
             this.diffGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.diffGridView_CellDoubleClick);
             // 
+            // type
+            // 
+            this.type.HeaderText = "Тип";
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            // 
+            // npc_name
+            // 
+            this.npc_name.HeaderText = "Имя NPC";
+            this.npc_name.Name = "npc_name";
+            this.npc_name.ReadOnly = true;
+            // 
+            // identif
+            // 
+            this.identif.HeaderText = "ID";
+            this.identif.Name = "identif";
+            this.identif.ReadOnly = true;
+            // 
+            // cur_ver
+            // 
+            this.cur_ver.HeaderText = "Текущая версия";
+            this.cur_ver.Name = "cur_ver";
+            this.cur_ver.ReadOnly = true;
+            // 
+            // new_ver
+            // 
+            this.new_ver.HeaderText = "Новая версия";
+            this.new_ver.Name = "new_ver";
+            this.new_ver.ReadOnly = true;
+            // 
+            // ColumnLocation
+            // 
+            this.ColumnLocation.HeaderText = "Локация";
+            this.ColumnLocation.Name = "ColumnLocation";
+            this.ColumnLocation.ReadOnly = true;
+            // 
+            // RusText1
+            // 
+            this.RusText1.HeaderText = "Русский1";
+            this.RusText1.Name = "RusText1";
+            this.RusText1.ReadOnly = true;
+            // 
+            // EngText1
+            // 
+            this.EngText1.HeaderText = "English1";
+            this.EngText1.Name = "EngText1";
+            this.EngText1.ReadOnly = true;
+            // 
             // panel_diff_locale
             // 
             this.panel_diff_locale.Controls.Add(this.labelLocalizeOuput);
@@ -1492,54 +1540,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.SizingGrip = false;
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
-            // 
-            // type
-            // 
-            this.type.HeaderText = "Тип";
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
-            // 
-            // npc_name
-            // 
-            this.npc_name.HeaderText = "Имя NPC";
-            this.npc_name.Name = "npc_name";
-            this.npc_name.ReadOnly = true;
-            // 
-            // identif
-            // 
-            this.identif.HeaderText = "ID";
-            this.identif.Name = "identif";
-            this.identif.ReadOnly = true;
-            // 
-            // cur_ver
-            // 
-            this.cur_ver.HeaderText = "Текущая версия";
-            this.cur_ver.Name = "cur_ver";
-            this.cur_ver.ReadOnly = true;
-            // 
-            // new_ver
-            // 
-            this.new_ver.HeaderText = "Новая версия";
-            this.new_ver.Name = "new_ver";
-            this.new_ver.ReadOnly = true;
-            // 
-            // ColumnLocation
-            // 
-            this.ColumnLocation.HeaderText = "Локация";
-            this.ColumnLocation.Name = "ColumnLocation";
-            this.ColumnLocation.ReadOnly = true;
-            // 
-            // RusText1
-            // 
-            this.RusText1.HeaderText = "Русский1";
-            this.RusText1.Name = "RusText1";
-            this.RusText1.ReadOnly = true;
-            // 
-            // EngText1
-            // 
-            this.EngText1.HeaderText = "English1";
-            this.EngText1.Name = "EngText1";
-            this.EngText1.ReadOnly = true;
             // 
             // MainForm
             // 
