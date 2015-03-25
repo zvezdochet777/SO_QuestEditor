@@ -73,11 +73,11 @@ namespace StalkerOnlineQuesterEditor
             this.bAddEvent = new System.Windows.Forms.Button();
             this.tabInfoNPC = new System.Windows.Forms.TabPage();
             this.npcLinkShower = new UMD.HCIL.Piccolo.PCanvas();
-            this.pNpcLinkControls = new System.Windows.Forms.Panel();
+            this.panelNpcLinkControls = new System.Windows.Forms.Panel();
             this.lAdviceNpcLink = new System.Windows.Forms.Label();
             this.bNpcLinkExecute = new System.Windows.Forms.Button();
             this.tabReview = new System.Windows.Forms.TabPage();
-            this.gridViewReview = new System.Windows.Forms.DataGridView();
+            this.dgvReview = new System.Windows.Forms.DataGridView();
             this.colNPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сolDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сolQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,7 +99,7 @@ namespace StalkerOnlineQuesterEditor
             this.cbNumDialogs = new System.Windows.Forms.CheckBox();
             this.bFindNPC = new System.Windows.Forms.Button();
             this.tabManage = new System.Windows.Forms.TabPage();
-            this.manageGridView = new System.Windows.Forms.DataGridView();
+            this.dgvManage = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subevents = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,7 +122,7 @@ namespace StalkerOnlineQuesterEditor
             this.panel2 = new System.Windows.Forms.Panel();
             this.bSaveManage = new System.Windows.Forms.Button();
             this.tabTranslate = new System.Windows.Forms.TabPage();
-            this.diffGridView = new System.Windows.Forms.DataGridView();
+            this.dgvLocaleDiff = new System.Windows.Forms.DataGridView();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.npc_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.identif = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,7 +131,7 @@ namespace StalkerOnlineQuesterEditor
             this.ColumnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RusText1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EngText1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel_diff_locale = new System.Windows.Forms.Panel();
+            this.panelDiffLocale = new System.Windows.Forms.Panel();
             this.labelLocalizeOuput = new System.Windows.Forms.Label();
             this.bSaveLocale = new System.Windows.Forms.Button();
             this.ActualCheckBox = new System.Windows.Forms.CheckBox();
@@ -143,7 +143,7 @@ namespace StalkerOnlineQuesterEditor
             this.bSaveBalance = new System.Windows.Forms.Button();
             this.balanceTabControl = new System.Windows.Forms.TabControl();
             this.fractionsBalanceTabPage = new System.Windows.Forms.TabPage();
-            this.fractionBalanceDataGridView = new System.Windows.Forms.DataGridView();
+            this.dgvFractionBalance = new System.Windows.Forms.DataGridView();
             this.fraction_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fraction_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.penalty_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -151,6 +151,18 @@ namespace StalkerOnlineQuesterEditor
             this.cat_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cat_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cat_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabSearch = new System.Windows.Forms.TabPage();
+            this.dgvSearch = new System.Windows.Forms.DataGridView();
+            this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEngText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelSearchTools = new System.Windows.Forms.Panel();
+            this.lSearchResult = new System.Windows.Forms.Label();
+            this.lPhraseToSearch = new System.Windows.Forms.Label();
+            this.tbPhraseToSearch = new System.Windows.Forms.TextBox();
+            this.bStartSearch = new System.Windows.Forms.Button();
             this.SelectNPC = new System.Windows.Forms.Panel();
             this.bRemoveQuest = new System.Windows.Forms.Button();
             this.bAddQuest = new System.Windows.Forms.Button();
@@ -186,25 +198,28 @@ namespace StalkerOnlineQuesterEditor
             this.splitQuestsContainer.SuspendLayout();
             this.panelQuestTools.SuspendLayout();
             this.tabInfoNPC.SuspendLayout();
-            this.pNpcLinkControls.SuspendLayout();
+            this.panelNpcLinkControls.SuspendLayout();
             this.tabReview.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReview)).BeginInit();
             this.panelReviewButtons.SuspendLayout();
             this.gbQuestCheck.SuspendLayout();
             this.gbNPCcheck.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDialogs)).BeginInit();
             this.tabManage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.manageGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvManage)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabTranslate.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.diffGridView)).BeginInit();
-            this.panel_diff_locale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocaleDiff)).BeginInit();
+            this.panelDiffLocale.SuspendLayout();
             this.tabBalance.SuspendLayout();
             this.panel3.SuspendLayout();
             this.balanceTabControl.SuspendLayout();
             this.fractionsBalanceTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fractionBalanceDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFractionBalance)).BeginInit();
+            this.tabSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).BeginInit();
+            this.panelSearchTools.SuspendLayout();
             this.SelectNPC.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusDialogStrip.SuspendLayout();
@@ -254,6 +269,7 @@ namespace StalkerOnlineQuesterEditor
             this.CentralDock.Controls.Add(this.tabManage);
             this.CentralDock.Controls.Add(this.tabTranslate);
             this.CentralDock.Controls.Add(this.tabBalance);
+            this.CentralDock.Controls.Add(this.tabSearch);
             this.CentralDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CentralDock.HotTrack = true;
             this.CentralDock.Location = new System.Drawing.Point(0, 53);
@@ -703,7 +719,7 @@ namespace StalkerOnlineQuesterEditor
             // tabInfoNPC
             // 
             this.tabInfoNPC.Controls.Add(this.npcLinkShower);
-            this.tabInfoNPC.Controls.Add(this.pNpcLinkControls);
+            this.tabInfoNPC.Controls.Add(this.panelNpcLinkControls);
             this.tabInfoNPC.Location = new System.Drawing.Point(4, 22);
             this.tabInfoNPC.Name = "tabInfoNPC";
             this.tabInfoNPC.Size = new System.Drawing.Size(906, 540);
@@ -725,16 +741,16 @@ namespace StalkerOnlineQuesterEditor
             this.npcLinkShower.TabIndex = 1;
             this.npcLinkShower.Text = "8";
             // 
-            // pNpcLinkControls
+            // panelNpcLinkControls
             // 
-            this.pNpcLinkControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pNpcLinkControls.Controls.Add(this.lAdviceNpcLink);
-            this.pNpcLinkControls.Controls.Add(this.bNpcLinkExecute);
-            this.pNpcLinkControls.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pNpcLinkControls.Location = new System.Drawing.Point(0, 0);
-            this.pNpcLinkControls.Name = "pNpcLinkControls";
-            this.pNpcLinkControls.Size = new System.Drawing.Size(906, 52);
-            this.pNpcLinkControls.TabIndex = 2;
+            this.panelNpcLinkControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelNpcLinkControls.Controls.Add(this.lAdviceNpcLink);
+            this.panelNpcLinkControls.Controls.Add(this.bNpcLinkExecute);
+            this.panelNpcLinkControls.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelNpcLinkControls.Location = new System.Drawing.Point(0, 0);
+            this.panelNpcLinkControls.Name = "panelNpcLinkControls";
+            this.panelNpcLinkControls.Size = new System.Drawing.Size(906, 52);
+            this.panelNpcLinkControls.TabIndex = 2;
             // 
             // lAdviceNpcLink
             // 
@@ -757,7 +773,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // tabReview
             // 
-            this.tabReview.Controls.Add(this.gridViewReview);
+            this.tabReview.Controls.Add(this.dgvReview);
             this.tabReview.Controls.Add(this.panelReviewButtons);
             this.tabReview.Location = new System.Drawing.Point(4, 22);
             this.tabReview.Name = "tabReview";
@@ -766,25 +782,25 @@ namespace StalkerOnlineQuesterEditor
             this.tabReview.Text = "Проверки";
             this.tabReview.UseVisualStyleBackColor = true;
             // 
-            // gridViewReview
+            // dgvReview
             // 
-            this.gridViewReview.AllowUserToAddRows = false;
-            this.gridViewReview.AllowUserToDeleteRows = false;
-            this.gridViewReview.AllowUserToOrderColumns = true;
-            this.gridViewReview.AllowUserToResizeRows = false;
-            this.gridViewReview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridViewReview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvReview.AllowUserToAddRows = false;
+            this.dgvReview.AllowUserToDeleteRows = false;
+            this.dgvReview.AllowUserToOrderColumns = true;
+            this.dgvReview.AllowUserToResizeRows = false;
+            this.dgvReview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNPCName,
             this.сolDialogsNum,
             this.сolQuestsNum,
             this.colLocation,
             this.colCoordinates,
             this.colRussianName});
-            this.gridViewReview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridViewReview.Location = new System.Drawing.Point(0, 104);
-            this.gridViewReview.Name = "gridViewReview";
-            this.gridViewReview.Size = new System.Drawing.Size(906, 436);
-            this.gridViewReview.TabIndex = 1;
+            this.dgvReview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvReview.Location = new System.Drawing.Point(0, 104);
+            this.dgvReview.Name = "dgvReview";
+            this.dgvReview.Size = new System.Drawing.Size(906, 436);
+            this.dgvReview.TabIndex = 1;
             // 
             // colNPCName
             // 
@@ -821,6 +837,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // panelReviewButtons
             // 
+            this.panelReviewButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelReviewButtons.Controls.Add(this.gbQuestCheck);
             this.panelReviewButtons.Controls.Add(this.labelReviewOutputed);
             this.panelReviewButtons.Controls.Add(this.gbNPCcheck);
@@ -835,7 +852,7 @@ namespace StalkerOnlineQuesterEditor
             this.gbQuestCheck.Controls.Add(this.bFindQuest);
             this.gbQuestCheck.Location = new System.Drawing.Point(428, 4);
             this.gbQuestCheck.Name = "gbQuestCheck";
-            this.gbQuestCheck.Size = new System.Drawing.Size(200, 100);
+            this.gbQuestCheck.Size = new System.Drawing.Size(200, 95);
             this.gbQuestCheck.TabIndex = 2;
             this.gbQuestCheck.TabStop = false;
             this.gbQuestCheck.Text = "Квест";
@@ -871,7 +888,7 @@ namespace StalkerOnlineQuesterEditor
             this.gbNPCcheck.Controls.Add(this.bFindNPC);
             this.gbNPCcheck.Location = new System.Drawing.Point(3, 4);
             this.gbNPCcheck.Name = "gbNPCcheck";
-            this.gbNPCcheck.Size = new System.Drawing.Size(419, 100);
+            this.gbNPCcheck.Size = new System.Drawing.Size(419, 95);
             this.gbNPCcheck.TabIndex = 0;
             this.gbNPCcheck.TabStop = false;
             this.gbNPCcheck.Text = "NPC";
@@ -973,7 +990,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // tabManage
             // 
-            this.tabManage.Controls.Add(this.manageGridView);
+            this.tabManage.Controls.Add(this.dgvManage);
             this.tabManage.Controls.Add(this.panel2);
             this.tabManage.Location = new System.Drawing.Point(4, 22);
             this.tabManage.Name = "tabManage";
@@ -982,10 +999,10 @@ namespace StalkerOnlineQuesterEditor
             this.tabManage.Text = "Управление";
             this.tabManage.UseVisualStyleBackColor = true;
             // 
-            // manageGridView
+            // dgvManage
             // 
-            this.manageGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.manageGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvManage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvManage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.subevents,
             this.title,
@@ -1005,11 +1022,11 @@ namespace StalkerOnlineQuesterEditor
             this.author,
             this.Legend,
             this.worked});
-            this.manageGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.manageGridView.Location = new System.Drawing.Point(0, 0);
-            this.manageGridView.Name = "manageGridView";
-            this.manageGridView.Size = new System.Drawing.Size(906, 514);
-            this.manageGridView.TabIndex = 0;
+            this.dgvManage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvManage.Location = new System.Drawing.Point(0, 0);
+            this.dgvManage.Name = "dgvManage";
+            this.dgvManage.Size = new System.Drawing.Size(906, 514);
+            this.dgvManage.TabIndex = 0;
             // 
             // id
             // 
@@ -1143,8 +1160,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             // tabTranslate
             // 
-            this.tabTranslate.Controls.Add(this.diffGridView);
-            this.tabTranslate.Controls.Add(this.panel_diff_locale);
+            this.tabTranslate.Controls.Add(this.dgvLocaleDiff);
+            this.tabTranslate.Controls.Add(this.panelDiffLocale);
             this.tabTranslate.Location = new System.Drawing.Point(4, 22);
             this.tabTranslate.Name = "tabTranslate";
             this.tabTranslate.Size = new System.Drawing.Size(906, 540);
@@ -1152,12 +1169,12 @@ namespace StalkerOnlineQuesterEditor
             this.tabTranslate.Text = "Переводы";
             this.tabTranslate.UseVisualStyleBackColor = true;
             // 
-            // diffGridView
+            // dgvLocaleDiff
             // 
-            this.diffGridView.AllowUserToAddRows = false;
-            this.diffGridView.AllowUserToDeleteRows = false;
-            this.diffGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.diffGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvLocaleDiff.AllowUserToAddRows = false;
+            this.dgvLocaleDiff.AllowUserToDeleteRows = false;
+            this.dgvLocaleDiff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocaleDiff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.type,
             this.npc_name,
             this.identif,
@@ -1166,13 +1183,13 @@ namespace StalkerOnlineQuesterEditor
             this.ColumnLocation,
             this.RusText1,
             this.EngText1});
-            this.diffGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.diffGridView.Location = new System.Drawing.Point(0, 57);
-            this.diffGridView.Name = "diffGridView";
-            this.diffGridView.ReadOnly = true;
-            this.diffGridView.Size = new System.Drawing.Size(906, 483);
-            this.diffGridView.TabIndex = 1;
-            this.diffGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.diffGridView_CellDoubleClick);
+            this.dgvLocaleDiff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLocaleDiff.Location = new System.Drawing.Point(0, 57);
+            this.dgvLocaleDiff.Name = "dgvLocaleDiff";
+            this.dgvLocaleDiff.ReadOnly = true;
+            this.dgvLocaleDiff.Size = new System.Drawing.Size(906, 483);
+            this.dgvLocaleDiff.TabIndex = 1;
+            this.dgvLocaleDiff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLocaleDiff_CellDoubleClick);
             // 
             // type
             // 
@@ -1222,19 +1239,20 @@ namespace StalkerOnlineQuesterEditor
             this.EngText1.Name = "EngText1";
             this.EngText1.ReadOnly = true;
             // 
-            // panel_diff_locale
+            // panelDiffLocale
             // 
-            this.panel_diff_locale.Controls.Add(this.labelLocalizeOuput);
-            this.panel_diff_locale.Controls.Add(this.bSaveLocale);
-            this.panel_diff_locale.Controls.Add(this.ActualCheckBox);
-            this.panel_diff_locale.Controls.Add(this.OutdatedCheckBox);
-            this.panel_diff_locale.Controls.Add(this.bFindQuestDifference);
-            this.panel_diff_locale.Controls.Add(this.bFindDialogDifference);
-            this.panel_diff_locale.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_diff_locale.Location = new System.Drawing.Point(0, 0);
-            this.panel_diff_locale.Name = "panel_diff_locale";
-            this.panel_diff_locale.Size = new System.Drawing.Size(906, 57);
-            this.panel_diff_locale.TabIndex = 0;
+            this.panelDiffLocale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDiffLocale.Controls.Add(this.labelLocalizeOuput);
+            this.panelDiffLocale.Controls.Add(this.bSaveLocale);
+            this.panelDiffLocale.Controls.Add(this.ActualCheckBox);
+            this.panelDiffLocale.Controls.Add(this.OutdatedCheckBox);
+            this.panelDiffLocale.Controls.Add(this.bFindQuestDifference);
+            this.panelDiffLocale.Controls.Add(this.bFindDialogDifference);
+            this.panelDiffLocale.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelDiffLocale.Location = new System.Drawing.Point(0, 0);
+            this.panelDiffLocale.Name = "panelDiffLocale";
+            this.panelDiffLocale.Size = new System.Drawing.Size(906, 57);
+            this.panelDiffLocale.TabIndex = 0;
             // 
             // labelLocalizeOuput
             // 
@@ -1339,7 +1357,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // fractionsBalanceTabPage
             // 
-            this.fractionsBalanceTabPage.Controls.Add(this.fractionBalanceDataGridView);
+            this.fractionsBalanceTabPage.Controls.Add(this.dgvFractionBalance);
             this.fractionsBalanceTabPage.Location = new System.Drawing.Point(4, 22);
             this.fractionsBalanceTabPage.Name = "fractionsBalanceTabPage";
             this.fractionsBalanceTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1348,12 +1366,12 @@ namespace StalkerOnlineQuesterEditor
             this.fractionsBalanceTabPage.Text = "Опыт фракций";
             this.fractionsBalanceTabPage.UseVisualStyleBackColor = true;
             // 
-            // fractionBalanceDataGridView
+            // dgvFractionBalance
             // 
-            this.fractionBalanceDataGridView.AllowUserToAddRows = false;
-            this.fractionBalanceDataGridView.AllowUserToDeleteRows = false;
-            this.fractionBalanceDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.fractionBalanceDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvFractionBalance.AllowUserToAddRows = false;
+            this.dgvFractionBalance.AllowUserToDeleteRows = false;
+            this.dgvFractionBalance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFractionBalance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fraction_id,
             this.fraction_name,
             this.penalty_name,
@@ -1361,11 +1379,11 @@ namespace StalkerOnlineQuesterEditor
             this.cat_1,
             this.cat_2,
             this.cat_3});
-            this.fractionBalanceDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fractionBalanceDataGridView.Location = new System.Drawing.Point(3, 3);
-            this.fractionBalanceDataGridView.Name = "fractionBalanceDataGridView";
-            this.fractionBalanceDataGridView.Size = new System.Drawing.Size(892, 508);
-            this.fractionBalanceDataGridView.TabIndex = 0;
+            this.dgvFractionBalance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFractionBalance.Location = new System.Drawing.Point(3, 3);
+            this.dgvFractionBalance.Name = "dgvFractionBalance";
+            this.dgvFractionBalance.Size = new System.Drawing.Size(892, 508);
+            this.dgvFractionBalance.TabIndex = 0;
             // 
             // fraction_id
             // 
@@ -1404,6 +1422,111 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.cat_3.HeaderText = "Категория 3";
             this.cat_3.Name = "cat_3";
+            // 
+            // tabSearch
+            // 
+            this.tabSearch.Controls.Add(this.dgvSearch);
+            this.tabSearch.Controls.Add(this.panelSearchTools);
+            this.tabSearch.Location = new System.Drawing.Point(4, 22);
+            this.tabSearch.Name = "tabSearch";
+            this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSearch.Size = new System.Drawing.Size(906, 540);
+            this.tabSearch.TabIndex = 7;
+            this.tabSearch.Text = "Поиск";
+            this.tabSearch.UseVisualStyleBackColor = true;
+            // 
+            // dgvSearch
+            // 
+            this.dgvSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colType,
+            this.colNPC,
+            this.colID,
+            this.colText,
+            this.colEngText});
+            this.dgvSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSearch.Location = new System.Drawing.Point(3, 62);
+            this.dgvSearch.Name = "dgvSearch";
+            this.dgvSearch.Size = new System.Drawing.Size(900, 475);
+            this.dgvSearch.TabIndex = 1;
+            this.dgvSearch.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearch_CellDoubleClick);
+            // 
+            // colType
+            // 
+            this.colType.HeaderText = "Тип";
+            this.colType.Name = "colType";
+            this.colType.Width = 50;
+            // 
+            // colNPC
+            // 
+            this.colNPC.HeaderText = "NPC";
+            this.colNPC.Name = "colNPC";
+            // 
+            // colID
+            // 
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.Width = 50;
+            // 
+            // colText
+            // 
+            this.colText.HeaderText = "Текст";
+            this.colText.Name = "colText";
+            this.colText.Width = 250;
+            // 
+            // colEngText
+            // 
+            this.colEngText.HeaderText = "EnglishText";
+            this.colEngText.Name = "colEngText";
+            this.colEngText.Width = 250;
+            // 
+            // panelSearchTools
+            // 
+            this.panelSearchTools.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSearchTools.Controls.Add(this.lSearchResult);
+            this.panelSearchTools.Controls.Add(this.lPhraseToSearch);
+            this.panelSearchTools.Controls.Add(this.tbPhraseToSearch);
+            this.panelSearchTools.Controls.Add(this.bStartSearch);
+            this.panelSearchTools.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSearchTools.Location = new System.Drawing.Point(3, 3);
+            this.panelSearchTools.Name = "panelSearchTools";
+            this.panelSearchTools.Size = new System.Drawing.Size(900, 59);
+            this.panelSearchTools.TabIndex = 0;
+            // 
+            // lSearchResult
+            // 
+            this.lSearchResult.AutoSize = true;
+            this.lSearchResult.Location = new System.Drawing.Point(750, 33);
+            this.lSearchResult.Name = "lSearchResult";
+            this.lSearchResult.Size = new System.Drawing.Size(54, 13);
+            this.lSearchResult.TabIndex = 3;
+            this.lSearchResult.Text = "Найдено:";
+            // 
+            // lPhraseToSearch
+            // 
+            this.lPhraseToSearch.AutoSize = true;
+            this.lPhraseToSearch.Location = new System.Drawing.Point(17, 7);
+            this.lPhraseToSearch.Name = "lPhraseToSearch";
+            this.lPhraseToSearch.Size = new System.Drawing.Size(75, 13);
+            this.lPhraseToSearch.TabIndex = 2;
+            this.lPhraseToSearch.Text = "Найти фразу:";
+            // 
+            // tbPhraseToSearch
+            // 
+            this.tbPhraseToSearch.Location = new System.Drawing.Point(14, 27);
+            this.tbPhraseToSearch.Name = "tbPhraseToSearch";
+            this.tbPhraseToSearch.Size = new System.Drawing.Size(417, 20);
+            this.tbPhraseToSearch.TabIndex = 1;
+            // 
+            // bStartSearch
+            // 
+            this.bStartSearch.Location = new System.Drawing.Point(437, 7);
+            this.bStartSearch.Name = "bStartSearch";
+            this.bStartSearch.Size = new System.Drawing.Size(90, 40);
+            this.bStartSearch.TabIndex = 0;
+            this.bStartSearch.Text = "Найти";
+            this.bStartSearch.UseVisualStyleBackColor = true;
+            this.bStartSearch.Click += new System.EventHandler(this.bStartSearch_Click);
             // 
             // SelectNPC
             // 
@@ -1575,10 +1698,10 @@ namespace StalkerOnlineQuesterEditor
             this.splitQuestsContainer.ResumeLayout(false);
             this.panelQuestTools.ResumeLayout(false);
             this.tabInfoNPC.ResumeLayout(false);
-            this.pNpcLinkControls.ResumeLayout(false);
-            this.pNpcLinkControls.PerformLayout();
+            this.panelNpcLinkControls.ResumeLayout(false);
+            this.panelNpcLinkControls.PerformLayout();
             this.tabReview.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewReview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReview)).EndInit();
             this.panelReviewButtons.ResumeLayout(false);
             this.panelReviewButtons.PerformLayout();
             this.gbQuestCheck.ResumeLayout(false);
@@ -1587,17 +1710,21 @@ namespace StalkerOnlineQuesterEditor
             ((System.ComponentModel.ISupportInitialize)(this.numQuests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDialogs)).EndInit();
             this.tabManage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.manageGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvManage)).EndInit();
             this.panel2.ResumeLayout(false);
             this.tabTranslate.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.diffGridView)).EndInit();
-            this.panel_diff_locale.ResumeLayout(false);
-            this.panel_diff_locale.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocaleDiff)).EndInit();
+            this.panelDiffLocale.ResumeLayout(false);
+            this.panelDiffLocale.PerformLayout();
             this.tabBalance.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.balanceTabControl.ResumeLayout(false);
             this.fractionsBalanceTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fractionBalanceDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFractionBalance)).EndInit();
+            this.tabSearch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).EndInit();
+            this.panelSearchTools.ResumeLayout(false);
+            this.panelSearchTools.PerformLayout();
             this.SelectNPC.ResumeLayout(false);
             this.SelectNPC.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1645,7 +1772,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.TabPage tabInfoNPC;
         private PCanvas npcLinkShower;
         private System.Windows.Forms.TabPage tabManage;
-        private System.Windows.Forms.DataGridView manageGridView;
+        private System.Windows.Forms.DataGridView dgvManage;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.StatusStrip statusDialogStrip;
         private System.Windows.Forms.Panel panel2;
@@ -1673,16 +1800,16 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label labelQuestTree;
         private System.Windows.Forms.Label labelBuffer;
         private System.Windows.Forms.TabPage tabTranslate;
-        private System.Windows.Forms.Panel panel_diff_locale;
+        private System.Windows.Forms.Panel panelDiffLocale;
         private System.Windows.Forms.Button bFindDialogDifference;
-        private System.Windows.Forms.DataGridView diffGridView;
+        private System.Windows.Forms.DataGridView dgvLocaleDiff;
         private System.Windows.Forms.Button bFindQuestDifference;
         private System.Windows.Forms.TabPage tabBalance;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button bSaveBalance;
         private System.Windows.Forms.TabControl balanceTabControl;
         private System.Windows.Forms.TabPage fractionsBalanceTabPage;
-        private System.Windows.Forms.DataGridView fractionBalanceDataGridView;
+        private System.Windows.Forms.DataGridView dgvFractionBalance;
         private System.Windows.Forms.DataGridViewTextBoxColumn fraction_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn fraction_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn penalty_name;
@@ -1706,13 +1833,13 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cbNumDialogs;
         private System.Windows.Forms.Button bFindNPC;
-        private System.Windows.Forms.DataGridView gridViewReview;
+        private System.Windows.Forms.DataGridView dgvReview;
         private System.Windows.Forms.NumericUpDown numQuests;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbNumQuests;
         private System.Windows.Forms.Button bRunThroughNPC;
         private System.Windows.Forms.Label labelReviewOutputed;
-        private System.Windows.Forms.Panel pNpcLinkControls;
+        private System.Windows.Forms.Panel panelNpcLinkControls;
         private System.Windows.Forms.Button bNpcLinkExecute;
         private System.Windows.Forms.Label lAdviceNpcLink;
         private System.Windows.Forms.GroupBox gbQuestCheck;
@@ -1745,6 +1872,18 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn RusText1;
         private System.Windows.Forms.DataGridViewTextBoxColumn EngText1;
+        private System.Windows.Forms.TabPage tabSearch;
+        private System.Windows.Forms.Panel panelSearchTools;
+        private System.Windows.Forms.Button bStartSearch;
+        private System.Windows.Forms.Label lPhraseToSearch;
+        private System.Windows.Forms.TextBox tbPhraseToSearch;
+        private System.Windows.Forms.Label lSearchResult;
+        private System.Windows.Forms.DataGridView dgvSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNPC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEngText;
 
 
     }

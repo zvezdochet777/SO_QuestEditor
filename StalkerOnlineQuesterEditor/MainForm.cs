@@ -1106,12 +1106,12 @@ namespace StalkerOnlineQuesterEditor
         //! Заполняет вкладку Управление
         void FillTabManage()
         {
-            manageGridView.Rows.Clear();
+            dgvManage.Rows.Clear();
             
-            ((DataGridViewComboBoxColumn)manageGridView.Columns[18]).Items.Clear();
-            ((DataGridViewComboBoxColumn)manageGridView.Columns[18]).Items.Add("Да.");
-            ((DataGridViewComboBoxColumn)manageGridView.Columns[18]).Items.Add("Нет.");
-            ((DataGridViewComboBoxColumn)manageGridView.Columns[18]).Items.Add("Правка.");
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[18]).Items.Clear();
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[18]).Items.Add("Да.");
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[18]).Items.Add("Нет.");
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[18]).Items.Add("Правка.");
 
             foreach (string npcName in npcConst.NPCs.Keys)
                 foreach (CQuest quest in quests.quest.Values)
@@ -1236,13 +1236,13 @@ namespace StalkerOnlineQuesterEditor
                                 sRewardItem += "\n" + itemName + ":" + count.ToString();
                         }
                         object[] row = { id, subIDs, title, description, npcNe, npcLinks, getDialogs, srewardExpBattle, srewardSurvival, srewardExpSupport, srewardCredits, sRewardItem, sPkStatus, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
-                        manageGridView.Rows.Add(row);
+                        dgvManage.Rows.Add(row);
                     }
         }
 
         private void bSaveManage_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in manageGridView.Rows)
+            foreach (DataGridViewRow row in dgvManage.Rows)
             {
                 try
                 {
@@ -1657,7 +1657,7 @@ namespace StalkerOnlineQuesterEditor
             int outdated = (OutdatedCheckBox.Checked) ? (1) : (0);
             FindType findType = (FindType)(actual + (outdated << 1) );
             this.translate_checker = 1;
-            diffGridView.Rows.Clear();
+            dgvLocaleDiff.Rows.Clear();
             string loc = settings.getCurrentLocale();
             var diff = dialogs.getDialogDifference(settings.getCurrentLocale(), findType);
             var type = "Диалог";
@@ -1671,7 +1671,7 @@ namespace StalkerOnlineQuesterEditor
                     string rustext1 = dialogs.dialogs[name][id].Title;
                     string engtext1 = dialogs.locales[loc][name][id].Title;
                     object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location, rustext1, engtext1 };
-                    diffGridView.Rows.Add(row);
+                    dgvLocaleDiff.Rows.Add(row);
                     count++;
                 }
             }
@@ -1680,11 +1680,11 @@ namespace StalkerOnlineQuesterEditor
         }
 
         int translate_checker = 0;
-        private void diffGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvLocaleDiff_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var index = e.RowIndex;
-            var id = int.Parse(diffGridView.Rows[index].Cells[2].Value.ToString());
-            currentNPC = diffGridView.Rows[index].Cells[1].Value.ToString();
+            var id = int.Parse(dgvLocaleDiff.Rows[index].Cells[2].Value.ToString());
+            currentNPC = dgvLocaleDiff.Rows[index].Cells[1].Value.ToString();
             if (this.translate_checker == 1)
             {
                 LocaleDialogForm editLocaleDialogForm = new LocaleDialogForm(this, id);
@@ -1703,7 +1703,7 @@ namespace StalkerOnlineQuesterEditor
             int outdated = (OutdatedCheckBox.Checked) ? (1) : (0);
             FindType findType = (FindType)(actual + (outdated << 1));
             this.translate_checker = 2;
-            diffGridView.Rows.Clear();
+            dgvLocaleDiff.Rows.Clear();
             string loc = settings.getCurrentLocale();
             var diff = quests.getQuestDifference(settings.getCurrentLocale(), findType);
             var type = "Квест";
@@ -1717,7 +1717,7 @@ namespace StalkerOnlineQuesterEditor
                     string rustext1 = quests.quest[id].QuestInformation.Title;
                     string engtext1 = quests.locales[loc][id].QuestInformation.Title;
                     object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location, rustext1, engtext1 };
-                    diffGridView.Rows.Add(row);
+                    dgvLocaleDiff.Rows.Add(row);
                     count++;
                 }
             }
@@ -1751,7 +1751,7 @@ namespace StalkerOnlineQuesterEditor
 
                 }
                 object[] row = { id, name, penalty_name, limit, cat_1, cat_2, cat_3 };
-                fractionBalanceDataGridView.Rows.Add(row);
+                dgvFractionBalance.Rows.Add(row);
 
                 foreach (KeyValuePair<int, string> penalty_pair in fractions.getListOfFractions())
                 {
@@ -1773,7 +1773,7 @@ namespace StalkerOnlineQuesterEditor
                             }
                         }
                         object[] sub_row = { sub_id, name, penalty_name, "", cat_1, cat_2, cat_3 };
-                        fractionBalanceDataGridView.Rows.Add(sub_row);
+                        dgvFractionBalance.Rows.Add(sub_row);
                     }
                 }
             }
@@ -1783,7 +1783,7 @@ namespace StalkerOnlineQuesterEditor
         {
             balances.fraction.Clear();
             int parent_id = 0;
-            foreach (DataGridViewRow row in fractionBalanceDataGridView.Rows)
+            foreach (DataGridViewRow row in dgvFractionBalance.Rows)
             {
                 int id    = int.Parse(row.Cells[0].FormattedValue.ToString());
                 string name         = row.Cells[1].FormattedValue.ToString();
@@ -1844,31 +1844,31 @@ namespace StalkerOnlineQuesterEditor
         //! Устанавливает надписи в таблице вкладки Проверка для поиска нужны NPC
         void setNPCCheckEnvironment()
         {
-            gridViewReview.Columns[0].HeaderText = "Имя NPC";
-            gridViewReview.Columns[1].HeaderText = "Диалоги";
-            gridViewReview.Columns[2].HeaderText = "Квесты";
-            gridViewReview.Columns[3].HeaderText = "Карта";
-            gridViewReview.Columns[4].HeaderText = "Координаты";
-            gridViewReview.Columns[5].HeaderText = "Русское имя";
-            gridViewReview.Columns[4].Visible = true;
-            gridViewReview.Columns[5].Visible = true;
+            dgvReview.Columns[0].HeaderText = "Имя NPC";
+            dgvReview.Columns[1].HeaderText = "Диалоги";
+            dgvReview.Columns[2].HeaderText = "Квесты";
+            dgvReview.Columns[3].HeaderText = "Карта";
+            dgvReview.Columns[4].HeaderText = "Координаты";
+            dgvReview.Columns[5].HeaderText = "Русское имя";
+            dgvReview.Columns[4].Visible = true;
+            dgvReview.Columns[5].Visible = true;
         }
         //! Устанавливает надписи в таблице вкладки Проверка для поиска квестов
         void setQuestCheckEnvironment()
         {
-            gridViewReview.Columns[0].HeaderText = "Имя NPC";
-            gridViewReview.Columns[1].HeaderText = "Квест";
-            gridViewReview.Columns[2].HeaderText = "Открыт квест";
-            gridViewReview.Columns[3].HeaderText = "Закрыт квест";
-            gridViewReview.Columns[4].Visible = false;
-            gridViewReview.Columns[5].Visible = false;
+            dgvReview.Columns[0].HeaderText = "Имя NPC";
+            dgvReview.Columns[1].HeaderText = "Квест";
+            dgvReview.Columns[2].HeaderText = "Открыт квест";
+            dgvReview.Columns[3].HeaderText = "Закрыт квест";
+            dgvReview.Columns[4].Visible = false;
+            dgvReview.Columns[5].Visible = false;
         }
  
         //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
         private void bFindNPC_Click(object sender, EventArgs e)
         {
             setNPCCheckEnvironment();
-            gridViewReview.Rows.Clear();
+            dgvReview.Rows.Clear();
             bool checkDialog = cbNumDialogs.Checked;
             bool checkQuest = cbNumQuests.Checked;
             bool checkLocation = cbOnlyOnLocation.Checked;
@@ -1885,16 +1885,16 @@ namespace StalkerOnlineQuesterEditor
                     && ( !checkLocation || (checkLocation && location == neededLocation) ) )
                 {
                     object[] row = { npc, d_num, q_num, location, coord, rusname };
-                    gridViewReview.Rows.Add( row );
+                    dgvReview.Rows.Add( row );
                 }
             }
-            labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
+            labelReviewOutputed.Text = "Выведено: " + dgvReview.RowCount.ToString();
         }
         //! Нажатие "Найти квесты", выводит несоответствия в квестах (не открыт, не закрыт, не существует)
         private void bFindQuest_Click(object sender, EventArgs e)
         {
             setQuestCheckEnvironment();
-            gridViewReview.Rows.Clear();
+            dgvReview.Rows.Clear();
 
             foreach (CQuest quest in quests.quest.Values)
             {
@@ -1914,10 +1914,10 @@ namespace StalkerOnlineQuesterEditor
                 if (open == 0 || close == 0)
                 {
                     object[] row = { quest.Additional.Holder, questID, open, close };
-                    gridViewReview.Rows.Add(row);
+                    dgvReview.Rows.Add(row);
                 }
             }
-            labelReviewOutputed.Text = "Выведено: " + gridViewReview.RowCount.ToString();
+            labelReviewOutputed.Text = "Выведено: " + dgvReview.RowCount.ToString();
         }
 //***************************END OF DATA CHECK - missed dialogs, quests, NPC and so on**************************
 
@@ -2205,6 +2205,78 @@ namespace StalkerOnlineQuesterEditor
                 }
             labelXNode.Text = "dupl = " + dupl.Count.ToString() + ", total=" + stup.ToString();
              */
+        }
+
+        private void bStartSearch_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            string locale = settings.getCurrentLocale();
+            string text = tbPhraseToSearch.Text;
+            string rusText = "";
+            string engText = "";
+            string npcName;
+            bool found = false;
+            dgvSearch.Rows.Clear();
+            foreach (CQuest quest in quests.quest.Values)
+            {
+                if (quest.QuestInformation.Title.Contains(text))
+                {
+                    rusText = quest.QuestInformation.Title;
+                    engText = quests.locales[locale][quest.QuestID].QuestInformation.Title;
+                    found = true;
+                }
+                else if (quest.QuestInformation.Description.Contains(text))
+                {
+                    rusText = quest.QuestInformation.Description;
+                    engText = quests.locales[locale][quest.QuestID].QuestInformation.Description;
+                    found = true;
+                }
+                if (found)
+                {
+                    npcName = quest.Additional.Holder;
+                    count++;
+                    object[] row = { "Квест", npcName, quest.QuestID, rusText, engText };
+                    dgvSearch.Rows.Add(row);
+                    found = false;
+                }
+            }
+            lSearchResult.Text = "Найдено: " + count.ToString();
+        }
+
+        private void dgvSearch_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            int id = int.Parse(dgvSearch.Rows[index].Cells[2].Value.ToString());
+            currentNPC = dgvSearch.Rows[index].Cells[1].Value.ToString();
+            string type = dgvSearch.Rows[index].Cells[0].Value.ToString();
+            if (type == "Квест")
+            {
+                if (settings.getMode() == settings.MODE_EDITOR)
+                {
+                    int mode = (quests.quest[id].Additional.IsSubQuest == 0) ? (2) : (3);
+                    EditQuestForm editQuestForm = new EditQuestForm(this, id, mode);
+                    editQuestForm.Visible = true;
+                }
+                else
+                {
+                    LocaleQuestForm editLocaleQuestform = new LocaleQuestForm(this, id);
+                    editLocaleQuestform.Visible = true;
+                }
+            }
+            else if (type == "Диалог")
+            {
+                if (settings.getMode() == settings.MODE_EDITOR)
+                {
+                    EditDialogForm editDialogForm = new EditDialogForm(false, this, id);
+                    editDialogForm.Visible = true;
+                }
+                else
+                {
+                    LocaleDialogForm editLocaleDialogForm = new LocaleDialogForm(this, id);
+                    editLocaleDialogForm.Visible = true;
+                }
+
+            }
         }
 
     }
