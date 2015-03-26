@@ -165,7 +165,6 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
-
         }
 
         //! Заполняет комбобокс со списком квестов у данного персонажа
@@ -244,14 +243,6 @@ namespace StalkerOnlineQuesterEditor
             QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
             QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
-        }
-
-        //! Заполнение итемов в комбобоксе выбора локации (во вкладке Проверка)
-        void fillLocationsBox()
-        {
-            cbLocation.Sorted = true;
-            cbLocation.DataSource = null;
-            cbLocation.DataSource = dialogs.locationNames;
         }
       
 // ************************ WORK WITH DIALOGS****************************************************
@@ -1617,7 +1608,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 for (int i = 4; i < CentralDock.TabPages.Count; i++)
                 {
-                    if (CentralDock.TabPages[i].Name != "tabTranslate")
+                    if (CentralDock.TabPages[i].Name != "tabTranslate" && CentralDock.TabPages[i].Name != "tabSearch")
                         CentralDock.TabPages[i].Enabled = false;
                     else
                         CentralDock.TabPages[i].Enabled = true;
@@ -1840,7 +1831,13 @@ namespace StalkerOnlineQuesterEditor
         }
 
 //*************************** DATA CHECK - missed dialogs, quests, NPC and so on**************************
-
+        //! Заполнение итемов в комбобоксе выбора локации (во вкладке Проверка)
+        void fillLocationsBox()
+        {
+            cbLocation.Sorted = true;
+            cbLocation.DataSource = null;
+            cbLocation.DataSource = dialogs.locationNames;
+        }
         //! Устанавливает надписи в таблице вкладки Проверка для поиска нужны NPC
         void setNPCCheckEnvironment()
         {
@@ -2211,21 +2208,22 @@ namespace StalkerOnlineQuesterEditor
         {
             int count = 0;
             string locale = settings.getCurrentLocale();
-            string text = tbPhraseToSearch.Text;
+            string textToFind = tbPhraseToSearch.Text;
             string rusText = "";
             string engText = "";
             string npcName;
             bool found = false;
             dgvSearch.Rows.Clear();
+            StringComparison compare = (cbIgnoreCase.Checked) ? (StringComparison.OrdinalIgnoreCase) : (StringComparison.Ordinal);
             foreach (CQuest quest in quests.quest.Values)
             {
-                if (quest.QuestInformation.Title.Contains(text))
+                if (quest.QuestInformation.Title.IndexOf(textToFind, compare) != -1)
                 {
                     rusText = quest.QuestInformation.Title;
                     engText = quests.locales[locale][quest.QuestID].QuestInformation.Title;
                     found = true;
                 }
-                else if (quest.QuestInformation.Description.Contains(text))
+                else if (quest.QuestInformation.Description.IndexOf(textToFind, compare) != -1)
                 {
                     rusText = quest.QuestInformation.Description;
                     engText = quests.locales[locale][quest.QuestID].QuestInformation.Description;
@@ -2240,6 +2238,31 @@ namespace StalkerOnlineQuesterEditor
                     found = false;
                 }
             }
+
+            found = false;
+            foreach (string Npc in dialogs.dialogs.Keys)
+                foreach (CDialog dialog in dialogs.dialogs[Npc].Values)
+                {
+                    if (dialog.Text.IndexOf(textToFind, compare) != -1)
+                    {
+                        rusText = dialog.Text;
+                        engText = dialogs.locales[locale][Npc][dialog.DialogID].Text;
+                        found = true;
+                    }
+                    else if (dialog.Title.IndexOf(textToFind, compare) != -1)
+                    {
+                        rusText = dialog.Title;
+                        engText = dialogs.locales[locale][Npc][dialog.DialogID].Title;
+                        found = true;
+                    }
+                    if (found)
+                    {
+                        count++;
+                        object[] row = { "Диалог", Npc, dialog.DialogID, rusText, engText };
+                        dgvSearch.Rows.Add(row);
+                        found = false;
+                    }
+                }
             lSearchResult.Text = "Найдено: " + count.ToString();
         }
 

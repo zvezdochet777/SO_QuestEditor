@@ -177,6 +177,7 @@ namespace StalkerOnlineQuesterEditor
             this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.cbIgnoreCase = new System.Windows.Forms.CheckBox();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -1483,6 +1484,7 @@ namespace StalkerOnlineQuesterEditor
             // panelSearchTools
             // 
             this.panelSearchTools.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSearchTools.Controls.Add(this.cbIgnoreCase);
             this.panelSearchTools.Controls.Add(this.lSearchResult);
             this.panelSearchTools.Controls.Add(this.lPhraseToSearch);
             this.panelSearchTools.Controls.Add(this.tbPhraseToSearch);
@@ -1663,6 +1665,18 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.SizingGrip = false;
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
+            // 
+            // cbIgnoreCase
+            // 
+            this.cbIgnoreCase.AutoSize = true;
+            this.cbIgnoreCase.Checked = true;
+            this.cbIgnoreCase.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbIgnoreCase.Location = new System.Drawing.Point(556, 7);
+            this.cbIgnoreCase.Name = "cbIgnoreCase";
+            this.cbIgnoreCase.Size = new System.Drawing.Size(138, 17);
+            this.cbIgnoreCase.TabIndex = 4;
+            this.cbIgnoreCase.Text = "Не учитывать регистр";
+            this.cbIgnoreCase.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1884,6 +1898,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colText;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEngText;
+        private System.Windows.Forms.CheckBox cbIgnoreCase;
 
 
     }
