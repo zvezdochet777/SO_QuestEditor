@@ -2036,6 +2036,7 @@ namespace StalkerOnlineQuesterEditor
             //синхронизация диалогов
             string loc = settings.getCurrentLocale();
             int added = 0;
+            int copied = 0;
             foreach (string npc in dialogs.dialogs.Keys)
             {
                 if (!dialogs.locales[loc].ContainsKey(npc))
@@ -2073,7 +2074,23 @@ namespace StalkerOnlineQuesterEditor
                         added++;
                     }
                     else
+                    {
                         dialogs.locales[loc][npc][dialogID] = eng;
+
+                        // копирование русских строчек вместо пустых
+                        if (rus.Title.Length > 0 && eng.Title.Length == 0)
+                        {
+                            eng.Title = rus.Title;
+                            eng.version = rus.version - 1;
+                            copied++;
+                        }
+                        if (rus.Text.Length > 0 && eng.Text.Length == 0)
+                        {
+                            eng.Text = rus.Text;
+                            eng.version = rus.version - 1;
+                            copied++;
+                        }
+                    }
 
                 }                
             }
@@ -2099,7 +2116,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (string npc in del.Keys)
                 dialogs.locales[loc].Remove(npc);
 
-            labelXNode.Text = "D added = " + added.ToString() + " del = " + garb.ToString();
+            labelXNode.Text = "D added = " + added.ToString() + " del = " + garb.ToString() + " copy " + copied.ToString();
             
             // синхронизация квестов            
             int empty = 0;

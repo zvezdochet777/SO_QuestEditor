@@ -31,7 +31,7 @@ namespace StalkerOnlineQuesterEditor.Forms
 
             if (localeDialog != null)
             {
-                if (localeDialog.Text != dialog.Text)
+                if (localeDialog.Text != dialog.Text || localeDialog.Title != dialog.Title)
                 {
                     textBoxNPCReactionLocale.Text = localeDialog.Text;
                     textBoxAnswerLocale.Text = localeDialog.Title;

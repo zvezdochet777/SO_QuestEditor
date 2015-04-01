@@ -47,14 +47,16 @@
             this.lNpcReaction = new System.Windows.Forms.Label();
             this.lViewNpcName = new System.Windows.Forms.Label();
             this.panelButtons = new System.Windows.Forms.Panel();
+            this.cbNotFinal = new System.Windows.Forms.CheckBox();
             this.bCancel = new System.Windows.Forms.Button();
             this.bOk = new System.Windows.Forms.Button();
-            this.cbNotFinal = new System.Windows.Forms.CheckBox();
             this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panelLabels2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -261,6 +263,16 @@
             this.panelButtons.Size = new System.Drawing.Size(663, 52);
             this.panelButtons.TabIndex = 2;
             // 
+            // cbNotFinal
+            // 
+            this.cbNotFinal.AutoSize = true;
+            this.cbNotFinal.Location = new System.Drawing.Point(278, 16);
+            this.cbNotFinal.Name = "cbNotFinal";
+            this.cbNotFinal.Size = new System.Drawing.Size(164, 17);
+            this.cbNotFinal.TabIndex = 2;
+            this.cbNotFinal.Text = "Предварительный перевод";
+            this.cbNotFinal.UseVisualStyleBackColor = true;
+            // 
             // bCancel
             // 
             this.bCancel.Location = new System.Drawing.Point(542, 12);
@@ -281,16 +293,6 @@
             this.bOk.UseVisualStyleBackColor = true;
             this.bOk.Click += new System.EventHandler(this.bOk_Click);
             // 
-            // cbNotFinal
-            // 
-            this.cbNotFinal.AutoSize = true;
-            this.cbNotFinal.Location = new System.Drawing.Point(278, 16);
-            this.cbNotFinal.Name = "cbNotFinal";
-            this.cbNotFinal.Size = new System.Drawing.Size(164, 17);
-            this.cbNotFinal.TabIndex = 2;
-            this.cbNotFinal.Text = "Предварительный перевод";
-            this.cbNotFinal.UseVisualStyleBackColor = true;
-            // 
             // LocaleDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,6 +309,7 @@
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panelLabels2.ResumeLayout(false);
             this.panelLabels2.PerformLayout();
@@ -314,6 +317,7 @@
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.panelButtons.ResumeLayout(false);
             this.panelButtons.PerformLayout();
