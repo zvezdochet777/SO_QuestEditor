@@ -856,7 +856,7 @@ namespace StalkerOnlineQuesterEditor
         {
             int iFirstQuestID = 1 + this.settings.getOperatorNumber() * 400;
             for (int questi = iFirstQuestID; ; questi++)
-                if (!quests.quest.Keys.Contains(questi) && !quests.buffer.Keys.Contains(questi))
+                if (!quests.quest.Keys.Contains(questi) && !quests.m_Buffer.Keys.Contains(questi))
                     return questi;
         }
 
@@ -864,7 +864,7 @@ namespace StalkerOnlineQuesterEditor
         {
             int iFirstQuestID = 1 + this.settings.getOperatorNumber() * 400;
             for (int questi = iFirstQuestID; ; questi++)
-                if (!quests.quest.Keys.Contains(questi) && !quests.buffer.Keys.Contains(questi) && !iLists.Contains(questi))
+                if (!quests.quest.Keys.Contains(questi) && !quests.m_Buffer.Keys.Contains(questi) && !iLists.Contains(questi))
                     return questi;
         }
         //! Создает новый корневой квест у персонажа (не подквест, а именно новый)
@@ -1262,20 +1262,6 @@ namespace StalkerOnlineQuesterEditor
 
 //*************************************************BUFFER'S WORK*******************
 
-        //private List<CQuest> getQuestsOnID(int questID)
-        //{
-        //    List<CQuest> ret = new List<CQuest>();
-        //    CQuest quest = getQuestOnQuestID(questID);
-        //    if (quest != null)
-        //    {
-        //        ret.Add(quest);
-        //        if (quest.Additional.ListOfSubQuest.Any())
-        //            foreach (int subquestID in quest.Additional.ListOfSubQuest)
-        //                ret.AddRange(getQuestsOnID(subquestID));
-        //    }
-        //    return ret;
-        //}
-
         //! Возвращает список субквестов для данного мастер квеста с questID
         private List<CQuest> selectQuestsOnID(int questID)
         {
@@ -1321,8 +1307,7 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие на кнопку "Копировать" квесты в буфер обмена
         private void bCopyEvents_Click(object sender, EventArgs e)
         {
-            quests.buffer.Clear();
-
+            /*
             List<CQuest> buffer = new List<CQuest>(selectQuestsOnID(currentQuest));
 
             buffer[0].Additional.IsSubQuest = 0;
@@ -1334,6 +1319,10 @@ namespace StalkerOnlineQuesterEditor
             addNodeOnTreeBuffer(buffer[0].QuestID);
             quests.bufferTop = buffer[0].QuestID;
             cut_quest_mode = false;
+            */
+            quests.PutQuestsToBuffer(currentQuest, false);
+            treeQuestBuffer.Nodes.Clear();
+            addNodeOnTreeBuffer(quests.m_Buffer.First().Value.QuestID);
         }
 
         //! Режим "вырезать" для буфера обмена - не меняет ID квестов при манипуляциях
@@ -1342,8 +1331,7 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие на кнопку "Вырезать" квесты и поместить их в буфер обмена квестов
         private void bCutEvents_Click(object sender, EventArgs e)
         {
-            quests.buffer.Clear();
-
+            /*
             List<CQuest> buffer = new List<CQuest>(selectQuestsOnID(currentQuest));
 
             removeQuest(currentQuest, false);
@@ -1356,6 +1344,10 @@ namespace StalkerOnlineQuesterEditor
             addNodeOnTreeBuffer(buffer[0].QuestID);
             quests.bufferTop = buffer[0].QuestID;
             cut_quest_mode = true;
+             * */
+            quests.PutQuestsToBuffer(currentQuest, true);
+            treeQuestBuffer.Nodes.Clear();
+            addNodeOnTreeBuffer(quests.m_Buffer.First().Value.QuestID);
         }
 
         private void treeQuest_Leave(object sender, EventArgs e)
@@ -1372,7 +1364,7 @@ namespace StalkerOnlineQuesterEditor
             //System.Console.WriteLine("currentQuest:" + currentQuest.ToString());
 
             bCopyEvents.Enabled = true;
-            if (this.quests.buffer.Any())
+            if (this.quests.m_Buffer.Any())
             {
                 bPasteEvents.Enabled = true;
             }
@@ -1453,7 +1445,7 @@ namespace StalkerOnlineQuesterEditor
             catch
             {
             }
-            if (quests.buffer.Any())
+            if (quests.m_Buffer.Any())
                 bPasteEvents.Enabled = true;
         }
 
@@ -1481,6 +1473,7 @@ namespace StalkerOnlineQuesterEditor
         private void pasteBuffer()
         {
             //System.Console.WriteLine("MainForm::pasteBuffer");
+            /*
             var quest = getQuestOnQuestID(currentQuest);
             List<CQuest> buffer = selectQuestsOnID(quests.bufferTop);
             if ( !cut_quest_mode )
@@ -1492,17 +1485,22 @@ namespace StalkerOnlineQuesterEditor
                 bufQuest.Additional.Holder = quest.Additional.Holder;
                 quests.addQuest(bufQuest);
             }
+
+             * */
+            quests.PasteBuffer(currentQuest);
             var rootID = quests.getRoot(currentQuest);
             treeQuest.Nodes.Clear();
             addNodeOnTreeQuest(rootID);
             treeQuest.ExpandAll();
-            if (cut_quest_mode)
+
+            if (quests.CutQuests)
                 clearQuestsBuffer();
         }
 
         //! Заменяет выделенный квест на квесты из буфера обмена
         private void replaceBuffer()
         {
+            /*
             var quest = getQuestOnQuestID(currentQuest);
             List<CQuest> buffer = selectQuestsOnID(quests.bufferTop);
             if ( !cut_quest_mode )
@@ -1543,9 +1541,16 @@ namespace StalkerOnlineQuesterEditor
                 treeQuest.Nodes.Clear();
                 addNodeOnTreeQuest(root);
             }
+             * */
+            var quest = getQuestOnQuestID(currentQuest);
+            var parentID = quest.Additional.IsSubQuest;
+            quests.ReplaceBuffer(currentQuest);
+            var root = quests.getRoot(parentID);
+            treeQuest.Nodes.Clear();
+            addNodeOnTreeQuest(root);
 
             treeQuest.ExpandAll();
-            if (cut_quest_mode)
+            if (quests.CutQuests)
                 clearQuestsBuffer();
         }
 
@@ -1564,7 +1569,8 @@ namespace StalkerOnlineQuesterEditor
         //! Очищает буфер обмена квестов
         public void clearQuestsBuffer()
         {
-            quests.buffer.Clear();
+            quests.m_Buffer.Clear();
+            quests.m_EngBuffer.Clear();
             treeQuestBuffer.Nodes.Clear();
             quests.bufferTop = 0;
             bPasteEvents.Enabled = false;

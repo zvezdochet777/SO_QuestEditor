@@ -159,6 +159,7 @@ namespace StalkerOnlineQuesterEditor
             this.colText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEngText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSearchTools = new System.Windows.Forms.Panel();
+            this.cbIgnoreCase = new System.Windows.Forms.CheckBox();
             this.lSearchResult = new System.Windows.Forms.Label();
             this.lPhraseToSearch = new System.Windows.Forms.Label();
             this.tbPhraseToSearch = new System.Windows.Forms.TextBox();
@@ -177,7 +178,6 @@ namespace StalkerOnlineQuesterEditor
             this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
-            this.cbIgnoreCase = new System.Windows.Forms.CheckBox();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -1495,6 +1495,18 @@ namespace StalkerOnlineQuesterEditor
             this.panelSearchTools.Size = new System.Drawing.Size(900, 59);
             this.panelSearchTools.TabIndex = 0;
             // 
+            // cbIgnoreCase
+            // 
+            this.cbIgnoreCase.AutoSize = true;
+            this.cbIgnoreCase.Checked = true;
+            this.cbIgnoreCase.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbIgnoreCase.Location = new System.Drawing.Point(556, 7);
+            this.cbIgnoreCase.Name = "cbIgnoreCase";
+            this.cbIgnoreCase.Size = new System.Drawing.Size(138, 17);
+            this.cbIgnoreCase.TabIndex = 4;
+            this.cbIgnoreCase.Text = "Не учитывать регистр";
+            this.cbIgnoreCase.UseVisualStyleBackColor = true;
+            // 
             // lSearchResult
             // 
             this.lSearchResult.AutoSize = true;
@@ -1665,18 +1677,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusDialogStrip.SizingGrip = false;
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
-            // 
-            // cbIgnoreCase
-            // 
-            this.cbIgnoreCase.AutoSize = true;
-            this.cbIgnoreCase.Checked = true;
-            this.cbIgnoreCase.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbIgnoreCase.Location = new System.Drawing.Point(556, 7);
-            this.cbIgnoreCase.Name = "cbIgnoreCase";
-            this.cbIgnoreCase.Size = new System.Drawing.Size(138, 17);
-            this.cbIgnoreCase.TabIndex = 4;
-            this.cbIgnoreCase.Text = "Не учитывать регистр";
-            this.cbIgnoreCase.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

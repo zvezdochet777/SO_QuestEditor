@@ -30,12 +30,14 @@ namespace StalkerOnlineQuesterEditor
         //! Словарь <QuestID, CQuest> - основной, содержащий все квесты
         public NPCQuestDict quest;
         public QuestLocales locales = new QuestLocales();
-        public NPCQuestDict buffer = new NPCQuestDict();
+        public NPCQuestDict m_Buffer = new NPCQuestDict();
+        public NPCQuestDict m_EngBuffer = new NPCQuestDict();
 
         XDocument doc = new XDocument();
         MainForm parent;
 
         public int bufferTop = 0;
+        public bool CutQuests = false;
 
         //! Конструктор, заполняет словарь quest, парсит файлы
         public CQuests(MainForm form)
@@ -556,8 +558,18 @@ namespace StalkerOnlineQuesterEditor
         {
             if (quest.Keys.Contains(questID))
                 return quest[questID];
-            else if (buffer.Keys.Contains(questID))
-                return buffer[questID];
+            else if (m_Buffer.Keys.Contains(questID))
+                return m_Buffer[questID];
+            else return null;
+        }
+
+        //! Возвращает экземпляр класса CQuest с указанным ID
+        public CQuest getQuestFromLocale(int questID, String locale)
+        {
+            if (locales.ContainsKey(locale) && locales[locale].ContainsKey(questID))
+                return locales[locale][questID];
+            else if (m_EngBuffer.Keys.Contains(questID))
+                return m_EngBuffer[questID];
             else return null;
         }
 
@@ -625,37 +637,14 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int subQuestID in curQuest.Additional.ListOfSubQuest)
                     setClan(subQuestID, IsClan);
         }
-        /*
-        public string getRootTitle(int questID)
-        {
-            string ret = "";
-            CQuest quest = getQuest(questID);
-            
-            if (quest != null)
-            {
-                if (!quest.Additional.IsSubQuest.Equals(0))
-                    ret += getRootTitle(quest.Additional.IsSubQuest);
-                else
-                    ret += quest.QuestInformation.Title;
-            }
-            return ret;
-        }
-        */
-
-        public void setBuffer(List<CQuest> quests)
-        {
-            buffer.Clear();
-            foreach (CQuest quest in quests)
-                buffer.Add(quest.QuestID, quest);            
-        }
 
         public void replaceQuest(CQuest iQuest)
         {
             var questID = iQuest.QuestID;
             if (quest.Keys.Contains(questID))
                 quest[questID] = iQuest;
-            else if (buffer.Keys.Contains(questID))
-                buffer[questID] = iQuest;
+            else if (m_Buffer.Keys.Contains(questID))
+                m_Buffer[questID] = iQuest;
         }
 
         public void addQuest(CQuest iQuest)
@@ -667,8 +656,8 @@ namespace StalkerOnlineQuesterEditor
         {
             if (quest.Keys.Contains(questID))
                 quest.Remove(questID);
-            else if (buffer.Keys.Contains(questID))
-                buffer.Remove(questID);
+            else if (m_Buffer.Keys.Contains(questID))
+                m_Buffer.Remove(questID);
         }
 
         public void removeQuestWithSubs(int questID)
@@ -679,12 +668,38 @@ namespace StalkerOnlineQuesterEditor
             removeQuest(questID);
         }
 
+        //! Удаляет квест и  все его подквесты
+        void removeQuestsWithLocals(int questID, bool recursiveCall)
+        {
+            List<int> temp = getQuest(questID).Additional.ListOfSubQuest;
+            foreach (int subquest in temp) //getQuestOnQuestID(questID).Additional.ListOfSubQuest)
+                removeQuestsWithLocals(subquest, true);
+
+            if (!recursiveCall)
+                if (getQuest(questID).Additional.IsSubQuest != 0)
+                    quest[getQuest(questID).Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
+
+            //removeQuestWithSubs(questID);
+
+            // удаляем квест из локализаций
+            CQuest english = locales["ENG"][questID];
+            foreach (int subquest in english.Additional.ListOfSubQuest)
+                removeQuestsWithLocals(subquest, true);
+            if (english.Additional.IsSubQuest != 0)
+                locales["ENG"][english.Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
+            locales["ENG"].Remove(questID);
+
+            //treeQuest.Nodes.Find(questID.ToString(), true)[0].Remove();
+            quest.Remove(questID);
+        }
+
         public int getRoot(int questID)
         {
-            var quest = getQuest(questID);
+            CQuest quest = getQuest(questID);
             if (quest.Additional.IsSubQuest == 0)
                 return questID;
-            else return getRoot(quest.Additional.IsSubQuest);
+            else 
+                return getRoot(quest.Additional.IsSubQuest);
         }
 
         public void setTutorial(int questID, bool isTutor)
@@ -833,6 +848,214 @@ namespace StalkerOnlineQuesterEditor
             }
             */
             return ret;
+        }
+
+        public void PutQuestsToBuffer(int questID, bool cutQuests)
+        {
+            List<CQuest> result = GetQuestWithSubs(questID);
+            List<CQuest> engResult = GetLocalizedQuestWithSubs(questID);
+            CutQuests = cutQuests;
+            if(cutQuests)
+                removeQuestsWithLocals(questID, false);
+
+            result[0].Additional.IsSubQuest = 0;
+            engResult[0].Additional.IsSubQuest = 0; 
+            foreach (CQuest quest in result)
+                quest.Additional.Holder = "";
+            foreach (CQuest quest in engResult)
+                quest.Additional.Holder = "";
+
+            if (!cutQuests)
+                ChangeQuestsIDs(result, engResult);
+
+            setBuffer(result, m_Buffer);
+            setBuffer(engResult, m_EngBuffer); 
+            bufferTop = result[0].QuestID;
+        }
+        //! Возвращает список всех подквестов для квеста questID
+        public List<CQuest> GetQuestWithSubs(int questID)
+        {
+            List<CQuest> result = new List<CQuest>();
+            CQuest quest = getQuest(questID);
+            if (quest != null)
+            {
+                result.Add((CQuest)quest.Clone());
+                if (quest.Additional.ListOfSubQuest.Any())
+                    foreach (int subquestID in quest.Additional.ListOfSubQuest)
+                        result.AddRange(GetQuestWithSubs(subquestID));
+            }
+            return result;
+        }
+
+        //! Возвращает список всех переведенных подквестов для квеста questID
+        public List<CQuest> GetLocalizedQuestWithSubs(int questID)
+        {
+            List<CQuest> result = new List<CQuest>();
+            CQuest quest = locales["ENG"][questID];
+            if (quest != null)
+            {
+                result.Add((CQuest)quest.Clone());
+                if (quest.Additional.ListOfSubQuest.Any())
+                    foreach (int subquestID in quest.Additional.ListOfSubQuest)
+                        result.AddRange(GetLocalizedQuestWithSubs(subquestID));
+            }
+            return result;
+        }
+
+        //! Заменяет ID квестов в буфере на новые
+        public List<CQuest> ChangeQuestsIDs(List<CQuest> quests, List<CQuest> engQuests)
+        {
+            Dictionary<int, int> replace = new Dictionary<int, int>();
+            foreach (CQuest quest in quests)
+            {
+                List<int> excepts = replace.Values.ToList();
+                excepts.AddRange(replace.Keys.ToList());
+
+                replace.Add(quest.QuestID, getQuestNewID(excepts));
+                quest.QuestID = replace[quest.QuestID];               
+            }
+            foreach (CQuest quest in quests)
+            {
+                if (replace.Keys.Contains(quest.Additional.IsSubQuest))
+                    quest.Additional.IsSubQuest = replace[quest.Additional.IsSubQuest];
+
+                List<int> newSubQuestIDs = new List<int>();
+                foreach (int subqID in quest.Additional.ListOfSubQuest)
+                    newSubQuestIDs.Add(replace[subqID]);
+
+                quest.Additional.ListOfSubQuest = newSubQuestIDs;
+            }
+
+            foreach (CQuest engQuest in engQuests)
+            {
+                engQuest.QuestID = replace[engQuest.QuestID];
+                if (replace.Keys.Contains(engQuest.Additional.IsSubQuest))
+                    engQuest.Additional.IsSubQuest = replace[engQuest.Additional.IsSubQuest];
+
+                List<int> newSubQuestIDs = new List<int>();
+                foreach (int subqID in engQuest.Additional.ListOfSubQuest)
+                    newSubQuestIDs.Add(replace[subqID]);
+
+                engQuest.Additional.ListOfSubQuest = newSubQuestIDs;
+            }
+
+            return quests;
+        }
+
+        //! Возвращает ID для нового квеста без учета списка excepts 
+        private int getQuestNewID(List<int> exceptsList)
+        {
+            int iFirstQuestID = 1;
+            for (int questi = iFirstQuestID; ; questi++)
+                if (!quest.Keys.Contains(questi) && !m_Buffer.Keys.Contains(questi) && !exceptsList.Contains(questi))
+                    return questi;
+        }
+        //! Сохраняет квесты quests в буфер обмена destination
+        public void setBuffer(List<CQuest> quests, NPCQuestDict destination)
+        {
+            destination.Clear();
+            foreach (CQuest quest in quests)
+                destination.Add(quest.QuestID, quest);
+        }
+
+        //! Вставляет квесты из буфера обмена как подквест 
+        public void PasteBuffer(int CurrentQuestID)
+        {
+            CQuest HeadQuest = getQuest(CurrentQuestID);
+            List<CQuest> buffer = m_Buffer.Values.ToList();
+            List<CQuest> engBuffer = m_EngBuffer.Values.ToList();
+            
+            if (!CutQuests)
+                buffer = ChangeQuestsIDs(buffer, engBuffer);
+            
+            HeadQuest.Additional.ListOfSubQuest.Add(buffer[0].QuestID);
+            buffer[0].Additional.IsSubQuest = HeadQuest.QuestID;
+            foreach (CQuest bufQuest in buffer)
+            {
+                bufQuest.Additional.Holder = HeadQuest.Additional.Holder;
+                addQuest(bufQuest);
+            }
+
+            CQuest HeadEnglish = locales["ENG"][CurrentQuestID];
+            HeadEnglish.Additional.ListOfSubQuest.Add(engBuffer[0].QuestID);
+            engBuffer[0].Additional.IsSubQuest = HeadEnglish.QuestID;
+            foreach (CQuest engQuest in engBuffer)
+            {
+                engQuest.Additional.Holder = HeadEnglish.Additional.Holder;
+                locales["ENG"].Add(engQuest.QuestID, engQuest);
+            }
+            //if (cut_quest_mode)
+             //   clearQuestsBuffer();
+        }
+
+        public void ReplaceBuffer(int CurrentQuestID)
+        {
+            CQuest HeadQuest = getQuest(CurrentQuestID);
+            CQuest HeadEnglish = getQuestFromLocale(CurrentQuestID, "ENG");
+            List<CQuest> buffer = m_Buffer.Values.ToList();
+            List<CQuest> engBuffer = m_EngBuffer.Values.ToList();
+            if (!CutQuests)
+                buffer = ChangeQuestsIDs(buffer, engBuffer);
+
+            String name = HeadQuest.Additional.Holder;
+            int questID = HeadQuest.QuestID;
+            int parentID = HeadQuest.Additional.IsSubQuest;
+            CQuest parentQuest = getQuest(parentID);
+            CQuest parentEngQuest = getQuestFromLocale(parentID, "ENG");
+            int index = parentQuest.Additional.ListOfSubQuest.IndexOf(questID);
+            int engIndex = parentEngQuest.Additional.ListOfSubQuest.IndexOf(questID);
+            //removeQuestWithSubs(questID);
+            removeQuestsWithLocals(questID, false);
+
+            if (HeadQuest.Additional.IsSubQuest == 0)
+            {
+                buffer[0].QuestID = questID;
+                foreach (var subQuest in buffer)
+                {
+                    if (buffer[0].Additional.ListOfSubQuest.Contains(subQuest.QuestID))
+                        subQuest.Additional.IsSubQuest = questID;
+                    subQuest.Additional.Holder = name;
+                    addQuest(subQuest);
+                }
+            }
+            else
+            {
+                parentQuest.Additional.ListOfSubQuest.Remove(questID);
+                parentQuest.Additional.ListOfSubQuest.Insert(index, buffer[0].QuestID);
+                buffer[0].Additional.IsSubQuest = parentID;
+                foreach (var subQuest in buffer)
+                {
+                    subQuest.Additional.Holder = name;
+                    addQuest(subQuest);
+                }
+            }
+
+            // копируем и вставляем локализации
+            if (HeadEnglish.Additional.IsSubQuest == 0)
+            {
+                engBuffer[0].QuestID = questID;
+                foreach (var subQuest in engBuffer)
+                {
+                    if (engBuffer[0].Additional.ListOfSubQuest.Contains(subQuest.QuestID))
+                        subQuest.Additional.IsSubQuest = questID;
+                    subQuest.Additional.Holder = name;
+                    locales["ENG"].Add(subQuest.QuestID, subQuest);                    
+                }
+            }
+            else
+            {
+                parentEngQuest.Additional.ListOfSubQuest.Remove(questID);
+                parentEngQuest.Additional.ListOfSubQuest.Insert(engIndex, engBuffer[0].QuestID);
+                engBuffer[0].Additional.IsSubQuest = parentID;
+                foreach (var subQuest in engBuffer)
+                {
+                    subQuest.Additional.Holder = name;
+                    locales["ENG"].Add(subQuest.QuestID, subQuest);
+                }
+            }
+
+            //if (cut_quest_mode)
+             //   clearQuestsBuffer();
         }
     }
 }
