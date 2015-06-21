@@ -132,7 +132,6 @@
     <Compile Include="Forms\LocaleQuestForm.Designer.cs">
       <DependentUpon>LocaleQuestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IOClasses\CBalance.cs" />
     <Compile Include="ResourceClasses\CEffectConstants.cs" />
     <Compile Include="ResourceClasses\CFracConstants.cs" />
     <Compile Include="ResourceClasses\CGUIConst.cs" />

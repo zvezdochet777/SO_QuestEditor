@@ -138,19 +138,6 @@ namespace StalkerOnlineQuesterEditor
             this.OutdatedCheckBox = new System.Windows.Forms.CheckBox();
             this.bFindQuestDifference = new System.Windows.Forms.Button();
             this.bFindDialogDifference = new System.Windows.Forms.Button();
-            this.tabBalance = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.bSaveBalance = new System.Windows.Forms.Button();
-            this.balanceTabControl = new System.Windows.Forms.TabControl();
-            this.fractionsBalanceTabPage = new System.Windows.Forms.TabPage();
-            this.dgvFractionBalance = new System.Windows.Forms.DataGridView();
-            this.fraction_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fraction_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.penalty_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.limit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cat_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cat_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cat_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSearch = new System.Windows.Forms.TabPage();
             this.dgvSearch = new System.Windows.Forms.DataGridView();
             this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -213,11 +200,6 @@ namespace StalkerOnlineQuesterEditor
             this.tabTranslate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocaleDiff)).BeginInit();
             this.panelDiffLocale.SuspendLayout();
-            this.tabBalance.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.balanceTabControl.SuspendLayout();
-            this.fractionsBalanceTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFractionBalance)).BeginInit();
             this.tabSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).BeginInit();
             this.panelSearchTools.SuspendLayout();
@@ -269,7 +251,6 @@ namespace StalkerOnlineQuesterEditor
             this.CentralDock.Controls.Add(this.tabReview);
             this.CentralDock.Controls.Add(this.tabManage);
             this.CentralDock.Controls.Add(this.tabTranslate);
-            this.CentralDock.Controls.Add(this.tabBalance);
             this.CentralDock.Controls.Add(this.tabSearch);
             this.CentralDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CentralDock.HotTrack = true;
@@ -1315,115 +1296,6 @@ namespace StalkerOnlineQuesterEditor
             this.bFindDialogDifference.UseVisualStyleBackColor = true;
             this.bFindDialogDifference.Click += new System.EventHandler(this.bFindDialogDifference_Click);
             // 
-            // tabBalance
-            // 
-            this.tabBalance.Controls.Add(this.panel3);
-            this.tabBalance.Controls.Add(this.balanceTabControl);
-            this.tabBalance.Location = new System.Drawing.Point(4, 22);
-            this.tabBalance.Name = "tabBalance";
-            this.tabBalance.Size = new System.Drawing.Size(906, 540);
-            this.tabBalance.TabIndex = 6;
-            this.tabBalance.Text = "Баланс";
-            this.tabBalance.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.bSaveBalance);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 514);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(906, 26);
-            this.panel3.TabIndex = 2;
-            // 
-            // bSaveBalance
-            // 
-            this.bSaveBalance.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bSaveBalance.Location = new System.Drawing.Point(831, 0);
-            this.bSaveBalance.Name = "bSaveBalance";
-            this.bSaveBalance.Size = new System.Drawing.Size(75, 26);
-            this.bSaveBalance.TabIndex = 0;
-            this.bSaveBalance.Text = "Сохранить";
-            this.bSaveBalance.UseVisualStyleBackColor = true;
-            this.bSaveBalance.Click += new System.EventHandler(this.bSaveBalance_Click);
-            // 
-            // balanceTabControl
-            // 
-            this.balanceTabControl.Controls.Add(this.fractionsBalanceTabPage);
-            this.balanceTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.balanceTabControl.Location = new System.Drawing.Point(0, 0);
-            this.balanceTabControl.Name = "balanceTabControl";
-            this.balanceTabControl.SelectedIndex = 0;
-            this.balanceTabControl.Size = new System.Drawing.Size(906, 540);
-            this.balanceTabControl.TabIndex = 0;
-            // 
-            // fractionsBalanceTabPage
-            // 
-            this.fractionsBalanceTabPage.Controls.Add(this.dgvFractionBalance);
-            this.fractionsBalanceTabPage.Location = new System.Drawing.Point(4, 22);
-            this.fractionsBalanceTabPage.Name = "fractionsBalanceTabPage";
-            this.fractionsBalanceTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.fractionsBalanceTabPage.Size = new System.Drawing.Size(898, 514);
-            this.fractionsBalanceTabPage.TabIndex = 0;
-            this.fractionsBalanceTabPage.Text = "Опыт фракций";
-            this.fractionsBalanceTabPage.UseVisualStyleBackColor = true;
-            // 
-            // dgvFractionBalance
-            // 
-            this.dgvFractionBalance.AllowUserToAddRows = false;
-            this.dgvFractionBalance.AllowUserToDeleteRows = false;
-            this.dgvFractionBalance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFractionBalance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fraction_id,
-            this.fraction_name,
-            this.penalty_name,
-            this.limit,
-            this.cat_1,
-            this.cat_2,
-            this.cat_3});
-            this.dgvFractionBalance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvFractionBalance.Location = new System.Drawing.Point(3, 3);
-            this.dgvFractionBalance.Name = "dgvFractionBalance";
-            this.dgvFractionBalance.Size = new System.Drawing.Size(892, 508);
-            this.dgvFractionBalance.TabIndex = 0;
-            // 
-            // fraction_id
-            // 
-            this.fraction_id.HeaderText = "id";
-            this.fraction_id.Name = "fraction_id";
-            this.fraction_id.Visible = false;
-            // 
-            // fraction_name
-            // 
-            this.fraction_name.HeaderText = "Имя фракции";
-            this.fraction_name.Name = "fraction_name";
-            this.fraction_name.ReadOnly = true;
-            // 
-            // penalty_name
-            // 
-            this.penalty_name.HeaderText = "Штрафы/Бонусы к фракциям NPC";
-            this.penalty_name.Name = "penalty_name";
-            this.penalty_name.ReadOnly = true;
-            // 
-            // limit
-            // 
-            this.limit.HeaderText = "Суточный лимит";
-            this.limit.Name = "limit";
-            // 
-            // cat_1
-            // 
-            this.cat_1.HeaderText = "Категория 1";
-            this.cat_1.Name = "cat_1";
-            // 
-            // cat_2
-            // 
-            this.cat_2.HeaderText = "Категория 2";
-            this.cat_2.Name = "cat_2";
-            // 
-            // cat_3
-            // 
-            this.cat_3.HeaderText = "Категория 3";
-            this.cat_3.Name = "cat_3";
-            // 
             // tabSearch
             // 
             this.tabSearch.Controls.Add(this.dgvSearch);
@@ -1730,11 +1602,6 @@ namespace StalkerOnlineQuesterEditor
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocaleDiff)).EndInit();
             this.panelDiffLocale.ResumeLayout(false);
             this.panelDiffLocale.PerformLayout();
-            this.tabBalance.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.balanceTabControl.ResumeLayout(false);
-            this.fractionsBalanceTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFractionBalance)).EndInit();
             this.tabSearch.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).EndInit();
             this.panelSearchTools.ResumeLayout(false);
@@ -1818,19 +1685,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bFindDialogDifference;
         private System.Windows.Forms.DataGridView dgvLocaleDiff;
         private System.Windows.Forms.Button bFindQuestDifference;
-        private System.Windows.Forms.TabPage tabBalance;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button bSaveBalance;
-        private System.Windows.Forms.TabControl balanceTabControl;
-        private System.Windows.Forms.TabPage fractionsBalanceTabPage;
-        private System.Windows.Forms.DataGridView dgvFractionBalance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fraction_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fraction_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn penalty_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn limit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cat_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cat_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cat_3;
         private System.Windows.Forms.CheckBox ActualCheckBox;
         private System.Windows.Forms.CheckBox OutdatedCheckBox;
         private System.Windows.Forms.Button bSaveLocale;

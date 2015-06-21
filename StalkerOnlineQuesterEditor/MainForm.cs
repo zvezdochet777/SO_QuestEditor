@@ -61,7 +61,6 @@ namespace StalkerOnlineQuesterEditor
         public CFracConstants fractions;
         public CGUIConst gui;
         public CEffectConstants effects;
-        public CBalance balances;
         public int currentQuest;
 
         public MainForm()
@@ -85,11 +84,9 @@ namespace StalkerOnlineQuesterEditor
             fractions = new CFracConstants();
             gui = new CGUIConst();
             effects = new CEffectConstants();
-            balances = new CBalance(this);
 
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             //fillNPCBox();
-            fillFractionBalance();
             fillLocationsBox();
             DialogShower.AddInputEventListener(Listener);
 
@@ -1252,7 +1249,6 @@ namespace StalkerOnlineQuesterEditor
             manageNotes.save();
         }
 
-
 //*************************************************BUFFER'S WORK*******************
 
         //! Нажатие на кнопку "Копировать" квесты в буфер обмена
@@ -1581,92 +1577,10 @@ namespace StalkerOnlineQuesterEditor
             labelLocalizeOuput.Text = "Выведено: " + count.ToString();
             labelLocalizeOuput.Update();
         }
-        //! Заполняет раздел Баланс Фракций (пока не изведано)
-        private void fillFractionBalance()
-        {
-            foreach (KeyValuePair<int, string> pair in fractions.getListOfFractions())
-            {
-                int id = pair.Key;
-                string name = pair.Value;
-                string penalty_name = "";
-                double limit = 0;
-                double cat_1 = 0;
-                double cat_2 = 0;
-                double cat_3 = 0;
-                bool has_key = false;
-                CBalanceFractions fract = new CBalanceFractions();
 
-                if (balances.fraction.Keys.Contains(id))
-                {
-                    fract = balances.fraction[id];
-
-                    limit = fract.limit;
-                    cat_1 = fract.cat_1;
-                    cat_2 = fract.cat_2;
-                    cat_3 = fract.cat_3;
-                    has_key = true;
-
-                }
-                object[] row = { id, name, penalty_name, limit, cat_1, cat_2, cat_3 };
-                dgvFractionBalance.Rows.Add(row);
-
-                foreach (KeyValuePair<int, string> penalty_pair in fractions.getListOfFractions())
-                {
-                    int sub_id = penalty_pair.Key;
-                    name = "";
-                    penalty_name = penalty_pair.Value;
-                    cat_1 = 0;
-                    cat_2 = 0;
-                    cat_3 = 0;
-                    if (id != sub_id)
-                    {
-                        if (has_key)
-                        {
-                            if (fract.penalty.Keys.Contains(penalty_pair.Key))
-                            {
-                                cat_1 = fract.penalty[penalty_pair.Key].cat_1;
-                                cat_2 = fract.penalty[penalty_pair.Key].cat_2;
-                                cat_3 = fract.penalty[penalty_pair.Key].cat_3;
-                            }
-                        }
-                        object[] sub_row = { sub_id, name, penalty_name, "", cat_1, cat_2, cat_3 };
-                        dgvFractionBalance.Rows.Add(sub_row);
-                    }
-                }
-            }
-        }
         //! Сохраняет Баланс фракций
         private void bSaveBalance_Click(object sender, EventArgs e)
         {
-            balances.fraction.Clear();
-            int parent_id = 0;
-            foreach (DataGridViewRow row in dgvFractionBalance.Rows)
-            {
-                int id    = int.Parse(row.Cells[0].FormattedValue.ToString());
-                string name         = row.Cells[1].FormattedValue.ToString();
-                string penalty_name = row.Cells[2].FormattedValue.ToString();
-                double limit = 0;
-                if (row.Cells[3].FormattedValue.ToString()!="")
-                    limit = double.Parse(row.Cells[3].FormattedValue.ToString().Replace('.',','));
-                double cat_1 = double.Parse(row.Cells[4].FormattedValue.ToString().Replace('.', ','));
-                double cat_2 = double.Parse(row.Cells[5].FormattedValue.ToString().Replace('.', ','));
-                double cat_3 = double.Parse(row.Cells[6].FormattedValue.ToString().Replace('.', ','));
-
-                if (name != "")
-                {
-                    parent_id = id;
-                    balances.fraction.Add(id, new CBalanceFractions());
-                    balances.fraction[id].limit = limit;
-                    balances.fraction[id].cat_1 = cat_1;
-                    balances.fraction[id].cat_2 = cat_2;
-                    balances.fraction[id].cat_3 = cat_3;
-                }
-                else if (parent_id != 0)
-                {
-                    balances.fraction[parent_id].penalty.Add(id, new CFractionPenalty(cat_1,cat_2,cat_3));
-                }
-            }
-            balances.save();
 
         }
         //! Нажатие на кнопку Отцентрировать - приводит DialogShower к исходному виду
