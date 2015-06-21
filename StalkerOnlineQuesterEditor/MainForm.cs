@@ -860,13 +860,6 @@ namespace StalkerOnlineQuesterEditor
                     return questi;
         }
 
-        public int getQuestNewID(List<int> iLists)
-        {
-            int iFirstQuestID = 1 + this.settings.getOperatorNumber() * 400;
-            for (int questi = iFirstQuestID; ; questi++)
-                if (!quests.quest.Keys.Contains(questi) && !quests.m_Buffer.Keys.Contains(questi) && !iLists.Contains(questi))
-                    return questi;
-        }
         //! Создает новый корневой квест у персонажа (не подквест, а именно новый)
         public void createNewQuest(CQuest newQuest)
         {
@@ -1262,89 +1255,17 @@ namespace StalkerOnlineQuesterEditor
 
 //*************************************************BUFFER'S WORK*******************
 
-        //! Возвращает список субквестов для данного мастер квеста с questID
-        private List<CQuest> selectQuestsOnID(int questID)
-        {
-            List<CQuest> ret = new List<CQuest>();
-            CQuest quest = getQuestOnQuestID(questID);
-            if (quest != null)
-            {
-                ret.Add((CQuest)quest.Clone());
-                if (quest.Additional.ListOfSubQuest.Any())
-                    foreach (int subquestID in quest.Additional.ListOfSubQuest)
-                        ret.AddRange(selectQuestsOnID(subquestID));
-            }
-            return ret;
-        }
-
-        //! Заменяет ID квестов в буфере на новые
-        private List<CQuest> replaceQuestsIDs(List<CQuest> quests)
-        {
-            Dictionary<int, int> replace = new Dictionary<int,int>();
-            foreach (CQuest quest in quests)
-            {
-                List<int> excepts = replace.Values.ToList();
-                excepts.AddRange(replace.Keys.ToList());
-
-                replace.Add(quest.QuestID, getQuestNewID(excepts));
-                quest.QuestID = replace[quest.QuestID];
-            }
-            foreach (CQuest quest in quests)
-            {
-                if (replace.Keys.Contains(quest.Additional.IsSubQuest))
-                    quest.Additional.IsSubQuest = replace[quest.Additional.IsSubQuest];
-
-                List<int> newSubQuestIDs = new List<int>();
-                foreach (int subqID in quest.Additional.ListOfSubQuest)
-                {
-                    newSubQuestIDs.Add(replace[subqID]);
-                }
-                quest.Additional.ListOfSubQuest = newSubQuestIDs;
-            }
-            return quests;
-        }
-
         //! Нажатие на кнопку "Копировать" квесты в буфер обмена
         private void bCopyEvents_Click(object sender, EventArgs e)
         {
-            /*
-            List<CQuest> buffer = new List<CQuest>(selectQuestsOnID(currentQuest));
-
-            buffer[0].Additional.IsSubQuest = 0;
-            foreach (CQuest quest in buffer)
-                quest.Additional.Holder = "";
-            replaceQuestsIDs(buffer);
-            quests.setBuffer(buffer);
-            treeQuestBuffer.Nodes.Clear();
-            addNodeOnTreeBuffer(buffer[0].QuestID);
-            quests.bufferTop = buffer[0].QuestID;
-            cut_quest_mode = false;
-            */
             quests.PutQuestsToBuffer(currentQuest, false);
             treeQuestBuffer.Nodes.Clear();
             addNodeOnTreeBuffer(quests.m_Buffer.First().Value.QuestID);
         }
 
-        //! Режим "вырезать" для буфера обмена - не меняет ID квестов при манипуляциях
-        bool cut_quest_mode;
-
         //! Нажатие на кнопку "Вырезать" квесты и поместить их в буфер обмена квестов
         private void bCutEvents_Click(object sender, EventArgs e)
         {
-            /*
-            List<CQuest> buffer = new List<CQuest>(selectQuestsOnID(currentQuest));
-
-            removeQuest(currentQuest, false);
-
-            buffer[0].Additional.IsSubQuest = 0;
-            foreach (CQuest quest in buffer)
-                quest.Additional.Holder = "";
-            quests.setBuffer(buffer);
-            treeQuestBuffer.Nodes.Clear();
-            addNodeOnTreeBuffer(buffer[0].QuestID);
-            quests.bufferTop = buffer[0].QuestID;
-            cut_quest_mode = true;
-             * */
             quests.PutQuestsToBuffer(currentQuest, true);
             treeQuestBuffer.Nodes.Clear();
             addNodeOnTreeBuffer(quests.m_Buffer.First().Value.QuestID);
@@ -1359,15 +1280,11 @@ namespace StalkerOnlineQuesterEditor
 
         private void treeQuest_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //System.Console.WriteLine("treeQuest_AfterSelect");
             this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
-            //System.Console.WriteLine("currentQuest:" + currentQuest.ToString());
 
             bCopyEvents.Enabled = true;
             if (this.quests.m_Buffer.Any())
-            {
                 bPasteEvents.Enabled = true;
-            }
         }
 
         //! Добавляет узел квеста в дерево буфера квестов
@@ -1472,21 +1389,6 @@ namespace StalkerOnlineQuesterEditor
         //! Вставляет квесты из буфера обмена как подквест 
         private void pasteBuffer()
         {
-            //System.Console.WriteLine("MainForm::pasteBuffer");
-            /*
-            var quest = getQuestOnQuestID(currentQuest);
-            List<CQuest> buffer = selectQuestsOnID(quests.bufferTop);
-            if ( !cut_quest_mode )
-                buffer = replaceQuestsIDs(buffer);
-            quest.Additional.ListOfSubQuest.Add(buffer[0].QuestID);
-            buffer[0].Additional.IsSubQuest = quest.QuestID;
-            foreach (CQuest bufQuest in buffer)
-            {
-                bufQuest.Additional.Holder = quest.Additional.Holder;
-                quests.addQuest(bufQuest);
-            }
-
-             * */
             quests.PasteBuffer(currentQuest);
             var rootID = quests.getRoot(currentQuest);
             treeQuest.Nodes.Clear();
@@ -1500,48 +1402,6 @@ namespace StalkerOnlineQuesterEditor
         //! Заменяет выделенный квест на квесты из буфера обмена
         private void replaceBuffer()
         {
-            /*
-            var quest = getQuestOnQuestID(currentQuest);
-            List<CQuest> buffer = selectQuestsOnID(quests.bufferTop);
-            if ( !cut_quest_mode )
-                buffer = replaceQuestsIDs(buffer);
-            var name = quest.Additional.Holder;
-            var questID = quest.QuestID;
-            var parentID = quest.Additional.IsSubQuest;
-            quests.removeQuestWithSubs(questID);
-
-            if (quest.Additional.IsSubQuest == 0)
-            {
-                buffer[0].QuestID = questID;
-                foreach (var subQuest in buffer)
-                {
-                    if (buffer[0].Additional.ListOfSubQuest.Contains(subQuest.QuestID))
-                    {
-                        subQuest.Additional.IsSubQuest = questID;
-                    }
-                    subQuest.Additional.Holder = name;
-                    quests.addQuest(subQuest);
-                }
-                treeQuest.Nodes.Clear();
-                addNodeOnTreeQuest(questID);
-            }
-            else
-            {
-                var parentQuest = getQuestOnQuestID(parentID);
-                int index = parentQuest.Additional.ListOfSubQuest.IndexOf(questID);
-                parentQuest.Additional.ListOfSubQuest.Remove(questID);
-                parentQuest.Additional.ListOfSubQuest.Insert(index, buffer[0].QuestID);
-                buffer[0].Additional.IsSubQuest = parentID;
-                foreach (var subQuest in buffer)
-                {
-                    subQuest.Additional.Holder = name;
-                    quests.addQuest(subQuest);
-                }
-                var root = quests.getRoot(parentID);
-                treeQuest.Nodes.Clear();
-                addNodeOnTreeQuest(root);
-            }
-             * */
             var quest = getQuestOnQuestID(currentQuest);
             var parentID = quest.Additional.IsSubQuest;
             quests.ReplaceBuffer(currentQuest);

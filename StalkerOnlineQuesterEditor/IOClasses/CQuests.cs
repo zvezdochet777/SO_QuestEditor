@@ -903,7 +903,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Заменяет ID квестов в буфере на новые
-        public List<CQuest> ChangeQuestsIDs(List<CQuest> quests, List<CQuest> engQuests)
+        public void ChangeQuestsIDs(List<CQuest> quests, List<CQuest> engQuests)
         {
             Dictionary<int, int> replace = new Dictionary<int, int>();
             foreach (CQuest quest in quests)
@@ -939,7 +939,7 @@ namespace StalkerOnlineQuesterEditor
                 engQuest.Additional.ListOfSubQuest = newSubQuestIDs;
             }
 
-            return quests;
+            //return quests;
         }
 
         //! Возвращает ID для нового квеста без учета списка excepts 
@@ -962,11 +962,16 @@ namespace StalkerOnlineQuesterEditor
         public void PasteBuffer(int CurrentQuestID)
         {
             CQuest HeadQuest = getQuest(CurrentQuestID);
-            List<CQuest> buffer = m_Buffer.Values.ToList();
-            List<CQuest> engBuffer = m_EngBuffer.Values.ToList();
-            
+            List<CQuest> buffer = new List<CQuest>();
+            foreach (CQuest q in m_Buffer.Values.ToList())
+                buffer.Add((CQuest)q.Clone());
+
+            List<CQuest> engBuffer = new List<CQuest>();
+            foreach (CQuest q in m_EngBuffer.Values.ToList())
+                engBuffer.Add((CQuest)q.Clone());
+
             if (!CutQuests)
-                buffer = ChangeQuestsIDs(buffer, engBuffer);
+                ChangeQuestsIDs(buffer, engBuffer);
             
             HeadQuest.Additional.ListOfSubQuest.Add(buffer[0].QuestID);
             buffer[0].Additional.IsSubQuest = HeadQuest.QuestID;
@@ -992,10 +997,15 @@ namespace StalkerOnlineQuesterEditor
         {
             CQuest HeadQuest = getQuest(CurrentQuestID);
             CQuest HeadEnglish = getQuestFromLocale(CurrentQuestID, "ENG");
-            List<CQuest> buffer = m_Buffer.Values.ToList();
-            List<CQuest> engBuffer = m_EngBuffer.Values.ToList();
+            List<CQuest> buffer = new List<CQuest>();
+            foreach (CQuest q in m_Buffer.Values.ToList())
+                buffer.Add((CQuest)q.Clone());
+            List<CQuest> engBuffer = new List<CQuest>();
+            foreach (CQuest q in m_EngBuffer.Values.ToList())
+                engBuffer.Add((CQuest)q.Clone());
+
             if (!CutQuests)
-                buffer = ChangeQuestsIDs(buffer, engBuffer);
+                ChangeQuestsIDs(buffer, engBuffer);
 
             String name = HeadQuest.Additional.Holder;
             int questID = HeadQuest.QuestID;
