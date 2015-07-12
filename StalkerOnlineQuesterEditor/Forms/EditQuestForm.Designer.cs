@@ -108,6 +108,7 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
+            this.cantCancelCheckBox = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -729,13 +730,18 @@
             this.quantityUpDown.Enabled = false;
             this.quantityUpDown.Location = new System.Drawing.Point(431, 13);
             this.quantityUpDown.Maximum = new decimal(new int[] {
-            1000000,
+            100000000,
             0,
             0,
             0});
             this.quantityUpDown.Name = "quantityUpDown";
-            this.quantityUpDown.Size = new System.Drawing.Size(60, 20);
+            this.quantityUpDown.Size = new System.Drawing.Size(77, 20);
             this.quantityUpDown.TabIndex = 15;
+            this.quantityUpDown.Value = new decimal(new int[] {
+            12345678,
+            0,
+            0,
+            0});
             // 
             // targetComboBox
             // 
@@ -764,6 +770,7 @@
             // questInformationBox
             // 
             this.questInformationBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.questInformationBox.Controls.Add(this.cantCancelCheckBox);
             this.questInformationBox.Controls.Add(this.tutorialCheckBox);
             this.questInformationBox.Controls.Add(this.loseRButton);
             this.questInformationBox.Controls.Add(this.winRButton);
@@ -984,6 +991,16 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
+            // cantCancelCheckBox
+            // 
+            this.cantCancelCheckBox.AutoSize = true;
+            this.cantCancelCheckBox.Location = new System.Drawing.Point(261, 162);
+            this.cantCancelCheckBox.Name = "cantCancelCheckBox";
+            this.cantCancelCheckBox.Size = new System.Drawing.Size(115, 17);
+            this.cantCancelCheckBox.TabIndex = 16;
+            this.cantCancelCheckBox.Text = "Нельзя отменить";
+            this.cantCancelCheckBox.UseVisualStyleBackColor = true;
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1106,5 +1123,6 @@
         private System.Windows.Forms.TextBox tSurvival;
         private System.Windows.Forms.Label lSupportSkills;
         private System.Windows.Forms.Label lSurvivalSkills;
+        private System.Windows.Forms.CheckBox cantCancelCheckBox;
     }
 }

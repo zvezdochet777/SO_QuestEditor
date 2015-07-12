@@ -128,11 +128,7 @@ namespace StalkerOnlineQuesterEditor
                 else
                     target.IsGroup = 0;
 
-                if (!item.Element("Target").Element("IsClan").Value.Equals(""))
-                    target.IsClan = false;
-                else if (!item.Element("Target").Element("IsClan").Value.Equals("0"))
-                    target.IsClan = false;
-                else if (!item.Element("Target").Element("IsClan").Value.Equals("1"))
+                if (item.Element("Target").Element("IsClan").Value.Equals("1"))
                     target.IsClan = true;
                 else
                     target.IsClan = false;
@@ -255,6 +251,13 @@ namespace StalkerOnlineQuesterEditor
                     foreach (string quest in item.Element("Additional").Element("ListOfSubQuest").Value.Split(','))
                         additional.ListOfSubQuest.Add(int.Parse(quest));
 
+                if (item.Element("Additional").Descendants().Any(u => u.Name == "CantCancel"))
+                {
+                    if (item.Element("Additional").Element("CantCancel").Value.Equals(""))
+                        additional.CantCancel = false;
+                    else if (item.Element("Additional").Element("CantCancel").Value.Equals("1"))
+                        additional.CantCancel = true;
+                }
                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Penalty
                 string text_pen_exp = item.Element("Penalty").Element("Expirience").Value;
                 penalty.Experience = 0;
@@ -449,6 +452,7 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("IsSubQuest", getIntAsString(questValue.Additional.IsSubQuest)),
                         new XElement("ListOfSubQuest", getListAsString(questValue.Additional.ListOfSubQuest)),
                         new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()),
+                        new XElement("CantCancel", getBoolAsString( questValue.Additional.CantCancel )),
                         new XElement("Holder",questValue.Additional.Holder))
                    );
                 resultDoc.Root.Add(element);

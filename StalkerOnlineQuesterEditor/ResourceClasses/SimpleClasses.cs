@@ -630,6 +630,7 @@ namespace StalkerOnlineQuesterEditor
         public int IsSubQuest;
         public List<int> ListOfSubQuest;
         public int ShowProgress;
+        public bool CantCancel;
         public string Holder;
 
         public object Clone()
@@ -638,6 +639,7 @@ namespace StalkerOnlineQuesterEditor
             copy.IsSubQuest = this.IsSubQuest;
             copy.ListOfSubQuest = new List<int>(this.ListOfSubQuest);
             copy.ShowProgress = this.ShowProgress;
+            copy.CantCancel = this.CantCancel;
             copy.Holder = this.Holder;
             return copy;
         }
@@ -647,6 +649,7 @@ namespace StalkerOnlineQuesterEditor
             this.IsSubQuest = new int();
             this.ListOfSubQuest = new List<int>();
             this.ShowProgress = new int();
+            this.CantCancel = false;
             this.Holder = "";
         }
 
@@ -655,6 +658,7 @@ namespace StalkerOnlineQuesterEditor
             this.IsSubQuest = new int();
             this.ListOfSubQuest = new List<int>();
             this.ShowProgress = new int();
+            this.CantCancel = false;
             this.Holder = Holder;
         }
     }

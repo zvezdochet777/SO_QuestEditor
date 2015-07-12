@@ -31,7 +31,8 @@ namespace StalkerOnlineQuesterEditor
         barter = 7,
         clan_base = 8,
         go_pvp_area = 9,
-        start_pvp = 10
+        start_pvp = 10,
+        colorize_item = 11
     };
     public partial class MainForm : Form
     {

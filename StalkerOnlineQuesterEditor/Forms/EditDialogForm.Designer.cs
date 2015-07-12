@@ -83,6 +83,7 @@
             this.NPCReactionText = new System.Windows.Forms.Label();
             this.MustPanel = new System.Windows.Forms.Panel();
             this.textGroupBox = new System.Windows.Forms.GroupBox();
+            this.ColorizeItemCheckBox = new System.Windows.Forms.CheckBox();
             this.actionsBox.SuspendLayout();
             this.PreconditionBox.SuspendLayout();
             this.gbClanOptions.SuspendLayout();
@@ -138,6 +139,7 @@
             // 
             // actionsBox
             // 
+            this.actionsBox.Controls.Add(this.ColorizeItemCheckBox);
             this.actionsBox.Controls.Add(this.ToClanBaseCheckBox);
             this.actionsBox.Controls.Add(this.barterCheckBox);
             this.actionsBox.Controls.Add(this.toComplexRepairCheckBox);
@@ -654,6 +656,16 @@
             this.textGroupBox.TabIndex = 15;
             this.textGroupBox.TabStop = false;
             // 
+            // ColorizeItemCheckBox
+            // 
+            this.ColorizeItemCheckBox.AutoSize = true;
+            this.ColorizeItemCheckBox.Location = new System.Drawing.Point(386, 83);
+            this.ColorizeItemCheckBox.Name = "ColorizeItemCheckBox";
+            this.ColorizeItemCheckBox.Size = new System.Drawing.Size(76, 17);
+            this.ColorizeItemCheckBox.TabIndex = 32;
+            this.ColorizeItemCheckBox.Text = "Покраска";
+            this.ColorizeItemCheckBox.UseVisualStyleBackColor = true;
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,5 +753,6 @@
         private System.Windows.Forms.CheckBox cbLonerOnly;
         private System.Windows.Forms.CheckBox cbAnyClanOnly;
         private System.Windows.Forms.CheckBox cbSameClanOnly;
+        private System.Windows.Forms.CheckBox ColorizeItemCheckBox;
     }
 }

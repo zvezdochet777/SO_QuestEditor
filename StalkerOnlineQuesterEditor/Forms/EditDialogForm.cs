@@ -119,6 +119,8 @@ namespace StalkerOnlineQuesterEditor
                     barterCheckBox.Checked = true;
                 else if (curDialog.Actions.Event == (int) DialogEvents.clan_base)
                     ToClanBaseCheckBox.Checked = true;
+                else if (curDialog.Actions.Event == (int)DialogEvents.colorize_item)
+                    ColorizeItemCheckBox.Checked = true;
                 ExitCheckBox.Checked = curDialog.Actions.Exit;
 
                 if (curDialog.Actions.CompleteQuests.Any())
@@ -364,6 +366,8 @@ namespace StalkerOnlineQuesterEditor
                     actions.Event = (int)DialogEvents.barter;
                 else if (ToClanBaseCheckBox.Checked)
                     actions.Event = (int)DialogEvents.clan_base;
+                else if (ColorizeItemCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.colorize_item;
 
                 if (GetQuestsCheckBox.Checked)
                     foreach (string quest in GetQuestsTextBox.Text.Split(','))

@@ -471,6 +471,10 @@ namespace StalkerOnlineQuesterEditor
                 addActionTextToEmulator(" Телепорт. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Event == (int)DialogEvents.clan_base)
                 addActionTextToEmulator(" Телепорт на базу. Выход.", choosenDialogID);
+            else if (choosenDialog.Actions.Event == (int)DialogEvents.go_pvp_area)
+                addActionTextToEmulator(" Идти в зону PvP. Выход.", choosenDialogID);
+            else if (choosenDialog.Actions.Event == (int)DialogEvents.colorize_item)
+                addActionTextToEmulator(" Покрасить предмет. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Exit)
                 addActionTextToEmulator(" Выход.", choosenDialogID);
 
