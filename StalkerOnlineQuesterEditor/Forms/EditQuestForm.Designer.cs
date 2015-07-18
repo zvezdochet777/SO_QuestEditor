@@ -88,6 +88,7 @@
             this.targetComboBox = new System.Windows.Forms.ComboBox();
             this.lNameObject = new System.Windows.Forms.Label();
             this.questInformationBox = new System.Windows.Forms.GroupBox();
+            this.cantCancelCheckBox = new System.Windows.Forms.CheckBox();
             this.tutorialCheckBox = new System.Windows.Forms.CheckBox();
             this.loseRButton = new System.Windows.Forms.RadioButton();
             this.winRButton = new System.Windows.Forms.RadioButton();
@@ -108,7 +109,6 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
-            this.cantCancelCheckBox = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -797,6 +797,16 @@
             this.questInformationBox.TabStop = false;
             this.questInformationBox.Text = "Информация";
             // 
+            // cantCancelCheckBox
+            // 
+            this.cantCancelCheckBox.AutoSize = true;
+            this.cantCancelCheckBox.Location = new System.Drawing.Point(261, 162);
+            this.cantCancelCheckBox.Name = "cantCancelCheckBox";
+            this.cantCancelCheckBox.Size = new System.Drawing.Size(115, 17);
+            this.cantCancelCheckBox.TabIndex = 16;
+            this.cantCancelCheckBox.Text = "Нельзя отменить";
+            this.cantCancelCheckBox.UseVisualStyleBackColor = true;
+            // 
             // tutorialCheckBox
             // 
             this.tutorialCheckBox.AutoSize = true;
@@ -990,16 +1000,6 @@
             this.eventLabel.Size = new System.Drawing.Size(75, 13);
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
-            // 
-            // cantCancelCheckBox
-            // 
-            this.cantCancelCheckBox.AutoSize = true;
-            this.cantCancelCheckBox.Location = new System.Drawing.Point(261, 162);
-            this.cantCancelCheckBox.Name = "cantCancelCheckBox";
-            this.cantCancelCheckBox.Size = new System.Drawing.Size(115, 17);
-            this.cantCancelCheckBox.TabIndex = 16;
-            this.cantCancelCheckBox.Text = "Нельзя отменить";
-            this.cantCancelCheckBox.UseVisualStyleBackColor = true;
             // 
             // EditQuestForm
             // 

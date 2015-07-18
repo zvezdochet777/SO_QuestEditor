@@ -34,6 +34,7 @@
             this.NPCSaid = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.actionsBox = new System.Windows.Forms.GroupBox();
+            this.ColorizeItemCheckBox = new System.Windows.Forms.CheckBox();
             this.ToClanBaseCheckBox = new System.Windows.Forms.CheckBox();
             this.barterCheckBox = new System.Windows.Forms.CheckBox();
             this.toComplexRepairCheckBox = new System.Windows.Forms.CheckBox();
@@ -83,7 +84,7 @@
             this.NPCReactionText = new System.Windows.Forms.Label();
             this.MustPanel = new System.Windows.Forms.Panel();
             this.textGroupBox = new System.Windows.Forms.GroupBox();
-            this.ColorizeItemCheckBox = new System.Windows.Forms.CheckBox();
+            this.CreateClanCheckBox = new System.Windows.Forms.CheckBox();
             this.actionsBox.SuspendLayout();
             this.PreconditionBox.SuspendLayout();
             this.gbClanOptions.SuspendLayout();
@@ -139,6 +140,7 @@
             // 
             // actionsBox
             // 
+            this.actionsBox.Controls.Add(this.CreateClanCheckBox);
             this.actionsBox.Controls.Add(this.ColorizeItemCheckBox);
             this.actionsBox.Controls.Add(this.ToClanBaseCheckBox);
             this.actionsBox.Controls.Add(this.barterCheckBox);
@@ -159,14 +161,25 @@
             this.actionsBox.Enabled = false;
             this.actionsBox.Location = new System.Drawing.Point(0, 500);
             this.actionsBox.Name = "actionsBox";
-            this.actionsBox.Size = new System.Drawing.Size(588, 115);
+            this.actionsBox.Size = new System.Drawing.Size(588, 141);
             this.actionsBox.TabIndex = 8;
             this.actionsBox.TabStop = false;
+            // 
+            // ColorizeItemCheckBox
+            // 
+            this.ColorizeItemCheckBox.AutoSize = true;
+            this.ColorizeItemCheckBox.Location = new System.Drawing.Point(131, 109);
+            this.ColorizeItemCheckBox.Name = "ColorizeItemCheckBox";
+            this.ColorizeItemCheckBox.Size = new System.Drawing.Size(76, 17);
+            this.ColorizeItemCheckBox.TabIndex = 32;
+            this.ColorizeItemCheckBox.Text = "Покраска";
+            this.ColorizeItemCheckBox.UseVisualStyleBackColor = true;
+            this.ColorizeItemCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
             // ToClanBaseCheckBox
             // 
             this.ToClanBaseCheckBox.AutoSize = true;
-            this.ToClanBaseCheckBox.Location = new System.Drawing.Point(266, 83);
+            this.ToClanBaseCheckBox.Location = new System.Drawing.Point(280, 89);
             this.ToClanBaseCheckBox.Name = "ToClanBaseCheckBox";
             this.ToClanBaseCheckBox.Size = new System.Drawing.Size(115, 17);
             this.ToClanBaseCheckBox.TabIndex = 31;
@@ -177,7 +190,7 @@
             // barterCheckBox
             // 
             this.barterCheckBox.AutoSize = true;
-            this.barterCheckBox.Location = new System.Drawing.Point(6, 83);
+            this.barterCheckBox.Location = new System.Drawing.Point(20, 88);
             this.barterCheckBox.Name = "barterCheckBox";
             this.barterCheckBox.Size = new System.Drawing.Size(62, 17);
             this.barterCheckBox.TabIndex = 21;
@@ -188,7 +201,7 @@
             // toComplexRepairCheckBox
             // 
             this.toComplexRepairCheckBox.AutoSize = true;
-            this.toComplexRepairCheckBox.Location = new System.Drawing.Point(117, 62);
+            this.toComplexRepairCheckBox.Location = new System.Drawing.Point(131, 87);
             this.toComplexRepairCheckBox.Name = "toComplexRepairCheckBox";
             this.toComplexRepairCheckBox.Size = new System.Drawing.Size(139, 17);
             this.toComplexRepairCheckBox.TabIndex = 23;
@@ -203,7 +216,7 @@
             this.teleportComboBox.DropDownWidth = 250;
             this.teleportComboBox.Enabled = false;
             this.teleportComboBox.FormattingEnabled = true;
-            this.teleportComboBox.Location = new System.Drawing.Point(379, 60);
+            this.teleportComboBox.Location = new System.Drawing.Point(400, 66);
             this.teleportComboBox.Name = "teleportComboBox";
             this.teleportComboBox.Size = new System.Drawing.Size(147, 21);
             this.teleportComboBox.TabIndex = 30;
@@ -211,7 +224,7 @@
             // teleportCheckBox
             // 
             this.teleportCheckBox.AutoSize = true;
-            this.teleportCheckBox.Location = new System.Drawing.Point(266, 62);
+            this.teleportCheckBox.Location = new System.Drawing.Point(280, 67);
             this.teleportCheckBox.Name = "teleportCheckBox";
             this.teleportCheckBox.Size = new System.Drawing.Size(74, 17);
             this.teleportCheckBox.TabIndex = 29;
@@ -222,7 +235,7 @@
             // toRepairCheckBox
             // 
             this.toRepairCheckBox.AutoSize = true;
-            this.toRepairCheckBox.Location = new System.Drawing.Point(117, 41);
+            this.toRepairCheckBox.Location = new System.Drawing.Point(131, 65);
             this.toRepairCheckBox.Name = "toRepairCheckBox";
             this.toRepairCheckBox.Size = new System.Drawing.Size(69, 17);
             this.toRepairCheckBox.TabIndex = 22;
@@ -233,7 +246,7 @@
             // changeCheckBox
             // 
             this.changeCheckBox.AutoSize = true;
-            this.changeCheckBox.Location = new System.Drawing.Point(6, 62);
+            this.changeCheckBox.Location = new System.Drawing.Point(20, 67);
             this.changeCheckBox.Name = "changeCheckBox";
             this.changeCheckBox.Size = new System.Drawing.Size(60, 17);
             this.changeCheckBox.TabIndex = 20;
@@ -244,7 +257,7 @@
             // CompleteQuestsTextBox
             // 
             this.CompleteQuestsTextBox.Enabled = false;
-            this.CompleteQuestsTextBox.Location = new System.Drawing.Point(379, 39);
+            this.CompleteQuestsTextBox.Location = new System.Drawing.Point(400, 44);
             this.CompleteQuestsTextBox.Name = "CompleteQuestsTextBox";
             this.CompleteQuestsTextBox.Size = new System.Drawing.Size(147, 20);
             this.CompleteQuestsTextBox.TabIndex = 28;
@@ -252,7 +265,7 @@
             // GetQuestsTextBox
             // 
             this.GetQuestsTextBox.Enabled = false;
-            this.GetQuestsTextBox.Location = new System.Drawing.Point(379, 16);
+            this.GetQuestsTextBox.Location = new System.Drawing.Point(400, 22);
             this.GetQuestsTextBox.Name = "GetQuestsTextBox";
             this.GetQuestsTextBox.Size = new System.Drawing.Size(147, 20);
             this.GetQuestsTextBox.TabIndex = 26;
@@ -261,7 +274,7 @@
             // 
             this.ToDialogComboBox.Enabled = false;
             this.ToDialogComboBox.FormattingEnabled = true;
-            this.ToDialogComboBox.Location = new System.Drawing.Point(117, 19);
+            this.ToDialogComboBox.Location = new System.Drawing.Point(131, 25);
             this.ToDialogComboBox.Name = "ToDialogComboBox";
             this.ToDialogComboBox.Size = new System.Drawing.Size(100, 21);
             this.ToDialogComboBox.TabIndex = 18;
@@ -269,7 +282,7 @@
             // ExitCheckBox
             // 
             this.ExitCheckBox.AutoSize = true;
-            this.ExitCheckBox.Location = new System.Drawing.Point(117, 83);
+            this.ExitCheckBox.Location = new System.Drawing.Point(280, 111);
             this.ExitCheckBox.Name = "ExitCheckBox";
             this.ExitCheckBox.Size = new System.Drawing.Size(141, 17);
             this.ExitCheckBox.TabIndex = 24;
@@ -280,7 +293,7 @@
             // toTradeCheckBox
             // 
             this.toTradeCheckBox.AutoSize = true;
-            this.toTradeCheckBox.Location = new System.Drawing.Point(6, 42);
+            this.toTradeCheckBox.Location = new System.Drawing.Point(20, 46);
             this.toTradeCheckBox.Name = "toTradeCheckBox";
             this.toTradeCheckBox.Size = new System.Drawing.Size(79, 17);
             this.toTradeCheckBox.TabIndex = 19;
@@ -291,7 +304,7 @@
             // CompleteQuestsCheckBox
             // 
             this.CompleteQuestsCheckBox.AutoSize = true;
-            this.CompleteQuestsCheckBox.Location = new System.Drawing.Point(266, 42);
+            this.CompleteQuestsCheckBox.Location = new System.Drawing.Point(280, 45);
             this.CompleteQuestsCheckBox.Name = "CompleteQuestsCheckBox";
             this.CompleteQuestsCheckBox.Size = new System.Drawing.Size(119, 17);
             this.CompleteQuestsCheckBox.TabIndex = 27;
@@ -302,7 +315,7 @@
             // GetQuestsCheckBox
             // 
             this.GetQuestsCheckBox.AutoSize = true;
-            this.GetQuestsCheckBox.Location = new System.Drawing.Point(266, 17);
+            this.GetQuestsCheckBox.Location = new System.Drawing.Point(280, 23);
             this.GetQuestsCheckBox.Name = "GetQuestsCheckBox";
             this.GetQuestsCheckBox.Size = new System.Drawing.Size(96, 17);
             this.GetQuestsCheckBox.TabIndex = 25;
@@ -313,7 +326,7 @@
             // ToDialogCheckBox
             // 
             this.ToDialogCheckBox.AutoSize = true;
-            this.ToDialogCheckBox.Location = new System.Drawing.Point(6, 19);
+            this.ToDialogCheckBox.Location = new System.Drawing.Point(20, 25);
             this.ToDialogCheckBox.Name = "ToDialogCheckBox";
             this.ToDialogCheckBox.Size = new System.Drawing.Size(114, 17);
             this.ToDialogCheckBox.TabIndex = 17;
@@ -633,7 +646,7 @@
             this.MustPanel.Controls.Add(this.bEditDialogCancel);
             this.MustPanel.Controls.Add(this.bEditDialogOk);
             this.MustPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MustPanel.Location = new System.Drawing.Point(0, 615);
+            this.MustPanel.Location = new System.Drawing.Point(0, 641);
             this.MustPanel.Name = "MustPanel";
             this.MustPanel.Size = new System.Drawing.Size(588, 33);
             this.MustPanel.TabIndex = 13;
@@ -656,21 +669,22 @@
             this.textGroupBox.TabIndex = 15;
             this.textGroupBox.TabStop = false;
             // 
-            // ColorizeItemCheckBox
+            // CreateClanCheckBox
             // 
-            this.ColorizeItemCheckBox.AutoSize = true;
-            this.ColorizeItemCheckBox.Location = new System.Drawing.Point(386, 83);
-            this.ColorizeItemCheckBox.Name = "ColorizeItemCheckBox";
-            this.ColorizeItemCheckBox.Size = new System.Drawing.Size(76, 17);
-            this.ColorizeItemCheckBox.TabIndex = 32;
-            this.ColorizeItemCheckBox.Text = "Покраска";
-            this.ColorizeItemCheckBox.UseVisualStyleBackColor = true;
+            this.CreateClanCheckBox.AutoSize = true;
+            this.CreateClanCheckBox.Location = new System.Drawing.Point(20, 109);
+            this.CreateClanCheckBox.Name = "CreateClanCheckBox";
+            this.CreateClanCheckBox.Size = new System.Drawing.Size(95, 17);
+            this.CreateClanCheckBox.TabIndex = 33;
+            this.CreateClanCheckBox.Text = "Создать клан";
+            this.CreateClanCheckBox.UseVisualStyleBackColor = true;
+            this.CreateClanCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 654);
+            this.ClientSize = new System.Drawing.Size(588, 679);
             this.Controls.Add(this.actionsCheckBox);
             this.Controls.Add(this.MustPanel);
             this.Controls.Add(this.actionsBox);
@@ -754,5 +768,6 @@
         private System.Windows.Forms.CheckBox cbAnyClanOnly;
         private System.Windows.Forms.CheckBox cbSameClanOnly;
         private System.Windows.Forms.CheckBox ColorizeItemCheckBox;
+        private System.Windows.Forms.CheckBox CreateClanCheckBox;
     }
 }

@@ -461,6 +461,8 @@ namespace StalkerOnlineQuesterEditor
                 addActionTextToEmulator(" Торговля. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Event == (int) DialogEvents.change)
                 addActionTextToEmulator(" Обмен. Выход.", choosenDialogID);
+            else if (choosenDialog.Actions.Event == (int)DialogEvents.create_clan)
+                addActionTextToEmulator(" Создание клана. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Event == (int)DialogEvents.barter)
                 addActionTextToEmulator(" Бартер. Выход.", choosenDialogID);
             else if (choosenDialog.Actions.Event == (int)DialogEvents.repair)

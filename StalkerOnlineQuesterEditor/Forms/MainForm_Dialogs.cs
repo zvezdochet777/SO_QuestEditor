@@ -24,7 +24,7 @@ namespace StalkerOnlineQuesterEditor
     {
         trade = 1,
         change = 2,
-        createclan = 3,
+        create_clan = 3,
         repair = 4,
         teleport = 5,
         complex_repair = 6,

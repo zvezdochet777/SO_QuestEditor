@@ -121,6 +121,8 @@ namespace StalkerOnlineQuesterEditor
                     ToClanBaseCheckBox.Checked = true;
                 else if (curDialog.Actions.Event == (int)DialogEvents.colorize_item)
                     ColorizeItemCheckBox.Checked = true;
+                else if (curDialog.Actions.Event == (int)DialogEvents.create_clan)
+                    CreateClanCheckBox.Checked = true;
                 ExitCheckBox.Checked = curDialog.Actions.Exit;
 
                 if (curDialog.Actions.CompleteQuests.Any())
@@ -254,6 +256,8 @@ namespace StalkerOnlineQuesterEditor
             teleportCheckBox.Enabled = teleportCheckBox.Checked;
             barterCheckBox.Enabled = barterCheckBox.Checked;
             ToClanBaseCheckBox.Enabled = ToClanBaseCheckBox.Checked;
+            ColorizeItemCheckBox.Enabled = ColorizeItemCheckBox.Checked;
+            CreateClanCheckBox.Enabled = CreateClanCheckBox.Checked;
         }
         //! Разблокирует контролы на форме
         private void unlockOtherEvent()
@@ -268,6 +272,8 @@ namespace StalkerOnlineQuesterEditor
             teleportCheckBox.Enabled = true;
             barterCheckBox.Enabled = true;
             ToClanBaseCheckBox.Enabled = true;
+            ColorizeItemCheckBox.Enabled = true;
+            CreateClanCheckBox.Enabled = true;
         }
         //! При наборе текста проверяем число символов в строке
         private void tPlayerText_KeyPress(object sender, KeyPressEventArgs e)
@@ -368,6 +374,8 @@ namespace StalkerOnlineQuesterEditor
                     actions.Event = (int)DialogEvents.clan_base;
                 else if (ColorizeItemCheckBox.Checked)
                     actions.Event = (int)DialogEvents.colorize_item;
+                else if (CreateClanCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.create_clan;
 
                 if (GetQuestsCheckBox.Checked)
                     foreach (string quest in GetQuestsTextBox.Text.Split(','))
