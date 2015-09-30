@@ -1458,6 +1458,7 @@ namespace StalkerOnlineQuesterEditor
         //! Изменения на форме при смене режима (Editor <-> Localization)
         public void onChangeMode()
         {
+            int currentNpcIndex = NPCBox.SelectedIndex;
             if (settings.getMode() == settings.MODE_LOCALIZATION)
             {
                 for (int i = 4; i < CentralDock.TabPages.Count; i++)
@@ -1479,6 +1480,8 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
             fillNPCBox();
+            if (currentNpcIndex > -1)
+                NPCBox.SelectedIndex = currentNpcIndex;
         }
 
         //! Выводит диалоги для локализации. В зависимости от помеченных чекбоксов - актуальные или устаревшие
