@@ -19,6 +19,8 @@ namespace StalkerOnlineQuesterEditor
     using NPCLocales = Dictionary<string, Dictionary<string, Dictionary<int, CDialog>>>;
     //! Словарь <NPCName, <DialogID, CDifference>>
     using DifferenceDict = Dictionary<string, Dictionary<int, CDifference>>;
+    //! Словарь Имя NPC < ID диалога, Структура NodeCoordinates > 
+    using CoordinatesDict = Dictionary<string, Dictionary<int, NodeCoordinates>>;
     
     public struct npcData
     {
@@ -53,6 +55,7 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<string, string> rusNamesToNPC = new Dictionary<string, string>();
         //! Словарь cоответствия англ имя - общее имя в игре (для поиска в комбобоксе NPCBox)
         public Dictionary<string, string> engNamesToNPC = new Dictionary<string, string>();
+        private CoordinatesDict tempCoordinates = new CoordinatesDict();
         //! Список всех локаций
         public List<string> locationNames = new List<string>();
 
@@ -61,6 +64,7 @@ namespace StalkerOnlineQuesterEditor
         {
             this.parent = parent;
             String DialogsXMLFile = parent.settings.getDialogsPath();
+            parseNodeCoordinates("NodeCoordinates.xml");
             parseDialogsFile(DialogsXMLFile, this.dialogs);
             foreach (var locale in parent.settings.getListLocales())
             {
@@ -78,7 +82,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if (!File.Exists(DialogsXMLFile))
                 return;
-
+            
             doc = XDocument.Load(DialogsXMLFile);
             foreach (XElement item in doc.Root.Elements())
             {
@@ -177,11 +181,17 @@ namespace StalkerOnlineQuesterEditor
                 NodeCoordinates nodeCoord = new NodeCoordinates();
                 if ( item.Descendants("NodeCoordinates").ToList().Count > 0 )
                 {
+                    /*
                     if (!item.Element("NodeCoordinates").Element("X").Value.Equals(""))
                         nodeCoord.X = int.Parse(item.Element("NodeCoordinates").Element("X").Value);
                     if (!item.Element("NodeCoordinates").Element("Y").Value.Equals(""))
                         nodeCoord.Y = int.Parse(item.Element("NodeCoordinates").Element("Y").Value);
-
+                    */
+                    if (tempCoordinates.ContainsKey(Holder[0]) && tempCoordinates[Holder[0]].ContainsKey(DialogID))
+                    {
+                        nodeCoord.X = tempCoordinates[Holder[0]][DialogID].X;
+                        nodeCoord.Y = tempCoordinates[Holder[0]][DialogID].Y;
+                    }
                     if (item.Element("NodeCoordinates").Element("RootDialog").Value.Equals("1"))
                         nodeCoord.RootDialog = true;
                     else
@@ -236,6 +246,7 @@ namespace StalkerOnlineQuesterEditor
         {
             //fileName = "RUS\\" + fileName; 
             save(fileName, this.dialogs);
+            saveNodeCoordinates("NodeCoordinates.xml",this.dialogs);
         }
 
         //! Сохраняет текущую локализацию диалогов в файл
@@ -292,8 +303,8 @@ namespace StalkerOnlineQuesterEditor
                            new XElement("CompleteQuest", getListAsString(dialog.Actions.CompleteQuests))),
                        new XElement("Nodes", getListAsString(dialog.Nodes)),
                        new XElement("NodeCoordinates",
-                           new XElement("X", getIntAsString(dialog.coordinates.X)),
-                           new XElement("Y", getIntAsString(dialog.coordinates.Y)),
+                           //new XElement("X", getIntAsString(dialog.coordinates.X)),
+                           //new XElement("Y", getIntAsString(dialog.coordinates.Y)),
                            new XElement("RootDialog", getBoolAsString(dialog.coordinates.RootDialog)),
                            new XElement("Active", getBoolAsString(dialog.coordinates.Active)))
                        );
@@ -310,6 +321,56 @@ namespace StalkerOnlineQuesterEditor
                 resultDoc.Save(w);
             }
             //copyResultFile(fileName);
+        }
+
+        private void saveNodeCoordinates(string fileName, NPCDicts target)
+        {
+            XDocument resultDoc = new XDocument(new XElement("root"));
+            XElement npc_element;
+            foreach (String NPC_Name in target.Keys)
+            {
+                npc_element = new XElement("NPC", new XAttribute("NPC_Name", NPC_Name));
+                foreach (CDialog dialog in target[NPC_Name].Values)
+                {
+                    npc_element.Add(new XElement("Dialog", 
+                        new XAttribute("ID", dialog.DialogID.ToString()),
+                        new XElement("X", dialog.coordinates.X.ToString()),
+                        new XElement("Y", dialog.coordinates.Y.ToString())));                  
+                }
+                resultDoc.Root.Add(npc_element);
+            }
+            System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
+            settings.Encoding = new UTF8Encoding(false);
+            settings.Indent = true;
+            settings.OmitXmlDeclaration = true;
+            settings.NewLineOnAttributes = true;
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
+            {
+                resultDoc.Save(w);
+            }
+        }
+
+        private void parseNodeCoordinates(string filename)
+        {
+            if (!File.Exists(filename))
+                return;
+
+            doc = XDocument.Load(filename);
+            foreach (XElement item in doc.Root.Elements())
+            {
+                string npc_name = item.Attribute("NPC_Name").Value.ToString();
+                if (!tempCoordinates.ContainsKey(npc_name))
+                    tempCoordinates.Add(npc_name, new Dictionary<int,NodeCoordinates>());
+
+                foreach (XElement dialog in item.Elements())
+                {
+                    int id = int.Parse(dialog.Attribute("ID").Value);
+                    int x = int.Parse(dialog.Element("X").Value);
+                    int y = int.Parse(dialog.Element("Y").Value);
+                    tempCoordinates[npc_name].Add(id, new NodeCoordinates(x,y,false,false));
+                }
+                
+            }
         }
 
         //! Парсит файл с местонахождением NPC
