@@ -1506,6 +1506,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.SaveAllToolStripMenuItem.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.SaveDisk;
             this.SaveAllToolStripMenuItem.Name = "SaveAllToolStripMenuItem";
+            this.SaveAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.SaveAllToolStripMenuItem.Size = new System.Drawing.Size(114, 20);
             this.SaveAllToolStripMenuItem.Text = "Сохранить все";
             this.SaveAllToolStripMenuItem.Click += new System.EventHandler(this.SaveAllToolStripMenuItem_Click);

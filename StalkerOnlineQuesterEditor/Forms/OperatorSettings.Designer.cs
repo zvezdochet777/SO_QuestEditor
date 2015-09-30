@@ -38,8 +38,6 @@
             this.localeComboBox = new System.Windows.Forms.ComboBox();
             this.bLocaleRefresh = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bCreateResult = new System.Windows.Forms.Button();
-            this.bCreateExamples = new System.Windows.Forms.Button();
             this.tbAddressToCopyFiles = new System.Windows.Forms.TextBox();
             this.labelAddressToCopy = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -53,7 +51,6 @@
             this.operatorSelectComboBox.Name = "operatorSelectComboBox";
             this.operatorSelectComboBox.Size = new System.Drawing.Size(127, 21);
             this.operatorSelectComboBox.TabIndex = 0;
-            this.operatorSelectComboBox.SelectedIndexChanged += new System.EventHandler(this.operatorSelectComboBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -133,8 +130,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.bCreateResult);
-            this.groupBox1.Controls.Add(this.bCreateExamples);
             this.groupBox1.Controls.Add(this.localizeCheckBox);
             this.groupBox1.Controls.Add(this.bLocaleRefresh);
             this.groupBox1.Controls.Add(this.label2);
@@ -142,32 +137,10 @@
             this.groupBox1.Controls.Add(this.localesTextBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(224, 173);
+            this.groupBox1.Size = new System.Drawing.Size(224, 114);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Локализация";
-            // 
-            // bCreateResult
-            // 
-            this.bCreateResult.Enabled = false;
-            this.bCreateResult.Location = new System.Drawing.Point(6, 123);
-            this.bCreateResult.Name = "bCreateResult";
-            this.bCreateResult.Size = new System.Drawing.Size(130, 23);
-            this.bCreateResult.TabIndex = 11;
-            this.bCreateResult.Text = "Выгрузить результат";
-            this.bCreateResult.UseVisualStyleBackColor = true;
-            this.bCreateResult.Click += new System.EventHandler(this.bCreateResult_Click);
-            // 
-            // bCreateExamples
-            // 
-            this.bCreateExamples.Enabled = false;
-            this.bCreateExamples.Location = new System.Drawing.Point(6, 94);
-            this.bCreateExamples.Name = "bCreateExamples";
-            this.bCreateExamples.Size = new System.Drawing.Size(130, 23);
-            this.bCreateExamples.TabIndex = 10;
-            this.bCreateExamples.Text = "Создать заготовки";
-            this.bCreateExamples.UseVisualStyleBackColor = true;
-            this.bCreateExamples.Click += new System.EventHandler(this.bCreateExamples_Click);
             // 
             // tbAddressToCopyFiles
             // 
@@ -181,15 +154,15 @@
             this.labelAddressToCopy.AutoSize = true;
             this.labelAddressToCopy.Location = new System.Drawing.Point(15, 230);
             this.labelAddressToCopy.Name = "labelAddressToCopy";
-            this.labelAddressToCopy.Size = new System.Drawing.Size(169, 13);
+            this.labelAddressToCopy.Size = new System.Drawing.Size(189, 13);
             this.labelAddressToCopy.TabIndex = 12;
-            this.labelAddressToCopy.Text = "Адрес для копирования файлов";
+            this.labelAddressToCopy.Text = "Путь к данным квестов и диалогов:";
             // 
             // OperatorSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 325);
+            this.ClientSize = new System.Drawing.Size(250, 328);
             this.ControlBox = false;
             this.Controls.Add(this.labelAddressToCopy);
             this.Controls.Add(this.tbAddressToCopyFiles);
@@ -222,8 +195,6 @@
         private System.Windows.Forms.ComboBox localeComboBox;
         private System.Windows.Forms.Button bLocaleRefresh;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button bCreateExamples;
-        private System.Windows.Forms.Button bCreateResult;
         private System.Windows.Forms.TextBox tbAddressToCopyFiles;
         private System.Windows.Forms.Label labelAddressToCopy;
     }

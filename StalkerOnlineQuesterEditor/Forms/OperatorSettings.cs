@@ -53,14 +53,6 @@ namespace StalkerOnlineQuesterEditor
             tbAddressToCopyFiles.Text = parent.settings.pathToCopyFiles;
         }
 
-        private void operatorSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //System.Console.WriteLine("bOperatorChanged");
-            //if (parent.settings.getOperatorNumber() != operatorSelectComboBox.SelectedIndex)
-            //    System.Console.WriteLine("bOperatorChanged=true");
-            //    this.bOperatorChanged = true;
-        }
-
         //! Нажатие ОК - магические действия с номером оператора и выход на главную
         private void bOK_Click(object sender, EventArgs e)
         {
@@ -122,16 +114,5 @@ namespace StalkerOnlineQuesterEditor
             parent.Visible = true;
         }
 
-        //! Вызывает функцию родителя CreateExamples
-        private void bCreateExamples_Click(object sender, EventArgs e)
-        {
-            parent.createExamples();
-        }
-
-        //! Вызывает функцию родителя CreateResult
-        private void bCreateResult_Click(object sender, EventArgs e)
-        {
-            parent.createResults();
-        }
     }
 }

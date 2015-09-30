@@ -1481,20 +1481,6 @@ namespace StalkerOnlineQuesterEditor
             fillNPCBox();
         }
 
-        //! Создает примеры диалогов и квестов
-        public void createExamples()
-        {
-            dialogs.createExamples();
-            quests.createExamples();
-        }
-
-        //! Создает результаты работы над диалогами и квестами
-        public void createResults()
-        {
-            dialogs.createResults();
-            quests.createResults();
-        }
-
         //! Выводит диалоги для локализации. В зависимости от помеченных чекбоксов - актуальные или устаревшие
         private void bFindDialogDifference_Click(object sender, EventArgs e)
         {

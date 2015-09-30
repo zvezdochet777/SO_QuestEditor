@@ -28,8 +28,6 @@ namespace StalkerOnlineQuesterEditor
 
         string SETTINGS_PATH = "settings/";
         string SETTING_FILE = "Settings.xml";
-
-        string LOCALES_PATH = "locales/";
         string ORIGINAL_PATH = "RUS\\";
 
         public System.String dialogXML = "Dialogs.xml";
@@ -45,7 +43,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 foreach (string locale in doc.Root.Element("locales").Value.ToString().Split(','))
                     locales.Add(locale);
-                createLocalesFolder();
             }
             catch
             {
@@ -90,15 +87,6 @@ namespace StalkerOnlineQuesterEditor
             parent.onChangeMode();
         }
 
-        //! Создает папку для хранения файлов локализации, если таковой еще нет
-        private void createLocalesFolder()
-        {
-            //System.Console.WriteLine("CSettings::createLocalesFolder");
-            foreach(string locale in this.locales)
-                if (!Directory.Exists(LOCALES_PATH + locale))
-                    Directory.CreateDirectory(LOCALES_PATH + locale);
-        }
-
         //! Возврщает номер оператора
         public int getOperatorNumber()
         {
@@ -112,7 +100,6 @@ namespace StalkerOnlineQuesterEditor
             this.locales.Clear();
             foreach (string locale in locales.Split(','))
                 this.locales.Add(locale.Trim());
-            createLocalesFolder();
         }
 
         //! Возвращает все локали в строке через запятую
@@ -206,14 +193,6 @@ namespace StalkerOnlineQuesterEditor
         {
             return balanceXML;
         }
-
-        //! Возвращает путь к папке с текущей локалью
-        /*public string getCurrentLocalePath()
-        {
-            //return "locales\\" + this.locales[currentLocale];
-            return this.locales[currentLocale];
-        }
-         */ 
 
         //! Возвращает адрес локализованного файла квестов
         public string getQuestLocalePath()

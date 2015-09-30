@@ -727,21 +727,6 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        //! @todo понять, что они вообще хотели тут сделать
-        public void createExamples()
-        {
-            List<int> rem = new List<int>();
-            foreach (var qId in rem)
-            {
-                quest[qId].Target = new CQuestTarget();
-                quest[qId].Precondition = new CQuestPrecondition();
-                quest[qId].QuestRules = new CQuestRules();
-                quest[qId].Reward = new CQuestReward();
-                quest[qId].QuestPenalty = new CQuestPenalty();
-            }
-            saveQuests(parent.settings.questXML);
-        }
-
         public CQuest getLocaleQuest(int questID, string locale)
         {
             if (this.locales.Keys.Contains(locale) && this.locales[locale].Keys.Contains(questID))
@@ -758,27 +743,6 @@ namespace StalkerOnlineQuesterEditor
                if (this.locales[locale].Keys.Contains(quest.QuestID))
                     this.locales[locale].Remove(quest.QuestID);
                this.locales[locale].Add(quest.QuestID, quest);
-        }
-
-        public void createResults()
-        {
-            if (!this.locales.Keys.Contains(parent.settings.getCurrentLocale()))
-                return;
-            NPCQuestDict results = new NPCQuestDict();
-            CQuest cur_quest;
-            foreach (var loc_quest in this.locales[parent.settings.getCurrentLocale()].Values)
-            {
-                //System.Console.WriteLine("questID:" + loc_quest.QuestID.ToString());
-                CQuest quest = getQuest(loc_quest.QuestID);
-
-                if (quest != null && loc_quest.Version == quest.Version)
-                {
-                    cur_quest = (CQuest)quest.Clone();
-                    cur_quest.QuestInformation = loc_quest.QuestInformation;
-                    results.Add(cur_quest.QuestID, cur_quest);
-                }
-            }
-            this.save(parent.settings.questXML, results);
         }
 
         //! Возвращает словарь из квестов для локализации (устаревшие, актуальные или все)

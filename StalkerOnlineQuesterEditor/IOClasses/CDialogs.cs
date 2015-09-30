@@ -489,18 +489,6 @@ namespace StalkerOnlineQuesterEditor
             this.locales[locale][dialog.Holder].Add(dialog.DialogID, dialog);
         }
 
-        //! @todo исправлять это говнище, все затирает
-        public void createExamples()
-        {
-            foreach (var npc in dialogs.Values)
-                foreach (var dialog in npc.Values)
-                {
-                    dialog.Actions = new Actions();
-                    dialog.Precondition = new CDialogPrecondition();
-                }
-            saveDialogs(parent.settings.dialogXML);
-        }
-
         //! Возвращает словарь из диалогов для локализации (устаревшие, актуальные или все)
         public DifferenceDict getDialogDifference(string locale, FindType findType)
         {
@@ -558,24 +546,5 @@ namespace StalkerOnlineQuesterEditor
             return ret;
         }
 
-        //! @todo исправлять это говнище!!!
-        public void createResults()
-        {
-            NPCDicts results = new NPCDicts();
-            foreach (var npc_name in this.locales[parent.settings.getCurrentLocale()].Keys)
-                foreach (var locale_dialog in this.locales[parent.settings.getCurrentLocale()][npc_name].Values)
-                {
-                    var dialog = parent.getDialogOnDialogID(npc_name, locale_dialog.DialogID);
-                    if (dialog != null && dialog.version == locale_dialog.version)
-                    {
-                        if (!results.Keys.Contains(npc_name))
-                            results.Add(npc_name, new Dictionary<int, CDialog>());
-                        results[npc_name].Add(dialog.DialogID, new CDialog(dialog.Holder, locale_dialog.Title,
-                            locale_dialog.Text, dialog.Precondition, dialog.Actions, dialog.Nodes, 
-                            dialog.DialogID, dialog.version, dialog.coordinates));
-                    }
-                }
-            this.save(parent.settings.dialogXML, results);
-        }
     }
 }
