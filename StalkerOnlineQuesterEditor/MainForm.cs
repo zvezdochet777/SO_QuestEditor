@@ -127,6 +127,7 @@ namespace StalkerOnlineQuesterEditor
                 bEditDialog.Enabled = false;
                 bRemoveDialog.Enabled = false;
                 QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
+                EmulatorsplitContainer.Panel2.Controls.Clear();
                 DialogSelected(true);
             }
             else if (CentralDock.SelectedIndex == 1)
@@ -759,21 +760,6 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        //! Сохранение - почему-то общее для всех.
-        private void bSaveDialogs_Click(object sender, EventArgs e)
-        {
-            this.saveData();
-        }
-        //! Сохранение данных
-        private void bSaveQuests_Click(object sender, EventArgs e)
-        {
-            this.saveData();
-        }
-        //! Сохранение данных
-        private void bSaveLocale_Click(object sender, EventArgs e)
-        {
-            this.saveData();
-        }
         //! Нажатие кнопки Добавить NPC - открывает форму с именем
         private void bAddNPC_Click(object sender, EventArgs e)
         {
@@ -2103,6 +2089,17 @@ namespace StalkerOnlineQuesterEditor
                 }
 
             }
+        }
+
+        private void ExplorerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String path = System.IO.Path.GetDirectoryName(settings.getDialogsPath());
+            System.Diagnostics.Process.Start(path);
+        }
+
+        private void SaveAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.saveData();
         }
 
     }

@@ -334,6 +334,22 @@ namespace StalkerOnlineQuesterEditor
             teleportComboBox.Enabled = !teleportComboBox.Enabled;
         }
 
+        bool CheckConditions()
+        {
+            if (ToDialogCheckBox.Checked)
+            {
+                String toDialog = ToDialogComboBox.Text;
+                int index = ToDialogComboBox.Items.IndexOf(toDialog);
+                //int index = ToDialogComboBox.FindString(toDialog);    // very bad way to do!!!
+                if (index == -1)
+                {
+                    MessageBox.Show("Действие невозможно: такой диалог не существует у этого персонажа.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return true;
+        }
+
         //! Нажатие ОК - сохранение всех опций диалога и выход на главную
         private void bEditDialogOk_Click(object sender, EventArgs e)
         {
@@ -344,21 +360,24 @@ namespace StalkerOnlineQuesterEditor
             List<int> nodes = new List<int>();
             //List<string> holder = new List<string>();
             string holder = parent.currentNPC;
-
+            if (!CheckConditions())
+                return;
             if (!tSubDialogsTextBox.Text.Equals(""))
                 foreach (string node in tSubDialogsTextBox.Text.Split(','))
                     nodes.Add(int.Parse(node));
 
             // заполняем действия диалога - торговля, бартер, починка, телепорт и т.д.
             if (actionsCheckBox.Checked)
-            {
+            {               
                 actions.Exit = ExitCheckBox.Checked;
                 if (toTradeCheckBox.Checked)
                     actions.Event = (int)DialogEvents.trade;
                 else if (changeCheckBox.Checked)
                     actions.Event = (int)DialogEvents.change;
                 else if (ToDialogCheckBox.Checked)
-                    actions.ToDialog = int.Parse(ToDialogComboBox.SelectedItem.ToString());
+                    actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString()); // use Text instead of Selected Item
+                    
+
                 else if (toRepairCheckBox.Checked)
                     actions.Event = (int)DialogEvents.repair;
                 else if (teleportCheckBox.Checked && !teleportComboBox.SelectedItem.ToString().Equals(""))
@@ -443,6 +462,7 @@ namespace StalkerOnlineQuesterEditor
             }
             parent.Enabled = true;
             parent.DialogSelected(true);
+            parent.startEmulator(currentDialogID);
             this.Close();
         }
 

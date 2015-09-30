@@ -48,7 +48,6 @@ namespace StalkerOnlineQuesterEditor
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.labelYNode = new System.Windows.Forms.Label();
             this.labelXNode = new System.Windows.Forms.Label();
-            this.bSaveDialogs = new System.Windows.Forms.Button();
             this.bRemoveDialog = new System.Windows.Forms.Button();
             this.bEditDialog = new System.Windows.Forms.Button();
             this.bAddDialog = new System.Windows.Forms.Button();
@@ -67,7 +66,6 @@ namespace StalkerOnlineQuesterEditor
             this.bCopyEvents = new System.Windows.Forms.Button();
             this.bQuestDown = new System.Windows.Forms.Button();
             this.bQuestUp = new System.Windows.Forms.Button();
-            this.bSaveQuests = new System.Windows.Forms.Button();
             this.bRemoveEvent = new System.Windows.Forms.Button();
             this.bEditEvent = new System.Windows.Forms.Button();
             this.bAddEvent = new System.Windows.Forms.Button();
@@ -133,7 +131,6 @@ namespace StalkerOnlineQuesterEditor
             this.EngText1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDiffLocale = new System.Windows.Forms.Panel();
             this.labelLocalizeOuput = new System.Windows.Forms.Label();
-            this.bSaveLocale = new System.Windows.Forms.Button();
             this.ActualCheckBox = new System.Windows.Forms.CheckBox();
             this.OutdatedCheckBox = new System.Windows.Forms.CheckBox();
             this.bFindQuestDifference = new System.Windows.Forms.Button();
@@ -161,8 +158,10 @@ namespace StalkerOnlineQuesterEditor
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatisticToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.StatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
             this.CentralDock.SuspendLayout();
@@ -218,7 +217,7 @@ namespace StalkerOnlineQuesterEditor
             this.DialogShower.Location = new System.Drawing.Point(0, 0);
             this.DialogShower.Name = "DialogShower";
             this.DialogShower.RegionManagement = true;
-            this.DialogShower.Size = new System.Drawing.Size(468, 399);
+            this.DialogShower.Size = new System.Drawing.Size(469, 399);
             this.DialogShower.TabIndex = 0;
             this.DialogShower.Text = "8";
             // 
@@ -322,7 +321,7 @@ namespace StalkerOnlineQuesterEditor
             this.GrafAndAllQuests.Panel2.Controls.Add(this.bZoomIn);
             this.GrafAndAllQuests.Panel2.Controls.Add(this.bZoomOut);
             this.GrafAndAllQuests.Panel2.Controls.Add(this.DialogShower);
-            this.GrafAndAllQuests.Size = new System.Drawing.Size(711, 403);
+            this.GrafAndAllQuests.Size = new System.Drawing.Size(712, 403);
             this.GrafAndAllQuests.SplitterDistance = 235;
             this.GrafAndAllQuests.TabIndex = 2;
             // 
@@ -338,7 +337,7 @@ namespace StalkerOnlineQuesterEditor
             // bZoomIn
             // 
             this.bZoomIn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bZoomIn.Location = new System.Drawing.Point(380, 0);
+            this.bZoomIn.Location = new System.Drawing.Point(381, 0);
             this.bZoomIn.MaximumSize = new System.Drawing.Size(44, 21);
             this.bZoomIn.Name = "bZoomIn";
             this.bZoomIn.Size = new System.Drawing.Size(44, 21);
@@ -351,7 +350,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.bZoomOut.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.bZoomOut.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bZoomOut.Location = new System.Drawing.Point(424, 0);
+            this.bZoomOut.Location = new System.Drawing.Point(425, 0);
             this.bZoomOut.MaximumSize = new System.Drawing.Size(44, 21);
             this.bZoomOut.Name = "bZoomOut";
             this.bZoomOut.Size = new System.Drawing.Size(44, 21);
@@ -369,14 +368,13 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
             this.DialogActions.Controls.Add(this.labelYNode);
             this.DialogActions.Controls.Add(this.labelXNode);
-            this.DialogActions.Controls.Add(this.bSaveDialogs);
             this.DialogActions.Controls.Add(this.bRemoveDialog);
             this.DialogActions.Controls.Add(this.bEditDialog);
             this.DialogActions.Controls.Add(this.bAddDialog);
             this.DialogActions.Dock = System.Windows.Forms.DockStyle.Right;
-            this.DialogActions.Location = new System.Drawing.Point(714, 16);
+            this.DialogActions.Location = new System.Drawing.Point(715, 16);
             this.DialogActions.Name = "DialogActions";
-            this.DialogActions.Size = new System.Drawing.Size(183, 403);
+            this.DialogActions.Size = new System.Drawing.Size(182, 403);
             this.DialogActions.TabIndex = 1;
             // 
             // bSync
@@ -427,16 +425,6 @@ namespace StalkerOnlineQuesterEditor
             this.labelXNode.Size = new System.Drawing.Size(62, 13);
             this.labelXNode.TabIndex = 4;
             this.labelXNode.Text = "labelXNode";
-            // 
-            // bSaveDialogs
-            // 
-            this.bSaveDialogs.Location = new System.Drawing.Point(7, 163);
-            this.bSaveDialogs.Name = "bSaveDialogs";
-            this.bSaveDialogs.Size = new System.Drawing.Size(173, 23);
-            this.bSaveDialogs.TabIndex = 3;
-            this.bSaveDialogs.Text = "Сохранить изменения";
-            this.bSaveDialogs.UseVisualStyleBackColor = true;
-            this.bSaveDialogs.Click += new System.EventHandler(this.bSaveDialogs_Click);
             // 
             // bRemoveDialog
             // 
@@ -581,7 +569,6 @@ namespace StalkerOnlineQuesterEditor
             this.panelQuestTools.Controls.Add(this.bCopyEvents);
             this.panelQuestTools.Controls.Add(this.bQuestDown);
             this.panelQuestTools.Controls.Add(this.bQuestUp);
-            this.panelQuestTools.Controls.Add(this.bSaveQuests);
             this.panelQuestTools.Controls.Add(this.bRemoveEvent);
             this.panelQuestTools.Controls.Add(this.bEditEvent);
             this.panelQuestTools.Controls.Add(this.bAddEvent);
@@ -654,16 +641,6 @@ namespace StalkerOnlineQuesterEditor
             this.bQuestUp.Text = "Вверх";
             this.bQuestUp.UseVisualStyleBackColor = true;
             this.bQuestUp.Click += new System.EventHandler(this.bQuestUp_Click);
-            // 
-            // bSaveQuests
-            // 
-            this.bSaveQuests.Location = new System.Drawing.Point(4, 336);
-            this.bSaveQuests.Name = "bSaveQuests";
-            this.bSaveQuests.Size = new System.Drawing.Size(191, 23);
-            this.bSaveQuests.TabIndex = 3;
-            this.bSaveQuests.Text = "Сохранить изменения";
-            this.bSaveQuests.UseVisualStyleBackColor = true;
-            this.bSaveQuests.Click += new System.EventHandler(this.bSaveQuests_Click);
             // 
             // bRemoveEvent
             // 
@@ -1225,7 +1202,6 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.panelDiffLocale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDiffLocale.Controls.Add(this.labelLocalizeOuput);
-            this.panelDiffLocale.Controls.Add(this.bSaveLocale);
             this.panelDiffLocale.Controls.Add(this.ActualCheckBox);
             this.panelDiffLocale.Controls.Add(this.OutdatedCheckBox);
             this.panelDiffLocale.Controls.Add(this.bFindQuestDifference);
@@ -1243,16 +1219,6 @@ namespace StalkerOnlineQuesterEditor
             this.labelLocalizeOuput.Name = "labelLocalizeOuput";
             this.labelLocalizeOuput.Size = new System.Drawing.Size(0, 13);
             this.labelLocalizeOuput.TabIndex = 5;
-            // 
-            // bSaveLocale
-            // 
-            this.bSaveLocale.Location = new System.Drawing.Point(802, 8);
-            this.bSaveLocale.Name = "bSaveLocale";
-            this.bSaveLocale.Size = new System.Drawing.Size(88, 40);
-            this.bSaveLocale.TabIndex = 4;
-            this.bSaveLocale.Text = "Сохранить";
-            this.bSaveLocale.UseVisualStyleBackColor = true;
-            this.bSaveLocale.Click += new System.EventHandler(this.bSaveLocale_Click);
             // 
             // ActualCheckBox
             // 
@@ -1497,7 +1463,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
-            this.StatisticsToolStripMenuItem});
+            this.SaveAllToolStripMenuItem,
+            this.ExplorerToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(914, 24);
@@ -1508,6 +1475,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SettingsToolStripMenuItem,
+            this.StatisticToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
@@ -1520,6 +1488,13 @@ namespace StalkerOnlineQuesterEditor
             this.SettingsToolStripMenuItem.Text = "Настройка оператора";
             this.SettingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
+            // StatisticToolStripMenuItem
+            // 
+            this.StatisticToolStripMenuItem.Name = "StatisticToolStripMenuItem";
+            this.StatisticToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.StatisticToolStripMenuItem.Text = "Статистика";
+            this.StatisticToolStripMenuItem.Click += new System.EventHandler(this.StatisticsToolStripMenuItem_Click);
+            // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
@@ -1527,12 +1502,21 @@ namespace StalkerOnlineQuesterEditor
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // StatisticsToolStripMenuItem
+            // SaveAllToolStripMenuItem
             // 
-            this.StatisticsToolStripMenuItem.Name = "StatisticsToolStripMenuItem";
-            this.StatisticsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.StatisticsToolStripMenuItem.Text = "Статистика";
-            this.StatisticsToolStripMenuItem.Click += new System.EventHandler(this.StatisticsToolStripMenuItem_Click);
+            this.SaveAllToolStripMenuItem.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.SaveDisk;
+            this.SaveAllToolStripMenuItem.Name = "SaveAllToolStripMenuItem";
+            this.SaveAllToolStripMenuItem.Size = new System.Drawing.Size(114, 20);
+            this.SaveAllToolStripMenuItem.Text = "Сохранить все";
+            this.SaveAllToolStripMenuItem.Click += new System.EventHandler(this.SaveAllToolStripMenuItem_Click);
+            // 
+            // ExplorerToolStripMenuItem
+            // 
+            this.ExplorerToolStripMenuItem.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.Explorer;
+            this.ExplorerToolStripMenuItem.Name = "ExplorerToolStripMenuItem";
+            this.ExplorerToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.ExplorerToolStripMenuItem.Text = "Проводник";
+            this.ExplorerToolStripMenuItem.Click += new System.EventHandler(this.ExplorerToolStripMenuItem_Click);
             // 
             // toolStripStatusLabel
             // 
@@ -1645,7 +1629,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bAddQuest;
         private System.Windows.Forms.Button bZoomOut;
         private System.Windows.Forms.Button bZoomIn;
-        private System.Windows.Forms.Button bSaveDialogs;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
@@ -1687,13 +1670,11 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bFindQuestDifference;
         private System.Windows.Forms.CheckBox ActualCheckBox;
         private System.Windows.Forms.CheckBox OutdatedCheckBox;
-        private System.Windows.Forms.Button bSaveLocale;
         private System.Windows.Forms.Label labelLocalizeOuput;
         public System.Windows.Forms.TabControl CentralDock;
         private System.Windows.Forms.Label labelYNode;
         private System.Windows.Forms.Label labelXNode;
         private System.Windows.Forms.Button bCenterizeDialogShower;
-        private System.Windows.Forms.ToolStripMenuItem StatisticsToolStripMenuItem;
         private System.Windows.Forms.TabPage tabReview;
         private System.Windows.Forms.Panel panelReviewButtons;
         private System.Windows.Forms.GroupBox gbNPCcheck;
@@ -1718,7 +1699,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bCopyEvents;
         private System.Windows.Forms.Button bQuestDown;
         private System.Windows.Forms.Button bQuestUp;
-        private System.Windows.Forms.Button bSaveQuests;
         private System.Windows.Forms.Button bRemoveEvent;
         private System.Windows.Forms.Button bEditEvent;
         private System.Windows.Forms.Button bAddEvent;
@@ -1753,6 +1733,9 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn colText;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEngText;
         private System.Windows.Forms.CheckBox cbIgnoreCase;
+        private System.Windows.Forms.ToolStripMenuItem ExplorerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StatisticToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveAllToolStripMenuItem;
 
 
     }
