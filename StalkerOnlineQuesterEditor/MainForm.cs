@@ -126,7 +126,6 @@ namespace StalkerOnlineQuesterEditor
                 bAddDialog.Enabled = false;
                 bEditDialog.Enabled = false;
                 bRemoveDialog.Enabled = false;
-                QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
                 EmulatorsplitContainer.Panel2.Controls.Clear();
                 DialogSelected(true);
             }
@@ -135,6 +134,7 @@ namespace StalkerOnlineQuesterEditor
                 fillQuestChangeBox(false);
                 QuestBox.Text = "Пожалуйста, выберите квест";
             }
+            tabQuests.Text = "Квесты (" + quests.getCountOfQuests(currentNPC) + ")";
         }
 
         //! Поиск в комбобоксe NPC по имени общему, или локализованному русскому, английскому
