@@ -570,7 +570,6 @@ namespace StalkerOnlineQuesterEditor
                 case 2:         // Вкладка Связи NPC 
                     SetControlsAbility(false);
                     NPCBox.Enabled = true;
-                    fillNPCLinkView();
                     break;                
                 case 3: case 5: case 6:     // Вкладки Проверка, Перевод, Баланс
                     SetControlsAbility(false);

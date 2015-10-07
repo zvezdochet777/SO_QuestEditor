@@ -85,54 +85,6 @@ namespace StalkerOnlineQuesterEditor
             npcLinkShower.Layer.AddChildren(nodeNPClinkLayer);
         }
 
-        //! Заполняет граф связей по старой уёбищной схеме
-        void fillNPCLinkView()
-        {
-            // Initialize, and create a layer for the edges (always underneath the nodes)
-            this.npcLinkShower.Layer.RemoveAllChildren();
-            nodeNPClinkLayer = new PNodeList();
-            edgeNPClinkLayer = new PLayer();
-
-            this.npcLinkShower.Root.AddChild(edgeNPClinkLayer);
-            this.npcLinkShower.Camera.AddLayer(0, edgeNPClinkLayer);
-            //////Image iBackground = Image.FromFile("source/map.jpg");
-            //////this.npcLinkShower.BackgroundImage = iBackground;
-            bNumOfIter = false;
-            rootx = (float)(this.ClientSize.Width / 5);
-            rooty = (float)(this.ClientSize.Height / 5);
-
-            foreach (KeyValuePair<int, CQuest> quest in quests.quest)
-                foreach (Dictionary<int, CDialog> dialog in dialogs.dialogs.Values)
-                    foreach (KeyValuePair<int, CDialog> dial in dialog)
-                        if (dial.Value.Actions.CompleteQuests.Contains(quest.Key) && !dial.Value.Holder.Equals(quest.Value.Additional.Holder)
-                            && !dial.Value.Holder.Equals("") && !quest.Value.Additional.Holder.Equals(""))
-                        {
-                            string sQuestHolder = quest.Value.Additional.Holder;
-                            string sDialogHolder = dial.Value.Holder;
-                            PNode dialogHolder = new PNode();
-                            PNode questHolder = new PNode();
-                            
-                            if (mapGraphs.Keys.Contains(sQuestHolder))
-                                questHolder = mapGraphs[sQuestHolder];
-                            else
-                                addNodeToNpcLink(ref questHolder, sQuestHolder, new npcData());
-
-                            if (mapGraphs.Keys.Contains(sDialogHolder))
-                                dialogHolder = mapGraphs[sDialogHolder];
-                            else
-                                addNodeToNpcLink(ref dialogHolder, sDialogHolder, new npcData());
-
-                            PrepareNodesForEdge(questHolder, dialogHolder, ref edgeNPClinkLayer);
-
-                            if (!nodeNPClinkLayer.Contains(dialogHolder))
-                                nodeNPClinkLayer.Add(dialogHolder);
-                            if (!nodeNPClinkLayer.Contains(questHolder))
-                                nodeNPClinkLayer.Add(questHolder);
-
-                        }
-            npcLinkShower.Layer.AddChildren(nodeNPClinkLayer);
-        }
-
         //! Добавляет узел на граф связей NPC между собой
         void addNodeToNpcLink(ref PNode Holder, string name, npcData NpcData)
         {
