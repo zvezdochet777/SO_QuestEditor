@@ -19,12 +19,12 @@ namespace StalkerOnlineQuesterEditor
     {
         public PNode curNode = null;
         public PNode prevNode = null;
-        public MainForm form;
+        public MainForm mainForm;
         
 
         public NodeDragHandler(MainForm form)
         {
-            this.form = form;
+            this.mainForm = form;
         }
 
         public override bool DoesAcceptEvent(PInputEventArgs e)
@@ -65,34 +65,28 @@ namespace StalkerOnlineQuesterEditor
             float w = e.PickedNode.GlobalFullBounds.Width;
             float h = e.PickedNode.GlobalFullBounds.Height;
 
-            int dialogID = form.getDialogIDOnNode(e.PickedNode);
-            CDialog dialog = form.getDialogOnIDConditional(dialogID);
-            form.SaveCoordinates(dialog, e.PickedNode, dialog.coordinates.RootDialog);
-            form.setXYCoordinates(x, y, w, h);
+            int dialogID = mainForm.getDialogIDOnNode(e.PickedNode);
+            CDialog dialog = mainForm.getDialogOnIDConditional(dialogID);
+            mainForm.SaveCoordinates(dialog, e.PickedNode, dialog.coordinates.RootDialog);
+            mainForm.setXYCoordinates(x, y, w, h);
         }
 
         //! Клик мыши по узлу диалога - выделяем его и потомков цветом
         public override void OnClick(object sender, PInputEventArgs e)
         {
-            //System.Console.WriteLine("i have "+form.graphs.Count+" graphs");
-            form.clearToolstripLabel();
+            mainForm.clearToolstripLabel();
             e.Handled = true;
             if (e.PickedNode.Tag != null)
             {
-                setCurrentNode(form.getDialogIDOnNode(e.PickedNode));
+                setCurrentNode(mainForm.getDialogIDOnNode(e.PickedNode));
             }
-        }
-
-        string getStringFromnode(PText node){
-            return "";
         }
 
         public override void OnDoubleClick(object sender, PInputEventArgs e)
         {
             e.Handled = true;
-            int node = form.getDialogIDOnNode(e.PickedNode);
-            //System.Console.WriteLine("DoubleClick on node " + node.ToString());
-            form.bEditDialog_Click(sender, new EventArgs() );
+            int node = mainForm.getDialogIDOnNode(e.PickedNode);
+            mainForm.bEditDialog_Click(sender, new EventArgs() );
         }
 
         protected override void OnDrag(object sender, PInputEventArgs e)
@@ -112,7 +106,7 @@ namespace StalkerOnlineQuesterEditor
         public int getCurDialogID()
         {
             if (curNode != null)
-                return form.getDialogIDOnNode(curNode);
+                return mainForm.getDialogIDOnNode(curNode);
             else
                 return 0;
            /* {
@@ -129,7 +123,7 @@ namespace StalkerOnlineQuesterEditor
             if (curNode != null)
                 if (!getCurDialogID().Equals(dialogID))
                 {
-                    if (form.isRoot(form.getDialogIDOnNode(curNode)))
+                    if (mainForm.isRoot(mainForm.getDialogIDOnNode(curNode)))
                         curNode.Brush = Brushes.Green;
                     else
                         curNode.Brush = Brushes.White;
@@ -137,25 +131,25 @@ namespace StalkerOnlineQuesterEditor
                 }
             if (!getCurDialogID().Equals(dialogID))
             {
-                form.onDeselectNode();
-                form.deselectSubNodesDialogGraphView();
+                mainForm.onDeselectNode();
+                mainForm.deselectSubNodesDialogGraphView();
                 
                 if (dialogID == 0)
                     curNode = null;
                 else
-                    curNode = form.getNodeOnDialogID(dialogID);
+                    curNode = mainForm.getNodeOnDialogID(dialogID);
                 if (curNode != null)
                 {
                     curNode.Brush = Brushes.Red;
-                    form.selectNodeOnDialogTree(dialogID);
+                    mainForm.selectNodeOnDialogTree(dialogID);
                     
-                    form.selectSubNodesDialogGraphView(dialogID);
+                    mainForm.selectSubNodesDialogGraphView(dialogID);
                 }
-                form.onSelectNode(dialogID);
+                mainForm.onSelectNode(dialogID);
             }
 
-            if (form.isDialogActive(dialogID))
-                form.startEmulator(dialogID);//, true);
+            if (mainForm.isDialogActive(dialogID))
+                mainForm.startEmulator(dialogID);//, true);
         }
 
    }

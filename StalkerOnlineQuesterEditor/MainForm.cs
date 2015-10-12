@@ -36,7 +36,6 @@ namespace StalkerOnlineQuesterEditor
         //! Ссылка на экземпляр класса CQuests
         CQuests quests;
         NodeDragHandler Listener;
-        MapNodeDragHandler MapListener;
         PLayer edgeLayer;
         PNodeList nodeLayer;
 
@@ -68,7 +67,6 @@ namespace StalkerOnlineQuesterEditor
         {
             InitializeComponent();
             Listener = new NodeDragHandler(this);
-            MapListener = new MapNodeDragHandler(this);
             settings = new CSettings(this);
             dialogs = new CDialogs(this);
             quests = new CQuests(this);
