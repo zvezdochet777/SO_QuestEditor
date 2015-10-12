@@ -50,6 +50,7 @@ namespace StalkerOnlineQuesterEditor
             this.labelYNode = new System.Windows.Forms.Label();
             this.labelXNode = new System.Windows.Forms.Label();
             this.bRemoveDialog = new System.Windows.Forms.Button();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.bEditDialog = new System.Windows.Forms.Button();
             this.bAddDialog = new System.Windows.Forms.Button();
             this.EmulatorGroupBox = new System.Windows.Forms.GroupBox();
@@ -68,7 +69,6 @@ namespace StalkerOnlineQuesterEditor
             this.bQuestDown = new System.Windows.Forms.Button();
             this.bQuestUp = new System.Windows.Forms.Button();
             this.bRemoveEvent = new System.Windows.Forms.Button();
-            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.bEditEvent = new System.Windows.Forms.Button();
             this.bAddEvent = new System.Windows.Forms.Button();
             this.PanelSelectQuest = new System.Windows.Forms.Panel();
@@ -437,6 +437,14 @@ namespace StalkerOnlineQuesterEditor
             this.bRemoveDialog.UseVisualStyleBackColor = true;
             this.bRemoveDialog.Click += new System.EventHandler(this.bRemoveDialog_Click);
             // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "add.png");
+            this.imageList.Images.SetKeyName(1, "Edit.png");
+            this.imageList.Images.SetKeyName(2, "delete.png");
+            // 
             // bEditDialog
             // 
             this.bEditDialog.Enabled = false;
@@ -666,14 +674,6 @@ namespace StalkerOnlineQuesterEditor
             this.bRemoveEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bRemoveEvent.UseVisualStyleBackColor = true;
             this.bRemoveEvent.Click += new System.EventHandler(this.bRemoveEvent_Click);
-            // 
-            // imageList
-            // 
-            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "add.png");
-            this.imageList.Images.SetKeyName(1, "Edit.png");
-            this.imageList.Images.SetKeyName(2, "delete.png");
             // 
             // bEditEvent
             // 
@@ -1536,7 +1536,7 @@ namespace StalkerOnlineQuesterEditor
             this.SynchroToolStripMenuItem.Name = "SynchroToolStripMenuItem";
             this.SynchroToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.SynchroToolStripMenuItem.Text = "Синхронизировать";
-            this.SynchroToolStripMenuItem.Click += new System.EventHandler(this.bSync_Click);
+            this.SynchroToolStripMenuItem.Click += new System.EventHandler(this.SynchroToolStripMenuItem_Click);
             // 
             // StatisticToolStripMenuItem
             // 
@@ -1595,6 +1595,7 @@ namespace StalkerOnlineQuesterEditor
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusDialogStrip);
             this.Name = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.CentralDock.ResumeLayout(false);
             this.tabDialogs.ResumeLayout(false);
             this.splitDialogs.Panel1.ResumeLayout(false);

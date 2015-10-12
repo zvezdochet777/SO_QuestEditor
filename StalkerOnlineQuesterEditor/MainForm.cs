@@ -232,7 +232,7 @@ namespace StalkerOnlineQuesterEditor
             NPCBox.DisplayMember = "DisplayString";
             NPCBox.ValueMember = "Value";
             NPCBox.DataSource = npcNames;
-            NPCBox.SelectedIndex = 1;
+            NPCBox.SelectedIndex = settings.getLastNpcIndex();
 
             NPCBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -1573,24 +1573,6 @@ namespace StalkerOnlineQuesterEditor
             // сдвиг ставим на 0 -камера возвращается в исходное положение
             DialogShower.Camera.SetViewOffset(0, 0);
         }
-        //! Пункт главного меню - Настройки
-        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OperatorSettings fOperator = new OperatorSettings(this);
-            this.Enabled = false;
-            fOperator.Show();
-        }
-        //! Пункт главного меню - Выход
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        //! Пункт главного меню - статистика
-        private void StatisticsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests, dialogs);
-            sf.Show();
-        }
 
 //*************************** DATA CHECK - missed dialogs, quests, NPC and so on**************************
         //! Заполнение итемов в комбобоксе выбора локации (во вкладке Проверка)
@@ -1792,198 +1774,6 @@ namespace StalkerOnlineQuesterEditor
             }
 
         }
-
-        private void bSync_Click(object sender, EventArgs e)
-        {
-            //синхронизация диалогов
-            string loc = settings.getCurrentLocale();
-            int added = 0;
-            int copied = 0;
-            foreach (string npc in dialogs.dialogs.Keys)
-            {
-                if (!dialogs.locales[loc].ContainsKey(npc))
-                {
-                    dialogs.locales[loc].Add(npc, new Dictionary<int, CDialog>());
-                }
-                foreach (int dialogID in dialogs.dialogs[npc].Keys)
-                {
-                    bool exist = true;
-                    CDialog rus = dialogs.dialogs[npc][dialogID];
-                    CDialog eng = new CDialog();
-                    try
-                    {
-                        eng = dialogs.locales[loc][npc][dialogID];
-                    }
-                    catch
-                    {
-                        exist = false;
-                    }
-
-                    eng.Precondition = rus.Precondition;
-                    eng.Nodes = rus.Nodes;
-                    eng.Actions = rus.Actions;
-                    eng.coordinates.Active = rus.coordinates.Active;
-
-                    if (!exist)
-                    {
-                        eng.Holder = rus.Holder;
-                        eng.coordinates = rus.coordinates;
-                        eng.DialogID = rus.DialogID;
-                        eng.Text = rus.Text;
-                        eng.Title = rus.Title;
-                        eng.version = 0;
-                        dialogs.locales[loc][npc].Add(dialogID, eng);
-                        added++;
-                    }
-                    else
-                    {
-                        dialogs.locales[loc][npc][dialogID] = eng;
-
-                        // копирование русских строчек вместо пустых
-                        if (rus.Title.Length > 0 && eng.Title.Length == 0)
-                        {
-                            eng.Title = rus.Title;
-                            eng.version = rus.version - 1;
-                            copied++;
-                        }
-                        if (rus.Text.Length > 0 && eng.Text.Length == 0)
-                        {
-                            eng.Text = rus.Text;
-                            eng.version = rus.version - 1;
-                            copied++;
-                        }
-                    }
-
-                }                
-            }
-            // удаление лишних диалогов
-            int garb = 0;
-            Dictionary<string, int> del = new Dictionary<string, int>();
-            foreach (string npc in dialogs.locales[loc].Keys)
-                foreach (int dialID in dialogs.locales[loc][npc].Keys)
-                {
-                    if (!dialogs.dialogs.ContainsKey(npc) && !del.ContainsKey(npc))
-                    {
-                        del.Add(npc, 0);
-                        garb++;
-                    }
-                    else if (!dialogs.dialogs.ContainsKey(npc) && del.ContainsKey(npc))
-                    {
-                        garb++;
-                        del[npc]++;
-                    }
-                    //else if (dialogs.dialogs.ContainsKey(npc) && !dialogs.dialogs[npc].ContainsKey(dialID))
-                    //    del.Add(npc, dialID);
-                }
-            foreach (string npc in del.Keys)
-                dialogs.locales[loc].Remove(npc);
-                       
-            // синхронизация квестов            
-            int empty = 0;
-            int title = 0, desc = 0;
-            foreach (CQuest quest in quests.quest.Values)
-            {                
-                bool exist = true;
-                CQuest local = new CQuest();
-                try
-                {
-                    local = this.quests.locales[loc][quest.QuestID];
-                }
-                catch
-                {
-                    exist = false;
-                }
-                if (!exist)
-                {
-                    CQuest toadd = new CQuest();
-                    toadd = (CQuest)quest.Clone();
-                    toadd.Version = 0;
-                    quests.locales[loc].Add(toadd.QuestID, toadd);
-                    empty++;
-                }
-                else
-                {
-                    local.QuestInformation.Items = quest.QuestInformation.Items;
-                    local.Additional.ShowProgress = quest.Additional.ShowProgress;
-                    local.Additional.ListOfSubQuest = quest.Additional.ListOfSubQuest;
-                    local.Additional.IsSubQuest = quest.Additional.IsSubQuest;
-                    local.Precondition = quest.Precondition;
-                    local.QuestPenalty = quest.QuestPenalty;
-                    local.QuestRules = quest.QuestRules;
-                    local.Reward = quest.Reward;
-                    local.Target = quest.Target;
-                    // копирование русских строчек вместо пустых
-                    if (quest.QuestInformation.Title.Length > 0 && local.QuestInformation.Title.Length == 0)
-                    {
-                        local.QuestInformation.Title = quest.QuestInformation.Title;
-                        local.Version = quest.Version - 1;
-                        title++;
-                    }
-                    if (quest.QuestInformation.Description.Length > 0 && local.QuestInformation.Description.Length == 0)
-                    {
-                        local.QuestInformation.Description = quest.QuestInformation.Description;
-                        local.Version = quest.Version - 1;
-                        desc++;
-                    }
-                    if (quest.QuestInformation.onWin.Length > 0 && local.QuestInformation.onWin.Length == 0)
-                    {
-                        local.QuestInformation.onWin = quest.QuestInformation.onWin;
-                        local.Version = quest.Version - 1;
-                        title++;
-                    }
-                    if (quest.QuestInformation.onFailed.Length > 0 && local.QuestInformation.onFailed.Length == 0)
-                    {
-                        local.QuestInformation.onFailed = quest.QuestInformation.onFailed;
-                        local.Version = quest.Version - 1;
-                        desc++;
-                    }
-                }
-            }
-            
-            
-            // удаляем лишние квесты 
-            List<int> trash = new List<int>();
-            foreach (CQuest local in quests.locales[loc].Values)
-            {
-                if (!quests.quest.ContainsKey(local.QuestID))
-                {
-                    trash.Add(local.QuestID);
-                    //if (local.QuestID <= 3500 && local.QuestID >= 2500)
-                }
-            }
-            foreach (int shit in trash)
-                quests.locales[loc].Remove(shit);
-                        
-            string info = "Синхронизация исходных данных и переводов: \n";
-            info += "Диалогов добавлено: "+ added.ToString() + " Удалено: " +garb.ToString()+ " Скопировано: "+ copied.ToString() + "\n";
-            info += "Квестов добавлено: " + empty.ToString() + " Удалено: " + trash.Count.ToString() + " Заголовков: " + title.ToString() + " Описаний: " + desc.ToString();
-            MessageBox.Show(info, "Результаты синхронизации", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            /*
-             * // дублированные ID диалогов
-            Dictionary<int, int> shitty = new Dictionary<int, int>();
-            Dictionary<int, int> dupl = new Dictionary<int, int>();
-            foreach (string npc in dialogs.dialogs.Keys)
-            {
-                foreach (int dialogID in dialogs.dialogs[npc].Keys)
-                {
-                    if (!shitty.ContainsKey(dialogID))
-                        shitty.Add(dialogID, 1);
-                    else
-                        shitty[dialogID]++;
-                }
-            }
-            int stup = 0;
-            foreach (int key in shitty.Keys)
-                if (shitty[key] > 1)
-                {
-                    dupl.Add(key, shitty[key]);
-                    stup += shitty[key];
-                }
-            labelXNode.Text = "dupl = " + dupl.Count.ToString() + ", total=" + stup.ToString();
-             */
-        }
-
         private void bStartSearch_Click(object sender, EventArgs e)
         {
             int count = 0;
@@ -2081,16 +1871,232 @@ namespace StalkerOnlineQuesterEditor
 
             }
         }
-
+//***************************MAIN MENU ITEMS **************************
+        //! Пункт главного меню - открытие папки с данными 
         private void ExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String path = System.IO.Path.GetDirectoryName(settings.getDialogsPath());
             System.Diagnostics.Process.Start(path);
         }
-
+        //! Пункт главного меню - сохранение всех данных
         private void SaveAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.saveData();
+        }
+        //! Пункт главного меню - Настройки
+        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OperatorSettings fOperator = new OperatorSettings(this);
+            this.Enabled = false;
+            fOperator.Show();
+        }
+        //! Пункт главного меню - Синхронизация 
+        private void SynchroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //синхронизация диалогов
+            string loc = settings.getCurrentLocale();
+            int added = 0;
+            int copied = 0;
+            foreach (string npc in dialogs.dialogs.Keys)
+            {
+                if (!dialogs.locales[loc].ContainsKey(npc))
+                {
+                    dialogs.locales[loc].Add(npc, new Dictionary<int, CDialog>());
+                }
+                foreach (int dialogID in dialogs.dialogs[npc].Keys)
+                {
+                    bool exist = true;
+                    CDialog rus = dialogs.dialogs[npc][dialogID];
+                    CDialog eng = new CDialog();
+                    try
+                    {
+                        eng = dialogs.locales[loc][npc][dialogID];
+                    }
+                    catch
+                    {
+                        exist = false;
+                    }
+
+                    eng.Precondition = rus.Precondition;
+                    eng.Nodes = rus.Nodes;
+                    eng.Actions = rus.Actions;
+                    eng.coordinates.Active = rus.coordinates.Active;
+
+                    if (!exist)
+                    {
+                        eng.Holder = rus.Holder;
+                        eng.coordinates = rus.coordinates;
+                        eng.DialogID = rus.DialogID;
+                        eng.Text = rus.Text;
+                        eng.Title = rus.Title;
+                        eng.version = 0;
+                        dialogs.locales[loc][npc].Add(dialogID, eng);
+                        added++;
+                    }
+                    else
+                    {
+                        dialogs.locales[loc][npc][dialogID] = eng;
+
+                        // копирование русских строчек вместо пустых
+                        if (rus.Title.Length > 0 && eng.Title.Length == 0)
+                        {
+                            eng.Title = rus.Title;
+                            eng.version = rus.version - 1;
+                            copied++;
+                        }
+                        if (rus.Text.Length > 0 && eng.Text.Length == 0)
+                        {
+                            eng.Text = rus.Text;
+                            eng.version = rus.version - 1;
+                            copied++;
+                        }
+                    }
+
+                }
+            }
+            // удаление лишних диалогов
+            int garb = 0;
+            Dictionary<string, int> del = new Dictionary<string, int>();
+            foreach (string npc in dialogs.locales[loc].Keys)
+                foreach (int dialID in dialogs.locales[loc][npc].Keys)
+                {
+                    if (!dialogs.dialogs.ContainsKey(npc) && !del.ContainsKey(npc))
+                    {
+                        del.Add(npc, 0);
+                        garb++;
+                    }
+                    else if (!dialogs.dialogs.ContainsKey(npc) && del.ContainsKey(npc))
+                    {
+                        garb++;
+                        del[npc]++;
+                    }
+                    //else if (dialogs.dialogs.ContainsKey(npc) && !dialogs.dialogs[npc].ContainsKey(dialID))
+                    //    del.Add(npc, dialID);
+                }
+            foreach (string npc in del.Keys)
+                dialogs.locales[loc].Remove(npc);
+
+            // синхронизация квестов            
+            int empty = 0;
+            int title = 0, desc = 0;
+            foreach (CQuest quest in quests.quest.Values)
+            {
+                bool exist = true;
+                CQuest local = new CQuest();
+                try
+                {
+                    local = this.quests.locales[loc][quest.QuestID];
+                }
+                catch
+                {
+                    exist = false;
+                }
+                if (!exist)
+                {
+                    CQuest toadd = new CQuest();
+                    toadd = (CQuest)quest.Clone();
+                    toadd.Version = 0;
+                    quests.locales[loc].Add(toadd.QuestID, toadd);
+                    empty++;
+                }
+                else
+                {
+                    local.QuestInformation.Items = quest.QuestInformation.Items;
+                    local.Additional.ShowProgress = quest.Additional.ShowProgress;
+                    local.Additional.ListOfSubQuest = quest.Additional.ListOfSubQuest;
+                    local.Additional.IsSubQuest = quest.Additional.IsSubQuest;
+                    local.Precondition = quest.Precondition;
+                    local.QuestPenalty = quest.QuestPenalty;
+                    local.QuestRules = quest.QuestRules;
+                    local.Reward = quest.Reward;
+                    local.Target = quest.Target;
+                    // копирование русских строчек вместо пустых
+                    if (quest.QuestInformation.Title.Length > 0 && local.QuestInformation.Title.Length == 0)
+                    {
+                        local.QuestInformation.Title = quest.QuestInformation.Title;
+                        local.Version = quest.Version - 1;
+                        title++;
+                    }
+                    if (quest.QuestInformation.Description.Length > 0 && local.QuestInformation.Description.Length == 0)
+                    {
+                        local.QuestInformation.Description = quest.QuestInformation.Description;
+                        local.Version = quest.Version - 1;
+                        desc++;
+                    }
+                    if (quest.QuestInformation.onWin.Length > 0 && local.QuestInformation.onWin.Length == 0)
+                    {
+                        local.QuestInformation.onWin = quest.QuestInformation.onWin;
+                        local.Version = quest.Version - 1;
+                        title++;
+                    }
+                    if (quest.QuestInformation.onFailed.Length > 0 && local.QuestInformation.onFailed.Length == 0)
+                    {
+                        local.QuestInformation.onFailed = quest.QuestInformation.onFailed;
+                        local.Version = quest.Version - 1;
+                        desc++;
+                    }
+                }
+            }
+
+
+            // удаляем лишние квесты 
+            List<int> trash = new List<int>();
+            foreach (CQuest local in quests.locales[loc].Values)
+            {
+                if (!quests.quest.ContainsKey(local.QuestID))
+                {
+                    trash.Add(local.QuestID);
+                    //if (local.QuestID <= 3500 && local.QuestID >= 2500)
+                }
+            }
+            foreach (int shit in trash)
+                quests.locales[loc].Remove(shit);
+
+            string info = "Синхронизация исходных данных и переводов: \n";
+            info += "Диалогов добавлено: " + added.ToString() + " Удалено: " + garb.ToString() + " Скопировано: " + copied.ToString() + "\n";
+            info += "Квестов добавлено: " + empty.ToString() + " Удалено: " + trash.Count.ToString() + " Заголовков: " + title.ToString() + " Описаний: " + desc.ToString();
+            MessageBox.Show(info, "Результаты синхронизации", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            /*
+             * // дублированные ID диалогов
+            Dictionary<int, int> shitty = new Dictionary<int, int>();
+            Dictionary<int, int> dupl = new Dictionary<int, int>();
+            foreach (string npc in dialogs.dialogs.Keys)
+            {
+                foreach (int dialogID in dialogs.dialogs[npc].Keys)
+                {
+                    if (!shitty.ContainsKey(dialogID))
+                        shitty.Add(dialogID, 1);
+                    else
+                        shitty[dialogID]++;
+                }
+            }
+            int stup = 0;
+            foreach (int key in shitty.Keys)
+                if (shitty[key] > 1)
+                {
+                    dupl.Add(key, shitty[key]);
+                    stup += shitty[key];
+                }
+            labelXNode.Text = "dupl = " + dupl.Count.ToString() + ", total=" + stup.ToString();
+             */
+        }
+
+        //! Пункт главного меню - Cтатистика
+        private void StatisticsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests, dialogs);
+            sf.Show();
+        }
+        //! Пункт главного меню - Выход
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            settings.setLastNpcIndex(NPCBox.SelectedIndex);
+            settings.saveSettings();
         }
 
     }

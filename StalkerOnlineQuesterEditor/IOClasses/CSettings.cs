@@ -22,6 +22,7 @@ namespace StalkerOnlineQuesterEditor
         List<string> locales = new List<string>();
         //! Текущая локализация. Пока хранит 0 - видимо для русского языка
         int currentLocale = 0;
+        int lastNpcIndex = 0;
 
         public int MODE_EDITOR = 0;
         public int MODE_LOCALIZATION = 1;       
@@ -32,48 +33,32 @@ namespace StalkerOnlineQuesterEditor
 
         public System.String dialogXML = "Dialogs.xml";
         public System.String questXML = "Quests.xml";
-        public System.String balanceXML = "Balance.xml";
 
         public CSettings(MainForm parent)
         {
             this.parent = parent;
             XDocument doc = XDocument.Load(SETTINGS_PATH + SETTING_FILE);
-            this.iNumOperator = int.Parse(doc.Root.Element("operator").Value.ToString());
+            
             try
             {
+                this.iNumOperator = int.Parse(doc.Root.Element("operator").Value.ToString());
                 foreach (string locale in doc.Root.Element("locales").Value.ToString().Split(','))
                     locales.Add(locale);
-            }
-            catch
-            {
-                System.Console.WriteLine("Can't parse locales");
-            }
-
-            try
-            {
                 this.mode = int.Parse(doc.Root.Element("mode").Value.ToString());
-                System.Console.WriteLine("The mode is: " + mode.ToString());
-            }
-            catch
-            {
-                System.Console.WriteLine("Can't parse mode");
-            }
-
-            try
-            {
                 this.currentLocale = int.Parse(doc.Root.Element("current_locale").Value.ToString());
-            }
-            catch
-            {
-
-            }
-            try
-            {
                 pathToCopyFiles = doc.Root.Element("pathToCopyFiles").Value;
+                lastNpcIndex = int.Parse(doc.Root.Element("LastNPcIndex").Value.ToString());
             }
             catch
-            { 
-            
+            {
+                iNumOperator = 0;
+                if (!locales.Contains("ENG"))
+                    locales.Add("ENG");
+                mode = MODE_EDITOR;
+                currentLocale = 0;
+                lastNpcIndex = 1;
+                pathToCopyFiles = @"..\..\..\res\scripts\common\data\Quests\";
+                System.Console.WriteLine("Can't parse settings file! Defaults used");
             }
         }
 
@@ -127,6 +112,15 @@ namespace StalkerOnlineQuesterEditor
             this.iNumOperator = iNumOperator;
         }
 
+        public void setLastNpcIndex(int NpcIndex)
+        {
+            lastNpcIndex = NpcIndex;
+        }
+        public int getLastNpcIndex()
+        {
+            return lastNpcIndex;
+        }
+
         //! Сохраняет все настройки в файл settings.xml
         public void saveSettings()
         {
@@ -135,12 +129,14 @@ namespace StalkerOnlineQuesterEditor
             XElement loc = new XElement("locales", getLocales());
             XElement mode = new XElement("mode", this.mode.ToString());
             XElement current_locale = new XElement("current_locale", this.currentLocale.ToString());
+            XElement lastNpcIndex = new XElement("LastNPcIndex", this.lastNpcIndex);
             XElement path = new XElement("pathToCopyFiles", this.pathToCopyFiles);
 
             resultDoc.Root.Add(oper);
             resultDoc.Root.Add(loc);
             resultDoc.Root.Add(mode);
             resultDoc.Root.Add(current_locale);
+            resultDoc.Root.Add(lastNpcIndex);
             resultDoc.Root.Add(path);
             resultDoc.Save(SETTINGS_PATH + SETTING_FILE);
         }
@@ -186,12 +182,6 @@ namespace StalkerOnlineQuesterEditor
         public string getCurrentLocale()
         {
             return locales[currentLocale];
-        }
-
-        //! Возвращает путь к файлу с балансом
-        public string getBalancePath()
-        {
-            return balanceXML;
         }
 
         //! Возвращает адрес локализованного файла квестов
