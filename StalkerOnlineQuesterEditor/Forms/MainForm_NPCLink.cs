@@ -39,6 +39,11 @@ namespace StalkerOnlineQuesterEditor
                 return;
             //string npcName = NPCBox.SelectedItem.ToString();
             string npcName = NPCBox.SelectedValue.ToString();
+            if (!dialogs.NpcData.ContainsKey(npcName))
+            {
+                MessageBox.Show("Выбранный NPC отсутствует на игровых локациях. Запустите парсер NPC, если нужно обновить информацию.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             npcData NpcData = dialogs.NpcData[npcName];
             // очищаем поле графа
             bNumOfIter = true;
