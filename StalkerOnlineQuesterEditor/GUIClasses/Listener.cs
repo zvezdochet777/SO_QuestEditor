@@ -36,15 +36,15 @@ namespace StalkerOnlineQuesterEditor
         {
             base.OnMouseEnter(sender, e);
             //if ((e.Button == MouseButtons.None) && (e.PickedNode.Tag!= null))
-            //e.PickedNode.Brush = Brushes.Red;
+            //    e.PickedNode.Brush = Brushes.Red;
 
         }
 
         public override void OnMouseLeave(object sender, PInputEventArgs e)
         {
             base.OnMouseLeave(sender, e);
-            // if (e.Button == MouseButtons.None)
-            //e.PickedNode.Brush = Brushes.White;
+            //if (e.Button == MouseButtons.None)
+            //    e.PickedNode.Brush = Brushes.White;
 
         }
         //! Начало перетаскивания узлов диалога

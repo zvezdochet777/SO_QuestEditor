@@ -1877,9 +1877,7 @@ namespace StalkerOnlineQuesterEditor
                 }
             foreach (string npc in del.Keys)
                 dialogs.locales[loc].Remove(npc);
-
-            labelXNode.Text = "D added = " + added.ToString() + " del = " + garb.ToString() + " copy " + copied.ToString();
-            
+                       
             // синхронизация квестов            
             int empty = 0;
             int title = 0, desc = 0;
@@ -1955,8 +1953,11 @@ namespace StalkerOnlineQuesterEditor
             }
             foreach (int shit in trash)
                 quests.locales[loc].Remove(shit);
-            labelYNode.Text = "Q added = " + empty.ToString() + " del = " + trash.Count.ToString() + " title = " + title.ToString() + " desc = " + desc.ToString();
-             
+                        
+            string info = "Синхронизация исходных данных и переводов: \n";
+            info += "Диалогов добавлено: "+ added.ToString() + " Удалено: " +garb.ToString()+ " Скопировано: "+ copied.ToString() + "\n";
+            info += "Квестов добавлено: " + empty.ToString() + " Удалено: " + trash.Count.ToString() + " Заголовков: " + title.ToString() + " Описаний: " + desc.ToString();
+            MessageBox.Show(info, "Результаты синхронизации", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             /*
              * // дублированные ID диалогов

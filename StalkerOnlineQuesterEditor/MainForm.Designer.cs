@@ -45,7 +45,6 @@ namespace StalkerOnlineQuesterEditor
             this.bZoomIn = new System.Windows.Forms.Button();
             this.bZoomOut = new System.Windows.Forms.Button();
             this.DialogActions = new System.Windows.Forms.Panel();
-            this.bSync = new System.Windows.Forms.Button();
             this.bRunThroughNPC = new System.Windows.Forms.Button();
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.labelYNode = new System.Windows.Forms.Label();
@@ -68,6 +67,10 @@ namespace StalkerOnlineQuesterEditor
             this.bCopyEvents = new System.Windows.Forms.Button();
             this.bQuestDown = new System.Windows.Forms.Button();
             this.bQuestUp = new System.Windows.Forms.Button();
+            this.bRemoveEvent = new System.Windows.Forms.Button();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.bEditEvent = new System.Windows.Forms.Button();
+            this.bAddEvent = new System.Windows.Forms.Button();
             this.PanelSelectQuest = new System.Windows.Forms.Panel();
             this.bRemoveQuest = new System.Windows.Forms.Button();
             this.bAddQuest = new System.Windows.Forms.Button();
@@ -160,14 +163,11 @@ namespace StalkerOnlineQuesterEditor
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatisticToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
-            this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.bRemoveEvent = new System.Windows.Forms.Button();
-            this.bEditEvent = new System.Windows.Forms.Button();
-            this.bAddEvent = new System.Windows.Forms.Button();
             this.SaveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.SynchroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -370,7 +370,6 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.DialogActions.AutoSize = true;
             this.DialogActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.DialogActions.Controls.Add(this.bSync);
             this.DialogActions.Controls.Add(this.bRunThroughNPC);
             this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
             this.DialogActions.Controls.Add(this.labelYNode);
@@ -383,16 +382,6 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions.Name = "DialogActions";
             this.DialogActions.Size = new System.Drawing.Size(182, 403);
             this.DialogActions.TabIndex = 1;
-            // 
-            // bSync
-            // 
-            this.bSync.Location = new System.Drawing.Point(36, 218);
-            this.bSync.Name = "bSync";
-            this.bSync.Size = new System.Drawing.Size(116, 23);
-            this.bSync.TabIndex = 9;
-            this.bSync.Text = "Синхронизировать";
-            this.bSync.UseVisualStyleBackColor = true;
-            this.bSync.Click += new System.EventHandler(this.bSync_Click);
             // 
             // bRunThroughNPC
             // 
@@ -649,6 +638,62 @@ namespace StalkerOnlineQuesterEditor
             this.bQuestUp.Text = "Вверх";
             this.bQuestUp.UseVisualStyleBackColor = true;
             this.bQuestUp.Click += new System.EventHandler(this.bQuestUp_Click);
+            // 
+            // bRemoveEvent
+            // 
+            this.bRemoveEvent.Enabled = false;
+            this.bRemoveEvent.ImageKey = "delete.png";
+            this.bRemoveEvent.ImageList = this.imageList;
+            this.bRemoveEvent.Location = new System.Drawing.Point(4, 80);
+            this.bRemoveEvent.Name = "bRemoveEvent";
+            this.bRemoveEvent.Size = new System.Drawing.Size(191, 30);
+            this.bRemoveEvent.TabIndex = 2;
+            this.bRemoveEvent.Text = "Удалить событие";
+            this.bRemoveEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bRemoveEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bRemoveEvent.UseVisualStyleBackColor = true;
+            this.bRemoveEvent.Click += new System.EventHandler(this.bRemoveEvent_Click);
+            // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "add.png");
+            this.imageList.Images.SetKeyName(1, "Edit.png");
+            this.imageList.Images.SetKeyName(2, "delete.png");
+            // 
+            // bEditEvent
+            // 
+            this.bEditEvent.Enabled = false;
+            this.bEditEvent.ImageKey = "Edit.png";
+            this.bEditEvent.ImageList = this.imageList;
+            this.bEditEvent.Location = new System.Drawing.Point(3, 44);
+            this.bEditEvent.Name = "bEditEvent";
+            this.bEditEvent.Size = new System.Drawing.Size(192, 30);
+            this.bEditEvent.TabIndex = 1;
+            this.bEditEvent.Text = "Править событие";
+            this.bEditEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bEditEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bEditEvent.UseVisualStyleBackColor = true;
+            this.bEditEvent.Click += new System.EventHandler(this.bEditEvent_Click);
+            // 
+            // bAddEvent
+            // 
+            this.bAddEvent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.bAddEvent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bAddEvent.Enabled = false;
+            this.bAddEvent.ImageKey = "add.png";
+            this.bAddEvent.ImageList = this.imageList;
+            this.bAddEvent.Location = new System.Drawing.Point(4, 8);
+            this.bAddEvent.Name = "bAddEvent";
+            this.bAddEvent.Size = new System.Drawing.Size(191, 30);
+            this.bAddEvent.TabIndex = 0;
+            this.bAddEvent.Text = "Добавить событие";
+            this.bAddEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bAddEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bAddEvent.UseMnemonic = false;
+            this.bAddEvent.UseVisualStyleBackColor = false;
+            this.bAddEvent.Click += new System.EventHandler(this.bAddEvent_Click);
             // 
             // PanelSelectQuest
             // 
@@ -1459,6 +1504,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SettingsToolStripMenuItem,
+            this.SynchroToolStripMenuItem,
             this.StatisticToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
@@ -1486,78 +1532,6 @@ namespace StalkerOnlineQuesterEditor
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // toolStripStatusLabel
-            // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
-            // 
-            // statusDialogStrip
-            // 
-            this.statusDialogStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
-            this.statusDialogStrip.Location = new System.Drawing.Point(0, 619);
-            this.statusDialogStrip.Name = "statusDialogStrip";
-            this.statusDialogStrip.Size = new System.Drawing.Size(914, 22);
-            this.statusDialogStrip.SizingGrip = false;
-            this.statusDialogStrip.Stretch = false;
-            this.statusDialogStrip.TabIndex = 1;
-            // 
-            // imageList
-            // 
-            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "add.png");
-            this.imageList.Images.SetKeyName(1, "Edit.png");
-            this.imageList.Images.SetKeyName(2, "delete.png");
-            // 
-            // bRemoveEvent
-            // 
-            this.bRemoveEvent.Enabled = false;
-            this.bRemoveEvent.ImageKey = "delete.png";
-            this.bRemoveEvent.ImageList = this.imageList;
-            this.bRemoveEvent.Location = new System.Drawing.Point(4, 80);
-            this.bRemoveEvent.Name = "bRemoveEvent";
-            this.bRemoveEvent.Size = new System.Drawing.Size(191, 30);
-            this.bRemoveEvent.TabIndex = 2;
-            this.bRemoveEvent.Text = "Удалить событие";
-            this.bRemoveEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bRemoveEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bRemoveEvent.UseVisualStyleBackColor = true;
-            this.bRemoveEvent.Click += new System.EventHandler(this.bRemoveEvent_Click);
-            // 
-            // bEditEvent
-            // 
-            this.bEditEvent.Enabled = false;
-            this.bEditEvent.ImageKey = "Edit.png";
-            this.bEditEvent.ImageList = this.imageList;
-            this.bEditEvent.Location = new System.Drawing.Point(3, 44);
-            this.bEditEvent.Name = "bEditEvent";
-            this.bEditEvent.Size = new System.Drawing.Size(192, 30);
-            this.bEditEvent.TabIndex = 1;
-            this.bEditEvent.Text = "Править событие";
-            this.bEditEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bEditEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bEditEvent.UseVisualStyleBackColor = true;
-            this.bEditEvent.Click += new System.EventHandler(this.bEditEvent_Click);
-            // 
-            // bAddEvent
-            // 
-            this.bAddEvent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.bAddEvent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.bAddEvent.Enabled = false;
-            this.bAddEvent.ImageKey = "add.png";
-            this.bAddEvent.ImageList = this.imageList;
-            this.bAddEvent.Location = new System.Drawing.Point(4, 8);
-            this.bAddEvent.Name = "bAddEvent";
-            this.bAddEvent.Size = new System.Drawing.Size(191, 30);
-            this.bAddEvent.TabIndex = 0;
-            this.bAddEvent.Text = "Добавить событие";
-            this.bAddEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bAddEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bAddEvent.UseMnemonic = false;
-            this.bAddEvent.UseVisualStyleBackColor = false;
-            this.bAddEvent.Click += new System.EventHandler(this.bAddEvent_Click);
-            // 
             // SaveAllToolStripMenuItem
             // 
             this.SaveAllToolStripMenuItem.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.SaveDisk;
@@ -1574,6 +1548,29 @@ namespace StalkerOnlineQuesterEditor
             this.ExplorerToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
             this.ExplorerToolStripMenuItem.Text = "Проводник";
             this.ExplorerToolStripMenuItem.Click += new System.EventHandler(this.ExplorerToolStripMenuItem_Click);
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // statusDialogStrip
+            // 
+            this.statusDialogStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            this.statusDialogStrip.Location = new System.Drawing.Point(0, 619);
+            this.statusDialogStrip.Name = "statusDialogStrip";
+            this.statusDialogStrip.Size = new System.Drawing.Size(914, 22);
+            this.statusDialogStrip.SizingGrip = false;
+            this.statusDialogStrip.Stretch = false;
+            this.statusDialogStrip.TabIndex = 1;
+            // 
+            // SynchroToolStripMenuItem
+            // 
+            this.SynchroToolStripMenuItem.Name = "SynchroToolStripMenuItem";
+            this.SynchroToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.SynchroToolStripMenuItem.Text = "Синхронизировать";
+            this.SynchroToolStripMenuItem.Click += new System.EventHandler(this.bSync_Click);
             // 
             // MainForm
             // 
@@ -1732,7 +1729,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label lAdviceNpcLink;
         private System.Windows.Forms.GroupBox gbQuestCheck;
         private System.Windows.Forms.Button bFindQuest;
-        private System.Windows.Forms.Button bSync;
         private System.Windows.Forms.Panel PanelQuestTools;
         private System.Windows.Forms.Button bPasteEvents;
         private System.Windows.Forms.Button bCopyEvents;
@@ -1781,6 +1777,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label labelChosenQuest;
         public System.Windows.Forms.Button bAddEvent;
         private System.Windows.Forms.ImageList imageList;
+        private System.Windows.Forms.ToolStripMenuItem SynchroToolStripMenuItem;
 
 
     }
