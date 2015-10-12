@@ -30,6 +30,7 @@ namespace StalkerOnlineQuesterEditor
     {
         //! Текущий выбранный NPC (в комбобоксе вверху)
         public string currentNPC = "";
+        private int selectedDialogID = 0;
         //! Ссылка на экземпляр класса CDialogs, хранит все данные и функции по работе с диалогами
         CDialogs dialogs;
         //! Ссылка на экземпляр класса CQuests
@@ -387,6 +388,7 @@ namespace StalkerOnlineQuesterEditor
         {
             // получаем фразу NPC
             CDialog rootDialog = getDialogOnIDConditional(dialogID);
+            selectedDialogID = dialogID;
             EmulatorsplitContainer.Panel2.Controls.Clear();
             titles = new Dictionary<LinkLabel,int>();
             Label NPCText = new Label();
@@ -1481,6 +1483,8 @@ namespace StalkerOnlineQuesterEditor
             fillNPCBox();
             if (currentNpcIndex > -1)
                 NPCBox.SelectedIndex = currentNpcIndex;
+            if (selectedDialogID != 0)
+                Listener.setCurrentNode(selectedDialogID);
         }
 
         //! Выводит диалоги для локализации. В зависимости от помеченных чекбоксов - актуальные или устаревшие
