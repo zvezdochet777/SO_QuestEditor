@@ -91,16 +91,18 @@ namespace StalkerOnlineQuesterEditor
             this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
             this.gbQuestCheck = new System.Windows.Forms.GroupBox();
+            this.labelItemReward = new System.Windows.Forms.Label();
+            this.cbItemReward = new System.Windows.Forms.ComboBox();
             this.bFindQuest = new System.Windows.Forms.Button();
             this.labelReviewOutputed = new System.Windows.Forms.Label();
             this.gbNPCcheck = new System.Windows.Forms.GroupBox();
             this.cbOnlyOnLocation = new System.Windows.Forms.CheckBox();
             this.cbLocation = new System.Windows.Forms.ComboBox();
             this.numQuests = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelLessThan2 = new System.Windows.Forms.Label();
             this.cbNumQuests = new System.Windows.Forms.CheckBox();
             this.numDialogs = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelLessThan1 = new System.Windows.Forms.Label();
             this.cbNumDialogs = new System.Windows.Forms.CheckBox();
             this.bFindNPC = new System.Windows.Forms.Button();
             this.tabManage = new System.Windows.Forms.TabPage();
@@ -896,6 +898,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             // gbQuestCheck
             // 
+            this.gbQuestCheck.Controls.Add(this.labelItemReward);
+            this.gbQuestCheck.Controls.Add(this.cbItemReward);
             this.gbQuestCheck.Controls.Add(this.bFindQuest);
             this.gbQuestCheck.Location = new System.Drawing.Point(428, 4);
             this.gbQuestCheck.Name = "gbQuestCheck";
@@ -903,6 +907,23 @@ namespace StalkerOnlineQuesterEditor
             this.gbQuestCheck.TabIndex = 2;
             this.gbQuestCheck.TabStop = false;
             this.gbQuestCheck.Text = "Квест";
+            // 
+            // labelItemReward
+            // 
+            this.labelItemReward.AutoSize = true;
+            this.labelItemReward.Location = new System.Drawing.Point(22, 49);
+            this.labelItemReward.Name = "labelItemReward";
+            this.labelItemReward.Size = new System.Drawing.Size(67, 13);
+            this.labelItemReward.TabIndex = 9;
+            this.labelItemReward.Text = "С наградой:";
+            // 
+            // cbItemReward
+            // 
+            this.cbItemReward.FormattingEnabled = true;
+            this.cbItemReward.Location = new System.Drawing.Point(13, 71);
+            this.cbItemReward.Name = "cbItemReward";
+            this.cbItemReward.Size = new System.Drawing.Size(158, 21);
+            this.cbItemReward.TabIndex = 8;
             // 
             // bFindQuest
             // 
@@ -927,10 +948,10 @@ namespace StalkerOnlineQuesterEditor
             this.gbNPCcheck.Controls.Add(this.cbOnlyOnLocation);
             this.gbNPCcheck.Controls.Add(this.cbLocation);
             this.gbNPCcheck.Controls.Add(this.numQuests);
-            this.gbNPCcheck.Controls.Add(this.label2);
+            this.gbNPCcheck.Controls.Add(this.labelLessThan2);
             this.gbNPCcheck.Controls.Add(this.cbNumQuests);
             this.gbNPCcheck.Controls.Add(this.numDialogs);
-            this.gbNPCcheck.Controls.Add(this.label1);
+            this.gbNPCcheck.Controls.Add(this.labelLessThan1);
             this.gbNPCcheck.Controls.Add(this.cbNumDialogs);
             this.gbNPCcheck.Controls.Add(this.bFindNPC);
             this.gbNPCcheck.Location = new System.Drawing.Point(3, 4);
@@ -970,14 +991,14 @@ namespace StalkerOnlineQuesterEditor
             0,
             0});
             // 
-            // label2
+            // labelLessThan2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(118, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "меньше";
+            this.labelLessThan2.AutoSize = true;
+            this.labelLessThan2.Location = new System.Drawing.Point(118, 73);
+            this.labelLessThan2.Name = "labelLessThan2";
+            this.labelLessThan2.Size = new System.Drawing.Size(47, 13);
+            this.labelLessThan2.TabIndex = 5;
+            this.labelLessThan2.Text = "меньше";
             // 
             // cbNumQuests
             // 
@@ -1006,14 +1027,14 @@ namespace StalkerOnlineQuesterEditor
             0,
             0});
             // 
-            // label1
+            // labelLessThan1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(117, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "меньше";
+            this.labelLessThan1.AutoSize = true;
+            this.labelLessThan1.Location = new System.Drawing.Point(117, 50);
+            this.labelLessThan1.Name = "labelLessThan1";
+            this.labelLessThan1.Size = new System.Drawing.Size(47, 13);
+            this.labelLessThan1.TabIndex = 2;
+            this.labelLessThan1.Text = "меньше";
             // 
             // cbNumDialogs
             // 
@@ -1630,6 +1651,7 @@ namespace StalkerOnlineQuesterEditor
             this.panelReviewButtons.ResumeLayout(false);
             this.panelReviewButtons.PerformLayout();
             this.gbQuestCheck.ResumeLayout(false);
+            this.gbQuestCheck.PerformLayout();
             this.gbNPCcheck.ResumeLayout(false);
             this.gbNPCcheck.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuests)).EndInit();
@@ -1730,12 +1752,12 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Panel panelReviewButtons;
         private System.Windows.Forms.GroupBox gbNPCcheck;
         private System.Windows.Forms.NumericUpDown numDialogs;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelLessThan1;
         private System.Windows.Forms.CheckBox cbNumDialogs;
         private System.Windows.Forms.Button bFindNPC;
         private System.Windows.Forms.DataGridView dgvReview;
         private System.Windows.Forms.NumericUpDown numQuests;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelLessThan2;
         private System.Windows.Forms.CheckBox cbNumQuests;
         private System.Windows.Forms.Button bRunThroughNPC;
         private System.Windows.Forms.Label labelReviewOutputed;
@@ -1793,6 +1815,8 @@ namespace StalkerOnlineQuesterEditor
         public System.Windows.Forms.Button bAddEvent;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.ToolStripMenuItem SynchroToolStripMenuItem;
+        private System.Windows.Forms.Label labelItemReward;
+        private System.Windows.Forms.ComboBox cbItemReward;
 
 
     }

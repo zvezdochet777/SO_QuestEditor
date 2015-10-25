@@ -87,6 +87,7 @@ namespace StalkerOnlineQuesterEditor
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             //fillNPCBox();
             fillLocationsBox();
+            fillItemRewardsBox();
             DialogShower.AddInputEventListener(Listener);
 
             foreach (string name in dialogs.getListOfNPC())
@@ -240,6 +241,48 @@ namespace StalkerOnlineQuesterEditor
             QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
             QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
+        }
+
+        //! Блокировка компонентов и обновление данных при смене вкладки на форме
+        private void onSelectTab(object sender, EventArgs e)
+        {
+            bCopyEvents.Enabled = false;
+            int index = CentralDock.SelectedIndex;
+            switch (index)
+            {
+                case 0:         // вкладка Диалоги
+                    SetControlsAbility(true);
+                    if (!currentNPC.Equals(""))
+                    {
+                        QuestBox.Items.Clear();
+                        fillQuestChangeBox(true);
+                        QuestBox.Enabled = false;
+                        bRemoveQuest.Enabled = false;
+                        bAddQuest.Enabled = false;
+                        QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
+                        DialogSelected(true);
+                    }
+                    break;
+                case 1:         // вкладка Квесты
+                    SetControlsAbility(true);
+                    bRemoveQuest.Enabled = false;
+                    QuestBox.Items.Clear();
+                    fillQuestChangeBox(false);
+                    QuestBox.Text = "Пожалуйста, выберите квест";
+                    break;
+                case 2:         // Вкладка Связи NPC 
+                    SetControlsAbility(false);
+                    NPCBox.Enabled = true;
+                    break;
+                case 3:
+                case 5:
+                case 6:     // Вкладки Проверка, Перевод, Баланс
+                    SetControlsAbility(false);
+                    break;
+                case 4:         // Вкладка Управление (квестами)
+                    FillTabManage();
+                    break;
+            }
         }
       
 // ************************ WORK WITH DIALOGS****************************************************
@@ -539,45 +582,6 @@ namespace StalkerOnlineQuesterEditor
             QuestBox.Enabled = enable;
             bRemoveQuest.Enabled = enable;
             bAddQuest.Enabled = enable;
-        }
-        //! Блокировка компонентов и обновление данных при смене вкладки на форме
-        private void onSelectTab(object sender, EventArgs e)
-        {
-            bCopyEvents.Enabled = false;
-            int index = CentralDock.SelectedIndex;
-            switch (index)
-            {
-                case 0:         // вкладка Диалоги
-                    SetControlsAbility(true);
-                    if (!currentNPC.Equals(""))
-                    {
-                        QuestBox.Items.Clear();
-                        fillQuestChangeBox(true);
-                        QuestBox.Enabled = false;
-                        bRemoveQuest.Enabled = false;
-                        bAddQuest.Enabled = false;
-                        QuestBox.Text = "Число квестов: " + quests.getCountOfQuests(currentNPC);
-                        DialogSelected(true);
-                    }
-                    break;
-                case 1:         // вкладка Квесты
-                    SetControlsAbility(true);
-                    bRemoveQuest.Enabled = false;
-                    QuestBox.Items.Clear();
-                    fillQuestChangeBox(false);
-                    QuestBox.Text = "Пожалуйста, выберите квест";
-                    break;                    
-                case 2:         // Вкладка Связи NPC 
-                    SetControlsAbility(false);
-                    NPCBox.Enabled = true;
-                    break;                
-                case 3: case 5: case 6:     // Вкладки Проверка, Перевод, Баланс
-                    SetControlsAbility(false);
-                    break;
-                case 4:         // Вкладка Управление (квестами)
-                    FillTabManage();
-                    break;
-            }
         }
 
 // ******************************* WORK WITH QUESTS ***************************************
@@ -1580,6 +1584,12 @@ namespace StalkerOnlineQuesterEditor
             cbLocation.DataSource = null;
             cbLocation.DataSource = dialogs.locationNames;
         }
+        void fillItemRewardsBox()
+        {
+            foreach (CItem description in itemConst.getAllItems().Values)
+                cbItemReward.Items.Add(description.getDescription());
+            cbItemReward.Sorted = true;
+        }
         //! Устанавливает надписи в таблице вкладки Проверка для поиска нужны NPC
         void setNPCCheckEnvironment()
         {
@@ -1634,26 +1644,40 @@ namespace StalkerOnlineQuesterEditor
         {
             setQuestCheckEnvironment();
             dgvReview.Rows.Clear();
-
-            foreach (CQuest quest in quests.quest.Values)
+            if (cbItemReward.SelectedIndex < 0)
             {
-                if (quest.Additional.IsSubQuest != 0)
-                    continue;
-
-                int questID = quest.QuestID;
-                int open = 0, close = 0;
-                foreach (string npc in dialogs.dialogs.Keys)
-                    foreach (CDialog dialog in dialogs.dialogs[npc].Values)
-                    { 
-                        if (dialog.Actions.GetQuests.Contains(questID))
-                            open = dialog.DialogID;
-                        if (dialog.Actions.CompleteQuests.Contains(questID))
-                            close = dialog.DialogID;
-                    }
-                if (open == 0 || close == 0)
+                foreach (CQuest quest in quests.quest.Values)
                 {
-                    object[] row = { quest.Additional.Holder, questID, open, close };
-                    dgvReview.Rows.Add(row);
+                    if (quest.Additional.IsSubQuest != 0)
+                        continue;
+
+                    int questID = quest.QuestID;
+                    int open = 0, close = 0;
+                    foreach (string npc in dialogs.dialogs.Keys)
+                        foreach (CDialog dialog in dialogs.dialogs[npc].Values)
+                        {
+                            if (dialog.Actions.GetQuests.Contains(questID))
+                                open = dialog.DialogID;
+                            if (dialog.Actions.CompleteQuests.Contains(questID))
+                                close = dialog.DialogID;
+                        }
+                    if (open == 0 || close == 0)
+                    {
+                        object[] row = { quest.Additional.Holder, questID, open, close };
+                        dgvReview.Rows.Add(row);
+                    }
+                }
+            }
+            else 
+            {
+                int itemID = itemConst.getIDOnDescription(cbItemReward.SelectedItem.ToString());
+                foreach (CQuest quest in quests.quest.Values)
+                {
+                    if (quest.Reward.TypeOfItems.Contains(itemID))
+                    {
+                        object[] row = { quest.Additional.Holder, quest.QuestID };
+                        dgvReview.Rows.Add(row);
+                    }
                 }
             }
             labelReviewOutputed.Text = "Выведено: " + dgvReview.RowCount.ToString();
