@@ -1390,9 +1390,7 @@ namespace StalkerOnlineQuesterEditor
         private void replaceBuffer()
         {
             var quest = getQuestOnQuestID(currentQuest);
-            var parentID = quest.Additional.IsSubQuest;
-            quests.ReplaceBuffer(currentQuest);
-            var root = quests.getRoot(parentID);
+            var root = quests.ReplaceBuffer(currentQuest);
             treeQuest.Nodes.Clear();
             addNodeOnTreeQuest(root);
 
