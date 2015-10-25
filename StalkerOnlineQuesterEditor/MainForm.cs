@@ -1876,6 +1876,7 @@ namespace StalkerOnlineQuesterEditor
         private void ExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String path = System.IO.Path.GetDirectoryName(settings.getDialogsPath());
+            path += "\\..\\";
             System.Diagnostics.Process.Start(path);
         }
         //! Пункт главного меню - сохранение всех данных

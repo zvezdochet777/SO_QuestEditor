@@ -105,6 +105,8 @@ namespace StalkerOnlineQuesterEditor
                     toTradeCheckBox.Checked = true;
                 else if (curDialog.Actions.Event == (int) DialogEvents.change)
                     changeCheckBox.Checked = true;
+                else if (curDialog.Actions.Event == (int)DialogEvents.create_clan)
+                    CreateClanCheckBox.Checked = true;
                 else if (curDialog.Actions.Event == (int) DialogEvents.repair)
                     toRepairCheckBox.Checked = true;
                 else if (curDialog.Actions.Event == (int) DialogEvents.complex_repair)
@@ -119,10 +121,10 @@ namespace StalkerOnlineQuesterEditor
                     barterCheckBox.Checked = true;
                 else if (curDialog.Actions.Event == (int) DialogEvents.clan_base)
                     ToClanBaseCheckBox.Checked = true;
+                else if (curDialog.Actions.Event == (int)DialogEvents.go_pvp_area)
+                    GoPvpCheckBox.Checked = true;
                 else if (curDialog.Actions.Event == (int)DialogEvents.colorize_item)
                     ColorizeItemCheckBox.Checked = true;
-                else if (curDialog.Actions.Event == (int)DialogEvents.create_clan)
-                    CreateClanCheckBox.Checked = true;
                 ExitCheckBox.Checked = curDialog.Actions.Exit;
 
                 if (curDialog.Actions.CompleteQuests.Any())
@@ -258,6 +260,7 @@ namespace StalkerOnlineQuesterEditor
             ToClanBaseCheckBox.Enabled = ToClanBaseCheckBox.Checked;
             ColorizeItemCheckBox.Enabled = ColorizeItemCheckBox.Checked;
             CreateClanCheckBox.Enabled = CreateClanCheckBox.Checked;
+            GoPvpCheckBox.Enabled = GoPvpCheckBox.Checked;
         }
         //! Разблокирует контролы на форме
         private void unlockOtherEvent()
@@ -274,6 +277,7 @@ namespace StalkerOnlineQuesterEditor
             ToClanBaseCheckBox.Enabled = true;
             ColorizeItemCheckBox.Enabled = true;
             CreateClanCheckBox.Enabled = true;
+            GoPvpCheckBox.Enabled = true;
         }
         //! При наборе текста проверяем число символов в строке
         private void tPlayerText_KeyPress(object sender, KeyPressEventArgs e)
@@ -375,9 +379,9 @@ namespace StalkerOnlineQuesterEditor
                 else if (changeCheckBox.Checked)
                     actions.Event = (int)DialogEvents.change;
                 else if (ToDialogCheckBox.Checked)
-                    actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString()); // use Text instead of Selected Item
-                    
-
+                    actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString());
+                else if (CreateClanCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.create_clan;
                 else if (toRepairCheckBox.Checked)
                     actions.Event = (int)DialogEvents.repair;
                 else if (teleportCheckBox.Checked && !teleportComboBox.SelectedItem.ToString().Equals(""))
@@ -391,10 +395,10 @@ namespace StalkerOnlineQuesterEditor
                     actions.Event = (int)DialogEvents.barter;
                 else if (ToClanBaseCheckBox.Checked)
                     actions.Event = (int)DialogEvents.clan_base;
+                else if (GoPvpCheckBox.Checked)
+                    actions.Event = (int)DialogEvents.go_pvp_area;
                 else if (ColorizeItemCheckBox.Checked)
                     actions.Event = (int)DialogEvents.colorize_item;
-                else if (CreateClanCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.create_clan;
 
                 if (GetQuestsCheckBox.Checked)
                     foreach (string quest in GetQuestsTextBox.Text.Split(','))

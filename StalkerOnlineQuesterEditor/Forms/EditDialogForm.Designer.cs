@@ -34,6 +34,8 @@
             this.NPCSaid = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.actionsBox = new System.Windows.Forms.GroupBox();
+            this.GoPvpCheckBox = new System.Windows.Forms.CheckBox();
+            this.CreateClanCheckBox = new System.Windows.Forms.CheckBox();
             this.ColorizeItemCheckBox = new System.Windows.Forms.CheckBox();
             this.ToClanBaseCheckBox = new System.Windows.Forms.CheckBox();
             this.barterCheckBox = new System.Windows.Forms.CheckBox();
@@ -84,7 +86,6 @@
             this.NPCReactionText = new System.Windows.Forms.Label();
             this.MustPanel = new System.Windows.Forms.Panel();
             this.textGroupBox = new System.Windows.Forms.GroupBox();
-            this.CreateClanCheckBox = new System.Windows.Forms.CheckBox();
             this.actionsBox.SuspendLayout();
             this.PreconditionBox.SuspendLayout();
             this.gbClanOptions.SuspendLayout();
@@ -140,6 +141,7 @@
             // 
             // actionsBox
             // 
+            this.actionsBox.Controls.Add(this.GoPvpCheckBox);
             this.actionsBox.Controls.Add(this.CreateClanCheckBox);
             this.actionsBox.Controls.Add(this.ColorizeItemCheckBox);
             this.actionsBox.Controls.Add(this.ToClanBaseCheckBox);
@@ -164,6 +166,28 @@
             this.actionsBox.Size = new System.Drawing.Size(588, 141);
             this.actionsBox.TabIndex = 8;
             this.actionsBox.TabStop = false;
+            // 
+            // GoPvpCheckBox
+            // 
+            this.GoPvpCheckBox.AutoSize = true;
+            this.GoPvpCheckBox.Location = new System.Drawing.Point(278, 112);
+            this.GoPvpCheckBox.Name = "GoPvpCheckBox";
+            this.GoPvpCheckBox.Size = new System.Drawing.Size(86, 17);
+            this.GoPvpCheckBox.TabIndex = 34;
+            this.GoPvpCheckBox.Text = "Начать PVP";
+            this.GoPvpCheckBox.UseVisualStyleBackColor = true;
+            this.GoPvpCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
+            // 
+            // CreateClanCheckBox
+            // 
+            this.CreateClanCheckBox.AutoSize = true;
+            this.CreateClanCheckBox.Location = new System.Drawing.Point(20, 109);
+            this.CreateClanCheckBox.Name = "CreateClanCheckBox";
+            this.CreateClanCheckBox.Size = new System.Drawing.Size(95, 17);
+            this.CreateClanCheckBox.TabIndex = 33;
+            this.CreateClanCheckBox.Text = "Создать клан";
+            this.CreateClanCheckBox.UseVisualStyleBackColor = true;
+            this.CreateClanCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
             // 
             // ColorizeItemCheckBox
             // 
@@ -282,7 +306,7 @@
             // ExitCheckBox
             // 
             this.ExitCheckBox.AutoSize = true;
-            this.ExitCheckBox.Location = new System.Drawing.Point(280, 111);
+            this.ExitCheckBox.Location = new System.Drawing.Point(406, 109);
             this.ExitCheckBox.Name = "ExitCheckBox";
             this.ExitCheckBox.Size = new System.Drawing.Size(141, 17);
             this.ExitCheckBox.TabIndex = 24;
@@ -669,17 +693,6 @@
             this.textGroupBox.TabIndex = 15;
             this.textGroupBox.TabStop = false;
             // 
-            // CreateClanCheckBox
-            // 
-            this.CreateClanCheckBox.AutoSize = true;
-            this.CreateClanCheckBox.Location = new System.Drawing.Point(20, 109);
-            this.CreateClanCheckBox.Name = "CreateClanCheckBox";
-            this.CreateClanCheckBox.Size = new System.Drawing.Size(95, 17);
-            this.CreateClanCheckBox.TabIndex = 33;
-            this.CreateClanCheckBox.Text = "Создать клан";
-            this.CreateClanCheckBox.UseVisualStyleBackColor = true;
-            this.CreateClanCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
-            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -769,5 +782,6 @@
         private System.Windows.Forms.CheckBox cbSameClanOnly;
         private System.Windows.Forms.CheckBox ColorizeItemCheckBox;
         private System.Windows.Forms.CheckBox CreateClanCheckBox;
+        private System.Windows.Forms.CheckBox GoPvpCheckBox;
     }
 }
