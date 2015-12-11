@@ -37,10 +37,10 @@ namespace StalkerOnlineQuesterEditor
         public CSettings(MainForm parent)
         {
             this.parent = parent;
-            XDocument doc = XDocument.Load(SETTINGS_PATH + SETTING_FILE);
-            
             try
             {
+                XDocument doc = XDocument.Load(SETTINGS_PATH + SETTING_FILE);
+            
                 this.iNumOperator = int.Parse(doc.Root.Element("operator").Value.ToString());
                 foreach (string locale in doc.Root.Element("locales").Value.ToString().Split(','))
                     locales.Add(locale);
@@ -124,6 +124,8 @@ namespace StalkerOnlineQuesterEditor
         //! Сохраняет все настройки в файл settings.xml
         public void saveSettings()
         {
+            if (!Directory.Exists(SETTINGS_PATH))
+                Directory.CreateDirectory(SETTINGS_PATH);
             XDocument resultDoc = new XDocument(new XElement("root"));
             XElement oper = new XElement("operator", iNumOperator);
             XElement loc = new XElement("locales", getLocales());
