@@ -45,7 +45,7 @@ namespace StalkerOnlineQuesterEditor
             this.bZoomIn = new System.Windows.Forms.Button();
             this.bZoomOut = new System.Windows.Forms.Button();
             this.DialogActions = new System.Windows.Forms.Panel();
-            this.bRunThroughNPC = new System.Windows.Forms.Button();
+            this.bTestButton = new System.Windows.Forms.Button();
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.labelYNode = new System.Windows.Forms.Label();
             this.labelXNode = new System.Windows.Forms.Label();
@@ -372,7 +372,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.DialogActions.AutoSize = true;
             this.DialogActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.DialogActions.Controls.Add(this.bRunThroughNPC);
+            this.DialogActions.Controls.Add(this.bTestButton);
             this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
             this.DialogActions.Controls.Add(this.labelYNode);
             this.DialogActions.Controls.Add(this.labelXNode);
@@ -385,16 +385,15 @@ namespace StalkerOnlineQuesterEditor
             this.DialogActions.Size = new System.Drawing.Size(201, 403);
             this.DialogActions.TabIndex = 1;
             // 
-            // bRunThroughNPC
+            // bTestButton
             // 
-            this.bRunThroughNPC.Location = new System.Drawing.Point(36, 276);
-            this.bRunThroughNPC.Name = "bRunThroughNPC";
-            this.bRunThroughNPC.Size = new System.Drawing.Size(116, 23);
-            this.bRunThroughNPC.TabIndex = 7;
-            this.bRunThroughNPC.Text = "Пробежать все";
-            this.bRunThroughNPC.UseVisualStyleBackColor = true;
-            this.bRunThroughNPC.Visible = false;
-            this.bRunThroughNPC.Click += new System.EventHandler(this.bRunThroughNPC_Click);
+            this.bTestButton.Location = new System.Drawing.Point(36, 276);
+            this.bTestButton.Name = "bTestButton";
+            this.bTestButton.Size = new System.Drawing.Size(116, 23);
+            this.bTestButton.TabIndex = 7;
+            this.bTestButton.Text = "ТестКнопка";
+            this.bTestButton.UseVisualStyleBackColor = true;
+            this.bTestButton.Click += new System.EventHandler(this.bTestButton_Click);
             // 
             // bCenterizeDialogShower
             // 
@@ -1759,7 +1758,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.NumericUpDown numQuests;
         private System.Windows.Forms.Label labelLessThan2;
         private System.Windows.Forms.CheckBox cbNumQuests;
-        private System.Windows.Forms.Button bRunThroughNPC;
+        private System.Windows.Forms.Button bTestButton;
         private System.Windows.Forms.Label labelReviewOutputed;
         private System.Windows.Forms.Panel panelNpcLinkControls;
         private System.Windows.Forms.Button bNpcLinkExecute;

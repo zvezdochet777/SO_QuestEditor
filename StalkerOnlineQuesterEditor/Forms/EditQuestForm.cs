@@ -488,7 +488,9 @@ namespace StalkerOnlineQuesterEditor
                 bItemReward.Image = Properties.Resources.but_indicate;
             else
                 bItemReward.Image = null;
-            if (editQuestReward.Fractions.Any())
+            //if (editQuestReward.Fractions.Any())
+            //if (editQuestReward.Reputation.Any())
+            if (editQuestReward.ReputationNotEmpty())
                 bRewardFractions.Image = Properties.Resources.but_indicate;
             else
                 bRewardFractions.Image = null;
@@ -720,6 +722,7 @@ namespace StalkerOnlineQuesterEditor
             reward.AttrOfItems = editQuestReward.AttrOfItems;
             reward.Probability = editQuestReward.Probability;
             reward.Fractions = editQuestReward.Fractions;
+            reward.Reputation = editQuestReward.Reputation;
             reward.Effects = editQuestReward.Effects;
 
             rules.TypeOfItems = editQuestRules.TypeOfItems;

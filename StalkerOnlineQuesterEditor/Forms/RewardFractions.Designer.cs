@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.dataFractions = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iReward = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bCancel = new System.Windows.Forms.Button();
             this.bOk = new System.Windows.Forms.Button();
-            this.unlimitedCheckBox = new System.Windows.Forms.CheckBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataFractions)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -48,38 +47,15 @@
             this.dataFractions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.sName,
-            this.iReward});
+            this.nValue});
             this.dataFractions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataFractions.Location = new System.Drawing.Point(0, 0);
             this.dataFractions.Name = "dataFractions";
             this.dataFractions.Size = new System.Drawing.Size(449, 330);
             this.dataFractions.TabIndex = 0;
             // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // sName
-            // 
-            this.sName.HeaderText = "Имя фракции";
-            this.sName.Name = "sName";
-            this.sName.ReadOnly = true;
-            this.sName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.sName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // iReward
-            // 
-            this.iReward.HeaderText = "Принадлежность";
-            this.iReward.Name = "iReward";
-            this.iReward.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.iReward.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.unlimitedCheckBox);
             this.panel1.Controls.Add(this.bCancel);
             this.panel1.Controls.Add(this.bOk);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -108,15 +84,26 @@
             this.bOk.UseVisualStyleBackColor = true;
             this.bOk.Click += new System.EventHandler(this.bOk_Click);
             // 
-            // unlimitedCheckBox
+            // id
             // 
-            this.unlimitedCheckBox.AutoSize = true;
-            this.unlimitedCheckBox.Location = new System.Drawing.Point(3, 6);
-            this.unlimitedCheckBox.Name = "unlimitedCheckBox";
-            this.unlimitedCheckBox.Size = new System.Drawing.Size(96, 17);
-            this.unlimitedCheckBox.TabIndex = 2;
-            this.unlimitedCheckBox.Text = "Безлимитный";
-            this.unlimitedCheckBox.UseVisualStyleBackColor = true;
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // sName
+            // 
+            this.sName.HeaderText = "Имя фракции";
+            this.sName.Name = "sName";
+            this.sName.ReadOnly = true;
+            this.sName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.sName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // nValue
+            // 
+            this.nValue.HeaderText = "Значение";
+            this.nValue.Name = "nValue";
+            this.nValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // RewardFractions
             // 
@@ -130,7 +117,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RewardFractions_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataFractions)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -143,7 +129,6 @@
         private System.Windows.Forms.Button bOk;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn sName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn iReward;
-        private System.Windows.Forms.CheckBox unlimitedCheckBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nValue;
     }
 }

@@ -515,10 +515,10 @@ namespace StalkerOnlineQuesterEditor
         public List<int> EventCodes;
         public string TeleportTo;
         public float Credits;
-        //public Dictionary<int, int> Reputation;
+        //! Словарь репутаций в награду, выглядит так <id фракции>:<значение награды>;
+        public Dictionary<int, int> Reputation;
         public List<int> Fractions;
         public int Difficulty;
-        public int Unlimited;
         public int KarmaPK;
         public List<CEffect> Effects;
 
@@ -534,13 +534,12 @@ namespace StalkerOnlineQuesterEditor
 
             copy.TeleportTo = (string)this.TeleportTo.Clone();
             copy.Credits = this.Credits;
-            //copy.Reputation = this.Reputation;
+            copy.Reputation = this.Reputation;
             copy.KarmaPK = this.KarmaPK;
             copy.Effects = new List<CEffect>(this.Effects);
 
             copy.Fractions = new List<int>(this.Fractions);
             copy.Difficulty = this.Difficulty;
-            copy.Unlimited = this.Unlimited;
             return copy;
         }
 
@@ -553,29 +552,38 @@ namespace StalkerOnlineQuesterEditor
             this.Probability = new List<float>();
             this.Credits = new float();
             this.EventCodes = new List<int>();
-            //this.Reputation = new Dictionary<int, int>();
+            this.Reputation = new Dictionary<int, int>();
             this.Fractions = new List<int>();
             this.KarmaPK = new int();
             this.TeleportTo = "";
             this.Effects = new List<CEffect>();
             this.Difficulty = 1;
-            this.Unlimited = 0;
         }
 
-        //public string getReputation()
-        //{
-            //string ret = "";
-            //if (this.Reputation.Any())
-            //{
-            //    foreach (int key in this.Reputation.Keys)
-            //    {
-            //        if (!ret.Equals(""))
-            //            ret += ",";
-            //        ret += (key.ToString() + ":" + this.Reputation[key].ToString());
-            //    }
-            //}
-        //    return ret;
-        //}
+        public string getReputation()
+        {
+            string result = "";
+            if (ReputationNotEmpty())
+            {
+                foreach (int key in this.Reputation.Keys)
+                {
+                    if (this.Reputation[key] == 0)
+                        continue;
+                    if (!result.Equals(""))
+                        result += ";";
+                    result += (key.ToString() + ":" + this.Reputation[key].ToString());
+                }
+            }
+            return result;
+        }
+
+        public bool ReputationNotEmpty()
+        {
+            foreach (int Value in this.Reputation.Values)
+                if (Value != 0)
+                    return true;
+            return false;
+        }
     }
 
     public class CQuestPenalty : ICloneable

@@ -213,23 +213,15 @@ namespace StalkerOnlineQuesterEditor
 
                 try
                 {
-                    reward.Unlimited = int.Parse(item.Element("Reward").Element("Unlimited").Value);
-                }
-                catch
-                {
-                }
-
-                try
-                {
                     reward.Difficulty = int.Parse(item.Element("Reward").Element("Difficulty").Value);
                 }
                 catch
                 {
                     reward.Difficulty = 1;
                 }
-                //foreach (string fraction in item.Element("Reward").Element("Reputation").Value.Split(','))
-                //    if (!fraction.Equals(""))
-                //        reward.Reputation.Add(int.Parse(fraction.Split(':')[0]),int.Parse(fraction.Split(':')[1]));
+                foreach (string fraction in item.Element("Reward").Element("Reputation").Value.Split(';'))
+                    if (!fraction.Equals(""))
+                        reward.Reputation.Add(int.Parse(fraction.Split(':')[0]),int.Parse(fraction.Split(':')[1]));
 
                 if (!item.Element("Reward").Element("KarmaPK").Value.Equals(""))
                     reward.KarmaPK = int.Parse(item.Element("Reward").Element("KarmaPK").Value);
@@ -434,10 +426,9 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("Probability", getListAsString(questValue.Reward.Probability)),
                         new XElement("Credits", questValue.Reward.Credits),
                         new XElement("EventCodes", getListAsString(questValue.Reward.EventCodes)),
-                        new XElement("Reputation", ""),
+                        new XElement("Reputation", questValue.Reward.getReputation()),
                         new XElement("Fractions", getListAsString(questValue.Reward.Fractions)),
                         new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()),
-                        new XElement("Unlimited", questValue.Reward.Unlimited.ToString()),
                         new XElement("Difficulty", questValue.Reward.Difficulty.ToString()),
                         Effects
                             ),
