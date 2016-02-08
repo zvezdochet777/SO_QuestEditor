@@ -1736,6 +1736,9 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (quest.Reward.Fractions.Count > 0)
                 {
+                    foreach (int fractionID in quest.Reward.Fractions)
+                        quest.Reward.Reputation[fractionID] = 25;
+
                     string sWriter = quest.Additional.Holder + " \t " + quest.QuestID.ToString();
                     if (quest.Additional.IsSubQuest > 0)
                         sWriter += " \t (parent quest: " + quest.Additional.IsSubQuest.ToString() + ")";
