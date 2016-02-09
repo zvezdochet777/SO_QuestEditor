@@ -16,12 +16,10 @@ namespace StalkerOnlineQuesterEditor
         {
             this.form = form;
             InitializeComponent();
-            label1.Text = "Теперь вводятся коэффициенты от суточной нормы.";
             CFracConstants frac = form.parent.fractions;
             foreach (KeyValuePair<int, string> pair in frac.getListOfFractions())
             {
                 int id = pair.Key;
-
                 string name = pair.Value;
                 string a = "";
                 string b = "";
@@ -40,21 +38,6 @@ namespace StalkerOnlineQuesterEditor
                 }
                 object[] row = { id, name, a, b };
                 dataReputation.Rows.Add(row);
-            }
-            if (form.editPrecondition.Reputation.Keys.Contains(0))
-            {
-                double type = form.editPrecondition.Reputation[0][0];
-                double a = form.editPrecondition.Reputation[0][1];
-                double b = form.editPrecondition.Reputation[0][2];
-
-                if (type == 0 || (type == 1))
-                {
-                    fractionNPCa.Text = a.ToString();
-                }
-                if (type == 0 || (type == 2))
-                {
-                    fractionNPCb.Text = b.ToString();
-                }
             }
         }
 
@@ -95,46 +78,12 @@ namespace StalkerOnlineQuesterEditor
                         lst.Add(ia);
                         lst.Add(ib);
 
-                        //System.Console.WriteLine("type:" + type.ToString() + " a:" + a.ToString() + " b:" + b.ToString());
-
                         form.editPrecondition.Reputation.Add(id, lst);
                     }
-
                 }
             }
-            if ((fractionNPCa.Text != "") || (fractionNPCb.Text != ""))
-            {
-                    string a = fractionNPCa.Text;
-                    string b = fractionNPCb.Text;
-                    double ia = double.Parse(fractionNPCa.Text);
-                    double ib = double.Parse(fractionNPCb.Text);
-                    int type = 0;
-                    if ((a != "") || (b != ""))
-                    {
-                        if (a != "")
-                        {
-                            type = 1;
-                            ia = double.Parse(a);
-                        }
-                        if (b != "")
-                        {
-                            if (type == 1)
-                                type = 0;
-                            else
-                                type = 2;
-
-                            ib = double.Parse(b);
-                        }
-
-                        List<double> lst = new List<double>();
-                        lst.Add(type);
-                        lst.Add(ia);
-                        lst.Add(ib);
-                        form.editPrecondition.Reputation.Add(0, lst);
-                    }
-            }
             form.checkReputationIndicates();
-            this.Close();
+            this.Close();            
         }
 
         private void DialogReputation_FormClosing(object sender, FormClosingEventArgs e)

@@ -1729,9 +1729,20 @@ namespace StalkerOnlineQuesterEditor
         //! Тeстовая фукция "пробежать", пробегает всех NPC (для заполнения полей в тестовом режиме)
         private void bTestButton_Click(object sender, EventArgs e)
         {
-            System.IO.StreamWriter sw = new System.IO.StreamWriter("Reputation.txt");
-            sw.WriteLine("List of reputations in So Quests (NPC name, quest ID): ");
+            System.IO.StreamWriter sw = new System.IO.StreamWriter("Reputation_Dialogs.txt");
+            sw.WriteLine("List of reputations in So Dialogs (NPC name, dialog ID): ");
+            foreach (string npc in dialogs.dialogs.Keys)
+            {
+                foreach (int dialogID in dialogs.dialogs[npc].Keys)
+                { 
+                    if (dialogs.dialogs[npc][dialogID].Precondition.getReputation() != "")
+                    {
+                        sw.WriteLine(npc + "\t" + dialogID.ToString() + "\t" + dialogs.dialogs[npc][dialogID].Precondition.getReputation());
+                    }
+                }
+            }
 
+            /*
             foreach (CQuest quest in quests.quest.Values)
             {
                 if (quest.Reward.Fractions.Count > 0)
@@ -1745,6 +1756,13 @@ namespace StalkerOnlineQuesterEditor
                     sw.WriteLine(sWriter);
                 }
             }
+             * */
+            IFormatProvider format;
+
+            sw.WriteLine("Neg:" + double.NegativeInfinity.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            sw.WriteLine("Pos:" + double.PositiveInfinity.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-GB")));
+            sw.WriteLine("NegF:" + float.NegativeInfinity.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            sw.WriteLine("PosF:" + float.PositiveInfinity.ToString(System.Globalization.CultureInfo.InvariantCulture));
             sw.Close();
 
         }

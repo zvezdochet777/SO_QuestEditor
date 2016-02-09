@@ -93,27 +93,27 @@ namespace StalkerOnlineQuesterEditor
 
         public string getReputation()
         {
-            string ret = "";
+            string result = "";
             foreach (int key in this.Reputation.Keys)
                 if (this.Reputation[key].Any())
             {
-                    if (ret != "")
-                        ret += ";";
+                    if (result != "")
+                        result += ";";
                     if (this.Reputation[key][0] == 0)
-                        ret += key.ToString() + ":"
+                        result += key.ToString() + ":"
                             + this.Reputation[key][0].ToString() + ":"
                             + this.Reputation[key][1].ToString() + ":"
                             + this.Reputation[key][2].ToString();
                     else if (this.Reputation[key][0] == 1)
-                        ret += key.ToString() + ":"
+                        result += key.ToString() + ":"
                             + this.Reputation[key][0].ToString() + ":"
                             + this.Reputation[key][1].ToString() + ":";
                     else if (this.Reputation[key][0] == 2)
-                        ret += key.ToString() + ":"
+                        result += key.ToString() + ":"
                             + this.Reputation[key][0].ToString() + "::"
                             + this.Reputation[key][2].ToString();
             }
-            return ret;
+            return result;
         }
     }
     //! Действия диалога - торговля, починка, телепортация, окончание разговора и т.д.
