@@ -485,15 +485,15 @@ namespace StalkerOnlineQuesterEditor
         public void checkRewardIndicates()
         {
             if (editQuestReward.TypeOfItems.Any())
-                bItemReward.Image = Properties.Resources.but_indicate;
+                bRewardItem.Image = Properties.Resources.but_indicate;
             else
-                bItemReward.Image = null;
+                bRewardItem.Image = null;
             //if (editQuestReward.Fractions.Any())
             //if (editQuestReward.Reputation.Any())
             if (editQuestReward.ReputationNotEmpty())
-                bRewardFractions.Image = Properties.Resources.but_indicate;
+                bRewardReputation.Image = Properties.Resources.but_indicate;
             else
-                bRewardFractions.Image = null;
+                bRewardReputation.Image = null;
             if (editQuestReward.Effects.Any())
                 bRewardEffects.Image = Properties.Resources.but_indicate;
             else
@@ -981,8 +981,8 @@ namespace StalkerOnlineQuesterEditor
             SelectQuestItem selectQItem = new SelectQuestItem(this, this.QuestID);
             this.Enabled = false;
         }
-        //! Открывает окно редактирования фракций
-        private void bRewardFractions_Click(object sender, EventArgs e)
+        //! Нажатие Репутация в наградах квеста - открывает окно редактирования репутаций
+        private void bRewardReputation_Click(object sender, EventArgs e)
         {
             RewardFractions formFractions = new RewardFractions(this);
             formFractions.Visible = true;
@@ -1016,7 +1016,7 @@ namespace StalkerOnlineQuesterEditor
             this.Enabled = false;
         }
         //! Нажатие Предметы в наградах квеста - открывает форму с редактором предметов
-        private void bItemReward_Click(object sender, EventArgs e)
+        private void bRewardItem_Click(object sender, EventArgs e)
         {
             ItemDialog itemDialog = new ItemDialog(this.parent, this, null, quest.QuestID, this.ITEM_REWARD);
             itemDialog.Enabled = true;

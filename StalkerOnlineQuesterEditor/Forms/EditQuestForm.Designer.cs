@@ -42,8 +42,8 @@
             this.lDifficulty = new System.Windows.Forms.Label();
             this.difficultyComboBox = new System.Windows.Forms.ComboBox();
             this.bRewardEffects = new System.Windows.Forms.Button();
-            this.bRewardFractions = new System.Windows.Forms.Button();
-            this.bItemReward = new System.Windows.Forms.Button();
+            this.bRewardReputation = new System.Windows.Forms.Button();
+            this.bRewardItem = new System.Windows.Forms.Button();
             this.textBoxKarmaPK = new System.Windows.Forms.TextBox();
             this.lKarmaPK = new System.Windows.Forms.Label();
             this.bHideReward = new System.Windows.Forms.Button();
@@ -207,8 +207,8 @@
             this.rewardGroupBox.Controls.Add(this.lDifficulty);
             this.rewardGroupBox.Controls.Add(this.difficultyComboBox);
             this.rewardGroupBox.Controls.Add(this.bRewardEffects);
-            this.rewardGroupBox.Controls.Add(this.bRewardFractions);
-            this.rewardGroupBox.Controls.Add(this.bItemReward);
+            this.rewardGroupBox.Controls.Add(this.bRewardReputation);
+            this.rewardGroupBox.Controls.Add(this.bRewardItem);
             this.rewardGroupBox.Controls.Add(this.textBoxKarmaPK);
             this.rewardGroupBox.Controls.Add(this.lKarmaPK);
             this.rewardGroupBox.Controls.Add(this.bHideReward);
@@ -288,27 +288,27 @@
             this.bRewardEffects.UseVisualStyleBackColor = true;
             this.bRewardEffects.Click += new System.EventHandler(this.bRewardEffects_Click);
             // 
-            // bRewardFractions
+            // bRewardReputation
             // 
-            this.bRewardFractions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardFractions.Location = new System.Drawing.Point(119, 19);
-            this.bRewardFractions.Name = "bRewardFractions";
-            this.bRewardFractions.Size = new System.Drawing.Size(105, 23);
-            this.bRewardFractions.TabIndex = 29;
-            this.bRewardFractions.Text = "Фракции";
-            this.bRewardFractions.UseVisualStyleBackColor = true;
-            this.bRewardFractions.Click += new System.EventHandler(this.bRewardFractions_Click);
+            this.bRewardReputation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bRewardReputation.Location = new System.Drawing.Point(119, 19);
+            this.bRewardReputation.Name = "bRewardReputation";
+            this.bRewardReputation.Size = new System.Drawing.Size(105, 23);
+            this.bRewardReputation.TabIndex = 29;
+            this.bRewardReputation.Text = "Репутация";
+            this.bRewardReputation.UseVisualStyleBackColor = true;
+            this.bRewardReputation.Click += new System.EventHandler(this.bRewardReputation_Click);
             // 
-            // bItemReward
+            // bRewardItem
             // 
-            this.bItemReward.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bItemReward.Location = new System.Drawing.Point(8, 19);
-            this.bItemReward.Name = "bItemReward";
-            this.bItemReward.Size = new System.Drawing.Size(104, 23);
-            this.bItemReward.TabIndex = 28;
-            this.bItemReward.Text = "Предметы";
-            this.bItemReward.UseVisualStyleBackColor = true;
-            this.bItemReward.Click += new System.EventHandler(this.bItemReward_Click);
+            this.bRewardItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bRewardItem.Location = new System.Drawing.Point(8, 19);
+            this.bRewardItem.Name = "bRewardItem";
+            this.bRewardItem.Size = new System.Drawing.Size(104, 23);
+            this.bRewardItem.TabIndex = 28;
+            this.bRewardItem.Text = "Предметы";
+            this.bRewardItem.UseVisualStyleBackColor = true;
+            this.bRewardItem.Click += new System.EventHandler(this.bRewardItem_Click);
             // 
             // textBoxKarmaPK
             // 
@@ -1103,10 +1103,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBoxKarmaPK;
         private System.Windows.Forms.Label lKarmaPK;
-        private System.Windows.Forms.Button bItemReward;
+        private System.Windows.Forms.Button bRewardItem;
         private System.Windows.Forms.Button bItemQuestRules;
         private System.Windows.Forms.Button bItemQID;
-        private System.Windows.Forms.Button bRewardFractions;
+        private System.Windows.Forms.Button bRewardReputation;
         private System.Windows.Forms.Label lFailed;
         private System.Windows.Forms.Label lWin;
         private System.Windows.Forms.MaskedTextBox onFailedTextBox;
