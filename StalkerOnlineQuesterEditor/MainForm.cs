@@ -1757,14 +1757,7 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
              * */
-            IFormatProvider format;
-
-            sw.WriteLine("Neg:" + double.NegativeInfinity.ToString(System.Globalization.CultureInfo.InvariantCulture));
-            sw.WriteLine("Pos:" + double.PositiveInfinity.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-GB")));
-            sw.WriteLine("NegF:" + float.NegativeInfinity.ToString(System.Globalization.CultureInfo.InvariantCulture));
-            sw.WriteLine("PosF:" + float.PositiveInfinity.ToString(System.Globalization.CultureInfo.InvariantCulture));
             sw.Close();
-
         }
         private void bStartSearch_Click(object sender, EventArgs e)
         {
