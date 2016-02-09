@@ -54,7 +54,7 @@
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation.Location = new System.Drawing.Point(0, 0);
             this.dataReputation.Name = "dataReputation";
-            this.dataReputation.Size = new System.Drawing.Size(497, 400);
+            this.dataReputation.Size = new System.Drawing.Size(483, 431);
             this.dataReputation.TabIndex = 0;
             // 
             // panel1
@@ -63,9 +63,9 @@
             this.panel1.Controls.Add(this.bCancel);
             this.panel1.Controls.Add(this.bOK);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 318);
+            this.panel1.Location = new System.Drawing.Point(0, 349);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(497, 82);
+            this.panel1.Size = new System.Drawing.Size(483, 82);
             this.panel1.TabIndex = 1;
             // 
             // lInfo
@@ -79,7 +79,7 @@
             // 
             // bCancel
             // 
-            this.bCancel.Location = new System.Drawing.Point(413, 46);
+            this.bCancel.Location = new System.Drawing.Point(398, 46);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
             this.bCancel.TabIndex = 1;
@@ -89,7 +89,7 @@
             // 
             // bOK
             // 
-            this.bOK.Location = new System.Drawing.Point(332, 46);
+            this.bOK.Location = new System.Drawing.Point(317, 46);
             this.bOK.Name = "bOK";
             this.bOK.Size = new System.Drawing.Size(75, 23);
             this.bOK.TabIndex = 0;
@@ -124,7 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 400);
+            this.ClientSize = new System.Drawing.Size(483, 431);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataReputation);
             this.Name = "DialogReputation";

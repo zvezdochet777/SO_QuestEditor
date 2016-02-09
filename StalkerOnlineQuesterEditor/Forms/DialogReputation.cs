@@ -25,16 +25,21 @@ namespace StalkerOnlineQuesterEditor
                 string b = "";
                 if (form.editPrecondition.Reputation.Keys.Contains(pair.Key))
                 {
-                    double type = form.editPrecondition.Reputation[pair.Key][0];
-                    if (type == 0 || (type == 1))
+                    if (form.editPrecondition.Reputation[id].Count == 3)         // костыль для старой версии, выжечт огнем позже
                     {
-                        a = form.editPrecondition.Reputation[pair.Key][1].ToString();
+                        double type = form.editPrecondition.Reputation[pair.Key][0];
+                        if (type == 0 || (type == 1))
+                            a = form.editPrecondition.Reputation[pair.Key][1].ToString();
+                        if (type == 0 || (type == 2))
+                            b = form.editPrecondition.Reputation[pair.Key][2].ToString();
                     }
-                    if (type == 0 || (type == 2))
+                    else if (form.editPrecondition.Reputation[id].Count == 2)
                     {
-                        b = form.editPrecondition.Reputation[pair.Key][2].ToString();
+                        if (form.editPrecondition.Reputation[id][0] != double.NegativeInfinity)
+                            a = form.editPrecondition.Reputation[id][0].ToString();
+                        if (form.editPrecondition.Reputation[id][1] != double.PositiveInfinity)
+                            b = form.editPrecondition.Reputation[id][1].ToString();
                     }
-
                 }
                 object[] row = { id, name, a, b };
                 dataReputation.Rows.Add(row);
@@ -48,37 +53,20 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (row.Cells[0].FormattedValue.ToString() != "")
                 {
-                    int id = int.Parse(row.Cells[0].FormattedValue.ToString());
+                    int fractionID = int.Parse(row.Cells[0].FormattedValue.ToString());
+                    string stringA = row.Cells[2].FormattedValue.ToString().Replace('.',',');
+                    string stringB = row.Cells[3].FormattedValue.ToString().Replace('.', ',');
 
-                    string a = row.Cells[2].FormattedValue.ToString().Replace('.',',');
-                    string b = row.Cells[3].FormattedValue.ToString().Replace('.', ',');
-
-                    double ia = 0;
-                    double ib = 0;
-                    int type = 0;
-                    if ((a != "") || (b != ""))
+                    if ((stringA != "") || (stringB != ""))
                     {
-                        if (a != "")
-                        {
-                            type = 1;
-                            ia = double.Parse(a);
-                        }
-                        if (b != "")
-                        {
-                            if (type == 1)
-                                type = 0;
-                            else
-                                type = 2;
+                        double doubleA;
+                        double doubleB;
+                        if (!double.TryParse(stringA, out doubleA))
+                            doubleA = double.NegativeInfinity;
+                        if (!double.TryParse(stringB, out doubleB))
+                            doubleB = double.PositiveInfinity;
 
-                            ib = double.Parse(b);
-                        }
-
-                        List<double> lst = new List<double>();
-                        lst.Add(type);
-                        lst.Add(ia);
-                        lst.Add(ib);
-
-                        form.editPrecondition.Reputation.Add(id, lst);
+                        form.editPrecondition.Reputation.Add( fractionID, new List<double>() {doubleA, doubleB} );
                     }
                 }
             }

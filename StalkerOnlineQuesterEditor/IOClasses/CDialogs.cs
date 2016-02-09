@@ -209,7 +209,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (string el in item.Element("Precondition").Element("Reputation").Value.Split(';'))
                 {
                     string[] fr = el.Split(':');
-                    if (fr.Count() > 1)
+                    if (fr.Count() == 4)            // костыль для плавного перехода между старой версией и новой, следует позже удалить
                     {
                         Precondition.Reputation.Add(int.Parse(fr[0]), new List<double>());
                         int type = int.Parse(fr[1]);
@@ -222,6 +222,15 @@ namespace StalkerOnlineQuesterEditor
                         if (fr[3] != "")
                             b = double.Parse(fr[3]);
                         Precondition.Reputation[int.Parse(fr[0])].Add(b);
+                    }
+                    else if (fr.Count() == 3)
+                    {
+                        int fractionID = int.Parse(fr[0]);
+                        Precondition.Reputation.Add(fractionID, new List<double>());
+                        double A = double.Parse(fr[1], System.Globalization.CultureInfo.InvariantCulture);
+                        double B = double.Parse(fr[2], System.Globalization.CultureInfo.InvariantCulture);
+                        Precondition.Reputation[fractionID].Add(A);
+                        Precondition.Reputation[fractionID].Add(B);                    
                     }
                 }
 

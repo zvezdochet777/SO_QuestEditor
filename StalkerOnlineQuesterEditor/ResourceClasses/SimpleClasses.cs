@@ -94,24 +94,31 @@ namespace StalkerOnlineQuesterEditor
         public string getReputation()
         {
             string result = "";
+            //double.NegativeInfinity.ToString(System.Globalization.CultureInfo.InvariantCulture);
             foreach (int key in this.Reputation.Keys)
-                if (this.Reputation[key].Any())
             {
+                if (this.Reputation[key].Count == 2)
+                {
                     if (result != "")
                         result += ";";
-                    if (this.Reputation[key][0] == 0)
-                        result += key.ToString() + ":"
-                            + this.Reputation[key][0].ToString() + ":"
-                            + this.Reputation[key][1].ToString() + ":"
-                            + this.Reputation[key][2].ToString();
-                    else if (this.Reputation[key][0] == 1)
-                        result += key.ToString() + ":"
-                            + this.Reputation[key][0].ToString() + ":"
-                            + this.Reputation[key][1].ToString() + ":";
-                    else if (this.Reputation[key][0] == 2)
-                        result += key.ToString() + ":"
-                            + this.Reputation[key][0].ToString() + "::"
-                            + this.Reputation[key][2].ToString();
+                    result += key.ToString() + ":";
+                    result += this.Reputation[key][0].ToString(System.Globalization.CultureInfo.InvariantCulture) + ":";
+                    result += this.Reputation[key][1].ToString(System.Globalization.CultureInfo.InvariantCulture);
+                }
+                else if (this.Reputation[key].Count == 3)  //костыль для плавного перехода между старой и новой версией
+                {
+                    if (result != "")
+                        result += ";";
+                    double A = this.Reputation[key][1];
+                    double B = this.Reputation[key][2];
+                    if (A == 0.0)
+                        A = double.NegativeInfinity;
+                    if (B == 0.0)
+                        B = double.PositiveInfinity;
+                    result = key.ToString() + ":";
+                    result += A.ToString(System.Globalization.CultureInfo.InvariantCulture) + ":";
+                    result += B.ToString(System.Globalization.CultureInfo.InvariantCulture);                
+                }
             }
             return result;
         }
