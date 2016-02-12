@@ -34,24 +34,14 @@
             this.NPCSaid = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.actionsBox = new System.Windows.Forms.GroupBox();
-            this.GoPvpCheckBox = new System.Windows.Forms.CheckBox();
-            this.CreateClanCheckBox = new System.Windows.Forms.CheckBox();
-            this.ColorizeItemCheckBox = new System.Windows.Forms.CheckBox();
-            this.ToClanBaseCheckBox = new System.Windows.Forms.CheckBox();
-            this.barterCheckBox = new System.Windows.Forms.CheckBox();
-            this.toComplexRepairCheckBox = new System.Windows.Forms.CheckBox();
+            this.ActionsComboBox = new System.Windows.Forms.ComboBox();
             this.teleportComboBox = new System.Windows.Forms.ComboBox();
-            this.teleportCheckBox = new System.Windows.Forms.CheckBox();
-            this.toRepairCheckBox = new System.Windows.Forms.CheckBox();
-            this.changeCheckBox = new System.Windows.Forms.CheckBox();
             this.CompleteQuestsTextBox = new System.Windows.Forms.MaskedTextBox();
             this.GetQuestsTextBox = new System.Windows.Forms.MaskedTextBox();
             this.ToDialogComboBox = new System.Windows.Forms.ComboBox();
             this.ExitCheckBox = new System.Windows.Forms.CheckBox();
-            this.toTradeCheckBox = new System.Windows.Forms.CheckBox();
             this.CompleteQuestsCheckBox = new System.Windows.Forms.CheckBox();
             this.GetQuestsCheckBox = new System.Windows.Forms.CheckBox();
-            this.ToDialogCheckBox = new System.Windows.Forms.CheckBox();
             this.actionsCheckBox = new System.Windows.Forms.CheckBox();
             this.tNPCReactiontextBox = new System.Windows.Forms.TextBox();
             this.tSubDialogsTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -141,24 +131,14 @@
             // 
             // actionsBox
             // 
-            this.actionsBox.Controls.Add(this.GoPvpCheckBox);
-            this.actionsBox.Controls.Add(this.CreateClanCheckBox);
-            this.actionsBox.Controls.Add(this.ColorizeItemCheckBox);
-            this.actionsBox.Controls.Add(this.ToClanBaseCheckBox);
-            this.actionsBox.Controls.Add(this.barterCheckBox);
-            this.actionsBox.Controls.Add(this.toComplexRepairCheckBox);
+            this.actionsBox.Controls.Add(this.ActionsComboBox);
             this.actionsBox.Controls.Add(this.teleportComboBox);
-            this.actionsBox.Controls.Add(this.teleportCheckBox);
-            this.actionsBox.Controls.Add(this.toRepairCheckBox);
-            this.actionsBox.Controls.Add(this.changeCheckBox);
             this.actionsBox.Controls.Add(this.CompleteQuestsTextBox);
             this.actionsBox.Controls.Add(this.GetQuestsTextBox);
             this.actionsBox.Controls.Add(this.ToDialogComboBox);
             this.actionsBox.Controls.Add(this.ExitCheckBox);
-            this.actionsBox.Controls.Add(this.toTradeCheckBox);
             this.actionsBox.Controls.Add(this.CompleteQuestsCheckBox);
             this.actionsBox.Controls.Add(this.GetQuestsCheckBox);
-            this.actionsBox.Controls.Add(this.ToDialogCheckBox);
             this.actionsBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.actionsBox.Enabled = false;
             this.actionsBox.Location = new System.Drawing.Point(0, 500);
@@ -167,121 +147,31 @@
             this.actionsBox.TabIndex = 8;
             this.actionsBox.TabStop = false;
             // 
-            // GoPvpCheckBox
+            // ActionsComboBox
             // 
-            this.GoPvpCheckBox.AutoSize = true;
-            this.GoPvpCheckBox.Location = new System.Drawing.Point(278, 112);
-            this.GoPvpCheckBox.Name = "GoPvpCheckBox";
-            this.GoPvpCheckBox.Size = new System.Drawing.Size(86, 17);
-            this.GoPvpCheckBox.TabIndex = 34;
-            this.GoPvpCheckBox.Text = "Начать PVP";
-            this.GoPvpCheckBox.UseVisualStyleBackColor = true;
-            this.GoPvpCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
-            // 
-            // CreateClanCheckBox
-            // 
-            this.CreateClanCheckBox.AutoSize = true;
-            this.CreateClanCheckBox.Location = new System.Drawing.Point(20, 109);
-            this.CreateClanCheckBox.Name = "CreateClanCheckBox";
-            this.CreateClanCheckBox.Size = new System.Drawing.Size(95, 17);
-            this.CreateClanCheckBox.TabIndex = 33;
-            this.CreateClanCheckBox.Text = "Создать клан";
-            this.CreateClanCheckBox.UseVisualStyleBackColor = true;
-            this.CreateClanCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
-            // 
-            // ColorizeItemCheckBox
-            // 
-            this.ColorizeItemCheckBox.AutoSize = true;
-            this.ColorizeItemCheckBox.Location = new System.Drawing.Point(131, 109);
-            this.ColorizeItemCheckBox.Name = "ColorizeItemCheckBox";
-            this.ColorizeItemCheckBox.Size = new System.Drawing.Size(76, 17);
-            this.ColorizeItemCheckBox.TabIndex = 32;
-            this.ColorizeItemCheckBox.Text = "Покраска";
-            this.ColorizeItemCheckBox.UseVisualStyleBackColor = true;
-            this.ColorizeItemCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
-            // 
-            // ToClanBaseCheckBox
-            // 
-            this.ToClanBaseCheckBox.AutoSize = true;
-            this.ToClanBaseCheckBox.Location = new System.Drawing.Point(280, 89);
-            this.ToClanBaseCheckBox.Name = "ToClanBaseCheckBox";
-            this.ToClanBaseCheckBox.Size = new System.Drawing.Size(115, 17);
-            this.ToClanBaseCheckBox.TabIndex = 31;
-            this.ToClanBaseCheckBox.Text = "Телепорт на базу";
-            this.ToClanBaseCheckBox.UseVisualStyleBackColor = true;
-            this.ToClanBaseCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
-            // 
-            // barterCheckBox
-            // 
-            this.barterCheckBox.AutoSize = true;
-            this.barterCheckBox.Location = new System.Drawing.Point(20, 88);
-            this.barterCheckBox.Name = "barterCheckBox";
-            this.barterCheckBox.Size = new System.Drawing.Size(62, 17);
-            this.barterCheckBox.TabIndex = 21;
-            this.barterCheckBox.Text = "Бартер";
-            this.barterCheckBox.UseVisualStyleBackColor = true;
-            this.barterCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
-            // 
-            // toComplexRepairCheckBox
-            // 
-            this.toComplexRepairCheckBox.AutoSize = true;
-            this.toComplexRepairCheckBox.Location = new System.Drawing.Point(131, 87);
-            this.toComplexRepairCheckBox.Name = "toComplexRepairCheckBox";
-            this.toComplexRepairCheckBox.Size = new System.Drawing.Size(139, 17);
-            this.toComplexRepairCheckBox.TabIndex = 23;
-            this.toComplexRepairCheckBox.Text = "Комплексная починка";
-            this.toComplexRepairCheckBox.UseVisualStyleBackColor = true;
-            this.toComplexRepairCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
+            this.ActionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ActionsComboBox.FormattingEnabled = true;
+            this.ActionsComboBox.Location = new System.Drawing.Point(31, 76);
+            this.ActionsComboBox.Name = "ActionsComboBox";
+            this.ActionsComboBox.Size = new System.Drawing.Size(160, 21);
+            this.ActionsComboBox.TabIndex = 35;
+            this.ActionsComboBox.SelectedValueChanged += new System.EventHandler(this.ActionsComboBox_SelectedValueChanged);
             // 
             // teleportComboBox
             // 
             this.teleportComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.teleportComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.teleportComboBox.DropDownWidth = 250;
-            this.teleportComboBox.Enabled = false;
             this.teleportComboBox.FormattingEnabled = true;
-            this.teleportComboBox.Location = new System.Drawing.Point(400, 66);
+            this.teleportComboBox.Location = new System.Drawing.Point(222, 76);
             this.teleportComboBox.Name = "teleportComboBox";
             this.teleportComboBox.Size = new System.Drawing.Size(147, 21);
             this.teleportComboBox.TabIndex = 30;
             // 
-            // teleportCheckBox
-            // 
-            this.teleportCheckBox.AutoSize = true;
-            this.teleportCheckBox.Location = new System.Drawing.Point(280, 67);
-            this.teleportCheckBox.Name = "teleportCheckBox";
-            this.teleportCheckBox.Size = new System.Drawing.Size(74, 17);
-            this.teleportCheckBox.TabIndex = 29;
-            this.teleportCheckBox.Text = "Телепорт";
-            this.teleportCheckBox.UseVisualStyleBackColor = true;
-            this.teleportCheckBox.CheckedChanged += new System.EventHandler(this.teleportCheckBox_CheckedChanged);
-            // 
-            // toRepairCheckBox
-            // 
-            this.toRepairCheckBox.AutoSize = true;
-            this.toRepairCheckBox.Location = new System.Drawing.Point(131, 65);
-            this.toRepairCheckBox.Name = "toRepairCheckBox";
-            this.toRepairCheckBox.Size = new System.Drawing.Size(69, 17);
-            this.toRepairCheckBox.TabIndex = 22;
-            this.toRepairCheckBox.Text = "Починка";
-            this.toRepairCheckBox.UseVisualStyleBackColor = true;
-            this.toRepairCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
-            // 
-            // changeCheckBox
-            // 
-            this.changeCheckBox.AutoSize = true;
-            this.changeCheckBox.Location = new System.Drawing.Point(20, 67);
-            this.changeCheckBox.Name = "changeCheckBox";
-            this.changeCheckBox.Size = new System.Drawing.Size(60, 17);
-            this.changeCheckBox.TabIndex = 20;
-            this.changeCheckBox.Text = "Обмен";
-            this.changeCheckBox.UseVisualStyleBackColor = true;
-            this.changeCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
-            // 
             // CompleteQuestsTextBox
             // 
             this.CompleteQuestsTextBox.Enabled = false;
-            this.CompleteQuestsTextBox.Location = new System.Drawing.Point(400, 44);
+            this.CompleteQuestsTextBox.Location = new System.Drawing.Point(151, 41);
             this.CompleteQuestsTextBox.Name = "CompleteQuestsTextBox";
             this.CompleteQuestsTextBox.Size = new System.Drawing.Size(147, 20);
             this.CompleteQuestsTextBox.TabIndex = 28;
@@ -289,46 +179,34 @@
             // GetQuestsTextBox
             // 
             this.GetQuestsTextBox.Enabled = false;
-            this.GetQuestsTextBox.Location = new System.Drawing.Point(400, 22);
+            this.GetQuestsTextBox.Location = new System.Drawing.Point(151, 19);
             this.GetQuestsTextBox.Name = "GetQuestsTextBox";
             this.GetQuestsTextBox.Size = new System.Drawing.Size(147, 20);
             this.GetQuestsTextBox.TabIndex = 26;
             // 
             // ToDialogComboBox
             // 
-            this.ToDialogComboBox.Enabled = false;
             this.ToDialogComboBox.FormattingEnabled = true;
-            this.ToDialogComboBox.Location = new System.Drawing.Point(131, 25);
+            this.ToDialogComboBox.Location = new System.Drawing.Point(222, 76);
             this.ToDialogComboBox.Name = "ToDialogComboBox";
-            this.ToDialogComboBox.Size = new System.Drawing.Size(100, 21);
+            this.ToDialogComboBox.Size = new System.Drawing.Size(147, 21);
             this.ToDialogComboBox.TabIndex = 18;
             // 
             // ExitCheckBox
             // 
             this.ExitCheckBox.AutoSize = true;
-            this.ExitCheckBox.Location = new System.Drawing.Point(406, 109);
+            this.ExitCheckBox.Location = new System.Drawing.Point(31, 108);
             this.ExitCheckBox.Name = "ExitCheckBox";
             this.ExitCheckBox.Size = new System.Drawing.Size(141, 17);
             this.ExitCheckBox.TabIndex = 24;
             this.ExitCheckBox.Text = "Закрыть окно диалога";
             this.ExitCheckBox.UseVisualStyleBackColor = true;
-            this.ExitCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
-            // 
-            // toTradeCheckBox
-            // 
-            this.toTradeCheckBox.AutoSize = true;
-            this.toTradeCheckBox.Location = new System.Drawing.Point(20, 46);
-            this.toTradeCheckBox.Name = "toTradeCheckBox";
-            this.toTradeCheckBox.Size = new System.Drawing.Size(79, 17);
-            this.toTradeCheckBox.TabIndex = 19;
-            this.toTradeCheckBox.Text = "Торговать";
-            this.toTradeCheckBox.UseVisualStyleBackColor = true;
-            this.toTradeCheckBox.CheckedChanged += new System.EventHandler(this.AnyActionCheckBox_CheckedChanged);
+            this.ExitCheckBox.Click += new System.EventHandler(this.ExitCheckBox_Click);
             // 
             // CompleteQuestsCheckBox
             // 
             this.CompleteQuestsCheckBox.AutoSize = true;
-            this.CompleteQuestsCheckBox.Location = new System.Drawing.Point(280, 45);
+            this.CompleteQuestsCheckBox.Location = new System.Drawing.Point(31, 42);
             this.CompleteQuestsCheckBox.Name = "CompleteQuestsCheckBox";
             this.CompleteQuestsCheckBox.Size = new System.Drawing.Size(119, 17);
             this.CompleteQuestsCheckBox.TabIndex = 27;
@@ -339,24 +217,13 @@
             // GetQuestsCheckBox
             // 
             this.GetQuestsCheckBox.AutoSize = true;
-            this.GetQuestsCheckBox.Location = new System.Drawing.Point(280, 23);
+            this.GetQuestsCheckBox.Location = new System.Drawing.Point(31, 20);
             this.GetQuestsCheckBox.Name = "GetQuestsCheckBox";
             this.GetQuestsCheckBox.Size = new System.Drawing.Size(96, 17);
             this.GetQuestsCheckBox.TabIndex = 25;
             this.GetQuestsCheckBox.Text = "Взять квесты";
             this.GetQuestsCheckBox.UseVisualStyleBackColor = true;
             this.GetQuestsCheckBox.CheckedChanged += new System.EventHandler(this.GetQuestsCheckBox_CheckedChanged);
-            // 
-            // ToDialogCheckBox
-            // 
-            this.ToDialogCheckBox.AutoSize = true;
-            this.ToDialogCheckBox.Location = new System.Drawing.Point(20, 25);
-            this.ToDialogCheckBox.Name = "ToDialogCheckBox";
-            this.ToDialogCheckBox.Size = new System.Drawing.Size(114, 17);
-            this.ToDialogCheckBox.TabIndex = 17;
-            this.ToDialogCheckBox.Text = "Переход на диал.";
-            this.ToDialogCheckBox.UseVisualStyleBackColor = true;
-            this.ToDialogCheckBox.CheckedChanged += new System.EventHandler(this.ToDialogCheckBox1_CheckedChanged);
             // 
             // actionsCheckBox
             // 
@@ -731,19 +598,13 @@
         private System.Windows.Forms.Label NPCSaid;
         private System.Windows.Forms.Label lAttention;
         private System.Windows.Forms.GroupBox actionsBox;
-        private System.Windows.Forms.CheckBox toComplexRepairCheckBox;
         private System.Windows.Forms.ComboBox teleportComboBox;
-        private System.Windows.Forms.CheckBox teleportCheckBox;
-        private System.Windows.Forms.CheckBox toRepairCheckBox;
-        private System.Windows.Forms.CheckBox changeCheckBox;
         private System.Windows.Forms.MaskedTextBox CompleteQuestsTextBox;
         private System.Windows.Forms.MaskedTextBox GetQuestsTextBox;
         private System.Windows.Forms.ComboBox ToDialogComboBox;
         private System.Windows.Forms.CheckBox ExitCheckBox;
-        private System.Windows.Forms.CheckBox toTradeCheckBox;
         private System.Windows.Forms.CheckBox CompleteQuestsCheckBox;
         private System.Windows.Forms.CheckBox GetQuestsCheckBox;
-        private System.Windows.Forms.CheckBox ToDialogCheckBox;
         private System.Windows.Forms.TextBox tNPCReactiontextBox;
         private System.Windows.Forms.MaskedTextBox tSubDialogsTextBox;
         private System.Windows.Forms.Label subDialogsLabel;
@@ -768,11 +629,9 @@
         private System.Windows.Forms.GroupBox textGroupBox;
         private System.Windows.Forms.Button bReputation;
         private System.Windows.Forms.Button bKarma;
-        private System.Windows.Forms.CheckBox barterCheckBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveFailedQuests;
         private System.Windows.Forms.MaskedTextBox tMustHaveFailedQuests;
-        private System.Windows.Forms.CheckBox ToClanBaseCheckBox;
         private System.Windows.Forms.MaskedTextBox mtbPlayerLevel;
         private System.Windows.Forms.Label lPlayerLevel;
         private System.Windows.Forms.CheckBox cbShowClanOptions;
@@ -780,8 +639,6 @@
         private System.Windows.Forms.CheckBox cbLonerOnly;
         private System.Windows.Forms.CheckBox cbAnyClanOnly;
         private System.Windows.Forms.CheckBox cbSameClanOnly;
-        private System.Windows.Forms.CheckBox ColorizeItemCheckBox;
-        private System.Windows.Forms.CheckBox CreateClanCheckBox;
-        private System.Windows.Forms.CheckBox GoPvpCheckBox;
+        private System.Windows.Forms.ComboBox ActionsComboBox;
     }
 }
