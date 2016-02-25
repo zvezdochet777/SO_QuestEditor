@@ -55,7 +55,7 @@ namespace StalkerOnlineQuesterEditor
             if (!isAdd)
             {
                 fillDialogEditForm(currentDialogID);
-                this.Text = "Добавление диалога в " + currentDialogID + "";
+                this.Text = "Редактирование диалога ID = " + currentDialogID + "";
             }
 
             this.Text += "   Версия: " + curDialog.version;
@@ -91,41 +91,27 @@ namespace StalkerOnlineQuesterEditor
                 cbLonerOnly.Checked = true;
             ShowClanOptions();
 
+            FillActionsComboBox();
             if (curDialog.Actions.CompleteQuests.Any() || curDialog.Actions.GetQuests.Any() ||
                 curDialog.Actions.Exit || curDialog.Actions.ToDialog!=0 || curDialog.Actions.Event != 0)
             {
                 actionsCheckBox.Checked = true;
+                ActionsComboBox.SelectedValue = curDialog.Actions.Event;
+                ExitCheckBox.Checked = curDialog.Actions.Exit;
+
+                if (ActionsComboBox.Text == "Телепорт")
+                {
+                    string key = parent.tpConst.getName(curDialog.Actions.Data);
+                    teleportComboBox.SelectedItem = key;
+                    teleportComboBox.Visible = true;
+                }
+                
                 if (curDialog.Actions.ToDialog != 0)
                 {
-                    ToDialogCheckBox.Checked = true;
+                    ActionsComboBox.SelectedValue = 100;
                     int neededDialog = ToDialogComboBox.FindStringExact(curDialog.Actions.ToDialog.ToString());
                     ToDialogComboBox.SelectedIndex = neededDialog;
                 }
-                else if (curDialog.Actions.Event == (int) DialogEvents.trade)
-                    toTradeCheckBox.Checked = true;
-                else if (curDialog.Actions.Event == (int) DialogEvents.change)
-                    changeCheckBox.Checked = true;
-                else if (curDialog.Actions.Event == (int)DialogEvents.create_clan)
-                    CreateClanCheckBox.Checked = true;
-                else if (curDialog.Actions.Event == (int) DialogEvents.repair)
-                    toRepairCheckBox.Checked = true;
-                else if (curDialog.Actions.Event == (int) DialogEvents.complex_repair)
-                    toComplexRepairCheckBox.Checked = true;
-                else if (curDialog.Actions.Event == (int) DialogEvents.teleport)
-                {
-                    teleportCheckBox.Checked = true;
-                    string key = parent.tpConst.getName(curDialog.Actions.Data);
-                    teleportComboBox.SelectedItem = key;
-                }
-                else if (curDialog.Actions.Event == (int) DialogEvents.barter)
-                    barterCheckBox.Checked = true;
-                else if (curDialog.Actions.Event == (int) DialogEvents.clan_base)
-                    ToClanBaseCheckBox.Checked = true;
-                else if (curDialog.Actions.Event == (int)DialogEvents.go_pvp_area)
-                    GoPvpCheckBox.Checked = true;
-                else if (curDialog.Actions.Event == (int)DialogEvents.colorize_item)
-                    ColorizeItemCheckBox.Checked = true;
-                ExitCheckBox.Checked = curDialog.Actions.Exit;
 
                 if (curDialog.Actions.CompleteQuests.Any())
                 {
@@ -181,6 +167,32 @@ namespace StalkerOnlineQuesterEditor
             else
                 textBox.Text += ("," + item);
         }
+
+        private void FillActionsComboBox()
+        {
+            ActionsComboBox.Items.Clear();
+            List<DialogEvent> events = new List<DialogEvent>();
+            events.Add(new DialogEvent("Пусто", 0));            
+            events.Add(new DialogEvent("Торговля", 1));
+            events.Add(new DialogEvent("Обмен", 2));
+            events.Add(new DialogEvent("Создание клана", 3));
+            events.Add(new DialogEvent("Починка", 4));
+            events.Add(new DialogEvent("Телепорт", 5));
+            events.Add(new DialogEvent("Комплексная починка", 6));
+            events.Add(new DialogEvent("Бартер", 7));
+            events.Add(new DialogEvent("Телепорт на базу", 8));
+            events.Add(new DialogEvent("Идти в зону ПВП", 9));
+            events.Add(new DialogEvent("Начало ПВП", 10));
+            events.Add(new DialogEvent("Покраска предмета", 11));
+            events.Add(new DialogEvent("Купить флаг", 13));
+            events.Add(new DialogEvent("Нанять охранника", 14));
+            events.Add(new DialogEvent("Нанять торговца", 15));
+            events.Add(new DialogEvent("Переход к диалогу", 100));
+
+            ActionsComboBox.DataSource = events;
+            ActionsComboBox.DisplayMember = "Display";
+            ActionsComboBox.ValueMember = "Value";
+        }
         //! Скрывает опции кланов, если они не заполнены при открытии формы
         private void ShowClanOptions()
         {
@@ -223,62 +235,7 @@ namespace StalkerOnlineQuesterEditor
         {
             CompleteQuestsTextBox.Enabled = CompleteQuestsCheckBox.Checked;
         }
-        //! Блокировка других действий при выборе
-        private void AnyActionCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (((CheckBox)sender).Checked)
-                lockOtherEvent();
-            else
-                unlockOtherEvent();
-        }
-        //! Блокировка других компонентов при выборе опции "переход на диалог № xxx"
-        private void ToDialogCheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            ToDialogComboBox.Enabled = ToDialogCheckBox.Checked;
-            if (ToDialogCheckBox.Checked)
-                lockOtherEvent();
-            else
-                unlockOtherEvent();
-        }
 
-        //! Блокирует контролы на форме
-        private void lockOtherEvent()
-        {
-            if (!ExitCheckBox.Checked)
-            {
-                if (!ToDialogCheckBox.Checked)
-                    ExitCheckBox.Checked = true;
-                ExitCheckBox.Enabled = false;
-            }
-            toTradeCheckBox.Enabled = toTradeCheckBox.Checked;
-            changeCheckBox.Enabled = changeCheckBox.Checked;
-            toRepairCheckBox.Enabled = toRepairCheckBox.Checked;
-            toComplexRepairCheckBox.Enabled = toComplexRepairCheckBox.Checked;
-            ToDialogCheckBox.Enabled = ToDialogCheckBox.Checked;
-            teleportCheckBox.Enabled = teleportCheckBox.Checked;
-            barterCheckBox.Enabled = barterCheckBox.Checked;
-            ToClanBaseCheckBox.Enabled = ToClanBaseCheckBox.Checked;
-            ColorizeItemCheckBox.Enabled = ColorizeItemCheckBox.Checked;
-            CreateClanCheckBox.Enabled = CreateClanCheckBox.Checked;
-            GoPvpCheckBox.Enabled = GoPvpCheckBox.Checked;
-        }
-        //! Разблокирует контролы на форме
-        private void unlockOtherEvent()
-        {
-            ExitCheckBox.Checked = false;
-            ExitCheckBox.Enabled = true;
-            toTradeCheckBox.Enabled = true;
-            changeCheckBox.Enabled = true;
-            toRepairCheckBox.Enabled = true;
-            toComplexRepairCheckBox.Enabled = true;
-            ToDialogCheckBox.Enabled = true;
-            teleportCheckBox.Enabled = true;
-            barterCheckBox.Enabled = true;
-            ToClanBaseCheckBox.Enabled = true;
-            ColorizeItemCheckBox.Enabled = true;
-            CreateClanCheckBox.Enabled = true;
-            GoPvpCheckBox.Enabled = true;
-        }
         //! При наборе текста проверяем число символов в строке
         private void tPlayerText_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -328,19 +285,41 @@ namespace StalkerOnlineQuesterEditor
                 bKarma.Image = null;
         }
 
-        //! Чекбокс телепорта - заполняем возможные локации
-        private void teleportCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void ExitCheckBox_Click(object sender, EventArgs e)
         {
-            if (teleportCheckBox.Checked)
-                lockOtherEvent();
-            else
-                unlockOtherEvent();
-            teleportComboBox.Enabled = !teleportComboBox.Enabled;
+            ActionsComboBox.Enabled = !ExitCheckBox.Checked;
+        }
+
+        //! Изменение текущего однократного действия
+        private void ActionsComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            int SelectedValue = -1;
+            if (!int.TryParse(ActionsComboBox.SelectedValue.ToString(), out SelectedValue))
+                return;
+
+            teleportComboBox.Visible = (SelectedValue == 5);
+            ToDialogComboBox.Visible = (SelectedValue == 100);
+
+            switch (SelectedValue)
+            { 
+                case 0:
+                    ExitCheckBox.Checked = false;
+                    ExitCheckBox.Enabled = true;
+                    break;
+                case 100:
+                    ExitCheckBox.Checked = false;
+                    ExitCheckBox.Enabled = false;;
+                    break;
+                default:
+                    ExitCheckBox.Checked = true;
+                    ExitCheckBox.Enabled = false;
+                    break;
+            }
         }
 
         bool CheckConditions()
         {
-            if (ToDialogCheckBox.Checked)
+            if (ActionsComboBox.Text == "Переход к диалогу")
             {
                 String toDialog = ToDialogComboBox.Text;
                 int index = ToDialogComboBox.Items.IndexOf(toDialog);
@@ -348,6 +327,14 @@ namespace StalkerOnlineQuesterEditor
                 if (index == -1)
                 {
                     MessageBox.Show("Действие невозможно: такой диалог не существует у этого персонажа.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            else if (ActionsComboBox.Text == "Телепорт")
+            {
+                if (teleportComboBox.Text.Equals(""))
+                {
+                    MessageBox.Show("Действие невозможно: не задана точка для телепортации.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
@@ -374,31 +361,14 @@ namespace StalkerOnlineQuesterEditor
             if (actionsCheckBox.Checked)
             {               
                 actions.Exit = ExitCheckBox.Checked;
-                if (toTradeCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.trade;
-                else if (changeCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.change;
-                else if (ToDialogCheckBox.Checked)
-                    actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString());
-                else if (CreateClanCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.create_clan;
-                else if (toRepairCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.repair;
-                else if (teleportCheckBox.Checked && !teleportComboBox.SelectedItem.ToString().Equals(""))
-                {
-                    actions.Event = (int)DialogEvents.teleport;
+                actions.Event = (int) ActionsComboBox.SelectedValue;
+                if (actions.Event == 5)     // телепорт 
                     actions.Data = parent.tpConst.getTtID(teleportComboBox.SelectedItem.ToString());
+                if (actions.Event == 100)    // переход к диалогу
+                {
+                    actions.Event = 0;
+                    actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString());
                 }
-                else if (toComplexRepairCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.complex_repair;
-                else if (barterCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.barter;
-                else if (ToClanBaseCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.clan_base;
-                else if (GoPvpCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.go_pvp_area;
-                else if (ColorizeItemCheckBox.Checked)
-                    actions.Event = (int)DialogEvents.colorize_item;
 
                 if (GetQuestsCheckBox.Checked)
                     foreach (string quest in GetQuestsTextBox.Text.Split(','))

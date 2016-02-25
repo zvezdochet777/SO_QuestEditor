@@ -34,6 +34,31 @@ namespace StalkerOnlineQuesterEditor
         start_pvp = 10,
         colorize_item = 11
     };
+
+    public class DialogEvent
+    {
+        public string RusName;
+        public string EngName;
+        public int EventID;
+        public DialogEvent(string Name, int ID)
+        {
+            RusName = Name;
+            EventID = ID;
+        }
+
+        public string Display
+        {
+            get { return RusName; }
+            set { RusName = value; }
+        }
+
+        public int Value
+        {
+            get { return EventID; }
+            set { EventID = value;}
+        }
+    }
+
     public partial class MainForm : Form
     {
         public levelDict nodesOnLevel;
