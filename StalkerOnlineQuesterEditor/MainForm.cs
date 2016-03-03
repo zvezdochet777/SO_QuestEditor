@@ -509,9 +509,9 @@ namespace StalkerOnlineQuesterEditor
             CDialog choosenDialog = dialogs.dialogs[currentNPC][choosenDialogID];
             toolStripStatusLabel.Text = "";
             if (choosenDialog.Actions.CompleteQuests.Any())
-                toolStripStatusLabel.Text += "Завершенные: " + getListAsString(choosenDialog.Actions.CompleteQuests);
+                toolStripStatusLabel.Text += "Завершенные: " + Global.GetListAsString(choosenDialog.Actions.CompleteQuests);
             if (choosenDialog.Actions.GetQuests.Any())
-                toolStripStatusLabel.Text += " Взятые: " + getListAsString(choosenDialog.Actions.GetQuests);
+                toolStripStatusLabel.Text += " Взятые: " + Global.GetListAsString(choosenDialog.Actions.GetQuests);
 
             ListDialogEvents AllEvents = new ListDialogEvents();
             string eventName = " " + AllEvents.GetEventName(choosenDialog.Actions.Event);
@@ -547,20 +547,6 @@ namespace StalkerOnlineQuesterEditor
         }
 
 // ************************END DIALOGS BLOCK****************************************************
-
-        //! Возвращает список как строку со значениями через запятую
-        string getListAsString(List<int> list)
-        {
-            string str = "";
-            foreach (int element in list)
-            {
-                if (str.Equals(""))
-                    str += element.ToString();
-                else
-                    str += "," + element.ToString();
-            }
-            return str;
-        }
 
         public void clearToolstripLabel()
         {
@@ -1131,7 +1117,7 @@ namespace StalkerOnlineQuesterEditor
 
                         string npcLinks = "";
                         string getDialogs = "";
-                        string subIDs = getListAsString(iSubIDS);
+                        string subIDs = Global.GetListAsString(iSubIDS);
                         string title = quest.QuestInformation.Title;
                         string description = quest.QuestInformation.Description;
                         string npcNe = quest.Additional.Holder;
