@@ -513,38 +513,20 @@ namespace StalkerOnlineQuesterEditor
             if (choosenDialog.Actions.GetQuests.Any())
                 toolStripStatusLabel.Text += " Взятые: " + getListAsString(choosenDialog.Actions.GetQuests);
 
-            if (choosenDialog.Actions.Event == (int) DialogEvents.trade)
-                addActionTextToEmulator(" Торговля. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int) DialogEvents.change)
-                addActionTextToEmulator(" Обмен. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int)DialogEvents.create_clan)
-                addActionTextToEmulator(" Создание клана. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int)DialogEvents.barter)
-                addActionTextToEmulator(" Бартер. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int)DialogEvents.repair)
-                addActionTextToEmulator(" Починка. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int)DialogEvents.complex_repair)
-                addActionTextToEmulator(" Комплексная починка. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int)DialogEvents.teleport)
-                addActionTextToEmulator(" Телепорт. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int)DialogEvents.clan_base)
-                addActionTextToEmulator(" Телепорт на базу. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int)DialogEvents.go_pvp_area)
-                addActionTextToEmulator(" Идти в зону PvP. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Event == (int)DialogEvents.colorize_item)
-                addActionTextToEmulator(" Покрасить предмет. Выход.", choosenDialogID);
-            else if (choosenDialog.Actions.Exit)
+            ListDialogEvents AllEvents = new ListDialogEvents();
+            string eventName = " " + AllEvents.GetEventName(choosenDialog.Actions.Event);
+            addActionTextToEmulator(eventName, choosenDialogID);
+
+            if (choosenDialog.Actions.Exit)
                 addActionTextToEmulator(" Выход.", choosenDialogID);
 
             else if (choosenDialog.Actions.ToDialog != 0)
             {
-                toolStripStatusLabel.Text += " Переход на диал.: " + choosenDialog.Actions.ToDialog.ToString();
-                //startEmulator(choosenDialog.Actions.ToDialog, false);
+                toolStripStatusLabel.Text += " Переход на диалог: " + choosenDialog.Actions.ToDialog.ToString();
                 Listener.setCurrentNode(choosenDialog.Actions.ToDialog);
             }
             else
             {
-                //startEmulator(choosenDialogID,false);
                 Listener.setCurrentNode(choosenDialogID);
             }            
         }

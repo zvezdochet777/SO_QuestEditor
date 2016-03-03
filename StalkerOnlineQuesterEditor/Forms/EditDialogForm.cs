@@ -171,25 +171,8 @@ namespace StalkerOnlineQuesterEditor
         private void FillActionsComboBox()
         {
             ActionsComboBox.Items.Clear();
-            List<DialogEvent> events = new List<DialogEvent>();
-            events.Add(new DialogEvent("Пусто", 0));            
-            events.Add(new DialogEvent("Торговля", 1));
-            events.Add(new DialogEvent("Обмен", 2));
-            events.Add(new DialogEvent("Создание клана", 3));
-            events.Add(new DialogEvent("Починка", 4));
-            events.Add(new DialogEvent("Телепорт", 5));
-            events.Add(new DialogEvent("Комплексная починка", 6));
-            events.Add(new DialogEvent("Бартер", 7));
-            events.Add(new DialogEvent("Телепорт на базу", 8));
-            events.Add(new DialogEvent("Идти в зону ПВП", 9));
-            events.Add(new DialogEvent("Начало ПВП", 10));
-            events.Add(new DialogEvent("Покраска предмета", 11));
-            events.Add(new DialogEvent("Купить флаг", 13));
-            events.Add(new DialogEvent("Нанять охранника", 14));
-            events.Add(new DialogEvent("Нанять торговца", 15));
-            events.Add(new DialogEvent("Переход к диалогу", 100));
-
-            ActionsComboBox.DataSource = events;
+            ListDialogEvents AllEvents = new ListDialogEvents();
+            ActionsComboBox.DataSource = AllEvents.GetFullList();
             ActionsComboBox.DisplayMember = "Display";
             ActionsComboBox.ValueMember = "Value";
         }

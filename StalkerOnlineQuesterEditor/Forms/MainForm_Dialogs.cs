@@ -20,44 +20,6 @@ namespace StalkerOnlineQuesterEditor
     //! Словарь <уровень в иерархии, список узлов>
     using levelDict = Dictionary<int, List<int>>;
     //! Перечисление событий в диалогах, строго соответствует scripts/common/Dialog.py
-    enum DialogEvents
-    {
-        trade = 1,
-        change = 2,
-        create_clan = 3,
-        repair = 4,
-        teleport = 5,
-        complex_repair = 6,
-        barter = 7,
-        clan_base = 8,
-        go_pvp_area = 9,
-        start_pvp = 10,
-        colorize_item = 11
-    };
-
-    public class DialogEvent
-    {
-        public string RusName;
-        public string EngName;
-        public int EventID;
-        public DialogEvent(string Name, int ID)
-        {
-            RusName = Name;
-            EventID = ID;
-        }
-
-        public string Display
-        {
-            get { return RusName; }
-            set { RusName = value; }
-        }
-
-        public int Value
-        {
-            get { return EventID; }
-            set { EventID = value;}
-        }
-    }
 
     public partial class MainForm : Form
     {
