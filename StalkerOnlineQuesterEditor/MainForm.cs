@@ -96,6 +96,18 @@ namespace StalkerOnlineQuesterEditor
 
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
+            SetMasterMode();
+        }
+        //! Set mode for me, if Command line has /master parameter, TestButton and some labels will be shown
+        void SetMasterMode()
+        {
+            string cmd = Environment.CommandLine;
+            if (cmd.IndexOf("/master") != -1)
+            {
+                bTestButton.Visible = true;
+                labelXNode.Visible = true;
+                labelYNode.Visible = true;
+            }
         }
 
         //! Очищает данные о квестах - дерево квестов, комбобокс, подквесты

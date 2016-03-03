@@ -387,12 +387,13 @@ namespace StalkerOnlineQuesterEditor
             // 
             // bTestButton
             // 
-            this.bTestButton.Location = new System.Drawing.Point(36, 276);
+            this.bTestButton.Location = new System.Drawing.Point(6, 261);
             this.bTestButton.Name = "bTestButton";
-            this.bTestButton.Size = new System.Drawing.Size(116, 23);
+            this.bTestButton.Size = new System.Drawing.Size(192, 38);
             this.bTestButton.TabIndex = 7;
             this.bTestButton.Text = "ТестКнопка";
             this.bTestButton.UseVisualStyleBackColor = true;
+            this.bTestButton.Visible = false;
             this.bTestButton.Click += new System.EventHandler(this.bTestButton_Click);
             // 
             // bCenterizeDialogShower
@@ -413,6 +414,7 @@ namespace StalkerOnlineQuesterEditor
             this.labelYNode.Size = new System.Drawing.Size(62, 13);
             this.labelYNode.TabIndex = 5;
             this.labelYNode.Text = "labelYNode";
+            this.labelYNode.Visible = false;
             // 
             // labelXNode
             // 
@@ -422,6 +424,7 @@ namespace StalkerOnlineQuesterEditor
             this.labelXNode.Size = new System.Drawing.Size(62, 13);
             this.labelXNode.TabIndex = 4;
             this.labelXNode.Text = "labelXNode";
+            this.labelXNode.Visible = false;
             // 
             // bRemoveDialog
             // 
