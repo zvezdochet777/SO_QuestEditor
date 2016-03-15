@@ -47,11 +47,13 @@ namespace StalkerOnlineQuesterEditor
         int locQuestText;
         int locQuestSpaceless;
 
+        //! Класс статистических данных по репутации одной фракции
         public class RepData
         {
             public int plus;
             public int minus;
-            public int quests;
+            public int numPlus;
+            public int numMinus;
         };
 
         //! Конструктор, получает элементы от главной формы
@@ -180,7 +182,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 string id = fraction.Key.ToString();
                 string name = fraction.Value;
-                object[] row = { id, name, "0", "0" };
+                object[] row = { id, name, "0", "0", "0", "0", "0" };
                 RepStats.Add(fraction.Key, new RepData());
                 dataFractionStats.Rows.Add(row);
             }
@@ -193,12 +195,12 @@ namespace StalkerOnlineQuesterEditor
                         if (oneRep.Value > 0)
                         {
                             RepStats[oneRep.Key].plus += oneRep.Value;
-                            RepStats[oneRep.Key].quests++;
+                            RepStats[oneRep.Key].numPlus++;
                         }
                         else if (oneRep.Value < 0)
                         {
                             RepStats[oneRep.Key].minus += oneRep.Value;
-                            RepStats[oneRep.Key].quests++;                        
+                            RepStats[oneRep.Key].numMinus++;                        
                         }
                     }
                 }
@@ -208,7 +210,11 @@ namespace StalkerOnlineQuesterEditor
                 int fractionID = int.Parse( row.Cells[0].Value.ToString() );
                 row.Cells["colPlus"].Value = RepStats[fractionID].plus;
                 row.Cells["colMinus"].Value = RepStats[fractionID].minus;
-                row.Cells["colQuestsNum"].Value = RepStats[fractionID].quests;
+                row.Cells["colQuestsNum"].Value = RepStats[fractionID].numPlus + RepStats[fractionID].numMinus;
+                if (RepStats[fractionID].numPlus != 0)
+                    row.Cells["colAveragePlus"].Value = RepStats[fractionID].plus / RepStats[fractionID].numPlus;
+                if (RepStats[fractionID].numMinus != 0)
+                    row.Cells["colAverageMinus"].Value = RepStats[fractionID].minus / RepStats[fractionID].numMinus;
             }
         }
 
