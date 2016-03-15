@@ -1709,8 +1709,9 @@ namespace StalkerOnlineQuesterEditor
         //! Тeстовая фукция "пробежать", пробегает всех NPC (для заполнения полей в тестовом режиме)
         private void bTestButton_Click(object sender, EventArgs e)
         {
-            System.IO.StreamWriter sw = new System.IO.StreamWriter("Reputation_Dialogs.txt");
-            sw.WriteLine("List of reputations in So Dialogs (NPC name, dialog ID): ");
+            //System.IO.StreamWriter sw = new System.IO.StreamWriter("Reputation_Dialogs.txt");
+            //sw.WriteLine("List of reputations in So Dialogs (NPC name, dialog ID): ");
+            /*
             foreach (string npc in dialogs.dialogs.Keys)
             {
                 foreach (int dialogID in dialogs.dialogs[npc].Keys)
@@ -1722,22 +1723,24 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
 
-            /*
+            */
+            var rand = new System.Random();
+            
             foreach (CQuest quest in quests.quest.Values)
             {
                 if (quest.Reward.Fractions.Count > 0)
                 {
                     foreach (int fractionID in quest.Reward.Fractions)
-                        quest.Reward.Reputation[fractionID] = 25;
+                        quest.Reward.Reputation[fractionID] = rand.Next(-50, 50);
 
                     string sWriter = quest.Additional.Holder + " \t " + quest.QuestID.ToString();
                     if (quest.Additional.IsSubQuest > 0)
                         sWriter += " \t (parent quest: " + quest.Additional.IsSubQuest.ToString() + ")";
-                    sw.WriteLine(sWriter);
+                    //sw.WriteLine(sWriter);
                 }
             }
-             * */
-            sw.Close();
+            
+            //sw.Close();
         }
         private void bStartSearch_Click(object sender, EventArgs e)
         {
@@ -1971,6 +1974,7 @@ namespace StalkerOnlineQuesterEditor
                     local.Additional.ShowProgress = quest.Additional.ShowProgress;
                     local.Additional.ListOfSubQuest = quest.Additional.ListOfSubQuest;
                     local.Additional.IsSubQuest = quest.Additional.IsSubQuest;
+                    local.Additional.CantCancel = quest.Additional.CantCancel;
                     local.Precondition = quest.Precondition;
                     local.QuestPenalty = quest.QuestPenalty;
                     local.QuestRules = quest.QuestRules;
