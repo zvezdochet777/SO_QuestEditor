@@ -21,7 +21,7 @@ namespace StalkerOnlineQuesterEditor
         //! Экземпляр класса CDialogs, хранящий всю инфу по диалогам
         CDialogs dialogs;
 
-        float Credits;
+        double Credits;
         int countOfQuests;
         int countOfAmountGold;
         int[] countOfExQuests = { 0, 0, 0 };
@@ -47,6 +47,13 @@ namespace StalkerOnlineQuesterEditor
         int locQuestText;
         int locQuestSpaceless;
 
+        public class RepData
+        {
+            public int plus;
+            public int minus;
+            public int quests;
+        };
+
         //! Конструктор, получает элементы от главной формы
         public StatisticsForm(MainForm parent, int _NPCCount, CQuests _quests, CDialogs _dialogs)
         {
@@ -56,6 +63,7 @@ namespace StalkerOnlineQuesterEditor
             quests = _quests;
             dialogs = _dialogs;
             calcStatistic();
+            calcReputation();
             showOnScreen();
         }
 
@@ -66,11 +74,11 @@ namespace StalkerOnlineQuesterEditor
             calcSymbolsInDialogs();
             calcSymbolsInQuests();
         }
-        //! Считает денежные вознагражлдения и опыт
+        //! Считает денежные вознаграждения и опыт
         void calcRewards()
         {
             const int NumExp = 3;
-            Credits = new float();
+            Credits = new double();
             countOfQuests = 0;
             countOfAmountGold = 0;
             lExperience = new List<int>(3);
@@ -164,45 +172,88 @@ namespace StalkerOnlineQuesterEditor
                 }
             }        
         }
+        //! Считает статистику по бонусам и штрафам к репутации у каждой фракции и заполняет табличку
+        void calcReputation()
+        {
+            Dictionary<int, RepData> RepStats = new Dictionary<int,RepData>();
+            foreach (KeyValuePair<int, string> fraction in parent.fractions.getListOfFractions())
+            {
+                string id = fraction.Key.ToString();
+                string name = fraction.Value;
+                object[] row = { id, name, "0", "0" };
+                RepStats.Add(fraction.Key, new RepData());
+                dataFractionStats.Rows.Add(row);
+            }
+            foreach (CQuest quest in quests.quest.Values)
+            {
+                if (quest.Reward.ReputationNotEmpty())
+                {
+                    foreach (KeyValuePair<int, int> oneRep in quest.Reward.Reputation)
+                    {
+                        if (oneRep.Value > 0)
+                        {
+                            RepStats[oneRep.Key].plus += oneRep.Value;
+                            RepStats[oneRep.Key].quests++;
+                        }
+                        else if (oneRep.Value < 0)
+                        {
+                            RepStats[oneRep.Key].minus += oneRep.Value;
+                            RepStats[oneRep.Key].quests++;                        
+                        }
+                    }
+                }
+            }
+            foreach (DataGridViewRow row in dataFractionStats.Rows)
+            { 
+                int fractionID = int.Parse( row.Cells[0].Value.ToString() );
+                row.Cells["colPlus"].Value = RepStats[fractionID].plus;
+                row.Cells["colMinus"].Value = RepStats[fractionID].minus;
+                row.Cells["colQuestsNum"].Value = RepStats[fractionID].quests;
+            }
+        }
 
         //! Показывает результаты на экране
         void showOnScreen()
         {
-            string str = "";
-            str += "Общее количество NPC:        " + NPCCount.ToString() + "\n";
-            str += "Общее количество квестов:    " + topLevelQuests.ToString() + " (c субквестами: " + countOfQuests.ToString() + ")\n";
-            str += "Общее количество диалогов:   " + countOfDialogs.ToString() + "\n";
-            str += "Общее количество знаков в словах NPC:   " + countOfTextLetters.ToString() + "\n";
+            string symbols = "";
+            symbols += "Общее количество NPC:        " + NPCCount.ToString() + "\n";
+            symbols += "Общее количество квестов:    " + topLevelQuests.ToString() + " (c субквестами: " + countOfQuests.ToString() + ")\n";
+            symbols += "Общее количество диалогов:   " + countOfDialogs.ToString() + "\n";
+            symbols += "Общее количество знаков в словах NPC:   " + countOfTextLetters.ToString() + "\n";
                                             //", без пробелов: " + countOfTextNoSpaces.ToString() + "\n";
-            str += "Общее количество знаков в словах ГГ:   " + countOfTitleLetters.ToString() + "\n";
+            symbols += "Общее количество знаков в словах ГГ:   " + countOfTitleLetters.ToString() + "\n";
                                             //", без пробелов: " + countOfTitleNoSpaces.ToString() + "\n";
-            str += "Общее количество знаков в описаниях квестов:   " + countOfQuestTexts.ToString() + "\n\n";
+            symbols += "Общее количество знаков в описаниях квестов:   " + countOfQuestTexts.ToString() + "\n\n";
                                             //", без пробелов: " + countOfQuestSpaceless.ToString() + "\n\n";
 
-            str += "ОСТАЛОСЬ ЛОКАЛИЗОВАТЬ: \n";
-            str += "Диалогов:   " + locDialogs.ToString() + "\n";
-            str += "Знаков в словах NPC:   " + locText.ToString() + "\n";
+            symbols += "ОСТАЛОСЬ ЛОКАЛИЗОВАТЬ: \n";
+            symbols += "Диалогов:   " + locDialogs.ToString() + "\n";
+            symbols += "Знаков в словах NPC:   " + locText.ToString() + "\n";
                                             //", без пробелов: " + locTextSpaceless.ToString() + "\n";
-            str += "Знаков в словах ГГ:   " + locTitle.ToString() + "\n";
+            symbols += "Знаков в словах ГГ:   " + locTitle.ToString() + "\n";
                                             //", без пробелов: " + locTitleSpaceless.ToString() + "\n";
-            str += "Квестов:   " + locQuestCount.ToString() + "\n";
-            str += "Знаков в названиях и описаниях квестов:   " + locQuestText.ToString() + "\n\n";
+            symbols += "Квестов:   " + locQuestCount.ToString() + "\n";
+            symbols += "Знаков в названиях и описаниях квестов:   " + locQuestText.ToString() + "\n\n";
                                             //", без пробелов: " + locQuestSpaceless.ToString() + "\n\n";
+            lLocalizationInfo.Text = symbols;
 
-            str += "По наградам:\n";
-            str += "Общее количество денег:         ";
-            str += (Credits.ToString() + " руб." + "   Среднее: " + (Credits / countOfAmountGold).ToString() + " руб.\n");
-            str += "   Общее количество опыта:\n";
-            str += "\aБоевого:         ";
+            string rewards = "";
+            rewards += "По наградам:\n";
+            rewards += "Общее количество денег:         ";
+            rewards += (Credits.ToString() + " руб." + "   Среднее: " + (Credits / countOfAmountGold).ToString("F0") + " руб.\n");
+            rewards += "   Общее количество опыта:\n";
+            rewards += "\aБоевого:         ";
             if (countOfExQuests[0] != 0 || lExperience[0] != 0)
-                str += (lExperience[0].ToString() + "   Среднее: " + averageExp[0].ToString() + "\n");
-            str += "\aВыживания:         ";
+                rewards += (lExperience[0].ToString() + "   Среднее: " + averageExp[0].ToString() + "\n");
+            rewards += "\aВыживания:         ";
             if (countOfExQuests[1] != 0 || lExperience[1] != 0)
-                str += (lExperience[1].ToString() + "   Среднее: " + averageExp[1].ToString() + "\n");
-            str += "\aПоддержка:         ";
+                rewards += (lExperience[1].ToString() + "   Среднее: " + averageExp[1].ToString() + "\n");
+            rewards += "\aПоддержка:         ";
             if (countOfExQuests[2] != 0 || lExperience[2] != 0)
-                str += (lExperience[2].ToString() + "   Среднее: " + averageExp[2].ToString() + "\n");
-            labelInfo.Text = str;        
+                rewards += (lExperience[2].ToString() + "   Среднее: " + averageExp[2].ToString() + "\n");
+
+            lRewardInfo.Text = rewards;
+                   
         }
 
         //! Нажатие ОК - закрытие формы
