@@ -170,9 +170,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void FillActionsComboBox()
         {
-            ActionsComboBox.Items.Clear();
-            ListDialogEvents AllEvents = new ListDialogEvents();
-            ActionsComboBox.DataSource = AllEvents.GetFullList();
+            ActionsComboBox.Items.Clear();            
+            ActionsComboBox.DataSource = parent.dialogEvents.GetFullList();
             ActionsComboBox.DisplayMember = "Display";
             ActionsComboBox.ValueMember = "Value";
         }

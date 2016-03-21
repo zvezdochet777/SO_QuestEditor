@@ -61,6 +61,7 @@ namespace StalkerOnlineQuesterEditor
         public CFracConstants fractions;
         public CGUIConst gui;
         public CEffectConstants effects;
+        public DialogEventsList dialogEvents;
         public int currentQuest;
 
         public MainForm()
@@ -83,6 +84,7 @@ namespace StalkerOnlineQuesterEditor
             fractions = new CFracConstants();
             gui = new CGUIConst();
             effects = new CEffectConstants();
+            dialogEvents = new DialogEventsList();
 
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             //fillNPCBox();
@@ -512,17 +514,16 @@ namespace StalkerOnlineQuesterEditor
                 toolStripStatusLabel.Text += "Завершенные: " + Global.GetListAsString(choosenDialog.Actions.CompleteQuests);
             if (choosenDialog.Actions.GetQuests.Any())
                 toolStripStatusLabel.Text += " Взятые: " + Global.GetListAsString(choosenDialog.Actions.GetQuests);
-
-            ListDialogEvents AllEvents = new ListDialogEvents();
-            string eventName = " " + AllEvents.GetEventName(choosenDialog.Actions.Event);
+            
+            string eventName = dialogEvents.GetEventName(choosenDialog.Actions.Event);
             addActionTextToEmulator(eventName, choosenDialogID);
 
             if (choosenDialog.Actions.Exit)
-                addActionTextToEmulator(" Выход.", choosenDialogID);
+                addActionTextToEmulator("Выход.", choosenDialogID);
 
             else if (choosenDialog.Actions.ToDialog != 0)
             {
-                toolStripStatusLabel.Text += " Переход на диалог: " + choosenDialog.Actions.ToDialog.ToString();
+                toolStripStatusLabel.Text += "Переход на диалог: " + choosenDialog.Actions.ToDialog.ToString();
                 Listener.setCurrentNode(choosenDialog.Actions.ToDialog);
             }
             else
@@ -533,6 +534,8 @@ namespace StalkerOnlineQuesterEditor
         //! Антиговнокод - добавление примечания к фразе диалога с действием
         void addActionTextToEmulator(string text, int dialogID)
         {
+            if (toolStripStatusLabel.Text != "")
+                toolStripStatusLabel.Text += "\n";
             toolStripStatusLabel.Text += text;
             EmulatorsplitContainer.Panel2.Controls.Clear();
             Listener.setCurrentNode(dialogID);
