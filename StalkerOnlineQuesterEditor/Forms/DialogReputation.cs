@@ -54,6 +54,7 @@ namespace StalkerOnlineQuesterEditor
                 if (row.Cells[0].FormattedValue.ToString() != "")
                 {
                     int fractionID = int.Parse(row.Cells[0].FormattedValue.ToString());
+                    //string fractionName = row.Cells[1].FormattedValue.ToString();
                     string stringA = row.Cells[2].FormattedValue.ToString().Replace('.',',');
                     string stringB = row.Cells[3].FormattedValue.ToString().Replace('.', ',');
 
@@ -65,7 +66,11 @@ namespace StalkerOnlineQuesterEditor
                             doubleA = double.NegativeInfinity;
                         if (!double.TryParse(stringB, out doubleB))
                             doubleB = double.PositiveInfinity;
-
+                        if (doubleA >= doubleB)
+                        {
+                            MessageBox.Show("Неправильное условие по репутации! Значение А должно быть меньше B" , "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         form.editPrecondition.Reputation.Add( fractionID, new List<double>() {doubleA, doubleB} );
                     }
                 }
