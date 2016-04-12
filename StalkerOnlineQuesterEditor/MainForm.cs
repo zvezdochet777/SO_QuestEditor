@@ -37,6 +37,7 @@ namespace StalkerOnlineQuesterEditor
         CQuests quests;
         NodeDragHandler Listener;
         RectangleDrawingHandler RectDrawer;
+        PanEventHandler PanHandler;
         public PLayer edgeLayer;
         public PLayer drawingLayer;
         public PNodeList nodeLayer;
@@ -71,6 +72,7 @@ namespace StalkerOnlineQuesterEditor
             InitializeComponent();
             Listener = new NodeDragHandler(this);
             RectDrawer = new RectangleDrawingHandler(this);
+            PanHandler = new PanEventHandler(this);
             settings = new CSettings(this);
             dialogs = new CDialogs(this);
             quests = new CQuests(this);
@@ -94,8 +96,10 @@ namespace StalkerOnlineQuesterEditor
             fillLocationsBox();
             fillItemRewardsBox();
             DialogShower.AddInputEventListener(Listener);
-            DialogShower.AddInputEventListener(RectDrawer);            
+            DialogShower.AddInputEventListener(RectDrawer);
+            DialogShower.AddInputEventListener(PanHandler);
             DialogShower.PanEventHandler = null;
+            DialogShower.ZoomEventHandler = null;
 
             foreach (string name in dialogs.getListOfNPC())
                 if (!npcConst.NPCs.Keys.Contains(name))
@@ -1561,7 +1565,8 @@ namespace StalkerOnlineQuesterEditor
             // важное место - ставим зум на 1
             DialogShower.Camera.ViewScale = 1;
             // сдвиг ставим на 0 -камера возвращается в исходное положение
-            DialogShower.Camera.SetViewOffset(0, 0);
+            //DialogShower.Camera.SetViewOffset(0, 0);
+            DialogShower.Camera.SetOffset(0, 0);
         }
 
 //*************************** DATA CHECK - missed dialogs, quests, NPC and so on**************************
