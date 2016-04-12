@@ -36,8 +36,10 @@ namespace StalkerOnlineQuesterEditor
         //! Ссылка на экземпляр класса CQuests
         CQuests quests;
         NodeDragHandler Listener;
-        PLayer edgeLayer;
-        PNodeList nodeLayer;
+        RectangleDrawingHandler RectDrawer;
+        public PLayer edgeLayer;
+        public PLayer drawingLayer;
+        public PNodeList nodeLayer;
 
         Dictionary<PNode, GraphProperties> graphs = new Dictionary<PNode, GraphProperties>();
         Dictionary<Panel, int> panels = new Dictionary<Panel, int>();
@@ -68,6 +70,7 @@ namespace StalkerOnlineQuesterEditor
         {
             InitializeComponent();
             Listener = new NodeDragHandler(this);
+            RectDrawer = new RectangleDrawingHandler(this);
             settings = new CSettings(this);
             dialogs = new CDialogs(this);
             quests = new CQuests(this);
@@ -91,6 +94,8 @@ namespace StalkerOnlineQuesterEditor
             fillLocationsBox();
             fillItemRewardsBox();
             DialogShower.AddInputEventListener(Listener);
+            DialogShower.AddInputEventListener(RectDrawer);            
+            DialogShower.PanEventHandler = null;
 
             foreach (string name in dialogs.getListOfNPC())
                 if (!npcConst.NPCs.Keys.Contains(name))
@@ -1712,9 +1717,13 @@ namespace StalkerOnlineQuesterEditor
         //! Тeстовая фукция "пробежать", пробегает всех NPC (для заполнения полей в тестовом режиме)
         private void bTestButton_Click(object sender, EventArgs e)
         {
+            PPath test;
+            test = PPath.CreateRectangle(50, 50, 100, 200);
+            drawingLayer.AddChild(test);            
             //System.IO.StreamWriter sw = new System.IO.StreamWriter("Reputation_Dialogs.txt");
             //sw.WriteLine("List of reputations in So Dialogs (NPC name, dialog ID): ");
             /*
+            //edgeLayer.AddChild(test);
             foreach (string npc in dialogs.dialogs.Keys)
             {
                 foreach (int dialogID in dialogs.dialogs[npc].Keys)
@@ -1727,6 +1736,7 @@ namespace StalkerOnlineQuesterEditor
             }
 
             */
+            /*
             var rand = new System.Random();
             
             foreach (CQuest quest in quests.quest.Values)
@@ -1742,7 +1752,7 @@ namespace StalkerOnlineQuesterEditor
                     //sw.WriteLine(sWriter);
                 }
             }
-            
+            */
             //sw.Close();
         }
         private void bStartSearch_Click(object sender, EventArgs e)

@@ -19,7 +19,8 @@ namespace StalkerOnlineQuesterEditor
     {
         public PNode curNode = null;
         public PNode prevNode = null;
-        public MainForm mainForm;
+        //private NodeCoordinates StartingPoint;
+        private MainForm mainForm;
         
 
         public NodeDragHandler(MainForm form)
@@ -29,7 +30,10 @@ namespace StalkerOnlineQuesterEditor
 
         public override bool DoesAcceptEvent(PInputEventArgs e)
         {
-            return e.IsMouseEvent && (e.Button != MouseButtons.None || e.IsMouseEnterOrMouseLeave);
+            //bool temp = e.IsMouseEvent;
+            //bool t2 = e.IsMouseEnterOrMouseLeave;
+            
+            return e.IsMouseEvent && (e.Button != MouseButtons.None || e.IsMouseEnterOrMouseLeave);            
         }
 
         public override void OnMouseEnter(object sender, PInputEventArgs e)
@@ -64,11 +68,15 @@ namespace StalkerOnlineQuesterEditor
             float y = e.PickedNode.GlobalFullBounds.Y;
             float w = e.PickedNode.GlobalFullBounds.Width;
             float h = e.PickedNode.GlobalFullBounds.Height;
+            string str = sender.ToString();
 
             int dialogID = mainForm.getDialogIDOnNode(e.PickedNode);
             CDialog dialog = mainForm.getDialogOnIDConditional(dialogID);
-            mainForm.SaveCoordinates(dialog, e.PickedNode, dialog.coordinates.RootDialog);
-            mainForm.setXYCoordinates(x, y, w, h);
+            if (dialog != null)
+            {
+                mainForm.SaveCoordinates(dialog, e.PickedNode, dialog.coordinates.RootDialog);
+                mainForm.setXYCoordinates(x, y, w, h);                
+            }
         }
 
         //! Клик мыши по узлу диалога - выделяем его и потомков цветом
@@ -88,6 +96,62 @@ namespace StalkerOnlineQuesterEditor
             int node = mainForm.getDialogIDOnNode(e.PickedNode);
             mainForm.bEditDialog_Click(sender, new EventArgs() );
         }
+        /*
+        public override void OnMouseDown(object sender, PInputEventArgs e)
+        {
+            base.OnMouseDown(sender, e);
+            //if (e.Modifiers == Keys.Shift)
+            {
+                StartingPoint = new NodeCoordinates();
+                StartingPoint.X = (int) e.Position.X;
+                StartingPoint.Y = (int) e.Position.Y;
+            }
+        }   */     
+
+        /*
+        public override void OnMouseMove(object sender, PInputEventArgs e)
+        {
+            base.OnMouseMove(sender, e);
+            mainForm.setXYCoordinates(500, 300, e.Position.X, e.Position.Y);
+        }*/
+
+        /*
+        public override void OnMouseMove(object sender, PInputEventArgs e)
+        {
+            
+            mainForm.setXYCoordinates(StartingPoint.X, StartingPoint.Y, e.Position.X, e.Position.Y);
+            base.OnMouseMove(sender, e);
+            if (e.Modifiers == Keys.Shift)     // e.Button == MouseButtons.Left &&
+            {
+                float width = e.Position.X - (float)StartingPoint.X;
+                float height = e.Position.Y - (float)StartingPoint.Y;
+                PNode newNode = PPath.CreateRectangle((float)StartingPoint.X, (float)StartingPoint.Y, width, height);
+                //mainForm.nodeLayer.Add(newNode);
+                mainForm.drawingLayer.AddChild(newNode);
+                mainForm.setXYCoordinates(StartingPoint.X, StartingPoint.Y, width, height);
+            }
+        }
+         * */
+        /*
+        public override void OnMouseUp(object sender, PInputEventArgs e)
+        {
+            base.OnMouseUp(sender, e);
+            if (e.Modifiers == Keys.Shift)     // e.Button == MouseButtons.Left &&
+            {
+                NodeCoordinates newPos = new NodeCoordinates((int)e.Position.X, (int)e.Position.Y, false, false);
+                float width = Math.Abs(newPos.X - (float)StartingPoint.X);
+                float height = Math.Abs(newPos.Y - (float)StartingPoint.Y);
+
+                StartingPoint.X = (newPos.X < StartingPoint.X) ? (newPos.X) : (StartingPoint.X);
+                StartingPoint.Y = (newPos.Y < StartingPoint.Y) ? (newPos.Y) : (StartingPoint.Y);
+
+                PNode newNode = PPath.CreateRectangle((float)StartingPoint.X, (float)StartingPoint.Y, width, height);
+                //mainForm.nodeLayer.Add(newNode);
+                mainForm.drawingLayer.AddChild(newNode);
+                newNode.MoveToBack();
+                mainForm.setXYCoordinates(StartingPoint.X, StartingPoint.Y, width, height);
+            }
+        }*/
 
         protected override void OnDrag(object sender, PInputEventArgs e)
         {
@@ -149,9 +213,33 @@ namespace StalkerOnlineQuesterEditor
             }
 
             if (mainForm.isDialogActive(dialogID))
-                mainForm.startEmulator(dialogID);//, true);
+                mainForm.startEmulator(dialogID);//, true);            
         }
 
    }
+
+    public class PanHandler : PPanEventHandler
+    {
+        protected override void Pan(PInputEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                base.Pan(e);
+            
+        }
+    }
+
+    public class ZoomHandler : PZoomEventHandler
+    {
+        public override void OnMouseWheel(object sender, PInputEventArgs e)
+        {
+            base.OnMouseWheel(sender, e);
+        }
+
+        public override void OnMouseDown(object sender, PInputEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)                
+                base.OnMouseDown(sender, e);
+        }
+    }
 
 }
