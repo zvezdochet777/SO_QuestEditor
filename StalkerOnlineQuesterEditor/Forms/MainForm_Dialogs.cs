@@ -213,11 +213,8 @@ namespace StalkerOnlineQuesterEditor
             edgeLayer = new PLayer();
             drawingLayer = new PLayer();
 
-            
-            //this.DialogShower.Root.AddChild(1, edgeLayer);
-            //this.DialogShower.Camera.AddLayer(1, edgeLayer);
-            
-            DialogShower.Camera.AddChild(0, edgeLayer);
+            DialogShower.Camera.AddChild(drawingLayer);                      
+            DialogShower.Camera.AddChild(edgeLayer);
 
             // Show root node
             float rootx = root.coordinates.X;
@@ -244,13 +241,8 @@ namespace StalkerOnlineQuesterEditor
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
             SaveCoordinates(root, rootNode, true);
             this.fillDialogSubgraphView(root, rootNode, 1, ref edgeLayer, ref nodeLayer, false);
-            //this.DialogShower.Layer.AddChildren(nodeLayer);
-            this.DialogShower.Camera.AddChildren(nodeLayer);
 
-            //this.DialogShower.Root.AddChild(0, drawingLayer);
-            //this.DialogShower.Camera.AddLayer(0, drawingLayer);           
-             DialogShower.Camera.AddChild(1, drawingLayer);
-            
+            this.DialogShower.Camera.AddChildren(nodeLayer);            
             //edgeLayer.MoveToFront();
             //drawingLayer.MoveToBack();
             //CalcNodesOnLevel(root);
