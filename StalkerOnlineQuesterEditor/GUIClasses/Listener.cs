@@ -19,9 +19,8 @@ namespace StalkerOnlineQuesterEditor
     {
         public PNode curNode = null;
         public PNode prevNode = null;
-        //private NodeCoordinates StartingPoint;
-        private MainForm mainForm;
-        
+
+        private MainForm mainForm;       
 
         public NodeDragHandler(MainForm form)
         {
@@ -32,8 +31,7 @@ namespace StalkerOnlineQuesterEditor
         {
             //bool temp = e.IsMouseEvent;
             //bool t2 = e.IsMouseEnterOrMouseLeave;
-            
-            return e.IsMouseEvent && (e.Button != MouseButtons.None || e.IsMouseEnterOrMouseLeave);            
+            return e.IsMouseEvent && e.Modifiers == Keys.None && e.Button == MouseButtons.Left;
         }
 
         public override void OnMouseEnter(object sender, PInputEventArgs e)
@@ -96,24 +94,6 @@ namespace StalkerOnlineQuesterEditor
             int node = mainForm.getDialogIDOnNode(e.PickedNode);
             mainForm.bEditDialog_Click(sender, new EventArgs() );
         }
-        /*
-        public override void OnMouseDown(object sender, PInputEventArgs e)
-        {
-            base.OnMouseDown(sender, e);
-            //if (e.Modifiers == Keys.Shift)
-            {
-                StartingPoint = new NodeCoordinates();
-                StartingPoint.X = (int) e.Position.X;
-                StartingPoint.Y = (int) e.Position.Y;
-            }
-        }   */     
-
-        /*
-        public override void OnMouseMove(object sender, PInputEventArgs e)
-        {
-            base.OnMouseMove(sender, e);
-            mainForm.setXYCoordinates(500, 300, e.Position.X, e.Position.Y);
-        }*/
 
         /*
         public override void OnMouseMove(object sender, PInputEventArgs e)
