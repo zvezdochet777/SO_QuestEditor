@@ -34,10 +34,7 @@ namespace StalkerOnlineQuesterEditor
 
         public override bool DoesAcceptEvent(PInputEventArgs e)
         {
-            //var node = e.PickedNode;
-            //e.Handled = true;
             return e.IsMouseEvent && e.Button == MouseButtons.Left && e.Modifiers == Keys.Shift;
-            //return base.DoesAcceptEvent(e);
         }
 
         public override void OnMouseDown(object sender, PInputEventArgs e)
@@ -77,6 +74,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 PPath layeredRect = new PPath();
                 layeredRect = PPath.CreateRectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
+                //layeredRect.Tag = 5;
                 mainForm.drawingLayer.AddChild(layeredRect);
                 rectangle.PathReference.Reset();
             }

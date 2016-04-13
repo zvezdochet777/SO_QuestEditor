@@ -19,12 +19,11 @@ namespace StalkerOnlineQuesterEditor
         public GraphProperties()
         {
             this.DialogID = new int();
-
         }
+
         public GraphProperties(int dialogID)
         {
             this.DialogID = dialogID;
-
         }
 
         public int getDialogID()
