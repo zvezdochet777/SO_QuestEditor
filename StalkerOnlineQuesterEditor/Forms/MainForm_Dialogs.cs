@@ -215,6 +215,7 @@ namespace StalkerOnlineQuesterEditor
 
             DialogShower.Camera.AddChild(drawingLayer);                      
             DialogShower.Camera.AddChild(edgeLayer);
+            DrawRectangles();
 
             // Show root node
             float rootx = root.coordinates.X;
@@ -581,6 +582,17 @@ namespace StalkerOnlineQuesterEditor
                 graphs = new Dictionary<PNode, GraphProperties>();
                 this.fillDialogGraphView(root);
             }
+        }
+
+        public void DrawRectangles()
+        {
+            Dictionary<int, CRectangle> rects = new Dictionary<int, CRectangle>();
+            rects = RectManager.GetRectanglesForNpc(GetCurrentNPC());
+            foreach (CRectangle rect in rects.Values)
+            {
+                PPath newRect = PPath.CreateRectangle(rect.coordX, rect.coordY, rect.Width, rect.Height);
+                drawingLayer.AddChild(newRect);
+            }            
         }
     }
 }

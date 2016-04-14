@@ -109,6 +109,7 @@ namespace StalkerOnlineQuesterEditor
 
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
+            RectManager.LoadData();
             SetMasterMode();
         }
         //! Set mode for me, if Command line has /master parameter, TestButton and some labels will be shown

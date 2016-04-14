@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,6 +11,7 @@ using System.Xml.Linq;
 namespace StalkerOnlineQuesterEditor
 {
     using NPCRectangles = Dictionary<int, CRectangle>;
+
     //! Прямоугольник, нарисованный пользователем на доске Piccolo. Хранит свои координаты и надпись на нем.
     public class CRectangle
     {
@@ -20,13 +22,14 @@ namespace StalkerOnlineQuesterEditor
         public int Width;
         public int Height;
 
-        public CRectangle(int id, int _x, int _y, int width, int height)
+        public CRectangle(int id, int _x, int _y, int width, int height, string text)
         {
             ID = id;
             coordX = _x;
             coordY = _y;
             Width = width;
             Height = height;
+            Text = text;
         }
 
         public CRectangle(int id, PointF point, SizeF size)
@@ -53,13 +56,12 @@ namespace StalkerOnlineQuesterEditor
             Text = text;
         }
     }
-        
-    
+            
 
     //! Класс, управляющий всеми прямоугольниками в текущей сессии.
     public class RectangleManager
     {
-        //public Dictionary<int, CRectangle> NpcRectangles;
+        private const string RectFilename = "Rectangles.xml";
         public Dictionary<string, NPCRectangles> Rectangles;
         private string CurrentNPC;
 
@@ -82,12 +84,13 @@ namespace StalkerOnlineQuesterEditor
                     return newID;
         }
 
-        public void AddRectangle(string npc, PointF point, SizeF size)
+        public int AddRectangle(string npc, PointF point, SizeF size)
         {
             SetCurrentNPC(npc);
             int newID = GetNewID();
-            CRectangle newRect = new CRectangle(newID, point, size);            
-            Rectangles[CurrentNPC].Add(newID, newRect);            
+            CRectangle newRect = new CRectangle(newID, point, size);
+            Rectangles[CurrentNPC].Add(newID, newRect);
+            return newID;
         }
 
         public void RemoveRectangle(int id)
@@ -98,6 +101,14 @@ namespace StalkerOnlineQuesterEditor
         public void ChangeText(int id, string text)
         {
             Rectangles[CurrentNPC][id].SetText(text);
+        }
+
+        public NPCRectangles GetRectanglesForNpc(string NpcName)
+        {
+            NPCRectangles list = new NPCRectangles();
+            if (Rectangles.ContainsKey(NpcName))
+                list = Rectangles[NpcName];
+            return list;
         }
 
         public void SaveData()
@@ -124,10 +135,35 @@ namespace StalkerOnlineQuesterEditor
             settings.Indent = true;
             settings.OmitXmlDeclaration = true;
             settings.NewLineOnAttributes = false;
-            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create("Rectangles.xml", settings))
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(RectFilename, settings))
             {
                 resultDoc.Save(w);
             }        
+        }
+
+        public void LoadData()
+        {
+            if (!File.Exists(RectFilename))
+                return;
+
+            XDocument doc = XDocument.Load(RectFilename);
+            foreach (XElement item in doc.Root.Elements())
+            {
+                string npcName = item.Attribute("NPC_Name").Value.ToString();
+                if (!Rectangles.ContainsKey(npcName))
+                    Rectangles.Add(npcName, new NPCRectangles());
+
+                foreach (XElement rectangle in item.Elements())
+                {
+                    int id = int.Parse(rectangle.Attribute("ID").Value);
+                    int x = int.Parse(rectangle.Element("X").Value);
+                    int y = int.Parse(rectangle.Element("Y").Value);
+                    int width = int.Parse(rectangle.Element("width").Value);
+                    int height = int.Parse(rectangle.Element("height").Value);
+                    string text = rectangle.Element("Text").Value.ToString();
+                    Rectangles[npcName].Add(id, new CRectangle(id, x ,y, width, height, text));
+                }
+            }
         }
     }
 }
