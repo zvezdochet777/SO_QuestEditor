@@ -71,8 +71,9 @@ namespace StalkerOnlineQuesterEditor
         public MainForm()
         {
             InitializeComponent();
+            RectManager = new RectangleManager();
             Listener = new NodeDragHandler(this);
-            RectDrawer = new RectangleDrawingHandler(this);
+            RectDrawer = new RectangleDrawingHandler(this, RectManager);
             PanHandler = new PanEventHandler(this);
             settings = new CSettings(this);
             dialogs = new CDialogs(this);
@@ -90,8 +91,7 @@ namespace StalkerOnlineQuesterEditor
             fractions = new CFracConstants();
             gui = new CGUIConst();
             effects = new CEffectConstants();
-            dialogEvents = new DialogEventsList();
-            RectManager = new RectangleManager();
+            dialogEvents = new DialogEventsList();            
 
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             //fillNPCBox();
@@ -932,6 +932,7 @@ namespace StalkerOnlineQuesterEditor
             dialogs.saveLocales(settings.getDialogLocalePath());  // settings.dialogXML
             quests.saveLocales(settings.getQuestLocalePath());    // settings.questXML
             //}
+            RectManager.SaveData();
             Thread.Sleep(1000);
             toolStripStatusLabel.Text = "Данные успешно сохранены.";
             this.Enabled = true;

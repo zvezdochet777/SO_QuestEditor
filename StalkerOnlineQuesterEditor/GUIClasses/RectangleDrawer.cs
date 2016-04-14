@@ -26,10 +26,12 @@ namespace StalkerOnlineQuesterEditor
         protected PointF dragPoint;
 
         private MainForm mainForm;
+        private RectangleManager RectManager;
 
-        public RectangleDrawingHandler(MainForm form)
+        public RectangleDrawingHandler(MainForm mainform, RectangleManager rectManager)
         {
-            this.mainForm = form;
+            mainForm = mainform;
+            RectManager = rectManager;
         }
 
         public override bool DoesAcceptEvent(PInputEventArgs e)
@@ -76,6 +78,7 @@ namespace StalkerOnlineQuesterEditor
                 layeredRect = PPath.CreateRectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
                 //layeredRect.Tag = 5;
                 mainForm.drawingLayer.AddChild(layeredRect);
+                RectManager.AddRectangle(layeredRect.Bounds.Location, layeredRect.Bounds.Size);
                 rectangle.PathReference.Reset();
             }
             rectangle = null;

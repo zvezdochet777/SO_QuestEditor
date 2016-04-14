@@ -28,13 +28,13 @@ namespace StalkerOnlineQuesterEditor
             Height = height;
         }
 
-        public CRectangle(int id, Point point, Size size)
+        public CRectangle(int id, PointF point, SizeF size)
         {
             ID = id;
-            coordX = point.X;
-            coordY = point.Y;
-            Width = size.Width;
-            Height = size.Height;
+            coordX = (int) point.X;
+            coordY = (int) point.Y;
+            Width = (int) size.Width;
+            Height = (int) size.Height;
         }
 
         public int GetID()
@@ -70,7 +70,7 @@ namespace StalkerOnlineQuesterEditor
                     return newID;
         }
 
-        public void AddRectangle(Point point, Size size)
+        public void AddRectangle(PointF point, SizeF size)
         {
             int newID = GetNewID();
             CRectangle newRect = new CRectangle(newID, point, size);
@@ -107,7 +107,7 @@ namespace StalkerOnlineQuesterEditor
             settings.Encoding = new UTF8Encoding(false);
             settings.Indent = true;
             settings.OmitXmlDeclaration = true;
-            settings.NewLineOnAttributes = true;
+            settings.NewLineOnAttributes = false;
             using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create("Rectangles.xml", settings))
             {
                 resultDoc.Save(w);
