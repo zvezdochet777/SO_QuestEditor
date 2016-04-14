@@ -352,7 +352,7 @@ namespace StalkerOnlineQuesterEditor
             settings.Encoding = new UTF8Encoding(false);
             settings.Indent = true;
             settings.OmitXmlDeclaration = true;
-            settings.NewLineOnAttributes = true;
+            settings.NewLineOnAttributes = false;
             using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
             {
                 resultDoc.Save(w);

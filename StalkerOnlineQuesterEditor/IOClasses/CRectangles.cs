@@ -9,6 +9,7 @@ using System.Xml.Linq;
 
 namespace StalkerOnlineQuesterEditor
 {
+    using NPCRectangles = Dictionary<int, CRectangle>;
     //! Прямоугольник, нарисованный пользователем на доске Piccolo. Хранит свои координаты и надпись на нем.
     public class CRectangle
     {
@@ -52,56 +53,71 @@ namespace StalkerOnlineQuesterEditor
             Text = text;
         }
     }
+        
+    
 
     //! Класс, управляющий всеми прямоугольниками в текущей сессии.
     public class RectangleManager
     {
-        public Dictionary<int, CRectangle> Rectangles;
+        //public Dictionary<int, CRectangle> NpcRectangles;
+        public Dictionary<string, NPCRectangles> Rectangles;
+        private string CurrentNPC;
 
         public RectangleManager()
         {
-            Rectangles = new Dictionary<int, CRectangle>();
+            Rectangles = new Dictionary<string, NPCRectangles>();
+        }
+
+        public void SetCurrentNPC(string currentNPC)
+        {
+            CurrentNPC = currentNPC;
+            if (!Rectangles.ContainsKey(CurrentNPC))
+                Rectangles.Add(CurrentNPC, new NPCRectangles());
         }
 
         private int GetNewID()
         {
             for (int newID = 0; ; newID++)
-                if (!Rectangles.Keys.Contains(newID))
+                if (!Rectangles[CurrentNPC].Keys.Contains(newID))
                     return newID;
         }
 
-        public void AddRectangle(PointF point, SizeF size)
+        public void AddRectangle(string npc, PointF point, SizeF size)
         {
+            SetCurrentNPC(npc);
             int newID = GetNewID();
-            CRectangle newRect = new CRectangle(newID, point, size);
-            Rectangles.Add(newID, newRect);
+            CRectangle newRect = new CRectangle(newID, point, size);            
+            Rectangles[CurrentNPC].Add(newID, newRect);            
         }
 
         public void RemoveRectangle(int id)
         {
-            Rectangles.Remove(id);
+            Rectangles[CurrentNPC].Remove(id);
         }
 
         public void ChangeText(int id, string text)
         {
-            Rectangles[id].SetText(text);
+            Rectangles[CurrentNPC][id].SetText(text);
         }
 
         public void SaveData()
         {
             XDocument resultDoc = new XDocument(new XElement("root"));
-            XElement rectElement;
-            foreach (CRectangle rectangle in Rectangles.Values)
-            {
-                //npc_element = new XElement("NPC", new XAttribute("NPC_Name", NPC_Name));
-                rectElement = new XElement("Rect");
-                rectElement.Add(new XAttribute("ID", rectangle.GetID()),
-                        new XElement("X", rectangle.coordX.ToString()),
-                        new XElement("Y", rectangle.coordY.ToString()),
-                        new XElement("width", rectangle.Width.ToString()),
-                        new XElement("height", rectangle.Height.ToString()),
-                        new XElement("Text", rectangle.GetText()));
-                resultDoc.Root.Add(rectElement);
+            XElement npcElement;
+            foreach (string npcName in Rectangles.Keys)
+	        {
+                npcElement = new XElement("NPC", new XAttribute("NPC_Name", npcName));
+                foreach (CRectangle rectangle in Rectangles[npcName].Values)
+                {                    
+                    npcElement.Add(new XElement("Rect",
+                            new XAttribute("ID", rectangle.GetID()),
+                            new XElement("X", rectangle.coordX.ToString()),
+                            new XElement("Y", rectangle.coordY.ToString()),
+                            new XElement("width", rectangle.Width.ToString()),
+                            new XElement("height", rectangle.Height.ToString()),
+                            new XElement("Text", rectangle.GetText())));
+                }
+                resultDoc.Root.Add(npcElement);
             }
             System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
             settings.Encoding = new UTF8Encoding(false);

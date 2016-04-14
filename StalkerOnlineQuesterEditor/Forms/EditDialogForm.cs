@@ -332,7 +332,7 @@ namespace StalkerOnlineQuesterEditor
             NodeCoordinates coord = new NodeCoordinates();
             List<int> nodes = new List<int>();
             //List<string> holder = new List<string>();
-            string holder = parent.currentNPC;
+            string holder = parent.GetCurrentNPC();
             if (!CheckConditions())
                 return;
             if (!tSubDialogsTextBox.Text.Equals(""))

@@ -29,7 +29,7 @@ namespace StalkerOnlineQuesterEditor
     public partial class MainForm : Form
     {
         //! Текущий выбранный NPC (в комбобоксе вверху)
-        public string currentNPC = "";
+        private string currentNPC = "";
         private int selectedDialogID = 0;
         //! Ссылка на экземпляр класса CDialogs, хранит все данные и функции по работе с диалогами
         CDialogs dialogs;
@@ -121,6 +121,11 @@ namespace StalkerOnlineQuesterEditor
                 labelXNode.Visible = true;
                 labelYNode.Visible = true;
             }
+        }
+
+        public string GetCurrentNPC()
+        {
+            return currentNPC;
         }
 
         //! Очищает данные о квестах - дерево квестов, комбобокс, подквесты

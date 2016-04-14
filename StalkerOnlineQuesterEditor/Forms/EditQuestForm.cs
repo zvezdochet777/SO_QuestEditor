@@ -537,7 +537,7 @@ namespace StalkerOnlineQuesterEditor
 
             information.Description = descriptionTextBox.Text;
             information.Title = titleTextBox.Text;
-            additional.Holder = parent.currentNPC;
+            additional.Holder = parent.GetCurrentNPC();
             information.onWin = onWonTextBox.Text;
             information.onFailed = onFailedTextBox.Text;
 
