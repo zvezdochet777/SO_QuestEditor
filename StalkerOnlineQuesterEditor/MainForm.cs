@@ -37,6 +37,7 @@ namespace StalkerOnlineQuesterEditor
         CQuests quests;
         NodeDragHandler Listener;
         RectangleDrawingHandler RectDrawer;
+        RectangleManager RectManager;
         PanEventHandler PanHandler;
         public PLayer edgeLayer;
         public PLayer drawingLayer;
@@ -90,6 +91,7 @@ namespace StalkerOnlineQuesterEditor
             gui = new CGUIConst();
             effects = new CEffectConstants();
             dialogEvents = new DialogEventsList();
+            RectManager = new RectangleManager();
 
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             //fillNPCBox();
