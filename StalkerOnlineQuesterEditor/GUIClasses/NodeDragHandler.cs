@@ -73,6 +73,14 @@ namespace StalkerOnlineQuesterEditor
                 mainForm.SaveCoordinates(dialog, e.PickedNode, dialog.coordinates.RootDialog);
                 mainForm.setXYCoordinates(x, y, w, h);                
             }
+
+            if (e.PickedNode.Tag.ToString().Substring(0, 4) == "rect")
+            {
+                string full = e.PickedNode.Tag.ToString();
+                full = full.Substring(4, full.Length - 4);
+                int rectID = int.Parse(full);
+                mainForm.RectManager.ChangeCoordinates(mainForm.GetCurrentNPC(), rectID, (int) x, (int) y);
+            }
         }
 
         //! Клик мыши по узлу диалога - выделяем его и потомков цветом
@@ -96,7 +104,7 @@ namespace StalkerOnlineQuesterEditor
         protected override void OnDrag(object sender, PInputEventArgs e)
         {
             base.OnDrag(sender, e);
-            if (e.PickedNode.Tag != null)
+            if (e.PickedNode.Tag != null && e.PickedNode.Tag.ToString().Substring(0,4) != "rect")
             {
                 ArrayList edges = (ArrayList)e.PickedNode.Tag;
                 foreach (Object edge in edges)

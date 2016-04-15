@@ -103,6 +103,12 @@ namespace StalkerOnlineQuesterEditor
             Rectangles[CurrentNPC][id].SetText(text);
         }
 
+        public void ChangeCoordinates(string npc, int id, int newX, int newY)
+        {
+            Rectangles[npc][id].coordX = newX;
+            Rectangles[npc][id].coordY = newY;
+        }
+
         public NPCRectangles GetRectanglesForNpc(string NpcName)
         {
             NPCRectangles list = new NPCRectangles();

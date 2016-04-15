@@ -37,7 +37,7 @@ namespace StalkerOnlineQuesterEditor
         CQuests quests;
         NodeDragHandler Listener;
         RectangleDrawingHandler RectDrawer;
-        RectangleManager RectManager;
+        public RectangleManager RectManager;
         PanEventHandler PanHandler;
         public PLayer edgeLayer;
         public PLayer drawingLayer;
@@ -75,6 +75,7 @@ namespace StalkerOnlineQuesterEditor
             Listener = new NodeDragHandler(this);
             RectDrawer = new RectangleDrawingHandler(this, RectManager);
             PanHandler = new PanEventHandler(this);
+            RectManager.LoadData();
             settings = new CSettings(this);
             dialogs = new CDialogs(this);
             quests = new CQuests(this);
@@ -109,7 +110,6 @@ namespace StalkerOnlineQuesterEditor
 
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
-            RectManager.LoadData();
             SetMasterMode();
         }
         //! Set mode for me, if Command line has /master parameter, TestButton and some labels will be shown

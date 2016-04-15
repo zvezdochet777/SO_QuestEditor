@@ -591,6 +591,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (CRectangle rect in rects.Values)
             {
                 PPath newRect = PPath.CreateRectangle(rect.coordX, rect.coordY, rect.Width, rect.Height);
+                newRect.Tag = "rect" + rect.GetID().ToString();
                 drawingLayer.AddChild(newRect);
             }            
         }
