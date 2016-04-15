@@ -1,10 +1,4 @@
-﻿#define OLDVERSION
-//#define OPERATOR2
-//#define OPERATOR3
-//#define OPERATOR4
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +24,10 @@ namespace StalkerOnlineQuesterEditor
     {
         //! Текущий выбранный NPC (в комбобоксе вверху)
         private string currentNPC = "";
+        //! Текущий выбранный Id диалога. Используется ТОЛЬКО для выделения диалога после смены режима эдитор-переводчик
         private int selectedDialogID = 0;
+        //! Тип выбранного пользователем элемента - ничего, диалог или прямоугольник
+        public SelectedItemType selectedItemType;
         //! Ссылка на экземпляр класса CDialogs, хранит все данные и функции по работе с диалогами
         CDialogs dialogs;
         //! Ссылка на экземпляр класса CQuests
@@ -144,6 +141,7 @@ namespace StalkerOnlineQuesterEditor
             try
             {
                 currentNPC = NPCBox.SelectedValue.ToString();
+                RectManager.SetCurrentNPC(currentNPC);
             }
             catch {
                 return;
@@ -360,13 +358,19 @@ namespace StalkerOnlineQuesterEditor
         {
             if (settings.getMode() == settings.MODE_EDITOR)
             {
-                if (Listener.curNode != null)
-                    removeNodeFromDialogGraphView(getDialogIDOnNode(Listener.curNode));
-                else
-                    removeDialog(int.Parse(treeDialogs.SelectedNode.Text));
-
-                bRemoveDialog.Enabled = false;
-                bEditDialog.Enabled = false;
+                if (selectedItemType == SelectedItemType.dialog)
+                {
+                    if (Listener.curNode != null)
+                        removeNodeFromDialogGraphView(getDialogIDOnNode(Listener.curNode));
+                    else
+                        removeDialog(int.Parse(treeDialogs.SelectedNode.Text));
+                }
+                else if (selectedItemType == SelectedItemType.rectangle)
+                {
+                    RectManager.RemoveRectangle();
+                    DrawRectangles();
+                }
+                onDeselectNode();
             }
         }
 
@@ -393,12 +397,12 @@ namespace StalkerOnlineQuesterEditor
                     {
                         foreach (PNode node in DialogShower.Layer.AllNodes)
                             if (getDialogIDOnNode(node).Equals(treeID))
-                                Listener.setCurrentNode(treeID);
+                                Listener.SelectCurrentNode(treeID);
                     }
                     else if (treeDialogs.SelectedNode.Parent.Text == "Recycle")
                     {
                         onSelectNode(treeID);
-                        Listener.setCurrentNode(0);
+                        Listener.SelectCurrentNode(0);
                     }
                 }
             }
@@ -541,11 +545,11 @@ namespace StalkerOnlineQuesterEditor
             else if (choosenDialog.Actions.ToDialog != 0)
             {
                 toolStripStatusLabel.Text += "Переход на диалог: " + choosenDialog.Actions.ToDialog.ToString();
-                Listener.setCurrentNode(choosenDialog.Actions.ToDialog);
+                Listener.SelectCurrentNode(choosenDialog.Actions.ToDialog);
             }
             else
             {
-                Listener.setCurrentNode(choosenDialogID);
+                Listener.SelectCurrentNode(choosenDialogID);
             }            
         }
         //! Антиговнокод - добавление примечания к фразе диалога с действием
@@ -555,7 +559,7 @@ namespace StalkerOnlineQuesterEditor
                 toolStripStatusLabel.Text += "\n";
             toolStripStatusLabel.Text += text;
             EmulatorsplitContainer.Panel2.Controls.Clear();
-            Listener.setCurrentNode(dialogID);
+            Listener.SelectCurrentNode(dialogID);
         }
         //! Выводит координаты узла как прямоугольника. Для отладки.
         public void setXYCoordinates(float X, float Y, float w, float h)
@@ -1485,7 +1489,7 @@ namespace StalkerOnlineQuesterEditor
             if (currentNpcIndex > -1)
                 NPCBox.SelectedIndex = currentNpcIndex;
             if (selectedDialogID != 0)
-                Listener.setCurrentNode(selectedDialogID);
+                Listener.SelectCurrentNode(selectedDialogID);
         }
 
         //! Выводит диалоги для локализации. В зависимости от помеченных чекбоксов - актуальные или устаревшие

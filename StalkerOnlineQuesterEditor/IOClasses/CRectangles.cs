@@ -62,8 +62,10 @@ namespace StalkerOnlineQuesterEditor
     public class RectangleManager
     {
         private const string RectFilename = "Rectangles.xml";
-        public Dictionary<string, NPCRectangles> Rectangles;
+        private const string RectFlag = "rect";
+        private Dictionary<string, NPCRectangles> Rectangles;
         private string CurrentNPC;
+        private int SelectedRectID;
 
         public RectangleManager()
         {
@@ -93,9 +95,9 @@ namespace StalkerOnlineQuesterEditor
             return newID;
         }
 
-        public void RemoveRectangle(int id)
+        public void RemoveRectangle()
         {
-            Rectangles[CurrentNPC].Remove(id);
+            Rectangles[CurrentNPC].Remove(SelectedRectID);
         }
 
         public void ChangeText(int id, string text)
@@ -107,6 +109,28 @@ namespace StalkerOnlineQuesterEditor
         {
             Rectangles[npc][id].coordX = newX;
             Rectangles[npc][id].coordY = newY;
+        }
+
+        public bool CheckIfRect(object NodeTag, out int rectID)
+        {
+            rectID = -1;
+            if (NodeTag != null)
+            {
+                string tagString = NodeTag.ToString();                
+                if (tagString.StartsWith(RectFlag))
+                {
+                    int flagLength = RectFlag.Length;
+                    string idString = tagString.Substring(flagLength, tagString.Length - flagLength);
+                    rectID = int.Parse(idString);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void SetSelectedRectangleID(int selectedID)
+        {
+            SelectedRectID = selectedID;
         }
 
         public NPCRectangles GetRectanglesForNpc(string NpcName)

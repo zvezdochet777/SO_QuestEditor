@@ -29,7 +29,7 @@ namespace StalkerOnlineQuesterEditor
 
         public override bool DoesAcceptEvent(PInputEventArgs e)
         {
-            return e.IsMouseEvent && e.Modifiers == Keys.None && (e.Button == MouseButtons.Left || e.IsMouseEnterOrMouseLeave);
+            return e.IsMouseEvent && e.Modifiers == Keys.None && e.Button == MouseButtons.Left;
         }
 
         public override void OnMouseEnter(object sender, PInputEventArgs e)
@@ -37,7 +37,6 @@ namespace StalkerOnlineQuesterEditor
             base.OnMouseEnter(sender, e);
             if ((e.Button == MouseButtons.None) && (e.PickedNode.Tag!= null))
                 e.PickedNode.Brush = Brushes.Red;
-
         }
 
         public override void OnMouseLeave(object sender, PInputEventArgs e)
@@ -74,13 +73,9 @@ namespace StalkerOnlineQuesterEditor
                 mainForm.setXYCoordinates(x, y, w, h);                
             }
 
-            if (e.PickedNode.Tag.ToString().Substring(0, 4) == "rect")
-            {
-                string full = e.PickedNode.Tag.ToString();
-                full = full.Substring(4, full.Length - 4);
-                int rectID = int.Parse(full);
-                mainForm.RectManager.ChangeCoordinates(mainForm.GetCurrentNPC(), rectID, (int) x, (int) y);
-            }
+            int rectId;
+            if (mainForm.RectManager.CheckIfRect(e.PickedNode.Tag, out rectId))
+                mainForm.RectManager.ChangeCoordinates(mainForm.GetCurrentNPC(), rectId, (int) x, (int) y);
         }
 
         //! Клик мыши по узлу диалога - выделяем его и потомков цветом
@@ -88,10 +83,11 @@ namespace StalkerOnlineQuesterEditor
         {
             mainForm.clearToolstripLabel();
             e.Handled = true;
-            if (e.PickedNode.Tag != null)
-            {
-                setCurrentNode(mainForm.getDialogIDOnNode(e.PickedNode));
-            }
+            int rectId;
+            if (mainForm.RectManager.CheckIfRect(e.PickedNode.Tag, out rectId))
+                SelectRectangle(e.PickedNode, rectId);
+            else if (e.PickedNode.Tag != null)
+                SelectCurrentNode(mainForm.getDialogIDOnNode(e.PickedNode));
         }
 
         public override void OnDoubleClick(object sender, PInputEventArgs e)
@@ -104,13 +100,12 @@ namespace StalkerOnlineQuesterEditor
         protected override void OnDrag(object sender, PInputEventArgs e)
         {
             base.OnDrag(sender, e);
-            if (e.PickedNode.Tag != null && e.PickedNode.Tag.ToString().Substring(0,4) != "rect")
+            int temp;
+            if (e.PickedNode.Tag != null && !mainForm.RectManager.CheckIfRect(e.PickedNode.Tag, out temp))
             {
                 ArrayList edges = (ArrayList)e.PickedNode.Tag;
                 foreach (Object edge in edges)
-//                    if (edge.GetType().ToString().Equals("System.String"))
-//                        System.Console.WriteLine("hello");
-                   /* else*/ if (edge.GetType().ToString().Equals("UMD.HCIL.Piccolo.Nodes.PPath"))
+                    if (edge.GetType().ToString().Equals("UMD.HCIL.Piccolo.Nodes.PPath"))
                         MainForm.updateEdge((PPath)edge);
             }
         }
@@ -130,7 +125,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Пользователь выделил конкретный узел - красим его в красный, потомков - в желтый
-        public void setCurrentNode(int dialogID)
+        public void SelectCurrentNode(int dialogID)
         {
             if (curNode != null)
                 if (!getCurDialogID().Equals(dialogID))
@@ -153,15 +148,24 @@ namespace StalkerOnlineQuesterEditor
                 if (curNode != null)
                 {
                     curNode.Brush = Brushes.Red;
-                    mainForm.selectNodeOnDialogTree(dialogID);
-                    
+                    mainForm.selectNodeOnDialogTree(dialogID);                    
                     mainForm.selectSubNodesDialogGraphView(dialogID);
                 }
-                mainForm.onSelectNode(dialogID);
+                mainForm.onSelectNode(dialogID); 
             }
+
+            mainForm.selectedItemType = SelectedItemType.dialog;
 
             if (mainForm.isDialogActive(dialogID))
                 mainForm.startEmulator(dialogID);//, true);            
+        }
+
+        public void SelectRectangle(PNode rectangle, int rectID)
+        {
+            mainForm.DeselectRectangles();
+            rectangle.Brush = Brushes.Azure;
+            mainForm.RectManager.SetSelectedRectangleID(rectID);
+            mainForm.selectedItemType = SelectedItemType.rectangle;
         }
 
    }

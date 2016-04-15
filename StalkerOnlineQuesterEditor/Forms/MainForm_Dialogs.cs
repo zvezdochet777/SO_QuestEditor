@@ -19,7 +19,13 @@ namespace StalkerOnlineQuesterEditor
     using DialogDict = Dictionary<int, CDialog>;
     //! Словарь <уровень в иерархии, список узлов>
     using levelDict = Dictionary<int, List<int>>;
-    //! Перечисление событий в диалогах, строго соответствует scripts/common/Dialog.py
+    //! Тип выделенного элемента на экране
+    public enum SelectedItemType
+    { 
+        none = 0,
+        dialog = 1,
+        rectangle = 2
+    };
 
     public partial class MainForm : Form
     {
@@ -588,12 +594,20 @@ namespace StalkerOnlineQuesterEditor
         {
             Dictionary<int, CRectangle> rects = new Dictionary<int, CRectangle>();
             rects = RectManager.GetRectanglesForNpc(GetCurrentNPC());
+            drawingLayer.RemoveAllChildren();
             foreach (CRectangle rect in rects.Values)
             {
                 PPath newRect = PPath.CreateRectangle(rect.coordX, rect.coordY, rect.Width, rect.Height);
                 newRect.Tag = "rect" + rect.GetID().ToString();
                 drawingLayer.AddChild(newRect);
             }            
+        }
+
+        public void DeselectRectangles()
+        {
+            PNodeList rectList = drawingLayer.ChildrenReference;
+            for (int i = 0; i < rectList.Count; i++)
+                rectList[i].Brush = Brushes.White;
         }
     }
 }
