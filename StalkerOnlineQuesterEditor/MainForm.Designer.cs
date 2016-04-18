@@ -170,6 +170,7 @@ namespace StalkerOnlineQuesterEditor
             this.ExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.labelDrawingTip = new System.Windows.Forms.Label();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -264,7 +265,7 @@ namespace StalkerOnlineQuesterEditor
             this.CentralDock.Location = new System.Drawing.Point(0, 53);
             this.CentralDock.Name = "CentralDock";
             this.CentralDock.SelectedIndex = 0;
-            this.CentralDock.Size = new System.Drawing.Size(914, 566);
+            this.CentralDock.Size = new System.Drawing.Size(914, 567);
             this.CentralDock.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.CentralDock.TabIndex = 2;
             this.CentralDock.SelectedIndexChanged += new System.EventHandler(this.onSelectTab);
@@ -275,7 +276,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabDialogs.Location = new System.Drawing.Point(4, 22);
             this.tabDialogs.Name = "tabDialogs";
             this.tabDialogs.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDialogs.Size = new System.Drawing.Size(906, 540);
+            this.tabDialogs.Size = new System.Drawing.Size(906, 541);
             this.tabDialogs.TabIndex = 0;
             this.tabDialogs.Text = "Диалоги";
             this.tabDialogs.UseVisualStyleBackColor = true;
@@ -298,7 +299,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.splitDialogs.Panel2.Controls.Add(this.EmulatorGroupBox);
             this.splitDialogs.Panel2MinSize = 10;
-            this.splitDialogs.Size = new System.Drawing.Size(900, 534);
+            this.splitDialogs.Size = new System.Drawing.Size(900, 535);
             this.splitDialogs.SplitterDistance = 422;
             this.splitDialogs.TabIndex = 1;
             // 
@@ -372,6 +373,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.DialogActions.AutoSize = true;
             this.DialogActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DialogActions.Controls.Add(this.labelDrawingTip);
             this.DialogActions.Controls.Add(this.bTestButton);
             this.DialogActions.Controls.Add(this.bCenterizeDialogShower);
             this.DialogActions.Controls.Add(this.labelYNode);
@@ -387,7 +389,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // bTestButton
             // 
-            this.bTestButton.Location = new System.Drawing.Point(6, 261);
+            this.bTestButton.Location = new System.Drawing.Point(6, 294);
             this.bTestButton.Name = "bTestButton";
             this.bTestButton.Size = new System.Drawing.Size(192, 38);
             this.bTestButton.TabIndex = 7;
@@ -398,11 +400,15 @@ namespace StalkerOnlineQuesterEditor
             // 
             // bCenterizeDialogShower
             // 
-            this.bCenterizeDialogShower.Location = new System.Drawing.Point(6, 305);
+            this.bCenterizeDialogShower.ImageKey = "ArrowsBig.png";
+            this.bCenterizeDialogShower.ImageList = this.imageList;
+            this.bCenterizeDialogShower.Location = new System.Drawing.Point(6, 160);
             this.bCenterizeDialogShower.Name = "bCenterizeDialogShower";
             this.bCenterizeDialogShower.Size = new System.Drawing.Size(192, 30);
             this.bCenterizeDialogShower.TabIndex = 6;
             this.bCenterizeDialogShower.Text = "Отцентрировать";
+            this.bCenterizeDialogShower.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bCenterizeDialogShower.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bCenterizeDialogShower.UseVisualStyleBackColor = true;
             this.bCenterizeDialogShower.Click += new System.EventHandler(this.bCenterizeDialogShower_Click);
             // 
@@ -448,6 +454,7 @@ namespace StalkerOnlineQuesterEditor
             this.imageList.Images.SetKeyName(0, "add.png");
             this.imageList.Images.SetKeyName(1, "Edit.png");
             this.imageList.Images.SetKeyName(2, "delete.png");
+            this.imageList.Images.SetKeyName(3, "ArrowsBig.png");
             // 
             // bEditDialog
             // 
@@ -486,7 +493,7 @@ namespace StalkerOnlineQuesterEditor
             this.EmulatorGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EmulatorGroupBox.Location = new System.Drawing.Point(0, 0);
             this.EmulatorGroupBox.Name = "EmulatorGroupBox";
-            this.EmulatorGroupBox.Size = new System.Drawing.Size(900, 108);
+            this.EmulatorGroupBox.Size = new System.Drawing.Size(900, 109);
             this.EmulatorGroupBox.TabIndex = 0;
             this.EmulatorGroupBox.TabStop = false;
             this.EmulatorGroupBox.Text = "Эмулятор";
@@ -500,7 +507,7 @@ namespace StalkerOnlineQuesterEditor
             // EmulatorsplitContainer.Panel2
             // 
             this.EmulatorsplitContainer.Panel2.AutoScroll = true;
-            this.EmulatorsplitContainer.Size = new System.Drawing.Size(894, 89);
+            this.EmulatorsplitContainer.Size = new System.Drawing.Size(894, 90);
             this.EmulatorsplitContainer.SplitterDistance = 150;
             this.EmulatorsplitContainer.TabIndex = 0;
             // 
@@ -512,7 +519,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabQuests.Location = new System.Drawing.Point(4, 22);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(906, 540);
+            this.tabQuests.Size = new System.Drawing.Size(876, 541);
             this.tabQuests.TabIndex = 1;
             this.tabQuests.Text = "Квесты";
             this.tabQuests.UseVisualStyleBackColor = true;
@@ -828,7 +835,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabReview.Controls.Add(this.panelReviewButtons);
             this.tabReview.Location = new System.Drawing.Point(4, 22);
             this.tabReview.Name = "tabReview";
-            this.tabReview.Size = new System.Drawing.Size(906, 540);
+            this.tabReview.Size = new System.Drawing.Size(876, 541);
             this.tabReview.TabIndex = 3;
             this.tabReview.Text = "Проверки";
             this.tabReview.UseVisualStyleBackColor = true;
@@ -1234,7 +1241,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabTranslate.Controls.Add(this.panelDiffLocale);
             this.tabTranslate.Location = new System.Drawing.Point(4, 22);
             this.tabTranslate.Name = "tabTranslate";
-            this.tabTranslate.Size = new System.Drawing.Size(906, 540);
+            this.tabTranslate.Size = new System.Drawing.Size(876, 541);
             this.tabTranslate.TabIndex = 5;
             this.tabTranslate.Text = "Переводы";
             this.tabTranslate.UseVisualStyleBackColor = true;
@@ -1601,22 +1608,32 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.statusDialogStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusDialogStrip.Location = new System.Drawing.Point(0, 619);
+            this.statusDialogStrip.Location = new System.Drawing.Point(0, 620);
             this.statusDialogStrip.Name = "statusDialogStrip";
             this.statusDialogStrip.Size = new System.Drawing.Size(914, 22);
             this.statusDialogStrip.SizingGrip = false;
             this.statusDialogStrip.Stretch = false;
             this.statusDialogStrip.TabIndex = 1;
             // 
+            // labelDrawingTip
+            // 
+            this.labelDrawingTip.Location = new System.Drawing.Point(9, 197);
+            this.labelDrawingTip.Name = "labelDrawingTip";
+            this.labelDrawingTip.Size = new System.Drawing.Size(189, 45);
+            this.labelDrawingTip.TabIndex = 8;
+            this.labelDrawingTip.Text = "Для рисования прямоугольников удерживайте Shift и левую кнопку мыши. Pan - правой" +
+    " кнопкой мыши.";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 641);
+            this.ClientSize = new System.Drawing.Size(914, 642);
             this.Controls.Add(this.CentralDock);
             this.Controls.Add(this.PanelSelectNPC);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusDialogStrip);
+            this.MinimumSize = new System.Drawing.Size(900, 680);
             this.Name = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.CentralDock.ResumeLayout(false);
@@ -1819,6 +1836,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ToolStripMenuItem SynchroToolStripMenuItem;
         private System.Windows.Forms.Label labelItemReward;
         private System.Windows.Forms.ComboBox cbItemReward;
+        private System.Windows.Forms.Label labelDrawingTip;
 
 
     }
