@@ -18,7 +18,6 @@ namespace StalkerOnlineQuesterEditor
     public class NodeDragHandler : PDragEventHandler
     {
         public PNode curNode = null;
-        private PNode prevNode = null;
 
         private MainForm mainForm;       
 
@@ -127,6 +126,7 @@ namespace StalkerOnlineQuesterEditor
         //! Пользователь выделил конкретный узел - красим его в красный, потомков - в желтый
         public void SelectCurrentNode(int dialogID)
         {
+            //! Меняем цвет у предыдущего выделенного узла на стандартный - белый или зеленый (у root)
             if (curNode != null)
                 if (!getCurDialogID().Equals(dialogID))
                 {
@@ -134,8 +134,8 @@ namespace StalkerOnlineQuesterEditor
                         curNode.Brush = Brushes.Green;
                     else
                         curNode.Brush = Brushes.White;
-                    prevNode = curNode;
                 }
+            //! Выделяем цветом новый узел и его потомков, включаем кнопки редактирования
             if (!getCurDialogID().Equals(dialogID))
             {
                 mainForm.onDeselectNode();
@@ -148,13 +148,12 @@ namespace StalkerOnlineQuesterEditor
                 if (curNode != null)
                 {
                     curNode.Brush = Brushes.Red;
-                    mainForm.selectNodeOnDialogTree(dialogID);                    
+                    mainForm.selectNodeOnDialogTree(dialogID);
                     mainForm.selectSubNodesDialogGraphView(dialogID);
                 }
-                mainForm.onSelectNode(dialogID); 
+                mainForm.selectedItemType = SelectedItemType.dialog;
+                mainForm.onSelectNode(dialogID);
             }
-
-            mainForm.selectedItemType = SelectedItemType.dialog;
 
             if (mainForm.isDialogActive(dialogID))
                 mainForm.startEmulator(dialogID);//, true);            
@@ -166,6 +165,7 @@ namespace StalkerOnlineQuesterEditor
             rectangle.Brush = Brushes.Azure;
             mainForm.RectManager.SetSelectedRectangleID(rectID);
             mainForm.selectedItemType = SelectedItemType.rectangle;
+            mainForm.onSelectNode(-1);
         }
 
    }

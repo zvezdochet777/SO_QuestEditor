@@ -335,10 +335,19 @@ namespace StalkerOnlineQuesterEditor
 
         internal void onSelectNode(int dialogID)
         {
-            bAddDialog.Enabled = true;
-            bEditDialog.Enabled = true;
-            if (!isRoot(dialogID))
+            if (selectedItemType == SelectedItemType.dialog)
+            {
+                bAddDialog.Enabled = true;
+                bEditDialog.Enabled = true;
+                if (!isRoot(dialogID))
+                    bRemoveDialog.Enabled = true;
+            }
+            else if (selectedItemType == SelectedItemType.rectangle)
+            {
+                bAddDialog.Enabled = false;
+                bEditDialog.Enabled = true;
                 bRemoveDialog.Enabled = true;
+            }
         }
 
         public void selectNodeOnDialogTree(int dialogID)
