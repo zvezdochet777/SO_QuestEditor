@@ -599,6 +599,10 @@ namespace StalkerOnlineQuesterEditor
             {
                 PPath newRect = PPath.CreateRectangle(rect.coordX, rect.coordY, rect.Width, rect.Height);
                 newRect.Tag = "rect" + rect.GetID().ToString();
+                PText rectText = new PText(rect.GetText());
+                rectText.Bounds = newRect.Bounds;
+                rectText.Pickable = false;
+                newRect.AddChild(rectText);
                 drawingLayer.AddChild(newRect);
             }            
         }

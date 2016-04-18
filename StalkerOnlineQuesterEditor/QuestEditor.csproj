@@ -64,6 +64,7 @@
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -92,6 +93,7 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Telerik.WinControls.RichTextBox, Version=2013.1.220.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Scheduler, Version=2013.1.220.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2013.1.220.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -121,6 +123,12 @@
     </Compile>
     <Compile Include="Forms\AddPassiveDialogForm.Designer.cs">
       <DependentUpon>AddPassiveDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditRectangle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditRectangle.Designer.cs">
+      <DependentUpon>EditRectangle.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LocaleDialogForm.cs">
       <SubType>Form</SubType>
@@ -247,6 +255,9 @@
     <EmbeddedResource Include="Forms\EditDialogForm.resx">
       <DependentUpon>EditDialogForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditRectangle.resx">
+      <DependentUpon>EditRectangle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EffectDialog.resx">
       <DependentUpon>EffectDialog.cs</DependentUpon>

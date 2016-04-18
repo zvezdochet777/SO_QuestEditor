@@ -439,15 +439,24 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие на кнопку "Редактирование диалогов" - открывает редактор или переводчик диалогов
         public void bEditDialog_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (selectedItemType == SelectedItemType.dialog)
             {
-                EditDialogForm editDialogForm = new EditDialogForm(false, this, int.Parse(treeDialogs.SelectedNode.Text));
-                editDialogForm.Visible = true;
+                if (settings.getMode() == settings.MODE_EDITOR)
+                {
+                    EditDialogForm editDialogForm = new EditDialogForm(false, this, int.Parse(treeDialogs.SelectedNode.Text));
+                    editDialogForm.Visible = true;
+                }
+                else
+                {
+                    LocaleDialogForm editLocaleDialogForm = new LocaleDialogForm(this, int.Parse(treeDialogs.SelectedNode.Text));
+                    editLocaleDialogForm.Visible = true;
+                }
             }
-            else
+            else if (selectedItemType == SelectedItemType.rectangle)
             {
-                LocaleDialogForm editLocaleDialogForm = new LocaleDialogForm(this, int.Parse(treeDialogs.SelectedNode.Text));
-                editLocaleDialogForm.Visible = true;
+                EditRectangle editRect = new EditRectangle(this.RectManager);
+                editRect.ShowDialog();
+                DrawRectangles();
             }
         }
         //! Полностью удаляет диалог из эдитора (выбор в Recycled -> удаление)

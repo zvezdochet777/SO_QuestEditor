@@ -95,20 +95,30 @@ namespace StalkerOnlineQuesterEditor
             return newID;
         }
 
+        public void SetSelectedRectangleID(int selectedID)
+        {
+            SelectedRectID = selectedID;
+        }
+
         public void RemoveRectangle()
         {
             Rectangles[CurrentNPC].Remove(SelectedRectID);
         }
 
-        public void ChangeText(int id, string text)
+        public void ChangeText(string text)
         {
-            Rectangles[CurrentNPC][id].SetText(text);
+            Rectangles[CurrentNPC][SelectedRectID].SetText(text);
         }
 
         public void ChangeCoordinates(string npc, int id, int newX, int newY)
         {
             Rectangles[npc][id].coordX = newX;
             Rectangles[npc][id].coordY = newY;
+        }
+
+        public string GetTextOfSelectedRect()
+        {
+            return Rectangles[CurrentNPC][SelectedRectID].GetText();
         }
 
         public bool CheckIfRect(object NodeTag, out int rectID)
@@ -126,11 +136,6 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
             return false;
-        }
-
-        public void SetSelectedRectangleID(int selectedID)
-        {
-            SelectedRectID = selectedID;
         }
 
         public NPCRectangles GetRectanglesForNpc(string NpcName)
