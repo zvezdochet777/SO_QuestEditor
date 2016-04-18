@@ -459,7 +459,7 @@ namespace StalkerOnlineQuesterEditor
             this.bRemoveDialog.Name = "bRemoveDialog";
             this.bRemoveDialog.Size = new System.Drawing.Size(192, 30);
             this.bRemoveDialog.TabIndex = 2;
-            this.bRemoveDialog.Text = "Удалить узел/ветку";
+            this.bRemoveDialog.Text = "Удалить";
             this.bRemoveDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bRemoveDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bRemoveDialog.UseVisualStyleBackColor = true;
@@ -474,7 +474,7 @@ namespace StalkerOnlineQuesterEditor
             this.bEditDialog.Name = "bEditDialog";
             this.bEditDialog.Size = new System.Drawing.Size(192, 30);
             this.bEditDialog.TabIndex = 1;
-            this.bEditDialog.Text = "Править узел диалога";
+            this.bEditDialog.Text = "Править";
             this.bEditDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bEditDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bEditDialog.UseVisualStyleBackColor = true;
