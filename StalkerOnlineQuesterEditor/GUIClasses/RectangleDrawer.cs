@@ -76,10 +76,9 @@ namespace StalkerOnlineQuesterEditor
             {
                 PPath layeredRect = new PPath();
                 layeredRect = PPath.CreateRectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
-                //layeredRect.Tag = 5;
                 mainForm.drawingLayer.AddChild(layeredRect);
                 int id = RectManager.AddRectangle(mainForm.GetCurrentNPC(), layeredRect.Bounds.Location, layeredRect.Bounds.Size);
-                layeredRect.Tag = "rect" + id.ToString();
+                layeredRect.Tag = RectManager.SetUniqueTag(id);
                 rectangle.PathReference.Reset();
             }
             rectangle = null;

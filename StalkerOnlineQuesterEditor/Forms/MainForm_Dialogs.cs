@@ -598,7 +598,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (CRectangle rect in rects.Values)
             {
                 PPath newRect = PPath.CreateRectangle(rect.coordX, rect.coordY, rect.Width, rect.Height);
-                newRect.Tag = "rect" + rect.GetID().ToString();
+                newRect.Tag = RectManager.SetUniqueTag(rect.GetID());
                 PText rectText = new PText(rect.GetText());
                 rectText.Bounds = newRect.Bounds;
                 rectText.Pickable = false;

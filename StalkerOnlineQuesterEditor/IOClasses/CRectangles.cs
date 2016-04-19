@@ -121,6 +121,13 @@ namespace StalkerOnlineQuesterEditor
             return Rectangles[CurrentNPC][SelectedRectID].GetText();
         }
 
+        public object SetUniqueTag(int rectangleID)
+        {
+            object tag = new object();
+            tag = RectFlag + rectangleID.ToString();
+            return tag;
+        }
+
         public bool CheckIfRect(object NodeTag, out int rectID)
         {
             rectID = -1;
@@ -152,6 +159,8 @@ namespace StalkerOnlineQuesterEditor
             XElement npcElement;
             foreach (string npcName in Rectangles.Keys)
 	        {
+                if (Rectangles[npcName].Count == 0)
+                    continue;
                 npcElement = new XElement("NPC", new XAttribute("NPC_Name", npcName));
                 foreach (CRectangle rectangle in Rectangles[npcName].Values)
                 {                    
@@ -173,7 +182,7 @@ namespace StalkerOnlineQuesterEditor
             using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(RectFilename, settings))
             {
                 resultDoc.Save(w);
-            }        
+            }
         }
 
         public void LoadData()
