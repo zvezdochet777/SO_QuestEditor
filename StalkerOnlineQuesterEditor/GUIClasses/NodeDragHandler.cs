@@ -58,10 +58,10 @@ namespace StalkerOnlineQuesterEditor
         protected override void OnEndDrag(object sender, PInputEventArgs e)
         {
             base.OnEndDrag(sender, e);
-            float x = e.PickedNode.GlobalFullBounds.X;
-            float y = e.PickedNode.GlobalFullBounds.Y;
-            float w = e.PickedNode.GlobalFullBounds.Width;
-            float h = e.PickedNode.GlobalFullBounds.Height;
+            float x = e.PickedNode.FullBounds.X;
+            float y = e.PickedNode.FullBounds.Y;
+            float w = e.PickedNode.Bounds.Width;
+            float h = e.PickedNode.Bounds.Height;
             string str = sender.ToString();
 
             int dialogID = mainForm.getDialogIDOnNode(e.PickedNode);
