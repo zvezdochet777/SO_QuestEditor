@@ -31,9 +31,34 @@ namespace StalkerOnlineQuesterEditor
         public override void OnMouseDown(object sender, PInputEventArgs e)
         {
             //base.OnMouseDown(sender, e);
-            //e.Position;
-            //e.CanvasPosition.
-            mainForm.setXYCoordinates(e.Position.X, e.CanvasPosition.X, e.Position.Y, e.CanvasPosition.Y);
+            //mainForm.setXYCoordinates(e.Position.X, e.CanvasPosition.X, e.Position.Y, e.CanvasPosition.Y);
+
+            PointF local = e.Position;
+            
+            PointF global = e.Camera.LocalToGlobal(local);
+            PointF parent = e.Camera.LocalToParent(local);
+            PointF view = e.Camera.LocalToView(local);            
+
+            // local and global differs. Global looks to have zero and the current pan position, local - some centralized one.
+            //mainForm.setXYCoordinates(local.X, local.Y, global.X, global.Y);
+
+            // parent looks like the global stuff
+            //mainForm.setXYCoordinates(local.X, local.Y, parent.X, parent.Y);
+
+            // view is the same as local
+            //mainForm.setXYCoordinates(local.X, local.Y, view.X, view.Y);
+
+            // all the same shit for TopCamera and Camera. They works in the same way 100%.
+
+            mainForm.setXYCoordinates(local.X, local.Y, global.X, global.Y);
+
+            /*
+            RectangleF bounds = e.Camera.GlobalBounds;
+            RectangleF fullb = e.Camera.GlobalFullBounds;
+            float rotat = e.Camera.GlobalRotation;
+            float scale = e.Camera.GlobalScale;
+            PointF trans = e.Camera.GlobalTranslation;
+            */
         }
 
         public override void OnMouseDrag(object sender, PInputEventArgs e)
@@ -50,6 +75,16 @@ namespace StalkerOnlineQuesterEditor
             // works perfect, centrelize breaks
             //e.Camera.OffsetBy(e.Delta.Width, e.Delta.Height);
             e.TopCamera.OffsetBy(e.Delta.Width, e.Delta.Height);
+            
+            // nothing works here
+            /*
+            e.TopCamera.InvalidateFullBounds();
+            e.TopCamera.InvalidateLayout();
+            e.TopCamera.InvalidatePaint();
+            e.Camera.InvalidateFullBounds();
+            e.Camera.InvalidateLayout();
+            e.TopCamera.ApplyViewConstraints();
+             */ 
         }
 
         public override void OnDoubleClick(object sender, PInputEventArgs e)
