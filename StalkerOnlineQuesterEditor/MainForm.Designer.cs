@@ -391,14 +391,15 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.labelDrawingTip.Location = new System.Drawing.Point(9, 197);
             this.labelDrawingTip.Name = "labelDrawingTip";
-            this.labelDrawingTip.Size = new System.Drawing.Size(189, 45);
+            this.labelDrawingTip.Size = new System.Drawing.Size(189, 87);
             this.labelDrawingTip.TabIndex = 8;
-            this.labelDrawingTip.Text = "Для рисования прямоугольников удерживайте Shift и левую кнопку мыши. Pan - правой" +
-    " кнопкой мыши.";
+            this.labelDrawingTip.Text = "Для рисования прямоугольников удерживайте Shift и левую кнопку мыши. Кнопки Прави" +
+    "ть и Удалить работают для диалогов и прямоугольников. Pan - правой кнопкой мыши." +
+    "";
             // 
             // bTestButton
             // 
-            this.bTestButton.Location = new System.Drawing.Point(6, 294);
+            this.bTestButton.Location = new System.Drawing.Point(6, 298);
             this.bTestButton.Name = "bTestButton";
             this.bTestButton.Size = new System.Drawing.Size(192, 38);
             this.bTestButton.TabIndex = 7;
@@ -433,7 +434,7 @@ namespace StalkerOnlineQuesterEditor
             // labelYNode
             // 
             this.labelYNode.AutoSize = true;
-            this.labelYNode.Location = new System.Drawing.Point(26, 371);
+            this.labelYNode.Location = new System.Drawing.Point(26, 376);
             this.labelYNode.Name = "labelYNode";
             this.labelYNode.Size = new System.Drawing.Size(62, 13);
             this.labelYNode.TabIndex = 5;
@@ -443,7 +444,7 @@ namespace StalkerOnlineQuesterEditor
             // labelXNode
             // 
             this.labelXNode.AutoSize = true;
-            this.labelXNode.Location = new System.Drawing.Point(26, 345);
+            this.labelXNode.Location = new System.Drawing.Point(26, 351);
             this.labelXNode.Name = "labelXNode";
             this.labelXNode.Size = new System.Drawing.Size(62, 13);
             this.labelXNode.TabIndex = 4;
