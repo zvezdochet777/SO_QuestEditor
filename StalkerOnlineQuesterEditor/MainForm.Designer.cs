@@ -171,6 +171,7 @@ namespace StalkerOnlineQuesterEditor
             this.ExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDialogStrip = new System.Windows.Forms.StatusStrip();
+            this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -1838,6 +1839,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label labelItemReward;
         private System.Windows.Forms.ComboBox cbItemReward;
         private System.Windows.Forms.Label labelDrawingTip;
+        private System.Windows.Forms.ToolTip toolTipDialogs;
 
 
     }

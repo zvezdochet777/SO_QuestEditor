@@ -142,6 +142,7 @@
     <Compile Include="Forms\LocaleQuestForm.Designer.cs">
       <DependentUpon>LocaleQuestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUIClasses\MouseHoverHandler.cs" />
     <Compile Include="GUIClasses\PanEventHandler.cs" />
     <Compile Include="GUIClasses\RectangleDrawer.cs" />
     <Compile Include="IOClasses\CRectangles.cs" />

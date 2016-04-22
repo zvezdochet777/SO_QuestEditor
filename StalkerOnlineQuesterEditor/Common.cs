@@ -13,15 +13,15 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает список как строку со значениями через запятую
         public static string GetListAsString(List<int> list)
         {
-            string str = "";
+            string result = "";
             foreach (int element in list)
             {
-                if (str.Equals(""))
-                    str += element.ToString();
+                if (result.Equals(""))
+                    result += element.ToString();
                 else
-                    str += "," + element.ToString();
+                    result += "," + element.ToString();
             }
-            return str;
+            return result;
         }
     }
 

@@ -32,20 +32,6 @@ namespace StalkerOnlineQuesterEditor
             return e.IsMouseEvent && e.Modifiers == Keys.None && e.Button == MouseButtons.Left;
         }
 
-        public override void OnMouseEnter(object sender, PInputEventArgs e)
-        {
-            base.OnMouseEnter(sender, e);
-            if ((e.Button == MouseButtons.None) && (e.PickedNode.Tag!= null))
-                e.PickedNode.Brush = Brushes.Red;
-        }
-
-        public override void OnMouseLeave(object sender, PInputEventArgs e)
-        {
-            base.OnMouseLeave(sender, e);
-            if (e.Button == MouseButtons.None)
-                e.PickedNode.Brush = Brushes.White;
-
-        }
         //! Начало перетаскивания узлов диалога
         protected override void OnStartDrag(object sender, PInputEventArgs e)
         {

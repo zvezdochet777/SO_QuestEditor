@@ -36,6 +36,7 @@ namespace StalkerOnlineQuesterEditor
         RectangleDrawingHandler RectDrawer;
         public RectangleManager RectManager;
         PanEventHandler PanHandler;
+        MouseHoverHandler HoverHandler;
         public PLayer edgeLayer;
         public PLayer drawingLayer;
         public PNodeList nodeLayer;
@@ -72,6 +73,7 @@ namespace StalkerOnlineQuesterEditor
             Listener = new NodeDragHandler(this);
             RectDrawer = new RectangleDrawingHandler(this, RectManager);
             PanHandler = new PanEventHandler(this);
+            HoverHandler = new MouseHoverHandler(this, RectManager);
             RectManager.LoadData();
             settings = new CSettings(this);
             dialogs = new CDialogs(this);
@@ -98,6 +100,7 @@ namespace StalkerOnlineQuesterEditor
             DialogShower.AddInputEventListener(Listener);
             DialogShower.AddInputEventListener(RectDrawer);
             DialogShower.AddInputEventListener(PanHandler);
+            DialogShower.AddInputEventListener(HoverHandler);
             DialogShower.PanEventHandler = null;
             DialogShower.ZoomEventHandler = null;
 
@@ -586,6 +589,24 @@ namespace StalkerOnlineQuesterEditor
             this.labelYNode.Text = "Y=" + Y.ToString();
             this.labelXNode.Text += " w=" + w.ToString();
             this.labelYNode.Text += " h=" + h.ToString();
+        }
+
+        public void ShowDialogTooltip(PNode CurrentNode)
+        {
+            int dialogID = getDialogIDOnNode(CurrentNode);
+            CDialog dialog = dialogs.dialogs[currentNPC][dialogID];
+            if (dialog.Actions.GetQuests.Count > 0 || dialog.Actions.CompleteQuests.Count > 0)
+            {
+                string tooltip = "Взять: " + Global.GetListAsString(dialog.Actions.GetQuests) + "\nЗакрыть: " + Global.GetListAsString(dialog.Actions.CompleteQuests);
+                toolTipDialogs.SetToolTip(DialogShower, tooltip);
+            }
+            else
+                toolTipDialogs.SetToolTip(DialogShower, "Нет действий у диалога");
+        }
+
+        public void ResetDialogsTooltip()
+        {
+            toolTipDialogs.SetToolTip(DialogShower, "");
         }
 
 // ************************END DIALOGS BLOCK****************************************************
