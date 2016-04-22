@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor
 {
-    //! Класс, отвечающий за Drag нодов диалогов по канвасу Piccollo. Также обрабатывает левый клик и выделение нодов
+    //! Класс, отвечающий за Drag нодов диалогов и прямоугольников по канвасу Piccollo. Также обрабатывает левый клик и выделение нодов
     public class NodeDragHandler : PDragEventHandler
     {
         public PNode curNode = null;
@@ -26,6 +26,7 @@ namespace StalkerOnlineQuesterEditor
             this.mainForm = form;
         }
 
+        //! Условие, при котором событие будет срабатывать - только левый клик, никаких зажатых кнопок на клавиатуре
         public override bool DoesAcceptEvent(PInputEventArgs e)
         {
             return e.IsMouseEvent && e.Modifiers == Keys.None && e.Button == MouseButtons.Left;
@@ -54,7 +55,7 @@ namespace StalkerOnlineQuesterEditor
             if (e.PickedNode.Tag != null)
                 e.PickedNode.MoveToFront();
         }
-        //! Закончили перетаскивать узел диалога
+        //! Закончили перетаскивать узел диалога или прямоугольник. Сохраняем их координаты
         protected override void OnEndDrag(object sender, PInputEventArgs e)
         {
             base.OnEndDrag(sender, e);
@@ -77,7 +78,7 @@ namespace StalkerOnlineQuesterEditor
                 mainForm.RectManager.ChangeCoordinates(mainForm.GetCurrentNPC(), rectId, (int) x, (int) y);
         }
 
-        //! Клик мыши по узлу диалога - выделяем его и потомков цветом
+        //! Клик мыши по узлу диалога или прямоугольнику - выделяем диалог и его потомков цветом, либо выделяем прямугольник
         public override void OnClick(object sender, PInputEventArgs e)
         {
             mainForm.clearToolstripLabel();
@@ -89,6 +90,7 @@ namespace StalkerOnlineQuesterEditor
                 SelectCurrentNode(mainForm.getDialogIDOnNode(e.PickedNode));
         }
 
+        //! Вызываем форму редактирования для диалога или прямоугольника
         public override void OnDoubleClick(object sender, PInputEventArgs e)
         {
             e.Handled = true;
@@ -96,6 +98,7 @@ namespace StalkerOnlineQuesterEditor
             mainForm.bEditDialog_Click(sender, new EventArgs() );
         }
 
+        //! При перетаскивании перерисовываем связи диалога. К прямоугольникам не относится
         protected override void OnDrag(object sender, PInputEventArgs e)
         {
             base.OnDrag(sender, e);
@@ -109,18 +112,13 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        //! Возвращает текущий ID диалога по выделенной ноде curNode
         public int getCurDialogID()
         {
             if (curNode != null)
                 return mainForm.getDialogIDOnNode(curNode);
             else
                 return 0;
-           /* {
-                foreach (PNode node in curNode.AllNodes)
-                    if (node.GetType().ToString().Equals("UMD.HCIL.Piccolo.Nodes.PText"))
-                        return int.Parse(((PText)node).Text);
-            }
-            return 0;*/
         }
 
         //! Пользователь выделил конкретный узел - красим его в красный, потомков - в желтый
@@ -159,6 +157,7 @@ namespace StalkerOnlineQuesterEditor
                 mainForm.startEmulator(dialogID);//, true);            
         }
 
+        //! Пользователь выделил прямугольников кликом мыши - красим его в спец цвет, задаем его ID как текущий
         public void SelectRectangle(PNode rectangle, int rectID)
         {
             mainForm.DeselectRectangles();

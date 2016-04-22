@@ -9,6 +9,7 @@ using Telerik.WinControls;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Класс редактирования прямоугольников. Пока позволяет редактировать только отображаемый текст.
     public partial class EditRectangle : Telerik.WinControls.UI.RadForm
     {
         private RectangleManager RectManager;

@@ -13,6 +13,7 @@ using UMD.HCIL.Piccolo.Event;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! Класс, обрабатывающий перемещение камеры на поле Piccolo с помощью правой кнопки мыши. Pan event.
     public class PanEventHandler : PBasicInputEventHandler
     {
         private MainForm mainForm;
@@ -22,12 +23,14 @@ namespace StalkerOnlineQuesterEditor
             mainForm = main;
         }
 
+        //! Условие, при котором событие будет срабатывать - нажата правая кнопка мыши.
         public override bool DoesAcceptEvent(PInputEventArgs e)
         {
             return e.IsMouseEvent && e.Button == MouseButtons.Right;
             //return base.DoesAcceptEvent(e);
         }
 
+        //! Отладочная функция. По одиночному клику возвращаем текущие координаты
         public override void OnMouseDown(object sender, PInputEventArgs e)
         {
             //base.OnMouseDown(sender, e);
@@ -61,6 +64,7 @@ namespace StalkerOnlineQuesterEditor
             */
         }
 
+        //! Основная функция. При перемещении мыши с нажатой правой кнопкой смещаем всю сцену на дельту мыши.
         public override void OnMouseDrag(object sender, PInputEventArgs e)
         {
             // works perfect, centrelize breaks
@@ -87,6 +91,7 @@ namespace StalkerOnlineQuesterEditor
              */ 
         }
 
+        //! По двойному клику правой кнопки возвращаемся в центр канваса.
         public override void OnDoubleClick(object sender, PInputEventArgs e)
         {
             e.TopCamera.SetOffset(0, 0);

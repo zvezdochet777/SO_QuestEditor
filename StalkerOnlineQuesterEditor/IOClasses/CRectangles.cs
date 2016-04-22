@@ -72,6 +72,7 @@ namespace StalkerOnlineQuesterEditor
             Rectangles = new Dictionary<string, NPCRectangles>();
         }
 
+        //! Назначает текущего NPC, все операции добавления, удаления, редактирования прямугольников будут работать исходя из этого текущего NPC
         public void SetCurrentNPC(string currentNPC)
         {
             CurrentNPC = currentNPC;
@@ -79,6 +80,7 @@ namespace StalkerOnlineQuesterEditor
                 Rectangles.Add(CurrentNPC, new NPCRectangles());
         }
 
+        //! Находит незанятый ID прямоугольника и возвращает его.
         private int GetNewID()
         {
             for (int newID = 0; ; newID++)
@@ -86,6 +88,7 @@ namespace StalkerOnlineQuesterEditor
                     return newID;
         }
 
+        //! Добавляет новый прямоугольник в словарь
         public int AddRectangle(string npc, PointF point, SizeF size)
         {
             SetCurrentNPC(npc);
@@ -95,32 +98,38 @@ namespace StalkerOnlineQuesterEditor
             return newID;
         }
 
+        //Задает ID текущего (выделенного) прямоугольника. Используется для события Mouse_LeftButtonClick
         public void SetSelectedRectangleID(int selectedID)
         {
             SelectedRectID = selectedID;
         }
 
+        //! Удаляет текущий прямоугольник из словаря.
         public void RemoveRectangle()
         {
             Rectangles[CurrentNPC].Remove(SelectedRectID);
         }
 
+        //! Меняет текст текущего прямоугольника, используется в форме редактирования прямоугольника.
         public void ChangeText(string text)
         {
             Rectangles[CurrentNPC][SelectedRectID].SetText(text);
         }
 
+        //! Меняет координаты прямоугольника, принадлежащего npc c id на новые. Используется при событии Drag.
         public void ChangeCoordinates(string npc, int id, int newX, int newY)
         {
             Rectangles[npc][id].coordX = newX;
             Rectangles[npc][id].coordY = newY;
         }
 
+        //! Возвращает текст текущего (выделенного) прямоуголньика. Используется в форме редактирования прямоугольника EditRectangle
         public string GetTextOfSelectedRect()
         {
             return Rectangles[CurrentNPC][SelectedRectID].GetText();
         }
 
+        //! Создает уникальный тег для прямоугольника на форме.
         public object SetUniqueTag(int rectangleID)
         {
             object tag = new object();
@@ -128,6 +137,7 @@ namespace StalkerOnlineQuesterEditor
             return tag;
         }
 
+        //! Определяет по тегу выделенного элемента, является ли он прямоугольником. В этом случае возвращает true и его rectID 
         public bool CheckIfRect(object NodeTag, out int rectID)
         {
             rectID = -1;
@@ -145,6 +155,7 @@ namespace StalkerOnlineQuesterEditor
             return false;
         }
 
+        //! Возвращает словарь, состоящий из ID и CRectangles для одного NPC. Используется для рисования на Piccolo Canvas.
         public NPCRectangles GetRectanglesForNpc(string NpcName)
         {
             NPCRectangles list = new NPCRectangles();
@@ -153,6 +164,7 @@ namespace StalkerOnlineQuesterEditor
             return list;
         }
 
+        //! Сохранение данных о прямоугольниках в файл Rectangles.xml
         public void SaveData()
         {
             XDocument resultDoc = new XDocument(new XElement("root"));
@@ -185,6 +197,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        //! Загрузка данных о прямогоульниках из файла Rectangles.xml
         public void LoadData()
         {
             if (!File.Exists(RectFilename))
