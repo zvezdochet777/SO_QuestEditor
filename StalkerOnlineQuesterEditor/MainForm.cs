@@ -36,6 +36,7 @@ namespace StalkerOnlineQuesterEditor
         RectangleDrawingHandler RectDrawer;
         public RectangleManager RectManager;
         PanEventHandler PanHandler;
+        ZoomEventHandler ZoomHandler;
         MouseHoverHandler HoverHandler;
         public PLayer edgeLayer;
         public PLayer drawingLayer;
@@ -73,6 +74,7 @@ namespace StalkerOnlineQuesterEditor
             Listener = new NodeDragHandler(this);
             RectDrawer = new RectangleDrawingHandler(this, RectManager);
             PanHandler = new PanEventHandler(this);
+            ZoomHandler = new ZoomEventHandler();
             HoverHandler = new MouseHoverHandler(this, RectManager);
             RectManager.LoadData();
             settings = new CSettings(this);
@@ -100,6 +102,7 @@ namespace StalkerOnlineQuesterEditor
             DialogShower.AddInputEventListener(Listener);
             DialogShower.AddInputEventListener(RectDrawer);
             DialogShower.AddInputEventListener(PanHandler);
+            DialogShower.AddInputEventListener(ZoomHandler);
             DialogShower.AddInputEventListener(HoverHandler);
             DialogShower.PanEventHandler = null;
             DialogShower.ZoomEventHandler = null;
