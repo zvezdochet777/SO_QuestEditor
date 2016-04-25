@@ -158,7 +158,7 @@ namespace StalkerOnlineQuesterEditor
                 bAddDialog.Enabled = false;
                 bEditDialog.Enabled = false;
                 bRemoveDialog.Enabled = false;
-                EmulatorsplitContainer.Panel2.Controls.Clear();
+                splitDialogsEmulator.Panel2.Controls.Clear();
                 DialogSelected(true);
             }
             else if (CentralDock.SelectedIndex == 1)
@@ -486,7 +486,7 @@ namespace StalkerOnlineQuesterEditor
             // получаем фразу NPC
             CDialog rootDialog = getDialogOnIDConditional(dialogID);
             selectedDialogID = dialogID;
-            EmulatorsplitContainer.Panel2.Controls.Clear();
+            splitDialogsEmulator.Panel2.Controls.Clear();
             titles = new Dictionary<LinkLabel,int>();
             Label NPCText = new Label();
             NPCText.Text = rootDialog.Text;
@@ -533,9 +533,9 @@ namespace StalkerOnlineQuesterEditor
                 dialogLink.Dock = DockStyle.Top;
                 dialogLink.Links.Add(0, 0, dialog);
                 titles.Add(dialogLink,dialog);
-                EmulatorsplitContainer.Panel2.Controls.Add(dialogLink);
+                splitDialogsEmulator.Panel2.Controls.Add(dialogLink);
             }
-            EmulatorsplitContainer.Panel2.Controls.Add(NPCText);
+            splitDialogsEmulator.Panel2.Controls.Add(NPCText);
         }
 
         public bool isDialogActive(int dialogID)
@@ -579,7 +579,7 @@ namespace StalkerOnlineQuesterEditor
             if (toolStripStatusLabel.Text != "")
                 toolStripStatusLabel.Text += "\n";
             toolStripStatusLabel.Text += text;
-            EmulatorsplitContainer.Panel2.Controls.Clear();
+            splitDialogsEmulator.Panel2.Controls.Clear();
             Listener.SelectCurrentNode(dialogID);
         }
         //! Выводит координаты узла как прямоугольника. Для отладки.
@@ -1534,8 +1534,8 @@ namespace StalkerOnlineQuesterEditor
         //! Выводит диалоги для локализации. В зависимости от помеченных чекбоксов - актуальные или устаревшие
         private void bFindDialogDifference_Click(object sender, EventArgs e)
         {
-            int actual = (ActualCheckBox.Checked) ? (1) : (0);
-            int outdated = (OutdatedCheckBox.Checked) ? (1) : (0);
+            int actual = (cbActualFinder.Checked) ? (1) : (0);
+            int outdated = (cbOutdatedFinder.Checked) ? (1) : (0);
             FindType findType = (FindType)(actual + (outdated << 1) );
             this.translate_checker = 1;
             dgvLocaleDiff.Rows.Clear();
@@ -1580,8 +1580,8 @@ namespace StalkerOnlineQuesterEditor
         //! Выводит квесты для локализации
         private void bFindQuestDifference_Click(object sender, EventArgs e)
         {
-            int actual = (ActualCheckBox.Checked) ? (1) : (0);
-            int outdated = (OutdatedCheckBox.Checked) ? (1) : (0);
+            int actual = (cbActualFinder.Checked) ? (1) : (0);
+            int outdated = (cbOutdatedFinder.Checked) ? (1) : (0);
             FindType findType = (FindType)(actual + (outdated << 1));
             this.translate_checker = 2;
             dgvLocaleDiff.Rows.Clear();
@@ -1616,6 +1616,7 @@ namespace StalkerOnlineQuesterEditor
         {
             // важное место - ставим зум на 1
             DialogShower.Camera.ViewScale = 1;
+            DialogShower.Camera.Scale = 1;
             // сдвиг ставим на 0 -камера возвращается в исходное положение
             //DialogShower.Camera.SetViewOffset(0, 0);
             DialogShower.Camera.SetOffset(0, 0);
@@ -1871,7 +1872,7 @@ namespace StalkerOnlineQuesterEditor
                         found = false;
                     }
                 }
-            lSearchResult.Text = "Найдено: " + count.ToString();
+            labelSearchResult.Text = "Найдено: " + count.ToString();
         }
 
         private void dgvSearch_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
