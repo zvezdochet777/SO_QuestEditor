@@ -1618,10 +1618,8 @@ namespace StalkerOnlineQuesterEditor
         private void bCenterizeDialogShower_Click(object sender, EventArgs e)
         {
             // важное место - ставим зум на 1
-            DialogShower.Camera.ViewScale = 1;
             DialogShower.Camera.Scale = 1;
             // сдвиг ставим на 0 -камера возвращается в исходное положение
-            //DialogShower.Camera.SetViewOffset(0, 0);
             DialogShower.Camera.SetOffset(0, 0);
         }
 
@@ -2141,6 +2139,11 @@ namespace StalkerOnlineQuesterEditor
         {
             settings.setLastNpcIndex(NPCBox.SelectedIndex);
             settings.saveSettings();
+        }
+
+        private void DialogShower_MouseMove(object sender, MouseEventArgs e)
+        {
+            DialogShower.Focus();
         }
 
     }

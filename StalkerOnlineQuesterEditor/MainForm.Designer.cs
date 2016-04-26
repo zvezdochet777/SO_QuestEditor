@@ -227,6 +227,7 @@ namespace StalkerOnlineQuesterEditor
             this.DialogShower.Size = new System.Drawing.Size(536, 399);
             this.DialogShower.TabIndex = 0;
             this.DialogShower.Text = "8";
+            this.DialogShower.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DialogShower_MouseMove);
             // 
             // NPCBox
             // 
@@ -367,11 +368,11 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.labelDrawingTip.Location = new System.Drawing.Point(9, 197);
             this.labelDrawingTip.Name = "labelDrawingTip";
-            this.labelDrawingTip.Size = new System.Drawing.Size(189, 87);
+            this.labelDrawingTip.Size = new System.Drawing.Size(189, 98);
             this.labelDrawingTip.TabIndex = 8;
             this.labelDrawingTip.Text = "Для рисования прямоугольников удерживайте Shift и левую кнопку мыши. Кнопки Прави" +
     "ть и Удалить работают для диалогов и прямоугольников. Pan - правой кнопкой мыши." +
-    "";
+    " Zoom - колесиком мыши.";
             // 
             // bTestButton
             // 
@@ -1530,6 +1531,7 @@ namespace StalkerOnlineQuesterEditor
             this.menuMainControl.Name = "menuMainControl";
             this.menuMainControl.Size = new System.Drawing.Size(914, 24);
             this.menuMainControl.TabIndex = 2;
+            this.menuMainControl.TabStop = true;
             this.menuMainControl.Text = "menuStrip1";
             // 
             // menuMain

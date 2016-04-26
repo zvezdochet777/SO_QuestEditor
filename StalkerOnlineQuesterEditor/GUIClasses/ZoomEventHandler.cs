@@ -26,17 +26,8 @@ namespace StalkerOnlineQuesterEditor
             if (e.IsMouseEvent)
                 if (e.Modifiers == Keys.None)
                     if (e.Button == MouseButtons.Middle || e.WheelDelta != 0)
-                        //if (e.WheelDelta != 0)
                             return true;
-            //return e.Button == MouseButtons.Middle;
-            //return base.DoesAcceptEvent(e);
             return false;
-        }
-
-        protected override bool PBasicInputEventHandlerAcceptsEvent(PInputEventArgs e)
-        {
-            return false;
-            //return base.PBasicInputEventHandlerAcceptsEvent(e);
         }
 
         //! Обработка перемещения колесика мыши из WheelDelta в значение зума
@@ -52,21 +43,14 @@ namespace StalkerOnlineQuesterEditor
             // WheelDelta == 120 and -120
             // Normal scale is 1.0F
             // Scaling should be between 0.3 and 3.0
+            // scaling by negative number rotates the whole canvas by 180 degreees
             //MessageBox.Show("WheelDelta: " + e.WheelDelta.ToString());
         }
-        
-        //! Отладочная функция по клику на колесико
-        public override void OnMouseDown(object sender, PInputEventArgs e)
+
+        public override void OnClick(object sender, PInputEventArgs e)
         {
-            //base.OnMouseDown(sender, e);
-            // scaling by negative number rotates the whole canvas by 180 degreees
-            e.TopCamera.ScaleBy(0.8F, e.Position.X, e.Position.Y);
-            float scale = e.TopCamera.Scale;
-            float gscale = e.TopCamera.GlobalScale;
-            float vscale = e.TopCamera.ViewScale;
-            MessageBox.Show("Scale data: " + scale.ToString() + " " + gscale.ToString()+ " " +vscale.ToString());
-            
-            //mainForm.setXYCoordinates(0, scale, gscale, vscale);
+            e.TopCamera.Scale = 1.0F;
         }
+        
     }
 }
