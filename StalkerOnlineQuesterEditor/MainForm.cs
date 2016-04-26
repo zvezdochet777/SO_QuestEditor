@@ -554,11 +554,11 @@ namespace StalkerOnlineQuesterEditor
         {
             int choosenDialogID = (int)e.Link.LinkData;
             CDialog choosenDialog = dialogs.dialogs[currentNPC][choosenDialogID];
-            toolStripStatusLabel.Text = "";
+            statusLabel.Text = "";
             if (choosenDialog.Actions.CompleteQuests.Any())
-                toolStripStatusLabel.Text += "Завершенные: " + Global.GetListAsString(choosenDialog.Actions.CompleteQuests);
+                statusLabel.Text += "Завершенные: " + Global.GetListAsString(choosenDialog.Actions.CompleteQuests);
             if (choosenDialog.Actions.GetQuests.Any())
-                toolStripStatusLabel.Text += " Взятые: " + Global.GetListAsString(choosenDialog.Actions.GetQuests);
+                statusLabel.Text += " Взятые: " + Global.GetListAsString(choosenDialog.Actions.GetQuests);
             
             string eventName = dialogEvents.GetEventName(choosenDialog.Actions.Event);
             addActionTextToEmulator(eventName, choosenDialogID);
@@ -568,7 +568,7 @@ namespace StalkerOnlineQuesterEditor
 
             else if (choosenDialog.Actions.ToDialog != 0)
             {
-                toolStripStatusLabel.Text += "Переход на диалог: " + choosenDialog.Actions.ToDialog.ToString();
+                statusLabel.Text += "Переход на диалог: " + choosenDialog.Actions.ToDialog.ToString();
                 Listener.SelectCurrentNode(choosenDialog.Actions.ToDialog);
             }
             else
@@ -579,9 +579,9 @@ namespace StalkerOnlineQuesterEditor
         //! Антиговнокод - добавление примечания к фразе диалога с действием
         void addActionTextToEmulator(string text, int dialogID)
         {
-            if (toolStripStatusLabel.Text != "")
-                toolStripStatusLabel.Text += "\n";
-            toolStripStatusLabel.Text += text;
+            if (statusLabel.Text != "")
+                statusLabel.Text += "\n";
+            statusLabel.Text += text;
             splitDialogsEmulator.Panel2.Controls.Clear();
             Listener.SelectCurrentNode(dialogID);
         }
@@ -616,7 +616,7 @@ namespace StalkerOnlineQuesterEditor
 
         public void clearToolstripLabel()
         {
-            toolStripStatusLabel.Text = "";
+            statusLabel.Text = "";
         }
 
         //! Устанавливает доступность компонентов формы
@@ -986,7 +986,7 @@ namespace StalkerOnlineQuesterEditor
             //}
             RectManager.SaveData();
             Thread.Sleep(1000);
-            toolStripStatusLabel.Text = "Данные успешно сохранены.";
+            statusLabel.Text = "Данные успешно сохранены.";
             this.Enabled = true;
         }
         //! Нажатие на кнопку "Удаление квеста"
