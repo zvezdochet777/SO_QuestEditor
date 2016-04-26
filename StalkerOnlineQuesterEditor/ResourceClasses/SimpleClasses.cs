@@ -155,6 +155,19 @@ namespace StalkerOnlineQuesterEditor
             this.GetQuests = new ListOfQuests();
             this.Data = "";
         }
+
+        public bool CheckAndGetString(out string ActionString)
+        {
+            ActionString = "";
+            if (GetQuests.Count > 0 || CompleteQuests.Count > 0 || Event != 0)
+            {
+                //string action = dialogEvents.GetEventName(dialog.Actions.Event) + "\n";
+                string tooltip = "Взять: " + Global.GetListAsString(GetQuests) + "\nЗакрыть: " + Global.GetListAsString(CompleteQuests);
+                return true;
+            }
+            else
+                return false;
+        }
     }
     //! Класс параметров узла диалога на графе - координаты и флаг "корневой"
     public class NodeCoordinates

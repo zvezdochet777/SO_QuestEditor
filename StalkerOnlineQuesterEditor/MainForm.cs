@@ -597,10 +597,17 @@ namespace StalkerOnlineQuesterEditor
         public void ShowDialogTooltip(PNode CurrentNode)
         {
             int dialogID = getDialogIDOnNode(CurrentNode);
-            CDialog dialog = dialogs.dialogs[currentNPC][dialogID];
-            if (dialog.Actions.GetQuests.Count > 0 || dialog.Actions.CompleteQuests.Count > 0)
+            Actions actions = dialogs.dialogs[currentNPC][dialogID].Actions;
+            if (actions.GetQuests.Count > 0 || actions.CompleteQuests.Count > 0 || actions.Event != 0)
             {
-                string tooltip = "Взять: " + Global.GetListAsString(dialog.Actions.GetQuests) + "\nЗакрыть: " + Global.GetListAsString(dialog.Actions.CompleteQuests);
+                string tooltip = "";
+                string action = dialogEvents.GetEventName(actions.Event);
+                if (action != "")
+                    tooltip = action + "\n";
+                if (actions.GetQuests.Any())
+                    tooltip += "Взять: " + Global.GetListAsString(actions.GetQuests) + "\n";
+                if (actions.CompleteQuests.Any())
+                    tooltip += "Закрыть: " + Global.GetListAsString(actions.CompleteQuests);                
                 toolTipDialogs.SetToolTip(DialogShower, tooltip);
             }
             else
