@@ -22,12 +22,15 @@ namespace StalkerOnlineQuesterEditor
         private void EditRectangle_Load(object sender, EventArgs e)
         {
             tbRectText.Text = RectManager.GetTextOfSelectedRect();
+            colorBox.Value = RectManager.GetColorOfSelectedRect();
         }
 
         private void bOK_Click(object sender, EventArgs e)
         {
             string text = tbRectText.Text;
             RectManager.ChangeText(text);
+            Color color = colorBox.Value;
+            RectManager.ChangeColor(color);
             this.Close();
         }
 
@@ -40,6 +43,15 @@ namespace StalkerOnlineQuesterEditor
         {
             if (e.KeyCode == Keys.Enter)
                 bOK_Click(sender, e);
+        }
+
+        private void colorBox_ValueChanging(object sender, Telerik.WinControls.UI.ValueChangingEventArgs e)
+        {
+            if (!((Color)e.NewValue).IsNamedColor)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Выберите цвет из доступных списков", "Совет", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

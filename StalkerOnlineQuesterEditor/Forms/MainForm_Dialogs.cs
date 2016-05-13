@@ -599,12 +599,13 @@ namespace StalkerOnlineQuesterEditor
             {
                 PPath newRect = PPath.CreateRectangle(rect.coordX, rect.coordY, rect.Width, rect.Height);
                 newRect.Tag = RectManager.SetUniqueTag(rect.GetID());
+                newRect.Pen = new Pen(rect.RectColor);
                 PText rectText = new PText(rect.GetText());
                 rectText.Bounds = newRect.Bounds;
                 rectText.Pickable = false;
                 newRect.AddChild(rectText);
                 drawingLayer.AddChild(newRect);
-            }            
+            }
         }
 
         public void DeselectRectangles()

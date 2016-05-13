@@ -17,12 +17,13 @@ namespace StalkerOnlineQuesterEditor
     {
         private int ID;
         private string Text;
+        private Color color;
         public int coordX;
         public int coordY;
         public int Width;
         public int Height;
 
-        public CRectangle(int id, int _x, int _y, int width, int height, string text)
+        public CRectangle(int id, int _x, int _y, int width, int height, string text, Color _color)
         {
             ID = id;
             coordX = _x;
@@ -30,6 +31,7 @@ namespace StalkerOnlineQuesterEditor
             Width = width;
             Height = height;
             Text = text;
+            color = _color;
         }
 
         public CRectangle(int id, PointF point, SizeF size)
@@ -39,6 +41,8 @@ namespace StalkerOnlineQuesterEditor
             coordY = (int) point.Y;
             Width = (int) size.Width;
             Height = (int) size.Height;
+            Text = "";
+            color = Color.Black;
         }
 
         public int GetID()
@@ -54,6 +58,12 @@ namespace StalkerOnlineQuesterEditor
         public void SetText(string text)
         {
             Text = text;
+        }
+
+        public Color RectColor
+        {
+            get { return color; }
+            set { color = value; }
         }
     }
             
@@ -116,6 +126,11 @@ namespace StalkerOnlineQuesterEditor
             Rectangles[CurrentNPC][SelectedRectID].SetText(text);
         }
 
+        public void ChangeColor(Color color)
+        {
+            Rectangles[CurrentNPC][SelectedRectID].RectColor = color;
+        }
+
         //! Меняет координаты прямоугольника, принадлежащего npc c id на новые. Используется при событии Drag.
         public void ChangeCoordinates(string npc, int id, int newX, int newY)
         {
@@ -127,6 +142,11 @@ namespace StalkerOnlineQuesterEditor
         public string GetTextOfSelectedRect()
         {
             return Rectangles[CurrentNPC][SelectedRectID].GetText();
+        }
+
+        public Color GetColorOfSelectedRect()
+        {
+            return Rectangles[CurrentNPC][SelectedRectID].RectColor;
         }
 
         //! Создает уникальный тег для прямоугольника на форме.
@@ -182,7 +202,8 @@ namespace StalkerOnlineQuesterEditor
                             new XElement("Y", rectangle.coordY.ToString()),
                             new XElement("width", rectangle.Width.ToString()),
                             new XElement("height", rectangle.Height.ToString()),
-                            new XElement("Text", rectangle.GetText())));
+                            new XElement("Text", rectangle.GetText()),
+                            new XElement("Color", rectangle.RectColor.ToKnownColor())));
                 }
                 resultDoc.Root.Add(npcElement);
             }
@@ -218,7 +239,8 @@ namespace StalkerOnlineQuesterEditor
                     int width = int.Parse(rectangle.Element("width").Value);
                     int height = int.Parse(rectangle.Element("height").Value);
                     string text = rectangle.Element("Text").Value.ToString();
-                    Rectangles[npcName].Add(id, new CRectangle(id, x ,y, width, height, text));
+                    Color color = Color.FromName(rectangle.Element("Color").Value.ToString());
+                    Rectangles[npcName].Add(id, new CRectangle(id, x ,y, width, height, text, color));
                 }
             }
         }
