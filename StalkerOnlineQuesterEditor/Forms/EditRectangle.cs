@@ -12,25 +12,27 @@ namespace StalkerOnlineQuesterEditor
     //! Класс редактирования прямоугольников. Пока позволяет редактировать только отображаемый текст.
     public partial class EditRectangle : Telerik.WinControls.UI.RadForm
     {
-        private RectangleManager RectManager;
-        public EditRectangle(RectangleManager rectManager)
+        private CRectangle CurrentRectangle;
+        public EditRectangle(CRectangle rectangle)
         {
             InitializeComponent();
-            RectManager = rectManager;
+            CurrentRectangle = rectangle;
         }
 
         private void EditRectangle_Load(object sender, EventArgs e)
         {
-            tbRectText.Text = RectManager.GetTextOfSelectedRect();
-            colorBox.Value = RectManager.GetColorOfSelectedRect();
+            tbRectText.Text = CurrentRectangle.GetText();
+            colorBox.Value = CurrentRectangle.RectColor;
+            spinWidth.Value = CurrentRectangle.Width;
+            spinHeight.Value = CurrentRectangle.Height;
         }
 
         private void bOK_Click(object sender, EventArgs e)
         {
-            string text = tbRectText.Text;
-            RectManager.ChangeText(text);
-            Color color = colorBox.Value;
-            RectManager.ChangeColor(color);
+            CurrentRectangle.SetText(tbRectText.Text);
+            CurrentRectangle.RectColor = colorBox.Value;
+            CurrentRectangle.Width = (int) spinWidth.Value;
+            CurrentRectangle.Height = (int) spinHeight.Value;
             this.Close();
         }
 

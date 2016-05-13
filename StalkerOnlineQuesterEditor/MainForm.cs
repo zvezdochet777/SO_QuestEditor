@@ -460,7 +460,7 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (selectedItemType == SelectedItemType.rectangle)
             {
-                EditRectangle editRect = new EditRectangle(this.RectManager);
+                EditRectangle editRect = new EditRectangle(RectManager.GetSelectedRectangle());
                 editRect.ShowDialog();
                 DrawRectangles();
             }

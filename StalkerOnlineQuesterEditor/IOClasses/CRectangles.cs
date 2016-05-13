@@ -120,17 +120,6 @@ namespace StalkerOnlineQuesterEditor
             Rectangles[CurrentNPC].Remove(SelectedRectID);
         }
 
-        //! Меняет текст текущего прямоугольника, используется в форме редактирования прямоугольника.
-        public void ChangeText(string text)
-        {
-            Rectangles[CurrentNPC][SelectedRectID].SetText(text);
-        }
-
-        public void ChangeColor(Color color)
-        {
-            Rectangles[CurrentNPC][SelectedRectID].RectColor = color;
-        }
-
         //! Меняет координаты прямоугольника, принадлежащего npc c id на новые. Используется при событии Drag.
         public void ChangeCoordinates(string npc, int id, int newX, int newY)
         {
@@ -138,15 +127,9 @@ namespace StalkerOnlineQuesterEditor
             Rectangles[npc][id].coordY = newY;
         }
 
-        //! Возвращает текст текущего (выделенного) прямоуголньика. Используется в форме редактирования прямоугольника EditRectangle
-        public string GetTextOfSelectedRect()
+        public CRectangle GetSelectedRectangle()
         {
-            return Rectangles[CurrentNPC][SelectedRectID].GetText();
-        }
-
-        public Color GetColorOfSelectedRect()
-        {
-            return Rectangles[CurrentNPC][SelectedRectID].RectColor;
+            return Rectangles[CurrentNPC][SelectedRectID];
         }
 
         //! Создает уникальный тег для прямоугольника на форме.

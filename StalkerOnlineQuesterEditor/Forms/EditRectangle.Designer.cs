@@ -34,12 +34,20 @@
             this.tbRectText = new Telerik.WinControls.UI.RadTextBoxControl();
             this.colorBox = new Telerik.WinControls.UI.RadColorBox();
             this.lColorTip = new Telerik.WinControls.UI.RadLabel();
+            this.lWidthTip = new Telerik.WinControls.UI.RadLabel();
+            this.lHeightTip = new Telerik.WinControls.UI.RadLabel();
+            this.spinWidth = new Telerik.WinControls.UI.RadSpinEditor();
+            this.spinHeight = new Telerik.WinControls.UI.RadSpinEditor();
             ((System.ComponentModel.ISupportInitialize)(this.lTextTip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRectText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lColorTip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lWidthTip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lHeightTip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +61,7 @@
             // 
             // bOK
             // 
-            this.bOK.Location = new System.Drawing.Point(137, 169);
+            this.bOK.Location = new System.Drawing.Point(137, 202);
             this.bOK.Name = "bOK";
             this.bOK.Size = new System.Drawing.Size(128, 24);
             this.bOK.TabIndex = 1;
@@ -62,7 +70,7 @@
             // 
             // bCancel
             // 
-            this.bCancel.Location = new System.Drawing.Point(271, 169);
+            this.bCancel.Location = new System.Drawing.Point(271, 202);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(128, 24);
             this.bCancel.TabIndex = 2;
@@ -78,7 +86,7 @@
             // 
             // colorBox
             // 
-            this.colorBox.Location = new System.Drawing.Point(137, 102);
+            this.colorBox.Location = new System.Drawing.Point(111, 102);
             this.colorBox.Name = "colorBox";
             this.colorBox.Size = new System.Drawing.Size(148, 20);
             this.colorBox.TabIndex = 4;
@@ -94,11 +102,62 @@
             this.lColorTip.TabIndex = 5;
             this.lColorTip.Text = "Задайте цвет:";
             // 
+            // lWidthTip
+            // 
+            this.lWidthTip.Location = new System.Drawing.Point(22, 135);
+            this.lWidthTip.Name = "lWidthTip";
+            this.lWidthTip.Size = new System.Drawing.Size(52, 18);
+            this.lWidthTip.TabIndex = 6;
+            this.lWidthTip.Text = "Ширина:";
+            // 
+            // lHeightTip
+            // 
+            this.lHeightTip.Location = new System.Drawing.Point(22, 161);
+            this.lHeightTip.Name = "lHeightTip";
+            this.lHeightTip.Size = new System.Drawing.Size(45, 18);
+            this.lHeightTip.TabIndex = 7;
+            this.lHeightTip.Text = "Высота:";
+            // 
+            // spinWidth
+            // 
+            this.spinWidth.Location = new System.Drawing.Point(111, 133);
+            this.spinWidth.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.spinWidth.Name = "spinWidth";
+            this.spinWidth.Size = new System.Drawing.Size(100, 20);
+            this.spinWidth.TabIndex = 8;
+            this.spinWidth.TabStop = false;
+            this.spinWidth.Value = new decimal(new int[] {
+            13,
+            0,
+            0,
+            0});
+            // 
+            // spinHeight
+            // 
+            this.spinHeight.Location = new System.Drawing.Point(111, 159);
+            this.spinHeight.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.spinHeight.Name = "spinHeight";
+            this.spinHeight.Size = new System.Drawing.Size(100, 20);
+            this.spinHeight.TabIndex = 9;
+            this.spinHeight.TabStop = false;
+            // 
             // EditRectangle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 216);
+            this.ClientSize = new System.Drawing.Size(421, 239);
+            this.Controls.Add(this.spinHeight);
+            this.Controls.Add(this.spinWidth);
+            this.Controls.Add(this.lHeightTip);
+            this.Controls.Add(this.lWidthTip);
             this.Controls.Add(this.lColorTip);
             this.Controls.Add(this.colorBox);
             this.Controls.Add(this.tbRectText);
@@ -121,6 +180,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbRectText)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lColorTip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lWidthTip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lHeightTip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -135,5 +198,9 @@
         private Telerik.WinControls.UI.RadTextBoxControl tbRectText;
         private Telerik.WinControls.UI.RadColorBox colorBox;
         private Telerik.WinControls.UI.RadLabel lColorTip;
+        private Telerik.WinControls.UI.RadLabel lWidthTip;
+        private Telerik.WinControls.UI.RadLabel lHeightTip;
+        private Telerik.WinControls.UI.RadSpinEditor spinWidth;
+        private Telerik.WinControls.UI.RadSpinEditor spinHeight;
     }
 }
