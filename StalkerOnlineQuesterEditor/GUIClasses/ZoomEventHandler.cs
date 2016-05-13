@@ -33,7 +33,6 @@ namespace StalkerOnlineQuesterEditor
         //! Обработка перемещения колесика мыши из WheelDelta в значение зума
         public override void OnMouseWheel(object sender, PInputEventArgs e)
         {
-            //base.OnMouseWheel(sender, e);
             float delta = e.WheelDelta / 120;
             float normal = 1.0F;
             float step = 0.1F;

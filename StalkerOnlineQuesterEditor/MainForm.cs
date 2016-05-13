@@ -73,7 +73,7 @@ namespace StalkerOnlineQuesterEditor
             RectManager = new RectangleManager();
             Listener = new NodeDragHandler(this);
             RectDrawer = new RectangleDrawingHandler(this, RectManager);
-            PanHandler = new PanEventHandler(this);
+            PanHandler = new PanEventHandler();
             ZoomHandler = new ZoomEventHandler();
             HoverHandler = new MouseHoverHandler(this, RectManager);
             RectManager.LoadData();
