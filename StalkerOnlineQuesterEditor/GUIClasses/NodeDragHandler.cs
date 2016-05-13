@@ -17,7 +17,7 @@ namespace StalkerOnlineQuesterEditor
     //! Класс, отвечающий за Drag нодов диалогов и прямоугольников по канвасу Piccollo. Также обрабатывает левый клик и выделение нодов
     public class NodeDragHandler : PDragEventHandler
     {
-        public PNode curNode = null;
+        public PNode SelectedNode = null;
 
         private MainForm mainForm;       
 
@@ -101,8 +101,8 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает текущий ID диалога по выделенной ноде curNode
         public int getCurDialogID()
         {
-            if (curNode != null)
-                return mainForm.getDialogIDOnNode(curNode);
+            if (SelectedNode != null)
+                return mainForm.getDialogIDOnNode(SelectedNode);
             else
                 return 0;
         }
@@ -110,33 +110,29 @@ namespace StalkerOnlineQuesterEditor
         //! Пользователь выделил конкретный узел - красим его в красный, потомков - в желтый
         public void SelectCurrentNode(int dialogID)
         {
-            //! Меняем цвет у предыдущего выделенного узла на стандартный - белый или зеленый (у root)
-            if (curNode != null)
-                if (!getCurDialogID().Equals(dialogID))
-                {
-                    if (mainForm.isRoot(mainForm.getDialogIDOnNode(curNode)))
-                        curNode.Brush = Brushes.Green;
-                    else
-                        curNode.Brush = Brushes.White;
-                }
             //! Выделяем цветом новый узел и его потомков, включаем кнопки редактирования
             if (!getCurDialogID().Equals(dialogID))
             {
+                PNode previousNode = (SelectedNode != null) ? (SelectedNode) : (new PNode());
                 mainForm.onDeselectNode();
                 mainForm.deselectSubNodesDialogGraphView();
                 
                 if (dialogID == 0)
-                    curNode = null;
+                    SelectedNode = null;
                 else
-                    curNode = mainForm.getNodeOnDialogID(dialogID);
-                if (curNode != null)
+                    SelectedNode = mainForm.getNodeOnDialogID(dialogID);
+                if (SelectedNode != null)
                 {
-                    curNode.Brush = Brushes.Red;
+                    SelectedNode.Brush = mainForm.GetBrushForNode(SelectedNode);
                     mainForm.selectNodeOnDialogTree(dialogID);
                     mainForm.selectSubNodesDialogGraphView(dialogID);
                 }
                 mainForm.selectedItemType = SelectedItemType.dialog;
                 mainForm.onSelectNode(dialogID);
+
+                //! Меняем цвет у предыдущего выделенного узла на стандартный - белый или зеленый (у root)
+                if (previousNode != null)
+                    previousNode.Brush = mainForm.GetBrushForNode(previousNode);
             }
 
             if (mainForm.isDialogActive(dialogID))

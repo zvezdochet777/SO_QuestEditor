@@ -233,7 +233,7 @@ namespace StalkerOnlineQuesterEditor
             }
             SizeF size = CalcEllipsisSizeForNode(root.DialogID);
             PNode rootNode = PPath.CreateEllipse(rootx, rooty, size.Width, size.Height);
-            rootNode.Brush = Brushes.Green;
+            rootNode.Brush = Brushes.Green; //GetBrushForNode(rootNode);
 
             PText rootText = new PText(root.DialogID.ToString());
             rootText.Pickable = false;
@@ -241,7 +241,6 @@ namespace StalkerOnlineQuesterEditor
             rootText.Y = rootNode.Y + 10;
             rootNode.Tag = new ArrayList();
 
-            //          ((ArrayList)rootNode.Tag).Add(root.DialogID);
             rootNode.AddChild(rootText);
             nodeLayer.Add(rootNode);
             if (!graphs.Keys.Contains(rootNode))
@@ -250,9 +249,6 @@ namespace StalkerOnlineQuesterEditor
             this.fillDialogSubgraphView(root, rootNode, 1, ref edgeLayer, ref nodeLayer, false);
 
             this.DialogShower.Camera.AddChildren(nodeLayer);            
-            //edgeLayer.MoveToFront();
-            //drawingLayer.MoveToBack();
-            //CalcNodesOnLevel(root);
         }
 
         //! @brief Отображает все дочерние узлы на графе диалогов 
@@ -539,17 +535,15 @@ namespace StalkerOnlineQuesterEditor
 
             if (subNodes.Any())
                 foreach (PNode subNode in subNodes)
-                    subNode.Brush = Brushes.Yellow;
+                    subNode.Brush = GetBrushForNode(subNode);
         }
 
         public void deselectSubNodesDialogGraphView()
         {
-            foreach (PNode subNode in subNodes)
-                if (!isRoot(getDialogIDOnNode(subNode)))
-                    subNode.Brush = Brushes.White;
-                else
-                    subNode.Brush = Brushes.Green;
+            List<PNode> nodesToClear = subNodes;
             subNodes = new List<PNode>();
+            foreach (PNode subNode in nodesToClear)
+                subNode.Brush = GetBrushForNode(subNode);
         }
         //! Заменяет диалог с dialogID на dialog (используется в форме редактирования диалогов)
         public void replaceDialog(CDialog dialog, int dialogID)

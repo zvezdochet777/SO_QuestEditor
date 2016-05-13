@@ -375,8 +375,8 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (selectedItemType == SelectedItemType.dialog)
                 {
-                    if (Listener.curNode != null)
-                        removeNodeFromDialogGraphView(getDialogIDOnNode(Listener.curNode));
+                    if (Listener.SelectedNode != null)
+                        removeNodeFromDialogGraphView(getDialogIDOnNode(Listener.SelectedNode));
                     else
                         removeDialog(int.Parse(treeDialogs.SelectedNode.Text));
                 }
@@ -394,9 +394,16 @@ namespace StalkerOnlineQuesterEditor
             return rootElements.Contains(dialogID);
         }
 
-        public bool isRoot(PNode node)
+        public Brush GetBrushForNode(PNode node)
         {
-            return isRoot(getDialogIDOnNode(node));
+            if (isRoot(getDialogIDOnNode(node)))
+                return Brushes.Green;
+            else if (node == Listener.SelectedNode)
+                return Brushes.Red;
+            else if (subNodes.Contains(node))
+                return Brushes.Yellow;
+            else
+                return Brushes.White;
         }
 
         private void treeDialogs_GotFocus(object sender, TreeViewEventArgs e)

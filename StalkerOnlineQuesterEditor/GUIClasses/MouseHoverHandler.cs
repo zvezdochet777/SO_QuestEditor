@@ -51,10 +51,7 @@ namespace StalkerOnlineQuesterEditor
             int temp;
             if (e.PickedNode.Tag != null && !RectManager.CheckIfRect(e.PickedNode.Tag, out temp))
             {
-                if (mainForm.isRoot(mainForm.getDialogIDOnNode(e.PickedNode)))
-                    e.PickedNode.Brush = Brushes.Green;
-                else
-                    e.PickedNode.Brush = Brushes.White;
+                e.PickedNode.Brush = mainForm.GetBrushForNode(e.PickedNode);
                 mainForm.ResetDialogsTooltip();
             }
         }
