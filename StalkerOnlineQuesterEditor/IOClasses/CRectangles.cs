@@ -222,7 +222,9 @@ namespace StalkerOnlineQuesterEditor
                     int width = int.Parse(rectangle.Element("width").Value);
                     int height = int.Parse(rectangle.Element("height").Value);
                     string text = rectangle.Element("Text").Value.ToString();
-                    Color color = Color.FromName(rectangle.Element("Color").Value.ToString());
+                    Color color = Color.Black;
+                    if (rectangle.Descendants().Any(itm2 => itm2.Name == "Color"))
+                        color = Color.FromName(rectangle.Element("Color").Value.ToString());
                     Rectangles[npcName].Add(id, new CRectangle(id, x ,y, width, height, text, color));
                 }
             }
