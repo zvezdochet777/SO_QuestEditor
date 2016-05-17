@@ -90,6 +90,7 @@ namespace StalkerOnlineQuesterEditor
             this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
             this.gbQuestCheck = new System.Windows.Forms.GroupBox();
+            this.cbItemTarget = new System.Windows.Forms.ComboBox();
             this.labelItemReward = new System.Windows.Forms.Label();
             this.cbItemReward = new System.Windows.Forms.ComboBox();
             this.bFindQuest = new System.Windows.Forms.Button();
@@ -170,6 +171,7 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
+            this.labelItemTarget = new System.Windows.Forms.Label();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -897,20 +899,30 @@ namespace StalkerOnlineQuesterEditor
             // 
             // gbQuestCheck
             // 
+            this.gbQuestCheck.Controls.Add(this.labelItemTarget);
+            this.gbQuestCheck.Controls.Add(this.cbItemTarget);
             this.gbQuestCheck.Controls.Add(this.labelItemReward);
             this.gbQuestCheck.Controls.Add(this.cbItemReward);
             this.gbQuestCheck.Controls.Add(this.bFindQuest);
             this.gbQuestCheck.Location = new System.Drawing.Point(428, 4);
             this.gbQuestCheck.Name = "gbQuestCheck";
-            this.gbQuestCheck.Size = new System.Drawing.Size(200, 95);
+            this.gbQuestCheck.Size = new System.Drawing.Size(375, 95);
             this.gbQuestCheck.TabIndex = 2;
             this.gbQuestCheck.TabStop = false;
             this.gbQuestCheck.Text = "Квест";
             // 
+            // cbItemTarget
+            // 
+            this.cbItemTarget.FormattingEnabled = true;
+            this.cbItemTarget.Location = new System.Drawing.Point(196, 65);
+            this.cbItemTarget.Name = "cbItemTarget";
+            this.cbItemTarget.Size = new System.Drawing.Size(158, 21);
+            this.cbItemTarget.TabIndex = 10;
+            // 
             // labelItemReward
             // 
             this.labelItemReward.AutoSize = true;
-            this.labelItemReward.Location = new System.Drawing.Point(22, 49);
+            this.labelItemReward.Location = new System.Drawing.Point(15, 45);
             this.labelItemReward.Name = "labelItemReward";
             this.labelItemReward.Size = new System.Drawing.Size(67, 13);
             this.labelItemReward.TabIndex = 9;
@@ -919,14 +931,14 @@ namespace StalkerOnlineQuesterEditor
             // cbItemReward
             // 
             this.cbItemReward.FormattingEnabled = true;
-            this.cbItemReward.Location = new System.Drawing.Point(13, 71);
+            this.cbItemReward.Location = new System.Drawing.Point(18, 65);
             this.cbItemReward.Name = "cbItemReward";
             this.cbItemReward.Size = new System.Drawing.Size(158, 21);
             this.cbItemReward.TabIndex = 8;
             // 
             // bFindQuest
             // 
-            this.bFindQuest.Location = new System.Drawing.Point(13, 19);
+            this.bFindQuest.Location = new System.Drawing.Point(18, 19);
             this.bFindQuest.Name = "bFindQuest";
             this.bFindQuest.Size = new System.Drawing.Size(98, 23);
             this.bFindQuest.TabIndex = 0;
@@ -1606,6 +1618,15 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 1;
             // 
+            // labelItemTarget
+            // 
+            this.labelItemTarget.AutoSize = true;
+            this.labelItemTarget.Location = new System.Drawing.Point(193, 42);
+            this.labelItemTarget.Name = "labelItemTarget";
+            this.labelItemTarget.Size = new System.Drawing.Size(65, 13);
+            this.labelItemTarget.TabIndex = 11;
+            this.labelItemTarget.Text = "Или целью:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1818,6 +1839,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ComboBox cbItemReward;
         private System.Windows.Forms.Label labelDrawingTip;
         private System.Windows.Forms.ToolTip toolTipDialogs;
+        private System.Windows.Forms.ComboBox cbItemTarget;
+        private System.Windows.Forms.Label labelItemTarget;
     }
 }
 

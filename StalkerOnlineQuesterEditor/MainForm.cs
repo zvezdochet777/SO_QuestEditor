@@ -1407,13 +1407,10 @@ namespace StalkerOnlineQuesterEditor
 
         private void treeQuest_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
-            }
-            catch
-            {
-            }
+            int temp;
+            if (treeQuest.SelectedNode != null)
+                if (int.TryParse(treeQuest.SelectedNode.Text, out temp))
+                    this.currentQuest = temp;
             if (quests.m_Buffer.Any())
                 bPasteEvents.Enabled = true;
         }
@@ -1648,8 +1645,12 @@ namespace StalkerOnlineQuesterEditor
         void fillItemRewardsBox()
         {
             foreach (CItem description in itemConst.getAllItems().Values)
+            {
                 cbItemReward.Items.Add(description.getDescription());
+                cbItemTarget.Items.Add(description.getDescription());
+            }
             cbItemReward.Sorted = true;
+            cbItemTarget.Sorted = true;
         }
         //! Устанавливает надписи в таблице вкладки Проверка для поиска нужны NPC
         void setNPCCheckEnvironment()
@@ -1705,7 +1706,7 @@ namespace StalkerOnlineQuesterEditor
         {
             setQuestCheckEnvironment();
             dgvReview.Rows.Clear();
-            if (cbItemReward.SelectedIndex < 0)
+            if (cbItemReward.SelectedIndex < 0 && cbItemTarget.SelectedIndex < 0)
             {
                 foreach (CQuest quest in quests.quest.Values)
                 {
@@ -1731,10 +1732,20 @@ namespace StalkerOnlineQuesterEditor
             }
             else 
             {
-                int itemID = itemConst.getIDOnDescription(cbItemReward.SelectedItem.ToString());
+                int itemID = -1;
+                int targetItemID = -1;
+                if (cbItemReward.SelectedIndex > -1)
+                    itemID = itemConst.getIDOnDescription(cbItemReward.SelectedItem.ToString());
+                if (cbItemTarget.SelectedIndex > -1)
+                    targetItemID = itemConst.getIDOnDescription(cbItemTarget.SelectedItem.ToString());
                 foreach (CQuest quest in quests.quest.Values)
                 {
                     if (quest.Reward.TypeOfItems.Contains(itemID))
+                    {
+                        object[] row = { quest.Additional.Holder, quest.QuestID };
+                        dgvReview.Rows.Add(row);
+                    }
+                    if (quest.Target.ObjectType == targetItemID)
                     {
                         object[] row = { quest.Additional.Holder, quest.QuestID };
                         dgvReview.Rows.Add(row);

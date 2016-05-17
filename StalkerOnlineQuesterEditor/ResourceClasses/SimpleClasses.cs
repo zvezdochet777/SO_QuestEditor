@@ -451,7 +451,6 @@ namespace StalkerOnlineQuesterEditor
 
     public class CQuestRules : ICloneable
     {
-        //List<int> Reputation;
         public List<int> TypeOfItems;
         public List<int> NumOfItems;
         public List<int> AttrOfItems;
@@ -482,7 +481,6 @@ namespace StalkerOnlineQuesterEditor
 
         public CQuestRules()
         {
-          //  this.Reputation = new List<int>(3);
             this.TypeOfItems = new List<int>();
             this.NumOfItems = new List<int>();
             this.AttrOfItems = new List<int>();
@@ -758,39 +756,6 @@ namespace StalkerOnlineQuesterEditor
         {
             this.cur_version = cur_version;
             this.old_version = old_version;
-        }
-    }
-
-    public class CBalanceFractions
-    {
-        public double limit;
-        public double cat_1;
-        public double cat_2;
-        public double cat_3;
-        public Dictionary<int, CFractionPenalty> penalty;
-
-        public CBalanceFractions()
-        {
-            limit = 0;
-            penalty = new Dictionary<int, CFractionPenalty>();
-        }
-    }
-
-    public class CFractionPenalty
-    {
-        public double cat_1;
-        public double cat_2;
-        public double cat_3;
-
-        public CFractionPenalty()
-        {
-        }
-
-        public CFractionPenalty(double cat_1, double cat_2, double cat_3)
-        {
-            this.cat_1 = cat_1;
-            this.cat_2 = cat_2;
-            this.cat_3 = cat_3;
         }
     }
 
