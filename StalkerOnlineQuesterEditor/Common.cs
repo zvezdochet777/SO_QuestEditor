@@ -41,6 +41,16 @@ namespace StalkerOnlineQuesterEditor
             else
                 return intValue.ToString();
         }
+
+        public static System.Xml.XmlWriterSettings GetXmlSettings()
+        {
+            System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
+            settings.Encoding = new UTF8Encoding(false);
+            settings.Indent = true;
+            settings.OmitXmlDeclaration = true;
+            settings.NewLineOnAttributes = false;
+            return settings;
+        }
     }
 
     //! Класс для кодировки значений \\n, \\p в <n> и <p>

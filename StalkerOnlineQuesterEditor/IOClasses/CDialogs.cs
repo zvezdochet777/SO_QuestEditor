@@ -43,7 +43,6 @@ namespace StalkerOnlineQuesterEditor
             parseDialogsFile(DialogsXMLFile, this.dialogs);
             foreach (var locale in parent.settings.getListLocales())
             {
-                //DialogsXMLFile = "locales\\" + locale + "\\" + parent.settings.dialogXML;
                 DialogsXMLFile = parent.settings.getDialogLocalePath();
                 if (!locales.Keys.Contains(locale))
                     locales.Add(locale, new NPCDicts());
@@ -216,15 +215,16 @@ namespace StalkerOnlineQuesterEditor
         //! Сохранить все диалоги в xml файл
         public void saveDialogs(string fileName)
         {
-            //fileName = "RUS\\" + fileName; 
+            string path = Path.GetDirectoryName(fileName);            
             save(fileName, this.dialogs);
             saveNodeCoordinates("NodeCoordinates.xml",this.dialogs);
+            SaveDialogsTexts(path + "\\DialogTexts.xml", this.dialogs);
+            SaveDialogsData(path + "\\..\\DialogData.xml", this.dialogs);
         }
 
         //! Сохраняет текущую локализацию диалогов в файл
         public void saveLocales(string fileName)
         {
-            //fileName = parent.settings.getCurrentLocalePath() + '\\' + fileName;
             this.save(fileName, this.locales[parent.settings.getCurrentLocale()]);
         }
 
@@ -281,15 +281,99 @@ namespace StalkerOnlineQuesterEditor
                     resultDoc.Root.Add(element);
                 }
 
-            System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
-            settings.Encoding = new UTF8Encoding(false);
-            settings.Indent = true;
-            settings.OmitXmlDeclaration = true;
-            settings.NewLineOnAttributes = true;
+            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
             using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
             {
                 resultDoc.Save(w);
             }
+        }
+
+        private void SaveDialogsTexts(string fileName, NPCDicts target)
+        {
+            XDocument resultDoc = new XDocument(new XElement("root"));
+            XElement element;
+            XElement npcElement;
+
+            foreach (string npcName in target.Keys)
+            {
+                npcElement = new XElement("NPC", new XAttribute("Name", npcName));
+                NPCDialogDict Dictdialog = target[npcName];
+                foreach (CDialog dialog in Dictdialog.Values)
+                {
+                    element = new XElement("Dialog",
+                       new XAttribute("ID", dialog.DialogID.ToString()),
+                       new XElement("Version", dialog.version.ToString()),
+                       new XElement("Title", dialog.Title),
+                       new XElement("Text", dialog.Text));
+                    npcElement.Add(element);
+                }
+                resultDoc.Root.Add(npcElement);
+            }
+            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
+            {
+                resultDoc.Save(w);
+            }
+        }
+
+        private void SaveDialogsData(string fileName, NPCDicts target)
+        {
+            XDocument resultDoc = new XDocument(new XElement("root"));
+            XElement element;
+            XElement npcElement;
+
+            foreach (string npcName in target.Keys)
+            {
+                npcElement = new XElement("NPC", new XAttribute("Name", npcName));
+                NPCDialogDict Dictdialog = target[npcName];
+                foreach (CDialog dialog in Dictdialog.Values)
+                {
+                    element = new XElement("Dialog",
+                       new XAttribute("ID", dialog.DialogID.ToString()),
+                       new XElement("Precondition",
+                           new XElement("ListOfNecessaryQuests",
+                               new XElement("listOfCompletedQuests",
+                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)),
+                               new XElement("listOfOpenedQuests",
+                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)),
+                               new XElement("listOfOnTestQuests",
+                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)),
+                                new XElement("listOfFailedQuests",
+                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests))),
+                           new XElement("ListOfMustNoQuests",
+                               new XElement("listOfCompletedQuests",
+                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)),
+                               new XElement("listOfOpenedQuests",
+                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)),
+                               new XElement("listOfOnTestQuests",
+                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)),
+                               new XElement("listOfFailedQuests",
+                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests))),
+                           new XElement("tests", Global.GetListAsString(dialog.Precondition.tests)),
+                           new XElement("Reputation", dialog.Precondition.getReputation()),
+                           new XElement("PlayerLevel", Global.GetIntAsString(dialog.Precondition.PlayerLevel)),
+                           new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK))),
+                       new XElement("Actions",
+                           new XElement("Exit", Global.GetBoolAsString(dialog.Actions.Exit)),
+                           new XElement("ToDialog", Global.GetIntAsString(dialog.Actions.ToDialog)),
+                           new XElement("Data", dialog.Actions.Data),
+                           new XElement("Event", dialog.Actions.Event.ToString()),
+                           new XElement("GetQuest", Global.GetListAsString(dialog.Actions.GetQuests)),
+                           new XElement("CompleteQuest", Global.GetListAsString(dialog.Actions.CompleteQuests))),
+                       new XElement("Nodes", Global.GetListAsString(dialog.Nodes)),
+                       new XElement("RootDialog", Global.GetBoolAsString(dialog.coordinates.RootDialog)),
+                       new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active))
+                           );
+
+                    npcElement.Add(element);
+                }
+                resultDoc.Root.Add(npcElement);
+            }
+            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
+            {
+                resultDoc.Save(w);
+            }        
         }
 
         private void saveNodeCoordinates(string fileName, NPCDicts target)
@@ -308,11 +392,7 @@ namespace StalkerOnlineQuesterEditor
                 }
                 resultDoc.Root.Add(npc_element);
             }
-            System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
-            settings.Encoding = new UTF8Encoding(false);
-            settings.Indent = true;
-            settings.OmitXmlDeclaration = true;
-            settings.NewLineOnAttributes = false;
+            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
             using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
             {
                 resultDoc.Save(w);
@@ -338,7 +418,6 @@ namespace StalkerOnlineQuesterEditor
                     int y = int.Parse(dialog.Element("Y").Value);
                     tempCoordinates[npc_name].Add(id, new NodeCoordinates(x,y,false,false));
                 }
-                
             }
         }
 
