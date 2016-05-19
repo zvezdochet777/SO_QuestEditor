@@ -32,6 +32,7 @@ namespace StalkerOnlineQuesterEditor
         CDialogs dialogs;
         //! Ссылка на экземпляр класса CQuests
         CQuests quests;
+        CManagerNPC ManagerNPC;
         NodeDragHandler Listener;
         RectangleDrawingHandler RectDrawer;
         public RectangleManager RectManager;
@@ -78,7 +79,8 @@ namespace StalkerOnlineQuesterEditor
             HoverHandler = new MouseHoverHandler(this, RectManager);
             RectManager.LoadData();
             settings = new CSettings(this);
-            dialogs = new CDialogs(this);
+            ManagerNPC = new CManagerNPC();
+            dialogs = new CDialogs(this, ManagerNPC);
             quests = new CQuests(this);
             tpConst = new CTPConstants();
             settings.checkMode();
@@ -183,17 +185,17 @@ namespace StalkerOnlineQuesterEditor
                 string name = "";
                 if (settings.getMode() == settings.MODE_EDITOR)
                 {
-                    if (dialogs.rusNamesToNPC.ContainsKey(text))
+                    if (ManagerNPC.rusNamesToNPC.ContainsKey(text))
                     {
-                        name = dialogs.rusNamesToNPC[text];
+                        name = ManagerNPC.rusNamesToNPC[text];
                         NPCBox.SelectedValue = name;
                     }
                 }
                 else if (settings.getMode() == settings.MODE_LOCALIZATION)
                 {
-                    if (dialogs.engNamesToNPC.ContainsKey(text))
+                    if (ManagerNPC.engNamesToNPC.ContainsKey(text))
                     {
-                        name = dialogs.engNamesToNPC[text];
+                        name = ManagerNPC.engNamesToNPC[text];
                         NPCBox.SelectedValue = name;
                     }
                 }
@@ -250,12 +252,12 @@ namespace StalkerOnlineQuesterEditor
             {
                 string npcName = holder;
                 string localName = "";
-                if (dialogs.NpcData.ContainsKey(holder))
+                if (ManagerNPC.NpcData.ContainsKey(holder))
                 {
                     if (settings.getMode() == settings.MODE_EDITOR)
-                        localName = dialogs.NpcData[holder].rusName;
+                        localName = ManagerNPC.NpcData[holder].rusName;
                     else if (settings.getMode() == settings.MODE_LOCALIZATION)
-                        localName = dialogs.NpcData[holder].engName;
+                        localName = ManagerNPC.NpcData[holder].engName;
 
                     NPCBox.AutoCompleteCustomSource.Add(localName);
                     npcName += " (" + localName + ")";
@@ -1562,7 +1564,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 foreach (var id in diff[name].Keys)
                 {
-                    string location = (dialogs.NpcData.ContainsKey(name)) ? (dialogs.NpcData[name].location) : ("НЕТ ИМЕНИ");
+                    string location = (ManagerNPC.NpcData.ContainsKey(name)) ? (ManagerNPC.NpcData[name].location) : ("НЕТ ИМЕНИ");
                     string rustext1 = dialogs.dialogs[name][id].Title;
                     string engtext1 = dialogs.locales[loc][name][id].Title;
                     object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location, rustext1, engtext1 };
@@ -1608,7 +1610,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 foreach (var id in diff[name].Keys)
                 {
-                    string location = (dialogs.NpcData.ContainsKey(name)) ? (dialogs.NpcData[name].location) : ("НЕТ ИМЕНИ");
+                    string location = (ManagerNPC.NpcData.ContainsKey(name)) ? (ManagerNPC.NpcData[name].location) : ("НЕТ ИМЕНИ");
                     string rustext1 = quests.quest[id].QuestInformation.Title;
                     string engtext1 = quests.locales[loc][id].QuestInformation.Title;
                     object[] row = { type, name, id, diff[name][id].old_version, diff[name][id].cur_version, location, rustext1, engtext1 };
@@ -1640,7 +1642,7 @@ namespace StalkerOnlineQuesterEditor
         {
             cbLocation.Sorted = true;
             cbLocation.DataSource = null;
-            cbLocation.DataSource = dialogs.locationNames;
+            cbLocation.DataSource = ManagerNPC.locationNames;
         }
         void fillItemRewardsBox()
         {
@@ -1688,9 +1690,9 @@ namespace StalkerOnlineQuesterEditor
                 int d_num = dialogs.dialogs[npc].Count;
                 int q_num = quests.getCountOfQuests(npc);
                 string neededLocation = cbLocation.Text;
-                string location = (dialogs.NpcData.ContainsKey(npc)) ? (dialogs.NpcData[npc].location) : ("НЕТ ИМЕНИ");
-                string rusname = (dialogs.NpcData.ContainsKey(npc)) ? (dialogs.NpcData[npc].rusName) : ("НЕ ПЕРЕВЕДЕН");
-                string coord = (dialogs.NpcData.ContainsKey(npc)) ? (dialogs.NpcData[npc].coordinates) : ("НЕТ КООРДИНАТ");
+                string location = (ManagerNPC.NpcData.ContainsKey(npc)) ? (ManagerNPC.NpcData[npc].location) : ("НЕТ ИМЕНИ");
+                string rusname = (ManagerNPC.NpcData.ContainsKey(npc)) ? (ManagerNPC.NpcData[npc].rusName) : ("НЕ ПЕРЕВЕДЕН");
+                string coord = (ManagerNPC.NpcData.ContainsKey(npc)) ? (ManagerNPC.NpcData[npc].coordinates) : ("НЕТ КООРДИНАТ");
                 if( ( !checkDialog || (checkDialog && d_num < numDialogs.Value) )
                     && ( !checkQuest || (checkQuest && q_num < numQuests.Value) )
                     && ( !checkLocation || (checkLocation && location == neededLocation) ) )
@@ -2152,7 +2154,7 @@ namespace StalkerOnlineQuesterEditor
         //! Пункт главного меню - Cтатистика
         private void StatisticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests, dialogs);
+            StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests, dialogs, ManagerNPC);
             sf.Show();
         }
         //! Пункт главного меню - Выход

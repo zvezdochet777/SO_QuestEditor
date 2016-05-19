@@ -20,6 +20,7 @@ namespace StalkerOnlineQuesterEditor
         CQuests quests;
         //! Экземпляр класса CDialogs, хранящий всю инфу по диалогам
         CDialogs dialogs;
+        CManagerNPC ManagerNPC;
 
         double Credits;
         int countOfQuests;
@@ -57,13 +58,14 @@ namespace StalkerOnlineQuesterEditor
         };
 
         //! Конструктор, получает элементы от главной формы
-        public StatisticsForm(MainForm parent, int _NPCCount, CQuests _quests, CDialogs _dialogs)
+        public StatisticsForm(MainForm parent, int _NPCCount, CQuests _quests, CDialogs _dialogs, CManagerNPC manager)
         {
             InitializeComponent();
             this.parent = parent;
             NPCCount = _NPCCount;
             quests = _quests;
             dialogs = _dialogs;
+            ManagerNPC = manager;
             calcStatistic();
             calcReputation();
             showOnScreen();
@@ -122,7 +124,7 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (string npc in dialogs.dialogs.Keys)
             {
-                if (!dialogs.NpcData.ContainsKey(npc) || dialogs.NpcData[npc].location == "notfound")
+                if (!ManagerNPC.NpcData.ContainsKey(npc) || ManagerNPC.NpcData[npc].location == "notfound")
                     continue;
 
                 foreach (int id in dialogs.dialogs[npc].Keys)

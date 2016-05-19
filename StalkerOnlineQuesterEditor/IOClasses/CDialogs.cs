@@ -23,27 +23,21 @@ namespace StalkerOnlineQuesterEditor
     //! Класс обработки диалогов
     public class CDialogs
     {
-        MainForm parent;
+        private MainForm parent;
         //! XML файл диалогов для хранения информации
         XDocument doc = new XDocument();
         //! Словарь диалогов: < Имя NPC, <DialogID,  CDialog> >
         public NPCDicts dialogs = new NPCDicts();
         //! Словарь локалей
         public NPCLocales locales = new NPCLocales();
-        //! Словарь информации об NPC - локализованное имя, карта, координаты
-        public Dictionary<string, NpcData> NpcData = new Dictionary<string, NpcData>();
-        //! Словарь соответствия русское имя - общее имя в игре (для поиска в комбобоксе NPCBox)
-        public Dictionary<string, string> rusNamesToNPC = new Dictionary<string, string>();
-        //! Словарь cоответствия англ имя - общее имя в игре (для поиска в комбобоксе NPCBox)
-        public Dictionary<string, string> engNamesToNPC = new Dictionary<string, string>();
         private CoordinatesDict tempCoordinates = new CoordinatesDict();
-        //! Список всех локаций
-        public List<string> locationNames = new List<string>();
+        private CManagerNPC ManagerNPC;
 
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
-        public CDialogs(MainForm parent)
+        public CDialogs(MainForm parent, CManagerNPC managerNPC)
         {
             this.parent = parent;
+            ManagerNPC = managerNPC;
             String DialogsXMLFile = parent.settings.getDialogsPath();
             parseNodeCoordinates("NodeCoordinates.xml");
             parseDialogsFile(DialogsXMLFile, this.dialogs);
@@ -55,7 +49,6 @@ namespace StalkerOnlineQuesterEditor
                     locales.Add(locale, new NPCDicts());
                 parseDialogsFile(DialogsXMLFile, this.locales[locale]);
             }
-            parseNpcLocationFile("npc_stat.xml");
         }
 
         //! Парсер xml - файла диалогов, записывает результат в target
@@ -349,31 +342,6 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        //! Парсит файл с местонахождением NPC
-        void parseNpcLocationFile(string fileName)
-        {
-            if (!File.Exists(fileName))
-                return;
-
-            doc = XDocument.Load(fileName);
-            foreach (XElement item in doc.Root.Elements())
-            {
-                string name = item.Element("Name").Value.ToString();
-                string map = item.Element("map").Value.ToString();
-                string rusName = item.Element("npcLocal").Value.ToString();
-                string engName = item.Element("npcEngName").Value.ToString();
-                string coord = item.Element("chunk").Value.ToString();
-                if ( !NpcData.ContainsKey(name) )
-                    NpcData.Add(name, new NpcData(rusName, engName, map, coord));
-                if ( !locationNames.Contains(map) )
-                    locationNames.Add( map );
-                if  ( !rusNamesToNPC.ContainsKey(rusName) )
-                    rusNamesToNPC.Add(rusName, name);
-                if ( !engNamesToNPC.ContainsKey(engName) )
-                    engNamesToNPC.Add(engName, name);
-            }
-        }
-
         //! Возвращает список всех NPC
         public List<string> getListOfNPC()
         {
@@ -434,7 +402,7 @@ namespace StalkerOnlineQuesterEditor
                     {
                         if (!dialog.coordinates.Active)
                             continue;
-                        if (!NpcData.ContainsKey(npc_name) || NpcData[npc_name].location == "notfound")
+                        if (!ManagerNPC.NpcData.ContainsKey(npc_name) || ManagerNPC.NpcData[npc_name].location == "notfound")
                             continue;
 
                         var locale_version = 0;
@@ -460,12 +428,6 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
-            //foreach (var name in ret.Keys)
-            //    {
-            //        System.Console.WriteLine(name + ":");
-            //        foreach (var id in ret[name])
-            //            System.Console.WriteLine("id:"+id.ToString());
-            //    }
             return ret;
         }
 
