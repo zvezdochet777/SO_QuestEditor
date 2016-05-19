@@ -9,8 +9,6 @@ using System.Windows.Forms;
 
 namespace StalkerOnlineQuesterEditor
 {
-    using ListOfQuests = List<int>;
-
     //! Словарь <DialogID, CDialog>
     using NPCDialogDict = Dictionary<int, CDialog>;
     //! Словарь <NPCName, <DialogID, CDialog>>
@@ -19,29 +17,12 @@ namespace StalkerOnlineQuesterEditor
     using NPCLocales = Dictionary<string, Dictionary<string, Dictionary<int, CDialog>>>;
     //! Словарь <NPCName, <DialogID, CDifference>>
     using DifferenceDict = Dictionary<string, Dictionary<int, CDifference>>;
-    //! Словарь Имя NPC < ID диалога, Структура NodeCoordinates > 
+    //! Словарь <Имя NPC, < ID диалога, Структура NodeCoordinates > 
     using CoordinatesDict = Dictionary<string, Dictionary<int, NodeCoordinates>>;
-    
-    public struct npcData
-    {
-        public string rusName;
-        public string engName;
-        public string location;
-        public string coordinates;
-
-        public npcData(string rn, string en, string loc, string cd)
-        {
-            rusName = rn;
-            engName = en;
-            location = loc;
-            coordinates = cd;
-        }
-    }
 
     //! Класс обработки диалогов
     public class CDialogs
     {
-        Common common = new Common();
         MainForm parent;
         //! XML файл диалогов для хранения информации
         XDocument doc = new XDocument();
@@ -50,7 +31,7 @@ namespace StalkerOnlineQuesterEditor
         //! Словарь локалей
         public NPCLocales locales = new NPCLocales();
         //! Словарь информации об NPC - локализованное имя, карта, координаты
-        public Dictionary<string, npcData> NpcData = new Dictionary<string, npcData>();
+        public Dictionary<string, NpcData> NpcData = new Dictionary<string, NpcData>();
         //! Словарь соответствия русское имя - общее имя в игре (для поиска в комбобоксе NPCBox)
         public Dictionary<string, string> rusNamesToNPC = new Dictionary<string, string>();
         //! Словарь cоответствия англ имя - общее имя в игре (для поиска в комбобоксе NPCBox)
@@ -157,11 +138,6 @@ namespace StalkerOnlineQuesterEditor
                     foreach (string quest in item.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfFailedQuests").Value.Split(','))
                         Precondition.ListOfNecessaryQuests.ListOfOnTestQuests.Add(int.Parse(quest));
 
-                //if (item.Element("Precondition").Element("CheckClan").Value == "1")
-                //    Precondition.tests.Add(0);
-                //if (item.Element("Precondition").Element("CheckClanID").Value == "1")
-                //    Precondition.tests.Add(1);
-
                 Precondition.KarmaPK = new List<int>();
                 if (item.Element("Precondition").Element("KarmaPK").Value != "")
                     foreach (string karme_el in item.Element("Precondition").Element("KarmaPK").Value.Split(','))
@@ -181,12 +157,6 @@ namespace StalkerOnlineQuesterEditor
                 NodeCoordinates nodeCoord = new NodeCoordinates();
                 if ( item.Descendants("NodeCoordinates").ToList().Count > 0 )
                 {
-                    /*
-                    if (!item.Element("NodeCoordinates").Element("X").Value.Equals(""))
-                        nodeCoord.X = int.Parse(item.Element("NodeCoordinates").Element("X").Value);
-                    if (!item.Element("NodeCoordinates").Element("Y").Value.Equals(""))
-                        nodeCoord.Y = int.Parse(item.Element("NodeCoordinates").Element("Y").Value);
-                    */
                     if (tempCoordinates.ContainsKey(Holder[0]) && tempCoordinates[Holder[0]].ContainsKey(DialogID))
                     {
                         nodeCoord.X = tempCoordinates[Holder[0]][DialogID].X;
@@ -282,40 +252,38 @@ namespace StalkerOnlineQuesterEditor
                        new XElement("Precondition",
                            new XElement("ListOfNecessaryQuests",
                                new XElement("listOfCompletedQuests",
-                                       getListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)),
+                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)),
                                new XElement("listOfOpenedQuests",
-                                       getListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)),
+                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)),
                                new XElement("listOfOnTestQuests",
-                                       getListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)),
+                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)),
                                 new XElement("listOfFailedQuests",
-                                       getListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests))),
+                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests))),
                            new XElement("ListOfMustNoQuests",
                                new XElement("listOfCompletedQuests",
-                                       getListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)),
+                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)),
                                new XElement("listOfOpenedQuests",
-                                       getListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)),
+                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)),
                                new XElement("listOfOnTestQuests",
-                                       getListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)),
+                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)),
                                new XElement("listOfFailedQuests",
-                                       getListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests))),
-                           new XElement("tests", getListAsString(dialog.Precondition.tests)),
+                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests))),
+                           new XElement("tests", Global.GetListAsString(dialog.Precondition.tests)),
                            new XElement("Reputation", dialog.Precondition.getReputation()),
-                           new XElement("PlayerLevel", getIntAsString(dialog.Precondition.PlayerLevel)),
-                           new XElement("KarmaPK", getListAsString(dialog.Precondition.KarmaPK))),
+                           new XElement("PlayerLevel", Global.GetIntAsString(dialog.Precondition.PlayerLevel)),
+                           new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK))),
                        new XElement("Text", dialog.Text),
                        new XElement("Actions",
-                           new XElement("Exit", getBoolAsString(dialog.Actions.Exit)),
-                           new XElement("ToDialog", getIntAsString(dialog.Actions.ToDialog)),
+                           new XElement("Exit", Global.GetBoolAsString(dialog.Actions.Exit)),
+                           new XElement("ToDialog", Global.GetIntAsString(dialog.Actions.ToDialog)),
                            new XElement("Data", dialog.Actions.Data),
                            new XElement("Event", dialog.Actions.Event.ToString()),
-                           new XElement("GetQuest", getListAsString(dialog.Actions.GetQuests)),
-                           new XElement("CompleteQuest", getListAsString(dialog.Actions.CompleteQuests))),
-                       new XElement("Nodes", getListAsString(dialog.Nodes)),
+                           new XElement("GetQuest", Global.GetListAsString(dialog.Actions.GetQuests)),
+                           new XElement("CompleteQuest", Global.GetListAsString(dialog.Actions.CompleteQuests))),
+                       new XElement("Nodes", Global.GetListAsString(dialog.Nodes)),
                        new XElement("NodeCoordinates",
-                           //new XElement("X", getIntAsString(dialog.coordinates.X)),
-                           //new XElement("Y", getIntAsString(dialog.coordinates.Y)),
-                           new XElement("RootDialog", getBoolAsString(dialog.coordinates.RootDialog)),
-                           new XElement("Active", getBoolAsString(dialog.coordinates.Active)))
+                           new XElement("RootDialog", Global.GetBoolAsString(dialog.coordinates.RootDialog)),
+                           new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active)))
                        );
                     resultDoc.Root.Add(element);
                 }
@@ -329,7 +297,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 resultDoc.Save(w);
             }
-            //copyResultFile(fileName);
         }
 
         private void saveNodeCoordinates(string fileName, NPCDicts target)
@@ -397,7 +364,7 @@ namespace StalkerOnlineQuesterEditor
                 string engName = item.Element("npcEngName").Value.ToString();
                 string coord = item.Element("chunk").Value.ToString();
                 if ( !NpcData.ContainsKey(name) )
-                    NpcData.Add(name, new npcData(rusName, engName, map, coord));
+                    NpcData.Add(name, new NpcData(rusName, engName, map, coord));
                 if ( !locationNames.Contains(map) )
                     locationNames.Add( map );
                 if  ( !rusNamesToNPC.ContainsKey(rusName) )
@@ -405,59 +372,6 @@ namespace StalkerOnlineQuesterEditor
                 if ( !engNamesToNPC.ContainsKey(engName) )
                     engNamesToNPC.Add(engName, name);
             }
-        }
-
-        //! Копирование получившегося файла в директорию игры (она задается в настройках)
-        void copyResultFile(string filename)
-        {
-            if (parent.settings.pathToCopyFiles == "")
-                return;
-            if (!parent.settings.pathToCopyFiles.EndsWith("\\"))
-                parent.settings.pathToCopyFiles += "\\";
-            string destPath = parent.settings.pathToCopyFiles + filename;
-            string srcPath = filename;
-            try
-            {
-                File.Copy(srcPath, destPath, true);
-            }
-            catch 
-            {
-                MessageBox.Show("Невозможно скопировать файл результата! Проверьте путь в настройках программы.", "Ошибка",
-                                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        //! Возвращает список как строку из элементов через запятую
-        string getListAsString(List<int> list)
-        {
-            string str = "";
-            foreach (int element in list)
-            {
-                if (str.Equals(""))
-                    str += element.ToString();
-                else
-                    str += "," + element.ToString();
-            }
-            return str;
-        }
-
-        //! Возвращает булевское значение строкой: "1" или ""
-        string getBoolAsString(bool bbool)
-        {
-            if (bbool)
-                return "1";
-            else
-                return "";
-        }
-
-        //! Возвращает целое как строку: "123" или "" в случае нуля
-        string getIntAsString(int someInt)
-        {
-            if (someInt == 0)
-                return "";
-            else
-                return someInt.ToString();
-
         }
 
         //! Возвращает список всех NPC

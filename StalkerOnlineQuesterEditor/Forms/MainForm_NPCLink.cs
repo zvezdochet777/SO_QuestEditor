@@ -44,7 +44,7 @@ namespace StalkerOnlineQuesterEditor
                 MessageBox.Show("Выбранный NPC отсутствует на игровых локациях. Запустите парсер NPC, если нужно обновить информацию.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            npcData NpcData = dialogs.NpcData[npcName];
+            NpcData NpcData = dialogs.NpcData[npcName];
             // очищаем поле графа
             bNumOfIter = true;
             rootx = (float)(this.ClientSize.Width / 5);
@@ -75,7 +75,7 @@ namespace StalkerOnlineQuesterEditor
                     {
                         PNode new_node = new PNode();
                         string new_npc = quests.quest[questID].Additional.Holder;
-                        npcData new_data = dialogs.NpcData[new_npc];
+                        NpcData new_data = dialogs.NpcData[new_npc];
                         if (mapGraphs.Keys.Contains(new_npc))
                             new_node = mapGraphs[new_npc];
                         else
@@ -91,7 +91,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Добавляет узел на граф связей NPC между собой
-        void addNodeToNpcLink(ref PNode Holder, string name, npcData NpcData)
+        void addNodeToNpcLink(ref PNode Holder, string name, NpcData NpcData)
         {
             Holder = PPath.CreateRectangle(rootx, rooty, 180, 33);
             if (bNumOfIter)

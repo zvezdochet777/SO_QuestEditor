@@ -146,6 +146,7 @@
     <Compile Include="GUIClasses\PanEventHandler.cs" />
     <Compile Include="GUIClasses\RectangleDrawer.cs" />
     <Compile Include="GUIClasses\ZoomEventHandler.cs" />
+    <Compile Include="IOClasses\CNpcData.cs" />
     <Compile Include="IOClasses\CRectangles.cs" />
     <Compile Include="ResourceClasses\CEffectConstants.cs" />
     <Compile Include="ResourceClasses\CFracConstants.cs" />

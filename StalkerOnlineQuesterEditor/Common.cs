@@ -23,6 +23,24 @@ namespace StalkerOnlineQuesterEditor
             }
             return result;
         }
+
+        //! Возвращает булевское значение строкой: "1" или ""
+        public static string GetBoolAsString(bool booleanValue)
+        {
+            if (booleanValue)
+                return "1";
+            else
+                return "";
+        }
+
+        //! Возвращает целое как строку: "123" или "" в случае нуля
+        public static string GetIntAsString(int intValue)
+        {
+            if (intValue == 0)
+                return "";
+            else
+                return intValue.ToString();
+        }
     }
 
     //! Класс для кодировки значений \\n, \\p в <n> и <p>
@@ -55,4 +73,5 @@ namespace StalkerOnlineQuesterEditor
             
         }
     }
+
 }
