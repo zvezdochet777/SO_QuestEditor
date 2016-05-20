@@ -440,7 +440,6 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfOnTestQuests = new ListOfQuests(copy.ListOfOnTestQuests);
             copy.Repeat = this.Repeat;
             copy.TakenPeriod = this.TakenPeriod;
-
             return copy;
         }
     }
@@ -522,7 +521,7 @@ namespace StalkerOnlineQuesterEditor
         public List<int> AttrOfItems;
         //! Вероятность выпадения предметов
         public List<float> Probability;
-        public List<int> EventCodes;
+        //! Денежное вознаграждение
         public float Credits;
         //! Словарь репутаций в награду, выглядит так <id фракции>:<значение награды>;
         public Dictionary<int, int> Reputation;
@@ -538,7 +537,6 @@ namespace StalkerOnlineQuesterEditor
             copy.NumOfItems = new List<int>(this.NumOfItems);
             copy.AttrOfItems = new List<int>(this.AttrOfItems);
             copy.Probability = this.Probability;
-            copy.EventCodes = new List<int>(this.EventCodes);
             copy.Credits = this.Credits;
             copy.Reputation = this.Reputation;
             copy.KarmaPK = this.KarmaPK;
@@ -554,8 +552,7 @@ namespace StalkerOnlineQuesterEditor
             this.NumOfItems = new List<int>();
             this.AttrOfItems = new List<int>();
             this.Probability = new List<float>();
-            this.Credits = new float();
-            this.EventCodes = new List<int>();
+            this.Credits = new float();            
             this.Reputation = new Dictionary<int, int>();
             this.KarmaPK = new int();
             this.Effects = new List<CEffect>();
@@ -593,10 +590,7 @@ namespace StalkerOnlineQuesterEditor
         public int Experience;
         public List<int> TypeOfItems;
         public List<int> NumOfItems;
-        //public List<int> EventCodes;
-        public string TeleportTo;
         public float Credits;
-        //public Dictionary<int, int> Reputation;
 
         public object Clone()
         {
@@ -604,9 +598,7 @@ namespace StalkerOnlineQuesterEditor
             copy.Experience = this.Experience;
             copy.TypeOfItems = new List<int>(this.TypeOfItems);
             copy.NumOfItems = new List<int>(this.NumOfItems);
-            copy.TeleportTo = (string)this.TeleportTo.Clone();
             copy.Credits = this.Credits;
-            //copy.Reputation = this.Reputation;
             return copy;
         }
 
@@ -616,23 +608,7 @@ namespace StalkerOnlineQuesterEditor
             this.TypeOfItems = new List<int>();
             this.NumOfItems = new List<int>();
             this.Credits = new float();
-            //this.Reputation = new Dictionary<int, int>();
-            this.TeleportTo = "";
-            //this.EventCodes = new List<int>();
         }
-        //public string getReputation()
-        //{
-        //    string ret = "";
-
-        //    foreach (int key in this.Reputation.Keys)
-        //    {
-        //        if (!ret.Equals(""))
-        //            ret += ",";
-        //        ret += (key.ToString() + ":" + this.Reputation[key].ToString());
-        //    }
-
-        //    return ret;
-        //}
     }
 
     public class CQuestAdditional : ICloneable

@@ -33,14 +33,6 @@ namespace StalkerOnlineQuesterEditor
                 ret.Add(key);
             return ret;
         }
-
-        public string getNameOnDir(string sDir)
-        {
-            foreach (KeyValuePair<string, CSpaceDescription> element in this.spaces)
-                if (element.Value.getDir().Equals(sDir))
-                    return element.Key;
-            return "";
-        }
     }
 
     public class CSpaceDescription
