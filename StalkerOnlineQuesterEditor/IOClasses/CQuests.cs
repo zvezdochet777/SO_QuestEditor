@@ -171,8 +171,6 @@ namespace StalkerOnlineQuesterEditor
                     foreach (string itemType in item.Element("QuestRules").Element("Scenarios").Value.Split(','))
                         questRules.Scenarios.Add(int.Parse(itemType));
 
-                reward.TeleportTo = item.Element("Reward").Element("TeleportTo").Value.ToString();
-
                 if (!item.Element("Reward").Element("Expirience").Value.Equals(""))
                     foreach (string itemNum in item.Element("Reward").Element("Expirience").Value.Split(','))
                         reward.Experience.Add(int.Parse(itemNum));
@@ -199,16 +197,6 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Element("Reward").Element("EventCodes").Value.Equals(""))
                     foreach (string events in item.Element("Reward").Element("EventCodes").Value.Split(','))
                         reward.NumOfItems.Add(int.Parse(events));
-
-                try
-                {
-                    foreach (string fraction in item.Element("Reward").Element("Fractions").Value.Split(','))
-                        if (!fraction.Equals(""))
-                            reward.Fractions.Add(int.Parse(fraction));
-                }
-                catch
-                {
-                }
 
                 try
                 {
@@ -273,11 +261,6 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Element("Penalty").Element("Credits").Value.Equals(""))
                     penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value);
 
-                //foreach (string fraction in item.Element("Penalty").Element("Reputation").Value.Split(','))
-                //    if (!fraction.Equals(""))
-                //        reward.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
-                // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Penalty
-
                 if (!variable_target.ContainsKey(QuestID))
                     variable_target.Add(QuestID, new CQuest(QuestID, Version, information, precondition, questRules, reward, additional, target, penalty));
             }
@@ -334,7 +317,10 @@ namespace StalkerOnlineQuesterEditor
         //! Сохраняет данные по квестам в xml файл
         public void saveQuests(string fileName)
         {
+            string path = Path.GetDirectoryName(fileName);
             save(fileName, this.quest);
+            SaveQuestsTexts(path + "\\QuestTexts.xml", this.quest);
+            SaveQuestsData(path + "\\..\\QuestData.xml", this.quest);
         }
 
         //! Сохраняет текущую локализацию квестов в файл
@@ -393,7 +379,6 @@ namespace StalkerOnlineQuesterEditor
                     new XElement("QuestRules",
                         new XElement("Scenarios", Global.GetListAsString(questValue.QuestRules.Scenarios)),
                         new XElement("TeleportTo", questValue.QuestRules.TeleportTo),
-                        new XElement("Reputation", ""),
                         new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestRules.TypeOfItems)),
                         new XElement("NumOfItems", Global.GetListAsString(questValue.QuestRules.NumOfItems)),
                         new XElement("AttrOfItems", Global.GetListAsString(questValue.QuestRules.AttrOfItems)),
@@ -402,7 +387,6 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("MinMember", Global.GetIntAsString(questValue.QuestRules.MinMember)),
                         new XElement("MaxMember", Global.GetIntAsString(questValue.QuestRules.MaxMember))),
                     new XElement("Reward",
-                        new XElement("TeleportTo", ""),
                         new XElement("Expirience", Global.GetListAsString(questValue.Reward.Experience)),
                         new XElement("TypeOfItems", Global.GetListAsString(questValue.Reward.TypeOfItems)),
                         new XElement("NumOfItems", Global.GetListAsString(questValue.Reward.NumOfItems)),
@@ -411,17 +395,14 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("Credits", questValue.Reward.Credits),
                         new XElement("EventCodes", Global.GetListAsString(questValue.Reward.EventCodes)),
                         new XElement("Reputation", questValue.Reward.getReputation()),
-                        new XElement("Fractions", Global.GetListAsString(questValue.Reward.Fractions)),
                         new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()),
                         new XElement("Difficulty", questValue.Reward.Difficulty.ToString()),
                         Effects),
                     new XElement("Penalty",
-                        new XElement("TeleportTo", ""),
                         new XElement("Expirience", Global.GetIntAsString(questValue.QuestPenalty.Experience)),
                         new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestPenalty.TypeOfItems)),
                         new XElement("NumOfItems", Global.GetListAsString(questValue.QuestPenalty.NumOfItems)),
-                        new XElement("Credits", questValue.QuestPenalty.Credits),
-                        new XElement("Reputation", "")),
+                        new XElement("Credits", questValue.QuestPenalty.Credits)),
                     new XElement("Additional",
                         new XElement("IsSubQuest", Global.GetIntAsString(questValue.Additional.IsSubQuest)),
                         new XElement("ListOfSubQuest", Global.GetListAsString(questValue.Additional.ListOfSubQuest)),
@@ -429,6 +410,113 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("CantCancel", Global.GetBoolAsString( questValue.Additional.CantCancel )),
                         new XElement("Holder", questValue.Additional.Holder))
                    );
+                resultDoc.Root.Add(element);
+            }
+
+            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
+            {
+                resultDoc.Save(w);
+            }
+        }
+
+        private void SaveQuestsTexts(string fileName, NPCQuestDict target)
+        { 
+            XDocument resultDoc = new XDocument(new XDeclaration("1.0","utf-8",null), new XElement("root"));
+            XElement element;
+
+            foreach (CQuest questValue in target.Values)
+            {
+                List<XElement> ItemsXE = getItemElements(questValue.QuestInformation.Items);
+                XElement Items;
+                if (ItemsXE.Any())
+                    Items = new XElement("Items", ItemsXE);
+                else
+                    Items = new XElement("Items", "");
+
+                element = new XElement("Quest",
+                   new XAttribute("ID", questValue.QuestID),
+                   new XElement("NPC", questValue.Additional.Holder),
+                   new XElement("Version", questValue.Version),
+                   new XElement("Title", questValue.QuestInformation.Title),
+                   new XElement("Description", questValue.QuestInformation.Description),
+                   new XElement("onWin", questValue.QuestInformation.onWin),
+                   new XElement("onFailed", questValue.QuestInformation.onFailed),
+                   Items);
+                resultDoc.Root.Add(element);
+            }
+
+            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
+            {
+                resultDoc.Save(w);
+            }
+        }
+
+        private void SaveQuestsData(string fileName, NPCQuestDict target)
+        {
+            XDocument resultDoc = new XDocument(new XDeclaration("1.0", "utf-8", null), new XElement("root"));
+            XElement element;
+
+            foreach (CQuest questValue in target.Values)
+            {
+                List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
+                XElement Effects;
+                if (EffectsXE.Any())
+                    Effects = new XElement("Effects", EffectsXE);
+                else
+                    Effects = new XElement("Effects", "");
+
+                element = new XElement("Quest",
+                   new XAttribute("ID", questValue.QuestID),
+                   new XElement("Target",
+                        new XElement("onFin", questValue.Target.onFin),
+                        new XElement("QuestType", questValue.Target.QuestType),
+                        new XElement("ObjectType", Global.GetIntAsString(questValue.Target.ObjectType)),
+                        new XElement("ObjectAttr", questValue.Target.ObjectAttr),
+                        new XElement("NumOfObjects", Global.GetIntAsString(questValue.Target.NumOfObjects)),
+                        new XElement("ObjectName", questValue.Target.ObjectName),
+                        new XElement("AObjectAttrs", Global.GetListAsString(questValue.Target.AObjectAttrs)),
+                        new XElement("AreaName", questValue.Target.AreaName),
+                        new XElement("IsGroup", questValue.Target.IsGroup.ToString()),
+                        new XElement("IsClan", Global.GetBoolAsString(questValue.Target.IsClan)),
+                        new XElement("Time", questValue.Target.Time.ToString())),
+                    new XElement("Precondition",
+                        new XElement("TakenPeriod", questValue.Precondition.TakenPeriod.ToString()),
+                        new XElement("Repeat", Global.GetIntAsString(questValue.Precondition.Repeat))),
+                    new XElement("QuestRules",
+                        new XElement("Scenarios", Global.GetListAsString(questValue.QuestRules.Scenarios)),
+                        new XElement("TeleportTo", questValue.QuestRules.TeleportTo),
+                        new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestRules.TypeOfItems)),
+                        new XElement("NumOfItems", Global.GetListAsString(questValue.QuestRules.NumOfItems)),
+                        new XElement("AttrOfItems", Global.GetListAsString(questValue.QuestRules.AttrOfItems)),
+                        new XElement("MinGroup", Global.GetIntAsString(questValue.QuestRules.MinGroup)),
+                        new XElement("MaxGroup", Global.GetIntAsString(questValue.QuestRules.MaxGroup)),
+                        new XElement("MinMember", Global.GetIntAsString(questValue.QuestRules.MinMember)),
+                        new XElement("MaxMember", Global.GetIntAsString(questValue.QuestRules.MaxMember))),
+                    new XElement("Reward",
+                        new XElement("Experience", Global.GetListAsString(questValue.Reward.Experience)),
+                        new XElement("TypeOfItems", Global.GetListAsString(questValue.Reward.TypeOfItems)),
+                        new XElement("NumOfItems", Global.GetListAsString(questValue.Reward.NumOfItems)),
+                        new XElement("AttrOfItems", Global.GetListAsString(questValue.Reward.AttrOfItems)),
+                        new XElement("Probability", getListAsString(questValue.Reward.Probability)),
+                        new XElement("Credits", questValue.Reward.Credits),
+                        new XElement("EventCodes", Global.GetListAsString(questValue.Reward.EventCodes)),
+                        new XElement("Reputation", questValue.Reward.getReputation()),
+                        new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()),
+                        new XElement("Difficulty", questValue.Reward.Difficulty.ToString()),
+                        Effects),
+                    new XElement("Penalty",
+                        new XElement("Experience", Global.GetIntAsString(questValue.QuestPenalty.Experience)),
+                        new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestPenalty.TypeOfItems)),
+                        new XElement("NumOfItems", Global.GetListAsString(questValue.QuestPenalty.NumOfItems)),
+                        new XElement("Credits", questValue.QuestPenalty.Credits)),
+                    new XElement("Additional",
+                        new XElement("IsSubQuest", Global.GetIntAsString(questValue.Additional.IsSubQuest)),
+                        new XElement("ListOfSubQuest", Global.GetListAsString(questValue.Additional.ListOfSubQuest)),
+                        new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()),
+                        new XElement("CantCancel", Global.GetBoolAsString(questValue.Additional.CantCancel)),
+                        new XElement("Holder", questValue.Additional.Holder)));
                 resultDoc.Root.Add(element);
             }
 

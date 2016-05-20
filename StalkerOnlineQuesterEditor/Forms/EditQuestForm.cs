@@ -721,7 +721,6 @@ namespace StalkerOnlineQuesterEditor
             reward.NumOfItems = editQuestReward.NumOfItems;
             reward.AttrOfItems = editQuestReward.AttrOfItems;
             reward.Probability = editQuestReward.Probability;
-            reward.Fractions = editQuestReward.Fractions;
             reward.Reputation = editQuestReward.Reputation;
             reward.Effects = editQuestReward.Effects;
 

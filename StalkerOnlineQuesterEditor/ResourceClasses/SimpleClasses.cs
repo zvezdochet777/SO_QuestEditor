@@ -15,14 +15,12 @@ namespace StalkerOnlineQuesterEditor
         public ListOfQuests ListOfOnTestQuests;
         public ListOfQuests ListOfFailedQuests;
         
-
         public CDialogPreconditionQuests()
         {
             this.ListOfCompletedQuests = new ListOfQuests();
             this.ListOfOpenedQuests = new ListOfQuests();
             this.ListOfOnTestQuests = new ListOfQuests();
             this.ListOfFailedQuests = new ListOfQuests();
-
         }
 
         public bool Any()
@@ -40,10 +38,8 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfOpenedQuests = this.ListOfOpenedQuests;
             copy.ListOfOnTestQuests = this.ListOfOnTestQuests;
             copy.ListOfFailedQuests = this.ListOfFailedQuests;
-
             return copy;
         }
-
     }
 
     public class CDialogPrecondition : ICloneable
@@ -497,10 +493,6 @@ namespace StalkerOnlineQuesterEditor
         int id;
         int stack;
 
-        public CEffect()
-        {
-
-        }
         public CEffect(int id, int stack)
         {
             this.id = id;
@@ -531,11 +523,9 @@ namespace StalkerOnlineQuesterEditor
         //! Вероятность выпадения предметов
         public List<float> Probability;
         public List<int> EventCodes;
-        public string TeleportTo;
         public float Credits;
         //! Словарь репутаций в награду, выглядит так <id фракции>:<значение награды>;
         public Dictionary<int, int> Reputation;
-        public List<int> Fractions;
         public int Difficulty;
         public int KarmaPK;
         public List<CEffect> Effects;
@@ -549,14 +539,10 @@ namespace StalkerOnlineQuesterEditor
             copy.AttrOfItems = new List<int>(this.AttrOfItems);
             copy.Probability = this.Probability;
             copy.EventCodes = new List<int>(this.EventCodes);
-
-            copy.TeleportTo = (string)this.TeleportTo.Clone();
             copy.Credits = this.Credits;
             copy.Reputation = this.Reputation;
             copy.KarmaPK = this.KarmaPK;
             copy.Effects = new List<CEffect>(this.Effects);
-
-            copy.Fractions = new List<int>(this.Fractions);
             copy.Difficulty = this.Difficulty;
             return copy;
         }
@@ -571,9 +557,7 @@ namespace StalkerOnlineQuesterEditor
             this.Credits = new float();
             this.EventCodes = new List<int>();
             this.Reputation = new Dictionary<int, int>();
-            this.Fractions = new List<int>();
             this.KarmaPK = new int();
-            this.TeleportTo = "";
             this.Effects = new List<CEffect>();
             this.Difficulty = 1;
         }
