@@ -991,17 +991,13 @@ namespace StalkerOnlineQuesterEditor
             this.Enabled = false;
             if (settings.getMode() == settings.MODE_EDITOR)
             {
-                dialogs.saveDialogs(settings.getDialogsPath());  // settings.dialogXML
-                quests.saveQuests(settings.getQuestsPath());     // settings.questXML
+                dialogs.saveDialogs(settings.getDialogsPath());
+                quests.saveQuests(settings.getQuestsPath());
             }
-            //else
-            //{
-            // сохраняем изменения в локализациях
-            dialogs.saveLocales(settings.getDialogLocalePath());  // settings.dialogXML
-            quests.saveLocales(settings.getQuestLocalePath());    // settings.questXML
-            //}
+            dialogs.saveLocales(settings.getDialogLocalePath());
+            quests.saveLocales(settings.getQuestLocalePath());
             RectManager.SaveData();
-            Thread.Sleep(1000);
+            Thread.Sleep(300);
             statusLabel.Text = "Данные успешно сохранены.";
             this.Enabled = true;
         }
