@@ -194,10 +194,6 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Element("Reward").Element("Credits").Value.Equals(""))
                     reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value);
 
-                if (!item.Element("Reward").Element("EventCodes").Value.Equals(""))
-                    foreach (string events in item.Element("Reward").Element("EventCodes").Value.Split(','))
-                        reward.NumOfItems.Add(int.Parse(events));
-
                 try
                 {
                     reward.Difficulty = int.Parse(item.Element("Reward").Element("Difficulty").Value);

@@ -1697,7 +1697,7 @@ namespace StalkerOnlineQuesterEditor
                     dgvReview.Rows.Add( row );
                 }
             }
-            labelReviewOutputed.Text = "Выведено: " + dgvReview.RowCount.ToString();
+            statusLabel.Text = "Выведено: " + dgvReview.RowCount.ToString();
         }
         //! Нажатие "Найти квесты", выводит несоответствия в квестах (не открыт, не закрыт, не существует)
         private void bFindQuest_Click(object sender, EventArgs e)
@@ -1750,7 +1750,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
-            labelReviewOutputed.Text = "Выведено: " + dgvReview.RowCount.ToString();
+            statusLabel.Text = "Выведено: " + dgvReview.RowCount.ToString();
         }
 //***************************END OF DATA CHECK - missed dialogs, quests, NPC and so on**************************
 
