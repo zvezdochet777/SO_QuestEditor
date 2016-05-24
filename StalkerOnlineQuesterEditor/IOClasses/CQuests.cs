@@ -430,7 +430,7 @@ namespace StalkerOnlineQuesterEditor
                     Items = new XElement("Items", "");
 
                 element = new XElement("Quest",
-                   new XAttribute("ID", questValue.QuestID),
+                   new XElement("ID", questValue.QuestID),
                    new XElement("NPC", questValue.Additional.Holder),
                    new XElement("Version", questValue.Version),
                    new XElement("Title", questValue.QuestInformation.Title),
@@ -463,7 +463,7 @@ namespace StalkerOnlineQuesterEditor
                     Effects = new XElement("Effects", "");
 
                 element = new XElement("Quest",
-                   new XAttribute("ID", questValue.QuestID),
+                   new XElement("ID", questValue.QuestID),
                    new XElement("Target",
                         new XElement("onFin", questValue.Target.onFin),
                         new XElement("QuestType", questValue.Target.QuestType),

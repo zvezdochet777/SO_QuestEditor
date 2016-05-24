@@ -296,12 +296,12 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (string npcName in target.Keys)
             {
-                npcElement = new XElement("NPC", new XAttribute("Name", npcName));
+                npcElement = new XElement("NPC", new XElement("Name", npcName));
                 NPCDialogDict Dictdialog = target[npcName];
                 foreach (CDialog dialog in Dictdialog.Values)
                 {
                     element = new XElement("Dialog",
-                       new XAttribute("ID", dialog.DialogID.ToString()),
+                       new XElement("ID", dialog.DialogID.ToString()),
                        new XElement("Version", dialog.version.ToString()),
                        new XElement("Title", dialog.Title),
                        new XElement("Text", dialog.Text));
@@ -324,12 +324,12 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (string npcName in target.Keys)
             {
-                npcElement = new XElement("NPC", new XAttribute("Name", npcName));
+                npcElement = new XElement("NPC", new XElement("Name", npcName));
                 NPCDialogDict Dictdialog = target[npcName];
                 foreach (CDialog dialog in Dictdialog.Values)
                 {
                     element = new XElement("Dialog",
-                       new XAttribute("ID", dialog.DialogID.ToString()),
+                       new XElement("ID", dialog.DialogID.ToString()),
                        new XElement("Precondition",
                            new XElement("ListOfNecessaryQuests",
                                new XElement("listOfCompletedQuests",
