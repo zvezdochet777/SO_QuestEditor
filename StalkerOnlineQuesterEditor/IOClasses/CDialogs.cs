@@ -213,19 +213,19 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Сохранить все диалоги в xml файл
-        public void saveDialogs(string fileName)
+        public void SaveDialogs()
         {
-            string path = Path.GetDirectoryName(fileName);            
-            save(fileName, this.dialogs);
+            save(parent.settings.getDialogsPath(), this.dialogs);
             saveNodeCoordinates("NodeCoordinates.xml",this.dialogs);
-            SaveDialogsTexts(path + "\\DialogTexts.xml", this.dialogs);
-            SaveDialogsData(path + "\\..\\DialogData.xml", this.dialogs);
+            SaveDialogsTexts(parent.settings.GetDialogTextPath(), this.dialogs);
+            SaveDialogsData(parent.settings.GetDialogDataPath(), this.dialogs);
         }
 
         //! Сохраняет текущую локализацию диалогов в файл
-        public void saveLocales(string fileName)
+        public void SaveLocales()
         {
-            this.save(fileName, this.locales[parent.settings.getCurrentLocale()]);
+            this.save(parent.settings.getDialogLocalePath(), this.locales[parent.settings.getCurrentLocale()]);
+            SaveDialogsTexts(parent.settings.GetDialogLocaleTextPath(), this.locales[parent.settings.getCurrentLocale()]);
         }
 
         //! Сохранение всех диалогов в xml файл

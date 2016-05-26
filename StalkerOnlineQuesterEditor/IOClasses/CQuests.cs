@@ -311,18 +311,18 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Сохраняет данные по квестам в xml файл
-        public void saveQuests(string fileName)
+        public void SaveQuests()
         {
-            string path = Path.GetDirectoryName(fileName);
-            save(fileName, this.quest);
-            SaveQuestsTexts(path + "\\QuestTexts.xml", this.quest);
-            SaveQuestsData(path + "\\..\\QuestData.xml", this.quest);
+            save(parent.settings.getQuestsPath(), this.quest);
+            SaveQuestsTexts(parent.settings.GetQuestTextPath(), this.quest);
+            SaveQuestsData(parent.settings.GetQuestDataPath(), this.quest);
         }
 
         //! Сохраняет текущую локализацию квестов в файл
-        public void saveLocales(string fileName)
+        public void SaveLocales()
         {
-            this.save(fileName, this.locales[parent.settings.getCurrentLocale()]);
+            this.save(parent.settings.getQuestLocalePath(), this.locales[parent.settings.getCurrentLocale()]);
+            SaveQuestsTexts(parent.settings.GetQuestLocaleTextPath(), this.locales[parent.settings.getCurrentLocale()]);
         }
 
         //! Сохраняет данные по квестам в xml файл

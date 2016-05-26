@@ -31,8 +31,12 @@ namespace StalkerOnlineQuesterEditor
         string SETTING_FILE = "Settings.xml";
         string ORIGINAL_PATH = "RUS\\";
 
-        private System.String dialogXML = "Dialogs.xml";
-        private System.String questXML = "Quests.xml";
+        private string dialogXML = "Dialogs.xml";
+        private string dialogTextsXML = "DialogTexts.xml";
+        private string dialogDataXML = "DialogData.xml";
+        private string questXML = "Quests.xml";
+        private string questTextsXML = "QuestTexts.xml";
+        private string questDataXML = "QuestData.xml";
 
         public CSettings(MainForm parent)
         {
@@ -80,8 +84,6 @@ namespace StalkerOnlineQuesterEditor
 
         public void setLocales(string locales)
         {
-            //System.Console.WriteLine("CSettings::setLocales");
-            //System.Console.WriteLine("locales: " + locales);
             this.locales.Clear();
             foreach (string locale in locales.Split(','))
                 this.locales.Add(locale.Trim());
@@ -90,7 +92,7 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает все локали в строке через запятую
         public string getLocales()
         {
-            string ret = "";
+            string ret = "";            
             foreach(string loc in locales)
             {
                 if (ret == "")
@@ -170,7 +172,6 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает текущий режим (Simple или Localization)
         public int getMode()
         {
-            //System.Console.WriteLine("CSettings::getMode " + mode.ToString());
             return mode;
         }
 
@@ -186,39 +187,59 @@ namespace StalkerOnlineQuesterEditor
             return locales[currentLocale];
         }
 
-        //! Возвращает адрес локализованного файла квестов
-        public string getQuestLocalePath()
+        public string GetDialogTextPath()
         {
-            string path = pathToCopyFiles;
-            path += getCurrentLocale() + "\\";
-            path += questXML;
-            return path;
+            return Path.Combine(pathToCopyFiles, ORIGINAL_PATH, dialogTextsXML);
         }
 
-        public string getDialogLocalePath()
+        public string GetQuestTextPath()
         {
-            string path = pathToCopyFiles;
-            path += getCurrentLocale() + "\\";
-            path += dialogXML;
-            return path;
+            return Path.Combine(pathToCopyFiles, ORIGINAL_PATH, questTextsXML);
         }
 
-        //! Возвращает путь к xml файлу с квестами
+        public string GetDialogDataPath()
+        {
+            return Path.Combine(pathToCopyFiles, dialogDataXML);
+        }
+
+        public string GetQuestDataPath()
+        {
+            return Path.Combine(pathToCopyFiles, questDataXML);
+        }
+
+        public string GetDialogLocaleTextPath()
+        {
+            return Path.Combine(pathToCopyFiles, getCurrentLocale(), dialogTextsXML);
+        }
+
+        public string GetQuestLocaleTextPath()
+        {
+            return Path.Combine(pathToCopyFiles, getCurrentLocale(), questTextsXML);
+        }
+
+        // @todo следующие ЧЕТЫРЕ функции выкурить после полного перехода на двух-файловую систему
+        //Возвращает путь к xml файлу с квестами
         public string getQuestsPath()
         {
-            string path = pathToCopyFiles;
-            path += ORIGINAL_PATH;
-            path += questXML;
-            return path;
+            return Path.Combine(pathToCopyFiles, ORIGINAL_PATH, questXML);
         }
 
-        //! Возвращает путь к xml файлу с диалогами
+        //Возвращает путь к xml файлу с диалогами
         public string getDialogsPath()
         {
-            string path = pathToCopyFiles;
-            path += ORIGINAL_PATH;
-            path += dialogXML;
-            return path;
+            return Path.Combine(pathToCopyFiles, ORIGINAL_PATH, dialogXML);
+        }
+
+        //Возвращает адрес локализованного файла квестов (для текущей локализации)
+        public string getQuestLocalePath()
+        {
+            return Path.Combine(pathToCopyFiles, getCurrentLocale(), questXML);
+        }
+
+        //Возвращает адрес локализованного файла диалогов (для текущей локализации)
+        public string getDialogLocalePath()
+        {
+            return Path.Combine(pathToCopyFiles, getCurrentLocale(), dialogXML);
         }
 
     }

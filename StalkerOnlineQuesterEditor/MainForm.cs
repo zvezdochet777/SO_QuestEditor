@@ -991,11 +991,11 @@ namespace StalkerOnlineQuesterEditor
             this.Enabled = false;
             if (settings.getMode() == settings.MODE_EDITOR)
             {
-                dialogs.saveDialogs(settings.getDialogsPath());
-                quests.saveQuests(settings.getQuestsPath());
+                dialogs.SaveDialogs();
+                quests.SaveQuests();
             }
-            dialogs.saveLocales(settings.getDialogLocalePath());
-            quests.saveLocales(settings.getQuestLocalePath());
+            dialogs.SaveLocales();
+            quests.SaveLocales();
             RectManager.SaveData();
             Thread.Sleep(300);
             statusLabel.Text = "Данные успешно сохранены.";
