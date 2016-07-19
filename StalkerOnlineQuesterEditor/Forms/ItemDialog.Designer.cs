@@ -116,7 +116,8 @@
             this.itemAttr.HeaderText = "Аттрибут";
             this.itemAttr.Items.AddRange(new object[] {
             "Обычный",
-            "Квестовый"});
+            "Квестовый",
+            "Авто"});
             this.itemAttr.Name = "itemAttr";
             // 
             // itemQuantity

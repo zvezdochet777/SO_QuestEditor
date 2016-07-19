@@ -89,10 +89,18 @@ namespace StalkerOnlineQuesterEditor
                     string attr;
                     try
                     {
-                        if (parentForm.editQuestReward.AttrOfItems[i].Equals(1))
-                            attr = "Квестовый";
-                        else
-                            attr = "Обычный";
+                        switch (parentForm.editQuestReward.AttrOfItems[i])
+                        {
+                            case 1:
+                                attr = "Квестовый";
+                                break;
+                            case 2:
+                                attr = "Авто";
+                                break;
+                            default:
+                                attr = "Обычный";
+                                break;
+                        }
                     }
                     catch
                     {
@@ -154,10 +162,18 @@ namespace StalkerOnlineQuesterEditor
                     string attr;
                     try
                     {
-                        if (parentForm2.pub_quest.Reward.AttrOfItems[i].Equals(1))
-                            attr = "Квестовый";
-                        else
-                            attr = "Обычный";
+                        switch (parentForm2.pub_quest.Reward.AttrOfItems[i])
+                        {
+                            case 1:
+                                attr = "Квестовый";
+                                break;
+                            case 2:
+                                attr = "Авто";
+                                break;
+                            default:
+                                attr = "Обычный";
+                                break;
+                        }
                     }
                     catch
                     {
@@ -318,21 +334,27 @@ namespace StalkerOnlineQuesterEditor
                         float probability = checkFloatValue(row.Cells["itemProbability"].FormattedValue.ToString());
                         if (probability < 0)
                             return;
-                        if (attrName.Equals("Квестовый"))
+                        switch (attrName)
                         {
-                            attr = 1;
-                            try
-                            {
-                                itemsInfo.Add(typeID, new QuestItemInfo(title, description, activation));
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Есть идентичные квестовые предметы.", "Ошибка.");
-                                return;
-                            }
+                            case "Квестовый":
+                                attr = 1;
+                                try
+                                {
+                                    itemsInfo.Add(typeID, new QuestItemInfo(title, description, activation));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Есть идентичные квестовые предметы.", "Ошибка.");
+                                    return;
+                                }
+                                break;
+                            case "Авто":
+                                attr = 2;
+                                break;
+                            default:
+                                attr = 0;
+                                break;
                         }
-                        else
-                            attr = 0;
 
                         probabilityOfItems.Add(probability);
                         typeOfItems.Add(typeID);
