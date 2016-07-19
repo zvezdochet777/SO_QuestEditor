@@ -38,7 +38,7 @@ namespace StalkerOnlineQuesterEditor
         {
             this.parent = parent;
             ManagerNPC = managerNPC;
-            parseNodeCoordinates("NodeCoordinates.xml");
+            ParseNodeCoordinates("NodeCoordinates.xml");
 
             ParseDialogsData(parent.settings.GetDialogDataPath(), this.dialogs);
             ParseDialogsTexts(parent.settings.GetDialogTextPath(), this.dialogs);
@@ -99,37 +99,15 @@ namespace StalkerOnlineQuesterEditor
                         foreach (string quest in dialog.Element("Actions").Element("CompleteQuest").Value.Split(','))
                             Actions.CompleteQuests.Add(int.Parse(quest));
 
-                    if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfCompletedQuests").Value != "")
-                        foreach (string quest in dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfCompletedQuests").Value.Split(','))
-                            Precondition.ListOfNecessaryQuests.ListOfCompletedQuests.Add(int.Parse(quest));
+                    AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOpenedQuests", Precondition.ListOfNecessaryQuests.ListOfOpenedQuests);
+                    AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
+                    AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfCompletedQuests", Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
+                    AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfFailedQuests", Precondition.ListOfNecessaryQuests.ListOfFailedQuests);
 
-                    if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfOpenedQuests").Value != "")
-                        foreach (string quest in dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfOpenedQuests").Value.Split(','))
-                            Precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Add(int.Parse(quest));
-
-                    if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfOnTestQuests").Value != "")
-                        foreach (string quest in dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfOnTestQuests").Value.Split(','))
-                            Precondition.ListOfNecessaryQuests.ListOfOnTestQuests.Add(int.Parse(quest));
-
-                    if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfCompletedQuests").Value != "")
-                        foreach (string quest in dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfCompletedQuests").Value.Split(','))
-                            Precondition.ListOfMustNoQuests.ListOfCompletedQuests.Add(int.Parse(quest));
-
-                    if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfOpenedQuests").Value != "")
-                        foreach (string quest in dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfOpenedQuests").Value.Split(','))
-                            Precondition.ListOfMustNoQuests.ListOfOpenedQuests.Add(int.Parse(quest));
-
-                    if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfOnTestQuests").Value != "")
-                        foreach (string quest in dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfOnTestQuests").Value.Split(','))
-                            Precondition.ListOfMustNoQuests.ListOfOnTestQuests.Add(int.Parse(quest));
-
-                    if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfFailedQuests").Value != "")
-                        foreach (string quest in dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfFailedQuests").Value.Split(','))
-                            Precondition.ListOfMustNoQuests.ListOfFailedQuests.Add(int.Parse(quest));
-
-                    if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfFailedQuests").Value != "")
-                        foreach (string quest in dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfFailedQuests").Value.Split(','))
-                            Precondition.ListOfNecessaryQuests.ListOfOnTestQuests.Add(int.Parse(quest));
+                    AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOpenedQuests", Precondition.ListOfMustNoQuests.ListOfOpenedQuests);
+                    AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOnTestQuests", Precondition.ListOfMustNoQuests.ListOfOnTestQuests);
+                    AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfCompletedQuests", Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
+                    AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfFailedQuests", Precondition.ListOfMustNoQuests.ListOfFailedQuests);
 
                     Precondition.KarmaPK = new List<int>();
                     if (dialog.Element("Precondition").Element("KarmaPK").Value != "")
@@ -144,20 +122,13 @@ namespace StalkerOnlineQuesterEditor
                             Precondition.tests.Add(int.Parse(test));
 
                     NodeCoordinates nodeCoord = new NodeCoordinates();
+                    nodeCoord.RootDialog = dialog.Element("RootDialog").Value.Equals("1");
+                    nodeCoord.Active = dialog.Element("Active").Value.Equals("1");
                     if (tempCoordinates.ContainsKey(npc_name) && tempCoordinates[npc_name].ContainsKey(DialogID))
                     {
                         nodeCoord.X = tempCoordinates[npc_name][DialogID].X;
                         nodeCoord.Y = tempCoordinates[npc_name][DialogID].Y;
                     }
-                    if (dialog.Element("RootDialog").Value.Equals("1"))
-                        nodeCoord.RootDialog = true;
-                    else
-                        nodeCoord.RootDialog = false;
-
-                    if (dialog.Element("Active").Value.Equals("1"))
-                        nodeCoord.Active = true;
-                    else
-                        nodeCoord.Active = false;
 
                     foreach (string el in dialog.Element("Precondition").Element("Reputation").Value.Split(';'))
                     {
@@ -178,6 +149,13 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        private void AddPreconditionQuests(XElement el, String name1, String name2, List<int> list)
+        {
+            if (el.Element("Precondition").Element(name1).Element(name2).Value != "")
+                foreach (string quest in el.Element("Precondition").Element(name1).Element(name2).Value.Split(','))
+                    list.Add(int.Parse(quest));        
+        }
+
         private void ParseDialogsTexts(String DialogsXMLFile, NPCDicts target)
         { 
             doc = XDocument.Load(DialogsXMLFile);
@@ -188,13 +166,11 @@ namespace StalkerOnlineQuesterEditor
                 foreach (XElement dialog in npc.Elements("Dialog"))
                 {
                     int DialogID = int.Parse(dialog.Element("ID").Value);
-                    string Title = dialog.Element("Title").Value.Trim();
-                    string Text = dialog.Element("Text").Value.Trim();
+                    target[npc_name][DialogID].Title = dialog.Element("Title").Value.Trim();
+                    target[npc_name][DialogID].Text = dialog.Element("Text").Value.Trim();
                     int Version = 0;
                     if (!dialog.Element("Version").Value.Equals(""))
                         Version = int.Parse(dialog.Element("Version").Value);
-                    target[npc_name][DialogID].Text = Text;
-                    target[npc_name][DialogID].Title = Title;
                     target[npc_name][DialogID].version = Version;
                 }
             }
@@ -203,7 +179,7 @@ namespace StalkerOnlineQuesterEditor
         //! Сохранить все диалоги в xml файл
         public void SaveDialogs()
         {
-            saveNodeCoordinates("NodeCoordinates.xml",this.dialogs);
+            SaveNodeCoordinates("NodeCoordinates.xml",this.dialogs);
             SaveDialogsTexts(parent.settings.GetDialogTextPath(), this.dialogs);
             SaveDialogsData(parent.settings.GetDialogDataPath(), this.dialogs);
         }
@@ -302,7 +278,7 @@ namespace StalkerOnlineQuesterEditor
             }        
         }
 
-        private void saveNodeCoordinates(string fileName, NPCDicts target)
+        private void SaveNodeCoordinates(string fileName, NPCDicts target)
         {
             XDocument resultDoc = new XDocument(new XElement("root"));
             XElement npc_element;
@@ -325,7 +301,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        private void parseNodeCoordinates(string filename)
+        private void ParseNodeCoordinates(string filename)
         {
             if (!File.Exists(filename))
                 return;
