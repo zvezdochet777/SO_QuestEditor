@@ -149,10 +149,10 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        private void AddPreconditionQuests(XElement el, String name1, String name2, List<int> list)
+        private void AddPreconditionQuests(XElement Element, String Name1, String Name2, List<int> list)
         {
-            if (el.Element("Precondition").Element(name1).Element(name2).Value != "")
-                foreach (string quest in el.Element("Precondition").Element(name1).Element(name2).Value.Split(','))
+            if (Element.Element("Precondition").Element(Name1).Element(Name2).Value != "")
+                foreach (string quest in Element.Element("Precondition").Element(Name1).Element(Name2).Value.Split(','))
                     list.Add(int.Parse(quest));        
         }
 

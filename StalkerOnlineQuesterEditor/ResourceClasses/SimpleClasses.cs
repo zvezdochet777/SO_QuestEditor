@@ -587,7 +587,7 @@ namespace StalkerOnlineQuesterEditor
 
     public class CQuestPenalty : ICloneable
     {
-        public int Experience;
+        public List<int> Experience;
         public List<int> TypeOfItems;
         public List<int> NumOfItems;
         public float Credits;
@@ -595,7 +595,7 @@ namespace StalkerOnlineQuesterEditor
         public object Clone()
         {
             CQuestPenalty copy = new CQuestPenalty();
-            copy.Experience = this.Experience;
+            copy.Experience = new List<int>(this.Experience);
             copy.TypeOfItems = new List<int>(this.TypeOfItems);
             copy.NumOfItems = new List<int>(this.NumOfItems);
             copy.Credits = this.Credits;
@@ -604,7 +604,7 @@ namespace StalkerOnlineQuesterEditor
 
         public CQuestPenalty()
         {
-            this.Experience = new int();
+            this.Experience = new List<int>();
             this.TypeOfItems = new List<int>();
             this.NumOfItems = new List<int>();
             this.Credits = new float();

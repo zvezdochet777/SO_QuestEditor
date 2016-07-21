@@ -101,15 +101,8 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Element("Target").Element("ObjectName").Value.Equals(""))
                     target.ObjectName = item.Element("Target").Element("ObjectName").Value;
 
-                if (!item.Element("Target").Element("IsGroup").Value.Equals(""))
-                    target.IsGroup = int.Parse(item.Element("Target").Element("IsGroup").Value);
-                else
-                    target.IsGroup = 0;
-
-                if (item.Element("Target").Element("IsClan").Value.Equals("1"))
-                    target.IsClan = true;
-                else
-                    target.IsClan = false;
+                ParseIntIfNotEmpty(item, "Target", "IsGroup", out target.IsGroup, 0);
+                target.IsClan = item.Element("Target").Element("IsClan").Value.Equals("1");
 
                 if (!item.Element("Target").Element("Time").Value.Equals(""))
                 {
@@ -125,45 +118,20 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Element("Precondition").Element("TakenPeriod").Value.Equals(""))
                     precondition.TakenPeriod = double.Parse(item.Element("Precondition").Element("TakenPeriod").Value);
 
-                if (!item.Element("QuestRules").Element("NumOfItems").Value.Equals(""))
-                    foreach (string itemNum in item.Element("QuestRules").Element("NumOfItems").Value.Split(','))
-                        questRules.NumOfItems.Add(int.Parse(itemNum));
-                if (!item.Element("QuestRules").Element("TypeOfItems").Value.Equals(""))
-                    foreach (string itemType in item.Element("QuestRules").Element("TypeOfItems").Value.Split(','))
-                        questRules.TypeOfItems.Add(int.Parse(itemType));
-
+                AddDataToList(item, "QuestRules", "NumOfItems", questRules.NumOfItems);
+                AddDataToList(item, "QuestRules", "TypeOfItems", questRules.TypeOfItems);
+                AddDataToList(item, "QuestRules", "AttrOfItems", questRules.AttrOfItems);
+                AddDataToList(item, "QuestRules", "Scenarios", questRules.Scenarios);
+                ParseIntIfNotEmpty(item, "QuestRules", "MaxGroup", out questRules.MaxGroup, 0);
+                ParseIntIfNotEmpty(item, "QuestRules", "MinGroup", out questRules.MinGroup, 0);
+                ParseIntIfNotEmpty(item, "QuestRules", "MaxMember", out questRules.MaxMember, 0);
+                ParseIntIfNotEmpty(item, "QuestRules", "MinMember", out questRules.MinMember, 0);
                 questRules.TeleportTo = item.Element("QuestRules").Element("TeleportTo").Value.ToString();
-                if (!item.Element("QuestRules").Element("MaxGroup").Value.Equals(""))
-                    questRules.MaxGroup = int.Parse(item.Element("QuestRules").Element("MaxGroup").Value);
-                if (!item.Element("QuestRules").Element("MinGroup").Value.Equals(""))
-                    questRules.MinGroup = int.Parse(item.Element("QuestRules").Element("MinGroup").Value);
 
-                if (!item.Element("QuestRules").Element("MaxMember").Value.Equals(""))
-                    questRules.MaxMember = int.Parse(item.Element("QuestRules").Element("MaxMember").Value);
-                if (!item.Element("QuestRules").Element("MinMember").Value.Equals(""))
-                    questRules.MinMember = int.Parse(item.Element("QuestRules").Element("MinMember").Value);
-
-                if (!item.Element("QuestRules").Element("AttrOfItems").Value.Equals(""))
-                    foreach (string itemType in item.Element("QuestRules").Element("AttrOfItems").Value.Split(','))
-                        questRules.AttrOfItems.Add(int.Parse(itemType));
-                if (!item.Element("QuestRules").Element("Scenarios").Value.Equals(""))
-                    foreach (string itemType in item.Element("QuestRules").Element("Scenarios").Value.Split(','))
-                        questRules.Scenarios.Add(int.Parse(itemType));
-
-                if (!item.Element("Reward").Element("Experience").Value.Equals(""))
-                    foreach (string itemNum in item.Element("Reward").Element("Experience").Value.Split(','))
-                        reward.Experience.Add(int.Parse(itemNum));
-
-                if (!item.Element("Reward").Element("NumOfItems").Value.Equals(""))
-                    foreach (string itemNum in item.Element("Reward").Element("NumOfItems").Value.Split(','))
-                        reward.NumOfItems.Add(int.Parse(itemNum));
-                if (!item.Element("Reward").Element("TypeOfItems").Value.Equals(""))
-                    foreach (string itemType in item.Element("Reward").Element("TypeOfItems").Value.Split(','))
-                        reward.TypeOfItems.Add(int.Parse(itemType));
-
-                if (!item.Element("Reward").Element("AttrOfItems").Value.Equals(""))
-                    foreach (string itemType in item.Element("Reward").Element("AttrOfItems").Value.Split(','))
-                        reward.AttrOfItems.Add(int.Parse(itemType));
+                AddDataToList(item, "Reward", "Experience", reward.Experience);
+                AddDataToList(item, "Reward", "NumOfItems", reward.NumOfItems);
+                AddDataToList(item, "Reward", "TypeOfItems", reward.TypeOfItems);
+                AddDataToList(item, "Reward", "AttrOfItems", reward.AttrOfItems);
 
                 if (item.Element("Reward").Descendants().Any(itm2 => itm2.Name == "Probability"))
                     if (!item.Element("Reward").Element("Probability").Value.Equals(""))
@@ -173,20 +141,12 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Element("Reward").Element("Credits").Value.Equals(""))
                     reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value);
 
-                try
-                {
-                    reward.Difficulty = int.Parse(item.Element("Reward").Element("Difficulty").Value);
-                }
-                catch
-                {
-                    reward.Difficulty = 1;
-                }
+                ParseIntIfNotEmpty(item, "Reward", "Difficulty", out reward.Difficulty, 1);
+                ParseIntIfNotEmpty(item, "Reward", "KarmaPK", out reward.KarmaPK, 0);
+
                 foreach (string fraction in item.Element("Reward").Element("Reputation").Value.Split(';'))
                     if (!fraction.Equals(""))
                         reward.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
-
-                if (!item.Element("Reward").Element("KarmaPK").Value.Equals(""))
-                    reward.KarmaPK = int.Parse(item.Element("Reward").Element("KarmaPK").Value);
 
                 foreach (XElement effect in item.Element("Reward").Element("Effects").Elements())
                 {
@@ -199,40 +159,16 @@ namespace StalkerOnlineQuesterEditor
                 else
                     additional.ShowProgress = this.SHOW_JOURNAL | this.SHOW_MESSAGE_CLOSE | this.SHOW_MESSAGE_TAKE | this.SHOW_MESSAGE_PROGRESS;
 
-                if (!item.Element("Additional").Element("IsSubQuest").Value.Equals(""))
-                    additional.IsSubQuest = int.Parse(item.Element("Additional").Element("IsSubQuest").Value);
-                if (!item.Element("Additional").Element("ListOfSubQuest").Value.Equals(""))
-                    foreach (string quest in item.Element("Additional").Element("ListOfSubQuest").Value.Split(','))
-                        additional.ListOfSubQuest.Add(int.Parse(quest));
+                ParseIntIfNotEmpty(item, "Additional", "IsSubQuest", out additional.IsSubQuest, 0);
+                AddDataToList(item, "Additional", "ListOfSubQuest", additional.ListOfSubQuest);
 
                 if (item.Element("Additional").Descendants().Any(u => u.Name == "CantCancel"))
-                {
-                    if (item.Element("Additional").Element("CantCancel").Value.Equals(""))
-                        additional.CantCancel = false;
-                    else if (item.Element("Additional").Element("CantCancel").Value.Equals("1"))
-                        additional.CantCancel = true;
-                }
-                // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Penalty
-                string text_pen_exp = item.Element("Penalty").Element("Experience").Value;
-                penalty.Experience = 0;
-                if (!text_pen_exp.Equals(""))
-                {
-                    if (text_pen_exp.Contains(','))
-                    {
-                        //After change from three skills role play
-                        foreach (string element_pen_exp in text_pen_exp.Split(','))
-                            penalty.Experience += int.Parse(element_pen_exp);
-                    }
-                    else
-                        penalty.Experience = int.Parse(text_pen_exp);
-                }
+                    additional.CantCancel = item.Element("Additional").Element("CantCancel").Value.Equals("1");
 
-                if (!item.Element("Penalty").Element("NumOfItems").Value.Equals(""))
-                    foreach (string itemNum in item.Element("Penalty").Element("NumOfItems").Value.Split(','))
-                        penalty.NumOfItems.Add(int.Parse(itemNum));
-                if (!item.Element("Penalty").Element("TypeOfItems").Value.Equals(""))
-                    foreach (string itemType in item.Element("Penalty").Element("TypeOfItems").Value.Split(','))
-                        penalty.TypeOfItems.Add(int.Parse(itemType));
+                AddDataToList(item, "Penalty", "Experience", penalty.Experience);
+                AddDataToList(item, "Penalty", "NumOfItems", penalty.NumOfItems);
+                AddDataToList(item, "Penalty", "TypeOfItems", penalty.TypeOfItems);
+
                 if (!item.Element("Penalty").Element("Credits").Value.Equals(""))
                     penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value);
 
@@ -267,6 +203,21 @@ namespace StalkerOnlineQuesterEditor
                     target[QuestID].QuestInformation.Items.Add(itemID, new QuestItemInfo(title, description, activation));
                 }
             }
+        }
+        
+        private void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
+        {
+            if (Element.Element(Name1).Element(Name2).Value != "")
+                foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
+                    list.Add(int.Parse(quest));
+        }
+
+        private void ParseIntIfNotEmpty(XElement Element, String Name1, String Name2, out int value, int defaultValue)
+        {
+            if (!Element.Element(Name1).Element(Name2).Value.Equals(""))
+                value = int.Parse(Element.Element(Name1).Element(Name2).Value);
+            else
+                value = defaultValue;
         }
 
         //! Возращает список квестов (без вложенных Subquest) для конкретного NPC
@@ -416,7 +367,7 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("Difficulty", questValue.Reward.Difficulty.ToString()),
                         Effects),
                     new XElement("Penalty",
-                        new XElement("Experience", Global.GetIntAsString(questValue.QuestPenalty.Experience)),
+                        new XElement("Experience", Global.GetListAsString(questValue.QuestPenalty.Experience)),
                         new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestPenalty.TypeOfItems)),
                         new XElement("NumOfItems", Global.GetListAsString(questValue.QuestPenalty.NumOfItems)),
                         new XElement("Credits", questValue.QuestPenalty.Credits)),
