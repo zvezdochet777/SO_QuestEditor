@@ -216,31 +216,5 @@ namespace StalkerOnlineQuesterEditor
         {
             return Path.Combine(pathToCopyFiles, getCurrentLocale(), questTextsXML);
         }
-
-        // @todo следующие ЧЕТЫРЕ функции выкурить после полного перехода на двух-файловую систему
-        //Возвращает путь к xml файлу с квестами
-        public string getQuestsPath()
-        {
-            return Path.Combine(pathToCopyFiles, ORIGINAL_PATH, questXML);
-        }
-
-        //Возвращает путь к xml файлу с диалогами
-        public string getDialogsPath()
-        {
-            return Path.Combine(pathToCopyFiles, ORIGINAL_PATH, dialogXML);
-        }
-
-        //Возвращает адрес локализованного файла квестов (для текущей локализации)
-        public string getQuestLocalePath()
-        {
-            return Path.Combine(pathToCopyFiles, getCurrentLocale(), questXML);
-        }
-
-        //Возвращает адрес локализованного файла диалогов (для текущей локализации)
-        public string getDialogLocalePath()
-        {
-            return Path.Combine(pathToCopyFiles, getCurrentLocale(), dialogXML);
-        }
-
     }
 }

@@ -1938,8 +1938,7 @@ namespace StalkerOnlineQuesterEditor
         //! Пункт главного меню - открытие папки с данными 
         private void ExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String path = System.IO.Path.GetDirectoryName(settings.getDialogsPath());
-            path += "\\..\\";
+            String path = System.IO.Path.GetDirectoryName(settings.GetDialogDataPath());
             System.Diagnostics.Process.Start(path);
         }
         //! Пункт главного меню - сохранение всех данных
