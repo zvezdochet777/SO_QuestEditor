@@ -526,7 +526,6 @@ namespace StalkerOnlineQuesterEditor
         //! Собирает данные с формы, и возвращает экземпляр CQuest с этими данными
         public CQuest getQuest()
         {
-            //System.Console.WriteLine("EditQuestForm::getQuest");
             CQuestAdditional additional = new CQuestAdditional();
             CQuestInformation information = new CQuestInformation();
             CQuestPrecondition precondition = new CQuestPrecondition();
@@ -564,23 +563,8 @@ namespace StalkerOnlineQuesterEditor
             else if ((target.QuestType == 2) || (target.QuestType == 3))
             {
                 target.ObjectType = parent.mobConst.getTypeOnDescription(targetComboBox.SelectedItem.ToString());
-                //if (targetAttributeComboBox2.SelectedIndex < 0)
-                //    target.ObjectAttr = 0;
-                //else
-                //{
-                //    target.ObjectAttr = parent.mobConst.getDescriptionOnType(target.ObjectType).getLevelOnIndex(targetAttributeComboBox2.SelectedIndex);
-                //}
 
-                int level = 0 ;
-                try
-                {
-                    level = int.Parse(resultextBox.Text);
-                }
-                catch
-                {
-
-                }
-
+                int level = ParseIntIfNotEmpty(resultextBox.Text);
                 target.ObjectAttr = level;
 
                 if (dynamicCheckBox.Checked)
@@ -592,11 +576,9 @@ namespace StalkerOnlineQuesterEditor
                     target.AreaName = "";
                 else
                     target.AreaName = parent.zoneConst.getKeyOnDescription(targetAttributeComboBox.SelectedItem.ToString());
-
             }
             else if ((target.QuestType == 4) || (target.QuestType == 8))
             {
-
                 if (dynamicCheckBox.Checked)
                     target.ObjectName = resultextBox.Text;
                 else
@@ -648,7 +630,6 @@ namespace StalkerOnlineQuesterEditor
                 target.ObjectAttr = targetAttributeComboBox.SelectedIndex;
             }
 
-
             if (iState == EDIT_SUB || iState == EDIT)
                 additional = quest.Additional;
 
@@ -665,35 +646,18 @@ namespace StalkerOnlineQuesterEditor
                 precondition.Repeat = 1;
 
             if (takenPeriodTextBox.Enabled && !takenPeriodTextBox.Text.Equals(""))
-                precondition.TakenPeriod =  double.Parse(takenPeriodTextBox.Text);
+                precondition.TakenPeriod =  double.Parse(takenPeriodTextBox.Text.Replace('.',','));
 
             foreach (string item in scenariosTextBox.Text.Split(','))
                 if (!item.Equals(""))
                     rules.Scenarios.Add(int.Parse(item));
             
-            if (tExperience.Text.Equals(""))
-                reward.Experience.Add(0);
-            else
-                reward.Experience.Add(int.Parse(tExperience.Text));
-            
-            if (tSurvival.Text.Equals(""))
-                reward.Experience.Add(0);
-            else 
-                reward.Experience.Add(int.Parse(tSurvival.Text));
-
-            if (tSupport.Text.Equals(""))
-                reward.Experience.Add(0);
-            else 
-                reward.Experience.Add(int.Parse(tSupport.Text));
-
-            if (!creditsTextBox.Text.Equals(""))
-                reward.Credits = int.Parse(creditsTextBox.Text);
-
-            if (difficultyComboBox.SelectedItem.ToString() != "")
-                reward.Difficulty = int.Parse(difficultyComboBox.SelectedItem.ToString());
-
-            if (!textBoxKarmaPK.Text.Equals(""))
-                reward.KarmaPK = int.Parse(textBoxKarmaPK.Text);
+            reward.Experience.Add(ParseIntIfNotEmpty(tExperience.Text));
+            reward.Experience.Add(ParseIntIfNotEmpty(tSurvival.Text));
+            reward.Experience.Add(ParseIntIfNotEmpty(tSupport.Text));
+            reward.Credits = ParseIntIfNotEmpty(creditsTextBox.Text);
+            reward.Difficulty = ParseIntIfNotEmpty(difficultyComboBox.SelectedItem.ToString());
+            reward.KarmaPK = ParseIntIfNotEmpty(textBoxKarmaPK.Text);
 
             int iProgressResult = 0;
             if (showCloseCheckBox.Checked)
@@ -748,6 +712,13 @@ namespace StalkerOnlineQuesterEditor
             }
             return retQuest;
         }
+
+        private int ParseIntIfNotEmpty(string text)
+        {
+            if (!text.Equals(""))
+                return int.Parse(text);
+            return 0;
+        }
         //! Действия при смене типа кевеста
         private void eventComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -783,11 +754,6 @@ namespace StalkerOnlineQuesterEditor
                 parent.Enabled = true;
                 this.Close();
             }
-        }
-
-        private void isClanCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void dynamicCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -999,11 +965,6 @@ namespace StalkerOnlineQuesterEditor
             EditDialogEffect edit_effect = new EditDialogEffect(this.parent, this, this.QuestID);
             edit_effect.Visible = true;
             this.Enabled = false;
-        }
-
-        private void descriptionTextBox_DoubleClick(object sender, EventArgs e)
-        {
-
         }
 
         //! Нажатие Предметы в правилах квеста - открывает форму с редактором предметов

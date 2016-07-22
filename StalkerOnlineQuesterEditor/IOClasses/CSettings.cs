@@ -31,10 +31,8 @@ namespace StalkerOnlineQuesterEditor
         string SETTING_FILE = "Settings.xml";
         string ORIGINAL_PATH = "RUS\\";
 
-        private string dialogXML = "Dialogs.xml";
         private string dialogTextsXML = "DialogTexts.xml";
         private string dialogDataXML = "DialogData.xml";
-        private string questXML = "Quests.xml";
         private string questTextsXML = "QuestTexts.xml";
         private string questDataXML = "QuestData.xml";
 
