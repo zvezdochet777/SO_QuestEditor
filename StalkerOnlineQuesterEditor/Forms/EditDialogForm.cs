@@ -49,7 +49,7 @@ namespace StalkerOnlineQuesterEditor
             }
 
             if (parent.isRoot(currentDialogID) && (!isAdd))
-                NPCReactionText.Text = "Приветствие:";
+                lReactionNPC.Text = "Приветствие:";
             if (isAdd)
                 mtbPlayerLevel.Text = "0";
             if (!isAdd)
@@ -68,7 +68,7 @@ namespace StalkerOnlineQuesterEditor
                     NPCSaidIs.Text+=(dialog.DialogID.ToString()+":\n"+dialog.Text);
             // заполнение текста речевки и ответа ГГ
             tPlayerText.Text = curDialog.Title.Normalize();
-            tNPCReactiontextBox.Text = curDialog.Text;
+            tReactionNPC.Text = curDialog.Text;
 
             foreach (TreeNode active in parent.tree.Nodes.Find("Active",true))
                 foreach (TreeNode node in active.Nodes)
@@ -77,10 +77,10 @@ namespace StalkerOnlineQuesterEditor
             if (curDialog.Nodes.Any())
                 foreach (int dialog in curDialog.Nodes)
                 {
-                    if (tSubDialogsTextBox.Text.Equals(""))
-                        tSubDialogsTextBox.Text += dialog.ToString();
+                    if (tNodes.Text.Equals(""))
+                        tNodes.Text += dialog.ToString();
                     else
-                        tSubDialogsTextBox.Text += ("," + dialog.ToString());
+                        tNodes.Text += ("," + dialog.ToString());
                 }
             // какой-то пиздец c кланами и одиночками
             if (curDialog.Precondition.tests.Contains(1))
@@ -97,7 +97,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 actionsCheckBox.Checked = true;
                 ActionsComboBox.SelectedValue = curDialog.Actions.Event;
-                ExitCheckBox.Checked = curDialog.Actions.Exit;
+                cbExit.Checked = curDialog.Actions.Exit;
 
                 if (ActionsComboBox.Text == "Телепорт")
                 {
@@ -115,16 +115,30 @@ namespace StalkerOnlineQuesterEditor
 
                 if (curDialog.Actions.CompleteQuests.Any())
                 {
-                    CompleteQuestsCheckBox.Checked = true;
+                    cbCompleteQuests.Checked = true;
                     foreach (int completeQuest in curDialog.Actions.CompleteQuests)
-                        addItemToTextBox(completeQuest.ToString(), CompleteQuestsTextBox);
+                        addItemToTextBox(completeQuest.ToString(), tbCompleteQuests);
                 }
 
                 if (curDialog.Actions.GetQuests.Any())
                 {
-                    GetQuestsCheckBox.Checked = true;
+                    cbGetQuests.Checked = true;
                     foreach (int getQuest in curDialog.Actions.GetQuests)
-                        addItemToTextBox(getQuest.ToString(), GetQuestsTextBox);
+                        addItemToTextBox(getQuest.ToString(), tbGetQuests);
+                }
+
+                if (curDialog.Actions.CancelQuests.Any())
+                {
+                    cbCancelQuests.Checked = true;
+                    foreach (int cancelQuest in curDialog.Actions.CancelQuests)
+                        addItemToTextBox(cancelQuest.ToString(), tbCancelQuests);
+                }
+
+                if (curDialog.Actions.FailQuests.Any())
+                {
+                    cbFailQuests.Checked = true;
+                    foreach (int failQuest in curDialog.Actions.FailQuests)
+                        addItemToTextBox(failQuest.ToString(), tbFailQuests);
                 }
             }
 
@@ -205,17 +219,27 @@ namespace StalkerOnlineQuesterEditor
         //! Чекбокс действия - возможность добавить действия к узлу диалога
         private void actionsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            actionsBox.Enabled = actionsCheckBox.Checked;
+            gbActions.Enabled = actionsCheckBox.Checked;
         }
         //! Блокировка комбобокса при клике на соответствующий чекбокс 
-        private void GetQuestsCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void cbGetQuests_CheckedChanged(object sender, EventArgs e)
         {
-            GetQuestsTextBox.Enabled = GetQuestsCheckBox.Checked;
+            tbGetQuests.Enabled = cbGetQuests.Checked;
         }
         //! Блокировка комбобокса при клике на соответствующий чекбокс 
-        private void CompleteQuestsCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void cbCompleteQuests_CheckedChanged(object sender, EventArgs e)
         {
-            CompleteQuestsTextBox.Enabled = CompleteQuestsCheckBox.Checked;
+            tbCompleteQuests.Enabled = cbCompleteQuests.Checked;
+        }
+
+        private void cbCancelQuests_CheckedChanged(object sender, EventArgs e)
+        {
+            tbCancelQuests.Enabled = cbCancelQuests.Checked;
+        }
+
+        private void cbFailQuests_CheckedChanged(object sender, EventArgs e)
+        {
+            tbFailQuests.Enabled = cbFailQuests.Checked;
         }
 
         //! При наборе текста проверяем число символов в строке
@@ -267,9 +291,9 @@ namespace StalkerOnlineQuesterEditor
                 bKarma.Image = null;
         }
 
-        private void ExitCheckBox_Click(object sender, EventArgs e)
+        private void cbExit_Click(object sender, EventArgs e)
         {
-            ActionsComboBox.Enabled = !ExitCheckBox.Checked;
+            ActionsComboBox.Enabled = !cbExit.Checked;
         }
 
         //! Изменение текущего однократного действия
@@ -285,16 +309,16 @@ namespace StalkerOnlineQuesterEditor
             switch (SelectedValue)
             { 
                 case 0:
-                    ExitCheckBox.Checked = false;
-                    ExitCheckBox.Enabled = true;
+                    cbExit.Checked = false;
+                    cbExit.Enabled = true;
                     break;
                 case 100:
-                    ExitCheckBox.Checked = false;
-                    ExitCheckBox.Enabled = false;;
+                    cbExit.Checked = false;
+                    cbExit.Enabled = false;
                     break;
                 default:
-                    ExitCheckBox.Checked = true;
-                    ExitCheckBox.Enabled = false;
+                    cbExit.Checked = true;
+                    cbExit.Enabled = false;
                     break;
             }
         }
@@ -335,14 +359,14 @@ namespace StalkerOnlineQuesterEditor
             string holder = parent.GetCurrentNPC();
             if (!CheckConditions())
                 return;
-            if (!tSubDialogsTextBox.Text.Equals(""))
-                foreach (string node in tSubDialogsTextBox.Text.Split(','))
+            if (!tNodes.Text.Equals(""))
+                foreach (string node in tNodes.Text.Split(','))
                     nodes.Add(int.Parse(node));
 
             // заполняем действия диалога - торговля, бартер, починка, телепорт и т.д.
             if (actionsCheckBox.Checked)
             {               
-                actions.Exit = ExitCheckBox.Checked;
+                actions.Exit = cbExit.Checked;
                 actions.Event = (int) ActionsComboBox.SelectedValue;
                 if (actions.Event == 5)     // телепорт 
                     actions.Data = parent.tpConst.getTtID(teleportComboBox.SelectedItem.ToString());
@@ -352,12 +376,18 @@ namespace StalkerOnlineQuesterEditor
                     actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString());
                 }
 
-                if (GetQuestsCheckBox.Checked)
-                    foreach (string quest in GetQuestsTextBox.Text.Split(','))
+                if (cbGetQuests.Checked)
+                    foreach (string quest in tbGetQuests.Text.Split(','))
                         actions.GetQuests.Add(int.Parse(quest));
-                if (CompleteQuestsCheckBox.Checked)
-                    foreach (string quest in CompleteQuestsTextBox.Text.Split(','))
+                if (cbCompleteQuests.Checked)
+                    foreach (string quest in tbCompleteQuests.Text.Split(','))
                         actions.CompleteQuests.Add(int.Parse(quest));
+                if (cbCancelQuests.Checked)
+                    foreach (string quest in tbCancelQuests.Text.Split(','))
+                        actions.CancelQuests.Add(int.Parse(quest));
+                if (cbFailQuests.Checked)
+                    foreach (string quest in tbFailQuests.Text.Split(','))
+                        actions.FailQuests.Add(int.Parse(quest));
             }
 
             // заполняем условия появления диалога - открытые и закрытые квесты и т.д.
@@ -402,7 +432,7 @@ namespace StalkerOnlineQuesterEditor
             if (isAdd)
             {
                 newID = parent.getDialogsNewID();
-                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text, precondition, actions, nodes, newID, 1, coord), currentDialogID);
+                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, newID, 1, coord), currentDialogID);
             }
             else
             {
@@ -411,9 +441,9 @@ namespace StalkerOnlineQuesterEditor
                 coord.RootDialog = curDialog.coordinates.RootDialog;
                 coord.Active = curDialog.coordinates.Active;
                 int version = curDialog.version;
-                if (tPlayerText.Text != curDialog.Title || tNPCReactiontextBox.Text != curDialog.Text)
+                if (tPlayerText.Text != curDialog.Title || tReactionNPC.Text != curDialog.Text)
                     version++;
-                parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tNPCReactiontextBox.Text,
+                parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tReactionNPC.Text,
                     precondition, actions, nodes, currentDialogID, version , coord), currentDialogID);
             }
             parent.Enabled = true;

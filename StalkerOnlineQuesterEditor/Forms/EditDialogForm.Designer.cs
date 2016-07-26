@@ -31,22 +31,26 @@
             this.tPlayerText = new System.Windows.Forms.TextBox();
             this.lAnswerText = new System.Windows.Forms.Label();
             this.NPCSaidIs = new System.Windows.Forms.Label();
-            this.NPCSaid = new System.Windows.Forms.Label();
+            this.lGreetNPC = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
-            this.actionsBox = new System.Windows.Forms.GroupBox();
+            this.gbActions = new System.Windows.Forms.GroupBox();
+            this.cbFailQuests = new System.Windows.Forms.CheckBox();
+            this.cbCancelQuests = new System.Windows.Forms.CheckBox();
+            this.tbFailQuests = new System.Windows.Forms.MaskedTextBox();
+            this.tbCancelQuests = new System.Windows.Forms.MaskedTextBox();
             this.ActionsComboBox = new System.Windows.Forms.ComboBox();
             this.teleportComboBox = new System.Windows.Forms.ComboBox();
-            this.CompleteQuestsTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.GetQuestsTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.tbCompleteQuests = new System.Windows.Forms.MaskedTextBox();
+            this.tbGetQuests = new System.Windows.Forms.MaskedTextBox();
             this.ToDialogComboBox = new System.Windows.Forms.ComboBox();
-            this.ExitCheckBox = new System.Windows.Forms.CheckBox();
-            this.CompleteQuestsCheckBox = new System.Windows.Forms.CheckBox();
-            this.GetQuestsCheckBox = new System.Windows.Forms.CheckBox();
+            this.cbExit = new System.Windows.Forms.CheckBox();
+            this.cbCompleteQuests = new System.Windows.Forms.CheckBox();
+            this.cbGetQuests = new System.Windows.Forms.CheckBox();
             this.actionsCheckBox = new System.Windows.Forms.CheckBox();
-            this.tNPCReactiontextBox = new System.Windows.Forms.TextBox();
-            this.tSubDialogsTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.subDialogsLabel = new System.Windows.Forms.Label();
-            this.PreconditionBox = new System.Windows.Forms.GroupBox();
+            this.tReactionNPC = new System.Windows.Forms.TextBox();
+            this.tNodes = new System.Windows.Forms.MaskedTextBox();
+            this.lNodes = new System.Windows.Forms.Label();
+            this.gbPrecondition = new System.Windows.Forms.GroupBox();
             this.cbShowClanOptions = new System.Windows.Forms.CheckBox();
             this.gbClanOptions = new System.Windows.Forms.GroupBox();
             this.cbLonerOnly = new System.Windows.Forms.CheckBox();
@@ -56,15 +60,15 @@
             this.lPlayerLevel = new System.Windows.Forms.Label();
             this.bKarma = new System.Windows.Forms.Button();
             this.bReputation = new System.Windows.Forms.Button();
-            this.QuestConditiongroupBox = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.gbQuestCondition = new System.Windows.Forms.GroupBox();
+            this.lFailedQuests = new System.Windows.Forms.Label();
             this.tShouldntHaveFailedQuests = new System.Windows.Forms.MaskedTextBox();
             this.tMustHaveFailedQuests = new System.Windows.Forms.MaskedTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lShouldntHaveQuests = new System.Windows.Forms.Label();
+            this.lNecessaryQuests = new System.Windows.Forms.Label();
+            this.lCompletedQuests = new System.Windows.Forms.Label();
+            this.lOnTestQuests = new System.Windows.Forms.Label();
+            this.lOpenedQuests = new System.Windows.Forms.Label();
             this.tMustHaveQuestsOnTest = new System.Windows.Forms.MaskedTextBox();
             this.tShouldntHaveCompletedQuests = new System.Windows.Forms.MaskedTextBox();
             this.tMustHaveOpenQuests = new System.Windows.Forms.MaskedTextBox();
@@ -73,15 +77,15 @@
             this.tMustHaveCompletedQuests = new System.Windows.Forms.MaskedTextBox();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
-            this.NPCReactionText = new System.Windows.Forms.Label();
-            this.MustPanel = new System.Windows.Forms.Panel();
-            this.textGroupBox = new System.Windows.Forms.GroupBox();
-            this.actionsBox.SuspendLayout();
-            this.PreconditionBox.SuspendLayout();
+            this.lReactionNPC = new System.Windows.Forms.Label();
+            this.pCommands = new System.Windows.Forms.Panel();
+            this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.gbActions.SuspendLayout();
+            this.gbPrecondition.SuspendLayout();
             this.gbClanOptions.SuspendLayout();
-            this.QuestConditiongroupBox.SuspendLayout();
-            this.MustPanel.SuspendLayout();
-            this.textGroupBox.SuspendLayout();
+            this.gbQuestCondition.SuspendLayout();
+            this.pCommands.SuspendLayout();
+            this.gbTexts.SuspendLayout();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -110,14 +114,14 @@
             this.NPCSaidIs.TabIndex = 11;
             this.NPCSaidIs.Text = "  ";
             // 
-            // NPCSaid
+            // lGreetNPC
             // 
-            this.NPCSaid.AutoSize = true;
-            this.NPCSaid.Location = new System.Drawing.Point(3, 9);
-            this.NPCSaid.Name = "NPCSaid";
-            this.NPCSaid.Size = new System.Drawing.Size(98, 13);
-            this.NPCSaid.TabIndex = 12;
-            this.NPCSaid.Text = "Приветствие NPC";
+            this.lGreetNPC.AutoSize = true;
+            this.lGreetNPC.Location = new System.Drawing.Point(3, 9);
+            this.lGreetNPC.Name = "lGreetNPC";
+            this.lGreetNPC.Size = new System.Drawing.Size(98, 13);
+            this.lGreetNPC.TabIndex = 12;
+            this.lGreetNPC.Text = "Приветствие NPC";
             // 
             // lAttention
             // 
@@ -129,23 +133,67 @@
             this.lAttention.TabIndex = 13;
             this.lAttention.Text = "lAttention";
             // 
-            // actionsBox
+            // gbActions
             // 
-            this.actionsBox.Controls.Add(this.ActionsComboBox);
-            this.actionsBox.Controls.Add(this.teleportComboBox);
-            this.actionsBox.Controls.Add(this.CompleteQuestsTextBox);
-            this.actionsBox.Controls.Add(this.GetQuestsTextBox);
-            this.actionsBox.Controls.Add(this.ToDialogComboBox);
-            this.actionsBox.Controls.Add(this.ExitCheckBox);
-            this.actionsBox.Controls.Add(this.CompleteQuestsCheckBox);
-            this.actionsBox.Controls.Add(this.GetQuestsCheckBox);
-            this.actionsBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.actionsBox.Enabled = false;
-            this.actionsBox.Location = new System.Drawing.Point(0, 500);
-            this.actionsBox.Name = "actionsBox";
-            this.actionsBox.Size = new System.Drawing.Size(588, 141);
-            this.actionsBox.TabIndex = 8;
-            this.actionsBox.TabStop = false;
+            this.gbActions.AutoSize = true;
+            this.gbActions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbActions.Controls.Add(this.cbFailQuests);
+            this.gbActions.Controls.Add(this.cbCancelQuests);
+            this.gbActions.Controls.Add(this.tbFailQuests);
+            this.gbActions.Controls.Add(this.tbCancelQuests);
+            this.gbActions.Controls.Add(this.ActionsComboBox);
+            this.gbActions.Controls.Add(this.teleportComboBox);
+            this.gbActions.Controls.Add(this.tbCompleteQuests);
+            this.gbActions.Controls.Add(this.tbGetQuests);
+            this.gbActions.Controls.Add(this.ToDialogComboBox);
+            this.gbActions.Controls.Add(this.cbExit);
+            this.gbActions.Controls.Add(this.cbCompleteQuests);
+            this.gbActions.Controls.Add(this.cbGetQuests);
+            this.gbActions.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbActions.Enabled = false;
+            this.gbActions.Location = new System.Drawing.Point(0, 500);
+            this.gbActions.Name = "gbActions";
+            this.gbActions.Size = new System.Drawing.Size(588, 144);
+            this.gbActions.TabIndex = 8;
+            this.gbActions.TabStop = false;
+            // 
+            // cbFailQuests
+            // 
+            this.cbFailQuests.AutoSize = true;
+            this.cbFailQuests.Location = new System.Drawing.Point(296, 44);
+            this.cbFailQuests.Name = "cbFailQuests";
+            this.cbFailQuests.Size = new System.Drawing.Size(121, 17);
+            this.cbFailQuests.TabIndex = 39;
+            this.cbFailQuests.Text = "Провалить квесты";
+            this.cbFailQuests.UseVisualStyleBackColor = true;
+            this.cbFailQuests.CheckedChanged += new System.EventHandler(this.cbFailQuests_CheckedChanged);
+            // 
+            // cbCancelQuests
+            // 
+            this.cbCancelQuests.AutoSize = true;
+            this.cbCancelQuests.Location = new System.Drawing.Point(296, 24);
+            this.cbCancelQuests.Name = "cbCancelQuests";
+            this.cbCancelQuests.Size = new System.Drawing.Size(116, 17);
+            this.cbCancelQuests.TabIndex = 38;
+            this.cbCancelQuests.Text = "Отменить квесты";
+            this.cbCancelQuests.UseVisualStyleBackColor = true;
+            this.cbCancelQuests.CheckedChanged += new System.EventHandler(this.cbCancelQuests_CheckedChanged);
+            // 
+            // tbFailQuests
+            // 
+            this.tbFailQuests.Enabled = false;
+            this.tbFailQuests.Location = new System.Drawing.Point(426, 44);
+            this.tbFailQuests.Name = "tbFailQuests";
+            this.tbFailQuests.Size = new System.Drawing.Size(147, 20);
+            this.tbFailQuests.TabIndex = 37;
+            // 
+            // tbCancelQuests
+            // 
+            this.tbCancelQuests.Enabled = false;
+            this.tbCancelQuests.Location = new System.Drawing.Point(426, 22);
+            this.tbCancelQuests.Name = "tbCancelQuests";
+            this.tbCancelQuests.Size = new System.Drawing.Size(147, 20);
+            this.tbCancelQuests.TabIndex = 36;
             // 
             // ActionsComboBox
             // 
@@ -168,21 +216,21 @@
             this.teleportComboBox.Size = new System.Drawing.Size(147, 21);
             this.teleportComboBox.TabIndex = 30;
             // 
-            // CompleteQuestsTextBox
+            // tbCompleteQuests
             // 
-            this.CompleteQuestsTextBox.Enabled = false;
-            this.CompleteQuestsTextBox.Location = new System.Drawing.Point(151, 41);
-            this.CompleteQuestsTextBox.Name = "CompleteQuestsTextBox";
-            this.CompleteQuestsTextBox.Size = new System.Drawing.Size(147, 20);
-            this.CompleteQuestsTextBox.TabIndex = 28;
+            this.tbCompleteQuests.Enabled = false;
+            this.tbCompleteQuests.Location = new System.Drawing.Point(136, 44);
+            this.tbCompleteQuests.Name = "tbCompleteQuests";
+            this.tbCompleteQuests.Size = new System.Drawing.Size(147, 20);
+            this.tbCompleteQuests.TabIndex = 28;
             // 
-            // GetQuestsTextBox
+            // tbGetQuests
             // 
-            this.GetQuestsTextBox.Enabled = false;
-            this.GetQuestsTextBox.Location = new System.Drawing.Point(151, 19);
-            this.GetQuestsTextBox.Name = "GetQuestsTextBox";
-            this.GetQuestsTextBox.Size = new System.Drawing.Size(147, 20);
-            this.GetQuestsTextBox.TabIndex = 26;
+            this.tbGetQuests.Enabled = false;
+            this.tbGetQuests.Location = new System.Drawing.Point(136, 22);
+            this.tbGetQuests.Name = "tbGetQuests";
+            this.tbGetQuests.Size = new System.Drawing.Size(147, 20);
+            this.tbGetQuests.TabIndex = 26;
             // 
             // ToDialogComboBox
             // 
@@ -192,38 +240,38 @@
             this.ToDialogComboBox.Size = new System.Drawing.Size(147, 21);
             this.ToDialogComboBox.TabIndex = 18;
             // 
-            // ExitCheckBox
+            // cbExit
             // 
-            this.ExitCheckBox.AutoSize = true;
-            this.ExitCheckBox.Location = new System.Drawing.Point(31, 108);
-            this.ExitCheckBox.Name = "ExitCheckBox";
-            this.ExitCheckBox.Size = new System.Drawing.Size(141, 17);
-            this.ExitCheckBox.TabIndex = 24;
-            this.ExitCheckBox.Text = "Закрыть окно диалога";
-            this.ExitCheckBox.UseVisualStyleBackColor = true;
-            this.ExitCheckBox.Click += new System.EventHandler(this.ExitCheckBox_Click);
+            this.cbExit.AutoSize = true;
+            this.cbExit.Location = new System.Drawing.Point(31, 108);
+            this.cbExit.Name = "cbExit";
+            this.cbExit.Size = new System.Drawing.Size(141, 17);
+            this.cbExit.TabIndex = 24;
+            this.cbExit.Text = "Закрыть окно диалога";
+            this.cbExit.UseVisualStyleBackColor = true;
+            this.cbExit.Click += new System.EventHandler(this.cbExit_Click);
             // 
-            // CompleteQuestsCheckBox
+            // cbCompleteQuests
             // 
-            this.CompleteQuestsCheckBox.AutoSize = true;
-            this.CompleteQuestsCheckBox.Location = new System.Drawing.Point(31, 42);
-            this.CompleteQuestsCheckBox.Name = "CompleteQuestsCheckBox";
-            this.CompleteQuestsCheckBox.Size = new System.Drawing.Size(119, 17);
-            this.CompleteQuestsCheckBox.TabIndex = 27;
-            this.CompleteQuestsCheckBox.Text = "Закончить квесты";
-            this.CompleteQuestsCheckBox.UseVisualStyleBackColor = true;
-            this.CompleteQuestsCheckBox.CheckedChanged += new System.EventHandler(this.CompleteQuestsCheckBox_CheckedChanged);
+            this.cbCompleteQuests.AutoSize = true;
+            this.cbCompleteQuests.Location = new System.Drawing.Point(16, 44);
+            this.cbCompleteQuests.Name = "cbCompleteQuests";
+            this.cbCompleteQuests.Size = new System.Drawing.Size(119, 17);
+            this.cbCompleteQuests.TabIndex = 27;
+            this.cbCompleteQuests.Text = "Закончить квесты";
+            this.cbCompleteQuests.UseVisualStyleBackColor = true;
+            this.cbCompleteQuests.CheckedChanged += new System.EventHandler(this.cbCompleteQuests_CheckedChanged);
             // 
-            // GetQuestsCheckBox
+            // cbGetQuests
             // 
-            this.GetQuestsCheckBox.AutoSize = true;
-            this.GetQuestsCheckBox.Location = new System.Drawing.Point(31, 20);
-            this.GetQuestsCheckBox.Name = "GetQuestsCheckBox";
-            this.GetQuestsCheckBox.Size = new System.Drawing.Size(96, 17);
-            this.GetQuestsCheckBox.TabIndex = 25;
-            this.GetQuestsCheckBox.Text = "Взять квесты";
-            this.GetQuestsCheckBox.UseVisualStyleBackColor = true;
-            this.GetQuestsCheckBox.CheckedChanged += new System.EventHandler(this.GetQuestsCheckBox_CheckedChanged);
+            this.cbGetQuests.AutoSize = true;
+            this.cbGetQuests.Location = new System.Drawing.Point(16, 22);
+            this.cbGetQuests.Name = "cbGetQuests";
+            this.cbGetQuests.Size = new System.Drawing.Size(96, 17);
+            this.cbGetQuests.TabIndex = 25;
+            this.cbGetQuests.Text = "Взять квесты";
+            this.cbGetQuests.UseVisualStyleBackColor = true;
+            this.cbGetQuests.CheckedChanged += new System.EventHandler(this.cbGetQuests_CheckedChanged);
             // 
             // actionsCheckBox
             // 
@@ -236,47 +284,48 @@
             this.actionsCheckBox.UseVisualStyleBackColor = true;
             this.actionsCheckBox.CheckedChanged += new System.EventHandler(this.actionsCheckBox_CheckedChanged);
             // 
-            // tNPCReactiontextBox
+            // tReactionNPC
             // 
-            this.tNPCReactiontextBox.Location = new System.Drawing.Point(103, 103);
-            this.tNPCReactiontextBox.Multiline = true;
-            this.tNPCReactiontextBox.Name = "tNPCReactiontextBox";
-            this.tNPCReactiontextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tNPCReactiontextBox.Size = new System.Drawing.Size(479, 88);
-            this.tNPCReactiontextBox.TabIndex = 1;
+            this.tReactionNPC.Location = new System.Drawing.Point(103, 103);
+            this.tReactionNPC.Multiline = true;
+            this.tReactionNPC.Name = "tReactionNPC";
+            this.tReactionNPC.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tReactionNPC.Size = new System.Drawing.Size(479, 88);
+            this.tReactionNPC.TabIndex = 1;
             // 
-            // tSubDialogsTextBox
+            // tNodes
             // 
-            this.tSubDialogsTextBox.Location = new System.Drawing.Point(103, 197);
-            this.tSubDialogsTextBox.Name = "tSubDialogsTextBox";
-            this.tSubDialogsTextBox.Size = new System.Drawing.Size(479, 20);
-            this.tSubDialogsTextBox.TabIndex = 2;
+            this.tNodes.Location = new System.Drawing.Point(103, 197);
+            this.tNodes.Name = "tNodes";
+            this.tNodes.Size = new System.Drawing.Size(479, 20);
+            this.tNodes.TabIndex = 2;
             // 
-            // subDialogsLabel
+            // lNodes
             // 
-            this.subDialogsLabel.AutoSize = true;
-            this.subDialogsLabel.Location = new System.Drawing.Point(3, 204);
-            this.subDialogsLabel.Name = "subDialogsLabel";
-            this.subDialogsLabel.Size = new System.Drawing.Size(68, 13);
-            this.subDialogsLabel.TabIndex = 9;
-            this.subDialogsLabel.Text = "Поддиалоги";
+            this.lNodes.AutoSize = true;
+            this.lNodes.Location = new System.Drawing.Point(3, 204);
+            this.lNodes.Name = "lNodes";
+            this.lNodes.Size = new System.Drawing.Size(68, 13);
+            this.lNodes.TabIndex = 9;
+            this.lNodes.Text = "Поддиалоги";
             // 
-            // PreconditionBox
+            // gbPrecondition
             // 
-            this.PreconditionBox.Controls.Add(this.cbShowClanOptions);
-            this.PreconditionBox.Controls.Add(this.gbClanOptions);
-            this.PreconditionBox.Controls.Add(this.mtbPlayerLevel);
-            this.PreconditionBox.Controls.Add(this.lPlayerLevel);
-            this.PreconditionBox.Controls.Add(this.bKarma);
-            this.PreconditionBox.Controls.Add(this.bReputation);
-            this.PreconditionBox.Controls.Add(this.QuestConditiongroupBox);
-            this.PreconditionBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PreconditionBox.Location = new System.Drawing.Point(0, 227);
-            this.PreconditionBox.Name = "PreconditionBox";
-            this.PreconditionBox.Size = new System.Drawing.Size(588, 273);
-            this.PreconditionBox.TabIndex = 4;
-            this.PreconditionBox.TabStop = false;
-            this.PreconditionBox.Text = "Условия активности узла";
+            this.gbPrecondition.Controls.Add(this.cbShowClanOptions);
+            this.gbPrecondition.Controls.Add(this.gbClanOptions);
+            this.gbPrecondition.Controls.Add(this.mtbPlayerLevel);
+            this.gbPrecondition.Controls.Add(this.lPlayerLevel);
+            this.gbPrecondition.Controls.Add(this.bKarma);
+            this.gbPrecondition.Controls.Add(this.bReputation);
+            this.gbPrecondition.Controls.Add(this.gbQuestCondition);
+            this.gbPrecondition.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbPrecondition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gbPrecondition.Location = new System.Drawing.Point(0, 227);
+            this.gbPrecondition.Name = "gbPrecondition";
+            this.gbPrecondition.Size = new System.Drawing.Size(588, 273);
+            this.gbPrecondition.TabIndex = 4;
+            this.gbPrecondition.TabStop = false;
+            this.gbPrecondition.Text = "Условия активности узла";
             // 
             // cbShowClanOptions
             // 
@@ -370,37 +419,37 @@
             this.bReputation.UseVisualStyleBackColor = true;
             this.bReputation.Click += new System.EventHandler(this.bReputation_Click);
             // 
-            // QuestConditiongroupBox
+            // gbQuestCondition
             // 
-            this.QuestConditiongroupBox.Controls.Add(this.label6);
-            this.QuestConditiongroupBox.Controls.Add(this.tShouldntHaveFailedQuests);
-            this.QuestConditiongroupBox.Controls.Add(this.tMustHaveFailedQuests);
-            this.QuestConditiongroupBox.Controls.Add(this.label5);
-            this.QuestConditiongroupBox.Controls.Add(this.label4);
-            this.QuestConditiongroupBox.Controls.Add(this.label3);
-            this.QuestConditiongroupBox.Controls.Add(this.label2);
-            this.QuestConditiongroupBox.Controls.Add(this.label1);
-            this.QuestConditiongroupBox.Controls.Add(this.tMustHaveQuestsOnTest);
-            this.QuestConditiongroupBox.Controls.Add(this.tShouldntHaveCompletedQuests);
-            this.QuestConditiongroupBox.Controls.Add(this.tMustHaveOpenQuests);
-            this.QuestConditiongroupBox.Controls.Add(this.tShouldntHaveQuestsOnTest);
-            this.QuestConditiongroupBox.Controls.Add(this.tShouldntHaveOpenQuests);
-            this.QuestConditiongroupBox.Controls.Add(this.tMustHaveCompletedQuests);
-            this.QuestConditiongroupBox.Location = new System.Drawing.Point(8, 17);
-            this.QuestConditiongroupBox.Name = "QuestConditiongroupBox";
-            this.QuestConditiongroupBox.Size = new System.Drawing.Size(350, 152);
-            this.QuestConditiongroupBox.TabIndex = 6;
-            this.QuestConditiongroupBox.TabStop = false;
-            this.QuestConditiongroupBox.Text = "Состояния квестов";
+            this.gbQuestCondition.Controls.Add(this.lFailedQuests);
+            this.gbQuestCondition.Controls.Add(this.tShouldntHaveFailedQuests);
+            this.gbQuestCondition.Controls.Add(this.tMustHaveFailedQuests);
+            this.gbQuestCondition.Controls.Add(this.lShouldntHaveQuests);
+            this.gbQuestCondition.Controls.Add(this.lNecessaryQuests);
+            this.gbQuestCondition.Controls.Add(this.lCompletedQuests);
+            this.gbQuestCondition.Controls.Add(this.lOnTestQuests);
+            this.gbQuestCondition.Controls.Add(this.lOpenedQuests);
+            this.gbQuestCondition.Controls.Add(this.tMustHaveQuestsOnTest);
+            this.gbQuestCondition.Controls.Add(this.tShouldntHaveCompletedQuests);
+            this.gbQuestCondition.Controls.Add(this.tMustHaveOpenQuests);
+            this.gbQuestCondition.Controls.Add(this.tShouldntHaveQuestsOnTest);
+            this.gbQuestCondition.Controls.Add(this.tShouldntHaveOpenQuests);
+            this.gbQuestCondition.Controls.Add(this.tMustHaveCompletedQuests);
+            this.gbQuestCondition.Location = new System.Drawing.Point(8, 17);
+            this.gbQuestCondition.Name = "gbQuestCondition";
+            this.gbQuestCondition.Size = new System.Drawing.Size(350, 152);
+            this.gbQuestCondition.TabIndex = 6;
+            this.gbQuestCondition.TabStop = false;
+            this.gbQuestCondition.Text = "Состояния квестов";
             // 
-            // label6
+            // lFailedQuests
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 119);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Проваленные квесты";
+            this.lFailedQuests.AutoSize = true;
+            this.lFailedQuests.Location = new System.Drawing.Point(6, 119);
+            this.lFailedQuests.Name = "lFailedQuests";
+            this.lFailedQuests.Size = new System.Drawing.Size(117, 13);
+            this.lFailedQuests.TabIndex = 13;
+            this.lFailedQuests.Text = "Проваленные квесты";
             // 
             // tShouldntHaveFailedQuests
             // 
@@ -416,50 +465,50 @@
             this.tMustHaveFailedQuests.Size = new System.Drawing.Size(100, 20);
             this.tMustHaveFailedQuests.TabIndex = 6;
             // 
-            // label5
+            // lShouldntHaveQuests
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(227, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Не должно быть";
+            this.lShouldntHaveQuests.AutoSize = true;
+            this.lShouldntHaveQuests.Location = new System.Drawing.Point(227, 16);
+            this.lShouldntHaveQuests.Name = "lShouldntHaveQuests";
+            this.lShouldntHaveQuests.Size = new System.Drawing.Size(90, 13);
+            this.lShouldntHaveQuests.TabIndex = 10;
+            this.lShouldntHaveQuests.Text = "Не должно быть";
             // 
-            // label4
+            // lNecessaryQuests
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(140, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Должно быть";
+            this.lNecessaryQuests.AutoSize = true;
+            this.lNecessaryQuests.Location = new System.Drawing.Point(140, 16);
+            this.lNecessaryQuests.Name = "lNecessaryQuests";
+            this.lNecessaryQuests.Size = new System.Drawing.Size(76, 13);
+            this.lNecessaryQuests.TabIndex = 9;
+            this.lNecessaryQuests.Text = "Должно быть";
             // 
-            // label3
+            // lCompletedQuests
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 92);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Закрытые квесты";
+            this.lCompletedQuests.AutoSize = true;
+            this.lCompletedQuests.Location = new System.Drawing.Point(6, 92);
+            this.lCompletedQuests.Name = "lCompletedQuests";
+            this.lCompletedQuests.Size = new System.Drawing.Size(99, 13);
+            this.lCompletedQuests.TabIndex = 8;
+            this.lCompletedQuests.Text = "Закрытые квесты";
             // 
-            // label2
+            // lOnTestQuests
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Квесты \"к проверке\"";
+            this.lOnTestQuests.AutoSize = true;
+            this.lOnTestQuests.Location = new System.Drawing.Point(6, 69);
+            this.lOnTestQuests.Name = "lOnTestQuests";
+            this.lOnTestQuests.Size = new System.Drawing.Size(115, 13);
+            this.lOnTestQuests.TabIndex = 7;
+            this.lOnTestQuests.Text = "Квесты \"к проверке\"";
             // 
-            // label1
+            // lOpenedQuests
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Открытые квесты";
+            this.lOpenedQuests.AutoSize = true;
+            this.lOpenedQuests.Location = new System.Drawing.Point(6, 43);
+            this.lOpenedQuests.Name = "lOpenedQuests";
+            this.lOpenedQuests.Size = new System.Drawing.Size(99, 13);
+            this.lOpenedQuests.TabIndex = 6;
+            this.lOpenedQuests.Text = "Открытые квесты";
             // 
             // tMustHaveQuestsOnTest
             // 
@@ -505,60 +554,60 @@
             // 
             // bEditDialogOk
             // 
-            this.bEditDialogOk.Location = new System.Drawing.Point(426, 3);
+            this.bEditDialogOk.Location = new System.Drawing.Point(172, 5);
             this.bEditDialogOk.Name = "bEditDialogOk";
-            this.bEditDialogOk.Size = new System.Drawing.Size(75, 23);
+            this.bEditDialogOk.Size = new System.Drawing.Size(106, 30);
             this.bEditDialogOk.TabIndex = 11;
-            this.bEditDialogOk.Text = "Ok";
+            this.bEditDialogOk.Text = "OK";
             this.bEditDialogOk.UseVisualStyleBackColor = true;
             this.bEditDialogOk.Click += new System.EventHandler(this.bEditDialogOk_Click);
             // 
             // bEditDialogCancel
             // 
-            this.bEditDialogCancel.Location = new System.Drawing.Point(507, 3);
+            this.bEditDialogCancel.Location = new System.Drawing.Point(284, 5);
             this.bEditDialogCancel.Name = "bEditDialogCancel";
-            this.bEditDialogCancel.Size = new System.Drawing.Size(75, 23);
+            this.bEditDialogCancel.Size = new System.Drawing.Size(106, 30);
             this.bEditDialogCancel.TabIndex = 12;
             this.bEditDialogCancel.Text = "Отмена";
             this.bEditDialogCancel.UseVisualStyleBackColor = true;
             this.bEditDialogCancel.Click += new System.EventHandler(this.bEditDialogCancel_Click);
             // 
-            // NPCReactionText
+            // lReactionNPC
             // 
-            this.NPCReactionText.AutoSize = true;
-            this.NPCReactionText.Location = new System.Drawing.Point(3, 105);
-            this.NPCReactionText.Name = "NPCReactionText";
-            this.NPCReactionText.Size = new System.Drawing.Size(75, 13);
-            this.NPCReactionText.TabIndex = 6;
-            this.NPCReactionText.Text = "Реакция NPC";
+            this.lReactionNPC.AutoSize = true;
+            this.lReactionNPC.Location = new System.Drawing.Point(3, 105);
+            this.lReactionNPC.Name = "lReactionNPC";
+            this.lReactionNPC.Size = new System.Drawing.Size(75, 13);
+            this.lReactionNPC.TabIndex = 6;
+            this.lReactionNPC.Text = "Реакция NPC";
             // 
-            // MustPanel
+            // pCommands
             // 
-            this.MustPanel.Controls.Add(this.bEditDialogCancel);
-            this.MustPanel.Controls.Add(this.bEditDialogOk);
-            this.MustPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MustPanel.Location = new System.Drawing.Point(0, 641);
-            this.MustPanel.Name = "MustPanel";
-            this.MustPanel.Size = new System.Drawing.Size(588, 33);
-            this.MustPanel.TabIndex = 13;
+            this.pCommands.Controls.Add(this.bEditDialogCancel);
+            this.pCommands.Controls.Add(this.bEditDialogOk);
+            this.pCommands.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pCommands.Location = new System.Drawing.Point(0, 644);
+            this.pCommands.Name = "pCommands";
+            this.pCommands.Size = new System.Drawing.Size(588, 35);
+            this.pCommands.TabIndex = 13;
             // 
-            // textGroupBox
+            // gbTexts
             // 
-            this.textGroupBox.Controls.Add(this.tSubDialogsTextBox);
-            this.textGroupBox.Controls.Add(this.subDialogsLabel);
-            this.textGroupBox.Controls.Add(this.tNPCReactiontextBox);
-            this.textGroupBox.Controls.Add(this.tPlayerText);
-            this.textGroupBox.Controls.Add(this.lAnswerText);
-            this.textGroupBox.Controls.Add(this.NPCSaidIs);
-            this.textGroupBox.Controls.Add(this.NPCSaid);
-            this.textGroupBox.Controls.Add(this.lAttention);
-            this.textGroupBox.Controls.Add(this.NPCReactionText);
-            this.textGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textGroupBox.Location = new System.Drawing.Point(0, 0);
-            this.textGroupBox.Name = "textGroupBox";
-            this.textGroupBox.Size = new System.Drawing.Size(588, 227);
-            this.textGroupBox.TabIndex = 15;
-            this.textGroupBox.TabStop = false;
+            this.gbTexts.Controls.Add(this.tNodes);
+            this.gbTexts.Controls.Add(this.lNodes);
+            this.gbTexts.Controls.Add(this.tReactionNPC);
+            this.gbTexts.Controls.Add(this.tPlayerText);
+            this.gbTexts.Controls.Add(this.lAnswerText);
+            this.gbTexts.Controls.Add(this.NPCSaidIs);
+            this.gbTexts.Controls.Add(this.lGreetNPC);
+            this.gbTexts.Controls.Add(this.lAttention);
+            this.gbTexts.Controls.Add(this.lReactionNPC);
+            this.gbTexts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbTexts.Location = new System.Drawing.Point(0, 0);
+            this.gbTexts.Name = "gbTexts";
+            this.gbTexts.Size = new System.Drawing.Size(588, 227);
+            this.gbTexts.TabIndex = 15;
+            this.gbTexts.TabStop = false;
             // 
             // EditDialogForm
             // 
@@ -566,25 +615,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 679);
             this.Controls.Add(this.actionsCheckBox);
-            this.Controls.Add(this.MustPanel);
-            this.Controls.Add(this.actionsBox);
-            this.Controls.Add(this.PreconditionBox);
-            this.Controls.Add(this.textGroupBox);
+            this.Controls.Add(this.pCommands);
+            this.Controls.Add(this.gbActions);
+            this.Controls.Add(this.gbPrecondition);
+            this.Controls.Add(this.gbTexts);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EditDialogForm";
             this.Text = "Редактирование диалога";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditDialogForm_FormClosed);
-            this.actionsBox.ResumeLayout(false);
-            this.actionsBox.PerformLayout();
-            this.PreconditionBox.ResumeLayout(false);
-            this.PreconditionBox.PerformLayout();
+            this.gbActions.ResumeLayout(false);
+            this.gbActions.PerformLayout();
+            this.gbPrecondition.ResumeLayout(false);
+            this.gbPrecondition.PerformLayout();
             this.gbClanOptions.ResumeLayout(false);
             this.gbClanOptions.PerformLayout();
-            this.QuestConditiongroupBox.ResumeLayout(false);
-            this.QuestConditiongroupBox.PerformLayout();
-            this.MustPanel.ResumeLayout(false);
-            this.textGroupBox.ResumeLayout(false);
-            this.textGroupBox.PerformLayout();
+            this.gbQuestCondition.ResumeLayout(false);
+            this.gbQuestCondition.PerformLayout();
+            this.pCommands.ResumeLayout(false);
+            this.gbTexts.ResumeLayout(false);
+            this.gbTexts.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -595,27 +644,26 @@
         private System.Windows.Forms.TextBox tPlayerText;
         private System.Windows.Forms.Label lAnswerText;
         private System.Windows.Forms.Label NPCSaidIs;
-        private System.Windows.Forms.Label NPCSaid;
+        private System.Windows.Forms.Label lGreetNPC;
         private System.Windows.Forms.Label lAttention;
-        private System.Windows.Forms.GroupBox actionsBox;
+        private System.Windows.Forms.GroupBox gbActions;
         private System.Windows.Forms.ComboBox teleportComboBox;
-        private System.Windows.Forms.MaskedTextBox CompleteQuestsTextBox;
-        private System.Windows.Forms.MaskedTextBox GetQuestsTextBox;
+        private System.Windows.Forms.MaskedTextBox tbCompleteQuests;
+        private System.Windows.Forms.MaskedTextBox tbGetQuests;
         private System.Windows.Forms.ComboBox ToDialogComboBox;
-        private System.Windows.Forms.CheckBox ExitCheckBox;
-        private System.Windows.Forms.CheckBox CompleteQuestsCheckBox;
-        private System.Windows.Forms.CheckBox GetQuestsCheckBox;
-        private System.Windows.Forms.TextBox tNPCReactiontextBox;
-        private System.Windows.Forms.MaskedTextBox tSubDialogsTextBox;
-        private System.Windows.Forms.Label subDialogsLabel;
+        private System.Windows.Forms.CheckBox cbExit;
+        private System.Windows.Forms.CheckBox cbCompleteQuests;
+        private System.Windows.Forms.CheckBox cbGetQuests;
+        private System.Windows.Forms.TextBox tReactionNPC;
+        private System.Windows.Forms.MaskedTextBox tNodes;
+        private System.Windows.Forms.Label lNodes;
         private System.Windows.Forms.CheckBox actionsCheckBox;
-        private System.Windows.Forms.GroupBox PreconditionBox;
-        private System.Windows.Forms.GroupBox QuestConditiongroupBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gbQuestCondition;
+        private System.Windows.Forms.Label lShouldntHaveQuests;
+        private System.Windows.Forms.Label lNecessaryQuests;
+        private System.Windows.Forms.Label lCompletedQuests;
+        private System.Windows.Forms.Label lOnTestQuests;
+        private System.Windows.Forms.Label lOpenedQuests;
         private System.Windows.Forms.MaskedTextBox tMustHaveQuestsOnTest;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveCompletedQuests;
         private System.Windows.Forms.MaskedTextBox tMustHaveOpenQuests;
@@ -624,12 +672,12 @@
         private System.Windows.Forms.MaskedTextBox tMustHaveCompletedQuests;
         private System.Windows.Forms.Button bEditDialogOk;
         private System.Windows.Forms.Button bEditDialogCancel;
-        private System.Windows.Forms.Label NPCReactionText;
-        private System.Windows.Forms.Panel MustPanel;
-        private System.Windows.Forms.GroupBox textGroupBox;
+        private System.Windows.Forms.Label lReactionNPC;
+        private System.Windows.Forms.Panel pCommands;
+        private System.Windows.Forms.GroupBox gbTexts;
         private System.Windows.Forms.Button bReputation;
         private System.Windows.Forms.Button bKarma;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lFailedQuests;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveFailedQuests;
         private System.Windows.Forms.MaskedTextBox tMustHaveFailedQuests;
         private System.Windows.Forms.MaskedTextBox mtbPlayerLevel;
@@ -640,5 +688,10 @@
         private System.Windows.Forms.CheckBox cbAnyClanOnly;
         private System.Windows.Forms.CheckBox cbSameClanOnly;
         private System.Windows.Forms.ComboBox ActionsComboBox;
+        private System.Windows.Forms.GroupBox gbPrecondition;
+        private System.Windows.Forms.CheckBox cbFailQuests;
+        private System.Windows.Forms.CheckBox cbCancelQuests;
+        private System.Windows.Forms.MaskedTextBox tbFailQuests;
+        private System.Windows.Forms.MaskedTextBox tbCancelQuests;
     }
 }

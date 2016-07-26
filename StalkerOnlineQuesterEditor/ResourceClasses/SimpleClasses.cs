@@ -123,11 +123,12 @@ namespace StalkerOnlineQuesterEditor
     public class Actions //: ICloneable
     {
         public bool Exit;
-        //public bool Trade;
         public int Event;
         public int ToDialog;
         public ListOfQuests CompleteQuests;
         public ListOfQuests GetQuests;
+        public ListOfQuests CancelQuests;
+        public ListOfQuests FailQuests;
         public string Data;
 
         //public object Clone()
@@ -146,9 +147,10 @@ namespace StalkerOnlineQuesterEditor
         {
             this.Exit = new bool();
             this.Event = new int();
-            //this.Trade = new bool();
             this.CompleteQuests = new ListOfQuests();
             this.GetQuests = new ListOfQuests();
+            this.CancelQuests = new ListOfQuests();
+            this.FailQuests = new ListOfQuests();
             this.Data = "";
         }
 

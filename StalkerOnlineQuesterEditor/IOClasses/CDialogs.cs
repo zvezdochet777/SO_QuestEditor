@@ -76,28 +76,18 @@ namespace StalkerOnlineQuesterEditor
                             if (node != "")
                                 Nodes.Add(int.Parse(node));
 
-                    if (dialog.Element("Actions").Element("Exit").Value == "1")
-                        Actions.Exit = true;
-                    else
-                        Actions.Exit = false;
-
-                    if (dialog.Element("Actions").Element("ToDialog").Value != "")
-                        Actions.ToDialog = int.Parse(dialog.Element("Actions").Element("ToDialog").Value);
-
-                    if (!dialog.Element("Actions").Element("Event").Value.Equals(""))
-                        Actions.Event = int.Parse(dialog.Element("Actions").Element("Event").Value);
-                    else
-                        Actions.Event = 0;
-
+                    Actions.Exit = dialog.Element("Actions").Element("Exit").Value == "1";
+                    Actions.ToDialog = ParseIntIfNotEmpty(dialog, "Actions", "ToDialog", 0);
+                    Actions.Event = ParseIntIfNotEmpty(dialog, "Actions", "Event", 0);
                     Actions.Data = dialog.Element("Actions").Element("Data").Value;
 
-                    if (dialog.Element("Actions").Element("GetQuest").Value != "")
-                        foreach (string quest in dialog.Element("Actions").Element("GetQuest").Value.Split(','))
-                            Actions.GetQuests.Add(int.Parse(quest));
-
-                    if (dialog.Element("Actions").Element("CompleteQuest").Value != "")
-                        foreach (string quest in dialog.Element("Actions").Element("CompleteQuest").Value.Split(','))
-                            Actions.CompleteQuests.Add(int.Parse(quest));
+                    AddDataToList(dialog, "Actions", "GetQuest", Actions.GetQuests);
+                    AddDataToList(dialog, "Actions", "CompleteQuest", Actions.CompleteQuests);
+                    if (dialog.Element("Actions").Descendants().Any(item => item.Name =="CancelQuest"))
+                    {
+                        AddDataToList(dialog, "Actions", "CancelQuest", Actions.CancelQuests);
+                        AddDataToList(dialog, "Actions", "FailQuest", Actions.FailQuests);
+                    }
 
                     AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOpenedQuests", Precondition.ListOfNecessaryQuests.ListOfOpenedQuests);
                     AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
@@ -110,16 +100,12 @@ namespace StalkerOnlineQuesterEditor
                     AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfFailedQuests", Precondition.ListOfMustNoQuests.ListOfFailedQuests);
 
                     Precondition.KarmaPK = new List<int>();
-                    if (dialog.Element("Precondition").Element("KarmaPK").Value != "")
-                        foreach (string karme_el in dialog.Element("Precondition").Element("KarmaPK").Value.Split(','))
-                            Precondition.KarmaPK.Add(int.Parse(karme_el));
+                    AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
+                    AddDataToList(dialog, "Precondition", "tests", Precondition.tests);
+
                     if (dialog.Element("Precondition").Descendants().Any(itm2 => itm2.Name == "PlayerLevel"))
                         if (!dialog.Element("Precondition").Element("PlayerLevel").Value.Equals(""))
                             Precondition.PlayerLevel = int.Parse(dialog.Element("Precondition").Element("PlayerLevel").Value);
-
-                    if (dialog.Element("Precondition").Element("tests").Value != "")
-                        foreach (string test in dialog.Element("Precondition").Element("tests").Value.Split(','))
-                            Precondition.tests.Add(int.Parse(test));
 
                     NodeCoordinates nodeCoord = new NodeCoordinates();
                     nodeCoord.RootDialog = dialog.Element("RootDialog").Value.Equals("1");
@@ -153,7 +139,21 @@ namespace StalkerOnlineQuesterEditor
         {
             if (Element.Element("Precondition").Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element("Precondition").Element(Name1).Element(Name2).Value.Split(','))
-                    list.Add(int.Parse(quest));        
+                    list.Add(int.Parse(quest));
+        }
+
+        private void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
+        {
+            if (Element.Element(Name1).Element(Name2).Value != "")
+                foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
+                    list.Add(int.Parse(quest));
+        }
+
+        private int ParseIntIfNotEmpty(XElement Element, String Name1, String Name2, int defaultValue)
+        {
+            if (!Element.Element(Name1).Element(Name2).Value.Equals(""))
+                return int.Parse(Element.Element(Name1).Element(Name2).Value);
+            return defaultValue;
         }
 
         private void ParseDialogsTexts(String DialogsXMLFile, NPCDicts target)
@@ -261,7 +261,9 @@ namespace StalkerOnlineQuesterEditor
                            new XElement("Data", dialog.Actions.Data),
                            new XElement("Event", dialog.Actions.Event.ToString()),
                            new XElement("GetQuest", Global.GetListAsString(dialog.Actions.GetQuests)),
-                           new XElement("CompleteQuest", Global.GetListAsString(dialog.Actions.CompleteQuests))),
+                           new XElement("CompleteQuest", Global.GetListAsString(dialog.Actions.CompleteQuests)),
+                           new XElement("CancelQuest", Global.GetListAsString(dialog.Actions.CancelQuests)),
+                           new XElement("FailQuest", Global.GetListAsString(dialog.Actions.FailQuests))),
                        new XElement("Nodes", Global.GetListAsString(dialog.Nodes)),
                        new XElement("RootDialog", Global.GetBoolAsString(dialog.coordinates.RootDialog)),
                        new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active))
