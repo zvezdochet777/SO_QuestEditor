@@ -80,6 +80,7 @@ namespace StalkerOnlineQuesterEditor
             RectManager.LoadData();
             settings = new CSettings(this);
             ManagerNPC = new CManagerNPC();
+            dialogEvents = new DialogEventsList();
             dialogs = new CDialogs(this, ManagerNPC);
             quests = new CQuests(this);
             tpConst = new CTPConstants();
@@ -95,7 +96,6 @@ namespace StalkerOnlineQuesterEditor
             fractions = new CFracConstants();
             gui = new CGUIConst();
             effects = new CEffectConstants();
-            dialogEvents = new DialogEventsList();            
 
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             //fillNPCBox();
@@ -564,13 +564,9 @@ namespace StalkerOnlineQuesterEditor
             int choosenDialogID = (int)e.Link.LinkData;
             CDialog choosenDialog = dialogs.dialogs[currentNPC][choosenDialogID];
             statusLabel.Text = "";
-            if (choosenDialog.Actions.CompleteQuests.Any())
-                statusLabel.Text += "Завершенные: " + Global.GetListAsString(choosenDialog.Actions.CompleteQuests);
-            if (choosenDialog.Actions.GetQuests.Any())
-                statusLabel.Text += " Взятые: " + Global.GetListAsString(choosenDialog.Actions.GetQuests);
-            
-            string eventName = dialogEvents.GetEventName(choosenDialog.Actions.Event);
-            addActionTextToEmulator(eventName, choosenDialogID);
+            String actionString = "";
+            if (choosenDialog.Actions.CheckAndGetString(out actionString))
+                addActionTextToEmulator(actionString, choosenDialogID);
 
             if (choosenDialog.Actions.Exit)
                 addActionTextToEmulator("Выход.", choosenDialogID);
@@ -581,9 +577,7 @@ namespace StalkerOnlineQuesterEditor
                 Listener.SelectCurrentNode(choosenDialog.Actions.ToDialog);
             }
             else
-            {
                 Listener.SelectCurrentNode(choosenDialogID);
-            }            
         }
         //! Антиговнокод - добавление примечания к фразе диалога с действием
         void addActionTextToEmulator(string text, int dialogID)
@@ -607,18 +601,9 @@ namespace StalkerOnlineQuesterEditor
         {
             int dialogID = getDialogIDOnNode(CurrentNode);
             Actions actions = dialogs.dialogs[currentNPC][dialogID].Actions;
-            if (actions.GetQuests.Count > 0 || actions.CompleteQuests.Count > 0 || actions.Event != 0)
-            {
-                string tooltip = "";
-                string action = dialogEvents.GetEventName(actions.Event);
-                if (action != "")
-                    tooltip = action + "\n";
-                if (actions.GetQuests.Any())
-                    tooltip += "Взять: " + Global.GetListAsString(actions.GetQuests) + "\n";
-                if (actions.CompleteQuests.Any())
-                    tooltip += "Закрыть: " + Global.GetListAsString(actions.CompleteQuests);                
-                toolTipDialogs.SetToolTip(DialogShower, tooltip);
-            }
+            String actionString;
+            if (actions.CheckAndGetString(out actionString))
+                toolTipDialogs.SetToolTip(DialogShower, actionString);
             else
                 toolTipDialogs.SetToolTip(DialogShower, "Нет действий у диалога");
         }

@@ -120,10 +120,10 @@ namespace StalkerOnlineQuesterEditor
         }
     }
     //! Действия диалога - торговля, починка, телепортация, окончание разговора и т.д.
-    public class Actions //: ICloneable
+    public class Actions
     {
         public bool Exit;
-        public int Event;
+        public DialogEvent Event;
         public int ToDialog;
         public ListOfQuests CompleteQuests;
         public ListOfQuests GetQuests;
@@ -131,22 +131,9 @@ namespace StalkerOnlineQuesterEditor
         public ListOfQuests FailQuests;
         public string Data;
 
-        //public object Clone()
-        //{
-        //    Actions copy = new Actions();
-        //    copy.Exit = this.Exit;
-        //    copy.Event = this.Event;
-        //    copy.ToDialog = this.ToDialog;
-        //    copy.CompleteQuests = this.CompleteQuests;
-        //    copy.GetQuests = this.GetQuests;
-        //    copy.Data = this.Data;
-        //    return copy;
-        //}
-
         public Actions()
         {
             this.Exit = new bool();
-            this.Event = new int();
             this.CompleteQuests = new ListOfQuests();
             this.GetQuests = new ListOfQuests();
             this.CancelQuests = new ListOfQuests();
@@ -154,13 +141,22 @@ namespace StalkerOnlineQuesterEditor
             this.Data = "";
         }
 
+        public bool Exists()
+        {
+            return (GetQuests.Count > 0 || CompleteQuests.Count > 0 || CancelQuests.Count > 0 || FailQuests.Count > 0 || Event.Value != 0);
+        }
+
         public bool CheckAndGetString(out string ActionString)
         {
             ActionString = "";
-            if (GetQuests.Count > 0 || CompleteQuests.Count > 0 || Event != 0)
+            if (Exists())
             {
-                //string action = dialogEvents.GetEventName(dialog.Actions.Event) + "\n";
-                string tooltip = "Взять: " + Global.GetListAsString(GetQuests) + "\nЗакрыть: " + Global.GetListAsString(CompleteQuests);
+                string tooltip = (Event.Value != 0) ? (Event.Display + "\n") : ("");
+                tooltip += "Взять: " + Global.GetListAsString(GetQuests);
+                tooltip += "\nЗакрыть: " + Global.GetListAsString(CompleteQuests);
+                tooltip += "\nОтменить: " + Global.GetListAsString(CancelQuests);
+                tooltip += "\nПровалить: " + Global.GetListAsString(FailQuests);
+                ActionString = tooltip;
                 return true;
             }
             else

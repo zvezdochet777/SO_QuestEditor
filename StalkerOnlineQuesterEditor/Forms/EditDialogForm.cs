@@ -92,11 +92,10 @@ namespace StalkerOnlineQuesterEditor
             ShowClanOptions();
 
             FillActionsComboBox();
-            if (curDialog.Actions.CompleteQuests.Any() || curDialog.Actions.GetQuests.Any() ||
-                curDialog.Actions.Exit || curDialog.Actions.ToDialog!=0 || curDialog.Actions.Event != 0)
+            if (curDialog.Actions.Exists() || curDialog.Actions.Exit || curDialog.Actions.ToDialog!=0 )
             {
                 actionsCheckBox.Checked = true;
-                ActionsComboBox.SelectedValue = curDialog.Actions.Event;
+                ActionsComboBox.SelectedValue = curDialog.Actions.Event.Value;
                 cbExit.Checked = curDialog.Actions.Exit;
 
                 if (ActionsComboBox.Text == "Телепорт")
@@ -367,14 +366,11 @@ namespace StalkerOnlineQuesterEditor
             if (actionsCheckBox.Checked)
             {               
                 actions.Exit = cbExit.Checked;
-                actions.Event = (int) ActionsComboBox.SelectedValue;
-                if (actions.Event == 5)     // телепорт 
+                actions.Event = parent.dialogEvents.GetEventFromID((int) ActionsComboBox.SelectedValue);
+                if (actions.Event.Display == "Телепорт")
                     actions.Data = parent.tpConst.getTtID(teleportComboBox.SelectedItem.ToString());
-                if (actions.Event == 100)    // переход к диалогу
-                {
-                    actions.Event = 0;
+                if (actions.Event.Display == "Переход к диалогу")
                     actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString());
-                }
 
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))

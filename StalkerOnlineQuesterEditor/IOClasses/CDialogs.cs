@@ -78,7 +78,7 @@ namespace StalkerOnlineQuesterEditor
 
                     Actions.Exit = dialog.Element("Actions").Element("Exit").Value == "1";
                     Actions.ToDialog = ParseIntIfNotEmpty(dialog, "Actions", "ToDialog", 0);
-                    Actions.Event = ParseIntIfNotEmpty(dialog, "Actions", "Event", 0);
+                    Actions.Event = parent.dialogEvents.GetEventFromID(ParseIntIfNotEmpty(dialog, "Actions", "Event", 0));
                     Actions.Data = dialog.Element("Actions").Element("Data").Value;
 
                     AddDataToList(dialog, "Actions", "GetQuest", Actions.GetQuests);
@@ -259,7 +259,7 @@ namespace StalkerOnlineQuesterEditor
                            new XElement("Exit", Global.GetBoolAsString(dialog.Actions.Exit)),
                            new XElement("ToDialog", Global.GetIntAsString(dialog.Actions.ToDialog)),
                            new XElement("Data", dialog.Actions.Data),
-                           new XElement("Event", dialog.Actions.Event.ToString()),
+                           new XElement("Event", dialog.Actions.Event.Value.ToString()),
                            new XElement("GetQuest", Global.GetListAsString(dialog.Actions.GetQuests)),
                            new XElement("CompleteQuest", Global.GetListAsString(dialog.Actions.CompleteQuests)),
                            new XElement("CancelQuest", Global.GetListAsString(dialog.Actions.CancelQuests)),

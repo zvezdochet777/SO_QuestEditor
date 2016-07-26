@@ -91,12 +91,12 @@ namespace StalkerOnlineQuesterEditor
             return allEvents;
         }
 
-        public string GetEventName(int eventID)
+        public DialogEvent GetEventFromID(int eventID)
         {
-            if (eventID == 0)
-                return "";
-            var stuff = allEvents.Where<DialogEvent>(item => item.Value == eventID);
-            return stuff.FirstOrDefault().Display;
+            DialogEvent stuff = allEvents.SingleOrDefault<DialogEvent>(item => item.Value == eventID);
+            if (stuff == null)
+                return allEvents.Single<DialogEvent>(item => item.Value == 0);
+            return stuff;
         }
     }
 
