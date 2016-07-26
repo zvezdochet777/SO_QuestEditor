@@ -27,6 +27,7 @@ namespace StalkerOnlineQuesterEditor.Forms
         {
             InitializeComponent();
             this.parent = parent;
+            parent.Enabled = false;
 
             CQuest locale_quest = parent.getLocaleQuest(questID);
             CQuest quest = parent.getQuestOnQuestID(questID);

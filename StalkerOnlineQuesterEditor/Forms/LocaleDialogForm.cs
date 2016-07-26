@@ -20,8 +20,9 @@ namespace StalkerOnlineQuesterEditor.Forms
         public LocaleDialogForm(MainForm parent, int selectedDialogID)
         {
             InitializeComponent();
-            this.parent = parent;            
-            CDialog dialog = parent.getDialogOnDialogID(selectedDialogID);            
+            this.parent = parent;
+            parent.Enabled = false;
+            CDialog dialog = parent.getDialogOnDialogID(selectedDialogID);
             NPCReactiontextBox.Text = dialog.Text;
             textBoxAnswer.Text = dialog.Title;
             lViewNpcName.Text = dialog.Holder;
