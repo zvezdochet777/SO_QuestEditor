@@ -157,7 +157,6 @@
     <Compile Include="ResourceClasses\CNPCConstants.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="ResourceClasses\CQuestConstants.cs" />
-    <Compile Include="ResourceClasses\CScenariosConstants.cs" />
     <Compile Include="IOClasses\CSettings.cs" />
     <Compile Include="ResourceClasses\CSpacesConstants.cs" />
     <Compile Include="ResourceClasses\CTPConstants.cs" />

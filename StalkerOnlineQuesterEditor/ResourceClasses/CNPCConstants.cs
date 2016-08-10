@@ -5,6 +5,7 @@ using System.Text;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! @todo: выкуривать, менять с NpcData
     public class CNPCConstants
     {
         public Dictionary<string, CNPCDescription> NPCs;
@@ -12,9 +13,6 @@ namespace StalkerOnlineQuesterEditor
         public CNPCConstants()
         {
             NPCs = new Dictionary<string, CNPCDescription>();
-//            this.NPCs.Add("Shtaket",new CNPCDescription("Штакет"));
-//            this.NPCs.Add("Metrofan", new CNPCDescription("Метрофан"));
-
         }
         public Dictionary<string, CNPCDescription> getAllNPCsDescription()
         {
@@ -35,11 +33,7 @@ namespace StalkerOnlineQuesterEditor
                         return key;
             }
             return "";
-                    
         }
-
-
-
     }
 
     public class CNPCDescription

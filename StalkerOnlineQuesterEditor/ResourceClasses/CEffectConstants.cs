@@ -17,11 +17,8 @@ namespace StalkerOnlineQuesterEditor
         JsonTextReader reader;
         public Dictionary<int, string> effects = new Dictionary<int, string>();
 
-
         public CEffectConstants()
         {
-            System.Console.WriteLine("CEffectConstants.__init__");
-            
             reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
             int id = 0;
             bool inName = false;
@@ -32,27 +29,18 @@ namespace StalkerOnlineQuesterEditor
                 {
                     int n;
                     if (int.TryParse(reader.Value.ToString(), out n))
-                    {
                         id = n;
-                    }
 
                     if (reader.Value.ToString().Equals("name"))
-                    {
                         inName = true;
-                    }
                 }
                 if (reader.TokenType == JsonToken.String)
                     if (inName)
                     {
                         inName = false;
                         effects.Add(id, reader.Value.ToString());
-
                     }
             }
-
-            //foreach (int tid in effects.Keys)
-            //    System.Console.WriteLine(tid.ToString() + ":" + effects[tid]);
-
         }
 
         public List<string> getAllDescriptions()

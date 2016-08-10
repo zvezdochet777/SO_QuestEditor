@@ -6,6 +6,7 @@ using System.Collections;
 
 namespace StalkerOnlineQuesterEditor
 {
+    //! @todo: переделывать все нахер. 
     //! Класс констант квеста - типов. Лучше бы переделывать.
     public class СQuestConstants
     {

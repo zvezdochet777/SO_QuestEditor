@@ -9,7 +9,6 @@ namespace StalkerOnlineQuesterEditor
     {
         public Dictionary<string, int> guiIDs = new Dictionary<string, int>();
 
-
         public CGUIConst()
         {
             guiIDs.Add("Журнал квестов", 16);
