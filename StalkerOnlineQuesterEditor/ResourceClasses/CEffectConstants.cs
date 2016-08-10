@@ -11,6 +11,29 @@ using System.Xml;
 
 namespace StalkerOnlineQuesterEditor
 {
+
+    public class CEffect
+    {
+        int id;
+        int stack;
+
+        public CEffect(int id, int stack)
+        {
+            this.id = id;
+            this.stack = stack;
+        }
+
+        public int getID()
+        {
+            return this.id;
+        }
+
+        public int getStack()
+        {
+            return this.stack;
+        }
+    }
+
     public class CEffectConstants
     {
         string JSON_PATH = "source/Effects.json";

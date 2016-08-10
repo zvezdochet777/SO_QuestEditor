@@ -53,4 +53,16 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    //! Класс различий - содержит текущую и устаревшую версию
+    public class CDifference
+    {
+        public int cur_version;
+        public int old_version;
+
+        public CDifference(int cur_version, int old_version)
+        {
+            this.cur_version = cur_version;
+            this.old_version = old_version;
+        }
+    }
 }

@@ -6,256 +6,7 @@ using System.Text;
 
 namespace StalkerOnlineQuesterEditor
 {
-    using ListOfQuests = List<int>;
 
-    public class CDialogPreconditionQuests : ICloneable
-    {
-        public ListOfQuests ListOfCompletedQuests;
-        public ListOfQuests ListOfOpenedQuests;
-        public ListOfQuests ListOfOnTestQuests;
-        public ListOfQuests ListOfFailedQuests;
-        
-        public CDialogPreconditionQuests()
-        {
-            this.ListOfCompletedQuests = new ListOfQuests();
-            this.ListOfOpenedQuests = new ListOfQuests();
-            this.ListOfOnTestQuests = new ListOfQuests();
-            this.ListOfFailedQuests = new ListOfQuests();
-        }
-
-        public bool Any()
-        {
-            if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() || ListOfFailedQuests.Any())
-                return true;
-            else
-                return false;
-        }
-
-        public object Clone()
-        {
-            CDialogPreconditionQuests copy = new CDialogPreconditionQuests();
-            copy.ListOfCompletedQuests = this.ListOfCompletedQuests;
-            copy.ListOfOpenedQuests = this.ListOfOpenedQuests;
-            copy.ListOfOnTestQuests = this.ListOfOnTestQuests;
-            copy.ListOfFailedQuests = this.ListOfFailedQuests;
-            return copy;
-        }
-    }
-
-    public class CDialogPrecondition : ICloneable
-    {
-        public CDialogPreconditionQuests ListOfNecessaryQuests;
-        public CDialogPreconditionQuests ListOfMustNoQuests;
-        //public bool CheckClanID;
-        //public bool CheckClan;
-        public List<int> tests;
-        public int PlayerLevel;
-        public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
-        public List<int> KarmaPK = new List<int>();
-
-        public object Clone()
-        {
-            CDialogPrecondition copy = new CDialogPrecondition();
-            //copy.CheckClanID = this.CheckClanID;
-            //copy.CheckClan = this.CheckClan;
-            foreach (int test in this.tests)
-                copy.tests.Add(test);
-            copy.ListOfNecessaryQuests = (CDialogPreconditionQuests)this.ListOfNecessaryQuests.Clone();
-            copy.ListOfMustNoQuests = (CDialogPreconditionQuests)this.ListOfMustNoQuests.Clone();
-            copy.Reputation = this.Reputation;
-            copy.KarmaPK = this.KarmaPK;
-            copy.PlayerLevel = this.PlayerLevel;
-            return copy;
-        }
-
-        public CDialogPrecondition()
-        {
-            this.ListOfNecessaryQuests = new CDialogPreconditionQuests();
-            this.ListOfMustNoQuests = new CDialogPreconditionQuests();
-            this.tests = new List<int>();
-            //this.CheckClanID = false;
-            //this.CheckClan = false;
-            this.Reputation = new Dictionary<int, List<double>>();
-            this.KarmaPK = new List<int>();
-            this.PlayerLevel = 0;
-        }
-        public bool Any()
-        {
-            if (ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any())
-                return true;
-            else
-                return false;
-        }
-
-        public string getReputation()
-        {
-            string result = "";
-            //double.NegativeInfinity.ToString(System.Globalization.CultureInfo.InvariantCulture);
-            foreach (int key in this.Reputation.Keys)
-            {
-                if (this.Reputation[key].Count == 2)
-                {
-                    if (result != "")
-                        result += ";";
-                    result += key.ToString() + ":";
-                    result += this.Reputation[key][0].ToString(System.Globalization.CultureInfo.InvariantCulture) + ":";
-                    result += this.Reputation[key][1].ToString(System.Globalization.CultureInfo.InvariantCulture);
-                }
-                else if (this.Reputation[key].Count == 3)  //костыль для плавного перехода между старой и новой версией
-                {
-                    if (result != "")
-                        result += ";";
-                    double A = this.Reputation[key][1];
-                    double B = this.Reputation[key][2];
-                    if (A == 0.0)
-                        A = double.NegativeInfinity;
-                    if (B == 0.0)
-                        B = double.PositiveInfinity;
-                    result = key.ToString() + ":";
-                    result += A.ToString(System.Globalization.CultureInfo.InvariantCulture) + ":";
-                    result += B.ToString(System.Globalization.CultureInfo.InvariantCulture);                
-                }
-            }
-            return result;
-        }
-    }
-    //! Действия диалога - торговля, починка, телепортация, окончание разговора и т.д.
-    public class Actions
-    {
-        public bool Exit;
-        public DialogEvent Event;
-        public int ToDialog;
-        public ListOfQuests CompleteQuests;
-        public ListOfQuests GetQuests;
-        public ListOfQuests CancelQuests;
-        public ListOfQuests FailQuests;
-        public string Data;
-
-        public Actions()
-        {
-            this.Exit = new bool();
-            this.CompleteQuests = new ListOfQuests();
-            this.GetQuests = new ListOfQuests();
-            this.CancelQuests = new ListOfQuests();
-            this.FailQuests = new ListOfQuests();
-            this.Data = "";
-        }
-
-        public bool Exists()
-        {
-            return (GetQuests.Count > 0 || CompleteQuests.Count > 0 || CancelQuests.Count > 0 || FailQuests.Count > 0 || Event.Value != 0);
-        }
-
-        public bool CheckAndGetString(out string ActionString)
-        {
-            ActionString = "";
-            if (Exists())
-            {
-                string tooltip = (Event.Value != 0) ? (Event.Display + "\n") : ("");
-                tooltip += "Взять: " + Global.GetListAsString(GetQuests);
-                tooltip += "\nЗакрыть: " + Global.GetListAsString(CompleteQuests);
-                tooltip += "\nОтменить: " + Global.GetListAsString(CancelQuests);
-                tooltip += "\nПровалить: " + Global.GetListAsString(FailQuests);
-                ActionString = tooltip;
-                return true;
-            }
-            else
-                return false;
-        }
-    }
-    //! Класс параметров узла диалога на графе - координаты и флаг "корневой"
-    public class NodeCoordinates
-    {
-        public int X;
-        public int Y;
-        public bool RootDialog;
-        public bool Active;
-        public NodeCoordinates()
-        {
-            X = 0;
-            Y = 0;
-            RootDialog = false;
-            Active = true;
-        }
-        public NodeCoordinates(int x, int y, bool root, bool active)
-        {
-            X = x;
-            Y = y;
-            RootDialog = root;
-            Active = active;
-        }
-    }
-
-    //! Класс диалога (одна ветка в xml файле)
-    public class CDialog : ICloneable
-    {
-        public int DialogID;
-        //public List<string> Holder;
-        public string Holder;
-        public string Title;
-        public string Text;
-        public CDialogPrecondition Precondition;
-        //public List<int> Actions;
-        public Actions Actions;
-        public List<int> Nodes;
-        public int version;
-        public NodeCoordinates coordinates;
-
-        public CDialog(string Holder, string Title, string Text , CDialogPrecondition Precondition, 
-                    Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates)
-        {
-            this.Holder = Holder;
-            this.Title = Title;
-            this.Text = Text;
-            this.Precondition = Precondition;
-            this.Actions = Actions;
-            this.Nodes = Nodes;
-            this.DialogID = DialogID;
-            this.version = version;
-            this.coordinates = Coordinates;
-        }
-        public CDialog()
-        {
-            //this.Holder = new List<string>();
-            this.Holder = "";
-            this.Title = "";
-            this.Text = "";
-            this.Precondition = new CDialogPrecondition();
-            this.Actions = new Actions();
-            this.Nodes = new List<int>();
-            this.DialogID = new int();
-            this.version = new int();
-            coordinates = new NodeCoordinates();
-        }
-        public object Clone()
-        {
-            CDialog copy = new CDialog();
-            copy.Actions = this.Actions;
-            copy.coordinates = this.coordinates;
-            copy.DialogID = this.DialogID;
-            copy.Holder = this.Holder;
-            copy.Nodes = new List<int>(this.Nodes);
-            copy.Precondition = this.Precondition;
-            copy.Text = this.Text;
-            copy.Title = this.Title;
-            copy.version = this.version;
-            return copy;
-        }
-        // Копирование всех нетекстовых полей (сделано для синхронизации данных, не изменяя перевода)
-        public void InsertNonTextData(CDialog source)
-        {
-            //this.Holder = Holder;
-            //this.Title = Title;
-            //this.Text = Text;
-            this.Precondition = source.Precondition;
-            this.Actions = source.Actions;
-            this.Nodes = new List<int>(source.Nodes);
-            //this.DialogID = DialogID;
-            //this.version = source.version;
-            this.coordinates.Active = source.coordinates.Active;
-            this.coordinates.RootDialog = source.coordinates.RootDialog;
-        }
-    }
     //! Класс квест - все параметры получения, выполнения и вознаграждения за квест
     public class CQuest : ICloneable
     {
@@ -268,7 +19,6 @@ namespace StalkerOnlineQuesterEditor
         public CQuestReward Reward;
         public CQuestPenalty QuestPenalty;
         public CQuestAdditional Additional;
-
 
         public object Clone()
         {
@@ -313,9 +63,6 @@ namespace StalkerOnlineQuesterEditor
 
         public void InsertNonTextData(CQuest source)
         {
-            //this.QuestID = questID;
-            //this.Version = Version;
-            //this.QuestInformation. = source.QuestInformation;
             this.Precondition = (CQuestPrecondition) source.Precondition.Clone();
             this.QuestRules = (CQuestRules) source.QuestRules.Clone();
             this.Reward = (CQuestReward) source.Reward.Clone();
@@ -324,6 +71,7 @@ namespace StalkerOnlineQuesterEditor
             this.QuestPenalty = (CQuestPenalty) source.QuestPenalty.Clone();        
         }
     }
+
     //! Класс текстовой информации о квесте - название, описание, надписи на победу и проигрыш
     public class CQuestInformation : ICloneable
     {
@@ -420,11 +168,11 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
-    public class CQuestPrecondition : CDialogPreconditionQuests
+    public class CQuestPrecondition
     {
        	public int Repeat;
         public double TakenPeriod;
-        public CQuestPrecondition() : base()
+        public CQuestPrecondition()
         {
             this.Repeat = new int();
             this.TakenPeriod = new double();
@@ -433,9 +181,6 @@ namespace StalkerOnlineQuesterEditor
         public object Clone()
         {
             CQuestPrecondition copy = new CQuestPrecondition();
-            copy.ListOfCompletedQuests = new ListOfQuests(this.ListOfCompletedQuests);
-            copy.ListOfOpenedQuests = new ListOfQuests(this.ListOfOpenedQuests);
-            copy.ListOfOnTestQuests = new ListOfQuests(copy.ListOfOnTestQuests);
             copy.Repeat = this.Repeat;
             copy.TakenPeriod = this.TakenPeriod;
             return copy;
@@ -485,27 +230,6 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
-    public class CEffect
-    {
-        int id;
-        int stack;
-
-        public CEffect(int id, int stack)
-        {
-            this.id = id;
-            this.stack = stack;
-        }
-
-        public int getID()
-        {
-            return this.id;
-        }
-
-        public int getStack()
-        {
-            return this.stack;
-        }
-    }
     //! Награда за успешное выполнение квеста
     public class CQuestReward : ICloneable
     {
@@ -647,32 +371,6 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
-    //public class TriggerInfo : ICloneable
-    //{
-    //    //public int itemID;
-    //    public string name;
-
-
-    //    public object Clone()
-    //    {
-    //        TriggerInfo copy = new TriggerInfo();
-
-    //        copy.name = this.name;
-
-    //        return copy;
-    //    }
-
-    //    public TriggerInfo()
-    //    {
-    //        this.name = "";
-
-    //    }
-    //    public TriggerInfo(string name)
-    //    {
-    //        this.name = name;
-    //    }
-    //}
-
     public class QuestItemInfo : ICloneable
     {
         public string title;
@@ -703,55 +401,5 @@ namespace StalkerOnlineQuesterEditor
             this.activation = activation;
         }
     }
-
-    //! Класс различий - содержит текущую и устаревшую версию
-    public class CDifference
-    {
-        public int cur_version;
-        public int old_version;
-
-        public CDifference(int cur_version, int old_version)
-        {
-            this.cur_version = cur_version;
-            this.old_version = old_version;
-        }
-    }
-
-    //! Класс объекта, хранящий данные о русском и английском имени NPC 
-    public class NPCNameDataSourceObject :IComparable
-    {
-        //! Имя NPC по-английски
-        private string value;
-        //! Имя NPC по-русски
-        private string displayString;
-
-        public NPCNameDataSourceObject(string _value, string _display)
-        {
-            value = _value;
-            displayString = _display;
-        }
-
-        public string DisplayString
-        {
-            get { return displayString; }
-        }
-
-        public string Value
-        {
-            get { return value; }
-        }
-
-        public int CompareTo(object obj)
-        {
-            if (obj == null) 
-                return 1;
-
-            NPCNameDataSourceObject otherNPCName = obj as NPCNameDataSourceObject;
-            if (otherNPCName != null)
-                return this.Value.CompareTo(otherNPCName.Value);
-            else
-                throw new ArgumentException("Object is not an NPC name");
-        }
-    };
 
 }

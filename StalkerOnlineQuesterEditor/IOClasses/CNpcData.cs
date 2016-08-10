@@ -68,4 +68,41 @@ namespace StalkerOnlineQuesterEditor
 
     }
 
+    //! Класс объекта, хранящий данные о русском и английском имени NPC 
+    public class NPCNameDataSourceObject : IComparable
+    {
+        //! Имя NPC по-английски
+        private string value;
+        //! Имя NPC по-русски
+        private string displayString;
+
+        public NPCNameDataSourceObject(string _value, string _display)
+        {
+            value = _value;
+            displayString = _display;
+        }
+
+        public string DisplayString
+        {
+            get { return displayString; }
+        }
+
+        public string Value
+        {
+            get { return value; }
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null)
+                return 1;
+
+            NPCNameDataSourceObject otherNPCName = obj as NPCNameDataSourceObject;
+            if (otherNPCName != null)
+                return this.Value.CompareTo(otherNPCName.Value);
+            else
+                throw new ArgumentException("Object is not an NPC name");
+        }
+    };
+
 }
