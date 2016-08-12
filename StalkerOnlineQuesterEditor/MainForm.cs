@@ -330,7 +330,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 foreach (TreeNode treeNode in this.treeDialogs.Nodes.Find("Active", true))
                 {
-                    //System.Console.WriteLine("Write dialog:" + subdialog.ToString());
                     if (!treeNode.Nodes.ContainsKey(subdialog.ToString()))
                     {
                         treeNode.Nodes.Add(subdialog.ToString(), subdialog.ToString());
@@ -493,7 +492,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Старует эмулятор диалога (язык диалога зависит от режима, непереведенные фрагменты помечаются красным)
-        public void startEmulator(int dialogID)//, bool isHandle)
+        public void startEmulator(int dialogID)
         {
             // получаем фразу NPC
             CDialog rootDialog = getDialogOnIDConditional(dialogID);
@@ -505,46 +504,21 @@ namespace StalkerOnlineQuesterEditor
             NPCText.ForeColor = (rootDialog.version != 0) ? (Color.Black) : (Color.Red);
             NPCText.AutoSize = false;
             NPCText.AutoEllipsis = true;
-            
-            //NPCText.Size = new Size(30, 30);
             NPCText.Dock = DockStyle.Top;
             
-            foreach (int dialog in rootDialog.Nodes)
+            foreach (int subdialogID in rootDialog.Nodes)
             {
                 LinkLabel dialogLink = new LinkLabel();
                 dialogLink.LinkClicked += new LinkLabelLinkClickedEventHandler(dialogLink_LinkClicked);
-                string openedQuests = "";
-                string closedQuests = "";
+                string actionResult = dialogs.dialogs[currentNPC][subdialogID].Actions.GetAsString();
 
-                foreach (int quid in dialogs.dialogs[currentNPC][dialog].Actions.CompleteQuests)
-                    if (closedQuests == "")
-                        closedQuests += quid.ToString();
-                    else
-                        closedQuests += "," + quid.ToString();
-
-                foreach (int quid in dialogs.dialogs[currentNPC][dialog].Actions.GetQuests)
-                    if (openedQuests == "")
-                        openedQuests += quid.ToString();
-                    else
-                        openedQuests += "," + quid.ToString();
-
-                string actionResult = "";
-                if (openedQuests != "")
-                    actionResult += " Взять:" + openedQuests;
-                if (closedQuests != "")
-                    actionResult += " Закрыть:" + closedQuests;
-                if (actionResult != "")
-                    actionResult = "(" + actionResult + ")";
-
-
-                //dialogLink.Text = dialog + ". " + dialogs.dialogs[currentNPC][dialog].Title + actionResult;
-                CDialog answer = getDialogOnIDConditional(dialog);
-                dialogLink.Text = dialog + ". " + answer.Title + actionResult;
+                CDialog answer = getDialogOnIDConditional(subdialogID);
+                dialogLink.Text = subdialogID + ". " + answer.Title + actionResult;
                 dialogLink.BackColor = (answer.version != 0) ? (Color.FromKnownColor(KnownColor.Transparent)) : (Color.FromArgb(0x7FAA45E0));             
                 dialogLink.AutoSize = true;
                 dialogLink.Dock = DockStyle.Top;
-                dialogLink.Links.Add(0, 0, dialog);
-                titles.Add(dialogLink,dialog);
+                dialogLink.Links.Add(0, 0, subdialogID);
+                titles.Add(dialogLink,subdialogID);
                 splitDialogsEmulator.Panel2.Controls.Add(dialogLink);
             }
             splitDialogsEmulator.Panel2.Controls.Add(NPCText);

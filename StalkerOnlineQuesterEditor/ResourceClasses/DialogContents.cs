@@ -186,6 +186,18 @@ namespace StalkerOnlineQuesterEditor
             else
                 return false;
         }
+
+        public string GetAsString()
+        {
+            string action = "";
+            action += Global.GetNamedList(" Взять: ", GetQuests);
+            action += Global.GetNamedList(" Закрыть: ", CompleteQuests);
+            action += Global.GetNamedList(" Отменить: ", CancelQuests);
+            action += Global.GetNamedList(" Провалить: ", FailQuests);
+            if (action.Length > 0)
+                action = "(" + action + ")";
+            return action;
+        }
     }
 
 
