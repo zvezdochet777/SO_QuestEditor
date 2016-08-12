@@ -17,8 +17,6 @@ namespace StalkerOnlineQuesterEditor
 {
     //! Словарь <DialogID, CDialog> - используется для диалогов 1 персонажа NPC
     using DialogDict = Dictionary<int, CDialog>;
-    //! Словарь <уровень в иерархии, список узлов>
-    using levelDict = Dictionary<int, List<int>>;
     //! Тип выделенного элемента на экране
     public enum SelectedItemType
     { 
@@ -29,9 +27,6 @@ namespace StalkerOnlineQuesterEditor
 
     public partial class MainForm : Form
     {
-        public levelDict nodesOnLevel;
-        //DIALOGS
-        //******************SETTERS/GETTERS****************************
         //! Возвращает вершину графа диалогов - корневую фразу
         CDialog getRootDialog()
         {
@@ -63,7 +58,6 @@ namespace StalkerOnlineQuesterEditor
                                 toadd.Text = "";
                                 toadd.Title = "";
                                 toadd.version = 0;
-                                //dialogs.locales[loc].Add(;
                                 Dictionary<int, CDialog> newdict = new Dictionary<int, CDialog>();
                                 newdict.Add(toadd.DialogID, toadd);
                                 dialogs.locales[loc].Add(currentNPC, newdict);
@@ -83,8 +77,6 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
-            
-
             return result;
         }
 
@@ -119,15 +111,6 @@ namespace StalkerOnlineQuesterEditor
                 return null;
         }
 
-        //! Возвращает диалог по ID, если он принадлежит этому NPC (всегда по-русски)
-        public CDialog getDialogOnDialogID(string npc_name, int dialogID)
-        {
-            if (dialogs.dialogs.Keys.Contains(npc_name) && (dialogID != 0) && dialogs.dialogs[npc_name].Keys.Contains(dialogID))
-                return dialogs.dialogs[npc_name][dialogID];
-            else
-                return null;
-        }
-
         //! Возвращает диалог по ID в зависимости от режима и локализации
         public CDialog getDialogOnIDConditional(int dialogID)
         {
@@ -155,7 +138,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Возвращает словарь диалогов одного NPC в зависимости от локализации
-        public DialogDict getDialogDictionary(string NPCName)
+        private DialogDict getDialogDictionary(string NPCName)
         {
             if (settings.getMode() == settings.MODE_EDITOR)
                 return dialogs.dialogs[NPCName];
@@ -182,7 +165,7 @@ namespace StalkerOnlineQuesterEditor
 
         //**********************WORK WITH FORM ****************************************************
 
-        void fillDialogTree(CDialog root, DialogDict dialogs)
+        private void fillDialogTree(CDialog root, DialogDict dialogs)
         {
             this.treeDialogs.Nodes.Clear();//tree clear
             this.treeDialogs.Nodes.Add("Active", "Active");
@@ -204,13 +187,13 @@ namespace StalkerOnlineQuesterEditor
             this.treeDialogs.ExpandAll();
         }
         //! Удаляет диалог из локализаций при его удалении из русской части диалогов
-        void setNonActiveDialog(string holder, int id)
+        private void setNonActiveDialog(string holder, int id)
         {
             dialogs.locales[settings.getListLocales()[0]][holder][id].coordinates.Active = false;
         }
 
         //! Заполняет граф диалога нужными узлами
-        void fillDialogGraphView(CDialog root)
+        private void fillDialogGraphView(CDialog root)
         {
             // Initialize, and create a layer for the edges (always underneath the nodes)
             this.DialogShower.Layer.RemoveAllChildren();
@@ -258,7 +241,7 @@ namespace StalkerOnlineQuesterEditor
         //! @param edgeLayer
         //! @param nodeLayer
         //! @param stopAfterThat
-        void fillDialogSubgraphView(CDialog root, PNode rootNode, float level, ref PLayer edgeLayer, ref PNodeList nodeLayer, bool stopAfterThat)
+        private void fillDialogSubgraphView(CDialog root, PNode rootNode, float level, ref PLayer edgeLayer, ref PNodeList nodeLayer, bool stopAfterThat)
         {
             //System.Console.WriteLine("subgraph: dialogID: " + root.DialogID.ToString() + ", level: " + level.ToString());
             float ix = rootNode.X;
@@ -334,7 +317,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Добавляет узел на граф
-        void addNodeOnDialogGraphView(int dialogID, int parentDialogID)
+        private void addNodeOnDialogGraphView(int dialogID, int parentDialogID)
         {
             PNode parentDialog = getNodeOnDialogID(parentDialogID);
 
@@ -374,7 +357,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Возвращает размер эллипса для Узла диалога по заданному ID диалога (дли широких надписей размер больше)
-        SizeF CalcEllipsisSizeForNode(int dialogId)
+        private SizeF CalcEllipsisSizeForNode(int dialogId)
         {
             SizeF size = new SizeF(0,0);
             if (dialogId / 1000 == 0)
@@ -385,7 +368,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Добавляем в теги узлов данные о гранях, в теги граней - данные об узлах
-        void PrepareNodesForEdge(PNode node1, PNode node2, ref PLayer edgeLayer)
+        private void PrepareNodesForEdge(PNode node1, PNode node2, ref PLayer edgeLayer)
         {
             PPath edge = new PPath();
             edge.Pickable = false;
@@ -437,40 +420,7 @@ namespace StalkerOnlineQuesterEditor
             SaveCoordinates(dialog, node, false);
         }
 
-        //! Считает число нодов в каждом уровне. Можно убрать, оставив рекурсивный вызов AddNodesToLevel
-        void CalcNodesOnLevel(CDialog root)
-        {
-            // словарь level - nodes list
-            levelDict nodesOnLevel = new levelDict();
-            List<int> nodes = new List<int>();
-            System.Console.WriteLine("*****NodesOnLevel*******");
-
-            AddNodesToLevel(root, 1, ref nodesOnLevel);
-
-            // вывод в консоль
-            for (int i = 1; i <= nodesOnLevel.Count; i++)
-            {
-                System.Console.WriteLine("\nLevel " + i.ToString() + ":  (totally:" + nodesOnLevel[i].Count.ToString() +")"); 
-                for (int k = 0; k < nodesOnLevel[i].Count; k++)
-                    System.Console.Write(" " + nodesOnLevel[i][k]);
-            }
-            //************
-        }
-        //! рекурсивно считает число нодов на каждом уровне и сохраняет в словарь
-        void AddNodesToLevel(CDialog root, int level, ref levelDict dict)
-        {
-            List<int> temp = new List<int>();
-            if (!dict.Keys.Contains(level))
-                dict.Add(level, temp);
-            foreach (int node in root.Nodes)
-            {
-                dict[level].Add(node);
-                CDialog dialogT = getDialogOnDialogID(node);
-                AddNodesToLevel(dialogT, level + 1, ref dict);
-            }
-        }
-
-        void removeNodeFromDialogGraphView(int node)
+        private void removeNodeFromDialogGraphView(int node)
         {
             bool haveBeenDeleted = false;
             CDialog dialog = this.dialogs.dialogs[currentNPC][node];
@@ -480,8 +430,6 @@ namespace StalkerOnlineQuesterEditor
                 dial.Value.Nodes.Remove(node);
                 dialogs.locales[settings.getListLocales()[0]][currentNPC][dial.Value.DialogID].Nodes.Remove(node);
             }
-            //foreach (CDialog dial in this.NPCDialogs[NPCBox.SelectedItem.ToString()])
-            //  dial.Nodes.Remove(node);
 
             PNode removedNode = getNodeOnDialogID(node);
 
@@ -502,10 +450,9 @@ namespace StalkerOnlineQuesterEditor
             }
             if (haveBeenDeleted)
                 removePassiveNodeFromDialogGraphView();
-            //System.Console.WriteLine("after delete node in graphs:" + graphs.Count);
         }
 
-        void removePassiveNodeFromDialogGraphView()
+        private void removePassiveNodeFromDialogGraphView()
         {
             DialogSelected(false);
 
@@ -569,7 +516,7 @@ namespace StalkerOnlineQuesterEditor
             this.dialogs.dialogs[currentNPC][parentID].Nodes.Add(dialogID);
             addNodeOnDialogGraphView(dialogID, parentID);
         }
-        //-------------------------------------------------
+
         public void DialogSelected(bool withGraph)
         {
             CDialog root = new CDialog();
