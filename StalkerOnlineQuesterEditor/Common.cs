@@ -42,6 +42,14 @@ namespace StalkerOnlineQuesterEditor
                 return intValue.ToString();
         }
 
+        public static string GetNamedList(string data, List<int> list)
+        {
+            if (list.Count > 0)
+                return data + GetListAsString(list);
+            else
+                return "";
+        }
+
         public static System.Xml.XmlWriterSettings GetXmlSettings()
         {
             System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();

@@ -600,12 +600,8 @@ namespace StalkerOnlineQuesterEditor
         public void ShowDialogTooltip(PNode CurrentNode)
         {
             int dialogID = getDialogIDOnNode(CurrentNode);
-            Actions actions = dialogs.dialogs[currentNPC][dialogID].Actions;
-            String actionString;
-            if (actions.CheckAndGetString(out actionString))
-                toolTipDialogs.SetToolTip(DialogShower, actionString);
-            else
-                toolTipDialogs.SetToolTip(DialogShower, "Нет действий у диалога");
+            string tooltip = dialogs.dialogs[currentNPC][dialogID].GetNodeTooltip();
+            toolTipDialogs.SetToolTip(DialogShower, tooltip);
         }
 
         public void ResetDialogsTooltip()

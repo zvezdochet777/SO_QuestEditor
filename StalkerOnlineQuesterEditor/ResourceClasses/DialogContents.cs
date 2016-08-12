@@ -40,6 +40,21 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfFailedQuests = this.ListOfFailedQuests;
             return copy;
         }
+
+        public string GetAsString()
+        {
+            if (Any())
+            {
+                string result = "\n";
+                result += Global.GetNamedList(" Открыто: ", ListOfOpenedQuests);
+                result += Global.GetNamedList(" На проверке: ", ListOfOnTestQuests);
+                result += Global.GetNamedList(" Закрыто: ", ListOfCompletedQuests);
+                result += Global.GetNamedList(" Провалено: ", ListOfFailedQuests);
+                return result;
+            }
+            else
+                return "";
+        }
     }
 
     //! Условия появления диалога в игре - открытые/закрытые/проваленные квесты, урвоень игрока, репутация у фракций, карма ПК
@@ -80,6 +95,19 @@ namespace StalkerOnlineQuesterEditor
                 return true;
             else
                 return false;
+        }
+
+        public string GetAsString()
+        {
+            if (Any())
+            {
+                string result = "";
+                result += (ListOfNecessaryQuests.Any()) ? ("\nДолжно быть:" + ListOfNecessaryQuests.GetAsString()) : ("");
+                result += (ListOfMustNoQuests.Any()) ? ("\nНе должно быть: " + ListOfMustNoQuests.GetAsString()) : ("");
+                return result;
+            }
+            else
+                return "";
         }
 
         public string getReputation()
@@ -147,11 +175,11 @@ namespace StalkerOnlineQuesterEditor
             ActionString = "";
             if (Exists())
             {
-                string tooltip = (Event.Value != 0) ? (Event.Display + "\n") : ("");
-                tooltip += "Взять: " + Global.GetListAsString(GetQuests);
-                tooltip += "\nЗакрыть: " + Global.GetListAsString(CompleteQuests);
-                tooltip += "\nОтменить: " + Global.GetListAsString(CancelQuests);
-                tooltip += "\nПровалить: " + Global.GetListAsString(FailQuests);
+                string tooltip = (Event.Value != 0) ? ("\n" + Event.Display) : ("");
+                tooltip += Global.GetNamedList("\nВзять: ", GetQuests);
+                tooltip += Global.GetNamedList("\nЗакрыть: ", CompleteQuests);
+                tooltip += Global.GetNamedList("\nОтменить: ", CancelQuests);
+                tooltip += Global.GetNamedList("\nПровалить: ", FailQuests);
                 ActionString = tooltip;
                 return true;
             }
@@ -245,6 +273,15 @@ namespace StalkerOnlineQuesterEditor
             this.Nodes = new List<int>(source.Nodes);
             this.coordinates.Active = source.coordinates.Active;
             this.coordinates.RootDialog = source.coordinates.RootDialog;
+        }
+
+        public string GetNodeTooltip()
+        {
+            string condition = Precondition.GetAsString();
+            string actionString;
+            Actions.CheckAndGetString(out actionString);
+            string result = (condition + actionString).TrimStart();
+            return result;
         }
     }
 
