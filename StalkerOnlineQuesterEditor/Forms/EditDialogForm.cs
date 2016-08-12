@@ -364,7 +364,7 @@ namespace StalkerOnlineQuesterEditor
 
             // заполняем действия диалога - торговля, бартер, починка, телепорт и т.д.
             if (actionsCheckBox.Checked)
-            {               
+            {
                 actions.Exit = cbExit.Checked;
                 actions.Event = parent.dialogEvents.GetEventFromID((int) ActionsComboBox.SelectedValue);
                 if (actions.Event.Display == "Телепорт")
@@ -385,6 +385,8 @@ namespace StalkerOnlineQuesterEditor
                     foreach (string quest in tbFailQuests.Text.Split(','))
                         actions.FailQuests.Add(int.Parse(quest));
             }
+            else
+                actions.Event = parent.dialogEvents.GetEventFromID(0);
 
             // заполняем условия появления диалога - открытые и закрытые квесты и т.д.
             if (!tMustHaveOpenQuests.Text.Equals(""))
