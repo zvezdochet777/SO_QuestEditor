@@ -16,7 +16,6 @@ namespace StalkerOnlineQuesterEditor
         public CDialogPrecondition editPrecondition = new CDialogPrecondition();
         public List<int> editKarmaPK = new List<int>();
         public CDialog curDialog;
-
         int currentDialogID;
         bool isAdd;
         //! Максимальная длина ответа ГГ, при превышении которого выводится сообщение
@@ -37,16 +36,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (string key in parent.tpConst.getKeys())
                 teleportComboBox.Items.Add(key);
 
-            if (curDialog.Precondition.Reputation.Any())
-            {
-                editPrecondition = curDialog.Precondition;
-                checkReputationIndicates();
-            }
-            if (curDialog.Precondition.KarmaPK.Any())
-            {
-                editKarmaPK = curDialog.Precondition.KarmaPK;
-                checkKarmaIndicates();
-            }
+            FillActionsComboBox();
 
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
@@ -91,7 +81,17 @@ namespace StalkerOnlineQuesterEditor
                 cbLonerOnly.Checked = true;
             ShowClanOptions();
 
-            FillActionsComboBox();
+            if (curDialog.Precondition.Reputation.Any())
+            {
+                editPrecondition = curDialog.Precondition;
+                checkReputationIndicates();
+            }
+            if (curDialog.Precondition.KarmaPK.Any())
+            {
+                editKarmaPK = curDialog.Precondition.KarmaPK;
+                checkKarmaIndicates();
+            }
+
             if (curDialog.Actions.Exists() || curDialog.Actions.Exit || curDialog.Actions.ToDialog!=0 )
             {
                 actionsCheckBox.Checked = true;

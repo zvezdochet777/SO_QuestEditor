@@ -122,7 +122,6 @@ namespace StalkerOnlineQuesterEditor
                 {
                     CDialog dd = new CDialog();
                     dd = dialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC);
-                    //CDialog d = dialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC);
                     if (dd != null)
                         return dd;
                     else
@@ -214,17 +213,8 @@ namespace StalkerOnlineQuesterEditor
                 rootx = (float)(this.ClientSize.Width / 5);
                 rooty = (float)(this.ClientSize.Height / 5);
             }
-            SizeF size = CalcEllipsisSizeForNode(root.DialogID);
-            PNode rootNode = PPath.CreateEllipse(rootx, rooty, size.Width, size.Height);
-            rootNode.Brush = Brushes.Green; //GetBrushForNode(rootNode);
-
-            PText rootText = new PText(root.DialogID.ToString());
-            rootText.Pickable = false;
-            rootText.X = rootNode.X + 15;
-            rootText.Y = rootNode.Y + 10;
-            rootNode.Tag = new ArrayList();
-
-            rootNode.AddChild(rootText);
+            PNode rootNode = CreateNode(root, new PointF(rootx, rooty));
+            rootNode.Brush = Brushes.Green;
             nodeLayer.Add(rootNode);
             if (!graphs.Keys.Contains(rootNode))
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
@@ -243,20 +233,15 @@ namespace StalkerOnlineQuesterEditor
         //! @param stopAfterThat
         private void fillDialogSubgraphView(CDialog root, PNode rootNode, float level, ref PLayer edgeLayer, ref PNodeList nodeLayer, bool stopAfterThat)
         {
-            //System.Console.WriteLine("subgraph: dialogID: " + root.DialogID.ToString() + ", level: " + level.ToString());
             float ix = rootNode.X;
             float iy = rootNode.Y;
             float i = 1;//Number of elements in string
             float localLevel = level;
-            //System.Console.WriteLine("dialogID:" + root.DialogID + " toDialog:" + root.Actions.ToDialog);
             if (root.Actions.ToDialog != 0)
             {
-                //System.Console.WriteLine("To dialog ID:"+root.Actions.ToDialog+" of "+root.DialogID);
                 PNode toDialogNode = getNodeOnDialogID(root.Actions.ToDialog);
 
-                if (toDialogNode == null)
-                    System.Console.WriteLine("Node is miss, dialogID = " + root.Actions.ToDialog.ToString());
-                else
+                if (toDialogNode != null)
                 {
                     PrepareNodesForEdge(toDialogNode, rootNode, ref edgeLayer);
                     nodeLayer.Add(toDialogNode);
@@ -273,11 +258,12 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
             else
-                foreach (int subdialogs in root.Nodes)
+                foreach (int subdialogID in root.Nodes)
                 {
-                    PNode node = getNodeOnDialogID(subdialogs);
-                    float x = getDialogOnIDConditional(subdialogs).coordinates.X;
-                    float y = getDialogOnIDConditional(subdialogs).coordinates.Y;
+                    PNode node = getNodeOnDialogID(subdialogID);
+                    CDialog currentDialog = getDialogOnIDConditional(subdialogID);
+                    float x = currentDialog.coordinates.X;
+                    float y = currentDialog.coordinates.Y;
 
                     if (x == 0 && y == 0)
                     {
@@ -287,31 +273,19 @@ namespace StalkerOnlineQuesterEditor
                     }
 
                     if (node == null)
-                    {
-                        SizeF size = CalcEllipsisSizeForNode(subdialogs);
-                        node = PPath.CreateEllipse(x, y, size.Width, size.Height);
-                        PText text = new PText(subdialogs.ToString());
-                        text.Pickable = false;
-                        text.X = node.X + 15;
-                        text.Y = node.Y + 10;
-                        node.Tag = new ArrayList();
-                        //((CMainDialog)node).DialogID = subdialogs;
-                        //((ArrayList)node.Tag).Add(subdialogs);
-                        node.AddChild(text);
-                    }
-                    SaveCoordinates( dialogs.dialogs[currentNPC][subdialogs], node);
-                    
-                    PrepareNodesForEdge( node, rootNode, ref edgeLayer);
+                        node = CreateNode(currentDialog, new PointF(x, y));
+
+                    PrepareNodesForEdge(node, rootNode, ref edgeLayer);
+                    SaveCoordinates(currentDialog, node);                   
                     nodeLayer.Add(node);
                     if (!graphs.Keys.Contains(node))
-                        graphs.Add(node, new GraphProperties(subdialogs));
+                        graphs.Add(node, new GraphProperties(subdialogID));
                     if (!stopAfterThat)
                     {
-
-                        if ( dialogs.dialogs[currentNPC][subdialogs].Nodes.Any() )
-                            this.fillDialogSubgraphView(dialogs.dialogs[currentNPC][subdialogs], node, localLevel + 1, ref edgeLayer, ref nodeLayer, false);
-                        else if ( dialogs.dialogs[currentNPC][subdialogs].Actions.ToDialog != 0 )
-                            this.fillDialogSubgraphView(dialogs.dialogs[currentNPC][subdialogs], node, localLevel, ref edgeLayer, ref nodeLayer, true);
+                        if ( currentDialog.Nodes.Any() )
+                            this.fillDialogSubgraphView(currentDialog, node, localLevel + 1, ref edgeLayer, ref nodeLayer, false);
+                        else if ( currentDialog.Actions.ToDialog != 0 )
+                            this.fillDialogSubgraphView(currentDialog, node, localLevel, ref edgeLayer, ref nodeLayer, true);
                     }
                 }
         }
@@ -319,41 +293,49 @@ namespace StalkerOnlineQuesterEditor
         //! Добавляет узел на граф
         private void addNodeOnDialogGraphView(int dialogID, int parentDialogID)
         {
-            PNode parentDialog = getNodeOnDialogID(parentDialogID);
+            PNode parentNode = getNodeOnDialogID(parentDialogID);
+            CDialog currentDialog = getDialogOnDialogID(dialogID);
 
-            float x = new float();
-            x = parentDialog.X - 60;
-            float y = new float();
-            y = parentDialog.Y + 60;
+            float x = parentNode.X - 60;
+            float y = parentNode.Y + 60;
+            PNode newNode = CreateNode(currentDialog, new PointF(x, y));
+            
+            PrepareNodesForEdge(newNode, parentNode, ref edgeLayer);
+            nodeLayer.Add(newNode);           
 
-            SizeF size = CalcEllipsisSizeForNode(dialogID);
-            PNode newDialog = PPath.CreateEllipse(x, y, size.Width, size.Height);
-            PText text = new PText(dialogID.ToString());
-            text.Pickable = false;
-            text.X = newDialog.X + 15;
-            text.Y = newDialog.Y + 10;
-            newDialog.Tag = new ArrayList();
-            newDialog.AddChild(text);
-            PrepareNodesForEdge(newDialog, parentDialog, ref edgeLayer);
-            nodeLayer.Add(newDialog);
-
-            if ((!getDialogOnDialogID(dialogID).Actions.Exit) && (getDialogOnDialogID(dialogID).Actions.ToDialog != 0))
+            if (!currentDialog.Actions.Exit && currentDialog.Actions.ToDialog != 0)
             {
-                PNode target = getNodeOnDialogID(getDialogOnDialogID(dialogID).Actions.ToDialog);
-                PrepareNodesForEdge(newDialog, target, ref edgeLayer);
+                PNode target = getNodeOnDialogID(currentDialog.Actions.ToDialog);
+                PrepareNodesForEdge(newNode, target, ref edgeLayer);
             }
 
-            //updateEdge(edge);
             DialogShower.Layer.AddChildren(nodeLayer);
 
-            if (!graphs.Keys.Contains(newDialog))
-                graphs.Add(newDialog, new GraphProperties(dialogID));
+            if (!graphs.Keys.Contains(newNode))
+                graphs.Add(newNode, new GraphProperties(dialogID));
 
-            if (getDialogOnDialogID(dialogID).Nodes.Any())
-                foreach (int subdialog in getDialogOnDialogID(dialogID).Nodes)
+            if (currentDialog.Nodes.Any())
+                foreach (int subdialog in currentDialog.Nodes)
                     addNodeOnDialogGraphView(subdialog, dialogID);
 
             DialogSelected(false);
+        }
+
+        private PNode CreateNode(CDialog dialog, PointF location)
+        {
+            PNode newNode;
+            SizeF size = CalcEllipsisSizeForNode(dialog.DialogID);
+            if (dialog.Precondition.Any())
+                newNode = PPath.CreateRectangle(location.X, location.Y, size.Width, size.Height);
+            else
+                newNode = PPath.CreateEllipse(location.X, location.Y, size.Width, size.Height);
+            PText text = new PText(dialog.DialogID.ToString());
+            text.Pickable = false;
+            text.X = newNode.X + 15;
+            text.Y = newNode.Y + 10;
+            newNode.Tag = new ArrayList();
+            newNode.AddChild(text);
+            return newNode;
         }
 
         //! Возвращает размер эллипса для Узла диалога по заданному ID диалога (дли широких надписей размер больше)
