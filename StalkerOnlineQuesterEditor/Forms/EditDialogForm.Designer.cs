@@ -58,8 +58,6 @@
             this.cbSameClanOnly = new System.Windows.Forms.CheckBox();
             this.mtbPlayerLevel = new System.Windows.Forms.MaskedTextBox();
             this.lPlayerLevel = new System.Windows.Forms.Label();
-            this.bKarma = new System.Windows.Forms.Button();
-            this.bReputation = new System.Windows.Forms.Button();
             this.gbQuestCondition = new System.Windows.Forms.GroupBox();
             this.lFailedQuests = new System.Windows.Forms.Label();
             this.tShouldntHaveFailedQuests = new System.Windows.Forms.MaskedTextBox();
@@ -79,15 +77,42 @@
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
             this.pCommands = new System.Windows.Forms.Panel();
-            this.gbTexts = new System.Windows.Forms.GroupBox();
-            this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.debuglabel = new System.Windows.Forms.Label();
+            this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.lMassQuests = new System.Windows.Forms.Label();
+            this.tShouldntHaveMassQuests = new System.Windows.Forms.MaskedTextBox();
+            this.tMustHaveMassQuests = new System.Windows.Forms.MaskedTextBox();
+            this.tabQuestsCircs = new System.Windows.Forms.TabControl();
+            this.tabQuests = new System.Windows.Forms.TabPage();
+            this.tabReputation = new System.Windows.Forms.TabPage();
+            this.tabKarma = new System.Windows.Forms.TabPage();
+            this.tabClan = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelDescription = new System.Windows.Forms.Label();
+            this.bTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.aTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.a = new System.Windows.Forms.Label();
+            this.lInfo = new System.Windows.Forms.Label();
+            this.dataReputation = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             this.gbClanOptions.SuspendLayout();
             this.gbQuestCondition.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
+            this.tabQuestsCircs.SuspendLayout();
+            this.tabQuests.SuspendLayout();
+            this.tabReputation.SuspendLayout();
+            this.tabKarma.SuspendLayout();
+            this.tabClan.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataReputation)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -155,7 +180,7 @@
             this.gbActions.Enabled = false;
             this.gbActions.Location = new System.Drawing.Point(0, 500);
             this.gbActions.Name = "gbActions";
-            this.gbActions.Size = new System.Drawing.Size(588, 144);
+            this.gbActions.Size = new System.Drawing.Size(1083, 144);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
             // 
@@ -313,18 +338,14 @@
             // 
             // gbPrecondition
             // 
-            this.gbPrecondition.Controls.Add(this.cbShowClanOptions);
-            this.gbPrecondition.Controls.Add(this.gbClanOptions);
+            this.gbPrecondition.Controls.Add(this.tabQuestsCircs);
             this.gbPrecondition.Controls.Add(this.mtbPlayerLevel);
             this.gbPrecondition.Controls.Add(this.lPlayerLevel);
-            this.gbPrecondition.Controls.Add(this.bKarma);
-            this.gbPrecondition.Controls.Add(this.bReputation);
-            this.gbPrecondition.Controls.Add(this.gbQuestCondition);
             this.gbPrecondition.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbPrecondition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbPrecondition.Location = new System.Drawing.Point(0, 227);
             this.gbPrecondition.Name = "gbPrecondition";
-            this.gbPrecondition.Size = new System.Drawing.Size(588, 273);
+            this.gbPrecondition.Size = new System.Drawing.Size(1083, 273);
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
@@ -332,7 +353,7 @@
             // cbShowClanOptions
             // 
             this.cbShowClanOptions.AutoSize = true;
-            this.cbShowClanOptions.Location = new System.Drawing.Point(395, 29);
+            this.cbShowClanOptions.Location = new System.Drawing.Point(15, 12);
             this.cbShowClanOptions.Name = "cbShowClanOptions";
             this.cbShowClanOptions.Size = new System.Drawing.Size(110, 17);
             this.cbShowClanOptions.TabIndex = 51;
@@ -346,7 +367,7 @@
             this.gbClanOptions.Controls.Add(this.cbLonerOnly);
             this.gbClanOptions.Controls.Add(this.cbAnyClanOnly);
             this.gbClanOptions.Controls.Add(this.cbSameClanOnly);
-            this.gbClanOptions.Location = new System.Drawing.Point(376, 56);
+            this.gbClanOptions.Location = new System.Drawing.Point(15, 35);
             this.gbClanOptions.Name = "gbClanOptions";
             this.gbClanOptions.Size = new System.Drawing.Size(200, 100);
             this.gbClanOptions.TabIndex = 50;
@@ -385,7 +406,7 @@
             // 
             // mtbPlayerLevel
             // 
-            this.mtbPlayerLevel.Location = new System.Drawing.Point(117, 215);
+            this.mtbPlayerLevel.Location = new System.Drawing.Point(117, 244);
             this.mtbPlayerLevel.Mask = "000";
             this.mtbPlayerLevel.Name = "mtbPlayerLevel";
             this.mtbPlayerLevel.PromptChar = ' ';
@@ -395,34 +416,17 @@
             // lPlayerLevel
             // 
             this.lPlayerLevel.AutoSize = true;
-            this.lPlayerLevel.Location = new System.Drawing.Point(13, 218);
+            this.lPlayerLevel.Location = new System.Drawing.Point(13, 247);
             this.lPlayerLevel.Name = "lPlayerLevel";
             this.lPlayerLevel.Size = new System.Drawing.Size(92, 13);
             this.lPlayerLevel.TabIndex = 48;
             this.lPlayerLevel.Text = "Уровень игрока:";
             // 
-            // bKarma
-            // 
-            this.bKarma.Location = new System.Drawing.Point(95, 175);
-            this.bKarma.Name = "bKarma";
-            this.bKarma.Size = new System.Drawing.Size(81, 23);
-            this.bKarma.TabIndex = 47;
-            this.bKarma.Text = "Карма";
-            this.bKarma.UseVisualStyleBackColor = true;
-            this.bKarma.Click += new System.EventHandler(this.bKarma_Click);
-            // 
-            // bReputation
-            // 
-            this.bReputation.Location = new System.Drawing.Point(8, 175);
-            this.bReputation.Name = "bReputation";
-            this.bReputation.Size = new System.Drawing.Size(81, 23);
-            this.bReputation.TabIndex = 46;
-            this.bReputation.Text = "Репутация";
-            this.bReputation.UseVisualStyleBackColor = true;
-            this.bReputation.Click += new System.EventHandler(this.bReputation_Click);
-            // 
             // gbQuestCondition
             // 
+            this.gbQuestCondition.Controls.Add(this.lMassQuests);
+            this.gbQuestCondition.Controls.Add(this.tShouldntHaveMassQuests);
+            this.gbQuestCondition.Controls.Add(this.tMustHaveMassQuests);
             this.gbQuestCondition.Controls.Add(this.lFailedQuests);
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveFailedQuests);
             this.gbQuestCondition.Controls.Add(this.tMustHaveFailedQuests);
@@ -437,9 +441,9 @@
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveQuestsOnTest);
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveOpenQuests);
             this.gbQuestCondition.Controls.Add(this.tMustHaveCompletedQuests);
-            this.gbQuestCondition.Location = new System.Drawing.Point(8, 17);
+            this.gbQuestCondition.Location = new System.Drawing.Point(6, 6);
             this.gbQuestCondition.Name = "gbQuestCondition";
-            this.gbQuestCondition.Size = new System.Drawing.Size(350, 152);
+            this.gbQuestCondition.Size = new System.Drawing.Size(469, 181);
             this.gbQuestCondition.TabIndex = 6;
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
@@ -447,7 +451,7 @@
             // lFailedQuests
             // 
             this.lFailedQuests.AutoSize = true;
-            this.lFailedQuests.Location = new System.Drawing.Point(6, 119);
+            this.lFailedQuests.Location = new System.Drawing.Point(6, 123);
             this.lFailedQuests.Name = "lFailedQuests";
             this.lFailedQuests.Size = new System.Drawing.Size(117, 13);
             this.lFailedQuests.TabIndex = 13;
@@ -488,7 +492,7 @@
             // lCompletedQuests
             // 
             this.lCompletedQuests.AutoSize = true;
-            this.lCompletedQuests.Location = new System.Drawing.Point(6, 92);
+            this.lCompletedQuests.Location = new System.Drawing.Point(6, 97);
             this.lCompletedQuests.Name = "lCompletedQuests";
             this.lCompletedQuests.Size = new System.Drawing.Size(99, 13);
             this.lCompletedQuests.TabIndex = 8;
@@ -497,7 +501,7 @@
             // lOnTestQuests
             // 
             this.lOnTestQuests.AutoSize = true;
-            this.lOnTestQuests.Location = new System.Drawing.Point(6, 69);
+            this.lOnTestQuests.Location = new System.Drawing.Point(6, 72);
             this.lOnTestQuests.Name = "lOnTestQuests";
             this.lOnTestQuests.Size = new System.Drawing.Size(115, 13);
             this.lOnTestQuests.TabIndex = 7;
@@ -506,7 +510,7 @@
             // lOpenedQuests
             // 
             this.lOpenedQuests.AutoSize = true;
-            this.lOpenedQuests.Location = new System.Drawing.Point(6, 43);
+            this.lOpenedQuests.Location = new System.Drawing.Point(6, 44);
             this.lOpenedQuests.Name = "lOpenedQuests";
             this.lOpenedQuests.Size = new System.Drawing.Size(99, 13);
             this.lOpenedQuests.TabIndex = 6;
@@ -592,8 +596,24 @@
             this.pCommands.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pCommands.Location = new System.Drawing.Point(0, 644);
             this.pCommands.Name = "pCommands";
-            this.pCommands.Size = new System.Drawing.Size(588, 62);
+            this.pCommands.Size = new System.Drawing.Size(1083, 62);
             this.pCommands.TabIndex = 13;
+            // 
+            // debuglabel
+            // 
+            this.debuglabel.AutoSize = true;
+            this.debuglabel.Location = new System.Drawing.Point(5, 14);
+            this.debuglabel.Name = "debuglabel";
+            this.debuglabel.Size = new System.Drawing.Size(161, 13);
+            this.debuglabel.TabIndex = 41;
+            this.debuglabel.Text = "Для дебага(Стасу не трогать):";
+            // 
+            // debugTextBox
+            // 
+            this.debugTextBox.Location = new System.Drawing.Point(8, 30);
+            this.debugTextBox.Name = "debugTextBox";
+            this.debugTextBox.Size = new System.Drawing.Size(147, 20);
+            this.debugTextBox.TabIndex = 40;
             // 
             // gbTexts
             // 
@@ -609,31 +629,198 @@
             this.gbTexts.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbTexts.Location = new System.Drawing.Point(0, 0);
             this.gbTexts.Name = "gbTexts";
-            this.gbTexts.Size = new System.Drawing.Size(588, 227);
+            this.gbTexts.Size = new System.Drawing.Size(1083, 227);
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
-            // debugTextBox
+            // lMassQuests
             // 
-            this.debugTextBox.Location = new System.Drawing.Point(8, 30);
-            this.debugTextBox.Name = "debugTextBox";
-            this.debugTextBox.Size = new System.Drawing.Size(147, 20);
-            this.debugTextBox.TabIndex = 40;
+            this.lMassQuests.AutoSize = true;
+            this.lMassQuests.Location = new System.Drawing.Point(6, 149);
+            this.lMassQuests.Name = "lMassQuests";
+            this.lMassQuests.Size = new System.Drawing.Size(100, 13);
+            this.lMassQuests.TabIndex = 16;
+            this.lMassQuests.Text = "Массовые квесты";
             // 
-            // debuglabel
+            // tShouldntHaveMassQuests
             // 
-            this.debuglabel.AutoSize = true;
-            this.debuglabel.Location = new System.Drawing.Point(5, 14);
-            this.debuglabel.Name = "debuglabel";
-            this.debuglabel.Size = new System.Drawing.Size(161, 13);
-            this.debuglabel.TabIndex = 41;
-            this.debuglabel.Text = "Для дебага(Стасу не трогать):";
+            this.tShouldntHaveMassQuests.Location = new System.Drawing.Point(234, 145);
+            this.tShouldntHaveMassQuests.Name = "tShouldntHaveMassQuests";
+            this.tShouldntHaveMassQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveMassQuests.TabIndex = 15;
+            // 
+            // tMustHaveMassQuests
+            // 
+            this.tMustHaveMassQuests.Location = new System.Drawing.Point(128, 145);
+            this.tMustHaveMassQuests.Name = "tMustHaveMassQuests";
+            this.tMustHaveMassQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveMassQuests.TabIndex = 14;
+            // 
+            // tabQuestsCircs
+            // 
+            this.tabQuestsCircs.Controls.Add(this.tabQuests);
+            this.tabQuestsCircs.Controls.Add(this.tabReputation);
+            this.tabQuestsCircs.Controls.Add(this.tabKarma);
+            this.tabQuestsCircs.Controls.Add(this.tabClan);
+            this.tabQuestsCircs.Location = new System.Drawing.Point(8, 19);
+            this.tabQuestsCircs.Name = "tabQuestsCircs";
+            this.tabQuestsCircs.SelectedIndex = 0;
+            this.tabQuestsCircs.Size = new System.Drawing.Size(574, 219);
+            this.tabQuestsCircs.TabIndex = 52;
+            // 
+            // tabQuests
+            // 
+            this.tabQuests.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabQuests.Controls.Add(this.gbQuestCondition);
+            this.tabQuests.Location = new System.Drawing.Point(4, 22);
+            this.tabQuests.Name = "tabQuests";
+            this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
+            this.tabQuests.Size = new System.Drawing.Size(566, 193);
+            this.tabQuests.TabIndex = 0;
+            this.tabQuests.Text = "Квесты";
+            // 
+            // tabReputation
+            // 
+            this.tabReputation.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabReputation.Controls.Add(this.lInfo);
+            this.tabReputation.Controls.Add(this.dataReputation);
+            this.tabReputation.Location = new System.Drawing.Point(4, 22);
+            this.tabReputation.Name = "tabReputation";
+            this.tabReputation.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReputation.Size = new System.Drawing.Size(566, 193);
+            this.tabReputation.TabIndex = 1;
+            this.tabReputation.Text = "Репутация";
+            // 
+            // tabKarma
+            // 
+            this.tabKarma.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabKarma.Controls.Add(this.panel2);
+            this.tabKarma.Controls.Add(this.bTextBox);
+            this.tabKarma.Controls.Add(this.label1);
+            this.tabKarma.Controls.Add(this.aTextBox);
+            this.tabKarma.Controls.Add(this.a);
+            this.tabKarma.Location = new System.Drawing.Point(4, 22);
+            this.tabKarma.Name = "tabKarma";
+            this.tabKarma.Padding = new System.Windows.Forms.Padding(3);
+            this.tabKarma.Size = new System.Drawing.Size(566, 193);
+            this.tabKarma.TabIndex = 2;
+            this.tabKarma.Text = "Карма";
+            // 
+            // tabClan
+            // 
+            this.tabClan.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabClan.Controls.Add(this.gbClanOptions);
+            this.tabClan.Controls.Add(this.cbShowClanOptions);
+            this.tabClan.Location = new System.Drawing.Point(4, 22);
+            this.tabClan.Name = "tabClan";
+            this.tabClan.Padding = new System.Windows.Forms.Padding(3);
+            this.tabClan.Size = new System.Drawing.Size(566, 193);
+            this.tabClan.TabIndex = 3;
+            this.tabClan.Text = "Клановые";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.labelDescription);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(3, 49);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(560, 141);
+            this.panel2.TabIndex = 4;
+            // 
+            // labelDescription
+            // 
+            this.labelDescription.AutoSize = true;
+            this.labelDescription.Location = new System.Drawing.Point(3, 10);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(90, 13);
+            this.labelDescription.TabIndex = 0;
+            this.labelDescription.Text = "Описание здесь";
+            // 
+            // bTextBox
+            // 
+            this.bTextBox.Location = new System.Drawing.Point(139, 21);
+            this.bTextBox.Name = "bTextBox";
+            this.bTextBox.Size = new System.Drawing.Size(100, 20);
+            this.bTextBox.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(183, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "B";
+            // 
+            // aTextBox
+            // 
+            this.aTextBox.Location = new System.Drawing.Point(33, 21);
+            this.aTextBox.Name = "aTextBox";
+            this.aTextBox.Size = new System.Drawing.Size(100, 20);
+            this.aTextBox.TabIndex = 6;
+            // 
+            // a
+            // 
+            this.a.AutoSize = true;
+            this.a.Location = new System.Drawing.Point(79, 5);
+            this.a.Name = "a";
+            this.a.Size = new System.Drawing.Size(14, 13);
+            this.a.TabIndex = 3;
+            this.a.Text = "A";
+            // 
+            // lInfo
+            // 
+            this.lInfo.Location = new System.Drawing.Point(400, 6);
+            this.lInfo.Name = "lInfo";
+            this.lInfo.Size = new System.Drawing.Size(146, 180);
+            this.lInfo.TabIndex = 4;
+            this.lInfo.Text = "Диалог будет доступен, если значение репутации игрока больше А и меньше В. Можно " +
+    "задать только одно из значений А или В, или оба сразу.";
+            // 
+            // dataReputation
+            // 
+            this.dataReputation.AllowUserToAddRows = false;
+            this.dataReputation.AllowUserToDeleteRows = false;
+            this.dataReputation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataReputation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.name,
+            this.dataGridViewTextBoxColumn1,
+            this.b});
+            this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataReputation.Location = new System.Drawing.Point(3, 3);
+            this.dataReputation.Name = "dataReputation";
+            this.dataReputation.Size = new System.Drawing.Size(560, 187);
+            this.dataReputation.TabIndex = 3;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Имя фракции";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "A (A < X < B)";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // b
+            // 
+            this.b.HeaderText = "B (A < X < B)";
+            this.b.Name = "b";
             // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 706);
+            this.ClientSize = new System.Drawing.Size(1083, 706);
             this.Controls.Add(this.actionsCheckBox);
             this.Controls.Add(this.pCommands);
             this.Controls.Add(this.gbActions);
@@ -655,6 +842,16 @@
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
             this.gbTexts.PerformLayout();
+            this.tabQuestsCircs.ResumeLayout(false);
+            this.tabQuests.ResumeLayout(false);
+            this.tabReputation.ResumeLayout(false);
+            this.tabKarma.ResumeLayout(false);
+            this.tabKarma.PerformLayout();
+            this.tabClan.ResumeLayout(false);
+            this.tabClan.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataReputation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -696,8 +893,6 @@
         private System.Windows.Forms.Label lReactionNPC;
         private System.Windows.Forms.Panel pCommands;
         private System.Windows.Forms.GroupBox gbTexts;
-        private System.Windows.Forms.Button bReputation;
-        private System.Windows.Forms.Button bKarma;
         private System.Windows.Forms.Label lFailedQuests;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveFailedQuests;
         private System.Windows.Forms.MaskedTextBox tMustHaveFailedQuests;
@@ -716,5 +911,25 @@
         private System.Windows.Forms.MaskedTextBox tbCancelQuests;
         private System.Windows.Forms.MaskedTextBox debugTextBox;
         private System.Windows.Forms.Label debuglabel;
+        private System.Windows.Forms.Label lMassQuests;
+        private System.Windows.Forms.MaskedTextBox tShouldntHaveMassQuests;
+        private System.Windows.Forms.MaskedTextBox tMustHaveMassQuests;
+        private System.Windows.Forms.TabControl tabQuestsCircs;
+        private System.Windows.Forms.TabPage tabQuests;
+        private System.Windows.Forms.TabPage tabReputation;
+        private System.Windows.Forms.TabPage tabKarma;
+        private System.Windows.Forms.TabPage tabClan;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelDescription;
+        private System.Windows.Forms.MaskedTextBox bTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox aTextBox;
+        private System.Windows.Forms.Label a;
+        private System.Windows.Forms.Label lInfo;
+        private System.Windows.Forms.DataGridView dataReputation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn b;
     }
 }

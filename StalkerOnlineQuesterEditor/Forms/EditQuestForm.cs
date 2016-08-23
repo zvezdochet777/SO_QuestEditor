@@ -482,7 +482,14 @@ namespace StalkerOnlineQuesterEditor
                     scenariosTextBox.Text += item.ToString();
                 else
                     scenariosTextBox.Text += ("," + item.ToString());
-            }            
+            }
+            foreach (int item in quest.QuestRules.MassQuests)
+            {
+                if (massQuestsTextBox.Text == "")
+                    massQuestsTextBox.Text += item.ToString();
+                else
+                    massQuestsTextBox.Text += ("," + item.ToString());
+            }
             checkQuestRulesIndicates();
         }
         //! Создает индикацию зеленым светом в графе Награда, если выдаются предметы, эффекты, или статус
@@ -655,7 +662,10 @@ namespace StalkerOnlineQuesterEditor
             foreach (string item in scenariosTextBox.Text.Split(','))
                 if (!item.Equals(""))
                     rules.Scenarios.Add(int.Parse(item));
-            
+            foreach (string item in massQuestsTextBox.Text.Split(','))
+                if (!item.Equals(""))
+                    rules.MassQuests.Add(int.Parse(item));
+
             reward.Experience.Add(ParseIntIfNotEmpty(tExperience.Text));
             reward.Experience.Add(ParseIntIfNotEmpty(tSurvival.Text));
             reward.Experience.Add(ParseIntIfNotEmpty(tSupport.Text));
@@ -897,6 +907,7 @@ namespace StalkerOnlineQuesterEditor
             bItemQuestRules.Visible = !bItemQuestRules.Visible;
             labelScenarios.Visible = !labelScenarios.Visible;
             scenariosTextBox.Visible = !scenariosTextBox.Visible;
+            massQuestsTextBox.Visible = !massQuestsTextBox.Visible;
             groupQuestRulesBox.Visible = !groupQuestRulesBox.Visible;
 
             if (bHideRules.Text == "Скрыть")

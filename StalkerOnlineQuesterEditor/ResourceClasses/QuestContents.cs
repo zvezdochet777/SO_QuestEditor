@@ -193,6 +193,7 @@ namespace StalkerOnlineQuesterEditor
         public List<int> NumOfItems;
         public List<int> AttrOfItems;
         public List<int> Scenarios;
+        public List<int> MassQuests;
         public string TeleportTo;
         public int FailedIf;
         public int MaxGroup;
@@ -208,6 +209,7 @@ namespace StalkerOnlineQuesterEditor
             copy.NumOfItems = new List<int>(this.NumOfItems);
             copy.AttrOfItems = new List<int>(this.AttrOfItems);
             copy.Scenarios = new List<int>(this.Scenarios);
+            copy.MassQuests = new List<int>(this.MassQuests);
             copy.TeleportTo = (string)this.TeleportTo.Clone();
             copy.FailedIf = this.FailedIf;
             copy.MaxGroup = this.MaxGroup;
@@ -223,6 +225,7 @@ namespace StalkerOnlineQuesterEditor
             this.NumOfItems = new List<int>();
             this.AttrOfItems = new List<int>();
             this.Scenarios = new List<int>();
+            this.MassQuests = new List<int>();
             this.FailedIf = new int();
             this.MaxGroup = new int();
             this.MinGroup = new int();

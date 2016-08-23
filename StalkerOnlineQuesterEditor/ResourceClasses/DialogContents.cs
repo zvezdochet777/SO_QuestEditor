@@ -14,6 +14,7 @@ namespace StalkerOnlineQuesterEditor
         public ListOfQuests ListOfOpenedQuests;
         public ListOfQuests ListOfOnTestQuests;
         public ListOfQuests ListOfFailedQuests;
+        public ListOfQuests ListOfMassQuests;
 
         public CDialogPreconditionQuests()
         {
@@ -21,11 +22,12 @@ namespace StalkerOnlineQuesterEditor
             this.ListOfOpenedQuests = new ListOfQuests();
             this.ListOfOnTestQuests = new ListOfQuests();
             this.ListOfFailedQuests = new ListOfQuests();
+            this.ListOfMassQuests = new ListOfQuests();
         }
 
         public bool Any()
         {
-            if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() || ListOfFailedQuests.Any())
+            if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() || ListOfFailedQuests.Any() || ListOfMassQuests.Any())
                 return true;
             else
                 return false;
@@ -38,6 +40,7 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfOpenedQuests = this.ListOfOpenedQuests;
             copy.ListOfOnTestQuests = this.ListOfOnTestQuests;
             copy.ListOfFailedQuests = this.ListOfFailedQuests;
+            copy.ListOfMassQuests = this.ListOfMassQuests;
             return copy;
         }
 
@@ -50,6 +53,7 @@ namespace StalkerOnlineQuesterEditor
                 result += Global.GetNamedList(" На проверке: ", ListOfOnTestQuests);
                 result += Global.GetNamedList(" Закрыто: ", ListOfCompletedQuests);
                 result += Global.GetNamedList(" Провалено: ", ListOfFailedQuests);
+                result += Global.GetNamedList(" Массовые: ", ListOfMassQuests);
                 return result;
             }
             else

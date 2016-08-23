@@ -111,6 +111,8 @@
             this.eventLabel = new System.Windows.Forms.Label();
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.massQuestsTextBox = new System.Windows.Forms.TextBox();
+            this.labelMassQuests = new System.Windows.Forms.Label();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -375,6 +377,8 @@
             // 
             // lQuestRules
             // 
+            this.lQuestRules.Controls.Add(this.massQuestsTextBox);
+            this.lQuestRules.Controls.Add(this.labelMassQuests);
             this.lQuestRules.Controls.Add(this.bItemQuestRules);
             this.lQuestRules.Controls.Add(this.bHideRules);
             this.lQuestRules.Controls.Add(this.scenariosTextBox);
@@ -421,7 +425,7 @@
             // labelScenarios
             // 
             this.labelScenarios.AutoSize = true;
-            this.labelScenarios.Location = new System.Drawing.Point(11, 49);
+            this.labelScenarios.Location = new System.Drawing.Point(11, 54);
             this.labelScenarios.Name = "labelScenarios";
             this.labelScenarios.Size = new System.Drawing.Size(56, 13);
             this.labelScenarios.TabIndex = 2;
@@ -1021,6 +1025,22 @@
             this.debugTextBox.Size = new System.Drawing.Size(147, 20);
             this.debugTextBox.TabIndex = 42;
             // 
+            // massQuestsTextBox
+            // 
+            this.massQuestsTextBox.Location = new System.Drawing.Point(90, 76);
+            this.massQuestsTextBox.Name = "massQuestsTextBox";
+            this.massQuestsTextBox.Size = new System.Drawing.Size(134, 20);
+            this.massQuestsTextBox.TabIndex = 26;
+            // 
+            // labelMassQuests
+            // 
+            this.labelMassQuests.AutoSize = true;
+            this.labelMassQuests.Location = new System.Drawing.Point(11, 81);
+            this.labelMassQuests.Name = "labelMassQuests";
+            this.labelMassQuests.Size = new System.Drawing.Size(66, 13);
+            this.labelMassQuests.TabIndex = 25;
+            this.labelMassQuests.Text = "Масс квест";
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1147,5 +1167,7 @@
         private System.Windows.Forms.CheckBox cantCancelCheckBox;
         private System.Windows.Forms.Label debuglabel;
         private System.Windows.Forms.MaskedTextBox debugTextBox;
+        private System.Windows.Forms.TextBox massQuestsTextBox;
+        private System.Windows.Forms.Label labelMassQuests;
     }
 }

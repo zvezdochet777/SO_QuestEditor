@@ -47,7 +47,8 @@ namespace StalkerOnlineQuesterEditor
                 fillDialogEditForm(currentDialogID);
                 this.Text = "Редактирование диалога ID = " + currentDialogID + "";
             }
-
+            this.initReputationTab();
+            this.initKarmaPKTab();
             this.Text += "   Версия: " + curDialog.version;
         }
 
@@ -156,6 +157,9 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests)
                     addItemToTextBox(quest.ToString(), tShouldntHaveFailedQuests);
 
+                foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfMassQuests)
+                    addItemToTextBox(quest.ToString(), tShouldntHaveMassQuests);
+
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveCompletedQuests);
 
@@ -167,6 +171,9 @@ namespace StalkerOnlineQuesterEditor
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveFailedQuests);
+
+                foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests)
+                    addItemToTextBox(quest.ToString(), tMustHaveMassQuests);
             }
             if (curDialog.DebugData != "") debugTextBox.Text = curDialog.DebugData;
             mtbPlayerLevel.Text = curDialog.Precondition.PlayerLevel.ToString();            
@@ -364,6 +371,10 @@ namespace StalkerOnlineQuesterEditor
                 foreach (string node in tNodes.Text.Split(','))
                     nodes.Add(int.Parse(node));
 
+
+            if(!this.checkReputation()) 
+                return;
+            this.checkKarmaPK();
             // заполняем действия диалога - торговля, бартер, починка, телепорт и т.д.
             if (actionsCheckBox.Checked)
             {
@@ -403,6 +414,9 @@ namespace StalkerOnlineQuesterEditor
             if (!tMustHaveFailedQuests.Text.Equals(""))
                 foreach (string quest in tMustHaveFailedQuests.Text.Split(','))
                     precondition.ListOfNecessaryQuests.ListOfFailedQuests.Add(int.Parse(quest));
+            if (!tMustHaveMassQuests.Text.Equals(""))
+                foreach (string quest in tMustHaveMassQuests.Text.Split(','))
+                    precondition.ListOfNecessaryQuests.ListOfMassQuests.Add(int.Parse(quest));
 
             if (!tShouldntHaveOpenQuests.Text.Equals(""))
                 foreach (string quest in tShouldntHaveOpenQuests.Text.Split(','))
@@ -416,6 +430,9 @@ namespace StalkerOnlineQuesterEditor
             if (!tShouldntHaveFailedQuests.Text.Equals(""))
                 foreach (string quest in tShouldntHaveFailedQuests.Text.Split(','))
                     precondition.ListOfMustNoQuests.ListOfFailedQuests.Add(int.Parse(quest));
+            if (!tShouldntHaveMassQuests.Text.Equals(""))
+                foreach (string quest in tShouldntHaveMassQuests.Text.Split(','))
+                    precondition.ListOfMustNoQuests.ListOfMassQuests.Add(int.Parse(quest));
             
             precondition.tests.Clear();
             if (cbSameClanOnly.Checked)
@@ -454,6 +471,127 @@ namespace StalkerOnlineQuesterEditor
             parent.startEmulator(currentDialogID);
             this.Close();
         }
+
+        private void initReputationTab()
+        {
+            CFracConstants frac = this.parent.fractions;
+            foreach (KeyValuePair<int, string> pair in frac.getListOfFractions())
+            {
+                int id = pair.Key;
+                string name = pair.Value;
+                string a = "";
+                string b = "";
+                if (this.editPrecondition.Reputation.Keys.Contains(pair.Key))
+                {
+                    if (this.editPrecondition.Reputation[id].Count == 3)         // костыль для старой версии, выжечт огнем позже
+                    {
+                        double type = this.editPrecondition.Reputation[pair.Key][0];
+                        if (type == 0 || (type == 1))
+                            a = this.editPrecondition.Reputation[pair.Key][1].ToString();
+                        if (type == 0 || (type == 2))
+                            b = this.editPrecondition.Reputation[pair.Key][2].ToString();
+                    }
+                    else if (this.editPrecondition.Reputation[id].Count == 2)
+                    {
+                        if (this.editPrecondition.Reputation[id][0] != double.NegativeInfinity)
+                            a = this.editPrecondition.Reputation[id][0].ToString();
+                        if (this.editPrecondition.Reputation[id][1] != double.PositiveInfinity)
+                            b = this.editPrecondition.Reputation[id][1].ToString();
+                    }
+                }
+                object[] row = { id, name, a, b };
+                dataReputation.Rows.Add(row);
+            }
+        }
+
+        private bool checkReputation()
+        {
+            this.editPrecondition.Reputation.Clear();
+            foreach (DataGridViewRow row in dataReputation.Rows)
+            {
+                if (row.Cells[0].FormattedValue.ToString() != "")
+                {
+                    int fractionID = int.Parse(row.Cells[0].FormattedValue.ToString());
+                    //string fractionName = row.Cells[1].FormattedValue.ToString();
+                    string stringA = row.Cells[2].FormattedValue.ToString().Replace('.', ',');
+                    string stringB = row.Cells[3].FormattedValue.ToString().Replace('.', ',');
+
+                    if ((stringA != "") || (stringB != ""))
+                    {
+                        double doubleA;
+                        double doubleB;
+                        if (!double.TryParse(stringA, out doubleA))
+                            doubleA = double.NegativeInfinity;
+                        if (!double.TryParse(stringB, out doubleB))
+                            doubleB = double.PositiveInfinity;
+                        if (doubleA >= doubleB)
+                        {
+                            MessageBox.Show("Неправильное условие по репутации! Значение А должно быть меньше B", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                        this.editPrecondition.Reputation.Add(fractionID, new List<double>() { doubleA, doubleB });
+                    }
+                }
+            }
+            this.checkReputationIndicates();
+            return true;
+        }
+
+        private void initKarmaPKTab()
+        {
+            labelDescription.Text = "Задаются пороги Кармы A,B такие, что A < Karma < B \n" +
+                "Игрок начинает игру с Кармой ПК = 0. \n" +
+                "За каждое ПК убийство Карма увеличивается на 100. \n" +
+                "После превышения Кармой 500 жизнь осложняется: \n" +
+                "Дроп выше, NPC не разговаривают, ник подсвечен красным";
+
+            List<int> karma = this.editKarmaPK;
+            if (karma.Any())
+            {
+                if (karma[0] == 0 || karma[0] == 1)
+                {
+                    aTextBox.Text = karma[2].ToString();    // костыль, похоже перепутаны значения
+                }
+                if (karma[0] == 0 || karma[0] == 2)
+                {
+                    bTextBox.Text = karma[1].ToString();    // костыль, похоже перепутаны значения
+                }
+            }
+        }
+
+        private void checkKarmaPK()
+        {
+            this.editKarmaPK.Clear();
+            int flag = 0;
+            int a = 0;
+            int b = 0;
+            if ((aTextBox.Text != "") || (bTextBox.Text != ""))
+            {
+                if (aTextBox.Text != "")
+                {
+                    a = int.Parse(aTextBox.Text);
+                    flag = 1;
+                }
+                if (bTextBox.Text != "")
+                {
+                    b = int.Parse(bTextBox.Text);
+                    if (flag == 1)
+                    {
+                        flag = 0;
+                    }
+                    else
+                    {
+                        flag = 2;
+                    }
+                }
+
+                this.editKarmaPK.Add(flag);
+                this.editKarmaPK.Add(b);        // тот же костыль
+                this.editKarmaPK.Add(a);        // тот же костыль
+            }
+            this.checkKarmaIndicates();
+        }
+        
 
     }
 }

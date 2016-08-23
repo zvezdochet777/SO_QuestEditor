@@ -122,6 +122,9 @@ namespace StalkerOnlineQuesterEditor
                 AddDataToList(item, "QuestRules", "TypeOfItems", questRules.TypeOfItems);
                 AddDataToList(item, "QuestRules", "AttrOfItems", questRules.AttrOfItems);
                 AddDataToList(item, "QuestRules", "Scenarios", questRules.Scenarios);
+                AddDataToList(item, "QuestRules", "MassQuests", questRules.MassQuests);
+
+
                 ParseIntIfNotEmpty(item, "QuestRules", "MaxGroup", out questRules.MaxGroup, 0);
                 ParseIntIfNotEmpty(item, "QuestRules", "MinGroup", out questRules.MinGroup, 0);
                 ParseIntIfNotEmpty(item, "QuestRules", "MaxMember", out questRules.MaxMember, 0);
@@ -210,6 +213,8 @@ namespace StalkerOnlineQuesterEditor
         
         private void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
         {
+            if (Element.Element(Name1).Element(Name2) == null) 
+                return;
             if (Element.Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
                     list.Add(int.Parse(quest));
@@ -380,6 +385,8 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()),
                         new XElement("CantCancel", Global.GetBoolAsString(questValue.Additional.CantCancel)),
                         new XElement("Holder", questValue.Additional.Holder)));
+                if (questValue.QuestRules.MassQuests.Any())
+                    element.Element("QuestRules").Add(new XElement("MassQuests", Global.GetListAsString(questValue.QuestRules.MassQuests)));
                 if (questValue.Additional.DebugData != "")
                     element.Element("Additional").Add(new XElement("DebugData", questValue.Additional.DebugData));
                 resultDoc.Root.Add(element);

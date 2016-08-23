@@ -94,11 +94,13 @@ namespace StalkerOnlineQuesterEditor
                     AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
                     AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfCompletedQuests", Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
                     AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfFailedQuests", Precondition.ListOfNecessaryQuests.ListOfFailedQuests);
+                    AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfMassQuests", Precondition.ListOfNecessaryQuests.ListOfMassQuests);
 
                     AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOpenedQuests", Precondition.ListOfMustNoQuests.ListOfOpenedQuests);
                     AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOnTestQuests", Precondition.ListOfMustNoQuests.ListOfOnTestQuests);
                     AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfCompletedQuests", Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
                     AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfFailedQuests", Precondition.ListOfMustNoQuests.ListOfFailedQuests);
+                    AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfMassQuests", Precondition.ListOfMustNoQuests.ListOfMassQuests);
 
                     Precondition.KarmaPK = new List<int>();
                     AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
@@ -140,6 +142,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void AddPreconditionQuests(XElement Element, String Name1, String Name2, List<int> list)
         {
+            if (Element.Element("Precondition").Element(Name1).Element(Name2) == null)
+                return;
             if (Element.Element("Precondition").Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element("Precondition").Element(Name1).Element(Name2).Value.Split(','))
                     list.Add(int.Parse(quest));
@@ -271,6 +275,12 @@ namespace StalkerOnlineQuesterEditor
                        new XElement("RootDialog", Global.GetBoolAsString(dialog.coordinates.RootDialog)),
                        new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active))
                            );
+                    if (dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests.Any())
+                        element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfMassQuests",
+                                                                 Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests)));
+                    if (dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests.Any())
+                        element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
+                                                                 Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests)));
                     if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
                     npcElement.Add(element);
                 }
