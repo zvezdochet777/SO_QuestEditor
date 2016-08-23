@@ -37,7 +37,8 @@ namespace StalkerOnlineQuesterEditor
                 teleportComboBox.Items.Add(key);
 
             FillActionsComboBox();
-
+            this.initReputationTab();
+            this.initKarmaPKTab();
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
             if (isAdd)
@@ -47,11 +48,47 @@ namespace StalkerOnlineQuesterEditor
                 fillDialogEditForm(currentDialogID);
                 this.Text = "Редактирование диалога ID = " + currentDialogID + "";
             }
-            this.initReputationTab();
-            this.initKarmaPKTab();
+
             this.Text += "   Версия: " + curDialog.version;
         }
-
+        void fillClanOptions(string options)
+        {
+            List<int> list = new List<int>();
+            if (options == "")
+                return;
+            switch(options[0])
+                
+            {
+                case '&':
+                    radioButtonAND.Checked = true;
+                    radioButtonOR.Checked = false;
+                    break;
+                case '|':
+                    radioButtonAND.Checked = false;
+                    radioButtonOR.Checked = true;
+                    break;
+            }
+            options = options.Substring(2);
+            foreach (string node in options.Split(','))
+                list.Add(int.Parse(node)); ;
+            // какой-то пиздец c кланами и одиночками
+            if (list.Contains(1))
+                cbSameClanOnly.Checked = true;
+            if (list.Contains(2))
+                cbNotSameClanOnly.Checked = true;
+            if (list.Contains(3))
+                cbEnemy.Checked = true;
+            if (list.Contains(4))
+                cbNotEnemy.Checked = true;
+            if (list.Contains(5))
+                cbPeaceTime.Checked = true;
+            if (list.Contains(6))
+                cbWarTime.Checked = true;
+            if (list.Contains(7))
+                cbAnyClanOnly.Checked = true;
+            if (list.Contains(8))
+                cbLonerOnly.Checked = true;
+        }
         //! Заполняет всю форму данными из CDialog
         void fillDialogEditForm(int dialogID)
         {
@@ -73,25 +110,9 @@ namespace StalkerOnlineQuesterEditor
                     else
                         tNodes.Text += ("," + dialog.ToString());
                 }
-            // какой-то пиздец c кланами и одиночками
-            if (curDialog.Precondition.tests.Contains(1))
-                cbSameClanOnly.Checked = true;
-            if (curDialog.Precondition.tests.Contains(0))
-                cbAnyClanOnly.Checked = true;
-            if (curDialog.Precondition.tests.Contains(2))
-                cbLonerOnly.Checked = true;
-            ShowClanOptions();
+            this.fillClanOptions(curDialog.Precondition.clanOptions);
 
-            if (curDialog.Precondition.Reputation.Any())
-            {
-                editPrecondition = curDialog.Precondition;
-                checkReputationIndicates();
-            }
-            if (curDialog.Precondition.KarmaPK.Any())
-            {
-                editKarmaPK = curDialog.Precondition.KarmaPK;
-                checkKarmaIndicates();
-            }
+           
 
             if (curDialog.Actions.Exists() || curDialog.Actions.Exit || curDialog.Actions.ToDialog!=0 )
             {
@@ -157,8 +178,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests)
                     addItemToTextBox(quest.ToString(), tShouldntHaveFailedQuests);
 
-                foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfMassQuests)
-                    addItemToTextBox(quest.ToString(), tShouldntHaveMassQuests);
+                addItemToTextBox(curDialog.Precondition.ListOfMustNoQuests.ListOfMassQuests, tShouldntHaveMassQuests);
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveCompletedQuests);
@@ -172,12 +192,25 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveFailedQuests);
 
-                foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests)
-                    addItemToTextBox(quest.ToString(), tMustHaveMassQuests);
+                addItemToTextBox(curDialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests, tMustHaveMassQuests);
+
             }
             if (curDialog.DebugData != "") debugTextBox.Text = curDialog.DebugData;
             mtbPlayerLevel.Text = curDialog.Precondition.PlayerLevel.ToString();            
             calcSymbolMaxAnswer();
+
+
+            if (curDialog.Precondition.Reputation.Any())
+            {
+                editPrecondition = curDialog.Precondition;
+                checkReputationIndicates();
+            }
+            if (curDialog.Precondition.KarmaPK.Any())
+            {
+                editKarmaPK = curDialog.Precondition.KarmaPK;
+                checkKarmaIndicates();
+            }
+            checkClanOptionsIndicator();
         }
 
         //! Антиговнокод-функция, добавление номера квеста в текстбокс
@@ -196,25 +229,24 @@ namespace StalkerOnlineQuesterEditor
             ActionsComboBox.DisplayMember = "Display";
             ActionsComboBox.ValueMember = "Value";
         }
-        //! Скрывает опции кланов, если они не заполнены при открытии формы
-        private void ShowClanOptions()
-        {
-            if (cbSameClanOnly.Checked || cbAnyClanOnly.Checked || cbLonerOnly.Checked)
-                gbClanOptions.Visible = true;
-            else
-                gbClanOptions.Visible = false;
-        }
 
-        //! Клик по кнопке "показать клановые опции"
-        private void cbShowClanOptions_Click(object sender, EventArgs e)
+        private void checkClanOptionsIndicator()
         {
-            gbClanOptions.Visible = !gbClanOptions.Visible;     // cbShowClanOptions.CheckState == CheckState.Checked;
-            if (!gbClanOptions.Visible && (cbSameClanOnly.Checked || cbAnyClanOnly.Checked || cbLonerOnly.Checked))
-                cbShowClanOptions.CheckState = CheckState.Indeterminate;
-            else if (gbClanOptions.Visible)
-                cbShowClanOptions.CheckState = CheckState.Checked;
-            else
-                cbShowClanOptions.CheckState = CheckState.Unchecked;
+            if (checkClanOptions())
+            {
+                pictureClan.Visible = true;
+            }
+            else pictureClan.Visible = false;
+        }
+        private bool checkClanOptions()
+        {
+            if (cbSameClanOnly.Checked || cbAnyClanOnly.Checked || cbLonerOnly.Checked || cbWarTime.Checked ||
+                cbEnemy.Checked || cbNotEnemy.Checked || cbPeaceTime.Checked || cbNotSameClanOnly.Checked)
+            {
+                return true;
+            }
+            else return false;
+             
         }
 
         //! Нажатие Отмена - выход без сохранения
@@ -267,35 +299,30 @@ namespace StalkerOnlineQuesterEditor
         {
             this.parent.Enabled = true;
         }
-        //! Открытие окна выбора репутации
-        private void bReputation_Click(object sender, EventArgs e)
-        {
-            DialogReputation reputationForm = new DialogReputation(this);
-            reputationForm.Visible = true;
-            this.Enabled = false;
-        }
-        //! Открытие окна кармы
-        private void bKarma_Click(object sender, EventArgs e)
-        {
-            DialogKarmaPK dialogKarma = new DialogKarmaPK(this);
-            dialogKarma.Visible = true;
-            this.Enabled = false;
-        }
         //! Задать цвет кнопки репутации, если репутация задана
         public void checkReputationIndicates()
         {
             if (editPrecondition.Reputation.Any())
-                bReputation.Image = Properties.Resources.but_indicate;
+                pictureReputation.Visible = true;
             else
-                bReputation.Image = null;
+                pictureReputation.Visible = false;
         }
         //! Задать цвет кнопки кармы, если карма задана
         public void checkKarmaIndicates()
         {
             if (editKarmaPK.Any())
-                bKarma.Image = Properties.Resources.but_indicate;
+                pictureKarma.Visible = true;
             else
-                bKarma.Image = null;
+                pictureKarma.Visible = false;
+        }
+
+        //! Задать цвет кнопки Клановой, если карма задана
+        public void checkClanIndicates()
+        {
+            if (editKarmaPK.Any())
+                pictureKarma.Visible = true;
+            else
+                pictureKarma.Visible = false;
         }
 
         private void cbExit_Click(object sender, EventArgs e)
@@ -415,8 +442,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (string quest in tMustHaveFailedQuests.Text.Split(','))
                     precondition.ListOfNecessaryQuests.ListOfFailedQuests.Add(int.Parse(quest));
             if (!tMustHaveMassQuests.Text.Equals(""))
-                foreach (string quest in tMustHaveMassQuests.Text.Split(','))
-                    precondition.ListOfNecessaryQuests.ListOfMassQuests.Add(int.Parse(quest));
+                precondition.ListOfNecessaryQuests.ListOfMassQuests = tMustHaveMassQuests.Text;
 
             if (!tShouldntHaveOpenQuests.Text.Equals(""))
                 foreach (string quest in tShouldntHaveOpenQuests.Text.Split(','))
@@ -431,16 +457,34 @@ namespace StalkerOnlineQuesterEditor
                 foreach (string quest in tShouldntHaveFailedQuests.Text.Split(','))
                     precondition.ListOfMustNoQuests.ListOfFailedQuests.Add(int.Parse(quest));
             if (!tShouldntHaveMassQuests.Text.Equals(""))
-                foreach (string quest in tShouldntHaveMassQuests.Text.Split(','))
-                    precondition.ListOfMustNoQuests.ListOfMassQuests.Add(int.Parse(quest));
-            
-            precondition.tests.Clear();
-            if (cbSameClanOnly.Checked)
-                precondition.tests.Add(1);
-            if (cbAnyClanOnly.Checked)
-                precondition.tests.Add(0);
-            if (cbLonerOnly.Checked)
-                precondition.tests.Add(2);
+                precondition.ListOfMustNoQuests.ListOfMassQuests = tShouldntHaveMassQuests.Text;
+
+
+
+            if (checkClanOptions())
+            {
+                if (radioButtonAND.Checked)
+                    precondition.clanOptions = "&";
+                if (radioButtonOR.Checked)
+                    precondition.clanOptions = "|";
+                if (cbSameClanOnly.Checked)
+                    precondition.clanOptions += ",1";
+                if (cbNotSameClanOnly.Checked)
+                    precondition.clanOptions += ",2";
+                if (cbEnemy.Checked)
+                    precondition.clanOptions += ",3";
+                if (cbNotEnemy.Checked)
+                    precondition.clanOptions += ",4";
+                if (cbPeaceTime.Checked)
+                    precondition.clanOptions += ",5";
+                if (cbWarTime.Checked)
+                    precondition.clanOptions += ",6";
+                if (cbAnyClanOnly.Checked)
+                    precondition.clanOptions += ",7";
+                if (cbLonerOnly.Checked)
+                    precondition.clanOptions += ",8";
+            }
+
 
             precondition.PlayerLevel = int.Parse(mtbPlayerLevel.Text.ToString());
             precondition.Reputation = editPrecondition.Reputation;
@@ -590,6 +634,13 @@ namespace StalkerOnlineQuesterEditor
                 this.editKarmaPK.Add(a);        // тот же костыль
             }
             this.checkKarmaIndicates();
+        }
+
+        private void tabQuestsCircs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.checkClanOptionsIndicator();
+            this.checkKarmaPK();
+            this.checkReputation();
         }
         
 

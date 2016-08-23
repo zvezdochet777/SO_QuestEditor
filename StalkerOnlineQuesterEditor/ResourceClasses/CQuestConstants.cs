@@ -48,6 +48,9 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(204, "_фонарик."));
             //simpleQuestsType.Add(new СQuestType(205, "_добавление предмета."));
             simpleQuestsType.Add(new СQuestType(206, "_событие ГУИ."));
+
+
+            
         }
         public bool isSimple(int questType)
         {

@@ -32,6 +32,8 @@
             this.groupQuestBox = new System.Windows.Forms.GroupBox();
             this.filedIFtContentBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.debuglabel = new System.Windows.Forms.Label();
+            this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.rewardGroupBox = new System.Windows.Forms.GroupBox();
@@ -52,6 +54,8 @@
             this.tExperience = new System.Windows.Forms.TextBox();
             this.lCombatSkills = new System.Windows.Forms.Label();
             this.lQuestRules = new System.Windows.Forms.GroupBox();
+            this.massQuestsTextBox = new System.Windows.Forms.TextBox();
+            this.labelMassQuests = new System.Windows.Forms.Label();
             this.bItemQuestRules = new System.Windows.Forms.Button();
             this.bHideRules = new System.Windows.Forms.Button();
             this.scenariosTextBox = new System.Windows.Forms.TextBox();
@@ -109,10 +113,6 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
-            this.debuglabel = new System.Windows.Forms.Label();
-            this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.massQuestsTextBox = new System.Windows.Forms.TextBox();
-            this.labelMassQuests = new System.Windows.Forms.Label();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -182,6 +182,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(614, 62);
             this.panel1.TabIndex = 7;
+            // 
+            // debuglabel
+            // 
+            this.debuglabel.AutoSize = true;
+            this.debuglabel.Location = new System.Drawing.Point(5, 12);
+            this.debuglabel.Name = "debuglabel";
+            this.debuglabel.Size = new System.Drawing.Size(161, 13);
+            this.debuglabel.TabIndex = 43;
+            this.debuglabel.Text = "Для дебага(Стасу не трогать):";
+            // 
+            // debugTextBox
+            // 
+            this.debugTextBox.Location = new System.Drawing.Point(8, 28);
+            this.debugTextBox.Name = "debugTextBox";
+            this.debugTextBox.Size = new System.Drawing.Size(147, 20);
+            this.debugTextBox.TabIndex = 42;
             // 
             // okButton
             // 
@@ -391,6 +407,22 @@
             this.lQuestRules.TabIndex = 3;
             this.lQuestRules.TabStop = false;
             this.lQuestRules.Text = "Правила квеста";
+            // 
+            // massQuestsTextBox
+            // 
+            this.massQuestsTextBox.Location = new System.Drawing.Point(90, 76);
+            this.massQuestsTextBox.Name = "massQuestsTextBox";
+            this.massQuestsTextBox.Size = new System.Drawing.Size(134, 20);
+            this.massQuestsTextBox.TabIndex = 26;
+            // 
+            // labelMassQuests
+            // 
+            this.labelMassQuests.AutoSize = true;
+            this.labelMassQuests.Location = new System.Drawing.Point(11, 81);
+            this.labelMassQuests.Name = "labelMassQuests";
+            this.labelMassQuests.Size = new System.Drawing.Size(66, 13);
+            this.labelMassQuests.TabIndex = 25;
+            this.labelMassQuests.Text = "Масс квест";
             // 
             // bItemQuestRules
             // 
@@ -1008,38 +1040,6 @@
             this.eventLabel.Size = new System.Drawing.Size(75, 13);
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
-            // 
-            // debuglabel
-            // 
-            this.debuglabel.AutoSize = true;
-            this.debuglabel.Location = new System.Drawing.Point(5, 12);
-            this.debuglabel.Name = "debuglabel";
-            this.debuglabel.Size = new System.Drawing.Size(161, 13);
-            this.debuglabel.TabIndex = 43;
-            this.debuglabel.Text = "Для дебага(Стасу не трогать):";
-            // 
-            // debugTextBox
-            // 
-            this.debugTextBox.Location = new System.Drawing.Point(8, 28);
-            this.debugTextBox.Name = "debugTextBox";
-            this.debugTextBox.Size = new System.Drawing.Size(147, 20);
-            this.debugTextBox.TabIndex = 42;
-            // 
-            // massQuestsTextBox
-            // 
-            this.massQuestsTextBox.Location = new System.Drawing.Point(90, 76);
-            this.massQuestsTextBox.Name = "massQuestsTextBox";
-            this.massQuestsTextBox.Size = new System.Drawing.Size(134, 20);
-            this.massQuestsTextBox.TabIndex = 26;
-            // 
-            // labelMassQuests
-            // 
-            this.labelMassQuests.AutoSize = true;
-            this.labelMassQuests.Location = new System.Drawing.Point(11, 81);
-            this.labelMassQuests.Name = "labelMassQuests";
-            this.labelMassQuests.Size = new System.Drawing.Size(66, 13);
-            this.labelMassQuests.TabIndex = 25;
-            this.labelMassQuests.Text = "Масс квест";
             // 
             // EditQuestForm
             // 

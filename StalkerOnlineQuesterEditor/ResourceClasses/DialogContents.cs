@@ -14,7 +14,7 @@ namespace StalkerOnlineQuesterEditor
         public ListOfQuests ListOfOpenedQuests;
         public ListOfQuests ListOfOnTestQuests;
         public ListOfQuests ListOfFailedQuests;
-        public ListOfQuests ListOfMassQuests;
+        public string ListOfMassQuests;
 
         public CDialogPreconditionQuests()
         {
@@ -22,12 +22,12 @@ namespace StalkerOnlineQuesterEditor
             this.ListOfOpenedQuests = new ListOfQuests();
             this.ListOfOnTestQuests = new ListOfQuests();
             this.ListOfFailedQuests = new ListOfQuests();
-            this.ListOfMassQuests = new ListOfQuests();
+            this.ListOfMassQuests = "";
         }
 
         public bool Any()
         {
-            if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() || ListOfFailedQuests.Any() || ListOfMassQuests.Any())
+            if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() || ListOfFailedQuests.Any() || ListOfMassQuests != "")
                 return true;
             else
                 return false;
@@ -53,7 +53,7 @@ namespace StalkerOnlineQuesterEditor
                 result += Global.GetNamedList(" На проверке: ", ListOfOnTestQuests);
                 result += Global.GetNamedList(" Закрыто: ", ListOfCompletedQuests);
                 result += Global.GetNamedList(" Провалено: ", ListOfFailedQuests);
-                result += Global.GetNamedList(" Массовые: ", ListOfMassQuests);
+                result += " Массовые: " + ListOfMassQuests;
                 return result;
             }
             else
@@ -66,7 +66,7 @@ namespace StalkerOnlineQuesterEditor
     {
         public CDialogPreconditionQuests ListOfNecessaryQuests;
         public CDialogPreconditionQuests ListOfMustNoQuests;
-        public List<int> tests;
+        public string clanOptions;
         public int PlayerLevel;
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
         public List<int> KarmaPK = new List<int>();
@@ -75,8 +75,7 @@ namespace StalkerOnlineQuesterEditor
         public object Clone()
         {
             CDialogPrecondition copy = new CDialogPrecondition();
-            foreach (int test in this.tests)
-                copy.tests.Add(test);
+            copy.clanOptions = this.clanOptions;
             copy.ListOfNecessaryQuests = (CDialogPreconditionQuests)this.ListOfNecessaryQuests.Clone();
             copy.ListOfMustNoQuests = (CDialogPreconditionQuests)this.ListOfMustNoQuests.Clone();
             copy.Reputation = this.Reputation;
@@ -89,7 +88,7 @@ namespace StalkerOnlineQuesterEditor
         {
             this.ListOfNecessaryQuests = new CDialogPreconditionQuests();
             this.ListOfMustNoQuests = new CDialogPreconditionQuests();
-            this.tests = new List<int>();
+            this.clanOptions = "";
             this.Reputation = new Dictionary<int, List<double>>();
             this.KarmaPK = new List<int>();
             this.PlayerLevel = 0;

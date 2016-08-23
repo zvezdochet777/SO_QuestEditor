@@ -51,6 +51,9 @@
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
             this.gbPrecondition = new System.Windows.Forms.GroupBox();
+            this.pictureClan = new System.Windows.Forms.PictureBox();
+            this.pictureKarma = new System.Windows.Forms.PictureBox();
+            this.pictureReputation = new System.Windows.Forms.PictureBox();
             this.tabQuestsCircs = new System.Windows.Forms.TabControl();
             this.tabQuests = new System.Windows.Forms.TabPage();
             this.gbQuestCondition = new System.Windows.Forms.GroupBox();
@@ -87,14 +90,18 @@
             this.a = new System.Windows.Forms.Label();
             this.tabClan = new System.Windows.Forms.TabPage();
             this.gbClanOptions = new System.Windows.Forms.GroupBox();
+            this.radioButtonOR = new System.Windows.Forms.RadioButton();
+            this.radioButtonAND = new System.Windows.Forms.RadioButton();
+            this.cbNotSameClanOnly = new System.Windows.Forms.CheckBox();
+            this.cbWarTime = new System.Windows.Forms.CheckBox();
+            this.cbPeaceTime = new System.Windows.Forms.CheckBox();
+            this.cbNotEnemy = new System.Windows.Forms.CheckBox();
+            this.cbEnemy = new System.Windows.Forms.CheckBox();
             this.cbLonerOnly = new System.Windows.Forms.CheckBox();
             this.cbAnyClanOnly = new System.Windows.Forms.CheckBox();
             this.cbSameClanOnly = new System.Windows.Forms.CheckBox();
-            this.cbShowClanOptions = new System.Windows.Forms.CheckBox();
             this.mtbPlayerLevel = new System.Windows.Forms.MaskedTextBox();
             this.lPlayerLevel = new System.Windows.Forms.Label();
-            this.bKarma = new System.Windows.Forms.Button();
-            this.bReputation = new System.Windows.Forms.Button();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -104,6 +111,9 @@
             this.gbTexts = new System.Windows.Forms.GroupBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureClan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureKarma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureReputation)).BeginInit();
             this.tabQuestsCircs.SuspendLayout();
             this.tabQuests.SuspendLayout();
             this.gbQuestCondition.SuspendLayout();
@@ -340,11 +350,12 @@
             // 
             // gbPrecondition
             // 
+            this.gbPrecondition.Controls.Add(this.pictureClan);
+            this.gbPrecondition.Controls.Add(this.pictureKarma);
+            this.gbPrecondition.Controls.Add(this.pictureReputation);
             this.gbPrecondition.Controls.Add(this.tabQuestsCircs);
             this.gbPrecondition.Controls.Add(this.mtbPlayerLevel);
             this.gbPrecondition.Controls.Add(this.lPlayerLevel);
-            this.gbPrecondition.Controls.Add(this.bKarma);
-            this.gbPrecondition.Controls.Add(this.bReputation);
             this.gbPrecondition.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbPrecondition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbPrecondition.Location = new System.Drawing.Point(0, 227);
@@ -354,17 +365,55 @@
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
             // 
+            // pictureClan
+            // 
+            this.pictureClan.BackColor = System.Drawing.Color.Transparent;
+            this.pictureClan.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureClan.Location = new System.Drawing.Point(196, 10);
+            this.pictureClan.Name = "pictureClan";
+            this.pictureClan.Size = new System.Drawing.Size(10, 10);
+            this.pictureClan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureClan.TabIndex = 55;
+            this.pictureClan.TabStop = false;
+            this.pictureClan.Visible = false;
+            // 
+            // pictureKarma
+            // 
+            this.pictureKarma.BackColor = System.Drawing.Color.Transparent;
+            this.pictureKarma.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureKarma.Location = new System.Drawing.Point(143, 10);
+            this.pictureKarma.Name = "pictureKarma";
+            this.pictureKarma.Size = new System.Drawing.Size(10, 10);
+            this.pictureKarma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureKarma.TabIndex = 54;
+            this.pictureKarma.TabStop = false;
+            this.pictureKarma.Visible = false;
+            // 
+            // pictureReputation
+            // 
+            this.pictureReputation.BackColor = System.Drawing.Color.Transparent;
+            this.pictureReputation.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureReputation.Location = new System.Drawing.Point(88, 10);
+            this.pictureReputation.Name = "pictureReputation";
+            this.pictureReputation.Size = new System.Drawing.Size(10, 10);
+            this.pictureReputation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureReputation.TabIndex = 53;
+            this.pictureReputation.TabStop = false;
+            this.pictureReputation.Visible = false;
+            // 
             // tabQuestsCircs
             // 
             this.tabQuestsCircs.Controls.Add(this.tabQuests);
             this.tabQuestsCircs.Controls.Add(this.tabReputation);
             this.tabQuestsCircs.Controls.Add(this.tabKarma);
             this.tabQuestsCircs.Controls.Add(this.tabClan);
+            this.tabQuestsCircs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabQuestsCircs.Location = new System.Drawing.Point(8, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
             this.tabQuestsCircs.SelectedIndex = 0;
             this.tabQuestsCircs.Size = new System.Drawing.Size(574, 219);
             this.tabQuestsCircs.TabIndex = 52;
+            this.tabQuestsCircs.SelectedIndexChanged += new System.EventHandler(this.tabQuestsCircs_SelectedIndexChanged);
             // 
             // tabQuests
             // 
@@ -665,7 +714,6 @@
             // 
             this.tabClan.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabClan.Controls.Add(this.gbClanOptions);
-            this.tabClan.Controls.Add(this.cbShowClanOptions);
             this.tabClan.Location = new System.Drawing.Point(4, 22);
             this.tabClan.Name = "tabClan";
             this.tabClan.Padding = new System.Windows.Forms.Padding(3);
@@ -676,56 +724,125 @@
             // gbClanOptions
             // 
             this.gbClanOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.gbClanOptions.Controls.Add(this.radioButtonOR);
+            this.gbClanOptions.Controls.Add(this.radioButtonAND);
+            this.gbClanOptions.Controls.Add(this.cbNotSameClanOnly);
+            this.gbClanOptions.Controls.Add(this.cbWarTime);
+            this.gbClanOptions.Controls.Add(this.cbPeaceTime);
+            this.gbClanOptions.Controls.Add(this.cbNotEnemy);
+            this.gbClanOptions.Controls.Add(this.cbEnemy);
             this.gbClanOptions.Controls.Add(this.cbLonerOnly);
             this.gbClanOptions.Controls.Add(this.cbAnyClanOnly);
             this.gbClanOptions.Controls.Add(this.cbSameClanOnly);
-            this.gbClanOptions.Location = new System.Drawing.Point(15, 35);
+            this.gbClanOptions.Location = new System.Drawing.Point(6, 6);
             this.gbClanOptions.Name = "gbClanOptions";
-            this.gbClanOptions.Size = new System.Drawing.Size(200, 100);
+            this.gbClanOptions.Size = new System.Drawing.Size(414, 160);
             this.gbClanOptions.TabIndex = 50;
             this.gbClanOptions.TabStop = false;
             this.gbClanOptions.Text = "Клановые опции";
             // 
+            // radioButtonOR
+            // 
+            this.radioButtonOR.AutoSize = true;
+            this.radioButtonOR.Location = new System.Drawing.Point(155, 20);
+            this.radioButtonOR.Name = "radioButtonOR";
+            this.radioButtonOR.Size = new System.Drawing.Size(49, 17);
+            this.radioButtonOR.TabIndex = 25;
+            this.radioButtonOR.TabStop = true;
+            this.radioButtonOR.Text = "ИЛИ";
+            this.radioButtonOR.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAND
+            // 
+            this.radioButtonAND.AutoSize = true;
+            this.radioButtonAND.Checked = true;
+            this.radioButtonAND.Location = new System.Drawing.Point(109, 20);
+            this.radioButtonAND.Name = "radioButtonAND";
+            this.radioButtonAND.Size = new System.Drawing.Size(33, 17);
+            this.radioButtonAND.TabIndex = 24;
+            this.radioButtonAND.TabStop = true;
+            this.radioButtonAND.Text = "И";
+            this.radioButtonAND.UseVisualStyleBackColor = true;
+            // 
+            // cbNotSameClanOnly
+            // 
+            this.cbNotSameClanOnly.AutoSize = true;
+            this.cbNotSameClanOnly.Location = new System.Drawing.Point(155, 45);
+            this.cbNotSameClanOnly.Name = "cbNotSameClanOnly";
+            this.cbNotSameClanOnly.Size = new System.Drawing.Size(101, 17);
+            this.cbNotSameClanOnly.TabIndex = 23;
+            this.cbNotSameClanOnly.Text = "не соклановец";
+            this.cbNotSameClanOnly.UseVisualStyleBackColor = true;
+            // 
+            // cbWarTime
+            // 
+            this.cbWarTime.AutoSize = true;
+            this.cbWarTime.Location = new System.Drawing.Point(155, 85);
+            this.cbWarTime.Name = "cbWarTime";
+            this.cbWarTime.Size = new System.Drawing.Size(143, 17);
+            this.cbWarTime.TabIndex = 22;
+            this.cbWarTime.Text = "военное время(захват)";
+            this.cbWarTime.UseVisualStyleBackColor = true;
+            // 
+            // cbPeaceTime
+            // 
+            this.cbPeaceTime.AutoSize = true;
+            this.cbPeaceTime.Location = new System.Drawing.Point(8, 85);
+            this.cbPeaceTime.Name = "cbPeaceTime";
+            this.cbPeaceTime.Size = new System.Drawing.Size(154, 17);
+            this.cbPeaceTime.TabIndex = 21;
+            this.cbPeaceTime.Text = "мирное время(не захват)";
+            this.cbPeaceTime.UseVisualStyleBackColor = true;
+            // 
+            // cbNotEnemy
+            // 
+            this.cbNotEnemy.AutoSize = true;
+            this.cbNotEnemy.Location = new System.Drawing.Point(155, 65);
+            this.cbNotEnemy.Name = "cbNotEnemy";
+            this.cbNotEnemy.Size = new System.Drawing.Size(64, 17);
+            this.cbNotEnemy.TabIndex = 20;
+            this.cbNotEnemy.Text = "не враг";
+            this.cbNotEnemy.UseVisualStyleBackColor = true;
+            // 
+            // cbEnemy
+            // 
+            this.cbEnemy.AutoSize = true;
+            this.cbEnemy.Location = new System.Drawing.Point(8, 65);
+            this.cbEnemy.Name = "cbEnemy";
+            this.cbEnemy.Size = new System.Drawing.Size(49, 17);
+            this.cbEnemy.TabIndex = 19;
+            this.cbEnemy.Text = "враг";
+            this.cbEnemy.UseVisualStyleBackColor = true;
+            // 
             // cbLonerOnly
             // 
             this.cbLonerOnly.AutoSize = true;
-            this.cbLonerOnly.Location = new System.Drawing.Point(19, 72);
+            this.cbLonerOnly.Location = new System.Drawing.Point(155, 105);
             this.cbLonerOnly.Name = "cbLonerOnly";
-            this.cbLonerOnly.Size = new System.Drawing.Size(134, 17);
+            this.cbLonerOnly.Size = new System.Drawing.Size(73, 17);
             this.cbLonerOnly.TabIndex = 18;
-            this.cbLonerOnly.Text = "Только для одиночек";
+            this.cbLonerOnly.Text = "одиночка";
             this.cbLonerOnly.UseVisualStyleBackColor = true;
             // 
             // cbAnyClanOnly
             // 
             this.cbAnyClanOnly.AutoSize = true;
-            this.cbAnyClanOnly.Location = new System.Drawing.Point(19, 48);
+            this.cbAnyClanOnly.Location = new System.Drawing.Point(8, 105);
             this.cbAnyClanOnly.Name = "cbAnyClanOnly";
-            this.cbAnyClanOnly.Size = new System.Drawing.Size(162, 17);
+            this.cbAnyClanOnly.Size = new System.Drawing.Size(102, 17);
             this.cbAnyClanOnly.TabIndex = 17;
-            this.cbAnyClanOnly.Text = "Только для имеющих клан";
+            this.cbAnyClanOnly.Text = "имеющий клан";
             this.cbAnyClanOnly.UseVisualStyleBackColor = true;
             // 
             // cbSameClanOnly
             // 
             this.cbSameClanOnly.AutoSize = true;
-            this.cbSameClanOnly.Location = new System.Drawing.Point(19, 24);
+            this.cbSameClanOnly.Location = new System.Drawing.Point(8, 45);
             this.cbSameClanOnly.Name = "cbSameClanOnly";
-            this.cbSameClanOnly.Size = new System.Drawing.Size(147, 17);
+            this.cbSameClanOnly.Size = new System.Drawing.Size(86, 17);
             this.cbSameClanOnly.TabIndex = 16;
-            this.cbSameClanOnly.Text = "Только для соклановца";
+            this.cbSameClanOnly.Text = "соклановец";
             this.cbSameClanOnly.UseVisualStyleBackColor = true;
-            // 
-            // cbShowClanOptions
-            // 
-            this.cbShowClanOptions.AutoSize = true;
-            this.cbShowClanOptions.Location = new System.Drawing.Point(15, 12);
-            this.cbShowClanOptions.Name = "cbShowClanOptions";
-            this.cbShowClanOptions.Size = new System.Drawing.Size(110, 17);
-            this.cbShowClanOptions.TabIndex = 51;
-            this.cbShowClanOptions.Text = "Клановые опции";
-            this.cbShowClanOptions.UseVisualStyleBackColor = true;
-            this.cbShowClanOptions.Click += new System.EventHandler(this.cbShowClanOptions_Click);
             // 
             // mtbPlayerLevel
             // 
@@ -744,26 +861,6 @@
             this.lPlayerLevel.Size = new System.Drawing.Size(92, 13);
             this.lPlayerLevel.TabIndex = 48;
             this.lPlayerLevel.Text = "Уровень игрока:";
-            // 
-            // bKarma
-            // 
-            this.bKarma.Location = new System.Drawing.Point(223, 244);
-            this.bKarma.Name = "bKarma";
-            this.bKarma.Size = new System.Drawing.Size(81, 23);
-            this.bKarma.TabIndex = 47;
-            this.bKarma.Text = "Карма";
-            this.bKarma.UseVisualStyleBackColor = true;
-            this.bKarma.Click += new System.EventHandler(this.bKarma_Click);
-            // 
-            // bReputation
-            // 
-            this.bReputation.Location = new System.Drawing.Point(309, 244);
-            this.bReputation.Name = "bReputation";
-            this.bReputation.Size = new System.Drawing.Size(81, 23);
-            this.bReputation.TabIndex = 46;
-            this.bReputation.Text = "Репутация";
-            this.bReputation.UseVisualStyleBackColor = true;
-            this.bReputation.Click += new System.EventHandler(this.bReputation_Click);
             // 
             // bEditDialogOk
             // 
@@ -858,6 +955,9 @@
             this.gbActions.PerformLayout();
             this.gbPrecondition.ResumeLayout(false);
             this.gbPrecondition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureClan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureKarma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureReputation)).EndInit();
             this.tabQuestsCircs.ResumeLayout(false);
             this.tabQuests.ResumeLayout(false);
             this.gbQuestCondition.ResumeLayout(false);
@@ -869,7 +969,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabClan.ResumeLayout(false);
-            this.tabClan.PerformLayout();
             this.gbClanOptions.ResumeLayout(false);
             this.gbClanOptions.PerformLayout();
             this.pCommands.ResumeLayout(false);
@@ -917,14 +1016,11 @@
         private System.Windows.Forms.Label lReactionNPC;
         private System.Windows.Forms.Panel pCommands;
         private System.Windows.Forms.GroupBox gbTexts;
-        private System.Windows.Forms.Button bReputation;
-        private System.Windows.Forms.Button bKarma;
         private System.Windows.Forms.Label lFailedQuests;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveFailedQuests;
         private System.Windows.Forms.MaskedTextBox tMustHaveFailedQuests;
         private System.Windows.Forms.MaskedTextBox mtbPlayerLevel;
         private System.Windows.Forms.Label lPlayerLevel;
-        private System.Windows.Forms.CheckBox cbShowClanOptions;
         private System.Windows.Forms.GroupBox gbClanOptions;
         private System.Windows.Forms.CheckBox cbLonerOnly;
         private System.Windows.Forms.CheckBox cbAnyClanOnly;
@@ -957,5 +1053,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn b;
+        private System.Windows.Forms.CheckBox cbWarTime;
+        private System.Windows.Forms.CheckBox cbPeaceTime;
+        private System.Windows.Forms.CheckBox cbNotEnemy;
+        private System.Windows.Forms.CheckBox cbEnemy;
+        private System.Windows.Forms.CheckBox cbNotSameClanOnly;
+        private System.Windows.Forms.RadioButton radioButtonOR;
+        private System.Windows.Forms.RadioButton radioButtonAND;
+        private System.Windows.Forms.PictureBox pictureReputation;
+        private System.Windows.Forms.PictureBox pictureKarma;
+        private System.Windows.Forms.PictureBox pictureClan;
     }
 }
