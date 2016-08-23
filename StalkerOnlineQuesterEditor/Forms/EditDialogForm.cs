@@ -37,8 +37,7 @@ namespace StalkerOnlineQuesterEditor
                 teleportComboBox.Items.Add(key);
 
             FillActionsComboBox();
-            this.initReputationTab();
-            this.initKarmaPKTab();
+
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
             if (isAdd)
@@ -67,6 +66,10 @@ namespace StalkerOnlineQuesterEditor
                     radioButtonAND.Checked = false;
                     radioButtonOR.Checked = true;
                     break;
+                default:
+                    options = "&," + options;
+                    break;
+
             }
             options = options.Substring(2);
             foreach (string node in options.Split(','))
@@ -210,6 +213,8 @@ namespace StalkerOnlineQuesterEditor
                 editKarmaPK = curDialog.Precondition.KarmaPK;
                 checkKarmaIndicates();
             }
+            this.initReputationTab();
+            this.initKarmaPKTab();
             checkClanOptionsIndicator();
         }
 
