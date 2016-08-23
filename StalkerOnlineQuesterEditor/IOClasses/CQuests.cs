@@ -164,7 +164,10 @@ namespace StalkerOnlineQuesterEditor
 
                 if (item.Element("Additional").Descendants().Any(u => u.Name == "CantCancel"))
                     additional.CantCancel = item.Element("Additional").Element("CantCancel").Value.Equals("1");
-
+                if (item.Element("Additional").Element("DebugData") != null)
+                {
+                    additional.DebugData = item.Element("Additional").Element("DebugData").Value.ToString();
+                }
                 AddDataToList(item, "Penalty", "Experience", penalty.Experience);
                 AddDataToList(item, "Penalty", "NumOfItems", penalty.NumOfItems);
                 AddDataToList(item, "Penalty", "TypeOfItems", penalty.TypeOfItems);
@@ -377,6 +380,8 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()),
                         new XElement("CantCancel", Global.GetBoolAsString(questValue.Additional.CantCancel)),
                         new XElement("Holder", questValue.Additional.Holder)));
+                if (questValue.Additional.DebugData != "")
+                    element.Element("Additional").Add(new XElement("DebugData", questValue.Additional.DebugData));
                 resultDoc.Root.Add(element);
             }
 

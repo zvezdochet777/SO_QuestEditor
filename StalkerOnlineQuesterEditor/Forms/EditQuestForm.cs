@@ -186,6 +186,10 @@ namespace StalkerOnlineQuesterEditor
                     showFailedCheckBox.Checked = true;
                 else
                     showFailedCheckBox.Checked = false;
+                if (quest.Additional.DebugData != "")
+                {
+                    this.debugTextBox.Text = quest.Additional.DebugData;
+                }
 
                 fillTarget();
                 fillPrecondition();
@@ -750,7 +754,7 @@ namespace StalkerOnlineQuesterEditor
 
                 if (result.Additional.IsSubQuest == 0)
                     parent.setTutorial(result.QuestID, (((result.Additional.ShowProgress & this.SHOW_TUTORIAL) > 0)));
-
+                if (debugTextBox.Text != "") { result.Additional.DebugData = debugTextBox.Text; }
                 parent.Enabled = true;
                 this.Close();
             }

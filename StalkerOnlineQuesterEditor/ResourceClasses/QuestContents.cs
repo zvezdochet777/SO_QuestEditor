@@ -340,6 +340,7 @@ namespace StalkerOnlineQuesterEditor
         public int ShowProgress;
         public bool CantCancel;
         public string Holder;
+        public string DebugData;
 
         public object Clone()
         {
@@ -349,6 +350,7 @@ namespace StalkerOnlineQuesterEditor
             copy.ShowProgress = this.ShowProgress;
             copy.CantCancel = this.CantCancel;
             copy.Holder = this.Holder;
+            copy.DebugData = this.DebugData;
             return copy;
         }
 
@@ -359,6 +361,7 @@ namespace StalkerOnlineQuesterEditor
             this.ShowProgress = new int();
             this.CantCancel = false;
             this.Holder = "";
+            this.DebugData = "";
         }
 
         public CQuestAdditional(string Holder)
@@ -368,6 +371,7 @@ namespace StalkerOnlineQuesterEditor
             this.ShowProgress = new int();
             this.CantCancel = false;
             this.Holder = Holder;
+            this.DebugData = "";
         }
     }
 

@@ -112,7 +112,6 @@ namespace StalkerOnlineQuesterEditor
             foreach (string name in dialogs.getListOfNPC())
                 if (!npcConst.NPCs.Keys.Contains(name))
                  npcConst.NPCs.Add(name, new CNPCDescription(name));
-
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
             SetMasterMode();

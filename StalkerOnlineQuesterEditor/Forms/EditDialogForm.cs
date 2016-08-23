@@ -168,6 +168,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveFailedQuests);
             }
+            if (curDialog.DebugData != "") debugTextBox.Text = curDialog.DebugData;
             mtbPlayerLevel.Text = curDialog.Precondition.PlayerLevel.ToString();            
             calcSymbolMaxAnswer();
         }
@@ -350,6 +351,7 @@ namespace StalkerOnlineQuesterEditor
         private void bEditDialogOk_Click(object sender, EventArgs e)
         {
             int newID;
+            string DebugData = ""; 
             Actions actions = new Actions();
             CDialogPrecondition precondition = new CDialogPrecondition();
             NodeCoordinates coord = new NodeCoordinates();
@@ -427,10 +429,13 @@ namespace StalkerOnlineQuesterEditor
             precondition.Reputation = editPrecondition.Reputation;
             precondition.KarmaPK = editKarmaPK;
 
+            if (debugTextBox.Text != "")
+                DebugData = debugTextBox.Text;
+
             if (isAdd)
             {
                 newID = parent.getDialogsNewID();
-                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, newID, 1, coord), currentDialogID);
+                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, newID, 1, coord, DebugData), currentDialogID);
             }
             else
             {
@@ -442,7 +447,7 @@ namespace StalkerOnlineQuesterEditor
                 if (tPlayerText.Text != curDialog.Title || tReactionNPC.Text != curDialog.Text)
                     version++;
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tReactionNPC.Text,
-                    precondition, actions, nodes, currentDialogID, version , coord), currentDialogID);
+                    precondition, actions, nodes, currentDialogID, version, coord, DebugData), currentDialogID);
             }
             parent.Enabled = true;
             parent.DialogSelected(true);

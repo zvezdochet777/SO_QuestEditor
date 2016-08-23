@@ -67,6 +67,7 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
         public List<int> KarmaPK = new List<int>();
 
+
         public object Clone()
         {
             CDialogPrecondition copy = new CDialogPrecondition();
@@ -237,9 +238,10 @@ namespace StalkerOnlineQuesterEditor
         public List<int> Nodes;
         public int version;
         public NodeCoordinates coordinates;
+        public string DebugData;
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
-                    Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates)
+                    Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "")
         {
             this.Holder = Holder;
             this.Title = Title;
@@ -250,6 +252,7 @@ namespace StalkerOnlineQuesterEditor
             this.DialogID = DialogID;
             this.version = version;
             this.coordinates = Coordinates;
+            this.DebugData = DebugData;
         }
         public CDialog()
         {
@@ -262,6 +265,7 @@ namespace StalkerOnlineQuesterEditor
             this.DialogID = new int();
             this.version = new int();
             coordinates = new NodeCoordinates();
+            this.DebugData = "";
         }
         public object Clone()
         {
@@ -275,6 +279,7 @@ namespace StalkerOnlineQuesterEditor
             copy.Text = this.Text;
             copy.Title = this.Title;
             copy.version = this.version;
+            copy.DebugData = this.DebugData;
             return copy;
         }
         // Копирование всех нетекстовых полей (сделано для синхронизации данных, не изменяя перевода)

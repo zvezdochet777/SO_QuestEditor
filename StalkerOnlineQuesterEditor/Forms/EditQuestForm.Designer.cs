@@ -109,6 +109,8 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
+            this.debuglabel = new System.Windows.Forms.Label();
+            this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -169,6 +171,8 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.debuglabel);
+            this.panel1.Controls.Add(this.debugTextBox);
             this.panel1.Controls.Add(this.okButton);
             this.panel1.Controls.Add(this.cancelButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1001,6 +1005,22 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
+            // debuglabel
+            // 
+            this.debuglabel.AutoSize = true;
+            this.debuglabel.Location = new System.Drawing.Point(5, 12);
+            this.debuglabel.Name = "debuglabel";
+            this.debuglabel.Size = new System.Drawing.Size(161, 13);
+            this.debuglabel.TabIndex = 43;
+            this.debuglabel.Text = "Для дебага(Стасу не трогать):";
+            // 
+            // debugTextBox
+            // 
+            this.debugTextBox.Location = new System.Drawing.Point(8, 28);
+            this.debugTextBox.Name = "debugTextBox";
+            this.debugTextBox.Size = new System.Drawing.Size(147, 20);
+            this.debugTextBox.TabIndex = 42;
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1022,6 +1042,7 @@
             this.filedIFtContentBox.ResumeLayout(false);
             this.filedIFtContentBox.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.rewardGroupBox.ResumeLayout(false);
             this.rewardGroupBox.PerformLayout();
             this.lQuestRules.ResumeLayout(false);
@@ -1124,5 +1145,7 @@
         private System.Windows.Forms.Label lSupportSkills;
         private System.Windows.Forms.Label lSurvivalSkills;
         private System.Windows.Forms.CheckBox cantCancelCheckBox;
+        private System.Windows.Forms.Label debuglabel;
+        private System.Windows.Forms.MaskedTextBox debugTextBox;
     }
 }

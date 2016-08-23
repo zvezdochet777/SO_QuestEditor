@@ -67,6 +67,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (XElement dialog in npc.Elements("Dialog"))
                 {
                     int DialogID = int.Parse(dialog.Element("ID").Value);
+                    string DebugData = "";
                     List<int> Nodes = new List<int>();
                     Actions Actions = new Actions();
                     CDialogPrecondition Precondition = new CDialogPrecondition();
@@ -129,8 +130,10 @@ namespace StalkerOnlineQuesterEditor
                         Precondition.Reputation[fractionID].Add(B);
                     }
 
+                    if (dialog.Element("DebugData") != null)
+                        DebugData = dialog.Element("DebugData").Value.ToString();
                     if (!target[npc_name].Keys.Contains(DialogID))
-                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, DialogID, 0, nodeCoord));
+                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, DialogID, 0, nodeCoord, DebugData));
                 }
             }
         }
@@ -268,7 +271,7 @@ namespace StalkerOnlineQuesterEditor
                        new XElement("RootDialog", Global.GetBoolAsString(dialog.coordinates.RootDialog)),
                        new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active))
                            );
-
+                    if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
                     npcElement.Add(element);
                 }
                 resultDoc.Root.Add(npcElement);

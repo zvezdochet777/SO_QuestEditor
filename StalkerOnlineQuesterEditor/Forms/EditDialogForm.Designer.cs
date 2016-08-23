@@ -80,6 +80,8 @@
             this.lReactionNPC = new System.Windows.Forms.Label();
             this.pCommands = new System.Windows.Forms.Panel();
             this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.debuglabel = new System.Windows.Forms.Label();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             this.gbClanOptions.SuspendLayout();
@@ -583,12 +585,14 @@
             // 
             // pCommands
             // 
+            this.pCommands.Controls.Add(this.debuglabel);
+            this.pCommands.Controls.Add(this.debugTextBox);
             this.pCommands.Controls.Add(this.bEditDialogCancel);
             this.pCommands.Controls.Add(this.bEditDialogOk);
             this.pCommands.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pCommands.Location = new System.Drawing.Point(0, 644);
             this.pCommands.Name = "pCommands";
-            this.pCommands.Size = new System.Drawing.Size(588, 35);
+            this.pCommands.Size = new System.Drawing.Size(588, 62);
             this.pCommands.TabIndex = 13;
             // 
             // gbTexts
@@ -609,11 +613,27 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
+            // debugTextBox
+            // 
+            this.debugTextBox.Location = new System.Drawing.Point(8, 30);
+            this.debugTextBox.Name = "debugTextBox";
+            this.debugTextBox.Size = new System.Drawing.Size(147, 20);
+            this.debugTextBox.TabIndex = 40;
+            // 
+            // debuglabel
+            // 
+            this.debuglabel.AutoSize = true;
+            this.debuglabel.Location = new System.Drawing.Point(5, 14);
+            this.debuglabel.Name = "debuglabel";
+            this.debuglabel.Size = new System.Drawing.Size(161, 13);
+            this.debuglabel.TabIndex = 41;
+            this.debuglabel.Text = "Для дебага(Стасу не трогать):";
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 679);
+            this.ClientSize = new System.Drawing.Size(588, 706);
             this.Controls.Add(this.actionsCheckBox);
             this.Controls.Add(this.pCommands);
             this.Controls.Add(this.gbActions);
@@ -632,6 +652,7 @@
             this.gbQuestCondition.ResumeLayout(false);
             this.gbQuestCondition.PerformLayout();
             this.pCommands.ResumeLayout(false);
+            this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
             this.gbTexts.PerformLayout();
             this.ResumeLayout(false);
@@ -693,5 +714,7 @@
         private System.Windows.Forms.CheckBox cbCancelQuests;
         private System.Windows.Forms.MaskedTextBox tbFailQuests;
         private System.Windows.Forms.MaskedTextBox tbCancelQuests;
+        private System.Windows.Forms.MaskedTextBox debugTextBox;
+        private System.Windows.Forms.Label debuglabel;
     }
 }
