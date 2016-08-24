@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace StalkerOnlineQuesterEditor
 {
@@ -70,7 +71,8 @@ namespace StalkerOnlineQuesterEditor
         public int PlayerLevel;
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
         public List<int> KarmaPK = new List<int>();
-
+        public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
+        public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
 
         public object Clone()
         {
@@ -81,6 +83,8 @@ namespace StalkerOnlineQuesterEditor
             copy.Reputation = this.Reputation;
             copy.KarmaPK = this.KarmaPK;
             copy.PlayerLevel = this.PlayerLevel;
+            copy.NecessaryEffects = this.NecessaryEffects;
+            copy.MustNoEffects = this.MustNoEffects;
             return copy;
         }
 
@@ -92,10 +96,12 @@ namespace StalkerOnlineQuesterEditor
             this.Reputation = new Dictionary<int, List<double>>();
             this.KarmaPK = new List<int>();
             this.PlayerLevel = 0;
+            this.NecessaryEffects = new List<DialogEffect>();
+            this.MustNoEffects = new List<DialogEffect>();
         }
         public bool Any()
         {
-            if (ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any())
+            if (ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any())
                 return true;
             else
                 return false;
@@ -143,6 +149,48 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
             return result;
+        }
+
+        public XElement getNecessaryEffects()
+        {
+            XElement effects = null;
+            if (!NecessaryEffects.Any())
+                return null;
+
+            foreach (DialogEffect effect in this.NecessaryEffects)
+            {
+                if (effects == null)
+                    effects = new XElement("NecessaryEffects",new XElement("Effect",
+                                                                    new XElement("id", effect.getID()),
+                                                                    new XElement("stack", effect.getStacks())));
+                else
+                    effects.Add(new XElement("Effect",
+                                                                    new XElement("id", effect.getID()),
+                                                                    new XElement("stack", effect.getStacks())));
+            }
+
+            return effects;
+
+        }
+        public XElement getMustNoEffects()
+        {
+            XElement effects = null;
+            if (!MustNoEffects.Any())
+                return null;
+            
+            foreach (DialogEffect effect in this.MustNoEffects)
+            {
+                if (effects == null)
+                    effects = new XElement("MustNoEffects", new XElement("Effect",
+                                                      new XElement("id", effect.getID()),
+                                                      new XElement("stack", effect.getStacks())));
+                else
+                    effects.Add(new XElement("Effect",
+                                                      new XElement("id", effect.getID()),
+                                                      new XElement("stack", effect.getStacks())));
+            }
+            return effects;
+
         }
     }
 

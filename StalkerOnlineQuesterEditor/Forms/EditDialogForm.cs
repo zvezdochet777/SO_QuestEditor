@@ -203,10 +203,9 @@ namespace StalkerOnlineQuesterEditor
             calcSymbolMaxAnswer();
 
 
-            if (curDialog.Precondition.Reputation.Any())
+            if (curDialog.Precondition.Any())
             {
                 editPrecondition = curDialog.Precondition;
-                checkReputationIndicates();
             }
             if (curDialog.Precondition.KarmaPK.Any())
             {
@@ -215,6 +214,7 @@ namespace StalkerOnlineQuesterEditor
             }
             this.initReputationTab();
             this.initKarmaPKTab();
+            this.initEffectsTab();
             checkClanOptionsIndicator();
         }
 
@@ -407,6 +407,7 @@ namespace StalkerOnlineQuesterEditor
             if(!this.checkReputation()) 
                 return;
             this.checkKarmaPK();
+            this.checkEffects();
             // заполняем действия диалога - торговля, бартер, починка, телепорт и т.д.
             if (actionsCheckBox.Checked)
             {
@@ -494,6 +495,8 @@ namespace StalkerOnlineQuesterEditor
             precondition.PlayerLevel = int.Parse(mtbPlayerLevel.Text.ToString());
             precondition.Reputation = editPrecondition.Reputation;
             precondition.KarmaPK = editKarmaPK;
+            precondition.NecessaryEffects = editPrecondition.NecessaryEffects;
+            precondition.MustNoEffects = editPrecondition.MustNoEffects;
 
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;
@@ -586,6 +589,70 @@ namespace StalkerOnlineQuesterEditor
             return true;
         }
 
+        private bool checkEffects()
+        {
+            this.editPrecondition.MustNoEffects = new List<DialogEffect>();
+            this.editPrecondition.NecessaryEffects = new List<DialogEffect>();
+            foreach (DataGridViewRow row in dataGridNotEffects.Rows)
+            {
+                if (row.Cells[0].FormattedValue.ToString() != "")
+                {
+                    string typeName = row.Cells[0].FormattedValue.ToString();
+                    int id = parent.effects.getIDOnDescription(typeName);
+                    string stack_from = row.Cells[1].FormattedValue.ToString();
+                    string stack_before = row.Cells[2].FormattedValue.ToString();
+                    this.editPrecondition.MustNoEffects.Add(new DialogEffect(id, stack_from, stack_before));
+                }
+            }
+
+            foreach (DataGridViewRow row in dataGridEffects.Rows)
+            {
+                if (row.Cells[0].FormattedValue.ToString() != "")
+                {
+                    string typeName = row.Cells[0].FormattedValue.ToString();
+                    int id = parent.effects.getIDOnDescription(typeName);
+                    string stack_from = row.Cells[1].FormattedValue.ToString();
+                    string stack_before = row.Cells[2].FormattedValue.ToString();
+                    this.editPrecondition.NecessaryEffects.Add(new DialogEffect(id, stack_from, stack_before));
+                }
+            }
+
+            this.checkEffectsIndicates();
+            return true;
+        }
+
+        private void initEffectsTab()
+        {
+
+            foreach (string effect_name in parent.effects.getAllDescriptions())
+            {
+                ((DataGridViewComboBoxColumn)dataGridEffects.Columns[0]).Items.Add(effect_name);
+                ((DataGridViewComboBoxColumn)dataGridNotEffects.Columns[0]).Items.Add(effect_name);
+            }
+            ((DataGridViewComboBoxColumn)dataGridEffects.Columns[0]).Sorted = true;
+            ((DataGridViewComboBoxColumn)dataGridNotEffects.Columns[0]).Sorted = true;
+
+            foreach (DialogEffect effect in this.editPrecondition.MustNoEffects)
+            {
+                string name = parent.effects.getDescriptionOnID(effect.getID());
+                string stack_from = effect.getStackFrom().ToString();
+                string stack_before = effect.getStackBefore().ToString();
+                object[] row = { name, stack_from, stack_before };
+                dataGridNotEffects.Rows.Add(row);
+            }
+
+            foreach (DialogEffect effect in this.editPrecondition.NecessaryEffects)
+            {
+                string name = parent.effects.getDescriptionOnID(effect.getID());
+                string stack_from = effect.getStackFrom().ToString();
+                string stack_before = effect.getStackBefore().ToString();
+                object[] row = { name, stack_from, stack_before };
+                dataGridEffects.Rows.Add(row);
+            }
+            this.checkEffectsIndicates();
+
+        }
+
         private void initKarmaPKTab()
         {
             labelDescription.Text = "Задаются пороги Кармы A,B такие, что A < Karma < B \n" +
@@ -641,11 +708,19 @@ namespace StalkerOnlineQuesterEditor
             this.checkKarmaIndicates();
         }
 
+        private void checkEffectsIndicates()
+        {
+            if (editPrecondition.MustNoEffects.Any() || editPrecondition.NecessaryEffects.Any())
+                pictureEffects.Visible = true;
+            else
+                pictureEffects.Visible = false;
+        }
         private void tabQuestsCircs_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.checkClanOptionsIndicator();
             this.checkKarmaPK();
             this.checkReputation();
+            this.checkEffects();
         }
         
 

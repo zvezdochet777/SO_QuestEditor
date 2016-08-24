@@ -103,6 +103,11 @@ namespace StalkerOnlineQuesterEditor
                     AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfFailedQuests", Precondition.ListOfMustNoQuests.ListOfFailedQuests);
                     if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests") != null)
                         Precondition.ListOfMustNoQuests.ListOfMassQuests = dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests").Value;
+                    
+                    if (dialog.Element("Precondition").Element("NecessaryEffects") != null)
+                        AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.NecessaryEffects);
+                    if (dialog.Element("Precondition").Element("MustNoEffects") != null)
+                        AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.MustNoEffects);
 
                     Precondition.KarmaPK = new List<int>();
                     
@@ -167,6 +172,18 @@ namespace StalkerOnlineQuesterEditor
             if (Element.Element("Precondition").Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element("Precondition").Element(Name1).Element(Name2).Value.Split(','))
                     list.Add(int.Parse(quest));
+        }
+        private void AddDialogEffectsToList(XElement Element, String Name1, String Name2, List<DialogEffect> list)
+        {
+            if (Element.Element(Name1).Element(Name2) == null)
+                return;
+          
+                foreach (XElement effect in Element.Element(Name1).Element(Name2).Elements())
+                {
+                    int ID = int.Parse(effect.Element("id").Value);
+                    string stack = effect.Element("stack").Value;
+                    list.Add(new DialogEffect(ID, stack));
+                }
         }
 
         private void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
@@ -303,6 +320,10 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests != "")
                         element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
                                                                  dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests));
+                    if (dialog.Precondition.MustNoEffects.Any())
+                        element.Element("Precondition").Add(dialog.Precondition.getMustNoEffects());
+                    if (dialog.Precondition.NecessaryEffects.Any())
+                        element.Element("Precondition").Add(dialog.Precondition.getNecessaryEffects());
                     if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
                     npcElement.Add(element);
                 }

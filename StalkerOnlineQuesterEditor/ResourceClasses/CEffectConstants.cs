@@ -14,8 +14,14 @@ namespace StalkerOnlineQuesterEditor
 
     public class CEffect
     {
-        int id;
-        int stack;
+       protected int id;
+       protected int stack;
+
+        public CEffect()
+        {
+            this.id = 0;
+            this.stack = 0;
+        }
 
         public CEffect(int id, int stack)
         {
@@ -31,6 +37,43 @@ namespace StalkerOnlineQuesterEditor
         public int getStack()
         {
             return this.stack;
+        }
+    }
+
+    public class DialogEffect : CEffect
+    {
+
+        protected string stack_before;
+        protected string stack_from;
+
+        public DialogEffect(int id, string stack_from, string stack_before)
+            : base(id, 0)
+        {
+            this.stack_before = stack_before;
+            this.stack_from = stack_from;
+        }
+
+        public DialogEffect(int id, string stack)
+            : base(id, 0)
+        {
+            string[] tmp;
+            tmp = stack.Split(':');
+            this.stack_from = tmp[0];
+            this.stack_before = tmp[1];   
+        }
+
+        public string getStacks()
+        {
+            return this.stack_from + ":" + this.stack_before;
+        }
+
+        public string getStackFrom()
+        {
+            return this.stack_from;
+        }
+        public string getStackBefore()
+        {
+            return this.stack_before;
         }
     }
 
