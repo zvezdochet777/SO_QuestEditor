@@ -79,32 +79,29 @@ namespace StalkerOnlineQuesterEditor
 
     public class CEffectConstants
     {
-        string JSON_PATH = "source/Effects.json";
+        string JSON_PATH = "../../../res/scripts/common/data/Effects.json";
+        
         JsonTextReader reader;
         public Dictionary<int, string> effects = new Dictionary<int, string>();
 
         public CEffectConstants()
         {
             reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
-            int id = 0;
+            string name = "";
             bool inName = false;
 
             while (reader.Read())
             {
                 if (reader.TokenType == JsonToken.PropertyName)
                 {
-                    int n;
-                    if (int.TryParse(reader.Value.ToString(), out n))
-                        id = n;
-
-                    if (reader.Value.ToString().Equals("name"))
-                        inName = true;
+                    name = reader.Value.ToString();
+                    inName = true;
                 }
-                if (reader.TokenType == JsonToken.String)
+                if (reader.TokenType == JsonToken.Integer)
                     if (inName)
                     {
                         inName = false;
-                        effects.Add(id, reader.Value.ToString());
+                        effects.Add(Convert.ToInt32(reader.Value), name);
                     }
             }
         }
