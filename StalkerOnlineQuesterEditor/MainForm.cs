@@ -620,7 +620,7 @@ namespace StalkerOnlineQuesterEditor
                     parent.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                     int lastIndex = parent.Nodes.Count - 1;
                     if (curQuest.Target.onFin == 1)
-                        parent.Nodes[lastIndex].BackColor = Color.Green;
+                        parent.Nodes[lastIndex].BackColor = Color.YellowGreen;
                     else
                         parent.Nodes[lastIndex].BackColor = Color.Red;
                 }
@@ -1305,7 +1305,7 @@ namespace StalkerOnlineQuesterEditor
                     parent.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                     int lastIndex = parent.Nodes.Count - 1;
                     if (curQuest.Target.onFin == 1)
-                        parent.Nodes[lastIndex].BackColor = Color.Green;
+                        parent.Nodes[lastIndex].BackColor = Color.YellowGreen;
                     else
                         parent.Nodes[lastIndex].BackColor = Color.Red;
                 }
@@ -1315,7 +1315,7 @@ namespace StalkerOnlineQuesterEditor
                 treeQuestBuffer.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                 int lastIndex = treeQuest.Nodes.Count - 1;
                 if (curQuest.Target.onFin == 1)
-                    treeQuestBuffer.Nodes[lastIndex].BackColor = Color.Green;
+                    treeQuestBuffer.Nodes[lastIndex].BackColor = Color.YellowGreen;
                 else
                     treeQuestBuffer.Nodes[lastIndex].BackColor = Color.Red;
             }

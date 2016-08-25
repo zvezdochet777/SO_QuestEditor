@@ -115,6 +115,9 @@
             this.eventLabel = new System.Windows.Forms.Label();
             this.lPercent = new System.Windows.Forms.Label();
             this.nBaseToCapturePercent = new System.Windows.Forms.NumericUpDown();
+            this.lState = new System.Windows.Forms.Label();
+            this.udState = new System.Windows.Forms.NumericUpDown();
+            this.cbState = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -129,6 +132,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).BeginInit();
             this.questInformationBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udState)).BeginInit();
             this.SuspendLayout();
             // 
             // QuestPanel
@@ -181,9 +185,9 @@
             this.panel1.Controls.Add(this.okButton);
             this.panel1.Controls.Add(this.cancelButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 745);
+            this.panel1.Location = new System.Drawing.Point(3, 757);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(614, 62);
+            this.panel1.Size = new System.Drawing.Size(614, 50);
             this.panel1.TabIndex = 7;
             // 
             // debuglabel
@@ -242,7 +246,7 @@
             this.rewardGroupBox.Controls.Add(this.tExperience);
             this.rewardGroupBox.Controls.Add(this.lCombatSkills);
             this.rewardGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rewardGroupBox.Location = new System.Drawing.Point(3, 611);
+            this.rewardGroupBox.Location = new System.Drawing.Point(3, 623);
             this.rewardGroupBox.Name = "rewardGroupBox";
             this.rewardGroupBox.Size = new System.Drawing.Size(614, 134);
             this.rewardGroupBox.TabIndex = 4;
@@ -406,7 +410,7 @@
             this.lQuestRules.Controls.Add(this.labelScenarios);
             this.lQuestRules.Controls.Add(this.groupQuestRulesBox);
             this.lQuestRules.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lQuestRules.Location = new System.Drawing.Point(3, 454);
+            this.lQuestRules.Location = new System.Drawing.Point(3, 466);
             this.lQuestRules.Name = "lQuestRules";
             this.lQuestRules.Size = new System.Drawing.Size(614, 157);
             this.lQuestRules.TabIndex = 3;
@@ -542,7 +546,7 @@
             this.preconditionGroupBox.Controls.Add(this.repeatComboBox);
             this.preconditionGroupBox.Controls.Add(this.lRepeat);
             this.preconditionGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.preconditionGroupBox.Location = new System.Drawing.Point(3, 401);
+            this.preconditionGroupBox.Location = new System.Drawing.Point(3, 413);
             this.preconditionGroupBox.Name = "preconditionGroupBox";
             this.preconditionGroupBox.Size = new System.Drawing.Size(614, 53);
             this.preconditionGroupBox.TabIndex = 2;
@@ -594,6 +598,9 @@
             // targetBox
             // 
             this.targetBox.AutoSize = true;
+            this.targetBox.Controls.Add(this.cbState);
+            this.targetBox.Controls.Add(this.lState);
+            this.targetBox.Controls.Add(this.udState);
             this.targetBox.Controls.Add(this.bItemQID);
             this.targetBox.Controls.Add(this.bHideTarget);
             this.targetBox.Controls.Add(this.targetAttributeComboBox2);
@@ -614,7 +621,7 @@
             this.targetBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.targetBox.Location = new System.Drawing.Point(3, 254);
             this.targetBox.Name = "targetBox";
-            this.targetBox.Size = new System.Drawing.Size(614, 147);
+            this.targetBox.Size = new System.Drawing.Size(614, 159);
             this.targetBox.TabIndex = 1;
             this.targetBox.TabStop = false;
             this.targetBox.Text = "Цель";
@@ -1063,6 +1070,41 @@
             this.nBaseToCapturePercent.TabIndex = 22;
             this.nBaseToCapturePercent.ValueChanged += new System.EventHandler(this.nBaseToCapturePercent_ValueChanged);
             // 
+            // lState
+            // 
+            this.lState.AutoSize = true;
+            this.lState.Enabled = false;
+            this.lState.Location = new System.Drawing.Point(14, 122);
+            this.lState.Name = "lState";
+            this.lState.Size = new System.Drawing.Size(64, 13);
+            this.lState.TabIndex = 21;
+            this.lState.Text = "Состояние:";
+            // 
+            // udState
+            // 
+            this.udState.Enabled = false;
+            this.udState.Location = new System.Drawing.Point(103, 120);
+            this.udState.Name = "udState";
+            this.udState.Size = new System.Drawing.Size(77, 20);
+            this.udState.TabIndex = 22;
+            this.udState.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // cbState
+            // 
+            this.cbState.AutoSize = true;
+            this.cbState.Enabled = false;
+            this.cbState.Location = new System.Drawing.Point(233, 122);
+            this.cbState.Name = "cbState";
+            this.cbState.Size = new System.Drawing.Size(137, 17);
+            this.cbState.TabIndex = 23;
+            this.cbState.Text = "Учитывать состояние";
+            this.cbState.UseVisualStyleBackColor = true;
+            this.cbState.CheckedChanged += new System.EventHandler(this.cbState_CheckedChanged);
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1101,6 +1143,7 @@
             this.questInformationBox.ResumeLayout(false);
             this.questInformationBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udState)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1194,5 +1237,8 @@
         private System.Windows.Forms.Label labelMassQuests;
         private System.Windows.Forms.NumericUpDown nBaseToCapturePercent;
         private System.Windows.Forms.Label lPercent;
+        private System.Windows.Forms.CheckBox cbState;
+        private System.Windows.Forms.Label lState;
+        private System.Windows.Forms.NumericUpDown udState;
     }
 }

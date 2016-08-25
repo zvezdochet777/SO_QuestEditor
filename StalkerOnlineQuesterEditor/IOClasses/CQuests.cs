@@ -104,7 +104,13 @@ namespace StalkerOnlineQuesterEditor
                 ParseIntIfNotEmpty(item, "Target", "IsGroup", out target.IsGroup, 0);
                 target.IsClan = item.Element("Target").Element("IsClan").Value.Equals("1");
                 if (item.Element("QuestRules").Element("baseToCapturePercent") != null)
-                    questRules.basePercent = Convert.ToSingle(item.Element("Target").Element("baseToCapturePercent").Value.ToString());
+                    questRules.basePercent = float.Parse(item.Element("QuestRules").Element("baseToCapturePercent").Value.Replace('.', ','));
+                if (item.Element("Target").Element("itemState") != null)
+                {
+                    target.useState = true;
+                    string str = item.Element("Target").Element("itemState").Value;
+                    target.itemState = float.Parse(item.Element("Target").Element("itemState").Value.Replace('.', ','));
+                }
                 if (!item.Element("Target").Element("Time").Value.Equals(""))
                 {
                     float Time = float.Parse(item.Element("Target").Element("Time").Value);
@@ -392,6 +398,8 @@ namespace StalkerOnlineQuesterEditor
                     element.Element("QuestRules").Add(new XElement("baseToCapturePercent", questValue.QuestRules.basePercent));
                 if (questValue.Additional.DebugData != "")
                     element.Element("Additional").Add(new XElement("DebugData", questValue.Additional.DebugData));
+                if (questValue.Target.useState)
+                    element.Element("Target").Add(new XElement("itemState", questValue.Target.itemState));
                 resultDoc.Root.Add(element);
             }
 

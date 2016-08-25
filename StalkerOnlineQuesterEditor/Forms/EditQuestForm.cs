@@ -237,6 +237,7 @@ namespace StalkerOnlineQuesterEditor
                 lNameObject.Enabled = true;
                 lQuantity.Enabled = true;
                 quantityUpDown.Enabled = true;
+                cbState.Enabled = false;
 
                 targetComboBox.SelectedItem = null;
                 targetComboBox.SelectedText = "";
@@ -262,6 +263,7 @@ namespace StalkerOnlineQuesterEditor
                     labelTargetAttr.Enabled = true;
                     ltargetResult.Enabled = true;
                     dynamicCheckBox.Enabled = true;
+                    cbState.Enabled = true;
                 }
 
                 else if (QuestType == 7)
@@ -285,6 +287,7 @@ namespace StalkerOnlineQuesterEditor
                         targetComboBox.Items.Add(description.getName());
                     lQuantity.Enabled = false;
                     quantityUpDown.Enabled = false;
+
                 }
                 else if ((QuestType == 2) || (QuestType == 3))
                 {
@@ -392,6 +395,13 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedItem = parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
                 targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
+                if (quest.Target.useState)
+                {
+                    cbState.Checked = true;
+                    udState.Value = Convert.ToDecimal(quest.Target.itemState * 100);
+                }
+                else cbState.Checked = false;
+
             }
             else if (quest.Target.QuestType == 1)
             {
@@ -475,7 +485,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (string space in parent.spacesConst.getSpacesDescription())
                 instanceComboBox.Items.Add(space);
 
-            nBaseToCapturePercent.Value = Convert.ToInt32(quest.QuestRules.basePercent * 100);
+            nBaseToCapturePercent.Value = Convert.ToDecimal(quest.QuestRules.basePercent * 100);
         }
         //! Заполняет раздел Правила на форме - уровень игрока, сценарий... (???)
         void fillQuestRules()
@@ -566,6 +576,12 @@ namespace StalkerOnlineQuesterEditor
                 target.ObjectType = parent.itemConst.getIDOnDescription(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
                 target.ObjectAttr = targetAttributeComboBox.SelectedIndex;
+                if (cbState.Checked && cbState.Enabled)
+                {
+                    target.useState = true;
+                    target.itemState = Convert.ToSingle(udState.Value) / 100;
+                }
+                else target.useState = false;
             }
             else if (target.QuestType == 1)
             {
@@ -1007,6 +1023,14 @@ namespace StalkerOnlineQuesterEditor
         private void nBaseToCapturePercent_ValueChanged(object sender, EventArgs e)
         {
             editQuestRules.basePercent = Convert.ToSingle(nBaseToCapturePercent.Value) / 100;
+        }
+
+        private void cbState_CheckedChanged(object sender, EventArgs e)
+        {
+                editTarget.useState = cbState.Checked;
+                lState.Enabled = cbState.Checked;
+                udState.Enabled = cbState.Checked;
+
         }
         
     }

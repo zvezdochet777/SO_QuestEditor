@@ -125,7 +125,8 @@ namespace StalkerOnlineQuesterEditor
         public int IsGroup;
         public bool IsClan;
         public int onFin;
-        
+        public float itemState;
+        public bool useState;
 
         public object Clone()
         {
@@ -142,7 +143,8 @@ namespace StalkerOnlineQuesterEditor
             copy.IsGroup = this.IsGroup;
             copy.IsClan = this.IsClan;
             copy.onFin = this.onFin;
-            
+            copy.itemState = this.itemState;
+            copy.useState = this.useState;
             return copy;
         }
 
@@ -156,10 +158,11 @@ namespace StalkerOnlineQuesterEditor
             this.Time = 0.0f;
             this.IsGroup = new int();
             this.IsClan = new bool();
-            
             this.ObjectName = "";
             this.AObjectAttrs = new List<int>();
             this.onFin = new int();
+            this.itemState = new float();
+            this.useState = false;
         }
         public CQuestTarget(int QuestType)
         {
@@ -205,6 +208,7 @@ namespace StalkerOnlineQuesterEditor
         public int MinMember;
         public float basePercent;
 
+
         public object Clone()
         {
             CQuestRules copy = new CQuestRules();
@@ -221,6 +225,7 @@ namespace StalkerOnlineQuesterEditor
             copy.MaxMember = this.MaxMember;
             copy.MinMember = this.MinMember;
             copy.basePercent = this.basePercent;
+            
             return copy;
         }
 
@@ -236,6 +241,7 @@ namespace StalkerOnlineQuesterEditor
             this.MinGroup = new int();
             this.TeleportTo = "";
             this.basePercent = new float();
+           
         }
     }
 
