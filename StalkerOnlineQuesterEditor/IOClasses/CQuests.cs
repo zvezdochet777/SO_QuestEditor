@@ -103,7 +103,8 @@ namespace StalkerOnlineQuesterEditor
 
                 ParseIntIfNotEmpty(item, "Target", "IsGroup", out target.IsGroup, 0);
                 target.IsClan = item.Element("Target").Element("IsClan").Value.Equals("1");
-
+                if (item.Element("QuestRules").Element("baseToCapturePercent") != null)
+                    questRules.basePercent = Convert.ToSingle(item.Element("Target").Element("baseToCapturePercent").Value.ToString());
                 if (!item.Element("Target").Element("Time").Value.Equals(""))
                 {
                     float Time = float.Parse(item.Element("Target").Element("Time").Value);
@@ -387,6 +388,8 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("Holder", questValue.Additional.Holder)));
                 if (questValue.QuestRules.MassQuests.Any())
                     element.Element("QuestRules").Add(new XElement("MassQuests", Global.GetListAsString(questValue.QuestRules.MassQuests)));
+                if (questValue.QuestRules.basePercent != 0)
+                    element.Element("QuestRules").Add(new XElement("baseToCapturePercent", questValue.QuestRules.basePercent));
                 if (questValue.Additional.DebugData != "")
                     element.Element("Additional").Add(new XElement("DebugData", questValue.Additional.DebugData));
                 resultDoc.Root.Add(element);

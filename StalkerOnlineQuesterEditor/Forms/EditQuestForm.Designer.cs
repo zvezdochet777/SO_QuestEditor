@@ -113,6 +113,8 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
+            this.lPercent = new System.Windows.Forms.Label();
+            this.nBaseToCapturePercent = new System.Windows.Forms.NumericUpDown();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -126,6 +128,7 @@
             this.targetBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).BeginInit();
             this.questInformationBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).BeginInit();
             this.SuspendLayout();
             // 
             // QuestPanel
@@ -393,7 +396,9 @@
             // 
             // lQuestRules
             // 
+            this.lQuestRules.Controls.Add(this.nBaseToCapturePercent);
             this.lQuestRules.Controls.Add(this.massQuestsTextBox);
+            this.lQuestRules.Controls.Add(this.lPercent);
             this.lQuestRules.Controls.Add(this.labelMassQuests);
             this.lQuestRules.Controls.Add(this.bItemQuestRules);
             this.lQuestRules.Controls.Add(this.bHideRules);
@@ -1041,6 +1046,23 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
+            // lPercent
+            // 
+            this.lPercent.AutoSize = true;
+            this.lPercent.Location = new System.Drawing.Point(14, 105);
+            this.lPercent.Name = "lPercent";
+            this.lPercent.Size = new System.Drawing.Size(103, 13);
+            this.lPercent.TabIndex = 21;
+            this.lPercent.Text = "Процент для базы:";
+            // 
+            // nBaseToCapturePercent
+            // 
+            this.nBaseToCapturePercent.Location = new System.Drawing.Point(123, 102);
+            this.nBaseToCapturePercent.Name = "nBaseToCapturePercent";
+            this.nBaseToCapturePercent.Size = new System.Drawing.Size(77, 20);
+            this.nBaseToCapturePercent.TabIndex = 22;
+            this.nBaseToCapturePercent.ValueChanged += new System.EventHandler(this.nBaseToCapturePercent_ValueChanged);
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1078,6 +1100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).EndInit();
             this.questInformationBox.ResumeLayout(false);
             this.questInformationBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1169,5 +1192,7 @@
         private System.Windows.Forms.MaskedTextBox debugTextBox;
         private System.Windows.Forms.TextBox massQuestsTextBox;
         private System.Windows.Forms.Label labelMassQuests;
+        private System.Windows.Forms.NumericUpDown nBaseToCapturePercent;
+        private System.Windows.Forms.Label lPercent;
     }
 }

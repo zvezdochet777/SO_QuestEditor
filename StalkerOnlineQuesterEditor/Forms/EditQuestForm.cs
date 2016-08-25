@@ -466,12 +466,16 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedItem = parent.gui.getDescriptionOnID(quest.Target.ObjectType);
                 targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
             }
+
+            
         }   
 
         void fillQuestRulesForm()
         {
             foreach (string space in parent.spacesConst.getSpacesDescription())
                 instanceComboBox.Items.Add(space);
+
+            nBaseToCapturePercent.Value = Convert.ToInt32(quest.QuestRules.basePercent * 100);
         }
         //! Заполняет раздел Правила на форме - уровень игрока, сценарий... (???)
         void fillQuestRules()
@@ -550,7 +554,7 @@ namespace StalkerOnlineQuesterEditor
             additional.Holder = parent.GetCurrentNPC();
             information.onWin = onWonTextBox.Text;
             information.onFailed = onFailedTextBox.Text;
-
+            rules.basePercent = Convert.ToSingle(nBaseToCapturePercent.Value) / 100;
             target.QuestType = parent.questConst.getQuestTypeOnDescription(eventComboBox.SelectedItem.ToString());
             if (loseRButton.Checked)
                 target.onFin = 0;
@@ -708,6 +712,7 @@ namespace StalkerOnlineQuesterEditor
             information.Items = editInformation.Items;
 
             target.AObjectAttrs = editTarget.AObjectAttrs;
+            rules.basePercent = editQuestRules.basePercent;
 
             if (iState == ADD_NEW || iState == ADD_SUB)
             {
@@ -997,6 +1002,11 @@ namespace StalkerOnlineQuesterEditor
             itemDialog.Enabled = true;
             itemDialog.Visible = true;
             this.Enabled = false;
+        }
+
+        private void nBaseToCapturePercent_ValueChanged(object sender, EventArgs e)
+        {
+            editQuestRules.basePercent = Convert.ToSingle(nBaseToCapturePercent.Value) / 100;
         }
         
     }

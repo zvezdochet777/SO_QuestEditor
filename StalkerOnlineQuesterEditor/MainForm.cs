@@ -630,7 +630,7 @@ namespace StalkerOnlineQuesterEditor
                 treeQuest.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                 int lastIndex = treeQuest.Nodes.Count - 1;
                 if (curQuest.Target.onFin == 1)
-                    treeQuest.Nodes[lastIndex].BackColor = Color.Green;
+                    treeQuest.Nodes[lastIndex].BackColor = Color.YellowGreen;
                 else
                     treeQuest.Nodes[lastIndex].BackColor = Color.Red;
             }
