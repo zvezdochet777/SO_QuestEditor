@@ -54,7 +54,9 @@
             this.tExperience = new System.Windows.Forms.TextBox();
             this.lCombatSkills = new System.Windows.Forms.Label();
             this.lQuestRules = new System.Windows.Forms.GroupBox();
+            this.nBaseToCapturePercent = new System.Windows.Forms.NumericUpDown();
             this.massQuestsTextBox = new System.Windows.Forms.TextBox();
+            this.lPercent = new System.Windows.Forms.Label();
             this.labelMassQuests = new System.Windows.Forms.Label();
             this.bItemQuestRules = new System.Windows.Forms.Button();
             this.bHideRules = new System.Windows.Forms.Button();
@@ -74,6 +76,9 @@
             this.repeatComboBox = new System.Windows.Forms.ComboBox();
             this.lRepeat = new System.Windows.Forms.Label();
             this.targetBox = new System.Windows.Forms.GroupBox();
+            this.cbState = new System.Windows.Forms.CheckBox();
+            this.lState = new System.Windows.Forms.Label();
+            this.udState = new System.Windows.Forms.NumericUpDown();
             this.bItemQID = new System.Windows.Forms.Button();
             this.bHideTarget = new System.Windows.Forms.Button();
             this.targetAttributeComboBox2 = new System.Windows.Forms.ComboBox();
@@ -113,26 +118,21 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
-            this.lPercent = new System.Windows.Forms.Label();
-            this.nBaseToCapturePercent = new System.Windows.Forms.NumericUpDown();
-            this.lState = new System.Windows.Forms.Label();
-            this.udState = new System.Windows.Forms.NumericUpDown();
-            this.cbState = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
             this.panel1.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
             this.lQuestRules.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).BeginInit();
             this.groupQuestRulesBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericMinGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericMaxGroup)).BeginInit();
             this.preconditionGroupBox.SuspendLayout();
             this.targetBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).BeginInit();
             this.questInformationBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udState)).BeginInit();
             this.SuspendLayout();
             // 
             // QuestPanel
@@ -417,12 +417,29 @@
             this.lQuestRules.TabStop = false;
             this.lQuestRules.Text = "Правила квеста";
             // 
+            // nBaseToCapturePercent
+            // 
+            this.nBaseToCapturePercent.Location = new System.Drawing.Point(123, 102);
+            this.nBaseToCapturePercent.Name = "nBaseToCapturePercent";
+            this.nBaseToCapturePercent.Size = new System.Drawing.Size(77, 20);
+            this.nBaseToCapturePercent.TabIndex = 22;
+            this.nBaseToCapturePercent.ValueChanged += new System.EventHandler(this.nBaseToCapturePercent_ValueChanged);
+            // 
             // massQuestsTextBox
             // 
             this.massQuestsTextBox.Location = new System.Drawing.Point(90, 76);
             this.massQuestsTextBox.Name = "massQuestsTextBox";
             this.massQuestsTextBox.Size = new System.Drawing.Size(134, 20);
             this.massQuestsTextBox.TabIndex = 26;
+            // 
+            // lPercent
+            // 
+            this.lPercent.AutoSize = true;
+            this.lPercent.Location = new System.Drawing.Point(14, 105);
+            this.lPercent.Name = "lPercent";
+            this.lPercent.Size = new System.Drawing.Size(103, 13);
+            this.lPercent.TabIndex = 21;
+            this.lPercent.Text = "Процент для базы:";
             // 
             // labelMassQuests
             // 
@@ -625,6 +642,41 @@
             this.targetBox.TabIndex = 1;
             this.targetBox.TabStop = false;
             this.targetBox.Text = "Цель";
+            // 
+            // cbState
+            // 
+            this.cbState.AutoSize = true;
+            this.cbState.Enabled = false;
+            this.cbState.Location = new System.Drawing.Point(233, 122);
+            this.cbState.Name = "cbState";
+            this.cbState.Size = new System.Drawing.Size(137, 17);
+            this.cbState.TabIndex = 23;
+            this.cbState.Text = "Учитывать состояние";
+            this.cbState.UseVisualStyleBackColor = true;
+            this.cbState.CheckedChanged += new System.EventHandler(this.cbState_CheckedChanged);
+            // 
+            // lState
+            // 
+            this.lState.AutoSize = true;
+            this.lState.Enabled = false;
+            this.lState.Location = new System.Drawing.Point(14, 122);
+            this.lState.Name = "lState";
+            this.lState.Size = new System.Drawing.Size(64, 13);
+            this.lState.TabIndex = 21;
+            this.lState.Text = "Состояние:";
+            // 
+            // udState
+            // 
+            this.udState.Enabled = false;
+            this.udState.Location = new System.Drawing.Point(103, 120);
+            this.udState.Name = "udState";
+            this.udState.Size = new System.Drawing.Size(77, 20);
+            this.udState.TabIndex = 22;
+            this.udState.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // bItemQID
             // 
@@ -1053,58 +1105,6 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
-            // lPercent
-            // 
-            this.lPercent.AutoSize = true;
-            this.lPercent.Location = new System.Drawing.Point(14, 105);
-            this.lPercent.Name = "lPercent";
-            this.lPercent.Size = new System.Drawing.Size(103, 13);
-            this.lPercent.TabIndex = 21;
-            this.lPercent.Text = "Процент для базы:";
-            // 
-            // nBaseToCapturePercent
-            // 
-            this.nBaseToCapturePercent.Location = new System.Drawing.Point(123, 102);
-            this.nBaseToCapturePercent.Name = "nBaseToCapturePercent";
-            this.nBaseToCapturePercent.Size = new System.Drawing.Size(77, 20);
-            this.nBaseToCapturePercent.TabIndex = 22;
-            this.nBaseToCapturePercent.ValueChanged += new System.EventHandler(this.nBaseToCapturePercent_ValueChanged);
-            // 
-            // lState
-            // 
-            this.lState.AutoSize = true;
-            this.lState.Enabled = false;
-            this.lState.Location = new System.Drawing.Point(14, 122);
-            this.lState.Name = "lState";
-            this.lState.Size = new System.Drawing.Size(64, 13);
-            this.lState.TabIndex = 21;
-            this.lState.Text = "Состояние:";
-            // 
-            // udState
-            // 
-            this.udState.Enabled = false;
-            this.udState.Location = new System.Drawing.Point(103, 120);
-            this.udState.Name = "udState";
-            this.udState.Size = new System.Drawing.Size(77, 20);
-            this.udState.TabIndex = 22;
-            this.udState.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // cbState
-            // 
-            this.cbState.AutoSize = true;
-            this.cbState.Enabled = false;
-            this.cbState.Location = new System.Drawing.Point(233, 122);
-            this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(137, 17);
-            this.cbState.TabIndex = 23;
-            this.cbState.Text = "Учитывать состояние";
-            this.cbState.UseVisualStyleBackColor = true;
-            this.cbState.CheckedChanged += new System.EventHandler(this.cbState_CheckedChanged);
-            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1131,6 +1131,7 @@
             this.rewardGroupBox.PerformLayout();
             this.lQuestRules.ResumeLayout(false);
             this.lQuestRules.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).EndInit();
             this.groupQuestRulesBox.ResumeLayout(false);
             this.groupQuestRulesBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericMinGroup)).EndInit();
@@ -1139,11 +1140,10 @@
             this.preconditionGroupBox.PerformLayout();
             this.targetBox.ResumeLayout(false);
             this.targetBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udState)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).EndInit();
             this.questInformationBox.ResumeLayout(false);
             this.questInformationBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udState)).EndInit();
             this.ResumeLayout(false);
 
         }

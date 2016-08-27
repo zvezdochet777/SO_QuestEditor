@@ -554,6 +554,7 @@ namespace StalkerOnlineQuesterEditor
                 object[] row = { id, name, a, b };
                 dataReputation.Rows.Add(row);
             }
+            this.checkReputation();
         }
 
         private bool checkReputation()
