@@ -199,7 +199,7 @@ namespace StalkerOnlineQuesterEditor
 
             }
             if (curDialog.DebugData != "") debugTextBox.Text = curDialog.DebugData;
-            mtbPlayerLevel.Text = curDialog.Precondition.PlayerLevel.ToString();            
+                   
             calcSymbolMaxAnswer();
 
 
@@ -215,6 +215,7 @@ namespace StalkerOnlineQuesterEditor
             this.initReputationTab();
             this.initKarmaPKTab();
             this.initEffectsTab();
+            this.initLevelTab();
             checkClanOptionsIndicator();
         }
 
@@ -491,8 +492,14 @@ namespace StalkerOnlineQuesterEditor
                     precondition.clanOptions += ",8";
             }
 
-
-            precondition.PlayerLevel = int.Parse(mtbPlayerLevel.Text.ToString());
+            if (mtbPlayerLevel.Text.ToString() != "")
+                precondition.PlayerLevel = int.Parse(mtbPlayerLevel.Text.ToString());
+            if (checkLevel())
+            {
+                precondition.playerCombatLvl = tbCombatLvlMin.Text + ":" + tbCombatLvlMax.Text;
+                precondition.playerSurvLvl = tbSurvLvlMin.Text + ":" + tbSurvLvlMax.Text;
+                precondition.playerOtherLvl = tbOtherLvlMin.Text + ":" + tbOtherLvlMax.Text;
+            }
             precondition.Reputation = editPrecondition.Reputation;
             precondition.KarmaPK = editKarmaPK;
             precondition.NecessaryEffects = editPrecondition.NecessaryEffects;
@@ -652,6 +659,51 @@ namespace StalkerOnlineQuesterEditor
             }
             this.checkEffectsIndicates();
 
+        }
+
+        private void initLevelTab()
+        {
+            mtbPlayerLevel.Text = curDialog.Precondition.PlayerLevel.ToString();
+            string[] tmp;
+            tmp = curDialog.Precondition.playerCombatLvl.Split(':');
+            if (tmp.Any() && tmp.Length > 1)
+            {
+                tbCombatLvlMin.Text = tmp[0];
+                tbCombatLvlMax.Text = tmp[1];
+            }
+            tmp = curDialog.Precondition.playerSurvLvl.Split(':');
+            if (tmp.Any() && tmp.Length > 1)
+            {              
+                tbSurvLvlMin.Text = tmp[0];
+                tbSurvLvlMax.Text = tmp[1];
+            }
+            tmp = curDialog.Precondition.playerOtherLvl.Split(':');
+            if (tmp.Any() && tmp.Length > 1)
+            {               
+                tbOtherLvlMin.Text = tmp[0];
+                tbOtherLvlMax.Text = tmp[1];
+            }
+            this.checkLevelIndicates();
+
+        }
+        private bool checkLevel()
+        {
+            if ( (mtbPlayerLevel.Text.Any() && Convert.ToInt32(mtbPlayerLevel.Text) != 0) ||
+                tbCombatLvlMin.Text.Any() || tbCombatLvlMax.Text.Any() ||
+                tbSurvLvlMin.Text.Any() || tbSurvLvlMax.Text.Any() ||
+                tbOtherLvlMin.Text.Any() || tbOtherLvlMax.Text.Any()
+               )
+                return true;
+            else return false;
+        }
+
+        private void checkLevelIndicates()
+        {
+            if (checkLevel())
+            {
+                pictureLevel.Visible = true;
+            }
+            else pictureLevel.Visible = false;
         }
 
         private void initKarmaPKTab()

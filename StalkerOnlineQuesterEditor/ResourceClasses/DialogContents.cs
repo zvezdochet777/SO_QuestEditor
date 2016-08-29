@@ -69,6 +69,9 @@ namespace StalkerOnlineQuesterEditor
         public CDialogPreconditionQuests ListOfMustNoQuests;
         public string clanOptions;
         public int PlayerLevel;
+        public string playerCombatLvl;
+        public string playerSurvLvl;
+        public string playerOtherLvl;
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
         public List<int> KarmaPK = new List<int>();
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
@@ -83,6 +86,9 @@ namespace StalkerOnlineQuesterEditor
             copy.Reputation = this.Reputation;
             copy.KarmaPK = this.KarmaPK;
             copy.PlayerLevel = this.PlayerLevel;
+            copy.playerCombatLvl = this.playerCombatLvl;
+            copy.playerSurvLvl = this.playerSurvLvl;
+            copy.playerOtherLvl = this.playerOtherLvl;
             copy.NecessaryEffects = this.NecessaryEffects;
             copy.MustNoEffects = this.MustNoEffects;
             return copy;
@@ -96,6 +102,9 @@ namespace StalkerOnlineQuesterEditor
             this.Reputation = new Dictionary<int, List<double>>();
             this.KarmaPK = new List<int>();
             this.PlayerLevel = 0;
+            this.playerCombatLvl = "";
+            this.playerSurvLvl = "";
+            this.playerOtherLvl = "";
             this.NecessaryEffects = new List<DialogEffect>();
             this.MustNoEffects = new List<DialogEffect>();
         }
