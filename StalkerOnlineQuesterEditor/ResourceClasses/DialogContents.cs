@@ -68,7 +68,7 @@ namespace StalkerOnlineQuesterEditor
         public CDialogPreconditionQuests ListOfNecessaryQuests;
         public CDialogPreconditionQuests ListOfMustNoQuests;
         public string clanOptions;
-        public int PlayerLevel;
+        public string PlayerLevel;
         public string playerCombatLvl;
         public string playerSurvLvl;
         public string playerOtherLvl;
@@ -101,7 +101,7 @@ namespace StalkerOnlineQuesterEditor
             this.clanOptions = "";
             this.Reputation = new Dictionary<int, List<double>>();
             this.KarmaPK = new List<int>();
-            this.PlayerLevel = 0;
+            this.PlayerLevel = "";
             this.playerCombatLvl = "";
             this.playerSurvLvl = "";
             this.playerOtherLvl = "";

@@ -41,7 +41,7 @@ namespace StalkerOnlineQuesterEditor
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
             if (isAdd)
-                mtbPlayerLevel.Text = "0";
+                mtbPlayerLevelMax.Text = "0";
             if (!isAdd)
             {
                 fillDialogEditForm(currentDialogID);
@@ -490,12 +490,10 @@ namespace StalkerOnlineQuesterEditor
                     precondition.clanOptions += ",7";
                 if (cbLonerOnly.Checked)
                     precondition.clanOptions += ",8";
-            }
-
-            if (mtbPlayerLevel.Text.ToString() != "")
-                precondition.PlayerLevel = int.Parse(mtbPlayerLevel.Text.ToString());
+            }             
             if (checkLevel())
             {
+                precondition.PlayerLevel = mtbPlayerLevelMin.Text + ":" + mtbPlayerLevelMax.Text;
                 precondition.playerCombatLvl = tbCombatLvlMin.Text + ":" + tbCombatLvlMax.Text;
                 precondition.playerSurvLvl = tbSurvLvlMin.Text + ":" + tbSurvLvlMax.Text;
                 precondition.playerOtherLvl = tbOtherLvlMin.Text + ":" + tbOtherLvlMax.Text;
@@ -663,8 +661,20 @@ namespace StalkerOnlineQuesterEditor
 
         private void initLevelTab()
         {
-            mtbPlayerLevel.Text = curDialog.Precondition.PlayerLevel.ToString();
+            
             string[] tmp;
+            tmp = curDialog.Precondition.PlayerLevel.Split(':');
+            if (tmp.Any())
+            {
+                if (tmp.Length > 1)
+                {
+                    mtbPlayerLevelMin.Text = tmp[0];
+                    mtbPlayerLevelMax.Text = tmp[1];
+                }
+                else mtbPlayerLevelMax.Text = curDialog.Precondition.PlayerLevel.ToString();
+            }
+
+            
             tmp = curDialog.Precondition.playerCombatLvl.Split(':');
             if (tmp.Any() && tmp.Length > 1)
             {
@@ -688,7 +698,8 @@ namespace StalkerOnlineQuesterEditor
         }
         private bool checkLevel()
         {
-            if ( (mtbPlayerLevel.Text.Any() && Convert.ToInt32(mtbPlayerLevel.Text) != 0) ||
+            if ( 
+                mtbPlayerLevelMin.Text.Any() || mtbPlayerLevelMax.Text.Any() ||
                 tbCombatLvlMin.Text.Any() || tbCombatLvlMax.Text.Any() ||
                 tbSurvLvlMin.Text.Any() || tbSurvLvlMax.Text.Any() ||
                 tbOtherLvlMin.Text.Any() || tbOtherLvlMax.Text.Any()
@@ -774,6 +785,14 @@ namespace StalkerOnlineQuesterEditor
             this.checkKarmaPK();
             this.checkReputation();
             this.checkEffects();
+        }
+
+        private void digitTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
         
 

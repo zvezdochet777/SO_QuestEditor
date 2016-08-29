@@ -122,7 +122,7 @@
             this.gbTexts = new System.Windows.Forms.GroupBox();
             this.tabLevel = new System.Windows.Forms.TabPage();
             this.pictureLevel = new System.Windows.Forms.PictureBox();
-            this.mtbPlayerLevel = new System.Windows.Forms.MaskedTextBox();
+            this.mtbPlayerLevelMax = new System.Windows.Forms.MaskedTextBox();
             this.lPlayerLevel = new System.Windows.Forms.Label();
             this.lCombatLvl = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -135,6 +135,7 @@
             this.tbOtherLvlMax = new System.Windows.Forms.MaskedTextBox();
             this.lFrom = new System.Windows.Forms.Label();
             this.lBefore = new System.Windows.Forms.Label();
+            this.mtbPlayerLevelMin = new System.Windows.Forms.MaskedTextBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEffects)).BeginInit();
@@ -1077,6 +1078,7 @@
             // tabLevel
             // 
             this.tabLevel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabLevel.Controls.Add(this.mtbPlayerLevelMin);
             this.tabLevel.Controls.Add(this.lBefore);
             this.tabLevel.Controls.Add(this.lFrom);
             this.tabLevel.Controls.Add(this.tbOtherLvlMax);
@@ -1088,7 +1090,7 @@
             this.tabLevel.Controls.Add(this.label3);
             this.tabLevel.Controls.Add(this.label2);
             this.tabLevel.Controls.Add(this.lCombatLvl);
-            this.tabLevel.Controls.Add(this.mtbPlayerLevel);
+            this.tabLevel.Controls.Add(this.mtbPlayerLevelMax);
             this.tabLevel.Controls.Add(this.lPlayerLevel);
             this.tabLevel.Location = new System.Drawing.Point(4, 22);
             this.tabLevel.Name = "tabLevel";
@@ -1108,14 +1110,14 @@
             this.pictureLevel.TabStop = false;
             this.pictureLevel.Visible = false;
             // 
-            // mtbPlayerLevel
+            // mtbPlayerLevelMax
             // 
-            this.mtbPlayerLevel.Location = new System.Drawing.Point(184, 137);
-            this.mtbPlayerLevel.Mask = "000";
-            this.mtbPlayerLevel.Name = "mtbPlayerLevel";
-            this.mtbPlayerLevel.PromptChar = ' ';
-            this.mtbPlayerLevel.Size = new System.Drawing.Size(100, 20);
-            this.mtbPlayerLevel.TabIndex = 51;
+            this.mtbPlayerLevelMax.Location = new System.Drawing.Point(290, 137);
+            this.mtbPlayerLevelMax.Name = "mtbPlayerLevelMax";
+            this.mtbPlayerLevelMax.PromptChar = ' ';
+            this.mtbPlayerLevelMax.Size = new System.Drawing.Size(100, 20);
+            this.mtbPlayerLevelMax.TabIndex = 51;
+            this.mtbPlayerLevelMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
             // 
             // lPlayerLevel
             // 
@@ -1156,57 +1158,57 @@
             // tbOtherLvlMin
             // 
             this.tbOtherLvlMin.Location = new System.Drawing.Point(184, 95);
-            this.tbOtherLvlMin.Mask = "000";
             this.tbOtherLvlMin.Name = "tbOtherLvlMin";
             this.tbOtherLvlMin.PromptChar = ' ';
             this.tbOtherLvlMin.Size = new System.Drawing.Size(100, 20);
             this.tbOtherLvlMin.TabIndex = 55;
+            this.tbOtherLvlMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
             // 
             // tbSurvLvlMin
             // 
             this.tbSurvLvlMin.Location = new System.Drawing.Point(184, 64);
-            this.tbSurvLvlMin.Mask = "000";
             this.tbSurvLvlMin.Name = "tbSurvLvlMin";
             this.tbSurvLvlMin.PromptChar = ' ';
             this.tbSurvLvlMin.Size = new System.Drawing.Size(100, 20);
             this.tbSurvLvlMin.TabIndex = 56;
+            this.tbSurvLvlMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
             // 
             // tbCombatLvlMin
             // 
             this.tbCombatLvlMin.Location = new System.Drawing.Point(184, 33);
-            this.tbCombatLvlMin.Mask = "000";
             this.tbCombatLvlMin.Name = "tbCombatLvlMin";
             this.tbCombatLvlMin.PromptChar = ' ';
             this.tbCombatLvlMin.Size = new System.Drawing.Size(100, 20);
             this.tbCombatLvlMin.TabIndex = 57;
+            this.tbCombatLvlMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
             // 
             // tbCombatLvlMax
             // 
             this.tbCombatLvlMax.Location = new System.Drawing.Point(290, 33);
-            this.tbCombatLvlMax.Mask = "000";
             this.tbCombatLvlMax.Name = "tbCombatLvlMax";
             this.tbCombatLvlMax.PromptChar = ' ';
             this.tbCombatLvlMax.Size = new System.Drawing.Size(100, 20);
             this.tbCombatLvlMax.TabIndex = 58;
+            this.tbCombatLvlMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
             // 
             // tbSurvLvlMax
             // 
             this.tbSurvLvlMax.Location = new System.Drawing.Point(290, 64);
-            this.tbSurvLvlMax.Mask = "00000";
             this.tbSurvLvlMax.Name = "tbSurvLvlMax";
             this.tbSurvLvlMax.PromptChar = ' ';
             this.tbSurvLvlMax.Size = new System.Drawing.Size(100, 20);
             this.tbSurvLvlMax.TabIndex = 59;
             this.tbSurvLvlMax.ValidatingType = typeof(int);
+            this.tbSurvLvlMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
             // 
             // tbOtherLvlMax
             // 
             this.tbOtherLvlMax.Location = new System.Drawing.Point(290, 95);
-            this.tbOtherLvlMax.Mask = "000";
             this.tbOtherLvlMax.Name = "tbOtherLvlMax";
             this.tbOtherLvlMax.PromptChar = ' ';
             this.tbOtherLvlMax.Size = new System.Drawing.Size(100, 20);
             this.tbOtherLvlMax.TabIndex = 60;
+            this.tbOtherLvlMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
             // 
             // lFrom
             // 
@@ -1225,6 +1227,15 @@
             this.lBefore.Size = new System.Drawing.Size(19, 13);
             this.lBefore.TabIndex = 62;
             this.lBefore.Text = "до";
+            // 
+            // mtbPlayerLevelMin
+            // 
+            this.mtbPlayerLevelMin.Location = new System.Drawing.Point(184, 137);
+            this.mtbPlayerLevelMin.Name = "mtbPlayerLevelMin";
+            this.mtbPlayerLevelMin.PromptChar = ' ';
+            this.mtbPlayerLevelMin.Size = new System.Drawing.Size(100, 20);
+            this.mtbPlayerLevelMin.TabIndex = 63;
+            this.mtbPlayerLevelMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
             // 
             // EditDialogForm
             // 
@@ -1382,9 +1393,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lCombatLvl;
-        private System.Windows.Forms.MaskedTextBox mtbPlayerLevel;
+        private System.Windows.Forms.MaskedTextBox mtbPlayerLevelMax;
         private System.Windows.Forms.Label lPlayerLevel;
         private System.Windows.Forms.Label lBefore;
         private System.Windows.Forms.Label lFrom;
+        private System.Windows.Forms.MaskedTextBox mtbPlayerLevelMin;
     }
 }

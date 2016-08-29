@@ -130,10 +130,14 @@ namespace StalkerOnlineQuesterEditor
                         else
                             Precondition.clanOptions += "," + Global.GetListAsString(tests);
                     }
-
+                    /*
                     if (dialog.Element("Precondition").Descendants().Any(itm2 => itm2.Name == "PlayerLevel"))
                         if (!dialog.Element("Precondition").Element("PlayerLevel").Value.Equals(""))
-                            Precondition.PlayerLevel = int.Parse(dialog.Element("Precondition").Element("PlayerLevel").Value);
+                            Precondition.PlayerLevel = int.Parse(dialog.Element("Precondition").Element("PlayerLevel").Value);*/
+                    if (dialog.Element("Precondition").Element("PlayerLevel") != null)
+                    {
+                        Precondition.PlayerLevel = dialog.Element("Precondition").Element("PlayerLevel").Value;
+                    }
                     if (dialog.Element("Precondition").Element("playerCombatLvl") != null)
                     {
                         Precondition.playerCombatLvl = dialog.Element("Precondition").Element("playerCombatLvl").Value;
@@ -337,19 +341,20 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Precondition").Add(dialog.Precondition.getNecessaryEffects());
                     if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
                     npcElement.Add(element);
-                    if (dialog.Precondition.PlayerLevel > 0)
+
+                    if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
                     {
-                        element.Element("Precondition").Add(new XElement("PlayerLevel", Global.GetIntAsString(dialog.Precondition.PlayerLevel)));
+                        element.Element("Precondition").Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
                     }
-                    if (dialog.Precondition.playerCombatLvl != "" || dialog.Precondition.playerCombatLvl != ":")
+                    if (dialog.Precondition.playerCombatLvl != "" && dialog.Precondition.playerCombatLvl != ":")
                     {
                         element.Element("Precondition").Add(new XElement("playerCombatLvl", dialog.Precondition.playerCombatLvl));
                     }
-                    if (dialog.Precondition.playerSurvLvl != "" || dialog.Precondition.playerSurvLvl != ":")
+                    if (dialog.Precondition.playerSurvLvl != "" && dialog.Precondition.playerSurvLvl != ":")
                     {
                         element.Element("Precondition").Add(new XElement("playerSurvLvl", dialog.Precondition.playerSurvLvl));
                     }
-                    if (dialog.Precondition.playerOtherLvl != "" || dialog.Precondition.playerOtherLvl != ":")
+                    if (dialog.Precondition.playerOtherLvl != "" && dialog.Precondition.playerOtherLvl != ":")
                     {
                         element.Element("Precondition").Add(new XElement("playerOtherLvl", dialog.Precondition.playerOtherLvl));
                     }
