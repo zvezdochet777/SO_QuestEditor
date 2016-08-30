@@ -130,10 +130,6 @@ namespace StalkerOnlineQuesterEditor
                         else
                             Precondition.clanOptions += "," + Global.GetListAsString(tests);
                     }
-                    /*
-                    if (dialog.Element("Precondition").Descendants().Any(itm2 => itm2.Name == "PlayerLevel"))
-                        if (!dialog.Element("Precondition").Element("PlayerLevel").Value.Equals(""))
-                            Precondition.PlayerLevel = int.Parse(dialog.Element("Precondition").Element("PlayerLevel").Value);*/
                     if (dialog.Element("Precondition").Element("PlayerLevel") != null)
                     {
                         Precondition.PlayerLevel = dialog.Element("Precondition").Element("PlayerLevel").Value;

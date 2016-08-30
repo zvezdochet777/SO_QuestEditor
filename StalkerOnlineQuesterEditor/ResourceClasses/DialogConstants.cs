@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace StalkerOnlineQuesterEditor.ResourceClasses
 {
@@ -51,6 +52,50 @@ namespace StalkerOnlineQuesterEditor.ResourceClasses
         public int getNum()
         {
             return num;
+        }
+    }
+
+
+    //! Класс, содержащий информацию командах для NPC
+    public class CommandConstants
+    {
+
+        Dictionary<string, string> _commands = new Dictionary<string, string>();
+        XDocument doc = new XDocument();
+
+        //! Конструктор, заполняет словарь на основе файлов xml
+        public CommandConstants()
+        {
+            doc = XDocument.Load("source/NPCcommands.xml");
+            foreach (XElement item in doc.Root.Elements())
+            {
+                string cmID = item.Element("id").Value;
+                string name = item.Element("name").Value;
+                _commands.Add(name, cmID);
+            }
+
+        }
+        //! Возвращает ID комманды
+        public string getTtID(string name)
+        {
+            return _commands[name];
+        }
+        //! Возвращает название по ID комманды
+        public string getName(string tpID)
+        {
+            string ret = "";
+            foreach (KeyValuePair<string, string> value in _commands)
+                if (value.Value.Equals(tpID))
+                    ret = value.Key;
+            return ret;
+        }
+        //! Возвращает список всех названий по-русски комманд
+        public List<string> getKeys()
+        {
+            List<string> ret = new List<string>();
+            foreach (string key in _commands.Keys)
+                ret.Add(key);
+            return ret;
         }
     }
 }

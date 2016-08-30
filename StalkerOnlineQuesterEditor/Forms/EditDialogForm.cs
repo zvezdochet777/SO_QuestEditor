@@ -36,6 +36,10 @@ namespace StalkerOnlineQuesterEditor
             foreach (string key in parent.tpConst.getKeys())
                 teleportComboBox.Items.Add(key);
 
+            commandsComboBox.Items.Clear();
+            foreach (string key in parent.cmConst.getKeys())
+                commandsComboBox.Items.Add(key);
+
             FillActionsComboBox();
 
             if (parent.isRoot(currentDialogID) && (!isAdd))
@@ -129,6 +133,14 @@ namespace StalkerOnlineQuesterEditor
                     teleportComboBox.SelectedItem = key;
                     teleportComboBox.Visible = true;
                 }
+                if (ActionsComboBox.Text == "Команда охраннику")
+                {
+                    string key = parent.cmConst.getName(curDialog.Actions.Data);
+                    commandsComboBox.SelectedItem = key;
+                    commandsComboBox.Visible = true;
+                }
+                else commandsComboBox.Visible = false;
+                
                 
                 if (curDialog.Actions.ToDialog != 0)
                 {
@@ -345,7 +357,7 @@ namespace StalkerOnlineQuesterEditor
 
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
-
+            commandsComboBox.Visible = (SelectedValue == 19);
             switch (SelectedValue)
             { 
                 case 0:
@@ -384,6 +396,14 @@ namespace StalkerOnlineQuesterEditor
                     return false;
                 }
             }
+            else if (ActionsComboBox.Text == "Команда охраннику")
+            {
+                if (commandsComboBox.Text.Equals(""))
+                {
+                    MessageBox.Show("Действие невозможно: не задано действие охраннику.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -418,7 +438,8 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.tpConst.getTtID(teleportComboBox.SelectedItem.ToString());
                 if (actions.Event.Display == "Переход к диалогу")
                     actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString());
-
+                if (actions.Event.Display == "Команда охраннику")
+                    actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))
                         actions.GetQuests.Add(int.Parse(quest));
@@ -671,7 +692,7 @@ namespace StalkerOnlineQuesterEditor
                     mtbPlayerLevelMin.Text = tmp[0];
                     mtbPlayerLevelMax.Text = tmp[1];
                 }
-                else mtbPlayerLevelMax.Text = curDialog.Precondition.PlayerLevel.ToString();
+                else mtbPlayerLevelMin.Text = curDialog.Precondition.PlayerLevel.ToString();
             }
 
             
@@ -789,10 +810,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void digitTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+
         }
         
 

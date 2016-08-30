@@ -136,6 +136,7 @@
             this.lFrom = new System.Windows.Forms.Label();
             this.lBefore = new System.Windows.Forms.Label();
             this.mtbPlayerLevelMin = new System.Windows.Forms.MaskedTextBox();
+            this.commandsComboBox = new System.Windows.Forms.ComboBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEffects)).BeginInit();
@@ -210,6 +211,7 @@
             // 
             this.gbActions.AutoSize = true;
             this.gbActions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbActions.Controls.Add(this.commandsComboBox);
             this.gbActions.Controls.Add(this.cbFailQuests);
             this.gbActions.Controls.Add(this.cbCancelQuests);
             this.gbActions.Controls.Add(this.tbFailQuests);
@@ -1237,6 +1239,22 @@
             this.mtbPlayerLevelMin.TabIndex = 63;
             this.mtbPlayerLevelMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
             // 
+            // commandsComboBox
+            // 
+            this.commandsComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.commandsComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.commandsComboBox.DropDownWidth = 250;
+            this.commandsComboBox.FormattingEnabled = true;
+            this.commandsComboBox.Items.AddRange(new object[] {
+            "Следуй за мной",
+            "Стой на месте",
+            "Жри аптечку(не работает)",
+            "Команда 1"});
+            this.commandsComboBox.Location = new System.Drawing.Point(222, 76);
+            this.commandsComboBox.Name = "commandsComboBox";
+            this.commandsComboBox.Size = new System.Drawing.Size(147, 21);
+            this.commandsComboBox.TabIndex = 40;
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1398,5 +1416,6 @@
         private System.Windows.Forms.Label lBefore;
         private System.Windows.Forms.Label lFrom;
         private System.Windows.Forms.MaskedTextBox mtbPlayerLevelMin;
+        private System.Windows.Forms.ComboBox commandsComboBox;
     }
 }
