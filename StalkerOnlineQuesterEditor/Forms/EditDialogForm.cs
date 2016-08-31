@@ -44,8 +44,6 @@ namespace StalkerOnlineQuesterEditor
 
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
-            if (isAdd)
-                mtbPlayerLevelMax.Text = "0";
             if (!isAdd)
             {
                 fillDialogEditForm(currentDialogID);
