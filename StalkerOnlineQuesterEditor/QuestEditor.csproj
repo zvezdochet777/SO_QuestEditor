@@ -224,6 +224,7 @@
     <Compile Include="Forms\SelectQuestItem.Designer.cs">
       <DependentUpon>SelectQuestItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResourceClasses\DialogConstant.cs" />
     <Compile Include="ResourceClasses\DialogContents.cs" />
     <Compile Include="ResourceClasses\DialogEvents.cs" />
     <Compile Include="ResourceClasses\QuestContents.cs" />
