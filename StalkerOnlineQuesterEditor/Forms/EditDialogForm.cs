@@ -36,10 +36,6 @@ namespace StalkerOnlineQuesterEditor
             foreach (string key in parent.tpConst.getKeys())
                 teleportComboBox.Items.Add(key);
 
-            commandsComboBox.Items.Clear();
-            foreach (string key in parent.cmConst.getKeys())
-                commandsComboBox.Items.Add(key);
-
             FillActionsComboBox();
 
             if (parent.isRoot(currentDialogID) && (!isAdd))
@@ -134,6 +130,12 @@ namespace StalkerOnlineQuesterEditor
                 if (ActionsComboBox.Text == "Команда охраннику")
                 {
                     string key = parent.cmConst.getName(curDialog.Actions.Data);
+                    commandsComboBox.SelectedItem = key;
+                    commandsComboBox.Visible = true;
+                }
+                if ((ActionsComboBox.Text == "Починка") || (ActionsComboBox.Text == "Комплексная починка"))
+                {
+                    string key = parent.rpConst.getName(curDialog.Actions.Data);
                     commandsComboBox.SelectedItem = key;
                     commandsComboBox.Visible = true;
                 }
@@ -355,7 +357,24 @@ namespace StalkerOnlineQuesterEditor
 
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
-            commandsComboBox.Visible = (SelectedValue == 19);
+            commandsComboBox.Visible = (SelectedValue == 19) || (SelectedValue == 4) || (SelectedValue == 6);
+
+            if (SelectedValue == 19)
+            {
+                commandsComboBox.Items.Clear();
+                foreach (string key in parent.cmConst.getKeys())
+                    commandsComboBox.Items.Add(key);
+            }
+            if ((SelectedValue == 4)|| (SelectedValue == 6))
+            {
+                commandsComboBox.Items.Clear();
+                foreach (string key in parent.rpConst.getKeys())
+                    commandsComboBox.Items.Add(key);
+            }
+
+
+
+
             switch (SelectedValue)
             { 
                 case 0:
@@ -438,6 +457,8 @@ namespace StalkerOnlineQuesterEditor
                     actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString());
                 if (actions.Event.Display == "Команда НПЦ")
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
+                if ((actions.Event.Display == "Починка") || (actions.Event.Display == "Комплексная починка"))
+                    actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))
                         actions.GetQuests.Add(int.Parse(quest));

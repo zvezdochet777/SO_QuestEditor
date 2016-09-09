@@ -60,7 +60,8 @@ namespace StalkerOnlineQuesterEditor
         public CSpacesConstants spacesConst;
         public CTriggerConstants triggerConst;
         public CTPConstants tpConst;
-        public CommandConstants cmConst;        
+        public CommandConstants cmConst;
+        public RepairConstants rpConst;
         
         public CSettings settings;
         public COperNotes manageNotes;
@@ -87,6 +88,7 @@ namespace StalkerOnlineQuesterEditor
             quests = new CQuests(this);
             tpConst = new CTPConstants();
             cmConst = new CommandConstants();
+            rpConst = new RepairConstants();
             settings.checkMode();
 
             tree = treeDialogs;

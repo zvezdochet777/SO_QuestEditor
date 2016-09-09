@@ -56,35 +56,26 @@ namespace StalkerOnlineQuesterEditor
     }
 
 
-    //! Класс, содержащий информацию командах для NPC
-    public class CommandConstants
+    public class Constants
     {
-
-        Dictionary<string, string> _commands = new Dictionary<string, string>();
-        XDocument doc = new XDocument();
+        protected Dictionary<string, string> _constants = new Dictionary<string, string>();
+        protected XDocument doc = new XDocument();
 
         //! Конструктор, заполняет словарь на основе файлов xml
-        public CommandConstants()
+        public Constants()
         {
-            doc = XDocument.Load("source/NPCcommands.xml");
-            foreach (XElement item in doc.Root.Elements())
-            {
-                string cmID = item.Element("id").Value;
-                string name = item.Element("name").Value;
-                _commands.Add(name, cmID);
-            }
 
         }
         //! Возвращает ID комманды
         public string getTtID(string name)
         {
-            return _commands[name];
+            return _constants[name];
         }
         //! Возвращает название по ID комманды
         public string getName(string tpID)
         {
             string ret = "";
-            foreach (KeyValuePair<string, string> value in _commands)
+            foreach (KeyValuePair<string, string> value in _constants)
                 if (value.Value.Equals(tpID))
                     ret = value.Key;
             return ret;
@@ -93,9 +84,43 @@ namespace StalkerOnlineQuesterEditor
         public List<string> getKeys()
         {
             List<string> ret = new List<string>();
-            foreach (string key in _commands.Keys)
+            foreach (string key in _constants.Keys)
                 ret.Add(key);
             return ret;
+        }
+    }
+
+
+    public class RepairConstants : Constants
+    {
+        //Dictionary<string, string> _constants = new Dictionary<string, string>();
+        //! Конструктор, заполняет словарь на основе файлов xml
+        public RepairConstants()
+        {
+            doc = XDocument.Load("source/NPCrepairs.xml");
+            foreach (XElement item in doc.Root.Elements())
+            {
+                string cmID = item.Element("id").Value;
+                string name = item.Element("name").Value;
+                _constants.Add(name, cmID);
+            }
+        }
+    }
+
+    //! Класс, содержащий информацию командах для NPC
+    public class CommandConstants : Constants
+    {
+        //Dictionary<string, string> _constants = new Dictionary<string, string>();
+        //! Конструктор, заполняет словарь на основе файлов xml
+        public CommandConstants()
+        {
+            doc = XDocument.Load("source/NPCcommands.xml");
+            foreach (XElement item in doc.Root.Elements())
+            {
+                string cmID = item.Element("id").Value;
+                string name = item.Element("name").Value;
+                _constants.Add(name, cmID);
+            }
         }
     }
 }
