@@ -137,6 +137,8 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.cbSecurNotExst = new System.Windows.Forms.CheckBox();
+            this.cbSecurExst = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).BeginInit();
@@ -802,6 +804,8 @@
             // gbClanOptions
             // 
             this.gbClanOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.gbClanOptions.Controls.Add(this.cbSecurNotExst);
+            this.gbClanOptions.Controls.Add(this.cbSecurExst);
             this.gbClanOptions.Controls.Add(this.radioButtonOR);
             this.gbClanOptions.Controls.Add(this.radioButtonAND);
             this.gbClanOptions.Controls.Add(this.cbNotSameClanOnly);
@@ -1255,6 +1259,26 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
+            // cbSecurNotExst
+            // 
+            this.cbSecurNotExst.AutoSize = true;
+            this.cbSecurNotExst.Location = new System.Drawing.Point(155, 128);
+            this.cbSecurNotExst.Name = "cbSecurNotExst";
+            this.cbSecurNotExst.Size = new System.Drawing.Size(83, 17);
+            this.cbSecurNotExst.TabIndex = 27;
+            this.cbSecurNotExst.Text = "нет охраны";
+            this.cbSecurNotExst.UseVisualStyleBackColor = true;
+            // 
+            // cbSecurExst
+            // 
+            this.cbSecurExst.AutoSize = true;
+            this.cbSecurExst.Location = new System.Drawing.Point(8, 128);
+            this.cbSecurExst.Name = "cbSecurExst";
+            this.cbSecurExst.Size = new System.Drawing.Size(87, 17);
+            this.cbSecurExst.TabIndex = 26;
+            this.cbSecurExst.Text = "есть охрана";
+            this.cbSecurExst.UseVisualStyleBackColor = true;
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1417,5 +1441,7 @@
         private System.Windows.Forms.Label lFrom;
         private System.Windows.Forms.MaskedTextBox mtbPlayerLevelMin;
         private System.Windows.Forms.ComboBox commandsComboBox;
+        private System.Windows.Forms.CheckBox cbSecurNotExst;
+        private System.Windows.Forms.CheckBox cbSecurExst;
     }
 }
