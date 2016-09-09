@@ -436,7 +436,7 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.tpConst.getTtID(teleportComboBox.SelectedItem.ToString());
                 if (actions.Event.Display == "Переход к диалогу")
                     actions.ToDialog = int.Parse(ToDialogComboBox.Text.ToString());
-                if (actions.Event.Display == "Команда охраннику")
+                if (actions.Event.Display == "Команда НПЦ")
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))
