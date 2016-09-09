@@ -125,21 +125,17 @@ namespace StalkerOnlineQuesterEditor
                 {
                     string key = parent.tpConst.getName(curDialog.Actions.Data);
                     teleportComboBox.SelectedItem = key;
-                    teleportComboBox.Visible = true;
                 }
-                if (ActionsComboBox.Text == "Команда охраннику")
+                if (ActionsComboBox.Text == "Команда НПЦ")
                 {
                     string key = parent.cmConst.getName(curDialog.Actions.Data);
                     commandsComboBox.SelectedItem = key;
-                    commandsComboBox.Visible = true;
                 }
                 if ((ActionsComboBox.Text == "Починка") || (ActionsComboBox.Text == "Комплексная починка"))
                 {
                     string key = parent.rpConst.getName(curDialog.Actions.Data);
                     commandsComboBox.SelectedItem = key;
-                    commandsComboBox.Visible = true;
                 }
-                else commandsComboBox.Visible = false;
                 
                 
                 if (curDialog.Actions.ToDialog != 0)
