@@ -66,6 +66,7 @@ namespace StalkerOnlineQuesterEditor
         public CSettings settings;
         public COperNotes manageNotes;
         public CFracConstants fractions;
+        public SkillConstants skills;
         public CGUIConst gui;
         public CEffectConstants effects;
         public DialogEventsList dialogEvents;
@@ -99,6 +100,7 @@ namespace StalkerOnlineQuesterEditor
             triggerConst = new CTriggerConstants();
             manageNotes = new COperNotes("ManNotes.xml");
             fractions = new CFracConstants();
+            skills = new SkillConstants();
             gui = new CGUIConst();
             effects = new CEffectConstants();
 

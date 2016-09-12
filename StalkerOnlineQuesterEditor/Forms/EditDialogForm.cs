@@ -224,10 +224,13 @@ namespace StalkerOnlineQuesterEditor
                 editKarmaPK = curDialog.Precondition.KarmaPK;
                 checkKarmaIndicates();
             }
+            if (curDialog.Precondition.Skills.Any())
+                editPrecondition.Skills = curDialog.Precondition.Skills;
             this.initReputationTab();
             this.initKarmaPKTab();
             this.initEffectsTab();
             this.initLevelTab();
+            this.initSkillsTab();
             checkClanOptionsIndicator();
         }
 
@@ -445,6 +448,8 @@ namespace StalkerOnlineQuesterEditor
 
             if(!this.checkReputation()) 
                 return;
+            if (!this.checkSkills())
+                return;
             this.checkKarmaPK();
             this.checkEffects();
             // заполняем действия диалога - торговля, бартер, починка, телепорт и т.д.
@@ -547,6 +552,7 @@ namespace StalkerOnlineQuesterEditor
             precondition.KarmaPK = editKarmaPK;
             precondition.NecessaryEffects = editPrecondition.NecessaryEffects;
             precondition.MustNoEffects = editPrecondition.MustNoEffects;
+            precondition.Skills = editPrecondition.Skills;
 
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;
@@ -573,6 +579,73 @@ namespace StalkerOnlineQuesterEditor
             parent.startEmulator(currentDialogID);
             this.Close();
         }
+
+        private void initSkillsTab()
+        {
+            SkillConstants skills = this.parent.skills;
+            int id = 0;
+            foreach (string skill_name in skills.getKeys())
+            {
+                string a = "";
+                string b = "";
+                string skill_id = skills.getTtID(skill_name);
+                DialogSkill skill = this.editPrecondition.Skills.getSkillValByName(skill_id);
+                if (skill != null)
+                {
+                    a = skill.min;
+                    b = skill.max;
+                }
+                object[] row = { id, skill_name, a, b };
+                dataSkill.Rows.Add(row);
+                id++;
+            }
+            this.checkSkills();
+        }
+
+        private bool checkSkills()
+        {
+            this.editPrecondition.Skills.Clear();
+            foreach (DataGridViewRow row in dataSkill.Rows)
+            {
+                if (row.Cells[0].FormattedValue.ToString() != "")
+                {
+                    string skill_name = parent.skills.getTtID(row.Cells[1].FormattedValue.ToString());
+                    string stringA = row.Cells[2].FormattedValue.ToString().Replace('.', ',');
+                    string stringB = row.Cells[3].FormattedValue.ToString().Replace('.', ',');
+
+                    int intA;
+                    int intB;
+                    if ((stringA != "") && (!int.TryParse(stringA, out intA)))
+                    {
+                        MessageBox.Show("Неправильное условие по навыкам!");
+                        return false;
+                    }
+                    if ((stringB != "") && (!int.TryParse(stringB, out intB)))
+                    {
+                        MessageBox.Show("Неправильное условие по навыкам!");
+                        return false;
+                    }
+
+
+                    if ((stringA == "") && (stringB == ""))
+                    {
+                        continue;
+                    }
+                    this.editPrecondition.Skills.Add(skill_name, stringA, stringB);
+                }
+            }
+            this.checkSkillIndicates();
+            return true;
+        }
+
+        private void checkSkillIndicates()
+        {
+            if (editPrecondition.Skills.Any())
+                pictureSkill.Visible = true;
+            else
+                pictureSkill.Visible = false;
+        }
+            
 
         private void initReputationTab()
         {
@@ -830,6 +903,7 @@ namespace StalkerOnlineQuesterEditor
             this.checkKarmaPK();
             this.checkReputation();
             this.checkEffects();
+            this.checkSkills();
         }
 
         private void digitTextBox_KeyPress(object sender, KeyPressEventArgs e)

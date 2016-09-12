@@ -93,6 +93,8 @@
             this.a = new System.Windows.Forms.Label();
             this.tabClan = new System.Windows.Forms.TabPage();
             this.gbClanOptions = new System.Windows.Forms.GroupBox();
+            this.cbSecurNotExst = new System.Windows.Forms.CheckBox();
+            this.cbSecurExst = new System.Windows.Forms.CheckBox();
             this.radioButtonOR = new System.Windows.Forms.RadioButton();
             this.radioButtonAND = new System.Windows.Forms.RadioButton();
             this.cbNotSameClanOnly = new System.Windows.Forms.CheckBox();
@@ -137,8 +139,13 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
-            this.cbSecurNotExst = new System.Windows.Forms.CheckBox();
-            this.cbSecurExst = new System.Windows.Forms.CheckBox();
+            this.tabSkills = new System.Windows.Forms.TabPage();
+            this.dataSkill = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureSkill = new System.Windows.Forms.PictureBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).BeginInit();
@@ -162,6 +169,9 @@
             this.tabLevel.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
+            this.tabSkills.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -404,6 +414,7 @@
             // 
             // gbPrecondition
             // 
+            this.gbPrecondition.Controls.Add(this.pictureSkill);
             this.gbPrecondition.Controls.Add(this.pictureLevel);
             this.gbPrecondition.Controls.Add(this.pictureEffects);
             this.gbPrecondition.Controls.Add(this.pictureClan);
@@ -487,6 +498,7 @@
             this.tabQuestsCircs.Controls.Add(this.tabClan);
             this.tabQuestsCircs.Controls.Add(this.tabEffects);
             this.tabQuestsCircs.Controls.Add(this.tabLevel);
+            this.tabQuestsCircs.Controls.Add(this.tabSkills);
             this.tabQuestsCircs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabQuestsCircs.Location = new System.Drawing.Point(8, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
@@ -822,6 +834,26 @@
             this.gbClanOptions.TabIndex = 50;
             this.gbClanOptions.TabStop = false;
             this.gbClanOptions.Text = "Клановые опции";
+            // 
+            // cbSecurNotExst
+            // 
+            this.cbSecurNotExst.AutoSize = true;
+            this.cbSecurNotExst.Location = new System.Drawing.Point(155, 128);
+            this.cbSecurNotExst.Name = "cbSecurNotExst";
+            this.cbSecurNotExst.Size = new System.Drawing.Size(83, 17);
+            this.cbSecurNotExst.TabIndex = 27;
+            this.cbSecurNotExst.Text = "нет охраны";
+            this.cbSecurNotExst.UseVisualStyleBackColor = true;
+            // 
+            // cbSecurExst
+            // 
+            this.cbSecurExst.AutoSize = true;
+            this.cbSecurExst.Location = new System.Drawing.Point(8, 128);
+            this.cbSecurExst.Name = "cbSecurExst";
+            this.cbSecurExst.Size = new System.Drawing.Size(87, 17);
+            this.cbSecurExst.TabIndex = 26;
+            this.cbSecurExst.Text = "есть охрана";
+            this.cbSecurExst.UseVisualStyleBackColor = true;
             // 
             // radioButtonOR
             // 
@@ -1259,25 +1291,67 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
-            // cbSecurNotExst
+            // tabSkills
             // 
-            this.cbSecurNotExst.AutoSize = true;
-            this.cbSecurNotExst.Location = new System.Drawing.Point(155, 128);
-            this.cbSecurNotExst.Name = "cbSecurNotExst";
-            this.cbSecurNotExst.Size = new System.Drawing.Size(83, 17);
-            this.cbSecurNotExst.TabIndex = 27;
-            this.cbSecurNotExst.Text = "нет охраны";
-            this.cbSecurNotExst.UseVisualStyleBackColor = true;
+            this.tabSkills.Controls.Add(this.dataSkill);
+            this.tabSkills.Location = new System.Drawing.Point(4, 22);
+            this.tabSkills.Name = "tabSkills";
+            this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSkills.Size = new System.Drawing.Size(566, 193);
+            this.tabSkills.TabIndex = 6;
+            this.tabSkills.Text = "Навыки";
+            this.tabSkills.UseVisualStyleBackColor = true;
             // 
-            // cbSecurExst
+            // dataSkill
             // 
-            this.cbSecurExst.AutoSize = true;
-            this.cbSecurExst.Location = new System.Drawing.Point(8, 128);
-            this.cbSecurExst.Name = "cbSecurExst";
-            this.cbSecurExst.Size = new System.Drawing.Size(87, 17);
-            this.cbSecurExst.TabIndex = 26;
-            this.cbSecurExst.Text = "есть охрана";
-            this.cbSecurExst.UseVisualStyleBackColor = true;
+            this.dataSkill.AllowUserToAddRows = false;
+            this.dataSkill.AllowUserToDeleteRows = false;
+            this.dataSkill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataSkill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.dataSkill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataSkill.Location = new System.Drawing.Point(3, 3);
+            this.dataSkill.Name = "dataSkill";
+            this.dataSkill.Size = new System.Drawing.Size(560, 187);
+            this.dataSkill.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "id";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Название навыка";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "A (A < X < B)";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "B (A < X < B)";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // pictureSkill
+            // 
+            this.pictureSkill.BackColor = System.Drawing.Color.Transparent;
+            this.pictureSkill.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureSkill.Location = new System.Drawing.Point(370, 10);
+            this.pictureSkill.Name = "pictureSkill";
+            this.pictureSkill.Size = new System.Drawing.Size(10, 10);
+            this.pictureSkill.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureSkill.TabIndex = 58;
+            this.pictureSkill.TabStop = false;
+            this.pictureSkill.Visible = false;
             // 
             // EditDialogForm
             // 
@@ -1325,6 +1399,9 @@
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
             this.gbTexts.PerformLayout();
+            this.tabSkills.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1443,5 +1520,12 @@
         private System.Windows.Forms.ComboBox commandsComboBox;
         private System.Windows.Forms.CheckBox cbSecurNotExst;
         private System.Windows.Forms.CheckBox cbSecurExst;
+        private System.Windows.Forms.TabPage tabSkills;
+        private System.Windows.Forms.DataGridView dataSkill;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.PictureBox pictureSkill;
     }
 }

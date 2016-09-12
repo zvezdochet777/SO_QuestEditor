@@ -109,6 +109,8 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Element("Precondition").Element("MustNoEffects") != null)
                         AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.MustNoEffects);
 
+                    if (dialog.Element("Precondition").Element("Skills") != null)
+                        AddDialogSkillsToListSkills(dialog, "Precondition", "Skills", Precondition.Skills);
                     Precondition.KarmaPK = new List<int>();
                     
                     AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
@@ -196,6 +198,18 @@ namespace StalkerOnlineQuesterEditor
                     string stack = effect.Element("stack").Value;
                     list.Add(new DialogEffect(ID, stack));
                 }
+        }
+        private void AddDialogSkillsToListSkills(XElement Element, String Name1, String Name2, ListDialogSkills list)
+        {
+            if (Element.Element(Name1).Element(Name2) == null)
+                return;
+
+            foreach (XElement effect in Element.Element(Name1).Element(Name2).Elements())
+            {
+                string name = effect.Element("id").Value;
+                string[] val = effect.Element("value").Value.Split(':');
+                list.Add(name, val[0], val[1]);
+            }
         }
 
         private void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
@@ -336,6 +350,8 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Precondition.NecessaryEffects.Any())
                         element.Element("Precondition").Add(dialog.Precondition.getNecessaryEffects());
                     if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
+                    if (dialog.Precondition.Skills.Any())
+                        element.Element("Precondition").Add(dialog.Precondition.Skills.getSkills());
                     npcElement.Add(element);
 
                     if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")

@@ -72,6 +72,7 @@ namespace StalkerOnlineQuesterEditor
         public string playerCombatLvl;
         public string playerSurvLvl;
         public string playerOtherLvl;
+        public ListDialogSkills Skills = new ListDialogSkills();
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
         public List<int> KarmaPK = new List<int>();
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
@@ -84,6 +85,7 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfNecessaryQuests = (CDialogPreconditionQuests)this.ListOfNecessaryQuests.Clone();
             copy.ListOfMustNoQuests = (CDialogPreconditionQuests)this.ListOfMustNoQuests.Clone();
             copy.Reputation = this.Reputation;
+            copy.Skills = this.Skills;
             copy.KarmaPK = this.KarmaPK;
             copy.PlayerLevel = this.PlayerLevel;
             copy.playerCombatLvl = this.playerCombatLvl;
@@ -100,6 +102,7 @@ namespace StalkerOnlineQuesterEditor
             this.ListOfMustNoQuests = new CDialogPreconditionQuests();
             this.clanOptions = "";
             this.Reputation = new Dictionary<int, List<double>>();
+            this.Skills = new ListDialogSkills();
             this.KarmaPK = new List<int>();
             this.PlayerLevel = "";
             this.playerCombatLvl = "";
