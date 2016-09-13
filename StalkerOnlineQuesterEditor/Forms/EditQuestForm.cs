@@ -73,8 +73,6 @@ namespace StalkerOnlineQuesterEditor
             if (iState == ADD_SUB)
             {
                 CQuest parent_quest = parent.getQuestOnQuestID(quest.Additional.IsSubQuest);
-                if (parent_quest != null)
-                    quest.Reward.Difficulty = parent_quest.Reward.Difficulty;
             }
 
             if (iState == EDIT || iState == EDIT_SUB)
@@ -113,8 +111,6 @@ namespace StalkerOnlineQuesterEditor
             showCloseCheckBox.Checked = true;
             showTakeCheckBox.Checked = true;
             showJournalCheckBox.Checked = true;
-
-            difficultyComboBox.SelectedIndex = 0;
 
             CQuest parentQuest =  new CQuest();
             //if (iState == EDIT_SUB)
@@ -534,11 +530,7 @@ namespace StalkerOnlineQuesterEditor
         void fillReward()
         {
             checkRewardIndicates();
-            if (quest.Reward.Difficulty != 0)
-                difficultyComboBox.SelectedItem = quest.Reward.Difficulty.ToString();
-            else
-                difficultyComboBox.SelectedItem = "1";
-
+           
             if (quest.Reward.Experience.Count == 3)
             {
                 tExperience.Text = quest.Reward.Experience[0].ToString();
@@ -690,7 +682,6 @@ namespace StalkerOnlineQuesterEditor
             reward.Experience.Add(ParseIntIfNotEmpty(tSurvival.Text));
             reward.Experience.Add(ParseIntIfNotEmpty(tSupport.Text));
             reward.Credits = ParseIntIfNotEmpty(creditsTextBox.Text);
-            reward.Difficulty = ParseIntIfNotEmpty(difficultyComboBox.SelectedItem.ToString());
             reward.KarmaPK = ParseIntIfNotEmpty(textBoxKarmaPK.Text);
 
             int iProgressResult = 0;
@@ -946,8 +937,6 @@ namespace StalkerOnlineQuesterEditor
         //! Кнопка Скрыть Награду квеста
         private void bHideReward_Click(object sender, EventArgs e)
         {
-            difficultyComboBox.Visible = !difficultyComboBox.Visible;
-            lDifficulty.Visible = !lDifficulty.Visible;
             lCredits.Visible = !lCredits.Visible;
             creditsTextBox.Visible = !creditsTextBox.Visible;
             lCombatSkills.Visible = !lCombatSkills.Visible;

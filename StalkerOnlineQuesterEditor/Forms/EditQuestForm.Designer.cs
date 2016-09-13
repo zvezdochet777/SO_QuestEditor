@@ -41,8 +41,6 @@
             this.lSurvivalSkills = new System.Windows.Forms.Label();
             this.tSupport = new System.Windows.Forms.TextBox();
             this.tSurvival = new System.Windows.Forms.TextBox();
-            this.lDifficulty = new System.Windows.Forms.Label();
-            this.difficultyComboBox = new System.Windows.Forms.ComboBox();
             this.bRewardEffects = new System.Windows.Forms.Button();
             this.bRewardReputation = new System.Windows.Forms.Button();
             this.bRewardItem = new System.Windows.Forms.Button();
@@ -233,8 +231,6 @@
             this.rewardGroupBox.Controls.Add(this.lSurvivalSkills);
             this.rewardGroupBox.Controls.Add(this.tSupport);
             this.rewardGroupBox.Controls.Add(this.tSurvival);
-            this.rewardGroupBox.Controls.Add(this.lDifficulty);
-            this.rewardGroupBox.Controls.Add(this.difficultyComboBox);
             this.rewardGroupBox.Controls.Add(this.bRewardEffects);
             this.rewardGroupBox.Controls.Add(this.bRewardReputation);
             this.rewardGroupBox.Controls.Add(this.bRewardItem);
@@ -256,7 +252,7 @@
             // lSupportSkills
             // 
             this.lSupportSkills.AutoSize = true;
-            this.lSupportSkills.Location = new System.Drawing.Point(295, 67);
+            this.lSupportSkills.Location = new System.Drawing.Point(295, 71);
             this.lSupportSkills.Name = "lSupportSkills";
             this.lSupportSkills.Size = new System.Drawing.Size(68, 13);
             this.lSupportSkills.TabIndex = 40;
@@ -265,7 +261,7 @@
             // lSurvivalSkills
             // 
             this.lSurvivalSkills.AutoSize = true;
-            this.lSurvivalSkills.Location = new System.Drawing.Point(172, 67);
+            this.lSurvivalSkills.Location = new System.Drawing.Point(172, 72);
             this.lSurvivalSkills.Name = "lSurvivalSkills";
             this.lSurvivalSkills.Size = new System.Drawing.Size(69, 13);
             this.lSurvivalSkills.TabIndex = 39;
@@ -284,27 +280,6 @@
             this.tSurvival.Name = "tSurvival";
             this.tSurvival.Size = new System.Drawing.Size(42, 20);
             this.tSurvival.TabIndex = 33;
-            // 
-            // lDifficulty
-            // 
-            this.lDifficulty.AutoSize = true;
-            this.lDifficulty.Location = new System.Drawing.Point(458, 67);
-            this.lDifficulty.Name = "lDifficulty";
-            this.lDifficulty.Size = new System.Drawing.Size(63, 13);
-            this.lDifficulty.TabIndex = 36;
-            this.lDifficulty.Text = "Сложность";
-            // 
-            // difficultyComboBox
-            // 
-            this.difficultyComboBox.FormattingEnabled = true;
-            this.difficultyComboBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.difficultyComboBox.Location = new System.Drawing.Point(527, 64);
-            this.difficultyComboBox.Name = "difficultyComboBox";
-            this.difficultyComboBox.Size = new System.Drawing.Size(75, 21);
-            this.difficultyComboBox.TabIndex = 35;
             // 
             // bRewardEffects
             // 
@@ -392,7 +367,7 @@
             // lCombatSkills
             // 
             this.lCombatSkills.AutoSize = true;
-            this.lCombatSkills.Location = new System.Drawing.Point(7, 67);
+            this.lCombatSkills.Location = new System.Drawing.Point(7, 71);
             this.lCombatSkills.Name = "lCombatSkills";
             this.lCombatSkills.Size = new System.Drawing.Size(76, 13);
             this.lCombatSkills.TabIndex = 8;
@@ -1224,8 +1199,6 @@
         private System.Windows.Forms.RadioButton winRButton;
         private System.Windows.Forms.CheckBox tutorialCheckBox;
         private System.Windows.Forms.Button bRewardEffects;
-        private System.Windows.Forms.Label lDifficulty;
-        private System.Windows.Forms.ComboBox difficultyComboBox;
         private System.Windows.Forms.TextBox tSupport;
         private System.Windows.Forms.TextBox tSurvival;
         private System.Windows.Forms.Label lSupportSkills;

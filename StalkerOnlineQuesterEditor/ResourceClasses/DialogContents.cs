@@ -111,6 +111,13 @@ namespace StalkerOnlineQuesterEditor
             this.NecessaryEffects = new List<DialogEffect>();
             this.MustNoEffects = new List<DialogEffect>();
         }
+
+        public bool Exists()
+        {
+            return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
+                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any();
+        }
+
         public bool Any()
         {
             if (ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any())
@@ -221,6 +228,8 @@ namespace StalkerOnlineQuesterEditor
 
         public Actions()
         {
+            this.ToDialog = new int();
+            //this.Event = new DialogEvent();
             this.Exit = new bool();
             this.CompleteQuests = new ListOfQuests();
             this.GetQuests = new ListOfQuests();
@@ -229,9 +238,15 @@ namespace StalkerOnlineQuesterEditor
             this.Data = "";
         }
 
+
+        public bool Any()
+        {
+            return GetQuests.Any() || CompleteQuests.Any() || CancelQuests.Any() || FailQuests.Any() || (Event != null && Event.Value != 0) || (ToDialog != 0) || Exit;
+        }
+
         public bool Exists()
         {
-            return (GetQuests.Count > 0 || CompleteQuests.Count > 0 || CancelQuests.Count > 0 || FailQuests.Count > 0 || Event.Value != 0);
+            return (GetQuests.Count > 0 || CompleteQuests.Count > 0 || CancelQuests.Count > 0 || FailQuests.Count > 0 || (Event!= null && Event.Value != 0));
         }
 
         public bool CheckAndGetString(out string ActionString)

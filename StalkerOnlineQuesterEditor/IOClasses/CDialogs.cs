@@ -72,15 +72,20 @@ namespace StalkerOnlineQuesterEditor
                     Actions Actions = new Actions();
                     CDialogPrecondition Precondition = new CDialogPrecondition();
 
-                    if (dialog.Element("Nodes").Value != "")
+                    if ((dialog.Element("Nodes") != null) && (dialog.Element("Nodes").Value != ""))
                         foreach (string node in dialog.Element("Nodes").Value.Split(','))
                             if (node != "")
                                 Nodes.Add(int.Parse(node));
+                    if (dialog.Element("Actions") != null)
+                    {
 
-                    Actions.Exit = dialog.Element("Actions").Element("Exit").Value == "1";
+
+                    if (dialog.Element("Actions").Element("Exit")!= null)
+                        Actions.Exit = dialog.Element("Actions").Element("Exit").Value == "1";
                     Actions.ToDialog = ParseIntIfNotEmpty(dialog, "Actions", "ToDialog", 0);
                     Actions.Event = parent.dialogEvents.GetEventFromID(ParseIntIfNotEmpty(dialog, "Actions", "Event", 0));
-                    Actions.Data = dialog.Element("Actions").Element("Data").Value;
+                    if (dialog.Element("Actions").Element("Data") != null)
+                        Actions.Data = dialog.Element("Actions").Element("Data").Value;
 
                     AddDataToList(dialog, "Actions", "GetQuest", Actions.GetQuests);
                     AddDataToList(dialog, "Actions", "CompleteQuest", Actions.CompleteQuests);
@@ -89,87 +94,102 @@ namespace StalkerOnlineQuesterEditor
                         AddDataToList(dialog, "Actions", "CancelQuest", Actions.CancelQuests);
                         AddDataToList(dialog, "Actions", "FailQuest", Actions.FailQuests);
                     }
-
-                    AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOpenedQuests", Precondition.ListOfNecessaryQuests.ListOfOpenedQuests);
-                    AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
-                    AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfCompletedQuests", Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
-                    AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfFailedQuests", Precondition.ListOfNecessaryQuests.ListOfFailedQuests);
-                    if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests") != null)
-                        Precondition.ListOfNecessaryQuests.ListOfMassQuests =  dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests").Value;
-
-                    AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOpenedQuests", Precondition.ListOfMustNoQuests.ListOfOpenedQuests);
-                    AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOnTestQuests", Precondition.ListOfMustNoQuests.ListOfOnTestQuests);
-                    AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfCompletedQuests", Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
-                    AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfFailedQuests", Precondition.ListOfMustNoQuests.ListOfFailedQuests);
-                    if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests") != null)
-                        Precondition.ListOfMustNoQuests.ListOfMassQuests = dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests").Value;
-                    
-                    if (dialog.Element("Precondition").Element("NecessaryEffects") != null)
-                        AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.NecessaryEffects);
-                    if (dialog.Element("Precondition").Element("MustNoEffects") != null)
-                        AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.MustNoEffects);
-
-                    if (dialog.Element("Precondition").Element("Skills") != null)
-                        AddDialogSkillsToListSkills(dialog, "Precondition", "Skills", Precondition.Skills);
-                    Precondition.KarmaPK = new List<int>();
-                    
-                    AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
-                    if (dialog.Element("Precondition").Element("clanOptions") != null)
-                    {
-                        Precondition.clanOptions = dialog.Element("Precondition").Element("clanOptions").Value.ToString();
                     }
-                    if (dialog.Element("Precondition").Element("tests") != null)
+                    if (dialog.Element("Precondition") != null)
                     {
-                        tests = new List<int>();
-                        AddDataToList(dialog, "Precondition", "tests", tests);
-                        for(int i=0; i<tests.Count; i++)
+
+                        if (dialog.Element("Precondition").Element("ListOfNecessaryQuests") != null)
                         {
-                            if (tests[i] == 0) tests[i] = 7;
-                            if (tests[i] == 2) tests[i] = 8;
+                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOpenedQuests", Precondition.ListOfNecessaryQuests.ListOfOpenedQuests);
+                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
+                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfCompletedQuests", Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
+                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfFailedQuests", Precondition.ListOfNecessaryQuests.ListOfFailedQuests);
+                            if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests") != null)
+                                Precondition.ListOfNecessaryQuests.ListOfMassQuests = dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests").Value;
                         }
-                        if (Precondition.clanOptions == "")
-                            Precondition.clanOptions = Global.GetListAsString(tests);
-                        else
-                            Precondition.clanOptions += "," + Global.GetListAsString(tests);
-                    }
-                    if (dialog.Element("Precondition").Element("PlayerLevel") != null)
-                    {
-                        Precondition.PlayerLevel = dialog.Element("Precondition").Element("PlayerLevel").Value;
-                    }
-                    if (dialog.Element("Precondition").Element("playerCombatLvl") != null)
-                    {
-                        Precondition.playerCombatLvl = dialog.Element("Precondition").Element("playerCombatLvl").Value;
-                    }
-                    if (dialog.Element("Precondition").Element("playerSurvLvl") != null)
-                    {
-                        Precondition.playerSurvLvl = dialog.Element("Precondition").Element("playerSurvLvl").Value;
-                    }
-                    if (dialog.Element("Precondition").Element("playerOtherLvl") != null)
-                    {
-                        Precondition.playerOtherLvl = dialog.Element("Precondition").Element("playerOtherLvl").Value;
-                    }
+                        if (dialog.Element("Precondition").Element("ListOfMustNoQuests") != null)
+                        {
+                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOpenedQuests", Precondition.ListOfMustNoQuests.ListOfOpenedQuests);
+                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOnTestQuests", Precondition.ListOfMustNoQuests.ListOfOnTestQuests);
+                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfCompletedQuests", Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
+                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfFailedQuests", Precondition.ListOfMustNoQuests.ListOfFailedQuests);
+                            if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests") != null)
+                                Precondition.ListOfMustNoQuests.ListOfMassQuests = dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests").Value;
+                        }
+                        if (dialog.Element("Precondition").Element("NecessaryEffects") != null)
+                            AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.NecessaryEffects);
+                        if (dialog.Element("Precondition").Element("MustNoEffects") != null)
+                            AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.MustNoEffects);
 
+                        if (dialog.Element("Precondition").Element("Skills") != null)
+                            AddDialogSkillsToListSkills(dialog, "Precondition", "Skills", Precondition.Skills);
+                        Precondition.KarmaPK = new List<int>();
+
+                        AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
+                        if (dialog.Element("Precondition").Element("clanOptions") != null)
+                        {
+                            Precondition.clanOptions = dialog.Element("Precondition").Element("clanOptions").Value.ToString();
+                        }
+                        if (dialog.Element("Precondition").Element("tests") != null)
+                        {
+                            tests = new List<int>();
+                            AddDataToList(dialog, "Precondition", "tests", tests);
+                            for (int i = 0; i < tests.Count; i++)
+                            {
+                                if (tests[i] == 0) tests[i] = 7;
+                                if (tests[i] == 2) tests[i] = 8;
+                            }
+                            if (Precondition.clanOptions == "")
+                                Precondition.clanOptions = Global.GetListAsString(tests);
+                            else
+                                Precondition.clanOptions += "," + Global.GetListAsString(tests);
+                        }
+                        if (dialog.Element("Precondition").Element("PlayerLevel") != null)
+                        {
+                            Precondition.PlayerLevel = dialog.Element("Precondition").Element("PlayerLevel").Value;
+                        }
+                        if (dialog.Element("Precondition").Element("playerCombatLvl") != null)
+                        {
+                            Precondition.playerCombatLvl = dialog.Element("Precondition").Element("playerCombatLvl").Value;
+                        }
+                        if (dialog.Element("Precondition").Element("playerSurvLvl") != null)
+                        {
+                            Precondition.playerSurvLvl = dialog.Element("Precondition").Element("playerSurvLvl").Value;
+                        }
+                        if (dialog.Element("Precondition").Element("playerOtherLvl") != null)
+                        {
+                            Precondition.playerOtherLvl = dialog.Element("Precondition").Element("playerOtherLvl").Value;
+                        }
+                        if (dialog.Element("Precondition").Element("Reputation") != null)
+                        {
+
+                        
+                        foreach (string el in dialog.Element("Precondition").Element("Reputation").Value.Split(';'))
+                        {
+                            if (el == "")
+                                continue;
+                            string[] fr = el.Split(':');
+                            int fractionID = int.Parse(fr[0]);
+                            Precondition.Reputation.Add(fractionID, new List<double>());
+                            double A = double.Parse(fr[1], System.Globalization.CultureInfo.InvariantCulture);
+                            double B = double.Parse(fr[2], System.Globalization.CultureInfo.InvariantCulture);
+                            Precondition.Reputation[fractionID].Add(A);
+                            Precondition.Reputation[fractionID].Add(B);
+                        }
+                        }
+
+                    }
                     NodeCoordinates nodeCoord = new NodeCoordinates();
-                    nodeCoord.RootDialog = dialog.Element("RootDialog").Value.Equals("1");
-                    nodeCoord.Active = dialog.Element("Active").Value.Equals("1");
+                    if (dialog.Element("RootDialog") != null)
+                        nodeCoord.RootDialog = dialog.Element("RootDialog").Value.Equals("1");
+                    if (dialog.Element("Active") != null)
+                        nodeCoord.Active = dialog.Element("Active").Value.Equals("1");
                     if (tempCoordinates.ContainsKey(npc_name) && tempCoordinates[npc_name].ContainsKey(DialogID))
                     {
                         nodeCoord.X = tempCoordinates[npc_name][DialogID].X;
                         nodeCoord.Y = tempCoordinates[npc_name][DialogID].Y;
                     }
 
-                    foreach (string el in dialog.Element("Precondition").Element("Reputation").Value.Split(';'))
-                    {
-                        if (el == "")
-                            continue;
-                        string[] fr = el.Split(':');
-                        int fractionID = int.Parse(fr[0]);
-                        Precondition.Reputation.Add(fractionID, new List<double>());
-                        double A = double.Parse(fr[1], System.Globalization.CultureInfo.InvariantCulture);
-                        double B = double.Parse(fr[2], System.Globalization.CultureInfo.InvariantCulture);
-                        Precondition.Reputation[fractionID].Add(A);
-                        Precondition.Reputation[fractionID].Add(B);
-                    }
 
                     if (dialog.Element("DebugData") != null)
                         DebugData = dialog.Element("DebugData").Value.ToString();
@@ -214,6 +234,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
         {
+            if (Element.Element(Name1).Element(Name2) == null)
+                return;
             if (Element.Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
                     list.Add(int.Parse(quest));
@@ -221,6 +243,8 @@ namespace StalkerOnlineQuesterEditor
 
         private int ParseIntIfNotEmpty(XElement Element, String Name1, String Name2, int defaultValue)
         {
+            if (Element.Element(Name1).Element(Name2) == null)
+                return defaultValue;
             if (!Element.Element(Name1).Element(Name2).Value.Equals(""))
                 return int.Parse(Element.Element(Name1).Element(Name2).Value);
             return defaultValue;
@@ -301,75 +325,107 @@ namespace StalkerOnlineQuesterEditor
                 foreach (CDialog dialog in Dictdialog.Values)
                 {
                     element = new XElement("Dialog",
-                       new XElement("ID", dialog.DialogID.ToString()),
-                       new XElement("Precondition",
-                           new XElement("ListOfNecessaryQuests",
-                               new XElement("listOfCompletedQuests",
-                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)),
-                               new XElement("listOfOpenedQuests",
-                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)),
-                               new XElement("listOfOnTestQuests",
-                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)),
-                                new XElement("listOfFailedQuests",
-                                       Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests))),
-                           new XElement("ListOfMustNoQuests",
-                               new XElement("listOfCompletedQuests",
-                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)),
-                               new XElement("listOfOpenedQuests",
-                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)),
-                               new XElement("listOfOnTestQuests",
-                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)),
-                               new XElement("listOfFailedQuests",
-                                       Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests))),
-                           //new XElement("tests", Global.GetListAsString(dialog.Precondition.tests)),
-                           new XElement("Reputation", dialog.Precondition.getReputation()),
-                           new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK))),
-                       new XElement("Actions",
-                           new XElement("Exit", Global.GetBoolAsString(dialog.Actions.Exit)),
-                           new XElement("ToDialog", Global.GetIntAsString(dialog.Actions.ToDialog)),
-                           new XElement("Data", dialog.Actions.Data),
-                           new XElement("Event", dialog.Actions.Event.Value.ToString()),
-                           new XElement("GetQuest", Global.GetListAsString(dialog.Actions.GetQuests)),
-                           new XElement("CompleteQuest", Global.GetListAsString(dialog.Actions.CompleteQuests)),
-                           new XElement("CancelQuest", Global.GetListAsString(dialog.Actions.CancelQuests)),
-                           new XElement("FailQuest", Global.GetListAsString(dialog.Actions.FailQuests))),
-                       new XElement("Nodes", Global.GetListAsString(dialog.Nodes)),
-                       new XElement("RootDialog", Global.GetBoolAsString(dialog.coordinates.RootDialog)),
-                       new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active))
-                           );
+                       new XElement("ID", dialog.DialogID.ToString()));
+                    if (dialog.Precondition.Exists())
+                    {
+                         element.Add(new XElement("Precondition"));
+                    
+                    if (dialog.Precondition.ListOfNecessaryQuests.Any())
+                    {
+                        element.Element("Precondition").Add(new XElement("ListOfNecessaryQuests"));
+                        if (dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests.Any())
+                            element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfCompletedQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)));
+                        if (dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Any())
+                            element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOpenedQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)));
+                        if (dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests.Any())
+                            element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOnTestQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)));
+                        if (dialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests.Any())
+                            element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfFailedQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)));
+                        if (dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests != "")
+                            element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfMassQuests",
+                                                                     dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests));
+                    }
+                    if (dialog.Precondition.ListOfMustNoQuests.Any())
+                    {
+                        element.Element("Precondition").Add(new XElement("ListOfMustNoQuests"));
+                        if (dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests.Any())
+                            element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfCompletedQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)));
+                        if (dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests.Any())
+                            element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOpenedQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)));
+                        if (dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests.Any())
+                            element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOnTestQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)));
+                        if (dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests.Any())
+                            element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfFailedQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests)));
+                        if (dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests != "")
+                            element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
+                                                                     dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests));
+                    }
                     if (dialog.Precondition.clanOptions != "")
                         element.Element("Precondition").Add(new XElement("clanOptions", dialog.Precondition.clanOptions));
-                    if (dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests != "")
-                        element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfMassQuests",
-                                                                 dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests));
-                    if (dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests != "")
-                        element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
-                                                                 dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests));
+                   
+                   
                     if (dialog.Precondition.MustNoEffects.Any())
                         element.Element("Precondition").Add(dialog.Precondition.getMustNoEffects());
                     if (dialog.Precondition.NecessaryEffects.Any())
                         element.Element("Precondition").Add(dialog.Precondition.getNecessaryEffects());
-                    if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
                     if (dialog.Precondition.Skills.Any())
                         element.Element("Precondition").Add(dialog.Precondition.Skills.getSkills());
+                    if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
+                        element.Element("Precondition").Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
+                    if (dialog.Precondition.playerCombatLvl != "" && dialog.Precondition.playerCombatLvl != ":")
+                        element.Element("Precondition").Add(new XElement("playerCombatLvl", dialog.Precondition.playerCombatLvl));
+                    if (dialog.Precondition.playerSurvLvl != "" && dialog.Precondition.playerSurvLvl != ":")
+                        element.Element("Precondition").Add(new XElement("playerSurvLvl", dialog.Precondition.playerSurvLvl));
+                    if (dialog.Precondition.playerOtherLvl != "" && dialog.Precondition.playerOtherLvl != ":")
+                        element.Element("Precondition").Add(new XElement("playerOtherLvl", dialog.Precondition.playerOtherLvl));
+                    if (dialog.Precondition.getReputation() != "")
+                        element.Element("Precondition").Add(new XElement("Reputation", dialog.Precondition.getReputation()));
+                    if (dialog.Precondition.KarmaPK.Any())
+                        element.Element("Precondition").Add(new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK)));
+                    }
+
+
+                    if (dialog.Actions.Any())
+                    {
+                        element.Add(new XElement("Actions", ""));
+                    
+                        if (dialog.Actions.Exit)
+                            element.Element("Actions").Add(new XElement("Exit", Global.GetBoolAsString(dialog.Actions.Exit)));
+                        if (dialog.Actions.ToDialog != 0)
+                            element.Element("Actions").Add(new XElement("ToDialog", Global.GetIntAsString(dialog.Actions.ToDialog)));
+                        if (dialog.Actions.Data != "")
+                            element.Element("Actions").Add(new XElement("Data", dialog.Actions.Data));
+                        if (dialog.Actions.Event.Value != 0)
+                            element.Element("Actions").Add(new XElement("Event", dialog.Actions.Event.Value.ToString()));
+                        if (dialog.Actions.GetQuests.Any())
+                            element.Element("Actions").Add(new XElement("GetQuest", Global.GetListAsString(dialog.Actions.GetQuests)));
+                        if (dialog.Actions.CompleteQuests.Any())
+                            element.Element("Actions").Add(new XElement("CompleteQuest", Global.GetListAsString(dialog.Actions.CompleteQuests)));
+                        if (dialog.Actions.CancelQuests.Any())
+                            element.Element("Actions").Add(new XElement("CancelQuest", Global.GetListAsString(dialog.Actions.CancelQuests)));
+                        if (dialog.Actions.FailQuests.Any())
+                            element.Element("Actions").Add( new XElement("FailQuest", Global.GetListAsString(dialog.Actions.FailQuests)));
+                    }
+
+                    if (dialog.Nodes.Any())
+                        element.Add(new XElement("Nodes", Global.GetListAsString(dialog.Nodes)));
+                    if (Global.GetBoolAsString(dialog.coordinates.RootDialog) != "")
+                        element.Add(new XElement("RootDialog", Global.GetBoolAsString(dialog.coordinates.RootDialog)));
+                    if (Global.GetBoolAsString(dialog.coordinates.Active) != "")
+                        element.Add(new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active)));
+                    if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
+
                     npcElement.Add(element);
 
-                    if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
-                    {
-                        element.Element("Precondition").Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
-                    }
-                    if (dialog.Precondition.playerCombatLvl != "" && dialog.Precondition.playerCombatLvl != ":")
-                    {
-                        element.Element("Precondition").Add(new XElement("playerCombatLvl", dialog.Precondition.playerCombatLvl));
-                    }
-                    if (dialog.Precondition.playerSurvLvl != "" && dialog.Precondition.playerSurvLvl != ":")
-                    {
-                        element.Element("Precondition").Add(new XElement("playerSurvLvl", dialog.Precondition.playerSurvLvl));
-                    }
-                    if (dialog.Precondition.playerOtherLvl != "" && dialog.Precondition.playerOtherLvl != ":")
-                    {
-                        element.Element("Precondition").Add(new XElement("playerOtherLvl", dialog.Precondition.playerOtherLvl));
-                    }
+                   
                 }
                 resultDoc.Root.Add(npcElement);
             }

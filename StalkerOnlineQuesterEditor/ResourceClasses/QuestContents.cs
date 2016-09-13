@@ -164,6 +164,14 @@ namespace StalkerOnlineQuesterEditor
             this.itemState = new float();
             this.useState = false;
         }
+
+        public bool Any()
+        {
+            return QuestType != 0 || ObjectType != 0 || NumOfObjects != 0 || ObjectAttr != 0 || AreaName != "" ||
+                    Time != 0.0f || IsGroup != 0 || IsClan || ObjectName != "" || AObjectAttrs.Any() ||
+                    onFin != 0 || itemState != 0 || useState;
+
+        }
         public CQuestTarget(int QuestType)
         {
             this.QuestType = QuestType;
@@ -191,6 +199,10 @@ namespace StalkerOnlineQuesterEditor
             copy.TakenPeriod = this.TakenPeriod;
             return copy;
         }
+        public bool Any()
+        {
+            return Repeat != 0 || TakenPeriod != 0;
+        }
     }
 
     public class CQuestRules : ICloneable
@@ -201,7 +213,6 @@ namespace StalkerOnlineQuesterEditor
         public List<int> Scenarios;
         public List<int> MassQuests;
         public string TeleportTo;
-        public int FailedIf;
         public int MaxGroup;
         public int MinGroup;
         public int MaxMember;
@@ -219,7 +230,6 @@ namespace StalkerOnlineQuesterEditor
             copy.Scenarios = new List<int>(this.Scenarios);
             copy.MassQuests = new List<int>(this.MassQuests);
             copy.TeleportTo = (string)this.TeleportTo.Clone();
-            copy.FailedIf = this.FailedIf;
             copy.MaxGroup = this.MaxGroup;
             copy.MinGroup = this.MinGroup;
             copy.MaxMember = this.MaxMember;
@@ -229,6 +239,12 @@ namespace StalkerOnlineQuesterEditor
             return copy;
         }
 
+        public bool Any()
+        {
+            return TypeOfItems.Any() || NumOfItems.Any() || AttrOfItems.Any() || Scenarios.Any() || MassQuests.Any() ||
+                MaxGroup != 0 || MinGroup != 0 || TeleportTo != "" || basePercent != 0 || MinMember != 0 || MaxMember != 0;
+
+        }
         public CQuestRules()
         {
             this.TypeOfItems = new List<int>();
@@ -236,9 +252,10 @@ namespace StalkerOnlineQuesterEditor
             this.AttrOfItems = new List<int>();
             this.Scenarios = new List<int>();
             this.MassQuests = new List<int>();
-            this.FailedIf = new int();
             this.MaxGroup = new int();
             this.MinGroup = new int();
+            this.MaxMember = new int();
+            this.MinMember = new int();
             this.TeleportTo = "";
             this.basePercent = new float();
            
@@ -262,7 +279,6 @@ namespace StalkerOnlineQuesterEditor
         public float Credits;
         //! Словарь репутаций в награду, выглядит так <id фракции>:<значение награды>;
         public Dictionary<int, int> Reputation;
-        public int Difficulty;
         public int KarmaPK;
         public List<CEffect> Effects;
 
@@ -278,7 +294,6 @@ namespace StalkerOnlineQuesterEditor
             copy.Reputation = this.Reputation;
             copy.KarmaPK = this.KarmaPK;
             copy.Effects = new List<CEffect>(this.Effects);
-            copy.Difficulty = this.Difficulty;
             return copy;
         }
 
@@ -293,7 +308,12 @@ namespace StalkerOnlineQuesterEditor
             this.Reputation = new Dictionary<int, int>();
             this.KarmaPK = new int();
             this.Effects = new List<CEffect>();
-            this.Difficulty = 1;
+        }
+        public bool Any()
+        {
+            return Experience.Any() || TypeOfItems.Any() || NumOfItems.Any() ||
+                AttrOfItems.Any() || Probability.Any() || Credits != 0 || ReputationNotEmpty() ||
+                KarmaPK != 0 || Effects.Any();
         }
 
         public string getReputation()
@@ -337,6 +357,11 @@ namespace StalkerOnlineQuesterEditor
             copy.NumOfItems = new List<int>(this.NumOfItems);
             copy.Credits = this.Credits;
             return copy;
+        }
+
+        public bool Any()
+        {
+            return Experience.Any() || TypeOfItems.Any() || NumOfItems.Any() || Credits != 0;
         }
 
         public CQuestPenalty()
@@ -387,6 +412,11 @@ namespace StalkerOnlineQuesterEditor
             this.CantCancel = false;
             this.Holder = Holder;
             this.DebugData = "";
+        }
+
+        public bool Any()
+        {
+            return ListOfSubQuest.Any() || IsSubQuest != 0 || ShowProgress != 0 || CantCancel || Holder != "" || DebugData != "";
         }
     }
 

@@ -73,117 +73,143 @@ namespace StalkerOnlineQuesterEditor
 
                 additional.Holder = item.Element("Additional").Element("Holder").Value.Trim();
 
-                target.QuestType = int.Parse(item.Element("Target").Element("QuestType").Value);
-                if (!item.Element("Target").Element("ObjectType").Value.Equals(""))
-                    target.ObjectType = int.Parse(item.Element("Target").Element("ObjectType").Value);
-                if (!item.Element("Target").Element("NumOfObjects").Value.Equals(""))
-                    target.NumOfObjects = int.Parse(item.Element("Target").Element("NumOfObjects").Value);
-                if (!item.Element("Target").Element("ObjectAttr").Value.Equals(""))
+                if (item.Element("Target") != null)
                 {
-                    int Target_ObjectAttr = int.Parse(item.Element("Target").Element("ObjectAttr").Value);
-                    if (Target_ObjectAttr < 0)
-                        Target_ObjectAttr = 0;
-                    target.ObjectAttr = Target_ObjectAttr;
+                    if (item.Element("Target").Element("QuestType") != null)
+                        target.QuestType = int.Parse(item.Element("Target").Element("QuestType").Value);
+                    if ((item.Element("Target").Element("ObjectType") != null) && (!item.Element("Target").Element("ObjectType").Value.Equals("")))
+                        target.ObjectType = int.Parse(item.Element("Target").Element("ObjectType").Value);
+                    if ((item.Element("Target").Element("NumOfObjects") != null) &&(!item.Element("Target").Element("NumOfObjects").Value.Equals("")))
+                        target.NumOfObjects = int.Parse(item.Element("Target").Element("NumOfObjects").Value);
+                    if((item.Element("Target").Element("ObjectAttr") != null) && (!item.Element("Target").Element("ObjectAttr").Value.Equals("")))
+                    {
+                        int Target_ObjectAttr = int.Parse(item.Element("Target").Element("ObjectAttr").Value);
+                        if (Target_ObjectAttr < 0)
+                            Target_ObjectAttr = 0;
+                        target.ObjectAttr = Target_ObjectAttr;
+                    }
+                    if (item.Element("Target").Element("AObjectAttrs") != null)
+                        foreach (string at in item.Element("Target").Element("AObjectAttrs").Value.ToString().Split(','))
+                            if (!at.Equals(""))
+                                target.AObjectAttrs.Add(int.Parse(at));
+                    if (item.Element("Target").Element("onFin") != null)
+                    {                
+                        if (!item.Element("Target").Element("onFin").Value.Equals(""))
+                            target.onFin = int.Parse(item.Element("Target").Element("onFin").Value);
+                        else
+                            target.onFin = 1;
+                    }
+
+                    if ((item.Element("Target").Element("AreaName") != null) && (!item.Element("Target").Element("AreaName").Value.Equals("")))
+                        target.AreaName = item.Element("Target").Element("AreaName").Value;
+
+                    if ((item.Element("Target").Element("ObjectName") != null) && (!item.Element("Target").Element("ObjectName").Value.Equals("")))
+                        target.ObjectName = item.Element("Target").Element("ObjectName").Value;
+
+                    ParseIntIfNotEmpty(item, "Target", "IsGroup", out target.IsGroup, 0);
+                    if (item.Element("Target").Element("IsClan") != null)
+                        target.IsClan = item.Element("Target").Element("IsClan").Value.Equals("1");
+
+                    if (item.Element("Target").Element("itemState") != null)
+                    {
+                        target.useState = true;
+                        string str = item.Element("Target").Element("itemState").Value;
+                        target.itemState = float.Parse(item.Element("Target").Element("itemState").Value.Replace('.', ','));
+                    }
+                    if ((item.Element("Target").Element("Time") != null) && (!item.Element("Target").Element("Time").Value.Equals("")))
+                    {
+                        float Time = float.Parse(item.Element("Target").Element("Time").Value);
+                        target.Time = Time;
+                    }
+                    else
+                        target.Time = 0.0f;
                 }
 
-                foreach (string at in item.Element("Target").Element("AObjectAttrs").Value.ToString().Split(','))
-                    if (!at.Equals(""))
-                        target.AObjectAttrs.Add(int.Parse(at));
-
-                if (!item.Element("Target").Element("onFin").Value.Equals(""))
-                    target.onFin = int.Parse(item.Element("Target").Element("onFin").Value);
-                else
-                    target.onFin = 1;
-
-                if (!item.Element("Target").Element("AreaName").Value.Equals(""))
-                    target.AreaName = item.Element("Target").Element("AreaName").Value;
-
-                if (!item.Element("Target").Element("ObjectName").Value.Equals(""))
-                    target.ObjectName = item.Element("Target").Element("ObjectName").Value;
-
-                ParseIntIfNotEmpty(item, "Target", "IsGroup", out target.IsGroup, 0);
-                target.IsClan = item.Element("Target").Element("IsClan").Value.Equals("1");
-                if (item.Element("QuestRules").Element("baseToCapturePercent") != null)
-                    questRules.basePercent = float.Parse(item.Element("QuestRules").Element("baseToCapturePercent").Value.Replace('.', ','));
-                if (item.Element("Target").Element("itemState") != null)
+                if (item.Element("Precondition") != null)
                 {
-                    target.useState = true;
-                    string str = item.Element("Target").Element("itemState").Value;
-                    target.itemState = float.Parse(item.Element("Target").Element("itemState").Value.Replace('.', ','));
+                    if ((item.Element("Precondition").Element("Repeat") != null) && (!item.Element("Precondition").Element("Repeat").Value.Equals("")))
+                        precondition.Repeat = int.Parse(item.Element("Precondition").Element("Repeat").Value);
+
+                    if ((item.Element("Precondition").Element("TakenPeriod") != null) && (!item.Element("Precondition").Element("TakenPeriod").Value.Equals("")))
+                        precondition.TakenPeriod = double.Parse(item.Element("Precondition").Element("TakenPeriod").Value.Replace('.', ','));
                 }
-                if (!item.Element("Target").Element("Time").Value.Equals(""))
+                if (item.Element("QuestRules") != null)
                 {
-                    float Time = float.Parse(item.Element("Target").Element("Time").Value);
-                    target.Time = Time;
-                }
-                else
-                    target.Time = 0.0f;
+                
+                    if (item.Element("QuestRules").Element("baseToCapturePercent") != null)
+                        questRules.basePercent = float.Parse(item.Element("QuestRules").Element("baseToCapturePercent").Value.Replace('.', ','));
+                    AddDataToList(item, "QuestRules", "NumOfItems", questRules.NumOfItems);
+                    AddDataToList(item, "QuestRules", "TypeOfItems", questRules.TypeOfItems);
+                    AddDataToList(item, "QuestRules", "AttrOfItems", questRules.AttrOfItems);
+                    AddDataToList(item, "QuestRules", "Scenarios", questRules.Scenarios);
+                    AddDataToList(item, "QuestRules", "MassQuests", questRules.MassQuests);
 
-                if (!item.Element("Precondition").Element("Repeat").Value.Equals(""))
-                    precondition.Repeat = int.Parse(item.Element("Precondition").Element("Repeat").Value);
-
-                if (!item.Element("Precondition").Element("TakenPeriod").Value.Equals(""))
-                    precondition.TakenPeriod = double.Parse(item.Element("Precondition").Element("TakenPeriod").Value);
-
-                AddDataToList(item, "QuestRules", "NumOfItems", questRules.NumOfItems);
-                AddDataToList(item, "QuestRules", "TypeOfItems", questRules.TypeOfItems);
-                AddDataToList(item, "QuestRules", "AttrOfItems", questRules.AttrOfItems);
-                AddDataToList(item, "QuestRules", "Scenarios", questRules.Scenarios);
-                AddDataToList(item, "QuestRules", "MassQuests", questRules.MassQuests);
-
-
-                ParseIntIfNotEmpty(item, "QuestRules", "MaxGroup", out questRules.MaxGroup, 0);
-                ParseIntIfNotEmpty(item, "QuestRules", "MinGroup", out questRules.MinGroup, 0);
-                ParseIntIfNotEmpty(item, "QuestRules", "MaxMember", out questRules.MaxMember, 0);
-                ParseIntIfNotEmpty(item, "QuestRules", "MinMember", out questRules.MinMember, 0);
-                questRules.TeleportTo = item.Element("QuestRules").Element("TeleportTo").Value.ToString();
-
-                AddDataToList(item, "Reward", "Experience", reward.Experience);
-                AddDataToList(item, "Reward", "NumOfItems", reward.NumOfItems);
-                AddDataToList(item, "Reward", "TypeOfItems", reward.TypeOfItems);
-                AddDataToList(item, "Reward", "AttrOfItems", reward.AttrOfItems);
-
-                if (item.Element("Reward").Descendants().Any(itm2 => itm2.Name == "Probability"))
-                    if (!item.Element("Reward").Element("Probability").Value.Equals(""))
-                        foreach (string itemType in item.Element("Reward").Element("Probability").Value.Split(';'))
-                            reward.Probability.Add(float.Parse(itemType, CultureInfo.InvariantCulture));
-
-                if (!item.Element("Reward").Element("Credits").Value.Equals(""))
-                    reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value);
-
-                ParseIntIfNotEmpty(item, "Reward", "Difficulty", out reward.Difficulty, 1);
-                ParseIntIfNotEmpty(item, "Reward", "KarmaPK", out reward.KarmaPK, 0);
-
-                foreach (string fraction in item.Element("Reward").Element("Reputation").Value.Split(';'))
-                    if (!fraction.Equals(""))
-                        reward.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
-
-                foreach (XElement effect in item.Element("Reward").Element("Effects").Elements())
-                {
-                    reward.Effects.Add(new CEffect(int.Parse(effect.Element("id").Value.ToString()),
-                        int.Parse(effect.Element("stack").Value.ToString())));
+                    ParseIntIfNotEmpty(item, "QuestRules", "MaxGroup", out questRules.MaxGroup, 0);
+                    ParseIntIfNotEmpty(item, "QuestRules", "MinGroup", out questRules.MinGroup, 0);
+                    ParseIntIfNotEmpty(item, "QuestRules", "MaxMember", out questRules.MaxMember, 0);
+                    ParseIntIfNotEmpty(item, "QuestRules", "MinMember", out questRules.MinMember, 0);
+                    if (item.Element("QuestRules").Element("TeleportTo") != null)
+                        questRules.TeleportTo = item.Element("QuestRules").Element("TeleportTo").Value.ToString();
                 }
 
-                if (!item.Element("Additional").Element("ShowProgress").Value.ToString().Equals(""))
-                    additional.ShowProgress = int.Parse(item.Element("Additional").Element("ShowProgress").Value.ToString());
-                else
-                    additional.ShowProgress = this.SHOW_JOURNAL | this.SHOW_MESSAGE_CLOSE | this.SHOW_MESSAGE_TAKE | this.SHOW_MESSAGE_PROGRESS;
-
-                ParseIntIfNotEmpty(item, "Additional", "IsSubQuest", out additional.IsSubQuest, 0);
-                AddDataToList(item, "Additional", "ListOfSubQuest", additional.ListOfSubQuest);
-
-                if (item.Element("Additional").Descendants().Any(u => u.Name == "CantCancel"))
-                    additional.CantCancel = item.Element("Additional").Element("CantCancel").Value.Equals("1");
-                if (item.Element("Additional").Element("DebugData") != null)
+                if (item.Element("Reward") != null)
                 {
-                    additional.DebugData = item.Element("Additional").Element("DebugData").Value.ToString();
-                }
-                AddDataToList(item, "Penalty", "Experience", penalty.Experience);
-                AddDataToList(item, "Penalty", "NumOfItems", penalty.NumOfItems);
-                AddDataToList(item, "Penalty", "TypeOfItems", penalty.TypeOfItems);
+                    AddDataToList(item, "Reward", "Experience", reward.Experience);
+                    AddDataToList(item, "Reward", "NumOfItems", reward.NumOfItems);
+                    AddDataToList(item, "Reward", "TypeOfItems", reward.TypeOfItems);
+                    AddDataToList(item, "Reward", "AttrOfItems", reward.AttrOfItems);
 
-                if (!item.Element("Penalty").Element("Credits").Value.Equals(""))
-                    penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value);
+                    if (item.Element("Reward").Descendants().Any(itm2 => itm2.Name == "Probability"))
+                        if (!item.Element("Reward").Element("Probability").Value.Equals(""))
+                            foreach (string itemType in item.Element("Reward").Element("Probability").Value.Split(';'))
+                                reward.Probability.Add(float.Parse(itemType, CultureInfo.InvariantCulture));
+
+                    if ((item.Element("Reward").Element("Credits") != null) &&(!item.Element("Reward").Element("Credits").Value.Equals("")))
+                        reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value);
+
+                    ParseIntIfNotEmpty(item, "Reward", "KarmaPK", out reward.KarmaPK, 0);
+
+                    if (item.Element("Reward").Element("Reputation") != null)
+                        foreach (string fraction in item.Element("Reward").Element("Reputation").Value.Split(';'))
+                            if (!fraction.Equals(""))
+                                reward.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
+                    if (item.Element("Reward").Element("Effects") != null)
+                        foreach (XElement effect in item.Element("Reward").Element("Effects").Elements())
+                        {
+                            reward.Effects.Add(new CEffect(int.Parse(effect.Element("id").Value.ToString()),
+                            int.Parse(effect.Element("stack").Value.ToString())));
+                        }
+                }
+
+                if (item.Element("Additional") != null)
+                {
+                    if (item.Element("Additional").Element("ShowProgress") != null)
+                    {
+                        if (!item.Element("Additional").Element("ShowProgress").Value.ToString().Equals(""))
+                            additional.ShowProgress = int.Parse(item.Element("Additional").Element("ShowProgress").Value.ToString());
+                        else
+                            additional.ShowProgress = this.SHOW_JOURNAL | this.SHOW_MESSAGE_CLOSE | this.SHOW_MESSAGE_TAKE | this.SHOW_MESSAGE_PROGRESS;
+                    }
+
+                    ParseIntIfNotEmpty(item, "Additional", "IsSubQuest", out additional.IsSubQuest, 0);
+                    AddDataToList(item, "Additional", "ListOfSubQuest", additional.ListOfSubQuest);
+
+                    if (item.Element("Additional").Descendants().Any(u => u.Name == "CantCancel"))
+                        additional.CantCancel = item.Element("Additional").Element("CantCancel").Value.Equals("1");
+                    if (item.Element("Additional").Element("DebugData") != null)
+                    {
+                        additional.DebugData = item.Element("Additional").Element("DebugData").Value.ToString();
+                    }
+                }
+                if (item.Element("Penalty") != null)
+                {
+                    AddDataToList(item, "Penalty", "Experience", penalty.Experience);
+                    AddDataToList(item, "Penalty", "NumOfItems", penalty.NumOfItems);
+                    AddDataToList(item, "Penalty", "TypeOfItems", penalty.TypeOfItems);
+
+                    if ((item.Element("Penalty").Element("Credits") != null) && (!item.Element("Penalty").Element("Credits").Value.Equals("")))
+                        penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value);
+                }
 
                 if (!dict_target.ContainsKey(QuestID))
                     dict_target.Add(QuestID, new CQuest(QuestID, 0, information, precondition, questRules, reward, additional, target, penalty));
@@ -220,7 +246,8 @@ namespace StalkerOnlineQuesterEditor
         
         private void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
         {
-            if (Element.Element(Name1).Element(Name2) == null) 
+
+            if((Element == null) || (Element.Element(Name1).Element(Name2) == null) )
                 return;
             if (Element.Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
@@ -229,6 +256,11 @@ namespace StalkerOnlineQuesterEditor
 
         private void ParseIntIfNotEmpty(XElement Element, String Name1, String Name2, out int value, int defaultValue)
         {
+            if ((Element == null) || (Element.Element(Name1).Element(Name2) == null))
+            {
+                value = defaultValue;
+                return;
+            }
             if (!Element.Element(Name1).Element(Name2).Value.Equals(""))
                 value = int.Parse(Element.Element(Name1).Element(Name2).Value);
             else
@@ -336,70 +368,125 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (CQuest questValue in target.Values)
             {
-                List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
-                XElement Effects;
-                if (EffectsXE.Any())
-                    Effects = new XElement("Effects", EffectsXE);
-                else
-                    Effects = new XElement("Effects", "");
-
                 element = new XElement("Quest",
-                   new XElement("ID", questValue.QuestID),
-                   new XElement("Target",
-                        new XElement("onFin", questValue.Target.onFin),
-                        new XElement("QuestType", questValue.Target.QuestType),
-                        new XElement("ObjectType", Global.GetIntAsString(questValue.Target.ObjectType)),
-                        new XElement("ObjectAttr", questValue.Target.ObjectAttr),
-                        new XElement("NumOfObjects", Global.GetIntAsString(questValue.Target.NumOfObjects)),
-                        new XElement("ObjectName", questValue.Target.ObjectName),
-                        new XElement("AObjectAttrs", Global.GetListAsString(questValue.Target.AObjectAttrs)),
-                        new XElement("AreaName", questValue.Target.AreaName),
-                        new XElement("IsGroup", questValue.Target.IsGroup.ToString()),
-                        new XElement("IsClan", Global.GetBoolAsString(questValue.Target.IsClan)),
-                        new XElement("Time", questValue.Target.Time.ToString())),
-                    new XElement("Precondition",
-                        new XElement("TakenPeriod", questValue.Precondition.TakenPeriod.ToString()),
-                        new XElement("Repeat", Global.GetIntAsString(questValue.Precondition.Repeat))),
-                    new XElement("QuestRules",
-                        new XElement("Scenarios", Global.GetListAsString(questValue.QuestRules.Scenarios)),
-                        new XElement("TeleportTo", questValue.QuestRules.TeleportTo),
-                        new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestRules.TypeOfItems)),
-                        new XElement("NumOfItems", Global.GetListAsString(questValue.QuestRules.NumOfItems)),
-                        new XElement("AttrOfItems", Global.GetListAsString(questValue.QuestRules.AttrOfItems)),
-                        new XElement("MinGroup", Global.GetIntAsString(questValue.QuestRules.MinGroup)),
-                        new XElement("MaxGroup", Global.GetIntAsString(questValue.QuestRules.MaxGroup)),
-                        new XElement("MinMember", Global.GetIntAsString(questValue.QuestRules.MinMember)),
-                        new XElement("MaxMember", Global.GetIntAsString(questValue.QuestRules.MaxMember))),
-                    new XElement("Reward",
-                        new XElement("Experience", Global.GetListAsString(questValue.Reward.Experience)),
-                        new XElement("TypeOfItems", Global.GetListAsString(questValue.Reward.TypeOfItems)),
-                        new XElement("NumOfItems", Global.GetListAsString(questValue.Reward.NumOfItems)),
-                        new XElement("AttrOfItems", Global.GetListAsString(questValue.Reward.AttrOfItems)),
-                        new XElement("Probability", getListAsString(questValue.Reward.Probability)),
-                        new XElement("Credits", questValue.Reward.Credits),
-                        new XElement("Reputation", questValue.Reward.getReputation()),
-                        new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()),
-                        new XElement("Difficulty", questValue.Reward.Difficulty.ToString()),
-                        Effects),
-                    new XElement("Penalty",
-                        new XElement("Experience", Global.GetListAsString(questValue.QuestPenalty.Experience)),
-                        new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestPenalty.TypeOfItems)),
-                        new XElement("NumOfItems", Global.GetListAsString(questValue.QuestPenalty.NumOfItems)),
-                        new XElement("Credits", questValue.QuestPenalty.Credits)),
-                    new XElement("Additional",
-                        new XElement("IsSubQuest", Global.GetIntAsString(questValue.Additional.IsSubQuest)),
-                        new XElement("ListOfSubQuest", Global.GetListAsString(questValue.Additional.ListOfSubQuest)),
-                        new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()),
-                        new XElement("CantCancel", Global.GetBoolAsString(questValue.Additional.CantCancel)),
-                        new XElement("Holder", questValue.Additional.Holder)));
-                if (questValue.QuestRules.MassQuests.Any())
-                    element.Element("QuestRules").Add(new XElement("MassQuests", Global.GetListAsString(questValue.QuestRules.MassQuests)));
-                if (questValue.QuestRules.basePercent != 0)
-                    element.Element("QuestRules").Add(new XElement("baseToCapturePercent", questValue.QuestRules.basePercent));
-                if (questValue.Additional.DebugData != "")
-                    element.Element("Additional").Add(new XElement("DebugData", questValue.Additional.DebugData));
-                if (questValue.Target.useState)
-                    element.Element("Target").Add(new XElement("itemState", questValue.Target.itemState));
+                   new XElement("ID", questValue.QuestID));
+                if (questValue.Target.Any())
+                {
+                    element.Add(new XElement("Target"));
+                    if (questValue.Target.onFin != 0)
+                        element.Element("Target").Add(new XElement("onFin", questValue.Target.onFin));
+                    if (questValue.Target.QuestType != 0)
+                        element.Element("Target").Add(new XElement("QuestType", questValue.Target.QuestType));
+                    if (questValue.Target.ObjectType != 0)
+                        element.Element("Target").Add(new XElement("ObjectType", Global.GetIntAsString(questValue.Target.ObjectType)));
+                    if (questValue.Target.ObjectAttr != 0)
+                        element.Element("Target").Add(new XElement("ObjectAttr", questValue.Target.ObjectAttr));
+                    if (questValue.Target.NumOfObjects != 0)
+                        element.Element("Target").Add(new XElement("NumOfObjects", Global.GetIntAsString(questValue.Target.NumOfObjects)));
+                    if (questValue.Target.ObjectName != "")
+                        element.Element("Target").Add( new XElement("ObjectName", questValue.Target.ObjectName));
+                    if (questValue.Target.AObjectAttrs.Any())
+                        element.Element("Target").Add(new XElement("AObjectAttrs", Global.GetListAsString(questValue.Target.AObjectAttrs)));
+                    if (questValue.Target.AreaName != "")
+                        element.Element("Target").Add(new XElement("AreaName", questValue.Target.AreaName));
+                    if (questValue.Target.IsGroup != 0)
+                        element.Element("Target").Add(new XElement("IsGroup", questValue.Target.IsGroup.ToString()));
+                    if (questValue.Target.IsClan)
+                        element.Element("Target").Add(new XElement("IsClan", questValue.Target.IsClan));
+                    if (questValue.Target.Time != 0)
+                        element.Element("Target").Add(new XElement("Time", questValue.Target.Time.ToString()));
+                    if (questValue.Target.useState)
+                        element.Element("Target").Add(new XElement("itemState", questValue.Target.itemState));
+                }
+
+                if (questValue.Precondition.Any())
+                {
+                    element.Add(new XElement("Precondition"));
+                    if (questValue.Precondition.TakenPeriod != 0)
+                        element.Element("Precondition").Add(new XElement("TakenPeriod", questValue.Precondition.TakenPeriod));
+                    if (questValue.Precondition.Repeat != 0)
+                        element.Element("Precondition").Add(new XElement("Repeat", questValue.Precondition.Repeat));
+                }
+
+                if (questValue.QuestRules.Any())
+                {
+                    element.Add(new XElement("QuestRules"));
+                    if (questValue.QuestRules.Scenarios.Any())
+                         element.Element("QuestRules").Add(new XElement("Scenarios", Global.GetListAsString(questValue.QuestRules.Scenarios)));
+                    if (questValue.QuestRules.TeleportTo != "")
+                        element.Element("QuestRules").Add(new XElement("TeleportTo", questValue.QuestRules.TeleportTo));
+                    if (questValue.QuestRules.TypeOfItems.Any())
+                        element.Element("QuestRules").Add(new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestRules.TypeOfItems)));
+                    if (questValue.QuestRules.NumOfItems.Any())
+                        element.Element("QuestRules").Add(new XElement("NumOfItems", Global.GetListAsString(questValue.QuestRules.NumOfItems)));
+                    if (questValue.QuestRules.AttrOfItems.Any())
+                        element.Element("QuestRules").Add(new XElement("AttrOfItems", Global.GetListAsString(questValue.QuestRules.AttrOfItems)));
+                    if (questValue.QuestRules.MinGroup != 0)
+                        element.Element("QuestRules").Add(new XElement("MinGroup", Global.GetIntAsString(questValue.QuestRules.MinGroup)));
+                    if (questValue.QuestRules.MaxGroup != 0)
+                        element.Element("QuestRules").Add(new XElement("MaxGroup", Global.GetIntAsString(questValue.QuestRules.MaxGroup)));
+                    if (questValue.QuestRules.MaxMember != 0)
+                        element.Element("QuestRules").Add(new XElement("MaxMember", Global.GetIntAsString(questValue.QuestRules.MaxMember)));
+                    if (questValue.QuestRules.MassQuests.Any())
+                        element.Element("QuestRules").Add(new XElement("MassQuests", Global.GetListAsString(questValue.QuestRules.MassQuests)));
+                    if (questValue.QuestRules.basePercent != 0)
+                        element.Element("QuestRules").Add(new XElement("baseToCapturePercent", questValue.QuestRules.basePercent));
+                }
+
+                if (questValue.Reward.Any())
+                {
+                    element.Add(new XElement("Reward"));
+                    if (questValue.Reward.Experience.Any())
+                        element.Element("Reward").Add(new XElement("Experience", Global.GetListAsString(questValue.Reward.Experience)));
+                    if (questValue.Reward.TypeOfItems.Any())
+                        element.Element("Reward").Add(new XElement("TypeOfItems", Global.GetListAsString(questValue.Reward.TypeOfItems)));
+                    if (questValue.Reward.NumOfItems.Any())
+                        element.Element("Reward").Add(new XElement("NumOfItems", Global.GetListAsString(questValue.Reward.NumOfItems)));
+                    if (questValue.Reward.AttrOfItems.Any())
+                        element.Element("Reward").Add(new XElement("AttrOfItems", Global.GetListAsString(questValue.Reward.AttrOfItems)));
+                    if (questValue.Reward.Probability.Any())
+                        element.Element("Reward").Add(new XElement("Probability", getListAsString(questValue.Reward.Probability)));
+                    if (questValue.Reward.Credits != 0)
+                        element.Element("Reward").Add( new XElement("Credits", questValue.Reward.Credits));
+                    if (questValue.Reward.ReputationNotEmpty())
+                        element.Element("Reward").Add(new XElement("Reputation", questValue.Reward.getReputation()));
+                    if (questValue.Reward.KarmaPK != 0)
+                        element.Element("Reward").Add(new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()));
+                    List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
+                    if (EffectsXE.Any())
+                        element.Element("Reward").Add(new XElement("Effects", EffectsXE));
+                }              
+
+                if (questValue.QuestPenalty.Any())
+                {
+                     element.Add(new XElement("Penalty"));
+                     if (questValue.QuestPenalty.Experience.Any())
+                         element.Element("Penalty").Add(new XElement("Experience", Global.GetListAsString(questValue.QuestPenalty.Experience)));
+                     if (questValue.QuestPenalty.TypeOfItems.Any())
+                         element.Element("Penalty").Add(new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestPenalty.TypeOfItems)));
+                     if (questValue.QuestPenalty.NumOfItems.Any())
+                         element.Element("Penalty").Add(new XElement("NumOfItems", Global.GetListAsString(questValue.QuestPenalty.NumOfItems)));
+                    if (questValue.QuestPenalty.Credits != 0)
+                        element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits));
+                }
+
+                if (questValue.Additional.Any())
+                {
+                    element.Add(new XElement("Additional"));
+                    if (questValue.Additional.IsSubQuest != 0)
+                        element.Element("Additional").Add(new XElement("IsSubQuest", Global.GetIntAsString(questValue.Additional.IsSubQuest)));
+                    if (questValue.Additional.ListOfSubQuest.Any())
+                        element.Element("Additional").Add(new XElement("ListOfSubQuest", Global.GetListAsString(questValue.Additional.ListOfSubQuest)));
+                    if (questValue.Additional.ShowProgress != 0)
+                        element.Element("Additional").Add(new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()));
+                    if (questValue.Additional.CantCancel)
+                        element.Element("Additional").Add(new XElement("CantCancel", Global.GetBoolAsString(questValue.Additional.CantCancel)));
+                    if (questValue.Additional.Holder != "")
+                        element.Element("Additional").Add(new XElement("Holder", questValue.Additional.Holder));
+                    if (questValue.Additional.DebugData != "")
+                        element.Element("Additional").Add(new XElement("DebugData", questValue.Additional.DebugData));
+                }
+
                 resultDoc.Root.Add(element);
             }
 
