@@ -107,25 +107,6 @@ namespace StalkerOnlineQuesterEditor
             this.bFindQuest = new System.Windows.Forms.Button();
             this.tabManage = new System.Windows.Forms.TabPage();
             this.dgvManage = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subevents = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.npcName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subNPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dialogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardBattle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardSurvive = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardSupport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardCredits = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardReputation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.repeat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.repeatPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Legend = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worked = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bSaveManage = new System.Windows.Forms.Button();
             this.tabTranslate = new System.Windows.Forms.TabPage();
@@ -171,6 +152,24 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subevents = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.npcName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subNPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dialogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardBattle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardSurvive = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardSupport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardCredits = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.repeat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.repeatPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Legend = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worked = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -1093,7 +1092,6 @@ namespace StalkerOnlineQuesterEditor
             this.rewardSupport,
             this.rewardCredits,
             this.rewardItems,
-            this.rewardReputation,
             this.repeat,
             this.repeatPeriod,
             this.Level,
@@ -1105,116 +1103,6 @@ namespace StalkerOnlineQuesterEditor
             this.dgvManage.Name = "dgvManage";
             this.dgvManage.Size = new System.Drawing.Size(906, 515);
             this.dgvManage.TabIndex = 0;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // subevents
-            // 
-            this.subevents.HeaderText = "Вложенные события";
-            this.subevents.Name = "subevents";
-            this.subevents.ReadOnly = true;
-            // 
-            // title
-            // 
-            this.title.HeaderText = "Заголовок";
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Описание";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // npcName
-            // 
-            this.npcName.HeaderText = "NPC";
-            this.npcName.Name = "npcName";
-            this.npcName.ReadOnly = true;
-            // 
-            // subNPC
-            // 
-            this.subNPC.HeaderText = "Список NPC";
-            this.subNPC.Name = "subNPC";
-            this.subNPC.ReadOnly = true;
-            // 
-            // dialogID
-            // 
-            this.dialogID.HeaderText = "id диалога";
-            this.dialogID.Name = "dialogID";
-            this.dialogID.ReadOnly = true;
-            // 
-            // rewardBattle
-            // 
-            this.rewardBattle.HeaderText = "Награда опыт-бой";
-            this.rewardBattle.Name = "rewardBattle";
-            this.rewardBattle.ReadOnly = true;
-            // 
-            // rewardSurvive
-            // 
-            this.rewardSurvive.HeaderText = "Награда опыт-выживание";
-            this.rewardSurvive.Name = "rewardSurvive";
-            this.rewardSurvive.ReadOnly = true;
-            // 
-            // rewardSupport
-            // 
-            this.rewardSupport.HeaderText = "Награда опыт-поддержка";
-            this.rewardSupport.Name = "rewardSupport";
-            this.rewardSupport.ReadOnly = true;
-            // 
-            // rewardCredits
-            // 
-            this.rewardCredits.HeaderText = "Награда деньги";
-            this.rewardCredits.Name = "rewardCredits";
-            this.rewardCredits.ReadOnly = true;
-            // 
-            // rewardItems
-            // 
-            this.rewardItems.HeaderText = "Награда вещи";
-            this.rewardItems.Name = "rewardItems";
-            this.rewardItems.ReadOnly = true;
-            // 
-            // rewardReputation
-            // 
-            this.rewardReputation.HeaderText = "Награда репутация";
-            this.rewardReputation.Name = "rewardReputation";
-            this.rewardReputation.ReadOnly = true;
-            // 
-            // repeat
-            // 
-            this.repeat.HeaderText = "Повторяемый";
-            this.repeat.Name = "repeat";
-            this.repeat.ReadOnly = true;
-            // 
-            // repeatPeriod
-            // 
-            this.repeatPeriod.HeaderText = "Период повтора (часы)";
-            this.repeatPeriod.Name = "repeatPeriod";
-            this.repeatPeriod.ReadOnly = true;
-            // 
-            // Level
-            // 
-            this.Level.HeaderText = "Уровень ( комментарий)";
-            this.Level.Name = "Level";
-            // 
-            // author
-            // 
-            this.author.HeaderText = "Автор ( комментарий)";
-            this.author.Name = "author";
-            // 
-            // Legend
-            // 
-            this.Legend.HeaderText = "Легенда ( комментарий)";
-            this.Legend.Name = "Legend";
-            // 
-            // worked
-            // 
-            this.worked.HeaderText = "Рабочий";
-            this.worked.Name = "worked";
             // 
             // panel2
             // 
@@ -1617,6 +1505,110 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 1;
             // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // subevents
+            // 
+            this.subevents.HeaderText = "Вложенные события";
+            this.subevents.Name = "subevents";
+            this.subevents.ReadOnly = true;
+            // 
+            // title
+            // 
+            this.title.HeaderText = "Заголовок";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Описание";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // npcName
+            // 
+            this.npcName.HeaderText = "NPC";
+            this.npcName.Name = "npcName";
+            this.npcName.ReadOnly = true;
+            // 
+            // subNPC
+            // 
+            this.subNPC.HeaderText = "Список NPC";
+            this.subNPC.Name = "subNPC";
+            this.subNPC.ReadOnly = true;
+            // 
+            // dialogID
+            // 
+            this.dialogID.HeaderText = "id диалога";
+            this.dialogID.Name = "dialogID";
+            this.dialogID.ReadOnly = true;
+            // 
+            // rewardBattle
+            // 
+            this.rewardBattle.HeaderText = "Награда опыт-бой";
+            this.rewardBattle.Name = "rewardBattle";
+            this.rewardBattle.ReadOnly = true;
+            // 
+            // rewardSurvive
+            // 
+            this.rewardSurvive.HeaderText = "Награда опыт-выживание";
+            this.rewardSurvive.Name = "rewardSurvive";
+            this.rewardSurvive.ReadOnly = true;
+            // 
+            // rewardSupport
+            // 
+            this.rewardSupport.HeaderText = "Награда опыт-поддержка";
+            this.rewardSupport.Name = "rewardSupport";
+            this.rewardSupport.ReadOnly = true;
+            // 
+            // rewardCredits
+            // 
+            this.rewardCredits.HeaderText = "Награда деньги";
+            this.rewardCredits.Name = "rewardCredits";
+            this.rewardCredits.ReadOnly = true;
+            // 
+            // rewardItems
+            // 
+            this.rewardItems.HeaderText = "Награда вещи";
+            this.rewardItems.Name = "rewardItems";
+            this.rewardItems.ReadOnly = true;
+            // 
+            // repeat
+            // 
+            this.repeat.HeaderText = "Повторяемый";
+            this.repeat.Name = "repeat";
+            this.repeat.ReadOnly = true;
+            // 
+            // repeatPeriod
+            // 
+            this.repeatPeriod.HeaderText = "Период повтора (часы)";
+            this.repeatPeriod.Name = "repeatPeriod";
+            this.repeatPeriod.ReadOnly = true;
+            // 
+            // Level
+            // 
+            this.Level.HeaderText = "Уровень ( комментарий)";
+            this.Level.Name = "Level";
+            // 
+            // author
+            // 
+            this.author.HeaderText = "Автор ( комментарий)";
+            this.author.Name = "author";
+            // 
+            // Legend
+            // 
+            this.Legend.HeaderText = "Легенда ( комментарий)";
+            this.Legend.Name = "Legend";
+            // 
+            // worked
+            // 
+            this.worked.HeaderText = "Рабочий";
+            this.worked.Name = "worked";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1723,25 +1715,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button bSaveManage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subevents;
-        private System.Windows.Forms.DataGridViewTextBoxColumn title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn npcName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subNPC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dialogID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardBattle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardSurvive;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardSupport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardCredits;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardReputation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn repeat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn repeatPeriod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Level;
-        private System.Windows.Forms.DataGridViewTextBoxColumn author;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Legend;
-        private System.Windows.Forms.DataGridViewComboBoxColumn worked;
         private System.Windows.Forms.TreeView treeQuestBuffer;
         private System.Windows.Forms.Label labelQuestTree;
         private System.Windows.Forms.Label labelBuffer;
@@ -1829,6 +1802,24 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ToolTip toolTipDialogs;
         private System.Windows.Forms.ComboBox cbItemTarget;
         private System.Windows.Forms.Label labelItemTarget;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subevents;
+        private System.Windows.Forms.DataGridViewTextBoxColumn title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn npcName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subNPC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dialogID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rewardBattle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rewardSurvive;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rewardSupport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rewardCredits;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rewardItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn repeat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn repeatPeriod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Level;
+        private System.Windows.Forms.DataGridViewTextBoxColumn author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Legend;
+        private System.Windows.Forms.DataGridViewComboBoxColumn worked;
     }
 }
 
