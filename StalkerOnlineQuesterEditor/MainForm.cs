@@ -1099,6 +1099,171 @@ namespace StalkerOnlineQuesterEditor
             }
             return ret;
         }
+
+        void fillQuestDataInManageTab(string npcName, CQuest quest, bool force = false, string parentTitle = "" )
+        {
+            //если 12 тип, то показать его детей первого уровня и его самого, всё равно, что сам он дочерний
+            if (quest.Additional.Holder == npcName && ( force || (quest.Additional.IsSubQuest == 0) || (quest.Target.QuestType == 12)))
+            {
+
+                string id = quest.QuestID.ToString();
+                List<int> iSubIDS = getSubIDs(quest.QuestID);
+                List<string> sNPCLink = new List<string>();
+                int rewardExpBattle = 0;
+                int rewardExpSurvival = 0;
+                int rewardExpSupport = 0;
+                float rewardCredits = 0;
+                int[] reputations = new int[1];
+                //чтоб ничего не сломалось, если кто-то захотел удалить/добавить фракцию
+                Array.Resize<int>(ref reputations, fractions.genLenListOfFractions());
+
+                Dictionary<int, int> rewardItems = new Dictionary<int, int>();
+
+
+                foreach (int quid in iSubIDS)
+                {
+                    CQuest q = getQuestOnQuestID(quid);
+
+                    if (q.Reward.Experience.Any())
+                    {
+                        rewardExpBattle += q.Reward.Experience[0];
+                        rewardExpSurvival += q.Reward.Experience[1];
+                        rewardExpSupport += q.Reward.Experience[2];
+                    }
+
+                    rewardCredits += q.Reward.Credits;
+
+                    for (int index = 0; index < q.Reward.TypeOfItems.Count; ++index)
+                    {
+                        int type = q.Reward.TypeOfItems[index];
+                        int count = q.Reward.NumOfItems[index];
+                        int attr = 0;
+                        if (q.Reward.AttrOfItems.Any())
+                            attr = q.Reward.AttrOfItems[index];
+                        if (attr == 0)
+                        {
+                            if (rewardItems.Keys.Contains(type))
+                                rewardItems[type] += count;
+                            else
+                                rewardItems[type] = count;
+                        }
+                    }
+                    int frac_index = 0;
+                    foreach (KeyValuePair<int, string> fraction in this.fractions.getListOfFractions())
+                    {
+                        int fraction_id = fraction.Key;
+                        int val = 0;
+                        if (q.Reward.Reputation.ContainsKey(fraction_id))
+                            val = q.Reward.Reputation[fraction_id];
+                        reputations[frac_index] += val;
+                        frac_index++;
+                    }
+                    if (quest.Target.QuestType == 12)
+                    {
+                        break;
+                    }
+                }
+
+                string npcLinks = "";
+                string getDialogs = "";
+                string subIDs = Global.GetListAsString(iSubIDS);
+                string title;
+                if (parentTitle != "")
+                    title = parentTitle;
+                else
+                    title = quest.QuestInformation.Title;
+                string description = quest.QuestInformation.Description;
+                string npcNe = quest.Additional.Holder;
+                string srewardExpBattle = rewardExpBattle.ToString();
+                string srewardSurvival = rewardExpSurvival.ToString();
+                string srewardExpSupport = rewardExpSupport.ToString();
+                string srewardCredits = rewardCredits.ToString();
+                string sRewardItem = "";
+                string sRepeat = quest.Precondition.Repeat.ToString();
+                string sPeriod = quest.Precondition.TakenPeriod.ToString();
+
+                string sLevel = "";
+                string sAuthor = "";
+                string sLegend = "";
+                string sWorked = "Нет.";
+
+                COperNote note = manageNotes.getNote(quest.QuestID);
+                if (note != null)
+                {
+                    sAuthor = note.iOperator;
+                    sLegend = note.sHistory;
+                    sLevel = note.iLevel;
+                    if (note.iWorked == 1)
+                        sWorked = "Да.";
+                    else if (note.iWorked == 2)
+                        sWorked = "Правка.";
+                }
+
+                //NPC dialog statistic
+                foreach (KeyValuePair<string, Dictionary<int, CDialog>> dialogNPC in dialogs.dialogs)
+                {
+                    foreach (KeyValuePair<int, CDialog> dialog in dialogNPC.Value)
+                    {
+                        if (dialog.Value.Holder == npcName)
+                            if (dialog.Value.Actions.GetQuests.Contains(quest.QuestID))
+                            {
+                                if (getDialogs == "")
+                                    getDialogs += dialog.Value.DialogID.ToString();
+                                else
+                                    getDialogs += ("," + dialog.Value.DialogID.ToString());
+                            }
+                        if (!sNPCLink.Contains(dialog.Value.Holder) && dialog.Value.Holder != npcNe)
+                        {
+                            foreach (int q in dialog.Value.Actions.CompleteQuests)
+                                if ((iSubIDS.Contains(q)) && (!sNPCLink.Contains(dialog.Value.Holder)))
+                                    sNPCLink.Add(dialog.Value.Holder);
+                        }
+                    }
+
+                }
+                //NPC dialog statistic
+
+                foreach (string npc in sNPCLink)
+                {
+                    if (npcLinks == "")
+                        npcLinks += npc;
+                    else
+                        npcLinks += "," + npc;
+                }
+
+                //rewardItem
+
+                foreach (int type in rewardItems.Keys)
+                {
+                    string itemName = itemConst.getDescriptionOnID(type);
+                    string count = rewardItems[type].ToString();
+
+                    if (sRewardItem == "")
+                        sRewardItem += itemName + ":" + count.ToString();
+                    else
+                        sRewardItem += "\n" + itemName + ":" + count.ToString();
+                }
+                object[] row = { id, subIDs, title, description, npcNe, npcLinks, getDialogs, srewardExpBattle, srewardSurvival, srewardExpSupport, srewardCredits, sRewardItem, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
+                int old_len = row.Count();
+                Array.Resize(ref row, old_len + reputations.Count());
+                for (int i = old_len, j = 0; i < row.Count(); i++, j++)
+                {
+                    row[i] = reputations[j];
+                }
+
+                dgvManage.Rows.Add(row);
+                if (quest.Target.QuestType == 12)
+                {
+                    CQuest sub_quest;
+                    foreach (int subquestID in quest.Additional.ListOfSubQuest)
+                    {
+                        sub_quest = getQuestOnQuestID(subquestID);
+                        fillQuestDataInManageTab(npcName, sub_quest, true, quest.QuestInformation.Title);
+                    }
+
+                }
+            }
+        }
         
         //! Заполняет вкладку Управление
         void FillTabManage()
@@ -1112,149 +1277,10 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (string npcName in npcConst.NPCs.Keys)
                 foreach (CQuest quest in quests.quest.Values)
-                    if (quest.Additional.Holder == npcName && (quest.Additional.IsSubQuest==0) )
-                    {
-
-                        string id = quest.QuestID.ToString();
-                        List<int> iSubIDS = getSubIDs(quest.QuestID);
-                        List<string> sNPCLink = new List<string>();
-                        int rewardExpBattle = 0;
-                        int rewardExpSurvival = 0;
-                        int rewardExpSupport = 0;
-                        float rewardCredits = 0;
-                        int[] reputations = new int[1];
-                        //чтоб ничего не сломалось, если кто-то захотел удалить/добавить фракцию
-                        Array.Resize<int>(ref reputations, fractions.genLenListOfFractions());
-
-                        Dictionary<int, int> rewardItems = new Dictionary<int, int>();
-
-
-                        foreach (int quid in iSubIDS)
-                        {
-                            CQuest q = getQuestOnQuestID(quid);
-
-                            if (q.Reward.Experience.Any())
-                            {
-                                rewardExpBattle += q.Reward.Experience[0];
-                                rewardExpSurvival += q.Reward.Experience[1];
-                                rewardExpSupport += q.Reward.Experience[2];
-                            }
-
-                            rewardCredits += q.Reward.Credits;
-
-                            for (int index = 0; index < q.Reward.TypeOfItems.Count; ++index)
-                            {
-                                int type = q.Reward.TypeOfItems[index];
-                                int count = q.Reward.NumOfItems[index];
-                                int attr = 0;
-                                if (q.Reward.AttrOfItems.Any())
-                                     attr = q.Reward.AttrOfItems[index];
-                                if (attr == 0)
-                                {
-                                    if (rewardItems.Keys.Contains(type))
-                                        rewardItems[type] += count;
-                                    else
-                                        rewardItems[type] = count;
-                                }
-                            }
-                            int frac_index = 0;
-                            foreach (KeyValuePair<int, string> fraction in this.fractions.getListOfFractions())
-                            {
-                                int fraction_id = fraction.Key;
-                                int val = 0;
-                                if (q.Reward.Reputation.ContainsKey(fraction_id))
-                                    val = q.Reward.Reputation[fraction_id];
-                                reputations[frac_index] = val;
-                                frac_index++;
-                            }
-                        }
-
-                        string npcLinks = "";
-                        string getDialogs = "";
-                        string subIDs = Global.GetListAsString(iSubIDS);
-                        string title = quest.QuestInformation.Title;
-                        string description = quest.QuestInformation.Description;
-                        string npcNe = quest.Additional.Holder;
-                        string srewardExpBattle = rewardExpBattle.ToString();
-                        string srewardSurvival = rewardExpSurvival.ToString();
-                        string srewardExpSupport = rewardExpSupport.ToString();
-                        string srewardCredits = rewardCredits.ToString();
-                        string srewardReputation = "";
-                        string sRewardItem = "";
-                        string sRepeat = quest.Precondition.Repeat.ToString();
-                        string sPeriod = quest.Precondition.TakenPeriod.ToString();
-
-                        string sLevel = "";
-                        string sAuthor = "";
-                        string sLegend = "";
-                        string sWorked = "Нет.";
-
-                        COperNote note = manageNotes.getNote(quest.QuestID);
-                        if (note != null)
-                        {
-                            sAuthor = note.iOperator;
-                            sLegend = note.sHistory;
-                            sLevel = note.iLevel;
-                            if (note.iWorked == 1)
-                                sWorked = "Да.";
-                            else if (note.iWorked == 2)
-                                sWorked = "Правка.";
-                        }   
-
-                        //NPC dialog statistic
-                        foreach (KeyValuePair<string, Dictionary<int, CDialog>> dialogNPC in dialogs.dialogs)
-                        {
-                            foreach (KeyValuePair<int, CDialog> dialog in dialogNPC.Value)
-                            {
-                                if (dialog.Value.Holder == npcName)
-                                    if (dialog.Value.Actions.GetQuests.Contains(quest.QuestID))
-                                    {
-                                        if (getDialogs == "")
-                                            getDialogs += dialog.Value.DialogID.ToString();
-                                        else
-                                            getDialogs += ("," + dialog.Value.DialogID.ToString());
-                                    }
-                                if (!sNPCLink.Contains(dialog.Value.Holder) && dialog.Value.Holder != npcNe)
-                                {
-                                    foreach (int q in dialog.Value.Actions.CompleteQuests)
-                                        if ((iSubIDS.Contains(q)) && (!sNPCLink.Contains(dialog.Value.Holder)))
-                                                sNPCLink.Add(dialog.Value.Holder);
-                                }
-                            }
-
-                        }
-                        //NPC dialog statistic
-
-                        foreach (string npc in sNPCLink)
-                        {
-                            if (npcLinks == "")
-                                npcLinks += npc;
-                            else
-                                npcLinks += "," + npc;
-                        }
-
-                        //rewardItem
-                        
-                        foreach (int type in rewardItems.Keys)
-                        {
-                            string itemName = itemConst.getDescriptionOnID(type);
-                            string count = rewardItems[type].ToString();
-
-                            if (sRewardItem == "")
-                                sRewardItem += itemName + ":" + count.ToString();
-                            else
-                                sRewardItem += "\n" + itemName + ":" + count.ToString();
-                        }
-                        object[] row = { id, subIDs, title, description, npcNe, npcLinks, getDialogs, srewardExpBattle, srewardSurvival, srewardExpSupport, srewardCredits, sRewardItem, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
-                        int old_len = row.Count();
-                        Array.Resize(ref row, old_len + reputations.Count());
-                        for (int i = old_len, j = 0; i < row.Count(); i++, j++ )
-                        {
-                            row[i] = reputations[j];
-                        }
-                        
-                        dgvManage.Rows.Add(row);
-                    }
+                {
+                    fillQuestDataInManageTab(npcName , quest);
+                }
+                    
         }
 
         private void bSaveManage_Click(object sender, EventArgs e)
