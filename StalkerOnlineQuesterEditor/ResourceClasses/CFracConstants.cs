@@ -33,5 +33,10 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        public int genLenListOfFractions()
+        {
+            return this.fractions.Count;
+        }
+
     }
 }

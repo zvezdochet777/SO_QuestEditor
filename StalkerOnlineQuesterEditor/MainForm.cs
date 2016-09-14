@@ -108,6 +108,7 @@ namespace StalkerOnlineQuesterEditor
             //fillNPCBox();
             fillLocationsBox();
             fillItemRewardsBox();
+            fillFractionsInManageTab();
             DialogShower.AddInputEventListener(Listener);
             DialogShower.AddInputEventListener(RectDrawer);
             DialogShower.AddInputEventListener(PanHandler);
@@ -1104,10 +1105,10 @@ namespace StalkerOnlineQuesterEditor
         {
             dgvManage.Rows.Clear();
             
-            ((DataGridViewComboBoxColumn)dgvManage.Columns[18]).Items.Clear();
-            ((DataGridViewComboBoxColumn)dgvManage.Columns[18]).Items.Add("Да.");
-            ((DataGridViewComboBoxColumn)dgvManage.Columns[18]).Items.Add("Нет.");
-            ((DataGridViewComboBoxColumn)dgvManage.Columns[18]).Items.Add("Правка.");
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Clear();
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Add("Да.");
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Add("Нет.");
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Add("Правка.");
 
             foreach (string npcName in npcConst.NPCs.Keys)
                 foreach (CQuest quest in quests.quest.Values)
@@ -1121,22 +1122,25 @@ namespace StalkerOnlineQuesterEditor
                         int rewardExpSurvival = 0;
                         int rewardExpSupport = 0;
                         float rewardCredits = 0;
+                        int[] reputations = new int[1];
+                        //чтоб ничего не сломалось, если кто-то захотел удалить/добавить фракцию
+                        Array.Resize<int>(ref reputations, fractions.genLenListOfFractions());
+
                         Dictionary<int, int> rewardItems = new Dictionary<int, int>();
-                        int pkStatus = 0;
+
 
                         foreach (int quid in iSubIDS)
                         {
                             CQuest q = getQuestOnQuestID(quid);
 
-                            //if (q.Reward.Expirience.Any())
-                            //{
-                            //    rewardExpBattle += q.Reward.Expirience[0];
-                            //    rewardExpSurvival += q.Reward.Expirience[1];
-                            //    rewardExpSupport += q.Reward.Expirience[2];
-                            //}
+                            if (q.Reward.Experience.Any())
+                            {
+                                rewardExpBattle += q.Reward.Experience[0];
+                                rewardExpSurvival += q.Reward.Experience[1];
+                                rewardExpSupport += q.Reward.Experience[2];
+                            }
 
                             rewardCredits += q.Reward.Credits;
-                            pkStatus += q.Reward.KarmaPK;
 
                             for (int index = 0; index < q.Reward.TypeOfItems.Count; ++index)
                             {
@@ -1153,6 +1157,16 @@ namespace StalkerOnlineQuesterEditor
                                         rewardItems[type] = count;
                                 }
                             }
+                            int frac_index = 0;
+                            foreach (KeyValuePair<int, string> fraction in this.fractions.getListOfFractions())
+                            {
+                                int fraction_id = fraction.Key;
+                                int val = 0;
+                                if (q.Reward.Reputation.ContainsKey(fraction_id))
+                                    val = q.Reward.Reputation[fraction_id];
+                                reputations[frac_index] = val;
+                                frac_index++;
+                            }
                         }
 
                         string npcLinks = "";
@@ -1165,7 +1179,7 @@ namespace StalkerOnlineQuesterEditor
                         string srewardSurvival = rewardExpSurvival.ToString();
                         string srewardExpSupport = rewardExpSupport.ToString();
                         string srewardCredits = rewardCredits.ToString();
-                        string sPkStatus = pkStatus.ToString();
+                        string srewardReputation = "";
                         string sRewardItem = "";
                         string sRepeat = quest.Precondition.Repeat.ToString();
                         string sPeriod = quest.Precondition.TakenPeriod.ToString();
@@ -1231,7 +1245,14 @@ namespace StalkerOnlineQuesterEditor
                             else
                                 sRewardItem += "\n" + itemName + ":" + count.ToString();
                         }
-                        object[] row = { id, subIDs, title, description, npcNe, npcLinks, getDialogs, srewardExpBattle, srewardSurvival, srewardExpSupport, srewardCredits, sRewardItem, sPkStatus, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
+                        object[] row = { id, subIDs, title, description, npcNe, npcLinks, getDialogs, srewardExpBattle, srewardSurvival, srewardExpSupport, srewardCredits, sRewardItem, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
+                        int old_len = row.Count();
+                        Array.Resize(ref row, old_len + reputations.Count());
+                        for (int i = old_len, j = 0; i < row.Count(); i++, j++ )
+                        {
+                            row[i] = reputations[j];
+                        }
+                        
                         dgvManage.Rows.Add(row);
                     }
         }
@@ -1601,6 +1622,21 @@ namespace StalkerOnlineQuesterEditor
             cbLocation.DataSource = null;
             cbLocation.DataSource = ManagerNPC.locationNames;
         }
+
+        //! добавляет в таблицу Управление столбцы фракций
+        void fillFractionsInManageTab()
+        {
+            foreach (KeyValuePair<int, string> fraction in this.fractions.getListOfFractions())
+            {
+                string id = fraction.Key.ToString();
+                string name = fraction.Value;
+                this.dgvManage.Columns.Add(name, name);
+            }
+            //this.dgvManage;
+        }
+
+
+
         void fillItemRewardsBox()
         {
             foreach (CItem description in itemConst.getAllItems().Values)
