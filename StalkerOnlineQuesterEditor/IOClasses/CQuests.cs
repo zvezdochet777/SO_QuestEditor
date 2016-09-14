@@ -114,7 +114,7 @@ namespace StalkerOnlineQuesterEditor
                     {
                         target.useState = true;
                         string str = item.Element("Target").Element("itemState").Value;
-                        target.itemState = float.Parse(item.Element("Target").Element("itemState").Value.Replace('.', ','));
+                        target.itemState = float.Parse(item.Element("Target").Element("itemState").Value, CultureInfo.InvariantCulture);
                     }
                     if ((item.Element("Target").Element("Time") != null) && (!item.Element("Target").Element("Time").Value.Equals("")))
                     {
@@ -131,13 +131,13 @@ namespace StalkerOnlineQuesterEditor
                         precondition.Repeat = int.Parse(item.Element("Precondition").Element("Repeat").Value);
 
                     if ((item.Element("Precondition").Element("TakenPeriod") != null) && (!item.Element("Precondition").Element("TakenPeriod").Value.Equals("")))
-                        precondition.TakenPeriod = double.Parse(item.Element("Precondition").Element("TakenPeriod").Value.Replace('.', ','));
+                        precondition.TakenPeriod = double.Parse(item.Element("Precondition").Element("TakenPeriod").Value, CultureInfo.InvariantCulture);
                 }
                 if (item.Element("QuestRules") != null)
                 {
                 
                     if (item.Element("QuestRules").Element("baseToCapturePercent") != null)
-                        questRules.basePercent = float.Parse(item.Element("QuestRules").Element("baseToCapturePercent").Value.Replace('.', ','));
+                        questRules.basePercent = float.Parse(item.Element("QuestRules").Element("baseToCapturePercent").Value, CultureInfo.InvariantCulture);
                     AddDataToList(item, "QuestRules", "NumOfItems", questRules.NumOfItems);
                     AddDataToList(item, "QuestRules", "TypeOfItems", questRules.TypeOfItems);
                     AddDataToList(item, "QuestRules", "AttrOfItems", questRules.AttrOfItems);
@@ -165,7 +165,7 @@ namespace StalkerOnlineQuesterEditor
                                 reward.Probability.Add(float.Parse(itemType, CultureInfo.InvariantCulture));
 
                     if ((item.Element("Reward").Element("Credits") != null) &&(!item.Element("Reward").Element("Credits").Value.Equals("")))
-                        reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value);
+                        reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value, System.Globalization.CultureInfo.InvariantCulture);
 
                     ParseIntIfNotEmpty(item, "Reward", "KarmaPK", out reward.KarmaPK, 0);
 
@@ -208,7 +208,7 @@ namespace StalkerOnlineQuesterEditor
                     AddDataToList(item, "Penalty", "TypeOfItems", penalty.TypeOfItems);
 
                     if ((item.Element("Penalty").Element("Credits") != null) && (!item.Element("Penalty").Element("Credits").Value.Equals("")))
-                        penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value);
+                        penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value, System.Globalization.CultureInfo.InvariantCulture);
                 }
 
                 if (!dict_target.ContainsKey(QuestID))

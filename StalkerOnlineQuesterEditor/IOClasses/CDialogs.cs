@@ -184,6 +184,7 @@ namespace StalkerOnlineQuesterEditor
                         nodeCoord.RootDialog = dialog.Element("RootDialog").Value.Equals("1");
                     if (dialog.Element("Active") != null)
                         nodeCoord.Active = dialog.Element("Active").Value.Equals("1");
+                    else nodeCoord.Active = false;
                     if (tempCoordinates.ContainsKey(npc_name) && tempCoordinates[npc_name].ContainsKey(DialogID))
                     {
                         nodeCoord.X = tempCoordinates[npc_name][DialogID].X;
@@ -417,9 +418,9 @@ namespace StalkerOnlineQuesterEditor
 
                     if (dialog.Nodes.Any())
                         element.Add(new XElement("Nodes", Global.GetListAsString(dialog.Nodes)));
-                    if (Global.GetBoolAsString(dialog.coordinates.RootDialog) != "")
+                    if (dialog.coordinates.RootDialog)
                         element.Add(new XElement("RootDialog", Global.GetBoolAsString(dialog.coordinates.RootDialog)));
-                    if (Global.GetBoolAsString(dialog.coordinates.Active) != "")
+                    if (dialog.coordinates.Active)
                         element.Add(new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active)));
                     if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
 

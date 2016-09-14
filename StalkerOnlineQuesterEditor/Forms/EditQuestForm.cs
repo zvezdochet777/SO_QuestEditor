@@ -629,7 +629,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 try
                 {
-                    target.Time = float.Parse(resultextBox.Text.ToString());
+                    target.Time = float.Parse(resultextBox.Text.ToString(), System.Globalization.CultureInfo.InvariantCulture);
                 }
                 catch
                 {
@@ -669,7 +669,7 @@ namespace StalkerOnlineQuesterEditor
                 precondition.Repeat = 1;
 
             if (takenPeriodTextBox.Enabled && !takenPeriodTextBox.Text.Equals(""))
-                precondition.TakenPeriod =  double.Parse(takenPeriodTextBox.Text.Replace('.',','));
+                precondition.TakenPeriod = double.Parse(takenPeriodTextBox.Text, System.Globalization.CultureInfo.InvariantCulture);
 
             foreach (string item in scenariosTextBox.Text.Split(','))
                 if (!item.Equals(""))
