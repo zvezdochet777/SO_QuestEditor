@@ -116,6 +116,7 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
+            this.IsCounterCheckBox = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
@@ -532,6 +533,7 @@
             // preconditionGroupBox
             // 
             this.preconditionGroupBox.AutoSize = true;
+            this.preconditionGroupBox.Controls.Add(this.IsCounterCheckBox);
             this.preconditionGroupBox.Controls.Add(this.lH);
             this.preconditionGroupBox.Controls.Add(this.takenPeriodTextBox);
             this.preconditionGroupBox.Controls.Add(this.lDaily);
@@ -1080,6 +1082,16 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
+            // IsCounterCheckBox
+            // 
+            this.IsCounterCheckBox.AutoSize = true;
+            this.IsCounterCheckBox.Location = new System.Drawing.Point(499, 17);
+            this.IsCounterCheckBox.Name = "IsCounterCheckBox";
+            this.IsCounterCheckBox.Size = new System.Drawing.Size(104, 17);
+            this.IsCounterCheckBox.TabIndex = 24;
+            this.IsCounterCheckBox.Text = "Счётчик квеста";
+            this.IsCounterCheckBox.UseVisualStyleBackColor = true;
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1213,5 +1225,6 @@
         private System.Windows.Forms.CheckBox cbState;
         private System.Windows.Forms.Label lState;
         private System.Windows.Forms.NumericUpDown udState;
+        private System.Windows.Forms.CheckBox IsCounterCheckBox;
     }
 }

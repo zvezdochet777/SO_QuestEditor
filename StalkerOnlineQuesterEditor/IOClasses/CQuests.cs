@@ -132,6 +132,9 @@ namespace StalkerOnlineQuesterEditor
 
                     if ((item.Element("Precondition").Element("TakenPeriod") != null) && (!item.Element("Precondition").Element("TakenPeriod").Value.Equals("")))
                         precondition.TakenPeriod = double.Parse(item.Element("Precondition").Element("TakenPeriod").Value, CultureInfo.InvariantCulture);
+
+                    if (item.Element("Precondition").Element("OmniCounter") != null)
+                        precondition.omniCounter = item.Element("Precondition").Element("OmniCounter").Value.Equals("1");
                 }
                 if (item.Element("QuestRules") != null)
                 {
@@ -406,6 +409,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Precondition").Add(new XElement("TakenPeriod", questValue.Precondition.TakenPeriod));
                     if (questValue.Precondition.Repeat != 0)
                         element.Element("Precondition").Add(new XElement("Repeat", questValue.Precondition.Repeat));
+                    if (questValue.Precondition.omniCounter)
+                        element.Element("Precondition").Add(new XElement("OmniCounter", Global.GetBoolAsString(questValue.Precondition.omniCounter)));
                 }
 
                 if (questValue.QuestRules.Any())

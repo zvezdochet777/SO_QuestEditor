@@ -193,6 +193,9 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests)
                     addItemToTextBox(quest.ToString(), tShouldntHaveFailedQuests);
 
+                foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfCounters)
+                    addItemToTextBox(quest.ToString(), tShouldntHaveCounters);
+
                 addItemToTextBox(curDialog.Precondition.ListOfMustNoQuests.ListOfMassQuests, tShouldntHaveMassQuests);
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)
@@ -206,6 +209,9 @@ namespace StalkerOnlineQuesterEditor
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveFailedQuests);
+
+                foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCounters)
+                    addItemToTextBox(quest.ToString(), tMustHaveCounters);
 
                 addItemToTextBox(curDialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests, tMustHaveMassQuests);
 
@@ -496,6 +502,9 @@ namespace StalkerOnlineQuesterEditor
                     precondition.ListOfNecessaryQuests.ListOfFailedQuests.Add(int.Parse(quest));
             if (!tMustHaveMassQuests.Text.Equals(""))
                 precondition.ListOfNecessaryQuests.ListOfMassQuests = tMustHaveMassQuests.Text;
+            if (!tMustHaveCounters.Text.Equals(""))
+                foreach (string quest in tMustHaveCounters.Text.Split(','))
+                    precondition.ListOfNecessaryQuests.ListOfCounters.Add(int.Parse(quest));
 
             if (!tShouldntHaveOpenQuests.Text.Equals(""))
                 foreach (string quest in tShouldntHaveOpenQuests.Text.Split(','))
@@ -511,6 +520,9 @@ namespace StalkerOnlineQuesterEditor
                     precondition.ListOfMustNoQuests.ListOfFailedQuests.Add(int.Parse(quest));
             if (!tShouldntHaveMassQuests.Text.Equals(""))
                 precondition.ListOfMustNoQuests.ListOfMassQuests = tShouldntHaveMassQuests.Text;
+            if (!tShouldntHaveCounters.Text.Equals(""))
+                foreach (string quest in tShouldntHaveCounters.Text.Split(','))
+                    precondition.ListOfMustNoQuests.ListOfCounters.Add(int.Parse(quest));
 
 
 

@@ -52,6 +52,7 @@
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
             this.gbPrecondition = new System.Windows.Forms.GroupBox();
+            this.pictureSkill = new System.Windows.Forms.PictureBox();
             this.pictureLevel = new System.Windows.Forms.PictureBox();
             this.pictureEffects = new System.Windows.Forms.PictureBox();
             this.pictureClan = new System.Windows.Forms.PictureBox();
@@ -132,6 +133,12 @@
             this.lCombatLvl = new System.Windows.Forms.Label();
             this.mtbPlayerLevelMax = new System.Windows.Forms.MaskedTextBox();
             this.lPlayerLevel = new System.Windows.Forms.Label();
+            this.tabSkills = new System.Windows.Forms.TabPage();
+            this.dataSkill = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -139,15 +146,12 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
-            this.tabSkills = new System.Windows.Forms.TabPage();
-            this.dataSkill = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureSkill = new System.Windows.Forms.PictureBox();
+            this.lConuters = new System.Windows.Forms.Label();
+            this.tShouldntHaveCounters = new System.Windows.Forms.MaskedTextBox();
+            this.tMustHaveCounters = new System.Windows.Forms.MaskedTextBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEffects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClan)).BeginInit();
@@ -167,11 +171,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEffects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotEffects)).BeginInit();
             this.tabLevel.SuspendLayout();
-            this.pCommands.SuspendLayout();
-            this.gbTexts.SuspendLayout();
             this.tabSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).BeginInit();
+            this.pCommands.SuspendLayout();
+            this.gbTexts.SuspendLayout();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -430,6 +433,18 @@
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
             // 
+            // pictureSkill
+            // 
+            this.pictureSkill.BackColor = System.Drawing.Color.Transparent;
+            this.pictureSkill.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureSkill.Location = new System.Drawing.Point(370, 10);
+            this.pictureSkill.Name = "pictureSkill";
+            this.pictureSkill.Size = new System.Drawing.Size(10, 10);
+            this.pictureSkill.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureSkill.TabIndex = 58;
+            this.pictureSkill.TabStop = false;
+            this.pictureSkill.Visible = false;
+            // 
             // pictureLevel
             // 
             this.pictureLevel.BackColor = System.Drawing.Color.Transparent;
@@ -503,7 +518,7 @@
             this.tabQuestsCircs.Location = new System.Drawing.Point(8, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
             this.tabQuestsCircs.SelectedIndex = 0;
-            this.tabQuestsCircs.Size = new System.Drawing.Size(574, 219);
+            this.tabQuestsCircs.Size = new System.Drawing.Size(574, 246);
             this.tabQuestsCircs.TabIndex = 52;
             this.tabQuestsCircs.SelectedIndexChanged += new System.EventHandler(this.tabQuestsCircs_SelectedIndexChanged);
             // 
@@ -514,12 +529,15 @@
             this.tabQuests.Location = new System.Drawing.Point(4, 22);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(566, 193);
+            this.tabQuests.Size = new System.Drawing.Size(566, 220);
             this.tabQuests.TabIndex = 0;
             this.tabQuests.Text = "Квесты";
             // 
             // gbQuestCondition
             // 
+            this.gbQuestCondition.Controls.Add(this.lConuters);
+            this.gbQuestCondition.Controls.Add(this.tShouldntHaveCounters);
+            this.gbQuestCondition.Controls.Add(this.tMustHaveCounters);
             this.gbQuestCondition.Controls.Add(this.lMassQuests);
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveMassQuests);
             this.gbQuestCondition.Controls.Add(this.tMustHaveMassQuests);
@@ -539,7 +557,7 @@
             this.gbQuestCondition.Controls.Add(this.tMustHaveCompletedQuests);
             this.gbQuestCondition.Location = new System.Drawing.Point(6, 6);
             this.gbQuestCondition.Name = "gbQuestCondition";
-            this.gbQuestCondition.Size = new System.Drawing.Size(469, 181);
+            this.gbQuestCondition.Size = new System.Drawing.Size(469, 208);
             this.gbQuestCondition.TabIndex = 6;
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
@@ -685,7 +703,7 @@
             this.tabReputation.Location = new System.Drawing.Point(4, 22);
             this.tabReputation.Name = "tabReputation";
             this.tabReputation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation.Size = new System.Drawing.Size(566, 193);
+            this.tabReputation.Size = new System.Drawing.Size(566, 220);
             this.tabReputation.TabIndex = 1;
             this.tabReputation.Text = "Репутация";
             // 
@@ -711,7 +729,7 @@
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation.Location = new System.Drawing.Point(3, 3);
             this.dataReputation.Name = "dataReputation";
-            this.dataReputation.Size = new System.Drawing.Size(560, 187);
+            this.dataReputation.Size = new System.Drawing.Size(560, 214);
             this.dataReputation.TabIndex = 3;
             // 
             // id
@@ -748,7 +766,7 @@
             this.tabKarma.Location = new System.Drawing.Point(4, 22);
             this.tabKarma.Name = "tabKarma";
             this.tabKarma.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKarma.Size = new System.Drawing.Size(566, 193);
+            this.tabKarma.Size = new System.Drawing.Size(566, 220);
             this.tabKarma.TabIndex = 2;
             this.tabKarma.Text = "Карма";
             // 
@@ -756,7 +774,7 @@
             // 
             this.panel2.Controls.Add(this.labelDescription);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 49);
+            this.panel2.Location = new System.Drawing.Point(3, 76);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(560, 141);
             this.panel2.TabIndex = 4;
@@ -809,7 +827,7 @@
             this.tabClan.Location = new System.Drawing.Point(4, 22);
             this.tabClan.Name = "tabClan";
             this.tabClan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClan.Size = new System.Drawing.Size(566, 193);
+            this.tabClan.Size = new System.Drawing.Size(566, 220);
             this.tabClan.TabIndex = 3;
             this.tabClan.Text = "Клановые";
             // 
@@ -964,7 +982,7 @@
             this.tabEffects.Location = new System.Drawing.Point(4, 22);
             this.tabEffects.Name = "tabEffects";
             this.tabEffects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEffects.Size = new System.Drawing.Size(566, 193);
+            this.tabEffects.Size = new System.Drawing.Size(566, 220);
             this.tabEffects.TabIndex = 4;
             this.tabEffects.Text = "Эффекты";
             this.tabEffects.UseVisualStyleBackColor = true;
@@ -979,7 +997,7 @@
             this.effectsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.effectsPanel.Location = new System.Drawing.Point(3, 3);
             this.effectsPanel.Name = "effectsPanel";
-            this.effectsPanel.Size = new System.Drawing.Size(560, 187);
+            this.effectsPanel.Size = new System.Drawing.Size(560, 214);
             this.effectsPanel.TabIndex = 17;
             // 
             // lMustNotEffects
@@ -1012,7 +1030,7 @@
             this.dataGridEffects.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridEffects.Location = new System.Drawing.Point(0, 0);
             this.dataGridEffects.Name = "dataGridEffects";
-            this.dataGridEffects.Size = new System.Drawing.Size(246, 187);
+            this.dataGridEffects.Size = new System.Drawing.Size(246, 214);
             this.dataGridEffects.TabIndex = 2;
             // 
             // dataGridViewComboBoxColumn1
@@ -1044,7 +1062,7 @@
             this.dataGridNotEffects.Dock = System.Windows.Forms.DockStyle.Right;
             this.dataGridNotEffects.Location = new System.Drawing.Point(314, 0);
             this.dataGridNotEffects.Name = "dataGridNotEffects";
-            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 187);
+            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 214);
             this.dataGridNotEffects.TabIndex = 6;
             // 
             // dataGridViewComboBoxColumn2
@@ -1085,7 +1103,7 @@
             this.tabLevel.Controls.Add(this.lPlayerLevel);
             this.tabLevel.Location = new System.Drawing.Point(4, 22);
             this.tabLevel.Name = "tabLevel";
-            this.tabLevel.Size = new System.Drawing.Size(566, 193);
+            this.tabLevel.Size = new System.Drawing.Size(566, 220);
             this.tabLevel.TabIndex = 5;
             this.tabLevel.Text = "Уровень";
             // 
@@ -1216,6 +1234,56 @@
             this.lPlayerLevel.TabIndex = 50;
             this.lPlayerLevel.Text = "Суммарный уровень игрока:";
             // 
+            // tabSkills
+            // 
+            this.tabSkills.Controls.Add(this.dataSkill);
+            this.tabSkills.Location = new System.Drawing.Point(4, 22);
+            this.tabSkills.Name = "tabSkills";
+            this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSkills.Size = new System.Drawing.Size(566, 220);
+            this.tabSkills.TabIndex = 6;
+            this.tabSkills.Text = "Навыки";
+            this.tabSkills.UseVisualStyleBackColor = true;
+            // 
+            // dataSkill
+            // 
+            this.dataSkill.AllowUserToAddRows = false;
+            this.dataSkill.AllowUserToDeleteRows = false;
+            this.dataSkill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataSkill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.dataSkill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataSkill.Location = new System.Drawing.Point(3, 3);
+            this.dataSkill.Name = "dataSkill";
+            this.dataSkill.Size = new System.Drawing.Size(560, 214);
+            this.dataSkill.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "id";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Название навыка";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "A (A < X < B)";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "B (A < X < B)";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
             // bEditDialogOk
             // 
             this.bEditDialogOk.Location = new System.Drawing.Point(172, 5);
@@ -1291,67 +1359,28 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
-            // tabSkills
+            // lConuters
             // 
-            this.tabSkills.Controls.Add(this.dataSkill);
-            this.tabSkills.Location = new System.Drawing.Point(4, 22);
-            this.tabSkills.Name = "tabSkills";
-            this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSkills.Size = new System.Drawing.Size(566, 193);
-            this.tabSkills.TabIndex = 6;
-            this.tabSkills.Text = "Навыки";
-            this.tabSkills.UseVisualStyleBackColor = true;
+            this.lConuters.AutoSize = true;
+            this.lConuters.Location = new System.Drawing.Point(6, 171);
+            this.lConuters.Name = "lConuters";
+            this.lConuters.Size = new System.Drawing.Size(53, 13);
+            this.lConuters.TabIndex = 19;
+            this.lConuters.Text = "Счётчики";
             // 
-            // dataSkill
+            // tShouldntHaveCounters
             // 
-            this.dataSkill.AllowUserToAddRows = false;
-            this.dataSkill.AllowUserToDeleteRows = false;
-            this.dataSkill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataSkill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.dataSkill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataSkill.Location = new System.Drawing.Point(3, 3);
-            this.dataSkill.Name = "dataSkill";
-            this.dataSkill.Size = new System.Drawing.Size(560, 187);
-            this.dataSkill.TabIndex = 4;
+            this.tShouldntHaveCounters.Location = new System.Drawing.Point(234, 170);
+            this.tShouldntHaveCounters.Name = "tShouldntHaveCounters";
+            this.tShouldntHaveCounters.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveCounters.TabIndex = 18;
             // 
-            // dataGridViewTextBoxColumn4
+            // tMustHaveCounters
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "id";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Название навыка";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "A (A < X < B)";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "B (A < X < B)";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // pictureSkill
-            // 
-            this.pictureSkill.BackColor = System.Drawing.Color.Transparent;
-            this.pictureSkill.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureSkill.Location = new System.Drawing.Point(370, 10);
-            this.pictureSkill.Name = "pictureSkill";
-            this.pictureSkill.Size = new System.Drawing.Size(10, 10);
-            this.pictureSkill.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureSkill.TabIndex = 58;
-            this.pictureSkill.TabStop = false;
-            this.pictureSkill.Visible = false;
+            this.tMustHaveCounters.Location = new System.Drawing.Point(128, 170);
+            this.tMustHaveCounters.Name = "tMustHaveCounters";
+            this.tMustHaveCounters.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveCounters.TabIndex = 17;
             // 
             // EditDialogForm
             // 
@@ -1370,6 +1399,7 @@
             this.gbActions.ResumeLayout(false);
             this.gbActions.PerformLayout();
             this.gbPrecondition.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEffects)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClan)).EndInit();
@@ -1395,13 +1425,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotEffects)).EndInit();
             this.tabLevel.ResumeLayout(false);
             this.tabLevel.PerformLayout();
+            this.tabSkills.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).EndInit();
             this.pCommands.ResumeLayout(false);
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
             this.gbTexts.PerformLayout();
-            this.tabSkills.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1527,5 +1556,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.PictureBox pictureSkill;
+        private System.Windows.Forms.Label lConuters;
+        private System.Windows.Forms.MaskedTextBox tShouldntHaveCounters;
+        private System.Windows.Forms.MaskedTextBox tMustHaveCounters;
     }
 }

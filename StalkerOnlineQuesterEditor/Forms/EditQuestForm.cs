@@ -213,7 +213,7 @@ namespace StalkerOnlineQuesterEditor
                 repeatComboBox.SelectedIndex = 0;
             else
                 repeatComboBox.SelectedIndex = 1;
-
+            IsCounterCheckBox.Checked = quest.Precondition.omniCounter;
             takenPeriodTextBox.Text = quest.Precondition.TakenPeriod.ToString();
         }       
         //! Настраивает форму на определенный тип квеста
@@ -671,6 +671,7 @@ namespace StalkerOnlineQuesterEditor
             if (takenPeriodTextBox.Enabled && !takenPeriodTextBox.Text.Equals(""))
                 precondition.TakenPeriod = double.Parse(takenPeriodTextBox.Text, System.Globalization.CultureInfo.InvariantCulture);
 
+            precondition.omniCounter = IsCounterCheckBox.Checked;
             foreach (string item in scenariosTextBox.Text.Split(','))
                 if (!item.Equals(""))
                     rules.Scenarios.Add(int.Parse(item));

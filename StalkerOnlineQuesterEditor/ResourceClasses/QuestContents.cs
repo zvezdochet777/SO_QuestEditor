@@ -186,10 +186,12 @@ namespace StalkerOnlineQuesterEditor
     {
        	public int Repeat;
         public double TakenPeriod;
+        public bool omniCounter;
         public CQuestPrecondition()
         {
             this.Repeat = new int();
             this.TakenPeriod = new double();
+            this.omniCounter = false;
         }
 
         public object Clone()
@@ -197,11 +199,12 @@ namespace StalkerOnlineQuesterEditor
             CQuestPrecondition copy = new CQuestPrecondition();
             copy.Repeat = this.Repeat;
             copy.TakenPeriod = this.TakenPeriod;
+            copy.omniCounter = this.omniCounter;
             return copy;
         }
         public bool Any()
         {
-            return Repeat != 0 || TakenPeriod != 0;
+            return Repeat != 0 || TakenPeriod != 0 || omniCounter;
         }
     }
 
