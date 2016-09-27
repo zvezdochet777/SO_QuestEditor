@@ -30,7 +30,8 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(18, "Выйти из игры."));
             simpleQuestsType.Add(new СQuestType(19, "Экипировка предмета."));
             simpleQuestsType.Add(new СQuestType(20, "Добавление предмета."));
-
+            simpleQuestsType.Add(new СQuestType(21, "Получение эффекта."));
+            simpleQuestsType.Add(new СQuestType(22, "Необходимое количество репутации."));
             ierarchyQuestsType.Add(new СQuestType(50, "Игра против режиссера."));
 
             ierarchyQuestsType.Add(new СQuestType(10, "Выполнение всех в любом порядке."));

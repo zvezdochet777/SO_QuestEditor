@@ -227,23 +227,28 @@ namespace StalkerOnlineQuesterEditor
             {
                 int QuestID = int.Parse(quest.Element("ID").Value);
                 String npc_name = quest.Element("NPC").Value;
-                target[QuestID].QuestInformation.Title = quest.Element("Title").Value;
-                target[QuestID].QuestInformation.Description = quest.Element("Description").Value;
-                target[QuestID].QuestInformation.onWin = quest.Element("onWin").Value;
-                target[QuestID].QuestInformation.onFailed = quest.Element("onFailed").Value;
+                if (quest.Element("Title") != null)
+                    target[QuestID].QuestInformation.Title = quest.Element("Title").Value;
+                if (quest.Element("Description") != null)
+                    target[QuestID].QuestInformation.Description = quest.Element("Description").Value;
+                if (quest.Element("onWin") != null)
+                    target[QuestID].QuestInformation.onWin = quest.Element("onWin").Value;
+                if (quest.Element("onFailed") != null)
+                    target[QuestID].QuestInformation.onFailed = quest.Element("onFailed").Value;
                 int Version = 0;
                 if (!quest.Element("Version").Value.Equals(""))
                     Version = int.Parse(quest.Element("Version").Value);
                 target[QuestID].Version = Version;
 
-                foreach (XElement qitem in quest.Element("Items").Elements())
-                {
-                    string title = qitem.Element("title").Value;
-                    string description = qitem.Element("description").Value;
-                    int itemID = int.Parse(qitem.Element("itemID").Value);
-                    string activation = qitem.Element("activation").Value;
-                    target[QuestID].QuestInformation.Items.Add(itemID, new QuestItemInfo(title, description, activation));
-                }
+                if (quest.Element("Items") != null)
+                    foreach (XElement qitem in quest.Element("Items").Elements())
+                    {
+                        string title = qitem.Element("title").Value;
+                        string description = qitem.Element("description").Value;
+                        int itemID = int.Parse(qitem.Element("itemID").Value);
+                        string activation = qitem.Element("activation").Value;
+                        target[QuestID].QuestInformation.Items.Add(itemID, new QuestItemInfo(title, description, activation));
+                    }
             }
         }
         
@@ -338,22 +343,23 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (CQuest questValue in target.Values)
             {
-                List<XElement> ItemsXE = getItemElements(questValue.QuestInformation.Items);
-                XElement Items;
-                if (ItemsXE.Any())
-                    Items = new XElement("Items", ItemsXE);
-                else
-                    Items = new XElement("Items", "");
-
+                
                 element = new XElement("Quest",
                    new XElement("ID", questValue.QuestID),
                    new XElement("NPC", questValue.Additional.Holder),
-                   new XElement("Version", questValue.Version),
-                   new XElement("Title", questValue.QuestInformation.Title),
-                   new XElement("Description", questValue.QuestInformation.Description),
-                   new XElement("onWin", questValue.QuestInformation.onWin),
-                   new XElement("onFailed", questValue.QuestInformation.onFailed),
-                   Items);
+                   new XElement("Version", questValue.Version));
+                if (questValue.QuestInformation.Title != "")
+                    element.Add(new XElement("Title", questValue.QuestInformation.Title));
+                if (questValue.QuestInformation.Description != "")
+                    element.Add(new XElement("Description", questValue.QuestInformation.Description));
+                if (questValue.QuestInformation.onWin != "")
+                    element.Add(new XElement("onWin", questValue.QuestInformation.onWin));
+                if (questValue.QuestInformation.onFailed != "")
+                    element.Add(new XElement("onFailed", questValue.QuestInformation.onFailed));
+
+                List<XElement> ItemsXE = getItemElements(questValue.QuestInformation.Items);
+                if (ItemsXE.Any())
+                    element.Add(new XElement("Items", ItemsXE));
                 resultDoc.Root.Add(element);
             }
 

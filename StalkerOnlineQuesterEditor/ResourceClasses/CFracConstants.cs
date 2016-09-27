@@ -27,6 +27,24 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        public int getFractionIDByDescr(string frac_name)
+        {
+            foreach (KeyValuePair<int, string> pair in this.fractions)
+            {
+                if (pair.Value == frac_name) return pair.Key;
+            }
+            return 0;
+        }
+
+        public string getFractionDesctByID(int frac_id)
+        {
+            foreach (KeyValuePair<int, string> pair in this.fractions)
+            {
+                if (pair.Key == frac_id) return pair.Value;
+            }
+            return "";
+        }
+
         public Dictionary<int, string> getListOfFractions()
         {
             return this.fractions;

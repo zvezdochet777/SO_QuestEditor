@@ -359,6 +359,27 @@ namespace StalkerOnlineQuesterEditor
                     targetAttributeComboBox.Items.Add("Скрыть.");
                     targetAttributeComboBox.SelectedIndex = 0;
                 }
+                else if (QuestType == 21)
+                {
+                    lNameObject.Text = "Эффект";
+                    foreach (string description in parent.effects.getAllDescriptions())
+                        targetComboBox.Items.Add(description);
+                    quantityUpDown.Enabled = true;
+                    targetComboBox.Enabled = true;
+                    lNameObject.Enabled = true;
+                    lQuantity.Enabled = false;
+                }
+                else if (QuestType == 22)
+                {
+                    lNameObject.Text = "Репутация";
+                    foreach (KeyValuePair<int, string> pair in parent.fractions.getListOfFractions())
+                        targetComboBox.Items.Add(pair.Value);
+                    quantityUpDown.Enabled = true;
+                    targetComboBox.Enabled = true;
+                    lNameObject.Enabled = true;
+                    lQuantity.Enabled = false;
+                }
+
             }
             else
             {
@@ -471,6 +492,16 @@ namespace StalkerOnlineQuesterEditor
             {
                 targetComboBox.SelectedItem = parent.gui.getDescriptionOnID(quest.Target.ObjectType);
                 targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
+            }
+            else if (quest.Target.QuestType == 21)
+            {
+                targetComboBox.SelectedItem = parent.effects.getDescriptionOnID(quest.Target.ObjectType);
+                quantityUpDown.Value = quest.Target.NumOfObjects;
+            }
+            else if (quest.Target.QuestType == 22)
+            {
+                targetComboBox.SelectedItem = parent.fractions.getFractionDesctByID(quest.Target.ObjectType);
+                quantityUpDown.Value = quest.Target.NumOfObjects;
             }
 
             
@@ -651,6 +682,16 @@ namespace StalkerOnlineQuesterEditor
             {
                 target.ObjectType = parent.gui.getIDOnDescription(targetComboBox.SelectedItem.ToString());
                 target.ObjectAttr = targetAttributeComboBox.SelectedIndex;
+            }
+            else if (target.QuestType == 21)
+            {
+                target.ObjectType = parent.effects.getIDOnDescription(targetComboBox.SelectedItem.ToString());
+                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString()); 
+            }
+            else if (target.QuestType == 22)
+            {
+                target.ObjectType = parent.fractions.getFractionIDByDescr(targetComboBox.SelectedItem.ToString());
+                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString()); 
             }
 
             if (iState == EDIT_SUB || iState == EDIT)

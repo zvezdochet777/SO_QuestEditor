@@ -263,8 +263,10 @@ namespace StalkerOnlineQuesterEditor
                 foreach (XElement dialog in npc.Elements("Dialog"))
                 {
                     int DialogID = int.Parse(dialog.Element("ID").Value);
-                    target[npc_name][DialogID].Title = dialog.Element("Title").Value.Trim();
-                    target[npc_name][DialogID].Text = dialog.Element("Text").Value.Trim();
+                    if (dialog.Element("Title") != null)
+                        target[npc_name][DialogID].Title = dialog.Element("Title").Value.Trim();
+                    if (dialog.Element("Text") != null)
+                        target[npc_name][DialogID].Text = dialog.Element("Text").Value.Trim();
                     int Version = 0;
                     if (!dialog.Element("Version").Value.Equals(""))
                         Version = int.Parse(dialog.Element("Version").Value);
@@ -301,9 +303,12 @@ namespace StalkerOnlineQuesterEditor
                 {
                     element = new XElement("Dialog",
                        new XElement("ID", dialog.DialogID.ToString()),
-                       new XElement("Version", dialog.version.ToString()),
-                       new XElement("Title", dialog.Title),
-                       new XElement("Text", dialog.Text));
+                       new XElement("Version", dialog.version.ToString()));
+                    if (dialog.Title != "")
+                        element.Add(new XElement("Title", dialog.Title));
+                    if (dialog.Text != "")
+                        element.Add(new XElement("Text", dialog.Text));
+
                     npcElement.Add(element);
                 }
                 resultDoc.Root.Add(npcElement);
