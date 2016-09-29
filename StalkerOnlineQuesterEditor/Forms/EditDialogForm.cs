@@ -760,6 +760,9 @@ namespace StalkerOnlineQuesterEditor
         private void initEffectsTab()
         {
 
+            ((DataGridViewComboBoxColumn)dataGridEffects.Columns[0]).Items.Add("");
+            ((DataGridViewComboBoxColumn)dataGridNotEffects.Columns[0]).Items.Add("");
+
             foreach (string effect_name in parent.effects.getAllDescriptions())
             {
                 ((DataGridViewComboBoxColumn)dataGridEffects.Columns[0]).Items.Add(effect_name);
