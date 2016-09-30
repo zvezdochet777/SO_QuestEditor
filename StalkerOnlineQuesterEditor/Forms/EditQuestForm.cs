@@ -235,6 +235,8 @@ namespace StalkerOnlineQuesterEditor
                 quantityUpDown.Enabled = true;
                 cbState.Enabled = false;
 
+                quantityUpDown.Minimum = 0;
+
                 targetComboBox.SelectedItem = null;
                 targetComboBox.SelectedText = "";
                 targetComboBox.Items.Clear();
@@ -378,6 +380,7 @@ namespace StalkerOnlineQuesterEditor
                     targetComboBox.Enabled = true;
                     lNameObject.Enabled = true;
                     lQuantity.Enabled = false;
+                    quantityUpDown.Minimum = -1000000;
                 }
 
             }
