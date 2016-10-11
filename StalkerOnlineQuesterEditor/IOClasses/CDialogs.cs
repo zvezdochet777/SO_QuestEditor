@@ -133,7 +133,7 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("Precondition").Element("NecessaryEffects") != null)
                             AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.NecessaryEffects);
                         if (dialog.Element("Precondition").Element("MustNoEffects") != null)
-                            AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.MustNoEffects);
+                            AddDialogEffectsToList(dialog, "Precondition", "MustNoEffects", Precondition.MustNoEffects);
 
                         if (dialog.Element("Precondition").Element("Skills") != null)
                             AddDialogSkillsToListSkills(dialog, "Precondition", "Skills", Precondition.Skills);
