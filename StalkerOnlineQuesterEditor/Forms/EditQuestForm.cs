@@ -234,7 +234,8 @@ namespace StalkerOnlineQuesterEditor
                 lQuantity.Enabled = true;
                 quantityUpDown.Enabled = true;
                 cbState.Enabled = false;
-
+                cbReputationLow.Enabled = false;
+                cbReputationLow.Visible = false;
                 quantityUpDown.Minimum = 0;
 
                 targetComboBox.SelectedItem = null;
@@ -371,7 +372,7 @@ namespace StalkerOnlineQuesterEditor
                     lNameObject.Enabled = true;
                     lQuantity.Enabled = false;
                 }
-                else if (QuestType == 22)
+                else if ((QuestType == 22) || (QuestType == 23))
                 {
                     lNameObject.Text = "Репутация";
                     foreach (KeyValuePair<int, string> pair in parent.fractions.getListOfFractions())
@@ -381,6 +382,9 @@ namespace StalkerOnlineQuesterEditor
                     lNameObject.Enabled = true;
                     lQuantity.Enabled = false;
                     quantityUpDown.Minimum = -1000000;
+                    cbReputationLow.Visible = true;
+                    cbReputationLow.Enabled = true;
+
                 }
 
             }
@@ -501,10 +505,11 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedItem = parent.effects.getDescriptionOnID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
             }
-            else if (quest.Target.QuestType == 22)
+            else if (quest.Target.QuestType == 22 || quest.Target.QuestType == 23)
             {
                 targetComboBox.SelectedItem = parent.fractions.getFractionDesctByID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
+                cbReputationLow.Checked = quest.Target.ObjectAttr != 0;
             }
 
             
@@ -691,10 +696,11 @@ namespace StalkerOnlineQuesterEditor
                 target.ObjectType = parent.effects.getIDOnDescription(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString()); 
             }
-            else if (target.QuestType == 22)
+            else if (target.QuestType == 22 || target.QuestType == 23)
             {
                 target.ObjectType = parent.fractions.getFractionIDByDescr(targetComboBox.SelectedItem.ToString());
-                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString()); 
+                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
+                target.ObjectAttr = Convert.ToInt16(cbReputationLow.Checked);
             }
 
             if (iState == EDIT_SUB || iState == EDIT)

@@ -11,7 +11,7 @@ namespace StalkerOnlineQuesterEditor
     public class Global
     {
         //! Возвращает список как строку со значениями через запятую
-        public static string GetListAsString(List<int> list)
+        public static string GetListAsString(List<int> list, char separator = ',')
         {
             string result = "";
             foreach (int element in list)
@@ -19,7 +19,7 @@ namespace StalkerOnlineQuesterEditor
                 if (result.Equals(""))
                     result += element.ToString();
                 else
-                    result += "," + element.ToString();
+                    result += separator + element.ToString();
             }
             return result;
         }

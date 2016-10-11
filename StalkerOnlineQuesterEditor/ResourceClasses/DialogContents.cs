@@ -12,26 +12,34 @@ namespace StalkerOnlineQuesterEditor
     public class CDialogPreconditionQuests : ICloneable
     {
         public ListOfQuests ListOfCompletedQuests;
+        public char conditionOfCompletedQuests;
         public ListOfQuests ListOfOpenedQuests;
+        public char conditionOfOpenedQuests;
         public ListOfQuests ListOfOnTestQuests;
-        public ListOfQuests ListOfFailedQuests;
+        public char conditionOfOnTestQuest;
         public ListOfQuests ListOfCounters;
+        public char conditionOfCounterss;
         public string ListOfMassQuests;
+        public char conditionOfMassQuests;
 
         public CDialogPreconditionQuests()
         {
             this.ListOfCompletedQuests = new ListOfQuests();
             this.ListOfOpenedQuests = new ListOfQuests();
             this.ListOfOnTestQuests = new ListOfQuests();
-            this.ListOfFailedQuests = new ListOfQuests();
             this.ListOfCounters = new ListOfQuests();
             this.ListOfMassQuests = "";
+            this.conditionOfCompletedQuests = ',';
+            this.conditionOfOpenedQuests = ',';
+            this.conditionOfOnTestQuest = ',';
+            this.conditionOfCounterss = ',';
+            this.conditionOfMassQuests = ',';
         }
 
         public bool Any()
         {
             if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() || 
-                ListOfFailedQuests.Any() || ListOfCounters.Any() || ListOfMassQuests != "")
+                ListOfCounters.Any() || ListOfMassQuests != "")
                 return true;
             else
                 return false;
@@ -43,9 +51,13 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfCompletedQuests = this.ListOfCompletedQuests;
             copy.ListOfOpenedQuests = this.ListOfOpenedQuests;
             copy.ListOfOnTestQuests = this.ListOfOnTestQuests;
-            copy.ListOfFailedQuests = this.ListOfFailedQuests;
             copy.ListOfMassQuests = this.ListOfMassQuests;
             copy.ListOfCounters = this.ListOfCounters;
+            copy.conditionOfCompletedQuests = this.conditionOfCompletedQuests;
+            copy.conditionOfOpenedQuests = this.conditionOfOpenedQuests;
+            copy.conditionOfOnTestQuest = this.conditionOfOnTestQuest;
+            copy.conditionOfCounterss = this.conditionOfCounterss;
+            copy.conditionOfMassQuests = this.conditionOfMassQuests;
             return copy;
         }
 
@@ -57,7 +69,6 @@ namespace StalkerOnlineQuesterEditor
                 result += Global.GetNamedList(" Открыто: ", ListOfOpenedQuests);
                 result += Global.GetNamedList(" На проверке: ", ListOfOnTestQuests);
                 result += Global.GetNamedList(" Закрыто: ", ListOfCompletedQuests);
-                result += Global.GetNamedList(" Провалено: ", ListOfFailedQuests);
                 result += Global.GetNamedList(" Счётчики: ", ListOfCounters);
                 result += " Массовые: " + ListOfMassQuests;
                 return result;

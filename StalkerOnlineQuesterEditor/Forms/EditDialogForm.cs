@@ -183,38 +183,71 @@ namespace StalkerOnlineQuesterEditor
             {
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)
                     addItemToTextBox(quest.ToString(), tShouldntHaveCompletedQuests);
+                if (curDialog.Precondition.ListOfMustNoQuests.conditionOfCompletedQuests == '|')
+                    cbShouldntHaveCompletedQuests.Checked = true;
+                else
+                    cbShouldntHaveCompletedQuests.Checked = false;
 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)
                     addItemToTextBox(quest.ToString(), tShouldntHaveOpenQuests);
+                if (curDialog.Precondition.ListOfMustNoQuests.conditionOfOpenedQuests == '|')
+                    cbShouldntHaveOpenQuests.Checked = true;
+                else
+                    cbShouldntHaveOpenQuests.Checked = false;
 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)
                     addItemToTextBox(quest.ToString(), tShouldntHaveQuestsOnTest);
-
-                foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests)
-                    addItemToTextBox(quest.ToString(), tShouldntHaveFailedQuests);
+                if (curDialog.Precondition.ListOfMustNoQuests.conditionOfOnTestQuest == '|')
+                    cbShouldntHaveQuestsOnTest.Checked = true;
+                else
+                    cbShouldntHaveQuestsOnTest.Checked = false;
 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfCounters)
                     addItemToTextBox(quest.ToString(), tShouldntHaveCounters);
+                if (curDialog.Precondition.ListOfMustNoQuests.conditionOfCounterss == '|')
+                    cbShouldntHaveCounters.Checked = true;
+                else
+                    cbShouldntHaveCounters.Checked = false;
 
                 addItemToTextBox(curDialog.Precondition.ListOfMustNoQuests.ListOfMassQuests, tShouldntHaveMassQuests);
+                if (curDialog.Precondition.ListOfMustNoQuests.conditionOfMassQuests == '|')
+                    cbShouldntHaveMassQuests.Checked = true;
+                else
+                    cbShouldntHaveMassQuests.Checked = false;
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveCompletedQuests);
+                if (curDialog.Precondition.ListOfNecessaryQuests.conditionOfCompletedQuests == '|')
+                    cbMustHaveCompletedQuests.Checked = true;
+                else
+                    cbMustHaveCompletedQuests.Checked = false;
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveQuestsOnTest);
+                if (curDialog.Precondition.ListOfNecessaryQuests.conditionOfOnTestQuest == '|')
+                    cbMustHaveQuestsOnTest.Checked = true;
+                else
+                    cbMustHaveQuestsOnTest.Checked = false;
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)
                     addItemToTextBox(quest.ToString(), tMustHaveOpenQuests);
-
-                foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)
-                    addItemToTextBox(quest.ToString(), tMustHaveFailedQuests);
+                if (curDialog.Precondition.ListOfNecessaryQuests.conditionOfOpenedQuests == '|')
+                    cbMustHaveOpenQuests.Checked = true;
+                else
+                    cbMustHaveOpenQuests.Checked = false;
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCounters)
                     addItemToTextBox(quest.ToString(), tMustHaveCounters);
+                if (curDialog.Precondition.ListOfNecessaryQuests.conditionOfCounterss == '|')
+                    cbMustHaveCounters.Checked = true;
+                else
+                    cbMustHaveCounters.Checked = false;
 
                 addItemToTextBox(curDialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests, tMustHaveMassQuests);
-
+                if (curDialog.Precondition.ListOfNecessaryQuests.conditionOfMassQuests == '|')
+                    cbMustHaveMassQuests.Checked = true;
+                else
+                    cbMustHaveMassQuests.Checked = false;
             }
             if (curDialog.DebugData != "") debugTextBox.Text = curDialog.DebugData;
                    
@@ -489,40 +522,94 @@ namespace StalkerOnlineQuesterEditor
 
             // заполняем условия появления диалога - открытые и закрытые квесты и т.д.
             if (!tMustHaveOpenQuests.Text.Equals(""))
+            {
+                if (cbMustHaveOpenQuests.Checked)
+                    precondition.ListOfNecessaryQuests.conditionOfOpenedQuests = '|';
+                else
+                    precondition.ListOfNecessaryQuests.conditionOfOpenedQuests = '&';
                 foreach (string quest in tMustHaveOpenQuests.Text.Split(','))
                     precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Add(int.Parse(quest));
+            }
             if (!tMustHaveQuestsOnTest.Text.Equals(""))
+            {
+                if (cbMustHaveQuestsOnTest.Checked)
+                    precondition.ListOfNecessaryQuests.conditionOfOnTestQuest = '|';
+                else
+                    precondition.ListOfNecessaryQuests.conditionOfOnTestQuest = '&';
                 foreach (string quest in tMustHaveQuestsOnTest.Text.Split(','))
                     precondition.ListOfNecessaryQuests.ListOfOnTestQuests.Add(int.Parse(quest));
+            }
             if (!tMustHaveCompletedQuests.Text.Equals(""))
+            {
+                if (cbMustHaveCompletedQuests.Checked)
+                    precondition.ListOfNecessaryQuests.conditionOfCompletedQuests = '|';
+                else
+                    precondition.ListOfNecessaryQuests.conditionOfCompletedQuests = '&';
                 foreach (string quest in tMustHaveCompletedQuests.Text.Split(','))
                     precondition.ListOfNecessaryQuests.ListOfCompletedQuests.Add(int.Parse(quest));
-            if (!tMustHaveFailedQuests.Text.Equals(""))
-                foreach (string quest in tMustHaveFailedQuests.Text.Split(','))
-                    precondition.ListOfNecessaryQuests.ListOfFailedQuests.Add(int.Parse(quest));
+            }
             if (!tMustHaveMassQuests.Text.Equals(""))
+            {
+                if (cbMustHaveMassQuests.Checked)
+                    precondition.ListOfNecessaryQuests.conditionOfMassQuests = '|';
+                else
+                    precondition.ListOfNecessaryQuests.conditionOfMassQuests = '&';
                 precondition.ListOfNecessaryQuests.ListOfMassQuests = tMustHaveMassQuests.Text;
+            }
             if (!tMustHaveCounters.Text.Equals(""))
+            {
+                if (cbMustHaveCounters.Checked)
+                    precondition.ListOfNecessaryQuests.conditionOfCounterss = '|';
+                else
+                    precondition.ListOfNecessaryQuests.conditionOfCounterss = '&';
                 foreach (string quest in tMustHaveCounters.Text.Split(','))
                     precondition.ListOfNecessaryQuests.ListOfCounters.Add(int.Parse(quest));
+            }
 
             if (!tShouldntHaveOpenQuests.Text.Equals(""))
+            {
+                if (cbShouldntHaveOpenQuests.Checked)
+                    precondition.ListOfMustNoQuests.conditionOfOpenedQuests = '|';
+                else
+                    precondition.ListOfMustNoQuests.conditionOfOpenedQuests = '&';
                 foreach (string quest in tShouldntHaveOpenQuests.Text.Split(','))
                     precondition.ListOfMustNoQuests.ListOfOpenedQuests.Add(int.Parse(quest));
+            }
             if (!tShouldntHaveQuestsOnTest.Text.Equals(""))
+            {
+                if (cbShouldntHaveQuestsOnTest.Checked)
+                    precondition.ListOfMustNoQuests.conditionOfOnTestQuest = '|';
+                else
+                    precondition.ListOfMustNoQuests.conditionOfOnTestQuest = '&';
                 foreach (string quest in tShouldntHaveQuestsOnTest.Text.Split(','))
                     precondition.ListOfMustNoQuests.ListOfOnTestQuests.Add(int.Parse(quest));
+            }
             if (!tShouldntHaveCompletedQuests.Text.Equals(""))
+            {
+                if (cbShouldntHaveCompletedQuests.Checked)
+                    precondition.ListOfMustNoQuests.conditionOfCompletedQuests = '|';
+                else
+                    precondition.ListOfMustNoQuests.conditionOfCompletedQuests = '&';
                 foreach (string quest in tShouldntHaveCompletedQuests.Text.Split(','))
                     precondition.ListOfMustNoQuests.ListOfCompletedQuests.Add(int.Parse(quest));
-            if (!tShouldntHaveFailedQuests.Text.Equals(""))
-                foreach (string quest in tShouldntHaveFailedQuests.Text.Split(','))
-                    precondition.ListOfMustNoQuests.ListOfFailedQuests.Add(int.Parse(quest));
+            }
             if (!tShouldntHaveMassQuests.Text.Equals(""))
+            {
+                if (cbShouldntHaveMassQuests.Checked)
+                    precondition.ListOfMustNoQuests.conditionOfMassQuests = '|';
+                else
+                    precondition.ListOfMustNoQuests.conditionOfMassQuests = '&';
                 precondition.ListOfMustNoQuests.ListOfMassQuests = tShouldntHaveMassQuests.Text;
+            }
             if (!tShouldntHaveCounters.Text.Equals(""))
+            {
+                if (cbShouldntHaveCounters.Checked)
+                    precondition.ListOfMustNoQuests.conditionOfCounterss = '|';
+                else
+                    precondition.ListOfMustNoQuests.conditionOfCounterss = '&';
                 foreach (string quest in tShouldntHaveCounters.Text.Split(','))
                     precondition.ListOfMustNoQuests.ListOfCounters.Add(int.Parse(quest));
+            }
 
 
 

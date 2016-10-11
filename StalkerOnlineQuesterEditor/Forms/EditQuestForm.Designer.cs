@@ -75,6 +75,7 @@
             this.repeatComboBox = new System.Windows.Forms.ComboBox();
             this.lRepeat = new System.Windows.Forms.Label();
             this.targetBox = new System.Windows.Forms.GroupBox();
+            this.cbReputationLow = new System.Windows.Forms.CheckBox();
             this.cbState = new System.Windows.Forms.CheckBox();
             this.lState = new System.Windows.Forms.Label();
             this.udState = new System.Windows.Forms.NumericUpDown();
@@ -602,6 +603,7 @@
             // targetBox
             // 
             this.targetBox.AutoSize = true;
+            this.targetBox.Controls.Add(this.cbReputationLow);
             this.targetBox.Controls.Add(this.cbState);
             this.targetBox.Controls.Add(this.lState);
             this.targetBox.Controls.Add(this.udState);
@@ -629,6 +631,18 @@
             this.targetBox.TabIndex = 1;
             this.targetBox.TabStop = false;
             this.targetBox.Text = "Цель";
+            // 
+            // cbReputationLow
+            // 
+            this.cbReputationLow.AutoSize = true;
+            this.cbReputationLow.Enabled = false;
+            this.cbReputationLow.Location = new System.Drawing.Point(402, 39);
+            this.cbReputationLow.Name = "cbReputationLow";
+            this.cbReputationLow.Size = new System.Drawing.Size(106, 17);
+            this.cbReputationLow.TabIndex = 24;
+            this.cbReputationLow.Text = "На уменьшение";
+            this.cbReputationLow.UseVisualStyleBackColor = true;
+            this.cbReputationLow.Visible = false;
             // 
             // cbState
             // 
@@ -1226,5 +1240,6 @@
         private System.Windows.Forms.Label lState;
         private System.Windows.Forms.NumericUpDown udState;
         private System.Windows.Forms.CheckBox IsCounterCheckBox;
+        private System.Windows.Forms.CheckBox cbReputationLow;
     }
 }

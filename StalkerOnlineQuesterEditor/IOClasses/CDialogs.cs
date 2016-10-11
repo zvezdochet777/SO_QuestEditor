@@ -100,23 +100,35 @@ namespace StalkerOnlineQuesterEditor
 
                         if (dialog.Element("Precondition").Element("ListOfNecessaryQuests") != null)
                         {
-                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOpenedQuests", Precondition.ListOfNecessaryQuests.ListOfOpenedQuests);
-                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
-                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfCompletedQuests", Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
-                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfFailedQuests", Precondition.ListOfNecessaryQuests.ListOfFailedQuests);
-                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOmniCounters", Precondition.ListOfNecessaryQuests.ListOfCounters);
+                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOpenedQuests", Precondition.ListOfNecessaryQuests.ListOfOpenedQuests, ref Precondition.ListOfNecessaryQuests.conditionOfOpenedQuests);
+                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests, ref Precondition.ListOfNecessaryQuests.conditionOfOnTestQuest);
+                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfCompletedQuests", Precondition.ListOfNecessaryQuests.ListOfCompletedQuests, ref Precondition.ListOfNecessaryQuests.conditionOfCompletedQuests);
+                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOmniCounters", Precondition.ListOfNecessaryQuests.ListOfCounters, ref Precondition.ListOfNecessaryQuests.conditionOfCounterss);
                             if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests") != null)
+                            {
+                                if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests").Value.Contains('|'))
+                                    Precondition.ListOfNecessaryQuests.conditionOfMassQuests = '|';
+                                else
+                                    Precondition.ListOfNecessaryQuests.conditionOfMassQuests = '&';
                                 Precondition.ListOfNecessaryQuests.ListOfMassQuests = dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests").Value;
+                                Precondition.ListOfNecessaryQuests.ListOfMassQuests.Replace(Precondition.ListOfNecessaryQuests.conditionOfMassQuests, ',');
+                            }
                         }
                         if (dialog.Element("Precondition").Element("ListOfMustNoQuests") != null)
                         {
-                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOpenedQuests", Precondition.ListOfMustNoQuests.ListOfOpenedQuests);
-                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOnTestQuests", Precondition.ListOfMustNoQuests.ListOfOnTestQuests);
-                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfCompletedQuests", Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
-                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfFailedQuests", Precondition.ListOfMustNoQuests.ListOfFailedQuests);
-                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOmniCounters", Precondition.ListOfMustNoQuests.ListOfCounters);
+                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOpenedQuests", Precondition.ListOfMustNoQuests.ListOfOpenedQuests, ref Precondition.ListOfMustNoQuests.conditionOfOpenedQuests);
+                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOnTestQuests", Precondition.ListOfMustNoQuests.ListOfOnTestQuests, ref Precondition.ListOfMustNoQuests.conditionOfOnTestQuest);
+                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfCompletedQuests", Precondition.ListOfMustNoQuests.ListOfCompletedQuests, ref Precondition.ListOfMustNoQuests.conditionOfCompletedQuests);
+                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOmniCounters", Precondition.ListOfMustNoQuests.ListOfCounters, ref Precondition.ListOfMustNoQuests.conditionOfCounterss);
                             if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests") != null)
+                            {
+                                if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests").Value.Contains('|'))
+                                    Precondition.ListOfMustNoQuests.conditionOfMassQuests = '|';
+                                else
+                                    Precondition.ListOfMustNoQuests.conditionOfMassQuests = '&';
                                 Precondition.ListOfMustNoQuests.ListOfMassQuests = dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests").Value;
+                                Precondition.ListOfMustNoQuests.ListOfMassQuests.Replace(Precondition.ListOfMustNoQuests.conditionOfMassQuests, ',');
+                            }
                         }
                         if (dialog.Element("Precondition").Element("NecessaryEffects") != null)
                             AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.NecessaryEffects);
@@ -202,12 +214,19 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        private void AddPreconditionQuests(XElement Element, String Name1, String Name2, List<int> list)
+        private void AddPreconditionQuests(XElement Element, String Name1, String Name2, List<int> list, ref char condition)
         {
             if (Element.Element("Precondition").Element(Name1).Element(Name2) == null)
                 return;
             if (Element.Element("Precondition").Element(Name1).Element(Name2).Value != "")
-                foreach (string quest in Element.Element("Precondition").Element(Name1).Element(Name2).Value.Split(','))
+
+                if (Element.Element("Precondition").Element(Name1).Element(Name2).Value.Contains('|'))
+                    condition = '|';
+                else if (Element.Element("Precondition").Element(Name1).Element(Name2).Value.Contains('&'))
+                    condition = '&';
+                else
+                    condition = ',';
+                foreach (string quest in Element.Element("Precondition").Element(Name1).Element(Name2).Value.Split(condition))
                     list.Add(int.Parse(quest));
         }
         private void AddDialogEffectsToList(XElement Element, String Name1, String Name2, List<DialogEffect> list)
@@ -343,44 +362,46 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Precondition").Add(new XElement("ListOfNecessaryQuests"));
                         if (dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests.Any())
                             element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfCompletedQuests",
-                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)));
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests, 
+                                                                dialog.Precondition.ListOfNecessaryQuests.conditionOfCompletedQuests)));
                         if (dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Any())
                             element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOpenedQuests",
-                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)));
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests,
+                                                                dialog.Precondition.ListOfNecessaryQuests.conditionOfOpenedQuests)));
                         if (dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests.Any())
                             element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOnTestQuests",
-                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)));
-                        if (dialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests.Any())
-                            element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfFailedQuests",
-                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfFailedQuests)));
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests,
+                                                                dialog.Precondition.ListOfNecessaryQuests.conditionOfOnTestQuest)));
                         if (dialog.Precondition.ListOfNecessaryQuests.ListOfCounters.Any())
                             element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOmniCounters",
-                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCounters)));
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCounters,
+                                                                dialog.Precondition.ListOfNecessaryQuests.conditionOfCounterss)));
                         if (dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests != "")
                             element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfMassQuests",
-                                                                     dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests));
+                                                                     dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests.Replace(',', dialog.Precondition.ListOfNecessaryQuests.conditionOfMassQuests)));
                     }
                     if (dialog.Precondition.ListOfMustNoQuests.Any())
                     {
                         element.Element("Precondition").Add(new XElement("ListOfMustNoQuests"));
                         if (dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests.Any())
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfCompletedQuests",
-                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)));
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests,
+                                                                dialog.Precondition.ListOfMustNoQuests.conditionOfCompletedQuests)));
                         if (dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests.Any())
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOpenedQuests",
-                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)));
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests,
+                                                                dialog.Precondition.ListOfMustNoQuests.conditionOfOpenedQuests)));
                         if (dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests.Any())
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOnTestQuests",
-                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)));
-                        if (dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests.Any())
-                            element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfFailedQuests",
-                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfFailedQuests)));
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests,
+                                                                dialog.Precondition.ListOfMustNoQuests.conditionOfOnTestQuest)));
                         if (dialog.Precondition.ListOfMustNoQuests.ListOfCounters.Any())
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOmniCounters",
-                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCounters)));
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCounters,
+                                                                dialog.Precondition.ListOfMustNoQuests.conditionOfCounterss)));
                         if (dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests != "")
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
-                                                                     dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests));
+                                                                     dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests.Replace(',', dialog.Precondition.ListOfMustNoQuests.conditionOfMassQuests)));
                     }
                     if (dialog.Precondition.clanOptions != "")
                         element.Element("Precondition").Add(new XElement("clanOptions", dialog.Precondition.clanOptions));
