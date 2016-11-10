@@ -874,7 +874,7 @@ namespace StalkerOnlineQuesterEditor
         {
             int iFirstQuestID = 1 + this.settings.getOperatorNumber() * 400;
             for (int questi = iFirstQuestID; ; questi++)
-                if (!quests.quest.Keys.Contains(questi) && !quests.m_Buffer.Keys.Contains(questi))
+                if (!quests.quest.Keys.Contains(questi) && !quests.m_Buffer.Keys.Contains(questi) && !quests.deletedQuests.Contains(questi))
                     return questi;
         }
 
@@ -991,6 +991,7 @@ namespace StalkerOnlineQuesterEditor
             quests.locales[settings.getListLocales()[0]].Remove(questID);
 
             treeQuest.Nodes.Find(questID.ToString(), true)[0].Remove();
+            quests.addDeletedQuests(questID);
             quests.quest.Remove(questID);
         }
         //! Перемещение квеста вверх по дереву квестов

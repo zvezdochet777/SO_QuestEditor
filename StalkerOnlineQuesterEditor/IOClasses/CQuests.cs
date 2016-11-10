@@ -31,7 +31,7 @@ namespace StalkerOnlineQuesterEditor
         public QuestLocales locales = new QuestLocales();
         public NPCQuestDict m_Buffer = new NPCQuestDict();
         public NPCQuestDict m_EngBuffer = new NPCQuestDict();
-
+        public List<int> deletedQuests = new List<int>();
         XDocument doc = new XDocument();
         MainForm parent;
 
@@ -45,6 +45,7 @@ namespace StalkerOnlineQuesterEditor
             this.quest = new NPCQuestDict();
             ParseQuestsData(parent.settings.GetQuestDataPath(), quest);
             ParseQuestsTexts(parent.settings.GetQuestTextPath(), quest);
+            ParseDeletedQuest(parent.settings.GetDeletedQuestsPath(), deletedQuests);
 
             foreach (var locale in parent.settings.getListLocales())
             {
@@ -53,6 +54,28 @@ namespace StalkerOnlineQuesterEditor
                 ParseQuestsData(parent.settings.GetQuestDataPath(), this.locales[locale]);
                 ParseQuestsTexts(parent.settings.GetQuestLocaleTextPath(), this.locales[locale]);
             }
+        }
+
+        void ParseDeletedQuest(string sPath, List<int> list_target)
+        {
+            if (!File.Exists(sPath))
+                return;
+            System.IO.StreamReader fileReader = new StreamReader(sPath);
+            string line;
+            while ((line = fileReader.ReadLine()) != null)
+            {
+                list_target.Add(Convert.ToInt32(line));
+            }
+            fileReader.Close();
+        }
+
+        public void addDeletedQuests(int questID)
+        {
+            deletedQuests.Add(questID);
+            string path = parent.settings.GetDeletedQuestsPath();
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(path, true);
+            writer.WriteLine(questID.ToString());
+            writer.Close();
         }
 
         void ParseQuestsData(string sPath, NPCQuestDict dict_target)

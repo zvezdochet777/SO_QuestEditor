@@ -35,6 +35,7 @@ namespace StalkerOnlineQuesterEditor
         private string dialogDataXML = "DialogData.xml";
         private string questTextsXML = "QuestTexts.xml";
         private string questDataXML = "QuestData.xml";
+        private string deletedQuests = "DeletedQuests.txt";
 
         public CSettings(MainForm parent)
         {
@@ -198,6 +199,11 @@ namespace StalkerOnlineQuesterEditor
         public string GetDialogDataPath()
         {
             return Path.Combine(pathToCopyFiles, dialogDataXML);
+        }
+
+        public string GetDeletedQuestsPath()
+        {
+            return "source\\" + deletedQuests;
         }
 
         public string GetQuestDataPath()
