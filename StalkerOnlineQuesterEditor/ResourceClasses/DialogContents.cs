@@ -94,6 +94,8 @@ namespace StalkerOnlineQuesterEditor
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
 
+       
+
         public object Clone()
         {
             CDialogPrecondition copy = new CDialogPrecondition();
@@ -109,6 +111,7 @@ namespace StalkerOnlineQuesterEditor
             copy.playerOtherLvl = this.playerOtherLvl;
             copy.NecessaryEffects = this.NecessaryEffects;
             copy.MustNoEffects = this.MustNoEffects;
+            
             return copy;
         }
 
@@ -126,6 +129,8 @@ namespace StalkerOnlineQuesterEditor
             this.playerOtherLvl = "";
             this.NecessaryEffects = new List<DialogEffect>();
             this.MustNoEffects = new List<DialogEffect>();
+            
+
         }
 
         public bool Exists()
@@ -241,6 +246,9 @@ namespace StalkerOnlineQuesterEditor
         public ListOfQuests CancelQuests;
         public ListOfQuests FailQuests;
         public string Data;
+        public string actionCamera;
+        public string actionAnimationPlayer;
+        public string actionAnimationNPC;
 
         public Actions()
         {
@@ -252,12 +260,16 @@ namespace StalkerOnlineQuesterEditor
             this.CancelQuests = new ListOfQuests();
             this.FailQuests = new ListOfQuests();
             this.Data = "";
+            this.actionCamera = "";
+            this.actionAnimationPlayer = "";
+            this.actionAnimationNPC = "";
         }
 
 
         public bool Any()
         {
-            return GetQuests.Any() || CompleteQuests.Any() || CancelQuests.Any() || FailQuests.Any() || (Event != null && Event.Value != 0) || (ToDialog != 0) || Exit;
+            return GetQuests.Any() || CompleteQuests.Any() || CancelQuests.Any() || FailQuests.Any() || (Event != null && Event.Value != 0) || (ToDialog != 0) || Exit ||
+                actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "";
         }
 
         public bool Exists()

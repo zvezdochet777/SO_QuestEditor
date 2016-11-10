@@ -123,4 +123,26 @@ namespace StalkerOnlineQuesterEditor
             }
         }
     }
+
+    public class AvatarActions
+    {
+       protected List<string> _constants;
+
+        public AvatarActions()
+        {
+            _constants = new List<string>();
+            XDocument doc;
+            doc = XDocument.Load("source/AvatarActions.xml");
+            foreach (XElement item in doc.Root.Elements())
+            {
+                string name = item.Value;
+                _constants.Add(name);
+            }
+        }
+
+        public List<string> getKeys()
+        {
+            return _constants;
+        }
+    }
 }

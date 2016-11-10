@@ -119,7 +119,7 @@ namespace StalkerOnlineQuesterEditor
 
            
 
-            if (curDialog.Actions.Exists() || curDialog.Actions.Exit || curDialog.Actions.ToDialog!=0 )
+            if (curDialog.Actions.Any())
             {
                 actionsCheckBox.Checked = true;
                 ActionsComboBox.SelectedValue = curDialog.Actions.Event.Value;
@@ -176,6 +176,7 @@ namespace StalkerOnlineQuesterEditor
                     foreach (int failQuest in curDialog.Actions.FailQuests)
                         addItemToTextBox(failQuest.ToString(), tbFailQuests);
                 }
+                this.initActionTab();
             }
 
             // заполнение условий для открытия диалога - список открытых, завершенных, заваленных квестов
@@ -270,6 +271,7 @@ namespace StalkerOnlineQuesterEditor
             this.initEffectsTab();
             this.initLevelTab();
             this.initSkillsTab();
+            
             checkClanOptionsIndicator();
         }
 
@@ -520,6 +522,14 @@ namespace StalkerOnlineQuesterEditor
             else
                 actions.Event = parent.dialogEvents.GetEventFromID(0);
 
+            if (cbCamera.Checked && tbCamera.Text.Any())
+                actions.actionCamera = tbCamera.Text;
+            if (cbAnimationPlayer.Checked && tbAnimationPlayer.Text.Any())
+                actions.actionAnimationPlayer = tbAnimationPlayer.Text;
+            if (cbAnimationNPC.Checked && tbAnimationNPC.Text.Any())
+                actions.actionAnimationNPC = tbAnimationNPC.Text;
+
+
             // заполняем условия появления диалога - открытые и закрытые квесты и т.д.
             if (!tMustHaveOpenQuests.Text.Equals(""))
             {
@@ -611,8 +621,6 @@ namespace StalkerOnlineQuesterEditor
                     precondition.ListOfMustNoQuests.ListOfCounters.Add(int.Parse(quest));
             }
 
-
-
             if (checkClanOptions())
             {
                 if (radioButtonAND.Checked)
@@ -652,6 +660,7 @@ namespace StalkerOnlineQuesterEditor
             precondition.NecessaryEffects = editPrecondition.NecessaryEffects;
             precondition.MustNoEffects = editPrecondition.MustNoEffects;
             precondition.Skills = editPrecondition.Skills;
+           
 
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;
@@ -879,6 +888,34 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        private void initActionTab()
+        {
+            if (curDialog.Actions.actionCamera.Any())
+            {
+                cbCamera.Checked = true;
+                tbCamera.Text = curDialog.Actions.actionCamera;
+            }
+
+            tbAnimationPlayer.Items.Clear();
+            tbAnimationNPC.Items.Clear();
+            foreach (string key in parent.avAmin.getKeys())
+            {
+                tbAnimationPlayer.Items.Add(key);
+                tbAnimationNPC.Items.Add(key);
+            }
+            if (curDialog.Actions.actionAnimationPlayer.Any())
+            {
+                cbAnimationPlayer.Checked = true;
+                tbAnimationPlayer.Text = curDialog.Actions.actionAnimationPlayer;
+            }
+            if (curDialog.Actions.actionAnimationNPC.Any())
+            {
+                cbAnimationNPC.Checked = true;
+                tbAnimationNPC.Text = curDialog.Actions.actionAnimationNPC;
+            }
+            this.checkActionIndicates();
+        }
+
         private void initLevelTab()
         {
             
@@ -992,6 +1029,15 @@ namespace StalkerOnlineQuesterEditor
             this.checkKarmaIndicates();
         }
 
+        private void checkActionIndicates()
+        {
+            if ((cbAnimationNPC.Checked && tbAnimationNPC.Text.Any()) || (cbAnimationPlayer.Checked && tbAnimationPlayer.Text.Any()) ||
+                (cbCamera.Checked && tbCamera.Text.Any()))
+                pictureAction.Visible = true;
+            else
+                pictureAction.Visible = false;
+        }
+
         private void checkEffectsIndicates()
         {
             if (editPrecondition.MustNoEffects.Any() || editPrecondition.NecessaryEffects.Any())
@@ -1006,6 +1052,7 @@ namespace StalkerOnlineQuesterEditor
             this.checkReputation();
             this.checkEffects();
             this.checkSkills();
+            this.checkActionIndicates();
         }
 
         private void digitTextBox_KeyPress(object sender, KeyPressEventArgs e)

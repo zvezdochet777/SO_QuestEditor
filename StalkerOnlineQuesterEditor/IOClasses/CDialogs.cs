@@ -78,7 +78,12 @@ namespace StalkerOnlineQuesterEditor
                                 Nodes.Add(int.Parse(node));
                     if (dialog.Element("Actions") != null)
                     {
-
+                        if (dialog.Element("Actions").Element("GoToCamera") != null)
+                            Actions.actionCamera = dialog.Element("Actions").Element("GoToCamera").Value;
+                        if (dialog.Element("Actions").Element("AnimationPlayer") != null)
+                            Actions.actionAnimationPlayer = dialog.Element("Actions").Element("AnimationPlayer").Value;
+                        if (dialog.Element("Actions").Element("AnimationNPC") != null)
+                            Actions.actionAnimationNPC = dialog.Element("Actions").Element("AnimationNPC").Value;
 
                     if (dialog.Element("Actions").Element("Exit")!= null)
                         Actions.Exit = dialog.Element("Actions").Element("Exit").Value == "1";
@@ -448,6 +453,13 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Actions").Add(new XElement("CancelQuest", Global.GetListAsString(dialog.Actions.CancelQuests)));
                         if (dialog.Actions.FailQuests.Any())
                             element.Element("Actions").Add( new XElement("FailQuest", Global.GetListAsString(dialog.Actions.FailQuests)));
+                        if (dialog.Actions.actionCamera.Any())
+                            element.Element("Actions").Add(new XElement("GoToCamera", dialog.Actions.actionCamera));
+                        if (dialog.Actions.actionAnimationPlayer.Any())
+                            element.Element("Actions").Add(new XElement("AnimationPlayer", dialog.Actions.actionAnimationPlayer));
+                        if (dialog.Actions.actionAnimationNPC.Any())
+                            element.Element("Actions").Add(new XElement("AnimationNPC", dialog.Actions.actionAnimationNPC));
+
                     }
 
                     if (dialog.Nodes.Any())
