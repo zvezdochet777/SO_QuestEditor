@@ -266,6 +266,8 @@ namespace StalkerOnlineQuesterEditor
             }
             if (curDialog.Precondition.Skills.Any())
                 editPrecondition.Skills = curDialog.Precondition.Skills;
+
+            cbForDev.Checked = curDialog.Precondition.forDev;
             this.initReputationTab();
             this.initKarmaPKTab();
             this.initEffectsTab();
@@ -660,7 +662,7 @@ namespace StalkerOnlineQuesterEditor
             precondition.NecessaryEffects = editPrecondition.NecessaryEffects;
             precondition.MustNoEffects = editPrecondition.MustNoEffects;
             precondition.Skills = editPrecondition.Skills;
-           
+            precondition.forDev = cbForDev.Checked;
 
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;

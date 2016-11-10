@@ -145,6 +145,8 @@ namespace StalkerOnlineQuesterEditor
                         Precondition.KarmaPK = new List<int>();
 
                         AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
+                        if (dialog.Element("Precondition").Element("forDev") != null)
+                            Precondition.forDev = true;
                         if (dialog.Element("Precondition").Element("clanOptions") != null)
                         {
                             Precondition.clanOptions = dialog.Element("Precondition").Element("clanOptions").Value.ToString();
@@ -431,6 +433,8 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Precondition.KarmaPK.Any())
                         element.Element("Precondition").Add(new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK)));
                     }
+                    if (dialog.Precondition.forDev)
+                        element.Element("Precondition").Add(new XElement("forDev", Global.GetBoolAsString(dialog.Precondition.forDev)));
 
 
                     if (dialog.Actions.Any())

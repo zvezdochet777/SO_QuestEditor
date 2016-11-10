@@ -93,7 +93,7 @@ namespace StalkerOnlineQuesterEditor
         public List<int> KarmaPK = new List<int>();
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
-
+        public bool forDev;
        
 
         public object Clone()
@@ -111,7 +111,7 @@ namespace StalkerOnlineQuesterEditor
             copy.playerOtherLvl = this.playerOtherLvl;
             copy.NecessaryEffects = this.NecessaryEffects;
             copy.MustNoEffects = this.MustNoEffects;
-            
+            copy.forDev = this.forDev;
             return copy;
         }
 
@@ -129,14 +129,14 @@ namespace StalkerOnlineQuesterEditor
             this.playerOtherLvl = "";
             this.NecessaryEffects = new List<DialogEffect>();
             this.MustNoEffects = new List<DialogEffect>();
-            
+            this.forDev = false;
 
         }
 
         public bool Exists()
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
-                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any();
+                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || forDev;
         }
 
         public bool Any()

@@ -52,6 +52,7 @@
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
             this.gbPrecondition = new System.Windows.Forms.GroupBox();
+            this.pictureAction = new System.Windows.Forms.PictureBox();
             this.pictureSkill = new System.Windows.Forms.PictureBox();
             this.pictureLevel = new System.Windows.Forms.PictureBox();
             this.pictureEffects = new System.Windows.Forms.PictureBox();
@@ -151,6 +152,13 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabActions = new System.Windows.Forms.TabPage();
+            this.tbCamera = new System.Windows.Forms.ComboBox();
+            this.tbAnimationNPC = new System.Windows.Forms.ComboBox();
+            this.tbAnimationPlayer = new System.Windows.Forms.ComboBox();
+            this.cbCamera = new System.Windows.Forms.CheckBox();
+            this.cbAnimationNPC = new System.Windows.Forms.CheckBox();
+            this.cbAnimationPlayer = new System.Windows.Forms.CheckBox();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -158,16 +166,10 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
-            this.tabActions = new System.Windows.Forms.TabPage();
-            this.cbAnimationPlayer = new System.Windows.Forms.CheckBox();
-            this.cbAnimationNPC = new System.Windows.Forms.CheckBox();
-            this.cbCamera = new System.Windows.Forms.CheckBox();
-            this.pictureAction = new System.Windows.Forms.PictureBox();
-            this.tbAnimationPlayer = new System.Windows.Forms.ComboBox();
-            this.tbAnimationNPC = new System.Windows.Forms.ComboBox();
-            this.tbCamera = new System.Windows.Forms.ComboBox();
+            this.cbForDev = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEffects)).BeginInit();
@@ -190,10 +192,9 @@
             this.tabLevel.SuspendLayout();
             this.tabSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).BeginInit();
+            this.tabActions.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
-            this.tabActions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -452,6 +453,18 @@
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
+            // 
+            // pictureAction
+            // 
+            this.pictureAction.BackColor = System.Drawing.Color.Transparent;
+            this.pictureAction.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureAction.Location = new System.Drawing.Point(426, 10);
+            this.pictureAction.Name = "pictureAction";
+            this.pictureAction.Size = new System.Drawing.Size(10, 10);
+            this.pictureAction.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureAction.TabIndex = 59;
+            this.pictureAction.TabStop = false;
+            this.pictureAction.Visible = false;
             // 
             // pictureSkill
             // 
@@ -1422,6 +1435,76 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "B (A < X < B)";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
+            // tabActions
+            // 
+            this.tabActions.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabActions.Controls.Add(this.tbCamera);
+            this.tabActions.Controls.Add(this.tbAnimationNPC);
+            this.tabActions.Controls.Add(this.tbAnimationPlayer);
+            this.tabActions.Controls.Add(this.cbCamera);
+            this.tabActions.Controls.Add(this.cbAnimationNPC);
+            this.tabActions.Controls.Add(this.cbAnimationPlayer);
+            this.tabActions.Location = new System.Drawing.Point(4, 22);
+            this.tabActions.Name = "tabActions";
+            this.tabActions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabActions.Size = new System.Drawing.Size(566, 220);
+            this.tabActions.TabIndex = 7;
+            this.tabActions.Text = "Действия";
+            // 
+            // tbCamera
+            // 
+            this.tbCamera.FormattingEnabled = true;
+            this.tbCamera.Location = new System.Drawing.Point(210, 80);
+            this.tbCamera.Name = "tbCamera";
+            this.tbCamera.Size = new System.Drawing.Size(223, 21);
+            this.tbCamera.TabIndex = 8;
+            // 
+            // tbAnimationNPC
+            // 
+            this.tbAnimationNPC.FormattingEnabled = true;
+            this.tbAnimationNPC.Location = new System.Drawing.Point(210, 56);
+            this.tbAnimationNPC.Name = "tbAnimationNPC";
+            this.tbAnimationNPC.Size = new System.Drawing.Size(223, 21);
+            this.tbAnimationNPC.TabIndex = 7;
+            // 
+            // tbAnimationPlayer
+            // 
+            this.tbAnimationPlayer.FormattingEnabled = true;
+            this.tbAnimationPlayer.Location = new System.Drawing.Point(210, 32);
+            this.tbAnimationPlayer.Name = "tbAnimationPlayer";
+            this.tbAnimationPlayer.Size = new System.Drawing.Size(223, 21);
+            this.tbAnimationPlayer.TabIndex = 6;
+            // 
+            // cbCamera
+            // 
+            this.cbCamera.AutoSize = true;
+            this.cbCamera.Location = new System.Drawing.Point(28, 84);
+            this.cbCamera.Name = "cbCamera";
+            this.cbCamera.Size = new System.Drawing.Size(118, 17);
+            this.cbCamera.TabIndex = 2;
+            this.cbCamera.Text = "Сместить камеру:";
+            this.cbCamera.UseVisualStyleBackColor = true;
+            // 
+            // cbAnimationNPC
+            // 
+            this.cbAnimationNPC.AutoSize = true;
+            this.cbAnimationNPC.Location = new System.Drawing.Point(28, 60);
+            this.cbAnimationNPC.Name = "cbAnimationNPC";
+            this.cbAnimationNPC.Size = new System.Drawing.Size(105, 17);
+            this.cbAnimationNPC.TabIndex = 1;
+            this.cbAnimationNPC.Text = "Анимация NPC:";
+            this.cbAnimationNPC.UseVisualStyleBackColor = true;
+            // 
+            // cbAnimationPlayer
+            // 
+            this.cbAnimationPlayer.AutoSize = true;
+            this.cbAnimationPlayer.Location = new System.Drawing.Point(28, 36);
+            this.cbAnimationPlayer.Name = "cbAnimationPlayer";
+            this.cbAnimationPlayer.Size = new System.Drawing.Size(118, 17);
+            this.cbAnimationPlayer.TabIndex = 0;
+            this.cbAnimationPlayer.Text = "Анимация игрока:";
+            this.cbAnimationPlayer.UseVisualStyleBackColor = true;
+            // 
             // bEditDialogOk
             // 
             this.bEditDialogOk.Location = new System.Drawing.Point(172, 5);
@@ -1453,6 +1536,7 @@
             // 
             // pCommands
             // 
+            this.pCommands.Controls.Add(this.cbForDev);
             this.pCommands.Controls.Add(this.debuglabel);
             this.pCommands.Controls.Add(this.debugTextBox);
             this.pCommands.Controls.Add(this.bEditDialogCancel);
@@ -1497,87 +1581,15 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
-            // tabActions
+            // cbForDev
             // 
-            this.tabActions.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabActions.Controls.Add(this.tbCamera);
-            this.tabActions.Controls.Add(this.tbAnimationNPC);
-            this.tabActions.Controls.Add(this.tbAnimationPlayer);
-            this.tabActions.Controls.Add(this.cbCamera);
-            this.tabActions.Controls.Add(this.cbAnimationNPC);
-            this.tabActions.Controls.Add(this.cbAnimationPlayer);
-            this.tabActions.Location = new System.Drawing.Point(4, 22);
-            this.tabActions.Name = "tabActions";
-            this.tabActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActions.Size = new System.Drawing.Size(566, 220);
-            this.tabActions.TabIndex = 7;
-            this.tabActions.Text = "Действия";
-            // 
-            // cbAnimationPlayer
-            // 
-            this.cbAnimationPlayer.AutoSize = true;
-            this.cbAnimationPlayer.Location = new System.Drawing.Point(28, 36);
-            this.cbAnimationPlayer.Name = "cbAnimationPlayer";
-            this.cbAnimationPlayer.Size = new System.Drawing.Size(118, 17);
-            this.cbAnimationPlayer.TabIndex = 0;
-            this.cbAnimationPlayer.Text = "Анимация игрока:";
-            this.cbAnimationPlayer.UseVisualStyleBackColor = true;
-            // 
-            // cbAnimationNPC
-            // 
-            this.cbAnimationNPC.AutoSize = true;
-            this.cbAnimationNPC.Location = new System.Drawing.Point(28, 60);
-            this.cbAnimationNPC.Name = "cbAnimationNPC";
-            this.cbAnimationNPC.Size = new System.Drawing.Size(105, 17);
-            this.cbAnimationNPC.TabIndex = 1;
-            this.cbAnimationNPC.Text = "Анимация NPC:";
-            this.cbAnimationNPC.UseVisualStyleBackColor = true;
-            // 
-            // cbCamera
-            // 
-            this.cbCamera.AutoSize = true;
-            this.cbCamera.Location = new System.Drawing.Point(28, 84);
-            this.cbCamera.Name = "cbCamera";
-            this.cbCamera.Size = new System.Drawing.Size(118, 17);
-            this.cbCamera.TabIndex = 2;
-            this.cbCamera.Text = "Сместить камеру:";
-            this.cbCamera.UseVisualStyleBackColor = true;
-            // 
-            // pictureAction
-            // 
-            this.pictureAction.BackColor = System.Drawing.Color.Transparent;
-            this.pictureAction.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureAction.Location = new System.Drawing.Point(426, 10);
-            this.pictureAction.Name = "pictureAction";
-            this.pictureAction.Size = new System.Drawing.Size(10, 10);
-            this.pictureAction.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureAction.TabIndex = 59;
-            this.pictureAction.TabStop = false;
-            this.pictureAction.Visible = false;
-            // 
-            // tbAnimationPlayer
-            // 
-            this.tbAnimationPlayer.FormattingEnabled = true;
-            this.tbAnimationPlayer.Location = new System.Drawing.Point(210, 32);
-            this.tbAnimationPlayer.Name = "tbAnimationPlayer";
-            this.tbAnimationPlayer.Size = new System.Drawing.Size(223, 21);
-            this.tbAnimationPlayer.TabIndex = 6;
-            // 
-            // tbAnimationNPC
-            // 
-            this.tbAnimationNPC.FormattingEnabled = true;
-            this.tbAnimationNPC.Location = new System.Drawing.Point(210, 56);
-            this.tbAnimationNPC.Name = "tbAnimationNPC";
-            this.tbAnimationNPC.Size = new System.Drawing.Size(223, 21);
-            this.tbAnimationNPC.TabIndex = 7;
-            // 
-            // tbCamera
-            // 
-            this.tbCamera.FormattingEnabled = true;
-            this.tbCamera.Location = new System.Drawing.Point(210, 80);
-            this.tbCamera.Name = "tbCamera";
-            this.tbCamera.Size = new System.Drawing.Size(223, 21);
-            this.tbCamera.TabIndex = 8;
+            this.cbForDev.AutoSize = true;
+            this.cbForDev.Location = new System.Drawing.Point(397, 13);
+            this.cbForDev.Name = "cbForDev";
+            this.cbForDev.Size = new System.Drawing.Size(167, 17);
+            this.cbForDev.TabIndex = 42;
+            this.cbForDev.Text = "Виден только для разрабов";
+            this.cbForDev.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -1596,6 +1608,7 @@
             this.gbActions.ResumeLayout(false);
             this.gbActions.PerformLayout();
             this.gbPrecondition.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEffects)).EndInit();
@@ -1624,13 +1637,12 @@
             this.tabLevel.PerformLayout();
             this.tabSkills.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).EndInit();
+            this.tabActions.ResumeLayout(false);
+            this.tabActions.PerformLayout();
             this.pCommands.ResumeLayout(false);
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
             this.gbTexts.PerformLayout();
-            this.tabActions.ResumeLayout(false);
-            this.tabActions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1776,5 +1788,6 @@
         private System.Windows.Forms.ComboBox tbCamera;
         private System.Windows.Forms.ComboBox tbAnimationNPC;
         private System.Windows.Forms.ComboBox tbAnimationPlayer;
+        private System.Windows.Forms.CheckBox cbForDev;
     }
 }
