@@ -525,11 +525,14 @@ namespace StalkerOnlineQuesterEditor
                 actions.Event = parent.dialogEvents.GetEventFromID(0);
 
             if (cbCamera.Checked && tbCamera.Text.Any())
+                actions.actionCameraSmoothly = cbCameraSmoothly.Checked;
                 actions.actionCamera = tbCamera.Text;
             if (cbAnimationPlayer.Checked && tbAnimationPlayer.Text.Any())
                 actions.actionAnimationPlayer = tbAnimationPlayer.Text;
             if (cbAnimationNPC.Checked && tbAnimationNPC.Text.Any())
                 actions.actionAnimationNPC = tbAnimationNPC.Text;
+            if (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any())
+                actions.actionAvatarPoint = tbAvatarPoint.Text;
 
 
             // заполняем условия появления диалога - открытые и закрытые квесты и т.д.
@@ -896,6 +899,10 @@ namespace StalkerOnlineQuesterEditor
             {
                 cbCamera.Checked = true;
                 tbCamera.Text = curDialog.Actions.actionCamera;
+                if (curDialog.Actions.actionCameraSmoothly)
+                {
+                    cbCameraSmoothly.Checked = curDialog.Actions.actionCameraSmoothly;
+                }
             }
 
             tbAnimationPlayer.Items.Clear();
@@ -914,6 +921,11 @@ namespace StalkerOnlineQuesterEditor
             {
                 cbAnimationNPC.Checked = true;
                 tbAnimationNPC.Text = curDialog.Actions.actionAnimationNPC;
+            }
+            if (curDialog.Actions.actionAvatarPoint.Any())
+            {
+                cbAvatarPoint.Checked = true;
+                tbAvatarPoint.Text = curDialog.Actions.actionAvatarPoint;
             }
             this.checkActionIndicates();
         }

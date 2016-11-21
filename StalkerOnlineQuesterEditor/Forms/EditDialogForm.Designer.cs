@@ -153,6 +153,8 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabActions = new System.Windows.Forms.TabPage();
+            this.tbAvatarPoint = new System.Windows.Forms.ComboBox();
+            this.cbAvatarPoint = new System.Windows.Forms.CheckBox();
             this.tbCamera = new System.Windows.Forms.ComboBox();
             this.tbAnimationNPC = new System.Windows.Forms.ComboBox();
             this.tbAnimationPlayer = new System.Windows.Forms.ComboBox();
@@ -163,10 +165,11 @@
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
             this.pCommands = new System.Windows.Forms.Panel();
+            this.cbForDev = new System.Windows.Forms.CheckBox();
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
-            this.cbForDev = new System.Windows.Forms.CheckBox();
+            this.cbCameraSmoothly = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -1438,6 +1441,9 @@
             // tabActions
             // 
             this.tabActions.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabActions.Controls.Add(this.cbCameraSmoothly);
+            this.tabActions.Controls.Add(this.tbAvatarPoint);
+            this.tabActions.Controls.Add(this.cbAvatarPoint);
             this.tabActions.Controls.Add(this.tbCamera);
             this.tabActions.Controls.Add(this.tbAnimationNPC);
             this.tabActions.Controls.Add(this.tbAnimationPlayer);
@@ -1451,9 +1457,29 @@
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
+            // tbAvatarPoint
+            // 
+            this.tbAvatarPoint.FormattingEnabled = true;
+            this.tbAvatarPoint.Location = new System.Drawing.Point(210, 103);
+            this.tbAvatarPoint.Name = "tbAvatarPoint";
+            this.tbAvatarPoint.Size = new System.Drawing.Size(223, 21);
+            this.tbAvatarPoint.TabIndex = 10;
+            // 
+            // cbAvatarPoint
+            // 
+            this.cbAvatarPoint.AutoSize = true;
+            this.cbAvatarPoint.Location = new System.Drawing.Point(28, 107);
+            this.cbAvatarPoint.Name = "cbAvatarPoint";
+            this.cbAvatarPoint.Size = new System.Drawing.Size(101, 17);
+            this.cbAvatarPoint.TabIndex = 9;
+            this.cbAvatarPoint.Text = "Точка Аватара";
+            this.cbAvatarPoint.UseVisualStyleBackColor = true;
+            // 
             // tbCamera
             // 
             this.tbCamera.FormattingEnabled = true;
+            this.tbCamera.Items.AddRange(new object[] {
+            "default"});
             this.tbCamera.Location = new System.Drawing.Point(210, 80);
             this.tbCamera.Name = "tbCamera";
             this.tbCamera.Size = new System.Drawing.Size(223, 21);
@@ -1547,6 +1573,16 @@
             this.pCommands.Size = new System.Drawing.Size(588, 62);
             this.pCommands.TabIndex = 13;
             // 
+            // cbForDev
+            // 
+            this.cbForDev.AutoSize = true;
+            this.cbForDev.Location = new System.Drawing.Point(397, 13);
+            this.cbForDev.Name = "cbForDev";
+            this.cbForDev.Size = new System.Drawing.Size(167, 17);
+            this.cbForDev.TabIndex = 42;
+            this.cbForDev.Text = "Виден только для разрабов";
+            this.cbForDev.UseVisualStyleBackColor = true;
+            // 
             // debuglabel
             // 
             this.debuglabel.AutoSize = true;
@@ -1581,15 +1617,15 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
-            // cbForDev
+            // cbCameraSmoothly
             // 
-            this.cbForDev.AutoSize = true;
-            this.cbForDev.Location = new System.Drawing.Point(397, 13);
-            this.cbForDev.Name = "cbForDev";
-            this.cbForDev.Size = new System.Drawing.Size(167, 17);
-            this.cbForDev.TabIndex = 42;
-            this.cbForDev.Text = "Виден только для разрабов";
-            this.cbForDev.UseVisualStyleBackColor = true;
+            this.cbCameraSmoothly.AutoSize = true;
+            this.cbCameraSmoothly.Location = new System.Drawing.Point(439, 84);
+            this.cbCameraSmoothly.Name = "cbCameraSmoothly";
+            this.cbCameraSmoothly.Size = new System.Drawing.Size(64, 17);
+            this.cbCameraSmoothly.TabIndex = 11;
+            this.cbCameraSmoothly.Text = "Плавно";
+            this.cbCameraSmoothly.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -1789,5 +1825,8 @@
         private System.Windows.Forms.ComboBox tbAnimationNPC;
         private System.Windows.Forms.ComboBox tbAnimationPlayer;
         private System.Windows.Forms.CheckBox cbForDev;
+        private System.Windows.Forms.ComboBox tbAvatarPoint;
+        private System.Windows.Forms.CheckBox cbAvatarPoint;
+        private System.Windows.Forms.CheckBox cbCameraSmoothly;
     }
 }
