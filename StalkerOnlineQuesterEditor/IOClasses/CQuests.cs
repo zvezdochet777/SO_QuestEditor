@@ -250,6 +250,9 @@ namespace StalkerOnlineQuesterEditor
             {
                 int QuestID = int.Parse(quest.Element("ID").Value);
                 String npc_name = quest.Element("NPC").Value;
+                if (!target.ContainsKey(QuestID))
+                    MessageBox.Show("Ошибка, квест с ID:" + QuestID.ToString() + " был удалён, по причине, что есть текст, но нет квеста", "Удалён квест");
+                    continue;
                 if (quest.Element("Title") != null)
                     target[QuestID].QuestInformation.Title = quest.Element("Title").Value;
                 if (quest.Element("Description") != null)
