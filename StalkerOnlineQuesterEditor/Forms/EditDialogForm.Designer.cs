@@ -153,6 +153,9 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabActions = new System.Windows.Forms.TabPage();
+            this.tbPlaySonund = new System.Windows.Forms.ComboBox();
+            this.cbPlaySonund = new System.Windows.Forms.CheckBox();
+            this.cbCameraSmoothly = new System.Windows.Forms.CheckBox();
             this.tbAvatarPoint = new System.Windows.Forms.ComboBox();
             this.cbAvatarPoint = new System.Windows.Forms.CheckBox();
             this.tbCamera = new System.Windows.Forms.ComboBox();
@@ -169,7 +172,8 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
-            this.cbCameraSmoothly = new System.Windows.Forms.CheckBox();
+            this.tbGotTo = new System.Windows.Forms.ComboBox();
+            this.cbGoTo = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -1441,6 +1445,10 @@
             // tabActions
             // 
             this.tabActions.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabActions.Controls.Add(this.tbGotTo);
+            this.tabActions.Controls.Add(this.cbGoTo);
+            this.tabActions.Controls.Add(this.tbPlaySonund);
+            this.tabActions.Controls.Add(this.cbPlaySonund);
             this.tabActions.Controls.Add(this.cbCameraSmoothly);
             this.tabActions.Controls.Add(this.tbAvatarPoint);
             this.tabActions.Controls.Add(this.cbAvatarPoint);
@@ -1457,10 +1465,38 @@
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
+            // tbPlaySonund
+            // 
+            this.tbPlaySonund.FormattingEnabled = true;
+            this.tbPlaySonund.Location = new System.Drawing.Point(210, 106);
+            this.tbPlaySonund.Name = "tbPlaySonund";
+            this.tbPlaySonund.Size = new System.Drawing.Size(223, 21);
+            this.tbPlaySonund.TabIndex = 13;
+            // 
+            // cbPlaySonund
+            // 
+            this.cbPlaySonund.AutoSize = true;
+            this.cbPlaySonund.Location = new System.Drawing.Point(28, 110);
+            this.cbPlaySonund.Name = "cbPlaySonund";
+            this.cbPlaySonund.Size = new System.Drawing.Size(106, 17);
+            this.cbPlaySonund.TabIndex = 12;
+            this.cbPlaySonund.Text = "Проиграть звук";
+            this.cbPlaySonund.UseVisualStyleBackColor = true;
+            // 
+            // cbCameraSmoothly
+            // 
+            this.cbCameraSmoothly.AutoSize = true;
+            this.cbCameraSmoothly.Location = new System.Drawing.Point(439, 64);
+            this.cbCameraSmoothly.Name = "cbCameraSmoothly";
+            this.cbCameraSmoothly.Size = new System.Drawing.Size(64, 17);
+            this.cbCameraSmoothly.TabIndex = 11;
+            this.cbCameraSmoothly.Text = "Плавно";
+            this.cbCameraSmoothly.UseVisualStyleBackColor = true;
+            // 
             // tbAvatarPoint
             // 
             this.tbAvatarPoint.FormattingEnabled = true;
-            this.tbAvatarPoint.Location = new System.Drawing.Point(210, 103);
+            this.tbAvatarPoint.Location = new System.Drawing.Point(210, 83);
             this.tbAvatarPoint.Name = "tbAvatarPoint";
             this.tbAvatarPoint.Size = new System.Drawing.Size(223, 21);
             this.tbAvatarPoint.TabIndex = 10;
@@ -1468,7 +1504,7 @@
             // cbAvatarPoint
             // 
             this.cbAvatarPoint.AutoSize = true;
-            this.cbAvatarPoint.Location = new System.Drawing.Point(28, 107);
+            this.cbAvatarPoint.Location = new System.Drawing.Point(28, 87);
             this.cbAvatarPoint.Name = "cbAvatarPoint";
             this.cbAvatarPoint.Size = new System.Drawing.Size(101, 17);
             this.cbAvatarPoint.TabIndex = 9;
@@ -1480,7 +1516,7 @@
             this.tbCamera.FormattingEnabled = true;
             this.tbCamera.Items.AddRange(new object[] {
             "default"});
-            this.tbCamera.Location = new System.Drawing.Point(210, 80);
+            this.tbCamera.Location = new System.Drawing.Point(210, 60);
             this.tbCamera.Name = "tbCamera";
             this.tbCamera.Size = new System.Drawing.Size(223, 21);
             this.tbCamera.TabIndex = 8;
@@ -1488,7 +1524,7 @@
             // tbAnimationNPC
             // 
             this.tbAnimationNPC.FormattingEnabled = true;
-            this.tbAnimationNPC.Location = new System.Drawing.Point(210, 56);
+            this.tbAnimationNPC.Location = new System.Drawing.Point(210, 36);
             this.tbAnimationNPC.Name = "tbAnimationNPC";
             this.tbAnimationNPC.Size = new System.Drawing.Size(223, 21);
             this.tbAnimationNPC.TabIndex = 7;
@@ -1496,7 +1532,7 @@
             // tbAnimationPlayer
             // 
             this.tbAnimationPlayer.FormattingEnabled = true;
-            this.tbAnimationPlayer.Location = new System.Drawing.Point(210, 32);
+            this.tbAnimationPlayer.Location = new System.Drawing.Point(210, 12);
             this.tbAnimationPlayer.Name = "tbAnimationPlayer";
             this.tbAnimationPlayer.Size = new System.Drawing.Size(223, 21);
             this.tbAnimationPlayer.TabIndex = 6;
@@ -1504,7 +1540,7 @@
             // cbCamera
             // 
             this.cbCamera.AutoSize = true;
-            this.cbCamera.Location = new System.Drawing.Point(28, 84);
+            this.cbCamera.Location = new System.Drawing.Point(28, 64);
             this.cbCamera.Name = "cbCamera";
             this.cbCamera.Size = new System.Drawing.Size(118, 17);
             this.cbCamera.TabIndex = 2;
@@ -1514,7 +1550,7 @@
             // cbAnimationNPC
             // 
             this.cbAnimationNPC.AutoSize = true;
-            this.cbAnimationNPC.Location = new System.Drawing.Point(28, 60);
+            this.cbAnimationNPC.Location = new System.Drawing.Point(28, 40);
             this.cbAnimationNPC.Name = "cbAnimationNPC";
             this.cbAnimationNPC.Size = new System.Drawing.Size(105, 17);
             this.cbAnimationNPC.TabIndex = 1;
@@ -1524,7 +1560,7 @@
             // cbAnimationPlayer
             // 
             this.cbAnimationPlayer.AutoSize = true;
-            this.cbAnimationPlayer.Location = new System.Drawing.Point(28, 36);
+            this.cbAnimationPlayer.Location = new System.Drawing.Point(28, 16);
             this.cbAnimationPlayer.Name = "cbAnimationPlayer";
             this.cbAnimationPlayer.Size = new System.Drawing.Size(118, 17);
             this.cbAnimationPlayer.TabIndex = 0;
@@ -1617,15 +1653,27 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
-            // cbCameraSmoothly
+            // tbGotTo
             // 
-            this.cbCameraSmoothly.AutoSize = true;
-            this.cbCameraSmoothly.Location = new System.Drawing.Point(439, 84);
-            this.cbCameraSmoothly.Name = "cbCameraSmoothly";
-            this.cbCameraSmoothly.Size = new System.Drawing.Size(64, 17);
-            this.cbCameraSmoothly.TabIndex = 11;
-            this.cbCameraSmoothly.Text = "Плавно";
-            this.cbCameraSmoothly.UseVisualStyleBackColor = true;
+            this.tbGotTo.FormattingEnabled = true;
+            this.tbGotTo.Items.AddRange(new object[] {
+            "письку",
+            "Стас, зачем ты открыл",
+            "этот dropList?"});
+            this.tbGotTo.Location = new System.Drawing.Point(210, 129);
+            this.tbGotTo.Name = "tbGotTo";
+            this.tbGotTo.Size = new System.Drawing.Size(223, 21);
+            this.tbGotTo.TabIndex = 15;
+            // 
+            // cbGoTo
+            // 
+            this.cbGoTo.AutoSize = true;
+            this.cbGoTo.Location = new System.Drawing.Point(28, 133);
+            this.cbGoTo.Name = "cbGoTo";
+            this.cbGoTo.Size = new System.Drawing.Size(61, 17);
+            this.cbGoTo.TabIndex = 14;
+            this.cbGoTo.Text = "Иди на";
+            this.cbGoTo.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -1828,5 +1876,9 @@
         private System.Windows.Forms.ComboBox tbAvatarPoint;
         private System.Windows.Forms.CheckBox cbAvatarPoint;
         private System.Windows.Forms.CheckBox cbCameraSmoothly;
+        private System.Windows.Forms.ComboBox tbPlaySonund;
+        private System.Windows.Forms.CheckBox cbPlaySonund;
+        private System.Windows.Forms.ComboBox tbGotTo;
+        private System.Windows.Forms.CheckBox cbGoTo;
     }
 }

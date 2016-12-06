@@ -63,6 +63,7 @@ namespace StalkerOnlineQuesterEditor
         public CommandConstants cmConst;
         public RepairConstants rpConst;
         public AvatarActions avAmin;
+        public ListSounds listSouds;
         
         public CSettings settings;
         public COperNotes manageNotes;
@@ -92,6 +93,7 @@ namespace StalkerOnlineQuesterEditor
             cmConst = new CommandConstants();
             rpConst = new RepairConstants();
             avAmin = new AvatarActions();
+            listSouds = new ListSounds();
             settings.checkMode();
 
             tree = treeDialogs;

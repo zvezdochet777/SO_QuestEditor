@@ -145,4 +145,26 @@ namespace StalkerOnlineQuesterEditor
             return _constants;
         }
     }
+
+    public class ListSounds
+    {
+        protected List<string> _constants;
+
+        public ListSounds()
+        {
+            _constants = new List<string>();
+            XDocument doc;
+            doc = XDocument.Load("source/Sounds.xml");
+            foreach (XElement item in doc.Root.Elements())
+            {
+                string name = item.Value;
+                _constants.Add(name);
+            }
+        }
+
+        public List<string> getKeys()
+        {
+            return _constants;
+        }
+    }
 }

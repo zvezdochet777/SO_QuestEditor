@@ -533,6 +533,10 @@ namespace StalkerOnlineQuesterEditor
                 actions.actionAnimationNPC = tbAnimationNPC.Text;
             if (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any())
                 actions.actionAvatarPoint = tbAvatarPoint.Text;
+            if (cbPlaySonund.Checked && tbPlaySonund.Text.Any())
+                actions.actionPlaySound = tbPlaySonund.Text;
+            if (cbGoTo.Checked && tbGotTo.Text.Any())
+                actions.actionAvatarGoTo = tbGotTo.Text;
 
 
             // заполняем условия появления диалога - открытые и закрытые квесты и т.д.
@@ -927,6 +931,20 @@ namespace StalkerOnlineQuesterEditor
                 cbAvatarPoint.Checked = true;
                 tbAvatarPoint.Text = curDialog.Actions.actionAvatarPoint;
             }
+            foreach (string key in parent.listSouds.getKeys())
+            {
+                tbPlaySonund.Items.Add(key);
+            }
+            if (curDialog.Actions.actionPlaySound.Any())
+            {
+                cbPlaySonund.Checked = true;
+                tbPlaySonund.Text = curDialog.Actions.actionPlaySound;
+            }
+            if (curDialog.Actions.actionAvatarGoTo.Any())
+            {
+                cbGoTo.Checked = true;
+                tbGotTo.Text = curDialog.Actions.actionAvatarGoTo;
+            }
             this.checkActionIndicates();
         }
 
@@ -1046,7 +1064,7 @@ namespace StalkerOnlineQuesterEditor
         private void checkActionIndicates()
         {
             if ((cbAnimationNPC.Checked && tbAnimationNPC.Text.Any()) || (cbAnimationPlayer.Checked && tbAnimationPlayer.Text.Any()) ||
-                (cbCamera.Checked && tbCamera.Text.Any()))
+                (cbCamera.Checked && tbCamera.Text.Any()) || (cbPlaySonund.Checked && tbPlaySonund.Text.Any()) || (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any()))
                 pictureAction.Visible = true;
             else
                 pictureAction.Visible = false;

@@ -84,12 +84,16 @@ namespace StalkerOnlineQuesterEditor
                             if (dialog.Element("Actions").Element("CameraSmoothly") == null)
                                 Actions.actionCameraSmoothly = false;
                             }
+                        if (dialog.Element("Actions").Element("AvatarGoTo") != null)
+                            Actions.actionAvatarGoTo = dialog.Element("Actions").Element("AvatarGoTo").Value;
                         if (dialog.Element("Actions").Element("AnimationPlayer") != null)
                             Actions.actionAnimationPlayer = dialog.Element("Actions").Element("AnimationPlayer").Value;
                         if (dialog.Element("Actions").Element("AnimationNPC") != null)
                             Actions.actionAnimationNPC = dialog.Element("Actions").Element("AnimationNPC").Value;
                         if (dialog.Element("Actions").Element("AvatarPoint") != null)
                             Actions.actionAvatarPoint = dialog.Element("Actions").Element("AvatarPoint").Value;
+                        if (dialog.Element("Actions").Element("PlaySound") != null)
+                            Actions.actionPlaySound = dialog.Element("Actions").Element("PlaySound").Value;
 
                     if (dialog.Element("Actions").Element("Exit")!= null)
                         Actions.Exit = dialog.Element("Actions").Element("Exit").Value == "1";
@@ -475,6 +479,10 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Actions").Add(new XElement("AnimationNPC", dialog.Actions.actionAnimationNPC));
                         if (dialog.Actions.actionAvatarPoint.Any())
                             element.Element("Actions").Add(new XElement("AvatarPoint", dialog.Actions.actionAvatarPoint));
+                        if (dialog.Actions.actionPlaySound.Any())
+                            element.Element("Actions").Add(new XElement("PlaySound", dialog.Actions.actionPlaySound));
+                        if (dialog.Actions.actionAvatarGoTo.Any())
+                            element.Element("Actions").Add(new XElement("AvatarGoTo", dialog.Actions.actionAvatarGoTo));
 
                     }
 
