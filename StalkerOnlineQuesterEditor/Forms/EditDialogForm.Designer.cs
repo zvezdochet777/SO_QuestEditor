@@ -172,8 +172,8 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
-            this.tbGotTo = new System.Windows.Forms.ComboBox();
-            this.cbGoTo = new System.Windows.Forms.CheckBox();
+            this.cbAutoNode = new System.Windows.Forms.CheckBox();
+            this.tbAvatarGoTo = new System.Windows.Forms.TextBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -253,6 +253,7 @@
             // 
             this.gbActions.AutoSize = true;
             this.gbActions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbActions.Controls.Add(this.tbAvatarGoTo);
             this.gbActions.Controls.Add(this.commandsComboBox);
             this.gbActions.Controls.Add(this.cbFailQuests);
             this.gbActions.Controls.Add(this.cbCancelQuests);
@@ -1445,8 +1446,6 @@
             // tabActions
             // 
             this.tabActions.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabActions.Controls.Add(this.tbGotTo);
-            this.tabActions.Controls.Add(this.cbGoTo);
             this.tabActions.Controls.Add(this.tbPlaySonund);
             this.tabActions.Controls.Add(this.cbPlaySonund);
             this.tabActions.Controls.Add(this.cbCameraSmoothly);
@@ -1637,6 +1636,7 @@
             // 
             // gbTexts
             // 
+            this.gbTexts.Controls.Add(this.cbAutoNode);
             this.gbTexts.Controls.Add(this.tNodes);
             this.gbTexts.Controls.Add(this.lNodes);
             this.gbTexts.Controls.Add(this.tReactionNPC);
@@ -1653,27 +1653,24 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
-            // tbGotTo
+            // cbAutoNode
             // 
-            this.tbGotTo.FormattingEnabled = true;
-            this.tbGotTo.Items.AddRange(new object[] {
-            "письку",
-            "Стас, зачем ты открыл",
-            "этот dropList?"});
-            this.tbGotTo.Location = new System.Drawing.Point(210, 129);
-            this.tbGotTo.Name = "tbGotTo";
-            this.tbGotTo.Size = new System.Drawing.Size(223, 21);
-            this.tbGotTo.TabIndex = 15;
+            this.cbAutoNode.AutoSize = true;
+            this.cbAutoNode.Location = new System.Drawing.Point(103, 9);
+            this.cbAutoNode.Name = "cbAutoNode";
+            this.cbAutoNode.Size = new System.Drawing.Size(123, 17);
+            this.cbAutoNode.TabIndex = 14;
+            this.cbAutoNode.Text = "Автопереключалка";
+            this.cbAutoNode.UseVisualStyleBackColor = true;
+            this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // cbGoTo
+            // tbAvatarGoTo
             // 
-            this.cbGoTo.AutoSize = true;
-            this.cbGoTo.Location = new System.Drawing.Point(28, 133);
-            this.cbGoTo.Name = "cbGoTo";
-            this.cbGoTo.Size = new System.Drawing.Size(61, 17);
-            this.cbGoTo.TabIndex = 14;
-            this.cbGoTo.Text = "Иди на";
-            this.cbGoTo.UseVisualStyleBackColor = true;
+            this.tbAvatarGoTo.Location = new System.Drawing.Point(222, 77);
+            this.tbAvatarGoTo.Name = "tbAvatarGoTo";
+            this.tbAvatarGoTo.Size = new System.Drawing.Size(147, 20);
+            this.tbAvatarGoTo.TabIndex = 41;
+            this.tbAvatarGoTo.Visible = false;
             // 
             // EditDialogForm
             // 
@@ -1878,7 +1875,7 @@
         private System.Windows.Forms.CheckBox cbCameraSmoothly;
         private System.Windows.Forms.ComboBox tbPlaySonund;
         private System.Windows.Forms.CheckBox cbPlaySonund;
-        private System.Windows.Forms.ComboBox tbGotTo;
-        private System.Windows.Forms.CheckBox cbGoTo;
+        private System.Windows.Forms.CheckBox cbAutoNode;
+        private System.Windows.Forms.TextBox tbAvatarGoTo;
     }
 }

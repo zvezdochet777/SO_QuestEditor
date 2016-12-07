@@ -141,7 +141,8 @@ namespace StalkerOnlineQuesterEditor
 
         public bool Any()
         {
-            if (ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any())
+            if (ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
+                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any())
                 return true;
             else
                 return false;
@@ -252,7 +253,6 @@ namespace StalkerOnlineQuesterEditor
         public string actionAnimationNPC;
         public string actionAvatarPoint;
         public string actionPlaySound;
-        public string actionAvatarGoTo;
 
         public Actions()
         {
@@ -270,14 +270,13 @@ namespace StalkerOnlineQuesterEditor
             this.actionAnimationNPC = "";
             this.actionAvatarPoint = "";
             this.actionPlaySound = "";
-            this.actionAvatarGoTo = "";
         }
 
 
         public bool Any()
         {
             return GetQuests.Any() || CompleteQuests.Any() || CancelQuests.Any() || FailQuests.Any() || (Event != null && Event.Value != 0) || (ToDialog != 0) || Exit ||
-                actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "" || actionAvatarPoint != "" || actionPlaySound != "" || actionAvatarGoTo != "";
+                actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "" || actionAvatarPoint != "" || actionPlaySound != "" ;
         }
 
         public bool Exists()
@@ -353,9 +352,10 @@ namespace StalkerOnlineQuesterEditor
         public int version;
         public NodeCoordinates coordinates;
         public string DebugData;
+        public bool isAutoNode;
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
-                    Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "")
+                    Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false)
         {
             this.Holder = Holder;
             this.Title = Title;
@@ -367,6 +367,7 @@ namespace StalkerOnlineQuesterEditor
             this.version = version;
             this.coordinates = Coordinates;
             this.DebugData = DebugData;
+            this.isAutoNode = isAutoNode;
         }
         public CDialog()
         {
@@ -379,6 +380,7 @@ namespace StalkerOnlineQuesterEditor
             this.DialogID = new int();
             this.version = new int();
             coordinates = new NodeCoordinates();
+            this.isAutoNode = false;
             this.DebugData = "";
         }
         public object Clone()
@@ -394,6 +396,7 @@ namespace StalkerOnlineQuesterEditor
             copy.Title = this.Title;
             copy.version = this.version;
             copy.DebugData = this.DebugData;
+            copy.isAutoNode = this.isAutoNode;
             return copy;
         }
         // Копирование всех нетекстовых полей (сделано для синхронизации данных, не изменяя перевода)

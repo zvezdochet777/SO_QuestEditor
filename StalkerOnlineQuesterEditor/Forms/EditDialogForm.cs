@@ -97,6 +97,8 @@ namespace StalkerOnlineQuesterEditor
         //! Заполняет всю форму данными из CDialog
         void fillDialogEditForm(int dialogID)
         {
+            cbAutoNode.Checked = curDialog.isAutoNode;
+           
             foreach (CDialog dialog in parent.getDialogsWithDialogIDInNodes(dialogID))
                     NPCSaidIs.Text+=(dialog.DialogID.ToString()+":\n"+dialog.Text);
             // заполнение текста речевки и ответа ГГ
@@ -116,8 +118,6 @@ namespace StalkerOnlineQuesterEditor
                         tNodes.Text += ("," + dialog.ToString());
                 }
             this.fillClanOptions(curDialog.Precondition.clanOptions);
-
-           
 
             if (curDialog.Actions.Any())
             {
@@ -140,6 +140,8 @@ namespace StalkerOnlineQuesterEditor
                     string key = parent.rpConst.getName(curDialog.Actions.Data);
                     commandsComboBox.SelectedItem = key;
                 }
+                if (ActionsComboBox.Text == "Перейти в точку")
+                    tbAvatarGoTo.Text = curDialog.Actions.Data;
                 
                 
                 if (curDialog.Actions.ToDialog != 0)
@@ -176,7 +178,7 @@ namespace StalkerOnlineQuesterEditor
                     foreach (int failQuest in curDialog.Actions.FailQuests)
                         addItemToTextBox(failQuest.ToString(), tbFailQuests);
                 }
-                this.initActionTab();
+                
             }
 
             // заполнение условий для открытия диалога - список открытых, завершенных, заваленных квестов
@@ -273,7 +275,7 @@ namespace StalkerOnlineQuesterEditor
             this.initEffectsTab();
             this.initLevelTab();
             this.initSkillsTab();
-            
+            this.initActionTab();
             checkClanOptionsIndicator();
         }
 
@@ -405,7 +407,7 @@ namespace StalkerOnlineQuesterEditor
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
             commandsComboBox.Visible = (SelectedValue == 19) || (SelectedValue == 4) || (SelectedValue == 6);
-
+            tbAvatarGoTo.Visible = (SelectedValue == 20);
             if (SelectedValue == 19)
             {
                 commandsComboBox.Items.Clear();
@@ -482,12 +484,17 @@ namespace StalkerOnlineQuesterEditor
             List<int> nodes = new List<int>();
             //List<string> holder = new List<string>();
             string holder = parent.GetCurrentNPC();
-            if (!CheckConditions())
-                return;
+           
+
+            
+
             if (!tNodes.Text.Equals(""))
                 foreach (string node in tNodes.Text.Split(','))
                     nodes.Add(int.Parse(node));
-
+            if (!cbAutoNode.Checked)
+            {
+            if (!CheckConditions())
+                return;
 
             if(!this.checkReputation()) 
                 return;
@@ -508,6 +515,8 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if ((actions.Event.Display == "Починка") || (actions.Event.Display == "Комплексная починка"))
                     actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
+                if (actions.Event.Display == "Перейти в точку")
+                    actions.Data = tbAvatarGoTo.Text;
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))
                         actions.GetQuests.Add(int.Parse(quest));
@@ -535,8 +544,6 @@ namespace StalkerOnlineQuesterEditor
                 actions.actionAvatarPoint = tbAvatarPoint.Text;
             if (cbPlaySonund.Checked && tbPlaySonund.Text.Any())
                 actions.actionPlaySound = tbPlaySonund.Text;
-            if (cbGoTo.Checked && tbGotTo.Text.Any())
-                actions.actionAvatarGoTo = tbGotTo.Text;
 
 
             // заполняем условия появления диалога - открытые и закрытые квесты и т.д.
@@ -671,13 +678,15 @@ namespace StalkerOnlineQuesterEditor
             precondition.Skills = editPrecondition.Skills;
             precondition.forDev = cbForDev.Checked;
 
+            }
+
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;
 
             if (isAdd)
             {
                 newID = parent.getDialogsNewID();
-                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, newID, 1, coord, DebugData), currentDialogID);
+                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, newID, 1, coord, DebugData, cbAutoNode.Checked), currentDialogID);
             }
             else
             {
@@ -689,7 +698,7 @@ namespace StalkerOnlineQuesterEditor
                 if (tPlayerText.Text != curDialog.Title || tReactionNPC.Text != curDialog.Text)
                     version++;
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tReactionNPC.Text,
-                    precondition, actions, nodes, currentDialogID, version, coord, DebugData), currentDialogID);
+                    precondition, actions, nodes, currentDialogID, version, coord, DebugData, cbAutoNode.Checked), currentDialogID);
             }
             parent.Enabled = true;
             parent.DialogSelected(true);
@@ -940,11 +949,6 @@ namespace StalkerOnlineQuesterEditor
                 cbPlaySonund.Checked = true;
                 tbPlaySonund.Text = curDialog.Actions.actionPlaySound;
             }
-            if (curDialog.Actions.actionAvatarGoTo.Any())
-            {
-                cbGoTo.Checked = true;
-                tbGotTo.Text = curDialog.Actions.actionAvatarGoTo;
-            }
             this.checkActionIndicates();
         }
 
@@ -1090,6 +1094,18 @@ namespace StalkerOnlineQuesterEditor
         private void digitTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void cbAutoNode_CheckedChanged(object sender, EventArgs e)
+        {
+            bool check = !cbAutoNode.Checked;
+            tPlayerText.Enabled = check;
+            tReactionNPC.Enabled = check;
+            tNodes.Enabled = check;
+            gbPrecondition.Enabled = check;
+            gbActions.Enabled = check;
+            actionsCheckBox.Enabled = check;
+            cbForDev.Enabled = check;
         }
         
 

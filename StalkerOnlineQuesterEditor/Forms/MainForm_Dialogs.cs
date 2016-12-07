@@ -325,14 +325,29 @@ namespace StalkerOnlineQuesterEditor
         {
             PNode newNode;
             SizeF size = CalcEllipsisSizeForNode(dialog.DialogID);
-            if (dialog.Precondition.Any())
-                newNode = PPath.CreateRectangle(location.X, location.Y, size.Width, size.Height);
-            else
-                newNode = PPath.CreateEllipse(location.X, location.Y, size.Width, size.Height);
             PText text = new PText(dialog.DialogID.ToString());
-            text.Pickable = false;
-            text.X = newNode.X + 15;
-            text.Y = newNode.Y + 10;
+             text.Pickable = false;
+             if (dialog.isAutoNode)
+             {
+                 PointF[] listPoints = new PointF[4];
+                 listPoints[0] = new PointF(location.X - size.Height, location.Y);
+                 listPoints[1] = new PointF(location.X, location.Y - size.Height);
+                 listPoints[2] = new PointF(location.X + size.Height, location.Y);
+                 listPoints[3] = new PointF(location.X, location.Y + size.Height);
+                 
+                 newNode = PPath.CreatePolygon(listPoints);
+                 text.X = newNode.X + 20;
+                 text.Y = newNode.Y + 30;
+             }
+             else
+             {
+                 if (dialog.Precondition.Any())
+                     newNode = PPath.CreateRectangle(location.X, location.Y, size.Width, size.Height);
+                 else
+                     newNode = PPath.CreateEllipse(location.X, location.Y, size.Width, size.Height);
+                 text.X = newNode.X + 11;
+                 text.Y = newNode.Y + 10;
+             }
             newNode.Tag = new ArrayList();
             newNode.AddChild(text);
             return newNode;

@@ -68,6 +68,7 @@ namespace StalkerOnlineQuesterEditor
                 {
                     int DialogID = int.Parse(dialog.Element("ID").Value);
                     string DebugData = "";
+                    bool isAutoNode = false;
                     List<int> Nodes = new List<int>();
                     Actions Actions = new Actions();
                     CDialogPrecondition Precondition = new CDialogPrecondition();
@@ -84,8 +85,6 @@ namespace StalkerOnlineQuesterEditor
                             if (dialog.Element("Actions").Element("CameraSmoothly") == null)
                                 Actions.actionCameraSmoothly = false;
                             }
-                        if (dialog.Element("Actions").Element("AvatarGoTo") != null)
-                            Actions.actionAvatarGoTo = dialog.Element("Actions").Element("AvatarGoTo").Value;
                         if (dialog.Element("Actions").Element("AnimationPlayer") != null)
                             Actions.actionAnimationPlayer = dialog.Element("Actions").Element("AnimationPlayer").Value;
                         if (dialog.Element("Actions").Element("AnimationNPC") != null)
@@ -225,8 +224,10 @@ namespace StalkerOnlineQuesterEditor
 
                     if (dialog.Element("DebugData") != null)
                         DebugData = dialog.Element("DebugData").Value.ToString();
+                    if (dialog.Element("isAutoNode") != null)
+                        isAutoNode = dialog.Element("isAutoNode").Value.Equals("1");
                     if (!target[npc_name].Keys.Contains(DialogID))
-                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, DialogID, 0, nodeCoord, DebugData));
+                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, DialogID, 0, nodeCoord, DebugData, isAutoNode));
                 }
             }
         }
@@ -481,8 +482,6 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Actions").Add(new XElement("AvatarPoint", dialog.Actions.actionAvatarPoint));
                         if (dialog.Actions.actionPlaySound.Any())
                             element.Element("Actions").Add(new XElement("PlaySound", dialog.Actions.actionPlaySound));
-                        if (dialog.Actions.actionAvatarGoTo.Any())
-                            element.Element("Actions").Add(new XElement("AvatarGoTo", dialog.Actions.actionAvatarGoTo));
 
                     }
 
@@ -493,6 +492,7 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.coordinates.Active)
                         element.Add(new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active)));
                     if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
+                    if (dialog.isAutoNode) element.Add(new XElement("isAutoNode", Global.GetBoolAsString(dialog.isAutoNode)));
 
                     npcElement.Add(element);
 
