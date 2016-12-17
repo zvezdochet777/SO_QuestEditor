@@ -98,7 +98,7 @@ namespace StalkerOnlineQuesterEditor
         void fillDialogEditForm(int dialogID)
         {
             cbAutoNode.Checked = curDialog.isAutoNode;
-           
+            autoDefaultNode.Text = curDialog.defaultNode;
             foreach (CDialog dialog in parent.getDialogsWithDialogIDInNodes(dialogID))
                     NPCSaidIs.Text+=(dialog.DialogID.ToString()+":\n"+dialog.Text);
             // заполнение текста речевки и ответа ГГ
@@ -109,6 +109,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (TreeNode node in active.Nodes)
                     ToDialogComboBox.Items.Add(node.Text);
             // заполнение текстбокса "Поддиалоги" (Nodes)
+            autoDefaultNode.Items.Clear();
             if (curDialog.Nodes.Any())
                 foreach (int dialog in curDialog.Nodes)
                 {
@@ -116,6 +117,8 @@ namespace StalkerOnlineQuesterEditor
                         tNodes.Text += dialog.ToString();
                     else
                         tNodes.Text += ("," + dialog.ToString());
+                    autoDefaultNode.Items.Add(dialog.ToString());
+
                 }
             this.fillClanOptions(curDialog.Precondition.clanOptions);
 
@@ -212,6 +215,13 @@ namespace StalkerOnlineQuesterEditor
                 else
                     cbShouldntHaveCounters.Checked = false;
 
+                foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfRepeat)
+                    addItemToTextBox(quest.ToString(), tShouldntHaveRepeat);
+                if (curDialog.Precondition.ListOfMustNoQuests.conditionOfRepeat == '|')
+                    cbShouldntHaveRepeat.Checked = true;
+                else
+                    cbShouldntHaveRepeat.Checked = false;
+
                 addItemToTextBox(curDialog.Precondition.ListOfMustNoQuests.ListOfMassQuests, tShouldntHaveMassQuests);
                 if (curDialog.Precondition.ListOfMustNoQuests.conditionOfMassQuests == '|')
                     cbShouldntHaveMassQuests.Checked = true;
@@ -245,6 +255,13 @@ namespace StalkerOnlineQuesterEditor
                     cbMustHaveCounters.Checked = true;
                 else
                     cbMustHaveCounters.Checked = false;
+
+                foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfRepeat)
+                    addItemToTextBox(quest.ToString(), tMustHaveRepeat);
+                if (curDialog.Precondition.ListOfNecessaryQuests.conditionOfRepeat == '|')
+                    cbMustHaveRepeat.Checked = true;
+                else
+                    cbMustHaveRepeat.Checked = false;
 
                 addItemToTextBox(curDialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests, tMustHaveMassQuests);
                 if (curDialog.Precondition.ListOfNecessaryQuests.conditionOfMassQuests == '|')
@@ -491,8 +508,7 @@ namespace StalkerOnlineQuesterEditor
             if (!tNodes.Text.Equals(""))
                 foreach (string node in tNodes.Text.Split(','))
                     nodes.Add(int.Parse(node));
-            if (!cbAutoNode.Checked)
-            {
+
             if (!CheckConditions())
                 return;
 
@@ -591,6 +607,15 @@ namespace StalkerOnlineQuesterEditor
                 foreach (string quest in tMustHaveCounters.Text.Split(','))
                     precondition.ListOfNecessaryQuests.ListOfCounters.Add(int.Parse(quest));
             }
+            if (!tMustHaveRepeat.Text.Equals(""))
+            {
+                if (cbMustHaveRepeat.Checked)
+                    precondition.ListOfNecessaryQuests.conditionOfRepeat = '|';
+                else
+                    precondition.ListOfNecessaryQuests.conditionOfRepeat = '&';
+                foreach (string quest in tMustHaveRepeat.Text.Split(','))
+                    precondition.ListOfNecessaryQuests.ListOfRepeat.Add(int.Parse(quest));
+            }
 
             if (!tShouldntHaveOpenQuests.Text.Equals(""))
             {
@@ -636,6 +661,16 @@ namespace StalkerOnlineQuesterEditor
                 foreach (string quest in tShouldntHaveCounters.Text.Split(','))
                     precondition.ListOfMustNoQuests.ListOfCounters.Add(int.Parse(quest));
             }
+            if (!tShouldntHaveRepeat.Text.Equals(""))
+            {
+                if (cbShouldntHaveRepeat.Checked)
+                    precondition.ListOfMustNoQuests.conditionOfRepeat = '|';
+                else
+                    precondition.ListOfMustNoQuests.conditionOfRepeat = '&';
+                foreach (string quest in tShouldntHaveRepeat.Text.Split(','))
+                    precondition.ListOfMustNoQuests.ListOfRepeat.Add(int.Parse(quest));
+            }
+
 
             if (checkClanOptions())
             {
@@ -678,7 +713,6 @@ namespace StalkerOnlineQuesterEditor
             precondition.Skills = editPrecondition.Skills;
             precondition.forDev = cbForDev.Checked;
 
-            }
 
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;
@@ -686,7 +720,7 @@ namespace StalkerOnlineQuesterEditor
             if (isAdd)
             {
                 newID = parent.getDialogsNewID();
-                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, newID, 1, coord, DebugData, cbAutoNode.Checked), currentDialogID);
+                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, newID, 1, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
             }
             else
             {
@@ -698,7 +732,7 @@ namespace StalkerOnlineQuesterEditor
                 if (tPlayerText.Text != curDialog.Title || tReactionNPC.Text != curDialog.Text)
                     version++;
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tReactionNPC.Text,
-                    precondition, actions, nodes, currentDialogID, version, coord, DebugData, cbAutoNode.Checked), currentDialogID);
+                    precondition, actions, nodes, currentDialogID, version, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
             }
             parent.Enabled = true;
             parent.DialogSelected(true);
@@ -1101,11 +1135,24 @@ namespace StalkerOnlineQuesterEditor
             bool check = !cbAutoNode.Checked;
             tPlayerText.Enabled = check;
             tReactionNPC.Enabled = check;
+            /*
             tNodes.Enabled = check;
             gbPrecondition.Enabled = check;
             gbActions.Enabled = check;
             actionsCheckBox.Enabled = check;
             cbForDev.Enabled = check;
+            */
+            tPlayerText.Visible = check;
+            tReactionNPC.Visible = check;
+            /*
+            tNodes.Visible = check;
+            gbPrecondition.Visible = check;
+            gbActions.Visible = check;
+            actionsCheckBox.Visible = check;
+            cbForDev.Visible = check;
+            */
+            autoPanel.Enabled = !check;
+            autoPanel.Visible = !check;
         }
         
 

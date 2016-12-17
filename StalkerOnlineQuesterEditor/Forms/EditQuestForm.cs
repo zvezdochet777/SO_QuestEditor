@@ -237,6 +237,7 @@ namespace StalkerOnlineQuesterEditor
                 cbReputationLow.Enabled = false;
                 cbReputationLow.Visible = false;
                 quantityUpDown.Minimum = 0;
+                //quantityUpDown.Maximum = 32000;
 
                 targetComboBox.SelectedItem = null;
                 targetComboBox.SelectedText = "";
@@ -606,6 +607,11 @@ namespace StalkerOnlineQuesterEditor
             {
                 target.ObjectType = parent.itemConst.getIDOnDescription(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
+                if (target.NumOfObjects < 1)
+                {
+                    MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
+                    return null;
+                }
                 target.ObjectAttr = targetAttributeComboBox.SelectedIndex;
                 if (cbState.Checked && cbState.Enabled)
                 {
@@ -626,13 +632,20 @@ namespace StalkerOnlineQuesterEditor
             {
                 target.ObjectType = parent.mobConst.getTypeOnDescription(targetComboBox.SelectedItem.ToString());
 
-                int level = ParseIntIfNotEmpty(resultextBox.Text);
-                target.ObjectAttr = level;
+                //int level = ParseIntIfNotEmpty(resultextBox.Text);
+                //target.ObjectAttr = level;
 
                 if (dynamicCheckBox.Checked)
                     target.ObjectName = resultextBox.Text;
                 else
+                {
                     target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
+                    if ((target.NumOfObjects > 32000) || (target.NumOfObjects < 1))
+                    {
+                        MessageBox.Show("Цель->Количество - некорректное значение(нужно 0 < x < 32000)", "Ошибка");
+                        return null;
+                    }
+                }
 
                 if (targetAttributeComboBox.SelectedItem.ToString().Equals(""))
                     target.AreaName = "";
@@ -655,6 +668,11 @@ namespace StalkerOnlineQuesterEditor
             else if (target.QuestType == 5)
             {
                 target.NumOfObjects = (int)quantityUpDown.Value;
+                if (target.NumOfObjects < 1)
+                {
+                    MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
+                    return null;
+                }
             }
             else if (target.QuestType == 6)
             {
@@ -694,13 +712,23 @@ namespace StalkerOnlineQuesterEditor
             else if (target.QuestType == 21)
             {
                 target.ObjectType = parent.effects.getIDOnDescription(targetComboBox.SelectedItem.ToString());
-                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString()); 
+                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
+                if (target.NumOfObjects < 1)
+                {
+                    MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
+                    return null;
+                }
             }
             else if (target.QuestType == 22 || target.QuestType == 23)
             {
                 target.ObjectType = parent.fractions.getFractionIDByDescr(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
                 target.ObjectAttr = Convert.ToInt16(cbReputationLow.Checked);
+                if (target.NumOfObjects < 1)
+                {
+                    MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
+                    return null;
+                }
             }
 
             if (iState == EDIT_SUB || iState == EDIT)

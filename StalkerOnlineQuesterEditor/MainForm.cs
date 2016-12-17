@@ -464,8 +464,10 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие на кнопку "Редактирование диалогов" - открывает редактор или переводчик диалогов
         public void bEditDialog_Click(object sender, EventArgs e)
         {
+            
             if (selectedItemType == SelectedItemType.dialog)
             {
+                if (treeDialogs.SelectedNode == null) return;
                 if (settings.getMode() == settings.MODE_EDITOR)
                 {
                     EditDialogForm editDialogForm = new EditDialogForm(false, this, int.Parse(treeDialogs.SelectedNode.Text));

@@ -34,6 +34,7 @@
             this.lGreetNPC = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.gbActions = new System.Windows.Forms.GroupBox();
+            this.tbAvatarGoTo = new System.Windows.Forms.TextBox();
             this.commandsComboBox = new System.Windows.Forms.ComboBox();
             this.cbFailQuests = new System.Windows.Forms.CheckBox();
             this.cbCancelQuests = new System.Windows.Forms.CheckBox();
@@ -62,6 +63,11 @@
             this.tabQuestsCircs = new System.Windows.Forms.TabControl();
             this.tabQuests = new System.Windows.Forms.TabPage();
             this.gbQuestCondition = new System.Windows.Forms.GroupBox();
+            this.cbShouldntHaveRepeat = new System.Windows.Forms.CheckBox();
+            this.cbMustHaveRepeat = new System.Windows.Forms.CheckBox();
+            this.tShouldntHaveRepeat = new System.Windows.Forms.MaskedTextBox();
+            this.tMustHaveRepeat = new System.Windows.Forms.MaskedTextBox();
+            this.lRepeat = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbShouldntHaveCounters = new System.Windows.Forms.CheckBox();
@@ -172,8 +178,10 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.autoPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.tbAvatarGoTo = new System.Windows.Forms.TextBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -202,6 +210,7 @@
             this.tabActions.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
+            this.autoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -274,6 +283,14 @@
             this.gbActions.Size = new System.Drawing.Size(588, 144);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
+            // 
+            // tbAvatarGoTo
+            // 
+            this.tbAvatarGoTo.Location = new System.Drawing.Point(222, 77);
+            this.tbAvatarGoTo.Name = "tbAvatarGoTo";
+            this.tbAvatarGoTo.Size = new System.Drawing.Size(147, 20);
+            this.tbAvatarGoTo.TabIndex = 41;
+            this.tbAvatarGoTo.Visible = false;
             // 
             // commandsComboBox
             // 
@@ -577,6 +594,11 @@
             // 
             // gbQuestCondition
             // 
+            this.gbQuestCondition.Controls.Add(this.cbShouldntHaveRepeat);
+            this.gbQuestCondition.Controls.Add(this.cbMustHaveRepeat);
+            this.gbQuestCondition.Controls.Add(this.tShouldntHaveRepeat);
+            this.gbQuestCondition.Controls.Add(this.tMustHaveRepeat);
+            this.gbQuestCondition.Controls.Add(this.lRepeat);
             this.gbQuestCondition.Controls.Add(this.label5);
             this.gbQuestCondition.Controls.Add(this.label4);
             this.gbQuestCondition.Controls.Add(this.cbShouldntHaveCounters);
@@ -608,10 +630,51 @@
             this.gbQuestCondition.Controls.Add(this.tMustHaveCompletedQuests);
             this.gbQuestCondition.Location = new System.Drawing.Point(6, 6);
             this.gbQuestCondition.Name = "gbQuestCondition";
-            this.gbQuestCondition.Size = new System.Drawing.Size(495, 179);
+            this.gbQuestCondition.Size = new System.Drawing.Size(495, 208);
             this.gbQuestCondition.TabIndex = 6;
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
+            // 
+            // cbShouldntHaveRepeat
+            // 
+            this.cbShouldntHaveRepeat.AutoSize = true;
+            this.cbShouldntHaveRepeat.Location = new System.Drawing.Point(379, 169);
+            this.cbShouldntHaveRepeat.Name = "cbShouldntHaveRepeat";
+            this.cbShouldntHaveRepeat.Size = new System.Drawing.Size(15, 14);
+            this.cbShouldntHaveRepeat.TabIndex = 36;
+            this.cbShouldntHaveRepeat.UseVisualStyleBackColor = true;
+            // 
+            // cbMustHaveRepeat
+            // 
+            this.cbMustHaveRepeat.AutoSize = true;
+            this.cbMustHaveRepeat.Location = new System.Drawing.Point(146, 169);
+            this.cbMustHaveRepeat.Name = "cbMustHaveRepeat";
+            this.cbMustHaveRepeat.Size = new System.Drawing.Size(15, 14);
+            this.cbMustHaveRepeat.TabIndex = 35;
+            this.cbMustHaveRepeat.UseVisualStyleBackColor = true;
+            // 
+            // tShouldntHaveRepeat
+            // 
+            this.tShouldntHaveRepeat.Location = new System.Drawing.Point(273, 166);
+            this.tShouldntHaveRepeat.Name = "tShouldntHaveRepeat";
+            this.tShouldntHaveRepeat.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveRepeat.TabIndex = 33;
+            // 
+            // tMustHaveRepeat
+            // 
+            this.tMustHaveRepeat.Location = new System.Drawing.Point(167, 166);
+            this.tMustHaveRepeat.Name = "tMustHaveRepeat";
+            this.tMustHaveRepeat.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveRepeat.TabIndex = 32;
+            // 
+            // lRepeat
+            // 
+            this.lRepeat.AutoSize = true;
+            this.lRepeat.Location = new System.Drawing.Point(10, 169);
+            this.lRepeat.Name = "lRepeat";
+            this.lRepeat.Size = new System.Drawing.Size(100, 13);
+            this.lRepeat.TabIndex = 34;
+            this.lRepeat.Text = "Повторное взятие";
             // 
             // label5
             // 
@@ -1636,6 +1699,7 @@
             // 
             // gbTexts
             // 
+            this.gbTexts.Controls.Add(this.autoPanel);
             this.gbTexts.Controls.Add(this.cbAutoNode);
             this.gbTexts.Controls.Add(this.tNodes);
             this.gbTexts.Controls.Add(this.lNodes);
@@ -1653,6 +1717,33 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
+            // autoPanel
+            // 
+            this.autoPanel.Controls.Add(this.label6);
+            this.autoPanel.Controls.Add(this.autoDefaultNode);
+            this.autoPanel.Location = new System.Drawing.Point(4, 46);
+            this.autoPanel.Name = "autoPanel";
+            this.autoPanel.Size = new System.Drawing.Size(578, 149);
+            this.autoPanel.TabIndex = 17;
+            this.autoPanel.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Node по-умолчанию";
+            // 
+            // autoDefaultNode
+            // 
+            this.autoDefaultNode.FormattingEnabled = true;
+            this.autoDefaultNode.Location = new System.Drawing.Point(131, 21);
+            this.autoDefaultNode.Name = "autoDefaultNode";
+            this.autoDefaultNode.Size = new System.Drawing.Size(121, 21);
+            this.autoDefaultNode.TabIndex = 0;
+            // 
             // cbAutoNode
             // 
             this.cbAutoNode.AutoSize = true;
@@ -1663,14 +1754,6 @@
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
-            // 
-            // tbAvatarGoTo
-            // 
-            this.tbAvatarGoTo.Location = new System.Drawing.Point(222, 77);
-            this.tbAvatarGoTo.Name = "tbAvatarGoTo";
-            this.tbAvatarGoTo.Size = new System.Drawing.Size(147, 20);
-            this.tbAvatarGoTo.TabIndex = 41;
-            this.tbAvatarGoTo.Visible = false;
             // 
             // EditDialogForm
             // 
@@ -1724,6 +1807,8 @@
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
             this.gbTexts.PerformLayout();
+            this.autoPanel.ResumeLayout(false);
+            this.autoPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1877,5 +1962,13 @@
         private System.Windows.Forms.CheckBox cbPlaySonund;
         private System.Windows.Forms.CheckBox cbAutoNode;
         private System.Windows.Forms.TextBox tbAvatarGoTo;
+        private System.Windows.Forms.CheckBox cbShouldntHaveRepeat;
+        private System.Windows.Forms.CheckBox cbMustHaveRepeat;
+        private System.Windows.Forms.MaskedTextBox tShouldntHaveRepeat;
+        private System.Windows.Forms.MaskedTextBox tMustHaveRepeat;
+        private System.Windows.Forms.Label lRepeat;
+        private System.Windows.Forms.Panel autoPanel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox autoDefaultNode;
     }
 }

@@ -842,11 +842,6 @@
             this.quantityUpDown.Name = "quantityUpDown";
             this.quantityUpDown.Size = new System.Drawing.Size(77, 20);
             this.quantityUpDown.TabIndex = 15;
-            this.quantityUpDown.Value = new decimal(new int[] {
-            12345678,
-            0,
-            0,
-            0});
             // 
             // targetComboBox
             // 

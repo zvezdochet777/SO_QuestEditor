@@ -21,25 +21,28 @@ namespace StalkerOnlineQuesterEditor
         public char conditionOfCounterss;
         public string ListOfMassQuests;
         public char conditionOfMassQuests;
-
+        public ListOfQuests ListOfRepeat;
+        public char conditionOfRepeat;
         public CDialogPreconditionQuests()
         {
             this.ListOfCompletedQuests = new ListOfQuests();
             this.ListOfOpenedQuests = new ListOfQuests();
             this.ListOfOnTestQuests = new ListOfQuests();
             this.ListOfCounters = new ListOfQuests();
+            this.ListOfRepeat = new ListOfQuests();
             this.ListOfMassQuests = "";
             this.conditionOfCompletedQuests = ',';
             this.conditionOfOpenedQuests = ',';
             this.conditionOfOnTestQuest = ',';
             this.conditionOfCounterss = ',';
             this.conditionOfMassQuests = ',';
+            this.conditionOfRepeat = ',';
         }
 
         public bool Any()
         {
-            if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() || 
-                ListOfCounters.Any() || ListOfMassQuests != "")
+            if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() ||
+                ListOfCounters.Any() || ListOfMassQuests != "" || ListOfRepeat.Any())
                 return true;
             else
                 return false;
@@ -53,11 +56,13 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfOnTestQuests = this.ListOfOnTestQuests;
             copy.ListOfMassQuests = this.ListOfMassQuests;
             copy.ListOfCounters = this.ListOfCounters;
+            copy.ListOfRepeat = this.ListOfRepeat;
             copy.conditionOfCompletedQuests = this.conditionOfCompletedQuests;
             copy.conditionOfOpenedQuests = this.conditionOfOpenedQuests;
             copy.conditionOfOnTestQuest = this.conditionOfOnTestQuest;
             copy.conditionOfCounterss = this.conditionOfCounterss;
             copy.conditionOfMassQuests = this.conditionOfMassQuests;
+            copy.conditionOfRepeat = this.conditionOfRepeat;
             return copy;
         }
 
@@ -353,9 +358,10 @@ namespace StalkerOnlineQuesterEditor
         public NodeCoordinates coordinates;
         public string DebugData;
         public bool isAutoNode;
+        public string defaultNode;
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
-                    Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false)
+                    Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false, string defaultNode = "")
         {
             this.Holder = Holder;
             this.Title = Title;
@@ -368,6 +374,7 @@ namespace StalkerOnlineQuesterEditor
             this.coordinates = Coordinates;
             this.DebugData = DebugData;
             this.isAutoNode = isAutoNode;
+            this.defaultNode = defaultNode;
         }
         public CDialog()
         {
@@ -382,6 +389,7 @@ namespace StalkerOnlineQuesterEditor
             coordinates = new NodeCoordinates();
             this.isAutoNode = false;
             this.DebugData = "";
+            this.defaultNode = "";
         }
         public object Clone()
         {
@@ -397,6 +405,7 @@ namespace StalkerOnlineQuesterEditor
             copy.version = this.version;
             copy.DebugData = this.DebugData;
             copy.isAutoNode = this.isAutoNode;
+            copy.defaultNode = this.defaultNode;
             return copy;
         }
         // Копирование всех нетекстовых полей (сделано для синхронизации данных, не изменяя перевода)

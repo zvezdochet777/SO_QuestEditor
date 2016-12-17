@@ -69,6 +69,7 @@ namespace StalkerOnlineQuesterEditor
                     int DialogID = int.Parse(dialog.Element("ID").Value);
                     string DebugData = "";
                     bool isAutoNode = false;
+                    string defaultNode = "";
                     List<int> Nodes = new List<int>();
                     Actions Actions = new Actions();
                     CDialogPrecondition Precondition = new CDialogPrecondition();
@@ -118,6 +119,8 @@ namespace StalkerOnlineQuesterEditor
                             AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests, ref Precondition.ListOfNecessaryQuests.conditionOfOnTestQuest);
                             AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfCompletedQuests", Precondition.ListOfNecessaryQuests.ListOfCompletedQuests, ref Precondition.ListOfNecessaryQuests.conditionOfCompletedQuests);
                             AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOmniCounters", Precondition.ListOfNecessaryQuests.ListOfCounters, ref Precondition.ListOfNecessaryQuests.conditionOfCounterss);
+                            AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfRepeat", Precondition.ListOfNecessaryQuests.ListOfRepeat, ref Precondition.ListOfNecessaryQuests.conditionOfRepeat);
+                            
                             if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests") != null)
                             {
                                 if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests").Value.Contains('|'))
@@ -134,6 +137,8 @@ namespace StalkerOnlineQuesterEditor
                             AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOnTestQuests", Precondition.ListOfMustNoQuests.ListOfOnTestQuests, ref Precondition.ListOfMustNoQuests.conditionOfOnTestQuest);
                             AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfCompletedQuests", Precondition.ListOfMustNoQuests.ListOfCompletedQuests, ref Precondition.ListOfMustNoQuests.conditionOfCompletedQuests);
                             AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOmniCounters", Precondition.ListOfMustNoQuests.ListOfCounters, ref Precondition.ListOfMustNoQuests.conditionOfCounterss);
+                            AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfRepeat", Precondition.ListOfMustNoQuests.ListOfRepeat, ref Precondition.ListOfMustNoQuests.conditionOfRepeat);
+                        
                             if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests") != null)
                             {
                                 if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests").Value.Contains('|'))
@@ -225,9 +230,13 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Element("DebugData") != null)
                         DebugData = dialog.Element("DebugData").Value.ToString();
                     if (dialog.Element("isAutoNode") != null)
+                    {
                         isAutoNode = dialog.Element("isAutoNode").Value.Equals("1");
+                        if (dialog.Element("defaultNode") != null) defaultNode = dialog.Element("defaultNode").Value; 
+
+                    }
                     if (!target[npc_name].Keys.Contains(DialogID))
-                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, DialogID, 0, nodeCoord, DebugData, isAutoNode));
+                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, DialogID, 0, nodeCoord, DebugData, isAutoNode, defaultNode));
                 }
             }
         }
@@ -300,8 +309,21 @@ namespace StalkerOnlineQuesterEditor
                 foreach (XElement dialog in npc.Elements("Dialog"))
                 {
                     int DialogID = int.Parse(dialog.Element("ID").Value);
+
+                    if (!target[npc_name].ContainsKey(DialogID))
+                    {
+                        string msg = "Проблема с диалогом ID:" + DialogID.ToString();
+                        if (dialog.Element("Title") != null)
+                            msg += " Title:" + dialog.Element("Title").Value.Trim();
+                        MessageBox.Show(msg, "Ошибка парсинга текстов");
+                        continue;
+                    }
+                   
                     if (dialog.Element("Title") != null)
+                    {
+                       
                         target[npc_name][DialogID].Title = dialog.Element("Title").Value.Trim();
+                    }
                     if (dialog.Element("Text") != null)
                         target[npc_name][DialogID].Text = dialog.Element("Text").Value.Trim();
                     int Version = 0;
@@ -394,6 +416,10 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOmniCounters",
                                           Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCounters,
                                                                 dialog.Precondition.ListOfNecessaryQuests.conditionOfCounterss)));
+                        if (dialog.Precondition.ListOfNecessaryQuests.ListOfRepeat.Any())
+                            element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfRepeat",
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfRepeat,
+                                                                dialog.Precondition.ListOfNecessaryQuests.conditionOfRepeat)));
                         if (dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests != "")
                             element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfMassQuests",
                                                                      dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests.Replace(',', dialog.Precondition.ListOfNecessaryQuests.conditionOfMassQuests)));
@@ -417,6 +443,10 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOmniCounters",
                                           Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCounters,
                                                                 dialog.Precondition.ListOfMustNoQuests.conditionOfCounterss)));
+                        if (dialog.Precondition.ListOfMustNoQuests.ListOfRepeat.Any())
+                            element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfRepeat",
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfRepeat,
+                                                                dialog.Precondition.ListOfMustNoQuests.conditionOfRepeat)));
                         if (dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests != "")
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
                                                                      dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests.Replace(',', dialog.Precondition.ListOfMustNoQuests.conditionOfMassQuests)));
@@ -492,7 +522,11 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.coordinates.Active)
                         element.Add(new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active)));
                     if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
-                    if (dialog.isAutoNode) element.Add(new XElement("isAutoNode", Global.GetBoolAsString(dialog.isAutoNode)));
+                    if (dialog.isAutoNode)
+                    {
+                        element.Add(new XElement("isAutoNode", Global.GetBoolAsString(dialog.isAutoNode)));
+                        if (dialog.defaultNode.Any()) element.Add(new XElement("defaultNode", dialog.defaultNode));
+                    }
 
                     npcElement.Add(element);
 
