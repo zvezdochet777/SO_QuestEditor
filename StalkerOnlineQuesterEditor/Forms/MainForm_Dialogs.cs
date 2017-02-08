@@ -330,14 +330,13 @@ namespace StalkerOnlineQuesterEditor
              if (dialog.isAutoNode)
              {
                  PointF[] listPoints = new PointF[4];
-                 listPoints[0] = new PointF(location.X - size.Height, location.Y);
-                 listPoints[1] = new PointF(location.X, location.Y - size.Height);
-                 listPoints[2] = new PointF(location.X + size.Height, location.Y);
-                 listPoints[3] = new PointF(location.X, location.Y + size.Height);
-                 
+                 listPoints[0] = new PointF(location.X, location.Y + size.Height);
+                 listPoints[1] = new PointF(location.X + size.Height, location.Y);
+                 listPoints[2] = new PointF(location.X + 2 * size.Height, location.Y + size.Height);
+                 listPoints[3] = new PointF(location.X + size.Height, location.Y + 2*size.Height);                 
                  newNode = PPath.CreatePolygon(listPoints);
                  text.X = newNode.X + 20;
-                 text.Y = newNode.Y + 30;
+                 text.Y = newNode.Y + 20;
              }
              else
              {

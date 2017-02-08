@@ -284,6 +284,7 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<int, int> Reputation;
         public int KarmaPK;
         public List<CEffect> Effects;
+        public bool RewardWindow; 
 
         public object Clone()
         {
@@ -297,6 +298,7 @@ namespace StalkerOnlineQuesterEditor
             copy.Reputation = this.Reputation;
             copy.KarmaPK = this.KarmaPK;
             copy.Effects = new List<CEffect>(this.Effects);
+            copy.RewardWindow = this.RewardWindow;
             return copy;
         }
 
@@ -311,12 +313,13 @@ namespace StalkerOnlineQuesterEditor
             this.Reputation = new Dictionary<int, int>();
             this.KarmaPK = new int();
             this.Effects = new List<CEffect>();
+            this.RewardWindow = false;
         }
         public bool Any()
         {
             return Experience.Any() || TypeOfItems.Any() || NumOfItems.Any() ||
                 AttrOfItems.Any() || Probability.Any() || Credits != 0 || ReputationNotEmpty() ||
-                KarmaPK != 0 || Effects.Any();
+                KarmaPK != 0 || Effects.Any() || RewardWindow;
         }
 
         public string getReputation()

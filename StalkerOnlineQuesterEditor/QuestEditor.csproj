@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\stalker-online\sys\tools\QuestEditor\</OutputPath>
+    <OutputPath>..\..\Git\sys\tools\QuestEditor\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -124,6 +124,12 @@
     <Compile Include="Forms\AddPassiveDialogForm.Designer.cs">
       <DependentUpon>AddPassiveDialogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CheckErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CheckErrorForm.Designer.cs">
+      <DependentUpon>CheckErrorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditRectangle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,12 @@
     <Compile Include="Forms\LocaleQuestForm.Designer.cs">
       <DependentUpon>LocaleQuestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UpdateDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdateDataForm.Designer.cs">
+      <DependentUpon>UpdateDataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUIClasses\MouseHoverHandler.cs" />
     <Compile Include="GUIClasses\PanEventHandler.cs" />
     <Compile Include="GUIClasses\RectangleDrawer.cs" />
@@ -158,6 +170,7 @@
     <Compile Include="Common.cs" />
     <Compile Include="ResourceClasses\CQuestConstants.cs" />
     <Compile Include="IOClasses\CSettings.cs" />
+    <Compile Include="ResourceClasses\CSkillConstants.cs" />
     <Compile Include="ResourceClasses\CSpacesConstants.cs" />
     <Compile Include="ResourceClasses\CTPConstants.cs" />
     <Compile Include="ResourceClasses\CTriggerConstants.cs" />
@@ -244,9 +257,15 @@
     <Compile Include="GUIClasses\NodeDragHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Forms\AddPassiveDialogForm.resx">
       <DependentUpon>AddPassiveDialogForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CheckErrorForm.resx">
+      <DependentUpon>CheckErrorForm.cs</DependentUpon>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CheckErrorForm1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogKarmaPK.resx">
       <DependentUpon>DialogKarmaPK.cs</DependentUpon>
@@ -283,6 +302,9 @@
       <DependentUpon>OperatorSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdateDataForm.resx">
+      <DependentUpon>UpdateDataForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -317,6 +339,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -368,6 +391,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QuestEditor.sdm" />
+    <None Include="Resources\143580742812686844.jpg" />
+    <None Include="Resources\Image1.jpg" />
     <None Include="res\add.png" />
     <None Include="res\SaveDisk.jpg" />
     <None Include="res\Explorer.jpg" />

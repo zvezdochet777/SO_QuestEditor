@@ -37,6 +37,7 @@
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.rewardGroupBox = new System.Windows.Forms.GroupBox();
+            this.cbRewardWindow = new System.Windows.Forms.CheckBox();
             this.lSupportSkills = new System.Windows.Forms.Label();
             this.lSurvivalSkills = new System.Windows.Forms.Label();
             this.tSupport = new System.Windows.Forms.TextBox();
@@ -229,6 +230,7 @@
             // rewardGroupBox
             // 
             this.rewardGroupBox.AutoSize = true;
+            this.rewardGroupBox.Controls.Add(this.cbRewardWindow);
             this.rewardGroupBox.Controls.Add(this.lSupportSkills);
             this.rewardGroupBox.Controls.Add(this.lSurvivalSkills);
             this.rewardGroupBox.Controls.Add(this.tSupport);
@@ -251,10 +253,20 @@
             this.rewardGroupBox.TabStop = false;
             this.rewardGroupBox.Text = "Награда";
             // 
+            // cbRewardWindow
+            // 
+            this.cbRewardWindow.AutoSize = true;
+            this.cbRewardWindow.Location = new System.Drawing.Point(339, 23);
+            this.cbRewardWindow.Name = "cbRewardWindow";
+            this.cbRewardWindow.Size = new System.Drawing.Size(98, 17);
+            this.cbRewardWindow.TabIndex = 41;
+            this.cbRewardWindow.Text = "Окно награды";
+            this.cbRewardWindow.UseVisualStyleBackColor = true;
+            // 
             // lSupportSkills
             // 
             this.lSupportSkills.AutoSize = true;
-            this.lSupportSkills.Location = new System.Drawing.Point(295, 71);
+            this.lSupportSkills.Location = new System.Drawing.Point(429, 72);
             this.lSupportSkills.Name = "lSupportSkills";
             this.lSupportSkills.Size = new System.Drawing.Size(68, 13);
             this.lSupportSkills.TabIndex = 40;
@@ -263,7 +275,7 @@
             // lSurvivalSkills
             // 
             this.lSurvivalSkills.AutoSize = true;
-            this.lSurvivalSkills.Location = new System.Drawing.Point(172, 72);
+            this.lSurvivalSkills.Location = new System.Drawing.Point(229, 72);
             this.lSurvivalSkills.Name = "lSurvivalSkills";
             this.lSurvivalSkills.Size = new System.Drawing.Size(69, 13);
             this.lSurvivalSkills.TabIndex = 39;
@@ -271,16 +283,16 @@
             // 
             // tSupport
             // 
-            this.tSupport.Location = new System.Drawing.Point(369, 67);
+            this.tSupport.Location = new System.Drawing.Point(503, 67);
             this.tSupport.Name = "tSupport";
-            this.tSupport.Size = new System.Drawing.Size(54, 20);
+            this.tSupport.Size = new System.Drawing.Size(100, 20);
             this.tSupport.TabIndex = 34;
             // 
             // tSurvival
             // 
-            this.tSurvival.Location = new System.Drawing.Point(247, 67);
+            this.tSurvival.Location = new System.Drawing.Point(304, 67);
             this.tSurvival.Name = "tSurvival";
-            this.tSurvival.Size = new System.Drawing.Size(42, 20);
+            this.tSurvival.Size = new System.Drawing.Size(100, 20);
             this.tSurvival.TabIndex = 33;
             // 
             // bRewardEffects
@@ -347,7 +359,7 @@
             // 
             this.creditsTextBox.Location = new System.Drawing.Point(119, 45);
             this.creditsTextBox.Name = "creditsTextBox";
-            this.creditsTextBox.Size = new System.Drawing.Size(47, 20);
+            this.creditsTextBox.Size = new System.Drawing.Size(100, 20);
             this.creditsTextBox.TabIndex = 31;
             // 
             // lCredits
@@ -363,7 +375,7 @@
             // 
             this.tExperience.Location = new System.Drawing.Point(119, 67);
             this.tExperience.Name = "tExperience";
-            this.tExperience.Size = new System.Drawing.Size(47, 20);
+            this.tExperience.Size = new System.Drawing.Size(100, 20);
             this.tExperience.TabIndex = 32;
             // 
             // lCombatSkills
@@ -1236,5 +1248,6 @@
         private System.Windows.Forms.NumericUpDown udState;
         private System.Windows.Forms.CheckBox IsCounterCheckBox;
         private System.Windows.Forms.CheckBox cbReputationLow;
+        private System.Windows.Forms.CheckBox cbRewardWindow;
     }
 }

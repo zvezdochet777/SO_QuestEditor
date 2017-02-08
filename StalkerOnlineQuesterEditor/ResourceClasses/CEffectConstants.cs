@@ -80,13 +80,20 @@ namespace StalkerOnlineQuesterEditor
     public class CEffectConstants
     {
         string JSON_PATH = "../../../res/scripts/common/data/Effects.json";
-        
+        string OTHER_JSON_PATH = "source/Effects.json";
+
         JsonTextReader reader;
         public Dictionary<int, string> effects = new Dictionary<int, string>();
 
         public CEffectConstants()
         {
-            reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
+            string path;
+            if (File.Exists(JSON_PATH))
+                path = JSON_PATH;
+            else
+                path = OTHER_JSON_PATH;
+
+            reader = new JsonTextReader(new StreamReader(path, Encoding.UTF8));
             string name = "";
             bool inName = false;
 
@@ -101,7 +108,10 @@ namespace StalkerOnlineQuesterEditor
                     if (inName)
                     {
                         inName = false;
-                        effects.Add(Convert.ToInt32(reader.Value), name);
+                        int id = Convert.ToInt32(reader.Value);
+                        if (effects.ContainsKey(id))
+                            System.Windows.Forms.MessageBox.Show("Ошибка парсинга эффектов. Повторяются ID в effects.json, ошибочный эффект - " + id.ToString(), "Ошибка");
+                        effects.Add(id, name);
                     }
             }
         }
@@ -124,6 +134,11 @@ namespace StalkerOnlineQuesterEditor
                 if (pair.Value == description)
                     return pair.Key;
             return 0;
+        }
+
+        public bool hasEffectById(int id)
+        {
+            return effects.ContainsKey(id);
         }
     }
 

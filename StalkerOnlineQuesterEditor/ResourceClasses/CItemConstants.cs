@@ -16,14 +16,21 @@ namespace StalkerOnlineQuesterEditor
             XDocument doc = XDocument.Load("source/ItemStrings.xml");
             foreach (XElement item in doc.Root.Elements())
             {
+                bool deleted = false, converted = false;
+                if (item.Element("deleted") != null)
+                    deleted = true;
+                if (item.Element("converted") != null)
+                    converted = true;
                 try
                 {
-                    items.Add(int.Parse(item.Element("id").Value.ToString()), new CItem(item.Element("Name").Value.ToString()));
+                    items.Add(int.Parse(item.Element("id").Value.ToString()), new CItem(item.Element("Name").Value.ToString(), deleted, converted));
                 }
                 catch
                 {
                     System.Console.WriteLine("Error with item id:" + item.Element("id").Value.ToString());
                 }
+
+                
             }
 
         }
@@ -50,9 +57,14 @@ namespace StalkerOnlineQuesterEditor
     public class CItem
     {
         public string Description;
-        public CItem(string Description)
+        public bool deleted;
+        public bool converted;
+
+        public CItem(string Description, bool deleted = false, bool converted = false)
         {
             this.Description = Description;
+            this.deleted = deleted;
+            this.converted = converted;
         }
         public string getDescription()
         {

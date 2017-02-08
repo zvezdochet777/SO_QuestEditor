@@ -207,6 +207,9 @@ namespace StalkerOnlineQuesterEditor
                             reward.Effects.Add(new CEffect(int.Parse(effect.Element("id").Value.ToString()),
                             int.Parse(effect.Element("stack").Value.ToString())));
                         }
+
+                    if (item.Element("Reward").Element("RewardWindow") != null)
+                        reward.RewardWindow = item.Element("Reward").Element("RewardWindow").Value.Equals("1");
                 }
 
                 if (item.Element("Additional") != null)
@@ -493,6 +496,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Reward").Add(new XElement("Reputation", questValue.Reward.getReputation()));
                     if (questValue.Reward.KarmaPK != 0)
                         element.Element("Reward").Add(new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()));
+                    if (questValue.Reward.RewardWindow)
+                        element.Element("Reward").Add(new XElement("RewardWindow", Global.GetBoolAsString(questValue.Reward.RewardWindow)));
                     List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
                     if (EffectsXE.Any())
                         element.Element("Reward").Add(new XElement("Effects", EffectsXE));

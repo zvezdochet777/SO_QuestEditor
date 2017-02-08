@@ -32,7 +32,7 @@ namespace StalkerOnlineQuesterEditor
         CDialogs dialogs;
         //! Ссылка на экземпляр класса CQuests
         CQuests quests;
-        CManagerNPC ManagerNPC;
+        public CManagerNPC ManagerNPC;
         NodeDragHandler Listener;
         RectangleDrawingHandler RectDrawer;
         public RectangleManager RectManager;
@@ -2196,6 +2196,18 @@ namespace StalkerOnlineQuesterEditor
         private void DialogShower_MouseMove(object sender, MouseEventArgs e)
         {
             DialogShower.Focus();
+        }
+
+        private void парсерыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateDataForm udf = new UpdateDataForm(this);
+            udf.ShowDialog();
+        }
+
+        private void проверкаОшибокToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckErrorForm cef = new CheckErrorForm(dialogs, quests, this);
+            cef.Show();
         }
 
     }

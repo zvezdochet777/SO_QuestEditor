@@ -577,6 +577,7 @@ namespace StalkerOnlineQuesterEditor
                 tSurvival.Text = quest.Reward.Experience[1].ToString();
                 tSupport.Text = quest.Reward.Experience[2].ToString();
             }
+            cbRewardWindow.Checked = quest.Reward.RewardWindow;
             creditsTextBox.Text = quest.Reward.Credits.ToString();
             textBoxKarmaPK.Text = quest.Reward.KarmaPK.ToString();
         }
@@ -762,6 +763,7 @@ namespace StalkerOnlineQuesterEditor
             reward.Experience.Add(ParseIntIfNotEmpty(tSupport.Text));
             reward.Credits = ParseIntIfNotEmpty(creditsTextBox.Text);
             reward.KarmaPK = ParseIntIfNotEmpty(textBoxKarmaPK.Text);
+            reward.RewardWindow = cbRewardWindow.Checked;
 
             int iProgressResult = 0;
             if (showCloseCheckBox.Checked)

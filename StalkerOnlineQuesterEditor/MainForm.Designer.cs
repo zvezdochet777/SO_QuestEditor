@@ -107,6 +107,24 @@ namespace StalkerOnlineQuesterEditor
             this.bFindQuest = new System.Windows.Forms.Button();
             this.tabManage = new System.Windows.Forms.TabPage();
             this.dgvManage = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subevents = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.npcName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subNPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dialogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardBattle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardSurvive = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardSupport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardCredits = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.repeat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.repeatPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Legend = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worked = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bSaveManage = new System.Windows.Forms.Button();
             this.tabTranslate = new System.Windows.Forms.TabPage();
@@ -149,27 +167,12 @@ namespace StalkerOnlineQuesterEditor
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSaveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExplorer = new System.Windows.Forms.ToolStripMenuItem();
+            this.обновленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.парсерыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проверкаОшибокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subevents = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.npcName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subNPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dialogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardBattle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardSurvive = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardSupport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardCredits = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.repeat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.repeatPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Legend = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worked = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -1104,6 +1107,110 @@ namespace StalkerOnlineQuesterEditor
             this.dgvManage.Size = new System.Drawing.Size(906, 515);
             this.dgvManage.TabIndex = 0;
             // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // subevents
+            // 
+            this.subevents.HeaderText = "Вложенные события";
+            this.subevents.Name = "subevents";
+            this.subevents.ReadOnly = true;
+            // 
+            // title
+            // 
+            this.title.HeaderText = "Заголовок";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Описание";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // npcName
+            // 
+            this.npcName.HeaderText = "NPC";
+            this.npcName.Name = "npcName";
+            this.npcName.ReadOnly = true;
+            // 
+            // subNPC
+            // 
+            this.subNPC.HeaderText = "Список NPC";
+            this.subNPC.Name = "subNPC";
+            this.subNPC.ReadOnly = true;
+            // 
+            // dialogID
+            // 
+            this.dialogID.HeaderText = "id диалога";
+            this.dialogID.Name = "dialogID";
+            this.dialogID.ReadOnly = true;
+            // 
+            // rewardBattle
+            // 
+            this.rewardBattle.HeaderText = "Награда опыт-бой";
+            this.rewardBattle.Name = "rewardBattle";
+            this.rewardBattle.ReadOnly = true;
+            // 
+            // rewardSurvive
+            // 
+            this.rewardSurvive.HeaderText = "Награда опыт-выживание";
+            this.rewardSurvive.Name = "rewardSurvive";
+            this.rewardSurvive.ReadOnly = true;
+            // 
+            // rewardSupport
+            // 
+            this.rewardSupport.HeaderText = "Награда опыт-поддержка";
+            this.rewardSupport.Name = "rewardSupport";
+            this.rewardSupport.ReadOnly = true;
+            // 
+            // rewardCredits
+            // 
+            this.rewardCredits.HeaderText = "Награда деньги";
+            this.rewardCredits.Name = "rewardCredits";
+            this.rewardCredits.ReadOnly = true;
+            // 
+            // rewardItems
+            // 
+            this.rewardItems.HeaderText = "Награда вещи";
+            this.rewardItems.Name = "rewardItems";
+            this.rewardItems.ReadOnly = true;
+            // 
+            // repeat
+            // 
+            this.repeat.HeaderText = "Повторяемый";
+            this.repeat.Name = "repeat";
+            this.repeat.ReadOnly = true;
+            // 
+            // repeatPeriod
+            // 
+            this.repeatPeriod.HeaderText = "Период повтора (часы)";
+            this.repeatPeriod.Name = "repeatPeriod";
+            this.repeatPeriod.ReadOnly = true;
+            // 
+            // Level
+            // 
+            this.Level.HeaderText = "Уровень ( комментарий)";
+            this.Level.Name = "Level";
+            // 
+            // author
+            // 
+            this.author.HeaderText = "Автор ( комментарий)";
+            this.author.Name = "author";
+            // 
+            // Legend
+            // 
+            this.Legend.HeaderText = "Легенда ( комментарий)";
+            this.Legend.Name = "Legend";
+            // 
+            // worked
+            // 
+            this.worked.HeaderText = "Рабочий";
+            this.worked.Name = "worked";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.bSaveManage);
@@ -1425,7 +1532,8 @@ namespace StalkerOnlineQuesterEditor
             this.menuMainControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuMain,
             this.menuSaveAll,
-            this.menuExplorer});
+            this.menuExplorer,
+            this.обновленияToolStripMenuItem});
             this.menuMainControl.Location = new System.Drawing.Point(0, 0);
             this.menuMainControl.Name = "menuMainControl";
             this.menuMainControl.Size = new System.Drawing.Size(914, 24);
@@ -1489,6 +1597,29 @@ namespace StalkerOnlineQuesterEditor
             this.menuExplorer.Text = "Проводник";
             this.menuExplorer.Click += new System.EventHandler(this.ExplorerToolStripMenuItem_Click);
             // 
+            // обновленияToolStripMenuItem
+            // 
+            this.обновленияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.парсерыToolStripMenuItem,
+            this.проверкаОшибокToolStripMenuItem});
+            this.обновленияToolStripMenuItem.Name = "обновленияToolStripMenuItem";
+            this.обновленияToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
+            this.обновленияToolStripMenuItem.Text = "Обновления";
+            // 
+            // парсерыToolStripMenuItem
+            // 
+            this.парсерыToolStripMenuItem.Name = "парсерыToolStripMenuItem";
+            this.парсерыToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.парсерыToolStripMenuItem.Text = "Парсеры";
+            this.парсерыToolStripMenuItem.Click += new System.EventHandler(this.парсерыToolStripMenuItem_Click);
+            // 
+            // проверкаОшибокToolStripMenuItem
+            // 
+            this.проверкаОшибокToolStripMenuItem.Name = "проверкаОшибокToolStripMenuItem";
+            this.проверкаОшибокToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.проверкаОшибокToolStripMenuItem.Text = "Проверка Ошибок";
+            this.проверкаОшибокToolStripMenuItem.Click += new System.EventHandler(this.проверкаОшибокToolStripMenuItem_Click);
+            // 
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
@@ -1504,110 +1635,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 1;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // subevents
-            // 
-            this.subevents.HeaderText = "Вложенные события";
-            this.subevents.Name = "subevents";
-            this.subevents.ReadOnly = true;
-            // 
-            // title
-            // 
-            this.title.HeaderText = "Заголовок";
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Описание";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // npcName
-            // 
-            this.npcName.HeaderText = "NPC";
-            this.npcName.Name = "npcName";
-            this.npcName.ReadOnly = true;
-            // 
-            // subNPC
-            // 
-            this.subNPC.HeaderText = "Список NPC";
-            this.subNPC.Name = "subNPC";
-            this.subNPC.ReadOnly = true;
-            // 
-            // dialogID
-            // 
-            this.dialogID.HeaderText = "id диалога";
-            this.dialogID.Name = "dialogID";
-            this.dialogID.ReadOnly = true;
-            // 
-            // rewardBattle
-            // 
-            this.rewardBattle.HeaderText = "Награда опыт-бой";
-            this.rewardBattle.Name = "rewardBattle";
-            this.rewardBattle.ReadOnly = true;
-            // 
-            // rewardSurvive
-            // 
-            this.rewardSurvive.HeaderText = "Награда опыт-выживание";
-            this.rewardSurvive.Name = "rewardSurvive";
-            this.rewardSurvive.ReadOnly = true;
-            // 
-            // rewardSupport
-            // 
-            this.rewardSupport.HeaderText = "Награда опыт-поддержка";
-            this.rewardSupport.Name = "rewardSupport";
-            this.rewardSupport.ReadOnly = true;
-            // 
-            // rewardCredits
-            // 
-            this.rewardCredits.HeaderText = "Награда деньги";
-            this.rewardCredits.Name = "rewardCredits";
-            this.rewardCredits.ReadOnly = true;
-            // 
-            // rewardItems
-            // 
-            this.rewardItems.HeaderText = "Награда вещи";
-            this.rewardItems.Name = "rewardItems";
-            this.rewardItems.ReadOnly = true;
-            // 
-            // repeat
-            // 
-            this.repeat.HeaderText = "Повторяемый";
-            this.repeat.Name = "repeat";
-            this.repeat.ReadOnly = true;
-            // 
-            // repeatPeriod
-            // 
-            this.repeatPeriod.HeaderText = "Период повтора (часы)";
-            this.repeatPeriod.Name = "repeatPeriod";
-            this.repeatPeriod.ReadOnly = true;
-            // 
-            // Level
-            // 
-            this.Level.HeaderText = "Уровень ( комментарий)";
-            this.Level.Name = "Level";
-            // 
-            // author
-            // 
-            this.author.HeaderText = "Автор ( комментарий)";
-            this.author.Name = "author";
-            // 
-            // Legend
-            // 
-            this.Legend.HeaderText = "Легенда ( комментарий)";
-            this.Legend.Name = "Legend";
-            // 
-            // worked
-            // 
-            this.worked.HeaderText = "Рабочий";
-            this.worked.Name = "worked";
             // 
             // MainForm
             // 
@@ -1820,6 +1847,9 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn author;
         private System.Windows.Forms.DataGridViewTextBoxColumn Legend;
         private System.Windows.Forms.DataGridViewComboBoxColumn worked;
+        private System.Windows.Forms.ToolStripMenuItem обновленияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem парсерыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem проверкаОшибокToolStripMenuItem;
     }
 }
 

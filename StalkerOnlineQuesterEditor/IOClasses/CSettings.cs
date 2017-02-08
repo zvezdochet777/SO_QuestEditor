@@ -63,6 +63,9 @@ namespace StalkerOnlineQuesterEditor
                 pathToCopyFiles = @"..\..\..\res\scripts\common\data\Quests\";
                 System.Console.WriteLine("Can't parse settings file! Defaults used");
             }
+
+            if (!Directory.Exists(pathToCopyFiles))
+                pathToCopyFiles = "source/Quests/";
         }
 
         //! Проверяет режим, и задает соответствующую надпись на главной форме

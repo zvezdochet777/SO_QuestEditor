@@ -21,6 +21,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 string id = item.Element("mark").Value.ToString().Trim();
                 string name = item.Element("description").Value.ToString().Trim();
+
                 zones.Add(id, new CZoneDescription(name));
             }
 
@@ -29,11 +30,43 @@ namespace StalkerOnlineQuesterEditor
             foreach(XElement item in allAreas.Root.Elements())
             {
                 string id = item.Element("mark").Value.ToString().Trim();
+                List<int> quests = new List<int>();
+                string[] q;
+                if (item.Element("quests") != null)
+                {
+                    q = item.Element("quests").Value.ToString().Trim().Split(' ');
+                    foreach (string i in q)
+                    {
+                        if (i != "0")
+                            quests.Add(Convert.ToInt32(i));
+                    }
+                }
                 if (!zones.ContainsKey(id))
-                    zones.Add(id, new CZoneDescription(id));
+                    zones.Add(id, new CZoneDescription(id, quests));
+                else { zones[id].setQuests(quests); }
+
             }
 
         }
+
+        public bool checkAreaGiveQuestByID(int quest_id)
+        {
+            foreach (CZoneDescription area in zones.Values)
+            {
+                List<int> area_quest;
+                area_quest = area.getQuests();
+                if (area_quest == null) continue;
+                if (area_quest.Contains(quest_id))
+                    return true;
+            }
+            return false;
+        }
+
+        public bool checkHaveArea(string key)
+        {
+            return zones.ContainsKey(key.Trim());
+        }
+
         //! Возвращает словарь всех территорий
         public Dictionary<string, CZoneDescription> getAllZones()
         {
@@ -59,15 +92,27 @@ namespace StalkerOnlineQuesterEditor
     public class CZoneDescription
     {
         string Name;
+        List<int> quests;
 
-        public CZoneDescription(string name)
+        public CZoneDescription(string name, List<int> quests = null)
         {
             this.Name = name;
+            this.quests = quests;
         }
 
         public string getName()
         {
             return this.Name;
+        }
+
+        public List<int> getQuests()
+        {
+            return quests;
+        }
+
+        public void setQuests(List<int> value)
+        {
+            quests = value;
         }
     }
 }
