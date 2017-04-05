@@ -24,6 +24,7 @@ namespace StalkerOnlineQuesterEditor
 
         double Credits;
         int countOfQuests;
+        int countHiddenQuests;
         int countOfAmountGold;
         int[] countOfExQuests = { 0, 0, 0 };
         List<int> lExperience;
@@ -84,12 +85,18 @@ namespace StalkerOnlineQuesterEditor
             const int NumExp = 3;
             Credits = new double();
             countOfQuests = 0;
+            countHiddenQuests = 0;
             countOfAmountGold = 0;
             lExperience = new List<int>(3);
             lExperience.Add(0); lExperience.Add(0); lExperience.Add(0);
             foreach (CQuest quest in quests.quest.Values)
             {
                 countOfQuests++;
+                if (quest.hidden)
+                {
+                    countHiddenQuests++;
+                    continue;
+                }
                 if (quest.Reward.Experience.Any())
                 {
                     for (int i = 0; i < NumExp; i++)
@@ -190,6 +197,7 @@ namespace StalkerOnlineQuesterEditor
             }
             foreach (CQuest quest in quests.quest.Values)
             {
+                if (quest.hidden) continue;
                 if (quest.Reward.ReputationNotEmpty())
                 {
                     foreach (KeyValuePair<int, int> oneRep in quest.Reward.Reputation)
@@ -226,6 +234,8 @@ namespace StalkerOnlineQuesterEditor
             string symbols = "";
             symbols += "Общее количество NPC:        " + NPCCount.ToString() + "\n";
             symbols += "Общее количество квестов:    " + topLevelQuests.ToString() + " (c субквестами: " + countOfQuests.ToString() + ")\n";
+            symbols += "Количество скрытых квестов:  " + countHiddenQuests.ToString() + "\n";
+
             symbols += "Общее количество диалогов:   " + countOfDialogs.ToString() + "\n";
             symbols += "Общее количество знаков в словах NPC:   " + countOfTextLetters.ToString() + "\n";
                                             //", без пробелов: " + countOfTextNoSpaces.ToString() + "\n";

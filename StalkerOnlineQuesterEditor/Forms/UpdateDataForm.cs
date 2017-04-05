@@ -84,6 +84,7 @@ namespace StalkerOnlineQuesterEditor.Forms
             string fileName = @"..\misc\developer_scripts\QuestEditorScripts\AllAreaParser.py";
             run_cmd(fileName);
             this.parent.zoneConst = new CZoneConstants();
+            this.parent.zoneMobConst = new CZoneMobConstants();
             MessageBox.Show("Complete");
         }
 

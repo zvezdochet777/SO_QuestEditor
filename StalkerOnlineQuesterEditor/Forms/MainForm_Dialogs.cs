@@ -210,8 +210,8 @@ namespace StalkerOnlineQuesterEditor
             float rooty = root.coordinates.Y;
             if (rootx == 0 && rooty == 0)
             {
-                rootx = (float)(this.ClientSize.Width / 5);
-                rooty = (float)(this.ClientSize.Height / 5);
+                rootx = (float)this.ClientSize.Width / 5.0f;
+                rooty = (float)this.ClientSize.Height / 5.0f;
             }
             PNode rootNode = CreateNode(root, new PointF(rootx, rooty));
             rootNode.Brush = Brushes.Green;
@@ -395,8 +395,8 @@ namespace StalkerOnlineQuesterEditor
         //! Сохраняет координаты узла 
         public void SaveCoordinates(CDialog dialog, PNode node, bool isRoot)
         {
-            dialog.coordinates.X = (int) node.FullBounds.X;
-            dialog.coordinates.Y = (int) node.FullBounds.Y;
+            dialog.coordinates.X = node.FullBounds.X;
+            dialog.coordinates.Y = node.FullBounds.Y;
             dialog.coordinates.RootDialog = isRoot;
             //! костылек
             if (settings.getMode() == settings.MODE_LOCALIZATION)

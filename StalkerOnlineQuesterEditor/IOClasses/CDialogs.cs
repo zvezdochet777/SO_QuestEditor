@@ -305,7 +305,11 @@ namespace StalkerOnlineQuesterEditor
             foreach (XElement npc in doc.Root.Elements())
             {
                 string npc_name = npc.Element("Name").Value.ToString();
-
+                if (!target.ContainsKey(npc_name))
+                {
+                    MessageBox.Show("В DialogsData отсутствует NPC:" + npc_name, "Ошибка парсинга текстов");
+                    continue;
+                }
                 foreach (XElement dialog in npc.Elements("Dialog"))
                 {
                     int DialogID = int.Parse(dialog.Element("ID").Value);
@@ -552,8 +556,8 @@ namespace StalkerOnlineQuesterEditor
                 {
                     npc_element.Add(new XElement("Dialog", 
                         new XAttribute("ID", dialog.DialogID.ToString()),
-                        new XElement("X", dialog.coordinates.X.ToString()),
-                        new XElement("Y", dialog.coordinates.Y.ToString())));                  
+                        new XElement("X", Convert.ToString(dialog.coordinates.X)),
+                        new XElement("Y", Convert.ToString(dialog.coordinates.Y))));                  
                 }
                 resultDoc.Root.Add(npc_element);
             }
@@ -579,8 +583,8 @@ namespace StalkerOnlineQuesterEditor
                 foreach (XElement dialog in item.Elements())
                 {
                     int id = int.Parse(dialog.Attribute("ID").Value);
-                    int x = int.Parse(dialog.Element("X").Value);
-                    int y = int.Parse(dialog.Element("Y").Value);
+                    float x = float.Parse(dialog.Element("X").Value);
+                    float y = float.Parse(dialog.Element("Y").Value);
                     tempCoordinates[npc_name].Add(id, new NodeCoordinates(x,y,false,false));
                 }
             }

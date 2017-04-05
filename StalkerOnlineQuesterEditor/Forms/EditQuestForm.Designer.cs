@@ -30,6 +30,7 @@
         {
             this.QuestPanel = new System.Windows.Forms.Panel();
             this.groupQuestBox = new System.Windows.Forms.GroupBox();
+            this.cbHidden = new System.Windows.Forms.CheckBox();
             this.filedIFtContentBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.debuglabel = new System.Windows.Forms.Label();
@@ -148,6 +149,7 @@
             // groupQuestBox
             // 
             this.groupQuestBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupQuestBox.Controls.Add(this.cbHidden);
             this.groupQuestBox.Controls.Add(this.filedIFtContentBox);
             this.groupQuestBox.Controls.Add(this.eventComboBox);
             this.groupQuestBox.Controls.Add(this.eventLabel);
@@ -158,6 +160,16 @@
             this.groupQuestBox.TabIndex = 0;
             this.groupQuestBox.TabStop = false;
             this.groupQuestBox.Text = "Событие ID ";
+            // 
+            // cbHidden
+            // 
+            this.cbHidden.AutoSize = true;
+            this.cbHidden.Location = new System.Drawing.Point(543, 3);
+            this.cbHidden.Name = "cbHidden";
+            this.cbHidden.Size = new System.Drawing.Size(72, 17);
+            this.cbHidden.TabIndex = 3;
+            this.cbHidden.Text = "Скрытый";
+            this.cbHidden.UseVisualStyleBackColor = true;
             // 
             // filedIFtContentBox
             // 
@@ -1249,5 +1261,6 @@
         private System.Windows.Forms.CheckBox IsCounterCheckBox;
         private System.Windows.Forms.CheckBox cbReputationLow;
         private System.Windows.Forms.CheckBox cbRewardWindow;
+        private System.Windows.Forms.CheckBox cbHidden;
     }
 }

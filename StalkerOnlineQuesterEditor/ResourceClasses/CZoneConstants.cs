@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using System.IO;
 
 namespace StalkerOnlineQuesterEditor
 {
@@ -10,7 +11,7 @@ namespace StalkerOnlineQuesterEditor
     public class CZoneConstants
     {
         //! Словарь ID территории (mark в xml файле) - Имя территории (по-русски, для геймдевов)
-        Dictionary<string, CZoneDescription> zones;
+        protected Dictionary<string, CZoneDescription> zones;
 
         //! Конструктор, создает словарь на основе xml файлов areas и AllAreas
         public CZoneConstants()
@@ -88,6 +89,37 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class CZoneMobConstants : CZoneConstants
+    {
+        public CZoneMobConstants()
+        {
+            zones = new Dictionary<string, CZoneDescription>();
+            if (!File.Exists("source/MobAreas.xml"))
+                return;
+
+            XDocument mobAreas = XDocument.Load("source/MobAreas.xml");
+            foreach (XElement item in mobAreas.Root.Elements())
+            {
+                string id = item.Element("mark").Value.ToString().Trim();
+                List<int> quests = new List<int>();
+                string[] q;
+                if (item.Element("quests") != null)
+                {
+                    q = item.Element("quests").Value.ToString().Trim().Split(' ');
+                    foreach (string i in q)
+                    {
+                        if (i != "0")
+                            quests.Add(Convert.ToInt32(i));
+                    }
+                }
+                if (!zones.ContainsKey(id))
+                    zones.Add(id, new CZoneDescription(id, quests));
+                else { zones[id].setQuests(quests); }
+
+            }
+
+        }
+    }
     //! Класс описания территории для посещения. Имеет только поле имя. Что за пиздец???
     public class CZoneDescription
     {

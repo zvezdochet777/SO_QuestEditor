@@ -36,6 +36,7 @@ namespace StalkerOnlineQuesterEditor
         private string questTextsXML = "QuestTexts.xml";
         private string questDataXML = "QuestData.xml";
         private string deletedQuests = "DeletedQuests.txt";
+        private string lastQuestID = "lastQuestID.txt";
 
         public CSettings(MainForm parent)
         {
@@ -222,6 +223,11 @@ namespace StalkerOnlineQuesterEditor
         public string GetQuestLocaleTextPath()
         {
             return Path.Combine(pathToCopyFiles, getCurrentLocale(), questTextsXML);
+        }
+
+        public string GetLastQuestIDPath()
+        {
+            return SETTINGS_PATH + lastQuestID;
         }
     }
 }

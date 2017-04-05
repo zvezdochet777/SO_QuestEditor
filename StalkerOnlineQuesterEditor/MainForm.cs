@@ -57,6 +57,7 @@ namespace StalkerOnlineQuesterEditor
         public CNPCConstants npcConst;
         public CMobConstants mobConst;
         public CZoneConstants zoneConst;
+        public CZoneMobConstants zoneMobConst;
         public CSpacesConstants spacesConst;
         public CTriggerConstants triggerConst;
         public CTPConstants tpConst;
@@ -126,6 +127,7 @@ namespace StalkerOnlineQuesterEditor
                  npcConst.NPCs.Add(name, new CNPCDescription(name));
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
+            this.zoneMobConst = new CZoneMobConstants();
             SetMasterMode();
         }
         //! Set mode for me, if Command line has /master parameter, TestButton and some labels will be shown
@@ -633,7 +635,9 @@ namespace StalkerOnlineQuesterEditor
                     TreeNode parent = nodes[0];
                     parent.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                     int lastIndex = parent.Nodes.Count - 1;
-                    if (curQuest.Target.onFin == 1)
+                    if (curQuest.hidden)
+                        parent.Nodes[lastIndex].BackColor = Color.CadetBlue;
+                    else if (curQuest.Target.onFin == 1)
                         parent.Nodes[lastIndex].BackColor = Color.YellowGreen;
                     else
                         parent.Nodes[lastIndex].BackColor = Color.Red;
@@ -643,7 +647,9 @@ namespace StalkerOnlineQuesterEditor
             {
                 treeQuest.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                 int lastIndex = treeQuest.Nodes.Count - 1;
-                if (curQuest.Target.onFin == 1)
+                if (curQuest.hidden)
+                    treeQuest.Nodes[lastIndex].BackColor = Color.CadetBlue;
+                else if (curQuest.Target.onFin == 1)
                     treeQuest.Nodes[lastIndex].BackColor = Color.YellowGreen;
                 else
                     treeQuest.Nodes[lastIndex].BackColor = Color.Red;
@@ -874,8 +880,17 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        public void incQuestNewID()
+        {
+            quests.last_quest_id++;
+        }
+
         public int getQuestNewID()
         {
+            if (quests.last_quest_id != 0)
+            {
+                return quests.last_quest_id;
+            }
             int iFirstQuestID = 1 + this.settings.getOperatorNumber() * 400;
             for (int questi = iFirstQuestID; ; questi++)
                 if (!quests.quest.Keys.Contains(questi) && !quests.m_Buffer.Keys.Contains(questi) && !quests.deletedQuests.Contains(questi))
@@ -923,7 +938,7 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие на кнопку "Добавление квеста", вызов окна EditQuestForm
         private void bAddEvent_Click(object sender, EventArgs e)
         {
-            EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 4);
+            EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 4, getQuestNewID());
             questEditor.Visible = true;
             this.Enabled = false;
         }
@@ -1109,6 +1124,8 @@ namespace StalkerOnlineQuesterEditor
 
         void fillQuestDataInManageTab(string npcName, CQuest quest, bool force = false, string parentTitle = "" )
         {
+            if (quest.hidden && !force)
+                return;
             //если 12 тип, то показать его детей первого уровня и его самого, всё равно, что сам он дочерний
             if (quest.Additional.Holder == npcName && ( force || (quest.Additional.IsSubQuest == 0) || (quest.Target.QuestType == 12)))
             {
@@ -1365,7 +1382,9 @@ namespace StalkerOnlineQuesterEditor
                     TreeNode parent = nodes[0];
                     parent.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                     int lastIndex = parent.Nodes.Count - 1;
-                    if (curQuest.Target.onFin == 1)
+                    if (curQuest.hidden)
+                        parent.Nodes[lastIndex].BackColor = Color.CadetBlue;
+                    else if (curQuest.Target.onFin == 1)
                         parent.Nodes[lastIndex].BackColor = Color.YellowGreen;
                     else
                         parent.Nodes[lastIndex].BackColor = Color.Red;
@@ -1375,7 +1394,9 @@ namespace StalkerOnlineQuesterEditor
             {
                 treeQuestBuffer.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                 int lastIndex = treeQuest.Nodes.Count - 1;
-                if (curQuest.Target.onFin == 1)
+                if (curQuest.hidden)
+                    treeQuestBuffer.Nodes[lastIndex].BackColor = Color.CadetBlue;
+                else if (curQuest.Target.onFin == 1)
                     treeQuestBuffer.Nodes[lastIndex].BackColor = Color.YellowGreen;
                 else
                     treeQuestBuffer.Nodes[lastIndex].BackColor = Color.Red;

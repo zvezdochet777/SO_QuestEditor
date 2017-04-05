@@ -25,6 +25,7 @@ namespace StalkerOnlineQuesterEditor
         public int SHOW_MESSAGE_PROGRESS = 4;
         public int SHOW_JOURNAL = 8;
 
+        public int last_quest_id = 0;
         //public Dictionary<string, NPCQuestDict> quest;
         //! Словарь <QuestID, CQuest> - основной, содержащий все квесты
         public NPCQuestDict quest;
@@ -43,6 +44,7 @@ namespace StalkerOnlineQuesterEditor
         {
             parent = form;
             this.quest = new NPCQuestDict();
+            ParseLastQuestID(parent.settings.GetLastQuestIDPath());
             ParseQuestsData(parent.settings.GetQuestDataPath(), quest);
             ParseQuestsTexts(parent.settings.GetQuestTextPath(), quest);
             ParseDeletedQuest(parent.settings.GetDeletedQuestsPath(), deletedQuests);
@@ -80,6 +82,22 @@ namespace StalkerOnlineQuesterEditor
             writer.Close();
         }
 
+        void ParseLastQuestID(string sPath)
+        {
+            if (!File.Exists(sPath))
+                return;
+
+            System.IO.StreamReader fileReader = new StreamReader(sPath);
+            string line;
+            while ((line = fileReader.ReadLine()) != null)
+            {
+                if (!line.Any())
+                    continue;
+                last_quest_id = Convert.ToInt32(line);
+            }
+            fileReader.Close();
+        }
+
         void ParseQuestsData(string sPath, NPCQuestDict dict_target)
         {
             doc = XDocument.Load(sPath);
@@ -87,7 +105,8 @@ namespace StalkerOnlineQuesterEditor
             foreach (XElement item in doc.Root.Elements())
             {
                 int QuestID = int.Parse(item.Element("ID").Value);
-
+                if (QuestID >= last_quest_id)
+                    last_quest_id = QuestID + 1;
                 CQuestInformation information = new CQuestInformation();
                 CQuestTarget target = new CQuestTarget();
                 CQuestPrecondition precondition = new CQuestPrecondition();
@@ -95,6 +114,9 @@ namespace StalkerOnlineQuesterEditor
                 CQuestReward reward = new CQuestReward();
                 CQuestAdditional additional = new CQuestAdditional();
                 CQuestPenalty penalty = new CQuestPenalty();
+                bool hidden = false;
+                if (item.Element("hidden") != null)
+                    hidden = true;
 
                 additional.Holder = item.Element("Additional").Element("Holder").Value.Trim();
 
@@ -243,7 +265,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
                 if (!dict_target.ContainsKey(QuestID))
-                    dict_target.Add(QuestID, new CQuest(QuestID, 0, information, precondition, questRules, reward, additional, target, penalty));
+                    dict_target.Add(QuestID, new CQuest(QuestID, 0, information, precondition, questRules, reward, additional, target, penalty, hidden));
             }
         }
 
@@ -359,6 +381,12 @@ namespace StalkerOnlineQuesterEditor
         //! Сохраняет данные по квестам в xml файл
         public void SaveQuests()
         {
+            string path = parent.settings.GetLastQuestIDPath();
+            FileStream fcreate = File.Open(path, FileMode.Create);
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(fcreate);
+            writer.WriteLine(last_quest_id.ToString());
+            writer.Close();
+
             SaveQuestsTexts(parent.settings.GetQuestTextPath(), this.quest);
             SaveQuestsData(parent.settings.GetQuestDataPath(), this.quest);
         }
@@ -412,6 +440,9 @@ namespace StalkerOnlineQuesterEditor
             {
                 element = new XElement("Quest",
                    new XElement("ID", questValue.QuestID));
+                if (questValue.hidden)
+                    element.Add(new XElement("hidden"));
+
                 if (questValue.Target.Any())
                 {
                     element.Add(new XElement("Target"));
@@ -887,7 +918,13 @@ namespace StalkerOnlineQuesterEditor
         private int getQuestNewID(List<int> exceptsList)
         {
             int iFirstQuestID = 1;
+            if (last_quest_id != 0)
+            {
+                last_quest_id++;
+                return last_quest_id - 1;
+            }
             for (int questi = iFirstQuestID; ; questi++)
+
                 if (!quest.Keys.Contains(questi) && !m_Buffer.Keys.Contains(questi) && !exceptsList.Contains(questi))
                     return questi;
         }

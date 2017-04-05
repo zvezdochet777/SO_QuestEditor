@@ -19,6 +19,7 @@ namespace StalkerOnlineQuesterEditor
         public CQuestReward Reward;
         public CQuestPenalty QuestPenalty;
         public CQuestAdditional Additional;
+        public bool hidden;
 
         public object Clone()
         {
@@ -32,6 +33,7 @@ namespace StalkerOnlineQuesterEditor
             copy.QuestPenalty = (CQuestPenalty)this.QuestPenalty.Clone();
             copy.Additional = (CQuestAdditional)this.Additional.Clone();
             copy.Target = (CQuestTarget)this.Target.Clone();
+            copy.hidden = this.hidden;
             return copy;
         }
 
@@ -46,9 +48,10 @@ namespace StalkerOnlineQuesterEditor
             this.QuestPenalty = new CQuestPenalty();
             this.Additional = new CQuestAdditional();
             this.Target = new CQuestTarget();
+            this.hidden = false;
         }
 
-        public CQuest(int questID,int Version, CQuestInformation questInformation,CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional,CQuestTarget target, CQuestPenalty penalty)
+        public CQuest(int questID, int Version, CQuestInformation questInformation,CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional,CQuestTarget target, CQuestPenalty penalty, bool hidden = false)
         {
             this.QuestID = questID;
             this.Version = Version;
@@ -59,6 +62,7 @@ namespace StalkerOnlineQuesterEditor
             this.Additional = additional;
             this.Target = target;
             this.QuestPenalty = penalty;
+            this.hidden = hidden;
         }
 
         public void InsertNonTextData(CQuest source)

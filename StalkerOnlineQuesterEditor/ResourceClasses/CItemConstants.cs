@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using System.IO;
 
 namespace StalkerOnlineQuesterEditor
 {
@@ -13,6 +14,11 @@ namespace StalkerOnlineQuesterEditor
         public CItemConstants()
         {
             items = new Dictionary<int, CItem>();
+            if (!File.Exists("source/ItemStrings.xml"))
+            {
+                System.Windows.Forms.MessageBox.Show("Отсуствует файл ItemStrings.xml, нужно распарсить", "Ошибка");
+                return;
+            }
             XDocument doc = XDocument.Load("source/ItemStrings.xml");
             foreach (XElement item in doc.Root.Elements())
             {

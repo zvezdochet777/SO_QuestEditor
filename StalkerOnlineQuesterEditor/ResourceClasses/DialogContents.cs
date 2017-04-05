@@ -323,8 +323,8 @@ namespace StalkerOnlineQuesterEditor
     //! Класс параметров узла диалога на графе - координаты и флаг "корневой"
     public class NodeCoordinates
     {
-        public int X;
-        public int Y;
+        public float X;
+        public float Y;
         public bool RootDialog;
         public bool Active;
         public NodeCoordinates()
@@ -334,7 +334,7 @@ namespace StalkerOnlineQuesterEditor
             RootDialog = false;
             Active = true;
         }
-        public NodeCoordinates(int x, int y, bool root, bool active)
+        public NodeCoordinates(float x, float y, bool root, bool active)
         {
             X = x;
             Y = y;

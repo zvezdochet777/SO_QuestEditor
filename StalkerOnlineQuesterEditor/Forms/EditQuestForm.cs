@@ -49,17 +49,21 @@ namespace StalkerOnlineQuesterEditor
         int iState;
 
         //! Конструктор, заполянет форму данными
-        public EditQuestForm(MainForm parent, int currentQuest, int iState)
+        public EditQuestForm(MainForm parent, int currentQuest, int iState, int subID = 0)
         {
             InitializeComponent();
             this.parent = parent;
             this.iState = iState;
-            this.QuestID = currentQuest;
+            if (iState == ADD_SUB)
+                this.QuestID = subID;
+            else
+                this.QuestID = currentQuest;
 
             if (iState != ADD_NEW)
                 this.quest = parent.getQuestOnQuestID(currentQuest);
             else
                 this.quest = new CQuest();
+
             if (iState == ADD_SUB || iState == EDIT_SUB)
             {
                 titleTextBox.Enabled = false;
@@ -82,8 +86,8 @@ namespace StalkerOnlineQuesterEditor
                 editTarget = quest.Target;
                 editInformation = quest.QuestInformation;
             }
-            groupQuestBox.Text += " " + currentQuest.ToString();
-            this.Text += (": " + this.quest.QuestID.ToString() + "   Версия: " + this.quest.Version.ToString());
+            groupQuestBox.Text += " " + this.QuestID.ToString();
+            this.Text += (": " + this.QuestID.ToString() + "   Версия: " + this.quest.Version.ToString());
             fillForm();
         }
 
@@ -102,6 +106,7 @@ namespace StalkerOnlineQuesterEditor
         //! Заполняет форму данными о квесте
         void fillForm()
         {
+            cbHidden.Checked = quest.hidden;
             //bItemQuestRules.ImageKey = "";
             //bItemQuestRules.ImageKey = "but_indicate";
             foreach (СQuestType eventDescription in parent.questConst.getListQuests())
@@ -297,15 +302,16 @@ namespace StalkerOnlineQuesterEditor
                     lTargetAttr1.Enabled = true;
                     //targetAttributeComboBox2.Enabled = true;
                     resultextBox.Enabled = true;
-
+                    targetComboBox.Items.Clear();
                     foreach (CMobDescription description in parent.mobConst.getAllDescriptions().Values)
                         targetComboBox.Items.Add(description.getName());
                     
                     lQuantity.Text = "Количество:";
                     labelTargetAttr.Text = "Зона:";
+                    targetAttributeComboBox.Items.Clear();
                     targetAttributeComboBox.Enabled = true;
                     targetAttributeComboBox.Items.Add("");
-                    foreach (CZoneDescription description in parent.zoneConst.getAllZones().Values)
+                    foreach (CZoneDescription description in parent.zoneMobConst.getAllZones().Values)
                         targetAttributeComboBox.Items.Add(description.getName());
                     targetAttributeComboBox.SelectedIndex = 0;
                     //targetAttributeComboBox2.SelectedIndex = 0;
@@ -314,6 +320,7 @@ namespace StalkerOnlineQuesterEditor
                 else if ((QuestType == 4) || (QuestType == 8))
                 {
                     lNameObject.Text = "Имя зоны:";
+                    targetComboBox.Items.Clear();
                     foreach (CZoneDescription description in parent.zoneConst.getAllZones().Values)
                         targetComboBox.Items.Add(description.getName());
                     lQuantity.Enabled = false;
@@ -333,6 +340,7 @@ namespace StalkerOnlineQuesterEditor
                 else if (QuestType == 6)
                 {
                     lNameObject.Text = "Триггер:";
+                    targetComboBox.Items.Clear();
                     foreach (string item in parent.triggerConst.getTriggersDescription())
                         targetComboBox.Items.Add(item);
                     lQuantity.Enabled = false;
@@ -349,6 +357,7 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else if (QuestType == 19 || QuestType == 20){
                     lNameObject.Text = "Тип предмета:";
+                    targetComboBox.Items.Clear();
                     foreach (CItem description in parent.itemConst.getAllItems().Values)
                         targetComboBox.Items.Add(description.getDescription());
                     quantityUpDown.Enabled = false;
@@ -356,6 +365,7 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else if (QuestType == 206)
                 {
+                    targetComboBox.Items.Clear();
                     foreach (string descr in parent.gui.guiIDs.Keys)
                         targetComboBox.Items.Add(descr);
                     targetAttributeComboBox.Enabled = true;
@@ -366,6 +376,7 @@ namespace StalkerOnlineQuesterEditor
                 else if (QuestType == 21)
                 {
                     lNameObject.Text = "Эффект";
+                    targetComboBox.Items.Clear();
                     foreach (string description in parent.effects.getAllDescriptions())
                         targetComboBox.Items.Add(description);
                     quantityUpDown.Enabled = true;
@@ -376,6 +387,7 @@ namespace StalkerOnlineQuesterEditor
                 else if ((QuestType == 22) || (QuestType == 23))
                 {
                     lNameObject.Text = "Репутация";
+                    targetComboBox.Items.Clear();
                     foreach (KeyValuePair<int, string> pair in parent.fractions.getListOfFractions())
                         targetComboBox.Items.Add(pair.Value);
                     quantityUpDown.Enabled = true;
@@ -436,7 +448,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 targetComboBox.SelectedItem = parent.mobConst.getDescriptionOnType(quest.Target.ObjectType).getName();
                 if (!quest.Target.AreaName.Equals(""))
-                    targetAttributeComboBox.SelectedItem = parent.zoneConst.getDescriptionOnKey(quest.Target.AreaName).getName();
+                    targetAttributeComboBox.SelectedItem = parent.zoneMobConst.getDescriptionOnKey(quest.Target.AreaName).getName();
 
                 //if (quest.Target.ObjectAttr < 0)
                 //    targetAttributeComboBox2.SelectedIndex = 0;
@@ -632,14 +644,14 @@ namespace StalkerOnlineQuesterEditor
             else if ((target.QuestType == 2) || (target.QuestType == 3))
             {
                 target.ObjectType = parent.mobConst.getTypeOnDescription(targetComboBox.SelectedItem.ToString());
-
-                //int level = ParseIntIfNotEmpty(resultextBox.Text);
-                //target.ObjectAttr = level;
-
+                
                 if (dynamicCheckBox.Checked)
                     target.ObjectName = resultextBox.Text;
                 else
                 {
+                    int level = ParseIntIfNotEmpty(resultextBox.Text);
+                    target.ObjectAttr = level;
+
                     target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
                     if ((target.NumOfObjects > 32000) || (target.NumOfObjects < 1))
                     {
@@ -651,7 +663,7 @@ namespace StalkerOnlineQuesterEditor
                 if (targetAttributeComboBox.SelectedItem.ToString().Equals(""))
                     target.AreaName = "";
                 else
-                    target.AreaName = parent.zoneConst.getKeyOnDescription(targetAttributeComboBox.SelectedItem.ToString());
+                    target.AreaName = parent.zoneMobConst.getKeyOnDescription(targetAttributeComboBox.SelectedItem.ToString());
             }
             else if ((target.QuestType == 4) || (target.QuestType == 8))
             {
@@ -806,7 +818,8 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (iState == ADD_SUB)
                     additional.IsSubQuest = quest.QuestID;
-                retQuest = new CQuest(parent.getQuestNewID(), 1 , information, precondition, rules, reward, additional, target, penalty);
+                retQuest = new CQuest(this.QuestID, 1, information, precondition, rules, reward, additional, target, penalty);
+                parent.incQuestNewID();
             }
             else
             {
@@ -815,7 +828,7 @@ namespace StalkerOnlineQuesterEditor
                         || quest.QuestInformation.onWin != information.onWin || quest.QuestInformation.onFailed != information.onFailed)
                     version++;
                  
-                retQuest = new CQuest(quest.QuestID, version, information, precondition, rules, reward, additional, target, penalty);
+                retQuest = new CQuest(quest.QuestID, version, information, precondition, rules, reward, additional, target, penalty, cbHidden.Checked);
             }
             return retQuest;
         }
@@ -880,10 +893,18 @@ namespace StalkerOnlineQuesterEditor
             }
             else
             {
-                ltargetResult.Text = "Результат:";
+                if (this.QuestType == 2 || this.QuestType == 3)
+                {
+                    ltargetResult.Text = "Уровень моба";
+                    resultextBox.Enabled = true;
+                }
+                else
+                {
+                    ltargetResult.Text = "Результат:";
+                    resultextBox.Enabled = false;
+                }
                 bTargetAddDynamic.Enabled = false;
                 bTargetClearDynamic.Enabled = false;
-                resultextBox.Enabled = false;
             }
         }
 
