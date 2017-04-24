@@ -231,7 +231,8 @@ namespace StalkerOnlineQuesterEditor
             targetAttributeComboBox2.Enabled = false;
             lTargetAttr1.Text = "Атрибут2";
             ltargetResult.Text = "Результат";
-
+            cbState.Text = "Учитывать состояние";
+            lState.Text = "Состояние";
             if (parent.questConst.isSimple(QuestType))
             {
                 targetComboBox.Enabled = true;
@@ -300,17 +301,24 @@ namespace StalkerOnlineQuesterEditor
                     ltargetResult.Text = "Уровень моба";
                     ltargetResult.Enabled = true;
                     lTargetAttr1.Enabled = true;
-                    //targetAttributeComboBox2.Enabled = true;
+                    
                     resultextBox.Enabled = true;
                     targetComboBox.Items.Clear();
                     foreach (CMobDescription description in parent.mobConst.getAllDescriptions().Values)
                         targetComboBox.Items.Add(description.getName());
-                    
+
+                    cbState.Text = "Учитывать урон";
+                    cbState.Enabled = true;
+                    lState.Text = "Процент урона";
                     lQuantity.Text = "Количество:";
                     labelTargetAttr.Text = "Зона:";
                     targetAttributeComboBox.Items.Clear();
                     targetAttributeComboBox.Enabled = true;
                     targetAttributeComboBox.Items.Add("");
+                   // targetAttributeComboBox2.Items.Clear();
+                   // targetAttributeComboBox2.Enabled = true;
+                    //targetAttributeComboBox2.Items.Add("");
+                   
                     foreach (CZoneDescription description in parent.zoneMobConst.getAllZones().Values)
                         targetAttributeComboBox.Items.Add(description.getName());
                     targetAttributeComboBox.SelectedIndex = 0;
@@ -432,10 +440,10 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedItem = parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
                 targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
-                if (quest.Target.useState)
+                if (quest.Target.usePercent)
                 {
                     cbState.Checked = true;
-                    udState.Value = Convert.ToDecimal(quest.Target.itemState * 100);
+                    udState.Value = Convert.ToDecimal(quest.Target.percent * 100);
                 }
                 else cbState.Checked = false;
 
@@ -455,7 +463,12 @@ namespace StalkerOnlineQuesterEditor
                 //else
                 //    targetAttributeComboBox2.SelectedIndex = parent.mobConst.getDescriptionOnType(quest.Target.ObjectType).getIndexOnLevel(quest.Target.ObjectAttr);
                 resultextBox.Text = quest.Target.ObjectAttr.ToString();
-
+                if (quest.Target.usePercent)
+                {
+                    cbState.Checked = true;
+                    udState.Value = Convert.ToDecimal(quest.Target.percent * 100);
+                }
+                else cbState.Checked = false;
 
                 if (quest.Target.ObjectName.Contains(','))
                 {
@@ -628,10 +641,10 @@ namespace StalkerOnlineQuesterEditor
                 target.ObjectAttr = targetAttributeComboBox.SelectedIndex;
                 if (cbState.Checked && cbState.Enabled)
                 {
-                    target.useState = true;
-                    target.itemState = Convert.ToSingle(udState.Value) / 100;
+                    target.usePercent = true;
+                    target.percent = Convert.ToSingle(udState.Value) / 100;
                 }
-                else target.useState = false;
+                else target.usePercent = false;
             }
             else if (target.QuestType == 1)
             {
@@ -659,6 +672,13 @@ namespace StalkerOnlineQuesterEditor
                         return null;
                     }
                 }
+
+                if (cbState.Checked && cbState.Enabled)
+                {
+                    target.usePercent = true;
+                    target.percent = Convert.ToSingle(udState.Value) / 100;
+                }
+                else target.usePercent = false;
 
                 if (targetAttributeComboBox.SelectedItem.ToString().Equals(""))
                     target.AreaName = "";
@@ -1118,7 +1138,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void cbState_CheckedChanged(object sender, EventArgs e)
         {
-                editTarget.useState = cbState.Checked;
+                editTarget.usePercent = cbState.Checked;
                 lState.Enabled = cbState.Checked;
                 udState.Enabled = cbState.Checked;
 

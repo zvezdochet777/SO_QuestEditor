@@ -182,6 +182,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
+            this.tbItemNPC = new System.Windows.Forms.ComboBox();
+            this.cbItemNPC = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -1509,6 +1511,8 @@
             // tabActions
             // 
             this.tabActions.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabActions.Controls.Add(this.tbItemNPC);
+            this.tabActions.Controls.Add(this.cbItemNPC);
             this.tabActions.Controls.Add(this.tbPlaySonund);
             this.tabActions.Controls.Add(this.cbPlaySonund);
             this.tabActions.Controls.Add(this.cbCameraSmoothly);
@@ -1530,7 +1534,7 @@
             // tbPlaySonund
             // 
             this.tbPlaySonund.FormattingEnabled = true;
-            this.tbPlaySonund.Location = new System.Drawing.Point(210, 106);
+            this.tbPlaySonund.Location = new System.Drawing.Point(210, 128);
             this.tbPlaySonund.Name = "tbPlaySonund";
             this.tbPlaySonund.Size = new System.Drawing.Size(223, 21);
             this.tbPlaySonund.TabIndex = 13;
@@ -1538,7 +1542,7 @@
             // cbPlaySonund
             // 
             this.cbPlaySonund.AutoSize = true;
-            this.cbPlaySonund.Location = new System.Drawing.Point(28, 110);
+            this.cbPlaySonund.Location = new System.Drawing.Point(28, 132);
             this.cbPlaySonund.Name = "cbPlaySonund";
             this.cbPlaySonund.Size = new System.Drawing.Size(106, 17);
             this.cbPlaySonund.TabIndex = 12;
@@ -1548,7 +1552,7 @@
             // cbCameraSmoothly
             // 
             this.cbCameraSmoothly.AutoSize = true;
-            this.cbCameraSmoothly.Location = new System.Drawing.Point(439, 64);
+            this.cbCameraSmoothly.Location = new System.Drawing.Point(439, 86);
             this.cbCameraSmoothly.Name = "cbCameraSmoothly";
             this.cbCameraSmoothly.Size = new System.Drawing.Size(64, 17);
             this.cbCameraSmoothly.TabIndex = 11;
@@ -1558,7 +1562,7 @@
             // tbAvatarPoint
             // 
             this.tbAvatarPoint.FormattingEnabled = true;
-            this.tbAvatarPoint.Location = new System.Drawing.Point(210, 83);
+            this.tbAvatarPoint.Location = new System.Drawing.Point(210, 105);
             this.tbAvatarPoint.Name = "tbAvatarPoint";
             this.tbAvatarPoint.Size = new System.Drawing.Size(223, 21);
             this.tbAvatarPoint.TabIndex = 10;
@@ -1566,7 +1570,7 @@
             // cbAvatarPoint
             // 
             this.cbAvatarPoint.AutoSize = true;
-            this.cbAvatarPoint.Location = new System.Drawing.Point(28, 87);
+            this.cbAvatarPoint.Location = new System.Drawing.Point(28, 109);
             this.cbAvatarPoint.Name = "cbAvatarPoint";
             this.cbAvatarPoint.Size = new System.Drawing.Size(101, 17);
             this.cbAvatarPoint.TabIndex = 9;
@@ -1578,7 +1582,7 @@
             this.tbCamera.FormattingEnabled = true;
             this.tbCamera.Items.AddRange(new object[] {
             "default"});
-            this.tbCamera.Location = new System.Drawing.Point(210, 60);
+            this.tbCamera.Location = new System.Drawing.Point(210, 82);
             this.tbCamera.Name = "tbCamera";
             this.tbCamera.Size = new System.Drawing.Size(223, 21);
             this.tbCamera.TabIndex = 8;
@@ -1602,7 +1606,7 @@
             // cbCamera
             // 
             this.cbCamera.AutoSize = true;
-            this.cbCamera.Location = new System.Drawing.Point(28, 64);
+            this.cbCamera.Location = new System.Drawing.Point(28, 86);
             this.cbCamera.Name = "cbCamera";
             this.cbCamera.Size = new System.Drawing.Size(118, 17);
             this.cbCamera.TabIndex = 2;
@@ -1754,6 +1758,24 @@
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
+            // 
+            // tbItemNPC
+            // 
+            this.tbItemNPC.FormattingEnabled = true;
+            this.tbItemNPC.Location = new System.Drawing.Point(210, 59);
+            this.tbItemNPC.Name = "tbItemNPC";
+            this.tbItemNPC.Size = new System.Drawing.Size(223, 21);
+            this.tbItemNPC.TabIndex = 15;
+            // 
+            // cbItemNPC
+            // 
+            this.cbItemNPC.AutoSize = true;
+            this.cbItemNPC.Location = new System.Drawing.Point(28, 63);
+            this.cbItemNPC.Name = "cbItemNPC";
+            this.cbItemNPC.Size = new System.Drawing.Size(99, 17);
+            this.cbItemNPC.TabIndex = 14;
+            this.cbItemNPC.Text = "Предмет NPC:";
+            this.cbItemNPC.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -1970,5 +1992,7 @@
         private System.Windows.Forms.Panel autoPanel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox autoDefaultNode;
+        private System.Windows.Forms.ComboBox tbItemNPC;
+        private System.Windows.Forms.CheckBox cbItemNPC;
     }
 }

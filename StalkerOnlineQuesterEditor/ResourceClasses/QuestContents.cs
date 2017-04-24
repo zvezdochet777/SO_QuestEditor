@@ -129,8 +129,8 @@ namespace StalkerOnlineQuesterEditor
         public int IsGroup;
         public bool IsClan;
         public int onFin;
-        public float itemState;
-        public bool useState;
+        public float percent;
+        public bool usePercent;
 
         public object Clone()
         {
@@ -147,8 +147,8 @@ namespace StalkerOnlineQuesterEditor
             copy.IsGroup = this.IsGroup;
             copy.IsClan = this.IsClan;
             copy.onFin = this.onFin;
-            copy.itemState = this.itemState;
-            copy.useState = this.useState;
+            copy.percent = this.percent;
+            copy.usePercent = this.usePercent;
             return copy;
         }
 
@@ -165,15 +165,15 @@ namespace StalkerOnlineQuesterEditor
             this.ObjectName = "";
             this.AObjectAttrs = new List<int>();
             this.onFin = new int();
-            this.itemState = new float();
-            this.useState = false;
+            this.percent = new float();
+            this.usePercent = false;
         }
 
         public bool Any()
         {
             return QuestType != 0 || ObjectType != 0 || NumOfObjects != 0 || ObjectAttr != 0 || AreaName != "" ||
                     Time != 0.0f || IsGroup != 0 || IsClan || ObjectName != "" || AObjectAttrs.Any() ||
-                    onFin != 0 || itemState != 0 || useState;
+                    onFin != 0 || percent != 0 || usePercent;
 
         }
         public CQuestTarget(int QuestType)

@@ -256,6 +256,7 @@ namespace StalkerOnlineQuesterEditor
         public bool actionCameraSmoothly;
         public string actionAnimationPlayer;
         public string actionAnimationNPC;
+        public string actionItemNPC;
         public string actionAvatarPoint;
         public string actionPlaySound;
 
@@ -275,6 +276,7 @@ namespace StalkerOnlineQuesterEditor
             this.actionAnimationNPC = "";
             this.actionAvatarPoint = "";
             this.actionPlaySound = "";
+            this.actionItemNPC = "";
         }
 
 
@@ -348,17 +350,17 @@ namespace StalkerOnlineQuesterEditor
     public class CDialog : ICloneable
     {
         public int DialogID;
-        public string Holder;
+        public string Holder; //имя NPC
         public string Title;
         public string Text;
-        public CDialogPrecondition Precondition;
-        public Actions Actions;
+        public CDialogPrecondition Precondition; //Условия
+        public Actions Actions; //Действия диалога
         public List<int> Nodes;
-        public int version;
+        public int version; //Версия для перевода
         public NodeCoordinates coordinates;
-        public string DebugData;
-        public bool isAutoNode;
-        public string defaultNode;
+        public string DebugData; //Для теста, пока фича не реализована в эдиторе, пользуются этой нодой
+        public bool isAutoNode; //Диалог автоматически перебрасывает на рандомную ноду
+        public string defaultNode; //Диалог по-умолчанию, если другие не подходят по условиям(для автопереходилки)
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
                     Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false, string defaultNode = "")

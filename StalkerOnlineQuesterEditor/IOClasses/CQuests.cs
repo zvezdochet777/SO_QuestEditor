@@ -157,11 +157,11 @@ namespace StalkerOnlineQuesterEditor
                     if (item.Element("Target").Element("IsClan") != null)
                         target.IsClan = item.Element("Target").Element("IsClan").Value.Equals("1");
 
-                    if (item.Element("Target").Element("itemState") != null)
+                    if (item.Element("Target").Element("percent") != null)
                     {
-                        target.useState = true;
-                        string str = item.Element("Target").Element("itemState").Value;
-                        target.itemState = float.Parse(item.Element("Target").Element("itemState").Value, CultureInfo.InvariantCulture);
+                        target.usePercent = true;
+                        string str = item.Element("Target").Element("percent").Value;
+                        target.percent = float.Parse(item.Element("Target").Element("percent").Value, CultureInfo.InvariantCulture);
                     }
                     if ((item.Element("Target").Element("Time") != null) && (!item.Element("Target").Element("Time").Value.Equals("")))
                     {
@@ -441,7 +441,7 @@ namespace StalkerOnlineQuesterEditor
                 element = new XElement("Quest",
                    new XElement("ID", questValue.QuestID));
                 if (questValue.hidden)
-                    element.Add(new XElement("hidden"));
+                    element.Add(new XElement("hidden", "1"));
 
                 if (questValue.Target.Any())
                 {
@@ -468,8 +468,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Target").Add(new XElement("IsClan", questValue.Target.IsClan));
                     if (questValue.Target.Time != 0)
                         element.Element("Target").Add(new XElement("Time", questValue.Target.Time.ToString()));
-                    if (questValue.Target.useState)
-                        element.Element("Target").Add(new XElement("itemState", questValue.Target.itemState));
+                    if (questValue.Target.usePercent)
+                        element.Element("Target").Add(new XElement("percent", questValue.Target.percent));
                 }
 
                 if (questValue.Precondition.Any())
@@ -562,6 +562,9 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Additional").Add(new XElement("Holder", questValue.Additional.Holder));
                     if (questValue.Additional.DebugData != "")
                         element.Element("Additional").Add(new XElement("DebugData", questValue.Additional.DebugData));
+                    if (!questValue.QuestInformation.Title.Any() && !questValue.QuestInformation.Description.Any())
+                        element.Element("Additional").Add(new XElement("isEmpty", "1")); ;
+
                 }
 
                 resultDoc.Root.Add(element);

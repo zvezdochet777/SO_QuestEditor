@@ -556,6 +556,8 @@ namespace StalkerOnlineQuesterEditor
                 actions.actionAnimationPlayer = tbAnimationPlayer.Text;
             if (cbAnimationNPC.Checked && tbAnimationNPC.Text.Any())
                 actions.actionAnimationNPC = tbAnimationNPC.Text;
+            if (cbItemNPC.Checked && tbItemNPC.Text.Any())
+                actions.actionItemNPC = tbItemNPC.Text;
             if (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any())
                 actions.actionAvatarPoint = tbAvatarPoint.Text;
             if (cbPlaySonund.Checked && tbPlaySonund.Text.Any())
@@ -969,6 +971,8 @@ namespace StalkerOnlineQuesterEditor
                 cbAnimationNPC.Checked = true;
                 tbAnimationNPC.Text = curDialog.Actions.actionAnimationNPC;
             }
+            tbItemNPC.Text = curDialog.Actions.actionItemNPC;
+            cbItemNPC.Checked = tbItemNPC.Text.Any();
             if (curDialog.Actions.actionAvatarPoint.Any())
             {
                 cbAvatarPoint.Checked = true;
@@ -1102,7 +1106,8 @@ namespace StalkerOnlineQuesterEditor
         private void checkActionIndicates()
         {
             if ((cbAnimationNPC.Checked && tbAnimationNPC.Text.Any()) || (cbAnimationPlayer.Checked && tbAnimationPlayer.Text.Any()) ||
-                (cbCamera.Checked && tbCamera.Text.Any()) || (cbPlaySonund.Checked && tbPlaySonund.Text.Any()) || (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any()))
+                (cbCamera.Checked && tbCamera.Text.Any()) || (cbPlaySonund.Checked && tbPlaySonund.Text.Any()) || (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any()) ||
+                (cbItemNPC.Checked && tbItemNPC.Text.Any()))
                 pictureAction.Visible = true;
             else
                 pictureAction.Visible = false;

@@ -90,6 +90,8 @@ namespace StalkerOnlineQuesterEditor
                             Actions.actionAnimationPlayer = dialog.Element("Actions").Element("AnimationPlayer").Value;
                         if (dialog.Element("Actions").Element("AnimationNPC") != null)
                             Actions.actionAnimationNPC = dialog.Element("Actions").Element("AnimationNPC").Value;
+                        if (dialog.Element("Actions").Element("ItemNPC") != null)
+                            Actions.actionItemNPC = dialog.Element("Actions").Element("ItemNPC").Value;
                         if (dialog.Element("Actions").Element("AvatarPoint") != null)
                             Actions.actionAvatarPoint = dialog.Element("Actions").Element("AvatarPoint").Value;
                         if (dialog.Element("Actions").Element("PlaySound") != null)
@@ -512,6 +514,8 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Actions").Add(new XElement("AnimationPlayer", dialog.Actions.actionAnimationPlayer));
                         if (dialog.Actions.actionAnimationNPC.Any())
                             element.Element("Actions").Add(new XElement("AnimationNPC", dialog.Actions.actionAnimationNPC));
+                        if (dialog.Actions.actionItemNPC.Any())
+                            element.Element("Actions").Add(new XElement("ItemNPC", dialog.Actions.actionItemNPC));
                         if (dialog.Actions.actionAvatarPoint.Any())
                             element.Element("Actions").Add(new XElement("AvatarPoint", dialog.Actions.actionAvatarPoint));
                         if (dialog.Actions.actionPlaySound.Any())
