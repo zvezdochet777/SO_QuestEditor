@@ -355,12 +355,13 @@ namespace StalkerOnlineQuesterEditor
         public string Text;
         public CDialogPrecondition Precondition; //Условия
         public Actions Actions; //Действия диалога
-        public List<int> Nodes;
+        public List<int> Nodes; //ID детей
         public int version; //Версия для перевода
         public NodeCoordinates coordinates;
         public string DebugData; //Для теста, пока фича не реализована в эдиторе, пользуются этой нодой
         public bool isAutoNode; //Диалог автоматически перебрасывает на рандомную ноду
         public string defaultNode; //Диалог по-умолчанию, если другие не подходят по условиям(для автопереходилки)
+        public List<int> parentNodes = new List<int>(); //ID родителей, по-умолчанию пуст и не сохраняется в файле
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
                     Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false, string defaultNode = "")
@@ -408,6 +409,7 @@ namespace StalkerOnlineQuesterEditor
             copy.DebugData = this.DebugData;
             copy.isAutoNode = this.isAutoNode;
             copy.defaultNode = this.defaultNode;
+            copy.parentNodes = new List<int>(this.parentNodes);
             return copy;
         }
         // Копирование всех нетекстовых полей (сделано для синхронизации данных, не изменяя перевода)

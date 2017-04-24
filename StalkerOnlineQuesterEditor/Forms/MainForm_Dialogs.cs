@@ -164,6 +164,19 @@ namespace StalkerOnlineQuesterEditor
 
         //**********************WORK WITH FORM ****************************************************
 
+        private void fillDialogParents(CDialog root)
+        {
+            if (root.Nodes.Any())
+                foreach (int dialogID in root.Nodes)
+                {
+                    CDialog dialog = getDialogOnDialogID(dialogID);
+                    if (!dialog.parentNodes.Contains(root.DialogID))
+                        dialog.parentNodes.Add(root.DialogID);
+                    if (dialog.Nodes.Any())
+                        fillDialogParents(dialog);
+                }
+        }
+
         private void fillDialogTree(CDialog root, DialogDict dialogs)
         {
             this.treeDialogs.Nodes.Clear();//tree clear
@@ -258,10 +271,27 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
             else
+            {
+                int index = 0;
                 foreach (int subdialogID in root.Nodes)
                 {
+                    index++;
                     PNode node = getNodeOnDialogID(subdialogID);
                     CDialog currentDialog = getDialogOnIDConditional(subdialogID);
+                    int index_0 = 0;
+                    bool need_continue = false;
+                    /* заготовка сложной фигни для Стаса, которая должна не рисовать ноды, у которых одни родители и одни дети
+                    if (currentDialog.Nodes.Any())
+                    foreach(int dialogID in root.Nodes)
+                    {
+                        index_0 ++;
+                        if (dialogID == subdialogID) continue;
+                        CDialog dialog = getDialogOnDialogID(dialogID);
+                        if (currentDialog.Nodes.SequenceEqual(dialog.Nodes) && currentDialog.parentNodes.SequenceEqual(dialog.parentNodes))
+                            if (index < index_0)
+                                need_continue = true;
+                    }*/
+                    if (need_continue) continue;
                     float x = currentDialog.coordinates.X;
                     float y = currentDialog.coordinates.Y;
 
@@ -288,6 +318,7 @@ namespace StalkerOnlineQuesterEditor
                             this.fillDialogSubgraphView(currentDialog, node, localLevel, ref edgeLayer, ref nodeLayer, true);
                     }
                 }
+            }
         }
 
         //! Добавляет узел на граф
@@ -519,6 +550,7 @@ namespace StalkerOnlineQuesterEditor
             DialogDict dialogs = getDialogDictionary(currentNPC);
             root = getRootDialog();
             root = getDialogOnIDConditional( root.DialogID );
+            fillDialogParents(root);
             fillDialogTree(root, dialogs);
             if (withGraph)
             {
