@@ -33,6 +33,7 @@
             this.btnUpdateTP = new System.Windows.Forms.Button();
             this.btnUpdateAreas = new System.Windows.Forms.Button();
             this.btnUpdateTriggers = new System.Windows.Forms.Button();
+            this.btnUpdateMobs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUpdateItems
@@ -85,11 +86,22 @@
             this.btnUpdateTriggers.UseVisualStyleBackColor = true;
             this.btnUpdateTriggers.Click += new System.EventHandler(this.btnUpdateTriggers_Click);
             // 
+            // btnUpdateMobs
+            // 
+            this.btnUpdateMobs.Location = new System.Drawing.Point(32, 172);
+            this.btnUpdateMobs.Name = "btnUpdateMobs";
+            this.btnUpdateMobs.Size = new System.Drawing.Size(120, 26);
+            this.btnUpdateMobs.TabIndex = 6;
+            this.btnUpdateMobs.Text = "Обновить Мобов";
+            this.btnUpdateMobs.UseVisualStyleBackColor = true;
+            this.btnUpdateMobs.Click += new System.EventHandler(this.btnUpdateMobs_Click);
+            // 
             // UpdateDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(184, 261);
+            this.Controls.Add(this.btnUpdateMobs);
             this.Controls.Add(this.btnUpdateTriggers);
             this.Controls.Add(this.btnUpdateAreas);
             this.Controls.Add(this.btnUpdateTP);
@@ -114,5 +126,6 @@
         private System.Windows.Forms.Button btnUpdateTP;
         private System.Windows.Forms.Button btnUpdateAreas;
         private System.Windows.Forms.Button btnUpdateTriggers;
+        private System.Windows.Forms.Button btnUpdateMobs;
     }
 }

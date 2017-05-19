@@ -77,6 +77,8 @@ namespace StalkerOnlineQuesterEditor
         public CZoneDescription getDescriptionOnKey(string key)
         {
             //System.Console.WriteLine("key:" + key);
+            if (!zones.ContainsKey(key.Trim()))
+                return new CZoneDescription("");
             return zones[key.Trim()];
         }
         //! Возвращает ключ по описанию территории

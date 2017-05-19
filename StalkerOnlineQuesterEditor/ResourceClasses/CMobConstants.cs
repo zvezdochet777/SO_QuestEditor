@@ -21,10 +21,10 @@ namespace StalkerOnlineQuesterEditor
                 {
                     int iType = int.Parse(item.Element("id").Value.ToString());
                     string sDescription = item.Element("Name").Value.ToString();
-                    List<int> lLevels = new List<int>();
+                    List<string> lLevels = new List<string>();
                     
                     foreach(string sLevel in item.Element("Levels").Value.ToString().Split(','))
-                        lLevels.Add(int.Parse(sLevel));
+                        lLevels.Add(sLevel.Trim());
 
                     CMobDescription mobDescr = new CMobDescription(item.Element("Name").Value.ToString(), lLevels);
                     mobs.Add(iType, mobDescr);
@@ -54,7 +54,7 @@ namespace StalkerOnlineQuesterEditor
             return 1000;
         }
 
-        public List<int> getLevelsOnDescription(string description)
+        public List<string> getLevelsOnDescription(string description)
         {
             foreach (int key in mobs.Keys)
                 if (mobs[key].getName().Equals(description))
@@ -66,9 +66,9 @@ namespace StalkerOnlineQuesterEditor
     public class CMobDescription
     {
         string Name;
-        List<int> iLevels;
+        List<string> iLevels;
 
-        public CMobDescription(string name, List<int> iLevels)
+        public CMobDescription(string name, List<string> iLevels)
         {
             this.Name = name;
             this.iLevels = iLevels;
@@ -78,22 +78,21 @@ namespace StalkerOnlineQuesterEditor
         {
             return this.Name;
         }
-        public List<int> getLevels()
+        public List<string> getLevels()
         {
             return this.iLevels;
         }
 
-        public int getLevelOnIndex(int index)
+        public string getLevelOnIndex(int index)
         {
             if (index - 1 < 0)
-                return 0;
+                return "default";
             else
                 return this.iLevels[index - 1];
         }
 
-        public int getIndexOnLevel(int ilevel)
+        public int getIndexOnLevel(string ilevel)
         {
-
                 if (iLevels.Contains(ilevel))
                     return this.iLevels.IndexOf(ilevel) + 1;
                 else

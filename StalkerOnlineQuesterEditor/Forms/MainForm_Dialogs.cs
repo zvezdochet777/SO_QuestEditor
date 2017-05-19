@@ -276,7 +276,7 @@ namespace StalkerOnlineQuesterEditor
                         node = CreateNode(currentDialog, new PointF(x, y));
 
                     PrepareNodesForEdge(node, rootNode, ref edgeLayer);
-                    SaveCoordinates(currentDialog, node);                   
+                    SaveCoordinates(currentDialog, node);  
                     nodeLayer.Add(node);
                     if (!graphs.Keys.Contains(node))
                         graphs.Add(node, new GraphProperties(subdialogID));

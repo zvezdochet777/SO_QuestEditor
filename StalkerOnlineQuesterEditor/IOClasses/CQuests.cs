@@ -200,6 +200,15 @@ namespace StalkerOnlineQuesterEditor
                     ParseIntIfNotEmpty(item, "QuestRules", "MinMember", out questRules.MinMember, 0);
                     if (item.Element("QuestRules").Element("TeleportTo") != null)
                         questRules.TeleportTo = item.Element("QuestRules").Element("TeleportTo").Value.ToString();
+
+                    if (item.Element("QuestRules").Element("npc") != null)
+                    {
+                        questRules.npc.setXML(item.Element("QuestRules").Element("npc"));
+                    }
+                    if (item.Element("QuestRules").Element("mobs") != null)
+                    {
+                        questRules.mobs.setXML(item.Element("QuestRules").Element("mobs"));
+                    }
                 }
 
                 if (item.Element("Reward") != null)
@@ -506,6 +515,10 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("QuestRules").Add(new XElement("MassQuests", Global.GetListAsString(questValue.QuestRules.MassQuests)));
                     if (questValue.QuestRules.basePercent != 0)
                         element.Element("QuestRules").Add(new XElement("baseToCapturePercent", questValue.QuestRules.basePercent));
+                    if (questValue.QuestRules.npc.Any())
+                        element.Element("QuestRules").Add(questValue.QuestRules.npc.getXML());
+                    if (questValue.QuestRules.mobs.Any())
+                        element.Element("QuestRules").Add(questValue.QuestRules.mobs.getXML());
                 }
 
                 if (questValue.Reward.Any())

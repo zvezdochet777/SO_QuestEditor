@@ -90,6 +90,48 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class Items
+    {
+        protected Dictionary<int, string> _constants = new Dictionary<int, string>();
+        public Items() { }
+
+        public void Add(int id, string name)
+        {
+            _constants.Add(id, name);
+        }
+
+        public string getNameByID(int id)
+        {
+            if (!_constants.ContainsKey(id)) return "";
+            return _constants[id];
+        }
+
+        public int getIDByName(string name)
+        {
+            int ret = 0;
+            foreach (KeyValuePair<int, string> value in _constants)
+                if (value.Value.Equals(name))
+                    ret = value.Key;
+            return ret;
+        }
+
+        public List<int> getIDs()
+        {
+            List<int> ret = new List<int>();
+            foreach (int key in _constants.Keys)
+                ret.Add(key);
+            return ret;
+        }
+
+        public List<string> getNames()
+        {
+            List<string> ret = new List<string>();
+            foreach (string value in _constants.Values)
+                ret.Add(value);
+            return ret;
+        }
+    }
+
 
     public class RepairConstants : Constants
     {
@@ -117,9 +159,56 @@ namespace StalkerOnlineQuesterEditor
             doc = XDocument.Load("source/NPCcommands.xml");
             foreach (XElement item in doc.Root.Elements())
             {
+                item.Name.ToString();
                 string cmID = item.Element("id").Value;
                 string name = item.Element("name").Value;
                 _constants.Add(name, cmID);
+            }
+        }
+    }
+
+    //! Класс, содержащий информацию предметах для NPC
+    public class NPCItems
+    {
+        public Items weapons = new Items();
+        public Items hands = new Items();
+        public Items boots = new Items();
+        public Items body = new Items();
+        public Items armor = new Items();
+        public Items legs = new Items();
+        public Items cap = new Items();
+        public Items mask = new Items();
+        public Items back = new Items();
+        public Items head = new Items();
+        //! Конструктор, заполняет словарь на основе файлов xml
+
+        public NPCItems()
+        {
+            XDocument doc = XDocument.Load("source/NPCItems.xml");
+            foreach (XElement items in doc.Root.Elements())
+            {
+                string items_name = items.Name.ToString();
+
+                foreach (XElement item in items.Elements())
+                {
+                    int ID = Convert.ToInt32(item.Element("id").Value.ToString());
+
+                    string name = item.Element("name").Value;
+                    switch (items_name)
+                    {
+                        case "NPC_WEAPON": weapons.Add(ID, name); break;
+                        case "NPC_HANDS": hands.Add(ID, name); break;
+                        case "NPC_BOOTS": boots.Add(ID, name); break;
+                        case "NPC_BODY": body.Add(ID, name); break;
+                        case "NPC_ARMOR": armor.Add(ID, name); break;
+                        case "NPC_LEGS": legs.Add(ID, name); break;
+                        case "NPC_CAP": cap.Add(ID, name); break;
+                        case "NPC_MASK": mask.Add(ID, name); break;
+                        case "NPC_BACK": back.Add(ID, name); break;
+                        case "NPC_HEAD": head.Add(ID, name); break;
+                    }
+                }
+                
             }
         }
     }

@@ -95,5 +95,13 @@ namespace StalkerOnlineQuesterEditor.Forms
             this.parent.triggerConst = new CTriggerConstants();
             MessageBox.Show("Complete");
         }
+
+        private void btnUpdateMobs_Click(object sender, EventArgs e)
+        {
+            string fileName = @"..\misc\developer_scripts\QuestEditorScripts\MobsParser.py";
+            run_cmd(fileName);
+            this.parent.mobConst = new CMobConstants();
+            MessageBox.Show("Complete");
+        }
     }
 }

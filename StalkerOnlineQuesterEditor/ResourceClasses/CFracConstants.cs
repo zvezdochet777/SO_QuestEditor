@@ -48,7 +48,6 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<int, string> getListOfFractions()
         {
             return this.fractions;
-
         }
 
         public int genLenListOfFractions()

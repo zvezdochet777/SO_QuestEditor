@@ -30,6 +30,56 @@
         {
             this.QuestPanel = new System.Windows.Forms.Panel();
             this.groupQuestBox = new System.Windows.Forms.GroupBox();
+            this.panelCreateMob = new System.Windows.Forms.Panel();
+            this.cbMobInvul = new System.Windows.Forms.CheckBox();
+            this.cbMobLevel = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbUniqMobID = new System.Windows.Forms.TextBox();
+            this.nupMobCount = new System.Windows.Forms.NumericUpDown();
+            this.tbMobWay = new System.Windows.Forms.TextBox();
+            this.cbMobUniq = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbScenType = new System.Windows.Forms.Label();
+            this.cbMobType = new System.Windows.Forms.ComboBox();
+            this.cbScenaryType = new System.Windows.Forms.ComboBox();
+            this.panelCreateNPC = new System.Windows.Forms.Panel();
+            this.cbNPCInvul = new System.Windows.Forms.CheckBox();
+            this.cbUniqNPC = new System.Windows.Forms.CheckBox();
+            this.cbArmor = new System.Windows.Forms.ComboBox();
+            this.lbArmor = new System.Windows.Forms.Label();
+            this.tbNPCAnim = new System.Windows.Forms.TextBox();
+            this.cbHead = new System.Windows.Forms.ComboBox();
+            this.cbBackpack = new System.Windows.Forms.ComboBox();
+            this.cbMask = new System.Windows.Forms.ComboBox();
+            this.cbCap = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbHead = new System.Windows.Forms.Label();
+            this.lbBack = new System.Windows.Forms.Label();
+            this.lbMask = new System.Windows.Forms.Label();
+            this.lbCap = new System.Windows.Forms.Label();
+            this.cbLegs = new System.Windows.Forms.ComboBox();
+            this.cbBody = new System.Windows.Forms.ComboBox();
+            this.cbBoots = new System.Windows.Forms.ComboBox();
+            this.cbHands = new System.Windows.Forms.ComboBox();
+            this.cbWeapon = new System.Windows.Forms.ComboBox();
+            this.lbLegs = new System.Windows.Forms.Label();
+            this.lbBody = new System.Windows.Forms.Label();
+            this.lbBoots = new System.Windows.Forms.Label();
+            this.lbHand = new System.Windows.Forms.Label();
+            this.cbFractionID = new System.Windows.Forms.ComboBox();
+            this.tbWay = new System.Windows.Forms.TextBox();
+            this.tbReputation = new System.Windows.Forms.TextBox();
+            this.tbNpcName = new System.Windows.Forms.TextBox();
+            this.tbDisplayName = new System.Windows.Forms.TextBox();
+            this.lbWay = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbReputation = new System.Windows.Forms.Label();
+            this.lbFractionID = new System.Windows.Forms.Label();
+            this.lbNPCName = new System.Windows.Forms.Label();
+            this.lbDisplayName = new System.Windows.Forms.Label();
             this.cbHidden = new System.Windows.Forms.CheckBox();
             this.filedIFtContentBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -77,6 +127,7 @@
             this.repeatComboBox = new System.Windows.Forms.ComboBox();
             this.lRepeat = new System.Windows.Forms.Label();
             this.targetBox = new System.Windows.Forms.GroupBox();
+            this.resultComboBox = new System.Windows.Forms.ComboBox();
             this.cbReputationLow = new System.Windows.Forms.CheckBox();
             this.cbState = new System.Windows.Forms.CheckBox();
             this.lState = new System.Windows.Forms.Label();
@@ -89,7 +140,6 @@
             this.bTargetAddDynamic = new System.Windows.Forms.Button();
             this.dynamicCheckBox = new System.Windows.Forms.CheckBox();
             this.ltargetResult = new System.Windows.Forms.Label();
-            this.resultextBox = new System.Windows.Forms.MaskedTextBox();
             this.targetAttributeComboBox = new System.Windows.Forms.ComboBox();
             this.labelTargetAttr = new System.Windows.Forms.Label();
             this.isClanCheckBox = new System.Windows.Forms.CheckBox();
@@ -122,6 +172,9 @@
             this.eventLabel = new System.Windows.Forms.Label();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
+            this.panelCreateMob.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
+            this.panelCreateNPC.SuspendLayout();
             this.filedIFtContentBox.SuspendLayout();
             this.panel1.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
@@ -143,12 +196,14 @@
             this.QuestPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.QuestPanel.Location = new System.Drawing.Point(0, 0);
             this.QuestPanel.Name = "QuestPanel";
-            this.QuestPanel.Size = new System.Drawing.Size(626, 863);
+            this.QuestPanel.Size = new System.Drawing.Size(622, 863);
             this.QuestPanel.TabIndex = 0;
             // 
             // groupQuestBox
             // 
             this.groupQuestBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupQuestBox.Controls.Add(this.panelCreateMob);
+            this.groupQuestBox.Controls.Add(this.panelCreateNPC);
             this.groupQuestBox.Controls.Add(this.cbHidden);
             this.groupQuestBox.Controls.Add(this.filedIFtContentBox);
             this.groupQuestBox.Controls.Add(this.eventComboBox);
@@ -156,10 +211,492 @@
             this.groupQuestBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupQuestBox.Location = new System.Drawing.Point(0, 0);
             this.groupQuestBox.Name = "groupQuestBox";
-            this.groupQuestBox.Size = new System.Drawing.Size(626, 863);
+            this.groupQuestBox.Size = new System.Drawing.Size(622, 863);
             this.groupQuestBox.TabIndex = 0;
             this.groupQuestBox.TabStop = false;
             this.groupQuestBox.Text = "Событие ID ";
+            // 
+            // panelCreateMob
+            // 
+            this.panelCreateMob.Controls.Add(this.cbMobInvul);
+            this.panelCreateMob.Controls.Add(this.cbMobLevel);
+            this.panelCreateMob.Controls.Add(this.label9);
+            this.panelCreateMob.Controls.Add(this.tbUniqMobID);
+            this.panelCreateMob.Controls.Add(this.nupMobCount);
+            this.panelCreateMob.Controls.Add(this.tbMobWay);
+            this.panelCreateMob.Controls.Add(this.cbMobUniq);
+            this.panelCreateMob.Controls.Add(this.label8);
+            this.panelCreateMob.Controls.Add(this.label7);
+            this.panelCreateMob.Controls.Add(this.label6);
+            this.panelCreateMob.Controls.Add(this.label4);
+            this.panelCreateMob.Controls.Add(this.lbScenType);
+            this.panelCreateMob.Controls.Add(this.cbMobType);
+            this.panelCreateMob.Controls.Add(this.cbScenaryType);
+            this.panelCreateMob.Location = new System.Drawing.Point(3, 301);
+            this.panelCreateMob.Name = "panelCreateMob";
+            this.panelCreateMob.Size = new System.Drawing.Size(622, 161);
+            this.panelCreateMob.TabIndex = 17;
+            this.panelCreateMob.Visible = false;
+            // 
+            // cbMobInvul
+            // 
+            this.cbMobInvul.AutoSize = true;
+            this.cbMobInvul.Location = new System.Drawing.Point(14, 87);
+            this.cbMobInvul.Name = "cbMobInvul";
+            this.cbMobInvul.Size = new System.Drawing.Size(96, 17);
+            this.cbMobInvul.TabIndex = 36;
+            this.cbMobInvul.Text = "Бессмертный";
+            this.cbMobInvul.UseVisualStyleBackColor = true;
+            // 
+            // cbMobLevel
+            // 
+            this.cbMobLevel.FormattingEnabled = true;
+            this.cbMobLevel.Location = new System.Drawing.Point(86, 61);
+            this.cbMobLevel.Name = "cbMobLevel";
+            this.cbMobLevel.Size = new System.Drawing.Size(136, 21);
+            this.cbMobLevel.TabIndex = 35;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(310, 65);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "questID:";
+            // 
+            // tbUniqMobID
+            // 
+            this.tbUniqMobID.Location = new System.Drawing.Point(405, 62);
+            this.tbUniqMobID.Name = "tbUniqMobID";
+            this.tbUniqMobID.Size = new System.Drawing.Size(135, 20);
+            this.tbUniqMobID.TabIndex = 33;
+            // 
+            // nupMobCount
+            // 
+            this.nupMobCount.Location = new System.Drawing.Point(405, 36);
+            this.nupMobCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nupMobCount.Name = "nupMobCount";
+            this.nupMobCount.Size = new System.Drawing.Size(135, 20);
+            this.nupMobCount.TabIndex = 32;
+            this.nupMobCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // tbMobWay
+            // 
+            this.tbMobWay.Location = new System.Drawing.Point(405, 10);
+            this.tbMobWay.Name = "tbMobWay";
+            this.tbMobWay.Size = new System.Drawing.Size(135, 20);
+            this.tbMobWay.TabIndex = 31;
+            // 
+            // cbMobUniq
+            // 
+            this.cbMobUniq.AutoSize = true;
+            this.cbMobUniq.Location = new System.Drawing.Point(313, 87);
+            this.cbMobUniq.Name = "cbMobUniq";
+            this.cbMobUniq.Size = new System.Drawing.Size(90, 17);
+            this.cbMobUniq.TabIndex = 29;
+            this.cbMobUniq.Text = "Уникальный";
+            this.cbMobUniq.UseVisualStyleBackColor = true;
+            this.cbMobUniq.CheckedChanged += new System.EventHandler(this.cbMobUniq_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(310, 41);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Количество:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(311, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Путь:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Уровень:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Тип моба:";
+            // 
+            // lbScenType
+            // 
+            this.lbScenType.AutoSize = true;
+            this.lbScenType.Location = new System.Drawing.Point(10, 14);
+            this.lbScenType.Name = "lbScenType";
+            this.lbScenType.Size = new System.Drawing.Size(75, 13);
+            this.lbScenType.TabIndex = 23;
+            this.lbScenType.Text = "Тип события:";
+            // 
+            // cbMobType
+            // 
+            this.cbMobType.FormattingEnabled = true;
+            this.cbMobType.Location = new System.Drawing.Point(86, 35);
+            this.cbMobType.Name = "cbMobType";
+            this.cbMobType.Size = new System.Drawing.Size(136, 21);
+            this.cbMobType.TabIndex = 21;
+            this.cbMobType.SelectedIndexChanged += new System.EventHandler(this.cbMobType_SelectedIndexChanged);
+            // 
+            // cbScenaryType
+            // 
+            this.cbScenaryType.FormattingEnabled = true;
+            this.cbScenaryType.Location = new System.Drawing.Point(86, 9);
+            this.cbScenaryType.Name = "cbScenaryType";
+            this.cbScenaryType.Size = new System.Drawing.Size(136, 21);
+            this.cbScenaryType.TabIndex = 20;
+            // 
+            // panelCreateNPC
+            // 
+            this.panelCreateNPC.Controls.Add(this.cbNPCInvul);
+            this.panelCreateNPC.Controls.Add(this.cbUniqNPC);
+            this.panelCreateNPC.Controls.Add(this.cbArmor);
+            this.panelCreateNPC.Controls.Add(this.lbArmor);
+            this.panelCreateNPC.Controls.Add(this.tbNPCAnim);
+            this.panelCreateNPC.Controls.Add(this.cbHead);
+            this.panelCreateNPC.Controls.Add(this.cbBackpack);
+            this.panelCreateNPC.Controls.Add(this.cbMask);
+            this.panelCreateNPC.Controls.Add(this.cbCap);
+            this.panelCreateNPC.Controls.Add(this.label2);
+            this.panelCreateNPC.Controls.Add(this.lbHead);
+            this.panelCreateNPC.Controls.Add(this.lbBack);
+            this.panelCreateNPC.Controls.Add(this.lbMask);
+            this.panelCreateNPC.Controls.Add(this.lbCap);
+            this.panelCreateNPC.Controls.Add(this.cbLegs);
+            this.panelCreateNPC.Controls.Add(this.cbBody);
+            this.panelCreateNPC.Controls.Add(this.cbBoots);
+            this.panelCreateNPC.Controls.Add(this.cbHands);
+            this.panelCreateNPC.Controls.Add(this.cbWeapon);
+            this.panelCreateNPC.Controls.Add(this.lbLegs);
+            this.panelCreateNPC.Controls.Add(this.lbBody);
+            this.panelCreateNPC.Controls.Add(this.lbBoots);
+            this.panelCreateNPC.Controls.Add(this.lbHand);
+            this.panelCreateNPC.Controls.Add(this.cbFractionID);
+            this.panelCreateNPC.Controls.Add(this.tbWay);
+            this.panelCreateNPC.Controls.Add(this.tbReputation);
+            this.panelCreateNPC.Controls.Add(this.tbNpcName);
+            this.panelCreateNPC.Controls.Add(this.tbDisplayName);
+            this.panelCreateNPC.Controls.Add(this.lbWay);
+            this.panelCreateNPC.Controls.Add(this.label1);
+            this.panelCreateNPC.Controls.Add(this.lbReputation);
+            this.panelCreateNPC.Controls.Add(this.lbFractionID);
+            this.panelCreateNPC.Controls.Add(this.lbNPCName);
+            this.panelCreateNPC.Controls.Add(this.lbDisplayName);
+            this.panelCreateNPC.Location = new System.Drawing.Point(0, 304);
+            this.panelCreateNPC.Name = "panelCreateNPC";
+            this.panelCreateNPC.Size = new System.Drawing.Size(622, 166);
+            this.panelCreateNPC.TabIndex = 25;
+            this.panelCreateNPC.Visible = false;
+            // 
+            // cbNPCInvul
+            // 
+            this.cbNPCInvul.AutoSize = true;
+            this.cbNPCInvul.Location = new System.Drawing.Point(509, 125);
+            this.cbNPCInvul.Name = "cbNPCInvul";
+            this.cbNPCInvul.Size = new System.Drawing.Size(96, 17);
+            this.cbNPCInvul.TabIndex = 37;
+            this.cbNPCInvul.Text = "Бессметрный";
+            this.cbNPCInvul.UseVisualStyleBackColor = true;
+            // 
+            // cbUniqNPC
+            // 
+            this.cbUniqNPC.AutoSize = true;
+            this.cbUniqNPC.Location = new System.Drawing.Point(424, 125);
+            this.cbUniqNPC.Name = "cbUniqNPC";
+            this.cbUniqNPC.Size = new System.Drawing.Size(90, 17);
+            this.cbUniqNPC.TabIndex = 36;
+            this.cbUniqNPC.Text = "Уникальный";
+            this.cbUniqNPC.UseVisualStyleBackColor = true;
+            // 
+            // cbArmor
+            // 
+            this.cbArmor.FormattingEnabled = true;
+            this.cbArmor.Location = new System.Drawing.Point(479, 7);
+            this.cbArmor.Name = "cbArmor";
+            this.cbArmor.Size = new System.Drawing.Size(136, 21);
+            this.cbArmor.TabIndex = 33;
+            // 
+            // lbArmor
+            // 
+            this.lbArmor.AutoSize = true;
+            this.lbArmor.Location = new System.Drawing.Point(425, 11);
+            this.lbArmor.Name = "lbArmor";
+            this.lbArmor.Size = new System.Drawing.Size(41, 13);
+            this.lbArmor.TabIndex = 32;
+            this.lbArmor.Text = "Броня:";
+            // 
+            // tbNPCAnim
+            // 
+            this.tbNPCAnim.Location = new System.Drawing.Point(92, 122);
+            this.tbNPCAnim.Name = "tbNPCAnim";
+            this.tbNPCAnim.Size = new System.Drawing.Size(136, 20);
+            this.tbNPCAnim.TabIndex = 31;
+            // 
+            // cbHead
+            // 
+            this.cbHead.FormattingEnabled = true;
+            this.cbHead.Location = new System.Drawing.Point(479, 97);
+            this.cbHead.Name = "cbHead";
+            this.cbHead.Size = new System.Drawing.Size(136, 21);
+            this.cbHead.TabIndex = 30;
+            // 
+            // cbBackpack
+            // 
+            this.cbBackpack.FormattingEnabled = true;
+            this.cbBackpack.Location = new System.Drawing.Point(479, 75);
+            this.cbBackpack.Name = "cbBackpack";
+            this.cbBackpack.Size = new System.Drawing.Size(136, 21);
+            this.cbBackpack.TabIndex = 29;
+            // 
+            // cbMask
+            // 
+            this.cbMask.FormattingEnabled = true;
+            this.cbMask.Location = new System.Drawing.Point(479, 53);
+            this.cbMask.Name = "cbMask";
+            this.cbMask.Size = new System.Drawing.Size(136, 21);
+            this.cbMask.TabIndex = 28;
+            // 
+            // cbCap
+            // 
+            this.cbCap.FormattingEnabled = true;
+            this.cbCap.Location = new System.Drawing.Point(479, 30);
+            this.cbCap.Name = "cbCap";
+            this.cbCap.Size = new System.Drawing.Size(136, 21);
+            this.cbCap.TabIndex = 27;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 125);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Анимация:";
+            // 
+            // lbHead
+            // 
+            this.lbHead.AutoSize = true;
+            this.lbHead.Location = new System.Drawing.Point(425, 100);
+            this.lbHead.Name = "lbHead";
+            this.lbHead.Size = new System.Drawing.Size(46, 13);
+            this.lbHead.TabIndex = 25;
+            this.lbHead.Text = "Голова:";
+            // 
+            // lbBack
+            // 
+            this.lbBack.AutoSize = true;
+            this.lbBack.Location = new System.Drawing.Point(425, 77);
+            this.lbBack.Name = "lbBack";
+            this.lbBack.Size = new System.Drawing.Size(49, 13);
+            this.lbBack.TabIndex = 24;
+            this.lbBack.Text = "Рюкзак:";
+            // 
+            // lbMask
+            // 
+            this.lbMask.AutoSize = true;
+            this.lbMask.Location = new System.Drawing.Point(425, 54);
+            this.lbMask.Name = "lbMask";
+            this.lbMask.Size = new System.Drawing.Size(43, 13);
+            this.lbMask.TabIndex = 23;
+            this.lbMask.Text = "Маска:";
+            // 
+            // lbCap
+            // 
+            this.lbCap.AutoSize = true;
+            this.lbCap.Location = new System.Drawing.Point(425, 34);
+            this.lbCap.Name = "lbCap";
+            this.lbCap.Size = new System.Drawing.Size(29, 13);
+            this.lbCap.TabIndex = 22;
+            this.lbCap.Text = "Cap:";
+            // 
+            // cbLegs
+            // 
+            this.cbLegs.FormattingEnabled = true;
+            this.cbLegs.Location = new System.Drawing.Point(283, 97);
+            this.cbLegs.Name = "cbLegs";
+            this.cbLegs.Size = new System.Drawing.Size(136, 21);
+            this.cbLegs.TabIndex = 21;
+            // 
+            // cbBody
+            // 
+            this.cbBody.FormattingEnabled = true;
+            this.cbBody.Location = new System.Drawing.Point(283, 74);
+            this.cbBody.Name = "cbBody";
+            this.cbBody.Size = new System.Drawing.Size(136, 21);
+            this.cbBody.TabIndex = 20;
+            // 
+            // cbBoots
+            // 
+            this.cbBoots.FormattingEnabled = true;
+            this.cbBoots.Location = new System.Drawing.Point(283, 52);
+            this.cbBoots.Name = "cbBoots";
+            this.cbBoots.Size = new System.Drawing.Size(136, 21);
+            this.cbBoots.TabIndex = 19;
+            // 
+            // cbHands
+            // 
+            this.cbHands.FormattingEnabled = true;
+            this.cbHands.Location = new System.Drawing.Point(283, 30);
+            this.cbHands.Name = "cbHands";
+            this.cbHands.Size = new System.Drawing.Size(136, 21);
+            this.cbHands.TabIndex = 18;
+            // 
+            // cbWeapon
+            // 
+            this.cbWeapon.FormattingEnabled = true;
+            this.cbWeapon.Location = new System.Drawing.Point(283, 7);
+            this.cbWeapon.Name = "cbWeapon";
+            this.cbWeapon.Size = new System.Drawing.Size(136, 21);
+            this.cbWeapon.TabIndex = 17;
+            // 
+            // lbLegs
+            // 
+            this.lbLegs.AutoSize = true;
+            this.lbLegs.Location = new System.Drawing.Point(230, 99);
+            this.lbLegs.Name = "lbLegs";
+            this.lbLegs.Size = new System.Drawing.Size(35, 13);
+            this.lbLegs.TabIndex = 16;
+            this.lbLegs.Text = "Ноги:";
+            // 
+            // lbBody
+            // 
+            this.lbBody.AutoSize = true;
+            this.lbBody.Location = new System.Drawing.Point(230, 77);
+            this.lbBody.Name = "lbBody";
+            this.lbBody.Size = new System.Drawing.Size(35, 13);
+            this.lbBody.TabIndex = 15;
+            this.lbBody.Text = "Тело:";
+            // 
+            // lbBoots
+            // 
+            this.lbBoots.AutoSize = true;
+            this.lbBoots.Location = new System.Drawing.Point(230, 54);
+            this.lbBoots.Name = "lbBoots";
+            this.lbBoots.Size = new System.Drawing.Size(52, 13);
+            this.lbBoots.TabIndex = 14;
+            this.lbBoots.Text = "Ботинки:";
+            // 
+            // lbHand
+            // 
+            this.lbHand.AutoSize = true;
+            this.lbHand.Location = new System.Drawing.Point(230, 31);
+            this.lbHand.Name = "lbHand";
+            this.lbHand.Size = new System.Drawing.Size(34, 13);
+            this.lbHand.TabIndex = 13;
+            this.lbHand.Text = "Руки:";
+            // 
+            // cbFractionID
+            // 
+            this.cbFractionID.FormattingEnabled = true;
+            this.cbFractionID.Location = new System.Drawing.Point(92, 52);
+            this.cbFractionID.Name = "cbFractionID";
+            this.cbFractionID.Size = new System.Drawing.Size(136, 21);
+            this.cbFractionID.TabIndex = 12;
+            // 
+            // tbWay
+            // 
+            this.tbWay.Location = new System.Drawing.Point(92, 96);
+            this.tbWay.Name = "tbWay";
+            this.tbWay.Size = new System.Drawing.Size(136, 20);
+            this.tbWay.TabIndex = 10;
+            // 
+            // tbReputation
+            // 
+            this.tbReputation.Location = new System.Drawing.Point(92, 74);
+            this.tbReputation.Name = "tbReputation";
+            this.tbReputation.Size = new System.Drawing.Size(136, 20);
+            this.tbReputation.TabIndex = 9;
+            // 
+            // tbNpcName
+            // 
+            this.tbNpcName.Location = new System.Drawing.Point(92, 30);
+            this.tbNpcName.Name = "tbNpcName";
+            this.tbNpcName.Size = new System.Drawing.Size(136, 20);
+            this.tbNpcName.TabIndex = 7;
+            // 
+            // tbDisplayName
+            // 
+            this.tbDisplayName.Location = new System.Drawing.Point(92, 8);
+            this.tbDisplayName.Name = "tbDisplayName";
+            this.tbDisplayName.Size = new System.Drawing.Size(136, 20);
+            this.tbDisplayName.TabIndex = 6;
+            // 
+            // lbWay
+            // 
+            this.lbWay.AutoSize = true;
+            this.lbWay.Location = new System.Drawing.Point(5, 99);
+            this.lbWay.Name = "lbWay";
+            this.lbWay.Size = new System.Drawing.Size(34, 13);
+            this.lbWay.TabIndex = 5;
+            this.lbWay.Text = "Путь:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(230, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Оружие:";
+            // 
+            // lbReputation
+            // 
+            this.lbReputation.AutoSize = true;
+            this.lbReputation.Location = new System.Drawing.Point(5, 77);
+            this.lbReputation.Name = "lbReputation";
+            this.lbReputation.Size = new System.Drawing.Size(87, 13);
+            this.lbReputation.TabIndex = 3;
+            this.lbReputation.Text = "Кол. репутации:";
+            // 
+            // lbFractionID
+            // 
+            this.lbFractionID.AutoSize = true;
+            this.lbFractionID.Location = new System.Drawing.Point(4, 54);
+            this.lbFractionID.Name = "lbFractionID";
+            this.lbFractionID.Size = new System.Drawing.Size(57, 13);
+            this.lbFractionID.TabIndex = 2;
+            this.lbFractionID.Text = "Фракция:";
+            // 
+            // lbNPCName
+            // 
+            this.lbNPCName.AutoSize = true;
+            this.lbNPCName.Location = new System.Drawing.Point(5, 32);
+            this.lbNPCName.Name = "lbNPCName";
+            this.lbNPCName.Size = new System.Drawing.Size(32, 13);
+            this.lbNPCName.TabIndex = 1;
+            this.lbNPCName.Text = "Имя:";
+            // 
+            // lbDisplayName
+            // 
+            this.lbDisplayName.AutoSize = true;
+            this.lbDisplayName.Location = new System.Drawing.Point(5, 11);
+            this.lbDisplayName.Name = "lbDisplayName";
+            this.lbDisplayName.Size = new System.Drawing.Size(67, 13);
+            this.lbDisplayName.TabIndex = 0;
+            this.lbDisplayName.Text = "Отобр. имя:";
             // 
             // cbHidden
             // 
@@ -184,7 +721,7 @@
             this.filedIFtContentBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filedIFtContentBox.Location = new System.Drawing.Point(3, 50);
             this.filedIFtContentBox.Name = "filedIFtContentBox";
-            this.filedIFtContentBox.Size = new System.Drawing.Size(620, 810);
+            this.filedIFtContentBox.Size = new System.Drawing.Size(616, 810);
             this.filedIFtContentBox.TabIndex = 2;
             this.filedIFtContentBox.TabStop = false;
             this.filedIFtContentBox.Text = "Содержание";
@@ -200,7 +737,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 757);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(614, 50);
+            this.panel1.Size = new System.Drawing.Size(610, 50);
             this.panel1.TabIndex = 7;
             // 
             // debuglabel
@@ -260,7 +797,7 @@
             this.rewardGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.rewardGroupBox.Location = new System.Drawing.Point(3, 623);
             this.rewardGroupBox.Name = "rewardGroupBox";
-            this.rewardGroupBox.Size = new System.Drawing.Size(614, 134);
+            this.rewardGroupBox.Size = new System.Drawing.Size(610, 134);
             this.rewardGroupBox.TabIndex = 4;
             this.rewardGroupBox.TabStop = false;
             this.rewardGroupBox.Text = "Награда";
@@ -413,7 +950,7 @@
             this.lQuestRules.Dock = System.Windows.Forms.DockStyle.Top;
             this.lQuestRules.Location = new System.Drawing.Point(3, 466);
             this.lQuestRules.Name = "lQuestRules";
-            this.lQuestRules.Size = new System.Drawing.Size(614, 157);
+            this.lQuestRules.Size = new System.Drawing.Size(610, 157);
             this.lQuestRules.TabIndex = 3;
             this.lQuestRules.TabStop = false;
             this.lQuestRules.Text = "Правила квеста";
@@ -567,7 +1104,7 @@
             this.preconditionGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.preconditionGroupBox.Location = new System.Drawing.Point(3, 413);
             this.preconditionGroupBox.Name = "preconditionGroupBox";
-            this.preconditionGroupBox.Size = new System.Drawing.Size(614, 53);
+            this.preconditionGroupBox.Size = new System.Drawing.Size(610, 53);
             this.preconditionGroupBox.TabIndex = 2;
             this.preconditionGroupBox.TabStop = false;
             this.preconditionGroupBox.Text = "Условия";
@@ -627,6 +1164,7 @@
             // targetBox
             // 
             this.targetBox.AutoSize = true;
+            this.targetBox.Controls.Add(this.resultComboBox);
             this.targetBox.Controls.Add(this.cbReputationLow);
             this.targetBox.Controls.Add(this.cbState);
             this.targetBox.Controls.Add(this.lState);
@@ -639,7 +1177,6 @@
             this.targetBox.Controls.Add(this.bTargetAddDynamic);
             this.targetBox.Controls.Add(this.dynamicCheckBox);
             this.targetBox.Controls.Add(this.ltargetResult);
-            this.targetBox.Controls.Add(this.resultextBox);
             this.targetBox.Controls.Add(this.targetAttributeComboBox);
             this.targetBox.Controls.Add(this.labelTargetAttr);
             this.targetBox.Controls.Add(this.isClanCheckBox);
@@ -651,10 +1188,23 @@
             this.targetBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.targetBox.Location = new System.Drawing.Point(3, 254);
             this.targetBox.Name = "targetBox";
-            this.targetBox.Size = new System.Drawing.Size(614, 159);
+            this.targetBox.Size = new System.Drawing.Size(610, 159);
             this.targetBox.TabIndex = 1;
             this.targetBox.TabStop = false;
             this.targetBox.Text = "Цель";
+            // 
+            // resultComboBox
+            // 
+            this.resultComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.resultComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.resultComboBox.DropDownWidth = 250;
+            this.resultComboBox.Enabled = false;
+            this.resultComboBox.FormattingEnabled = true;
+            this.resultComboBox.Location = new System.Drawing.Point(103, 11);
+            this.resultComboBox.Name = "resultComboBox";
+            this.resultComboBox.Size = new System.Drawing.Size(121, 21);
+            this.resultComboBox.Sorted = true;
+            this.resultComboBox.TabIndex = 25;
             // 
             // cbReputationLow
             // 
@@ -791,14 +1341,6 @@
             this.ltargetResult.TabIndex = 9;
             this.ltargetResult.Text = "Результат";
             // 
-            // resultextBox
-            // 
-            this.resultextBox.Enabled = false;
-            this.resultextBox.Location = new System.Drawing.Point(103, 12);
-            this.resultextBox.Name = "resultextBox";
-            this.resultextBox.Size = new System.Drawing.Size(121, 20);
-            this.resultextBox.TabIndex = 13;
-            // 
             // targetAttributeComboBox
             // 
             this.targetAttributeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -916,7 +1458,7 @@
             this.questInformationBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.questInformationBox.Location = new System.Drawing.Point(3, 16);
             this.questInformationBox.Name = "questInformationBox";
-            this.questInformationBox.Size = new System.Drawing.Size(614, 238);
+            this.questInformationBox.Size = new System.Drawing.Size(610, 238);
             this.questInformationBox.TabIndex = 0;
             this.questInformationBox.TabStop = false;
             this.questInformationBox.Text = "Информация";
@@ -1111,7 +1653,7 @@
             this.eventComboBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.eventComboBox.Location = new System.Drawing.Point(3, 29);
             this.eventComboBox.Name = "eventComboBox";
-            this.eventComboBox.Size = new System.Drawing.Size(620, 21);
+            this.eventComboBox.Size = new System.Drawing.Size(616, 21);
             this.eventComboBox.TabIndex = 1;
             this.eventComboBox.SelectedIndexChanged += new System.EventHandler(this.eventComboBox_SelectedIndexChanged);
             // 
@@ -1133,7 +1675,7 @@
             this.AutoScrollMargin = new System.Drawing.Size(5, 5);
             this.AutoScrollMinSize = new System.Drawing.Size(5, 5);
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(626, 863);
+            this.ClientSize = new System.Drawing.Size(622, 863);
             this.Controls.Add(this.QuestPanel);
             this.MinimumSize = new System.Drawing.Size(636, 850);
             this.Name = "EditQuestForm";
@@ -1143,6 +1685,11 @@
             this.QuestPanel.ResumeLayout(false);
             this.groupQuestBox.ResumeLayout(false);
             this.groupQuestBox.PerformLayout();
+            this.panelCreateMob.ResumeLayout(false);
+            this.panelCreateMob.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).EndInit();
+            this.panelCreateNPC.ResumeLayout(false);
+            this.panelCreateNPC.PerformLayout();
             this.filedIFtContentBox.ResumeLayout(false);
             this.filedIFtContentBox.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1211,7 +1758,6 @@
         private System.Windows.Forms.TextBox scenariosTextBox;
         private System.Windows.Forms.CheckBox showProgressCheckBox;
         private System.Windows.Forms.Label ltargetResult;
-        private System.Windows.Forms.MaskedTextBox resultextBox;
         private System.Windows.Forms.Button bTargetClearDynamic;
         private System.Windows.Forms.Button bTargetAddDynamic;
         private System.Windows.Forms.CheckBox dynamicCheckBox;
@@ -1262,5 +1808,56 @@
         private System.Windows.Forms.CheckBox cbReputationLow;
         private System.Windows.Forms.CheckBox cbRewardWindow;
         private System.Windows.Forms.CheckBox cbHidden;
+        private System.Windows.Forms.Panel panelCreateNPC;
+        private System.Windows.Forms.TextBox tbNpcName;
+        private System.Windows.Forms.TextBox tbDisplayName;
+        private System.Windows.Forms.Label lbWay;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbReputation;
+        private System.Windows.Forms.Label lbFractionID;
+        private System.Windows.Forms.Label lbNPCName;
+        private System.Windows.Forms.Label lbDisplayName;
+        private System.Windows.Forms.TextBox tbWay;
+        private System.Windows.Forms.TextBox tbReputation;
+        private System.Windows.Forms.ComboBox cbFractionID;
+        private System.Windows.Forms.Label lbLegs;
+        private System.Windows.Forms.Label lbBody;
+        private System.Windows.Forms.Label lbBoots;
+        private System.Windows.Forms.Label lbHand;
+        private System.Windows.Forms.TextBox tbNPCAnim;
+        private System.Windows.Forms.ComboBox cbHead;
+        private System.Windows.Forms.ComboBox cbBackpack;
+        private System.Windows.Forms.ComboBox cbMask;
+        private System.Windows.Forms.ComboBox cbCap;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbHead;
+        private System.Windows.Forms.Label lbBack;
+        private System.Windows.Forms.Label lbMask;
+        private System.Windows.Forms.Label lbCap;
+        private System.Windows.Forms.ComboBox cbLegs;
+        private System.Windows.Forms.ComboBox cbBody;
+        private System.Windows.Forms.ComboBox cbBoots;
+        private System.Windows.Forms.ComboBox cbHands;
+        private System.Windows.Forms.ComboBox cbWeapon;
+        private System.Windows.Forms.ComboBox cbArmor;
+        private System.Windows.Forms.Label lbArmor;
+        private System.Windows.Forms.Panel panelCreateMob;
+        private System.Windows.Forms.ComboBox cbMobType;
+        private System.Windows.Forms.ComboBox cbScenaryType;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbScenType;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown nupMobCount;
+        private System.Windows.Forms.TextBox tbMobWay;
+        private System.Windows.Forms.CheckBox cbMobUniq;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox cbUniqNPC;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbUniqMobID;
+        private System.Windows.Forms.ComboBox cbMobLevel;
+        private System.Windows.Forms.CheckBox cbMobInvul;
+        private System.Windows.Forms.CheckBox cbNPCInvul;
+        private System.Windows.Forms.ComboBox resultComboBox;
     }
 }

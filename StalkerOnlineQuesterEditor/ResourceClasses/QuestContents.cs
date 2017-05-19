@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 
 namespace StalkerOnlineQuesterEditor
@@ -225,7 +226,8 @@ namespace StalkerOnlineQuesterEditor
         public int MaxMember;
         public int MinMember;
         public float basePercent;
-
+        public NPC npc;
+        public Mob mobs;
 
         public object Clone()
         {
@@ -242,14 +244,15 @@ namespace StalkerOnlineQuesterEditor
             copy.MaxMember = this.MaxMember;
             copy.MinMember = this.MinMember;
             copy.basePercent = this.basePercent;
-            
+            copy.npc = this.npc;
+            copy.mobs = this.mobs;
             return copy;
         }
 
         public bool Any()
         {
             return TypeOfItems.Any() || NumOfItems.Any() || AttrOfItems.Any() || Scenarios.Any() || MassQuests.Any() ||
-                MaxGroup != 0 || MinGroup != 0 || TeleportTo != "" || basePercent != 0 || MinMember != 0 || MaxMember != 0;
+                MaxGroup != 0 || MinGroup != 0 || TeleportTo != "" || basePercent != 0 || MinMember != 0 || MaxMember != 0 || npc.Any() || mobs.Any();
 
         }
         public CQuestRules()
@@ -265,7 +268,175 @@ namespace StalkerOnlineQuesterEditor
             this.MinMember = new int();
             this.TeleportTo = "";
             this.basePercent = new float();
+            this.npc = new NPC();
+            this.mobs = new Mob();
            
+        }
+
+        public class Mob
+        {
+            public int mob_type = 0;
+            public string level = "0";
+            public string way = "";
+            public int count = 0;
+            public int scen_type = 0;
+            public bool uniq = false;
+            public string questID = "";
+            public bool invulnerable = false;
+
+            public bool Any()
+            {
+                return mob_type > 0 && count > 0 && scen_type > 0;
+            }
+
+            public XElement getXML()
+            {
+                XElement result = null;
+                if (!this.Any())
+                    return null;
+
+                result = new XElement("mobs");
+                result.Add(new XElement("mobType", mob_type));
+                if (level.Any())
+                    result.Add(new XElement("level", level));
+                result.Add(new XElement("count", count));
+                result.Add(new XElement("scenType", scen_type));
+                if (way.Any())
+                    result.Add(new XElement("way", way));
+                if (invulnerable)
+                    result.Add(new XElement("invulnerable", "1"));
+                if (uniq)
+                    result.Add(new XElement("uniq", "1"));
+                if (questID.Any())
+                    result.Add(new XElement("questID", questID));
+                return result;
+            }
+
+            public void setXML(XElement element)
+            {
+                if (element.Element("mobType") != null)
+                    int.TryParse(element.Element("mobType").Value.ToString(), out mob_type);
+                if (element.Element("level") != null)
+                    level = element.Element("level").Value.ToString();
+                if (element.Element("count") != null)
+                    int.TryParse(element.Element("count").Value.ToString(), out count);
+                if (element.Element("scenType") != null)
+                    int.TryParse(element.Element("scenType").Value.ToString(), out scen_type);
+                if (element.Element("way") != null)
+                    way = element.Element("way").Value;
+                if (element.Element("uniq") != null)
+                    uniq = true;
+                if (element.Element("invulnerable") != null)
+                    invulnerable = true;
+                if (element.Element("questID") != null)
+                    questID = element.Element("questID").Value.ToString();
+            }
+        }
+
+        public class NPC
+        {
+            public string name = "";
+            public string displayName = "";
+            public string way = "";
+            public int fraction = 0;
+            public int reputation = 0;
+            public string animation = "";
+            public int weapon = 0, hand = 0, boots = 0, body = 0, armor = 0, legs = 0, cap = 0, mask = 0, back = 0, head = 0;          
+            public bool uniq = false;
+            public bool invulnerable = false;
+
+            public bool Any()
+            {
+                return name.Any() || displayName.Any() || way.Any() || fraction != 0 || reputation != 0 || animation.Any() ||
+                        weapon != 0 || hand != 0 || boots != 0 || body != 0 ||
+                        armor != 0 || legs != 0 || cap != 0 || mask != 0 ||
+                        back != 0 || head != 0;
+            }
+
+            public void setXML(XElement element)
+            {
+                if (element.Element("name") != null)
+                    name = element.Element("name").Value;
+                if (element.Element("displayName") != null)
+                    displayName = element.Element("displayName").Value;
+                if (element.Element("way") != null)
+                    way = element.Element("way").Value;
+                if (element.Element("fraction") != null)
+                    int.TryParse(element.Element("fraction").Value, out fraction);
+                if (element.Element("reputation") != null)
+                    int.TryParse(element.Element("reputation").Value, out reputation);
+                if (element.Element("animation") != null)
+                    animation = element.Element("animation").Value;
+                if (element.Element("weapon") != null)
+                    int.TryParse(element.Element("weapon").Value, out weapon);
+                if (element.Element("hand") != null)
+                    int.TryParse(element.Element("hand").Value, out hand);
+                if (element.Element("boots") != null)
+                    int.TryParse(element.Element("boots").Value, out boots);
+                if (element.Element("body") != null)
+                    int.TryParse(element.Element("body").Value, out body);
+                if (element.Element("armor") != null)
+                    int.TryParse(element.Element("armor").Value, out armor);
+                if (element.Element("legs") != null)
+                    int.TryParse(element.Element("legs").Value, out legs);
+                if (element.Element("cap") != null)
+                    int.TryParse(element.Element("cap").Value, out cap);
+                if (element.Element("mask") != null)
+                    int.TryParse(element.Element("mask").Value, out mask);
+                if (element.Element("back") != null)
+                    int.TryParse(element.Element("back").Value, out back);
+                if (element.Element("head") != null)
+                    int.TryParse(element.Element("head").Value, out head);
+                if (element.Element("uniq") != null)
+                    uniq = true;
+                if (element.Element("invulnerable") != null)
+                    invulnerable = true;
+            }
+
+            public XElement getXML()
+            {
+                XElement result = null;
+                if (!this.Any())
+                    return null;
+
+                result = new XElement("npc");
+                if (name.Any())
+                    result.Add(new XElement("name", name));
+                if (displayName.Any())
+                    result.Add(new XElement("displayName", displayName));
+                if (way.Any())
+                    result.Add(new XElement("way", way));
+                if (fraction != 0)
+                    result.Add(new XElement("fraction", Global.GetIntAsString(fraction)));
+                if (reputation != 0)
+                    result.Add(new XElement("reputation", Global.GetIntAsString(reputation)));
+                if (animation.Any())
+                    result.Add(new XElement("animation", animation));
+                if (invulnerable)
+                    result.Add(new XElement("invulnerable", "1"));
+                if (weapon != 0)
+                    result.Add(new XElement("weapon", Global.GetIntAsString(weapon)));
+                if (hand != 0)
+                    result.Add(new XElement("hand", Global.GetIntAsString(hand)));
+                if (boots != 0)
+                    result.Add(new XElement("boots", Global.GetIntAsString(boots)));
+                if (body != 0)
+                    result.Add(new XElement("body", Global.GetIntAsString(body)));
+                if (armor != 0)
+                    result.Add(new XElement("armor", Global.GetIntAsString(armor)));
+                if (legs != 0)
+                    result.Add(new XElement("legs", Global.GetIntAsString(legs)));
+                if (cap != 0)
+                    result.Add(new XElement("cap", Global.GetIntAsString(cap)));
+                if (mask != 0)
+                    result.Add(new XElement("mask", Global.GetIntAsString(mask)));
+                if (back != 0)
+                    result.Add(new XElement("back", Global.GetIntAsString(back)));
+                if (head != 0)
+                    result.Add(new XElement("head", Global.GetIntAsString(head)));
+                if (uniq) result.Add(new XElement("uniq", "1"));
+                return result;
+            }
         }
     }
 
