@@ -423,6 +423,15 @@ namespace StalkerOnlineQuesterEditor
                     cbReputationLow.Enabled = true;
 
                 }
+                else if (QuestType == 24)
+                {
+                    lNameObject.Text = "Тип убийства:";
+                    targetComboBox.Items.Clear();
+                    targetComboBox.Items.Add("0 Кого-либо");
+                    targetComboBox.Items.Add("1 Creature");
+                    targetComboBox.Items.Add("2 Avatar");
+                    targetComboBox.Items.Add("3 NPC");
+                }
                 else if (QuestType == 53 || QuestType == 54)
                 {
                     lNameObject.Text = "Тип NPC:";
@@ -578,6 +587,10 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedItem = parent.fractions.getFractionDesctByID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
                 cbReputationLow.Checked = quest.Target.ObjectAttr != 0;
+            }
+            else if (quest.Target.QuestType == 24)
+            {
+                targetComboBox.SelectedIndex = quest.Target.ObjectType;
             }
             else if (quest.Target.QuestType == 51)
             {
@@ -949,6 +962,10 @@ namespace StalkerOnlineQuesterEditor
                     MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
                     return null;
                 }
+            }
+            else if (target.QuestType == 24)
+            {
+                target.ObjectType = targetComboBox.SelectedIndex;
             }
             else if (target.QuestType == 51)
             {

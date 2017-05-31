@@ -1132,7 +1132,7 @@ namespace StalkerOnlineQuesterEditor
             if (quest.Additional.Holder == npcName && ( force || (quest.Additional.IsSubQuest == 0) || (quest.Target.QuestType == 12)))
             {
 
-                string id = quest.QuestID.ToString();
+                //string id = quest.QuestID.ToString();
                 List<int> iSubIDS = getSubIDs(quest.QuestID);
                 List<string> sNPCLink = new List<string>();
                 int rewardExpBattle = 0;
@@ -1205,8 +1205,8 @@ namespace StalkerOnlineQuesterEditor
                 string srewardExpSupport = rewardExpSupport.ToString();
                 string srewardCredits = rewardCredits.ToString();
                 string sRewardItem = "";
-                string sRepeat = quest.Precondition.Repeat.ToString();
-                string sPeriod = quest.Precondition.TakenPeriod.ToString();
+                int sRepeat = quest.Precondition.Repeat;
+                double sPeriod = quest.Precondition.TakenPeriod;
 
                 string sLevel = "";
                 string sAuthor = "";
@@ -1269,7 +1269,7 @@ namespace StalkerOnlineQuesterEditor
                     else
                         sRewardItem += "\n" + itemName + ":" + count.ToString();
                 }
-                object[] row = { id, subIDs, title, description, npcNe, npcLinks, getDialogs, srewardExpBattle, srewardSurvival, srewardExpSupport, srewardCredits, sRewardItem, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
+                object[] row = { quest.QuestID, subIDs, title, description, npcNe, npcLinks, getDialogs, rewardExpBattle, rewardExpSurvival, rewardExpSupport, rewardCredits, sRewardItem, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
                 int old_len = row.Count();
                 Array.Resize(ref row, old_len + reputations.Count());
                 for (int i = old_len, j = 0; i < row.Count(); i++, j++)
