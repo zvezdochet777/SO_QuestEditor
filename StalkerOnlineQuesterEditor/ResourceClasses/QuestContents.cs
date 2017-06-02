@@ -305,6 +305,7 @@ namespace StalkerOnlineQuesterEditor
                     result.Add(new XElement("way", way));
                 if (invulnerable)
                     result.Add(new XElement("invulnerable", "1"));
+
                 if (uniq)
                     result.Add(new XElement("uniq", "1"));
                 if (questID.Any())
@@ -341,9 +342,11 @@ namespace StalkerOnlineQuesterEditor
             public int fraction = 0;
             public int reputation = 0;
             public string animation = "";
-            public int weapon = 0, hand = 0, boots = 0, body = 0, armor = 0, legs = 0, cap = 0, mask = 0, back = 0, head = 0;          
+            public int weapon = 0, hand = 0, boots = 0, body = 0, armor = 0, legs = 0, cap = 0, mask = 0, back = 0, head = 0;
+            public float walkSpeed = 0;
             public bool uniq = false;
             public bool invulnerable = false;
+            public bool mobNoAgr = false;
 
             public bool Any()
             {
@@ -391,6 +394,10 @@ namespace StalkerOnlineQuesterEditor
                     uniq = true;
                 if (element.Element("invulnerable") != null)
                     invulnerable = true;
+                if (element.Element("mobNoAggr") != null)
+                    mobNoAgr = true;
+                if (element.Element("walkSpeed") != null)
+                    float.TryParse(element.Element("walkSpeed").Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out walkSpeed);
             }
 
             public XElement getXML()
@@ -414,6 +421,8 @@ namespace StalkerOnlineQuesterEditor
                     result.Add(new XElement("animation", animation));
                 if (invulnerable)
                     result.Add(new XElement("invulnerable", "1"));
+                if (walkSpeed != 0.0)
+                    result.Add(new XElement("walkSpeed", walkSpeed));
                 if (weapon != 0)
                     result.Add(new XElement("weapon", Global.GetIntAsString(weapon)));
                 if (hand != 0)
@@ -435,6 +444,7 @@ namespace StalkerOnlineQuesterEditor
                 if (head != 0)
                     result.Add(new XElement("head", Global.GetIntAsString(head)));
                 if (uniq) result.Add(new XElement("uniq", "1"));
+                if (mobNoAgr) result.Add(new XElement("mobNoAggr", "1"));
                 return result;
             }
         }

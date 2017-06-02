@@ -159,6 +159,8 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabActions = new System.Windows.Forms.TabPage();
+            this.tbItemNPC = new System.Windows.Forms.ComboBox();
+            this.cbItemNPC = new System.Windows.Forms.CheckBox();
             this.tbPlaySonund = new System.Windows.Forms.ComboBox();
             this.cbPlaySonund = new System.Windows.Forms.CheckBox();
             this.cbCameraSmoothly = new System.Windows.Forms.CheckBox();
@@ -182,8 +184,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.tbItemNPC = new System.Windows.Forms.ComboBox();
-            this.cbItemNPC = new System.Windows.Forms.CheckBox();
+            this.cbShouldntHaveFailQuests = new System.Windows.Forms.CheckBox();
+            this.cbMustHaveFailQuests = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tMustHaveFailQuests = new System.Windows.Forms.MaskedTextBox();
+            this.tShouldntHaveFailQuests = new System.Windows.Forms.MaskedTextBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -596,6 +601,11 @@
             // 
             // gbQuestCondition
             // 
+            this.gbQuestCondition.Controls.Add(this.cbShouldntHaveFailQuests);
+            this.gbQuestCondition.Controls.Add(this.cbMustHaveFailQuests);
+            this.gbQuestCondition.Controls.Add(this.label7);
+            this.gbQuestCondition.Controls.Add(this.tMustHaveFailQuests);
+            this.gbQuestCondition.Controls.Add(this.tShouldntHaveFailQuests);
             this.gbQuestCondition.Controls.Add(this.cbShouldntHaveRepeat);
             this.gbQuestCondition.Controls.Add(this.cbMustHaveRepeat);
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveRepeat);
@@ -640,7 +650,7 @@
             // cbShouldntHaveRepeat
             // 
             this.cbShouldntHaveRepeat.AutoSize = true;
-            this.cbShouldntHaveRepeat.Location = new System.Drawing.Point(379, 169);
+            this.cbShouldntHaveRepeat.Location = new System.Drawing.Point(379, 194);
             this.cbShouldntHaveRepeat.Name = "cbShouldntHaveRepeat";
             this.cbShouldntHaveRepeat.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveRepeat.TabIndex = 36;
@@ -649,7 +659,7 @@
             // cbMustHaveRepeat
             // 
             this.cbMustHaveRepeat.AutoSize = true;
-            this.cbMustHaveRepeat.Location = new System.Drawing.Point(146, 169);
+            this.cbMustHaveRepeat.Location = new System.Drawing.Point(146, 194);
             this.cbMustHaveRepeat.Name = "cbMustHaveRepeat";
             this.cbMustHaveRepeat.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveRepeat.TabIndex = 35;
@@ -657,14 +667,14 @@
             // 
             // tShouldntHaveRepeat
             // 
-            this.tShouldntHaveRepeat.Location = new System.Drawing.Point(273, 166);
+            this.tShouldntHaveRepeat.Location = new System.Drawing.Point(273, 191);
             this.tShouldntHaveRepeat.Name = "tShouldntHaveRepeat";
             this.tShouldntHaveRepeat.Size = new System.Drawing.Size(100, 20);
             this.tShouldntHaveRepeat.TabIndex = 33;
             // 
             // tMustHaveRepeat
             // 
-            this.tMustHaveRepeat.Location = new System.Drawing.Point(167, 166);
+            this.tMustHaveRepeat.Location = new System.Drawing.Point(167, 191);
             this.tMustHaveRepeat.Name = "tMustHaveRepeat";
             this.tMustHaveRepeat.Size = new System.Drawing.Size(100, 20);
             this.tMustHaveRepeat.TabIndex = 32;
@@ -672,7 +682,7 @@
             // lRepeat
             // 
             this.lRepeat.AutoSize = true;
-            this.lRepeat.Location = new System.Drawing.Point(10, 169);
+            this.lRepeat.Location = new System.Drawing.Point(10, 194);
             this.lRepeat.Name = "lRepeat";
             this.lRepeat.Size = new System.Drawing.Size(100, 13);
             this.lRepeat.TabIndex = 34;
@@ -699,7 +709,7 @@
             // cbShouldntHaveCounters
             // 
             this.cbShouldntHaveCounters.AutoSize = true;
-            this.cbShouldntHaveCounters.Location = new System.Drawing.Point(379, 143);
+            this.cbShouldntHaveCounters.Location = new System.Drawing.Point(379, 168);
             this.cbShouldntHaveCounters.Name = "cbShouldntHaveCounters";
             this.cbShouldntHaveCounters.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveCounters.TabIndex = 29;
@@ -708,7 +718,7 @@
             // cbShouldntHaveMassQuests
             // 
             this.cbShouldntHaveMassQuests.AutoSize = true;
-            this.cbShouldntHaveMassQuests.Location = new System.Drawing.Point(379, 118);
+            this.cbShouldntHaveMassQuests.Location = new System.Drawing.Point(379, 143);
             this.cbShouldntHaveMassQuests.Name = "cbShouldntHaveMassQuests";
             this.cbShouldntHaveMassQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveMassQuests.TabIndex = 28;
@@ -744,7 +754,7 @@
             // cbMustHaveCounters
             // 
             this.cbMustHaveCounters.AutoSize = true;
-            this.cbMustHaveCounters.Location = new System.Drawing.Point(146, 143);
+            this.cbMustHaveCounters.Location = new System.Drawing.Point(146, 168);
             this.cbMustHaveCounters.Name = "cbMustHaveCounters";
             this.cbMustHaveCounters.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveCounters.TabIndex = 24;
@@ -753,7 +763,7 @@
             // cbMustHaveMassQuests
             // 
             this.cbMustHaveMassQuests.AutoSize = true;
-            this.cbMustHaveMassQuests.Location = new System.Drawing.Point(146, 118);
+            this.cbMustHaveMassQuests.Location = new System.Drawing.Point(146, 143);
             this.cbMustHaveMassQuests.Name = "cbMustHaveMassQuests";
             this.cbMustHaveMassQuests.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveMassQuests.TabIndex = 23;
@@ -761,14 +771,14 @@
             // 
             // tShouldntHaveCounters
             // 
-            this.tShouldntHaveCounters.Location = new System.Drawing.Point(273, 140);
+            this.tShouldntHaveCounters.Location = new System.Drawing.Point(273, 165);
             this.tShouldntHaveCounters.Name = "tShouldntHaveCounters";
             this.tShouldntHaveCounters.Size = new System.Drawing.Size(100, 20);
             this.tShouldntHaveCounters.TabIndex = 18;
             // 
             // tMustHaveCounters
             // 
-            this.tMustHaveCounters.Location = new System.Drawing.Point(167, 140);
+            this.tMustHaveCounters.Location = new System.Drawing.Point(167, 165);
             this.tMustHaveCounters.Name = "tMustHaveCounters";
             this.tMustHaveCounters.Size = new System.Drawing.Size(100, 20);
             this.tMustHaveCounters.TabIndex = 17;
@@ -803,7 +813,7 @@
             // lConuters
             // 
             this.lConuters.AutoSize = true;
-            this.lConuters.Location = new System.Drawing.Point(10, 143);
+            this.lConuters.Location = new System.Drawing.Point(10, 168);
             this.lConuters.Name = "lConuters";
             this.lConuters.Size = new System.Drawing.Size(53, 13);
             this.lConuters.TabIndex = 19;
@@ -812,7 +822,7 @@
             // lMassQuests
             // 
             this.lMassQuests.AutoSize = true;
-            this.lMassQuests.Location = new System.Drawing.Point(10, 118);
+            this.lMassQuests.Location = new System.Drawing.Point(10, 143);
             this.lMassQuests.Name = "lMassQuests";
             this.lMassQuests.Size = new System.Drawing.Size(100, 13);
             this.lMassQuests.TabIndex = 16;
@@ -820,14 +830,14 @@
             // 
             // tShouldntHaveMassQuests
             // 
-            this.tShouldntHaveMassQuests.Location = new System.Drawing.Point(273, 115);
+            this.tShouldntHaveMassQuests.Location = new System.Drawing.Point(273, 140);
             this.tShouldntHaveMassQuests.Name = "tShouldntHaveMassQuests";
             this.tShouldntHaveMassQuests.Size = new System.Drawing.Size(100, 20);
             this.tShouldntHaveMassQuests.TabIndex = 15;
             // 
             // tMustHaveMassQuests
             // 
-            this.tMustHaveMassQuests.Location = new System.Drawing.Point(167, 115);
+            this.tMustHaveMassQuests.Location = new System.Drawing.Point(167, 140);
             this.tMustHaveMassQuests.Name = "tMustHaveMassQuests";
             this.tMustHaveMassQuests.Size = new System.Drawing.Size(100, 20);
             this.tMustHaveMassQuests.TabIndex = 14;
@@ -1531,6 +1541,24 @@
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
+            // tbItemNPC
+            // 
+            this.tbItemNPC.FormattingEnabled = true;
+            this.tbItemNPC.Location = new System.Drawing.Point(210, 59);
+            this.tbItemNPC.Name = "tbItemNPC";
+            this.tbItemNPC.Size = new System.Drawing.Size(223, 21);
+            this.tbItemNPC.TabIndex = 15;
+            // 
+            // cbItemNPC
+            // 
+            this.cbItemNPC.AutoSize = true;
+            this.cbItemNPC.Location = new System.Drawing.Point(28, 63);
+            this.cbItemNPC.Name = "cbItemNPC";
+            this.cbItemNPC.Size = new System.Drawing.Size(99, 17);
+            this.cbItemNPC.TabIndex = 14;
+            this.cbItemNPC.Text = "Предмет NPC:";
+            this.cbItemNPC.UseVisualStyleBackColor = true;
+            // 
             // tbPlaySonund
             // 
             this.tbPlaySonund.FormattingEnabled = true;
@@ -1759,23 +1787,46 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // tbItemNPC
+            // cbShouldntHaveFailQuests
             // 
-            this.tbItemNPC.FormattingEnabled = true;
-            this.tbItemNPC.Location = new System.Drawing.Point(210, 59);
-            this.tbItemNPC.Name = "tbItemNPC";
-            this.tbItemNPC.Size = new System.Drawing.Size(223, 21);
-            this.tbItemNPC.TabIndex = 15;
+            this.cbShouldntHaveFailQuests.AutoSize = true;
+            this.cbShouldntHaveFailQuests.Location = new System.Drawing.Point(379, 118);
+            this.cbShouldntHaveFailQuests.Name = "cbShouldntHaveFailQuests";
+            this.cbShouldntHaveFailQuests.Size = new System.Drawing.Size(15, 14);
+            this.cbShouldntHaveFailQuests.TabIndex = 41;
+            this.cbShouldntHaveFailQuests.UseVisualStyleBackColor = true;
             // 
-            // cbItemNPC
+            // cbMustHaveFailQuests
             // 
-            this.cbItemNPC.AutoSize = true;
-            this.cbItemNPC.Location = new System.Drawing.Point(28, 63);
-            this.cbItemNPC.Name = "cbItemNPC";
-            this.cbItemNPC.Size = new System.Drawing.Size(99, 17);
-            this.cbItemNPC.TabIndex = 14;
-            this.cbItemNPC.Text = "Предмет NPC:";
-            this.cbItemNPC.UseVisualStyleBackColor = true;
+            this.cbMustHaveFailQuests.AutoSize = true;
+            this.cbMustHaveFailQuests.Location = new System.Drawing.Point(146, 118);
+            this.cbMustHaveFailQuests.Name = "cbMustHaveFailQuests";
+            this.cbMustHaveFailQuests.Size = new System.Drawing.Size(15, 14);
+            this.cbMustHaveFailQuests.TabIndex = 40;
+            this.cbMustHaveFailQuests.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 118);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 13);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "Проваленные квесты:";
+            // 
+            // tMustHaveFailQuests
+            // 
+            this.tMustHaveFailQuests.Location = new System.Drawing.Point(167, 115);
+            this.tMustHaveFailQuests.Name = "tMustHaveFailQuests";
+            this.tMustHaveFailQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveFailQuests.TabIndex = 37;
+            // 
+            // tShouldntHaveFailQuests
+            // 
+            this.tShouldntHaveFailQuests.Location = new System.Drawing.Point(273, 115);
+            this.tShouldntHaveFailQuests.Name = "tShouldntHaveFailQuests";
+            this.tShouldntHaveFailQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveFailQuests.TabIndex = 39;
             // 
             // EditDialogForm
             // 
@@ -1994,5 +2045,10 @@
         private System.Windows.Forms.ComboBox autoDefaultNode;
         private System.Windows.Forms.ComboBox tbItemNPC;
         private System.Windows.Forms.CheckBox cbItemNPC;
+        private System.Windows.Forms.CheckBox cbShouldntHaveFailQuests;
+        private System.Windows.Forms.CheckBox cbMustHaveFailQuests;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.MaskedTextBox tMustHaveFailQuests;
+        private System.Windows.Forms.MaskedTextBox tShouldntHaveFailQuests;
     }
 }

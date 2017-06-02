@@ -46,6 +46,8 @@
             this.cbMobType = new System.Windows.Forms.ComboBox();
             this.cbScenaryType = new System.Windows.Forms.ComboBox();
             this.panelCreateNPC = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nupNPCSpeed = new System.Windows.Forms.NumericUpDown();
             this.cbNPCInvul = new System.Windows.Forms.CheckBox();
             this.cbUniqNPC = new System.Windows.Forms.CheckBox();
             this.cbArmor = new System.Windows.Forms.ComboBox();
@@ -170,11 +172,13 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
+            this.cbNPCMobNoArg = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).BeginInit();
             this.filedIFtContentBox.SuspendLayout();
             this.panel1.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
@@ -234,7 +238,7 @@
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
             this.panelCreateMob.Location = new System.Drawing.Point(3, 301);
             this.panelCreateMob.Name = "panelCreateMob";
-            this.panelCreateMob.Size = new System.Drawing.Size(622, 161);
+            this.panelCreateMob.Size = new System.Drawing.Size(22, 161);
             this.panelCreateMob.TabIndex = 17;
             this.panelCreateMob.Visible = false;
             // 
@@ -371,6 +375,9 @@
             // 
             // panelCreateNPC
             // 
+            this.panelCreateNPC.Controls.Add(this.cbNPCMobNoArg);
+            this.panelCreateNPC.Controls.Add(this.label3);
+            this.panelCreateNPC.Controls.Add(this.nupNPCSpeed);
             this.panelCreateNPC.Controls.Add(this.cbNPCInvul);
             this.panelCreateNPC.Controls.Add(this.cbUniqNPC);
             this.panelCreateNPC.Controls.Add(this.cbArmor);
@@ -407,9 +414,36 @@
             this.panelCreateNPC.Controls.Add(this.lbDisplayName);
             this.panelCreateNPC.Location = new System.Drawing.Point(0, 304);
             this.panelCreateNPC.Name = "panelCreateNPC";
-            this.panelCreateNPC.Size = new System.Drawing.Size(622, 166);
+            this.panelCreateNPC.Size = new System.Drawing.Size(622, 172);
             this.panelCreateNPC.TabIndex = 25;
             this.panelCreateNPC.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(229, 126);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "Скрсть:";
+            // 
+            // nupNPCSpeed
+            // 
+            this.nupNPCSpeed.DecimalPlaces = 1;
+            this.nupNPCSpeed.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nupNPCSpeed.Location = new System.Drawing.Point(283, 122);
+            this.nupNPCSpeed.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nupNPCSpeed.Name = "nupNPCSpeed";
+            this.nupNPCSpeed.Size = new System.Drawing.Size(136, 20);
+            this.nupNPCSpeed.TabIndex = 38;
             // 
             // cbNPCInvul
             // 
@@ -1667,6 +1701,16 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
+            // cbNPCMobNoArg
+            // 
+            this.cbNPCMobNoArg.AutoSize = true;
+            this.cbNPCMobNoArg.Location = new System.Drawing.Point(509, 148);
+            this.cbNPCMobNoArg.Name = "cbNPCMobNoArg";
+            this.cbNPCMobNoArg.Size = new System.Drawing.Size(77, 17);
+            this.cbNPCMobNoArg.TabIndex = 40;
+            this.cbNPCMobNoArg.Text = "MobNoAgr";
+            this.cbNPCMobNoArg.UseVisualStyleBackColor = true;
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1690,6 +1734,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).EndInit();
             this.panelCreateNPC.ResumeLayout(false);
             this.panelCreateNPC.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).EndInit();
             this.filedIFtContentBox.ResumeLayout(false);
             this.filedIFtContentBox.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1859,5 +1904,8 @@
         private System.Windows.Forms.CheckBox cbMobInvul;
         private System.Windows.Forms.CheckBox cbNPCInvul;
         private System.Windows.Forms.ComboBox resultComboBox;
+        private System.Windows.Forms.NumericUpDown nupNPCSpeed;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox cbNPCMobNoArg;
     }
 }

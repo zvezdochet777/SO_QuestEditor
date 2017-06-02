@@ -209,11 +209,13 @@ namespace StalkerOnlineQuesterEditor.Forms
                     List<int> check_list = new List<int>();
                     check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfOpenedQuests);
+                    check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfFailQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfOnTestQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
 
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests);
+                    check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfFailQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
 

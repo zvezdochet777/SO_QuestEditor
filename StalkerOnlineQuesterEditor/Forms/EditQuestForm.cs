@@ -635,8 +635,12 @@ namespace StalkerOnlineQuesterEditor
             npc.mask = cbMask.SelectedItem == null ? 0 : parent.npcItems.mask.getIDByName(cbMask.SelectedItem.ToString());
             npc.back = cbBackpack.SelectedItem == null ? 0 : parent.npcItems.back.getIDByName(cbBackpack.SelectedItem.ToString());
             npc.head = cbHead.SelectedItem == null ? 0 : parent.npcItems.head.getIDByName(cbHead.SelectedItem.ToString());
+            npc.head = cbHead.SelectedItem == null ? 0 : parent.npcItems.head.getIDByName(cbHead.SelectedItem.ToString());
             npc.uniq = cbUniqNPC.Checked;
             npc.invulnerable = cbNPCInvul.Checked;
+            npc.mobNoAgr = cbNPCMobNoArg.Checked;
+
+            npc.walkSpeed = Convert.ToSingle(nupNPCSpeed.Value);
             return npc;
         }
 
@@ -694,6 +698,8 @@ namespace StalkerOnlineQuesterEditor
             cbHead.SelectedItem = parent.npcItems.head.getNameByID(quest.QuestRules.npc.head);
             cbUniqNPC.Checked = quest.QuestRules.npc.uniq;
             cbNPCInvul.Checked = quest.QuestRules.npc.invulnerable;
+            cbNPCMobNoArg.Checked = quest.QuestRules.npc.mobNoAgr;
+            nupNPCSpeed.Value = Convert.ToDecimal(quest.QuestRules.npc.walkSpeed);
         }
         void initCreateMobPanel()
         {

@@ -201,6 +201,13 @@ namespace StalkerOnlineQuesterEditor
                 else
                     cbShouldntHaveOpenQuests.Checked = false;
 
+                foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfFailQuests)
+                    addItemToTextBox(quest.ToString(), tShouldntHaveFailQuests);
+                if (curDialog.Precondition.ListOfMustNoQuests.conditionOfFailQuests == '|')
+                    cbShouldntHaveFailQuests.Checked = true;
+                else
+                    cbShouldntHaveFailQuests.Checked = false;
+
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)
                     addItemToTextBox(quest.ToString(), tShouldntHaveQuestsOnTest);
                 if (curDialog.Precondition.ListOfMustNoQuests.conditionOfOnTestQuest == '|')
@@ -248,6 +255,13 @@ namespace StalkerOnlineQuesterEditor
                     cbMustHaveOpenQuests.Checked = true;
                 else
                     cbMustHaveOpenQuests.Checked = false;
+
+                foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailQuests)
+                    addItemToTextBox(quest.ToString(), tMustHaveFailQuests);
+                if (curDialog.Precondition.ListOfNecessaryQuests.conditionOfFailQuests == '|')
+                    cbMustHaveFailQuests.Checked = true;
+                else
+                    cbMustHaveFailQuests.Checked = false;
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCounters)
                     addItemToTextBox(quest.ToString(), tMustHaveCounters);
@@ -574,6 +588,15 @@ namespace StalkerOnlineQuesterEditor
                 foreach (string quest in tMustHaveOpenQuests.Text.Split(','))
                     precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Add(int.Parse(quest));
             }
+            if (!tMustHaveFailQuests.Text.Equals(""))
+            {
+                if (cbMustHaveOpenQuests.Checked)
+                    precondition.ListOfNecessaryQuests.conditionOfFailQuests = '|';
+                else
+                    precondition.ListOfNecessaryQuests.conditionOfFailQuests = '&';
+                foreach (string quest in tMustHaveFailQuests.Text.Split(','))
+                    precondition.ListOfNecessaryQuests.ListOfFailQuests.Add(int.Parse(quest));
+            }
             if (!tMustHaveQuestsOnTest.Text.Equals(""))
             {
                 if (cbMustHaveQuestsOnTest.Checked)
@@ -627,6 +650,15 @@ namespace StalkerOnlineQuesterEditor
                     precondition.ListOfMustNoQuests.conditionOfOpenedQuests = '&';
                 foreach (string quest in tShouldntHaveOpenQuests.Text.Split(','))
                     precondition.ListOfMustNoQuests.ListOfOpenedQuests.Add(int.Parse(quest));
+            }
+            if (!tShouldntHaveFailQuests.Text.Equals(""))
+            {
+                if (cbShouldntHaveFailQuests.Checked)
+                    precondition.ListOfMustNoQuests.conditionOfFailQuests = '|';
+                else
+                    precondition.ListOfMustNoQuests.conditionOfFailQuests = '&';
+                foreach (string quest in tShouldntHaveFailQuests.Text.Split(','))
+                    precondition.ListOfMustNoQuests.ListOfFailQuests.Add(int.Parse(quest));
             }
             if (!tShouldntHaveQuestsOnTest.Text.Equals(""))
             {

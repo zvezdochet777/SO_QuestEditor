@@ -15,6 +15,8 @@ namespace StalkerOnlineQuesterEditor
         public char conditionOfCompletedQuests;
         public ListOfQuests ListOfOpenedQuests;
         public char conditionOfOpenedQuests;
+        public ListOfQuests ListOfFailQuests;
+        public char conditionOfFailQuests;
         public ListOfQuests ListOfOnTestQuests;
         public char conditionOfOnTestQuest;
         public ListOfQuests ListOfCounters;
@@ -27,6 +29,7 @@ namespace StalkerOnlineQuesterEditor
         {
             this.ListOfCompletedQuests = new ListOfQuests();
             this.ListOfOpenedQuests = new ListOfQuests();
+            this.ListOfFailQuests = new ListOfQuests();
             this.ListOfOnTestQuests = new ListOfQuests();
             this.ListOfCounters = new ListOfQuests();
             this.ListOfRepeat = new ListOfQuests();
@@ -42,7 +45,7 @@ namespace StalkerOnlineQuesterEditor
         public bool Any()
         {
             if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() ||
-                ListOfCounters.Any() || ListOfMassQuests != "" || ListOfRepeat.Any())
+                ListOfFailQuests.Any() || ListOfCounters.Any() || ListOfMassQuests != "" || ListOfRepeat.Any())
                 return true;
             else
                 return false;
@@ -53,6 +56,7 @@ namespace StalkerOnlineQuesterEditor
             CDialogPreconditionQuests copy = new CDialogPreconditionQuests();
             copy.ListOfCompletedQuests = this.ListOfCompletedQuests;
             copy.ListOfOpenedQuests = this.ListOfOpenedQuests;
+            copy.ListOfFailQuests = this.ListOfFailQuests;
             copy.ListOfOnTestQuests = this.ListOfOnTestQuests;
             copy.ListOfMassQuests = this.ListOfMassQuests;
             copy.ListOfCounters = this.ListOfCounters;
@@ -73,6 +77,7 @@ namespace StalkerOnlineQuesterEditor
                 string result = "\n";
                 result += Global.GetNamedList(" Открыто: ", ListOfOpenedQuests);
                 result += Global.GetNamedList(" На проверке: ", ListOfOnTestQuests);
+                result += Global.GetNamedList(" Провалено: ", ListOfFailQuests);
                 result += Global.GetNamedList(" Закрыто: ", ListOfCompletedQuests);
                 result += Global.GetNamedList(" Счётчики: ", ListOfCounters);
                 result += " Массовые: " + ListOfMassQuests;
