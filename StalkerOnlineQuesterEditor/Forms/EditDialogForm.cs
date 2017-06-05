@@ -133,6 +133,10 @@ namespace StalkerOnlineQuesterEditor
                     string key = parent.tpConst.getName(curDialog.Actions.Data);
                     teleportComboBox.SelectedItem = key;
                 }
+                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Обмен")
+                {
+                    tbAvatarGoTo.Text = curDialog.Actions.Data;
+                }
                 if (ActionsComboBox.Text == "Команда НПЦ")
                 {
                     string key = parent.cmConst.getName(curDialog.Actions.Data);
@@ -438,7 +442,7 @@ namespace StalkerOnlineQuesterEditor
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
             commandsComboBox.Visible = (SelectedValue == 19) || (SelectedValue == 4) || (SelectedValue == 6);
-            tbAvatarGoTo.Visible = (SelectedValue == 20);
+            tbAvatarGoTo.Visible = (SelectedValue == 20) || (SelectedValue == 1) || (SelectedValue == 2);
             if (SelectedValue == 19)
             {
                 commandsComboBox.Items.Clear();
@@ -545,7 +549,7 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if ((actions.Event.Display == "Починка") || (actions.Event.Display == "Комплексная починка"))
                     actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
-                if (actions.Event.Display == "Перейти в точку")
+                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Обмен" || actions.Event.Display == "Торговля")
                     actions.Data = tbAvatarGoTo.Text;
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))

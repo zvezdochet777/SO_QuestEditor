@@ -18,7 +18,7 @@ namespace StalkerOnlineQuesterEditor
         public CQuestPrecondition Precondition;
         public CQuestRules QuestRules;
         public CQuestReward Reward;
-        public CQuestPenalty QuestPenalty;
+        public CQuestReward QuestPenalty;
         public CQuestAdditional Additional;
         public bool hidden;
 
@@ -31,7 +31,7 @@ namespace StalkerOnlineQuesterEditor
             copy.Precondition = (CQuestPrecondition)this.Precondition.Clone();
             copy.QuestRules = (CQuestRules)this.QuestRules.Clone();
             copy.Reward = (CQuestReward)this.Reward.Clone();
-            copy.QuestPenalty = (CQuestPenalty)this.QuestPenalty.Clone();
+            copy.QuestPenalty = (CQuestReward)this.QuestPenalty.Clone();
             copy.Additional = (CQuestAdditional)this.Additional.Clone();
             copy.Target = (CQuestTarget)this.Target.Clone();
             copy.hidden = this.hidden;
@@ -46,13 +46,13 @@ namespace StalkerOnlineQuesterEditor
             this.Precondition = new CQuestPrecondition();
             this.QuestRules = new CQuestRules();
             this.Reward = new CQuestReward();
-            this.QuestPenalty = new CQuestPenalty();
+            this.QuestPenalty = new CQuestReward();
             this.Additional = new CQuestAdditional();
             this.Target = new CQuestTarget();
             this.hidden = false;
         }
 
-        public CQuest(int questID, int Version, CQuestInformation questInformation,CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional,CQuestTarget target, CQuestPenalty penalty, bool hidden = false)
+        public CQuest(int questID, int Version, CQuestInformation questInformation, CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional, CQuestTarget target, CQuestReward penalty, bool hidden = false)
         {
             this.QuestID = questID;
             this.Version = Version;
@@ -73,7 +73,7 @@ namespace StalkerOnlineQuesterEditor
             this.Reward = (CQuestReward) source.Reward.Clone();
             this.Additional = (CQuestAdditional) source.Additional.Clone();
             this.Target = (CQuestTarget) source.Target.Clone();
-            this.QuestPenalty = (CQuestPenalty) source.QuestPenalty.Clone();        
+            this.QuestPenalty = (CQuestReward)source.QuestPenalty.Clone();        
         }
     }
 

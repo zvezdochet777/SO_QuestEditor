@@ -113,7 +113,7 @@ namespace StalkerOnlineQuesterEditor
                 CQuestRules questRules = new CQuestRules();
                 CQuestReward reward = new CQuestReward();
                 CQuestAdditional additional = new CQuestAdditional();
-                CQuestPenalty penalty = new CQuestPenalty();
+                CQuestReward penalty = new CQuestReward();
                 bool hidden = false;
                 if (item.Element("hidden") != null)
                     hidden = true;
@@ -243,6 +243,36 @@ namespace StalkerOnlineQuesterEditor
                         reward.RewardWindow = item.Element("Reward").Element("RewardWindow").Value.Equals("1");
                 }
 
+
+                if (item.Element("Penalty") != null)
+                {
+                    AddDataToList(item, "Penalty", "Experience", penalty.Experience);
+                    AddDataToList(item, "Penalty", "NumOfItems", penalty.NumOfItems);
+                    AddDataToList(item, "Penalty", "TypeOfItems", penalty.TypeOfItems);
+                    AddDataToList(item, "Penalty", "AttrOfItems", penalty.AttrOfItems);
+
+                    if (item.Element("Penalty").Descendants().Any(itm2 => itm2.Name == "Probability"))
+                        if (!item.Element("Penalty").Element("Probability").Value.Equals(""))
+                            foreach (string itemType in item.Element("Penalty").Element("Probability").Value.Split(';'))
+                                penalty.Probability.Add(float.Parse(itemType, CultureInfo.InvariantCulture));
+
+                    if ((item.Element("Penalty").Element("Credits") != null) && (!item.Element("Penalty").Element("Credits").Value.Equals("")))
+                        penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value, System.Globalization.CultureInfo.InvariantCulture);
+
+                    ParseIntIfNotEmpty(item, "Penalty", "KarmaPK", out penalty.KarmaPK, 0);
+
+                    if (item.Element("Penalty").Element("Reputation") != null)
+                        foreach (string fraction in item.Element("Penalty").Element("Reputation").Value.Split(';'))
+                            if (!fraction.Equals(""))
+                                penalty.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
+                    if (item.Element("Penalty").Element("Effects") != null)
+                        foreach (XElement effect in item.Element("Penalty").Element("Effects").Elements())
+                        {
+                            penalty.Effects.Add(new CEffect(int.Parse(effect.Element("id").Value.ToString()),
+                            int.Parse(effect.Element("stack").Value.ToString())));
+                        }
+                }
+
                 if (item.Element("Additional") != null)
                 {
                     if (item.Element("Additional").Element("ShowProgress") != null)
@@ -262,15 +292,6 @@ namespace StalkerOnlineQuesterEditor
                     {
                         additional.DebugData = item.Element("Additional").Element("DebugData").Value.ToString();
                     }
-                }
-                if (item.Element("Penalty") != null)
-                {
-                    AddDataToList(item, "Penalty", "Experience", penalty.Experience);
-                    AddDataToList(item, "Penalty", "NumOfItems", penalty.NumOfItems);
-                    AddDataToList(item, "Penalty", "TypeOfItems", penalty.TypeOfItems);
-
-                    if ((item.Element("Penalty").Element("Credits") != null) && (!item.Element("Penalty").Element("Credits").Value.Equals("")))
-                        penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value, System.Globalization.CultureInfo.InvariantCulture);
                 }
 
                 if (!dict_target.ContainsKey(QuestID))
@@ -556,8 +577,19 @@ namespace StalkerOnlineQuesterEditor
                          element.Element("Penalty").Add(new XElement("TypeOfItems", Global.GetListAsString(questValue.QuestPenalty.TypeOfItems)));
                      if (questValue.QuestPenalty.NumOfItems.Any())
                          element.Element("Penalty").Add(new XElement("NumOfItems", Global.GetListAsString(questValue.QuestPenalty.NumOfItems)));
-                    if (questValue.QuestPenalty.Credits != 0)
-                        element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits));
+                     if (questValue.QuestPenalty.AttrOfItems.Any())
+                         element.Element("Penalty").Add(new XElement("AttrOfItems", Global.GetListAsString(questValue.QuestPenalty.AttrOfItems)));
+                     if (questValue.QuestPenalty.Probability.Any())
+                         element.Element("Penalty").Add(new XElement("Probability", getListAsString(questValue.QuestPenalty.Probability)));
+                     if (questValue.QuestPenalty.Credits != 0)
+                         element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits));
+                     if (questValue.QuestPenalty.ReputationNotEmpty())
+                         element.Element("Penalty").Add(new XElement("Reputation", questValue.QuestPenalty.getReputation()));
+                     if (questValue.QuestPenalty.KarmaPK != 0)
+                         element.Element("Penalty").Add(new XElement("KarmaPK", questValue.QuestPenalty.KarmaPK.ToString()));
+                     List<XElement> EffectsXE = getEffectElements(questValue.QuestPenalty.Effects);
+                     if (EffectsXE.Any())
+                         element.Element("Penalty").Add(new XElement("Effects", EffectsXE));
                 }
 
                 if (questValue.Additional.Any())

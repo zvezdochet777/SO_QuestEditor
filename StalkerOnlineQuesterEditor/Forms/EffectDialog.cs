@@ -13,18 +13,20 @@ namespace StalkerOnlineQuesterEditor
     {
         public MainForm parent;
         public EditQuestForm parentForm;
+        public List<CEffect> effects;
 
-        public EditDialogEffect(MainForm parent, EditQuestForm parentForm, int questID)
+        public EditDialogEffect(MainForm parent, EditQuestForm parentForm, int questID, ref List<CEffect> effects)
         {
             InitializeComponent();
             this.parent = parent;
             this.parentForm = parentForm;
+            this.effects = effects;
 
             foreach (string effect_name in parent.effects.getAllDescriptions())
                 ((DataGridViewComboBoxColumn)dataGridEffects.Columns[0]).Items.Add(effect_name);
             ((DataGridViewComboBoxColumn)dataGridEffects.Columns[0]).Sorted = true;
 
-            foreach (CEffect effect in parentForm.editQuestReward.Effects)
+            foreach (CEffect effect in effects)
             {
                 string name = parent.effects.getDescriptionOnID(effect.getID());
                 string stack = effect.getStack().ToString();
@@ -46,7 +48,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bOk_Click(object sender, EventArgs e)
         {
-            parentForm.editQuestReward.Effects = new List<CEffect>();
+            effects.Clear();
             foreach (DataGridViewRow row in dataGridEffects.Rows)
             {
                 if (row.Cells[1].FormattedValue.ToString() != "" && row.Cells[0].FormattedValue.ToString()!= "")
@@ -55,7 +57,7 @@ namespace StalkerOnlineQuesterEditor
                     int id = parent.effects.getIDOnDescription(typeName);
                     int stack = int.Parse(row.Cells[1].FormattedValue.ToString());
 
-                    parentForm.editQuestReward.Effects.Add(new CEffect(id, stack));
+                    effects.Add(new CEffect(id, stack));
                 }
             }
             parentForm.checkRewardIndicates();

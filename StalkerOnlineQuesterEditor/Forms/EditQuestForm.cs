@@ -29,6 +29,7 @@ namespace StalkerOnlineQuesterEditor
         int ITEM_REWARD = 0;
         int ITEM_QUESTRULES = 1;
         int ITEM_LOCALIZATION = 2;
+        int ITEM_PENALTY = 4;
 
         int QuestType;
 
@@ -45,6 +46,7 @@ namespace StalkerOnlineQuesterEditor
         public CQuestTarget editTarget = new CQuestTarget();
         public CQuestRules editQuestRules = new CQuestRules();
         public CQuestReward editQuestReward = new CQuestReward();
+        public CQuestReward editQuestPenalty = new CQuestReward();
         public CQuestInformation editInformation = new CQuestInformation();
         public MainForm parent;
         public CQuest quest;
@@ -85,6 +87,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 editQuestRules = quest.QuestRules;
                 editQuestReward = quest.Reward;
+                editQuestPenalty = quest.QuestPenalty;
                 editTarget = quest.Target;
                 editInformation = quest.QuestInformation;
             }
@@ -775,16 +778,31 @@ namespace StalkerOnlineQuesterEditor
                 bRewardItem.Image = Properties.Resources.but_indicate;
             else
                 bRewardItem.Image = null;
-            //if (editQuestReward.Fractions.Any())
-            //if (editQuestReward.Reputation.Any())
+
+            if (editQuestPenalty.TypeOfItems.Any())
+                bPenaltyItem.Image = Properties.Resources.but_indicate;
+            else
+                bPenaltyItem.Image = null;
+
             if (editQuestReward.ReputationNotEmpty())
                 bRewardReputation.Image = Properties.Resources.but_indicate;
             else
                 bRewardReputation.Image = null;
+
+            if (editQuestPenalty.ReputationNotEmpty())
+                bPenaltyReputation.Image = Properties.Resources.but_indicate;
+            else
+                bPenaltyReputation.Image = null;
+
             if (editQuestReward.Effects.Any())
                 bRewardEffects.Image = Properties.Resources.but_indicate;
             else
                 bRewardEffects.Image = null;
+
+            if (editQuestPenalty.Effects.Any())
+                bPenaltyEffects.Image = Properties.Resources.but_indicate;
+            else
+                bPenaltyEffects.Image = null; 
         }
         //! Создает индиикацию кнопки Предметы в графе Правила квеста
         public void checkQuestRulesIndicates()
@@ -803,9 +821,19 @@ namespace StalkerOnlineQuesterEditor
                 tSurvival.Text = quest.Reward.Experience[1].ToString();
                 tSupport.Text = quest.Reward.Experience[2].ToString();
             }
+
+            if (quest.QuestPenalty.Experience.Count == 3)
+            {
+                tbPenaltyExperience.Text = quest.QuestPenalty.Experience[0].ToString();
+                tbPenaltySurvival.Text = quest.QuestPenalty.Experience[1].ToString();
+                tbPenaltySupport.Text = quest.QuestPenalty.Experience[2].ToString();
+            }
+
             cbRewardWindow.Checked = quest.Reward.RewardWindow;
             creditsTextBox.Text = quest.Reward.Credits.ToString();
+            tbPenaltyCredits.Text = quest.QuestPenalty.Credits.ToString();
             textBoxKarmaPK.Text = quest.Reward.KarmaPK.ToString();
+            tbPenaltyKarmaPK.Text = quest.QuestPenalty.KarmaPK.ToString();
         }
         //! Собирает данные с формы, и возвращает экземпляр CQuest с этими данными
         public CQuest getQuest()
@@ -816,7 +844,7 @@ namespace StalkerOnlineQuesterEditor
             CQuestReward reward = new CQuestReward();
             CQuestRules rules = new CQuestRules();
             CQuestTarget target = new CQuestTarget();
-            CQuestPenalty penalty = new CQuestPenalty();
+            CQuestReward penalty = new CQuestReward();
 
             information.Description = descriptionTextBox.Text;
             information.Title = titleTextBox.Text;
@@ -1024,6 +1052,12 @@ namespace StalkerOnlineQuesterEditor
             reward.KarmaPK = ParseIntIfNotEmpty(textBoxKarmaPK.Text);
             reward.RewardWindow = cbRewardWindow.Checked;
 
+            penalty.Experience.Add(ParseIntIfNotEmpty(tbPenaltyExperience.Text));
+            penalty.Experience.Add(ParseIntIfNotEmpty(tbPenaltySurvival.Text));
+            penalty.Experience.Add(ParseIntIfNotEmpty(tbPenaltySupport.Text));
+            penalty.Credits = ParseIntIfNotEmpty(tbPenaltyCredits.Text);
+            penalty.KarmaPK = ParseIntIfNotEmpty(tbPenaltyKarmaPK.Text);
+
             int iProgressResult = 0;
             if (showCloseCheckBox.Checked)
                 iProgressResult |= this.SHOW_MESSAGE_CLOSE;
@@ -1052,6 +1086,13 @@ namespace StalkerOnlineQuesterEditor
             reward.Probability = editQuestReward.Probability;
             reward.Reputation = editQuestReward.Reputation;
             reward.Effects = editQuestReward.Effects;
+
+            penalty.TypeOfItems = editQuestPenalty.TypeOfItems;
+            penalty.NumOfItems = editQuestPenalty.NumOfItems;
+            penalty.AttrOfItems = editQuestPenalty.AttrOfItems;
+            penalty.Probability = editQuestPenalty.Probability;
+            penalty.Reputation = editQuestPenalty.Reputation;
+            penalty.Effects = editQuestPenalty.Effects;
 
             rules.TypeOfItems = editQuestRules.TypeOfItems;
             rules.NumOfItems = editQuestRules.NumOfItems;
@@ -1317,7 +1358,7 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие Репутация в наградах квеста - открывает окно редактирования репутаций
         private void bRewardReputation_Click(object sender, EventArgs e)
         {
-            RewardFractions formFractions = new RewardFractions(this);
+            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestReward.Reputation);
             formFractions.Visible = true;
             this.Enabled = false;
         }
@@ -1330,7 +1371,7 @@ namespace StalkerOnlineQuesterEditor
         //! Открывает окно редактирования эффектов (бафов)
         private void bRewardEffects_Click(object sender, EventArgs e)
         {
-            EditDialogEffect edit_effect = new EditDialogEffect(this.parent, this, this.QuestID);
+            EditDialogEffect edit_effect = new EditDialogEffect(this.parent, this, this.QuestID, ref this.editQuestReward.Effects);
             edit_effect.Visible = true;
             this.Enabled = false;
         }
@@ -1383,6 +1424,28 @@ namespace StalkerOnlineQuesterEditor
                 nupMobCount.Enabled = false;
             }
             else nupMobCount.Enabled = true;
+        }
+
+        private void bPenaltyItem_Click(object sender, EventArgs e)
+        {
+            ItemDialog itemDialog = new ItemDialog(this.parent, this, null, quest.QuestID, this.ITEM_PENALTY);
+            itemDialog.Enabled = true;
+            itemDialog.Visible = true;
+            this.Enabled = false;
+        }
+
+        private void bPenaltyEffects_Click(object sender, EventArgs e)
+        {
+            EditDialogEffect edit_effect = new EditDialogEffect(this.parent, this, this.QuestID, ref this.editQuestPenalty.Effects);
+            edit_effect.Visible = true;
+            this.Enabled = false;
+        }
+
+        private void bPenaltyReputation_Click(object sender, EventArgs e)
+        {
+            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestPenalty.Reputation);
+            formFractions.Visible = true;
+            this.Enabled = false;
         }
         
     }

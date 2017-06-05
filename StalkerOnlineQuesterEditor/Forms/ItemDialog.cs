@@ -17,6 +17,7 @@ namespace StalkerOnlineQuesterEditor
         int ITEM_QUESTRULES = 1;
         int ITEM_LOCALIZATION_RULES = 2;
         int ITEM_LOCALIZATION_REWARD = 3;
+        int ITEM_PENALTY = 4;
 
         int questID;
         public MainForm parent;
@@ -112,6 +113,53 @@ namespace StalkerOnlineQuesterEditor
                     string probability = "1";
                     if (parentForm.quest.Reward.Probability.Count > 0)
                         probability = parentForm.quest.Reward.Probability[i].ToString();
+                    if (parentForm.quest.QuestInformation.Items.Keys.Contains(typeID))
+                    {
+                        title = parentForm.quest.QuestInformation.Items[typeID].title;
+                        description = parentForm.quest.QuestInformation.Items[typeID].description;
+                        activation = parentForm.quest.QuestInformation.Items[typeID].activation;
+                    }
+                    object[] row = { name, attr, quantity.ToString(), probability, title, description, activation };
+                    itemGridView.Rows.Add(row);
+                }
+            }
+
+            else if (formType == this.ITEM_PENALTY)
+            {
+                //                System.Console.WriteLine("formType::ITEM_REWARD");
+                this.Text += " Награда";
+                itemGridView.Columns["itemProbability"].Visible = true;
+                for (int i = 0; i < parentForm.editQuestReward.TypeOfItems.Count; ++i)
+                {
+                    int typeID = parentForm.editQuestPenalty.TypeOfItems[i];
+                    int quantity = parentForm.editQuestPenalty.NumOfItems[i];
+                    string name = parent.itemConst.getDescriptionOnID(typeID);
+                    string attr;
+                    try
+                    {
+                        switch (parentForm.editQuestPenalty.AttrOfItems[i])
+                        {
+                            case 1:
+                                attr = "Квестовый";
+                                break;
+                            case 2:
+                                attr = "Авто";
+                                break;
+                            default:
+                                attr = "Обычный";
+                                break;
+                        }
+                    }
+                    catch
+                    {
+                        attr = "Обычный";
+                    }
+                    string title = "";
+                    string description = "";
+                    string activation = "";
+                    string probability = "1";
+                    if (parentForm.quest.QuestPenalty.Probability.Count > 0)
+                        probability = parentForm.quest.QuestPenalty.Probability[i].ToString();
                     if (parentForm.quest.QuestInformation.Items.Keys.Contains(typeID))
                     {
                         title = parentForm.quest.QuestInformation.Items[typeID].title;
@@ -384,6 +432,18 @@ namespace StalkerOnlineQuesterEditor
                 parentForm.editQuestReward.AttrOfItems = attrOfItems;
                 parentForm.editQuestReward.Probability.Clear();
                 parentForm.editQuestReward.Probability = probabilityOfItems;
+                parentForm.checkRewardIndicates();
+            }
+            else if (formType == this.ITEM_PENALTY)
+            {
+                parentForm.editQuestPenalty.TypeOfItems.Clear();
+                parentForm.editQuestPenalty.TypeOfItems = typeOfItems;
+                parentForm.editQuestPenalty.NumOfItems.Clear();
+                parentForm.editQuestPenalty.NumOfItems = numOfItems;
+                parentForm.editQuestPenalty.AttrOfItems.Clear();
+                parentForm.editQuestPenalty.AttrOfItems = attrOfItems;
+                parentForm.editQuestPenalty.Probability.Clear();
+                parentForm.editQuestPenalty.Probability = probabilityOfItems;
                 parentForm.checkRewardIndicates();
             }
             else if (formType == this.ITEM_LOCALIZATION_RULES || formType == this.ITEM_LOCALIZATION_REWARD)

@@ -12,9 +12,11 @@ namespace StalkerOnlineQuesterEditor
     public partial class RewardFractions : Form
     {
         EditQuestForm form;
-        public RewardFractions(EditQuestForm form)
+        Dictionary<int, int> reputations;
+        public RewardFractions(EditQuestForm form, ref Dictionary<int, int> reputations)
         {
             this.form = form;
+            this.reputations = reputations;
             InitializeComponent();
 
             foreach (KeyValuePair<int, string> pair in form.parent.fractions.getListOfFractions())
@@ -22,8 +24,8 @@ namespace StalkerOnlineQuesterEditor
                 string id = pair.Key.ToString();
                 string name = pair.Value;
                 int rewardValue = 0;
-                if (form.editQuestReward.Reputation.Keys.Contains(pair.Key))
-                    rewardValue = form.editQuestReward.Reputation[pair.Key];
+                if (reputations.Keys.Contains(pair.Key))
+                    rewardValue = reputations[pair.Key];
                 object[] row = { id, name, rewardValue };
                 dataFractions.Rows.Add(row);
             }
@@ -41,14 +43,14 @@ namespace StalkerOnlineQuesterEditor
 
         private void bOk_Click(object sender, EventArgs e)
         {
-            form.editQuestReward.Reputation.Clear();
+            reputations.Clear();
             foreach (DataGridViewRow row in dataFractions.Rows)
             {
                 int id = int.Parse(row.Cells[0].FormattedValue.ToString());
                 string sValue = row.Cells[2].FormattedValue.ToString();
                 int nValue;
                 if (int.TryParse(sValue, out nValue))
-                    form.editQuestReward.Reputation[id] = nValue;
+                    reputations[id] = nValue;
             }
 
             form.checkRewardIndicates();
