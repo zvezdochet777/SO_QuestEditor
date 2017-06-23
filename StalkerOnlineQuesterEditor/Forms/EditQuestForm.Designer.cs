@@ -78,7 +78,8 @@
             this.cbMobType = new System.Windows.Forms.ComboBox();
             this.cbScenaryType = new System.Windows.Forms.ComboBox();
             this.panelCreateNPC = new System.Windows.Forms.Panel();
-            this.cbNPCMobNoArg = new System.Windows.Forms.CheckBox();
+            this.cbNPCIgnoreWAR = new System.Windows.Forms.CheckBox();
+            this.cbNPCMobNoAggr = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nupNPCSpeed = new System.Windows.Forms.NumericUpDown();
             this.cbNPCInvul = new System.Windows.Forms.CheckBox();
@@ -282,7 +283,7 @@
             this.rewardGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.rewardGroupBox.Location = new System.Drawing.Point(3, 3);
             this.rewardGroupBox.Name = "rewardGroupBox";
-            this.rewardGroupBox.Size = new System.Drawing.Size(611, 134);
+            this.rewardGroupBox.Size = new System.Drawing.Size(611, 128);
             this.rewardGroupBox.TabIndex = 5;
             this.rewardGroupBox.TabStop = false;
             this.rewardGroupBox.Text = "Награда";
@@ -364,7 +365,7 @@
             // 
             // textBoxKarmaPK
             // 
-            this.textBoxKarmaPK.Location = new System.Drawing.Point(164, 95);
+            this.textBoxKarmaPK.Location = new System.Drawing.Point(119, 89);
             this.textBoxKarmaPK.Name = "textBoxKarmaPK";
             this.textBoxKarmaPK.Size = new System.Drawing.Size(100, 20);
             this.textBoxKarmaPK.TabIndex = 36;
@@ -372,11 +373,11 @@
             // lKarmaPK
             // 
             this.lKarmaPK.AutoSize = true;
-            this.lKarmaPK.Location = new System.Drawing.Point(7, 98);
+            this.lKarmaPK.Location = new System.Drawing.Point(10, 92);
             this.lKarmaPK.Name = "lKarmaPK";
-            this.lKarmaPK.Size = new System.Drawing.Size(146, 13);
+            this.lKarmaPK.Size = new System.Drawing.Size(58, 13);
             this.lKarmaPK.TabIndex = 30;
-            this.lKarmaPK.Text = "Карма ПК (\"-\" -  вычитание)";
+            this.lKarmaPK.Text = "Карма ПК";
             // 
             // bHideReward
             // 
@@ -574,7 +575,7 @@
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
             this.panelCreateMob.Location = new System.Drawing.Point(3, 301);
             this.panelCreateMob.Name = "panelCreateMob";
-            this.panelCreateMob.Size = new System.Drawing.Size(622, 161);
+            this.panelCreateMob.Size = new System.Drawing.Size(22, 161);
             this.panelCreateMob.TabIndex = 17;
             this.panelCreateMob.Visible = false;
             // 
@@ -711,7 +712,8 @@
             // 
             // panelCreateNPC
             // 
-            this.panelCreateNPC.Controls.Add(this.cbNPCMobNoArg);
+            this.panelCreateNPC.Controls.Add(this.cbNPCIgnoreWAR);
+            this.panelCreateNPC.Controls.Add(this.cbNPCMobNoAggr);
             this.panelCreateNPC.Controls.Add(this.label3);
             this.panelCreateNPC.Controls.Add(this.nupNPCSpeed);
             this.panelCreateNPC.Controls.Add(this.cbNPCInvul);
@@ -754,15 +756,25 @@
             this.panelCreateNPC.TabIndex = 25;
             this.panelCreateNPC.Visible = false;
             // 
-            // cbNPCMobNoArg
+            // cbNPCIgnoreWAR
             // 
-            this.cbNPCMobNoArg.AutoSize = true;
-            this.cbNPCMobNoArg.Location = new System.Drawing.Point(509, 148);
-            this.cbNPCMobNoArg.Name = "cbNPCMobNoArg";
-            this.cbNPCMobNoArg.Size = new System.Drawing.Size(77, 17);
-            this.cbNPCMobNoArg.TabIndex = 40;
-            this.cbNPCMobNoArg.Text = "MobNoAgr";
-            this.cbNPCMobNoArg.UseVisualStyleBackColor = true;
+            this.cbNPCIgnoreWAR.AutoSize = true;
+            this.cbNPCIgnoreWAR.Location = new System.Drawing.Point(424, 148);
+            this.cbNPCIgnoreWAR.Name = "cbNPCIgnoreWAR";
+            this.cbNPCIgnoreWAR.Size = new System.Drawing.Size(82, 17);
+            this.cbNPCIgnoreWAR.TabIndex = 41;
+            this.cbNPCIgnoreWAR.Text = "IgnoreWAR";
+            this.cbNPCIgnoreWAR.UseVisualStyleBackColor = true;
+            // 
+            // cbNPCMobNoAggr
+            // 
+            this.cbNPCMobNoAggr.AutoSize = true;
+            this.cbNPCMobNoAggr.Location = new System.Drawing.Point(509, 148);
+            this.cbNPCMobNoAggr.Name = "cbNPCMobNoAggr";
+            this.cbNPCMobNoAggr.Size = new System.Drawing.Size(77, 17);
+            this.cbNPCMobNoAggr.TabIndex = 40;
+            this.cbNPCMobNoAggr.Text = "MobNoAgr";
+            this.cbNPCMobNoAggr.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -2070,7 +2082,7 @@
         private System.Windows.Forms.ComboBox resultComboBox;
         private System.Windows.Forms.NumericUpDown nupNPCSpeed;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox cbNPCMobNoArg;
+        private System.Windows.Forms.CheckBox cbNPCMobNoAggr;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox rewardGroupBox;
@@ -2103,5 +2115,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button bPenaltyEffects;
         private System.Windows.Forms.Button bPenaltyReputation;
+        private System.Windows.Forms.CheckBox cbNPCIgnoreWAR;
     }
 }

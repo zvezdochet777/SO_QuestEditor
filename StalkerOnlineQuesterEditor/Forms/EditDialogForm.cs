@@ -133,7 +133,7 @@ namespace StalkerOnlineQuesterEditor
                     string key = parent.tpConst.getName(curDialog.Actions.Data);
                     teleportComboBox.SelectedItem = key;
                 }
-                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Обмен")
+                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Бартер")
                 {
                     tbAvatarGoTo.Text = curDialog.Actions.Data;
                 }
@@ -442,7 +442,7 @@ namespace StalkerOnlineQuesterEditor
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
             commandsComboBox.Visible = (SelectedValue == 19) || (SelectedValue == 4) || (SelectedValue == 6);
-            tbAvatarGoTo.Visible = (SelectedValue == 20) || (SelectedValue == 1) || (SelectedValue == 2);
+            tbAvatarGoTo.Visible = (SelectedValue == 20) || (SelectedValue == 1) || (SelectedValue == 7);
             if (SelectedValue == 19)
             {
                 commandsComboBox.Items.Clear();
@@ -455,9 +455,6 @@ namespace StalkerOnlineQuesterEditor
                 foreach (string key in parent.rpConst.getKeys())
                     commandsComboBox.Items.Add(key);
             }
-
-
-
 
             switch (SelectedValue)
             { 
@@ -519,9 +516,6 @@ namespace StalkerOnlineQuesterEditor
             List<int> nodes = new List<int>();
             //List<string> holder = new List<string>();
             string holder = parent.GetCurrentNPC();
-           
-
-            
 
             if (!tNodes.Text.Equals(""))
                 foreach (string node in tNodes.Text.Split(','))
@@ -549,7 +543,7 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if ((actions.Event.Display == "Починка") || (actions.Event.Display == "Комплексная починка"))
                     actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
-                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Обмен" || actions.Event.Display == "Торговля")
+                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Бартер" || actions.Event.Display == "Торговля")
                     actions.Data = tbAvatarGoTo.Text;
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))

@@ -346,7 +346,8 @@ namespace StalkerOnlineQuesterEditor
             public float walkSpeed = 0;
             public bool uniq = false;
             public bool invulnerable = false;
-            public bool mobNoAgr = false;
+            public bool mobNoAggr = false;
+            public int ignoreWAR = 0;
 
             public bool Any()
             {
@@ -395,7 +396,9 @@ namespace StalkerOnlineQuesterEditor
                 if (element.Element("invulnerable") != null)
                     invulnerable = true;
                 if (element.Element("mobNoAggr") != null)
-                    mobNoAgr = true;
+                    mobNoAggr = true;
+                if (element.Element("ignoreWAR") != null)
+                    int.TryParse(element.Element("ignoreWAR").Value, out ignoreWAR);
                 if (element.Element("walkSpeed") != null)
                     float.TryParse(element.Element("walkSpeed").Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out walkSpeed);
             }
@@ -444,7 +447,8 @@ namespace StalkerOnlineQuesterEditor
                 if (head != 0)
                     result.Add(new XElement("head", Global.GetIntAsString(head)));
                 if (uniq) result.Add(new XElement("uniq", "1"));
-                if (mobNoAgr) result.Add(new XElement("mobNoAggr", "1"));
+                if (mobNoAggr) result.Add(new XElement("mobNoAggr", "1"));
+                if (ignoreWAR > 0) result.Add(new XElement("ignoreWAR", Global.GetIntAsString(ignoreWAR)));
                 return result;
             }
         }

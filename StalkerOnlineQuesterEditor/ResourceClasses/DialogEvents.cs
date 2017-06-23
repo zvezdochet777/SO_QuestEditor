@@ -47,7 +47,7 @@ namespace StalkerOnlineQuesterEditor
             allEvents.Clear();
             allEvents.Add(new DialogEvent("Пусто", 0));
             allEvents.Add(new DialogEvent("Торговля", 1));
-            allEvents.Add(new DialogEvent("Обмен", 2));
+            allEvents.Add(new DialogEvent("Склад", 2));
             allEvents.Add(new DialogEvent("Создание клана", 3));
             allEvents.Add(new DialogEvent("Починка", 4));
             allEvents.Add(new DialogEvent("Телепорт", 5));
