@@ -588,7 +588,7 @@ namespace StalkerOnlineQuesterEditor
             }
             if (!tMustHaveFailQuests.Text.Equals(""))
             {
-                if (cbMustHaveOpenQuests.Checked)
+                if (cbMustHaveFailQuests.Checked)
                     precondition.ListOfNecessaryQuests.conditionOfFailQuests = '|';
                 else
                     precondition.ListOfNecessaryQuests.conditionOfFailQuests = '&';

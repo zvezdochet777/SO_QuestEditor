@@ -344,6 +344,8 @@ namespace StalkerOnlineQuesterEditor
             public string animation = "";
             public int weapon = 0, hand = 0, boots = 0, body = 0, armor = 0, legs = 0, cap = 0, mask = 0, back = 0, head = 0;
             public float walkSpeed = 0;
+            public float shootRange = 0;
+            public float shootRangeOnCreature = 0;
             public bool uniq = false;
             public bool invulnerable = false;
             public bool mobNoAggr = false;
@@ -401,6 +403,11 @@ namespace StalkerOnlineQuesterEditor
                     int.TryParse(element.Element("ignoreWAR").Value, out ignoreWAR);
                 if (element.Element("walkSpeed") != null)
                     float.TryParse(element.Element("walkSpeed").Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out walkSpeed);
+                if (element.Element("shootRange") != null)
+                    float.TryParse(element.Element("shootRange").Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out shootRange);
+                if (element.Element("shootRangeOnCreature") != null)
+                    float.TryParse(element.Element("shootRangeOnCreature").Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out shootRangeOnCreature);
+
             }
 
             public XElement getXML()
@@ -424,8 +431,12 @@ namespace StalkerOnlineQuesterEditor
                     result.Add(new XElement("animation", animation));
                 if (invulnerable)
                     result.Add(new XElement("invulnerable", "1"));
-                if (walkSpeed != 0.0)
+                if (walkSpeed != 0.0f)
                     result.Add(new XElement("walkSpeed", walkSpeed));
+                if (shootRange != 0.0f)
+                    result.Add(new XElement("shootRange", shootRange));
+                if (shootRangeOnCreature != 0.0f)
+                    result.Add(new XElement("shootRangeOnCreature", shootRangeOnCreature));
                 if (weapon != 0)
                     result.Add(new XElement("weapon", Global.GetIntAsString(weapon)));
                 if (hand != 0)

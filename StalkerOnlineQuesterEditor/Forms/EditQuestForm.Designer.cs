@@ -78,6 +78,8 @@
             this.cbMobType = new System.Windows.Forms.ComboBox();
             this.cbScenaryType = new System.Windows.Forms.ComboBox();
             this.panelCreateNPC = new System.Windows.Forms.Panel();
+            this.nupNPCShootRange = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
             this.cbNPCIgnoreWAR = new System.Windows.Forms.CheckBox();
             this.cbNPCMobNoAggr = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -190,6 +192,8 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
+            this.nupNPCShootRangeOnCreature = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -199,6 +203,7 @@
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).BeginInit();
             this.filedIFtContentBox.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -212,6 +217,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.udState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).BeginInit();
             this.questInformationBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).BeginInit();
             this.SuspendLayout();
             // 
             // QuestPanel
@@ -575,7 +581,7 @@
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
             this.panelCreateMob.Location = new System.Drawing.Point(3, 301);
             this.panelCreateMob.Name = "panelCreateMob";
-            this.panelCreateMob.Size = new System.Drawing.Size(22, 161);
+            this.panelCreateMob.Size = new System.Drawing.Size(622, 161);
             this.panelCreateMob.TabIndex = 17;
             this.panelCreateMob.Visible = false;
             // 
@@ -712,6 +718,10 @@
             // 
             // panelCreateNPC
             // 
+            this.panelCreateNPC.Controls.Add(this.nupNPCShootRangeOnCreature);
+            this.panelCreateNPC.Controls.Add(this.label15);
+            this.panelCreateNPC.Controls.Add(this.nupNPCShootRange);
+            this.panelCreateNPC.Controls.Add(this.label14);
             this.panelCreateNPC.Controls.Add(this.cbNPCIgnoreWAR);
             this.panelCreateNPC.Controls.Add(this.cbNPCMobNoAggr);
             this.panelCreateNPC.Controls.Add(this.label3);
@@ -755,6 +765,38 @@
             this.panelCreateNPC.Size = new System.Drawing.Size(622, 172);
             this.panelCreateNPC.TabIndex = 25;
             this.panelCreateNPC.Visible = false;
+            // 
+            // nupNPCShootRange
+            // 
+            this.nupNPCShootRange.DecimalPlaces = 1;
+            this.nupNPCShootRange.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nupNPCShootRange.Location = new System.Drawing.Point(283, 145);
+            this.nupNPCShootRange.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nupNPCShootRange.Name = "nupNPCShootRange";
+            this.nupNPCShootRange.Size = new System.Drawing.Size(136, 20);
+            this.nupNPCShootRange.TabIndex = 43;
+            this.nupNPCShootRange.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(230, 148);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(52, 13);
+            this.label14.TabIndex = 42;
+            this.label14.Text = "ShtRnge:";
             // 
             // cbNPCIgnoreWAR
             // 
@@ -1898,6 +1940,38 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
+            // nupNPCShootRangeOnCreature
+            // 
+            this.nupNPCShootRangeOnCreature.DecimalPlaces = 1;
+            this.nupNPCShootRangeOnCreature.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nupNPCShootRangeOnCreature.Location = new System.Drawing.Point(93, 146);
+            this.nupNPCShootRangeOnCreature.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nupNPCShootRangeOnCreature.Name = "nupNPCShootRangeOnCreature";
+            this.nupNPCShootRangeOnCreature.Size = new System.Drawing.Size(136, 20);
+            this.nupNPCShootRangeOnCreature.TabIndex = 45;
+            this.nupNPCShootRangeOnCreature.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(4, 149);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(92, 13);
+            this.label15.TabIndex = 44;
+            this.label15.Text = "ShtRngeCreature:";
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1928,6 +2002,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).EndInit();
             this.panelCreateNPC.ResumeLayout(false);
             this.panelCreateNPC.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).EndInit();
             this.filedIFtContentBox.ResumeLayout(false);
             this.filedIFtContentBox.PerformLayout();
@@ -1948,6 +2023,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).EndInit();
             this.questInformationBox.ResumeLayout(false);
             this.questInformationBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2116,5 +2192,9 @@
         private System.Windows.Forms.Button bPenaltyEffects;
         private System.Windows.Forms.Button bPenaltyReputation;
         private System.Windows.Forms.CheckBox cbNPCIgnoreWAR;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown nupNPCShootRange;
+        private System.Windows.Forms.NumericUpDown nupNPCShootRangeOnCreature;
+        private System.Windows.Forms.Label label15;
     }
 }

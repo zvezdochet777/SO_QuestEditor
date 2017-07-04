@@ -348,6 +348,11 @@ namespace StalkerOnlineQuesterEditor
                     if (!treeNode.Nodes.ContainsKey(subdialog.ToString()))
                     {
                         treeNode.Nodes.Add(subdialog.ToString(), subdialog.ToString());
+                        if (!dialogs.dialogs[currentNPC].ContainsKey(subdialog))
+                        {
+                            MessageBox.Show("Ошибка диалога, у NPC:" + currentNPC + " нет диалога №" + subdialog + ", а ссылка есть");
+                            continue;
+                        }
                         dialogs.dialogs[currentNPC][subdialog].coordinates.Active = true;
                     }
                 }

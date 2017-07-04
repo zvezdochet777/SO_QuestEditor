@@ -63,6 +63,11 @@
             this.tabQuestsCircs = new System.Windows.Forms.TabControl();
             this.tabQuests = new System.Windows.Forms.TabPage();
             this.gbQuestCondition = new System.Windows.Forms.GroupBox();
+            this.cbShouldntHaveFailQuests = new System.Windows.Forms.CheckBox();
+            this.cbMustHaveFailQuests = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tMustHaveFailQuests = new System.Windows.Forms.MaskedTextBox();
+            this.tShouldntHaveFailQuests = new System.Windows.Forms.MaskedTextBox();
             this.cbShouldntHaveRepeat = new System.Windows.Forms.CheckBox();
             this.cbMustHaveRepeat = new System.Windows.Forms.CheckBox();
             this.tShouldntHaveRepeat = new System.Windows.Forms.MaskedTextBox();
@@ -100,10 +105,6 @@
             this.tabReputation = new System.Windows.Forms.TabPage();
             this.lInfo = new System.Windows.Forms.Label();
             this.dataReputation = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabKarma = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelDescription = new System.Windows.Forms.Label();
@@ -184,11 +185,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.cbShouldntHaveFailQuests = new System.Windows.Forms.CheckBox();
-            this.cbMustHaveFailQuests = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tMustHaveFailQuests = new System.Windows.Forms.MaskedTextBox();
-            this.tShouldntHaveFailQuests = new System.Windows.Forms.MaskedTextBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -647,6 +647,47 @@
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
             // 
+            // cbShouldntHaveFailQuests
+            // 
+            this.cbShouldntHaveFailQuests.AutoSize = true;
+            this.cbShouldntHaveFailQuests.Location = new System.Drawing.Point(379, 118);
+            this.cbShouldntHaveFailQuests.Name = "cbShouldntHaveFailQuests";
+            this.cbShouldntHaveFailQuests.Size = new System.Drawing.Size(15, 14);
+            this.cbShouldntHaveFailQuests.TabIndex = 41;
+            this.cbShouldntHaveFailQuests.UseVisualStyleBackColor = true;
+            // 
+            // cbMustHaveFailQuests
+            // 
+            this.cbMustHaveFailQuests.AutoSize = true;
+            this.cbMustHaveFailQuests.Location = new System.Drawing.Point(146, 118);
+            this.cbMustHaveFailQuests.Name = "cbMustHaveFailQuests";
+            this.cbMustHaveFailQuests.Size = new System.Drawing.Size(15, 14);
+            this.cbMustHaveFailQuests.TabIndex = 40;
+            this.cbMustHaveFailQuests.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 118);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 13);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "Проваленные квесты:";
+            // 
+            // tMustHaveFailQuests
+            // 
+            this.tMustHaveFailQuests.Location = new System.Drawing.Point(167, 115);
+            this.tMustHaveFailQuests.Name = "tMustHaveFailQuests";
+            this.tMustHaveFailQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveFailQuests.TabIndex = 37;
+            // 
+            // tShouldntHaveFailQuests
+            // 
+            this.tShouldntHaveFailQuests.Location = new System.Drawing.Point(273, 115);
+            this.tShouldntHaveFailQuests.Name = "tShouldntHaveFailQuests";
+            this.tShouldntHaveFailQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveFailQuests.TabIndex = 39;
+            // 
             // cbShouldntHaveRepeat
             // 
             this.cbShouldntHaveRepeat.AutoSize = true;
@@ -943,7 +984,7 @@
             // 
             // lInfo
             // 
-            this.lInfo.Location = new System.Drawing.Point(400, 6);
+            this.lInfo.Location = new System.Drawing.Point(420, 3);
             this.lInfo.Name = "lInfo";
             this.lInfo.Size = new System.Drawing.Size(146, 182);
             this.lInfo.TabIndex = 4;
@@ -965,29 +1006,6 @@
             this.dataReputation.Name = "dataReputation";
             this.dataReputation.Size = new System.Drawing.Size(560, 214);
             this.dataReputation.TabIndex = 3;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Имя фракции";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "A (A < X < B)";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // b
-            // 
-            this.b.HeaderText = "B (A < X < B)";
-            this.b.Name = "b";
             // 
             // tabKarma
             // 
@@ -1787,46 +1805,32 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // cbShouldntHaveFailQuests
+            // id
             // 
-            this.cbShouldntHaveFailQuests.AutoSize = true;
-            this.cbShouldntHaveFailQuests.Location = new System.Drawing.Point(379, 118);
-            this.cbShouldntHaveFailQuests.Name = "cbShouldntHaveFailQuests";
-            this.cbShouldntHaveFailQuests.Size = new System.Drawing.Size(15, 14);
-            this.cbShouldntHaveFailQuests.TabIndex = 41;
-            this.cbShouldntHaveFailQuests.UseVisualStyleBackColor = true;
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
             // 
-            // cbMustHaveFailQuests
+            // name
             // 
-            this.cbMustHaveFailQuests.AutoSize = true;
-            this.cbMustHaveFailQuests.Location = new System.Drawing.Point(146, 118);
-            this.cbMustHaveFailQuests.Name = "cbMustHaveFailQuests";
-            this.cbMustHaveFailQuests.Size = new System.Drawing.Size(15, 14);
-            this.cbMustHaveFailQuests.TabIndex = 40;
-            this.cbMustHaveFailQuests.UseVisualStyleBackColor = true;
+            this.name.HeaderText = "Имя фракции";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 150;
             // 
-            // label7
+            // dataGridViewTextBoxColumn1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 118);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 13);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "Проваленные квесты:";
+            this.dataGridViewTextBoxColumn1.FillWeight = 110F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "A (A <= X <= B)";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 110;
             // 
-            // tMustHaveFailQuests
+            // b
             // 
-            this.tMustHaveFailQuests.Location = new System.Drawing.Point(167, 115);
-            this.tMustHaveFailQuests.Name = "tMustHaveFailQuests";
-            this.tMustHaveFailQuests.Size = new System.Drawing.Size(100, 20);
-            this.tMustHaveFailQuests.TabIndex = 37;
-            // 
-            // tShouldntHaveFailQuests
-            // 
-            this.tShouldntHaveFailQuests.Location = new System.Drawing.Point(273, 115);
-            this.tShouldntHaveFailQuests.Name = "tShouldntHaveFailQuests";
-            this.tShouldntHaveFailQuests.Size = new System.Drawing.Size(100, 20);
-            this.tShouldntHaveFailQuests.TabIndex = 39;
+            this.b.FillWeight = 110F;
+            this.b.HeaderText = "B (A <= X <= B)";
+            this.b.Name = "b";
+            this.b.Width = 110;
             // 
             // EditDialogForm
             // 
@@ -1951,10 +1955,6 @@
         private System.Windows.Forms.Label a;
         private System.Windows.Forms.Label lInfo;
         private System.Windows.Forms.DataGridView dataReputation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn b;
         private System.Windows.Forms.CheckBox cbWarTime;
         private System.Windows.Forms.CheckBox cbPeaceTime;
         private System.Windows.Forms.CheckBox cbNotEnemy;
@@ -2050,5 +2050,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox tMustHaveFailQuests;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveFailQuests;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn b;
     }
 }

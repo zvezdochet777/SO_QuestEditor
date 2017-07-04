@@ -644,6 +644,8 @@ namespace StalkerOnlineQuesterEditor
             npc.mobNoAggr = cbNPCMobNoAggr.Checked;
             npc.ignoreWAR = Convert.ToInt16(cbNPCIgnoreWAR.Checked);
 
+            npc.shootRange = Convert.ToSingle(nupNPCShootRange.Value);
+            npc.shootRangeOnCreature = Convert.ToSingle(nupNPCShootRangeOnCreature.Value);
             npc.walkSpeed = Convert.ToSingle(nupNPCSpeed.Value);
             return npc;
         }
@@ -705,6 +707,8 @@ namespace StalkerOnlineQuesterEditor
             cbNPCMobNoAggr.Checked = quest.QuestRules.npc.mobNoAggr;
             cbNPCIgnoreWAR.Checked = quest.QuestRules.npc.ignoreWAR > 0;
             nupNPCSpeed.Value = Convert.ToDecimal(quest.QuestRules.npc.walkSpeed);
+            nupNPCShootRange.Value = Convert.ToDecimal(quest.QuestRules.npc.shootRange);
+            nupNPCShootRangeOnCreature.Value = Convert.ToDecimal(quest.QuestRules.npc.shootRangeOnCreature);
         }
         void initCreateMobPanel()
         {
