@@ -169,6 +169,7 @@ namespace StalkerOnlineQuesterEditor
                 onWonTextBox.Text = quest.QuestInformation.onWin;
                 onFailedTextBox.Text = quest.QuestInformation.onFailed;
                 cantCancelCheckBox.Checked = quest.Additional.CantCancel;
+                cantFailCheckBox.Checked = quest.Additional.CantFail;
 
                 if ((quest.Additional.ShowProgress & this.SHOW_MESSAGE_CLOSE) > 0)
                     showCloseCheckBox.Checked = true;
@@ -1084,6 +1085,7 @@ namespace StalkerOnlineQuesterEditor
             }
             additional.ShowProgress = iProgressResult;
             additional.CantCancel = cantCancelCheckBox.Checked;
+            additional.CantFail = cantFailCheckBox.Checked;
             CQuest retQuest;
 
             reward.TypeOfItems = editQuestReward.TypeOfItems;

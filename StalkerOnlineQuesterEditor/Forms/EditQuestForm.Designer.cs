@@ -78,6 +78,8 @@
             this.cbMobType = new System.Windows.Forms.ComboBox();
             this.cbScenaryType = new System.Windows.Forms.ComboBox();
             this.panelCreateNPC = new System.Windows.Forms.Panel();
+            this.nupNPCShootRangeOnCreature = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
             this.nupNPCShootRange = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.cbNPCIgnoreWAR = new System.Windows.Forms.CheckBox();
@@ -192,8 +194,7 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
-            this.nupNPCShootRangeOnCreature = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
+            this.cantFailCheckBox = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -203,6 +204,7 @@
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).BeginInit();
             this.filedIFtContentBox.SuspendLayout();
@@ -217,7 +219,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.udState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).BeginInit();
             this.questInformationBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).BeginInit();
             this.SuspendLayout();
             // 
             // QuestPanel
@@ -765,6 +766,38 @@
             this.panelCreateNPC.Size = new System.Drawing.Size(622, 172);
             this.panelCreateNPC.TabIndex = 25;
             this.panelCreateNPC.Visible = false;
+            // 
+            // nupNPCShootRangeOnCreature
+            // 
+            this.nupNPCShootRangeOnCreature.DecimalPlaces = 1;
+            this.nupNPCShootRangeOnCreature.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nupNPCShootRangeOnCreature.Location = new System.Drawing.Point(93, 146);
+            this.nupNPCShootRangeOnCreature.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nupNPCShootRangeOnCreature.Name = "nupNPCShootRangeOnCreature";
+            this.nupNPCShootRangeOnCreature.Size = new System.Drawing.Size(136, 20);
+            this.nupNPCShootRangeOnCreature.TabIndex = 45;
+            this.nupNPCShootRangeOnCreature.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(4, 149);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(92, 13);
+            this.label15.TabIndex = 44;
+            this.label15.Text = "ShtRngeCreature:";
             // 
             // nupNPCShootRange
             // 
@@ -1709,6 +1742,7 @@
             // questInformationBox
             // 
             this.questInformationBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.questInformationBox.Controls.Add(this.cantFailCheckBox);
             this.questInformationBox.Controls.Add(this.cantCancelCheckBox);
             this.questInformationBox.Controls.Add(this.tutorialCheckBox);
             this.questInformationBox.Controls.Add(this.loseRButton);
@@ -1940,37 +1974,15 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
-            // nupNPCShootRangeOnCreature
+            // cantFailCheckBox
             // 
-            this.nupNPCShootRangeOnCreature.DecimalPlaces = 1;
-            this.nupNPCShootRangeOnCreature.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nupNPCShootRangeOnCreature.Location = new System.Drawing.Point(93, 146);
-            this.nupNPCShootRangeOnCreature.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.nupNPCShootRangeOnCreature.Name = "nupNPCShootRangeOnCreature";
-            this.nupNPCShootRangeOnCreature.Size = new System.Drawing.Size(136, 20);
-            this.nupNPCShootRangeOnCreature.TabIndex = 45;
-            this.nupNPCShootRangeOnCreature.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 149);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(92, 13);
-            this.label15.TabIndex = 44;
-            this.label15.Text = "ShtRngeCreature:";
+            this.cantFailCheckBox.AutoSize = true;
+            this.cantFailCheckBox.Location = new System.Drawing.Point(465, 105);
+            this.cantFailCheckBox.Name = "cantFailCheckBox";
+            this.cantFailCheckBox.Size = new System.Drawing.Size(120, 17);
+            this.cantFailCheckBox.TabIndex = 17;
+            this.cantFailCheckBox.Text = "Нельзя провалить";
+            this.cantFailCheckBox.UseVisualStyleBackColor = true;
             // 
             // EditQuestForm
             // 
@@ -2002,6 +2014,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).EndInit();
             this.panelCreateNPC.ResumeLayout(false);
             this.panelCreateNPC.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).EndInit();
             this.filedIFtContentBox.ResumeLayout(false);
@@ -2023,7 +2036,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).EndInit();
             this.questInformationBox.ResumeLayout(false);
             this.questInformationBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2196,5 +2208,6 @@
         private System.Windows.Forms.NumericUpDown nupNPCShootRange;
         private System.Windows.Forms.NumericUpDown nupNPCShootRangeOnCreature;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox cantFailCheckBox;
     }
 }

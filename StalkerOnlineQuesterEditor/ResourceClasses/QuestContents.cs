@@ -585,6 +585,7 @@ namespace StalkerOnlineQuesterEditor
         public List<int> ListOfSubQuest;
         public int ShowProgress;
         public bool CantCancel;
+        public bool CantFail;
         public string Holder;
         public string DebugData;
 
@@ -595,6 +596,7 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfSubQuest = new List<int>(this.ListOfSubQuest);
             copy.ShowProgress = this.ShowProgress;
             copy.CantCancel = this.CantCancel;
+            copy.CantFail = this.CantFail;
             copy.Holder = this.Holder;
             copy.DebugData = this.DebugData;
             return copy;
@@ -608,6 +610,7 @@ namespace StalkerOnlineQuesterEditor
             this.CantCancel = false;
             this.Holder = "";
             this.DebugData = "";
+            this.CantFail = false;
         }
 
         public CQuestAdditional(string Holder)
@@ -622,7 +625,7 @@ namespace StalkerOnlineQuesterEditor
 
         public bool Any()
         {
-            return ListOfSubQuest.Any() || IsSubQuest != 0 || ShowProgress != 0 || CantCancel || Holder != "" || DebugData != "";
+            return ListOfSubQuest.Any() || IsSubQuest != 0 || ShowProgress != 0 || CantCancel || Holder != "" || DebugData != "" || CantFail;
         }
     }
 

@@ -1019,7 +1019,7 @@ namespace StalkerOnlineQuesterEditor
             this.gbQuestCheck.Controls.Add(this.bFindQuest);
             this.gbQuestCheck.Location = new System.Drawing.Point(428, 4);
             this.gbQuestCheck.Name = "gbQuestCheck";
-            this.gbQuestCheck.Size = new System.Drawing.Size(375, 95);
+            this.gbQuestCheck.Size = new System.Drawing.Size(469, 95);
             this.gbQuestCheck.TabIndex = 2;
             this.gbQuestCheck.TabStop = false;
             this.gbQuestCheck.Text = "Квест";
@@ -1027,7 +1027,7 @@ namespace StalkerOnlineQuesterEditor
             // labelItemTarget
             // 
             this.labelItemTarget.AutoSize = true;
-            this.labelItemTarget.Location = new System.Drawing.Point(193, 42);
+            this.labelItemTarget.Location = new System.Drawing.Point(8, 44);
             this.labelItemTarget.Name = "labelItemTarget";
             this.labelItemTarget.Size = new System.Drawing.Size(65, 13);
             this.labelItemTarget.TabIndex = 11;
@@ -1036,15 +1036,15 @@ namespace StalkerOnlineQuesterEditor
             // cbItemTarget
             // 
             this.cbItemTarget.FormattingEnabled = true;
-            this.cbItemTarget.Location = new System.Drawing.Point(196, 65);
+            this.cbItemTarget.Location = new System.Drawing.Point(88, 39);
             this.cbItemTarget.Name = "cbItemTarget";
-            this.cbItemTarget.Size = new System.Drawing.Size(158, 21);
+            this.cbItemTarget.Size = new System.Drawing.Size(375, 21);
             this.cbItemTarget.TabIndex = 10;
             // 
             // labelItemReward
             // 
             this.labelItemReward.AutoSize = true;
-            this.labelItemReward.Location = new System.Drawing.Point(15, 45);
+            this.labelItemReward.Location = new System.Drawing.Point(8, 16);
             this.labelItemReward.Name = "labelItemReward";
             this.labelItemReward.Size = new System.Drawing.Size(67, 13);
             this.labelItemReward.TabIndex = 9;
@@ -1053,14 +1053,14 @@ namespace StalkerOnlineQuesterEditor
             // cbItemReward
             // 
             this.cbItemReward.FormattingEnabled = true;
-            this.cbItemReward.Location = new System.Drawing.Point(18, 65);
+            this.cbItemReward.Location = new System.Drawing.Point(88, 13);
             this.cbItemReward.Name = "cbItemReward";
-            this.cbItemReward.Size = new System.Drawing.Size(158, 21);
+            this.cbItemReward.Size = new System.Drawing.Size(375, 21);
             this.cbItemReward.TabIndex = 8;
             // 
             // bFindQuest
             // 
-            this.bFindQuest.Location = new System.Drawing.Point(18, 19);
+            this.bFindQuest.Location = new System.Drawing.Point(365, 66);
             this.bFindQuest.Name = "bFindQuest";
             this.bFindQuest.Size = new System.Drawing.Size(98, 23);
             this.bFindQuest.TabIndex = 0;

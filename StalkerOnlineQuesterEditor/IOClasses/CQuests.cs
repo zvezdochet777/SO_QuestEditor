@@ -288,6 +288,8 @@ namespace StalkerOnlineQuesterEditor
 
                     if (item.Element("Additional").Descendants().Any(u => u.Name == "CantCancel"))
                         additional.CantCancel = item.Element("Additional").Element("CantCancel").Value.Equals("1");
+                    if (item.Element("Additional").Descendants().Any(u => u.Name == "CantFail"))
+                        additional.CantFail = item.Element("Additional").Element("CantFail").Value.Equals("1");
                     if (item.Element("Additional").Element("DebugData") != null)
                     {
                         additional.DebugData = item.Element("Additional").Element("DebugData").Value.ToString();
@@ -603,6 +605,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Additional").Add(new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()));
                     if (questValue.Additional.CantCancel)
                         element.Element("Additional").Add(new XElement("CantCancel", Global.GetBoolAsString(questValue.Additional.CantCancel)));
+                    if (questValue.Additional.CantFail)
+                        element.Element("Additional").Add(new XElement("CantFail", Global.GetBoolAsString(questValue.Additional.CantFail)));
                     if (questValue.Additional.Holder != "")
                         element.Element("Additional").Add(new XElement("Holder", questValue.Additional.Holder));
                     if (questValue.Additional.DebugData != "")
