@@ -501,14 +501,14 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.Target.Time != 0)
                         element.Element("Target").Add(new XElement("Time", questValue.Target.Time.ToString()));
                     if (questValue.Target.usePercent)
-                        element.Element("Target").Add(new XElement("percent", questValue.Target.percent));
+                        element.Element("Target").Add(new XElement("percent", questValue.Target.percent.ToString("G5", CultureInfo.InvariantCulture)));
                 }
 
                 if (questValue.Precondition.Any())
                 {
                     element.Add(new XElement("Precondition"));
                     if (questValue.Precondition.TakenPeriod != 0)
-                        element.Element("Precondition").Add(new XElement("TakenPeriod", questValue.Precondition.TakenPeriod));
+                        element.Element("Precondition").Add(new XElement("TakenPeriod", questValue.Precondition.TakenPeriod.ToString("G5", CultureInfo.InvariantCulture)));
                     if (questValue.Precondition.Repeat != 0)
                         element.Element("Precondition").Add(new XElement("Repeat", questValue.Precondition.Repeat));
                     if (questValue.Precondition.omniCounter)
@@ -537,7 +537,7 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.QuestRules.MassQuests.Any())
                         element.Element("QuestRules").Add(new XElement("MassQuests", Global.GetListAsString(questValue.QuestRules.MassQuests)));
                     if (questValue.QuestRules.basePercent != 0)
-                        element.Element("QuestRules").Add(new XElement("baseToCapturePercent", questValue.QuestRules.basePercent));
+                        element.Element("QuestRules").Add(new XElement("baseToCapturePercent", questValue.QuestRules.basePercent.ToString("G5", CultureInfo.InvariantCulture)));
                     if (questValue.QuestRules.npc.Any())
                         element.Element("QuestRules").Add(questValue.QuestRules.npc.getXML());
                     if (questValue.QuestRules.mobs.Any())
@@ -584,7 +584,7 @@ namespace StalkerOnlineQuesterEditor
                      if (questValue.QuestPenalty.Probability.Any())
                          element.Element("Penalty").Add(new XElement("Probability", getListAsString(questValue.QuestPenalty.Probability)));
                      if (questValue.QuestPenalty.Credits != 0)
-                         element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits));
+                         element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits.ToString("G5", CultureInfo.InvariantCulture)));
                      if (questValue.QuestPenalty.ReputationNotEmpty())
                          element.Element("Penalty").Add(new XElement("Reputation", questValue.QuestPenalty.getReputation()));
                      if (questValue.QuestPenalty.KarmaPK != 0)
@@ -658,9 +658,9 @@ namespace StalkerOnlineQuesterEditor
             foreach (float element in list)
             {
                 if (str.Equals(""))
-                    str += element.ToString("0.000", CultureInfo.InvariantCulture);
+                    str += element.ToString("0.00000", CultureInfo.InvariantCulture);
                 else
-                    str += ";" + element.ToString("0.000", CultureInfo.InvariantCulture);
+                    str += ";" + element.ToString("0.00000", CultureInfo.InvariantCulture);
             }
             return str;
         }

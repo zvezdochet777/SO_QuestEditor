@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -432,11 +433,11 @@ namespace StalkerOnlineQuesterEditor
                 if (invulnerable)
                     result.Add(new XElement("invulnerable", "1"));
                 if (walkSpeed != 0.0f)
-                    result.Add(new XElement("walkSpeed", walkSpeed));
+                    result.Add(new XElement("walkSpeed", walkSpeed.ToString("G5", CultureInfo.InvariantCulture)));
                 if (shootRange != 0.0f)
-                    result.Add(new XElement("shootRange", shootRange));
+                    result.Add(new XElement("shootRange", shootRange.ToString("G5", CultureInfo.InvariantCulture)));
                 if (shootRangeOnCreature != 0.0f)
-                    result.Add(new XElement("shootRangeOnCreature", shootRangeOnCreature));
+                    result.Add(new XElement("shootRangeOnCreature", shootRangeOnCreature.ToString("G5", CultureInfo.InvariantCulture)));
                 if (weapon != 0)
                     result.Add(new XElement("weapon", Global.GetIntAsString(weapon)));
                 if (hand != 0)
