@@ -361,6 +361,7 @@ namespace StalkerOnlineQuesterEditor
         public CDialogPrecondition Precondition; //Условия
         public Actions Actions; //Действия диалога
         public List<int> Nodes;
+        public List<int> CheckNodes;
         public int version; //Версия для перевода
         public NodeCoordinates coordinates;
         public string DebugData; //Для теста, пока фича не реализована в эдиторе, пользуются этой нодой
@@ -368,7 +369,7 @@ namespace StalkerOnlineQuesterEditor
         public string defaultNode; //Диалог по-умолчанию, если другие не подходят по условиям(для автопереходилки)
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
-                    Actions Actions, List<int> Nodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false, string defaultNode = "")
+                    Actions Actions, List<int> Nodes, List<int> CheckNodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false, string defaultNode = "")
         {
             this.Holder = Holder;
             this.Title = Title;
@@ -376,6 +377,7 @@ namespace StalkerOnlineQuesterEditor
             this.Precondition = Precondition;
             this.Actions = Actions;
             this.Nodes = Nodes;
+            this.CheckNodes = CheckNodes;
             this.DialogID = DialogID;
             this.version = version;
             this.coordinates = Coordinates;
@@ -391,6 +393,7 @@ namespace StalkerOnlineQuesterEditor
             this.Precondition = new CDialogPrecondition();
             this.Actions = new Actions();
             this.Nodes = new List<int>();
+            this.CheckNodes = new List<int>();
             this.DialogID = new int();
             this.version = new int();
             coordinates = new NodeCoordinates();
@@ -406,6 +409,7 @@ namespace StalkerOnlineQuesterEditor
             copy.DialogID = this.DialogID;
             copy.Holder = this.Holder;
             copy.Nodes = new List<int>(this.Nodes);
+            copy.CheckNodes = new List<int>(this.CheckNodes);
             copy.Precondition = this.Precondition;
             copy.Text = this.Text;
             copy.Title = this.Title;
@@ -421,6 +425,7 @@ namespace StalkerOnlineQuesterEditor
             this.Precondition = source.Precondition;
             this.Actions = source.Actions;
             this.Nodes = new List<int>(source.Nodes);
+            this.CheckNodes = new List<int>(source.CheckNodes);
             this.coordinates.Active = source.coordinates.Active;
             this.coordinates.RootDialog = source.coordinates.RootDialog;
         }

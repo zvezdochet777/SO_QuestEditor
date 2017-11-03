@@ -52,6 +52,9 @@ namespace StalkerOnlineQuesterEditor
         Dictionary<LinkLabel,int> titles;
         List<NPCNameDataSourceObject> npcNames = new List<NPCNameDataSourceObject>();
 
+        List<int> npc_history = new List<int>();
+        int current_npc_history_index = -1;
+
         public СQuestConstants questConst;
         public CItemConstants itemConst;
         public CNPCConstants npcConst;
@@ -157,6 +160,26 @@ namespace StalkerOnlineQuesterEditor
             QuestBox.Items.Clear();
         }
 
+        private void btnBackNPC_Click(object sender, EventArgs e)
+        {
+            current_npc_history_index--;
+            NPCBox.SelectedIndex = npc_history[current_npc_history_index];
+            checkNavigationArrows();
+        }
+
+        private void btnNextNPC_Click(object sender, EventArgs e)
+        {
+            current_npc_history_index++;
+            NPCBox.SelectedIndex = npc_history[current_npc_history_index];
+            checkNavigationArrows();
+        }
+
+        private void checkNavigationArrows()
+        {
+            btnBackNPC.Enabled = (current_npc_history_index != -1) && (current_npc_history_index != 0);
+            btnNextNPC.Enabled = current_npc_history_index != (npc_history.Count - 1);
+        }
+
         //! Сменили NPC в комбобоксе выбора персонажа
         private void NPCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -165,6 +188,12 @@ namespace StalkerOnlineQuesterEditor
             {
                 currentNPC = NPCBox.SelectedValue.ToString();
                 RectManager.SetCurrentNPC(currentNPC);
+                if ((NPCBox.SelectedIndex != 0) && ((current_npc_history_index == -1) || (npc_history[current_npc_history_index] != NPCBox.SelectedIndex)))
+                {
+                    npc_history.Add(NPCBox.SelectedIndex);
+                    current_npc_history_index = npc_history.Count - 1;
+                    checkNavigationArrows();
+                }                
             }
             catch {
                 return;
@@ -244,6 +273,7 @@ namespace StalkerOnlineQuesterEditor
         //! Сменили квест в комбобоксе, выводим дерево всех подквестов
         private void QuestBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (QuestBox.SelectedItem == null) return;
             splitQuestsContainer.Panel2.Controls.Clear();
             treeQuest.Nodes.Clear();
 
@@ -285,6 +315,8 @@ namespace StalkerOnlineQuesterEditor
             NPCBox.DisplayMember = "DisplayString";
             NPCBox.ValueMember = "Value";
             NPCBox.DataSource = npcNames;
+            if (npcNames.Count <= settings.getLastNpcIndex())
+                settings.setLastNpcIndex(npcNames.Count - 1);
             NPCBox.SelectedIndex = settings.getLastNpcIndex();
 
             NPCBox.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -782,7 +814,9 @@ namespace StalkerOnlineQuesterEditor
         //! Двойной клик по квесту в дереве квестов. Открытие окна редактирования или перевода квеста
         private void treeQuestClicked(object sender, EventArgs e)
         {
+            if (currentQuest == 0) return;
             bCopyEvents.Enabled = true;
+            
             if (settings.getMode() == settings.MODE_EDITOR)
             {
                 if (getQuestOnQuestID(currentQuest).Additional.IsSubQuest == 0)
@@ -818,13 +852,13 @@ namespace StalkerOnlineQuesterEditor
             Dictionary<int,CDialog> firstDialog = new Dictionary<int,CDialog>();
             int dialogID = getDialogsNewID();
             NodeCoordinates nc = new NodeCoordinates(179, 125, true, true);
-            firstDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions() ,new List<int>(),
+            firstDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions() ,new List<int>(), new List<int>(),
                     dialogID, 0, nc));
 
             dialogs.dialogs.Add(Name, firstDialog);
             // добавляем ТЗс в английскую локаль, делаем копию словаря
             Dictionary<int, CDialog> engDialog = new Dictionary<int, CDialog>();
-            engDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(),
+            engDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(), new List<int>(),
                     dialogID, 0, nc));
             dialogs.locales[settings.getListLocales()[0]].Add(Name, engDialog);
             
@@ -2237,7 +2271,6 @@ namespace StalkerOnlineQuesterEditor
             CheckErrorForm cef = new CheckErrorForm(dialogs, quests, this);
             cef.Show();
         }
-
     }
 }
  

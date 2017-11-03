@@ -809,7 +809,17 @@ namespace StalkerOnlineQuesterEditor
             if (editQuestPenalty.Effects.Any())
                 bPenaltyEffects.Image = Properties.Resources.but_indicate;
             else
-                bPenaltyEffects.Image = null; 
+                bPenaltyEffects.Image = null;
+
+            if (editQuestReward.ChangeQuests.Any())
+                bRewardQuests.Image = Properties.Resources.but_indicate;
+            else
+                bRewardQuests.Image = null;
+
+            if (editQuestPenalty.ChangeQuests.Any())
+                bPenaltyQuests.Image = Properties.Resources.but_indicate;
+            else
+                bPenaltyQuests.Image = null;
         }
         //! Создает индиикацию кнопки Предметы в графе Правила квеста
         public void checkQuestRulesIndicates()
@@ -1094,6 +1104,7 @@ namespace StalkerOnlineQuesterEditor
             reward.Probability = editQuestReward.Probability;
             reward.Reputation = editQuestReward.Reputation;
             reward.Effects = editQuestReward.Effects;
+            reward.ChangeQuests = editQuestReward.ChangeQuests;
 
             penalty.TypeOfItems = editQuestPenalty.TypeOfItems;
             penalty.NumOfItems = editQuestPenalty.NumOfItems;
@@ -1101,6 +1112,7 @@ namespace StalkerOnlineQuesterEditor
             penalty.Probability = editQuestPenalty.Probability;
             penalty.Reputation = editQuestPenalty.Reputation;
             penalty.Effects = editQuestPenalty.Effects;
+            penalty.ChangeQuests = editQuestPenalty.ChangeQuests;
 
             rules.TypeOfItems = editQuestRules.TypeOfItems;
             rules.NumOfItems = editQuestRules.NumOfItems;
@@ -1384,6 +1396,16 @@ namespace StalkerOnlineQuesterEditor
             this.Enabled = false;
         }
 
+        //! Открывает окно редактирования  квестов
+        private void bRewardQuests_Click(object sender, EventArgs e)
+        {
+            RewardQuestsDialog edit_quest = new RewardQuestsDialog(this, ref this.editQuestReward.ChangeQuests);
+            this.Enabled = false;
+            edit_quest.ShowDialog();
+            this.Enabled = true;
+
+        }
+
         //! Нажатие Предметы в правилах квеста - открывает форму с редактором предметов
         private void bItemQuestRules_Click(object sender, EventArgs e)
         {
@@ -1455,6 +1477,13 @@ namespace StalkerOnlineQuesterEditor
             formFractions.Visible = true;
             this.Enabled = false;
         }
-        
+
+        private void bPenaltyQuests_Click(object sender, EventArgs e)
+        {
+            RewardQuestsDialog edit_quest = new RewardQuestsDialog(this, ref this.editQuestPenalty.ChangeQuests);
+            this.Enabled = false;
+            edit_quest.ShowDialog();
+            this.Enabled = true;
+        }
     }
 }

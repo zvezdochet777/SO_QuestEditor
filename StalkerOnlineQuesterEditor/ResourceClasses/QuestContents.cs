@@ -433,11 +433,11 @@ namespace StalkerOnlineQuesterEditor
                 if (invulnerable)
                     result.Add(new XElement("invulnerable", "1"));
                 if (walkSpeed != 0.0f)
-                    result.Add(new XElement("walkSpeed", walkSpeed.ToString("G5", CultureInfo.InvariantCulture)));
+                    result.Add(new XElement("walkSpeed", walkSpeed.ToString("G6", CultureInfo.InvariantCulture)));
                 if (shootRange != 0.0f)
-                    result.Add(new XElement("shootRange", shootRange.ToString("G5", CultureInfo.InvariantCulture)));
+                    result.Add(new XElement("shootRange", shootRange.ToString("G6", CultureInfo.InvariantCulture)));
                 if (shootRangeOnCreature != 0.0f)
-                    result.Add(new XElement("shootRangeOnCreature", shootRangeOnCreature.ToString("G5", CultureInfo.InvariantCulture)));
+                    result.Add(new XElement("shootRangeOnCreature", shootRangeOnCreature.ToString("G6", CultureInfo.InvariantCulture)));
                 if (weapon != 0)
                     result.Add(new XElement("weapon", Global.GetIntAsString(weapon)));
                 if (hand != 0)
@@ -483,9 +483,11 @@ namespace StalkerOnlineQuesterEditor
         public float Credits;
         //! Словарь репутаций в награду, выглядит так <id фракции>:<значение награды>;
         public Dictionary<int, int> Reputation;
+        //! Словарь репутаций в награду, выглядит так <id квеста>:<установленный статус>;
+        public Dictionary<int, int> ChangeQuests;
         public int KarmaPK;
         public List<CEffect> Effects;
-        public bool RewardWindow; 
+        public bool RewardWindow;
 
         public object Clone()
         {
@@ -494,9 +496,10 @@ namespace StalkerOnlineQuesterEditor
             copy.TypeOfItems = new List<int>(this.TypeOfItems);
             copy.NumOfItems = new List<int>(this.NumOfItems);
             copy.AttrOfItems = new List<int>(this.AttrOfItems);
+            copy.ChangeQuests = new Dictionary<int, int>(this.ChangeQuests);
             copy.Probability = this.Probability;
             copy.Credits = this.Credits;
-            copy.Reputation = this.Reputation;
+            copy.Reputation = new Dictionary<int, int>(this.Reputation);
             copy.KarmaPK = this.KarmaPK;
             copy.Effects = new List<CEffect>(this.Effects);
             copy.RewardWindow = this.RewardWindow;
@@ -512,6 +515,7 @@ namespace StalkerOnlineQuesterEditor
             this.Probability = new List<float>();
             this.Credits = new float();            
             this.Reputation = new Dictionary<int, int>();
+            this.ChangeQuests = new Dictionary<int, int>();
             this.KarmaPK = new int();
             this.Effects = new List<CEffect>();
             this.RewardWindow = false;
@@ -520,7 +524,7 @@ namespace StalkerOnlineQuesterEditor
         {
             return Experience.Any() || TypeOfItems.Any() || NumOfItems.Any() ||
                 AttrOfItems.Any() || Probability.Any() || Credits != 0 || ReputationNotEmpty() ||
-                KarmaPK != 0 || Effects.Any() || RewardWindow;
+                KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any();
         }
 
         public string getReputation()
@@ -535,6 +539,21 @@ namespace StalkerOnlineQuesterEditor
                     if (!result.Equals(""))
                         result += ";";
                     result += (key.ToString() + ":" + this.Reputation[key].ToString());
+                }
+            }
+            return result;
+        }
+
+        public string getChangeQuests()
+        {
+            string result = "";
+            if (ChangeQuests.Any())
+            {
+                foreach (int key in this.ChangeQuests.Keys)
+                {
+                    if (!result.Equals(""))
+                        result += ";";
+                    result += (key.ToString() + ":" + this.ChangeQuests[key].ToString());
                 }
             }
             return result;

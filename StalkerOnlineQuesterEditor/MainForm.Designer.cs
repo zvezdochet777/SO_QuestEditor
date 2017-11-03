@@ -157,6 +157,8 @@ namespace StalkerOnlineQuesterEditor
             this.tbPhraseToSearch = new System.Windows.Forms.TextBox();
             this.bStartSearch = new System.Windows.Forms.Button();
             this.panelSelectNPC = new System.Windows.Forms.Panel();
+            this.btnNextNPC = new System.Windows.Forms.Button();
+            this.btnBackNPC = new System.Windows.Forms.Button();
             this.bDelNPC = new System.Windows.Forms.Button();
             this.bAddNPC = new System.Windows.Forms.Button();
             this.menuMainControl = new System.Windows.Forms.MenuStrip();
@@ -237,7 +239,7 @@ namespace StalkerOnlineQuesterEditor
             this.NPCBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
             this.NPCBox.DropDownWidth = 280;
             this.NPCBox.FormattingEnabled = true;
-            this.NPCBox.Location = new System.Drawing.Point(96, 4);
+            this.NPCBox.Location = new System.Drawing.Point(161, 4);
             this.NPCBox.Name = "NPCBox";
             this.NPCBox.Size = new System.Drawing.Size(196, 21);
             this.NPCBox.TabIndex = 3;
@@ -247,7 +249,7 @@ namespace StalkerOnlineQuesterEditor
             // labelChosenNPC
             // 
             this.labelChosenNPC.AutoSize = true;
-            this.labelChosenNPC.Location = new System.Drawing.Point(3, 8);
+            this.labelChosenNPC.Location = new System.Drawing.Point(68, 8);
             this.labelChosenNPC.Name = "labelChosenNPC";
             this.labelChosenNPC.Size = new System.Drawing.Size(91, 13);
             this.labelChosenNPC.TabIndex = 4;
@@ -1497,6 +1499,8 @@ namespace StalkerOnlineQuesterEditor
             // panelSelectNPC
             // 
             this.panelSelectNPC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelSelectNPC.Controls.Add(this.btnNextNPC);
+            this.panelSelectNPC.Controls.Add(this.btnBackNPC);
             this.panelSelectNPC.Controls.Add(this.bDelNPC);
             this.panelSelectNPC.Controls.Add(this.bAddNPC);
             this.panelSelectNPC.Controls.Add(this.labelChosenNPC);
@@ -1507,9 +1511,31 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectNPC.Size = new System.Drawing.Size(914, 29);
             this.panelSelectNPC.TabIndex = 2;
             // 
+            // btnNextNPC
+            // 
+            this.btnNextNPC.Enabled = false;
+            this.btnNextNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.next_24;
+            this.btnNextNPC.Location = new System.Drawing.Point(32, -3);
+            this.btnNextNPC.Name = "btnNextNPC";
+            this.btnNextNPC.Size = new System.Drawing.Size(32, 32);
+            this.btnNextNPC.TabIndex = 10;
+            this.btnNextNPC.UseVisualStyleBackColor = true;
+            this.btnNextNPC.Click += new System.EventHandler(this.btnNextNPC_Click);
+            // 
+            // btnBackNPC
+            // 
+            this.btnBackNPC.Enabled = false;
+            this.btnBackNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.back_24;
+            this.btnBackNPC.Location = new System.Drawing.Point(2, -3);
+            this.btnBackNPC.Name = "btnBackNPC";
+            this.btnBackNPC.Size = new System.Drawing.Size(32, 32);
+            this.btnBackNPC.TabIndex = 9;
+            this.btnBackNPC.UseVisualStyleBackColor = true;
+            this.btnBackNPC.Click += new System.EventHandler(this.btnBackNPC_Click);
+            // 
             // bDelNPC
             // 
-            this.bDelNPC.Location = new System.Drawing.Point(413, 3);
+            this.bDelNPC.Location = new System.Drawing.Point(478, 3);
             this.bDelNPC.Name = "bDelNPC";
             this.bDelNPC.Size = new System.Drawing.Size(100, 23);
             this.bDelNPC.TabIndex = 8;
@@ -1519,7 +1545,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // bAddNPC
             // 
-            this.bAddNPC.Location = new System.Drawing.Point(309, 3);
+            this.bAddNPC.Location = new System.Drawing.Point(374, 3);
             this.bAddNPC.Name = "bAddNPC";
             this.bAddNPC.Size = new System.Drawing.Size(100, 23);
             this.bAddNPC.TabIndex = 7;
@@ -1850,6 +1876,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ToolStripMenuItem обновленияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem парсерыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem проверкаОшибокToolStripMenuItem;
+        private System.Windows.Forms.Button btnBackNPC;
+        private System.Windows.Forms.Button btnNextNPC;
     }
 }
 

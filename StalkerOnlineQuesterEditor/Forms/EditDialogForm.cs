@@ -120,6 +120,14 @@ namespace StalkerOnlineQuesterEditor
                     autoDefaultNode.Items.Add(dialog.ToString());
 
                 }
+            if (curDialog.CheckNodes.Any())
+                foreach (int node in curDialog.CheckNodes)
+                {
+                    if (tCheckNodes.Text.Equals(""))
+                        tCheckNodes.Text += node.ToString();
+                    else
+                        tCheckNodes.Text += ("," + node.ToString());
+                }
             this.fillClanOptions(curDialog.Precondition.clanOptions);
 
             if (curDialog.Actions.Any())
@@ -133,7 +141,7 @@ namespace StalkerOnlineQuesterEditor
                     string key = parent.tpConst.getName(curDialog.Actions.Data);
                     teleportComboBox.SelectedItem = key;
                 }
-                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Бартер")
+                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Бартер (обмен)")
                 {
                     tbAvatarGoTo.Text = curDialog.Actions.Data;
                 }
@@ -514,12 +522,16 @@ namespace StalkerOnlineQuesterEditor
             CDialogPrecondition precondition = new CDialogPrecondition();
             NodeCoordinates coord = new NodeCoordinates();
             List<int> nodes = new List<int>();
+            List<int> check_nodes = new List<int>();
             //List<string> holder = new List<string>();
             string holder = parent.GetCurrentNPC();
 
             if (!tNodes.Text.Equals(""))
                 foreach (string node in tNodes.Text.Split(','))
                     nodes.Add(int.Parse(node));
+            if (!tCheckNodes.Text.Equals(""))
+                foreach (string node in tCheckNodes.Text.Split(','))
+                    check_nodes.Add(int.Parse(node));
 
             if (!CheckConditions())
                 return;
@@ -543,7 +555,7 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if ((actions.Event.Display == "Починка") || (actions.Event.Display == "Комплексная починка"))
                     actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
-                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Бартер" || actions.Event.Display == "Торговля")
+                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Бартер (обмен)" || actions.Event.Display == "Торговля")
                     actions.Data = tbAvatarGoTo.Text;
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))
@@ -752,7 +764,7 @@ namespace StalkerOnlineQuesterEditor
             if (isAdd)
             {
                 newID = parent.getDialogsNewID();
-                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, newID, 1, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
+                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, check_nodes, newID, 1, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
             }
             else
             {
@@ -764,7 +776,7 @@ namespace StalkerOnlineQuesterEditor
                 if (tPlayerText.Text != curDialog.Title || tReactionNPC.Text != curDialog.Text)
                     version++;
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tReactionNPC.Text,
-                    precondition, actions, nodes, currentDialogID, version, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
+                    precondition, actions, nodes, check_nodes, currentDialogID, version, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
             }
             parent.Enabled = true;
             parent.DialogSelected(true);

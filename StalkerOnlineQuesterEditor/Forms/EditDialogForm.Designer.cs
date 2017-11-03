@@ -34,6 +34,7 @@
             this.lGreetNPC = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.gbActions = new System.Windows.Forms.GroupBox();
+            this.actionsCheckBox = new System.Windows.Forms.CheckBox();
             this.tbAvatarGoTo = new System.Windows.Forms.TextBox();
             this.commandsComboBox = new System.Windows.Forms.ComboBox();
             this.cbFailQuests = new System.Windows.Forms.CheckBox();
@@ -48,7 +49,6 @@
             this.cbExit = new System.Windows.Forms.CheckBox();
             this.cbCompleteQuests = new System.Windows.Forms.CheckBox();
             this.cbGetQuests = new System.Windows.Forms.CheckBox();
-            this.actionsCheckBox = new System.Windows.Forms.CheckBox();
             this.tReactionNPC = new System.Windows.Forms.TextBox();
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
@@ -105,6 +105,10 @@
             this.tabReputation = new System.Windows.Forms.TabPage();
             this.lInfo = new System.Windows.Forms.Label();
             this.dataReputation = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabKarma = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelDescription = new System.Windows.Forms.Label();
@@ -181,14 +185,12 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.tCheckNodes = new System.Windows.Forms.MaskedTextBox();
+            this.lCheckNodes = new System.Windows.Forms.Label();
             this.autoPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -268,7 +270,7 @@
             // gbActions
             // 
             this.gbActions.AutoSize = true;
-            this.gbActions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbActions.Controls.Add(this.actionsCheckBox);
             this.gbActions.Controls.Add(this.tbAvatarGoTo);
             this.gbActions.Controls.Add(this.commandsComboBox);
             this.gbActions.Controls.Add(this.cbFailQuests);
@@ -285,11 +287,22 @@
             this.gbActions.Controls.Add(this.cbGetQuests);
             this.gbActions.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbActions.Enabled = false;
-            this.gbActions.Location = new System.Drawing.Point(0, 500);
+            this.gbActions.Location = new System.Drawing.Point(0, 520);
             this.gbActions.Name = "gbActions";
-            this.gbActions.Size = new System.Drawing.Size(588, 144);
+            this.gbActions.Size = new System.Drawing.Size(595, 144);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
+            // 
+            // actionsCheckBox
+            // 
+            this.actionsCheckBox.AutoSize = true;
+            this.actionsCheckBox.Location = new System.Drawing.Point(16, 3);
+            this.actionsCheckBox.Name = "actionsCheckBox";
+            this.actionsCheckBox.Size = new System.Drawing.Size(76, 17);
+            this.actionsCheckBox.TabIndex = 16;
+            this.actionsCheckBox.Text = "Действия";
+            this.actionsCheckBox.UseVisualStyleBackColor = true;
+            this.actionsCheckBox.CheckedChanged += new System.EventHandler(this.actionsCheckBox_CheckedChanged);
             // 
             // tbAvatarGoTo
             // 
@@ -431,17 +444,6 @@
             this.cbGetQuests.UseVisualStyleBackColor = true;
             this.cbGetQuests.CheckedChanged += new System.EventHandler(this.cbGetQuests_CheckedChanged);
             // 
-            // actionsCheckBox
-            // 
-            this.actionsCheckBox.AutoSize = true;
-            this.actionsCheckBox.Location = new System.Drawing.Point(6, 498);
-            this.actionsCheckBox.Name = "actionsCheckBox";
-            this.actionsCheckBox.Size = new System.Drawing.Size(76, 17);
-            this.actionsCheckBox.TabIndex = 16;
-            this.actionsCheckBox.Text = "Действия";
-            this.actionsCheckBox.UseVisualStyleBackColor = true;
-            this.actionsCheckBox.CheckedChanged += new System.EventHandler(this.actionsCheckBox_CheckedChanged);
-            // 
             // tReactionNPC
             // 
             this.tReactionNPC.Location = new System.Drawing.Point(103, 103);
@@ -461,7 +463,7 @@
             // lNodes
             // 
             this.lNodes.AutoSize = true;
-            this.lNodes.Location = new System.Drawing.Point(3, 204);
+            this.lNodes.Location = new System.Drawing.Point(7, 200);
             this.lNodes.Name = "lNodes";
             this.lNodes.Size = new System.Drawing.Size(68, 13);
             this.lNodes.TabIndex = 9;
@@ -479,9 +481,9 @@
             this.gbPrecondition.Controls.Add(this.tabQuestsCircs);
             this.gbPrecondition.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbPrecondition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gbPrecondition.Location = new System.Drawing.Point(0, 227);
+            this.gbPrecondition.Location = new System.Drawing.Point(0, 247);
             this.gbPrecondition.Name = "gbPrecondition";
-            this.gbPrecondition.Size = new System.Drawing.Size(588, 273);
+            this.gbPrecondition.Size = new System.Drawing.Size(595, 273);
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
@@ -584,7 +586,7 @@
             this.tabQuestsCircs.Location = new System.Drawing.Point(8, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
             this.tabQuestsCircs.SelectedIndex = 0;
-            this.tabQuestsCircs.Size = new System.Drawing.Size(574, 246);
+            this.tabQuestsCircs.Size = new System.Drawing.Size(574, 270);
             this.tabQuestsCircs.TabIndex = 52;
             this.tabQuestsCircs.SelectedIndexChanged += new System.EventHandler(this.tabQuestsCircs_SelectedIndexChanged);
             // 
@@ -595,7 +597,7 @@
             this.tabQuests.Location = new System.Drawing.Point(4, 22);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(566, 220);
+            this.tabQuests.Size = new System.Drawing.Size(566, 244);
             this.tabQuests.TabIndex = 0;
             this.tabQuests.Text = "Квесты";
             // 
@@ -642,7 +644,7 @@
             this.gbQuestCondition.Controls.Add(this.tMustHaveCompletedQuests);
             this.gbQuestCondition.Location = new System.Drawing.Point(6, 6);
             this.gbQuestCondition.Name = "gbQuestCondition";
-            this.gbQuestCondition.Size = new System.Drawing.Size(495, 208);
+            this.gbQuestCondition.Size = new System.Drawing.Size(495, 221);
             this.gbQuestCondition.TabIndex = 6;
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
@@ -978,7 +980,7 @@
             this.tabReputation.Location = new System.Drawing.Point(4, 22);
             this.tabReputation.Name = "tabReputation";
             this.tabReputation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation.Size = new System.Drawing.Size(566, 220);
+            this.tabReputation.Size = new System.Drawing.Size(566, 244);
             this.tabReputation.TabIndex = 1;
             this.tabReputation.Text = "Репутация";
             // 
@@ -1004,8 +1006,35 @@
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation.Location = new System.Drawing.Point(3, 3);
             this.dataReputation.Name = "dataReputation";
-            this.dataReputation.Size = new System.Drawing.Size(560, 214);
+            this.dataReputation.Size = new System.Drawing.Size(560, 238);
             this.dataReputation.TabIndex = 3;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Имя фракции";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 110F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "A (A <= X <= B)";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 110;
+            // 
+            // b
+            // 
+            this.b.FillWeight = 110F;
+            this.b.HeaderText = "B (A <= X <= B)";
+            this.b.Name = "b";
+            this.b.Width = 110;
             // 
             // tabKarma
             // 
@@ -1018,7 +1047,7 @@
             this.tabKarma.Location = new System.Drawing.Point(4, 22);
             this.tabKarma.Name = "tabKarma";
             this.tabKarma.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKarma.Size = new System.Drawing.Size(566, 220);
+            this.tabKarma.Size = new System.Drawing.Size(566, 244);
             this.tabKarma.TabIndex = 2;
             this.tabKarma.Text = "Карма";
             // 
@@ -1026,7 +1055,7 @@
             // 
             this.panel2.Controls.Add(this.labelDescription);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 76);
+            this.panel2.Location = new System.Drawing.Point(3, 100);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(560, 141);
             this.panel2.TabIndex = 4;
@@ -1079,7 +1108,7 @@
             this.tabClan.Location = new System.Drawing.Point(4, 22);
             this.tabClan.Name = "tabClan";
             this.tabClan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClan.Size = new System.Drawing.Size(566, 220);
+            this.tabClan.Size = new System.Drawing.Size(566, 244);
             this.tabClan.TabIndex = 3;
             this.tabClan.Text = "Клановые";
             // 
@@ -1234,7 +1263,7 @@
             this.tabEffects.Location = new System.Drawing.Point(4, 22);
             this.tabEffects.Name = "tabEffects";
             this.tabEffects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEffects.Size = new System.Drawing.Size(566, 220);
+            this.tabEffects.Size = new System.Drawing.Size(566, 244);
             this.tabEffects.TabIndex = 4;
             this.tabEffects.Text = "Эффекты";
             this.tabEffects.UseVisualStyleBackColor = true;
@@ -1249,7 +1278,7 @@
             this.effectsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.effectsPanel.Location = new System.Drawing.Point(3, 3);
             this.effectsPanel.Name = "effectsPanel";
-            this.effectsPanel.Size = new System.Drawing.Size(560, 214);
+            this.effectsPanel.Size = new System.Drawing.Size(560, 238);
             this.effectsPanel.TabIndex = 17;
             // 
             // lMustNotEffects
@@ -1282,7 +1311,7 @@
             this.dataGridEffects.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridEffects.Location = new System.Drawing.Point(0, 0);
             this.dataGridEffects.Name = "dataGridEffects";
-            this.dataGridEffects.Size = new System.Drawing.Size(246, 214);
+            this.dataGridEffects.Size = new System.Drawing.Size(246, 238);
             this.dataGridEffects.TabIndex = 2;
             // 
             // dataGridViewComboBoxColumn1
@@ -1314,7 +1343,7 @@
             this.dataGridNotEffects.Dock = System.Windows.Forms.DockStyle.Right;
             this.dataGridNotEffects.Location = new System.Drawing.Point(314, 0);
             this.dataGridNotEffects.Name = "dataGridNotEffects";
-            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 214);
+            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 238);
             this.dataGridNotEffects.TabIndex = 6;
             // 
             // dataGridViewComboBoxColumn2
@@ -1355,7 +1384,7 @@
             this.tabLevel.Controls.Add(this.lPlayerLevel);
             this.tabLevel.Location = new System.Drawing.Point(4, 22);
             this.tabLevel.Name = "tabLevel";
-            this.tabLevel.Size = new System.Drawing.Size(566, 220);
+            this.tabLevel.Size = new System.Drawing.Size(566, 244);
             this.tabLevel.TabIndex = 5;
             this.tabLevel.Text = "Уровень";
             // 
@@ -1492,7 +1521,7 @@
             this.tabSkills.Location = new System.Drawing.Point(4, 22);
             this.tabSkills.Name = "tabSkills";
             this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSkills.Size = new System.Drawing.Size(566, 220);
+            this.tabSkills.Size = new System.Drawing.Size(566, 244);
             this.tabSkills.TabIndex = 6;
             this.tabSkills.Text = "Навыки";
             this.tabSkills.UseVisualStyleBackColor = true;
@@ -1510,7 +1539,7 @@
             this.dataSkill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataSkill.Location = new System.Drawing.Point(3, 3);
             this.dataSkill.Name = "dataSkill";
-            this.dataSkill.Size = new System.Drawing.Size(560, 214);
+            this.dataSkill.Size = new System.Drawing.Size(560, 238);
             this.dataSkill.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn4
@@ -1555,7 +1584,7 @@
             this.tabActions.Location = new System.Drawing.Point(4, 22);
             this.tabActions.Name = "tabActions";
             this.tabActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActions.Size = new System.Drawing.Size(566, 220);
+            this.tabActions.Size = new System.Drawing.Size(566, 244);
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
@@ -1716,9 +1745,9 @@
             this.pCommands.Controls.Add(this.bEditDialogCancel);
             this.pCommands.Controls.Add(this.bEditDialogOk);
             this.pCommands.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pCommands.Location = new System.Drawing.Point(0, 644);
+            this.pCommands.Location = new System.Drawing.Point(0, 664);
             this.pCommands.Name = "pCommands";
-            this.pCommands.Size = new System.Drawing.Size(588, 62);
+            this.pCommands.Size = new System.Drawing.Size(595, 56);
             this.pCommands.TabIndex = 13;
             // 
             // cbForDev
@@ -1749,6 +1778,8 @@
             // 
             // gbTexts
             // 
+            this.gbTexts.Controls.Add(this.tCheckNodes);
+            this.gbTexts.Controls.Add(this.lCheckNodes);
             this.gbTexts.Controls.Add(this.autoPanel);
             this.gbTexts.Controls.Add(this.cbAutoNode);
             this.gbTexts.Controls.Add(this.tNodes);
@@ -1763,17 +1794,33 @@
             this.gbTexts.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbTexts.Location = new System.Drawing.Point(0, 0);
             this.gbTexts.Name = "gbTexts";
-            this.gbTexts.Size = new System.Drawing.Size(588, 227);
+            this.gbTexts.Size = new System.Drawing.Size(595, 247);
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
+            // 
+            // tCheckNodes
+            // 
+            this.tCheckNodes.Location = new System.Drawing.Point(103, 221);
+            this.tCheckNodes.Name = "tCheckNodes";
+            this.tCheckNodes.Size = new System.Drawing.Size(479, 20);
+            this.tCheckNodes.TabIndex = 18;
+            // 
+            // lCheckNodes
+            // 
+            this.lCheckNodes.AutoSize = true;
+            this.lCheckNodes.Location = new System.Drawing.Point(7, 224);
+            this.lCheckNodes.Name = "lCheckNodes";
+            this.lCheckNodes.Size = new System.Drawing.Size(84, 13);
+            this.lCheckNodes.TabIndex = 19;
+            this.lCheckNodes.Text = "Условия нодов";
             // 
             // autoPanel
             // 
             this.autoPanel.Controls.Add(this.label6);
             this.autoPanel.Controls.Add(this.autoDefaultNode);
-            this.autoPanel.Location = new System.Drawing.Point(4, 46);
+            this.autoPanel.Location = new System.Drawing.Point(4, 42);
             this.autoPanel.Name = "autoPanel";
-            this.autoPanel.Size = new System.Drawing.Size(578, 149);
+            this.autoPanel.Size = new System.Drawing.Size(585, 175);
             this.autoPanel.TabIndex = 17;
             this.autoPanel.Visible = false;
             // 
@@ -1805,44 +1852,17 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Имя фракции";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.FillWeight = 110F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "A (A <= X <= B)";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 110;
-            // 
-            // b
-            // 
-            this.b.FillWeight = 110F;
-            this.b.HeaderText = "B (A <= X <= B)";
-            this.b.Name = "b";
-            this.b.Width = 110;
-            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 706);
-            this.Controls.Add(this.actionsCheckBox);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(595, 720);
             this.Controls.Add(this.pCommands);
             this.Controls.Add(this.gbActions);
             this.Controls.Add(this.gbPrecondition);
             this.Controls.Add(this.gbTexts);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "EditDialogForm";
             this.Text = "Редактирование диалога";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditDialogForm_FormClosed);
@@ -2054,5 +2074,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn b;
+        private System.Windows.Forms.MaskedTextBox tCheckNodes;
+        private System.Windows.Forms.Label lCheckNodes;
     }
 }

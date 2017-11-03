@@ -71,6 +71,7 @@ namespace StalkerOnlineQuesterEditor
                     bool isAutoNode = false;
                     string defaultNode = "";
                     List<int> Nodes = new List<int>();
+                    List<int> CheckNodes = new List<int>();
                     Actions Actions = new Actions();
                     CDialogPrecondition Precondition = new CDialogPrecondition();
 
@@ -78,6 +79,10 @@ namespace StalkerOnlineQuesterEditor
                         foreach (string node in dialog.Element("Nodes").Value.Split(','))
                             if (node != "")
                                 Nodes.Add(int.Parse(node));
+                    if ((dialog.Element("CheckNodes") != null) && (dialog.Element("CheckNodes").Value != ""))
+                        foreach (string node in dialog.Element("CheckNodes").Value.Split(','))
+                            if (node != "")
+                                CheckNodes.Add(int.Parse(node));
                     if (dialog.Element("Actions") != null)
                     {
                         if (dialog.Element("Actions").Element("GoToCamera") != null)
@@ -240,7 +245,7 @@ namespace StalkerOnlineQuesterEditor
 
                     }
                     if (!target[npc_name].Keys.Contains(DialogID))
-                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, DialogID, 0, nodeCoord, DebugData, isAutoNode, defaultNode));
+                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, CheckNodes, DialogID, 0, nodeCoord, DebugData, isAutoNode, defaultNode));
                 }
             }
         }
@@ -535,6 +540,8 @@ namespace StalkerOnlineQuesterEditor
 
                     if (dialog.Nodes.Any())
                         element.Add(new XElement("Nodes", Global.GetListAsString(dialog.Nodes)));
+                    if (dialog.CheckNodes.Any())
+                        element.Add(new XElement("CheckNodes", Global.GetListAsString(dialog.CheckNodes)));
                     if (dialog.coordinates.RootDialog)
                         element.Add(new XElement("RootDialog", Global.GetBoolAsString(dialog.coordinates.RootDialog)));
                     if (dialog.coordinates.Active)
