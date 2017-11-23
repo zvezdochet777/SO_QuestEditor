@@ -40,6 +40,7 @@ namespace StalkerOnlineQuesterEditor
 
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
+
             if (!isAdd)
             {
                 fillDialogEditForm(currentDialogID);
@@ -319,6 +320,7 @@ namespace StalkerOnlineQuesterEditor
             this.initLevelTab();
             this.initSkillsTab();
             this.initActionTab();
+            this.initItemsTab();
             checkClanOptionsIndicator();
         }
 
@@ -757,6 +759,42 @@ namespace StalkerOnlineQuesterEditor
             precondition.Skills = editPrecondition.Skills;
             precondition.forDev = cbForDev.Checked;
 
+            precondition.items.typeOfItems = new List<int>();
+            precondition.items.numOfItems = new List<int>();
+            precondition.items.attrOfItems = new List<int>();
+
+            if (rbCategory.Checked && cbCategory.SelectedIndex != -1)
+            {
+                precondition.items.itemCategory = parent.itemCategories.getID(cbCategory.Text);
+            }
+            else
+            {
+                precondition.items.itemCategory = -1;
+                foreach (DataGridViewRow row in GVItems.Rows)
+                {
+                    string typeName = row.Cells["itemType"].FormattedValue.ToString();
+                    if (!typeName.Equals(""))
+                    {
+                        int quantity = 0;
+
+                        if ((int.TryParse(row.Cells["itemQuantity"].FormattedValue.ToString(), out quantity)) && (quantity >= 1))
+                        {
+                            int typeID = parent.itemConst.getIDOnDescription(typeName);
+                            string attrName = row.Cells["itemAttr"].FormattedValue.ToString();
+                            int attr;
+                            switch (attrName)
+                            {
+                                case "Квестовый": attr = 1; break;
+                                case "Авто": attr = 2; break;
+                                default: attr = 0; break;
+                            }
+                            precondition.items.typeOfItems.Add(typeID);
+                            precondition.items.numOfItems.Add(quantity);
+                            precondition.items.attrOfItems.Add(attr);
+                        }
+                    }
+                }
+            }
 
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;
@@ -949,6 +987,42 @@ namespace StalkerOnlineQuesterEditor
             return true;
         }
 
+        private void initItemsTab()
+        {
+            foreach (CItem item in parent.itemConst.getAllItems().Values)
+                ((DataGridViewComboBoxColumn)GVItems.Columns[0]).Items.Add(item.getDescription());
+            ((DataGridViewComboBoxColumn)GVItems.Columns[0]).Sorted = true;
+
+            foreach (string category in parent.itemCategories.getAllItems().Values)
+                cbCategory.Items.Add(category);
+
+            if (this.editPrecondition.items.itemCategory != -1)
+            {
+                this.rbCategory.Checked = true;
+                this.cbCategory.SelectedIndex = this.editPrecondition.items.itemCategory;
+            }
+            else if (this.editPrecondition.items.typeOfItems.Any())
+            {
+                this.rbItems.Checked = true;
+                for (int i = 0; i< this.editPrecondition.items.typeOfItems.Count; i++)
+                {
+                    int item_type = this.editPrecondition.items.typeOfItems[i];
+                    string item_name = parent.itemConst.getDescriptionOnID(item_type);
+                    string item_attr;
+                    switch (this.editPrecondition.items.attrOfItems[i])
+                    {
+                        case 1: item_attr = "Квестовый"; break;
+                        case 2: item_attr = "Авто"; break;
+                        default:item_attr = "Обычный"; break;
+                    }
+                    int count = this.editPrecondition.items.numOfItems[i];
+                    object[] row = { item_name, item_attr, count };
+                    GVItems.Rows.Add(row);
+                }
+            }
+            checkItemsIndicates();
+
+        }
         private void initEffectsTab()
         {
 
@@ -1083,11 +1157,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void checkLevelIndicates()
         {
-            if (checkLevel())
-            {
-                pictureLevel.Visible = true;
-            }
-            else pictureLevel.Visible = false;
+            pictureLevel.Visible = checkLevel();
         }
 
         private void initKarmaPKTab()
@@ -1128,14 +1198,8 @@ namespace StalkerOnlineQuesterEditor
                 if (bTextBox.Text != "")
                 {
                     b = int.Parse(bTextBox.Text);
-                    if (flag == 1)
-                    {
-                        flag = 0;
-                    }
-                    else
-                    {
-                        flag = 2;
-                    }
+                    if (flag == 1) flag = 0;
+                    else flag = 2;
                 }
 
                 this.editKarmaPK.Add(flag);
@@ -1147,20 +1211,19 @@ namespace StalkerOnlineQuesterEditor
 
         private void checkActionIndicates()
         {
-            if ((cbAnimationNPC.Checked && tbAnimationNPC.Text.Any()) || (cbAnimationPlayer.Checked && tbAnimationPlayer.Text.Any()) ||
+            pictureAction.Visible = (cbAnimationNPC.Checked && tbAnimationNPC.Text.Any()) || (cbAnimationPlayer.Checked && tbAnimationPlayer.Text.Any()) ||
                 (cbCamera.Checked && tbCamera.Text.Any()) || (cbPlaySonund.Checked && tbPlaySonund.Text.Any()) || (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any()) ||
-                (cbItemNPC.Checked && tbItemNPC.Text.Any()))
-                pictureAction.Visible = true;
-            else
-                pictureAction.Visible = false;
+                (cbItemNPC.Checked && tbItemNPC.Text.Any());   
         }
 
         private void checkEffectsIndicates()
         {
-            if (editPrecondition.MustNoEffects.Any() || editPrecondition.NecessaryEffects.Any())
-                pictureEffects.Visible = true;
-            else
-                pictureEffects.Visible = false;
+            pictureEffects.Visible = editPrecondition.MustNoEffects.Any() || editPrecondition.NecessaryEffects.Any();
+        }
+
+        private void checkItemsIndicates()
+        {
+            pictureItems.Visible = (rbCategory.Checked && cbCategory.SelectedIndex != -1) || (rbItems.Checked && GVItems.Rows.Count > 0);
         }
         private void tabQuestsCircs_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1170,6 +1233,7 @@ namespace StalkerOnlineQuesterEditor
             this.checkEffects();
             this.checkSkills();
             this.checkActionIndicates();
+            this.checkItemsIndicates();
         }
 
         private void digitTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -1201,7 +1265,15 @@ namespace StalkerOnlineQuesterEditor
             autoPanel.Enabled = !check;
             autoPanel.Visible = !check;
         }
-        
 
+        private void rbItems_CheckedChanged(object sender, EventArgs e)
+        {
+            GVItems.Visible = rbItems.Checked;
+        }
+
+        private void rbCategory_CheckedChanged(object sender, EventArgs e)
+        {
+            cbCategory.Visible = rbCategory.Checked;
+        }
     }
 }

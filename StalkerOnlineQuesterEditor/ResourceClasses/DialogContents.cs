@@ -88,6 +88,19 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class DialogPreconditionItem
+    {
+        public List<int> typeOfItems = new List<int>();
+        public List<int> numOfItems = new List<int>();
+        public List<int> attrOfItems = new List<int>();
+        public int itemCategory = -1;
+
+        public bool Any()
+        {
+            return itemCategory > -1 || typeOfItems.Any();
+        }
+    }
+
     //! Условия появления диалога в игре - открытые/закрытые/проваленные квесты, урвоень игрока, репутация у фракций, карма ПК
     public class CDialogPrecondition : ICloneable
     {
@@ -104,7 +117,8 @@ namespace StalkerOnlineQuesterEditor
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
         public bool forDev;
-       
+        public DialogPreconditionItem items = new DialogPreconditionItem();
+
 
         public object Clone()
         {
@@ -152,7 +166,7 @@ namespace StalkerOnlineQuesterEditor
         public bool Any()
         {
             if (ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
-                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any())
+                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any())
                 return true;
             else
                 return false;

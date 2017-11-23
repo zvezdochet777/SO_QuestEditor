@@ -7,6 +7,50 @@ using System.IO;
 
 namespace StalkerOnlineQuesterEditor
 {
+
+    public class CItemCategories
+    {
+        Dictionary<int, string> items;
+
+        public CItemCategories()
+        {
+            items = new Dictionary<int, string>();
+            if (!File.Exists("source/ItemCategories.xml"))
+            {
+                System.Windows.Forms.MessageBox.Show("Отсуствует файл ItemCategories.xml, нужно распарсить предметы", "Ошибка");
+                return;
+            }
+            XDocument doc = XDocument.Load("source/ItemCategories.xml");
+            foreach (XElement item in doc.Root.Elements())
+            {                try
+                {
+                    items.Add(int.Parse(item.Element("id").Value.ToString()), item.Element("Name").Value.ToString());
+                }
+                catch
+                {
+                    System.Console.WriteLine("Error with item category:" + item.Element("id").Value.ToString());
+                }
+            }
+
+        }
+        public string getNameOnID(int typeID)
+        {
+            return items[typeID];
+        }
+
+        public Dictionary<int, string> getAllItems()
+        {
+            return items;
+        }
+
+        public int getID(string name)
+        {
+            foreach (int key in items.Keys)
+                if (items[key].Equals(name))
+                    return key;
+            return -1;
+        }
+    }
     public class CItemConstants
     {
         Dictionary<int, CItem> items;
@@ -16,7 +60,7 @@ namespace StalkerOnlineQuesterEditor
             items = new Dictionary<int, CItem>();
             if (!File.Exists("source/ItemStrings.xml"))
             {
-                System.Windows.Forms.MessageBox.Show("Отсуствует файл ItemStrings.xml, нужно распарсить", "Ошибка");
+                System.Windows.Forms.MessageBox.Show("Отсуствует файл ItemStrings.xml, нужно распарсить предметы", "Ошибка");
                 return;
             }
             XDocument doc = XDocument.Load("source/ItemStrings.xml");

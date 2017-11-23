@@ -155,7 +155,7 @@ namespace StalkerOnlineQuesterEditor
 
                     ParseIntIfNotEmpty(item, "Target", "IsGroup", out target.IsGroup, 0);
                     if (item.Element("Target").Element("IsClan") != null)
-                        target.IsClan = item.Element("Target").Element("IsClan").Value.Equals("1");
+                        target.IsClan = item.Element("Target").Element("IsClan").Value.Trim().Equals("1");
 
                     if (item.Element("Target").Element("percent") != null)
                     {
@@ -181,7 +181,7 @@ namespace StalkerOnlineQuesterEditor
                         precondition.TakenPeriod = double.Parse(item.Element("Precondition").Element("TakenPeriod").Value, CultureInfo.InvariantCulture);
 
                     if (item.Element("Precondition").Element("OmniCounter") != null)
-                        precondition.omniCounter = item.Element("Precondition").Element("OmniCounter").Value.Equals("1");
+                        precondition.omniCounter = item.Element("Precondition").Element("OmniCounter").Value.Trim().Equals("1");
                 }
                 if (item.Element("QuestRules") != null)
                 {
@@ -244,7 +244,7 @@ namespace StalkerOnlineQuesterEditor
                         }
 
                     if (item.Element("Reward").Element("RewardWindow") != null)
-                        reward.RewardWindow = item.Element("Reward").Element("RewardWindow").Value.Equals("1");
+                        reward.RewardWindow = item.Element("Reward").Element("RewardWindow").Value.Trim().Equals("1");
                 }
 
 
@@ -295,9 +295,9 @@ namespace StalkerOnlineQuesterEditor
                     AddDataToList(item, "Additional", "ListOfSubQuest", additional.ListOfSubQuest);
 
                     if (item.Element("Additional").Descendants().Any(u => u.Name == "CantCancel"))
-                        additional.CantCancel = item.Element("Additional").Element("CantCancel").Value.Equals("1");
+                        additional.CantCancel = item.Element("Additional").Element("CantCancel").Value.Trim().Equals("1");
                     if (item.Element("Additional").Descendants().Any(u => u.Name == "CantFail"))
-                        additional.CantFail = item.Element("Additional").Element("CantFail").Value.Equals("1");
+                        additional.CantFail = item.Element("Additional").Element("CantFail").Value.Trim().Equals("1");
                     if (item.Element("Additional").Element("DebugData") != null)
                     {
                         additional.DebugData = item.Element("Additional").Element("DebugData").Value.ToString();

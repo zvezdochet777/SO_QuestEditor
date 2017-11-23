@@ -34,7 +34,6 @@
             this.lGreetNPC = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.gbActions = new System.Windows.Forms.GroupBox();
-            this.actionsCheckBox = new System.Windows.Forms.CheckBox();
             this.tbAvatarGoTo = new System.Windows.Forms.TextBox();
             this.commandsComboBox = new System.Windows.Forms.ComboBox();
             this.cbFailQuests = new System.Windows.Forms.CheckBox();
@@ -49,10 +48,12 @@
             this.cbExit = new System.Windows.Forms.CheckBox();
             this.cbCompleteQuests = new System.Windows.Forms.CheckBox();
             this.cbGetQuests = new System.Windows.Forms.CheckBox();
+            this.actionsCheckBox = new System.Windows.Forms.CheckBox();
             this.tReactionNPC = new System.Windows.Forms.TextBox();
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
             this.gbPrecondition = new System.Windows.Forms.GroupBox();
+            this.pictureItems = new System.Windows.Forms.PictureBox();
             this.pictureAction = new System.Windows.Forms.PictureBox();
             this.pictureSkill = new System.Windows.Forms.PictureBox();
             this.pictureLevel = new System.Windows.Forms.PictureBox();
@@ -177,6 +178,14 @@
             this.cbCamera = new System.Windows.Forms.CheckBox();
             this.cbAnimationNPC = new System.Windows.Forms.CheckBox();
             this.cbAnimationPlayer = new System.Windows.Forms.CheckBox();
+            this.tabItems = new System.Windows.Forms.TabPage();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.rbItems = new System.Windows.Forms.RadioButton();
+            this.rbCategory = new System.Windows.Forms.RadioButton();
+            this.GVItems = new System.Windows.Forms.DataGridView();
+            this.itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -193,6 +202,7 @@
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).BeginInit();
@@ -217,6 +227,8 @@
             this.tabSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).BeginInit();
             this.tabActions.SuspendLayout();
+            this.tabItems.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GVItems)).BeginInit();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
@@ -270,7 +282,6 @@
             // gbActions
             // 
             this.gbActions.AutoSize = true;
-            this.gbActions.Controls.Add(this.actionsCheckBox);
             this.gbActions.Controls.Add(this.tbAvatarGoTo);
             this.gbActions.Controls.Add(this.commandsComboBox);
             this.gbActions.Controls.Add(this.cbFailQuests);
@@ -287,22 +298,11 @@
             this.gbActions.Controls.Add(this.cbGetQuests);
             this.gbActions.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbActions.Enabled = false;
-            this.gbActions.Location = new System.Drawing.Point(0, 520);
+            this.gbActions.Location = new System.Drawing.Point(0, 546);
             this.gbActions.Name = "gbActions";
             this.gbActions.Size = new System.Drawing.Size(595, 144);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
-            // 
-            // actionsCheckBox
-            // 
-            this.actionsCheckBox.AutoSize = true;
-            this.actionsCheckBox.Location = new System.Drawing.Point(16, 3);
-            this.actionsCheckBox.Name = "actionsCheckBox";
-            this.actionsCheckBox.Size = new System.Drawing.Size(76, 17);
-            this.actionsCheckBox.TabIndex = 16;
-            this.actionsCheckBox.Text = "Действия";
-            this.actionsCheckBox.UseVisualStyleBackColor = true;
-            this.actionsCheckBox.CheckedChanged += new System.EventHandler(this.actionsCheckBox_CheckedChanged);
             // 
             // tbAvatarGoTo
             // 
@@ -444,6 +444,17 @@
             this.cbGetQuests.UseVisualStyleBackColor = true;
             this.cbGetQuests.CheckedChanged += new System.EventHandler(this.cbGetQuests_CheckedChanged);
             // 
+            // actionsCheckBox
+            // 
+            this.actionsCheckBox.AutoSize = true;
+            this.actionsCheckBox.Location = new System.Drawing.Point(5, 277);
+            this.actionsCheckBox.Name = "actionsCheckBox";
+            this.actionsCheckBox.Size = new System.Drawing.Size(76, 17);
+            this.actionsCheckBox.TabIndex = 16;
+            this.actionsCheckBox.Text = "Действия";
+            this.actionsCheckBox.UseVisualStyleBackColor = true;
+            this.actionsCheckBox.CheckedChanged += new System.EventHandler(this.actionsCheckBox_CheckedChanged);
+            // 
             // tReactionNPC
             // 
             this.tReactionNPC.Location = new System.Drawing.Point(103, 103);
@@ -471,6 +482,8 @@
             // 
             // gbPrecondition
             // 
+            this.gbPrecondition.Controls.Add(this.pictureItems);
+            this.gbPrecondition.Controls.Add(this.actionsCheckBox);
             this.gbPrecondition.Controls.Add(this.pictureAction);
             this.gbPrecondition.Controls.Add(this.pictureSkill);
             this.gbPrecondition.Controls.Add(this.pictureLevel);
@@ -483,10 +496,22 @@
             this.gbPrecondition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbPrecondition.Location = new System.Drawing.Point(0, 247);
             this.gbPrecondition.Name = "gbPrecondition";
-            this.gbPrecondition.Size = new System.Drawing.Size(595, 273);
+            this.gbPrecondition.Size = new System.Drawing.Size(595, 299);
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
+            // 
+            // pictureItems
+            // 
+            this.pictureItems.BackColor = System.Drawing.Color.Transparent;
+            this.pictureItems.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureItems.Location = new System.Drawing.Point(492, 10);
+            this.pictureItems.Name = "pictureItems";
+            this.pictureItems.Size = new System.Drawing.Size(10, 10);
+            this.pictureItems.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureItems.TabIndex = 60;
+            this.pictureItems.TabStop = false;
+            this.pictureItems.Visible = false;
             // 
             // pictureAction
             // 
@@ -582,11 +607,12 @@
             this.tabQuestsCircs.Controls.Add(this.tabLevel);
             this.tabQuestsCircs.Controls.Add(this.tabSkills);
             this.tabQuestsCircs.Controls.Add(this.tabActions);
+            this.tabQuestsCircs.Controls.Add(this.tabItems);
             this.tabQuestsCircs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabQuestsCircs.Location = new System.Drawing.Point(8, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
             this.tabQuestsCircs.SelectedIndex = 0;
-            this.tabQuestsCircs.Size = new System.Drawing.Size(574, 270);
+            this.tabQuestsCircs.Size = new System.Drawing.Size(574, 256);
             this.tabQuestsCircs.TabIndex = 52;
             this.tabQuestsCircs.SelectedIndexChanged += new System.EventHandler(this.tabQuestsCircs_SelectedIndexChanged);
             // 
@@ -597,7 +623,7 @@
             this.tabQuests.Location = new System.Drawing.Point(4, 22);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(566, 244);
+            this.tabQuests.Size = new System.Drawing.Size(566, 230);
             this.tabQuests.TabIndex = 0;
             this.tabQuests.Text = "Квесты";
             // 
@@ -980,7 +1006,7 @@
             this.tabReputation.Location = new System.Drawing.Point(4, 22);
             this.tabReputation.Name = "tabReputation";
             this.tabReputation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation.Size = new System.Drawing.Size(566, 244);
+            this.tabReputation.Size = new System.Drawing.Size(566, 230);
             this.tabReputation.TabIndex = 1;
             this.tabReputation.Text = "Репутация";
             // 
@@ -1006,7 +1032,7 @@
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation.Location = new System.Drawing.Point(3, 3);
             this.dataReputation.Name = "dataReputation";
-            this.dataReputation.Size = new System.Drawing.Size(560, 238);
+            this.dataReputation.Size = new System.Drawing.Size(560, 224);
             this.dataReputation.TabIndex = 3;
             // 
             // id
@@ -1047,7 +1073,7 @@
             this.tabKarma.Location = new System.Drawing.Point(4, 22);
             this.tabKarma.Name = "tabKarma";
             this.tabKarma.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKarma.Size = new System.Drawing.Size(566, 244);
+            this.tabKarma.Size = new System.Drawing.Size(566, 230);
             this.tabKarma.TabIndex = 2;
             this.tabKarma.Text = "Карма";
             // 
@@ -1055,7 +1081,7 @@
             // 
             this.panel2.Controls.Add(this.labelDescription);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 100);
+            this.panel2.Location = new System.Drawing.Point(3, 86);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(560, 141);
             this.panel2.TabIndex = 4;
@@ -1108,7 +1134,7 @@
             this.tabClan.Location = new System.Drawing.Point(4, 22);
             this.tabClan.Name = "tabClan";
             this.tabClan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClan.Size = new System.Drawing.Size(566, 244);
+            this.tabClan.Size = new System.Drawing.Size(566, 230);
             this.tabClan.TabIndex = 3;
             this.tabClan.Text = "Клановые";
             // 
@@ -1263,7 +1289,7 @@
             this.tabEffects.Location = new System.Drawing.Point(4, 22);
             this.tabEffects.Name = "tabEffects";
             this.tabEffects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEffects.Size = new System.Drawing.Size(566, 244);
+            this.tabEffects.Size = new System.Drawing.Size(566, 230);
             this.tabEffects.TabIndex = 4;
             this.tabEffects.Text = "Эффекты";
             this.tabEffects.UseVisualStyleBackColor = true;
@@ -1278,7 +1304,7 @@
             this.effectsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.effectsPanel.Location = new System.Drawing.Point(3, 3);
             this.effectsPanel.Name = "effectsPanel";
-            this.effectsPanel.Size = new System.Drawing.Size(560, 238);
+            this.effectsPanel.Size = new System.Drawing.Size(560, 224);
             this.effectsPanel.TabIndex = 17;
             // 
             // lMustNotEffects
@@ -1311,7 +1337,7 @@
             this.dataGridEffects.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridEffects.Location = new System.Drawing.Point(0, 0);
             this.dataGridEffects.Name = "dataGridEffects";
-            this.dataGridEffects.Size = new System.Drawing.Size(246, 238);
+            this.dataGridEffects.Size = new System.Drawing.Size(246, 224);
             this.dataGridEffects.TabIndex = 2;
             // 
             // dataGridViewComboBoxColumn1
@@ -1343,7 +1369,7 @@
             this.dataGridNotEffects.Dock = System.Windows.Forms.DockStyle.Right;
             this.dataGridNotEffects.Location = new System.Drawing.Point(314, 0);
             this.dataGridNotEffects.Name = "dataGridNotEffects";
-            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 238);
+            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 224);
             this.dataGridNotEffects.TabIndex = 6;
             // 
             // dataGridViewComboBoxColumn2
@@ -1384,7 +1410,7 @@
             this.tabLevel.Controls.Add(this.lPlayerLevel);
             this.tabLevel.Location = new System.Drawing.Point(4, 22);
             this.tabLevel.Name = "tabLevel";
-            this.tabLevel.Size = new System.Drawing.Size(566, 244);
+            this.tabLevel.Size = new System.Drawing.Size(566, 230);
             this.tabLevel.TabIndex = 5;
             this.tabLevel.Text = "Уровень";
             // 
@@ -1521,7 +1547,7 @@
             this.tabSkills.Location = new System.Drawing.Point(4, 22);
             this.tabSkills.Name = "tabSkills";
             this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSkills.Size = new System.Drawing.Size(566, 244);
+            this.tabSkills.Size = new System.Drawing.Size(566, 230);
             this.tabSkills.TabIndex = 6;
             this.tabSkills.Text = "Навыки";
             this.tabSkills.UseVisualStyleBackColor = true;
@@ -1539,7 +1565,7 @@
             this.dataSkill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataSkill.Location = new System.Drawing.Point(3, 3);
             this.dataSkill.Name = "dataSkill";
-            this.dataSkill.Size = new System.Drawing.Size(560, 238);
+            this.dataSkill.Size = new System.Drawing.Size(560, 224);
             this.dataSkill.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn4
@@ -1584,7 +1610,7 @@
             this.tabActions.Location = new System.Drawing.Point(4, 22);
             this.tabActions.Name = "tabActions";
             this.tabActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActions.Size = new System.Drawing.Size(566, 244);
+            this.tabActions.Size = new System.Drawing.Size(566, 230);
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
@@ -1708,6 +1734,87 @@
             this.cbAnimationPlayer.Text = "Анимация игрока:";
             this.cbAnimationPlayer.UseVisualStyleBackColor = true;
             // 
+            // tabItems
+            // 
+            this.tabItems.BackColor = System.Drawing.SystemColors.Control;
+            this.tabItems.Controls.Add(this.cbCategory);
+            this.tabItems.Controls.Add(this.rbItems);
+            this.tabItems.Controls.Add(this.rbCategory);
+            this.tabItems.Controls.Add(this.GVItems);
+            this.tabItems.Location = new System.Drawing.Point(4, 22);
+            this.tabItems.Name = "tabItems";
+            this.tabItems.Padding = new System.Windows.Forms.Padding(3);
+            this.tabItems.Size = new System.Drawing.Size(566, 230);
+            this.tabItems.TabIndex = 8;
+            this.tabItems.Text = "Предметы";
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(0, 31);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(205, 21);
+            this.cbCategory.TabIndex = 4;
+            // 
+            // rbItems
+            // 
+            this.rbItems.AutoSize = true;
+            this.rbItems.Location = new System.Drawing.Point(87, 8);
+            this.rbItems.Name = "rbItems";
+            this.rbItems.Size = new System.Drawing.Size(78, 17);
+            this.rbItems.TabIndex = 3;
+            this.rbItems.Text = "Предметы";
+            this.rbItems.UseVisualStyleBackColor = true;
+            this.rbItems.CheckedChanged += new System.EventHandler(this.rbItems_CheckedChanged);
+            // 
+            // rbCategory
+            // 
+            this.rbCategory.AutoSize = true;
+            this.rbCategory.Checked = true;
+            this.rbCategory.Location = new System.Drawing.Point(3, 8);
+            this.rbCategory.Name = "rbCategory";
+            this.rbCategory.Size = new System.Drawing.Size(78, 17);
+            this.rbCategory.TabIndex = 2;
+            this.rbCategory.TabStop = true;
+            this.rbCategory.Text = "Категория";
+            this.rbCategory.UseVisualStyleBackColor = true;
+            this.rbCategory.CheckedChanged += new System.EventHandler(this.rbCategory_CheckedChanged);
+            // 
+            // GVItems
+            // 
+            this.GVItems.AllowUserToOrderColumns = true;
+            this.GVItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.itemType,
+            this.itemAttr,
+            this.itemQuantity});
+            this.GVItems.Location = new System.Drawing.Point(0, 31);
+            this.GVItems.Name = "GVItems";
+            this.GVItems.Size = new System.Drawing.Size(566, 199);
+            this.GVItems.TabIndex = 1;
+            this.GVItems.Visible = false;
+            // 
+            // itemType
+            // 
+            this.itemType.HeaderText = "Тип";
+            this.itemType.Name = "itemType";
+            this.itemType.Width = 320;
+            // 
+            // itemAttr
+            // 
+            this.itemAttr.HeaderText = "Аттрибут";
+            this.itemAttr.Items.AddRange(new object[] {
+            "Обычный",
+            "Квестовый",
+            "Авто"});
+            this.itemAttr.Name = "itemAttr";
+            // 
+            // itemQuantity
+            // 
+            this.itemQuantity.HeaderText = "Количество";
+            this.itemQuantity.Name = "itemQuantity";
+            this.itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // bEditDialogOk
             // 
             this.bEditDialogOk.Location = new System.Drawing.Point(172, 5);
@@ -1745,9 +1852,9 @@
             this.pCommands.Controls.Add(this.bEditDialogCancel);
             this.pCommands.Controls.Add(this.bEditDialogOk);
             this.pCommands.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pCommands.Location = new System.Drawing.Point(0, 664);
+            this.pCommands.Location = new System.Drawing.Point(0, 690);
             this.pCommands.Name = "pCommands";
-            this.pCommands.Size = new System.Drawing.Size(595, 56);
+            this.pCommands.Size = new System.Drawing.Size(595, 53);
             this.pCommands.TabIndex = 13;
             // 
             // cbForDev
@@ -1857,7 +1964,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(595, 720);
+            this.ClientSize = new System.Drawing.Size(595, 743);
             this.Controls.Add(this.pCommands);
             this.Controls.Add(this.gbActions);
             this.Controls.Add(this.gbPrecondition);
@@ -1869,6 +1976,8 @@
             this.gbActions.ResumeLayout(false);
             this.gbActions.PerformLayout();
             this.gbPrecondition.ResumeLayout(false);
+            this.gbPrecondition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).EndInit();
@@ -1900,6 +2009,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).EndInit();
             this.tabActions.ResumeLayout(false);
             this.tabActions.PerformLayout();
+            this.tabItems.ResumeLayout(false);
+            this.tabItems.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GVItems)).EndInit();
             this.pCommands.ResumeLayout(false);
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
@@ -2076,5 +2188,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn b;
         private System.Windows.Forms.MaskedTextBox tCheckNodes;
         private System.Windows.Forms.Label lCheckNodes;
+        private System.Windows.Forms.PictureBox pictureItems;
+        private System.Windows.Forms.TabPage tabItems;
+        private System.Windows.Forms.RadioButton rbItems;
+        private System.Windows.Forms.RadioButton rbCategory;
+        private System.Windows.Forms.DataGridView GVItems;
+        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.DataGridViewComboBoxColumn itemType;
+        private System.Windows.Forms.DataGridViewComboBoxColumn itemAttr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemQuantity;
     }
 }

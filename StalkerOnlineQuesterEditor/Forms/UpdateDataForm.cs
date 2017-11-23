@@ -60,6 +60,7 @@ namespace StalkerOnlineQuesterEditor.Forms
             string fileName = @"..\misc\developer_scripts\QuestEditorScripts\ItemsParser.py";
             run_cmd(fileName);
             this.parent.itemConst = new CItemConstants();
+            this.parent.itemCategories = new CItemCategories();
             MessageBox.Show("Complete");
         }
 

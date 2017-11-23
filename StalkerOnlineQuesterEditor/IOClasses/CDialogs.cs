@@ -61,7 +61,7 @@ namespace StalkerOnlineQuesterEditor
             doc = XDocument.Load(DialogsXMLFile);
             foreach (XElement npc in doc.Root.Elements())
             {
-                string npc_name = npc.Element("Name").Value.ToString();
+                string npc_name = npc.Element("Name").Value.ToString().Trim();
                 target.Add(npc_name, new Dictionary<int, CDialog>());
 
                 foreach (XElement dialog in npc.Elements("Dialog"))
@@ -206,28 +206,38 @@ namespace StalkerOnlineQuesterEditor
                         }
                         if (dialog.Element("Precondition").Element("Reputation") != null)
                         {
-
-                        
-                        foreach (string el in dialog.Element("Precondition").Element("Reputation").Value.Split(';'))
-                        {
-                            if (el == "")
-                                continue;
-                            string[] fr = el.Split(':');
-                            int fractionID = int.Parse(fr[0]);
-                            Precondition.Reputation.Add(fractionID, new List<double>());
-                            double A = double.Parse(fr[1], System.Globalization.CultureInfo.InvariantCulture);
-                            double B = double.Parse(fr[2], System.Globalization.CultureInfo.InvariantCulture);
-                            Precondition.Reputation[fractionID].Add(A);
-                            Precondition.Reputation[fractionID].Add(B);
+                            foreach (string el in dialog.Element("Precondition").Element("Reputation").Value.Split(';'))
+                            {
+                                if (el == "")
+                                    continue;
+                                string[] fr = el.Split(':');
+                                int fractionID = int.Parse(fr[0]);
+                                Precondition.Reputation.Add(fractionID, new List<double>());
+                                double A = double.Parse(fr[1], System.Globalization.CultureInfo.InvariantCulture);
+                                double B = double.Parse(fr[2], System.Globalization.CultureInfo.InvariantCulture);
+                                Precondition.Reputation[fractionID].Add(A);
+                                Precondition.Reputation[fractionID].Add(B);
+                            }
                         }
+
+                        if (dialog.Element("Precondition").Element("items") != null)
+                        {
+                            if (dialog.Element("Precondition").Element("items").Element("itemCategory") != null)
+                                Precondition.items.itemCategory = int.Parse(dialog.Element("Precondition").Element("items").Element("itemCategory").Value);
+                            else if (dialog.Element("Precondition").Element("items").Element("typeOfItems") != null)
+                            {
+                                AddDataToList(dialog.Element("Precondition"), "items", "typeOfItems", Precondition.items.typeOfItems);
+                                AddDataToList(dialog.Element("Precondition"), "items", "numOfItems", Precondition.items.numOfItems);
+                                AddDataToList(dialog.Element("Precondition"), "items", "attrOfItems", Precondition.items.attrOfItems);
+                            }
                         }
 
                     }
                     NodeCoordinates nodeCoord = new NodeCoordinates();
                     if (dialog.Element("RootDialog") != null)
-                        nodeCoord.RootDialog = dialog.Element("RootDialog").Value.Equals("1");
+                        nodeCoord.RootDialog = dialog.Element("RootDialog").Value.Trim().Equals("1");
                     if (dialog.Element("Active") != null)
-                        nodeCoord.Active = dialog.Element("Active").Value.Equals("1");
+                        nodeCoord.Active = dialog.Element("Active").Value.Trim().Equals("1");
                     else nodeCoord.Active = false;
                     if (tempCoordinates.ContainsKey(npc_name) && tempCoordinates[npc_name].ContainsKey(DialogID))
                     {
@@ -240,7 +250,7 @@ namespace StalkerOnlineQuesterEditor
                         DebugData = dialog.Element("DebugData").Value.ToString();
                     if (dialog.Element("isAutoNode") != null)
                     {
-                        isAutoNode = dialog.Element("isAutoNode").Value.Equals("1");
+                        isAutoNode = dialog.Element("isAutoNode").Value.Trim().Equals("1");
                         if (dialog.Element("defaultNode") != null) defaultNode = dialog.Element("defaultNode").Value; 
 
                     }
@@ -313,7 +323,7 @@ namespace StalkerOnlineQuesterEditor
             doc = XDocument.Load(DialogsXMLFile);
             foreach (XElement npc in doc.Root.Elements())
             {
-                string npc_name = npc.Element("Name").Value.ToString();
+                string npc_name = npc.Element("Name").Value.ToString().Trim();
                 if (!target.ContainsKey(npc_name))
                 {
                     MessageBox.Show("В DialogsData отсутствует NPC:" + npc_name, "Ошибка парсинга текстов");
@@ -325,7 +335,7 @@ namespace StalkerOnlineQuesterEditor
 
                     if (!target[npc_name].ContainsKey(DialogID))
                     {
-                        string msg = "Проблема с диалогом ID:" + DialogID.ToString();
+                        string msg = "Проблема с диалогом ID:" + DialogID.ToString() + ". У NPC в DialogData отсутствует диалог с таким ID";
                         if (dialog.Element("Title") != null)
                             msg += " Title:" + dialog.Element("Title").Value.Trim();
                         MessageBox.Show(msg, "Ошибка парсинга текстов");
@@ -498,7 +508,17 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Precondition.forDev)
                         element.Element("Precondition").Add(new XElement("forDev", Global.GetBoolAsString(dialog.Precondition.forDev)));
 
-
+                    if (dialog.Precondition.items.itemCategory != -1)
+                    {
+                        element.Element("Precondition").Add(new XElement("items", new XElement("itemCategory", dialog.Precondition.items.itemCategory.ToString())));
+                    }
+                    else if (dialog.Precondition.items.typeOfItems.Any())
+                    {
+                        element.Element("Precondition").Add(new XElement("items", ""));
+                        element.Element("Precondition").Element("items").Add(new XElement("typeOfItems", Global.GetListAsString(dialog.Precondition.items.typeOfItems)));
+                        element.Element("Precondition").Element("items").Add(new XElement("numOfItems", Global.GetListAsString(dialog.Precondition.items.numOfItems)));
+                        element.Element("Precondition").Element("items").Add(new XElement("attrOfItems", Global.GetListAsString(dialog.Precondition.items.attrOfItems)));
+                    }
                     if (dialog.Actions.Any())
                     {
                         element.Add(new XElement("Actions", ""));

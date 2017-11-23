@@ -57,6 +57,7 @@ namespace StalkerOnlineQuesterEditor
 
         public СQuestConstants questConst;
         public CItemConstants itemConst;
+        public CItemCategories itemCategories;
         public CNPCConstants npcConst;
         public CMobConstants mobConst;
         public CZoneConstants zoneConst;
@@ -105,6 +106,7 @@ namespace StalkerOnlineQuesterEditor
             tree = treeDialogs;
             questConst = new СQuestConstants();
             itemConst = new CItemConstants();
+            itemCategories = new CItemCategories();
             npcConst = new CNPCConstants();
             spacesConst = new CSpacesConstants();
             triggerConst = new CTriggerConstants();
