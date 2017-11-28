@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -776,7 +777,8 @@ namespace StalkerOnlineQuesterEditor
                     if (!typeName.Equals(""))
                     {
                         int quantity = 0;
-
+                        float cond = 0;
+                        float.TryParse(row.Cells["itemCond"].FormattedValue.ToString().Replace(',','.'), NumberStyles.Float, CultureInfo.InvariantCulture, out cond);
                         if ((int.TryParse(row.Cells["itemQuantity"].FormattedValue.ToString(), out quantity)) && (quantity >= 1))
                         {
                             int typeID = parent.itemConst.getIDOnDescription(typeName);
@@ -791,6 +793,7 @@ namespace StalkerOnlineQuesterEditor
                             precondition.items.typeOfItems.Add(typeID);
                             precondition.items.numOfItems.Add(quantity);
                             precondition.items.attrOfItems.Add(attr);
+                            precondition.items.condOfItems.Add(cond);
                         }
                     }
                 }
@@ -1016,7 +1019,8 @@ namespace StalkerOnlineQuesterEditor
                         default:item_attr = "Обычный"; break;
                     }
                     int count = this.editPrecondition.items.numOfItems[i];
-                    object[] row = { item_name, item_attr, count };
+                    string cond = this.editPrecondition.items.condOfItems[i].ToString("G6", CultureInfo.InvariantCulture);
+                    object[] row = { item_name, item_attr, count, cond};
                     GVItems.Rows.Add(row);
                 }
             }

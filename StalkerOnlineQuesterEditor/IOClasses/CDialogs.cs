@@ -229,6 +229,7 @@ namespace StalkerOnlineQuesterEditor
                                 AddDataToList(dialog.Element("Precondition"), "items", "typeOfItems", Precondition.items.typeOfItems);
                                 AddDataToList(dialog.Element("Precondition"), "items", "numOfItems", Precondition.items.numOfItems);
                                 AddDataToList(dialog.Element("Precondition"), "items", "attrOfItems", Precondition.items.attrOfItems);
+                                AddDataToList(dialog.Element("Precondition"), "items", "condOfItems", Precondition.items.condOfItems);
                             }
                         }
 
@@ -307,6 +308,15 @@ namespace StalkerOnlineQuesterEditor
             if (Element.Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
                     list.Add(int.Parse(quest));
+        }
+
+        private void AddDataToList(XElement Element, String Name1, String Name2, List<float> list)
+        {
+            if (Element.Element(Name1).Element(Name2) == null)
+                return;
+            if (Element.Element(Name1).Element(Name2).Value != "")
+                foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
+                    list.Add(float.Parse(quest, System.Globalization.CultureInfo.InvariantCulture));
         }
 
         private int ParseIntIfNotEmpty(XElement Element, String Name1, String Name2, int defaultValue)
@@ -518,6 +528,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Precondition").Element("items").Add(new XElement("typeOfItems", Global.GetListAsString(dialog.Precondition.items.typeOfItems)));
                         element.Element("Precondition").Element("items").Add(new XElement("numOfItems", Global.GetListAsString(dialog.Precondition.items.numOfItems)));
                         element.Element("Precondition").Element("items").Add(new XElement("attrOfItems", Global.GetListAsString(dialog.Precondition.items.attrOfItems)));
+                        element.Element("Precondition").Element("items").Add(new XElement("condOfItems", Global.GetListAsString(dialog.Precondition.items.condOfItems)));
+                        
                     }
                     if (dialog.Actions.Any())
                     {

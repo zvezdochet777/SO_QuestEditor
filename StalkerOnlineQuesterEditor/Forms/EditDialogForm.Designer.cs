@@ -183,9 +183,6 @@
             this.rbItems = new System.Windows.Forms.RadioButton();
             this.rbCategory = new System.Windows.Forms.RadioButton();
             this.GVItems = new System.Windows.Forms.DataGridView();
-            this.itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -200,6 +197,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
+            this.itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).BeginInit();
@@ -1786,34 +1787,13 @@
             this.GVItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemType,
             this.itemAttr,
-            this.itemQuantity});
+            this.itemQuantity,
+            this.ItemCond});
             this.GVItems.Location = new System.Drawing.Point(0, 31);
             this.GVItems.Name = "GVItems";
             this.GVItems.Size = new System.Drawing.Size(566, 199);
             this.GVItems.TabIndex = 1;
             this.GVItems.Visible = false;
-            // 
-            // itemType
-            // 
-            this.itemType.HeaderText = "Тип";
-            this.itemType.Name = "itemType";
-            this.itemType.Width = 320;
-            // 
-            // itemAttr
-            // 
-            this.itemAttr.HeaderText = "Аттрибут";
-            this.itemAttr.Items.AddRange(new object[] {
-            "Обычный",
-            "Квестовый",
-            "Авто"});
-            this.itemAttr.Name = "itemAttr";
-            // 
-            // itemQuantity
-            // 
-            this.itemQuantity.HeaderText = "Количество";
-            this.itemQuantity.Name = "itemQuantity";
-            this.itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // bEditDialogOk
             // 
@@ -1958,6 +1938,36 @@
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
+            // 
+            // itemType
+            // 
+            this.itemType.HeaderText = "Тип";
+            this.itemType.Name = "itemType";
+            this.itemType.Width = 300;
+            // 
+            // itemAttr
+            // 
+            this.itemAttr.HeaderText = "Аттрибут";
+            this.itemAttr.Items.AddRange(new object[] {
+            "Обычный",
+            "Квестовый",
+            "Авто"});
+            this.itemAttr.Name = "itemAttr";
+            this.itemAttr.Width = 70;
+            // 
+            // itemQuantity
+            // 
+            this.itemQuantity.HeaderText = "Количество";
+            this.itemQuantity.Name = "itemQuantity";
+            this.itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.itemQuantity.Width = 75;
+            // 
+            // ItemCond
+            // 
+            this.ItemCond.HeaderText = "Мин. прочность";
+            this.ItemCond.Name = "ItemCond";
+            this.ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // EditDialogForm
             // 
@@ -2197,5 +2207,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn itemType;
         private System.Windows.Forms.DataGridViewComboBoxColumn itemAttr;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCond;
     }
 }

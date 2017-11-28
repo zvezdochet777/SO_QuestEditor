@@ -93,6 +93,7 @@ namespace StalkerOnlineQuesterEditor
         public List<int> typeOfItems = new List<int>();
         public List<int> numOfItems = new List<int>();
         public List<int> attrOfItems = new List<int>();
+        public List<float> condOfItems = new List<float>();
         public int itemCategory = -1;
 
         public bool Any()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -20,6 +21,19 @@ namespace StalkerOnlineQuesterEditor
                     result += element.ToString();
                 else
                     result += separator + element.ToString();
+            }
+            return result;
+        }
+
+        public static string GetListAsString(List<float> list, char separator = ',')
+        {
+            string result = "";
+            foreach (float element in list)
+            {
+                if (result.Equals(""))
+                    result += element.ToString("G6", CultureInfo.InvariantCulture);
+                else
+                    result += separator + element.ToString("G6", CultureInfo.InvariantCulture);
             }
             return result;
         }
