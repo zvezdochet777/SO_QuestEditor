@@ -1019,7 +1019,17 @@ namespace StalkerOnlineQuesterEditor
                         default:item_attr = "Обычный"; break;
                     }
                     int count = this.editPrecondition.items.numOfItems[i];
-                    string cond = this.editPrecondition.items.condOfItems[i].ToString("G6", CultureInfo.InvariantCulture);
+                    string cond;
+                    try
+                    {
+                        cond = this.editPrecondition.items.condOfItems[i].ToString("G6", CultureInfo.InvariantCulture);
+                    }
+                    catch(Exception e)
+                    {
+                        cond = "0";
+                    }
+                   
+
                     object[] row = { item_name, item_attr, count, cond};
                     GVItems.Rows.Add(row);
                 }
