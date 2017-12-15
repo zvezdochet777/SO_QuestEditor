@@ -34,6 +34,8 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(22, "Необходимое количество репутации."));
             simpleQuestsType.Add(new СQuestType(23, "Необходимое количество репутации АВТО."));
             simpleQuestsType.Add(new СQuestType(24, "Убийство."));
+            simpleQuestsType.Add(new СQuestType(25, "Собрать количество предметов категории."));
+            simpleQuestsType.Add(new СQuestType(26, "Собрать количество предметов категории АВТО."));
 
             ierarchyQuestsType.Add(new СQuestType(50, "Игра против режиссера."));
             simpleQuestsType.Add(new СQuestType(51, "Создать NPC."));

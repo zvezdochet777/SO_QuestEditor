@@ -128,6 +128,7 @@ namespace StalkerOnlineQuesterEditor
         public string AreaName;
         public float Time;
         public string ObjectName;
+        public string additional = "";
         public int IsGroup;
         public bool IsClan;
         public int onFin;
@@ -485,6 +486,7 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<int, int> Reputation;
         //! Словарь репутаций в награду, выглядит так <id квеста>:<установленный статус>;
         public Dictionary<int, int> ChangeQuests;
+        public bool randomQuest = false;
         public int KarmaPK;
         public List<CEffect> Effects;
         public bool RewardWindow;

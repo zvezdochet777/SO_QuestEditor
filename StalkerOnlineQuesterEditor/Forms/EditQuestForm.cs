@@ -283,12 +283,23 @@ namespace StalkerOnlineQuesterEditor
                     targetAttributeComboBox.Items.Add("Обычный.");
                     targetAttributeComboBox.Items.Add("Квестовый.");
                     targetAttributeComboBox.Enabled = true;
+                    targetAttributeComboBox2.Enabled = true;
+                    targetAttributeComboBox2.Items.Clear();
+                    targetAttributeComboBox2.Items.Add("Не забирать.");
+
                     labelTargetAttr.Enabled = true;
                     ltargetResult.Enabled = true;
                     dynamicCheckBox.Enabled = true;
                     cbState.Enabled = true;
                 }
-
+                else if (QuestType == 25 || QuestType == 26)
+                {
+                    lNameObject.Text = "Категория:";
+                    foreach (string description in parent.itemCategories.getAllItems().Values)
+                        targetComboBox.Items.Add(description);
+                    targetAttributeComboBox.Items.Clear();
+                    targetAttributeComboBox.Enabled = false;
+                }
                 else if (QuestType == 7)
                 {
                     lNameObject.Text = "Тип предмета:";
@@ -485,6 +496,8 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedItem = parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
                 targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
+                if( (quest.Target.QuestType == 0 || quest.Target.QuestType == 16) && quest.Target.additional.Any())
+                    targetAttributeComboBox2.SelectedIndex = 0;
                 if (quest.Target.usePercent)
                 {
                     cbState.Checked = true;
@@ -492,6 +505,11 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else cbState.Checked = false;
 
+            }
+            else if (quest.Target.QuestType == 25 || quest.Target.QuestType == 26)
+            {
+                targetComboBox.SelectedItem = parent.itemCategories.getNameOnID(quest.Target.ObjectType);
+                quantityUpDown.Value = quest.Target.NumOfObjects;
             }
             else if (quest.Target.QuestType == 1)
             {
@@ -595,6 +613,10 @@ namespace StalkerOnlineQuesterEditor
             else if (quest.Target.QuestType == 24)
             {
                 targetComboBox.SelectedIndex = quest.Target.ObjectType;
+            }
+            else if (quest.Target.QuestType == 25 || quest.Target.QuestType == 26)
+            {
+
             }
             else if (quest.Target.QuestType == 51)
             {
@@ -879,18 +901,25 @@ namespace StalkerOnlineQuesterEditor
             {
                 target.ObjectType = parent.itemConst.getIDOnDescription(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
+                
                 if (target.NumOfObjects < 1)
                 {
                     MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
                     return null;
                 }
                 target.ObjectAttr = targetAttributeComboBox.SelectedIndex;
+                target.additional = (targetAttributeComboBox2.SelectedIndex == -1) ? "" : "1";
                 if (cbState.Checked && cbState.Enabled)
                 {
                     target.usePercent = true;
                     target.percent = Convert.ToSingle(udState.Value) / 100;
                 }
                 else target.usePercent = false;
+            }
+            else if (target.QuestType == 25 || target.QuestType == 26)
+            {
+                target.ObjectType = parent.itemCategories.getID(targetComboBox.SelectedItem.ToString());
+                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
             }
             else if (target.QuestType == 1)
             {
@@ -1105,6 +1134,7 @@ namespace StalkerOnlineQuesterEditor
             reward.Reputation = editQuestReward.Reputation;
             reward.Effects = editQuestReward.Effects;
             reward.ChangeQuests = editQuestReward.ChangeQuests;
+            reward.randomQuest = editQuestReward.randomQuest;
 
             penalty.TypeOfItems = editQuestPenalty.TypeOfItems;
             penalty.NumOfItems = editQuestPenalty.NumOfItems;
@@ -1113,6 +1143,7 @@ namespace StalkerOnlineQuesterEditor
             penalty.Reputation = editQuestPenalty.Reputation;
             penalty.Effects = editQuestPenalty.Effects;
             penalty.ChangeQuests = editQuestPenalty.ChangeQuests;
+            penalty.randomQuest = editQuestPenalty.randomQuest;
 
             rules.TypeOfItems = editQuestRules.TypeOfItems;
             rules.NumOfItems = editQuestRules.NumOfItems;
@@ -1399,7 +1430,7 @@ namespace StalkerOnlineQuesterEditor
         //! Открывает окно редактирования  квестов
         private void bRewardQuests_Click(object sender, EventArgs e)
         {
-            RewardQuestsDialog edit_quest = new RewardQuestsDialog(this, ref this.editQuestReward.ChangeQuests);
+            RewardQuestsDialog edit_quest = new RewardQuestsDialog(this, ref this.editQuestReward);
             this.Enabled = false;
             edit_quest.ShowDialog();
             this.Enabled = true;
@@ -1480,7 +1511,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bPenaltyQuests_Click(object sender, EventArgs e)
         {
-            RewardQuestsDialog edit_quest = new RewardQuestsDialog(this, ref this.editQuestPenalty.ChangeQuests);
+            RewardQuestsDialog edit_quest = new RewardQuestsDialog(this, ref this.editQuestPenalty);
             this.Enabled = false;
             edit_quest.ShowDialog();
             this.Enabled = true;
