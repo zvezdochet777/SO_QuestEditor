@@ -589,6 +589,8 @@ namespace StalkerOnlineQuesterEditor
                 actions.actionAvatarPoint = tbAvatarPoint.Text;
             if (cbPlaySonund.Checked && tbPlaySonund.Text.Any())
                 actions.actionPlaySound = tbPlaySonund.Text;
+            if (nupChangeMoney.Value != 0)
+                actions.changeMoney = Convert.ToInt32(nupChangeMoney.Value);
 
 
             // заполняем условия появления диалога - открытые и закрытые квесты и т.д.
@@ -1117,6 +1119,7 @@ namespace StalkerOnlineQuesterEditor
                 cbPlaySonund.Checked = true;
                 tbPlaySonund.Text = curDialog.Actions.actionPlaySound;
             }
+            nupChangeMoney.Value = Convert.ToDecimal(curDialog.Actions.changeMoney);
             this.checkActionIndicates();
         }
 
@@ -1227,7 +1230,7 @@ namespace StalkerOnlineQuesterEditor
         {
             pictureAction.Visible = (cbAnimationNPC.Checked && tbAnimationNPC.Text.Any()) || (cbAnimationPlayer.Checked && tbAnimationPlayer.Text.Any()) ||
                 (cbCamera.Checked && tbCamera.Text.Any()) || (cbPlaySonund.Checked && tbPlaySonund.Text.Any()) || (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any()) ||
-                (cbItemNPC.Checked && tbItemNPC.Text.Any());   
+                (cbItemNPC.Checked && tbItemNPC.Text.Any() && nupChangeMoney.Value != 0);   
         }
 
         private void checkEffectsIndicates()

@@ -277,6 +277,7 @@ namespace StalkerOnlineQuesterEditor
         public string actionAnimationPlayer;
         public string actionAnimationNPC;
         public string actionItemNPC;
+        public int changeMoney;
         public string actionAvatarPoint;
         public string actionPlaySound;
 
@@ -297,13 +298,14 @@ namespace StalkerOnlineQuesterEditor
             this.actionAvatarPoint = "";
             this.actionPlaySound = "";
             this.actionItemNPC = "";
+            this.changeMoney = 0;
         }
 
 
         public bool Any()
         {
             return GetQuests.Any() || CompleteQuests.Any() || CancelQuests.Any() || FailQuests.Any() || (Event != null && Event.Value != 0) || (ToDialog != 0) || Exit ||
-                actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "" || actionAvatarPoint != "" || actionPlaySound != "" ;
+                actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "" || actionAvatarPoint != "" || actionPlaySound != "" || (changeMoney != 0);
         }
 
         public bool Exists()

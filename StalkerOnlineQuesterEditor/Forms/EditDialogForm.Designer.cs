@@ -201,6 +201,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.nupChangeMoney = new System.Windows.Forms.NumericUpDown();
             this.gbActions.SuspendLayout();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).BeginInit();
@@ -233,6 +235,7 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -283,6 +286,8 @@
             // gbActions
             // 
             this.gbActions.AutoSize = true;
+            this.gbActions.Controls.Add(this.nupChangeMoney);
+            this.gbActions.Controls.Add(this.label8);
             this.gbActions.Controls.Add(this.tbAvatarGoTo);
             this.gbActions.Controls.Add(this.commandsComboBox);
             this.gbActions.Controls.Add(this.cbFailQuests);
@@ -1969,6 +1974,32 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(293, 103);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 13);
+            this.label8.TabIndex = 42;
+            this.label8.Text = "Изменить деньги:";
+            // 
+            // nupChangeMoney
+            // 
+            this.nupChangeMoney.Location = new System.Drawing.Point(426, 101);
+            this.nupChangeMoney.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nupChangeMoney.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.nupChangeMoney.Name = "nupChangeMoney";
+            this.nupChangeMoney.Size = new System.Drawing.Size(147, 20);
+            this.nupChangeMoney.TabIndex = 43;
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2028,6 +2059,7 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2208,5 +2240,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn itemAttr;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCond;
+        private System.Windows.Forms.NumericUpDown nupChangeMoney;
+        private System.Windows.Forms.Label label8;
     }
 }

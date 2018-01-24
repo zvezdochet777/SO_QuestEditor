@@ -170,16 +170,9 @@ namespace StalkerOnlineQuesterEditor
     //! Класс, содержащий информацию предметах для NPC
     public class NPCItems
     {
-        public Items weapons = new Items();
-        public Items hands = new Items();
-        public Items boots = new Items();
+        public Items primaryWeapons = new Items();
+        public Items secondaryyWeapons = new Items();
         public Items body = new Items();
-        public Items armor = new Items();
-        public Items legs = new Items();
-        public Items cap = new Items();
-        public Items mask = new Items();
-        public Items back = new Items();
-        public Items head = new Items();
         //! Конструктор, заполняет словарь на основе файлов xml
 
         public NPCItems()
@@ -196,18 +189,32 @@ namespace StalkerOnlineQuesterEditor
                     string name = item.Element("name").Value;
                     switch (items_name)
                     {
-                        case "NPC_WEAPON": weapons.Add(ID, name); break;
-                        case "NPC_HANDS": hands.Add(ID, name); break;
-                        case "NPC_BOOTS": boots.Add(ID, name); break;
                         case "NPC_BODY": body.Add(ID, name); break;
-                        case "NPC_ARMOR": armor.Add(ID, name); break;
-                        case "NPC_LEGS": legs.Add(ID, name); break;
-                        case "NPC_CAP": cap.Add(ID, name); break;
-                        case "NPC_MASK": mask.Add(ID, name); break;
-                        case "NPC_BACK": back.Add(ID, name); break;
-                        case "NPC_HEAD": head.Add(ID, name); break;
                     }
                 }
+                
+            }
+            if (!System.IO.File.Exists("source/ItemWeapons.xml"))
+            {
+                System.Windows.Forms.MessageBox.Show("Отсуствует файл ItemStrings.xml, нужно распарсить предметы", "Ошибка");
+                return;
+            }
+            doc = XDocument.Load("source/ItemWeapons.xml");
+            foreach (XElement items in doc.Root.Elements())
+            {
+                  string weapon_type = items.Name.ToString();
+
+                    foreach (XElement item in items.Elements())
+                    {
+                        int ID = Convert.ToInt32(item.Element("id").Value.ToString());
+
+                        string name = item.Element("Name").Value;
+                        switch (weapon_type)
+                        {
+                            case "PRIMARY_WEAPONS": primaryWeapons.Add(ID, name); break;
+                            case "SECONDARY_WEAPONS": secondaryyWeapons.Add(ID, name); break;
+                    }
+                    }
                 
             }
         }

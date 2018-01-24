@@ -192,11 +192,11 @@ namespace StalkerOnlineQuesterEditor
                 
                     if (item.Element("QuestRules").Element("baseToCapturePercent") != null)
                         questRules.basePercent = float.Parse(item.Element("QuestRules").Element("baseToCapturePercent").Value, CultureInfo.InvariantCulture);
-                    AddDataToList(item, "QuestRules", "NumOfItems", questRules.NumOfItems);
-                    AddDataToList(item, "QuestRules", "TypeOfItems", questRules.TypeOfItems);
-                    AddDataToList(item, "QuestRules", "AttrOfItems", questRules.AttrOfItems);
-                    AddDataToList(item, "QuestRules", "Scenarios", questRules.Scenarios);
-                    AddDataToList(item, "QuestRules", "MassQuests", questRules.MassQuests);
+                    CQuests.AddDataToList(item, "QuestRules", "NumOfItems", questRules.NumOfItems);
+                    CQuests.AddDataToList(item, "QuestRules", "TypeOfItems", questRules.TypeOfItems);
+                    CQuests.AddDataToList(item, "QuestRules", "AttrOfItems", questRules.AttrOfItems);
+                    CQuests.AddDataToList(item, "QuestRules", "Scenarios", questRules.Scenarios);
+                    CQuests.AddDataToList(item, "QuestRules", "MassQuests", questRules.MassQuests);
 
                     ParseIntIfNotEmpty(item, "QuestRules", "MaxGroup", out questRules.MaxGroup, 0);
                     ParseIntIfNotEmpty(item, "QuestRules", "MinGroup", out questRules.MinGroup, 0);
@@ -217,10 +217,10 @@ namespace StalkerOnlineQuesterEditor
 
                 if (item.Element("Reward") != null)
                 {
-                    AddDataToList(item, "Reward", "Experience", reward.Experience);
-                    AddDataToList(item, "Reward", "NumOfItems", reward.NumOfItems);
-                    AddDataToList(item, "Reward", "TypeOfItems", reward.TypeOfItems);
-                    AddDataToList(item, "Reward", "AttrOfItems", reward.AttrOfItems);
+                    CQuests.AddDataToList(item, "Reward", "Experience", reward.Experience);
+                    CQuests.AddDataToList(item, "Reward", "NumOfItems", reward.NumOfItems);
+                    CQuests.AddDataToList(item, "Reward", "TypeOfItems", reward.TypeOfItems);
+                    CQuests.AddDataToList(item, "Reward", "AttrOfItems", reward.AttrOfItems);
 
                     if (item.Element("Reward").Descendants().Any(itm2 => itm2.Name == "Probability"))
                         if (!item.Element("Reward").Element("Probability").Value.Equals(""))
@@ -258,10 +258,10 @@ namespace StalkerOnlineQuesterEditor
 
                 if (item.Element("Penalty") != null)
                 {
-                    AddDataToList(item, "Penalty", "Experience", penalty.Experience);
-                    AddDataToList(item, "Penalty", "NumOfItems", penalty.NumOfItems);
-                    AddDataToList(item, "Penalty", "TypeOfItems", penalty.TypeOfItems);
-                    AddDataToList(item, "Penalty", "AttrOfItems", penalty.AttrOfItems);
+                    CQuests.AddDataToList(item, "Penalty", "Experience", penalty.Experience);
+                    CQuests.AddDataToList(item, "Penalty", "NumOfItems", penalty.NumOfItems);
+                    CQuests.AddDataToList(item, "Penalty", "TypeOfItems", penalty.TypeOfItems);
+                    CQuests.AddDataToList(item, "Penalty", "AttrOfItems", penalty.AttrOfItems);
 
                     if (item.Element("Penalty").Descendants().Any(itm2 => itm2.Name == "Probability"))
                         if (!item.Element("Penalty").Element("Probability").Value.Equals(""))
@@ -304,7 +304,7 @@ namespace StalkerOnlineQuesterEditor
                     }
 
                     ParseIntIfNotEmpty(item, "Additional", "IsSubQuest", out additional.IsSubQuest, 0);
-                    AddDataToList(item, "Additional", "ListOfSubQuest", additional.ListOfSubQuest);
+                    CQuests.AddDataToList(item, "Additional", "ListOfSubQuest", additional.ListOfSubQuest);
 
                     if (item.Element("Additional").Descendants().Any(u => u.Name == "CantCancel"))
                         additional.CantCancel = item.Element("Additional").Element("CantCancel").Value.Trim().Equals("1");
@@ -359,13 +359,22 @@ namespace StalkerOnlineQuesterEditor
             }
         }
         
-        private void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
+        public static void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
         {
 
             if((Element == null) || (Element.Element(Name1).Element(Name2) == null) )
                 return;
             if (Element.Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
+                    list.Add(int.Parse(quest));
+        }
+
+        public static void AddDataToList(XElement Element, String Name1, List<int> list)
+        {
+            if ((Element == null) || (Element.Element(Name1) == null))
+                return;
+            if (Element.Element(Name1).Value != "")
+                foreach (string quest in Element.Element(Name1).Value.Split(','))
                     list.Add(int.Parse(quest));
         }
 
