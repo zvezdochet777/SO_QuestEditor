@@ -192,7 +192,7 @@ namespace StalkerOnlineQuesterEditor
                 RectManager.SetCurrentNPC(currentNPC);
                 if ((NPCBox.SelectedIndex != 0) && ((current_npc_history_index == -1) || (npc_history[current_npc_history_index] != NPCBox.SelectedIndex)))
                 {
-                    npc_history = npc_history.GetRange(0, Math.Max(current_npc_history_index, 0));
+                    npc_history = npc_history.GetRange(0, Math.Max(current_npc_history_index + 1, 0));
                     npc_history.Add(NPCBox.SelectedIndex);
                     current_npc_history_index = Math.Max(npc_history.Count - 1, 0);
                     checkNavigationArrows();
