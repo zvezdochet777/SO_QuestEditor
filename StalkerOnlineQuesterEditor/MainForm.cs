@@ -192,12 +192,15 @@ namespace StalkerOnlineQuesterEditor
                 RectManager.SetCurrentNPC(currentNPC);
                 if ((NPCBox.SelectedIndex != 0) && ((current_npc_history_index == -1) || (npc_history[current_npc_history_index] != NPCBox.SelectedIndex)))
                 {
+                    npc_history = npc_history.GetRange(0, Math.Max(current_npc_history_index, 0));
                     npc_history.Add(NPCBox.SelectedIndex);
-                    current_npc_history_index = npc_history.Count - 1;
+                    current_npc_history_index = Math.Max(npc_history.Count - 1, 0);
                     checkNavigationArrows();
                 }                
             }
-            catch {
+            catch (Exception err)
+            {
+                string a = err.Message;
                 return;
             }
             if (CentralDock.SelectedIndex == 0)
@@ -630,7 +633,9 @@ namespace StalkerOnlineQuesterEditor
         public void ShowDialogTooltip(PNode CurrentNode)
         {
             int dialogID = getDialogIDOnNode(CurrentNode);
-            string tooltip = dialogs.dialogs[currentNPC][dialogID].GetNodeTooltip();
+            string tooltip = "";
+            if (dialogs.dialogs[currentNPC].ContainsKey(dialogID))
+                tooltip = dialogs.dialogs[currentNPC][dialogID].GetNodeTooltip();
             toolTipDialogs.SetToolTip(DialogShower, tooltip);
         }
 
