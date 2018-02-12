@@ -651,14 +651,17 @@ namespace StalkerOnlineQuesterEditor
             npc.animation = tbNPCAnim.Text;
 
             npc.fraction = cbFractionID.SelectedItem == null ? 0 : parent.fractions.getFractionIDByDescr(cbFractionID.SelectedItem.ToString());
-            npc.npcWeapon = cbWeapon.SelectedIndex == -1 ? 0 : cbWeapon.SelectedIndex;
-            npc.npcWeaponPrimary = cbPrimaryWeapon.SelectedItem == null ? 0 : parent.npcItems.primaryWeapons.getIDByName(cbPrimaryWeapon.SelectedItem.ToString());
-
-            npc.npcWeaponPrimary2 = cbPrimary2Weapon.SelectedItem == null ? 0 : parent.npcItems.primaryWeapons.getIDByName(cbPrimary2Weapon.SelectedItem.ToString());
-
-            npc.npcWeaponSecondary = cbSecondaryWeapon.SelectedItem == null ? 0 : parent.npcItems.secondaryyWeapons.getIDByName(cbSecondaryWeapon.SelectedItem.ToString());
-
-            npc.NPCEquippedArmor = tbCloth.Text;
+            npc.weapon = cbWeapon.SelectedItem == null ? 0 : parent.npcItems.weapons.getIDByName(cbWeapon.SelectedItem.ToString());
+            npc.hand = cbHands.SelectedItem == null ? 0 : parent.npcItems.hands.getIDByName(cbHands.SelectedItem.ToString());
+            npc.boots = cbBoots.SelectedItem == null ? 0 : parent.npcItems.boots.getIDByName(cbBoots.SelectedItem.ToString());
+            npc.body = cbBody.SelectedItem == null ? 0 : parent.npcItems.body.getIDByName(cbBody.SelectedItem.ToString());
+            npc.armor = cbArmor.SelectedItem == null ? 0 : parent.npcItems.armor.getIDByName(cbArmor.SelectedItem.ToString());
+            npc.legs = cbLegs.SelectedItem == null ? 0 : parent.npcItems.legs.getIDByName(cbLegs.SelectedItem.ToString());
+            npc.cap = cbCap.SelectedItem == null ? 0 : parent.npcItems.cap.getIDByName(cbCap.SelectedItem.ToString());
+            npc.mask = cbMask.SelectedItem == null ? 0 : parent.npcItems.mask.getIDByName(cbMask.SelectedItem.ToString());
+            npc.back = cbBackpack.SelectedItem == null ? 0 : parent.npcItems.back.getIDByName(cbBackpack.SelectedItem.ToString());
+            npc.head = cbHead.SelectedItem == null ? 0 : parent.npcItems.head.getIDByName(cbHead.SelectedItem.ToString());
+            npc.head = cbHead.SelectedItem == null ? 0 : parent.npcItems.head.getIDByName(cbHead.SelectedItem.ToString());
             npc.uniq = cbUniqNPC.Checked;
             npc.invulnerable = cbNPCInvul.Checked;
             npc.mobNoAggr = cbNPCMobNoAggr.Checked;
@@ -712,13 +715,16 @@ namespace StalkerOnlineQuesterEditor
             tbWay.Text = quest.QuestRules.npc.way;
             tbNPCAnim.Text = quest.QuestRules.npc.animation;
             cbFractionID.SelectedItem = parent.fractions.getFractionDesctByID(quest.QuestRules.npc.fraction);
-            
-            cbWeapon.SelectedIndex = quest.QuestRules.npc.npcWeapon;
-            cbPrimaryWeapon.SelectedItem = parent.npcItems.primaryWeapons.getNameByID(quest.QuestRules.npc.npcWeaponPrimary);
-            cbPrimary2Weapon.SelectedItem = parent.npcItems.primaryWeapons.getNameByID(quest.QuestRules.npc.npcWeaponPrimary2);
-            cbSecondaryWeapon.SelectedItem = parent.npcItems.secondaryyWeapons.getNameByID(quest.QuestRules.npc.npcWeaponSecondary);
-
-            tbCloth.Text = quest.QuestRules.npc.NPCEquippedArmor;
+            cbWeapon.SelectedItem = parent.npcItems.weapons.getNameByID(quest.QuestRules.npc.weapon);
+            cbHands.SelectedItem = parent.npcItems.hands.getNameByID(quest.QuestRules.npc.hand);
+            cbBoots.SelectedItem = parent.npcItems.boots.getNameByID(quest.QuestRules.npc.boots);
+            cbBody.SelectedItem = parent.npcItems.body.getNameByID(quest.QuestRules.npc.body);
+            cbArmor.SelectedItem = parent.npcItems.armor.getNameByID(quest.QuestRules.npc.armor);
+            cbLegs.SelectedItem = parent.npcItems.legs.getNameByID(quest.QuestRules.npc.legs);
+            cbCap.SelectedItem = parent.npcItems.cap.getNameByID(quest.QuestRules.npc.cap);
+            cbMask.SelectedItem = parent.npcItems.mask.getNameByID(quest.QuestRules.npc.mask);
+            cbBackpack.SelectedItem = parent.npcItems.back.getNameByID(quest.QuestRules.npc.back);
+            cbHead.SelectedItem = parent.npcItems.head.getNameByID(quest.QuestRules.npc.head);
             cbUniqNPC.Checked = quest.QuestRules.npc.uniq;
             cbNPCInvul.Checked = quest.QuestRules.npc.invulnerable;
             cbNPCMobNoAggr.Checked = quest.QuestRules.npc.mobNoAggr;
@@ -746,19 +752,26 @@ namespace StalkerOnlineQuesterEditor
             cbFractionID.Items.AddRange(parent.fractions.getListOfFractions().Values.ToArray());
 
             cbWeapon.Items.Clear();
-            cbWeapon.Items.Add("пусто"); cbWeapon.Items.Add("Перв. оруж"); cbWeapon.Items.Add("Перв2. оруж"); cbWeapon.Items.Add("Втор. оруж");
+            cbHands.Items.Clear();
+            cbBoots.Items.Clear();
+            cbBody.Items.Clear();
+            cbArmor.Items.Clear();
+            cbLegs.Items.Clear();
+            cbCap.Items.Clear();
+            cbMask.Items.Clear();
+            cbBackpack.Items.Clear();
+            cbHead.Items.Clear();
 
-            cbPrimaryWeapon.Items.Clear();
-            cbPrimaryWeapon.Items.AddRange(parent.npcItems.primaryWeapons.getNames().ToArray());
-
-            cbPrimary2Weapon.Items.Clear();
-            cbPrimary2Weapon.Items.AddRange(parent.npcItems.primaryWeapons.getNames().ToArray());
-
-            cbSecondaryWeapon.Items.Clear();
-            cbSecondaryWeapon.Items.AddRange(parent.npcItems.secondaryyWeapons.getNames().ToArray());
-
-
-            tbCloth.Text = "";
+            cbWeapon.Items.AddRange(parent.npcItems.weapons.getNames().ToArray());
+            cbHands.Items.AddRange(parent.npcItems.hands.getNames().ToArray());
+            cbBoots.Items.AddRange(parent.npcItems.boots.getNames().ToArray());
+            cbBody.Items.AddRange(parent.npcItems.body.getNames().ToArray());
+            cbArmor.Items.AddRange(parent.npcItems.armor.getNames().ToArray());
+            cbLegs.Items.AddRange(parent.npcItems.legs.getNames().ToArray());
+            cbCap.Items.AddRange(parent.npcItems.cap.getNames().ToArray());
+            cbMask.Items.AddRange(parent.npcItems.mask.getNames().ToArray());
+            cbBackpack.Items.AddRange(parent.npcItems.back.getNames().ToArray());
+            cbHead.Items.AddRange(parent.npcItems.head.getNames().ToArray());
         }
 
         void fillQuestRulesForm()

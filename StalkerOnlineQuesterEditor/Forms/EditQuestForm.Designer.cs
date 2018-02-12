@@ -90,10 +90,27 @@
             this.nupNPCSpeed = new System.Windows.Forms.NumericUpDown();
             this.cbNPCInvul = new System.Windows.Forms.CheckBox();
             this.cbUniqNPC = new System.Windows.Forms.CheckBox();
+            this.cbArmor = new System.Windows.Forms.ComboBox();
             this.lbArmor = new System.Windows.Forms.Label();
             this.tbNPCAnim = new System.Windows.Forms.TextBox();
+            this.cbHead = new System.Windows.Forms.ComboBox();
+            this.cbBackpack = new System.Windows.Forms.ComboBox();
+            this.cbMask = new System.Windows.Forms.ComboBox();
+            this.cbCap = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.lbHead = new System.Windows.Forms.Label();
+            this.lbBack = new System.Windows.Forms.Label();
+            this.lbMask = new System.Windows.Forms.Label();
+            this.lbCap = new System.Windows.Forms.Label();
+            this.cbLegs = new System.Windows.Forms.ComboBox();
+            this.cbBody = new System.Windows.Forms.ComboBox();
+            this.cbBoots = new System.Windows.Forms.ComboBox();
+            this.cbHands = new System.Windows.Forms.ComboBox();
             this.cbWeapon = new System.Windows.Forms.ComboBox();
+            this.lbLegs = new System.Windows.Forms.Label();
+            this.lbBody = new System.Windows.Forms.Label();
+            this.lbBoots = new System.Windows.Forms.Label();
+            this.lbHand = new System.Windows.Forms.Label();
             this.cbFractionID = new System.Windows.Forms.ComboBox();
             this.tbWay = new System.Windows.Forms.TextBox();
             this.tbReputation = new System.Windows.Forms.TextBox();
@@ -180,13 +197,6 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
-            this.tbCloth = new System.Windows.Forms.TextBox();
-            this.cbPrimaryWeapon = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cbPrimary2Weapon = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cbSecondaryWeapon = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -593,7 +603,7 @@
             this.panelCreateMob.Controls.Add(this.lbScenType);
             this.panelCreateMob.Controls.Add(this.cbMobType);
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
-            this.panelCreateMob.Location = new System.Drawing.Point(3, 303);
+            this.panelCreateMob.Location = new System.Drawing.Point(3, 301);
             this.panelCreateMob.Name = "panelCreateMob";
             this.panelCreateMob.Size = new System.Drawing.Size(622, 161);
             this.panelCreateMob.TabIndex = 17;
@@ -732,13 +742,6 @@
             // 
             // panelCreateNPC
             // 
-            this.panelCreateNPC.Controls.Add(this.cbSecondaryWeapon);
-            this.panelCreateNPC.Controls.Add(this.label18);
-            this.panelCreateNPC.Controls.Add(this.cbPrimary2Weapon);
-            this.panelCreateNPC.Controls.Add(this.label17);
-            this.panelCreateNPC.Controls.Add(this.cbPrimaryWeapon);
-            this.panelCreateNPC.Controls.Add(this.label16);
-            this.panelCreateNPC.Controls.Add(this.tbCloth);
             this.panelCreateNPC.Controls.Add(this.nupNPCShootRangeOnCreature);
             this.panelCreateNPC.Controls.Add(this.label15);
             this.panelCreateNPC.Controls.Add(this.nupNPCShootRange);
@@ -749,10 +752,27 @@
             this.panelCreateNPC.Controls.Add(this.nupNPCSpeed);
             this.panelCreateNPC.Controls.Add(this.cbNPCInvul);
             this.panelCreateNPC.Controls.Add(this.cbUniqNPC);
+            this.panelCreateNPC.Controls.Add(this.cbArmor);
             this.panelCreateNPC.Controls.Add(this.lbArmor);
             this.panelCreateNPC.Controls.Add(this.tbNPCAnim);
+            this.panelCreateNPC.Controls.Add(this.cbHead);
+            this.panelCreateNPC.Controls.Add(this.cbBackpack);
+            this.panelCreateNPC.Controls.Add(this.cbMask);
+            this.panelCreateNPC.Controls.Add(this.cbCap);
             this.panelCreateNPC.Controls.Add(this.label2);
+            this.panelCreateNPC.Controls.Add(this.lbHead);
+            this.panelCreateNPC.Controls.Add(this.lbBack);
+            this.panelCreateNPC.Controls.Add(this.lbMask);
+            this.panelCreateNPC.Controls.Add(this.lbCap);
+            this.panelCreateNPC.Controls.Add(this.cbLegs);
+            this.panelCreateNPC.Controls.Add(this.cbBody);
+            this.panelCreateNPC.Controls.Add(this.cbBoots);
+            this.panelCreateNPC.Controls.Add(this.cbHands);
             this.panelCreateNPC.Controls.Add(this.cbWeapon);
+            this.panelCreateNPC.Controls.Add(this.lbLegs);
+            this.panelCreateNPC.Controls.Add(this.lbBody);
+            this.panelCreateNPC.Controls.Add(this.lbBoots);
+            this.panelCreateNPC.Controls.Add(this.lbHand);
             this.panelCreateNPC.Controls.Add(this.cbFractionID);
             this.panelCreateNPC.Controls.Add(this.tbWay);
             this.panelCreateNPC.Controls.Add(this.tbReputation);
@@ -901,10 +921,18 @@
             this.cbUniqNPC.Text = "Уникальный";
             this.cbUniqNPC.UseVisualStyleBackColor = true;
             // 
+            // cbArmor
+            // 
+            this.cbArmor.FormattingEnabled = true;
+            this.cbArmor.Location = new System.Drawing.Point(479, 7);
+            this.cbArmor.Name = "cbArmor";
+            this.cbArmor.Size = new System.Drawing.Size(136, 21);
+            this.cbArmor.TabIndex = 33;
+            // 
             // lbArmor
             // 
             this.lbArmor.AutoSize = true;
-            this.lbArmor.Location = new System.Drawing.Point(232, 97);
+            this.lbArmor.Location = new System.Drawing.Point(425, 11);
             this.lbArmor.Name = "lbArmor";
             this.lbArmor.Size = new System.Drawing.Size(41, 13);
             this.lbArmor.TabIndex = 32;
@@ -917,6 +945,38 @@
             this.tbNPCAnim.Size = new System.Drawing.Size(136, 20);
             this.tbNPCAnim.TabIndex = 31;
             // 
+            // cbHead
+            // 
+            this.cbHead.FormattingEnabled = true;
+            this.cbHead.Location = new System.Drawing.Point(479, 97);
+            this.cbHead.Name = "cbHead";
+            this.cbHead.Size = new System.Drawing.Size(136, 21);
+            this.cbHead.TabIndex = 30;
+            // 
+            // cbBackpack
+            // 
+            this.cbBackpack.FormattingEnabled = true;
+            this.cbBackpack.Location = new System.Drawing.Point(479, 75);
+            this.cbBackpack.Name = "cbBackpack";
+            this.cbBackpack.Size = new System.Drawing.Size(136, 21);
+            this.cbBackpack.TabIndex = 29;
+            // 
+            // cbMask
+            // 
+            this.cbMask.FormattingEnabled = true;
+            this.cbMask.Location = new System.Drawing.Point(479, 53);
+            this.cbMask.Name = "cbMask";
+            this.cbMask.Size = new System.Drawing.Size(136, 21);
+            this.cbMask.TabIndex = 28;
+            // 
+            // cbCap
+            // 
+            this.cbCap.FormattingEnabled = true;
+            this.cbCap.Location = new System.Drawing.Point(479, 30);
+            this.cbCap.Name = "cbCap";
+            this.cbCap.Size = new System.Drawing.Size(136, 21);
+            this.cbCap.TabIndex = 27;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -926,13 +986,117 @@
             this.label2.TabIndex = 26;
             this.label2.Text = "Анимация:";
             // 
+            // lbHead
+            // 
+            this.lbHead.AutoSize = true;
+            this.lbHead.Location = new System.Drawing.Point(425, 100);
+            this.lbHead.Name = "lbHead";
+            this.lbHead.Size = new System.Drawing.Size(46, 13);
+            this.lbHead.TabIndex = 25;
+            this.lbHead.Text = "Голова:";
+            // 
+            // lbBack
+            // 
+            this.lbBack.AutoSize = true;
+            this.lbBack.Location = new System.Drawing.Point(425, 77);
+            this.lbBack.Name = "lbBack";
+            this.lbBack.Size = new System.Drawing.Size(49, 13);
+            this.lbBack.TabIndex = 24;
+            this.lbBack.Text = "Рюкзак:";
+            // 
+            // lbMask
+            // 
+            this.lbMask.AutoSize = true;
+            this.lbMask.Location = new System.Drawing.Point(425, 54);
+            this.lbMask.Name = "lbMask";
+            this.lbMask.Size = new System.Drawing.Size(43, 13);
+            this.lbMask.TabIndex = 23;
+            this.lbMask.Text = "Маска:";
+            // 
+            // lbCap
+            // 
+            this.lbCap.AutoSize = true;
+            this.lbCap.Location = new System.Drawing.Point(425, 34);
+            this.lbCap.Name = "lbCap";
+            this.lbCap.Size = new System.Drawing.Size(29, 13);
+            this.lbCap.TabIndex = 22;
+            this.lbCap.Text = "Cap:";
+            // 
+            // cbLegs
+            // 
+            this.cbLegs.FormattingEnabled = true;
+            this.cbLegs.Location = new System.Drawing.Point(283, 97);
+            this.cbLegs.Name = "cbLegs";
+            this.cbLegs.Size = new System.Drawing.Size(136, 21);
+            this.cbLegs.TabIndex = 21;
+            // 
+            // cbBody
+            // 
+            this.cbBody.FormattingEnabled = true;
+            this.cbBody.Location = new System.Drawing.Point(283, 74);
+            this.cbBody.Name = "cbBody";
+            this.cbBody.Size = new System.Drawing.Size(136, 21);
+            this.cbBody.TabIndex = 20;
+            // 
+            // cbBoots
+            // 
+            this.cbBoots.FormattingEnabled = true;
+            this.cbBoots.Location = new System.Drawing.Point(283, 52);
+            this.cbBoots.Name = "cbBoots";
+            this.cbBoots.Size = new System.Drawing.Size(136, 21);
+            this.cbBoots.TabIndex = 19;
+            // 
+            // cbHands
+            // 
+            this.cbHands.FormattingEnabled = true;
+            this.cbHands.Location = new System.Drawing.Point(283, 30);
+            this.cbHands.Name = "cbHands";
+            this.cbHands.Size = new System.Drawing.Size(136, 21);
+            this.cbHands.TabIndex = 18;
+            // 
             // cbWeapon
             // 
             this.cbWeapon.FormattingEnabled = true;
-            this.cbWeapon.Location = new System.Drawing.Point(308, 7);
+            this.cbWeapon.Location = new System.Drawing.Point(283, 7);
             this.cbWeapon.Name = "cbWeapon";
-            this.cbWeapon.Size = new System.Drawing.Size(155, 21);
+            this.cbWeapon.Size = new System.Drawing.Size(136, 21);
             this.cbWeapon.TabIndex = 17;
+            // 
+            // lbLegs
+            // 
+            this.lbLegs.AutoSize = true;
+            this.lbLegs.Location = new System.Drawing.Point(230, 99);
+            this.lbLegs.Name = "lbLegs";
+            this.lbLegs.Size = new System.Drawing.Size(35, 13);
+            this.lbLegs.TabIndex = 16;
+            this.lbLegs.Text = "Ноги:";
+            // 
+            // lbBody
+            // 
+            this.lbBody.AutoSize = true;
+            this.lbBody.Location = new System.Drawing.Point(230, 77);
+            this.lbBody.Name = "lbBody";
+            this.lbBody.Size = new System.Drawing.Size(35, 13);
+            this.lbBody.TabIndex = 15;
+            this.lbBody.Text = "Тело:";
+            // 
+            // lbBoots
+            // 
+            this.lbBoots.AutoSize = true;
+            this.lbBoots.Location = new System.Drawing.Point(230, 54);
+            this.lbBoots.Name = "lbBoots";
+            this.lbBoots.Size = new System.Drawing.Size(52, 13);
+            this.lbBoots.TabIndex = 14;
+            this.lbBoots.Text = "Ботинки:";
+            // 
+            // lbHand
+            // 
+            this.lbHand.AutoSize = true;
+            this.lbHand.Location = new System.Drawing.Point(230, 31);
+            this.lbHand.Name = "lbHand";
+            this.lbHand.Size = new System.Drawing.Size(34, 13);
+            this.lbHand.TabIndex = 13;
+            this.lbHand.Text = "Руки:";
             // 
             // cbFractionID
             // 
@@ -984,9 +1148,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(230, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "В руках:";
+            this.label1.Text = "Оружие:";
             // 
             // lbReputation
             // 
@@ -1838,64 +2002,6 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
-            // tbCloth
-            // 
-            this.tbCloth.Location = new System.Drawing.Point(308, 93);
-            this.tbCloth.Name = "tbCloth";
-            this.tbCloth.Size = new System.Drawing.Size(306, 20);
-            this.tbCloth.TabIndex = 46;
-            // 
-            // cbPrimaryWeapon
-            // 
-            this.cbPrimaryWeapon.FormattingEnabled = true;
-            this.cbPrimaryWeapon.Location = new System.Drawing.Point(308, 28);
-            this.cbPrimaryWeapon.Name = "cbPrimaryWeapon";
-            this.cbPrimaryWeapon.Size = new System.Drawing.Size(155, 21);
-            this.cbPrimaryWeapon.TabIndex = 48;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(230, 32);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(76, 13);
-            this.label16.TabIndex = 47;
-            this.label16.Text = "Первое оруж:";
-            // 
-            // cbPrimary2Weapon
-            // 
-            this.cbPrimary2Weapon.FormattingEnabled = true;
-            this.cbPrimary2Weapon.Location = new System.Drawing.Point(308, 49);
-            this.cbPrimary2Weapon.Name = "cbPrimary2Weapon";
-            this.cbPrimary2Weapon.Size = new System.Drawing.Size(155, 21);
-            this.cbPrimary2Weapon.TabIndex = 50;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(230, 53);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(82, 13);
-            this.label17.TabIndex = 49;
-            this.label17.Text = "Первое2 оруж:";
-            // 
-            // cbSecondaryWeapon
-            // 
-            this.cbSecondaryWeapon.FormattingEnabled = true;
-            this.cbSecondaryWeapon.Location = new System.Drawing.Point(308, 71);
-            this.cbSecondaryWeapon.Name = "cbSecondaryWeapon";
-            this.cbSecondaryWeapon.Size = new System.Drawing.Size(155, 21);
-            this.cbSecondaryWeapon.TabIndex = 52;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(230, 75);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 13);
-            this.label18.TabIndex = 51;
-            this.label18.Text = "Втор. оруж:";
-            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2012,10 +2118,27 @@
         private System.Windows.Forms.NumericUpDown nupNPCSpeed;
         private System.Windows.Forms.CheckBox cbNPCInvul;
         private System.Windows.Forms.CheckBox cbUniqNPC;
+        private System.Windows.Forms.ComboBox cbArmor;
         private System.Windows.Forms.Label lbArmor;
         private System.Windows.Forms.TextBox tbNPCAnim;
+        private System.Windows.Forms.ComboBox cbHead;
+        private System.Windows.Forms.ComboBox cbBackpack;
+        private System.Windows.Forms.ComboBox cbMask;
+        private System.Windows.Forms.ComboBox cbCap;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbHead;
+        private System.Windows.Forms.Label lbBack;
+        private System.Windows.Forms.Label lbMask;
+        private System.Windows.Forms.Label lbCap;
+        private System.Windows.Forms.ComboBox cbLegs;
+        private System.Windows.Forms.ComboBox cbBody;
+        private System.Windows.Forms.ComboBox cbBoots;
+        private System.Windows.Forms.ComboBox cbHands;
         private System.Windows.Forms.ComboBox cbWeapon;
+        private System.Windows.Forms.Label lbLegs;
+        private System.Windows.Forms.Label lbBody;
+        private System.Windows.Forms.Label lbBoots;
+        private System.Windows.Forms.Label lbHand;
         private System.Windows.Forms.ComboBox cbFractionID;
         private System.Windows.Forms.TextBox tbWay;
         private System.Windows.Forms.TextBox tbReputation;
@@ -2102,12 +2225,5 @@
         private System.Windows.Forms.Label lTitle;
         private System.Windows.Forms.ComboBox eventComboBox;
         private System.Windows.Forms.Label eventLabel;
-        private System.Windows.Forms.TextBox tbCloth;
-        private System.Windows.Forms.ComboBox cbSecondaryWeapon;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox cbPrimary2Weapon;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox cbPrimaryWeapon;
-        private System.Windows.Forms.Label label16;
     }
 }

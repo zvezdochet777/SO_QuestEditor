@@ -344,15 +344,7 @@ namespace StalkerOnlineQuesterEditor
             public int fraction = 0;
             public int reputation = 0;
             public string animation = "";
-            public int npcWeapon = 0;
-            public string NPCEquippedArmor = "";
-            public int npcWeaponPrimary = 0;
-            public List<int> npcWeaponPrimaryAttachItemIDs = new List<int>();
-            public int npcWeaponPrimary2 = 0;
-            public List<int> npcWeaponPrimary2AttachItemIDs = new List<int>();
-            public int npcWeaponSecondary = 0;
-            public List<int> npcWeaponSecondaryAttachItemIDs = new List<int>();
-            public int npcSuit = 0;
+            public int weapon = 0, hand = 0, boots = 0, body = 0, armor = 0, legs = 0, cap = 0, mask = 0, back = 0, head = 0;
             public float walkSpeed = 0;
             public float shootRange = 0;
             public float shootRangeOnCreature = 0;
@@ -364,9 +356,9 @@ namespace StalkerOnlineQuesterEditor
             public bool Any()
             {
                 return name.Any() || displayName.Any() || way.Any() || fraction != 0 || reputation != 0 || animation.Any() ||
-                        npcWeapon != 0 || NPCEquippedArmor.Any() || npcWeaponPrimary != 0|| npcWeaponPrimaryAttachItemIDs.Any() || 
-                        npcWeaponPrimary2!=0 || npcWeaponPrimary2AttachItemIDs.Any() || npcWeaponSecondary!=0 || npcWeaponSecondaryAttachItemIDs.Any() || 
-                        npcSuit != 0;
+                        weapon != 0 || hand != 0 || boots != 0 || body != 0 ||
+                        armor != 0 || legs != 0 || cap != 0 || mask != 0 ||
+                        back != 0 || head != 0;
             }
 
             public void setXML(XElement element)
@@ -383,24 +375,26 @@ namespace StalkerOnlineQuesterEditor
                     int.TryParse(element.Element("reputation").Value, out reputation);
                 if (element.Element("animation") != null)
                     animation = element.Element("animation").Value;
-                if (element.Element("npcWeapon") != null)
-                    int.TryParse(element.Element("npcWeapon").Value, out npcWeapon);
-                if (element.Element("npcWeapon") != null)
-                    int.TryParse(element.Element("npcWeapon").Value, out npcWeapon);
-                if (element.Element("npcWeaponPrimary") != null)
-                    int.TryParse(element.Element("npcWeaponPrimary").Value, out npcWeaponPrimary);
-                if (element.Element("npcWeaponPrimaryAttachItemIDs") != null)
-                    CQuests.AddDataToList(element, "npcWeaponPrimaryAttachItemIDs", npcWeaponPrimaryAttachItemIDs);
-                if (element.Element("npcWeaponPrimary2") != null)
-                    int.TryParse(element.Element("npcWeaponPrimary2").Value, out npcWeaponPrimary2);
-                if (element.Element("npcWeaponPrimary2AttachItemIDs") != null)
-                    CQuests.AddDataToList(element, "npcWeaponPrimary2AttachItemIDs", npcWeaponPrimary2AttachItemIDs);
-                if (element.Element("npcWeaponSecondary") != null)
-                    int.TryParse(element.Element("npcWeaponSecondary").Value, out npcWeaponSecondary);
-                if (element.Element("npcWeaponSecondaryAttachItemIDs") != null)
-                    CQuests.AddDataToList(element, "npcWeaponSecondaryAttachItemIDs", npcWeaponSecondaryAttachItemIDs);
-                if (element.Element("NPCEquippedArmor") != null)
-                    NPCEquippedArmor = element.Element("NPCEquippedArmor").Value;
+                if (element.Element("weapon") != null)
+                    int.TryParse(element.Element("weapon").Value, out weapon);
+                if (element.Element("hand") != null)
+                    int.TryParse(element.Element("hand").Value, out hand);
+                if (element.Element("boots") != null)
+                    int.TryParse(element.Element("boots").Value, out boots);
+                if (element.Element("body") != null)
+                    int.TryParse(element.Element("body").Value, out body);
+                if (element.Element("armor") != null)
+                    int.TryParse(element.Element("armor").Value, out armor);
+                if (element.Element("legs") != null)
+                    int.TryParse(element.Element("legs").Value, out legs);
+                if (element.Element("cap") != null)
+                    int.TryParse(element.Element("cap").Value, out cap);
+                if (element.Element("mask") != null)
+                    int.TryParse(element.Element("mask").Value, out mask);
+                if (element.Element("back") != null)
+                    int.TryParse(element.Element("back").Value, out back);
+                if (element.Element("head") != null)
+                    int.TryParse(element.Element("head").Value, out head);
                 if (element.Element("uniq") != null)
                     uniq = true;
                 if (element.Element("invulnerable") != null)
@@ -415,6 +409,7 @@ namespace StalkerOnlineQuesterEditor
                     float.TryParse(element.Element("shootRange").Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out shootRange);
                 if (element.Element("shootRangeOnCreature") != null)
                     float.TryParse(element.Element("shootRangeOnCreature").Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out shootRangeOnCreature);
+
             }
 
             public XElement getXML()
@@ -444,22 +439,26 @@ namespace StalkerOnlineQuesterEditor
                     result.Add(new XElement("shootRange", shootRange.ToString("G6", CultureInfo.InvariantCulture)));
                 if (shootRangeOnCreature != 0.0f)
                     result.Add(new XElement("shootRangeOnCreature", shootRangeOnCreature.ToString("G6", CultureInfo.InvariantCulture)));
-                if (npcWeapon != 0)
-                    result.Add(new XElement("npcWeapon", Global.GetIntAsString(npcWeapon)));
-                if (npcWeaponPrimary != 0)
-                    result.Add(new XElement("npcWeaponPrimary", Global.GetIntAsString(npcWeaponPrimary)));
-                if (npcWeaponPrimaryAttachItemIDs.Any())
-                    result.Add(new XElement("npcWeaponPrimary", Global.GetListAsString(npcWeaponPrimaryAttachItemIDs)));
-                if (npcWeaponPrimary2 != 0)
-                    result.Add(new XElement("npcWeaponPrimary2", Global.GetIntAsString(npcWeaponPrimary2)));
-                if (npcWeaponPrimary2AttachItemIDs.Any())
-                    result.Add(new XElement("npcWeaponPrimary2AttachItemIDs", Global.GetListAsString(npcWeaponPrimary2AttachItemIDs)));
-                if (npcWeaponSecondary != 0)
-                    result.Add(new XElement("npcWeaponSecondary", Global.GetIntAsString(npcWeaponSecondary)));
-                if (npcWeaponSecondaryAttachItemIDs.Any())
-                    result.Add(new XElement("npcWeaponSecondaryAttachItemIDs", Global.GetListAsString(npcWeaponSecondaryAttachItemIDs)));
-                if (NPCEquippedArmor.Any())
-                    result.Add(new XElement("NPCEquippedArmor", NPCEquippedArmor));
+                if (weapon != 0)
+                    result.Add(new XElement("weapon", Global.GetIntAsString(weapon)));
+                if (hand != 0)
+                    result.Add(new XElement("hand", Global.GetIntAsString(hand)));
+                if (boots != 0)
+                    result.Add(new XElement("boots", Global.GetIntAsString(boots)));
+                if (body != 0)
+                    result.Add(new XElement("body", Global.GetIntAsString(body)));
+                if (armor != 0)
+                    result.Add(new XElement("armor", Global.GetIntAsString(armor)));
+                if (legs != 0)
+                    result.Add(new XElement("legs", Global.GetIntAsString(legs)));
+                if (cap != 0)
+                    result.Add(new XElement("cap", Global.GetIntAsString(cap)));
+                if (mask != 0)
+                    result.Add(new XElement("mask", Global.GetIntAsString(mask)));
+                if (back != 0)
+                    result.Add(new XElement("back", Global.GetIntAsString(back)));
+                if (head != 0)
+                    result.Add(new XElement("head", Global.GetIntAsString(head)));
                 if (uniq) result.Add(new XElement("uniq", "1"));
                 if (mobNoAggr) result.Add(new XElement("mobNoAggr", "1"));
                 if (ignoreWAR > 0) result.Add(new XElement("ignoreWAR", Global.GetIntAsString(ignoreWAR)));
