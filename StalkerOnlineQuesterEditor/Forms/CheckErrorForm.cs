@@ -264,24 +264,61 @@ namespace StalkerOnlineQuesterEditor.Forms
                 doProgress(50 + 50 * Convert.ToInt32(Convert.ToDouble(i) / count));
                 if (wasIgnoredQuestID(quest.Key))
                     continue;
+                if ((quest.Value.Target.QuestType == 0) || (quest.Value.Target.QuestType == 16) || (quest.Value.Target.QuestType == 7))
+                {
+                    int item_id = quest.Value.Target.ObjectType;
+                    if ((item_id != 0) && (!items.ContainsKey(item_id)))
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\t\t\tпредмета цели type:" + item_id + " не существует";
+                        this.writeToLog(line, quest.Key);
+                        continue;
+                    }
+                }
+                else if ((quest.Value.Target.QuestType == 4) || (quest.Value.Target.QuestType == 8))
+                {
+                    string zone = quest.Value.Target.ObjectName;
+                    if (zone.Any())
+                        if (!this.parent.zoneConst.checkHaveArea(zone))
+                        {
+                            string line = "Квест №:" + quest.Key.ToString() + "\tимеет в целях зону: \"" + quest.Value.Target.ObjectName + "\", которой нигде нет";
+                            this.writeToLog(line, quest.Key);
+                        }
+                }
+                else if (quest.Value.Target.QuestType == 6)
+                {
+                    if (parent.triggerConst.getDescriptionOnId(quest.Value.Target.ObjectType) == "")
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tимеет в целях триггер: \"" + quest.Value.Target.ObjectType.ToString() + "\", которого нет";
+                        this.writeToLog(line, quest.Key);
+                    }
+                }
+                else if ((quest.Value.Target.QuestType == 2) || (quest.Value.Target.QuestType == 3))
+                {
+                    if (quest.Value.Target.AreaName.Any())
+                        if (!this.parent.zoneConst.checkHaveArea(quest.Value.Target.AreaName))
+                        {
+                            string line = "Квест №:" + quest.Key.ToString() + "\tимеет зону: \"" + quest.Value.Target.AreaName + "\", которой нигде нет";
+                            this.writeToLog(line, quest.Key);
+                        }
+                }
                 foreach (int item_id in quest.Value.QuestRules.TypeOfItems)
                 {
                     if (!items.ContainsKey(item_id))
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\t\tпредмета условия type:" + item_id + " не существует";
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета условия type:" + item_id + " не существует";
                         this.writeToLog(line, quest.Key);
                         continue;
                     }
 
                     if (items[item_id].deleted)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\t\tпредмет условия type:" + item_id + " помечен на замену";
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмет условия type:" + item_id + " помечен на замену";
                         this.writeToLog(line, quest.Key);
                     }
 
                     if (items[item_id].converted)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\t\tпредмета условия type:" + item_id + " помечен на удаление";
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета условия type:" + item_id + " помечен на удаление";
                         this.writeToLog(line, quest.Key);
                     }
                 }
@@ -290,21 +327,21 @@ namespace StalkerOnlineQuesterEditor.Forms
                 {
                     if (!items.ContainsKey(item_id))
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\t\tпредмета награды type:" + item_id + " не существует";
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета награды type:" + item_id + " не существует";
                         this.writeToLog(line, quest.Key);
                         continue;
                     }
 
                     if (items[item_id].deleted)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\t\tпредмет награды type:" + item_id + " помечен на замену";
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмет награды type:" + item_id + " помечен на замену";
                         this.writeToLog(line, quest.Key);
                         continue;
                     }
 
                     if (items[item_id].converted)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\t\tпредмета награды type:" + item_id + " помечен на удаление";
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета награды type:" + item_id + " помечен на удаление";
                         this.writeToLog(line, quest.Key);
                         continue;
                     }
@@ -314,7 +351,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                 {
                     if (!this.parent.effects.hasEffectById(effect.getID()))
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\t\tЭффекта №" + effect.getID() + " нет, а выдаётся как награда";
+                        string line = "Квест №:" + quest.Key.ToString() + "\tЭффекта №" + effect.getID() + " нет, а выдаётся как награда";
                         this.writeToLog(line, quest.Key);
                     }
                 }
@@ -323,19 +360,9 @@ namespace StalkerOnlineQuesterEditor.Forms
                 {
                     if (!checkQuestIDinDialogOnTest(quest.Key))
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + " имеет тип: \"" + this.parent.questConst.getDescription(quest.Value.Target.QuestType) + "\" и нигде не проверяется";
+                        string line = "Квест №:" + quest.Key.ToString() + "\tимеет тип: \"" + this.parent.questConst.getDescription(quest.Value.Target.QuestType) + "\" и нигде не проверяется";
                         this.writeToLog(line, quest.Key);
                     }
-                }
-
-                if ((quest.Value.Target.QuestType == 2) || (quest.Value.Target.QuestType == 3))
-                {
-                    if (quest.Value.Target.AreaName.Any())
-                        if (!this.parent.zoneConst.checkHaveArea(quest.Value.Target.AreaName))
-                        {
-                            string line = "Квест №:" + quest.Key.ToString() + " имеет зону: \"" + quest.Value.Target.AreaName + "\", которой нигде нет";
-                            this.writeToLog(line, quest.Key);
-                        }
                 }
             }
             setLabel("Записываю в файл");
