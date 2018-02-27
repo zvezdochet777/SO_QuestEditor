@@ -15,52 +15,52 @@ namespace StalkerOnlineQuesterEditor
 
         public СQuestConstants()
         {
-            simpleQuestsType.Add(new СQuestType(0, "Собрать необходимое количество предметов."));
-            simpleQuestsType.Add(new СQuestType(16, "Собрать необходимое количество предметов авто."));
-            simpleQuestsType.Add(new СQuestType(1, "Поговорить."));
-            simpleQuestsType.Add(new СQuestType(2, "Убийство мобов с обязательной сдачей евента."));
-            simpleQuestsType.Add(new СQuestType(3, "Убийство мобов."));
-            simpleQuestsType.Add(new СQuestType(4, "Посещение зоны."));
-            simpleQuestsType.Add(new СQuestType(5, "Сдача денег."));
-            simpleQuestsType.Add(new СQuestType(6, "Действие над триггером."));
-            simpleQuestsType.Add(new СQuestType(7, "Использовать предмет."));
-            simpleQuestsType.Add(new СQuestType(8, "Покинуть зону."));
-            simpleQuestsType.Add(new СQuestType(9, "Таймер."));
-            simpleQuestsType.Add(new СQuestType(17, "Умереть."));
-            simpleQuestsType.Add(new СQuestType(18, "Выйти из игры."));
-            simpleQuestsType.Add(new СQuestType(19, "Экипировка предмета."));
-            simpleQuestsType.Add(new СQuestType(20, "Добавление предмета."));
-            simpleQuestsType.Add(new СQuestType(21, "Получение эффекта."));
-            simpleQuestsType.Add(new СQuestType(22, "Необходимое количество репутации."));
-            simpleQuestsType.Add(new СQuestType(23, "Необходимое количество репутации АВТО."));
-            simpleQuestsType.Add(new СQuestType(24, "Убийство."));
-            simpleQuestsType.Add(new СQuestType(25, "Собрать количество предметов категории."));
-            simpleQuestsType.Add(new СQuestType(26, "Собрать количество предметов категории АВТО."));
+            simpleQuestsType.Add(new СQuestType(0, "0  Собрать необходимое количество предметов."));
+            simpleQuestsType.Add(new СQuestType(16,"16 Собрать необходимое количество предметов авто."));
+            simpleQuestsType.Add(new СQuestType(1, "1  Поговорить."));
+            simpleQuestsType.Add(new СQuestType(2, "2  Убийство мобов с обязательной сдачей евента."));
+            simpleQuestsType.Add(new СQuestType(3, "3  Убийство мобов."));
+            simpleQuestsType.Add(new СQuestType(4, "4  Посещение зоны."));
+            simpleQuestsType.Add(new СQuestType(5, "5  Сдача денег."));
+            simpleQuestsType.Add(new СQuestType(6, "6  Действие над триггером."));
+            simpleQuestsType.Add(new СQuestType(7, "7  Использовать предмет."));
+            simpleQuestsType.Add(new СQuestType(8, "8  Покинуть зону."));
+            simpleQuestsType.Add(new СQuestType(9, "9  Таймер."));
+            simpleQuestsType.Add(new СQuestType(17,"17 Умереть."));
+            simpleQuestsType.Add(new СQuestType(18,"18 Выйти из игры."));
+            simpleQuestsType.Add(new СQuestType(19,"19 Экипировка предмета."));
+            simpleQuestsType.Add(new СQuestType(20,"20 Добавление предмета."));
+            simpleQuestsType.Add(new СQuestType(21,"21 Получение эффекта."));
+            simpleQuestsType.Add(new СQuestType(22,"22 Необходимое количество репутации."));
+            simpleQuestsType.Add(new СQuestType(23,"23 Необходимое количество репутации АВТО."));
+            simpleQuestsType.Add(new СQuestType(24,"24 Убийство."));
+            simpleQuestsType.Add(new СQuestType(25,"25 Собрать количество предметов категории."));
+            simpleQuestsType.Add(new СQuestType(26,"26 Собрать количество предметов категории АВТО."));
 
-            ierarchyQuestsType.Add(new СQuestType(50, "Игра против режиссера."));
-            simpleQuestsType.Add(new СQuestType(51, "Создать NPC."));
-            simpleQuestsType.Add(new СQuestType(52, "Создать Моба."));
-            simpleQuestsType.Add(new СQuestType(53, "Убийство NPC."));
-            simpleQuestsType.Add(new СQuestType(54, "Убийство NPC с обязательной сдачей евента."));
+            ierarchyQuestsType.Add(new СQuestType(50,"50 Игра против режиссера."));
+            simpleQuestsType.Add(new СQuestType(51,"51 Создать NPC."));
+            simpleQuestsType.Add(new СQuestType(52,"52 Создать Моба."));
+            simpleQuestsType.Add(new СQuestType(53,"53 Убийство NPC."));
+            simpleQuestsType.Add(new СQuestType(54,"54 Убийство NPC с обязательной сдачей евента."));
 
-            ierarchyQuestsType.Add(new СQuestType(10, "Выполнение всех в любом порядке."));
-            ierarchyQuestsType.Add(new СQuestType(11, "Выполнение всех по порядку."));
-            ierarchyQuestsType.Add(new СQuestType(12, "Выполнение на выбор."));
-            ierarchyQuestsType.Add(new СQuestType(13, "Выполнение всех в любом порядке со сдачей."));
-            ierarchyQuestsType.Add(new СQuestType(14, "Выполнение всех по порядку со сдачей."));
-            ierarchyQuestsType.Add(new СQuestType(15, "Выполнение на выбор со сдачей."));
-            
+            ierarchyQuestsType.Add(new СQuestType(10,"10 Выполнение всех в любом порядке."));
+            ierarchyQuestsType.Add(new СQuestType(11,"11 Выполнение всех по порядку."));
+            ierarchyQuestsType.Add(new СQuestType(12,"12 Выполнение на выбор."));
+            ierarchyQuestsType.Add(new СQuestType(13,"13 Выполнение всех в любом порядке со сдачей."));
+            ierarchyQuestsType.Add(new СQuestType(14,"14 Выполнение всех по порядку со сдачей."));
+            ierarchyQuestsType.Add(new СQuestType(15,"15 Выполнение на выбор со сдачей."));
+
             //Туториал
-            //simpleQuestsType.Add(new СQuestType(200, "_экипировка предмета."));
-            simpleQuestsType.Add(new СQuestType(201, "_выстрел."));
-            simpleQuestsType.Add(new СQuestType(202, "_лечение."));
-            simpleQuestsType.Add(new СQuestType(203, "_восстановление предмета."));
-            simpleQuestsType.Add(new СQuestType(204, "_фонарик."));
-            //simpleQuestsType.Add(new СQuestType(205, "_добавление предмета."));
-            simpleQuestsType.Add(new СQuestType(206, "_событие ГУИ."));
+            //simpleQuestsType.Add(new СQuestType(200,"200 _экипировка предмета."));
+            simpleQuestsType.Add(new СQuestType(201,"201 _выстрел."));
+            simpleQuestsType.Add(new СQuestType(202,"202 _лечение."));
+            simpleQuestsType.Add(new СQuestType(203,"203 _восстановление предмета."));
+            simpleQuestsType.Add(new СQuestType(204,"204 _фонарик."));
+            //simpleQuestsType.Add(new СQuestType(205,"205 _добавление предмета."));
+            simpleQuestsType.Add(new СQuestType(206,"206 _событие ГУИ."));
 
 
-            
+
         }
         public bool isSimple(int questType)
         {
