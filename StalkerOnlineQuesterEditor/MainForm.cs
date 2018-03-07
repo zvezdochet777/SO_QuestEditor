@@ -2278,6 +2278,18 @@ namespace StalkerOnlineQuesterEditor
             CheckErrorForm cef = new CheckErrorForm(dialogs, quests, this);
             cef.Show();
         }
+
+        private void btnClearRecycle_Click(object sender, EventArgs e)
+        {
+            foreach (TreeNode treeNode in this.treeDialogs.Nodes.Find("Recycle", true))
+            {
+                foreach (TreeNode recyckeNode in treeNode.Nodes)
+                {
+                    string nodeId = recyckeNode.Text;
+                    removeDialog(int.Parse(nodeId));
+                }
+            }
+        }
     }
 }
  

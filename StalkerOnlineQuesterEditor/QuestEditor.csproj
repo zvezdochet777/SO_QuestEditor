@@ -400,6 +400,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QuestEditor.sdm" />
+    <None Include="Resources\корзина_32х32.png" />
+    <None Include="Resources\w256h2561347801471RecycleBinempty.png" />
     <None Include="Resources\next_24.png" />
     <None Include="Resources\next.png" />
     <None Include="Resources\back_24.png" />

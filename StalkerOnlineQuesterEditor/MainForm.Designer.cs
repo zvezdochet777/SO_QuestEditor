@@ -43,6 +43,7 @@ namespace StalkerOnlineQuesterEditor
             this.splitDialogsTreeAndCanvas = new System.Windows.Forms.SplitContainer();
             this.treeDialogs = new System.Windows.Forms.TreeView();
             this.panelDialogTools = new System.Windows.Forms.Panel();
+            this.btnClearRecycle = new System.Windows.Forms.Button();
             this.labelDrawingTip = new System.Windows.Forms.Label();
             this.bTestButton = new System.Windows.Forms.Button();
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
@@ -229,7 +230,7 @@ namespace StalkerOnlineQuesterEditor
             this.DialogShower.Location = new System.Drawing.Point(0, 0);
             this.DialogShower.Name = "DialogShower";
             this.DialogShower.RegionManagement = true;
-            this.DialogShower.Size = new System.Drawing.Size(536, 399);
+            this.DialogShower.Size = new System.Drawing.Size(542, 399);
             this.DialogShower.TabIndex = 0;
             this.DialogShower.Text = "8";
             this.DialogShower.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DialogShower_MouseMove);
@@ -337,7 +338,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.splitDialogsTreeAndCanvas.Panel2.Controls.Add(this.DialogShower);
             this.splitDialogsTreeAndCanvas.Size = new System.Drawing.Size(693, 403);
-            this.splitDialogsTreeAndCanvas.SplitterDistance = 149;
+            this.splitDialogsTreeAndCanvas.SplitterDistance = 143;
             this.splitDialogsTreeAndCanvas.TabIndex = 0;
             this.splitDialogsTreeAndCanvas.TabStop = false;
             // 
@@ -346,7 +347,7 @@ namespace StalkerOnlineQuesterEditor
             this.treeDialogs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeDialogs.Location = new System.Drawing.Point(0, 0);
             this.treeDialogs.Name = "treeDialogs";
-            this.treeDialogs.Size = new System.Drawing.Size(145, 399);
+            this.treeDialogs.Size = new System.Drawing.Size(139, 399);
             this.treeDialogs.TabIndex = 2;
             this.treeDialogs.TabStop = false;
             this.treeDialogs.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDialogs_GotFocus);
@@ -355,6 +356,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.panelDialogTools.AutoSize = true;
             this.panelDialogTools.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelDialogTools.Controls.Add(this.btnClearRecycle);
             this.panelDialogTools.Controls.Add(this.labelDrawingTip);
             this.panelDialogTools.Controls.Add(this.bTestButton);
             this.panelDialogTools.Controls.Add(this.bCenterizeDialogShower);
@@ -368,6 +370,20 @@ namespace StalkerOnlineQuesterEditor
             this.panelDialogTools.Name = "panelDialogTools";
             this.panelDialogTools.Size = new System.Drawing.Size(201, 403);
             this.panelDialogTools.TabIndex = 3;
+            // 
+            // btnClearRecycle
+            // 
+            this.btnClearRecycle.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.корзина_32х32;
+            this.btnClearRecycle.ImageKey = "(отсутствует)";
+            this.btnClearRecycle.Location = new System.Drawing.Point(94, 342);
+            this.btnClearRecycle.Name = "btnClearRecycle";
+            this.btnClearRecycle.Size = new System.Drawing.Size(104, 58);
+            this.btnClearRecycle.TabIndex = 9;
+            this.btnClearRecycle.Text = "Очистить корзину";
+            this.btnClearRecycle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClearRecycle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClearRecycle.UseVisualStyleBackColor = true;
+            this.btnClearRecycle.Click += new System.EventHandler(this.btnClearRecycle_Click);
             // 
             // labelDrawingTip
             // 
@@ -1878,6 +1894,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ToolStripMenuItem проверкаОшибокToolStripMenuItem;
         private System.Windows.Forms.Button btnBackNPC;
         private System.Windows.Forms.Button btnNextNPC;
+        private System.Windows.Forms.Button btnClearRecycle;
     }
 }
 
