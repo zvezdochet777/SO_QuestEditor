@@ -1119,6 +1119,7 @@ namespace StalkerOnlineQuesterEditor
             reward.AttrOfItems = editQuestReward.AttrOfItems;
             reward.Probability = editQuestReward.Probability;
             reward.Reputation = editQuestReward.Reputation;
+            penalty.Reputation = editQuestPenalty.Reputation;
             reward.Effects = editQuestReward.Effects;
             reward.ChangeQuests = editQuestReward.ChangeQuests;
             reward.randomQuest = editQuestReward.randomQuest;
@@ -1128,6 +1129,7 @@ namespace StalkerOnlineQuesterEditor
             penalty.AttrOfItems = editQuestPenalty.AttrOfItems;
             penalty.Probability = editQuestPenalty.Probability;
             penalty.Reputation = editQuestPenalty.Reputation;
+            penalty.NPCReputation = editQuestPenalty.NPCReputation;
             penalty.Effects = editQuestPenalty.Effects;
             penalty.ChangeQuests = editQuestPenalty.ChangeQuests;
             penalty.randomQuest = editQuestPenalty.randomQuest;
@@ -1396,7 +1398,7 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие Репутация в наградах квеста - открывает окно редактирования репутаций
         private void bRewardReputation_Click(object sender, EventArgs e)
         {
-            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestReward.Reputation);
+            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestReward.Reputation, ref this.editQuestReward.NPCReputation);
             formFractions.Visible = true;
             this.Enabled = false;
         }
@@ -1491,7 +1493,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bPenaltyReputation_Click(object sender, EventArgs e)
         {
-            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestPenalty.Reputation);
+            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestPenalty.Reputation, ref this.editQuestPenalty.NPCReputation);
             formFractions.Visible = true;
             this.Enabled = false;
         }

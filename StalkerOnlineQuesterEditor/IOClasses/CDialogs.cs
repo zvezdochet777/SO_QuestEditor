@@ -221,6 +221,21 @@ namespace StalkerOnlineQuesterEditor
                                 Precondition.Reputation[fractionID].Add(B);
                             }
                         }
+                        if (dialog.Element("Precondition").Element("NPCReputation") != null)
+                        {
+                            foreach (string el in dialog.Element("Precondition").Element("NPCReputation").Value.Split(';'))
+                            {
+                                if (el == "")
+                                    continue;
+                                string[] fr = el.Split(':');
+                                string NPC_name = fr[0];
+                                Precondition.NPCReputation.Add(NPC_name, new List<double>());
+                                double A = double.Parse(fr[1], System.Globalization.CultureInfo.InvariantCulture);
+                                double B = double.Parse(fr[2], System.Globalization.CultureInfo.InvariantCulture);
+                                Precondition.NPCReputation[NPC_name].Add(A);
+                                Precondition.NPCReputation[NPC_name].Add(B);
+                            }
+                        }
 
                         if (dialog.Element("Precondition").Element("items") != null)
                         {
@@ -514,6 +529,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Precondition").Add(new XElement("playerOtherLvl", dialog.Precondition.playerOtherLvl));
                     if (dialog.Precondition.getReputation() != "")
                         element.Element("Precondition").Add(new XElement("Reputation", dialog.Precondition.getReputation()));
+                    if (dialog.Precondition.getNPCReputation() != "")
+                        element.Element("Precondition").Add(new XElement("NPCReputation", dialog.Precondition.getNPCReputation()));
                     if (dialog.Precondition.KarmaPK.Any())
                         element.Element("Precondition").Add(new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK)));
                     }

@@ -13,10 +13,13 @@ namespace StalkerOnlineQuesterEditor
     {
         EditQuestForm form;
         Dictionary<int, int> reputations;
-        public RewardFractions(EditQuestForm form, ref Dictionary<int, int> reputations)
+        Dictionary<string, int> npc_reputations;
+
+        public RewardFractions(EditQuestForm form, ref Dictionary<int, int> reputations, ref Dictionary<string, int> npc_reputations)
         {
             this.form = form;
             this.reputations = reputations;
+            this.npc_reputations = npc_reputations;
             InitializeComponent();
 
             foreach (KeyValuePair<int, string> pair in form.parent.fractions.getListOfFractions())
@@ -27,6 +30,13 @@ namespace StalkerOnlineQuesterEditor
                 if (reputations.Keys.Contains(pair.Key))
                     rewardValue = reputations[pair.Key];
                 object[] row = { id, name, rewardValue };
+                dataFractions.Rows.Add(row);
+            }
+            foreach (KeyValuePair<string, int> pair in this.npc_reputations)
+            {
+                string name = pair.Key;
+                int rewardValue = pair.Value;
+                object[] row = { "", name, rewardValue };
                 dataFractions.Rows.Add(row);
             }
         }
@@ -44,13 +54,25 @@ namespace StalkerOnlineQuesterEditor
         private void bOk_Click(object sender, EventArgs e)
         {
             reputations.Clear();
+            npc_reputations.Clear();
             foreach (DataGridViewRow row in dataFractions.Rows)
             {
-                int id = int.Parse(row.Cells[0].FormattedValue.ToString());
+                
                 string sValue = row.Cells[2].FormattedValue.ToString();
                 int nValue;
-                if (int.TryParse(sValue, out nValue))
+                int.TryParse(sValue, out nValue);
+                if (nValue == 0)
+                    continue;
+                int id = -1;
+                if (int.TryParse(row.Cells[0].FormattedValue.ToString(), out id))
+                {
                     reputations[id] = nValue;
+                }
+                else
+                {
+                    string name = row.Cells[1].FormattedValue.ToString();
+                    npc_reputations[name] = nValue;
+                }
             }
 
             form.checkRewardIndicates();
