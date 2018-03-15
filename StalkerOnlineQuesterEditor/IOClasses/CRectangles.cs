@@ -18,12 +18,12 @@ namespace StalkerOnlineQuesterEditor
         private int ID;
         private string Text;
         private Color color;
-        public int coordX;
-        public int coordY;
+        public float coordX;
+        public float coordY;
         public int Width;
         public int Height;
 
-        public CRectangle(int id, int _x, int _y, int width, int height, string text, Color _color)
+        public CRectangle(int id, float _x, float _y, int width, int height, string text, Color _color)
         {
             ID = id;
             coordX = _x;
@@ -37,8 +37,8 @@ namespace StalkerOnlineQuesterEditor
         public CRectangle(int id, PointF point, SizeF size)
         {
             ID = id;
-            coordX = (int) point.X;
-            coordY = (int) point.Y;
+            coordX =    point.X;
+            coordY =    point.Y;
             Width = (int) size.Width;
             Height = (int) size.Height;
             Text = "";
@@ -121,7 +121,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Меняет координаты прямоугольника, принадлежащего npc c id на новые. Используется при событии Drag.
-        public void ChangeCoordinates(string npc, int id, int newX, int newY)
+        public void ChangeCoordinates(string npc, int id, float newX, float newY)
         {
             Rectangles[npc][id].coordX = newX;
             Rectangles[npc][id].coordY = newY;
@@ -217,8 +217,8 @@ namespace StalkerOnlineQuesterEditor
                 foreach (XElement rectangle in item.Elements())
                 {
                     int id = int.Parse(rectangle.Attribute("ID").Value);
-                    int x = int.Parse(rectangle.Element("X").Value);
-                    int y = int.Parse(rectangle.Element("Y").Value);
+                    float x = float.Parse(rectangle.Element("X").Value);
+                    float y = float.Parse(rectangle.Element("Y").Value);
                     int width = int.Parse(rectangle.Element("width").Value);
                     int height = int.Parse(rectangle.Element("height").Value);
                     string text = rectangle.Element("Text").Value.ToString();
