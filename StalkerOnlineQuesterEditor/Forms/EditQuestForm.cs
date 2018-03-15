@@ -1042,7 +1042,8 @@ namespace StalkerOnlineQuesterEditor
                 target.ObjectAttr = Convert.ToInt16(cbReputationLow.Checked);
                 if (target.NumOfObjects < 1)
                 {
-                    
+                    MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
+                    return null;
                 }
             }
             else if (target.QuestType == 24)
@@ -1134,7 +1135,7 @@ namespace StalkerOnlineQuesterEditor
             reward.AttrOfItems = editQuestReward.AttrOfItems;
             reward.Probability = editQuestReward.Probability;
             reward.Reputation = editQuestReward.Reputation;
-            penalty.Reputation = editQuestPenalty.Reputation;
+            reward.NPCReputation = editQuestReward.NPCReputation;
             reward.Effects = editQuestReward.Effects;
             reward.ChangeQuests = editQuestReward.ChangeQuests;
             reward.randomQuest = editQuestReward.randomQuest;
