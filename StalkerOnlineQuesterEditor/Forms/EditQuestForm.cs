@@ -606,7 +606,13 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (quest.Target.QuestType == 22 || quest.Target.QuestType == 23)
             {
-                targetComboBox.SelectedItem = parent.fractions.getFractionDesctByID(quest.Target.ObjectType);
+                int factID = 0;
+                if (int.TryParse(quest.Target.ObjectName, out factID))
+                    targetComboBox.SelectedItem = parent.fractions.getFractionDesctByID(factID);
+                else
+                {
+                    targetComboBox.Text = quest.Target.ObjectName;
+                }
                 quantityUpDown.Value = quest.Target.NumOfObjects;
                 cbReputationLow.Checked = quest.Target.ObjectAttr != 0;
             }
@@ -1021,13 +1027,22 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (target.QuestType == 22 || target.QuestType == 23)
             {
-                target.ObjectType = parent.fractions.getFractionIDByDescr(targetComboBox.SelectedItem.ToString());
+                if (targetComboBox.SelectedItem == null)
+                {
+                    if (!targetComboBox.Text.Trim().Any())
+                    {
+                        MessageBox.Show("Цель->Репутация - некорректное значение", "Ошибка");
+                        return null;
+                    }
+                    target.ObjectName = targetComboBox.Text;
+                }  
+                else
+                    target.ObjectName = parent.fractions.getFractionIDByDescr(targetComboBox.SelectedItem.ToString()).ToString();
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
                 target.ObjectAttr = Convert.ToInt16(cbReputationLow.Checked);
                 if (target.NumOfObjects < 1)
                 {
-                    MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
-                    return null;
+                    
                 }
             }
             else if (target.QuestType == 24)
