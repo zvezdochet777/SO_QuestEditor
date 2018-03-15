@@ -34,6 +34,8 @@
             this.lGreetNPC = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.gbActions = new System.Windows.Forms.GroupBox();
+            this.nupChangeMoney = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.tbAvatarGoTo = new System.Windows.Forms.TextBox();
             this.commandsComboBox = new System.Windows.Forms.ComboBox();
             this.cbFailQuests = new System.Windows.Forms.CheckBox();
@@ -106,10 +108,6 @@
             this.tabReputation = new System.Windows.Forms.TabPage();
             this.lInfo = new System.Windows.Forms.Label();
             this.dataReputation = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabKarma = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelDescription = new System.Windows.Forms.Label();
@@ -201,9 +199,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.nupChangeMoney = new System.Windows.Forms.NumericUpDown();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbActions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -235,7 +236,6 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -309,6 +309,32 @@
             this.gbActions.Size = new System.Drawing.Size(595, 144);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
+            // 
+            // nupChangeMoney
+            // 
+            this.nupChangeMoney.Location = new System.Drawing.Point(426, 101);
+            this.nupChangeMoney.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nupChangeMoney.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.nupChangeMoney.Name = "nupChangeMoney";
+            this.nupChangeMoney.Size = new System.Drawing.Size(147, 20);
+            this.nupChangeMoney.TabIndex = 43;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(293, 103);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 13);
+            this.label8.TabIndex = 42;
+            this.label8.Text = "Изменить деньги:";
             // 
             // tbAvatarGoTo
             // 
@@ -1018,17 +1044,15 @@
             // 
             // lInfo
             // 
-            this.lInfo.Location = new System.Drawing.Point(420, 3);
+            this.lInfo.Location = new System.Drawing.Point(415, 4);
             this.lInfo.Name = "lInfo";
-            this.lInfo.Size = new System.Drawing.Size(146, 182);
+            this.lInfo.Size = new System.Drawing.Size(132, 182);
             this.lInfo.TabIndex = 4;
             this.lInfo.Text = "Диалог будет доступен, если значение репутации игрока больше А и меньше В. Можно " +
     "задать только одно из значений А или В, или оба сразу.";
             // 
             // dataReputation
             // 
-            this.dataReputation.AllowUserToAddRows = false;
-            this.dataReputation.AllowUserToDeleteRows = false;
             this.dataReputation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataReputation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -1040,33 +1064,6 @@
             this.dataReputation.Name = "dataReputation";
             this.dataReputation.Size = new System.Drawing.Size(560, 224);
             this.dataReputation.TabIndex = 3;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Имя фракции";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.FillWeight = 110F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "A (A <= X <= B)";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 110;
-            // 
-            // b
-            // 
-            this.b.FillWeight = 110F;
-            this.b.HeaderText = "B (A <= X <= B)";
-            this.b.Name = "b";
-            this.b.Width = 110;
             // 
             // tabKarma
             // 
@@ -1974,31 +1971,31 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // label8
+            // id
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(293, 103);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 13);
-            this.label8.TabIndex = 42;
-            this.label8.Text = "Изменить деньги:";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
             // 
-            // nupChangeMoney
+            // name
             // 
-            this.nupChangeMoney.Location = new System.Drawing.Point(426, 101);
-            this.nupChangeMoney.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.nupChangeMoney.Minimum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            -2147483648});
-            this.nupChangeMoney.Name = "nupChangeMoney";
-            this.nupChangeMoney.Size = new System.Drawing.Size(147, 20);
-            this.nupChangeMoney.TabIndex = 43;
+            this.name.HeaderText = "Имя фракции";
+            this.name.Name = "name";
+            this.name.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 110F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "A (A <= X <= B)";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 110;
+            // 
+            // b
+            // 
+            this.b.FillWeight = 110F;
+            this.b.HeaderText = "B (A <= X <= B)";
+            this.b.Name = "b";
+            this.b.Width = 110;
             // 
             // EditDialogForm
             // 
@@ -2016,6 +2013,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditDialogForm_FormClosed);
             this.gbActions.ResumeLayout(false);
             this.gbActions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).EndInit();
             this.gbPrecondition.ResumeLayout(false);
             this.gbPrecondition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).EndInit();
@@ -2059,7 +2057,6 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2224,10 +2221,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox tMustHaveFailQuests;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveFailQuests;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn b;
         private System.Windows.Forms.MaskedTextBox tCheckNodes;
         private System.Windows.Forms.Label lCheckNodes;
         private System.Windows.Forms.PictureBox pictureItems;
@@ -2242,5 +2235,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCond;
         private System.Windows.Forms.NumericUpDown nupChangeMoney;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn b;
     }
 }

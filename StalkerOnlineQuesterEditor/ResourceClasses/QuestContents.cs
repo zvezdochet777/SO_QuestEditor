@@ -484,7 +484,9 @@ namespace StalkerOnlineQuesterEditor
         public float Credits;
         //! Словарь репутаций в награду, выглядит так <id фракции>:<значение награды>;
         public Dictionary<int, int> Reputation;
-        //! Словарь репутаций в награду, выглядит так <id квеста>:<установленный статус>;
+        //! Словарь личной репутаций NPC в награду, выглядит так <имя NPC квеста>:<установленный статус>;
+        public Dictionary<string, int> NPCReputation;
+        //! Словарь изменений квеста в награду, выглядит так <id квеста>:<установленный статус>;
         public Dictionary<int, int> ChangeQuests;
         public bool randomQuest = false;
         public int KarmaPK;
@@ -502,6 +504,7 @@ namespace StalkerOnlineQuesterEditor
             copy.Probability = this.Probability;
             copy.Credits = this.Credits;
             copy.Reputation = new Dictionary<int, int>(this.Reputation);
+            copy.NPCReputation = new Dictionary<string, int>(this.NPCReputation);
             copy.KarmaPK = this.KarmaPK;
             copy.Effects = new List<CEffect>(this.Effects);
             copy.RewardWindow = this.RewardWindow;
@@ -517,6 +520,7 @@ namespace StalkerOnlineQuesterEditor
             this.Probability = new List<float>();
             this.Credits = new float();            
             this.Reputation = new Dictionary<int, int>();
+            this.NPCReputation = new Dictionary<string, int>();
             this.ChangeQuests = new Dictionary<int, int>();
             this.KarmaPK = new int();
             this.Effects = new List<CEffect>();
@@ -526,13 +530,26 @@ namespace StalkerOnlineQuesterEditor
         {
             return Experience.Any() || TypeOfItems.Any() || NumOfItems.Any() ||
                 AttrOfItems.Any() || Probability.Any() || Credits != 0 || ReputationNotEmpty() ||
-                KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any();
+                KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any() || NPCReputation.Any();
         }
 
-        public string getReputation()
+        public string getReputation(bool is_npc = false)
         {
             string result = "";
-            if (ReputationNotEmpty())
+            if (!ReputationNotEmpty(is_npc))
+                return result;
+            if (is_npc)
+            {
+                foreach (string key in this.NPCReputation.Keys)
+                {
+                    if (this.NPCReputation[key] == 0)
+                        continue;
+                    if (!result.Equals(""))
+                        result += ";";
+                    result += (key.ToString() + ":" + this.NPCReputation[key].ToString());
+                }
+            }
+            else
             {
                 foreach (int key in this.Reputation.Keys)
                 {
@@ -543,6 +560,7 @@ namespace StalkerOnlineQuesterEditor
                     result += (key.ToString() + ":" + this.Reputation[key].ToString());
                 }
             }
+
             return result;
         }
 
@@ -561,9 +579,11 @@ namespace StalkerOnlineQuesterEditor
             return result;
         }
 
-        public bool ReputationNotEmpty()
+        public bool ReputationNotEmpty(bool is_npc = false)
         {
-            foreach (int Value in this.Reputation.Values)
+            List<int> values;
+            values = is_npc ? new List<int>(this.NPCReputation.Values) : new List<int>(this.Reputation.Values);
+            foreach (int Value in values)
                 if (Value != 0)
                     return true;
             return false;

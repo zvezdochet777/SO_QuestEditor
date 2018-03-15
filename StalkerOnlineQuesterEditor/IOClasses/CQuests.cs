@@ -236,6 +236,10 @@ namespace StalkerOnlineQuesterEditor
                         foreach (string fraction in item.Element("Reward").Element("Reputation").Value.Split(';'))
                             if (!fraction.Equals(""))
                                 reward.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
+                    if (item.Element("Reward").Element("NPCReputation") != null)
+                        foreach (string fraction in item.Element("Reward").Element("NPCReputation").Value.Split(';'))
+                            if (!fraction.Equals(""))
+                                reward.NPCReputation.Add(fraction.Split(':')[0], int.Parse(fraction.Split(':')[1]));
                     if (item.Element("Reward").Element("ChangeQuests") != null)
                     {
                         if (item.Element("Reward").Element("randomQuest") != null)
@@ -277,6 +281,10 @@ namespace StalkerOnlineQuesterEditor
                         foreach (string fraction in item.Element("Penalty").Element("Reputation").Value.Split(';'))
                             if (!fraction.Equals(""))
                                 penalty.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
+                    if (item.Element("Penalty").Element("NPCReputation") != null)
+                        foreach (string fraction in item.Element("Penalty").Element("NPCReputation").Value.Split(';'))
+                            if (!fraction.Equals(""))
+                                penalty.NPCReputation.Add(fraction.Split(':')[0], int.Parse(fraction.Split(':')[1]));
                     if (item.Element("Penalty").Element("ChangeQuests") != null)
                     {
                         if (item.Element("Penalty").Element("randomQuest") != null)
@@ -592,6 +600,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Reward").Add( new XElement("Credits", questValue.Reward.Credits));
                     if (questValue.Reward.ReputationNotEmpty())
                         element.Element("Reward").Add(new XElement("Reputation", questValue.Reward.getReputation()));
+                    if (questValue.Reward.ReputationNotEmpty(true))
+                        element.Element("Reward").Add(new XElement("NPCReputation", questValue.Reward.getReputation(true)));
                     if (questValue.Reward.ChangeQuests.Any())
                         element.Element("Reward").Add(new XElement("ChangeQuests", questValue.Reward.getChangeQuests()));
                     if (questValue.Reward.randomQuest)
@@ -622,6 +632,8 @@ namespace StalkerOnlineQuesterEditor
                          element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits.ToString("G6", CultureInfo.InvariantCulture)));
                      if (questValue.QuestPenalty.ReputationNotEmpty())
                          element.Element("Penalty").Add(new XElement("Reputation", questValue.QuestPenalty.getReputation()));
+                    if (questValue.Reward.ReputationNotEmpty(true))
+                        element.Element("Penalty").Add(new XElement("NPCReputation", questValue.QuestPenalty.getReputation(true)));
                     if (questValue.QuestPenalty.ChangeQuests.Any())
                         element.Element("Penalty").Add(new XElement("ChangeQuests", questValue.QuestPenalty.getChangeQuests()));
                     if (questValue.QuestPenalty.randomQuest)

@@ -30,9 +30,9 @@
         {
             this.dataFractions = new System.Windows.Forms.DataGridView();
             this.pButtons = new System.Windows.Forms.Panel();
+            this.lInfo = new System.Windows.Forms.Label();
             this.bCancel = new System.Windows.Forms.Button();
             this.bOk = new System.Windows.Forms.Button();
-            this.lInfo = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,8 +42,6 @@
             // 
             // dataFractions
             // 
-            this.dataFractions.AllowUserToAddRows = false;
-            this.dataFractions.AllowUserToDeleteRows = false;
             this.dataFractions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataFractions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -66,6 +64,14 @@
             this.pButtons.Size = new System.Drawing.Size(453, 61);
             this.pButtons.TabIndex = 1;
             // 
+            // lInfo
+            // 
+            this.lInfo.Location = new System.Drawing.Point(13, 11);
+            this.lInfo.Name = "lInfo";
+            this.lInfo.Size = new System.Drawing.Size(267, 33);
+            this.lInfo.TabIndex = 2;
+            this.lInfo.Text = "Положительные значения - прибавка к репутации, отрицательные - штраф к репутации";
+            // 
             // bCancel
             // 
             this.bCancel.Location = new System.Drawing.Point(367, 33);
@@ -86,14 +92,6 @@
             this.bOk.UseVisualStyleBackColor = true;
             this.bOk.Click += new System.EventHandler(this.bOk_Click);
             // 
-            // lInfo
-            // 
-            this.lInfo.Location = new System.Drawing.Point(13, 11);
-            this.lInfo.Name = "lInfo";
-            this.lInfo.Size = new System.Drawing.Size(267, 33);
-            this.lInfo.TabIndex = 2;
-            this.lInfo.Text = "Положительные значения - прибавка к репутации, отрицательные - штраф к репутации";
-            // 
             // id
             // 
             this.id.HeaderText = "id";
@@ -105,7 +103,6 @@
             // 
             this.sName.HeaderText = "Имя фракции";
             this.sName.Name = "sName";
-            this.sName.ReadOnly = true;
             this.sName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.sName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.sName.Width = 150;
