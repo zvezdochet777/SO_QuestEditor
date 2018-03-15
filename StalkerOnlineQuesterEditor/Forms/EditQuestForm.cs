@@ -606,13 +606,7 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (quest.Target.QuestType == 22 || quest.Target.QuestType == 23)
             {
-                int factID = 0;
-                if (int.TryParse(quest.Target.ObjectName, out factID))
-                    targetComboBox.SelectedItem = parent.fractions.getFractionDesctByID(factID);
-                else
-                {
-                    targetComboBox.Text = quest.Target.ObjectName;
-                }
+                targetComboBox.SelectedItem = parent.fractions.getFractionDesctByID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
                 cbReputationLow.Checked = quest.Target.ObjectAttr != 0;
             }
@@ -1040,22 +1034,13 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (target.QuestType == 22 || target.QuestType == 23)
             {
-                if (targetComboBox.SelectedItem == null)
-                {
-                    if (!targetComboBox.Text.Trim().Any())
-                    {
-                        MessageBox.Show("Цель->Репутация - некорректное значение", "Ошибка");
-                        return null;
-                    }
-                    target.ObjectName = targetComboBox.Text;
-                }  
-                else
-                    target.ObjectName = parent.fractions.getFractionIDByDescr(targetComboBox.SelectedItem.ToString()).ToString();
+                target.ObjectType = parent.fractions.getFractionIDByDescr(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
                 target.ObjectAttr = Convert.ToInt16(cbReputationLow.Checked);
                 if (target.NumOfObjects < 1)
                 {
-                    
+                    MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
+                    return null;
                 }
             }
             else if (target.QuestType == 24)
@@ -1147,7 +1132,6 @@ namespace StalkerOnlineQuesterEditor
             reward.AttrOfItems = editQuestReward.AttrOfItems;
             reward.Probability = editQuestReward.Probability;
             reward.Reputation = editQuestReward.Reputation;
-            penalty.Reputation = editQuestPenalty.Reputation;
             reward.Effects = editQuestReward.Effects;
             reward.ChangeQuests = editQuestReward.ChangeQuests;
             reward.randomQuest = editQuestReward.randomQuest;
@@ -1157,7 +1141,6 @@ namespace StalkerOnlineQuesterEditor
             penalty.AttrOfItems = editQuestPenalty.AttrOfItems;
             penalty.Probability = editQuestPenalty.Probability;
             penalty.Reputation = editQuestPenalty.Reputation;
-            penalty.NPCReputation = editQuestPenalty.NPCReputation;
             penalty.Effects = editQuestPenalty.Effects;
             penalty.ChangeQuests = editQuestPenalty.ChangeQuests;
             penalty.randomQuest = editQuestPenalty.randomQuest;
@@ -1426,7 +1409,7 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие Репутация в наградах квеста - открывает окно редактирования репутаций
         private void bRewardReputation_Click(object sender, EventArgs e)
         {
-            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestReward.Reputation, ref this.editQuestReward.NPCReputation);
+            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestReward.Reputation);
             formFractions.Visible = true;
             this.Enabled = false;
         }
@@ -1521,7 +1504,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bPenaltyReputation_Click(object sender, EventArgs e)
         {
-            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestPenalty.Reputation, ref this.editQuestPenalty.NPCReputation);
+            RewardFractions formFractions = new RewardFractions(this, ref this.editQuestPenalty.Reputation);
             formFractions.Visible = true;
             this.Enabled = false;
         }

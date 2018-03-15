@@ -415,7 +415,10 @@ namespace StalkerOnlineQuesterEditor
         //! Задать цвет кнопки репутации, если репутация задана
         public void checkReputationIndicates()
         {
-            pictureReputation.Visible = editPrecondition.Reputation.Any() || editPrecondition.NPCReputation.Any();
+            if (editPrecondition.Reputation.Any())
+                pictureReputation.Visible = true;
+            else
+                pictureReputation.Visible = false;
         }
         //! Задать цвет кнопки кармы, если карма задана
         public void checkKarmaIndicates()
@@ -753,7 +756,6 @@ namespace StalkerOnlineQuesterEditor
                 precondition.playerOtherLvl = tbOtherLvlMin.Text + ":" + tbOtherLvlMax.Text;
             }
             precondition.Reputation = editPrecondition.Reputation;
-            precondition.NPCReputation = editPrecondition.NPCReputation;
             precondition.KarmaPK = editKarmaPK;
             precondition.NecessaryEffects = editPrecondition.NecessaryEffects;
             precondition.MustNoEffects = editPrecondition.MustNoEffects;
@@ -922,39 +924,18 @@ namespace StalkerOnlineQuesterEditor
                 object[] row = { id, name, a, b };
                 dataReputation.Rows.Add(row);
             }
-            foreach(KeyValuePair<string, List<double>> pair in this.editPrecondition.NPCReputation)
-            {
-                string name = pair.Key;
-                string a = "";
-                string b = "";
-                if (this.editPrecondition.NPCReputation[pair.Key].Count == 3)         // костыль для старой версии, выжечт огнем позже
-                {
-                    double type = this.editPrecondition.NPCReputation[pair.Key][0];
-                    if (type == 0 || (type == 1))
-                        a = this.editPrecondition.NPCReputation[pair.Key][1].ToString();
-                    if (type == 0 || (type == 2))
-                        b = this.editPrecondition.NPCReputation[pair.Key][2].ToString();
-                }
-                else if (this.editPrecondition.NPCReputation[pair.Key].Count == 2)
-                {
-                    if (this.editPrecondition.NPCReputation[pair.Key][0] != double.NegativeInfinity)
-                        a = this.editPrecondition.NPCReputation[pair.Key][0].ToString();
-                    if (this.editPrecondition.NPCReputation[pair.Key][1] != double.PositiveInfinity)
-                        b = this.editPrecondition.NPCReputation[pair.Key][1].ToString();
-                }
-                object[] row = { "", name, a, b };
-                dataReputation.Rows.Add(row);
-            }
             this.checkReputation();
         }
 
         private bool checkReputation()
         {
             this.editPrecondition.Reputation.Clear();
-            this.editPrecondition.NPCReputation.Clear();
             foreach (DataGridViewRow row in dataReputation.Rows)
             {
-                    string fractionName = row.Cells[1].FormattedValue.ToString();
+                if (row.Cells[0].FormattedValue.ToString() != "")
+                {
+                    int fractionID = int.Parse(row.Cells[0].FormattedValue.ToString());
+                    //string fractionName = row.Cells[1].FormattedValue.ToString();
                     string stringA = row.Cells[2].FormattedValue.ToString().Replace('.', ',');
                     string stringB = row.Cells[3].FormattedValue.ToString().Replace('.', ',');
 
@@ -971,19 +952,9 @@ namespace StalkerOnlineQuesterEditor
                             MessageBox.Show("Неправильное условие по репутации! Значение А должно быть меньше B", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return false;
                         }
-
-                        int fractionID = -1;
-                        if (int.TryParse(row.Cells[0].FormattedValue.ToString(), out fractionID))
-                        {
-                            this.editPrecondition.Reputation.Add(fractionID, new List<double>() { doubleA, doubleB });
-                        }
-                        else
-                        {
-                            this.editPrecondition.NPCReputation.Add(fractionName.Trim(), new List<double>() { doubleA, doubleB });
-                        }
-
-                        
+                        this.editPrecondition.Reputation.Add(fractionID, new List<double>() { doubleA, doubleB });
                     }
+                }
             }
             this.checkReputationIndicates();
             return true;

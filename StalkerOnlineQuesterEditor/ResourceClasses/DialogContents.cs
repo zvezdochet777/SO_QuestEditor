@@ -114,7 +114,6 @@ namespace StalkerOnlineQuesterEditor
         public string playerOtherLvl;
         public ListDialogSkills Skills = new ListDialogSkills();
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
-        public Dictionary<string, List<double>> NPCReputation = new Dictionary<string, List<double>>();
         public List<int> KarmaPK = new List<int>();
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
@@ -129,7 +128,6 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfNecessaryQuests = (CDialogPreconditionQuests)this.ListOfNecessaryQuests.Clone();
             copy.ListOfMustNoQuests = (CDialogPreconditionQuests)this.ListOfMustNoQuests.Clone();
             copy.Reputation = this.Reputation;
-            copy.NPCReputation = this.NPCReputation;
             copy.Skills = this.Skills;
             copy.KarmaPK = this.KarmaPK;
             copy.PlayerLevel = this.PlayerLevel;
@@ -148,7 +146,6 @@ namespace StalkerOnlineQuesterEditor
             this.ListOfMustNoQuests = new CDialogPreconditionQuests();
             this.clanOptions = "";
             this.Reputation = new Dictionary<int, List<double>>();
-            this.NPCReputation = new Dictionary<string, List<double>>();
             this.Skills = new ListDialogSkills();
             this.KarmaPK = new List<int>();
             this.PlayerLevel = "";
@@ -169,21 +166,24 @@ namespace StalkerOnlineQuesterEditor
 
         public bool Any()
         {
-            return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
-                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() || NPCReputation.Any();
+            if (ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
+                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any())
+                return true;
+            else
+                return false;
         }
 
         public string GetAsString()
         {
-            if (!Any())
+            if (Any())
             {
-                return "";
+                string result = "";
+                result += (ListOfNecessaryQuests.Any()) ? ("\nДолжно быть:" + ListOfNecessaryQuests.GetAsString()) : ("");
+                result += (ListOfMustNoQuests.Any()) ? ("\nНе должно быть: " + ListOfMustNoQuests.GetAsString()) : ("");
+                return result;
             }
-            string result = "";
-            result += (ListOfNecessaryQuests.Any()) ? ("\nДолжно быть:" + ListOfNecessaryQuests.GetAsString()) : ("");
-            result += (ListOfMustNoQuests.Any()) ? ("\nНе должно быть: " + ListOfMustNoQuests.GetAsString()) : ("");
-            return result;
-
+            else
+                return "";
         }
 
         public string getReputation()
@@ -216,38 +216,6 @@ namespace StalkerOnlineQuesterEditor
             }
             return result;
         }
-
-        public string getNPCReputation()
-        {
-            string result = "";
-            foreach (string key in this.NPCReputation.Keys)
-            {
-                if (this.NPCReputation[key].Count == 2)
-                {
-                    if (result != "")
-                        result += ";";
-                    result += key.ToString().Trim() + ":";
-                    result += this.NPCReputation[key][0].ToString(System.Globalization.CultureInfo.InvariantCulture) + ":";
-                    result += this.NPCReputation[key][1].ToString(System.Globalization.CultureInfo.InvariantCulture);
-                }
-                else if (this.NPCReputation[key].Count == 3)  //костыль для плавного перехода между старой и новой версией
-                {
-                    if (result != "")
-                        result += ";";
-                    double A = this.NPCReputation[key][1];
-                    double B = this.NPCReputation[key][2];
-                    if (A == 0.0)
-                        A = double.NegativeInfinity;
-                    if (B == 0.0)
-                        B = double.PositiveInfinity;
-                    result = key.ToString().Trim() + ":";
-                    result += A.ToString(System.Globalization.CultureInfo.InvariantCulture) + ":";
-                    result += B.ToString(System.Globalization.CultureInfo.InvariantCulture);
-                }
-            }
-            return result;
-        }
-
 
         public XElement getNecessaryEffects()
         {
