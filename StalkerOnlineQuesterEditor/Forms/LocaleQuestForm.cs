@@ -12,8 +12,8 @@ namespace StalkerOnlineQuesterEditor.Forms
     //! Форма локализации квеста, заголовок, описание и т.д.
     public partial class LocaleQuestForm : Form
     {
-        int ITEM_REWARD = 0;
-        int ITEM_QUESTRULES = 1;
+        //int ITEM_REWARD = 0;
+        //int ITEM_QUESTRULES = 1;
         int ITEM_LOCALIZATION_RULES = 2;
         int ITEM_LOCALIZATION_REWARD = 3;
 

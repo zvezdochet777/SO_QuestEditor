@@ -108,6 +108,10 @@
             this.tabReputation = new System.Windows.Forms.TabPage();
             this.lInfo = new System.Windows.Forms.Label();
             this.dataReputation = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabKarma = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelDescription = new System.Windows.Forms.Label();
@@ -163,8 +167,8 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabActions = new System.Windows.Forms.TabPage();
-            this.tbItemNPC = new System.Windows.Forms.ComboBox();
-            this.cbItemNPC = new System.Windows.Forms.CheckBox();
+            this.tbActionNPC = new System.Windows.Forms.ComboBox();
+            this.cbActionNPC = new System.Windows.Forms.CheckBox();
             this.tbPlaySonund = new System.Windows.Forms.ComboBox();
             this.cbPlaySonund = new System.Windows.Forms.CheckBox();
             this.cbCameraSmoothly = new System.Windows.Forms.CheckBox();
@@ -199,10 +203,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbAdditionalAction = new System.Windows.Forms.TextBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
@@ -1065,6 +1067,32 @@
             this.dataReputation.Size = new System.Drawing.Size(560, 224);
             this.dataReputation.TabIndex = 3;
             // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Имя фракции";
+            this.name.Name = "name";
+            this.name.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 110F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "A (A <= X <= B)";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 110;
+            // 
+            // b
+            // 
+            this.b.FillWeight = 110F;
+            this.b.HeaderText = "B (A <= X <= B)";
+            this.b.Name = "b";
+            this.b.Width = 110;
+            // 
             // tabKarma
             // 
             this.tabKarma.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1597,8 +1625,10 @@
             // tabActions
             // 
             this.tabActions.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabActions.Controls.Add(this.tbItemNPC);
-            this.tabActions.Controls.Add(this.cbItemNPC);
+            this.tabActions.Controls.Add(this.tbAdditionalAction);
+            this.tabActions.Controls.Add(this.label9);
+            this.tabActions.Controls.Add(this.tbActionNPC);
+            this.tabActions.Controls.Add(this.cbActionNPC);
             this.tabActions.Controls.Add(this.tbPlaySonund);
             this.tabActions.Controls.Add(this.cbPlaySonund);
             this.tabActions.Controls.Add(this.cbCameraSmoothly);
@@ -1617,28 +1647,28 @@
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
-            // tbItemNPC
+            // tbActionNPC
             // 
-            this.tbItemNPC.FormattingEnabled = true;
-            this.tbItemNPC.Location = new System.Drawing.Point(210, 59);
-            this.tbItemNPC.Name = "tbItemNPC";
-            this.tbItemNPC.Size = new System.Drawing.Size(223, 21);
-            this.tbItemNPC.TabIndex = 15;
+            this.tbActionNPC.FormattingEnabled = true;
+            this.tbActionNPC.Location = new System.Drawing.Point(210, 61);
+            this.tbActionNPC.Name = "tbActionNPC";
+            this.tbActionNPC.Size = new System.Drawing.Size(223, 21);
+            this.tbActionNPC.TabIndex = 15;
             // 
-            // cbItemNPC
+            // cbActionNPC
             // 
-            this.cbItemNPC.AutoSize = true;
-            this.cbItemNPC.Location = new System.Drawing.Point(28, 63);
-            this.cbItemNPC.Name = "cbItemNPC";
-            this.cbItemNPC.Size = new System.Drawing.Size(99, 17);
-            this.cbItemNPC.TabIndex = 14;
-            this.cbItemNPC.Text = "Предмет NPC:";
-            this.cbItemNPC.UseVisualStyleBackColor = true;
+            this.cbActionNPC.AutoSize = true;
+            this.cbActionNPC.Location = new System.Drawing.Point(28, 65);
+            this.cbActionNPC.Name = "cbActionNPC";
+            this.cbActionNPC.Size = new System.Drawing.Size(104, 17);
+            this.cbActionNPC.TabIndex = 14;
+            this.cbActionNPC.Text = "Действие NPC:";
+            this.cbActionNPC.UseVisualStyleBackColor = true;
             // 
             // tbPlaySonund
             // 
             this.tbPlaySonund.FormattingEnabled = true;
-            this.tbPlaySonund.Location = new System.Drawing.Point(210, 128);
+            this.tbPlaySonund.Location = new System.Drawing.Point(210, 156);
             this.tbPlaySonund.Name = "tbPlaySonund";
             this.tbPlaySonund.Size = new System.Drawing.Size(223, 21);
             this.tbPlaySonund.TabIndex = 13;
@@ -1646,7 +1676,7 @@
             // cbPlaySonund
             // 
             this.cbPlaySonund.AutoSize = true;
-            this.cbPlaySonund.Location = new System.Drawing.Point(28, 132);
+            this.cbPlaySonund.Location = new System.Drawing.Point(28, 160);
             this.cbPlaySonund.Name = "cbPlaySonund";
             this.cbPlaySonund.Size = new System.Drawing.Size(106, 17);
             this.cbPlaySonund.TabIndex = 12;
@@ -1656,7 +1686,7 @@
             // cbCameraSmoothly
             // 
             this.cbCameraSmoothly.AutoSize = true;
-            this.cbCameraSmoothly.Location = new System.Drawing.Point(439, 86);
+            this.cbCameraSmoothly.Location = new System.Drawing.Point(439, 114);
             this.cbCameraSmoothly.Name = "cbCameraSmoothly";
             this.cbCameraSmoothly.Size = new System.Drawing.Size(64, 17);
             this.cbCameraSmoothly.TabIndex = 11;
@@ -1666,7 +1696,7 @@
             // tbAvatarPoint
             // 
             this.tbAvatarPoint.FormattingEnabled = true;
-            this.tbAvatarPoint.Location = new System.Drawing.Point(210, 105);
+            this.tbAvatarPoint.Location = new System.Drawing.Point(210, 133);
             this.tbAvatarPoint.Name = "tbAvatarPoint";
             this.tbAvatarPoint.Size = new System.Drawing.Size(223, 21);
             this.tbAvatarPoint.TabIndex = 10;
@@ -1674,7 +1704,7 @@
             // cbAvatarPoint
             // 
             this.cbAvatarPoint.AutoSize = true;
-            this.cbAvatarPoint.Location = new System.Drawing.Point(28, 109);
+            this.cbAvatarPoint.Location = new System.Drawing.Point(28, 137);
             this.cbAvatarPoint.Name = "cbAvatarPoint";
             this.cbAvatarPoint.Size = new System.Drawing.Size(101, 17);
             this.cbAvatarPoint.TabIndex = 9;
@@ -1686,7 +1716,7 @@
             this.tbCamera.FormattingEnabled = true;
             this.tbCamera.Items.AddRange(new object[] {
             "default"});
-            this.tbCamera.Location = new System.Drawing.Point(210, 82);
+            this.tbCamera.Location = new System.Drawing.Point(210, 110);
             this.tbCamera.Name = "tbCamera";
             this.tbCamera.Size = new System.Drawing.Size(223, 21);
             this.tbCamera.TabIndex = 8;
@@ -1710,7 +1740,7 @@
             // cbCamera
             // 
             this.cbCamera.AutoSize = true;
-            this.cbCamera.Location = new System.Drawing.Point(28, 86);
+            this.cbCamera.Location = new System.Drawing.Point(28, 114);
             this.cbCamera.Name = "cbCamera";
             this.cbCamera.Size = new System.Drawing.Size(118, 17);
             this.cbCamera.TabIndex = 2;
@@ -1971,31 +2001,21 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // id
+            // label9
             // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.Visible = false;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(44, 90);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(95, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Доп. к действию:";
             // 
-            // name
+            // tbAdditionalAction
             // 
-            this.name.HeaderText = "Имя фракции";
-            this.name.Name = "name";
-            this.name.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.FillWeight = 110F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "A (A <= X <= B)";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 110;
-            // 
-            // b
-            // 
-            this.b.FillWeight = 110F;
-            this.b.HeaderText = "B (A <= X <= B)";
-            this.b.Name = "b";
-            this.b.Width = 110;
+            this.tbAdditionalAction.Location = new System.Drawing.Point(210, 86);
+            this.tbAdditionalAction.Name = "tbAdditionalAction";
+            this.tbAdditionalAction.Size = new System.Drawing.Size(223, 20);
+            this.tbAdditionalAction.TabIndex = 17;
             // 
             // EditDialogForm
             // 
@@ -2214,8 +2234,8 @@
         private System.Windows.Forms.Panel autoPanel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox autoDefaultNode;
-        private System.Windows.Forms.ComboBox tbItemNPC;
-        private System.Windows.Forms.CheckBox cbItemNPC;
+        private System.Windows.Forms.ComboBox tbActionNPC;
+        private System.Windows.Forms.CheckBox cbActionNPC;
         private System.Windows.Forms.CheckBox cbShouldntHaveFailQuests;
         private System.Windows.Forms.CheckBox cbMustHaveFailQuests;
         private System.Windows.Forms.Label label7;
@@ -2239,5 +2259,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn b;
+        private System.Windows.Forms.TextBox tbAdditionalAction;
+        private System.Windows.Forms.Label label9;
     }
 }

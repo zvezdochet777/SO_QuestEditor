@@ -308,7 +308,8 @@ namespace StalkerOnlineQuesterEditor
         public bool actionCameraSmoothly;
         public string actionAnimationPlayer;
         public string actionAnimationNPC;
-        public string actionItemNPC;
+        public int actionActionNPC;
+        public string actionAdditionalActionNPC;
         public int changeMoney;
         public string actionAvatarPoint;
         public string actionPlaySound;
@@ -329,7 +330,8 @@ namespace StalkerOnlineQuesterEditor
             this.actionAnimationNPC = "";
             this.actionAvatarPoint = "";
             this.actionPlaySound = "";
-            this.actionItemNPC = "";
+            this.actionActionNPC = 0;
+            this.actionAdditionalActionNPC = "";
             this.changeMoney = 0;
         }
 
@@ -337,7 +339,7 @@ namespace StalkerOnlineQuesterEditor
         public bool Any()
         {
             return GetQuests.Any() || CompleteQuests.Any() || CancelQuests.Any() || FailQuests.Any() || (Event != null && Event.Value != 0) || (ToDialog != 0) || Exit ||
-                actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "" || actionAvatarPoint != "" || actionPlaySound != "" || (changeMoney != 0);
+                actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "" || actionActionNPC != 0 || actionAvatarPoint != "" || actionPlaySound != "" || (changeMoney != 0);
         }
 
         public bool Exists()

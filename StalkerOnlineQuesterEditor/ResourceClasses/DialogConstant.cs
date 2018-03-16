@@ -242,6 +242,21 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class NPCActions : Constants
+    {
+        public NPCActions()
+        {
+            doc = XDocument.Load("source/NPCDialogActions.xml");
+            foreach (XElement item in doc.Root.Elements())
+            {
+                item.Name.ToString();
+                string cmID = item.Element("id").Value;
+                string name = item.Element("name").Value;
+                _constants.Add(name, cmID);
+            }
+        }
+    }
+
     public class ListSounds
     {
         protected List<string> _constants;

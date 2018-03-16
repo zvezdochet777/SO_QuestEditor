@@ -68,6 +68,7 @@ namespace StalkerOnlineQuesterEditor
         public CommandConstants cmConst;
         public RepairConstants rpConst;
         public AvatarActions avAmin;
+        public NPCActions npcActions;
         public ListSounds listSouds;
         public NPCItems npcItems;
         
@@ -99,6 +100,7 @@ namespace StalkerOnlineQuesterEditor
             cmConst = new CommandConstants();
             rpConst = new RepairConstants();
             avAmin = new AvatarActions();
+            npcActions = new NPCActions();
             npcItems = new NPCItems();
             listSouds = new ListSounds();
             settings.checkMode();

@@ -28,7 +28,7 @@ namespace StalkerOnlineQuesterEditor
 
         int ITEM_REWARD = 0;
         int ITEM_QUESTRULES = 1;
-        int ITEM_LOCALIZATION = 2;
+        //int ITEM_LOCALIZATION = 2;
         int ITEM_PENALTY = 4;
 
         int QuestType;

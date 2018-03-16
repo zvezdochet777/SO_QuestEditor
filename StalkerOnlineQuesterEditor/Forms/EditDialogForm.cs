@@ -580,8 +580,13 @@ namespace StalkerOnlineQuesterEditor
                 actions.actionAnimationPlayer = tbAnimationPlayer.Text;
             if (cbAnimationNPC.Checked && tbAnimationNPC.Text.Any())
                 actions.actionAnimationNPC = tbAnimationNPC.Text;
-            if (cbItemNPC.Checked && tbItemNPC.Text.Any())
-                actions.actionItemNPC = tbItemNPC.Text;
+            if (cbActionNPC.Checked && tbActionNPC.Text.Any())
+            {
+                actions.actionActionNPC = int.Parse(parent.npcActions.getTtID(tbActionNPC.Text));
+                actions.actionAdditionalActionNPC = tbAdditionalAction.Text;
+            }
+               
+          
             if (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any())
                 actions.actionAvatarPoint = tbAvatarPoint.Text;
             if (cbPlaySonund.Checked && tbPlaySonund.Text.Any())
@@ -1117,11 +1122,23 @@ namespace StalkerOnlineQuesterEditor
 
             tbAnimationPlayer.Items.Clear();
             tbAnimationNPC.Items.Clear();
+            tbActionNPC.Items.Clear();
+            
             foreach (string key in parent.avAmin.getKeys())
             {
                 tbAnimationPlayer.Items.Add(key);
                 tbAnimationNPC.Items.Add(key);
             }
+            foreach (string key in parent.npcActions.getKeys())
+            {
+                tbActionNPC.Items.Add(key);
+            }
+            if (curDialog.Actions.actionActionNPC != 0)
+            {
+                tbActionNPC.SelectedItem = parent.npcActions.getName(curDialog.Actions.actionActionNPC.ToString());
+                tbAdditionalAction.Text = curDialog.Actions.actionAdditionalActionNPC;
+            }
+
             if (curDialog.Actions.actionAnimationPlayer.Any())
             {
                 cbAnimationPlayer.Checked = true;
@@ -1132,8 +1149,8 @@ namespace StalkerOnlineQuesterEditor
                 cbAnimationNPC.Checked = true;
                 tbAnimationNPC.Text = curDialog.Actions.actionAnimationNPC;
             }
-            tbItemNPC.Text = curDialog.Actions.actionItemNPC;
-            cbItemNPC.Checked = tbItemNPC.Text.Any();
+            cbActionNPC.Checked = curDialog.Actions.actionActionNPC != 0;
+            tbAdditionalAction.Text = curDialog.Actions.actionAdditionalActionNPC;
             if (curDialog.Actions.actionAvatarPoint.Any())
             {
                 cbAvatarPoint.Checked = true;
@@ -1259,7 +1276,7 @@ namespace StalkerOnlineQuesterEditor
         {
             pictureAction.Visible = (cbAnimationNPC.Checked && tbAnimationNPC.Text.Any()) || (cbAnimationPlayer.Checked && tbAnimationPlayer.Text.Any()) ||
                 (cbCamera.Checked && tbCamera.Text.Any()) || (cbPlaySonund.Checked && tbPlaySonund.Text.Any()) || (cbAvatarPoint.Checked && tbAvatarPoint.Text.Any()) ||
-                (cbItemNPC.Checked && tbItemNPC.Text.Any() && nupChangeMoney.Value != 0);   
+                (cbActionNPC.Checked && tbActionNPC.Text.Any());   
         }
 
         private void checkEffectsIndicates()

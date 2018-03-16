@@ -95,8 +95,10 @@ namespace StalkerOnlineQuesterEditor
                             Actions.actionAnimationPlayer = dialog.Element("Actions").Element("AnimationPlayer").Value;
                         if (dialog.Element("Actions").Element("AnimationNPC") != null)
                             Actions.actionAnimationNPC = dialog.Element("Actions").Element("AnimationNPC").Value;
-                        if (dialog.Element("Actions").Element("ItemNPC") != null)
-                            Actions.actionItemNPC = dialog.Element("Actions").Element("ItemNPC").Value;
+                        if (dialog.Element("Actions").Element("ActionNPC") != null)
+                            Actions.actionActionNPC = int.Parse(dialog.Element("Actions").Element("ActionNPC").Value);
+                        if (dialog.Element("Actions").Element("AdditionalActionNPC") != null)
+                            Actions.actionAdditionalActionNPC = dialog.Element("Actions").Element("AdditionalActionNPC").Value;
                         if (dialog.Element("Actions").Element("AvatarPoint") != null)
                             Actions.actionAvatarPoint = dialog.Element("Actions").Element("AvatarPoint").Value;
                         if (dialog.Element("Actions").Element("PlaySound") != null)
@@ -580,8 +582,10 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Actions").Add(new XElement("AnimationPlayer", dialog.Actions.actionAnimationPlayer));
                         if (dialog.Actions.actionAnimationNPC.Any())
                             element.Element("Actions").Add(new XElement("AnimationNPC", dialog.Actions.actionAnimationNPC));
-                        if (dialog.Actions.actionItemNPC.Any())
-                            element.Element("Actions").Add(new XElement("ItemNPC", dialog.Actions.actionItemNPC));
+                        if (dialog.Actions.actionActionNPC != 0)
+                            element.Element("Actions").Add(new XElement("ActionNPC", Global.GetIntAsString(dialog.Actions.actionActionNPC)));
+                        if (dialog.Actions.actionAdditionalActionNPC.Any())
+                            element.Element("Actions").Add(new XElement("AdditionalActionNPC", dialog.Actions.actionAdditionalActionNPC));
                         if (dialog.Actions.actionAvatarPoint.Any())
                             element.Element("Actions").Add(new XElement("AvatarPoint", dialog.Actions.actionAvatarPoint));
                         if (dialog.Actions.actionPlaySound.Any())
