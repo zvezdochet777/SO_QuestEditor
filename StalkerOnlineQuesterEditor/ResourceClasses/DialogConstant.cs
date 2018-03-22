@@ -88,6 +88,20 @@ namespace StalkerOnlineQuesterEditor
                 ret.Add(key);
             return ret;
         }
+        
+        protected void loadFile(string path)
+        {
+            try
+            {
+                doc = XDocument.Load(path);
+            }
+            catch(Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Не удалось загрузить файл:" + System.IO.Path.GetFullPath(path), "Ошибка");
+            }
+
+
+        }
     }
 
     public class Items
@@ -139,7 +153,7 @@ namespace StalkerOnlineQuesterEditor
         //! Конструктор, заполняет словарь на основе файлов xml
         public RepairConstants()
         {
-            doc = XDocument.Load("source/NPCrepairs.xml");
+            loadFile("source/NPCrepairs.xml");
             foreach (XElement item in doc.Root.Elements())
             {
                 string cmID = item.Element("id").Value;
@@ -156,7 +170,7 @@ namespace StalkerOnlineQuesterEditor
         //! Конструктор, заполняет словарь на основе файлов xml
         public CommandConstants()
         {
-            doc = XDocument.Load("source/NPCcommands.xml");
+            loadFile("source/NPCcommands.xml");
             foreach (XElement item in doc.Root.Elements())
             {
                 item.Name.ToString();
@@ -177,7 +191,16 @@ namespace StalkerOnlineQuesterEditor
 
         public NPCItems()
         {
-            XDocument doc = XDocument.Load("source/NPCItems.xml");
+            XDocument doc;
+            try
+            {
+                doc = XDocument.Load("source/NPCItems.xml");
+            }
+            catch(Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Не удалось загрузить файл:" + System.IO.Path.GetFullPath("source/NPCItems.xml"), "Ошибка");
+                return;
+            }
             foreach (XElement items in doc.Root.Elements())
             {
                 string items_name = items.Name.ToString();
@@ -199,7 +222,15 @@ namespace StalkerOnlineQuesterEditor
                 System.Windows.Forms.MessageBox.Show("Отсуствует файл ItemStrings.xml, нужно распарсить предметы", "Ошибка");
                 return;
             }
-            doc = XDocument.Load("source/ItemWeapons.xml");
+            try
+            {
+                doc = XDocument.Load("source/ItemWeapons.xml");
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Не удалось загрузить файл:" + System.IO.Path.GetFullPath("source/ItemWeapons.xml"), "Ошибка");
+                return;
+            }
             foreach (XElement items in doc.Root.Elements())
             {
                   string weapon_type = items.Name.ToString();
@@ -228,7 +259,15 @@ namespace StalkerOnlineQuesterEditor
         {
             _constants = new List<string>();
             XDocument doc;
-            doc = XDocument.Load("source/AvatarActions.xml");
+            try
+            {
+                doc = XDocument.Load("source/AvatarActions.xml");
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Не удалось загрузить файл:" + System.IO.Path.GetFullPath("source/AvatarActions.xml"), "Ошибка");
+                return;
+            }
             foreach (XElement item in doc.Root.Elements())
             {
                 string name = item.Value;
@@ -246,7 +285,7 @@ namespace StalkerOnlineQuesterEditor
     {
         public NPCActions()
         {
-            doc = XDocument.Load("source/NPCDialogActions.xml");
+            loadFile("source/NPCDialogActions.xml");
             foreach (XElement item in doc.Root.Elements())
             {
                 item.Name.ToString();
@@ -265,7 +304,15 @@ namespace StalkerOnlineQuesterEditor
         {
             _constants = new List<string>();
             XDocument doc;
-            doc = XDocument.Load("source/Sounds.xml");
+            try
+            {
+                doc = XDocument.Load("source/Sounds.xml");
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Не удалось загрузить файл:" + System.IO.Path.GetFullPath("source/Sounds.xml"), "Ошибка");
+                return;
+            }
             foreach (XElement item in doc.Root.Elements())
             {
                 string name = item.Value;

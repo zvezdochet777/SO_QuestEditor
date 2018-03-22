@@ -125,4 +125,35 @@ namespace StalkerOnlineQuesterEditor
         }
 
     }
+
+    public class BillboardQuests
+    {
+        protected List<int> _constants;
+
+        public BillboardQuests()
+        {
+            _constants = new List<int>();
+            System.Xml.Linq.XDocument doc;
+            try
+            {
+                doc = System.Xml.Linq.XDocument.Load("source/QuestsInBoard.xml");
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Не удалось загрузить файл:" + System.IO.Path.GetFullPath("source/QuestsInBoard.xml"), "Ошибка");
+                return;
+            }
+            foreach (System.Xml.Linq.XElement item in doc.Root.Elements())
+            {
+                int quest_id = 0;
+                if (int.TryParse(item.Value, out quest_id))
+                    _constants.Add(quest_id);
+            }
+        }
+
+        public List<int> getKeys()
+        {
+            return _constants;
+        }
+    }
 }

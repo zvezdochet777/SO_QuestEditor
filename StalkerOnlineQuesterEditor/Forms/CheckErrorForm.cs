@@ -15,14 +15,43 @@ namespace StalkerOnlineQuesterEditor.Forms
 {
     public partial class CheckErrorForm : Form
     {
+        public class QuestError
+        {
+            public int error_type { get; set; }
+            public string text { get; set; }
+            public int quest_id { get; set; }
+
+            public QuestError(int err_type, string err_text, int quest_id = 0)
+            {
+                this.error_type = error_type;
+                this.text = err_text;
+                this.quest_id = quest_id;
+            }
+
+            public override string ToString()
+            {
+                return text;
+            }
+        }
+    
         protected CDialogs dialogs;
         protected CQuests quests;
         private MainForm parent;
-        private List<int> list_quest_id = new List<int>();
         private List<int> deleted_quests_ids = new List<int>();
+
+        List<QuestError> currentDisplayErrors = new List<QuestError>();
+
         string JSON_PATH = "settings/ignore_ids.json";
         string DELETED_PATH = "../../../res/scripts/common/QuestsToRemove.py";
         private Dictionary<string, List<int>> ignores_id = new Dictionary<string, List<int>>();
+        private Dictionary<int, List<KeyValuePair<int, string>>> errors = new Dictionary<int, List<KeyValuePair<int, string>>>();
+
+        const int ERROR_ITEM = 0;
+        const int ERROR_QUEST = 1;
+        const int ERROR_QUEST_TYPE5 = 2;
+        const int ERROR_OTHER = 3;
+        const int ERROR_NO_ROOT = 4;
+
 
         public CheckErrorForm(CDialogs dialogs, CQuests quests, MainForm parent)
         {
@@ -32,6 +61,9 @@ namespace StalkerOnlineQuesterEditor.Forms
             this.parent = parent;
             readIgnoresIDs();
             readDeletedQuests();
+
+            //lbLog.DataSource = lbLog.Items;
+            //lbLog.DisplayMember = "text";
         }
 
 
@@ -125,7 +157,7 @@ namespace StalkerOnlineQuesterEditor.Forms
             {
                 string line = "NPC:" + npc_name + "\t\tДиалогID: " + dialog_id + "\t\tКвест №" + quest_id.ToString() + " не существует, а проверяется";
                 //Thread.Sleep(100);
-                this.writeToLog(line);
+                this.writeToLog(ERROR_OTHER, line);
                 return true;
             }
             if (quest.Additional.IsSubQuest != 0) return true;
@@ -138,30 +170,46 @@ namespace StalkerOnlineQuesterEditor.Forms
                         return true;
                 }
             }
+            foreach (KeyValuePair<int, CQuest> item in quests.quest)
+            {
+                foreach (KeyValuePair<int, int> change_quest in item.Value.QuestPenalty.ChangeQuests)
+                {
+                    if (change_quest.Value != 0) continue;
+                    if (change_quest.Key == quest_id) return true;
+                }
+                foreach (KeyValuePair<int, int> change_quest in item.Value.Reward.ChangeQuests)
+                {
+                    if (change_quest.Value != 0) continue;
+                    if (change_quest.Key == quest_id) return true;
+                }
+            }
+            
 
-            if (parent != null)
-                return parent.zoneConst.checkAreaGiveQuestByID(quest_id);
+            if ((parent != null) && parent.zoneConst.checkAreaGiveQuestByID(quest_id))
+                return true;
+
+            if ((parent != null) && parent.billboardQuests.getKeys().Contains(quest_id))
+                return true;
 
             return false; 
         }
 
 
-        delegate void WriteToLogDelegate(string message, int quest_id = 0);
+        delegate void WriteToLogDelegate(int error_type, string message, int quest_id = 0);
 
-        private void writeToLog(string text, int quest_id = 0)
+        private void writeToLog(int error_type, string text, int quest_id = 0)
         {
             if (lbLog.InvokeRequired)
             {
                 var _writeToLog = new WriteToLogDelegate(writeToLog);
-                lbLog.Invoke(_writeToLog, text, quest_id);
+                lbLog.Invoke(_writeToLog, error_type, text, quest_id);
             }
             else
             {
-                if (!lbLog.Items.Contains(text))
-                {
-                    lbLog.Items.Add(text);
-                    list_quest_id.Add(quest_id);
-                }    
+                if (!errors.ContainsKey(error_type)) errors.Add(error_type, new List<KeyValuePair<int, string>>());
+                errors[error_type].Add(new KeyValuePair<int, string>(quest_id, text));
+                if (selectedTypes().Contains(error_type))
+                    lbLog.Items.Add(new QuestError(error_type, text, quest_id));   
             }
         }
 
@@ -198,8 +246,11 @@ namespace StalkerOnlineQuesterEditor.Forms
             int[] quest_types = new int[] { 0, 13, 14, 22, 2, 5 };
             int count = dialogs.dialogs.Count;
             int i = 0;
-            
+            errors.Clear();
+            doProgress(25);
             setLabel("Проверяем квесты в диалогах");
+            
+            List<int> on_test_list = new List<int>();
             foreach (KeyValuePair<string, Dictionary<int, CDialog>> npc in dialogs.dialogs)
             {
                 i++;
@@ -219,6 +270,9 @@ namespace StalkerOnlineQuesterEditor.Forms
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
 
+                    on_test_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
+
+
                     foreach (int quest_id in check_list)
                     {
                         if (wasIgnoredQuestID(quest_id))
@@ -226,13 +280,13 @@ namespace StalkerOnlineQuesterEditor.Forms
                         if (deleted_quests_ids.Contains(quest_id))
                         {
                             string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + quest_id.ToString() + " находится в списке автозавершения";
-                            this.writeToLog(line, quest_id);
+                            this.writeToLog(ERROR_QUEST, line, quest_id);
                         }
                         if (!checkQuestIDOnGet(quest_id, npc.Key, dia.Key.ToString()))
                         {
                             string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + quest_id.ToString() + " не выдаётся";
                             //Thread.Sleep(100);
-                            this.writeToLog(line, quest_id);
+                            this.writeToLog(ERROR_QUEST, line, quest_id);
                         }
                     }
 
@@ -246,7 +300,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                         {
                             string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tЭффекта №" + effect.getID() + " нет, а проверяется";
                             //Thread.Sleep(100);
-                            this.writeToLog(line);
+                            this.writeToLog(ERROR_OTHER, line);
                         }
                     }
 
@@ -256,21 +310,58 @@ namespace StalkerOnlineQuesterEditor.Forms
 
             count = quests.quest.Count;
             i = 0;
+            doProgress(50);
             setLabel("Проверяем квесты");
             Dictionary<int, CItem> items = this.parent.itemConst.getAllItems();
             foreach (KeyValuePair<int, CQuest> quest in quests.quest)
             {
                 i++;
-                doProgress(50 + 50 * Convert.ToInt32(Convert.ToDouble(i) / count));
+                doProgress(50 + 40 * Convert.ToInt32(Convert.ToDouble(i) / count));
                 if (wasIgnoredQuestID(quest.Key))
                     continue;
+                int parent_quest_id = quest.Value.Additional.IsSubQuest;
+                if (parent_quest_id > 0)
+                {
+                    if (!quests.quest.ContainsKey(parent_quest_id))
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tявляется подквестом несуществущего квеста №"+ parent_quest_id.ToString();
+                        this.writeToLog(ERROR_NO_ROOT, line, quest.Key);
+                    }
+                    CQuest parent_quest = quests.quest[parent_quest_id];
+                    bool is_realy_subquest = false;
+                    foreach (int child_quest_id in parent_quest.Additional.ListOfSubQuest)
+                    {
+                        if (child_quest_id == quest.Key)
+                        {
+                            is_realy_subquest = true;
+                            break;
+                        }
+                    }
+                    if (!is_realy_subquest)
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tявляется подквестом квеста №" + parent_quest_id.ToString() + "\tно у квеста нет такого подквеста";
+                        this.writeToLog(ERROR_NO_ROOT, line, quest.Key);
+                    }
+
+                }
+                if (quest_types.Contains(quest.Value.Target.QuestType))
+                {
+                    if (!on_test_list.Contains(quest.Key))
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tимеет тип: \"" + this.parent.questConst.getDescription(quest.Value.Target.QuestType) + "\" и нигде не проверяется";
+                        if (quest.Value.Target.QuestType == 5)
+                            this.writeToLog(ERROR_QUEST_TYPE5, line, quest.Key);
+                        else
+                            this.writeToLog(ERROR_QUEST, line, quest.Key);
+                    }
+                }
                 if ((quest.Value.Target.QuestType == 0) || (quest.Value.Target.QuestType == 16) || (quest.Value.Target.QuestType == 7))
                 {
                     int item_id = quest.Value.Target.ObjectType;
                     if ((item_id != 0) && (!items.ContainsKey(item_id)))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\t\t\tпредмета цели type:" + item_id + " не существует";
-                        this.writeToLog(line, quest.Key);
+                        this.writeToLog(ERROR_QUEST ,line, quest.Key);
                         continue;
                     }
                 }
@@ -281,7 +372,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                         if (!this.parent.zoneConst.checkHaveArea(zone))
                         {
                             string line = "Квест №:" + quest.Key.ToString() + "\tимеет в целях зону: \"" + quest.Value.Target.ObjectName + "\", которой нигде нет";
-                            this.writeToLog(line, quest.Key);
+                            this.writeToLog(ERROR_QUEST, line, quest.Key);
                         }
                 }
                 else if (quest.Value.Target.QuestType == 6)
@@ -289,87 +380,129 @@ namespace StalkerOnlineQuesterEditor.Forms
                     if (parent.triggerConst.getDescriptionOnId(quest.Value.Target.ObjectType) == "")
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tимеет в целях триггер: \"" + quest.Value.Target.ObjectType.ToString() + "\", которого нет";
-                        this.writeToLog(line, quest.Key);
+                        this.writeToLog(ERROR_QUEST, line, quest.Key);
                     }
                 }
                 else if ((quest.Value.Target.QuestType == 2) || (quest.Value.Target.QuestType == 3))
                 {
                     if (quest.Value.Target.AreaName.Any())
-                        if (!this.parent.zoneConst.checkHaveArea(quest.Value.Target.AreaName))
+                        if (!this.parent.zoneMobConst.checkHaveArea(quest.Value.Target.AreaName))
                         {
                             string line = "Квест №:" + quest.Key.ToString() + "\tимеет зону: \"" + quest.Value.Target.AreaName + "\", которой нигде нет";
-                            this.writeToLog(line, quest.Key);
+                            this.writeToLog(ERROR_QUEST, line, quest.Key);
                         }
                 }
+
                 foreach (int item_id in quest.Value.QuestRules.TypeOfItems)
                 {
                     if (!items.ContainsKey(item_id))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tпредмета условия type:" + item_id + " не существует";
-                        this.writeToLog(line, quest.Key);
+                        this.writeToLog(ERROR_ITEM, line, quest.Key);
                         continue;
                     }
 
                     if (items[item_id].deleted)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмет условия type:" + item_id + " помечен на замену";
-                        this.writeToLog(line, quest.Key);
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмет условия type:" + item_id + " помечен на удаление";
+                        this.writeToLog(ERROR_ITEM, line, quest.Key);
                     }
 
                     if (items[item_id].converted)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета условия type:" + item_id + " помечен на удаление";
-                        this.writeToLog(line, quest.Key);
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета условия type:" + item_id + " помечен на замену";
+                        this.writeToLog(ERROR_ITEM, line, quest.Key);
                     }
                 }
+                foreach (int quest_id in quest.Value.Reward.ChangeQuests.Keys)
+                {
+                    if (!quests.quest.Keys.Contains(quest_id))
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tв награде имеет несуществующий квест №" + quest_id.ToString();
+                        this.writeToLog(ERROR_QUEST, line, quest.Key);
+                        continue;
+                    }
+                }
+                foreach (int quest_id in quest.Value.QuestPenalty.ChangeQuests.Keys)
+                {
+                    if (!quests.quest.Keys.Contains(quest_id))
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tв штрафах имеет несуществующий квест №" + quest_id.ToString();
+                        this.writeToLog(ERROR_QUEST, line, quest.Key);
+                        continue;
+                    }
+                }
+                foreach (int item_id in quest.Value.QuestPenalty.TypeOfItems)
+                {
+                    if (!items.ContainsKey(item_id))
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета штрафа type:" + item_id + " не существует";
+                        this.writeToLog(ERROR_ITEM, line, quest.Key);
+                        continue;
+                    }
 
+                    if (items[item_id].deleted)
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмет штрафа type:" + item_id + " помечен на удаление";
+                        this.writeToLog(ERROR_ITEM, line, quest.Key);
+                        continue;
+                    }
+
+                    if (items[item_id].converted)
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета штрафа type:" + item_id + " помечен на замену";
+                        this.writeToLog(ERROR_ITEM, line, quest.Key);
+                        continue;
+                    }
+                }
                 foreach (int item_id in quest.Value.Reward.TypeOfItems)
                 {
                     if (!items.ContainsKey(item_id))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tпредмета награды type:" + item_id + " не существует";
-                        this.writeToLog(line, quest.Key);
+                        this.writeToLog(ERROR_ITEM, line, quest.Key);
                         continue;
                     }
 
                     if (items[item_id].deleted)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмет награды type:" + item_id + " помечен на замену";
-                        this.writeToLog(line, quest.Key);
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмет награды type:" + item_id + " помечен на удаление";
+                        this.writeToLog(ERROR_ITEM, line, quest.Key);
                         continue;
                     }
 
                     if (items[item_id].converted)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета награды type:" + item_id + " помечен на удаление";
-                        this.writeToLog(line, quest.Key);
+                        string line = "Квест №:" + quest.Key.ToString() + "\tпредмета награды type:" + item_id + " помечен на замену";
+                        this.writeToLog(ERROR_ITEM, line, quest.Key);
                         continue;
                     }
                 }
-
                 foreach (CEffect effect in quest.Value.Reward.Effects)
                 {
                     if (!this.parent.effects.hasEffectById(effect.getID()))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tЭффекта №" + effect.getID() + " нет, а выдаётся как награда";
-                        this.writeToLog(line, quest.Key);
+                        this.writeToLog(ERROR_QUEST, line, quest.Key);
                     }
                 }
-
-                if (quest_types.Contains(quest.Value.Target.QuestType)) 
+                foreach (CEffect effect in quest.Value.QuestPenalty.Effects)
                 {
-                    if (!checkQuestIDinDialogOnTest(quest.Key))
+                    if (!this.parent.effects.hasEffectById(effect.getID()))
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\tимеет тип: \"" + this.parent.questConst.getDescription(quest.Value.Target.QuestType) + "\" и нигде не проверяется";
-                        this.writeToLog(line, quest.Key);
+                        string line = "Квест №:" + quest.Key.ToString() + "\tЭффекта №" + effect.getID() + " нет, а выдаётся как штраф";
+                        this.writeToLog(ERROR_QUEST, line, quest.Key);
                     }
                 }
             }
+            doProgress(95);
             setLabel("Записываю в файл");
             saveLogToFile();
             setLabel("Готово");
+            doProgress(100);
 
         }
+
         delegate void saveLogDelegate();
         private void saveLogToFile()
         {
@@ -380,38 +513,19 @@ namespace StalkerOnlineQuesterEditor.Forms
             }
             else
             {
-                if (lbLog.Items.Count == 0)
+                if (errors.Count == 0)
                 {
                     bpNoErrors.Visible = true;
                     MessageBox.Show("Ты молодец, ошибок нет, Стас");  
                 }
                 StreamWriter writer = new StreamWriter("CheckErrorLog.txt");
-                foreach (string line in lbLog.Items)
+                foreach (QuestError err in lbLog.Items)
                 {
-                    writer.WriteLine(line);
+                    writer.WriteLine(err.text);
                 }
                 writer.Close();
             }
         }
-        private bool checkQuestIDinDialogOnTest(int questID)
-        {
-            foreach (KeyValuePair<string, Dictionary<int, CDialog>> npc in dialogs.dialogs)
-            {
-                foreach (KeyValuePair<int, CDialog> dia in npc.Value)
-                {
-                    foreach (int quest_id in dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)
-                    {
-                        if (quest_id == questID)
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-            
-        }
-
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -428,12 +542,13 @@ namespace StalkerOnlineQuesterEditor.Forms
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (lbLog.SelectedIndex == -1)
+            if (lbLog.SelectedItem == null)
             {
                 MessageBox.Show("Для удаления выбери элемент, Стас", "Ты допустил ошибку, не надо больше так делать");
                 return;
             }
-            int index = list_quest_id[lbLog.SelectedIndex];
+            
+            int index = (lbLog.SelectedItem as QuestError).quest_id;
             if (index > 0)
             {
                 if (!ignores_id.ContainsKey("quests"))
@@ -441,8 +556,66 @@ namespace StalkerOnlineQuesterEditor.Forms
                 ignores_id["quests"].Add(index);
                 this.saveIgnoresIDs();
             }
-            list_quest_id.RemoveRange(lbLog.SelectedIndex, 1);
-            lbLog.Items.RemoveAt(lbLog.SelectedIndex);
+            lbLog.Items.Remove((lbLog.SelectedItem as QuestError));
+        }
+
+        private List<int> selectedTypes()
+        {
+            List<int> result = new List<int>();
+            if (cbErrorItem.Checked) result.Add(ERROR_ITEM);
+            if (cbErrorQuest.Checked) result.Add(ERROR_QUEST);
+            if (cbErrQuest5.Checked) result.Add(ERROR_QUEST_TYPE5);
+            if (cbErrOther.Checked) result.Add(ERROR_OTHER);
+            if (cbErrNoRoot.Checked) result.Add(ERROR_NO_ROOT);
+            return result;
+        }
+
+        private void updateErrorLog()
+        {
+            lbLog.Items.Clear();
+            List<int> types = selectedTypes();
+            foreach(int key in types)
+            {
+                if (!errors.ContainsKey(key)) continue;
+                List<KeyValuePair<int, string>> err_list = errors[key];
+                foreach(KeyValuePair<int, string> line in err_list)
+                {
+                    lbLog.Items.Add(new QuestError(key, line.Value, line.Key));
+                }
+            }
+        }
+
+        private void cbError_CheckedChanged(object sender, EventArgs e)
+        {
+            updateErrorLog();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (lbLog.SelectedItem == null)
+            {
+                MessageBox.Show("Для копирования выбери элемент, Стас", "Ты допустил ошибку, не надо больше так делать");
+                return;
+            }
+
+            int index = (lbLog.SelectedItem as QuestError).quest_id;
+            Clipboard.SetText(index.ToString());
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (lbLog.SelectedItem == null)
+            {
+                MessageBox.Show("Перехода выбери элемент, Стас", "Ты допустил ошибку, не надо больше так делать");
+                return;
+            }
+            int index = (lbLog.SelectedItem as QuestError).quest_id;
+            if (index == 0)
+            {
+                MessageBox.Show("Это не квест, Стас. Это работает только на ошибках, где есть квест", "Ты допустил ошибку, не надо больше так делать");
+                return;
+            }
+            parent.selectQuestByID(index);
         }
     }
 }

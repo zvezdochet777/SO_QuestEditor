@@ -373,7 +373,6 @@ namespace StalkerOnlineQuesterEditor
             // 
             // btnClearRecycle
             // 
-            this.btnClearRecycle.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.корзина_32х32;
             this.btnClearRecycle.ImageKey = "(отсутствует)";
             this.btnClearRecycle.Location = new System.Drawing.Point(94, 342);
             this.btnClearRecycle.Name = "btnClearRecycle";

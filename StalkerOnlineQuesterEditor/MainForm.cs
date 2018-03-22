@@ -61,6 +61,7 @@ namespace StalkerOnlineQuesterEditor
         public CNPCConstants npcConst;
         public CMobConstants mobConst;
         public CZoneConstants zoneConst;
+        public BillboardQuests billboardQuests;
         public CZoneMobConstants zoneMobConst;
         public CSpacesConstants spacesConst;
         public CTriggerConstants triggerConst;
@@ -136,6 +137,7 @@ namespace StalkerOnlineQuesterEditor
                  npcConst.NPCs.Add(name, new CNPCDescription(name));
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
+            this.billboardQuests = new BillboardQuests();
             this.zoneMobConst = new CZoneMobConstants();
             SetMasterMode();
         }
@@ -2266,7 +2268,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void DialogShower_MouseMove(object sender, MouseEventArgs e)
         {
-            DialogShower.Focus();
+            //DialogShower.Focus();
         }
 
         private void парсерыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2291,6 +2293,24 @@ namespace StalkerOnlineQuesterEditor
                     removeDialog(int.Parse(nodeId));
                 }
             }
+        }
+
+        public void selectQuestByID(int quest_id)
+        {
+            this.CentralDock.SelectedIndex = 1;
+            CQuest quest = quests.getQuest(quest_id);
+            if (quest != null)
+            {
+                CQuest temp = quest;
+                while (temp.Additional.IsSubQuest != 0)
+                    temp = quests.getQuest(temp.Additional.IsSubQuest);
+
+                string qtext = temp.QuestID.ToString() + ": ";
+                qtext += temp.QuestInformation.Title;
+                NPCBox.SelectedValue = quest.Additional.Holder;
+                QuestBox.SelectedItem = qtext;
+            }
+
         }
     }
 }

@@ -34,6 +34,7 @@
             this.btnUpdateAreas = new System.Windows.Forms.Button();
             this.btnUpdateTriggers = new System.Windows.Forms.Button();
             this.btnUpdateMobs = new System.Windows.Forms.Button();
+            this.btnUpdateBoardQuests = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUpdateItems
@@ -96,11 +97,22 @@
             this.btnUpdateMobs.UseVisualStyleBackColor = true;
             this.btnUpdateMobs.Click += new System.EventHandler(this.btnUpdateMobs_Click);
             // 
+            // btnUpdateBoardQuests
+            // 
+            this.btnUpdateBoardQuests.Location = new System.Drawing.Point(32, 204);
+            this.btnUpdateBoardQuests.Name = "btnUpdateBoardQuests";
+            this.btnUpdateBoardQuests.Size = new System.Drawing.Size(120, 45);
+            this.btnUpdateBoardQuests.TabIndex = 7;
+            this.btnUpdateBoardQuests.Text = "Обновить Квесты с доски";
+            this.btnUpdateBoardQuests.UseVisualStyleBackColor = true;
+            this.btnUpdateBoardQuests.Click += new System.EventHandler(this.btnUpdateBoardQuests_Click);
+            // 
             // UpdateDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(184, 261);
+            this.Controls.Add(this.btnUpdateBoardQuests);
             this.Controls.Add(this.btnUpdateMobs);
             this.Controls.Add(this.btnUpdateTriggers);
             this.Controls.Add(this.btnUpdateAreas);
@@ -127,5 +139,6 @@
         private System.Windows.Forms.Button btnUpdateAreas;
         private System.Windows.Forms.Button btnUpdateTriggers;
         private System.Windows.Forms.Button btnUpdateMobs;
+        private System.Windows.Forms.Button btnUpdateBoardQuests;
     }
 }

@@ -24,10 +24,12 @@ namespace StalkerOnlineQuesterEditor.Forms
         private void run_cmd(string fileName)
         {
             //tbOutput.Clear();
-          
+            ProcessStartInfo cmdsi = new ProcessStartInfo(@"C:\Python27\python.exe");
+            cmdsi.Arguments = fileName;
+            /*
             String command = @"/k C:\Python27\python.exe  " + fileName;
             ProcessStartInfo cmdsi = new ProcessStartInfo("cmd.exe");
-            cmdsi.Arguments = command;
+            cmdsi.Arguments = command;*/
             Process cmd = Process.Start(cmdsi);
             cmd.WaitForExit();    
 
@@ -102,6 +104,14 @@ namespace StalkerOnlineQuesterEditor.Forms
             string fileName = @"..\misc\developer_scripts\QuestEditorScripts\MobsParser.py";
             run_cmd(fileName);
             this.parent.mobConst = new CMobConstants();
+            MessageBox.Show("Complete");
+        }
+
+        private void btnUpdateBoardQuests_Click(object sender, EventArgs e)
+        {
+            string fileName = @"..\misc\developer_scripts\QuestEditorScripts\QuestBoardParser.py";
+            run_cmd(fileName);
+            this.parent.billboardQuests = new BillboardQuests();
             MessageBox.Show("Complete");
         }
     }
