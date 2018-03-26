@@ -632,7 +632,7 @@ namespace StalkerOnlineQuesterEditor
                          element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits.ToString("G6", CultureInfo.InvariantCulture)));
                      if (questValue.QuestPenalty.ReputationNotEmpty())
                          element.Element("Penalty").Add(new XElement("Reputation", questValue.QuestPenalty.getReputation()));
-                    if (questValue.Reward.ReputationNotEmpty(true))
+                    if (questValue.QuestPenalty.ReputationNotEmpty(true))
                         element.Element("Penalty").Add(new XElement("NPCReputation", questValue.QuestPenalty.getReputation(true)));
                     if (questValue.QuestPenalty.ChangeQuests.Any())
                         element.Element("Penalty").Add(new XElement("ChangeQuests", questValue.QuestPenalty.getChangeQuests()));
@@ -827,12 +827,12 @@ namespace StalkerOnlineQuesterEditor
                     quest[getQuest(questID).Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
 
             // удаляем квест из локализаций
-            CQuest english = locales["ENG"][questID];
+            CQuest english = locales["English"][questID];
             foreach (int subquest in english.Additional.ListOfSubQuest)
                 removeQuestsWithLocals(subquest, true);
             if (english.Additional.IsSubQuest != 0)
-                locales["ENG"][english.Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
-            locales["ENG"].Remove(questID);
+                locales["English"][english.Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
+            locales["English"].Remove(questID);
             quest.Remove(questID);
         }
 
@@ -968,7 +968,7 @@ namespace StalkerOnlineQuesterEditor
         private List<CQuest> GetLocalizedQuestWithSubs(int questID)
         {
             List<CQuest> result = new List<CQuest>();
-            CQuest quest = locales["ENG"][questID];
+            CQuest quest = locales["English"][questID];
             if (quest != null)
             {
                 result.Add((CQuest)quest.Clone());
@@ -1062,13 +1062,13 @@ namespace StalkerOnlineQuesterEditor
                 addQuest(bufQuest);
             }
 
-            CQuest HeadEnglish = locales["ENG"][CurrentQuestID];
+            CQuest HeadEnglish = locales["English"][CurrentQuestID];
             HeadEnglish.Additional.ListOfSubQuest.Add(engBuffer[0].QuestID);
             engBuffer[0].Additional.IsSubQuest = HeadEnglish.QuestID;
             foreach (CQuest engQuest in engBuffer)
             {
                 engQuest.Additional.Holder = HeadEnglish.Additional.Holder;
-                locales["ENG"].Add(engQuest.QuestID, engQuest);
+                locales["English"].Add(engQuest.QuestID, engQuest);
             }
             //if (cut_quest_mode)
              //   clearQuestsBuffer();
@@ -1077,7 +1077,7 @@ namespace StalkerOnlineQuesterEditor
         public int ReplaceBuffer(int CurrentQuestID)
         {
             CQuest HeadQuest = getQuest(CurrentQuestID);
-            CQuest HeadEnglish = getQuestFromLocale(CurrentQuestID, "ENG");
+            CQuest HeadEnglish = getQuestFromLocale(CurrentQuestID, "English");
             List<CQuest> buffer = new List<CQuest>();
             foreach (CQuest q in m_Buffer.Values.ToList())
                 buffer.Add((CQuest)q.Clone());
@@ -1092,7 +1092,7 @@ namespace StalkerOnlineQuesterEditor
             int questID = HeadQuest.QuestID;
             int parentID = HeadQuest.Additional.IsSubQuest;
             CQuest parentQuest = getQuest(parentID);
-            CQuest parentEngQuest = getQuestFromLocale(parentID, "ENG");
+            CQuest parentEngQuest = getQuestFromLocale(parentID, "English");
             removeQuestsWithLocals(questID, false);
 
             if (HeadQuest.Additional.IsSubQuest == 0)
@@ -1129,7 +1129,7 @@ namespace StalkerOnlineQuesterEditor
                     if (engBuffer[0].Additional.ListOfSubQuest.Contains(subQuest.QuestID))
                         subQuest.Additional.IsSubQuest = questID;
                     subQuest.Additional.Holder = name;
-                    locales["ENG"].Add(subQuest.QuestID, subQuest);                    
+                    locales["English"].Add(subQuest.QuestID, subQuest);                    
                 }
                 parentID = questID;
             }
@@ -1142,7 +1142,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (var subQuest in engBuffer)
                 {
                     subQuest.Additional.Holder = name;
-                    locales["ENG"].Add(subQuest.QuestID, subQuest);
+                    locales["English"].Add(subQuest.QuestID, subQuest);
                 }
             }
 

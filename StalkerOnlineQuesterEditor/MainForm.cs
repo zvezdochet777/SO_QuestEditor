@@ -81,6 +81,7 @@ namespace StalkerOnlineQuesterEditor
         public CEffectConstants effects;
         public DialogEventsList dialogEvents;
         public int currentQuest;
+        public Dictionary<string, bool> npcFilters;
 
         public MainForm()
         {
@@ -104,6 +105,7 @@ namespace StalkerOnlineQuesterEditor
             npcActions = new NPCActions();
             npcItems = new NPCItems();
             listSouds = new ListSounds();
+            npcFilters = ManagerNPC.getSpaces();
             settings.checkMode();
 
             tree = treeDialogs;
@@ -305,6 +307,12 @@ namespace StalkerOnlineQuesterEditor
             foreach (string holder in this.dialogs.dialogs.Keys)
             {
                 string npcName = holder;
+                string space = "no map";
+                if (this.ManagerNPC.nameToMap.ContainsKey(npcName))
+                    space = this.ManagerNPC.nameToMap[npcName];
+                if (!npcFilters[space])
+                    continue;
+
                 string localName = "";
                 if (ManagerNPC.NpcData.ContainsKey(holder))
                 {
@@ -2311,6 +2319,34 @@ namespace StalkerOnlineQuesterEditor
                 QuestBox.SelectedItem = qtext;
             }
 
+        }
+
+        private void DialogShower_Click(object sender, EventArgs e)
+        {
+            DialogShower.Focus();
+        }
+
+        private void btnFilterNPC_Click(object sender, EventArgs e)
+        {
+            FilterNPCForm form = new FilterNPCForm(ref npcFilters);
+            form.ShowDialog();
+            this.fillNPCBox();
+            updateNPCButtons();
+        }
+
+        private void updateNPCButtons()
+        {
+            bAddNPC.Enabled = true;
+            bDelNPC.Enabled = true;
+            foreach(KeyValuePair<string, bool> val in npcFilters)
+            {
+                if (!val.Value)
+                {
+                    bAddNPC.Enabled = false;
+                    bDelNPC.Enabled = false;
+                    return;
+                }
+            }
         }
     }
 }

@@ -320,29 +320,52 @@ namespace StalkerOnlineQuesterEditor.Forms
                 if (wasIgnoredQuestID(quest.Key))
                     continue;
                 int parent_quest_id = quest.Value.Additional.IsSubQuest;
+                //проверяет, знает ли родительский квест о текущем
                 if (parent_quest_id > 0)
                 {
                     if (!quests.quest.ContainsKey(parent_quest_id))
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\tявляется подквестом несуществущего квеста №"+ parent_quest_id.ToString();
+                        string line = "Квест №:" + quest.Key.ToString() + "\tявляется подквестом несуществущего квеста №" + parent_quest_id.ToString();
                         this.writeToLog(ERROR_NO_ROOT, line, quest.Key);
                     }
-                    CQuest parent_quest = quests.quest[parent_quest_id];
-                    bool is_realy_subquest = false;
-                    foreach (int child_quest_id in parent_quest.Additional.ListOfSubQuest)
+                    else
                     {
-                        if (child_quest_id == quest.Key)
+                        CQuest parent_quest = quests.quest[parent_quest_id];
+                        bool is_realy_subquest = false;
+                        foreach (int child_quest_id in parent_quest.Additional.ListOfSubQuest)
                         {
-                            is_realy_subquest = true;
-                            break;
+                            if (child_quest_id == quest.Key)
+                            {
+                                is_realy_subquest = true;
+                                break;
+                            }
+                        }
+                        if (!is_realy_subquest)
+                        {
+                            string line = "Квест №:" + quest.Key.ToString() + "\tявляется подквестом квеста №" + parent_quest_id.ToString() + "\tно у квеста нет такого подквеста";
+                            this.writeToLog(ERROR_NO_ROOT, line, quest.Key);
                         }
                     }
-                    if (!is_realy_subquest)
+                }
+                //порверка обратная той, что выше
+                if (quest.Value.Additional.ListOfSubQuest.Any())
+                {
+                    foreach(int child_quest_id in quest.Value.Additional.ListOfSubQuest)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\tявляется подквестом квеста №" + parent_quest_id.ToString() + "\tно у квеста нет такого подквеста";
-                        this.writeToLog(ERROR_NO_ROOT, line, quest.Key);
+                        if (!quests.quest.ContainsKey(child_quest_id))
+                        {
+                            string line = "Квест №:" + quest.Key.ToString() + "\tимеет несуществущий подквест №" + child_quest_id.ToString();
+                            this.writeToLog(ERROR_NO_ROOT, line, quest.Key);
+                            continue;
+                        }
+                        CQuest child_quest = quests.quest[child_quest_id];
+                        if (child_quest.Additional.IsSubQuest != quest.Key)
+                        {
+                            string line = "Квест №:" + quest.Key.ToString() + "\tимеет подквест №" + parent_quest_id.ToString() + "\tно у подквеста родитель №"+ child_quest.Additional.IsSubQuest.ToString();
+                            this.writeToLog(ERROR_NO_ROOT, line, quest.Key);
+                            continue;
+                        }
                     }
-
                 }
                 if (quest_types.Contains(quest.Value.Target.QuestType))
                 {

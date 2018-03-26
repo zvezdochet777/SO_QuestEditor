@@ -58,7 +58,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_Remote_Stas|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>\\USTAS\QuestEditor\</OutputPath>
+    <OutputPath>\\SERGEY-PC\QuestEditor\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -118,6 +118,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FilterNPCForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FilterNPCForm.Designer.cs">
+      <DependentUpon>FilterNPCForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddPassiveDialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,9 @@
       <DependentUpon>RewardQuestsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Forms\FilterNPCForm.resx">
+      <DependentUpon>FilterNPCForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddPassiveDialogForm.resx">
       <DependentUpon>AddPassiveDialogForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -405,6 +414,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QuestEditor.sdm" />
+    <None Include="Resources\filter_24.png" />
     <None Include="Resources\корзина_32х32.png" />
     <None Include="Resources\w256h2561347801471RecycleBinempty.png" />
     <None Include="Resources\next_24.png" />
