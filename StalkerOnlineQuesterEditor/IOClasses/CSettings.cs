@@ -16,7 +16,7 @@ namespace StalkerOnlineQuesterEditor
         //! Режим - обычный (MODE_SIMPLE) или перевод (MODE_LOCALIZATION)
         int mode = 0;
         //! Путь, по которому копировать файлы результата - Dialogs.xml, Quests.xml etc.
-        public string pathToCopyFiles;
+        public string pathToCopyFiles = @"..\..\..\res\scripts\common\data\Quests\";
 
         //! Список все локализаций ENG, GER etc.
         List<string> locales = new List<string>();
@@ -47,10 +47,15 @@ namespace StalkerOnlineQuesterEditor
             
                 this.iNumOperator = int.Parse(doc.Root.Element("operator").Value.ToString());
                 foreach (string locale in doc.Root.Element("locales").Value.ToString().Split(','))
+                {
+                    if (locale.Count() > 3) continue;
                     locales.Add(locale);
+                }
+                    
                 this.mode = int.Parse(doc.Root.Element("mode").Value.ToString());
                 this.currentLocale = int.Parse(doc.Root.Element("current_locale").Value.ToString());
-                pathToCopyFiles = doc.Root.Element("pathToCopyFiles").Value;
+                if (Directory.Exists(doc.Root.Element("pathToCopyFiles").Value))
+                    pathToCopyFiles = doc.Root.Element("pathToCopyFiles").Value;
                 lastNpcIndex = int.Parse(doc.Root.Element("LastNPcIndex").Value.ToString());
             }
             catch

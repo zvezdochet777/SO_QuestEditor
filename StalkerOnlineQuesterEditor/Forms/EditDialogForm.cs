@@ -1026,7 +1026,7 @@ namespace StalkerOnlineQuesterEditor
                     {
                         cond = this.editPrecondition.items.condOfItems[i].ToString("G6", CultureInfo.InvariantCulture);
                     }
-                    catch(Exception e)
+                    catch(Exception)
                     {
                         cond = "0";
                     }
