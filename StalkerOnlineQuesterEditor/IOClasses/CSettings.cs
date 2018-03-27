@@ -16,7 +16,7 @@ namespace StalkerOnlineQuesterEditor
         //! Режим - обычный (MODE_SIMPLE) или перевод (MODE_LOCALIZATION)
         int mode = 0;
         //! Путь, по которому копировать файлы результата - Dialogs.xml, Quests.xml etc.
-        public string pathToCopyFiles;
+        public string pathToCopyFiles = @"..\..\..\res\scripts\common\data\Quests\";
         public string pathToLocalFiles = @"..\..\..\res\local\";
 
         //! Список все локализаций English, GER etc.
@@ -48,19 +48,22 @@ namespace StalkerOnlineQuesterEditor
 
                 this.iNumOperator = int.Parse(doc.Root.Element("operator").Value.ToString());
                 foreach (string locale in doc.Root.Element("locales").Value.ToString().Split(','))
+                {
+                    if (locale.Count() <= 3) continue;
                     locales.Add(locale);
+                }
                 this.mode = int.Parse(doc.Root.Element("mode").Value.ToString());
                 this.currentLocale = int.Parse(doc.Root.Element("current_locale").Value.ToString());
-                pathToCopyFiles = doc.Root.Element("pathToCopyFiles").Value;
+                if (Directory.Exists(doc.Root.Element("pathToCopyFiles").Value))
+                    pathToCopyFiles = doc.Root.Element("pathToCopyFiles").Value;
                 lastNpcIndex = int.Parse(doc.Root.Element("LastNPcIndex").Value.ToString());
-                pathToLocalFiles = doc.Root.Element("pathToLocalFiles").Value;
+                if (Directory.Exists(doc.Root.Element("pathToLocalFiles").Value))
+                    pathToLocalFiles = doc.Root.Element("pathToLocalFiles").Value;
 
             }
             catch
             {
                 iNumOperator = 0;
-                if (!locales.Contains("English"))
-                    locales.Add("English");
                 mode = MODE_EDITOR;
                 currentLocale = 0;
                 lastNpcIndex = 1;
@@ -68,6 +71,8 @@ namespace StalkerOnlineQuesterEditor
                 pathToLocalFiles = @"..\..\..\res\local\";
                 System.Console.WriteLine("Can't parse settings file! Defaults used");
             }
+            if (!locales.Contains("English"))
+                locales.Add("English");
             if (!Directory.Exists(pathToCopyFiles))
             {
                 pathToCopyFiles = "source/Quests/";
@@ -82,9 +87,9 @@ namespace StalkerOnlineQuesterEditor
         public void checkMode()
         {
             if (getMode() == MODE_LOCALIZATION)
-                parent.Text = "QuestEditor@SO_Team Режим перевода:" + getCurrentLocale();
+                parent.Text = "QuestEditor@SO_Team НОВЫЙ ПЕРСОНАЖ. Режим перевода:" + getCurrentLocale();
             else
-                parent.Text = "QuestEditor@SO_Team";
+                parent.Text = "QuestEditor@SO_Team НОВЫЙ ПЕРСОНАЖ";
             parent.onChangeMode();
         }
 
