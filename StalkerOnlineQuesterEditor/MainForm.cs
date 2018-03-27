@@ -18,6 +18,7 @@ namespace StalkerOnlineQuesterEditor
 {
     using NPCQuestDict = Dictionary<int, CDialog>;
     using StalkerOnlineQuesterEditor.Forms;
+    using System.IO;
 
     //! Главная форма программы, туча строк кода
     public partial class MainForm : Form
@@ -49,7 +50,7 @@ namespace StalkerOnlineQuesterEditor
         List<int> rootElements = new List<int>();
         public TreeView tree;
         List<PNode> subNodes = new List<PNode>();
-        Dictionary<LinkLabel,int> titles;
+        Dictionary<LinkLabel, int> titles;
         List<NPCNameDataSourceObject> npcNames = new List<NPCNameDataSourceObject>();
 
         List<int> npc_history = new List<int>();
@@ -70,7 +71,7 @@ namespace StalkerOnlineQuesterEditor
         public AvatarActions avAmin;
         public ListSounds listSouds;
         public NPCItems npcItems;
-        
+
         public CSettings settings;
         public COperNotes manageNotes;
         public CFracConstants fractions;
@@ -131,7 +132,7 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (string name in dialogs.getListOfNPC())
                 if (!npcConst.NPCs.Keys.Contains(name))
-                 npcConst.NPCs.Add(name, new CNPCDescription(name));
+                    npcConst.NPCs.Add(name, new CNPCDescription(name));
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
             this.zoneMobConst = new CZoneMobConstants();
@@ -196,7 +197,7 @@ namespace StalkerOnlineQuesterEditor
                     npc_history.Add(NPCBox.SelectedIndex);
                     current_npc_history_index = Math.Max(npc_history.Count - 1, 0);
                     checkNavigationArrows();
-                }                
+                }
             }
             catch (Exception err)
             {
@@ -229,7 +230,7 @@ namespace StalkerOnlineQuesterEditor
             if (e.KeyCode == Keys.Enter)
             {
                 string text = NPCBox.Text;
-                if (dialogs.dialogs.Keys.Contains(text) )
+                if (dialogs.dialogs.Keys.Contains(text))
                     return;
                 string name = "";
                 if (settings.getMode() == settings.MODE_EDITOR)
@@ -291,7 +292,7 @@ namespace StalkerOnlineQuesterEditor
                 bRemoveQuest.Enabled = true;
             }
             treeQuest.ExpandAll();
-        } 
+        }
 
         //! Заполнение итемов в комбобоксе NPC
         void fillNPCBox()
@@ -312,7 +313,7 @@ namespace StalkerOnlineQuesterEditor
                     NPCBox.AutoCompleteCustomSource.Add(localName);
                     npcName += " (" + localName + ")";
                 }
-                npcNames.Add ( new NPCNameDataSourceObject(holder, npcName));
+                npcNames.Add(new NPCNameDataSourceObject(holder, npcName));
                 NPCBox.AutoCompleteCustomSource.Add(npcName);
             }
             npcNames.Sort();
@@ -326,7 +327,7 @@ namespace StalkerOnlineQuesterEditor
 
             NPCBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                       
+
             QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
             QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
@@ -373,8 +374,8 @@ namespace StalkerOnlineQuesterEditor
                     break;
             }
         }
-      
-// ************************ WORK WITH DIALOGS****************************************************
+
+        // ************************ WORK WITH DIALOGS****************************************************
 
         void fillNPCBoxSubquests(CDialog sub)
         {
@@ -510,7 +511,7 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие на кнопку "Редактирование диалогов" - открывает редактор или переводчик диалогов
         public void bEditDialog_Click(object sender, EventArgs e)
         {
-            
+
             if (selectedItemType == SelectedItemType.dialog)
             {
                 if (treeDialogs.SelectedNode == null) return;
@@ -546,7 +547,7 @@ namespace StalkerOnlineQuesterEditor
                     dialog.Actions.ToDialog = 0;
 
             CDialog rootDialog = getRootDialog();
-            if (rootDialog!= null)
+            if (rootDialog != null)
                 fillDialogTree(rootDialog, this.dialogs.dialogs[currentNPC]);
         }
 
@@ -557,14 +558,14 @@ namespace StalkerOnlineQuesterEditor
             CDialog rootDialog = getDialogOnIDConditional(dialogID);
             selectedDialogID = dialogID;
             splitDialogsEmulator.Panel2.Controls.Clear();
-            titles = new Dictionary<LinkLabel,int>();
+            titles = new Dictionary<LinkLabel, int>();
             Label NPCText = new Label();
             NPCText.Text = rootDialog.Text;
             NPCText.ForeColor = (rootDialog.version != 0) ? (Color.Black) : (Color.Red);
             NPCText.AutoSize = false;
             NPCText.AutoEllipsis = true;
             NPCText.Dock = DockStyle.Top;
-            
+
             foreach (int subdialogID in rootDialog.Nodes)
             {
                 LinkLabel dialogLink = new LinkLabel();
@@ -573,11 +574,11 @@ namespace StalkerOnlineQuesterEditor
 
                 CDialog answer = getDialogOnIDConditional(subdialogID);
                 dialogLink.Text = subdialogID + ". " + answer.Title + actionResult;
-                dialogLink.BackColor = (answer.version != 0) ? (Color.FromKnownColor(KnownColor.Transparent)) : (Color.FromArgb(0x7FAA45E0));             
+                dialogLink.BackColor = (answer.version != 0) ? (Color.FromKnownColor(KnownColor.Transparent)) : (Color.FromArgb(0x7FAA45E0));
                 dialogLink.AutoSize = true;
                 dialogLink.Dock = DockStyle.Top;
                 dialogLink.Links.Add(0, 0, subdialogID);
-                titles.Add(dialogLink,subdialogID);
+                titles.Add(dialogLink, subdialogID);
                 splitDialogsEmulator.Panel2.Controls.Add(dialogLink);
             }
             splitDialogsEmulator.Panel2.Controls.Add(NPCText);
@@ -585,7 +586,7 @@ namespace StalkerOnlineQuesterEditor
 
         public bool isDialogActive(int dialogID)
         {
-            foreach (TreeNode node in treeDialogs.Nodes.Find("Active",true)[0].Nodes)
+            foreach (TreeNode node in treeDialogs.Nodes.Find("Active", true)[0].Nodes)
                 if (int.Parse(node.Name).Equals(dialogID))
                     return true;
             return false;
@@ -644,7 +645,7 @@ namespace StalkerOnlineQuesterEditor
             toolTipDialogs.SetToolTip(DialogShower, "");
         }
 
-// ************************END DIALOGS BLOCK****************************************************
+        // ************************END DIALOGS BLOCK****************************************************
 
         public void clearToolstripLabel()
         {
@@ -662,7 +663,7 @@ namespace StalkerOnlineQuesterEditor
             bAddQuest.Enabled = enable;
         }
 
-// ******************************* WORK WITH QUESTS ***************************************
+        // ******************************* WORK WITH QUESTS ***************************************
         //! Возвращает экземпляр CQuest по его ID
         public CQuest getQuestOnQuestID(int questID)
         {
@@ -689,7 +690,7 @@ namespace StalkerOnlineQuesterEditor
                         parent.Nodes[lastIndex].BackColor = Color.Red;
                 }
             }
-            else 
+            else
             {
                 treeQuest.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                 int lastIndex = treeQuest.Nodes.Count - 1;
@@ -700,11 +701,11 @@ namespace StalkerOnlineQuesterEditor
                 else
                     treeQuest.Nodes[lastIndex].BackColor = Color.Red;
             }
-                //if (!questConst.isSimple(curQuest.Target.QuestType) && (curQuest.Additional.ListOfSubQuest.Any()))
-            if ( (!questConst.isSimple(curQuest.Target.QuestType) || settings.getMode() == settings.MODE_LOCALIZATION)
-                    && ( curQuest.Additional.ListOfSubQuest.Any() ) )
-                    foreach (int subquest in curQuest.Additional.ListOfSubQuest)
-                        addNodeOnTreeQuest(subquest);
+            //if (!questConst.isSimple(curQuest.Target.QuestType) && (curQuest.Additional.ListOfSubQuest.Any()))
+            if ((!questConst.isSimple(curQuest.Target.QuestType) || settings.getMode() == settings.MODE_LOCALIZATION)
+                    && (curQuest.Additional.ListOfSubQuest.Any()))
+                foreach (int subquest in curQuest.Additional.ListOfSubQuest)
+                    addNodeOnTreeQuest(subquest);
             treeQuest.EndUpdate();
             treeQuest.Refresh();
             treeQuest.Update();
@@ -767,7 +768,7 @@ namespace StalkerOnlineQuesterEditor
             infoBox.Controls.Add(descriptionLabel);
 
             questBox.Controls.Add(infoBox);
-            questBox.Controls.SetChildIndex(infoBox,0);
+            questBox.Controls.SetChildIndex(infoBox, 0);
 
             questPanel.Controls.Add(questBox);
 
@@ -789,7 +790,7 @@ namespace StalkerOnlineQuesterEditor
         private void treeQuestSelected(object sender, EventArgs e)
         {
             this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
-//            int questID = int.Parse(treeQuest.SelectedNode.Text);
+            //            int questID = int.Parse(treeQuest.SelectedNode.Text);
             checkQuestButton(getQuestOnQuestID(currentQuest).Target.QuestType, currentQuest);
             fillQuestPanel();
         }
@@ -823,7 +824,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if (currentQuest == 0) return;
             bCopyEvents.Enabled = true;
-            
+
             if (settings.getMode() == settings.MODE_EDITOR)
             {
                 if (getQuestOnQuestID(currentQuest).Additional.IsSubQuest == 0)
@@ -856,10 +857,10 @@ namespace StalkerOnlineQuesterEditor
         //! Добавляет нового NPC в систему
         public void addNewNPC(string Name)
         {
-            Dictionary<int,CDialog> firstDialog = new Dictionary<int,CDialog>();
+            Dictionary<int, CDialog> firstDialog = new Dictionary<int, CDialog>();
             int dialogID = getDialogsNewID();
             NodeCoordinates nc = new NodeCoordinates(179, 125, true, true);
-            firstDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions() ,new List<int>(), new List<int>(),
+            firstDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(), new List<int>(),
                     dialogID, 0, nc));
 
             dialogs.dialogs.Add(Name, firstDialog);
@@ -868,7 +869,7 @@ namespace StalkerOnlineQuesterEditor
             engDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(), new List<int>(),
                     dialogID, 0, nc));
             dialogs.locales[settings.getListLocales()[0]].Add(Name, engDialog);
-            
+
             fillNPCBox();
             NPCBox.SelectedValue = Name;
             npcConst.NPCs.Add(Name, new CNPCDescription(Name));
@@ -968,7 +969,7 @@ namespace StalkerOnlineQuesterEditor
             quests.locales[settings.getListLocales()[0]][parent].Additional.ListOfSubQuest.Add(engQuest.QuestID);
             quests.locales[settings.getListLocales()[0]].Add(engQuest.QuestID, engQuest);
 
-            checkQuestButton(quest.Target.QuestType, quest.QuestID);            
+            checkQuestButton(quest.Target.QuestType, quest.QuestID);
             addNodeOnTreeQuest(quest.QuestID);
             treeQuest.ExpandAll();
             fillQuestPanel();
@@ -1042,10 +1043,10 @@ namespace StalkerOnlineQuesterEditor
         void removeQuest(int questID, bool recursiveCall)
         {
             List<int> temp = getQuestOnQuestID(questID).Additional.ListOfSubQuest;
-            foreach (int subquest in temp ) //getQuestOnQuestID(questID).Additional.ListOfSubQuest)
+            foreach (int subquest in temp) //getQuestOnQuestID(questID).Additional.ListOfSubQuest)
                 removeQuest(subquest, true);
 
-            if ( !recursiveCall )
+            if (!recursiveCall)
                 if (getQuestOnQuestID(questID).Additional.IsSubQuest != 0)
                     quests.quest[getQuestOnQuestID(questID).Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
 
@@ -1083,7 +1084,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
             int id = parent.QuestID;
-            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int> (parent.Additional.ListOfSubQuest);
+            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
         }
         //! Перемещение квеста вниз по дереву квестов
         private void bQuestDown_Click(object sender, EventArgs e)
@@ -1106,7 +1107,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
             int id = parent.QuestID;
-            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int> (parent.Additional.ListOfSubQuest);
+            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
         }
 
         void findAndSelectNodeOnTreeQuest(int questID)
@@ -1127,7 +1128,7 @@ namespace StalkerOnlineQuesterEditor
             newQuest.Visible = true;
             this.Enabled = false;
         }
- 
+
         public void setQuestISClan(int questID, bool ClanState)
         {
             quests.setClan(questID, ClanState);
@@ -1170,12 +1171,12 @@ namespace StalkerOnlineQuesterEditor
             return ret;
         }
 
-        void fillQuestDataInManageTab(string npcName, CQuest quest, bool force = false, string parentTitle = "" )
+        void fillQuestDataInManageTab(string npcName, CQuest quest, bool force = false, string parentTitle = "")
         {
             if (quest.hidden && !force)
                 return;
             //если 12 тип, то показать его детей первого уровня и его самого, всё равно, что сам он дочерний
-            if (quest.Additional.Holder == npcName && ( force || (quest.Additional.IsSubQuest == 0) || (quest.Target.QuestType == 12)))
+            if (quest.Additional.Holder == npcName && (force || (quest.Additional.IsSubQuest == 0) || (quest.Target.QuestType == 12)))
             {
 
                 //string id = quest.QuestID.ToString();
@@ -1336,12 +1337,12 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
         }
-        
+
         //! Заполняет вкладку Управление
         void FillTabManage()
         {
             dgvManage.Rows.Clear();
-            
+
             ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Clear();
             ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Add("Да.");
             ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Add("Нет.");
@@ -1350,9 +1351,9 @@ namespace StalkerOnlineQuesterEditor
             foreach (string npcName in npcConst.NPCs.Keys)
                 foreach (CQuest quest in quests.quest.Values)
                 {
-                    fillQuestDataInManageTab(npcName , quest);
+                    fillQuestDataInManageTab(npcName, quest);
                 }
-                    
+
         }
 
         private void bSaveManage_Click(object sender, EventArgs e)
@@ -1383,7 +1384,7 @@ namespace StalkerOnlineQuesterEditor
             manageNotes.save();
         }
 
-//*************************************************BUFFER'S WORK*******************
+        //*************************************************BUFFER'S WORK*******************
 
         //! Нажатие на кнопку "Копировать" квесты в буфер обмена
         private void bCopyEvents_Click(object sender, EventArgs e)
@@ -1571,7 +1572,7 @@ namespace StalkerOnlineQuesterEditor
             clearQuestsBuffer();
         }
 
-//*************************************************LOCALES*******************
+        //*************************************************LOCALES*******************
 
         public CDialog getLocaleDialog(int dialogID, string npcName)
         {
@@ -1632,7 +1633,7 @@ namespace StalkerOnlineQuesterEditor
         {
             int actual = (cbActualFinder.Checked) ? (1) : (0);
             int outdated = (cbOutdatedFinder.Checked) ? (1) : (0);
-            FindType findType = (FindType)(actual + (outdated << 1) );
+            FindType findType = (FindType)(actual + (outdated << 1));
             this.translate_checker = 1;
             dgvLocaleDiff.Rows.Clear();
             string loc = settings.getCurrentLocale();
@@ -1652,7 +1653,7 @@ namespace StalkerOnlineQuesterEditor
                     count++;
                 }
             }
-            labelLocalizeOuput.Text = "Выведено: "+ count.ToString();
+            labelLocalizeOuput.Text = "Выведено: " + count.ToString();
             labelLocalizeOuput.Update();
         }
 
@@ -1716,7 +1717,7 @@ namespace StalkerOnlineQuesterEditor
             DialogShower.Camera.SetOffset(0, 0);
         }
 
-//*************************** DATA CHECK - missed dialogs, quests, NPC and so on**************************
+        //*************************** DATA CHECK - missed dialogs, quests, NPC and so on**************************
         //! Заполнение итемов в комбобоксе выбора локации (во вкладке Проверка)
         void fillLocationsBox()
         {
@@ -1771,7 +1772,7 @@ namespace StalkerOnlineQuesterEditor
             dgvReview.Columns[4].Visible = false;
             dgvReview.Columns[5].Visible = false;
         }
- 
+
         //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
         private void bFindNPC_Click(object sender, EventArgs e)
         {
@@ -1788,12 +1789,12 @@ namespace StalkerOnlineQuesterEditor
                 string location = (ManagerNPC.NpcData.ContainsKey(npc)) ? (ManagerNPC.NpcData[npc].location) : ("НЕТ ИМЕНИ");
                 string rusname = (ManagerNPC.NpcData.ContainsKey(npc)) ? (ManagerNPC.NpcData[npc].rusName) : ("НЕ ПЕРЕВЕДЕН");
                 string coord = (ManagerNPC.NpcData.ContainsKey(npc)) ? (ManagerNPC.NpcData[npc].coordinates) : ("НЕТ КООРДИНАТ");
-                if( ( !checkDialog || (checkDialog && d_num < numDialogs.Value) )
-                    && ( !checkQuest || (checkQuest && q_num < numQuests.Value) )
-                    && ( !checkLocation || (checkLocation && location == neededLocation) ) )
+                if ((!checkDialog || (checkDialog && d_num < numDialogs.Value))
+                    && (!checkQuest || (checkQuest && q_num < numQuests.Value))
+                    && (!checkLocation || (checkLocation && location == neededLocation)))
                 {
                     object[] row = { npc, d_num, q_num, location, coord, rusname };
-                    dgvReview.Rows.Add( row );
+                    dgvReview.Rows.Add(row);
                 }
             }
             statusLabel.Text = "Выведено: " + dgvReview.RowCount.ToString();
@@ -1827,7 +1828,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
-            else 
+            else
             {
                 int itemID = -1;
                 int targetItemID = -1;
@@ -1851,7 +1852,7 @@ namespace StalkerOnlineQuesterEditor
             }
             statusLabel.Text = "Выведено: " + dgvReview.RowCount.ToString();
         }
-//***************************END OF DATA CHECK - missed dialogs, quests, NPC and so on**************************
+        //***************************END OF DATA CHECK - missed dialogs, quests, NPC and so on**************************
 
         //! Поиск по номеру квеста в комбобоксе квеста и вывод информации
         private void QuestBox_KeyDown(object sender, KeyEventArgs e)
@@ -1876,7 +1877,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
                 else    // вводят название квеста
-                { 
+                {
                     int questNum = 0;
                     foreach (int questID in quests.quest.Keys)
                         if (quests.quest[questID].QuestInformation.Title == text)
@@ -1900,7 +1901,7 @@ namespace StalkerOnlineQuesterEditor
         {
             PPath test;
             test = PPath.CreateRectangle(50, 50, 100, 200);
-            drawingLayer.AddChild(test);            
+            drawingLayer.AddChild(test);
             //System.IO.StreamWriter sw = new System.IO.StreamWriter("Reputation_Dialogs.txt");
             //sw.WriteLine("List of reputations in So Dialogs (NPC name, dialog ID): ");
             /*
@@ -2033,7 +2034,7 @@ namespace StalkerOnlineQuesterEditor
 
             }
         }
-//***************************MAIN MENU ITEMS **************************
+        //***************************MAIN MENU ITEMS **************************
         //! Пункт главного меню - открытие папки с данными 
         private void ExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2290,6 +2291,115 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
         }
+
+        private void создатьЭдиторДляПередачиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Несохранённые изменения не будут собраны. Вы уверены, что сейчас хотите собрать QuestEditor?", "Внимание", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes) return;
+
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            result = dialog.ShowDialog();
+            if (result != DialogResult.OK)
+                return;
+
+            //Копировать сам эдитор
+            string path = dialog.SelectedPath + "\\QuestEditor";
+            string sourceParh = Directory.GetCurrentDirectory();
+            try
+            {
+                Directory.CreateDirectory(path);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось сохранить QuestEditor в путь :" + path + "\\QuestEditor", "Ошибка сохранения");
+                return;
+            }
+
+            foreach (string dirPath in Directory.GetDirectories(sourceParh, "*", SearchOption.AllDirectories))
+            {
+                try
+                {
+                    Directory.CreateDirectory(dirPath.Replace(sourceParh, path));
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не удалось создать папку в пути:" + dirPath.Replace(sourceParh, path), "Ошибка сохранения");
+                    return;
+                }
+            }
+
+            foreach (string newPath in Directory.GetFiles(sourceParh, "*.*", SearchOption.AllDirectories))
+            {
+                try
+                {
+                    if (Path.GetFileName(newPath) == "Settings.xml") continue;
+                    File.Copy(newPath, newPath.Replace(sourceParh, path), true);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не удалось скопировать файл " + newPath + " в пути:" + newPath.Replace(sourceParh, path), "Ошибка сохранения");
+                    return;
+                }
+            }
+
+            /*
+            //Копировать локализацию
+            sourceParh = settings.pathToCopyFiles;
+            string locale_path = path + "\\source\\";
+            Directory.CreateDirectory(locale_path);
+
+            List<string> locales = new List<string>(settings.getListLocales());
+            locales.Add("RUS");
+            foreach (string locale in locales)
+            {
+                string lang_path = locale_path + "\\" + locale;
+                Directory.CreateDirectory(lang_path);
+                File.Copy(sourceParh + "\\" + locale + "\\DialogTexts.xml", lang_path + "\\DialogTexts.xml", true);
+                File.Copy(sourceParh + "\\" + locale + "\\QuestTexts.xml", lang_path + "\\QuestTexts.xml", true);
+            }
+            */
+            //Копировать effects.json
+            try
+            {
+                File.Copy(CEffectConstants.JSON_PATH, path + "\\source\\Effects.json", true);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось скопировать файл " + CEffectConstants.JSON_PATH + " в " + path + "\\source\\Effects.json", "Ошибка сохранения");
+            }
+            //Копировать QuestData и DialogData
+            sourceParh = settings.pathToCopyFiles;
+            string data_path = path + "\\source\\Quests\\";
+            Directory.CreateDirectory(data_path);
+
+            foreach (string dirPath in Directory.GetDirectories(sourceParh, "*", SearchOption.AllDirectories))
+            {
+                try
+                {
+                    Directory.CreateDirectory(dirPath.Replace(sourceParh, data_path));
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не удалось создать папку в пути:" + dirPath.Replace(sourceParh, data_path), "Ошибка сохранения");
+                    return;
+                }
+            }
+
+            foreach (string newPath in Directory.GetFiles(sourceParh, "*.*", SearchOption.AllDirectories))
+            {
+                try
+                {
+                    File.Copy(newPath, newPath.Replace(sourceParh, data_path), true);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не удалось скопировать файл " + newPath + " в пути:" + newPath.Replace(sourceParh, data_path), "Ошибка сохранения");
+                    return;
+                }
+            }
+
+
+            MessageBox.Show("QuestEditor готов. Сохранён в " + path, "Успех");
+        }
     }
 }
- 

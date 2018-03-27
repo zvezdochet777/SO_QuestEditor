@@ -176,6 +176,8 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
+            this.данныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьЭдиторДляПередачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -373,7 +375,6 @@ namespace StalkerOnlineQuesterEditor
             // 
             // btnClearRecycle
             // 
-            this.btnClearRecycle.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.корзина_32х32;
             this.btnClearRecycle.ImageKey = "(отсутствует)";
             this.btnClearRecycle.Location = new System.Drawing.Point(94, 342);
             this.btnClearRecycle.Name = "btnClearRecycle";
@@ -1575,7 +1576,8 @@ namespace StalkerOnlineQuesterEditor
             this.menuMain,
             this.menuSaveAll,
             this.menuExplorer,
-            this.обновленияToolStripMenuItem});
+            this.обновленияToolStripMenuItem,
+            this.данныеToolStripMenuItem});
             this.menuMainControl.Location = new System.Drawing.Point(0, 0);
             this.menuMainControl.Name = "menuMainControl";
             this.menuMainControl.Size = new System.Drawing.Size(914, 24);
@@ -1677,6 +1679,21 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 1;
+            // 
+            // данныеToolStripMenuItem
+            // 
+            this.данныеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.создатьЭдиторДляПередачиToolStripMenuItem});
+            this.данныеToolStripMenuItem.Name = "данныеToolStripMenuItem";
+            this.данныеToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.данныеToolStripMenuItem.Text = "Данные";
+            // 
+            // создатьЭдиторДляПередачиToolStripMenuItem
+            // 
+            this.создатьЭдиторДляПередачиToolStripMenuItem.Name = "создатьЭдиторДляПередачиToolStripMenuItem";
+            this.создатьЭдиторДляПередачиToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.создатьЭдиторДляПередачиToolStripMenuItem.Text = "Создать эдитор для передачи";
+            this.создатьЭдиторДляПередачиToolStripMenuItem.Click += new System.EventHandler(this.создатьЭдиторДляПередачиToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1895,6 +1912,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button btnBackNPC;
         private System.Windows.Forms.Button btnNextNPC;
         private System.Windows.Forms.Button btnClearRecycle;
+        private System.Windows.Forms.ToolStripMenuItem данныеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьЭдиторДляПередачиToolStripMenuItem;
     }
 }
 
