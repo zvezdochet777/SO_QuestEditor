@@ -79,8 +79,9 @@ namespace StalkerOnlineQuesterEditor
 
     public class CEffectConstants
     {
-        string JSON_PATH = "../../../res/scripts/common/data/Effects.json";
-        string OTHER_JSON_PATH = "source/Effects.json";
+
+        public static string JSON_PATH = "../../../res/scripts/common/data/Effects.json";
+        public static string OTHER_JSON_PATH = "source/Effects.json";
 
         JsonTextReader reader;
         public Dictionary<int, string> effects = new Dictionary<int, string>();
@@ -88,10 +89,10 @@ namespace StalkerOnlineQuesterEditor
         public CEffectConstants()
         {
             string path;
-            if (File.Exists(JSON_PATH))
-                path = JSON_PATH;
+            if (File.Exists(CEffectConstants.JSON_PATH))
+                path = CEffectConstants.JSON_PATH;
             else
-                path = OTHER_JSON_PATH;
+                path = CEffectConstants.OTHER_JSON_PATH;
 
             reader = new JsonTextReader(new StreamReader(path, Encoding.UTF8));
             string name = "";

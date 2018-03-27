@@ -33,9 +33,7 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<string, string> rusNamesToNPC = new Dictionary<string, string>();
         //! Словарь cоответствия англ имя - общее имя в игре (для поиска в комбобоксе NPCBox)
         public Dictionary<string, string> engNamesToNPC = new Dictionary<string, string>();
-
-        //Словать соответствия npcName - Карта
-        public Dictionary<string, string> nameToMap = new Dictionary<string, string>();
+        public Dictionary<string, List<string>> mapToNPCList = new Dictionary<string, List<string>>();
 
         //! Список всех локаций
         public List<string> locationNames = new List<string>();
@@ -72,16 +70,17 @@ namespace StalkerOnlineQuesterEditor
                 string coord = item.Element("chunk").Value.ToString();
                 if (!NpcData.ContainsKey(name))
                     NpcData.Add(name, new npc_data(rusName, engName, map, coord));
+                if (!mapToNPCList.ContainsKey(map))
+                    mapToNPCList.Add(map, new List<string>());
+                mapToNPCList[map].Add(name);
+
                 if (!locationNames.Contains(map))
                     locationNames.Add(map);
                 if (!rusNamesToNPC.ContainsKey(rusName))
                     rusNamesToNPC.Add(rusName, name);
                 if (!engNamesToNPC.ContainsKey(engName))
                     engNamesToNPC.Add(engName, name);
-                if (!nameToMap.ContainsKey(rusName))
-                    nameToMap.Add(rusName, map);
-                if (!nameToMap.ContainsKey(engName))
-                    nameToMap.Add(engName, map);
+
             }
         }
 

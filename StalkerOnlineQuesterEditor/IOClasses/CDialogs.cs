@@ -348,8 +348,16 @@ namespace StalkerOnlineQuesterEditor
         }
 
         private void ParseDialogsTexts(String DialogsXMLFile, NPCDicts target)
-        { 
-            doc = XDocument.Load(DialogsXMLFile);
+        {
+            try
+            {
+                doc = XDocument.Load(DialogsXMLFile);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Произошла ошибка при чтении файла: " + DialogsXMLFile, "Ошибка чтения");
+                return;
+            }
             foreach (XElement npc in doc.Root.Elements())
             {
                 string npc_name = npc.Element("Name").Value.ToString().Trim();

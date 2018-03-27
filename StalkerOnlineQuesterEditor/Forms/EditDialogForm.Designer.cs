@@ -167,6 +167,8 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabActions = new System.Windows.Forms.TabPage();
+            this.tbAdditionalAction = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tbActionNPC = new System.Windows.Forms.ComboBox();
             this.cbActionNPC = new System.Windows.Forms.CheckBox();
             this.tbPlaySonund = new System.Windows.Forms.ComboBox();
@@ -203,8 +205,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbAdditionalAction = new System.Windows.Forms.TextBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
@@ -539,7 +539,7 @@
             // 
             this.pictureItems.BackColor = System.Drawing.Color.Transparent;
             this.pictureItems.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureItems.Location = new System.Drawing.Point(492, 10);
+            this.pictureItems.Location = new System.Drawing.Point(486, 10);
             this.pictureItems.Name = "pictureItems";
             this.pictureItems.Size = new System.Drawing.Size(10, 10);
             this.pictureItems.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -643,10 +643,10 @@
             this.tabQuestsCircs.Controls.Add(this.tabActions);
             this.tabQuestsCircs.Controls.Add(this.tabItems);
             this.tabQuestsCircs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabQuestsCircs.Location = new System.Drawing.Point(8, 19);
+            this.tabQuestsCircs.Location = new System.Drawing.Point(4, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
             this.tabQuestsCircs.SelectedIndex = 0;
-            this.tabQuestsCircs.Size = new System.Drawing.Size(574, 256);
+            this.tabQuestsCircs.Size = new System.Drawing.Size(587, 256);
             this.tabQuestsCircs.TabIndex = 52;
             this.tabQuestsCircs.SelectedIndexChanged += new System.EventHandler(this.tabQuestsCircs_SelectedIndexChanged);
             // 
@@ -657,7 +657,7 @@
             this.tabQuests.Location = new System.Drawing.Point(4, 22);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(566, 230);
+            this.tabQuests.Size = new System.Drawing.Size(579, 230);
             this.tabQuests.TabIndex = 0;
             this.tabQuests.Text = "Квесты";
             // 
@@ -1040,7 +1040,7 @@
             this.tabReputation.Location = new System.Drawing.Point(4, 22);
             this.tabReputation.Name = "tabReputation";
             this.tabReputation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation.Size = new System.Drawing.Size(566, 230);
+            this.tabReputation.Size = new System.Drawing.Size(579, 230);
             this.tabReputation.TabIndex = 1;
             this.tabReputation.Text = "Репутация";
             // 
@@ -1064,7 +1064,7 @@
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation.Location = new System.Drawing.Point(3, 3);
             this.dataReputation.Name = "dataReputation";
-            this.dataReputation.Size = new System.Drawing.Size(560, 224);
+            this.dataReputation.Size = new System.Drawing.Size(573, 224);
             this.dataReputation.TabIndex = 3;
             // 
             // id
@@ -1104,7 +1104,7 @@
             this.tabKarma.Location = new System.Drawing.Point(4, 22);
             this.tabKarma.Name = "tabKarma";
             this.tabKarma.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKarma.Size = new System.Drawing.Size(566, 230);
+            this.tabKarma.Size = new System.Drawing.Size(579, 230);
             this.tabKarma.TabIndex = 2;
             this.tabKarma.Text = "Карма";
             // 
@@ -1114,7 +1114,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(3, 86);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(560, 141);
+            this.panel2.Size = new System.Drawing.Size(573, 141);
             this.panel2.TabIndex = 4;
             // 
             // labelDescription
@@ -1165,7 +1165,7 @@
             this.tabClan.Location = new System.Drawing.Point(4, 22);
             this.tabClan.Name = "tabClan";
             this.tabClan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClan.Size = new System.Drawing.Size(566, 230);
+            this.tabClan.Size = new System.Drawing.Size(579, 230);
             this.tabClan.TabIndex = 3;
             this.tabClan.Text = "Клановые";
             // 
@@ -1320,7 +1320,7 @@
             this.tabEffects.Location = new System.Drawing.Point(4, 22);
             this.tabEffects.Name = "tabEffects";
             this.tabEffects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEffects.Size = new System.Drawing.Size(566, 230);
+            this.tabEffects.Size = new System.Drawing.Size(579, 230);
             this.tabEffects.TabIndex = 4;
             this.tabEffects.Text = "Эффекты";
             this.tabEffects.UseVisualStyleBackColor = true;
@@ -1335,7 +1335,7 @@
             this.effectsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.effectsPanel.Location = new System.Drawing.Point(3, 3);
             this.effectsPanel.Name = "effectsPanel";
-            this.effectsPanel.Size = new System.Drawing.Size(560, 224);
+            this.effectsPanel.Size = new System.Drawing.Size(573, 224);
             this.effectsPanel.TabIndex = 17;
             // 
             // lMustNotEffects
@@ -1398,7 +1398,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.dataGridNotEffects.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridNotEffects.Location = new System.Drawing.Point(314, 0);
+            this.dataGridNotEffects.Location = new System.Drawing.Point(327, 0);
             this.dataGridNotEffects.Name = "dataGridNotEffects";
             this.dataGridNotEffects.Size = new System.Drawing.Size(246, 224);
             this.dataGridNotEffects.TabIndex = 6;
@@ -1441,7 +1441,7 @@
             this.tabLevel.Controls.Add(this.lPlayerLevel);
             this.tabLevel.Location = new System.Drawing.Point(4, 22);
             this.tabLevel.Name = "tabLevel";
-            this.tabLevel.Size = new System.Drawing.Size(566, 230);
+            this.tabLevel.Size = new System.Drawing.Size(579, 230);
             this.tabLevel.TabIndex = 5;
             this.tabLevel.Text = "Уровень";
             // 
@@ -1578,7 +1578,7 @@
             this.tabSkills.Location = new System.Drawing.Point(4, 22);
             this.tabSkills.Name = "tabSkills";
             this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSkills.Size = new System.Drawing.Size(566, 230);
+            this.tabSkills.Size = new System.Drawing.Size(579, 230);
             this.tabSkills.TabIndex = 6;
             this.tabSkills.Text = "Навыки";
             this.tabSkills.UseVisualStyleBackColor = true;
@@ -1596,7 +1596,7 @@
             this.dataSkill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataSkill.Location = new System.Drawing.Point(3, 3);
             this.dataSkill.Name = "dataSkill";
-            this.dataSkill.Size = new System.Drawing.Size(560, 224);
+            this.dataSkill.Size = new System.Drawing.Size(573, 224);
             this.dataSkill.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn4
@@ -1643,9 +1643,25 @@
             this.tabActions.Location = new System.Drawing.Point(4, 22);
             this.tabActions.Name = "tabActions";
             this.tabActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActions.Size = new System.Drawing.Size(566, 230);
+            this.tabActions.Size = new System.Drawing.Size(579, 230);
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
+            // 
+            // tbAdditionalAction
+            // 
+            this.tbAdditionalAction.Location = new System.Drawing.Point(210, 86);
+            this.tbAdditionalAction.Name = "tbAdditionalAction";
+            this.tbAdditionalAction.Size = new System.Drawing.Size(223, 20);
+            this.tbAdditionalAction.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(44, 90);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(95, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Доп. к действию:";
             // 
             // tbActionNPC
             // 
@@ -1777,7 +1793,7 @@
             this.tabItems.Location = new System.Drawing.Point(4, 22);
             this.tabItems.Name = "tabItems";
             this.tabItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tabItems.Size = new System.Drawing.Size(566, 230);
+            this.tabItems.Size = new System.Drawing.Size(579, 230);
             this.tabItems.TabIndex = 8;
             this.tabItems.Text = "Предметы";
             // 
@@ -2000,22 +2016,6 @@
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(44, 90);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(95, 13);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Доп. к действию:";
-            // 
-            // tbAdditionalAction
-            // 
-            this.tbAdditionalAction.Location = new System.Drawing.Point(210, 86);
-            this.tbAdditionalAction.Name = "tbAdditionalAction";
-            this.tbAdditionalAction.Size = new System.Drawing.Size(223, 20);
-            this.tbAdditionalAction.TabIndex = 17;
             // 
             // EditDialogForm
             // 

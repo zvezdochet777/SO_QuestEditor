@@ -18,6 +18,7 @@ namespace StalkerOnlineQuesterEditor
 {
     using NPCQuestDict = Dictionary<int, CDialog>;
     using StalkerOnlineQuesterEditor.Forms;
+    using System.IO;
 
     //! Главная форма программы, туча строк кода
     public partial class MainForm : Form
@@ -308,8 +309,16 @@ namespace StalkerOnlineQuesterEditor
             {
                 string npcName = holder;
                 string space = "no map";
-                if (this.ManagerNPC.nameToMap.ContainsKey(npcName))
-                    space = this.ManagerNPC.nameToMap[npcName];
+                foreach(KeyValuePair<string, List<string>> mapData in ManagerNPC.mapToNPCList)
+                {
+                    foreach(string name in mapData.Value)
+                    {
+                        if (name == npcName)
+                        {
+                            space = mapData.Key;
+                        }
+                    }
+                }
                 if (!npcFilters[space])
                     continue;
 
@@ -2347,6 +2356,120 @@ namespace StalkerOnlineQuesterEditor
                     return;
                 }
             }
+        }
+
+        private void собратьЭдиторДляПередачиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Несохранённые изменения не будут собраны. Вы уверены, что сейчас хотите собрать QuestEditor?", "Внимание", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes) return;
+
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            result = dialog.ShowDialog();
+            if (result != DialogResult.OK)
+                return;
+
+            //Копировать сам эдитор
+            string path = dialog.SelectedPath + "\\QuestEditor";
+            string sourceParh = Directory.GetCurrentDirectory();
+            try
+            {
+                Directory.CreateDirectory(path);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Не удалось сохранить QuestEditor в путь :" + path + "\\QuestEditor", "Ошибка сохранения");
+                return;
+            }
+
+            foreach (string dirPath in Directory.GetDirectories(sourceParh, "*", SearchOption.AllDirectories))
+            {
+                try
+                {
+                    Directory.CreateDirectory(dirPath.Replace(sourceParh, path));
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не удалось создать папку в пути:" + dirPath.Replace(sourceParh, path), "Ошибка сохранения");
+                    return;
+                }
+            }
+
+            foreach (string newPath in Directory.GetFiles(sourceParh, "*.*", SearchOption.AllDirectories))
+            {
+                try
+                {
+                    if (Path.GetFileName(newPath) == "Settings.xml") continue;
+                    File.Copy(newPath, newPath.Replace(sourceParh, path), true);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не удалось скопировать файл "+ newPath + " в пути:"+ newPath.Replace(sourceParh, path), "Ошибка сохранения");
+                    return;
+                }
+            }
+
+            //Копировать локализацию
+            sourceParh = settings.pathToLocalFiles;
+            string locale_path = path + "\\source\\" + "\\local";
+            Directory.CreateDirectory(locale_path);
+
+            List<string> locales = new List<string>(settings.getListLocales());
+            locales.Add("Russian");
+            foreach (string locale in locales)
+            {
+                string lang_path = locale_path + "\\" + locale;
+                Directory.CreateDirectory(lang_path);
+                File.Copy(sourceParh + "\\" + locale + "\\DialogTexts.xml", lang_path + "\\DialogTexts.xml", true);
+                File.Copy(sourceParh + "\\" + locale + "\\QuestTexts.xml", lang_path + "\\QuestTexts.xml", true);
+            }
+
+            //Копировать effects.json
+            try
+            {
+                File.Copy(CEffectConstants.JSON_PATH, path + "\\source\\Effects.json", true);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось скопировать файл " + CEffectConstants.JSON_PATH + " в "+ path+"\\source\\Effects.json", "Ошибка сохранения");
+            }
+            //Копировать QuestData и DialogData
+            sourceParh = settings.pathToCopyFiles;
+            string data_path = path + "\\source\\Quests\\";
+            Directory.CreateDirectory(data_path);
+
+            foreach (string dirPath in Directory.GetDirectories(sourceParh, "*", SearchOption.AllDirectories))
+            {
+                try
+                {
+                    Directory.CreateDirectory(dirPath.Replace(sourceParh, data_path));
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не удалось создать папку в пути:" + dirPath.Replace(sourceParh, data_path), "Ошибка сохранения");
+                    return;
+                }
+            }
+
+            foreach (string newPath in Directory.GetFiles(sourceParh, "*.*", SearchOption.AllDirectories))
+            {
+                try
+                {
+                    File.Copy(newPath, newPath.Replace(sourceParh, data_path), true);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не удалось скопировать файл " + newPath + " в пути:" + newPath.Replace(sourceParh, data_path), "Ошибка сохранения");
+                    return;
+                }
+            }
+
+
+            MessageBox.Show("QuestEditor готов. Сохранён в " + path, "Успех");
+        }
+
+        private void переместитьЛокализациюВИгруToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -46,9 +46,13 @@ namespace StalkerOnlineQuesterEditor
             this.btnClearRecycle = new System.Windows.Forms.Button();
             this.labelDrawingTip = new System.Windows.Forms.Label();
             this.bTestButton = new System.Windows.Forms.Button();
+            this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.labelYNode = new System.Windows.Forms.Label();
             this.labelXNode = new System.Windows.Forms.Label();
+            this.bRemoveDialog = new System.Windows.Forms.Button();
+            this.bEditDialog = new System.Windows.Forms.Button();
+            this.bAddDialog = new System.Windows.Forms.Button();
             this.gbEmulator = new System.Windows.Forms.GroupBox();
             this.splitDialogsEmulator = new System.Windows.Forms.SplitContainer();
             this.tabQuests = new System.Windows.Forms.TabPage();
@@ -64,6 +68,9 @@ namespace StalkerOnlineQuesterEditor
             this.bCopyEvents = new System.Windows.Forms.Button();
             this.bQuestDown = new System.Windows.Forms.Button();
             this.bQuestUp = new System.Windows.Forms.Button();
+            this.bRemoveEvent = new System.Windows.Forms.Button();
+            this.bEditEvent = new System.Windows.Forms.Button();
+            this.bAddEvent = new System.Windows.Forms.Button();
             this.panelSelectQuest = new System.Windows.Forms.Panel();
             this.bRemoveQuest = new System.Windows.Forms.Button();
             this.bAddQuest = new System.Windows.Forms.Button();
@@ -151,6 +158,9 @@ namespace StalkerOnlineQuesterEditor
             this.tbPhraseToSearch = new System.Windows.Forms.TextBox();
             this.bStartSearch = new System.Windows.Forms.Button();
             this.panelSelectNPC = new System.Windows.Forms.Panel();
+            this.btnFilterNPC = new System.Windows.Forms.Button();
+            this.btnNextNPC = new System.Windows.Forms.Button();
+            this.btnBackNPC = new System.Windows.Forms.Button();
             this.bDelNPC = new System.Windows.Forms.Button();
             this.bAddNPC = new System.Windows.Forms.Button();
             this.menuMainControl = new System.Windows.Forms.MenuStrip();
@@ -159,24 +169,16 @@ namespace StalkerOnlineQuesterEditor
             this.menuSynchronize = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSaveAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExplorer = new System.Windows.Forms.ToolStripMenuItem();
             this.обновленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.парсерыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проверкаОшибокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.данныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.собратьЭдиторДляПередачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.bCenterizeDialogShower = new System.Windows.Forms.Button();
-            this.bRemoveDialog = new System.Windows.Forms.Button();
-            this.bEditDialog = new System.Windows.Forms.Button();
-            this.bAddDialog = new System.Windows.Forms.Button();
-            this.bRemoveEvent = new System.Windows.Forms.Button();
-            this.bEditEvent = new System.Windows.Forms.Button();
-            this.bAddEvent = new System.Windows.Forms.Button();
-            this.btnFilterNPC = new System.Windows.Forms.Button();
-            this.btnNextNPC = new System.Windows.Forms.Button();
-            this.btnBackNPC = new System.Windows.Forms.Button();
-            this.menuSaveAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuExplorer = new System.Windows.Forms.ToolStripMenuItem();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -408,6 +410,20 @@ namespace StalkerOnlineQuesterEditor
             this.bTestButton.Visible = false;
             this.bTestButton.Click += new System.EventHandler(this.bTestButton_Click);
             // 
+            // bCenterizeDialogShower
+            // 
+            this.bCenterizeDialogShower.ImageKey = "ArrowsBig.png";
+            this.bCenterizeDialogShower.ImageList = this.imageList;
+            this.bCenterizeDialogShower.Location = new System.Drawing.Point(6, 160);
+            this.bCenterizeDialogShower.Name = "bCenterizeDialogShower";
+            this.bCenterizeDialogShower.Size = new System.Drawing.Size(192, 30);
+            this.bCenterizeDialogShower.TabIndex = 7;
+            this.bCenterizeDialogShower.Text = "Отцентрировать";
+            this.bCenterizeDialogShower.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bCenterizeDialogShower.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bCenterizeDialogShower.UseVisualStyleBackColor = true;
+            this.bCenterizeDialogShower.Click += new System.EventHandler(this.bCenterizeDialogShower_Click);
+            // 
             // imageList
             // 
             this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
@@ -436,6 +452,51 @@ namespace StalkerOnlineQuesterEditor
             this.labelXNode.TabIndex = 4;
             this.labelXNode.Text = "labelXNode";
             this.labelXNode.Visible = false;
+            // 
+            // bRemoveDialog
+            // 
+            this.bRemoveDialog.Enabled = false;
+            this.bRemoveDialog.ImageKey = "delete.png";
+            this.bRemoveDialog.ImageList = this.imageList;
+            this.bRemoveDialog.Location = new System.Drawing.Point(6, 99);
+            this.bRemoveDialog.Name = "bRemoveDialog";
+            this.bRemoveDialog.Size = new System.Drawing.Size(192, 30);
+            this.bRemoveDialog.TabIndex = 6;
+            this.bRemoveDialog.Text = "Удалить";
+            this.bRemoveDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bRemoveDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bRemoveDialog.UseVisualStyleBackColor = true;
+            this.bRemoveDialog.Click += new System.EventHandler(this.bRemoveDialog_Click);
+            // 
+            // bEditDialog
+            // 
+            this.bEditDialog.Enabled = false;
+            this.bEditDialog.ImageKey = "Edit.png";
+            this.bEditDialog.ImageList = this.imageList;
+            this.bEditDialog.Location = new System.Drawing.Point(6, 61);
+            this.bEditDialog.Name = "bEditDialog";
+            this.bEditDialog.Size = new System.Drawing.Size(192, 30);
+            this.bEditDialog.TabIndex = 5;
+            this.bEditDialog.Text = "Править";
+            this.bEditDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bEditDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bEditDialog.UseVisualStyleBackColor = true;
+            this.bEditDialog.Click += new System.EventHandler(this.bEditDialog_Click);
+            // 
+            // bAddDialog
+            // 
+            this.bAddDialog.Enabled = false;
+            this.bAddDialog.ImageKey = "add.png";
+            this.bAddDialog.ImageList = this.imageList;
+            this.bAddDialog.Location = new System.Drawing.Point(6, 23);
+            this.bAddDialog.Name = "bAddDialog";
+            this.bAddDialog.Size = new System.Drawing.Size(192, 30);
+            this.bAddDialog.TabIndex = 4;
+            this.bAddDialog.Text = "Добавить узел диалога";
+            this.bAddDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bAddDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bAddDialog.UseVisualStyleBackColor = true;
+            this.bAddDialog.Click += new System.EventHandler(this.bAddDialog_Click);
             // 
             // gbEmulator
             // 
@@ -623,6 +684,54 @@ namespace StalkerOnlineQuesterEditor
             this.bQuestUp.Text = "Вверх";
             this.bQuestUp.UseVisualStyleBackColor = true;
             this.bQuestUp.Click += new System.EventHandler(this.bQuestUp_Click);
+            // 
+            // bRemoveEvent
+            // 
+            this.bRemoveEvent.Enabled = false;
+            this.bRemoveEvent.ImageKey = "delete.png";
+            this.bRemoveEvent.ImageList = this.imageList;
+            this.bRemoveEvent.Location = new System.Drawing.Point(4, 80);
+            this.bRemoveEvent.Name = "bRemoveEvent";
+            this.bRemoveEvent.Size = new System.Drawing.Size(191, 30);
+            this.bRemoveEvent.TabIndex = 2;
+            this.bRemoveEvent.Text = "Удалить событие";
+            this.bRemoveEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bRemoveEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bRemoveEvent.UseVisualStyleBackColor = true;
+            this.bRemoveEvent.Click += new System.EventHandler(this.bRemoveEvent_Click);
+            // 
+            // bEditEvent
+            // 
+            this.bEditEvent.Enabled = false;
+            this.bEditEvent.ImageKey = "Edit.png";
+            this.bEditEvent.ImageList = this.imageList;
+            this.bEditEvent.Location = new System.Drawing.Point(4, 44);
+            this.bEditEvent.Name = "bEditEvent";
+            this.bEditEvent.Size = new System.Drawing.Size(191, 30);
+            this.bEditEvent.TabIndex = 1;
+            this.bEditEvent.Text = "Править событие";
+            this.bEditEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bEditEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bEditEvent.UseVisualStyleBackColor = true;
+            this.bEditEvent.Click += new System.EventHandler(this.bEditEvent_Click);
+            // 
+            // bAddEvent
+            // 
+            this.bAddEvent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.bAddEvent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bAddEvent.Enabled = false;
+            this.bAddEvent.ImageKey = "add.png";
+            this.bAddEvent.ImageList = this.imageList;
+            this.bAddEvent.Location = new System.Drawing.Point(4, 8);
+            this.bAddEvent.Name = "bAddEvent";
+            this.bAddEvent.Size = new System.Drawing.Size(191, 30);
+            this.bAddEvent.TabIndex = 0;
+            this.bAddEvent.Text = "Добавить событие";
+            this.bAddEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bAddEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bAddEvent.UseMnemonic = false;
+            this.bAddEvent.UseVisualStyleBackColor = false;
+            this.bAddEvent.Click += new System.EventHandler(this.bAddEvent_Click);
             // 
             // panelSelectQuest
             // 
@@ -1422,6 +1531,41 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectNPC.Size = new System.Drawing.Size(914, 29);
             this.panelSelectNPC.TabIndex = 2;
             // 
+            // btnFilterNPC
+            // 
+            this.btnFilterNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.filter_24;
+            this.btnFilterNPC.Location = new System.Drawing.Point(360, -3);
+            this.btnFilterNPC.Name = "btnFilterNPC";
+            this.btnFilterNPC.Size = new System.Drawing.Size(32, 32);
+            this.btnFilterNPC.TabIndex = 11;
+            this.toolTipDialogs.SetToolTip(this.btnFilterNPC, "Изменить фильтры NPC");
+            this.btnFilterNPC.UseVisualStyleBackColor = true;
+            this.btnFilterNPC.Click += new System.EventHandler(this.btnFilterNPC_Click);
+            // 
+            // btnNextNPC
+            // 
+            this.btnNextNPC.Enabled = false;
+            this.btnNextNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.next_24;
+            this.btnNextNPC.Location = new System.Drawing.Point(32, -3);
+            this.btnNextNPC.Name = "btnNextNPC";
+            this.btnNextNPC.Size = new System.Drawing.Size(32, 32);
+            this.btnNextNPC.TabIndex = 10;
+            this.toolTipDialogs.SetToolTip(this.btnNextNPC, "Вернуться на следующего NPC");
+            this.btnNextNPC.UseVisualStyleBackColor = true;
+            this.btnNextNPC.Click += new System.EventHandler(this.btnNextNPC_Click);
+            // 
+            // btnBackNPC
+            // 
+            this.btnBackNPC.Enabled = false;
+            this.btnBackNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.back_24;
+            this.btnBackNPC.Location = new System.Drawing.Point(2, -3);
+            this.btnBackNPC.Name = "btnBackNPC";
+            this.btnBackNPC.Size = new System.Drawing.Size(32, 32);
+            this.btnBackNPC.TabIndex = 9;
+            this.toolTipDialogs.SetToolTip(this.btnBackNPC, "Перейти к предыдущему NPC");
+            this.btnBackNPC.UseVisualStyleBackColor = true;
+            this.btnBackNPC.Click += new System.EventHandler(this.btnBackNPC_Click);
+            // 
             // bDelNPC
             // 
             this.bDelNPC.Location = new System.Drawing.Point(498, 3);
@@ -1448,7 +1592,8 @@ namespace StalkerOnlineQuesterEditor
             this.menuMain,
             this.menuSaveAll,
             this.menuExplorer,
-            this.обновленияToolStripMenuItem});
+            this.обновленияToolStripMenuItem,
+            this.данныеToolStripMenuItem});
             this.menuMainControl.Location = new System.Drawing.Point(0, 0);
             this.menuMainControl.Name = "menuMainControl";
             this.menuMainControl.Size = new System.Drawing.Size(914, 24);
@@ -1495,6 +1640,23 @@ namespace StalkerOnlineQuesterEditor
             this.menuExit.Text = "Выход";
             this.menuExit.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
+            // menuSaveAll
+            // 
+            this.menuSaveAll.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.SaveDisk;
+            this.menuSaveAll.Name = "menuSaveAll";
+            this.menuSaveAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.menuSaveAll.Size = new System.Drawing.Size(114, 20);
+            this.menuSaveAll.Text = "Сохранить все";
+            this.menuSaveAll.Click += new System.EventHandler(this.SaveAllToolStripMenuItem_Click);
+            // 
+            // menuExplorer
+            // 
+            this.menuExplorer.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.Explorer;
+            this.menuExplorer.Name = "menuExplorer";
+            this.menuExplorer.Size = new System.Drawing.Size(97, 20);
+            this.menuExplorer.Text = "Проводник";
+            this.menuExplorer.Click += new System.EventHandler(this.ExplorerToolStripMenuItem_Click);
+            // 
             // обновленияToolStripMenuItem
             // 
             this.обновленияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1518,6 +1680,21 @@ namespace StalkerOnlineQuesterEditor
             this.проверкаОшибокToolStripMenuItem.Text = "Проверка Ошибок";
             this.проверкаОшибокToolStripMenuItem.Click += new System.EventHandler(this.проверкаОшибокToolStripMenuItem_Click);
             // 
+            // данныеToolStripMenuItem
+            // 
+            this.данныеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.собратьЭдиторДляПередачиToolStripMenuItem});
+            this.данныеToolStripMenuItem.Name = "данныеToolStripMenuItem";
+            this.данныеToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.данныеToolStripMenuItem.Text = "Данные";
+            // 
+            // собратьЭдиторДляПередачиToolStripMenuItem
+            // 
+            this.собратьЭдиторДляПередачиToolStripMenuItem.Name = "собратьЭдиторДляПередачиToolStripMenuItem";
+            this.собратьЭдиторДляПередачиToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.собратьЭдиторДляПередачиToolStripMenuItem.Text = "Собрать эдитор для передачи";
+            this.собратьЭдиторДляПередачиToolStripMenuItem.Click += new System.EventHandler(this.собратьЭдиторДляПередачиToolStripMenuItem_Click);
+            // 
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
@@ -1533,162 +1710,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 1;
-            // 
-            // bCenterizeDialogShower
-            // 
-            this.bCenterizeDialogShower.ImageKey = "ArrowsBig.png";
-            this.bCenterizeDialogShower.ImageList = this.imageList;
-            this.bCenterizeDialogShower.Location = new System.Drawing.Point(6, 160);
-            this.bCenterizeDialogShower.Name = "bCenterizeDialogShower";
-            this.bCenterizeDialogShower.Size = new System.Drawing.Size(192, 30);
-            this.bCenterizeDialogShower.TabIndex = 7;
-            this.bCenterizeDialogShower.Text = "Отцентрировать";
-            this.bCenterizeDialogShower.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bCenterizeDialogShower.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bCenterizeDialogShower.UseVisualStyleBackColor = true;
-            this.bCenterizeDialogShower.Click += new System.EventHandler(this.bCenterizeDialogShower_Click);
-            // 
-            // bRemoveDialog
-            // 
-            this.bRemoveDialog.Enabled = false;
-            this.bRemoveDialog.ImageKey = "delete.png";
-            this.bRemoveDialog.ImageList = this.imageList;
-            this.bRemoveDialog.Location = new System.Drawing.Point(6, 99);
-            this.bRemoveDialog.Name = "bRemoveDialog";
-            this.bRemoveDialog.Size = new System.Drawing.Size(192, 30);
-            this.bRemoveDialog.TabIndex = 6;
-            this.bRemoveDialog.Text = "Удалить";
-            this.bRemoveDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bRemoveDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bRemoveDialog.UseVisualStyleBackColor = true;
-            this.bRemoveDialog.Click += new System.EventHandler(this.bRemoveDialog_Click);
-            // 
-            // bEditDialog
-            // 
-            this.bEditDialog.Enabled = false;
-            this.bEditDialog.ImageKey = "Edit.png";
-            this.bEditDialog.ImageList = this.imageList;
-            this.bEditDialog.Location = new System.Drawing.Point(6, 61);
-            this.bEditDialog.Name = "bEditDialog";
-            this.bEditDialog.Size = new System.Drawing.Size(192, 30);
-            this.bEditDialog.TabIndex = 5;
-            this.bEditDialog.Text = "Править";
-            this.bEditDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bEditDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bEditDialog.UseVisualStyleBackColor = true;
-            this.bEditDialog.Click += new System.EventHandler(this.bEditDialog_Click);
-            // 
-            // bAddDialog
-            // 
-            this.bAddDialog.Enabled = false;
-            this.bAddDialog.ImageKey = "add.png";
-            this.bAddDialog.ImageList = this.imageList;
-            this.bAddDialog.Location = new System.Drawing.Point(6, 23);
-            this.bAddDialog.Name = "bAddDialog";
-            this.bAddDialog.Size = new System.Drawing.Size(192, 30);
-            this.bAddDialog.TabIndex = 4;
-            this.bAddDialog.Text = "Добавить узел диалога";
-            this.bAddDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bAddDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bAddDialog.UseVisualStyleBackColor = true;
-            this.bAddDialog.Click += new System.EventHandler(this.bAddDialog_Click);
-            // 
-            // bRemoveEvent
-            // 
-            this.bRemoveEvent.Enabled = false;
-            this.bRemoveEvent.ImageKey = "delete.png";
-            this.bRemoveEvent.ImageList = this.imageList;
-            this.bRemoveEvent.Location = new System.Drawing.Point(4, 80);
-            this.bRemoveEvent.Name = "bRemoveEvent";
-            this.bRemoveEvent.Size = new System.Drawing.Size(191, 30);
-            this.bRemoveEvent.TabIndex = 2;
-            this.bRemoveEvent.Text = "Удалить событие";
-            this.bRemoveEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bRemoveEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bRemoveEvent.UseVisualStyleBackColor = true;
-            this.bRemoveEvent.Click += new System.EventHandler(this.bRemoveEvent_Click);
-            // 
-            // bEditEvent
-            // 
-            this.bEditEvent.Enabled = false;
-            this.bEditEvent.ImageKey = "Edit.png";
-            this.bEditEvent.ImageList = this.imageList;
-            this.bEditEvent.Location = new System.Drawing.Point(4, 44);
-            this.bEditEvent.Name = "bEditEvent";
-            this.bEditEvent.Size = new System.Drawing.Size(191, 30);
-            this.bEditEvent.TabIndex = 1;
-            this.bEditEvent.Text = "Править событие";
-            this.bEditEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bEditEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bEditEvent.UseVisualStyleBackColor = true;
-            this.bEditEvent.Click += new System.EventHandler(this.bEditEvent_Click);
-            // 
-            // bAddEvent
-            // 
-            this.bAddEvent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.bAddEvent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.bAddEvent.Enabled = false;
-            this.bAddEvent.ImageKey = "add.png";
-            this.bAddEvent.ImageList = this.imageList;
-            this.bAddEvent.Location = new System.Drawing.Point(4, 8);
-            this.bAddEvent.Name = "bAddEvent";
-            this.bAddEvent.Size = new System.Drawing.Size(191, 30);
-            this.bAddEvent.TabIndex = 0;
-            this.bAddEvent.Text = "Добавить событие";
-            this.bAddEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bAddEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bAddEvent.UseMnemonic = false;
-            this.bAddEvent.UseVisualStyleBackColor = false;
-            this.bAddEvent.Click += new System.EventHandler(this.bAddEvent_Click);
-            // 
-            // btnFilterNPC
-            // 
-            this.btnFilterNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.filter_24;
-            this.btnFilterNPC.Location = new System.Drawing.Point(360, -3);
-            this.btnFilterNPC.Name = "btnFilterNPC";
-            this.btnFilterNPC.Size = new System.Drawing.Size(32, 32);
-            this.btnFilterNPC.TabIndex = 11;
-            this.btnFilterNPC.UseVisualStyleBackColor = true;
-            this.btnFilterNPC.Click += new System.EventHandler(this.btnFilterNPC_Click);
-            // 
-            // btnNextNPC
-            // 
-            this.btnNextNPC.Enabled = false;
-            this.btnNextNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.next_24;
-            this.btnNextNPC.Location = new System.Drawing.Point(32, -3);
-            this.btnNextNPC.Name = "btnNextNPC";
-            this.btnNextNPC.Size = new System.Drawing.Size(32, 32);
-            this.btnNextNPC.TabIndex = 10;
-            this.btnNextNPC.UseVisualStyleBackColor = true;
-            this.btnNextNPC.Click += new System.EventHandler(this.btnNextNPC_Click);
-            // 
-            // btnBackNPC
-            // 
-            this.btnBackNPC.Enabled = false;
-            this.btnBackNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.back_24;
-            this.btnBackNPC.Location = new System.Drawing.Point(2, -3);
-            this.btnBackNPC.Name = "btnBackNPC";
-            this.btnBackNPC.Size = new System.Drawing.Size(32, 32);
-            this.btnBackNPC.TabIndex = 9;
-            this.btnBackNPC.UseVisualStyleBackColor = true;
-            this.btnBackNPC.Click += new System.EventHandler(this.btnBackNPC_Click);
-            // 
-            // menuSaveAll
-            // 
-            this.menuSaveAll.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.SaveDisk;
-            this.menuSaveAll.Name = "menuSaveAll";
-            this.menuSaveAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.menuSaveAll.Size = new System.Drawing.Size(114, 20);
-            this.menuSaveAll.Text = "Сохранить все";
-            this.menuSaveAll.Click += new System.EventHandler(this.SaveAllToolStripMenuItem_Click);
-            // 
-            // menuExplorer
-            // 
-            this.menuExplorer.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.Explorer;
-            this.menuExplorer.Name = "menuExplorer";
-            this.menuExplorer.Size = new System.Drawing.Size(97, 20);
-            this.menuExplorer.Text = "Проводник";
-            this.menuExplorer.Click += new System.EventHandler(this.ExplorerToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1908,6 +1929,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button btnNextNPC;
         private System.Windows.Forms.Button btnClearRecycle;
         private System.Windows.Forms.Button btnFilterNPC;
+        private System.Windows.Forms.ToolStripMenuItem данныеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem собратьЭдиторДляПередачиToolStripMenuItem;
     }
 }
 

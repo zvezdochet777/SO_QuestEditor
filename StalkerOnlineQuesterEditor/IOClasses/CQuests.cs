@@ -328,10 +328,18 @@ namespace StalkerOnlineQuesterEditor
                     dict_target.Add(QuestID, new CQuest(QuestID, 0, information, precondition, questRules, reward, additional, target, penalty, hidden));
             }
         }
-
+        
         void ParseQuestsTexts(string sPath, NPCQuestDict target)
-        { 
-            doc = XDocument.Load(sPath);
+        {
+            try
+            {
+                doc = XDocument.Load(sPath);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Не удалось загрузить файл:" + sPath, "Ошибка чтения");
+                return;
+            }
 
             foreach (XElement quest in doc.Root.Elements())
             {

@@ -52,7 +52,6 @@ namespace StalkerOnlineQuesterEditor
                 this.mode = int.Parse(doc.Root.Element("mode").Value.ToString());
                 this.currentLocale = int.Parse(doc.Root.Element("current_locale").Value.ToString());
                 pathToCopyFiles = doc.Root.Element("pathToCopyFiles").Value;
-                pathToLocalFiles = pathToCopyFiles;
                 lastNpcIndex = int.Parse(doc.Root.Element("LastNPcIndex").Value.ToString());
                 pathToLocalFiles = doc.Root.Element("pathToLocalFiles").Value;
 
@@ -75,7 +74,7 @@ namespace StalkerOnlineQuesterEditor
             }
             if (!Directory.Exists(pathToLocalFiles))
             {
-                pathToLocalFiles = "source/Quests/";
+                pathToLocalFiles = "source/local/";
             }
         }
 
