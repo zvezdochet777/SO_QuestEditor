@@ -80,6 +80,13 @@
             this.cbMobType = new System.Windows.Forms.ComboBox();
             this.cbScenaryType = new System.Windows.Forms.ComboBox();
             this.panelCreateNPC = new System.Windows.Forms.Panel();
+            this.cbSecondaryWeapon = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbPrimary2Weapon = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbPrimaryWeapon = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tbCloth = new System.Windows.Forms.TextBox();
             this.nupNPCShootRangeOnCreature = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
             this.nupNPCShootRange = new System.Windows.Forms.NumericUpDown();
@@ -180,13 +187,12 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
-            this.tbCloth = new System.Windows.Forms.TextBox();
-            this.cbPrimaryWeapon = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cbPrimary2Weapon = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cbSecondaryWeapon = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.onGotTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.cbWonScreenMsg = new System.Windows.Forms.CheckBox();
+            this.cbFailScreenMsg = new System.Windows.Forms.CheckBox();
+            this.cbGetScreenMsg = new System.Windows.Forms.CheckBox();
+            this.showGetCheckBox = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -593,7 +599,7 @@
             this.panelCreateMob.Controls.Add(this.lbScenType);
             this.panelCreateMob.Controls.Add(this.cbMobType);
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
-            this.panelCreateMob.Location = new System.Drawing.Point(3, 303);
+            this.panelCreateMob.Location = new System.Drawing.Point(3, 336);
             this.panelCreateMob.Name = "panelCreateMob";
             this.panelCreateMob.Size = new System.Drawing.Size(622, 161);
             this.panelCreateMob.TabIndex = 17;
@@ -764,11 +770,69 @@
             this.panelCreateNPC.Controls.Add(this.lbFractionID);
             this.panelCreateNPC.Controls.Add(this.lbNPCName);
             this.panelCreateNPC.Controls.Add(this.lbDisplayName);
-            this.panelCreateNPC.Location = new System.Drawing.Point(0, 304);
+            this.panelCreateNPC.Location = new System.Drawing.Point(0, 337);
             this.panelCreateNPC.Name = "panelCreateNPC";
-            this.panelCreateNPC.Size = new System.Drawing.Size(622, 172);
+            this.panelCreateNPC.Size = new System.Drawing.Size(622, 197);
             this.panelCreateNPC.TabIndex = 25;
             this.panelCreateNPC.Visible = false;
+            // 
+            // cbSecondaryWeapon
+            // 
+            this.cbSecondaryWeapon.FormattingEnabled = true;
+            this.cbSecondaryWeapon.Location = new System.Drawing.Point(308, 71);
+            this.cbSecondaryWeapon.Name = "cbSecondaryWeapon";
+            this.cbSecondaryWeapon.Size = new System.Drawing.Size(155, 21);
+            this.cbSecondaryWeapon.TabIndex = 52;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(230, 75);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 13);
+            this.label18.TabIndex = 51;
+            this.label18.Text = "Втор. оруж:";
+            // 
+            // cbPrimary2Weapon
+            // 
+            this.cbPrimary2Weapon.FormattingEnabled = true;
+            this.cbPrimary2Weapon.Location = new System.Drawing.Point(308, 49);
+            this.cbPrimary2Weapon.Name = "cbPrimary2Weapon";
+            this.cbPrimary2Weapon.Size = new System.Drawing.Size(155, 21);
+            this.cbPrimary2Weapon.TabIndex = 50;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(230, 53);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(82, 13);
+            this.label17.TabIndex = 49;
+            this.label17.Text = "Первое2 оруж:";
+            // 
+            // cbPrimaryWeapon
+            // 
+            this.cbPrimaryWeapon.FormattingEnabled = true;
+            this.cbPrimaryWeapon.Location = new System.Drawing.Point(308, 28);
+            this.cbPrimaryWeapon.Name = "cbPrimaryWeapon";
+            this.cbPrimaryWeapon.Size = new System.Drawing.Size(155, 21);
+            this.cbPrimaryWeapon.TabIndex = 48;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(230, 32);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(76, 13);
+            this.label16.TabIndex = 47;
+            this.label16.Text = "Первое оруж:";
+            // 
+            // tbCloth
+            // 
+            this.tbCloth.Location = new System.Drawing.Point(308, 93);
+            this.tbCloth.Name = "tbCloth";
+            this.tbCloth.Size = new System.Drawing.Size(306, 20);
+            this.tbCloth.TabIndex = 46;
             // 
             // nupNPCShootRangeOnCreature
             // 
@@ -1056,9 +1120,9 @@
             this.panel1.Controls.Add(this.okButton);
             this.panel1.Controls.Add(this.cancelButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 749);
+            this.panel1.Location = new System.Drawing.Point(3, 769);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(610, 58);
+            this.panel1.Size = new System.Drawing.Size(610, 38);
             this.panel1.TabIndex = 7;
             // 
             // debuglabel
@@ -1109,7 +1173,7 @@
             this.lQuestRules.Controls.Add(this.labelScenarios);
             this.lQuestRules.Controls.Add(this.groupQuestRulesBox);
             this.lQuestRules.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lQuestRules.Location = new System.Drawing.Point(3, 466);
+            this.lQuestRules.Location = new System.Drawing.Point(3, 486);
             this.lQuestRules.Name = "lQuestRules";
             this.lQuestRules.Size = new System.Drawing.Size(610, 283);
             this.lQuestRules.TabIndex = 3;
@@ -1263,7 +1327,7 @@
             this.preconditionGroupBox.Controls.Add(this.repeatComboBox);
             this.preconditionGroupBox.Controls.Add(this.lRepeat);
             this.preconditionGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.preconditionGroupBox.Location = new System.Drawing.Point(3, 413);
+            this.preconditionGroupBox.Location = new System.Drawing.Point(3, 433);
             this.preconditionGroupBox.Name = "preconditionGroupBox";
             this.preconditionGroupBox.Size = new System.Drawing.Size(610, 53);
             this.preconditionGroupBox.TabIndex = 2;
@@ -1347,7 +1411,7 @@
             this.targetBox.Controls.Add(this.targetComboBox);
             this.targetBox.Controls.Add(this.lNameObject);
             this.targetBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.targetBox.Location = new System.Drawing.Point(3, 254);
+            this.targetBox.Location = new System.Drawing.Point(3, 274);
             this.targetBox.Name = "targetBox";
             this.targetBox.Size = new System.Drawing.Size(610, 159);
             this.targetBox.TabIndex = 1;
@@ -1596,6 +1660,12 @@
             // 
             // questInformationBox
             // 
+            this.questInformationBox.Controls.Add(this.showGetCheckBox);
+            this.questInformationBox.Controls.Add(this.cbGetScreenMsg);
+            this.questInformationBox.Controls.Add(this.cbFailScreenMsg);
+            this.questInformationBox.Controls.Add(this.cbWonScreenMsg);
+            this.questInformationBox.Controls.Add(this.label19);
+            this.questInformationBox.Controls.Add(this.onGotTextBox);
             this.questInformationBox.Controls.Add(this.cantFailCheckBox);
             this.questInformationBox.Controls.Add(this.cantCancelCheckBox);
             this.questInformationBox.Controls.Add(this.tutorialCheckBox);
@@ -1619,7 +1689,7 @@
             this.questInformationBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.questInformationBox.Location = new System.Drawing.Point(3, 16);
             this.questInformationBox.Name = "questInformationBox";
-            this.questInformationBox.Size = new System.Drawing.Size(610, 238);
+            this.questInformationBox.Size = new System.Drawing.Size(610, 258);
             this.questInformationBox.TabIndex = 0;
             this.questInformationBox.TabStop = false;
             this.questInformationBox.Text = "Информация";
@@ -1789,7 +1859,7 @@
             // 
             // onFailedTextBox
             // 
-            this.onFailedTextBox.Location = new System.Drawing.Point(72, 211);
+            this.onFailedTextBox.Location = new System.Drawing.Point(72, 207);
             this.onFailedTextBox.Name = "onFailedTextBox";
             this.onFailedTextBox.Size = new System.Drawing.Size(407, 20);
             this.onFailedTextBox.TabIndex = 12;
@@ -1838,63 +1908,61 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
-            // tbCloth
+            // label19
             // 
-            this.tbCloth.Location = new System.Drawing.Point(308, 93);
-            this.tbCloth.Name = "tbCloth";
-            this.tbCloth.Size = new System.Drawing.Size(306, 20);
-            this.tbCloth.TabIndex = 46;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 235);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.TabIndex = 18;
+            this.label19.Text = "Взятие";
             // 
-            // cbPrimaryWeapon
+            // onGotTextBox
             // 
-            this.cbPrimaryWeapon.FormattingEnabled = true;
-            this.cbPrimaryWeapon.Location = new System.Drawing.Point(308, 28);
-            this.cbPrimaryWeapon.Name = "cbPrimaryWeapon";
-            this.cbPrimaryWeapon.Size = new System.Drawing.Size(155, 21);
-            this.cbPrimaryWeapon.TabIndex = 48;
+            this.onGotTextBox.Location = new System.Drawing.Point(72, 230);
+            this.onGotTextBox.Name = "onGotTextBox";
+            this.onGotTextBox.Size = new System.Drawing.Size(407, 20);
+            this.onGotTextBox.TabIndex = 19;
             // 
-            // label16
+            // cbWonScreenMsg
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(230, 32);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(76, 13);
-            this.label16.TabIndex = 47;
-            this.label16.Text = "Первое оруж:";
+            this.cbWonScreenMsg.AutoSize = true;
+            this.cbWonScreenMsg.Location = new System.Drawing.Point(484, 188);
+            this.cbWonScreenMsg.Name = "cbWonScreenMsg";
+            this.cbWonScreenMsg.Size = new System.Drawing.Size(131, 17);
+            this.cbWonScreenMsg.TabIndex = 20;
+            this.cbWonScreenMsg.Text = "сообщение на экран";
+            this.cbWonScreenMsg.UseVisualStyleBackColor = true;
             // 
-            // cbPrimary2Weapon
+            // cbFailScreenMsg
             // 
-            this.cbPrimary2Weapon.FormattingEnabled = true;
-            this.cbPrimary2Weapon.Location = new System.Drawing.Point(308, 49);
-            this.cbPrimary2Weapon.Name = "cbPrimary2Weapon";
-            this.cbPrimary2Weapon.Size = new System.Drawing.Size(155, 21);
-            this.cbPrimary2Weapon.TabIndex = 50;
+            this.cbFailScreenMsg.AutoSize = true;
+            this.cbFailScreenMsg.Location = new System.Drawing.Point(484, 209);
+            this.cbFailScreenMsg.Name = "cbFailScreenMsg";
+            this.cbFailScreenMsg.Size = new System.Drawing.Size(131, 17);
+            this.cbFailScreenMsg.TabIndex = 21;
+            this.cbFailScreenMsg.Text = "сообщение на экран";
+            this.cbFailScreenMsg.UseVisualStyleBackColor = true;
             // 
-            // label17
+            // cbGetScreenMsg
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(230, 53);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(82, 13);
-            this.label17.TabIndex = 49;
-            this.label17.Text = "Первое2 оруж:";
+            this.cbGetScreenMsg.AutoSize = true;
+            this.cbGetScreenMsg.Location = new System.Drawing.Point(484, 231);
+            this.cbGetScreenMsg.Name = "cbGetScreenMsg";
+            this.cbGetScreenMsg.Size = new System.Drawing.Size(131, 17);
+            this.cbGetScreenMsg.TabIndex = 22;
+            this.cbGetScreenMsg.Text = "сообщение на экран";
+            this.cbGetScreenMsg.UseVisualStyleBackColor = true;
             // 
-            // cbSecondaryWeapon
+            // showGetCheckBox
             // 
-            this.cbSecondaryWeapon.FormattingEnabled = true;
-            this.cbSecondaryWeapon.Location = new System.Drawing.Point(308, 71);
-            this.cbSecondaryWeapon.Name = "cbSecondaryWeapon";
-            this.cbSecondaryWeapon.Size = new System.Drawing.Size(155, 21);
-            this.cbSecondaryWeapon.TabIndex = 52;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(230, 75);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 13);
-            this.label18.TabIndex = 51;
-            this.label18.Text = "Втор. оруж:";
+            this.showGetCheckBox.AutoSize = true;
+            this.showGetCheckBox.Location = new System.Drawing.Point(465, 124);
+            this.showGetCheckBox.Name = "showGetCheckBox";
+            this.showGetCheckBox.Size = new System.Drawing.Size(138, 17);
+            this.showGetCheckBox.TabIndex = 23;
+            this.showGetCheckBox.Text = "Показ. сообщ. взятия";
+            this.showGetCheckBox.UseVisualStyleBackColor = true;
             // 
             // EditQuestForm
             // 
@@ -2109,5 +2177,11 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox cbPrimaryWeapon;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.MaskedTextBox onGotTextBox;
+        private System.Windows.Forms.CheckBox showGetCheckBox;
+        private System.Windows.Forms.CheckBox cbGetScreenMsg;
+        private System.Windows.Forms.CheckBox cbFailScreenMsg;
+        private System.Windows.Forms.CheckBox cbWonScreenMsg;
     }
 }

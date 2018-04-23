@@ -85,6 +85,7 @@ namespace StalkerOnlineQuesterEditor
 		public string Description;
         public string onWin;
         public string onFailed;
+        public string onGet;
         public Dictionary<int,QuestItemInfo> Items;
 
         public object Clone()
@@ -105,6 +106,7 @@ namespace StalkerOnlineQuesterEditor
             this.Description = "";
             this.onFailed = "";
             this.onWin = "";
+            this.onGet = "";
             this.Items = new Dictionary<int, QuestItemInfo>();
         }
 
@@ -631,6 +633,9 @@ namespace StalkerOnlineQuesterEditor
         public bool CantFail;
         public string Holder;
         public string DebugData;
+        public bool screenMessageOnWin;
+        public bool screenMessageOnFailed;
+        public bool screenMessageOnGet;
 
         public object Clone()
         {
@@ -642,6 +647,9 @@ namespace StalkerOnlineQuesterEditor
             copy.CantFail = this.CantFail;
             copy.Holder = this.Holder;
             copy.DebugData = this.DebugData;
+            copy.screenMessageOnWin = this.screenMessageOnWin;
+            copy.screenMessageOnFailed = this.screenMessageOnFailed;
+            copy.screenMessageOnGet = this.screenMessageOnGet;
             return copy;
         }
 
@@ -664,7 +672,10 @@ namespace StalkerOnlineQuesterEditor
             this.CantCancel = false;
             this.Holder = Holder;
             this.DebugData = "";
-        }
+            this.screenMessageOnWin = false;
+            this.screenMessageOnFailed = false;
+            this.screenMessageOnGet = false;
+    }
 
         public bool Any()
         {

@@ -54,6 +54,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bCancel = new System.Windows.Forms.Button();
             this.bOK = new System.Windows.Forms.Button();
+            this.localeOnGetTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.onGetTextBox = new System.Windows.Forms.MaskedTextBox();
             this.questInformationBox.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
             this.lQuestRules.SuspendLayout();
@@ -63,6 +66,9 @@
             // questInformationBox
             // 
             this.questInformationBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.questInformationBox.Controls.Add(this.localeOnGetTextBox);
+            this.questInformationBox.Controls.Add(this.label4);
+            this.questInformationBox.Controls.Add(this.onGetTextBox);
             this.questInformationBox.Controls.Add(this.lViewQuestID);
             this.questInformationBox.Controls.Add(this.labelQuestID);
             this.questInformationBox.Controls.Add(this.lViewNpcName);
@@ -184,7 +190,7 @@
             // lFailed
             // 
             this.lFailed.AutoSize = true;
-            this.lFailed.Location = new System.Drawing.Point(16, 201);
+            this.lFailed.Location = new System.Drawing.Point(16, 202);
             this.lFailed.Name = "lFailed";
             this.lFailed.Size = new System.Drawing.Size(60, 13);
             this.lFailed.TabIndex = 10;
@@ -312,6 +318,29 @@
             this.bOK.UseVisualStyleBackColor = true;
             this.bOK.Click += new System.EventHandler(this.bOK_Click);
             // 
+            // localeOnGetTextBox
+            // 
+            this.localeOnGetTextBox.Location = new System.Drawing.Point(438, 224);
+            this.localeOnGetTextBox.Name = "localeOnGetTextBox";
+            this.localeOnGetTextBox.Size = new System.Drawing.Size(407, 20);
+            this.localeOnGetTextBox.TabIndex = 24;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Получение";
+            // 
+            // onGetTextBox
+            // 
+            this.onGetTextBox.Location = new System.Drawing.Point(83, 224);
+            this.onGetTextBox.Name = "onGetTextBox";
+            this.onGetTextBox.Size = new System.Drawing.Size(349, 20);
+            this.onGetTextBox.TabIndex = 22;
+            // 
             // LocaleQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,5 +392,8 @@
         private System.Windows.Forms.Label labelQuestID;
         private System.Windows.Forms.Label lViewNpcName;
         private System.Windows.Forms.Label labelNpcName;
+        private System.Windows.Forms.MaskedTextBox localeOnGetTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.MaskedTextBox onGetTextBox;
     }
 }
