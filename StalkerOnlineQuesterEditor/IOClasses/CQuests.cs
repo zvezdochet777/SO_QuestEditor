@@ -303,6 +303,10 @@ namespace StalkerOnlineQuesterEditor
                             additional.ShowProgress = this.SHOW_JOURNAL | this.SHOW_MESSAGE_CLOSE | this.SHOW_MESSAGE_TAKE | this.SHOW_MESSAGE_PROGRESS;
                     }
 
+                    if (item.Element("Additional").Element("screenMessageOnWin") != null) additional.screenMessageOnWin = true;
+                    if (item.Element("Additional").Element("screenMessageOnFailed") != null) additional.screenMessageOnFailed = true;
+                    if (item.Element("Additional").Element("screenMessageOnGet") != null) additional.screenMessageOnGet = true;
+
                     ParseIntIfNotEmpty(item, "Additional", "IsSubQuest", out additional.IsSubQuest, 0);
                     CQuests.AddDataToList(item, "Additional", "ListOfSubQuest", additional.ListOfSubQuest);
 
@@ -340,6 +344,8 @@ namespace StalkerOnlineQuesterEditor
                     target[QuestID].QuestInformation.Description = quest.Element("Description").Value;
                 if (quest.Element("onWin") != null)
                     target[QuestID].QuestInformation.onWin = quest.Element("onWin").Value;
+                if (quest.Element("onGet") != null)
+                    target[QuestID].QuestInformation.onGet = quest.Element("onGet").Value;
                 if (quest.Element("onFailed") != null)
                     target[QuestID].QuestInformation.onFailed = quest.Element("onFailed").Value;
                 int Version = 0;
@@ -476,6 +482,9 @@ namespace StalkerOnlineQuesterEditor
                     element.Add(new XElement("Description", questValue.QuestInformation.Description));
                 if (questValue.QuestInformation.onWin != "")
                     element.Add(new XElement("onWin", questValue.QuestInformation.onWin));
+                if (questValue.QuestInformation.onGet != "")
+                    element.Add(new XElement("onGet", questValue.QuestInformation.onGet));
+
                 if (questValue.QuestInformation.onFailed != "")
                     element.Add(new XElement("onFailed", questValue.QuestInformation.onFailed));
 
@@ -642,6 +651,12 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Additional").Add(new XElement("ListOfSubQuest", Global.GetListAsString(questValue.Additional.ListOfSubQuest)));
                     if (questValue.Additional.ShowProgress != 0)
                         element.Element("Additional").Add(new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()));
+                    if (questValue.Additional.screenMessageOnFailed)
+                        element.Element("Additional").Add(new XElement("screenMessageOnFailed", "1"));
+                    if (questValue.Additional.screenMessageOnGet)
+                        element.Element("Additional").Add(new XElement("screenMessageOnGet", "1"));
+                    if (questValue.Additional.screenMessageOnWin)
+                        element.Element("Additional").Add(new XElement("screenMessageOnWin", "1"));
                     if (questValue.Additional.CantCancel)
                         element.Element("Additional").Add(new XElement("CantCancel", Global.GetBoolAsString(questValue.Additional.CantCancel)));
                     if (questValue.Additional.CantFail)
@@ -840,8 +855,8 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (isTutor)
                     quest.Additional.ShowProgress |= 64;
-                else
-                    quest.Additional.ShowProgress &= 63;
+                //else я не знаю зачем это было сделано
+                //    quest.Additional.ShowProgress &= 63;
 
                 foreach (int qID in quest.Additional.ListOfSubQuest)
                     setTutorial(qID, isTutor);

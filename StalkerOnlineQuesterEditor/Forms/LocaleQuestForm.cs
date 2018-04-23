@@ -42,6 +42,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                 locale_quest.QuestInformation.Description = "";
                 locale_quest.QuestInformation.onFailed = "";
                 locale_quest.QuestInformation.onWin = "";
+                locale_quest.QuestInformation.onGet = "";
                 locale_quest.QuestInformation.Title = "";
                 foreach (var key in locale_quest.QuestInformation.Items.Keys)
                 {
@@ -57,6 +58,7 @@ namespace StalkerOnlineQuesterEditor.Forms
             titleTextBox.Text = quest.QuestInformation.Title;
             descriptionTextBox.Text = quest.QuestInformation.Description;
             onWonTextBox.Text = quest.QuestInformation.onWin;
+            onGetTextBox.Text = quest.QuestInformation.onGet;
             onFailedTextBox.Text = quest.QuestInformation.onFailed;
 
             // если заголовки и описание совпадают, это означает, что в локализации просто копия русских
@@ -68,6 +70,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                 localeDescriptionTextBox.Text = locale_quest.QuestInformation.Description;
                 localeOnWonTextBox.Text = locale_quest.QuestInformation.onWin;
                 localeOnFailedTextBox.Text = locale_quest.QuestInformation.onFailed;
+                localeOnGetTextBox.Text = locale_quest.QuestInformation.onGet;
             }
         }
         //! Закрытие формы
@@ -98,6 +101,7 @@ namespace StalkerOnlineQuesterEditor.Forms
             cur_locale_quest.QuestInformation.Title = localeLitleTextBox.Text;
             cur_locale_quest.QuestInformation.Description = localeDescriptionTextBox.Text;
             cur_locale_quest.QuestInformation.onWin = localeOnWonTextBox.Text;
+            cur_locale_quest.QuestInformation.onGet = localeOnGetTextBox.Text;
             cur_locale_quest.QuestInformation.onFailed = localeOnFailedTextBox.Text;
             cur_locale_quest.Version = pub_version;
             // возможно здесь придется копировать данные из quest в cur_locale_quest

@@ -20,6 +20,7 @@ namespace StalkerOnlineQuesterEditor
         int SHOW_ONWIN = 16;
         int SHOW_ONFAILED = 32;
         int SHOW_TUTORIAL = 64;
+        int SHOW_ONGET = 128;
 
         const int ADD_NEW = 1;
         const int EDIT = 2;
@@ -166,37 +167,25 @@ namespace StalkerOnlineQuesterEditor
                 eventComboBox.SelectedItem = parent.questConst.getDescription(quest.Target.QuestType);
                 titleTextBox.Text = quest.QuestInformation.Title;
                 descriptionTextBox.Text = quest.QuestInformation.Description;
+
                 onWonTextBox.Text = quest.QuestInformation.onWin;
+                cbWonScreenMsg.Checked = quest.Additional.screenMessageOnWin;
                 onFailedTextBox.Text = quest.QuestInformation.onFailed;
+                cbFailScreenMsg.Checked = quest.Additional.screenMessageOnFailed;
+                onGotTextBox.Text = quest.QuestInformation.onGet;
+                cbGetScreenMsg.Checked = quest.Additional.screenMessageOnGet;
+
                 cantCancelCheckBox.Checked = quest.Additional.CantCancel;
                 cantFailCheckBox.Checked = quest.Additional.CantFail;
 
-                if ((quest.Additional.ShowProgress & this.SHOW_MESSAGE_CLOSE) > 0)
-                    showCloseCheckBox.Checked = true;
-                else
-                    showCloseCheckBox.Checked = false;
-                if ((quest.Additional.ShowProgress & this.SHOW_MESSAGE_TAKE) > 0)
-                    showTakeCheckBox.Checked = true;
-                else
-                    showTakeCheckBox.Checked = false;
-                if ((quest.Additional.ShowProgress & this.SHOW_MESSAGE_PROGRESS) > 0)
-                    showProgressCheckBox.Checked = true;
-                else
-                    showProgressCheckBox.Checked = false;
-                if ((quest.Additional.ShowProgress & this.SHOW_JOURNAL) > 0)
-                    showJournalCheckBox.Checked = true;
-                else
-                    showJournalCheckBox.Checked = false;
+                showCloseCheckBox.Checked = ((quest.Additional.ShowProgress & this.SHOW_MESSAGE_CLOSE) > 0);
+                showTakeCheckBox.Checked = ((quest.Additional.ShowProgress & this.SHOW_MESSAGE_TAKE) > 0);
+                showProgressCheckBox.Checked = ((quest.Additional.ShowProgress & this.SHOW_MESSAGE_PROGRESS) > 0);
+                showJournalCheckBox.Checked = ((quest.Additional.ShowProgress & this.SHOW_JOURNAL) > 0);
+                showGetCheckBox.Checked = ((quest.Additional.ShowProgress & this.SHOW_ONGET) > 0);
+                showWinCheckBox.Checked = ((quest.Additional.ShowProgress & this.SHOW_ONWIN) > 0);
+                showFailedCheckBox.Checked = ((quest.Additional.ShowProgress & this.SHOW_ONFAILED) > 0);
 
-                if ((quest.Additional.ShowProgress & this.SHOW_ONWIN) > 0)
-                    showWinCheckBox.Checked = true;
-                else
-                    showWinCheckBox.Checked = false;
-
-                if ((quest.Additional.ShowProgress & this.SHOW_ONFAILED) > 0)
-                    showFailedCheckBox.Checked = true;
-                else
-                    showFailedCheckBox.Checked = false;
                 if (quest.Additional.DebugData != "")
                 {
                     this.debugTextBox.Text = quest.Additional.DebugData;
@@ -889,6 +878,7 @@ namespace StalkerOnlineQuesterEditor
             information.Title = titleTextBox.Text;
             additional.Holder = parent.GetCurrentNPC();
             information.onWin = onWonTextBox.Text;
+            information.onGet = onGotTextBox.Text;
             information.onFailed = onFailedTextBox.Text;
             rules.basePercent = Convert.ToSingle(nBaseToCapturePercent.Value) / 100;
             target.QuestType = parent.questConst.getQuestTypeOnDescription(eventComboBox.SelectedItem.ToString());
@@ -1117,11 +1107,17 @@ namespace StalkerOnlineQuesterEditor
                 iProgressResult |= this.SHOW_ONWIN;
             if (showFailedCheckBox.Checked)
                 iProgressResult |= this.SHOW_ONFAILED;
+            if (showGetCheckBox.Checked)
+                iProgressResult |= this.SHOW_ONGET;
             if (tutorialCheckBox.Checked)
             {
                 System.Console.WriteLine("tutorialCheckBox.Checked != SHOW_TUTORIAL");
                 iProgressResult |= this.SHOW_TUTORIAL;
             }
+
+            additional.screenMessageOnWin = cbWonScreenMsg.Checked;
+            additional.screenMessageOnFailed = cbFailScreenMsg.Checked;
+            additional.screenMessageOnGet = cbGetScreenMsg.Checked;
             additional.ShowProgress = iProgressResult;
             additional.CantCancel = cantCancelCheckBox.Checked;
             additional.CantFail = cantFailCheckBox.Checked;
