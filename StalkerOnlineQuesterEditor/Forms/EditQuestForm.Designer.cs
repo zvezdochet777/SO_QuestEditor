@@ -80,13 +80,6 @@
             this.cbMobType = new System.Windows.Forms.ComboBox();
             this.cbScenaryType = new System.Windows.Forms.ComboBox();
             this.panelCreateNPC = new System.Windows.Forms.Panel();
-            this.cbSecondaryWeapon = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.cbPrimary2Weapon = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cbPrimaryWeapon = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.tbCloth = new System.Windows.Forms.TextBox();
             this.nupNPCShootRangeOnCreature = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
             this.nupNPCShootRange = new System.Windows.Forms.NumericUpDown();
@@ -802,64 +795,7 @@
             this.panelCreateNPC.Size = new System.Drawing.Size(622, 197);
             this.panelCreateNPC.TabIndex = 25;
             this.panelCreateNPC.Visible = false;
-            // 
-            // cbSecondaryWeapon
-            // 
-            this.cbSecondaryWeapon.FormattingEnabled = true;
-            this.cbSecondaryWeapon.Location = new System.Drawing.Point(308, 71);
-            this.cbSecondaryWeapon.Name = "cbSecondaryWeapon";
-            this.cbSecondaryWeapon.Size = new System.Drawing.Size(155, 21);
-            this.cbSecondaryWeapon.TabIndex = 52;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(230, 75);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 13);
-            this.label18.TabIndex = 51;
-            this.label18.Text = "Втор. оруж:";
-            // 
-            // cbPrimary2Weapon
-            // 
-            this.cbPrimary2Weapon.FormattingEnabled = true;
-            this.cbPrimary2Weapon.Location = new System.Drawing.Point(308, 49);
-            this.cbPrimary2Weapon.Name = "cbPrimary2Weapon";
-            this.cbPrimary2Weapon.Size = new System.Drawing.Size(155, 21);
-            this.cbPrimary2Weapon.TabIndex = 50;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(230, 53);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(82, 13);
-            this.label17.TabIndex = 49;
-            this.label17.Text = "Первое2 оруж:";
-            // 
-            // cbPrimaryWeapon
-            // 
-            this.cbPrimaryWeapon.FormattingEnabled = true;
-            this.cbPrimaryWeapon.Location = new System.Drawing.Point(308, 28);
-            this.cbPrimaryWeapon.Name = "cbPrimaryWeapon";
-            this.cbPrimaryWeapon.Size = new System.Drawing.Size(155, 21);
-            this.cbPrimaryWeapon.TabIndex = 48;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(230, 32);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(76, 13);
-            this.label16.TabIndex = 47;
-            this.label16.Text = "Первое оруж:";
-            // 
-            // tbCloth
-            // 
-            this.tbCloth.Location = new System.Drawing.Point(308, 93);
-            this.tbCloth.Name = "tbCloth";
-            this.tbCloth.Size = new System.Drawing.Size(306, 20);
-            this.tbCloth.TabIndex = 46;
+
             // 
             // nupNPCShootRangeOnCreature
             // 
