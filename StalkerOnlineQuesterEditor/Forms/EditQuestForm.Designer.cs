@@ -165,6 +165,12 @@
             this.targetComboBox = new System.Windows.Forms.ComboBox();
             this.lNameObject = new System.Windows.Forms.Label();
             this.questInformationBox = new System.Windows.Forms.GroupBox();
+            this.showGetCheckBox = new System.Windows.Forms.CheckBox();
+            this.cbGetScreenMsg = new System.Windows.Forms.CheckBox();
+            this.cbFailScreenMsg = new System.Windows.Forms.CheckBox();
+            this.cbWonScreenMsg = new System.Windows.Forms.CheckBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.onGotTextBox = new System.Windows.Forms.MaskedTextBox();
             this.cantFailCheckBox = new System.Windows.Forms.CheckBox();
             this.cantCancelCheckBox = new System.Windows.Forms.CheckBox();
             this.tutorialCheckBox = new System.Windows.Forms.CheckBox();
@@ -187,12 +193,6 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.onGotTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.cbWonScreenMsg = new System.Windows.Forms.CheckBox();
-            this.cbFailScreenMsg = new System.Windows.Forms.CheckBox();
-            this.cbGetScreenMsg = new System.Windows.Forms.CheckBox();
-            this.showGetCheckBox = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -1694,6 +1694,62 @@
             this.questInformationBox.TabStop = false;
             this.questInformationBox.Text = "Информация";
             // 
+            // showGetCheckBox
+            // 
+            this.showGetCheckBox.AutoSize = true;
+            this.showGetCheckBox.Location = new System.Drawing.Point(465, 124);
+            this.showGetCheckBox.Name = "showGetCheckBox";
+            this.showGetCheckBox.Size = new System.Drawing.Size(138, 17);
+            this.showGetCheckBox.TabIndex = 23;
+            this.showGetCheckBox.Text = "Показ. сообщ. взятия";
+            this.showGetCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cbGetScreenMsg
+            // 
+            this.cbGetScreenMsg.AutoSize = true;
+            this.cbGetScreenMsg.Location = new System.Drawing.Point(484, 231);
+            this.cbGetScreenMsg.Name = "cbGetScreenMsg";
+            this.cbGetScreenMsg.Size = new System.Drawing.Size(131, 17);
+            this.cbGetScreenMsg.TabIndex = 22;
+            this.cbGetScreenMsg.Text = "сообщение на экран";
+            this.cbGetScreenMsg.UseVisualStyleBackColor = true;
+            // 
+            // cbFailScreenMsg
+            // 
+            this.cbFailScreenMsg.AutoSize = true;
+            this.cbFailScreenMsg.Location = new System.Drawing.Point(484, 209);
+            this.cbFailScreenMsg.Name = "cbFailScreenMsg";
+            this.cbFailScreenMsg.Size = new System.Drawing.Size(131, 17);
+            this.cbFailScreenMsg.TabIndex = 21;
+            this.cbFailScreenMsg.Text = "сообщение на экран";
+            this.cbFailScreenMsg.UseVisualStyleBackColor = true;
+            // 
+            // cbWonScreenMsg
+            // 
+            this.cbWonScreenMsg.AutoSize = true;
+            this.cbWonScreenMsg.Location = new System.Drawing.Point(484, 188);
+            this.cbWonScreenMsg.Name = "cbWonScreenMsg";
+            this.cbWonScreenMsg.Size = new System.Drawing.Size(131, 17);
+            this.cbWonScreenMsg.TabIndex = 20;
+            this.cbWonScreenMsg.Text = "сообщение на экран";
+            this.cbWonScreenMsg.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 235);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.TabIndex = 18;
+            this.label19.Text = "Взятие";
+            // 
+            // onGotTextBox
+            // 
+            this.onGotTextBox.Location = new System.Drawing.Point(72, 230);
+            this.onGotTextBox.Name = "onGotTextBox";
+            this.onGotTextBox.Size = new System.Drawing.Size(407, 20);
+            this.onGotTextBox.TabIndex = 19;
+            // 
             // cantFailCheckBox
             // 
             this.cantFailCheckBox.AutoSize = true;
@@ -1908,62 +1964,6 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(7, 235);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 13);
-            this.label19.TabIndex = 18;
-            this.label19.Text = "Взятие";
-            // 
-            // onGotTextBox
-            // 
-            this.onGotTextBox.Location = new System.Drawing.Point(72, 230);
-            this.onGotTextBox.Name = "onGotTextBox";
-            this.onGotTextBox.Size = new System.Drawing.Size(407, 20);
-            this.onGotTextBox.TabIndex = 19;
-            // 
-            // cbWonScreenMsg
-            // 
-            this.cbWonScreenMsg.AutoSize = true;
-            this.cbWonScreenMsg.Location = new System.Drawing.Point(484, 188);
-            this.cbWonScreenMsg.Name = "cbWonScreenMsg";
-            this.cbWonScreenMsg.Size = new System.Drawing.Size(131, 17);
-            this.cbWonScreenMsg.TabIndex = 20;
-            this.cbWonScreenMsg.Text = "сообщение на экран";
-            this.cbWonScreenMsg.UseVisualStyleBackColor = true;
-            // 
-            // cbFailScreenMsg
-            // 
-            this.cbFailScreenMsg.AutoSize = true;
-            this.cbFailScreenMsg.Location = new System.Drawing.Point(484, 209);
-            this.cbFailScreenMsg.Name = "cbFailScreenMsg";
-            this.cbFailScreenMsg.Size = new System.Drawing.Size(131, 17);
-            this.cbFailScreenMsg.TabIndex = 21;
-            this.cbFailScreenMsg.Text = "сообщение на экран";
-            this.cbFailScreenMsg.UseVisualStyleBackColor = true;
-            // 
-            // cbGetScreenMsg
-            // 
-            this.cbGetScreenMsg.AutoSize = true;
-            this.cbGetScreenMsg.Location = new System.Drawing.Point(484, 231);
-            this.cbGetScreenMsg.Name = "cbGetScreenMsg";
-            this.cbGetScreenMsg.Size = new System.Drawing.Size(131, 17);
-            this.cbGetScreenMsg.TabIndex = 22;
-            this.cbGetScreenMsg.Text = "сообщение на экран";
-            this.cbGetScreenMsg.UseVisualStyleBackColor = true;
-            // 
-            // showGetCheckBox
-            // 
-            this.showGetCheckBox.AutoSize = true;
-            this.showGetCheckBox.Location = new System.Drawing.Point(465, 124);
-            this.showGetCheckBox.Name = "showGetCheckBox";
-            this.showGetCheckBox.Size = new System.Drawing.Size(138, 17);
-            this.showGetCheckBox.TabIndex = 23;
-            this.showGetCheckBox.Text = "Показ. сообщ. взятия";
-            this.showGetCheckBox.UseVisualStyleBackColor = true;
-            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1974,6 +1974,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "EditQuestForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование события";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuestEditForm_FormClosing);
             this.QuestPanel.ResumeLayout(false);

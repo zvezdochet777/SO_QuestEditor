@@ -301,6 +301,7 @@
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelButtons);
             this.Name = "LocaleDialogForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Локализация диалога";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LocaleDialogForm_FormClosing);
             this.panelMain.ResumeLayout(false);
