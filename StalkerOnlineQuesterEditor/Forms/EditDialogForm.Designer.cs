@@ -34,6 +34,8 @@
             this.lGreetNPC = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.gbActions = new System.Windows.Forms.GroupBox();
+            this.nupChangeMoney = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.tbAvatarGoTo = new System.Windows.Forms.TextBox();
             this.commandsComboBox = new System.Windows.Forms.ComboBox();
             this.cbFailQuests = new System.Windows.Forms.CheckBox();
@@ -201,9 +203,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.nupChangeMoney = new System.Windows.Forms.NumericUpDown();
             this.gbActions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -235,7 +236,6 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -309,6 +309,32 @@
             this.gbActions.Size = new System.Drawing.Size(595, 144);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
+            // 
+            // nupChangeMoney
+            // 
+            this.nupChangeMoney.Location = new System.Drawing.Point(426, 101);
+            this.nupChangeMoney.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nupChangeMoney.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.nupChangeMoney.Name = "nupChangeMoney";
+            this.nupChangeMoney.Size = new System.Drawing.Size(147, 20);
+            this.nupChangeMoney.TabIndex = 43;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(293, 103);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 13);
+            this.label8.TabIndex = 42;
+            this.label8.Text = "Изменить деньги:";
             // 
             // tbAvatarGoTo
             // 
@@ -1974,32 +2000,6 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(293, 103);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 13);
-            this.label8.TabIndex = 42;
-            this.label8.Text = "Изменить деньги:";
-            // 
-            // nupChangeMoney
-            // 
-            this.nupChangeMoney.Location = new System.Drawing.Point(426, 101);
-            this.nupChangeMoney.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.nupChangeMoney.Minimum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            -2147483648});
-            this.nupChangeMoney.Name = "nupChangeMoney";
-            this.nupChangeMoney.Size = new System.Drawing.Size(147, 20);
-            this.nupChangeMoney.TabIndex = 43;
-            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2011,11 +2011,14 @@
             this.Controls.Add(this.gbPrecondition);
             this.Controls.Add(this.gbTexts);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.MaximizeBox = false;
             this.Name = "EditDialogForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование диалога";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditDialogForm_FormClosed);
             this.gbActions.ResumeLayout(false);
             this.gbActions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).EndInit();
             this.gbPrecondition.ResumeLayout(false);
             this.gbPrecondition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).EndInit();
@@ -2059,7 +2062,6 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.questInformationBox = new System.Windows.Forms.GroupBox();
+            this.localeOnGetTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.onGetTextBox = new System.Windows.Forms.MaskedTextBox();
             this.lViewQuestID = new System.Windows.Forms.Label();
             this.labelQuestID = new System.Windows.Forms.Label();
             this.lViewNpcName = new System.Windows.Forms.Label();
@@ -54,9 +57,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bCancel = new System.Windows.Forms.Button();
             this.bOK = new System.Windows.Forms.Button();
-            this.localeOnGetTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.onGetTextBox = new System.Windows.Forms.MaskedTextBox();
             this.questInformationBox.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
             this.lQuestRules.SuspendLayout();
@@ -94,6 +94,29 @@
             this.questInformationBox.TabIndex = 1;
             this.questInformationBox.TabStop = false;
             this.questInformationBox.Text = "Информация";
+            // 
+            // localeOnGetTextBox
+            // 
+            this.localeOnGetTextBox.Location = new System.Drawing.Point(438, 224);
+            this.localeOnGetTextBox.Name = "localeOnGetTextBox";
+            this.localeOnGetTextBox.Size = new System.Drawing.Size(407, 20);
+            this.localeOnGetTextBox.TabIndex = 24;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Получение";
+            // 
+            // onGetTextBox
+            // 
+            this.onGetTextBox.Location = new System.Drawing.Point(83, 224);
+            this.onGetTextBox.Name = "onGetTextBox";
+            this.onGetTextBox.Size = new System.Drawing.Size(349, 20);
+            this.onGetTextBox.TabIndex = 22;
             // 
             // lViewQuestID
             // 
@@ -318,29 +341,6 @@
             this.bOK.UseVisualStyleBackColor = true;
             this.bOK.Click += new System.EventHandler(this.bOK_Click);
             // 
-            // localeOnGetTextBox
-            // 
-            this.localeOnGetTextBox.Location = new System.Drawing.Point(438, 224);
-            this.localeOnGetTextBox.Name = "localeOnGetTextBox";
-            this.localeOnGetTextBox.Size = new System.Drawing.Size(407, 20);
-            this.localeOnGetTextBox.TabIndex = 24;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 227);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "Получение";
-            // 
-            // onGetTextBox
-            // 
-            this.onGetTextBox.Location = new System.Drawing.Point(83, 224);
-            this.onGetTextBox.Name = "onGetTextBox";
-            this.onGetTextBox.Size = new System.Drawing.Size(349, 20);
-            this.onGetTextBox.TabIndex = 22;
-            // 
             // LocaleQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,6 +352,7 @@
             this.Controls.Add(this.lQuestRules);
             this.Controls.Add(this.questInformationBox);
             this.Name = "LocaleQuestForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Локализация события";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LocaleQuestForm_FormClosing);
             this.questInformationBox.ResumeLayout(false);
