@@ -289,7 +289,35 @@ namespace StalkerOnlineQuesterEditor.Forms
                             this.writeToLog(ERROR_QUEST, line, quest_id);
                         }
                     }
+                    foreach (int complete_quest_id in dia.Value.Actions.CompleteQuests)
+                    {
+                        CQuest complete_quest = parent.getQuestOnQuestID(complete_quest_id);
+                        if (complete_quest == null)
+                        {
+                            string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + complete_quest_id + " выдаётся и не существует";
+                            this.writeToLog(ERROR_QUEST, line, complete_quest_id);
+                            continue;
+                        }
+                        if (complete_quest.Reward.Any())
+                        {
+                            if (dia.Value.Actions.GetQuests.Contains(complete_quest_id))
+                            {
+                                string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + complete_quest_id + " даётся и завершается в одном ноде диалога";
+                                this.writeToLog(ERROR_QUEST, line, complete_quest_id);
+                            }
 
+                            if ((complete_quest.Additional.IsSubQuest != 0) && (dia.Value.Actions.GetQuests.Contains(complete_quest.Additional.IsSubQuest)))
+                            {
+                                int parent_id = complete_quest.Additional.IsSubQuest;
+                                CQuest parent_complete_quest = parent.getQuestOnQuestID(parent_id);
+                                if (parent_complete_quest.Additional.ListOfSubQuest.Count == 1)
+                                {
+                                    string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + parent_id + " даётся, а его единственное событие " + complete_quest_id + " завершается";
+                                    this.writeToLog(ERROR_QUEST, line, complete_quest_id);
+                                }
+                            }
+                        }
+                    }
                     List<DialogEffect> check_eff_list = new List<DialogEffect>();
                     check_eff_list.AddRange(dia.Value.Precondition.NecessaryEffects);
                     check_eff_list.AddRange(dia.Value.Precondition.MustNoEffects);
@@ -373,9 +401,13 @@ namespace StalkerOnlineQuesterEditor.Forms
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tимеет тип: \"" + this.parent.questConst.getDescription(quest.Value.Target.QuestType) + "\" и нигде не проверяется";
                         if (quest.Value.Target.QuestType == 5)
+                        {
                             this.writeToLog(ERROR_QUEST_TYPE5, line, quest.Key);
+                        }
                         else
+                        {
                             this.writeToLog(ERROR_QUEST, line, quest.Key);
+                        }
                     }
                 }
                 if ((quest.Value.Target.QuestType == 0) || (quest.Value.Target.QuestType == 16) || (quest.Value.Target.QuestType == 7))
