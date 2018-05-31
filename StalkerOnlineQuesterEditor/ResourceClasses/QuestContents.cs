@@ -526,9 +526,19 @@ namespace StalkerOnlineQuesterEditor
         }
         public bool Any()
         {
-            return Experience.Any() || TypeOfItems.Any() || NumOfItems.Any() ||
+            return hasExperience() || TypeOfItems.Any() || NumOfItems.Any() ||
                 AttrOfItems.Any() || Probability.Any() || Credits != 0 || ReputationNotEmpty() ||
                 KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any();
+        }
+
+        private bool hasExperience()
+        {
+            int sum = 0;
+            foreach (int val in Experience)
+            {
+                sum += val;
+            }
+            return sum != 0;
         }
 
         public string getReputation()

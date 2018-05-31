@@ -245,7 +245,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                         if (complete_quest == null)
                         {
                             string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + complete_quest_id + " выдаётся и не существует";
-                            this.writeToLog(line);
+                            this.writeToLog(line, complete_quest_id);
                             continue;
                         }
                         if (complete_quest.Reward.Any())
@@ -253,17 +253,17 @@ namespace StalkerOnlineQuesterEditor.Forms
                             if (dia.Value.Actions.GetQuests.Contains(complete_quest_id))
                             {
                                 string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + complete_quest_id + " даётся и завершается в одном ноде диалога";
-                                this.writeToLog(line);
+                                this.writeToLog(line, complete_quest_id);
                             }
 
-                            if (complete_quest.Additional.IsSubQuest != 0)
+                            if ((complete_quest.Additional.IsSubQuest != 0) && (dia.Value.Actions.GetQuests.Contains(complete_quest.Additional.IsSubQuest)))
                             {
                                 int parent_id = complete_quest.Additional.IsSubQuest;
                                 CQuest parent_complete_quest = parent.getQuestOnQuestID(parent_id);
                                 if (parent_complete_quest.Additional.ListOfSubQuest.Count == 1)
                                 {
-                                    string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + parent_id + " даётся, а его единственное событие " +complete_quest_id +" завершается";
-                                    this.writeToLog(line);
+                                    string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + parent_id + " даётся, а его единственное событие " + complete_quest_id + " завершается";
+                                    this.writeToLog(line, complete_quest_id);
                                 }
                             }
                         }
