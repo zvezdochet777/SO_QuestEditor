@@ -353,9 +353,9 @@ namespace StalkerOnlineQuesterEditor
             {
                 doc = XDocument.Load(DialogsXMLFile);
             }
-            catch(Exception)
+            catch(Exception e)
             {
-                MessageBox.Show("Произошла ошибка при чтении файла: " + DialogsXMLFile, "Ошибка чтения");
+                MessageBox.Show("Произошла ошибка при чтении файла: " + DialogsXMLFile + "\n" + e.Message, "Ошибка чтения");
                 return;
             }
             foreach (XElement npc in doc.Root.Elements())
@@ -658,20 +658,40 @@ namespace StalkerOnlineQuesterEditor
         {
             if (!File.Exists(filename))
                 return;
-
-            doc = XDocument.Load(filename);
+            try
+            {
+                doc = XDocument.Load(filename);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Произошла ошибка при чтении файла: " + filename + "\n" + e.Message, "Ошибка чтения");
+                return;
+            }
+            bool find_error = false;
             foreach (XElement item in doc.Root.Elements())
             {
                 string npc_name = item.Attribute("NPC_Name").Value.ToString();
                 if (!tempCoordinates.ContainsKey(npc_name))
                     tempCoordinates.Add(npc_name, new Dictionary<int,NodeCoordinates>());
-
+                
                 foreach (XElement dialog in item.Elements())
                 {
                     int id = int.Parse(dialog.Attribute("ID").Value);
                     float x = float.Parse(dialog.Element("X").Value);
                     float y = float.Parse(dialog.Element("Y").Value);
-                    tempCoordinates[npc_name].Add(id, new NodeCoordinates(x,y,false,false));
+                    try
+                    {
+                        tempCoordinates[npc_name].Add(id, new NodeCoordinates(x, y, false, false));
+                    }
+                    catch (Exception e)
+                    {
+                        if (!find_error)
+                        {
+                            MessageBox.Show("Произошла ошибка при чтении файла: " + filename + "\n" + e.Message, "Ошибка чтения");
+                            find_error = true;
+                        }
+                        continue;
+                    }
                 }
             }
         }

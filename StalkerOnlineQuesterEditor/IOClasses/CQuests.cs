@@ -339,9 +339,9 @@ namespace StalkerOnlineQuesterEditor
             {
                 doc = XDocument.Load(sPath);
             }
-            catch(Exception)
+            catch(Exception e)
             {
-                MessageBox.Show("Не удалось загрузить файл:" + sPath, "Ошибка чтения");
+                MessageBox.Show("Не удалось загрузить файл:" + sPath + "\n" + e.Message, "Ошибка чтения");
                 return;
             }
 
