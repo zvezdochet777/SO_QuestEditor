@@ -20,7 +20,8 @@
     <StartArguments>/master</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>/master</StartArguments>
+    <StartArguments>
+    </StartArguments>
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
     <RemoteDebugMachine>USTAS</RemoteDebugMachine>
     <StartAction>Project</StartAction>

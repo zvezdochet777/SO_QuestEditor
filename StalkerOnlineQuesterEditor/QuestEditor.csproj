@@ -171,6 +171,7 @@
     <Compile Include="GUIClasses\ZoomEventHandler.cs" />
     <Compile Include="IOClasses\CNpcData.cs" />
     <Compile Include="IOClasses\CRectangles.cs" />
+    <Compile Include="IOClasses\TCPListener.cs" />
     <Compile Include="ResourceClasses\CEffectConstants.cs" />
     <Compile Include="ResourceClasses\CFracConstants.cs" />
     <Compile Include="ResourceClasses\CGUIConst.cs" />

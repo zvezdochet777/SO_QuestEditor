@@ -32,6 +32,8 @@ namespace StalkerOnlineQuesterEditor
         public NPCLocales locales = new NPCLocales();
         private CoordinatesDict tempCoordinates = new CoordinatesDict();
         private CManagerNPC ManagerNPC;
+        private Dictionary<int, string> dialogIDList = new Dictionary<int, string>();
+        private Dictionary<int, List<string>> dialogErrors = new Dictionary<int, List<string>>();
 
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
         public CDialogs(MainForm parent, CManagerNPC managerNPC)
@@ -40,7 +42,7 @@ namespace StalkerOnlineQuesterEditor
             ManagerNPC = managerNPC;
             ParseNodeCoordinates("NodeCoordinates.xml");
 
-            ParseDialogsData(parent.settings.GetDialogDataPath(), this.dialogs);
+            ParseDialogsData(parent.settings.GetDialogDataPath(), this.dialogs, true);
             ParseDialogsTexts(parent.settings.GetDialogTextPath(), this.dialogs);
 
             foreach (var locale in parent.settings.getListLocales())
@@ -53,12 +55,13 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Парсер xml - файла данных диалогов, записывает результат в target
-        private void ParseDialogsData(String DialogsXMLFile, NPCDicts target)
+        private void ParseDialogsData(String DialogsXMLFile, NPCDicts target, bool findErrors = false)
         {
             if (!File.Exists(DialogsXMLFile))
                 return;
             List<int> tests;
             doc = XDocument.Load(DialogsXMLFile);
+            dialogErrors = new Dictionary<int, List<string>>();
             foreach (XElement npc in doc.Root.Elements())
             {
                 string npc_name = npc.Element("Name").Value.ToString().Trim();
@@ -67,6 +70,11 @@ namespace StalkerOnlineQuesterEditor
                 foreach (XElement dialog in npc.Elements("Dialog"))
                 {
                     int DialogID = int.Parse(dialog.Element("ID").Value);
+                    if (findErrors)
+                        if (dialogIDList.ContainsKey(DialogID))
+                            dialogErrors.Add(DialogID, new List<string> { npc_name, dialogIDList[DialogID] });
+                        else
+                            dialogIDList.Add(DialogID, npc_name);
                     string DebugData = "";
                     bool isAutoNode = false;
                     string defaultNode = "";
@@ -278,6 +286,14 @@ namespace StalkerOnlineQuesterEditor
                         target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, CheckNodes, DialogID, 0, nodeCoord, DebugData, isAutoNode, defaultNode));
                 }
             }
+
+            foreach (KeyValuePair<int, List<string>> dialogError in dialogErrors)
+            {
+                
+                MessageBox.Show("Ошибка дублирования диалогов (Всего "+ dialogErrors.Count + ") (" + dialogError.Value[0] + ", " + dialogError.Value[1] +") "+ dialogError.Key + " => " + (dialogIDList.Keys.Max()+1));
+                throw new Exception("Ошибка дублирования диалогов " + dialogError.Key + " => " + (dialogIDList.Keys.Max() + 1));
+            }
+            
         }
 
         private void AddPreconditionQuests(XElement Element, String Name1, String Name2, List<int> list, ref char condition)

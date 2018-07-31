@@ -83,8 +83,9 @@ namespace StalkerOnlineQuesterEditor
         public DialogEventsList dialogEvents;
         public int currentQuest;
         public Dictionary<string, bool> npcFilters;
+        IOClasses.TCPListener tcpListener;
 
-        public MainForm()
+        public MainForm(string[] args)
         {
             InitializeComponent();
             RectManager = new RectangleManager();
@@ -134,7 +135,7 @@ namespace StalkerOnlineQuesterEditor
             DialogShower.AddInputEventListener(HoverHandler);
             DialogShower.PanEventHandler = null;
             DialogShower.ZoomEventHandler = null;
-
+            
             foreach (string name in dialogs.getListOfNPC())
                 if (!npcConst.NPCs.Keys.Contains(name))
                  npcConst.NPCs.Add(name, new CNPCDescription(name));
@@ -142,7 +143,16 @@ namespace StalkerOnlineQuesterEditor
             this.zoneConst = new CZoneConstants();
             this.billboardQuests = new BillboardQuests();
             this.zoneMobConst = new CZoneMobConstants();
-            SetMasterMode();
+            //SetMasterMode();
+
+            tcpListener = new IOClasses.TCPListener(this);
+            tcpListener.start();
+
+            if (args.Length > 0)
+            {
+                Thread t = new Thread(() => this.openNPC(args[0].Replace("/", "")));
+                t.Start();
+            }
         }
         //! Set mode for me, if Command line has /master parameter, TestButton and some labels will be shown
         void SetMasterMode()
@@ -167,6 +177,35 @@ namespace StalkerOnlineQuesterEditor
             treeQuest.Nodes.Clear();
             splitQuestsContainer.Panel2.Controls.Clear();
             QuestBox.Items.Clear();
+        }
+
+        public void openNPC(string open_npc_name)
+        {
+            int index = 0;
+            for (int i=0;i< NPCBox.Items.Count; i++)
+            {
+                string npc_name = (NPCBox.Items[i] as NPCNameDataSourceObject).Value;
+                Console.WriteLine(npc_name.Contains(open_npc_name).ToString() + " " + open_npc_name + " " + npc_name);
+
+                if (npc_name.Contains(open_npc_name))
+                {
+                    settings.setLastNpcIndex(index);
+                    Console.WriteLine("NPC::" + index.ToString() + " " + npc_name);
+                    
+                    if (NPCBox.InvokeRequired)
+                    {
+                        NPCBox.Invoke(new ThreadStart(
+                            delegate
+                            {
+                                NPCBox.SelectedIndex = index;
+                            }));
+                    }
+                        
+                    break;
+                }
+                index++;
+            }
+            
         }
 
         private void btnBackNPC_Click(object sender, EventArgs e)
@@ -344,7 +383,6 @@ namespace StalkerOnlineQuesterEditor
             if (npcNames.Count <= settings.getLastNpcIndex())
                 settings.setLastNpcIndex(npcNames.Count - 1);
             NPCBox.SelectedIndex = settings.getLastNpcIndex();
-
             NPCBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
                        
@@ -2281,6 +2319,7 @@ namespace StalkerOnlineQuesterEditor
         {
             settings.setLastNpcIndex(NPCBox.SelectedIndex);
             settings.saveSettings();
+            tcpListener.stop();
         }
 
         private void DialogShower_MouseMove(object sender, MouseEventArgs e)

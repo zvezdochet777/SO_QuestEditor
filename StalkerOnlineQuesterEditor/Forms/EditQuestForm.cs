@@ -795,12 +795,12 @@ namespace StalkerOnlineQuesterEditor
             else
                 bPenaltyItem.Image = null;
 
-            if (editQuestReward.ReputationNotEmpty())
+            if (editQuestReward.ReputationNotEmpty() || editQuestReward.ReputationNotEmpty(true))
                 bRewardReputation.Image = Properties.Resources.but_indicate;
             else
                 bRewardReputation.Image = null;
 
-            if (editQuestPenalty.ReputationNotEmpty())
+            if (editQuestPenalty.ReputationNotEmpty() || editQuestReward.ReputationNotEmpty(true))
                 bPenaltyReputation.Image = Properties.Resources.but_indicate;
             else
                 bPenaltyReputation.Image = null;
