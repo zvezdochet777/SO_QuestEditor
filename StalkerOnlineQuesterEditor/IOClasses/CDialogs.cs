@@ -32,7 +32,7 @@ namespace StalkerOnlineQuesterEditor
         public NPCLocales locales = new NPCLocales();
         private CoordinatesDict tempCoordinates = new CoordinatesDict();
         private CManagerNPC ManagerNPC;
-        private Dictionary<int, string> dialogIDList = new Dictionary<int, string>();
+        public Dictionary<int, string> dialogIDList = new Dictionary<int, string>();
         private Dictionary<int, List<string>> dialogErrors = new Dictionary<int, List<string>>();
 
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже

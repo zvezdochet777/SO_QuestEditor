@@ -185,8 +185,6 @@ namespace StalkerOnlineQuesterEditor
             for (int i=0;i< NPCBox.Items.Count; i++)
             {
                 string npc_name = (NPCBox.Items[i] as NPCNameDataSourceObject).Value;
-                Console.WriteLine(npc_name.Contains(open_npc_name).ToString() + " " + open_npc_name + " " + npc_name);
-
                 if (npc_name.Contains(open_npc_name))
                 {
                     settings.setLastNpcIndex(index);
@@ -194,18 +192,16 @@ namespace StalkerOnlineQuesterEditor
                     
                     if (NPCBox.InvokeRequired)
                     {
-                        NPCBox.Invoke(new ThreadStart(
-                            delegate
-                            {
-                                NPCBox.SelectedIndex = index;
-                            }));
+                        NPCBox.Invoke(new ThreadStart(delegate {NPCBox.SelectedIndex = index;}));
                     }
-                        
+                    else
+                    {
+                        NPCBox.SelectedIndex = index;
+                    }
                     break;
                 }
                 index++;
             }
-            
         }
 
         private void btnBackNPC_Click(object sender, EventArgs e)
@@ -2509,6 +2505,27 @@ namespace StalkerOnlineQuesterEditor
         private void переместитьЛокализациюВИгруToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tbFindDialogID_TextChanged(object sender, EventArgs e)
+        {
+            string text = (sender as TextBox).Text;
+            int finded_dialogID;
+            string finded_npcName = "";
+            if (!int.TryParse(text, out finded_dialogID))
+                return;
+            foreach (int dialog_id in dialogs.dialogIDList.Keys)
+            {
+                if (dialog_id == finded_dialogID)
+                {
+                    finded_npcName = dialogs.dialogIDList[dialog_id];
+                    break;
+                }
+            }
+            if (finded_npcName == "") return;
+
+            openNPC(finded_npcName);
+            Listener.SelectCurrentNode(finded_dialogID);
         }
     }
 }

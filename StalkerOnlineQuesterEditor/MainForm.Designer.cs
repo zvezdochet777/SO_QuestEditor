@@ -179,6 +179,8 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
+            this.lFindDialogID = new System.Windows.Forms.Label();
+            this.tbFindDialogID = new System.Windows.Forms.TextBox();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
@@ -360,6 +362,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.panelDialogTools.AutoSize = true;
             this.panelDialogTools.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelDialogTools.Controls.Add(this.lFindDialogID);
+            this.panelDialogTools.Controls.Add(this.tbFindDialogID);
             this.panelDialogTools.Controls.Add(this.btnClearRecycle);
             this.panelDialogTools.Controls.Add(this.labelDrawingTip);
             this.panelDialogTools.Controls.Add(this.bTestButton);
@@ -458,7 +462,7 @@ namespace StalkerOnlineQuesterEditor
             this.bRemoveDialog.Enabled = false;
             this.bRemoveDialog.ImageKey = "delete.png";
             this.bRemoveDialog.ImageList = this.imageList;
-            this.bRemoveDialog.Location = new System.Drawing.Point(6, 99);
+            this.bRemoveDialog.Location = new System.Drawing.Point(6, 123);
             this.bRemoveDialog.Name = "bRemoveDialog";
             this.bRemoveDialog.Size = new System.Drawing.Size(192, 30);
             this.bRemoveDialog.TabIndex = 6;
@@ -473,7 +477,7 @@ namespace StalkerOnlineQuesterEditor
             this.bEditDialog.Enabled = false;
             this.bEditDialog.ImageKey = "Edit.png";
             this.bEditDialog.ImageList = this.imageList;
-            this.bEditDialog.Location = new System.Drawing.Point(6, 61);
+            this.bEditDialog.Location = new System.Drawing.Point(6, 85);
             this.bEditDialog.Name = "bEditDialog";
             this.bEditDialog.Size = new System.Drawing.Size(192, 30);
             this.bEditDialog.TabIndex = 5;
@@ -488,7 +492,7 @@ namespace StalkerOnlineQuesterEditor
             this.bAddDialog.Enabled = false;
             this.bAddDialog.ImageKey = "add.png";
             this.bAddDialog.ImageList = this.imageList;
-            this.bAddDialog.Location = new System.Drawing.Point(6, 23);
+            this.bAddDialog.Location = new System.Drawing.Point(6, 47);
             this.bAddDialog.Name = "bAddDialog";
             this.bAddDialog.Size = new System.Drawing.Size(192, 30);
             this.bAddDialog.TabIndex = 4;
@@ -1691,7 +1695,7 @@ namespace StalkerOnlineQuesterEditor
             // собратьЭдиторДляПередачиToolStripMenuItem
             // 
             this.собратьЭдиторДляПередачиToolStripMenuItem.Name = "собратьЭдиторДляПередачиToolStripMenuItem";
-            this.собратьЭдиторДляПередачиToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.собратьЭдиторДляПередачиToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.собратьЭдиторДляПередачиToolStripMenuItem.Text = "Собрать эдитор для передачи";
             this.собратьЭдиторДляПередачиToolStripMenuItem.Click += new System.EventHandler(this.собратьЭдиторДляПередачиToolStripMenuItem_Click);
             // 
@@ -1710,6 +1714,23 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 1;
+            // 
+            // lFindDialogID
+            // 
+            this.lFindDialogID.AutoSize = true;
+            this.lFindDialogID.Location = new System.Drawing.Point(3, 5);
+            this.lFindDialogID.Name = "lFindDialogID";
+            this.lFindDialogID.Size = new System.Drawing.Size(101, 13);
+            this.lFindDialogID.TabIndex = 11;
+            this.lFindDialogID.Text = "Поиск по DialogID:";
+            // 
+            // tbFindDialogID
+            // 
+            this.tbFindDialogID.Location = new System.Drawing.Point(6, 23);
+            this.tbFindDialogID.Name = "tbFindDialogID";
+            this.tbFindDialogID.Size = new System.Drawing.Size(192, 20);
+            this.tbFindDialogID.TabIndex = 10;
+            this.tbFindDialogID.TextChanged += new System.EventHandler(this.tbFindDialogID_TextChanged);
             // 
             // MainForm
             // 
@@ -1931,6 +1952,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button btnFilterNPC;
         private System.Windows.Forms.ToolStripMenuItem данныеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem собратьЭдиторДляПередачиToolStripMenuItem;
+        private System.Windows.Forms.Label lFindDialogID;
+        private System.Windows.Forms.TextBox tbFindDialogID;
     }
 }
 
