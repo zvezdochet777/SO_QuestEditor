@@ -50,7 +50,7 @@ namespace StalkerOnlineQuesterEditor
                 localizeCheckBox.Checked = true;
                 localeComboBox.SelectedIndex = parent.settings.getCurrentIndexLocale();
             }
-            tbAddressToCopyFiles.Text = parent.settings.pathToCopyFiles;
+            tbAddressToCopyFiles.Text = parent.settings.pathQuestDataFiles;
         }
 
         //! Нажатие ОК - магические действия с номером оператора и выход на главную
@@ -77,7 +77,7 @@ namespace StalkerOnlineQuesterEditor
             else
                 parent.settings.setEditorMode();
 
-            parent.settings.pathToCopyFiles = tbAddressToCopyFiles.Text;
+            parent.settings.pathQuestDataFiles = tbAddressToCopyFiles.Text;
             parent.settings.saveSettings();
             this.Close();
         }

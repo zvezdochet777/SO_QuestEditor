@@ -2468,8 +2468,14 @@ namespace StalkerOnlineQuesterEditor
                 MessageBox.Show("Не удалось скопировать файл " + CEffectConstants.JSON_PATH + " в "+ path+"\\source\\Effects.json", "Ошибка сохранения");
             }
             //Копировать QuestData и DialogData
-            sourceParh = settings.pathToCopyFiles;
+
             string data_path = path + "\\source\\Quests\\";
+            if (loadFiles(settings.pathQuestDataFiles, data_path) && loadFiles(settings.pathDialogsDataFiles, data_path))
+                MessageBox.Show("QuestEditor готов. Сохранён в " + path, "Успех");
+        }
+
+        private bool loadFiles(string sourceParh, string data_path)
+        {
             Directory.CreateDirectory(data_path);
 
             foreach (string dirPath in Directory.GetDirectories(sourceParh, "*", SearchOption.AllDirectories))
@@ -2481,7 +2487,7 @@ namespace StalkerOnlineQuesterEditor
                 catch (Exception)
                 {
                     MessageBox.Show("Не удалось создать папку в пути:" + dirPath.Replace(sourceParh, data_path), "Ошибка сохранения");
-                    return;
+                    return false;
                 }
             }
 
@@ -2494,12 +2500,10 @@ namespace StalkerOnlineQuesterEditor
                 catch (Exception)
                 {
                     MessageBox.Show("Не удалось скопировать файл " + newPath + " в пути:" + newPath.Replace(sourceParh, data_path), "Ошибка сохранения");
-                    return;
+                    return false;
                 }
             }
-
-
-            MessageBox.Show("QuestEditor готов. Сохранён в " + path, "Успех");
+            return true;
         }
 
         private void переместитьЛокализациюВИгруToolStripMenuItem_Click(object sender, EventArgs e)

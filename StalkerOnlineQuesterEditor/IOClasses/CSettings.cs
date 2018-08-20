@@ -16,7 +16,8 @@ namespace StalkerOnlineQuesterEditor
         //! Режим - обычный (MODE_SIMPLE) или перевод (MODE_LOCALIZATION)
         int mode = 0;
         //! Путь, по которому копировать файлы результата - Dialogs.xml, Quests.xml etc.
-        public string pathToCopyFiles = @"..\..\..\res\scripts\common\data\Quests\";
+        public string pathDialogsDataFiles = @"..\..\..\res\scripts\server_common\data\Quests\";
+        public string pathQuestDataFiles = @"..\..\..\res\scripts\common\data\Quests\";
         public string pathToLocalFiles = @"..\..\..\res\local\";
 
         //! Список все локализаций English, GER etc.
@@ -54,8 +55,10 @@ namespace StalkerOnlineQuesterEditor
                 }
                 this.mode = int.Parse(doc.Root.Element("mode").Value.ToString());
                 this.currentLocale = int.Parse(doc.Root.Element("current_locale").Value.ToString());
-                if (Directory.Exists(doc.Root.Element("pathToCopyFiles").Value))
-                    pathToCopyFiles = doc.Root.Element("pathToCopyFiles").Value;
+                if (Directory.Exists(doc.Root.Element("pathDialogsDataFiles").Value))
+                    pathDialogsDataFiles = doc.Root.Element("pathDialogsDataFiles").Value;
+                if (Directory.Exists(doc.Root.Element("pathQuestDataFiles").Value))
+                    pathDialogsDataFiles = doc.Root.Element("pathQuestDataFiles").Value;
                 lastNpcIndex = int.Parse(doc.Root.Element("LastNPcIndex").Value.ToString());
                 if (Directory.Exists(doc.Root.Element("pathToLocalFiles").Value))
                     pathToLocalFiles = doc.Root.Element("pathToLocalFiles").Value;
@@ -67,15 +70,20 @@ namespace StalkerOnlineQuesterEditor
                 mode = MODE_EDITOR;
                 currentLocale = 0;
                 lastNpcIndex = 1;
-                pathToCopyFiles = @"..\..\..\res\scripts\common\data\Quests\";
+                pathDialogsDataFiles = @"..\..\..\res\scripts\server_common\data\Quests\";
+                pathQuestDataFiles = @"..\..\..\res\scripts\common\data\Quests\";
                 pathToLocalFiles = @"..\..\..\res\local\";
                 System.Console.WriteLine("Can't parse settings file! Defaults used");
             }
             if (!locales.Contains("English"))
                 locales.Add("English");
-            if (!Directory.Exists(pathToCopyFiles))
+            if (!Directory.Exists(pathQuestDataFiles))
             {
-                pathToCopyFiles = "source/Quests/";
+                pathQuestDataFiles = "source/Quests/";
+            }
+            if (!Directory.Exists(pathDialogsDataFiles))
+            {
+                pathDialogsDataFiles = "source/Quests/";
             }
             if (!Directory.Exists(pathToLocalFiles))
             {
@@ -151,14 +159,16 @@ namespace StalkerOnlineQuesterEditor
             XElement mode = new XElement("mode", this.mode.ToString());
             XElement current_locale = new XElement("current_locale", this.currentLocale.ToString());
             XElement lastNpcIndex = new XElement("LastNPcIndex", this.lastNpcIndex);
-            XElement path = new XElement("pathToCopyFiles", this.pathToCopyFiles);
+            XElement path_dialog = new XElement("pathQuestDataFiles", this.pathQuestDataFiles);
+            XElement path_quest = new XElement("pathDialogsDataFiles", this.pathDialogsDataFiles);
             XElement local_path = new XElement("pathToLocalFiles", this.pathToLocalFiles);
             resultDoc.Root.Add(oper);
             resultDoc.Root.Add(loc);
             resultDoc.Root.Add(mode);
             resultDoc.Root.Add(current_locale);
             resultDoc.Root.Add(lastNpcIndex);
-            resultDoc.Root.Add(path);
+            resultDoc.Root.Add(path_quest);
+            resultDoc.Root.Add(path_dialog);
             resultDoc.Root.Add(local_path); 
             resultDoc.Save(SETTINGS_PATH + SETTING_FILE);
         }
@@ -217,7 +227,7 @@ namespace StalkerOnlineQuesterEditor
 
         public string GetDialogDataPath()
         {
-            return Path.Combine(pathToCopyFiles, dialogDataXML);
+            return Path.Combine(pathDialogsDataFiles, dialogDataXML);
         }
 
         public string GetDeletedQuestsPath()
@@ -227,7 +237,7 @@ namespace StalkerOnlineQuesterEditor
 
         public string GetQuestDataPath()
         {
-            return Path.Combine(pathToCopyFiles, questDataXML);
+            return Path.Combine(pathQuestDataFiles, questDataXML);
         }
 
         public string GetDialogLocaleTextPath()
