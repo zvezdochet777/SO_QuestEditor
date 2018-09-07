@@ -205,6 +205,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbChangeMoneyFailNode = new System.Windows.Forms.TextBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
@@ -288,6 +290,8 @@
             // gbActions
             // 
             this.gbActions.AutoSize = true;
+            this.gbActions.Controls.Add(this.tbChangeMoneyFailNode);
+            this.gbActions.Controls.Add(this.label10);
             this.gbActions.Controls.Add(this.nupChangeMoney);
             this.gbActions.Controls.Add(this.label8);
             this.gbActions.Controls.Add(this.tbAvatarGoTo);
@@ -308,13 +312,13 @@
             this.gbActions.Enabled = false;
             this.gbActions.Location = new System.Drawing.Point(0, 546);
             this.gbActions.Name = "gbActions";
-            this.gbActions.Size = new System.Drawing.Size(595, 144);
+            this.gbActions.Size = new System.Drawing.Size(595, 145);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
             // 
             // nupChangeMoney
             // 
-            this.nupChangeMoney.Location = new System.Drawing.Point(426, 101);
+            this.nupChangeMoney.Location = new System.Drawing.Point(326, 106);
             this.nupChangeMoney.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -326,13 +330,13 @@
             0,
             -2147483648});
             this.nupChangeMoney.Name = "nupChangeMoney";
-            this.nupChangeMoney.Size = new System.Drawing.Size(147, 20);
+            this.nupChangeMoney.Size = new System.Drawing.Size(136, 20);
             this.nupChangeMoney.TabIndex = 43;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(293, 103);
+            this.label8.Location = new System.Drawing.Point(221, 108);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 13);
             this.label8.TabIndex = 42;
@@ -1910,9 +1914,9 @@
             this.pCommands.Controls.Add(this.bEditDialogCancel);
             this.pCommands.Controls.Add(this.bEditDialogOk);
             this.pCommands.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pCommands.Location = new System.Drawing.Point(0, 690);
+            this.pCommands.Location = new System.Drawing.Point(0, 691);
             this.pCommands.Name = "pCommands";
-            this.pCommands.Size = new System.Drawing.Size(595, 53);
+            this.pCommands.Size = new System.Drawing.Size(595, 52);
             this.pCommands.TabIndex = 13;
             // 
             // cbForDev
@@ -2016,6 +2020,22 @@
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(466, 88);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 13);
+            this.label10.TabIndex = 44;
+            this.label10.Text = "В случае неудачи;";
+            // 
+            // tbChangeMoneyFailNode
+            // 
+            this.tbChangeMoneyFailNode.Location = new System.Drawing.Point(467, 106);
+            this.tbChangeMoneyFailNode.Name = "tbChangeMoneyFailNode";
+            this.tbChangeMoneyFailNode.Size = new System.Drawing.Size(100, 20);
+            this.tbChangeMoneyFailNode.TabIndex = 45;
             // 
             // EditDialogForm
             // 
@@ -2262,5 +2282,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn b;
         private System.Windows.Forms.TextBox tbAdditionalAction;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbChangeMoneyFailNode;
+        private System.Windows.Forms.Label label10;
     }
 }

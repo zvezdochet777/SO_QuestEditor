@@ -16,7 +16,7 @@ namespace StalkerOnlineQuesterEditor
         //! Режим - обычный (MODE_SIMPLE) или перевод (MODE_LOCALIZATION)
         int mode = 0;
         //! Путь, по которому копировать файлы результата - Dialogs.xml, Quests.xml etc.
-        public string pathDialogsDataFiles = @"..\..\..\res\scripts\server_common\data\Quests\";
+        public string pathDialogsDataFiles = @"..\..\..\res\scripts\server_data\Quests\";
         public string pathQuestDataFiles = @"..\..\..\res\scripts\common\data\Quests\";
         public string pathToLocalFiles = @"..\..\..\res\local\";
 
@@ -58,7 +58,7 @@ namespace StalkerOnlineQuesterEditor
                 if (Directory.Exists(doc.Root.Element("pathDialogsDataFiles").Value))
                     pathDialogsDataFiles = doc.Root.Element("pathDialogsDataFiles").Value;
                 if (Directory.Exists(doc.Root.Element("pathQuestDataFiles").Value))
-                    pathDialogsDataFiles = doc.Root.Element("pathQuestDataFiles").Value;
+                    pathQuestDataFiles = doc.Root.Element("pathQuestDataFiles").Value;
                 lastNpcIndex = int.Parse(doc.Root.Element("LastNPcIndex").Value.ToString());
                 if (Directory.Exists(doc.Root.Element("pathToLocalFiles").Value))
                     pathToLocalFiles = doc.Root.Element("pathToLocalFiles").Value;
@@ -70,7 +70,7 @@ namespace StalkerOnlineQuesterEditor
                 mode = MODE_EDITOR;
                 currentLocale = 0;
                 lastNpcIndex = 1;
-                pathDialogsDataFiles = @"..\..\..\res\scripts\server_common\data\Quests\";
+                pathDialogsDataFiles = @"..\..\..\res\scripts\server_data\Quests\";
                 pathQuestDataFiles = @"..\..\..\res\scripts\common\data\Quests\";
                 pathToLocalFiles = @"..\..\..\res\local\";
                 System.Console.WriteLine("Can't parse settings file! Defaults used");
@@ -159,8 +159,8 @@ namespace StalkerOnlineQuesterEditor
             XElement mode = new XElement("mode", this.mode.ToString());
             XElement current_locale = new XElement("current_locale", this.currentLocale.ToString());
             XElement lastNpcIndex = new XElement("LastNPcIndex", this.lastNpcIndex);
-            XElement path_dialog = new XElement("pathQuestDataFiles", this.pathQuestDataFiles);
-            XElement path_quest = new XElement("pathDialogsDataFiles", this.pathDialogsDataFiles);
+            XElement path_quest = new XElement("pathQuestDataFiles", this.pathQuestDataFiles);
+            XElement path_dialog = new XElement("pathDialogsDataFiles", this.pathDialogsDataFiles);
             XElement local_path = new XElement("pathToLocalFiles", this.pathToLocalFiles);
             resultDoc.Root.Add(oper);
             resultDoc.Root.Add(loc);

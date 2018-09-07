@@ -311,6 +311,7 @@ namespace StalkerOnlineQuesterEditor
         public int actionActionNPC;
         public string actionAdditionalActionNPC;
         public int changeMoney;
+        public int changeMoneyFailNode;
         public string actionAvatarPoint;
         public string actionPlaySound;
 
@@ -333,13 +334,15 @@ namespace StalkerOnlineQuesterEditor
             this.actionActionNPC = 0;
             this.actionAdditionalActionNPC = "";
             this.changeMoney = 0;
+            this.changeMoneyFailNode = 0;
         }
 
 
         public bool Any()
         {
             return GetQuests.Any() || CompleteQuests.Any() || CancelQuests.Any() || FailQuests.Any() || (Event != null && Event.Value != 0) || (ToDialog != 0) || Exit ||
-                actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "" || actionActionNPC != 0 || actionAvatarPoint != "" || actionPlaySound != "" || (changeMoney != 0);
+                actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "" || actionActionNPC != 0 || actionAvatarPoint != "" || actionPlaySound != "" || 
+                (changeMoney != 0) || (changeMoneyFailNode != 0);
         }
 
         public bool Exists()

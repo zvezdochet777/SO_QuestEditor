@@ -112,8 +112,11 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("Actions").Element("PlaySound") != null)
                             Actions.actionPlaySound = dialog.Element("Actions").Element("PlaySound").Value;
                         if (dialog.Element("Actions").Element("ChangeMoney") != null)
+                        {
                             Actions.changeMoney = int.Parse(dialog.Element("Actions").Element("ChangeMoney").Value);
-
+                            if (dialog.Element("Actions").Element("ChangeMoneyFailNode") != null)
+                                Actions.changeMoneyFailNode = int.Parse(dialog.Element("Actions").Element("ChangeMoneyFailNode").Value);
+                        }
                         if (dialog.Element("Actions").Element("Exit")!= null)
                         Actions.Exit = dialog.Element("Actions").Element("Exit").Value == "1";
                     Actions.ToDialog = ParseIntIfNotEmpty(dialog, "Actions", "ToDialog", 0);
@@ -615,7 +618,13 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Actions.actionPlaySound.Any())
                             element.Element("Actions").Add(new XElement("PlaySound", dialog.Actions.actionPlaySound));
                         if (dialog.Actions.changeMoney != 0)
+                        {
                             element.Element("Actions").Add(new XElement("ChangeMoney", Global.GetIntAsString(dialog.Actions.changeMoney)));
+                            if (dialog.Actions.changeMoneyFailNode != 0)
+                            {
+                                element.Element("Actions").Add(new XElement("ChangeMoneyFailNode", Global.GetIntAsString(dialog.Actions.changeMoneyFailNode)));
+                            }
+                        }
 
                     }
 

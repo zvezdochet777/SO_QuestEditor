@@ -592,7 +592,11 @@ namespace StalkerOnlineQuesterEditor
             if (cbPlaySonund.Checked && tbPlaySonund.Text.Any())
                 actions.actionPlaySound = tbPlaySonund.Text;
             if (nupChangeMoney.Value != 0)
+            {
                 actions.changeMoney = Convert.ToInt32(nupChangeMoney.Value);
+                if (tbChangeMoneyFailNode.Text.Any())
+                    int.TryParse(tbChangeMoneyFailNode.Text, out actions.changeMoneyFailNode);
+            }
 
 
             // заполняем условия появления диалога - открытые и закрытые квесты и т.д.
@@ -1166,6 +1170,11 @@ namespace StalkerOnlineQuesterEditor
                 tbPlaySonund.Text = curDialog.Actions.actionPlaySound;
             }
             nupChangeMoney.Value = Convert.ToDecimal(curDialog.Actions.changeMoney);
+            tbChangeMoneyFailNode.Text = "";
+            if (curDialog.Actions.changeMoneyFailNode != 0)
+            {
+                tbChangeMoneyFailNode.Text = curDialog.Actions.changeMoneyFailNode.ToString();
+            }
             this.checkActionIndicates();
         }
 

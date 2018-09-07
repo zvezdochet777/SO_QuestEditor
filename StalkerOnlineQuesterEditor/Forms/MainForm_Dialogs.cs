@@ -349,6 +349,16 @@ namespace StalkerOnlineQuesterEditor
              }
             newNode.Tag = new ArrayList();
             newNode.AddChild(text);
+
+            if ((dialog.Actions.changeMoney != 0) && (dialog.Actions.changeMoneyFailNode != 0))
+            {
+                PText fail_node = new PText("(" + dialog.Actions.changeMoneyFailNode.ToString() + ")");
+                fail_node.Font = new Font(fail_node.Font.Name, fail_node.Font.Size - 4, fail_node.Font.Style, fail_node.Font.Unit);
+                fail_node.X = text.X + 4;
+                fail_node.Y = text.Y + 13;
+                newNode.AddChild(fail_node);
+            }
+
             return newNode;
         }
 
