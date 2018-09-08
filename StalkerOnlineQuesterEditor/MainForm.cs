@@ -1767,8 +1767,21 @@ namespace StalkerOnlineQuesterEditor
         {
             // важное место - ставим зум на 1
             DialogShower.Camera.Scale = 1;
+            
+            float coordX = 0, coordY = 0;
+            foreach (KeyValuePair<int, CDialog> dialog in dialogs.dialogs[this.currentNPC])
+            {
+                if (dialog.Value.coordinates.RootDialog)
+                {
+                    coordX = dialog.Value.coordinates.X;
+                    coordY = dialog.Value.coordinates.Y;
+                    break;
+                }
+            }
+
             // сдвиг ставим на 0 -камера возвращается в исходное положение
-            DialogShower.Camera.SetOffset(0, 0);
+            DialogShower.Camera.SetOffset(-coordX + DialogShower.Width/2, -coordY + DialogShower.Height/2);
+
         }
 
 //*************************** DATA CHECK - missed dialogs, quests, NPC and so on**************************

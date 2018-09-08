@@ -322,6 +322,7 @@ namespace StalkerOnlineQuesterEditor
             this.initSkillsTab();
             this.initActionTab();
             this.initItemsTab();
+            this.initTransportTab();
             checkClanOptionsIndicator();
         }
 
@@ -726,6 +727,8 @@ namespace StalkerOnlineQuesterEditor
                     precondition.ListOfMustNoQuests.ListOfRepeat.Add(int.Parse(quest));
             }
 
+            precondition.transport.inTransportList = cbTransportInList.Checked;
+            precondition.transport.notInTransportList = cbNotInTransportList.Checked;
 
             if (checkClanOptions())
             {
@@ -1030,6 +1033,14 @@ namespace StalkerOnlineQuesterEditor
             return true;
         }
 
+        private void initTransportTab()
+        {
+            this.cbTransportInList.Checked = this.editPrecondition.transport.inTransportList;
+            this.cbNotInTransportList.Checked = this.editPrecondition.transport.notInTransportList;
+
+            this.checkTransportIndicates();
+        }
+
         private void initItemsTab()
         {
             foreach (CItem item in parent.itemConst.getAllItems().Values)
@@ -1297,6 +1308,12 @@ namespace StalkerOnlineQuesterEditor
         {
             pictureItems.Visible = (rbCategory.Checked && cbCategory.SelectedIndex != -1) || (rbItems.Checked && GVItems.Rows.Count > 0);
         }
+
+        private void checkTransportIndicates()
+        {
+            pictureTransport.Visible = (cbNotInTransportList.Checked || cbTransportInList.Checked);
+        }
+
         private void tabQuestsCircs_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.checkClanOptionsIndicator();
@@ -1306,6 +1323,7 @@ namespace StalkerOnlineQuesterEditor
             this.checkSkills();
             this.checkActionIndicates();
             this.checkItemsIndicates();
+            this.checkTransportIndicates();
         }
 
         private void digitTextBox_KeyPress(object sender, KeyPressEventArgs e)

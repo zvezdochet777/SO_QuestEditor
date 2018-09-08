@@ -34,6 +34,8 @@
             this.lGreetNPC = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.gbActions = new System.Windows.Forms.GroupBox();
+            this.tbChangeMoneyFailNode = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.nupChangeMoney = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.tbAvatarGoTo = new System.Windows.Forms.TextBox();
@@ -205,8 +207,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tbChangeMoneyFailNode = new System.Windows.Forms.TextBox();
+            this.tabTransport = new System.Windows.Forms.TabPage();
+            this.pictureTransport = new System.Windows.Forms.PictureBox();
+            this.cbTransportInList = new System.Windows.Forms.CheckBox();
+            this.cbNotInTransportList = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
@@ -240,6 +244,8 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
+            this.tabTransport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -315,6 +321,22 @@
             this.gbActions.Size = new System.Drawing.Size(595, 145);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
+            // 
+            // tbChangeMoneyFailNode
+            // 
+            this.tbChangeMoneyFailNode.Location = new System.Drawing.Point(467, 106);
+            this.tbChangeMoneyFailNode.Name = "tbChangeMoneyFailNode";
+            this.tbChangeMoneyFailNode.Size = new System.Drawing.Size(100, 20);
+            this.tbChangeMoneyFailNode.TabIndex = 45;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(466, 88);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 13);
+            this.label10.TabIndex = 44;
+            this.label10.Text = "В случае неудачи;";
             // 
             // nupChangeMoney
             // 
@@ -520,6 +542,7 @@
             // 
             // gbPrecondition
             // 
+            this.gbPrecondition.Controls.Add(this.pictureTransport);
             this.gbPrecondition.Controls.Add(this.pictureItems);
             this.gbPrecondition.Controls.Add(this.actionsCheckBox);
             this.gbPrecondition.Controls.Add(this.pictureAction);
@@ -646,6 +669,7 @@
             this.tabQuestsCircs.Controls.Add(this.tabSkills);
             this.tabQuestsCircs.Controls.Add(this.tabActions);
             this.tabQuestsCircs.Controls.Add(this.tabItems);
+            this.tabQuestsCircs.Controls.Add(this.tabTransport);
             this.tabQuestsCircs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabQuestsCircs.Location = new System.Drawing.Point(4, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
@@ -2021,21 +2045,49 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // label10
+            // tabTransport
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(466, 88);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 13);
-            this.label10.TabIndex = 44;
-            this.label10.Text = "В случае неудачи;";
+            this.tabTransport.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabTransport.Controls.Add(this.cbNotInTransportList);
+            this.tabTransport.Controls.Add(this.cbTransportInList);
+            this.tabTransport.Location = new System.Drawing.Point(4, 22);
+            this.tabTransport.Name = "tabTransport";
+            this.tabTransport.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTransport.Size = new System.Drawing.Size(579, 230);
+            this.tabTransport.TabIndex = 9;
+            this.tabTransport.Text = "Перевоз";
             // 
-            // tbChangeMoneyFailNode
+            // pictureTransport
             // 
-            this.tbChangeMoneyFailNode.Location = new System.Drawing.Point(467, 106);
-            this.tbChangeMoneyFailNode.Name = "tbChangeMoneyFailNode";
-            this.tbChangeMoneyFailNode.Size = new System.Drawing.Size(100, 20);
-            this.tbChangeMoneyFailNode.TabIndex = 45;
+            this.pictureTransport.BackColor = System.Drawing.Color.Transparent;
+            this.pictureTransport.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureTransport.Location = new System.Drawing.Point(544, 10);
+            this.pictureTransport.Name = "pictureTransport";
+            this.pictureTransport.Size = new System.Drawing.Size(10, 10);
+            this.pictureTransport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureTransport.TabIndex = 61;
+            this.pictureTransport.TabStop = false;
+            this.pictureTransport.Visible = false;
+            // 
+            // cbTransportInList
+            // 
+            this.cbTransportInList.AutoSize = true;
+            this.cbTransportInList.Location = new System.Drawing.Point(17, 19);
+            this.cbTransportInList.Name = "cbTransportInList";
+            this.cbTransportInList.Size = new System.Drawing.Size(162, 17);
+            this.cbTransportInList.TabIndex = 0;
+            this.cbTransportInList.Text = "в списке транспортировки";
+            this.cbTransportInList.UseVisualStyleBackColor = true;
+            // 
+            // cbNotInTransportList
+            // 
+            this.cbNotInTransportList.AutoSize = true;
+            this.cbNotInTransportList.Location = new System.Drawing.Point(17, 42);
+            this.cbNotInTransportList.Name = "cbNotInTransportList";
+            this.cbNotInTransportList.Size = new System.Drawing.Size(180, 17);
+            this.cbNotInTransportList.TabIndex = 1;
+            this.cbNotInTransportList.Text = "НЕ в списке транспортировки";
+            this.cbNotInTransportList.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -2098,6 +2150,9 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
+            this.tabTransport.ResumeLayout(false);
+            this.tabTransport.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2284,5 +2339,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbChangeMoneyFailNode;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox pictureTransport;
+        private System.Windows.Forms.TabPage tabTransport;
+        private System.Windows.Forms.CheckBox cbNotInTransportList;
+        private System.Windows.Forms.CheckBox cbTransportInList;
     }
 }

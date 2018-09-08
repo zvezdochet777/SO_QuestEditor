@@ -136,11 +136,6 @@
     <Compile Include="Forms\CheckErrorForm.Designer.cs">
       <DependentUpon>CheckErrorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CheckErrorForm1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CheckErrorForm.resx</DependentUpon>
-    </Compile>
     <Compile Include="Forms\EditRectangle.cs">
       <SubType>Form</SubType>
     </Compile>

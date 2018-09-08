@@ -33,6 +33,8 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.lbLog = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lCurrentCheck = new System.Windows.Forms.Label();
@@ -42,8 +44,7 @@
             this.cbErrQuest5 = new System.Windows.Forms.CheckBox();
             this.cbErrOther = new System.Windows.Forms.CheckBox();
             this.cbErrNoRoot = new System.Windows.Forms.CheckBox();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbErrDialogs = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bpNoErrors)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +78,21 @@
             this.toolStripMenuItem1,
             this.удалитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 70);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem2.Text = "Перейти к квесту";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem1.Text = "Копировать QuestID";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // удалитьToolStripMenuItem
             // 
@@ -160,7 +175,7 @@
             this.cbErrOther.AutoSize = true;
             this.cbErrOther.Checked = true;
             this.cbErrOther.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbErrOther.Location = new System.Drawing.Point(312, 42);
+            this.cbErrOther.Location = new System.Drawing.Point(417, 42);
             this.cbErrOther.Name = "cbErrOther";
             this.cbErrOther.Size = new System.Drawing.Size(79, 17);
             this.cbErrOther.TabIndex = 9;
@@ -181,25 +196,24 @@
             this.cbErrNoRoot.UseVisualStyleBackColor = true;
             this.cbErrNoRoot.CheckedChanged += new System.EventHandler(this.cbError_CheckedChanged);
             // 
-            // toolStripMenuItem1
+            // cbErrDialogs
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
-            this.toolStripMenuItem1.Text = "Копировать QuestID";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(184, 22);
-            this.toolStripMenuItem2.Text = "Перейти к квесту";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.cbErrDialogs.AutoSize = true;
+            this.cbErrDialogs.Checked = true;
+            this.cbErrDialogs.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbErrDialogs.Location = new System.Drawing.Point(312, 42);
+            this.cbErrDialogs.Name = "cbErrDialogs";
+            this.cbErrDialogs.Size = new System.Drawing.Size(80, 17);
+            this.cbErrDialogs.TabIndex = 11;
+            this.cbErrDialogs.Text = "Err. диалог";
+            this.cbErrDialogs.UseVisualStyleBackColor = true;
             // 
             // CheckErrorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 548);
+            this.Controls.Add(this.cbErrDialogs);
             this.Controls.Add(this.cbErrNoRoot);
             this.Controls.Add(this.cbErrOther);
             this.Controls.Add(this.cbErrQuest5);
@@ -235,5 +249,6 @@
         private System.Windows.Forms.CheckBox cbErrNoRoot;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.CheckBox cbErrDialogs;
     }
 }

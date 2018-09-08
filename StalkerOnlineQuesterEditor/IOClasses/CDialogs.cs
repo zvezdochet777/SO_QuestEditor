@@ -72,7 +72,12 @@ namespace StalkerOnlineQuesterEditor
                     int DialogID = int.Parse(dialog.Element("ID").Value);
                     if (findErrors)
                         if (dialogIDList.ContainsKey(DialogID))
-                            dialogErrors.Add(DialogID, new List<string> { npc_name, dialogIDList[DialogID] });
+                        {
+                            if (dialogErrors.ContainsKey(DialogID))
+                                dialogErrors[DialogID].Add(npc_name);
+                            else
+                                dialogErrors.Add(DialogID, new List<string> { npc_name, dialogIDList[DialogID] });
+                        }
                         else
                             dialogIDList.Add(DialogID, npc_name);
                     string DebugData = "";
@@ -185,6 +190,13 @@ namespace StalkerOnlineQuesterEditor
                         AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
                         if (dialog.Element("Precondition").Element("forDev") != null)
                             Precondition.forDev = true;
+                        if (dialog.Element("Precondition").Element("Cabman") != null)
+                        {
+                            if (dialog.Element("Precondition").Element("Cabman").Element("inTransportList") != null)
+                                Precondition.transport.inTransportList = true;
+                            if (dialog.Element("Precondition").Element("Cabman").Element("notInTransportList") != null)
+                                Precondition.transport.notInTransportList = true;
+                        }
                         if (dialog.Element("Precondition").Element("clanOptions") != null)
                         {
                             Precondition.clanOptions = dialog.Element("Precondition").Element("clanOptions").Value.ToString();
@@ -292,8 +304,12 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (KeyValuePair<int, List<string>> dialogError in dialogErrors)
             {
-                
-                MessageBox.Show("Ошибка дублирования диалогов (Всего "+ dialogErrors.Count + ") (" + dialogError.Value[0] + ", " + dialogError.Value[1] +") "+ dialogError.Key + " => " + (dialogIDList.Keys.Max()+1));
+                string npc_name_list = "";
+                foreach (string npc_name in dialogError.Value)
+                {
+                    npc_name_list += npc_name + ", ";
+                }
+                MessageBox.Show("Ошибка дублирования диалогов (Всего "+ dialogErrors.Count + ") (" + npc_name_list + ") "+ dialogError.Key + " => " + (dialogIDList.Keys.Max()+1));
                 throw new Exception("Ошибка дублирования диалогов " + dialogError.Key + " => " + (dialogIDList.Keys.Max() + 1));
             }
             
@@ -565,6 +581,15 @@ namespace StalkerOnlineQuesterEditor
                     }
                     if (dialog.Precondition.forDev)
                         element.Element("Precondition").Add(new XElement("forDev", Global.GetBoolAsString(dialog.Precondition.forDev)));
+
+                    if (dialog.Precondition.transport.Any())
+                    {
+                        element.Element("Precondition").Add(new XElement("Cabman"));
+                        if (dialog.Precondition.transport.inTransportList)
+                            element.Element("Precondition").Element("Cabman").Add(new XElement("inTransportList", Global.GetBoolAsString(dialog.Precondition.transport.inTransportList)));
+                        if (dialog.Precondition.transport.notInTransportList)
+                            element.Element("Precondition").Element("Cabman").Add(new XElement("notInTransportList", Global.GetBoolAsString(dialog.Precondition.transport.notInTransportList)));
+                    }
 
                     if (dialog.Precondition.items.itemCategory != -1)
                     {

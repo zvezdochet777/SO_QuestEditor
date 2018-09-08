@@ -102,11 +102,31 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class DialogPreconditionTransport
+    {
+        public bool inTransportList;
+        public bool notInTransportList;
+
+        public bool Any()
+        {
+            return inTransportList || notInTransportList;
+        }
+
+        public DialogPreconditionTransport Clone()
+        {
+            DialogPreconditionTransport result = new DialogPreconditionTransport();
+            result.inTransportList = this.inTransportList;
+            result.notInTransportList = this.notInTransportList;
+            return result;
+        }
+    }
+
     //! Условия появления диалога в игре - открытые/закрытые/проваленные квесты, урвоень игрока, репутация у фракций, карма ПК
     public class CDialogPrecondition : ICloneable
     {
         public CDialogPreconditionQuests ListOfNecessaryQuests;
         public CDialogPreconditionQuests ListOfMustNoQuests;
+        public DialogPreconditionTransport transport;
         public string clanOptions;
         public string PlayerLevel;
         public string playerCombatLvl;
@@ -139,6 +159,7 @@ namespace StalkerOnlineQuesterEditor
             copy.NecessaryEffects = this.NecessaryEffects;
             copy.MustNoEffects = this.MustNoEffects;
             copy.forDev = this.forDev;
+            copy.transport = this.transport.Clone();
             return copy;
         }
 
@@ -158,6 +179,7 @@ namespace StalkerOnlineQuesterEditor
             this.NecessaryEffects = new List<DialogEffect>();
             this.MustNoEffects = new List<DialogEffect>();
             this.forDev = false;
+            this.transport = new DialogPreconditionTransport();
 
         }
 
@@ -170,7 +192,8 @@ namespace StalkerOnlineQuesterEditor
         public bool Any()
         {
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
-                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() || NPCReputation.Any();
+                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() || 
+                NPCReputation.Any() || transport.Any();
         }
 
         public string GetAsString()

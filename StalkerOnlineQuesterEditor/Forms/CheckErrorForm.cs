@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace StalkerOnlineQuesterEditor.Forms
 {
@@ -51,7 +52,7 @@ namespace StalkerOnlineQuesterEditor.Forms
         const int ERROR_QUEST_TYPE5 = 2;
         const int ERROR_OTHER = 3;
         const int ERROR_NO_ROOT = 4;
-
+        const int ERROR_DIALOG = 5;
 
         public CheckErrorForm(CDialogs dialogs, CQuests quests, MainForm parent)
         {
@@ -249,7 +250,9 @@ namespace StalkerOnlineQuesterEditor.Forms
             errors.Clear();
             doProgress(25);
             setLabel("Проверяем квесты в диалогах");
-            
+
+            List<int> change_money_dialogs = new List<int>();
+
             List<int> on_test_list = new List<int>();
             foreach (KeyValuePair<string, Dictionary<int, CDialog>> npc in dialogs.dialogs)
             {
@@ -272,6 +275,12 @@ namespace StalkerOnlineQuesterEditor.Forms
 
                     on_test_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
 
+                    if (dia.Value.Actions.changeMoney != 0)
+                    {
+                        change_money_dialogs.Add(dia.Key);
+                    }
+                    
+                    //dialogs.locales
 
                     foreach (int quest_id in check_list)
                     {
@@ -318,6 +327,8 @@ namespace StalkerOnlineQuesterEditor.Forms
                             }
                         }
                     }
+
+                    
                     List<DialogEffect> check_eff_list = new List<DialogEffect>();
                     check_eff_list.AddRange(dia.Value.Precondition.NecessaryEffects);
                     check_eff_list.AddRange(dia.Value.Precondition.MustNoEffects);
@@ -335,6 +346,32 @@ namespace StalkerOnlineQuesterEditor.Forms
                 }
 
             }
+
+
+            doProgress(40);
+            setLabel("Проверяем локализацию диалогов");
+            foreach (string local in dialogs.locales.Keys)
+                foreach(string _npc_name in dialogs.locales[local].Keys)
+                    foreach (KeyValuePair<int, CDialog> _dialog in dialogs.locales[local][_npc_name])
+                    {
+                        string dialog_text = _dialog.Value.Text;
+                        if (dialog_text.Contains(":MONEY_COST%"))
+                        {
+                            Regex regex = new Regex("%D:(.*?):MONEY_COST%");
+                            Match match = regex.Match(dialog_text);
+                            while (match.Success)
+                            {
+                                int cm_dialog_id = int.Parse(match.Groups[1].Value);
+                                if (!change_money_dialogs.Contains(cm_dialog_id))
+                                {
+                                    string line = "Диалог №:" + cm_dialog_id.ToString() + "\tне изменяет денег, при наличии указателя в тексте диалога №" + _dialog.Key.ToString();
+                                    this.writeToLog(ERROR_DIALOG, line);
+                                }
+                                match = match.NextMatch();
+                            }
+                        }
+                    }
+
 
             count = quests.quest.Count;
             i = 0;
@@ -620,8 +657,10 @@ namespace StalkerOnlineQuesterEditor.Forms
             if (cbErrorItem.Checked) result.Add(ERROR_ITEM);
             if (cbErrorQuest.Checked) result.Add(ERROR_QUEST);
             if (cbErrQuest5.Checked) result.Add(ERROR_QUEST_TYPE5);
+            if (cbErrDialogs.Checked) result.Add(ERROR_DIALOG);
             if (cbErrOther.Checked) result.Add(ERROR_OTHER);
             if (cbErrNoRoot.Checked) result.Add(ERROR_NO_ROOT);
+            
             return result;
         }
 
