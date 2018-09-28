@@ -1,0 +1,27 @@
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\bin\Debug\SOHelpEditor.exe
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\bin\Debug\SOHelpEditor.pdb
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.Properties.Resources.resources
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csproj.GenerateResource.cache
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csproj.CoreCompileInputs.cache
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.exe
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.pdb
+D:\Git\sys\tools\HelpEditor\SOHelpEditor.exe
+D:\Git\sys\tools\HelpEditor\SOHelpEditor.pdb
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csproj.CopyComplete
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.MainForm.resources
+D:\Git\sys\tools\HelpEditor\SOHelpEditor.exe.config
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.InputForm.resources
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.LittleCardForm.resources
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csprojAssemblyReference.cache
+C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.CreateLinkForm.resources
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csprojAssemblyReference.cache
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.CreateLinkForm.resources
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.InputForm.resources
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.LittleCardForm.resources
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.MainForm.resources
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.Properties.Resources.resources
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csproj.GenerateResource.cache
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csproj.CoreCompileInputs.cache
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csproj.CopyComplete
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.exe
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.pdb
