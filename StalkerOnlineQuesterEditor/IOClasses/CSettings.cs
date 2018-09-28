@@ -26,6 +26,8 @@ namespace StalkerOnlineQuesterEditor
         int currentLocale = 0;
         int lastNpcIndex = 0;
 
+        string appLang = "ru-RU";
+
         public int MODE_EDITOR = 0;
         public int MODE_LOCALIZATION = 1;       
 
@@ -62,6 +64,10 @@ namespace StalkerOnlineQuesterEditor
                 lastNpcIndex = int.Parse(doc.Root.Element("LastNPcIndex").Value.ToString());
                 if (Directory.Exists(doc.Root.Element("pathToLocalFiles").Value))
                     pathToLocalFiles = doc.Root.Element("pathToLocalFiles").Value;
+                if (doc.Root.Element("app_lang")!= null)
+                {
+                    appLang = doc.Root.Element("app_lang").Value.ToString();
+                }
 
             }
             catch
@@ -105,6 +111,16 @@ namespace StalkerOnlineQuesterEditor
         public int getOperatorNumber()
         {
             return this.iNumOperator;
+        }
+
+        public string getLanguage()
+        {
+            return appLang;
+        }
+
+        public void setLanguage(string lang)
+        {
+            appLang = lang;
         }
 
         public void setLocales(string locales)
@@ -169,7 +185,8 @@ namespace StalkerOnlineQuesterEditor
             resultDoc.Root.Add(lastNpcIndex);
             resultDoc.Root.Add(path_quest);
             resultDoc.Root.Add(path_dialog);
-            resultDoc.Root.Add(local_path); 
+            resultDoc.Root.Add(local_path);
+            resultDoc.Root.Add(new XElement("app_lang", appLang));
             resultDoc.Save(SETTINGS_PATH + SETTING_FILE);
         }
 

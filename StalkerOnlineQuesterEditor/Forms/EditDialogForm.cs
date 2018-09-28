@@ -315,6 +315,7 @@ namespace StalkerOnlineQuesterEditor
                 editPrecondition.Skills = curDialog.Precondition.Skills;
 
             cbForDev.Checked = curDialog.Precondition.forDev;
+            cbHidden.Checked = curDialog.Precondition.hidden;
             this.initReputationTab();
             this.initKarmaPKTab();
             this.initEffectsTab();
@@ -771,6 +772,7 @@ namespace StalkerOnlineQuesterEditor
             precondition.MustNoEffects = editPrecondition.MustNoEffects;
             precondition.Skills = editPrecondition.Skills;
             precondition.forDev = cbForDev.Checked;
+            precondition.hidden = cbHidden.Checked;
 
             precondition.items.typeOfItems = new List<int>();
             precondition.items.numOfItems = new List<int>();

@@ -72,9 +72,23 @@ namespace StalkerOnlineQuesterEditor.Forms
                 localeOnFailedTextBox.Text = locale_quest.QuestInformation.onFailed;
                 localeOnGetTextBox.Text = locale_quest.QuestInformation.onGet;
             }
+
+            ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
+            ApplyResourceToControl(resources, this);
         }
-        //! Закрытие формы
-        private void LocaleQuestForm_FormClosing(object sender, FormClosingEventArgs e)
+    
+
+    private static void ApplyResourceToControl(ComponentResourceManager res, Control control)
+    {
+        foreach (Control c in control.Controls)
+            ApplyResourceToControl(res, c);
+
+        var text = res.GetString(String.Format("{0}.Text", control.Name));
+        control.Text = text ?? control.Text;
+    }
+
+    //! Закрытие формы
+    private void LocaleQuestForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             parent.Enabled = true;
         }

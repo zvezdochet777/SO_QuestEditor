@@ -33,16 +33,14 @@ namespace StalkerOnlineQuesterEditor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.DialogShower = new UMD.HCIL.Piccolo.PCanvas();
-            this.NPCBox = new System.Windows.Forms.ComboBox();
-            this.labelChosenNPC = new System.Windows.Forms.Label();
-            this.CentralDock = new System.Windows.Forms.TabControl();
-            this.tabDialogs = new System.Windows.Forms.TabPage();
             this.splitDialogs = new System.Windows.Forms.SplitContainer();
             this.gbDialogsEditor = new System.Windows.Forms.GroupBox();
             this.splitDialogsTreeAndCanvas = new System.Windows.Forms.SplitContainer();
             this.treeDialogs = new System.Windows.Forms.TreeView();
+            this.DialogShower = new UMD.HCIL.Piccolo.PCanvas();
             this.panelDialogTools = new System.Windows.Forms.Panel();
+            this.lFindDialogID = new System.Windows.Forms.Label();
+            this.tbFindDialogID = new System.Windows.Forms.TextBox();
             this.btnClearRecycle = new System.Windows.Forms.Button();
             this.labelDrawingTip = new System.Windows.Forms.Label();
             this.bTestButton = new System.Windows.Forms.Button();
@@ -55,12 +53,16 @@ namespace StalkerOnlineQuesterEditor
             this.bAddDialog = new System.Windows.Forms.Button();
             this.gbEmulator = new System.Windows.Forms.GroupBox();
             this.splitDialogsEmulator = new System.Windows.Forms.SplitContainer();
-            this.tabQuests = new System.Windows.Forms.TabPage();
             this.splitQuestsContainer = new System.Windows.Forms.SplitContainer();
             this.treeQuest = new System.Windows.Forms.TreeView();
             this.labelQuestTree = new System.Windows.Forms.Label();
             this.treeQuestBuffer = new System.Windows.Forms.TreeView();
             this.labelBuffer = new System.Windows.Forms.Label();
+            this.NPCBox = new System.Windows.Forms.ComboBox();
+            this.labelChosenNPC = new System.Windows.Forms.Label();
+            this.CentralDock = new System.Windows.Forms.TabControl();
+            this.tabDialogs = new System.Windows.Forms.TabPage();
+            this.tabQuests = new System.Windows.Forms.TabPage();
             this.panelQuestTools = new System.Windows.Forms.Panel();
             this.bClearBuffer = new System.Windows.Forms.Button();
             this.bCutEvents = new System.Windows.Forms.Button();
@@ -168,6 +170,9 @@ namespace StalkerOnlineQuesterEditor
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSynchronize = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStatistics = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeLanguageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.русскийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSaveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExplorer = new System.Windows.Forms.ToolStripMenuItem();
@@ -176,13 +181,13 @@ namespace StalkerOnlineQuesterEditor
             this.проверкаОшибокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.данныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.собратьЭдиторДляПередачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вытащитьНепереведённыеТекстыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьПереводToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.диалоговToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.квестовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.lFindDialogID = new System.Windows.Forms.Label();
-            this.tbFindDialogID = new System.Windows.Forms.TextBox();
-            this.CentralDock.SuspendLayout();
-            this.tabDialogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -196,10 +201,12 @@ namespace StalkerOnlineQuesterEditor
             this.gbEmulator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogsEmulator)).BeginInit();
             this.splitDialogsEmulator.SuspendLayout();
-            this.tabQuests.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitQuestsContainer)).BeginInit();
             this.splitQuestsContainer.Panel1.SuspendLayout();
             this.splitQuestsContainer.SuspendLayout();
+            this.CentralDock.SuspendLayout();
+            this.tabDialogs.SuspendLayout();
+            this.tabQuests.SuspendLayout();
             this.panelQuestTools.SuspendLayout();
             this.panelSelectQuest.SuspendLayout();
             this.tabInfoNPC.SuspendLayout();
@@ -225,143 +232,78 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // DialogShower
-            // 
-            this.DialogShower.AllowDrop = true;
-            this.DialogShower.BackColor = System.Drawing.Color.White;
-            this.DialogShower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.DialogShower.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DialogShower.GridFitText = false;
-            this.DialogShower.Location = new System.Drawing.Point(0, 0);
-            this.DialogShower.Name = "DialogShower";
-            this.DialogShower.RegionManagement = true;
-            this.DialogShower.Size = new System.Drawing.Size(542, 399);
-            this.DialogShower.TabIndex = 0;
-            this.DialogShower.Text = "8";
-            this.DialogShower.Click += new System.EventHandler(this.DialogShower_Click);
-            this.DialogShower.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DialogShower_MouseMove);
-            // 
-            // NPCBox
-            // 
-            this.NPCBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
-            this.NPCBox.DropDownWidth = 280;
-            this.NPCBox.FormattingEnabled = true;
-            this.NPCBox.Location = new System.Drawing.Point(161, 4);
-            this.NPCBox.Name = "NPCBox";
-            this.NPCBox.Size = new System.Drawing.Size(196, 21);
-            this.NPCBox.TabIndex = 3;
-            this.NPCBox.SelectedIndexChanged += new System.EventHandler(this.NPCBox_SelectedIndexChanged);
-            this.NPCBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NPCBox_KeyDown);
-            // 
-            // labelChosenNPC
-            // 
-            this.labelChosenNPC.AutoSize = true;
-            this.labelChosenNPC.Location = new System.Drawing.Point(68, 8);
-            this.labelChosenNPC.Name = "labelChosenNPC";
-            this.labelChosenNPC.Size = new System.Drawing.Size(91, 13);
-            this.labelChosenNPC.TabIndex = 4;
-            this.labelChosenNPC.Text = "Выбранный NPC";
-            // 
-            // CentralDock
-            // 
-            this.CentralDock.Controls.Add(this.tabDialogs);
-            this.CentralDock.Controls.Add(this.tabQuests);
-            this.CentralDock.Controls.Add(this.tabInfoNPC);
-            this.CentralDock.Controls.Add(this.tabReview);
-            this.CentralDock.Controls.Add(this.tabManage);
-            this.CentralDock.Controls.Add(this.tabTranslate);
-            this.CentralDock.Controls.Add(this.tabSearch);
-            this.CentralDock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CentralDock.HotTrack = true;
-            this.CentralDock.ItemSize = new System.Drawing.Size(90, 18);
-            this.CentralDock.Location = new System.Drawing.Point(0, 53);
-            this.CentralDock.Name = "CentralDock";
-            this.CentralDock.SelectedIndex = 0;
-            this.CentralDock.Size = new System.Drawing.Size(914, 567);
-            this.CentralDock.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.CentralDock.TabIndex = 0;
-            this.CentralDock.TabStop = false;
-            this.CentralDock.SelectedIndexChanged += new System.EventHandler(this.onSelectTab);
-            // 
-            // tabDialogs
-            // 
-            this.tabDialogs.Controls.Add(this.splitDialogs);
-            this.tabDialogs.Location = new System.Drawing.Point(4, 22);
-            this.tabDialogs.Name = "tabDialogs";
-            this.tabDialogs.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDialogs.Size = new System.Drawing.Size(906, 541);
-            this.tabDialogs.TabIndex = 0;
-            this.tabDialogs.Text = "Диалоги";
-            this.tabDialogs.UseVisualStyleBackColor = true;
-            // 
             // splitDialogs
             // 
-            this.splitDialogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitDialogs.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.splitDialogs, "splitDialogs");
             this.splitDialogs.Name = "splitDialogs";
-            this.splitDialogs.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitDialogs.Panel1
             // 
+            resources.ApplyResources(this.splitDialogs.Panel1, "splitDialogs.Panel1");
             this.splitDialogs.Panel1.BackColor = System.Drawing.SystemColors.Window;
-            this.splitDialogs.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.splitDialogs.Panel1.Controls.Add(this.gbDialogsEditor);
-            this.splitDialogs.Panel1MinSize = 10;
+            this.toolTipDialogs.SetToolTip(this.splitDialogs.Panel1, resources.GetString("splitDialogs.Panel1.ToolTip"));
             // 
             // splitDialogs.Panel2
             // 
+            resources.ApplyResources(this.splitDialogs.Panel2, "splitDialogs.Panel2");
             this.splitDialogs.Panel2.Controls.Add(this.gbEmulator);
-            this.splitDialogs.Panel2MinSize = 10;
-            this.splitDialogs.Size = new System.Drawing.Size(900, 535);
-            this.splitDialogs.SplitterDistance = 422;
-            this.splitDialogs.TabIndex = 9;
+            this.toolTipDialogs.SetToolTip(this.splitDialogs.Panel2, resources.GetString("splitDialogs.Panel2.ToolTip"));
             this.splitDialogs.TabStop = false;
+            this.toolTipDialogs.SetToolTip(this.splitDialogs, resources.GetString("splitDialogs.ToolTip"));
             // 
             // gbDialogsEditor
             // 
+            resources.ApplyResources(this.gbDialogsEditor, "gbDialogsEditor");
             this.gbDialogsEditor.Controls.Add(this.splitDialogsTreeAndCanvas);
             this.gbDialogsEditor.Controls.Add(this.panelDialogTools);
-            this.gbDialogsEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbDialogsEditor.Location = new System.Drawing.Point(0, 0);
             this.gbDialogsEditor.Name = "gbDialogsEditor";
-            this.gbDialogsEditor.Size = new System.Drawing.Size(900, 422);
-            this.gbDialogsEditor.TabIndex = 0;
             this.gbDialogsEditor.TabStop = false;
-            this.gbDialogsEditor.Text = "Правка диалогов";
+            this.toolTipDialogs.SetToolTip(this.gbDialogsEditor, resources.GetString("gbDialogsEditor.ToolTip"));
             // 
             // splitDialogsTreeAndCanvas
             // 
+            resources.ApplyResources(this.splitDialogsTreeAndCanvas, "splitDialogsTreeAndCanvas");
             this.splitDialogsTreeAndCanvas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitDialogsTreeAndCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitDialogsTreeAndCanvas.Location = new System.Drawing.Point(3, 16);
             this.splitDialogsTreeAndCanvas.Name = "splitDialogsTreeAndCanvas";
             // 
             // splitDialogsTreeAndCanvas.Panel1
             // 
+            resources.ApplyResources(this.splitDialogsTreeAndCanvas.Panel1, "splitDialogsTreeAndCanvas.Panel1");
             this.splitDialogsTreeAndCanvas.Panel1.Controls.Add(this.treeDialogs);
+            this.toolTipDialogs.SetToolTip(this.splitDialogsTreeAndCanvas.Panel1, resources.GetString("splitDialogsTreeAndCanvas.Panel1.ToolTip"));
             // 
             // splitDialogsTreeAndCanvas.Panel2
             // 
+            resources.ApplyResources(this.splitDialogsTreeAndCanvas.Panel2, "splitDialogsTreeAndCanvas.Panel2");
             this.splitDialogsTreeAndCanvas.Panel2.Controls.Add(this.DialogShower);
-            this.splitDialogsTreeAndCanvas.Size = new System.Drawing.Size(693, 403);
-            this.splitDialogsTreeAndCanvas.SplitterDistance = 143;
-            this.splitDialogsTreeAndCanvas.TabIndex = 0;
+            this.toolTipDialogs.SetToolTip(this.splitDialogsTreeAndCanvas.Panel2, resources.GetString("splitDialogsTreeAndCanvas.Panel2.ToolTip"));
             this.splitDialogsTreeAndCanvas.TabStop = false;
+            this.toolTipDialogs.SetToolTip(this.splitDialogsTreeAndCanvas, resources.GetString("splitDialogsTreeAndCanvas.ToolTip"));
             // 
             // treeDialogs
             // 
-            this.treeDialogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeDialogs.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.treeDialogs, "treeDialogs");
             this.treeDialogs.Name = "treeDialogs";
-            this.treeDialogs.Size = new System.Drawing.Size(139, 399);
-            this.treeDialogs.TabIndex = 2;
             this.treeDialogs.TabStop = false;
+            this.toolTipDialogs.SetToolTip(this.treeDialogs, resources.GetString("treeDialogs.ToolTip"));
             this.treeDialogs.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDialogs_GotFocus);
+            // 
+            // DialogShower
+            // 
+            resources.ApplyResources(this.DialogShower, "DialogShower");
+            this.DialogShower.AllowDrop = true;
+            this.DialogShower.BackColor = System.Drawing.Color.White;
+            this.DialogShower.GridFitText = false;
+            this.DialogShower.Name = "DialogShower";
+            this.DialogShower.RegionManagement = true;
+            this.toolTipDialogs.SetToolTip(this.DialogShower, resources.GetString("DialogShower.ToolTip"));
+            this.DialogShower.Click += new System.EventHandler(this.DialogShower_Click);
+            this.DialogShower.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DialogShower_MouseMove);
             // 
             // panelDialogTools
             // 
-            this.panelDialogTools.AutoSize = true;
-            this.panelDialogTools.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            resources.ApplyResources(this.panelDialogTools, "panelDialogTools");
             this.panelDialogTools.Controls.Add(this.lFindDialogID);
             this.panelDialogTools.Controls.Add(this.tbFindDialogID);
             this.panelDialogTools.Controls.Add(this.btnClearRecycle);
@@ -373,58 +315,51 @@ namespace StalkerOnlineQuesterEditor
             this.panelDialogTools.Controls.Add(this.bRemoveDialog);
             this.panelDialogTools.Controls.Add(this.bEditDialog);
             this.panelDialogTools.Controls.Add(this.bAddDialog);
-            this.panelDialogTools.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelDialogTools.Location = new System.Drawing.Point(696, 16);
             this.panelDialogTools.Name = "panelDialogTools";
-            this.panelDialogTools.Size = new System.Drawing.Size(201, 403);
-            this.panelDialogTools.TabIndex = 3;
+            this.toolTipDialogs.SetToolTip(this.panelDialogTools, resources.GetString("panelDialogTools.ToolTip"));
+            // 
+            // lFindDialogID
+            // 
+            resources.ApplyResources(this.lFindDialogID, "lFindDialogID");
+            this.lFindDialogID.Name = "lFindDialogID";
+            this.toolTipDialogs.SetToolTip(this.lFindDialogID, resources.GetString("lFindDialogID.ToolTip"));
+            // 
+            // tbFindDialogID
+            // 
+            resources.ApplyResources(this.tbFindDialogID, "tbFindDialogID");
+            this.tbFindDialogID.Name = "tbFindDialogID";
+            this.toolTipDialogs.SetToolTip(this.tbFindDialogID, resources.GetString("tbFindDialogID.ToolTip"));
+            this.tbFindDialogID.TextChanged += new System.EventHandler(this.tbFindDialogID_TextChanged);
             // 
             // btnClearRecycle
             // 
-            this.btnClearRecycle.ImageKey = "(отсутствует)";
-            this.btnClearRecycle.Location = new System.Drawing.Point(94, 342);
+            resources.ApplyResources(this.btnClearRecycle, "btnClearRecycle");
             this.btnClearRecycle.Name = "btnClearRecycle";
-            this.btnClearRecycle.Size = new System.Drawing.Size(104, 58);
-            this.btnClearRecycle.TabIndex = 9;
-            this.btnClearRecycle.Text = "Очистить корзину";
-            this.btnClearRecycle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClearRecycle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipDialogs.SetToolTip(this.btnClearRecycle, resources.GetString("btnClearRecycle.ToolTip"));
             this.btnClearRecycle.UseVisualStyleBackColor = true;
             this.btnClearRecycle.Click += new System.EventHandler(this.btnClearRecycle_Click);
             // 
             // labelDrawingTip
             // 
-            this.labelDrawingTip.Location = new System.Drawing.Point(9, 197);
+            resources.ApplyResources(this.labelDrawingTip, "labelDrawingTip");
             this.labelDrawingTip.Name = "labelDrawingTip";
-            this.labelDrawingTip.Size = new System.Drawing.Size(189, 98);
-            this.labelDrawingTip.TabIndex = 8;
-            this.labelDrawingTip.Text = "Для рисования прямоугольников удерживайте Shift и левую кнопку мыши. Кнопки Прави" +
-    "ть и Удалить работают для диалогов и прямоугольников. Pan - правой кнопкой мыши." +
-    " Zoom - колесиком мыши.";
+            this.toolTipDialogs.SetToolTip(this.labelDrawingTip, resources.GetString("labelDrawingTip.ToolTip"));
             // 
             // bTestButton
             // 
-            this.bTestButton.Location = new System.Drawing.Point(6, 298);
+            resources.ApplyResources(this.bTestButton, "bTestButton");
             this.bTestButton.Name = "bTestButton";
-            this.bTestButton.Size = new System.Drawing.Size(192, 38);
-            this.bTestButton.TabIndex = 4;
             this.bTestButton.TabStop = false;
-            this.bTestButton.Text = "ТестКнопка";
+            this.toolTipDialogs.SetToolTip(this.bTestButton, resources.GetString("bTestButton.ToolTip"));
             this.bTestButton.UseVisualStyleBackColor = true;
-            this.bTestButton.Visible = false;
             this.bTestButton.Click += new System.EventHandler(this.bTestButton_Click);
             // 
             // bCenterizeDialogShower
             // 
-            this.bCenterizeDialogShower.ImageKey = "ArrowsBig.png";
+            resources.ApplyResources(this.bCenterizeDialogShower, "bCenterizeDialogShower");
             this.bCenterizeDialogShower.ImageList = this.imageList;
-            this.bCenterizeDialogShower.Location = new System.Drawing.Point(6, 160);
             this.bCenterizeDialogShower.Name = "bCenterizeDialogShower";
-            this.bCenterizeDialogShower.Size = new System.Drawing.Size(192, 30);
-            this.bCenterizeDialogShower.TabIndex = 7;
-            this.bCenterizeDialogShower.Text = "Отцентрировать";
-            this.bCenterizeDialogShower.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bCenterizeDialogShower.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipDialogs.SetToolTip(this.bCenterizeDialogShower, resources.GetString("bCenterizeDialogShower.ToolTip"));
             this.bCenterizeDialogShower.UseVisualStyleBackColor = true;
             this.bCenterizeDialogShower.Click += new System.EventHandler(this.bCenterizeDialogShower_Click);
             // 
@@ -439,138 +374,95 @@ namespace StalkerOnlineQuesterEditor
             // 
             // labelYNode
             // 
-            this.labelYNode.AutoSize = true;
-            this.labelYNode.Location = new System.Drawing.Point(26, 376);
+            resources.ApplyResources(this.labelYNode, "labelYNode");
             this.labelYNode.Name = "labelYNode";
-            this.labelYNode.Size = new System.Drawing.Size(62, 13);
-            this.labelYNode.TabIndex = 5;
-            this.labelYNode.Text = "labelYNode";
-            this.labelYNode.Visible = false;
+            this.toolTipDialogs.SetToolTip(this.labelYNode, resources.GetString("labelYNode.ToolTip"));
             // 
             // labelXNode
             // 
-            this.labelXNode.AutoSize = true;
-            this.labelXNode.Location = new System.Drawing.Point(26, 351);
+            resources.ApplyResources(this.labelXNode, "labelXNode");
             this.labelXNode.Name = "labelXNode";
-            this.labelXNode.Size = new System.Drawing.Size(62, 13);
-            this.labelXNode.TabIndex = 4;
-            this.labelXNode.Text = "labelXNode";
-            this.labelXNode.Visible = false;
+            this.toolTipDialogs.SetToolTip(this.labelXNode, resources.GetString("labelXNode.ToolTip"));
             // 
             // bRemoveDialog
             // 
-            this.bRemoveDialog.Enabled = false;
-            this.bRemoveDialog.ImageKey = "delete.png";
+            resources.ApplyResources(this.bRemoveDialog, "bRemoveDialog");
             this.bRemoveDialog.ImageList = this.imageList;
-            this.bRemoveDialog.Location = new System.Drawing.Point(6, 123);
             this.bRemoveDialog.Name = "bRemoveDialog";
-            this.bRemoveDialog.Size = new System.Drawing.Size(192, 30);
-            this.bRemoveDialog.TabIndex = 6;
-            this.bRemoveDialog.Text = "Удалить";
-            this.bRemoveDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bRemoveDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipDialogs.SetToolTip(this.bRemoveDialog, resources.GetString("bRemoveDialog.ToolTip"));
             this.bRemoveDialog.UseVisualStyleBackColor = true;
             this.bRemoveDialog.Click += new System.EventHandler(this.bRemoveDialog_Click);
             // 
             // bEditDialog
             // 
-            this.bEditDialog.Enabled = false;
-            this.bEditDialog.ImageKey = "Edit.png";
+            resources.ApplyResources(this.bEditDialog, "bEditDialog");
             this.bEditDialog.ImageList = this.imageList;
-            this.bEditDialog.Location = new System.Drawing.Point(6, 85);
             this.bEditDialog.Name = "bEditDialog";
-            this.bEditDialog.Size = new System.Drawing.Size(192, 30);
-            this.bEditDialog.TabIndex = 5;
-            this.bEditDialog.Text = "Править";
-            this.bEditDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bEditDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipDialogs.SetToolTip(this.bEditDialog, resources.GetString("bEditDialog.ToolTip"));
             this.bEditDialog.UseVisualStyleBackColor = true;
             this.bEditDialog.Click += new System.EventHandler(this.bEditDialog_Click);
             // 
             // bAddDialog
             // 
-            this.bAddDialog.Enabled = false;
-            this.bAddDialog.ImageKey = "add.png";
+            resources.ApplyResources(this.bAddDialog, "bAddDialog");
             this.bAddDialog.ImageList = this.imageList;
-            this.bAddDialog.Location = new System.Drawing.Point(6, 47);
             this.bAddDialog.Name = "bAddDialog";
-            this.bAddDialog.Size = new System.Drawing.Size(192, 30);
-            this.bAddDialog.TabIndex = 4;
-            this.bAddDialog.Text = "Добавить узел диалога";
-            this.bAddDialog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bAddDialog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipDialogs.SetToolTip(this.bAddDialog, resources.GetString("bAddDialog.ToolTip"));
             this.bAddDialog.UseVisualStyleBackColor = true;
             this.bAddDialog.Click += new System.EventHandler(this.bAddDialog_Click);
             // 
             // gbEmulator
             // 
-            this.gbEmulator.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(this.gbEmulator, "gbEmulator");
             this.gbEmulator.Controls.Add(this.splitDialogsEmulator);
-            this.gbEmulator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbEmulator.Location = new System.Drawing.Point(0, 0);
             this.gbEmulator.Name = "gbEmulator";
-            this.gbEmulator.Size = new System.Drawing.Size(900, 109);
-            this.gbEmulator.TabIndex = 10;
             this.gbEmulator.TabStop = false;
-            this.gbEmulator.Text = "Эмулятор";
+            this.toolTipDialogs.SetToolTip(this.gbEmulator, resources.GetString("gbEmulator.ToolTip"));
             // 
             // splitDialogsEmulator
             // 
-            this.splitDialogsEmulator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitDialogsEmulator.Location = new System.Drawing.Point(3, 16);
+            resources.ApplyResources(this.splitDialogsEmulator, "splitDialogsEmulator");
             this.splitDialogsEmulator.Name = "splitDialogsEmulator";
+            // 
+            // splitDialogsEmulator.Panel1
+            // 
+            resources.ApplyResources(this.splitDialogsEmulator.Panel1, "splitDialogsEmulator.Panel1");
+            this.toolTipDialogs.SetToolTip(this.splitDialogsEmulator.Panel1, resources.GetString("splitDialogsEmulator.Panel1.ToolTip"));
             // 
             // splitDialogsEmulator.Panel2
             // 
-            this.splitDialogsEmulator.Panel2.AutoScroll = true;
-            this.splitDialogsEmulator.Size = new System.Drawing.Size(894, 90);
-            this.splitDialogsEmulator.SplitterDistance = 150;
-            this.splitDialogsEmulator.TabIndex = 4;
+            resources.ApplyResources(this.splitDialogsEmulator.Panel2, "splitDialogsEmulator.Panel2");
+            this.toolTipDialogs.SetToolTip(this.splitDialogsEmulator.Panel2, resources.GetString("splitDialogsEmulator.Panel2.ToolTip"));
             this.splitDialogsEmulator.TabStop = false;
-            // 
-            // tabQuests
-            // 
-            this.tabQuests.Controls.Add(this.splitQuestsContainer);
-            this.tabQuests.Controls.Add(this.panelQuestTools);
-            this.tabQuests.Controls.Add(this.panelSelectQuest);
-            this.tabQuests.Location = new System.Drawing.Point(4, 22);
-            this.tabQuests.Name = "tabQuests";
-            this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(906, 541);
-            this.tabQuests.TabIndex = 1;
-            this.tabQuests.Text = "Квесты";
-            this.tabQuests.UseVisualStyleBackColor = true;
+            this.toolTipDialogs.SetToolTip(this.splitDialogsEmulator, resources.GetString("splitDialogsEmulator.ToolTip"));
             // 
             // splitQuestsContainer
             // 
+            resources.ApplyResources(this.splitQuestsContainer, "splitQuestsContainer");
             this.splitQuestsContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitQuestsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitQuestsContainer.Location = new System.Drawing.Point(3, 48);
             this.splitQuestsContainer.Name = "splitQuestsContainer";
             // 
             // splitQuestsContainer.Panel1
             // 
+            resources.ApplyResources(this.splitQuestsContainer.Panel1, "splitQuestsContainer.Panel1");
             this.splitQuestsContainer.Panel1.Controls.Add(this.treeQuest);
             this.splitQuestsContainer.Panel1.Controls.Add(this.labelQuestTree);
             this.splitQuestsContainer.Panel1.Controls.Add(this.treeQuestBuffer);
             this.splitQuestsContainer.Panel1.Controls.Add(this.labelBuffer);
+            this.toolTipDialogs.SetToolTip(this.splitQuestsContainer.Panel1, resources.GetString("splitQuestsContainer.Panel1.ToolTip"));
             // 
             // splitQuestsContainer.Panel2
             // 
-            this.splitQuestsContainer.Panel2.AutoScroll = true;
-            this.splitQuestsContainer.Panel2.AutoScrollMargin = new System.Drawing.Size(10, 10);
-            this.splitQuestsContainer.Size = new System.Drawing.Size(702, 490);
-            this.splitQuestsContainer.SplitterDistance = 231;
-            this.splitQuestsContainer.TabIndex = 0;
+            resources.ApplyResources(this.splitQuestsContainer.Panel2, "splitQuestsContainer.Panel2");
+            this.toolTipDialogs.SetToolTip(this.splitQuestsContainer.Panel2, resources.GetString("splitQuestsContainer.Panel2.ToolTip"));
             this.splitQuestsContainer.TabStop = false;
+            this.toolTipDialogs.SetToolTip(this.splitQuestsContainer, resources.GetString("splitQuestsContainer.ToolTip"));
             // 
             // treeQuest
             // 
-            this.treeQuest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeQuest.Location = new System.Drawing.Point(0, 192);
+            resources.ApplyResources(this.treeQuest, "treeQuest");
             this.treeQuest.Name = "treeQuest";
-            this.treeQuest.Size = new System.Drawing.Size(227, 294);
-            this.treeQuest.TabIndex = 0;
+            this.toolTipDialogs.SetToolTip(this.treeQuest, resources.GetString("treeQuest.ToolTip"));
             this.treeQuest.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeQuest_AfterSelect);
             this.treeQuest.Click += new System.EventHandler(this.treeQuest_Click);
             this.treeQuest.DoubleClick += new System.EventHandler(this.treeQuestClicked);
@@ -578,38 +470,81 @@ namespace StalkerOnlineQuesterEditor
             // 
             // labelQuestTree
             // 
-            this.labelQuestTree.AutoSize = true;
-            this.labelQuestTree.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelQuestTree.Location = new System.Drawing.Point(0, 179);
+            resources.ApplyResources(this.labelQuestTree, "labelQuestTree");
             this.labelQuestTree.Name = "labelQuestTree";
-            this.labelQuestTree.Size = new System.Drawing.Size(87, 13);
-            this.labelQuestTree.TabIndex = 3;
-            this.labelQuestTree.Text = "Дерево квеста:";
+            this.toolTipDialogs.SetToolTip(this.labelQuestTree, resources.GetString("labelQuestTree.ToolTip"));
             // 
             // treeQuestBuffer
             // 
-            this.treeQuestBuffer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.treeQuestBuffer.Location = new System.Drawing.Point(0, 13);
+            resources.ApplyResources(this.treeQuestBuffer, "treeQuestBuffer");
             this.treeQuestBuffer.Name = "treeQuestBuffer";
-            this.treeQuestBuffer.Size = new System.Drawing.Size(227, 166);
-            this.treeQuestBuffer.TabIndex = 1;
+            this.toolTipDialogs.SetToolTip(this.treeQuestBuffer, resources.GetString("treeQuestBuffer.ToolTip"));
             this.treeQuestBuffer.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeQuestBuffer_AfterSelect);
             this.treeQuestBuffer.Click += new System.EventHandler(this.treeQuestBuffer_Click);
             this.treeQuestBuffer.DoubleClick += new System.EventHandler(this.treeQuestBuffer_DoubleClick);
             // 
             // labelBuffer
             // 
-            this.labelBuffer.AutoSize = true;
-            this.labelBuffer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelBuffer.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.labelBuffer, "labelBuffer");
             this.labelBuffer.Name = "labelBuffer";
-            this.labelBuffer.Size = new System.Drawing.Size(50, 13);
-            this.labelBuffer.TabIndex = 2;
-            this.labelBuffer.Text = "Буффер:";
+            this.toolTipDialogs.SetToolTip(this.labelBuffer, resources.GetString("labelBuffer.ToolTip"));
+            // 
+            // NPCBox
+            // 
+            resources.ApplyResources(this.NPCBox, "NPCBox");
+            this.NPCBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
+            this.NPCBox.DropDownWidth = 280;
+            this.NPCBox.FormattingEnabled = true;
+            this.NPCBox.Name = "NPCBox";
+            this.toolTipDialogs.SetToolTip(this.NPCBox, resources.GetString("NPCBox.ToolTip"));
+            this.NPCBox.SelectedIndexChanged += new System.EventHandler(this.NPCBox_SelectedIndexChanged);
+            this.NPCBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NPCBox_KeyDown);
+            // 
+            // labelChosenNPC
+            // 
+            resources.ApplyResources(this.labelChosenNPC, "labelChosenNPC");
+            this.labelChosenNPC.Name = "labelChosenNPC";
+            this.toolTipDialogs.SetToolTip(this.labelChosenNPC, resources.GetString("labelChosenNPC.ToolTip"));
+            // 
+            // CentralDock
+            // 
+            resources.ApplyResources(this.CentralDock, "CentralDock");
+            this.CentralDock.Controls.Add(this.tabDialogs);
+            this.CentralDock.Controls.Add(this.tabQuests);
+            this.CentralDock.Controls.Add(this.tabInfoNPC);
+            this.CentralDock.Controls.Add(this.tabReview);
+            this.CentralDock.Controls.Add(this.tabManage);
+            this.CentralDock.Controls.Add(this.tabTranslate);
+            this.CentralDock.Controls.Add(this.tabSearch);
+            this.CentralDock.HotTrack = true;
+            this.CentralDock.Name = "CentralDock";
+            this.CentralDock.SelectedIndex = 0;
+            this.CentralDock.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.CentralDock.TabStop = false;
+            this.toolTipDialogs.SetToolTip(this.CentralDock, resources.GetString("CentralDock.ToolTip"));
+            this.CentralDock.SelectedIndexChanged += new System.EventHandler(this.onSelectTab);
+            // 
+            // tabDialogs
+            // 
+            resources.ApplyResources(this.tabDialogs, "tabDialogs");
+            this.tabDialogs.Controls.Add(this.splitDialogs);
+            this.tabDialogs.Name = "tabDialogs";
+            this.toolTipDialogs.SetToolTip(this.tabDialogs, resources.GetString("tabDialogs.ToolTip"));
+            this.tabDialogs.UseVisualStyleBackColor = true;
+            // 
+            // tabQuests
+            // 
+            resources.ApplyResources(this.tabQuests, "tabQuests");
+            this.tabQuests.Controls.Add(this.splitQuestsContainer);
+            this.tabQuests.Controls.Add(this.panelQuestTools);
+            this.tabQuests.Controls.Add(this.panelSelectQuest);
+            this.tabQuests.Name = "tabQuests";
+            this.toolTipDialogs.SetToolTip(this.tabQuests, resources.GetString("tabQuests.ToolTip"));
+            this.tabQuests.UseVisualStyleBackColor = true;
             // 
             // panelQuestTools
             // 
-            this.panelQuestTools.AutoSize = true;
+            resources.ApplyResources(this.panelQuestTools, "panelQuestTools");
             this.panelQuestTools.Controls.Add(this.bClearBuffer);
             this.panelQuestTools.Controls.Add(this.bCutEvents);
             this.panelQuestTools.Controls.Add(this.bPasteEvents);
@@ -619,247 +554,181 @@ namespace StalkerOnlineQuesterEditor
             this.panelQuestTools.Controls.Add(this.bRemoveEvent);
             this.panelQuestTools.Controls.Add(this.bEditEvent);
             this.panelQuestTools.Controls.Add(this.bAddEvent);
-            this.panelQuestTools.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelQuestTools.Location = new System.Drawing.Point(705, 48);
             this.panelQuestTools.Name = "panelQuestTools";
-            this.panelQuestTools.Size = new System.Drawing.Size(198, 490);
-            this.panelQuestTools.TabIndex = 2;
+            this.toolTipDialogs.SetToolTip(this.panelQuestTools, resources.GetString("panelQuestTools.ToolTip"));
             // 
             // bClearBuffer
             // 
-            this.bClearBuffer.Location = new System.Drawing.Point(4, 327);
+            resources.ApplyResources(this.bClearBuffer, "bClearBuffer");
             this.bClearBuffer.Name = "bClearBuffer";
-            this.bClearBuffer.Size = new System.Drawing.Size(191, 23);
-            this.bClearBuffer.TabIndex = 9;
-            this.bClearBuffer.Text = "Очистить буфер";
+            this.toolTipDialogs.SetToolTip(this.bClearBuffer, resources.GetString("bClearBuffer.ToolTip"));
             this.bClearBuffer.UseVisualStyleBackColor = true;
             this.bClearBuffer.Click += new System.EventHandler(this.bClearBuffer_Click);
             // 
             // bCutEvents
             // 
-            this.bCutEvents.Location = new System.Drawing.Point(4, 238);
+            resources.ApplyResources(this.bCutEvents, "bCutEvents");
             this.bCutEvents.Name = "bCutEvents";
-            this.bCutEvents.Size = new System.Drawing.Size(191, 23);
-            this.bCutEvents.TabIndex = 8;
-            this.bCutEvents.Text = "Вырезать";
+            this.toolTipDialogs.SetToolTip(this.bCutEvents, resources.GetString("bCutEvents.ToolTip"));
             this.bCutEvents.UseVisualStyleBackColor = true;
             this.bCutEvents.Click += new System.EventHandler(this.bCutEvents_Click);
             // 
             // bPasteEvents
             // 
-            this.bPasteEvents.Enabled = false;
-            this.bPasteEvents.Location = new System.Drawing.Point(4, 296);
+            resources.ApplyResources(this.bPasteEvents, "bPasteEvents");
             this.bPasteEvents.Name = "bPasteEvents";
-            this.bPasteEvents.Size = new System.Drawing.Size(191, 23);
-            this.bPasteEvents.TabIndex = 7;
-            this.bPasteEvents.Text = "Вставить";
+            this.toolTipDialogs.SetToolTip(this.bPasteEvents, resources.GetString("bPasteEvents.ToolTip"));
             this.bPasteEvents.UseVisualStyleBackColor = true;
             this.bPasteEvents.Click += new System.EventHandler(this.bPasteEvents_Click);
             // 
             // bCopyEvents
             // 
-            this.bCopyEvents.Enabled = false;
-            this.bCopyEvents.Location = new System.Drawing.Point(4, 267);
+            resources.ApplyResources(this.bCopyEvents, "bCopyEvents");
             this.bCopyEvents.Name = "bCopyEvents";
-            this.bCopyEvents.Size = new System.Drawing.Size(191, 23);
-            this.bCopyEvents.TabIndex = 6;
-            this.bCopyEvents.Text = "Копировать";
+            this.toolTipDialogs.SetToolTip(this.bCopyEvents, resources.GetString("bCopyEvents.ToolTip"));
             this.bCopyEvents.UseVisualStyleBackColor = true;
             this.bCopyEvents.Click += new System.EventHandler(this.bCopyEvents_Click);
             // 
             // bQuestDown
             // 
-            this.bQuestDown.Enabled = false;
-            this.bQuestDown.Location = new System.Drawing.Point(4, 152);
+            resources.ApplyResources(this.bQuestDown, "bQuestDown");
             this.bQuestDown.Name = "bQuestDown";
-            this.bQuestDown.Size = new System.Drawing.Size(191, 30);
-            this.bQuestDown.TabIndex = 5;
-            this.bQuestDown.Text = "Вниз";
+            this.toolTipDialogs.SetToolTip(this.bQuestDown, resources.GetString("bQuestDown.ToolTip"));
             this.bQuestDown.UseVisualStyleBackColor = true;
             this.bQuestDown.Click += new System.EventHandler(this.bQuestDown_Click);
             // 
             // bQuestUp
             // 
-            this.bQuestUp.Enabled = false;
-            this.bQuestUp.Location = new System.Drawing.Point(4, 116);
+            resources.ApplyResources(this.bQuestUp, "bQuestUp");
             this.bQuestUp.Name = "bQuestUp";
-            this.bQuestUp.Size = new System.Drawing.Size(191, 30);
-            this.bQuestUp.TabIndex = 4;
-            this.bQuestUp.Text = "Вверх";
+            this.toolTipDialogs.SetToolTip(this.bQuestUp, resources.GetString("bQuestUp.ToolTip"));
             this.bQuestUp.UseVisualStyleBackColor = true;
             this.bQuestUp.Click += new System.EventHandler(this.bQuestUp_Click);
             // 
             // bRemoveEvent
             // 
-            this.bRemoveEvent.Enabled = false;
-            this.bRemoveEvent.ImageKey = "delete.png";
+            resources.ApplyResources(this.bRemoveEvent, "bRemoveEvent");
             this.bRemoveEvent.ImageList = this.imageList;
-            this.bRemoveEvent.Location = new System.Drawing.Point(4, 80);
             this.bRemoveEvent.Name = "bRemoveEvent";
-            this.bRemoveEvent.Size = new System.Drawing.Size(191, 30);
-            this.bRemoveEvent.TabIndex = 2;
-            this.bRemoveEvent.Text = "Удалить событие";
-            this.bRemoveEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bRemoveEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipDialogs.SetToolTip(this.bRemoveEvent, resources.GetString("bRemoveEvent.ToolTip"));
             this.bRemoveEvent.UseVisualStyleBackColor = true;
             this.bRemoveEvent.Click += new System.EventHandler(this.bRemoveEvent_Click);
             // 
             // bEditEvent
             // 
-            this.bEditEvent.Enabled = false;
-            this.bEditEvent.ImageKey = "Edit.png";
+            resources.ApplyResources(this.bEditEvent, "bEditEvent");
             this.bEditEvent.ImageList = this.imageList;
-            this.bEditEvent.Location = new System.Drawing.Point(4, 44);
             this.bEditEvent.Name = "bEditEvent";
-            this.bEditEvent.Size = new System.Drawing.Size(191, 30);
-            this.bEditEvent.TabIndex = 1;
-            this.bEditEvent.Text = "Править событие";
-            this.bEditEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bEditEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipDialogs.SetToolTip(this.bEditEvent, resources.GetString("bEditEvent.ToolTip"));
             this.bEditEvent.UseVisualStyleBackColor = true;
             this.bEditEvent.Click += new System.EventHandler(this.bEditEvent_Click);
             // 
             // bAddEvent
             // 
-            this.bAddEvent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.bAddEvent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.bAddEvent.Enabled = false;
-            this.bAddEvent.ImageKey = "add.png";
+            resources.ApplyResources(this.bAddEvent, "bAddEvent");
             this.bAddEvent.ImageList = this.imageList;
-            this.bAddEvent.Location = new System.Drawing.Point(4, 8);
             this.bAddEvent.Name = "bAddEvent";
-            this.bAddEvent.Size = new System.Drawing.Size(191, 30);
-            this.bAddEvent.TabIndex = 0;
-            this.bAddEvent.Text = "Добавить событие";
-            this.bAddEvent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bAddEvent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipDialogs.SetToolTip(this.bAddEvent, resources.GetString("bAddEvent.ToolTip"));
             this.bAddEvent.UseMnemonic = false;
             this.bAddEvent.UseVisualStyleBackColor = false;
             this.bAddEvent.Click += new System.EventHandler(this.bAddEvent_Click);
             // 
             // panelSelectQuest
             // 
+            resources.ApplyResources(this.panelSelectQuest, "panelSelectQuest");
             this.panelSelectQuest.Controls.Add(this.bRemoveQuest);
             this.panelSelectQuest.Controls.Add(this.bAddQuest);
             this.panelSelectQuest.Controls.Add(this.QuestBox);
             this.panelSelectQuest.Controls.Add(this.labelChosenQuest);
-            this.panelSelectQuest.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSelectQuest.Location = new System.Drawing.Point(3, 3);
             this.panelSelectQuest.Name = "panelSelectQuest";
-            this.panelSelectQuest.Size = new System.Drawing.Size(900, 45);
-            this.panelSelectQuest.TabIndex = 3;
+            this.toolTipDialogs.SetToolTip(this.panelSelectQuest, resources.GetString("panelSelectQuest.ToolTip"));
             // 
             // bRemoveQuest
             // 
-            this.bRemoveQuest.Enabled = false;
-            this.bRemoveQuest.Location = new System.Drawing.Point(591, 12);
+            resources.ApplyResources(this.bRemoveQuest, "bRemoveQuest");
             this.bRemoveQuest.Name = "bRemoveQuest";
-            this.bRemoveQuest.Size = new System.Drawing.Size(85, 23);
-            this.bRemoveQuest.TabIndex = 14;
-            this.bRemoveQuest.Text = "Удалить";
+            this.toolTipDialogs.SetToolTip(this.bRemoveQuest, resources.GetString("bRemoveQuest.ToolTip"));
             this.bRemoveQuest.UseVisualStyleBackColor = true;
             this.bRemoveQuest.Click += new System.EventHandler(this.bRemoveQuest_Click);
             // 
             // bAddQuest
             // 
-            this.bAddQuest.Enabled = false;
-            this.bAddQuest.Location = new System.Drawing.Point(500, 11);
+            resources.ApplyResources(this.bAddQuest, "bAddQuest");
             this.bAddQuest.Name = "bAddQuest";
-            this.bAddQuest.Size = new System.Drawing.Size(85, 23);
-            this.bAddQuest.TabIndex = 13;
-            this.bAddQuest.Text = "Добавить";
+            this.toolTipDialogs.SetToolTip(this.bAddQuest, resources.GetString("bAddQuest.ToolTip"));
             this.bAddQuest.UseVisualStyleBackColor = true;
             this.bAddQuest.Click += new System.EventHandler(this.bAddQuest_Click);
             // 
             // QuestBox
             // 
+            resources.ApplyResources(this.QuestBox, "QuestBox");
             this.QuestBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
-            this.QuestBox.Enabled = false;
             this.QuestBox.FormattingEnabled = true;
-            this.QuestBox.Location = new System.Drawing.Point(201, 12);
             this.QuestBox.Name = "QuestBox";
-            this.QuestBox.Size = new System.Drawing.Size(293, 21);
-            this.QuestBox.TabIndex = 12;
+            this.toolTipDialogs.SetToolTip(this.QuestBox, resources.GetString("QuestBox.ToolTip"));
             this.QuestBox.SelectedIndexChanged += new System.EventHandler(this.QuestBox_SelectedIndexChanged);
             this.QuestBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuestBox_KeyDown);
             // 
             // labelChosenQuest
             // 
-            this.labelChosenQuest.AutoSize = true;
-            this.labelChosenQuest.Location = new System.Drawing.Point(97, 15);
+            resources.ApplyResources(this.labelChosenQuest, "labelChosenQuest");
             this.labelChosenQuest.Name = "labelChosenQuest";
-            this.labelChosenQuest.Size = new System.Drawing.Size(98, 13);
-            this.labelChosenQuest.TabIndex = 11;
-            this.labelChosenQuest.Text = "Выбранный квест";
+            this.toolTipDialogs.SetToolTip(this.labelChosenQuest, resources.GetString("labelChosenQuest.ToolTip"));
             // 
             // tabInfoNPC
             // 
+            resources.ApplyResources(this.tabInfoNPC, "tabInfoNPC");
             this.tabInfoNPC.Controls.Add(this.npcLinkShower);
             this.tabInfoNPC.Controls.Add(this.panelNpcLinkControls);
-            this.tabInfoNPC.Location = new System.Drawing.Point(4, 22);
             this.tabInfoNPC.Name = "tabInfoNPC";
-            this.tabInfoNPC.Size = new System.Drawing.Size(906, 541);
-            this.tabInfoNPC.TabIndex = 2;
-            this.tabInfoNPC.Text = "Инфо NPC";
+            this.toolTipDialogs.SetToolTip(this.tabInfoNPC, resources.GetString("tabInfoNPC.ToolTip"));
             this.tabInfoNPC.UseVisualStyleBackColor = true;
             // 
             // npcLinkShower
             // 
+            resources.ApplyResources(this.npcLinkShower, "npcLinkShower");
             this.npcLinkShower.AllowDrop = true;
             this.npcLinkShower.BackColor = System.Drawing.Color.White;
-            this.npcLinkShower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.npcLinkShower.Dock = System.Windows.Forms.DockStyle.Fill;
             this.npcLinkShower.GridFitText = false;
-            this.npcLinkShower.Location = new System.Drawing.Point(0, 52);
             this.npcLinkShower.Name = "npcLinkShower";
             this.npcLinkShower.RegionManagement = true;
-            this.npcLinkShower.Size = new System.Drawing.Size(906, 489);
-            this.npcLinkShower.TabIndex = 1;
-            this.npcLinkShower.Text = "8";
+            this.toolTipDialogs.SetToolTip(this.npcLinkShower, resources.GetString("npcLinkShower.ToolTip"));
             // 
             // panelNpcLinkControls
             // 
+            resources.ApplyResources(this.panelNpcLinkControls, "panelNpcLinkControls");
             this.panelNpcLinkControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelNpcLinkControls.Controls.Add(this.labelAdviceNpcLink);
             this.panelNpcLinkControls.Controls.Add(this.bNpcLinkExecute);
-            this.panelNpcLinkControls.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelNpcLinkControls.Location = new System.Drawing.Point(0, 0);
             this.panelNpcLinkControls.Name = "panelNpcLinkControls";
-            this.panelNpcLinkControls.Size = new System.Drawing.Size(906, 52);
-            this.panelNpcLinkControls.TabIndex = 2;
+            this.toolTipDialogs.SetToolTip(this.panelNpcLinkControls, resources.GetString("panelNpcLinkControls.ToolTip"));
             // 
             // labelAdviceNpcLink
             // 
-            this.labelAdviceNpcLink.AutoSize = true;
-            this.labelAdviceNpcLink.Location = new System.Drawing.Point(7, 20);
+            resources.ApplyResources(this.labelAdviceNpcLink, "labelAdviceNpcLink");
             this.labelAdviceNpcLink.Name = "labelAdviceNpcLink";
-            this.labelAdviceNpcLink.Size = new System.Drawing.Size(250, 13);
-            this.labelAdviceNpcLink.TabIndex = 1;
-            this.labelAdviceNpcLink.Text = "Выберете NPC в комбобоксе вверху и нажмите";
+            this.toolTipDialogs.SetToolTip(this.labelAdviceNpcLink, resources.GetString("labelAdviceNpcLink.ToolTip"));
             // 
             // bNpcLinkExecute
             // 
-            this.bNpcLinkExecute.Location = new System.Drawing.Point(261, 15);
+            resources.ApplyResources(this.bNpcLinkExecute, "bNpcLinkExecute");
             this.bNpcLinkExecute.Name = "bNpcLinkExecute";
-            this.bNpcLinkExecute.Size = new System.Drawing.Size(107, 23);
-            this.bNpcLinkExecute.TabIndex = 0;
-            this.bNpcLinkExecute.Text = "Посмотреть";
+            this.toolTipDialogs.SetToolTip(this.bNpcLinkExecute, resources.GetString("bNpcLinkExecute.ToolTip"));
             this.bNpcLinkExecute.UseVisualStyleBackColor = true;
             this.bNpcLinkExecute.Click += new System.EventHandler(this.bNpcLinkExecute_Click);
             // 
             // tabReview
             // 
+            resources.ApplyResources(this.tabReview, "tabReview");
             this.tabReview.Controls.Add(this.dgvReview);
             this.tabReview.Controls.Add(this.panelReviewButtons);
-            this.tabReview.Location = new System.Drawing.Point(4, 22);
             this.tabReview.Name = "tabReview";
-            this.tabReview.Size = new System.Drawing.Size(906, 541);
-            this.tabReview.TabIndex = 3;
-            this.tabReview.Text = "Проверки";
+            this.toolTipDialogs.SetToolTip(this.tabReview, resources.GetString("tabReview.ToolTip"));
             this.tabReview.UseVisualStyleBackColor = true;
             // 
             // dgvReview
             // 
+            resources.ApplyResources(this.dgvReview, "dgvReview");
             this.dgvReview.AllowUserToAddRows = false;
             this.dgvReview.AllowUserToDeleteRows = false;
             this.dgvReview.AllowUserToOrderColumns = true;
@@ -872,58 +741,52 @@ namespace StalkerOnlineQuesterEditor
             this.colLocation,
             this.colCoordinates,
             this.colRussianName});
-            this.dgvReview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvReview.Location = new System.Drawing.Point(0, 104);
             this.dgvReview.Name = "dgvReview";
-            this.dgvReview.Size = new System.Drawing.Size(906, 437);
-            this.dgvReview.TabIndex = 1;
+            this.toolTipDialogs.SetToolTip(this.dgvReview, resources.GetString("dgvReview.ToolTip"));
             // 
             // colNPCName
             // 
-            this.colNPCName.HeaderText = "Имя NPC";
+            resources.ApplyResources(this.colNPCName, "colNPCName");
             this.colNPCName.Name = "colNPCName";
             // 
             // colDialogsNum
             // 
-            this.colDialogsNum.HeaderText = "Диалоги";
+            resources.ApplyResources(this.colDialogsNum, "colDialogsNum");
             this.colDialogsNum.Name = "colDialogsNum";
             // 
             // colQuestsNum
             // 
-            this.colQuestsNum.HeaderText = "Квесты";
+            resources.ApplyResources(this.colQuestsNum, "colQuestsNum");
             this.colQuestsNum.Name = "colQuestsNum";
             // 
             // colLocation
             // 
-            this.colLocation.HeaderText = "Карта";
+            resources.ApplyResources(this.colLocation, "colLocation");
             this.colLocation.Name = "colLocation";
             // 
             // colCoordinates
             // 
-            this.colCoordinates.HeaderText = "Координаты";
+            resources.ApplyResources(this.colCoordinates, "colCoordinates");
             this.colCoordinates.Name = "colCoordinates";
             this.colCoordinates.ReadOnly = true;
-            this.colCoordinates.Width = 150;
             // 
             // colRussianName
             // 
-            this.colRussianName.HeaderText = "Русское имя";
+            resources.ApplyResources(this.colRussianName, "colRussianName");
             this.colRussianName.Name = "colRussianName";
-            this.colRussianName.Width = 150;
             // 
             // panelReviewButtons
             // 
+            resources.ApplyResources(this.panelReviewButtons, "panelReviewButtons");
             this.panelReviewButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelReviewButtons.Controls.Add(this.gbNPCcheck);
             this.panelReviewButtons.Controls.Add(this.gbQuestCheck);
-            this.panelReviewButtons.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelReviewButtons.Location = new System.Drawing.Point(0, 0);
             this.panelReviewButtons.Name = "panelReviewButtons";
-            this.panelReviewButtons.Size = new System.Drawing.Size(906, 104);
-            this.panelReviewButtons.TabIndex = 0;
+            this.toolTipDialogs.SetToolTip(this.panelReviewButtons, resources.GetString("panelReviewButtons.ToolTip"));
             // 
             // gbNPCcheck
             // 
+            resources.ApplyResources(this.gbNPCcheck, "gbNPCcheck");
             this.gbNPCcheck.Controls.Add(this.cbOnlyOnLocation);
             this.gbNPCcheck.Controls.Add(this.cbLocation);
             this.gbNPCcheck.Controls.Add(this.numQuests);
@@ -933,37 +796,29 @@ namespace StalkerOnlineQuesterEditor
             this.gbNPCcheck.Controls.Add(this.labelLessThan1);
             this.gbNPCcheck.Controls.Add(this.cbNumDialogs);
             this.gbNPCcheck.Controls.Add(this.bFindNPC);
-            this.gbNPCcheck.Location = new System.Drawing.Point(3, 4);
             this.gbNPCcheck.Name = "gbNPCcheck";
-            this.gbNPCcheck.Size = new System.Drawing.Size(419, 95);
-            this.gbNPCcheck.TabIndex = 0;
             this.gbNPCcheck.TabStop = false;
-            this.gbNPCcheck.Text = "NPC";
+            this.toolTipDialogs.SetToolTip(this.gbNPCcheck, resources.GetString("gbNPCcheck.ToolTip"));
             // 
             // cbOnlyOnLocation
             // 
-            this.cbOnlyOnLocation.AutoSize = true;
-            this.cbOnlyOnLocation.Location = new System.Drawing.Point(253, 48);
+            resources.ApplyResources(this.cbOnlyOnLocation, "cbOnlyOnLocation");
             this.cbOnlyOnLocation.Name = "cbOnlyOnLocation";
-            this.cbOnlyOnLocation.Size = new System.Drawing.Size(126, 17);
-            this.cbOnlyOnLocation.TabIndex = 8;
-            this.cbOnlyOnLocation.Text = "Только на локации:";
+            this.toolTipDialogs.SetToolTip(this.cbOnlyOnLocation, resources.GetString("cbOnlyOnLocation.ToolTip"));
             this.cbOnlyOnLocation.UseVisualStyleBackColor = true;
             // 
             // cbLocation
             // 
+            resources.ApplyResources(this.cbLocation, "cbLocation");
             this.cbLocation.FormattingEnabled = true;
-            this.cbLocation.Location = new System.Drawing.Point(253, 71);
             this.cbLocation.Name = "cbLocation";
-            this.cbLocation.Size = new System.Drawing.Size(158, 21);
-            this.cbLocation.TabIndex = 7;
+            this.toolTipDialogs.SetToolTip(this.cbLocation, resources.GetString("cbLocation.ToolTip"));
             // 
             // numQuests
             // 
-            this.numQuests.Location = new System.Drawing.Point(175, 72);
+            resources.ApplyResources(this.numQuests, "numQuests");
             this.numQuests.Name = "numQuests";
-            this.numQuests.Size = new System.Drawing.Size(62, 20);
-            this.numQuests.TabIndex = 6;
+            this.toolTipDialogs.SetToolTip(this.numQuests, resources.GetString("numQuests.ToolTip"));
             this.numQuests.Value = new decimal(new int[] {
             3,
             0,
@@ -972,34 +827,27 @@ namespace StalkerOnlineQuesterEditor
             // 
             // labelLessThan2
             // 
-            this.labelLessThan2.AutoSize = true;
-            this.labelLessThan2.Location = new System.Drawing.Point(118, 73);
+            resources.ApplyResources(this.labelLessThan2, "labelLessThan2");
             this.labelLessThan2.Name = "labelLessThan2";
-            this.labelLessThan2.Size = new System.Drawing.Size(47, 13);
-            this.labelLessThan2.TabIndex = 5;
-            this.labelLessThan2.Text = "меньше";
+            this.toolTipDialogs.SetToolTip(this.labelLessThan2, resources.GetString("labelLessThan2.ToolTip"));
             // 
             // cbNumQuests
             // 
-            this.cbNumQuests.AutoSize = true;
-            this.cbNumQuests.Location = new System.Drawing.Point(7, 72);
+            resources.ApplyResources(this.cbNumQuests, "cbNumQuests");
             this.cbNumQuests.Name = "cbNumQuests";
-            this.cbNumQuests.Size = new System.Drawing.Size(102, 17);
-            this.cbNumQuests.TabIndex = 4;
-            this.cbNumQuests.Text = "Число квестов";
+            this.toolTipDialogs.SetToolTip(this.cbNumQuests, resources.GetString("cbNumQuests.ToolTip"));
             this.cbNumQuests.UseVisualStyleBackColor = true;
             // 
             // numDialogs
             // 
-            this.numDialogs.Location = new System.Drawing.Point(175, 48);
+            resources.ApplyResources(this.numDialogs, "numDialogs");
             this.numDialogs.Maximum = new decimal(new int[] {
             200,
             0,
             0,
             0});
             this.numDialogs.Name = "numDialogs";
-            this.numDialogs.Size = new System.Drawing.Size(62, 20);
-            this.numDialogs.TabIndex = 3;
+            this.toolTipDialogs.SetToolTip(this.numDialogs, resources.GetString("numDialogs.ToolTip"));
             this.numDialogs.Value = new decimal(new int[] {
             5,
             0,
@@ -1008,104 +856,83 @@ namespace StalkerOnlineQuesterEditor
             // 
             // labelLessThan1
             // 
-            this.labelLessThan1.AutoSize = true;
-            this.labelLessThan1.Location = new System.Drawing.Point(117, 50);
+            resources.ApplyResources(this.labelLessThan1, "labelLessThan1");
             this.labelLessThan1.Name = "labelLessThan1";
-            this.labelLessThan1.Size = new System.Drawing.Size(47, 13);
-            this.labelLessThan1.TabIndex = 2;
-            this.labelLessThan1.Text = "меньше";
+            this.toolTipDialogs.SetToolTip(this.labelLessThan1, resources.GetString("labelLessThan1.ToolTip"));
             // 
             // cbNumDialogs
             // 
-            this.cbNumDialogs.AutoSize = true;
-            this.cbNumDialogs.Location = new System.Drawing.Point(7, 49);
+            resources.ApplyResources(this.cbNumDialogs, "cbNumDialogs");
             this.cbNumDialogs.Name = "cbNumDialogs";
-            this.cbNumDialogs.Size = new System.Drawing.Size(108, 17);
-            this.cbNumDialogs.TabIndex = 1;
-            this.cbNumDialogs.Text = "Число диалогов";
+            this.toolTipDialogs.SetToolTip(this.cbNumDialogs, resources.GetString("cbNumDialogs.ToolTip"));
             this.cbNumDialogs.UseVisualStyleBackColor = true;
             // 
             // bFindNPC
             // 
-            this.bFindNPC.Location = new System.Drawing.Point(7, 19);
+            resources.ApplyResources(this.bFindNPC, "bFindNPC");
             this.bFindNPC.Name = "bFindNPC";
-            this.bFindNPC.Size = new System.Drawing.Size(98, 23);
-            this.bFindNPC.TabIndex = 0;
-            this.bFindNPC.Text = "Найти NPC";
+            this.toolTipDialogs.SetToolTip(this.bFindNPC, resources.GetString("bFindNPC.ToolTip"));
             this.bFindNPC.UseVisualStyleBackColor = true;
             this.bFindNPC.Click += new System.EventHandler(this.bFindNPC_Click);
             // 
             // gbQuestCheck
             // 
+            resources.ApplyResources(this.gbQuestCheck, "gbQuestCheck");
             this.gbQuestCheck.Controls.Add(this.labelItemTarget);
             this.gbQuestCheck.Controls.Add(this.cbItemTarget);
             this.gbQuestCheck.Controls.Add(this.labelItemReward);
             this.gbQuestCheck.Controls.Add(this.cbItemReward);
             this.gbQuestCheck.Controls.Add(this.bFindQuest);
-            this.gbQuestCheck.Location = new System.Drawing.Point(428, 4);
             this.gbQuestCheck.Name = "gbQuestCheck";
-            this.gbQuestCheck.Size = new System.Drawing.Size(469, 95);
-            this.gbQuestCheck.TabIndex = 2;
             this.gbQuestCheck.TabStop = false;
-            this.gbQuestCheck.Text = "Квест";
+            this.toolTipDialogs.SetToolTip(this.gbQuestCheck, resources.GetString("gbQuestCheck.ToolTip"));
             // 
             // labelItemTarget
             // 
-            this.labelItemTarget.AutoSize = true;
-            this.labelItemTarget.Location = new System.Drawing.Point(8, 44);
+            resources.ApplyResources(this.labelItemTarget, "labelItemTarget");
             this.labelItemTarget.Name = "labelItemTarget";
-            this.labelItemTarget.Size = new System.Drawing.Size(65, 13);
-            this.labelItemTarget.TabIndex = 11;
-            this.labelItemTarget.Text = "Или целью:";
+            this.toolTipDialogs.SetToolTip(this.labelItemTarget, resources.GetString("labelItemTarget.ToolTip"));
             // 
             // cbItemTarget
             // 
+            resources.ApplyResources(this.cbItemTarget, "cbItemTarget");
             this.cbItemTarget.FormattingEnabled = true;
-            this.cbItemTarget.Location = new System.Drawing.Point(88, 39);
             this.cbItemTarget.Name = "cbItemTarget";
-            this.cbItemTarget.Size = new System.Drawing.Size(375, 21);
-            this.cbItemTarget.TabIndex = 10;
+            this.toolTipDialogs.SetToolTip(this.cbItemTarget, resources.GetString("cbItemTarget.ToolTip"));
             // 
             // labelItemReward
             // 
-            this.labelItemReward.AutoSize = true;
-            this.labelItemReward.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.labelItemReward, "labelItemReward");
             this.labelItemReward.Name = "labelItemReward";
-            this.labelItemReward.Size = new System.Drawing.Size(67, 13);
-            this.labelItemReward.TabIndex = 9;
-            this.labelItemReward.Text = "С наградой:";
+            this.toolTipDialogs.SetToolTip(this.labelItemReward, resources.GetString("labelItemReward.ToolTip"));
             // 
             // cbItemReward
             // 
+            resources.ApplyResources(this.cbItemReward, "cbItemReward");
             this.cbItemReward.FormattingEnabled = true;
-            this.cbItemReward.Location = new System.Drawing.Point(88, 13);
             this.cbItemReward.Name = "cbItemReward";
-            this.cbItemReward.Size = new System.Drawing.Size(375, 21);
-            this.cbItemReward.TabIndex = 8;
+            this.toolTipDialogs.SetToolTip(this.cbItemReward, resources.GetString("cbItemReward.ToolTip"));
             // 
             // bFindQuest
             // 
-            this.bFindQuest.Location = new System.Drawing.Point(365, 66);
+            resources.ApplyResources(this.bFindQuest, "bFindQuest");
             this.bFindQuest.Name = "bFindQuest";
-            this.bFindQuest.Size = new System.Drawing.Size(98, 23);
-            this.bFindQuest.TabIndex = 0;
-            this.bFindQuest.Text = "Найти квест";
+            this.toolTipDialogs.SetToolTip(this.bFindQuest, resources.GetString("bFindQuest.ToolTip"));
             this.bFindQuest.UseVisualStyleBackColor = true;
             this.bFindQuest.Click += new System.EventHandler(this.bFindQuest_Click);
             // 
             // tabManage
             // 
+            resources.ApplyResources(this.tabManage, "tabManage");
             this.tabManage.Controls.Add(this.dgvManage);
             this.tabManage.Controls.Add(this.panel2);
-            this.tabManage.Location = new System.Drawing.Point(4, 22);
             this.tabManage.Name = "tabManage";
-            this.tabManage.Size = new System.Drawing.Size(906, 541);
-            this.tabManage.TabIndex = 4;
-            this.tabManage.Text = "Управление";
+            this.toolTipDialogs.SetToolTip(this.tabManage, resources.GetString("tabManage.ToolTip"));
             this.tabManage.UseVisualStyleBackColor = true;
             // 
             // dgvManage
             // 
+            resources.ApplyResources(this.dgvManage, "dgvManage");
             this.dgvManage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvManage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -1126,149 +953,140 @@ namespace StalkerOnlineQuesterEditor
             this.author,
             this.Legend,
             this.worked});
-            this.dgvManage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvManage.Location = new System.Drawing.Point(0, 0);
             this.dgvManage.Name = "dgvManage";
-            this.dgvManage.Size = new System.Drawing.Size(906, 515);
-            this.dgvManage.TabIndex = 0;
+            this.toolTipDialogs.SetToolTip(this.dgvManage, resources.GetString("dgvManage.ToolTip"));
             // 
             // id
             // 
-            this.id.HeaderText = "id";
+            resources.ApplyResources(this.id, "id");
             this.id.Name = "id";
             this.id.ReadOnly = true;
             // 
             // subevents
             // 
-            this.subevents.HeaderText = "Вложенные события";
+            resources.ApplyResources(this.subevents, "subevents");
             this.subevents.Name = "subevents";
             this.subevents.ReadOnly = true;
             // 
             // title
             // 
-            this.title.HeaderText = "Заголовок";
+            resources.ApplyResources(this.title, "title");
             this.title.Name = "title";
             this.title.ReadOnly = true;
             // 
             // Description
             // 
-            this.Description.HeaderText = "Описание";
+            resources.ApplyResources(this.Description, "Description");
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
             // 
             // npcName
             // 
-            this.npcName.HeaderText = "NPC";
+            resources.ApplyResources(this.npcName, "npcName");
             this.npcName.Name = "npcName";
             this.npcName.ReadOnly = true;
             // 
             // subNPC
             // 
-            this.subNPC.HeaderText = "Список NPC";
+            resources.ApplyResources(this.subNPC, "subNPC");
             this.subNPC.Name = "subNPC";
             this.subNPC.ReadOnly = true;
             // 
             // dialogID
             // 
-            this.dialogID.HeaderText = "id диалога";
+            resources.ApplyResources(this.dialogID, "dialogID");
             this.dialogID.Name = "dialogID";
             this.dialogID.ReadOnly = true;
             // 
             // rewardBattle
             // 
-            this.rewardBattle.HeaderText = "Награда опыт-бой";
+            resources.ApplyResources(this.rewardBattle, "rewardBattle");
             this.rewardBattle.Name = "rewardBattle";
             this.rewardBattle.ReadOnly = true;
             // 
             // rewardSurvive
             // 
-            this.rewardSurvive.HeaderText = "Награда опыт-выживание";
+            resources.ApplyResources(this.rewardSurvive, "rewardSurvive");
             this.rewardSurvive.Name = "rewardSurvive";
             this.rewardSurvive.ReadOnly = true;
             // 
             // rewardSupport
             // 
-            this.rewardSupport.HeaderText = "Награда опыт-поддержка";
+            resources.ApplyResources(this.rewardSupport, "rewardSupport");
             this.rewardSupport.Name = "rewardSupport";
             this.rewardSupport.ReadOnly = true;
             // 
             // rewardCredits
             // 
-            this.rewardCredits.HeaderText = "Награда деньги";
+            resources.ApplyResources(this.rewardCredits, "rewardCredits");
             this.rewardCredits.Name = "rewardCredits";
             this.rewardCredits.ReadOnly = true;
             // 
             // rewardItems
             // 
-            this.rewardItems.HeaderText = "Награда вещи";
+            resources.ApplyResources(this.rewardItems, "rewardItems");
             this.rewardItems.Name = "rewardItems";
             this.rewardItems.ReadOnly = true;
             // 
             // repeat
             // 
-            this.repeat.HeaderText = "Повторяемый";
+            resources.ApplyResources(this.repeat, "repeat");
             this.repeat.Name = "repeat";
             this.repeat.ReadOnly = true;
             // 
             // repeatPeriod
             // 
-            this.repeatPeriod.HeaderText = "Период повтора (часы)";
+            resources.ApplyResources(this.repeatPeriod, "repeatPeriod");
             this.repeatPeriod.Name = "repeatPeriod";
             this.repeatPeriod.ReadOnly = true;
             // 
             // Level
             // 
-            this.Level.HeaderText = "Уровень ( комментарий)";
+            resources.ApplyResources(this.Level, "Level");
             this.Level.Name = "Level";
             // 
             // author
             // 
-            this.author.HeaderText = "Автор ( комментарий)";
+            resources.ApplyResources(this.author, "author");
             this.author.Name = "author";
             // 
             // Legend
             // 
-            this.Legend.HeaderText = "Легенда ( комментарий)";
+            resources.ApplyResources(this.Legend, "Legend");
             this.Legend.Name = "Legend";
             // 
             // worked
             // 
-            this.worked.HeaderText = "Рабочий";
+            resources.ApplyResources(this.worked, "worked");
             this.worked.Name = "worked";
             // 
             // panel2
             // 
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.bSaveManage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 515);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(906, 26);
-            this.panel2.TabIndex = 1;
+            this.toolTipDialogs.SetToolTip(this.panel2, resources.GetString("panel2.ToolTip"));
             // 
             // bSaveManage
             // 
-            this.bSaveManage.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bSaveManage.Location = new System.Drawing.Point(831, 0);
+            resources.ApplyResources(this.bSaveManage, "bSaveManage");
             this.bSaveManage.Name = "bSaveManage";
-            this.bSaveManage.Size = new System.Drawing.Size(75, 26);
-            this.bSaveManage.TabIndex = 0;
-            this.bSaveManage.Text = "Сохранить";
+            this.toolTipDialogs.SetToolTip(this.bSaveManage, resources.GetString("bSaveManage.ToolTip"));
             this.bSaveManage.UseVisualStyleBackColor = true;
             this.bSaveManage.Click += new System.EventHandler(this.bSaveManage_Click);
             // 
             // tabTranslate
             // 
+            resources.ApplyResources(this.tabTranslate, "tabTranslate");
             this.tabTranslate.Controls.Add(this.dgvLocaleDiff);
             this.tabTranslate.Controls.Add(this.panelDiffLocale);
-            this.tabTranslate.Location = new System.Drawing.Point(4, 22);
             this.tabTranslate.Name = "tabTranslate";
-            this.tabTranslate.Size = new System.Drawing.Size(906, 541);
-            this.tabTranslate.TabIndex = 5;
-            this.tabTranslate.Text = "Переводы";
+            this.toolTipDialogs.SetToolTip(this.tabTranslate, resources.GetString("tabTranslate.ToolTip"));
             this.tabTranslate.UseVisualStyleBackColor = true;
             // 
             // dgvLocaleDiff
             // 
+            resources.ApplyResources(this.dgvLocaleDiff, "dgvLocaleDiff");
             this.dgvLocaleDiff.AllowUserToAddRows = false;
             this.dgvLocaleDiff.AllowUserToDeleteRows = false;
             this.dgvLocaleDiff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1281,140 +1099,121 @@ namespace StalkerOnlineQuesterEditor
             this.ColumnLocation,
             this.RusText1,
             this.EngText1});
-            this.dgvLocaleDiff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLocaleDiff.Location = new System.Drawing.Point(0, 57);
             this.dgvLocaleDiff.Name = "dgvLocaleDiff";
             this.dgvLocaleDiff.ReadOnly = true;
-            this.dgvLocaleDiff.Size = new System.Drawing.Size(906, 484);
-            this.dgvLocaleDiff.TabIndex = 1;
+            this.toolTipDialogs.SetToolTip(this.dgvLocaleDiff, resources.GetString("dgvLocaleDiff.ToolTip"));
             this.dgvLocaleDiff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLocaleDiff_CellDoubleClick);
             // 
             // type
             // 
-            this.type.HeaderText = "Тип";
+            resources.ApplyResources(this.type, "type");
             this.type.Name = "type";
             this.type.ReadOnly = true;
             // 
             // npc_name
             // 
-            this.npc_name.HeaderText = "Имя NPC";
+            resources.ApplyResources(this.npc_name, "npc_name");
             this.npc_name.Name = "npc_name";
             this.npc_name.ReadOnly = true;
             // 
             // identif
             // 
-            this.identif.HeaderText = "ID";
+            resources.ApplyResources(this.identif, "identif");
             this.identif.Name = "identif";
             this.identif.ReadOnly = true;
             // 
             // cur_ver
             // 
-            this.cur_ver.HeaderText = "Текущая версия";
+            resources.ApplyResources(this.cur_ver, "cur_ver");
             this.cur_ver.Name = "cur_ver";
             this.cur_ver.ReadOnly = true;
             // 
             // new_ver
             // 
-            this.new_ver.HeaderText = "Новая версия";
+            resources.ApplyResources(this.new_ver, "new_ver");
             this.new_ver.Name = "new_ver";
             this.new_ver.ReadOnly = true;
             // 
             // ColumnLocation
             // 
-            this.ColumnLocation.HeaderText = "Локация";
+            resources.ApplyResources(this.ColumnLocation, "ColumnLocation");
             this.ColumnLocation.Name = "ColumnLocation";
             this.ColumnLocation.ReadOnly = true;
             // 
             // RusText1
             // 
-            this.RusText1.HeaderText = "Русский1";
+            resources.ApplyResources(this.RusText1, "RusText1");
             this.RusText1.Name = "RusText1";
             this.RusText1.ReadOnly = true;
             // 
             // EngText1
             // 
-            this.EngText1.HeaderText = "English1";
+            resources.ApplyResources(this.EngText1, "EngText1");
             this.EngText1.Name = "EngText1";
             this.EngText1.ReadOnly = true;
             // 
             // panelDiffLocale
             // 
+            resources.ApplyResources(this.panelDiffLocale, "panelDiffLocale");
             this.panelDiffLocale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDiffLocale.Controls.Add(this.labelLocalizeOuput);
             this.panelDiffLocale.Controls.Add(this.cbActualFinder);
             this.panelDiffLocale.Controls.Add(this.cbOutdatedFinder);
             this.panelDiffLocale.Controls.Add(this.bFindQuestDifference);
             this.panelDiffLocale.Controls.Add(this.bFindDialogDifference);
-            this.panelDiffLocale.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelDiffLocale.Location = new System.Drawing.Point(0, 0);
             this.panelDiffLocale.Name = "panelDiffLocale";
-            this.panelDiffLocale.Size = new System.Drawing.Size(906, 57);
-            this.panelDiffLocale.TabIndex = 0;
+            this.toolTipDialogs.SetToolTip(this.panelDiffLocale, resources.GetString("panelDiffLocale.ToolTip"));
             // 
             // labelLocalizeOuput
             // 
-            this.labelLocalizeOuput.AutoSize = true;
-            this.labelLocalizeOuput.Location = new System.Drawing.Point(693, 19);
+            resources.ApplyResources(this.labelLocalizeOuput, "labelLocalizeOuput");
             this.labelLocalizeOuput.Name = "labelLocalizeOuput";
-            this.labelLocalizeOuput.Size = new System.Drawing.Size(0, 13);
-            this.labelLocalizeOuput.TabIndex = 5;
+            this.toolTipDialogs.SetToolTip(this.labelLocalizeOuput, resources.GetString("labelLocalizeOuput.ToolTip"));
             // 
             // cbActualFinder
             // 
-            this.cbActualFinder.AutoSize = true;
-            this.cbActualFinder.Location = new System.Drawing.Point(359, 9);
+            resources.ApplyResources(this.cbActualFinder, "cbActualFinder");
             this.cbActualFinder.Name = "cbActualFinder";
-            this.cbActualFinder.Size = new System.Drawing.Size(87, 17);
-            this.cbActualFinder.TabIndex = 3;
-            this.cbActualFinder.Text = "Актуальные";
+            this.toolTipDialogs.SetToolTip(this.cbActualFinder, resources.GetString("cbActualFinder.ToolTip"));
             this.cbActualFinder.UseVisualStyleBackColor = true;
             // 
             // cbOutdatedFinder
             // 
-            this.cbOutdatedFinder.AutoSize = true;
+            resources.ApplyResources(this.cbOutdatedFinder, "cbOutdatedFinder");
             this.cbOutdatedFinder.Checked = true;
             this.cbOutdatedFinder.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbOutdatedFinder.Location = new System.Drawing.Point(359, 32);
             this.cbOutdatedFinder.Name = "cbOutdatedFinder";
-            this.cbOutdatedFinder.Size = new System.Drawing.Size(89, 17);
-            this.cbOutdatedFinder.TabIndex = 2;
-            this.cbOutdatedFinder.Text = "Устаревшие";
+            this.toolTipDialogs.SetToolTip(this.cbOutdatedFinder, resources.GetString("cbOutdatedFinder.ToolTip"));
             this.cbOutdatedFinder.UseVisualStyleBackColor = true;
             // 
             // bFindQuestDifference
             // 
-            this.bFindQuestDifference.Location = new System.Drawing.Point(195, 9);
+            resources.ApplyResources(this.bFindQuestDifference, "bFindQuestDifference");
             this.bFindQuestDifference.Name = "bFindQuestDifference";
-            this.bFindQuestDifference.Size = new System.Drawing.Size(154, 23);
-            this.bFindQuestDifference.TabIndex = 1;
-            this.bFindQuestDifference.Text = "Найти квесты";
+            this.toolTipDialogs.SetToolTip(this.bFindQuestDifference, resources.GetString("bFindQuestDifference.ToolTip"));
             this.bFindQuestDifference.UseVisualStyleBackColor = true;
             this.bFindQuestDifference.Click += new System.EventHandler(this.bFindQuestDifference_Click);
             // 
             // bFindDialogDifference
             // 
-            this.bFindDialogDifference.Location = new System.Drawing.Point(35, 9);
+            resources.ApplyResources(this.bFindDialogDifference, "bFindDialogDifference");
             this.bFindDialogDifference.Name = "bFindDialogDifference";
-            this.bFindDialogDifference.Size = new System.Drawing.Size(154, 23);
-            this.bFindDialogDifference.TabIndex = 0;
-            this.bFindDialogDifference.Text = "Найти диалоги";
+            this.toolTipDialogs.SetToolTip(this.bFindDialogDifference, resources.GetString("bFindDialogDifference.ToolTip"));
             this.bFindDialogDifference.UseVisualStyleBackColor = true;
             this.bFindDialogDifference.Click += new System.EventHandler(this.bFindDialogDifference_Click);
             // 
             // tabSearch
             // 
+            resources.ApplyResources(this.tabSearch, "tabSearch");
             this.tabSearch.Controls.Add(this.dgvSearch);
             this.tabSearch.Controls.Add(this.panelSearchTools);
-            this.tabSearch.Location = new System.Drawing.Point(4, 22);
             this.tabSearch.Name = "tabSearch";
-            this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSearch.Size = new System.Drawing.Size(906, 541);
-            this.tabSearch.TabIndex = 7;
-            this.tabSearch.Text = "Поиск";
+            this.toolTipDialogs.SetToolTip(this.tabSearch, resources.GetString("tabSearch.ToolTip"));
             this.tabSearch.UseVisualStyleBackColor = true;
             // 
             // dgvSearch
             // 
+            resources.ApplyResources(this.dgvSearch, "dgvSearch");
             this.dgvSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colType,
@@ -1422,105 +1221,85 @@ namespace StalkerOnlineQuesterEditor
             this.colID,
             this.colText,
             this.colEngText});
-            this.dgvSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSearch.Location = new System.Drawing.Point(3, 62);
             this.dgvSearch.Name = "dgvSearch";
-            this.dgvSearch.Size = new System.Drawing.Size(900, 476);
-            this.dgvSearch.TabIndex = 1;
+            this.toolTipDialogs.SetToolTip(this.dgvSearch, resources.GetString("dgvSearch.ToolTip"));
             this.dgvSearch.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearch_CellDoubleClick);
             // 
             // colType
             // 
-            this.colType.HeaderText = "Тип";
+            resources.ApplyResources(this.colType, "colType");
             this.colType.Name = "colType";
-            this.colType.Width = 50;
             // 
             // colNPC
             // 
-            this.colNPC.HeaderText = "NPC";
+            resources.ApplyResources(this.colNPC, "colNPC");
             this.colNPC.Name = "colNPC";
             // 
             // colID
             // 
-            this.colID.HeaderText = "ID";
+            resources.ApplyResources(this.colID, "colID");
             this.colID.Name = "colID";
-            this.colID.Width = 50;
             // 
             // colText
             // 
-            this.colText.HeaderText = "Текст";
+            resources.ApplyResources(this.colText, "colText");
             this.colText.Name = "colText";
-            this.colText.Width = 250;
             // 
             // colEngText
             // 
-            this.colEngText.HeaderText = "EnglishText";
+            resources.ApplyResources(this.colEngText, "colEngText");
             this.colEngText.Name = "colEngText";
-            this.colEngText.Width = 250;
             // 
             // panelSearchTools
             // 
+            resources.ApplyResources(this.panelSearchTools, "panelSearchTools");
             this.panelSearchTools.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelSearchTools.Controls.Add(this.cbIgnoreCase);
             this.panelSearchTools.Controls.Add(this.labelSearchResult);
             this.panelSearchTools.Controls.Add(this.labelPhraseToSearch);
             this.panelSearchTools.Controls.Add(this.tbPhraseToSearch);
             this.panelSearchTools.Controls.Add(this.bStartSearch);
-            this.panelSearchTools.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSearchTools.Location = new System.Drawing.Point(3, 3);
             this.panelSearchTools.Name = "panelSearchTools";
-            this.panelSearchTools.Size = new System.Drawing.Size(900, 59);
-            this.panelSearchTools.TabIndex = 0;
+            this.toolTipDialogs.SetToolTip(this.panelSearchTools, resources.GetString("panelSearchTools.ToolTip"));
             // 
             // cbIgnoreCase
             // 
-            this.cbIgnoreCase.AutoSize = true;
+            resources.ApplyResources(this.cbIgnoreCase, "cbIgnoreCase");
             this.cbIgnoreCase.Checked = true;
             this.cbIgnoreCase.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbIgnoreCase.Location = new System.Drawing.Point(556, 7);
             this.cbIgnoreCase.Name = "cbIgnoreCase";
-            this.cbIgnoreCase.Size = new System.Drawing.Size(138, 17);
-            this.cbIgnoreCase.TabIndex = 4;
-            this.cbIgnoreCase.Text = "Не учитывать регистр";
+            this.toolTipDialogs.SetToolTip(this.cbIgnoreCase, resources.GetString("cbIgnoreCase.ToolTip"));
             this.cbIgnoreCase.UseVisualStyleBackColor = true;
             // 
             // labelSearchResult
             // 
-            this.labelSearchResult.AutoSize = true;
-            this.labelSearchResult.Location = new System.Drawing.Point(750, 33);
+            resources.ApplyResources(this.labelSearchResult, "labelSearchResult");
             this.labelSearchResult.Name = "labelSearchResult";
-            this.labelSearchResult.Size = new System.Drawing.Size(54, 13);
-            this.labelSearchResult.TabIndex = 3;
-            this.labelSearchResult.Text = "Найдено:";
+            this.toolTipDialogs.SetToolTip(this.labelSearchResult, resources.GetString("labelSearchResult.ToolTip"));
             // 
             // labelPhraseToSearch
             // 
-            this.labelPhraseToSearch.AutoSize = true;
-            this.labelPhraseToSearch.Location = new System.Drawing.Point(17, 7);
+            resources.ApplyResources(this.labelPhraseToSearch, "labelPhraseToSearch");
             this.labelPhraseToSearch.Name = "labelPhraseToSearch";
-            this.labelPhraseToSearch.Size = new System.Drawing.Size(75, 13);
-            this.labelPhraseToSearch.TabIndex = 2;
-            this.labelPhraseToSearch.Text = "Найти фразу:";
+            this.toolTipDialogs.SetToolTip(this.labelPhraseToSearch, resources.GetString("labelPhraseToSearch.ToolTip"));
             // 
             // tbPhraseToSearch
             // 
-            this.tbPhraseToSearch.Location = new System.Drawing.Point(14, 27);
+            resources.ApplyResources(this.tbPhraseToSearch, "tbPhraseToSearch");
             this.tbPhraseToSearch.Name = "tbPhraseToSearch";
-            this.tbPhraseToSearch.Size = new System.Drawing.Size(417, 20);
-            this.tbPhraseToSearch.TabIndex = 1;
+            this.toolTipDialogs.SetToolTip(this.tbPhraseToSearch, resources.GetString("tbPhraseToSearch.ToolTip"));
             // 
             // bStartSearch
             // 
-            this.bStartSearch.Location = new System.Drawing.Point(437, 7);
+            resources.ApplyResources(this.bStartSearch, "bStartSearch");
             this.bStartSearch.Name = "bStartSearch";
-            this.bStartSearch.Size = new System.Drawing.Size(90, 40);
-            this.bStartSearch.TabIndex = 0;
-            this.bStartSearch.Text = "Найти";
+            this.toolTipDialogs.SetToolTip(this.bStartSearch, resources.GetString("bStartSearch.ToolTip"));
             this.bStartSearch.UseVisualStyleBackColor = true;
             this.bStartSearch.Click += new System.EventHandler(this.bStartSearch_Click);
             // 
             // panelSelectNPC
             // 
+            resources.ApplyResources(this.panelSelectNPC, "panelSelectNPC");
             this.panelSelectNPC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelSelectNPC.Controls.Add(this.btnFilterNPC);
             this.panelSelectNPC.Controls.Add(this.btnNextNPC);
@@ -1529,223 +1308,221 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectNPC.Controls.Add(this.bAddNPC);
             this.panelSelectNPC.Controls.Add(this.labelChosenNPC);
             this.panelSelectNPC.Controls.Add(this.NPCBox);
-            this.panelSelectNPC.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSelectNPC.Location = new System.Drawing.Point(0, 24);
             this.panelSelectNPC.Name = "panelSelectNPC";
-            this.panelSelectNPC.Size = new System.Drawing.Size(914, 29);
-            this.panelSelectNPC.TabIndex = 2;
+            this.toolTipDialogs.SetToolTip(this.panelSelectNPC, resources.GetString("panelSelectNPC.ToolTip"));
             // 
             // btnFilterNPC
             // 
+            resources.ApplyResources(this.btnFilterNPC, "btnFilterNPC");
             this.btnFilterNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.filter_24;
-            this.btnFilterNPC.Location = new System.Drawing.Point(360, -3);
             this.btnFilterNPC.Name = "btnFilterNPC";
-            this.btnFilterNPC.Size = new System.Drawing.Size(32, 32);
-            this.btnFilterNPC.TabIndex = 11;
-            this.toolTipDialogs.SetToolTip(this.btnFilterNPC, "Изменить фильтры NPC");
+            this.toolTipDialogs.SetToolTip(this.btnFilterNPC, resources.GetString("btnFilterNPC.ToolTip"));
             this.btnFilterNPC.UseVisualStyleBackColor = true;
             this.btnFilterNPC.Click += new System.EventHandler(this.btnFilterNPC_Click);
             // 
             // btnNextNPC
             // 
-            this.btnNextNPC.Enabled = false;
+            resources.ApplyResources(this.btnNextNPC, "btnNextNPC");
             this.btnNextNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.next_24;
-            this.btnNextNPC.Location = new System.Drawing.Point(32, -3);
             this.btnNextNPC.Name = "btnNextNPC";
-            this.btnNextNPC.Size = new System.Drawing.Size(32, 32);
-            this.btnNextNPC.TabIndex = 10;
-            this.toolTipDialogs.SetToolTip(this.btnNextNPC, "Вернуться на следующего NPC");
+            this.toolTipDialogs.SetToolTip(this.btnNextNPC, resources.GetString("btnNextNPC.ToolTip"));
             this.btnNextNPC.UseVisualStyleBackColor = true;
             this.btnNextNPC.Click += new System.EventHandler(this.btnNextNPC_Click);
             // 
             // btnBackNPC
             // 
-            this.btnBackNPC.Enabled = false;
+            resources.ApplyResources(this.btnBackNPC, "btnBackNPC");
             this.btnBackNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.back_24;
-            this.btnBackNPC.Location = new System.Drawing.Point(2, -3);
             this.btnBackNPC.Name = "btnBackNPC";
-            this.btnBackNPC.Size = new System.Drawing.Size(32, 32);
-            this.btnBackNPC.TabIndex = 9;
-            this.toolTipDialogs.SetToolTip(this.btnBackNPC, "Перейти к предыдущему NPC");
+            this.toolTipDialogs.SetToolTip(this.btnBackNPC, resources.GetString("btnBackNPC.ToolTip"));
             this.btnBackNPC.UseVisualStyleBackColor = true;
             this.btnBackNPC.Click += new System.EventHandler(this.btnBackNPC_Click);
             // 
             // bDelNPC
             // 
-            this.bDelNPC.Location = new System.Drawing.Point(498, 3);
+            resources.ApplyResources(this.bDelNPC, "bDelNPC");
             this.bDelNPC.Name = "bDelNPC";
-            this.bDelNPC.Size = new System.Drawing.Size(100, 23);
-            this.bDelNPC.TabIndex = 8;
-            this.bDelNPC.Text = "Удалить";
+            this.toolTipDialogs.SetToolTip(this.bDelNPC, resources.GetString("bDelNPC.ToolTip"));
             this.bDelNPC.UseVisualStyleBackColor = true;
             this.bDelNPC.Click += new System.EventHandler(this.bDelNPC_Click);
             // 
             // bAddNPC
             // 
-            this.bAddNPC.Location = new System.Drawing.Point(394, 3);
+            resources.ApplyResources(this.bAddNPC, "bAddNPC");
             this.bAddNPC.Name = "bAddNPC";
-            this.bAddNPC.Size = new System.Drawing.Size(100, 23);
-            this.bAddNPC.TabIndex = 7;
-            this.bAddNPC.Text = "Добавить";
+            this.toolTipDialogs.SetToolTip(this.bAddNPC, resources.GetString("bAddNPC.ToolTip"));
             this.bAddNPC.UseVisualStyleBackColor = true;
             this.bAddNPC.Click += new System.EventHandler(this.bAddNPC_Click);
             // 
             // menuMainControl
             // 
+            resources.ApplyResources(this.menuMainControl, "menuMainControl");
             this.menuMainControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuMain,
             this.menuSaveAll,
             this.menuExplorer,
             this.обновленияToolStripMenuItem,
             this.данныеToolStripMenuItem});
-            this.menuMainControl.Location = new System.Drawing.Point(0, 0);
             this.menuMainControl.Name = "menuMainControl";
-            this.menuMainControl.Size = new System.Drawing.Size(914, 24);
-            this.menuMainControl.TabIndex = 2;
             this.menuMainControl.TabStop = true;
-            this.menuMainControl.Text = "menuStrip1";
+            this.toolTipDialogs.SetToolTip(this.menuMainControl, resources.GetString("menuMainControl.ToolTip"));
             // 
             // menuMain
             // 
+            resources.ApplyResources(this.menuMain, "menuMain");
             this.menuMain.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuSettings,
             this.menuSynchronize,
             this.menuStatistics,
+            this.changeLanguageToolStripMenuItem,
             this.menuExit});
             this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(53, 20);
-            this.menuMain.Text = "Меню";
             // 
             // menuSettings
             // 
+            resources.ApplyResources(this.menuSettings, "menuSettings");
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(194, 22);
-            this.menuSettings.Text = "Настройка оператора";
             this.menuSettings.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // menuSynchronize
             // 
+            resources.ApplyResources(this.menuSynchronize, "menuSynchronize");
             this.menuSynchronize.Name = "menuSynchronize";
-            this.menuSynchronize.Size = new System.Drawing.Size(194, 22);
-            this.menuSynchronize.Text = "Синхронизировать";
             this.menuSynchronize.Click += new System.EventHandler(this.SynchroToolStripMenuItem_Click);
             // 
             // menuStatistics
             // 
+            resources.ApplyResources(this.menuStatistics, "menuStatistics");
             this.menuStatistics.Name = "menuStatistics";
-            this.menuStatistics.Size = new System.Drawing.Size(194, 22);
-            this.menuStatistics.Text = "Статистика";
             this.menuStatistics.Click += new System.EventHandler(this.StatisticsToolStripMenuItem_Click);
+            // 
+            // changeLanguageToolStripMenuItem
+            // 
+            resources.ApplyResources(this.changeLanguageToolStripMenuItem, "changeLanguageToolStripMenuItem");
+            this.changeLanguageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.русскийToolStripMenuItem,
+            this.englishToolStripMenuItem});
+            this.changeLanguageToolStripMenuItem.Name = "changeLanguageToolStripMenuItem";
+            // 
+            // русскийToolStripMenuItem
+            // 
+            resources.ApplyResources(this.русскийToolStripMenuItem, "русскийToolStripMenuItem");
+            this.русскийToolStripMenuItem.Name = "русскийToolStripMenuItem";
+            this.русскийToolStripMenuItem.Click += new System.EventHandler(this.русскийToolStripMenuItem_Click);
+            // 
+            // englishToolStripMenuItem
+            // 
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // menuExit
             // 
+            resources.ApplyResources(this.menuExit, "menuExit");
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(194, 22);
-            this.menuExit.Text = "Выход";
             this.menuExit.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // menuSaveAll
             // 
+            resources.ApplyResources(this.menuSaveAll, "menuSaveAll");
             this.menuSaveAll.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.SaveDisk;
             this.menuSaveAll.Name = "menuSaveAll";
-            this.menuSaveAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.menuSaveAll.Size = new System.Drawing.Size(114, 20);
-            this.menuSaveAll.Text = "Сохранить все";
             this.menuSaveAll.Click += new System.EventHandler(this.SaveAllToolStripMenuItem_Click);
             // 
             // menuExplorer
             // 
+            resources.ApplyResources(this.menuExplorer, "menuExplorer");
             this.menuExplorer.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.Explorer;
             this.menuExplorer.Name = "menuExplorer";
-            this.menuExplorer.Size = new System.Drawing.Size(97, 20);
-            this.menuExplorer.Text = "Проводник";
             this.menuExplorer.Click += new System.EventHandler(this.ExplorerToolStripMenuItem_Click);
             // 
             // обновленияToolStripMenuItem
             // 
+            resources.ApplyResources(this.обновленияToolStripMenuItem, "обновленияToolStripMenuItem");
             this.обновленияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.парсерыToolStripMenuItem,
             this.проверкаОшибокToolStripMenuItem});
             this.обновленияToolStripMenuItem.Name = "обновленияToolStripMenuItem";
-            this.обновленияToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
-            this.обновленияToolStripMenuItem.Text = "Обновления";
             // 
             // парсерыToolStripMenuItem
             // 
+            resources.ApplyResources(this.парсерыToolStripMenuItem, "парсерыToolStripMenuItem");
             this.парсерыToolStripMenuItem.Name = "парсерыToolStripMenuItem";
-            this.парсерыToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.парсерыToolStripMenuItem.Text = "Парсеры";
             this.парсерыToolStripMenuItem.Click += new System.EventHandler(this.парсерыToolStripMenuItem_Click);
             // 
             // проверкаОшибокToolStripMenuItem
             // 
+            resources.ApplyResources(this.проверкаОшибокToolStripMenuItem, "проверкаОшибокToolStripMenuItem");
             this.проверкаОшибокToolStripMenuItem.Name = "проверкаОшибокToolStripMenuItem";
-            this.проверкаОшибокToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.проверкаОшибокToolStripMenuItem.Text = "Проверка Ошибок";
             this.проверкаОшибокToolStripMenuItem.Click += new System.EventHandler(this.проверкаОшибокToolStripMenuItem_Click);
             // 
             // данныеToolStripMenuItem
             // 
+            resources.ApplyResources(this.данныеToolStripMenuItem, "данныеToolStripMenuItem");
             this.данныеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.собратьЭдиторДляПередачиToolStripMenuItem});
+            this.собратьЭдиторДляПередачиToolStripMenuItem,
+            this.вытащитьНепереведённыеТекстыToolStripMenuItem,
+            this.загрузитьПереводToolStripMenuItem});
             this.данныеToolStripMenuItem.Name = "данныеToolStripMenuItem";
-            this.данныеToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.данныеToolStripMenuItem.Text = "Данные";
             // 
             // собратьЭдиторДляПередачиToolStripMenuItem
             // 
+            resources.ApplyResources(this.собратьЭдиторДляПередачиToolStripMenuItem, "собратьЭдиторДляПередачиToolStripMenuItem");
             this.собратьЭдиторДляПередачиToolStripMenuItem.Name = "собратьЭдиторДляПередачиToolStripMenuItem";
-            this.собратьЭдиторДляПередачиToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.собратьЭдиторДляПередачиToolStripMenuItem.Text = "Собрать эдитор для передачи";
             this.собратьЭдиторДляПередачиToolStripMenuItem.Click += new System.EventHandler(this.собратьЭдиторДляПередачиToolStripMenuItem_Click);
+            // 
+            // вытащитьНепереведённыеТекстыToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вытащитьНепереведённыеТекстыToolStripMenuItem, "вытащитьНепереведённыеТекстыToolStripMenuItem");
+            this.вытащитьНепереведённыеТекстыToolStripMenuItem.Name = "вытащитьНепереведённыеТекстыToolStripMenuItem";
+            this.вытащитьНепереведённыеТекстыToolStripMenuItem.Click += new System.EventHandler(this.вытащитьНепереведённыеТекстыToolStripMenuItem_Click);
+            // 
+            // загрузитьПереводToolStripMenuItem
+            // 
+            resources.ApplyResources(this.загрузитьПереводToolStripMenuItem, "загрузитьПереводToolStripMenuItem");
+            this.загрузитьПереводToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.диалоговToolStripMenuItem,
+            this.квестовToolStripMenuItem});
+            this.загрузитьПереводToolStripMenuItem.Name = "загрузитьПереводToolStripMenuItem";
+            // 
+            // диалоговToolStripMenuItem
+            // 
+            resources.ApplyResources(this.диалоговToolStripMenuItem, "диалоговToolStripMenuItem");
+            this.диалоговToolStripMenuItem.Name = "диалоговToolStripMenuItem";
+            this.диалоговToolStripMenuItem.Click += new System.EventHandler(this.диалоговToolStripMenuItem_Click);
+            // 
+            // квестовToolStripMenuItem
+            // 
+            resources.ApplyResources(this.квестовToolStripMenuItem, "квестовToolStripMenuItem");
+            this.квестовToolStripMenuItem.Name = "квестовToolStripMenuItem";
+            this.квестовToolStripMenuItem.Click += new System.EventHandler(this.квестовToolStripMenuItem_Click);
             // 
             // statusLabel
             // 
+            resources.ApplyResources(this.statusLabel, "statusLabel");
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // statusStrip
             // 
+            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 620);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(914, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
-            this.statusStrip.TabIndex = 1;
-            // 
-            // lFindDialogID
-            // 
-            this.lFindDialogID.AutoSize = true;
-            this.lFindDialogID.Location = new System.Drawing.Point(3, 5);
-            this.lFindDialogID.Name = "lFindDialogID";
-            this.lFindDialogID.Size = new System.Drawing.Size(101, 13);
-            this.lFindDialogID.TabIndex = 11;
-            this.lFindDialogID.Text = "Поиск по DialogID:";
-            // 
-            // tbFindDialogID
-            // 
-            this.tbFindDialogID.Location = new System.Drawing.Point(6, 23);
-            this.tbFindDialogID.Name = "tbFindDialogID";
-            this.tbFindDialogID.Size = new System.Drawing.Size(192, 20);
-            this.tbFindDialogID.TabIndex = 10;
-            this.tbFindDialogID.TextChanged += new System.EventHandler(this.tbFindDialogID_TextChanged);
+            this.toolTipDialogs.SetToolTip(this.statusStrip, resources.GetString("statusStrip.ToolTip"));
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 642);
             this.Controls.Add(this.CentralDock);
             this.Controls.Add(this.panelSelectNPC);
             this.Controls.Add(this.menuMainControl);
             this.Controls.Add(this.statusStrip);
-            this.MinimumSize = new System.Drawing.Size(900, 680);
             this.Name = "MainForm";
+            this.toolTipDialogs.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.CentralDock.ResumeLayout(false);
-            this.tabDialogs.ResumeLayout(false);
             this.splitDialogs.Panel1.ResumeLayout(false);
             this.splitDialogs.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).EndInit();
@@ -1761,12 +1538,14 @@ namespace StalkerOnlineQuesterEditor
             this.gbEmulator.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogsEmulator)).EndInit();
             this.splitDialogsEmulator.ResumeLayout(false);
-            this.tabQuests.ResumeLayout(false);
-            this.tabQuests.PerformLayout();
             this.splitQuestsContainer.Panel1.ResumeLayout(false);
             this.splitQuestsContainer.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitQuestsContainer)).EndInit();
             this.splitQuestsContainer.ResumeLayout(false);
+            this.CentralDock.ResumeLayout(false);
+            this.tabDialogs.ResumeLayout(false);
+            this.tabQuests.ResumeLayout(false);
+            this.tabQuests.PerformLayout();
             this.panelQuestTools.ResumeLayout(false);
             this.panelSelectQuest.ResumeLayout(false);
             this.panelSelectQuest.PerformLayout();
@@ -1877,24 +1656,10 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button bQuestUp;
         private System.Windows.Forms.Button bRemoveEvent;
         private System.Windows.Forms.Button bEditEvent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDialogsNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQuestsNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCoordinates;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
         private System.Windows.Forms.ComboBox cbLocation;
         private System.Windows.Forms.CheckBox cbOnlyOnLocation;
         private System.Windows.Forms.Button bCutEvents;
         private System.Windows.Forms.Button bClearBuffer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn npc_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn identif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cur_ver;
-        private System.Windows.Forms.DataGridViewTextBoxColumn new_ver;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RusText1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EngText1;
         private System.Windows.Forms.TabPage tabSearch;
         private System.Windows.Forms.Panel panelSearchTools;
         private System.Windows.Forms.Button bStartSearch;
@@ -1902,11 +1667,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.TextBox tbPhraseToSearch;
         private System.Windows.Forms.Label labelSearchResult;
         private System.Windows.Forms.DataGridView dgvSearch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNPC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colText;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEngText;
         private System.Windows.Forms.CheckBox cbIgnoreCase;
         private System.Windows.Forms.ToolStripMenuItem menuExplorer;
         private System.Windows.Forms.ToolStripMenuItem menuStatistics;
@@ -1925,6 +1685,23 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ToolTip toolTipDialogs;
         private System.Windows.Forms.ComboBox cbItemTarget;
         private System.Windows.Forms.Label labelItemTarget;
+        private System.Windows.Forms.ToolStripMenuItem обновленияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem парсерыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem проверкаОшибокToolStripMenuItem;
+        private System.Windows.Forms.Button btnBackNPC;
+        private System.Windows.Forms.Button btnNextNPC;
+        private System.Windows.Forms.Button btnClearRecycle;
+        private System.Windows.Forms.Button btnFilterNPC;
+        private System.Windows.Forms.ToolStripMenuItem данныеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem собратьЭдиторДляПередачиToolStripMenuItem;
+        private System.Windows.Forms.Label lFindDialogID;
+        private System.Windows.Forms.TextBox tbFindDialogID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDialogsNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQuestsNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCoordinates;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn subevents;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
@@ -1943,17 +1720,26 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn author;
         private System.Windows.Forms.DataGridViewTextBoxColumn Legend;
         private System.Windows.Forms.DataGridViewComboBoxColumn worked;
-        private System.Windows.Forms.ToolStripMenuItem обновленияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem парсерыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem проверкаОшибокToolStripMenuItem;
-        private System.Windows.Forms.Button btnBackNPC;
-        private System.Windows.Forms.Button btnNextNPC;
-        private System.Windows.Forms.Button btnClearRecycle;
-        private System.Windows.Forms.Button btnFilterNPC;
-        private System.Windows.Forms.ToolStripMenuItem данныеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem собратьЭдиторДляПередачиToolStripMenuItem;
-        private System.Windows.Forms.Label lFindDialogID;
-        private System.Windows.Forms.TextBox tbFindDialogID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn npc_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn identif;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cur_ver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn new_ver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RusText1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EngText1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNPC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEngText;
+        private System.Windows.Forms.ToolStripMenuItem вытащитьНепереведённыеТекстыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьПереводToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem диалоговToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem квестовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeLanguageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem русскийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
     }
 }
 

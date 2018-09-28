@@ -190,6 +190,8 @@ namespace StalkerOnlineQuesterEditor
                         AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
                         if (dialog.Element("Precondition").Element("forDev") != null)
                             Precondition.forDev = true;
+                        if (dialog.Element("Precondition").Element("hidden") != null)
+                            Precondition.hidden = true;
                         if (dialog.Element("Precondition").Element("Cabman") != null)
                         {
                             if (dialog.Element("Precondition").Element("Cabman").Element("inTransportList") != null)
@@ -581,6 +583,8 @@ namespace StalkerOnlineQuesterEditor
                     }
                     if (dialog.Precondition.forDev)
                         element.Element("Precondition").Add(new XElement("forDev", Global.GetBoolAsString(dialog.Precondition.forDev)));
+                    if (dialog.Precondition.hidden)
+                        element.Element("Precondition").Add(new XElement("hidden", Global.GetBoolAsString(dialog.Precondition.hidden)));
 
                     if (dialog.Precondition.transport.Any())
                     {

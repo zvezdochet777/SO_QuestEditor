@@ -57,6 +57,7 @@
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
             this.gbPrecondition = new System.Windows.Forms.GroupBox();
+            this.pictureTransport = new System.Windows.Forms.PictureBox();
             this.pictureItems = new System.Windows.Forms.PictureBox();
             this.pictureAction = new System.Windows.Forms.PictureBox();
             this.pictureSkill = new System.Windows.Forms.PictureBox();
@@ -193,6 +194,9 @@
             this.itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabTransport = new System.Windows.Forms.TabPage();
+            this.cbNotInTransportList = new System.Windows.Forms.CheckBox();
+            this.cbTransportInList = new System.Windows.Forms.CheckBox();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -207,13 +211,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.tabTransport = new System.Windows.Forms.TabPage();
-            this.pictureTransport = new System.Windows.Forms.PictureBox();
-            this.cbTransportInList = new System.Windows.Forms.CheckBox();
-            this.cbNotInTransportList = new System.Windows.Forms.CheckBox();
+            this.cbHidden = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).BeginInit();
@@ -241,11 +243,10 @@
             this.tabActions.SuspendLayout();
             this.tabItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).BeginInit();
+            this.tabTransport.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
-            this.tabTransport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -561,6 +562,18 @@
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
+            // 
+            // pictureTransport
+            // 
+            this.pictureTransport.BackColor = System.Drawing.Color.Transparent;
+            this.pictureTransport.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureTransport.Location = new System.Drawing.Point(544, 10);
+            this.pictureTransport.Name = "pictureTransport";
+            this.pictureTransport.Size = new System.Drawing.Size(10, 10);
+            this.pictureTransport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureTransport.TabIndex = 61;
+            this.pictureTransport.TabStop = false;
+            this.pictureTransport.Visible = false;
             // 
             // pictureItems
             // 
@@ -1901,6 +1914,38 @@
             this.ItemCond.Name = "ItemCond";
             this.ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // tabTransport
+            // 
+            this.tabTransport.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabTransport.Controls.Add(this.cbNotInTransportList);
+            this.tabTransport.Controls.Add(this.cbTransportInList);
+            this.tabTransport.Location = new System.Drawing.Point(4, 22);
+            this.tabTransport.Name = "tabTransport";
+            this.tabTransport.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTransport.Size = new System.Drawing.Size(579, 230);
+            this.tabTransport.TabIndex = 9;
+            this.tabTransport.Text = "Перевоз";
+            // 
+            // cbNotInTransportList
+            // 
+            this.cbNotInTransportList.AutoSize = true;
+            this.cbNotInTransportList.Location = new System.Drawing.Point(17, 42);
+            this.cbNotInTransportList.Name = "cbNotInTransportList";
+            this.cbNotInTransportList.Size = new System.Drawing.Size(180, 17);
+            this.cbNotInTransportList.TabIndex = 1;
+            this.cbNotInTransportList.Text = "НЕ в списке транспортировки";
+            this.cbNotInTransportList.UseVisualStyleBackColor = true;
+            // 
+            // cbTransportInList
+            // 
+            this.cbTransportInList.AutoSize = true;
+            this.cbTransportInList.Location = new System.Drawing.Point(17, 19);
+            this.cbTransportInList.Name = "cbTransportInList";
+            this.cbTransportInList.Size = new System.Drawing.Size(162, 17);
+            this.cbTransportInList.TabIndex = 0;
+            this.cbTransportInList.Text = "в списке транспортировки";
+            this.cbTransportInList.UseVisualStyleBackColor = true;
+            // 
             // bEditDialogOk
             // 
             this.bEditDialogOk.Location = new System.Drawing.Point(172, 5);
@@ -1932,6 +1977,7 @@
             // 
             // pCommands
             // 
+            this.pCommands.Controls.Add(this.cbHidden);
             this.pCommands.Controls.Add(this.cbForDev);
             this.pCommands.Controls.Add(this.debuglabel);
             this.pCommands.Controls.Add(this.debugTextBox);
@@ -1946,7 +1992,7 @@
             // cbForDev
             // 
             this.cbForDev.AutoSize = true;
-            this.cbForDev.Location = new System.Drawing.Point(397, 13);
+            this.cbForDev.Location = new System.Drawing.Point(397, 22);
             this.cbForDev.Name = "cbForDev";
             this.cbForDev.Size = new System.Drawing.Size(167, 17);
             this.cbForDev.TabIndex = 42;
@@ -2045,49 +2091,15 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // tabTransport
+            // cbHidden
             // 
-            this.tabTransport.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabTransport.Controls.Add(this.cbNotInTransportList);
-            this.tabTransport.Controls.Add(this.cbTransportInList);
-            this.tabTransport.Location = new System.Drawing.Point(4, 22);
-            this.tabTransport.Name = "tabTransport";
-            this.tabTransport.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTransport.Size = new System.Drawing.Size(579, 230);
-            this.tabTransport.TabIndex = 9;
-            this.tabTransport.Text = "Перевоз";
-            // 
-            // pictureTransport
-            // 
-            this.pictureTransport.BackColor = System.Drawing.Color.Transparent;
-            this.pictureTransport.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureTransport.Location = new System.Drawing.Point(544, 10);
-            this.pictureTransport.Name = "pictureTransport";
-            this.pictureTransport.Size = new System.Drawing.Size(10, 10);
-            this.pictureTransport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureTransport.TabIndex = 61;
-            this.pictureTransport.TabStop = false;
-            this.pictureTransport.Visible = false;
-            // 
-            // cbTransportInList
-            // 
-            this.cbTransportInList.AutoSize = true;
-            this.cbTransportInList.Location = new System.Drawing.Point(17, 19);
-            this.cbTransportInList.Name = "cbTransportInList";
-            this.cbTransportInList.Size = new System.Drawing.Size(162, 17);
-            this.cbTransportInList.TabIndex = 0;
-            this.cbTransportInList.Text = "в списке транспортировки";
-            this.cbTransportInList.UseVisualStyleBackColor = true;
-            // 
-            // cbNotInTransportList
-            // 
-            this.cbNotInTransportList.AutoSize = true;
-            this.cbNotInTransportList.Location = new System.Drawing.Point(17, 42);
-            this.cbNotInTransportList.Name = "cbNotInTransportList";
-            this.cbNotInTransportList.Size = new System.Drawing.Size(180, 17);
-            this.cbNotInTransportList.TabIndex = 1;
-            this.cbNotInTransportList.Text = "НЕ в списке транспортировки";
-            this.cbNotInTransportList.UseVisualStyleBackColor = true;
+            this.cbHidden.AutoSize = true;
+            this.cbHidden.Location = new System.Drawing.Point(397, 4);
+            this.cbHidden.Name = "cbHidden";
+            this.cbHidden.Size = new System.Drawing.Size(151, 17);
+            this.cbHidden.TabIndex = 43;
+            this.cbHidden.Text = "Просто скрытый от всех";
+            this.cbHidden.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -2109,6 +2121,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).EndInit();
             this.gbPrecondition.ResumeLayout(false);
             this.gbPrecondition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).EndInit();
@@ -2144,15 +2157,14 @@
             this.tabItems.ResumeLayout(false);
             this.tabItems.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).EndInit();
+            this.tabTransport.ResumeLayout(false);
+            this.tabTransport.PerformLayout();
             this.pCommands.ResumeLayout(false);
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
-            this.tabTransport.ResumeLayout(false);
-            this.tabTransport.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2343,5 +2355,6 @@
         private System.Windows.Forms.TabPage tabTransport;
         private System.Windows.Forms.CheckBox cbNotInTransportList;
         private System.Windows.Forms.CheckBox cbTransportInList;
+        private System.Windows.Forms.CheckBox cbHidden;
     }
 }

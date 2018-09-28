@@ -139,6 +139,7 @@ namespace StalkerOnlineQuesterEditor
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
         public bool forDev;
+        public bool hidden;
         public DialogPreconditionItem items = new DialogPreconditionItem();
 
 
@@ -159,6 +160,7 @@ namespace StalkerOnlineQuesterEditor
             copy.NecessaryEffects = this.NecessaryEffects;
             copy.MustNoEffects = this.MustNoEffects;
             copy.forDev = this.forDev;
+            copy.hidden = this.hidden;
             copy.transport = this.transport.Clone();
             return copy;
         }
@@ -179,6 +181,7 @@ namespace StalkerOnlineQuesterEditor
             this.NecessaryEffects = new List<DialogEffect>();
             this.MustNoEffects = new List<DialogEffect>();
             this.forDev = false;
+            this.hidden = false;
             this.transport = new DialogPreconditionTransport();
 
         }
@@ -186,7 +189,7 @@ namespace StalkerOnlineQuesterEditor
         public bool Exists()
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
-                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || forDev;
+                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || forDev || hidden;
         }
 
         public bool Any()
