@@ -180,7 +180,8 @@ namespace SOHelpEditor
         private void btnAddSubTitle_Click(object sender, EventArgs e)
         {
             string text = getInputText();
-            pasteSubTitle(text);
+            if (text.Trim().Any())
+                pasteSubTitle(text);
             input.Close();
         }
 
@@ -464,7 +465,7 @@ namespace SOHelpEditor
             current_paragraph.little_card.value = path;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRename_Click(object sender, EventArgs e)
         {
             int node_id = getCurrentNodeID();
             if (node_id == -1)
@@ -521,6 +522,7 @@ namespace SOHelpEditor
                 rtbText.Paste();
                 Clipboard.Clear();
             }
+            form.Close();
         }
 
         private void rtbText_Leave(object sender, EventArgs e)

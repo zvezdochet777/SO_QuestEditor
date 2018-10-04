@@ -14,7 +14,6 @@ C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHel
 C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.LittleCardForm.resources
 C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csprojAssemblyReference.cache
 C:\Users\eugeny_shvayko\Documents\Visual Studio 2017\Projects\SOHelpEditor\SOHelpEditor\obj\Debug\SOHelpEditor.CreateLinkForm.resources
-D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csprojAssemblyReference.cache
 D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.CreateLinkForm.resources
 D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.InputForm.resources
 D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.LittleCardForm.resources

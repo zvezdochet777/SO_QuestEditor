@@ -476,6 +476,8 @@ namespace StalkerOnlineQuesterEditor
                 lH.Enabled = false;
                 //IsGroupCheckBox.Enabled = false;
             }
+            if (targetComboBox.Items.Count > 0)
+                targetComboBox.DropDownWidth = this.DropDownWidth(targetComboBox) + 10;
         }
         //! Заполняет данные о целях квеста (о боги какой говнокод)
         void fillTarget()
@@ -1516,6 +1518,25 @@ namespace StalkerOnlineQuesterEditor
             this.Enabled = false;
             edit_quest.ShowDialog();
             this.Enabled = true;
+        }
+
+        int DropDownWidth(ComboBox myCombo)
+        {
+            int maxWidth = 0;
+            int temp = 0;
+            Label label1 = new Label();
+
+            foreach (var obj in myCombo.Items)
+            {
+                label1.Text = obj.ToString();
+                temp = label1.PreferredWidth;
+                if (temp > maxWidth)
+                {
+                    maxWidth = temp;
+                }
+            }
+            label1.Dispose();
+            return maxWidth;
         }
     }
 }

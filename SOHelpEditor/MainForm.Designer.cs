@@ -34,7 +34,6 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.changeLittleCard = new System.Windows.Forms.Button();
             this.btnRename = new System.Windows.Forms.Button();
-            this.labelProgress = new System.Windows.Forms.Label();
             this.btnLink = new System.Windows.Forms.Button();
             this.btnAddParagraph = new System.Windows.Forms.Button();
             this.btnAddSubTitle = new System.Windows.Forms.Button();
@@ -44,6 +43,7 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.labelProgress = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // rtbText
@@ -97,19 +97,12 @@
             this.btnRename.TabIndex = 13;
             this.toolTip.SetToolTip(this.btnRename, "Переименовать параграф/главу");
             this.btnRename.UseVisualStyleBackColor = true;
-            this.btnRename.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // labelProgress
-            // 
-            this.labelProgress.AutoSize = true;
-            this.labelProgress.Location = new System.Drawing.Point(1368, 523);
-            this.labelProgress.Name = "labelProgress";
-            this.labelProgress.Size = new System.Drawing.Size(0, 13);
-            this.labelProgress.TabIndex = 10;
+            this.btnRename.Click += new System.EventHandler(this.btnRename_Click);
             // 
             // btnLink
             // 
             this.btnLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLink.CausesValidation = false;
             this.btnLink.Image = global::SOHelpEditor.Properties.Resources.link;
             this.btnLink.Location = new System.Drawing.Point(1036, 427);
             this.btnLink.Name = "btnLink";
@@ -134,11 +127,12 @@
             // btnAddSubTitle
             // 
             this.btnAddSubTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddSubTitle.CausesValidation = false;
             this.btnAddSubTitle.Image = global::SOHelpEditor.Properties.Resources.subtitle;
             this.btnAddSubTitle.Location = new System.Drawing.Point(1036, 387);
             this.btnAddSubTitle.Name = "btnAddSubTitle";
             this.btnAddSubTitle.Size = new System.Drawing.Size(40, 40);
-            this.btnAddSubTitle.TabIndex = 8;
+            this.btnAddSubTitle.TabIndex = 14;
             this.toolTip.SetToolTip(this.btnAddSubTitle, "Вставить подзаголовок");
             this.btnAddSubTitle.UseVisualStyleBackColor = true;
             this.btnAddSubTitle.Click += new System.EventHandler(this.btnAddSubTitle_Click);
@@ -146,11 +140,12 @@
             // btnAddImage
             // 
             this.btnAddImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddImage.CausesValidation = false;
             this.btnAddImage.Image = global::SOHelpEditor.Properties.Resources.addImage;
             this.btnAddImage.Location = new System.Drawing.Point(1036, 347);
             this.btnAddImage.Name = "btnAddImage";
             this.btnAddImage.Size = new System.Drawing.Size(40, 40);
-            this.btnAddImage.TabIndex = 7;
+            this.btnAddImage.TabIndex = 14;
             this.toolTip.SetToolTip(this.btnAddImage, "Вставить изображение");
             this.btnAddImage.UseVisualStyleBackColor = true;
             this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
@@ -217,6 +212,14 @@
             this.toolTip.SetToolTip(this.btnSave, "Сохранить");
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // labelProgress
+            // 
+            this.labelProgress.AutoSize = true;
+            this.labelProgress.Location = new System.Drawing.Point(1368, 523);
+            this.labelProgress.Name = "labelProgress";
+            this.labelProgress.Size = new System.Drawing.Size(0, 13);
+            this.labelProgress.TabIndex = 10;
             // 
             // MainForm
             // 
