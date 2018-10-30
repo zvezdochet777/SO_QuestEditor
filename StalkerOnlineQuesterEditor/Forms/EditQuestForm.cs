@@ -1440,6 +1440,11 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        private void bRewardBlackBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //! Нажатие Предметы в правилах квеста - открывает форму с редактором предметов
         private void bItemQuestRules_Click(object sender, EventArgs e)
         {
@@ -1538,5 +1543,7 @@ namespace StalkerOnlineQuesterEditor
             label1.Dispose();
             return maxWidth;
         }
+
+
     }
 }

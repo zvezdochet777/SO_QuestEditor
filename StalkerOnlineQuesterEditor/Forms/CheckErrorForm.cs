@@ -251,8 +251,9 @@ namespace StalkerOnlineQuesterEditor.Forms
             doProgress(25);
             setLabel("Проверяем квесты в диалогах");
 
+            Dictionary<string, int> triggers = new Dictionary<string, int>();
+            Dictionary<string, int> zone_areas = new Dictionary<string, int>();
             List<int> change_money_dialogs = new List<int>();
-
             List<int> on_test_list = new List<int>();
             foreach (KeyValuePair<string, Dictionary<int, CDialog>> npc in dialogs.dialogs)
             {
@@ -460,6 +461,16 @@ namespace StalkerOnlineQuesterEditor.Forms
                 else if ((quest.Value.Target.QuestType == 4) || (quest.Value.Target.QuestType == 8))
                 {
                     string zone = quest.Value.Target.ObjectName;
+                    if (zone_areas.ContainsKey(zone))
+                    {
+                        string line = "Квесты №:" + quest.Key.ToString() + " и " + zone_areas[zone] + "\tимеет в целях одинаковую зону: \"" + zone + "\"";
+                        this.writeToLog(ERROR_QUEST, line, quest.Key);
+                    }
+                    else
+                    {
+                        zone_areas.Add(zone, quest.Key);
+                    }
+                        
                     if (zone.Any())
                         if (!this.parent.zoneConst.checkHaveArea(zone))
                         {
@@ -469,6 +480,16 @@ namespace StalkerOnlineQuesterEditor.Forms
                 }
                 else if (quest.Value.Target.QuestType == 6)
                 {
+                    string trigger_name = quest.Value.Target.ObjectType.ToString().Trim();
+                    if (triggers.ContainsKey(trigger_name))
+                    {
+                        string line = "Квесты №:" + quest.Key.ToString() + " и "+ triggers[trigger_name] + "\tимеет в целях одинаковый триггер: \"" + trigger_name + "\"";
+                        this.writeToLog(ERROR_QUEST, line, quest.Key);
+
+                    }
+                    else
+                        triggers.Add(trigger_name, quest.Key);
+
                     if (parent.triggerConst.getDescriptionOnId(quest.Value.Target.ObjectType) == "")
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tимеет в целях триггер: \"" + quest.Value.Target.ObjectType.ToString() + "\", которого нет";

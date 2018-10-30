@@ -33,6 +33,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.rewardGroupBox = new System.Windows.Forms.GroupBox();
+            this.bRewardBlackBox = new System.Windows.Forms.Button();
             this.bRewardQuests = new System.Windows.Forms.Button();
             this.cbRewardWindow = new System.Windows.Forms.CheckBox();
             this.lSupportSkills = new System.Windows.Forms.Label();
@@ -266,6 +267,7 @@
             // 
             // rewardGroupBox
             // 
+            this.rewardGroupBox.Controls.Add(this.bRewardBlackBox);
             this.rewardGroupBox.Controls.Add(this.bRewardQuests);
             this.rewardGroupBox.Controls.Add(this.cbRewardWindow);
             this.rewardGroupBox.Controls.Add(this.lSupportSkills);
@@ -291,12 +293,24 @@
             this.rewardGroupBox.TabStop = false;
             this.rewardGroupBox.Text = "Награда";
             // 
+            // bRewardBlackBox
+            // 
+            this.bRewardBlackBox.Enabled = false;
+            this.bRewardBlackBox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bRewardBlackBox.Location = new System.Drawing.Point(330, 19);
+            this.bRewardBlackBox.Name = "bRewardBlackBox";
+            this.bRewardBlackBox.Size = new System.Drawing.Size(81, 23);
+            this.bRewardBlackBox.TabIndex = 43;
+            this.bRewardBlackBox.Text = "BlackBox";
+            this.bRewardBlackBox.UseVisualStyleBackColor = true;
+            this.bRewardBlackBox.Click += new System.EventHandler(this.bRewardBlackBox_Click);
+            // 
             // bRewardQuests
             // 
             this.bRewardQuests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardQuests.Location = new System.Drawing.Point(323, 19);
+            this.bRewardQuests.Location = new System.Drawing.Point(250, 19);
             this.bRewardQuests.Name = "bRewardQuests";
-            this.bRewardQuests.Size = new System.Drawing.Size(94, 23);
+            this.bRewardQuests.Size = new System.Drawing.Size(81, 23);
             this.bRewardQuests.TabIndex = 42;
             this.bRewardQuests.Text = "Квесты";
             this.bRewardQuests.UseVisualStyleBackColor = true;
@@ -347,9 +361,9 @@
             // bRewardEffects
             // 
             this.bRewardEffects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardEffects.Location = new System.Drawing.Point(225, 19);
+            this.bRewardEffects.Location = new System.Drawing.Point(170, 19);
             this.bRewardEffects.Name = "bRewardEffects";
-            this.bRewardEffects.Size = new System.Drawing.Size(94, 23);
+            this.bRewardEffects.Size = new System.Drawing.Size(81, 23);
             this.bRewardEffects.TabIndex = 30;
             this.bRewardEffects.Text = "Эффекты";
             this.bRewardEffects.UseVisualStyleBackColor = true;
@@ -358,9 +372,9 @@
             // bRewardReputation
             // 
             this.bRewardReputation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardReputation.Location = new System.Drawing.Point(116, 19);
+            this.bRewardReputation.Location = new System.Drawing.Point(89, 19);
             this.bRewardReputation.Name = "bRewardReputation";
-            this.bRewardReputation.Size = new System.Drawing.Size(105, 23);
+            this.bRewardReputation.Size = new System.Drawing.Size(81, 23);
             this.bRewardReputation.TabIndex = 29;
             this.bRewardReputation.Text = "Репутация";
             this.bRewardReputation.UseVisualStyleBackColor = true;
@@ -371,7 +385,7 @@
             this.bRewardItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bRewardItem.Location = new System.Drawing.Point(8, 19);
             this.bRewardItem.Name = "bRewardItem";
-            this.bRewardItem.Size = new System.Drawing.Size(104, 23);
+            this.bRewardItem.Size = new System.Drawing.Size(81, 23);
             this.bRewardItem.TabIndex = 28;
             this.bRewardItem.Text = "Предметы";
             this.bRewardItem.UseVisualStyleBackColor = true;
@@ -2184,5 +2198,6 @@
         private System.Windows.Forms.CheckBox cbGetScreenMsg;
         private System.Windows.Forms.CheckBox cbFailScreenMsg;
         private System.Windows.Forms.CheckBox cbWonScreenMsg;
+        private System.Windows.Forms.Button bRewardBlackBox;
     }
 }
