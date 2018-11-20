@@ -491,6 +491,8 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<string, int> NPCReputation;
         //! Словарь изменений квеста в награду, выглядит так <id квеста>:<установленный статус>;
         public Dictionary<int, int> ChangeQuests;
+
+        public List<string> blackBoxes = new List<string>();
         public bool randomQuest = false;
         public int KarmaPK;
         public List<CEffect> Effects;
@@ -511,6 +513,7 @@ namespace StalkerOnlineQuesterEditor
             copy.KarmaPK = this.KarmaPK;
             copy.Effects = new List<CEffect>(this.Effects);
             copy.RewardWindow = this.RewardWindow;
+            copy.blackBoxes = new List<string>(this.blackBoxes);
             return copy;
         }
 
@@ -533,7 +536,7 @@ namespace StalkerOnlineQuesterEditor
         {
             return hasExperience() || TypeOfItems.Any() || NumOfItems.Any() ||
                 AttrOfItems.Any() || Probability.Any() || Credits != 0 || ReputationNotEmpty() ||
-                KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any() || NPCReputation.Any();
+                KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any() || NPCReputation.Any() || blackBoxes.Any();
         }
 
         private bool hasExperience()

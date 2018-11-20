@@ -234,8 +234,8 @@ namespace StalkerOnlineQuesterEditor
             ltargetResult.Text = "Результат";
             cbState.Text = "Учитывать состояние";
             lState.Text = "Состояние";
-            panelCreateNPC.Visible = QuestType == 51;
-            panelCreateNPC.Enabled = QuestType == 51;
+            panelCreateNPC.Visible = QuestType == СQuestConstants.TYPE_CREATE_NPC;
+            panelCreateNPC.Enabled = QuestType == СQuestConstants.TYPE_CREATE_NPC;
 
             panelCreateMob.Visible = QuestType == 52;
             panelCreateMob.Enabled = QuestType == 52;
@@ -255,7 +255,7 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedText = "";
                 targetComboBox.Items.Clear();
 
-                if (QuestType == 9)
+                if (QuestType == СQuestConstants.TYPE_TIMER)
                 {
                     targetComboBox.Enabled = false;
                     quantityUpDown.Enabled = false;
@@ -263,7 +263,7 @@ namespace StalkerOnlineQuesterEditor
                     ltargetResult.Text = "Время (сек):";
                 }
 
-                if ((QuestType == 0) || (QuestType == 16))
+                if ((QuestType == СQuestConstants.TYPE_FARM) || (QuestType == СQuestConstants.TYPE_FARM_AUTO))
                 {
                     lNameObject.Text = "Тип предмета:";
                     foreach (CItem description in parent.itemConst.getAllItems().Values)
@@ -281,7 +281,7 @@ namespace StalkerOnlineQuesterEditor
                     dynamicCheckBox.Enabled = true;
                     cbState.Enabled = true;
                 }
-                else if (QuestType == 25 || QuestType == 26)
+                else if (QuestType == СQuestConstants.TYPE_ITEM_CATEGORY || QuestType == СQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
                 {
                     lNameObject.Text = "Категория:";
                     foreach (string description in parent.itemCategories.getAllItems().Values)
@@ -289,7 +289,7 @@ namespace StalkerOnlineQuesterEditor
                     targetAttributeComboBox.Items.Clear();
                     targetAttributeComboBox.Enabled = false;
                 }
-                else if (QuestType == 7)
+                else if (QuestType == СQuestConstants.TYPE_QITEM_USE)
                 {
                     lNameObject.Text = "Тип предмета:";
                     foreach (CItem description in parent.itemConst.getAllItems().Values)
@@ -303,7 +303,7 @@ namespace StalkerOnlineQuesterEditor
                     bTargetAddDynamic.Enabled = false;
                     bTargetClearDynamic.Enabled = false;
                 }
-                else if (QuestType == 1)
+                else if (QuestType == СQuestConstants.TYPE_TALK)
                 {
                     lNameObject.Text = "Имя NPC:";
                     foreach (CNPCDescription description in parent.npcConst.getAllNPCsDescription().Values)
@@ -312,7 +312,7 @@ namespace StalkerOnlineQuesterEditor
                     quantityUpDown.Enabled = false;
 
                 }
-                else if ((QuestType == 2) || (QuestType == 3))
+                else if ((QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (QuestType == СQuestConstants.TYPE_KILLMOBS))
                 {
                     lNameObject.Text = "Тип моба:";
                     ltargetResult.Text = "Уровень моба";
@@ -344,7 +344,8 @@ namespace StalkerOnlineQuesterEditor
                     //targetAttributeComboBox2.SelectedIndex = 0;
                     dynamicCheckBox.Enabled = true;
                 }
-                else if ((QuestType == 4) || (QuestType == 8))
+                else if ((QuestType == СQuestConstants.TYPE_AREA_DISCOVER) || (QuestType == СQuestConstants.TYPE_AREA_LEAVE) ||
+                         (QuestType == СQuestConstants.TYPE_IN_AREA))
                 {
                     lNameObject.Text = "Имя зоны:";
                     targetComboBox.Items.Clear();
@@ -354,7 +355,7 @@ namespace StalkerOnlineQuesterEditor
                     quantityUpDown.Enabled = false;
                     dynamicCheckBox.Enabled = true;
                 }
-                else if (QuestType == 5)
+                else if (QuestType == СQuestConstants.TYPE_MONEYBACK)
                 {
                     lNameObject.Text = "Деньги:";
                     targetComboBox.SelectedText = "";
@@ -364,7 +365,7 @@ namespace StalkerOnlineQuesterEditor
                     targetAttributeComboBox.Enabled = false;
                     labelTargetAttr.Enabled = false;
                 }
-                else if (QuestType == 6)
+                else if (QuestType == СQuestConstants.TYPE_TRIGGER_ACTION)
                 {
                     lNameObject.Text = "Триггер:";
                     targetComboBox.Items.Clear();
@@ -382,7 +383,7 @@ namespace StalkerOnlineQuesterEditor
                     QuestType == 204)
                 {
                 }
-                else if (QuestType == 19 || QuestType == 20)
+                else if (QuestType == СQuestConstants.TYPE_ITEM_EQIP || QuestType == СQuestConstants.TYPE_ITEM_ADD)
                 {
                     lNameObject.Text = "Тип предмета:";
                     targetComboBox.Items.Clear();
@@ -401,7 +402,7 @@ namespace StalkerOnlineQuesterEditor
                     targetAttributeComboBox.Items.Add("Скрыть.");
                     targetAttributeComboBox.SelectedIndex = 0;
                 }
-                else if (QuestType == 21)
+                else if ((QuestType == СQuestConstants.TYPE_GIVE_EFFECT) || (QuestType == СQuestConstants.TYPE_HAVE_EFFECT))
                 {
                     lNameObject.Text = "Эффект";
                     targetComboBox.Items.Clear();
@@ -412,7 +413,7 @@ namespace StalkerOnlineQuesterEditor
                     lNameObject.Enabled = true;
                     lQuantity.Enabled = false;
                 }
-                else if ((QuestType == 22) || (QuestType == 23))
+                else if ((QuestType == СQuestConstants.TYPE_REPUTATION) || (QuestType == СQuestConstants.TYPE_REPUTATION_AUTO))
                 {
                     lNameObject.Text = "Репутация";
                     targetComboBox.Items.Clear();
@@ -427,7 +428,7 @@ namespace StalkerOnlineQuesterEditor
                     cbReputationLow.Enabled = true;
 
                 }
-                else if (QuestType == 24)
+                else if (QuestType == СQuestConstants.TYPE_KILL)
                 {
                     lNameObject.Text = "Тип убийства:";
                     targetComboBox.Items.Clear();
@@ -482,12 +483,12 @@ namespace StalkerOnlineQuesterEditor
         //! Заполняет данные о целях квеста (о боги какой говнокод)
         void fillTarget()
         {
-            if ((quest.Target.QuestType == 0) || (quest.Target.QuestType == 16) || (quest.Target.QuestType == 7))
+            if ((quest.Target.QuestType == СQuestConstants.TYPE_FARM) || (quest.Target.QuestType == СQuestConstants.TYPE_FARM_AUTO) || (quest.Target.QuestType == СQuestConstants.TYPE_QITEM_USE))
             {
                 targetComboBox.SelectedItem = parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
                 targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
-                if( (quest.Target.QuestType == 0 || quest.Target.QuestType == 16) && quest.Target.additional.Any())
+                if( (quest.Target.QuestType == СQuestConstants.TYPE_FARM || quest.Target.QuestType == СQuestConstants.TYPE_FARM_AUTO) && quest.Target.additional.Any())
                     targetAttributeComboBox2.SelectedIndex = 0;
                 if (quest.Target.usePercent)
                 {
@@ -497,16 +498,16 @@ namespace StalkerOnlineQuesterEditor
                 else cbState.Checked = false;
 
             }
-            else if (quest.Target.QuestType == 25 || quest.Target.QuestType == 26)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_ITEM_CATEGORY || quest.Target.QuestType == СQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
             {
                 targetComboBox.SelectedItem = parent.itemCategories.getNameOnID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
             }
-            else if (quest.Target.QuestType == 1)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_TALK)
             {
                 targetComboBox.SelectedItem = parent.npcConst.getDescriptionOnKey(quest.Target.ObjectName).getName();
             }
-            else if ((quest.Target.QuestType == 2) || (quest.Target.QuestType == 3))
+            else if ((quest.Target.QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (quest.Target.QuestType == СQuestConstants.TYPE_KILLMOBS))
             {
                 targetComboBox.SelectedItem = parent.mobConst.getDescriptionOnType(quest.Target.ObjectType).getName();
                 if (!quest.Target.AreaName.Equals(""))
@@ -545,7 +546,9 @@ namespace StalkerOnlineQuesterEditor
 
             }
 
-            else if ((quest.Target.QuestType == 4) || (quest.Target.QuestType == 8))
+            else if ((quest.Target.QuestType == СQuestConstants.TYPE_AREA_DISCOVER) || 
+                    (quest.Target.QuestType == СQuestConstants.TYPE_AREA_LEAVE) ||
+                    (quest.Target.QuestType == СQuestConstants.TYPE_IN_AREA))
             {
 
                 if (quest.Target.ObjectName.Contains(','))
@@ -558,11 +561,11 @@ namespace StalkerOnlineQuesterEditor
                     targetComboBox.SelectedItem = parent.zoneConst.getDescriptionOnKey(quest.Target.ObjectName).getName();
                 }
             }
-            else if (quest.Target.QuestType == 5)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_MONEYBACK)
             {
                 quantityUpDown.Value = quest.Target.NumOfObjects;
             }
-            else if (quest.Target.QuestType == 6)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_TRIGGER_ACTION)
             {
 
                 if (quest.Target.ObjectName.Contains(','))
@@ -575,12 +578,12 @@ namespace StalkerOnlineQuesterEditor
                     targetComboBox.SelectedItem = parent.triggerConst.getDescriptionOnId(quest.Target.ObjectType);
                 }
             }
-            else if (quest.Target.QuestType == 9)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_TIMER)
             {
                 resultComboBox.Text = resultComboBox.Text.Replace('.', ',');
                 resultComboBox.Text = quest.Target.Time.ToString();
             }
-            else if (quest.Target.QuestType == 19 || quest.Target.QuestType == 20)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_ITEM_EQIP || quest.Target.QuestType == СQuestConstants.TYPE_ITEM_ADD)
             {
                 //System.Console.WriteLine("getQuest: type" + quest.Target.QuestType.ToString());
                 targetComboBox.SelectedItem = parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
@@ -590,12 +593,12 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedItem = parent.gui.getDescriptionOnID(quest.Target.ObjectType);
                 targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
             }
-            else if (quest.Target.QuestType == 21)
+            else if ((quest.Target.QuestType == СQuestConstants.TYPE_GIVE_EFFECT) || (quest.Target.QuestType == СQuestConstants.TYPE_HAVE_EFFECT))
             {
                 targetComboBox.SelectedItem = parent.effects.getDescriptionOnID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
             }
-            else if (quest.Target.QuestType == 22 || quest.Target.QuestType == 23)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_REPUTATION || quest.Target.QuestType == СQuestConstants.TYPE_REPUTATION_AUTO)
             {
                 int factID = 0;
                 if (int.TryParse(quest.Target.ObjectName, out factID))
@@ -607,19 +610,19 @@ namespace StalkerOnlineQuesterEditor
                 quantityUpDown.Value = quest.Target.NumOfObjects;
                 cbReputationLow.Checked = quest.Target.ObjectAttr != 0;
             }
-            else if (quest.Target.QuestType == 24)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_KILL)
             {
                 targetComboBox.SelectedIndex = quest.Target.ObjectType;
             }
-            else if (quest.Target.QuestType == 25 || quest.Target.QuestType == 26)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_ITEM_CATEGORY || quest.Target.QuestType == СQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
             {
 
             }
-            else if (quest.Target.QuestType == 51)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_CREATE_NPC)
             {
                 fillCreateNPCPanel();
             }
-            else if (quest.Target.QuestType == 52)
+            else if (quest.Target.QuestType == СQuestConstants.TYPE_CREATE_MOB)
             {
                 fillCreateMobPanel();
             }
@@ -812,6 +815,11 @@ namespace StalkerOnlineQuesterEditor
             else
                 bRewardEffects.Image = null;
 
+            if (editQuestReward.blackBoxes.Any())
+                bRewardBlackBox.Image = Properties.Resources.but_indicate;
+            else
+                bRewardBlackBox.Image = null;
+
             if (editQuestPenalty.Effects.Any())
                 bPenaltyEffects.Image = Properties.Resources.but_indicate;
             else
@@ -882,7 +890,7 @@ namespace StalkerOnlineQuesterEditor
             else
                 target.onFin = 1;
 
-            if ((target.QuestType == 0) || (target.QuestType == 16) || (target.QuestType == 7))
+            if ((target.QuestType == СQuestConstants.TYPE_FARM) || (target.QuestType == СQuestConstants.TYPE_FARM_AUTO) || (target.QuestType == СQuestConstants.TYPE_QITEM_USE))
             {
                 target.ObjectType = parent.itemConst.getIDOnDescription(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
@@ -901,12 +909,12 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else target.usePercent = false;
             }
-            else if (target.QuestType == 25 || target.QuestType == 26)
+            else if (target.QuestType == СQuestConstants.TYPE_ITEM_CATEGORY || target.QuestType == СQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
             {
                 target.ObjectType = parent.itemCategories.getID(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
             }
-            else if (target.QuestType == 1)
+            else if (target.QuestType == СQuestConstants.TYPE_TALK)
             {
                 string key = parent.npcConst.getKeyOnDescription(targetComboBox.SelectedItem.ToString());
                 if (key.Equals(""))
@@ -914,7 +922,7 @@ namespace StalkerOnlineQuesterEditor
                 else
                     target.ObjectName = key;
             }
-            else if ((target.QuestType == 2) || (target.QuestType == 3))
+            else if ((target.QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (target.QuestType == СQuestConstants.TYPE_KILLMOBS))
             {
                 target.ObjectType = parent.mobConst.getTypeOnDescription(targetComboBox.SelectedItem.ToString());
                 
@@ -950,7 +958,9 @@ namespace StalkerOnlineQuesterEditor
                     target.AreaName = area.Any() ? area : targetAttributeComboBox.Text;
                 }
             }
-            else if ((target.QuestType == 4) || (target.QuestType == 8))
+            else if ((target.QuestType == СQuestConstants.TYPE_AREA_DISCOVER) || 
+                    (target.QuestType == СQuestConstants.TYPE_AREA_LEAVE) ||
+                    (target.QuestType == СQuestConstants.TYPE_IN_AREA))
             {
                 if (dynamicCheckBox.Checked)
                     target.ObjectName = resultComboBox.Text;
@@ -963,7 +973,7 @@ namespace StalkerOnlineQuesterEditor
                         target.ObjectName = zone;
                 }
             }
-            else if (target.QuestType == 5)
+            else if (target.QuestType == СQuestConstants.TYPE_MONEYBACK)
             {
                 target.NumOfObjects = (int)quantityUpDown.Value;
                 if (target.NumOfObjects < 1)
@@ -972,7 +982,7 @@ namespace StalkerOnlineQuesterEditor
                     return null;
                 }
             }
-            else if (target.QuestType == 6)
+            else if (target.QuestType == СQuestConstants.TYPE_TRIGGER_ACTION)
             {
                 if (dynamicCheckBox.Checked)
                     target.ObjectName = resultComboBox.Text;
@@ -980,7 +990,7 @@ namespace StalkerOnlineQuesterEditor
                     target.ObjectType = parent.triggerConst.getIdOnKey(targetComboBox.SelectedItem.ToString());
             }
 
-            else if (target.QuestType == 9)
+            else if (target.QuestType == СQuestConstants.TYPE_TIMER)
             {
                 try
                 {
@@ -991,9 +1001,9 @@ namespace StalkerOnlineQuesterEditor
                     return null;
                 }
             }
-            else if ((target.QuestType == 19) || (target.QuestType == 20))
+            else if ((target.QuestType == СQuestConstants.TYPE_ITEM_EQIP) || (target.QuestType == СQuestConstants.TYPE_ITEM_ADD))
             {
-                System.Console.WriteLine("QuestType == 19 || 20");
+                System.Console.WriteLine("QuestType == СQuestConstants.TYPE_ITEM_EQIP || 20");
                 target.ObjectType = parent.itemConst.getIDOnDescription(targetComboBox.SelectedItem.ToString());
             }
             else if (target.QuestType == 201 ||
@@ -1007,7 +1017,7 @@ namespace StalkerOnlineQuesterEditor
                 target.ObjectType = parent.gui.getIDOnDescription(targetComboBox.SelectedItem.ToString());
                 target.ObjectAttr = targetAttributeComboBox.SelectedIndex;
             }
-            else if (target.QuestType == 21)
+            else if ((target.QuestType == СQuestConstants.TYPE_GIVE_EFFECT) || (target.QuestType == СQuestConstants.TYPE_HAVE_EFFECT))
             {
                 target.ObjectType = parent.effects.getIDOnDescription(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
@@ -1017,7 +1027,7 @@ namespace StalkerOnlineQuesterEditor
                     return null;
                 }
             }
-            else if (target.QuestType == 22 || target.QuestType == 23)
+            else if (target.QuestType == СQuestConstants.TYPE_REPUTATION || target.QuestType == СQuestConstants.TYPE_REPUTATION_AUTO)
             {
                 if (targetComboBox.SelectedItem == null)
                 {
@@ -1038,15 +1048,15 @@ namespace StalkerOnlineQuesterEditor
                     return null;
                 }
             }
-            else if (target.QuestType == 24)
+            else if (target.QuestType == СQuestConstants.TYPE_KILL)
             {
                 target.ObjectType = targetComboBox.SelectedIndex;
             }
-            else if (target.QuestType == 51)
+            else if (target.QuestType == СQuestConstants.TYPE_CREATE_NPC)
             {
                 rules.npc = getCreateNPC();
             }
-            else if (target.QuestType == 52)
+            else if (target.QuestType == СQuestConstants.TYPE_CREATE_MOB)
             {
                 rules.mobs = getCreateMob();
             }
@@ -1137,6 +1147,7 @@ namespace StalkerOnlineQuesterEditor
             reward.Effects = editQuestReward.Effects;
             reward.ChangeQuests = editQuestReward.ChangeQuests;
             reward.randomQuest = editQuestReward.randomQuest;
+            reward.blackBoxes = editQuestReward.blackBoxes;
 
             penalty.TypeOfItems = editQuestPenalty.TypeOfItems;
             penalty.NumOfItems = editQuestPenalty.NumOfItems;
@@ -1226,16 +1237,16 @@ namespace StalkerOnlineQuesterEditor
                 bTargetClearDynamic.Enabled = true;
                 resultComboBox.Enabled = true;
 
-                if (this.QuestType == 2 || this.QuestType == 3)
+                if (this.QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST || this.QuestType == СQuestConstants.TYPE_KILLMOBS)
                     ltargetResult.Text = "Мин,Макс:";
-                else if (this.QuestType == 4)
+                else if ((this.QuestType == СQuestConstants.TYPE_AREA_DISCOVER) || (QuestType == СQuestConstants.TYPE_IN_AREA))
                     ltargetResult.Text = "Зоны:";
-                else if (this.QuestType == 6)
+                else if (this.QuestType == СQuestConstants.TYPE_TRIGGER_ACTION)
                     ltargetResult.Text = "Триггеры:";
             }
             else
             {
-                if (this.QuestType == 2 || this.QuestType == 3)
+                if (this.QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST || this.QuestType == СQuestConstants.TYPE_KILLMOBS)
                 {
                     ltargetResult.Text = "Уровень моба";
                     resultComboBox.Enabled = true;
@@ -1260,15 +1271,15 @@ namespace StalkerOnlineQuesterEditor
         {
             string str = "";
 
-            if (this.QuestType == 2 || this.QuestType == 3)
+            if (this.QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST || this.QuestType == СQuestConstants.TYPE_KILLMOBS)
             {
                 str += quantityUpDown.Value.ToString();
             }
-            else if (this.QuestType == 4)
+            else if ((this.QuestType == СQuestConstants.TYPE_AREA_DISCOVER) || (QuestType == СQuestConstants.TYPE_IN_AREA))
             {
                 str += parent.zoneConst.getKeyOnDescription(targetComboBox.SelectedItem.ToString());
             }
-            else if (this.QuestType == 6)
+            else if (this.QuestType == СQuestConstants.TYPE_TRIGGER_ACTION)
             {
                 str += parent.triggerConst.getIdOnKey(targetComboBox.SelectedItem.ToString());
             }
@@ -1289,7 +1300,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void targetComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.QuestType == 2 || this.QuestType == 3)
+            if (this.QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST || this.QuestType == СQuestConstants.TYPE_KILLMOBS)
             {
                 resultComboBox.Items.Clear();
                 foreach (string level in parent.mobConst.getLevelsOnDescription(targetComboBox.SelectedItem.ToString()))
@@ -1442,6 +1453,11 @@ namespace StalkerOnlineQuesterEditor
 
         private void bRewardBlackBox_Click(object sender, EventArgs e)
         {
+            RewardBlackBoxDialog edit_black_box = new RewardBlackBoxDialog(this.parent, this, 0, 0);
+            this.Enabled = false;
+            edit_black_box.ShowDialog();
+            this.Enabled = true;
+            checkRewardIndicates();
 
         }
 

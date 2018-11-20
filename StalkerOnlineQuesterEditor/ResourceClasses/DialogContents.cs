@@ -95,10 +95,11 @@ namespace StalkerOnlineQuesterEditor
         public List<int> attrOfItems = new List<int>();
         public List<float> condOfItems = new List<float>();
         public int itemCategory = -1;
+        public bool is_or = false;
 
         public bool Any()
         {
-            return itemCategory > -1 || typeOfItems.Any();
+            return itemCategory > -1 || typeOfItems.Any() || is_or;
         }
     }
 
@@ -141,6 +142,7 @@ namespace StalkerOnlineQuesterEditor
         public bool forDev;
         public bool hidden;
         public DialogPreconditionItem items = new DialogPreconditionItem();
+        public DialogPreconditionItem itemsNone = new DialogPreconditionItem();
 
 
         public object Clone()
@@ -195,8 +197,8 @@ namespace StalkerOnlineQuesterEditor
         public bool Any()
         {
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
-                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() || 
-                NPCReputation.Any() || transport.Any();
+                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() ||
+                itemsNone.Any() || NPCReputation.Any() || transport.Any();
         }
 
         public string GetAsString()

@@ -37,6 +37,20 @@ namespace StalkerOnlineQuesterEditor
             foreach (string key in parent.tpConst.getKeys())
                 teleportComboBox.Items.Add(key);
 
+            foreach (CItem item in parent.itemConst.getAllItems().Values)
+            {
+                ((DataGridViewComboBoxColumn)GVItems.Columns[0]).Items.Add(item.getDescription());
+                ((DataGridViewComboBoxColumn)GVNonItems.Columns[0]).Items.Add(item.getDescription());
+            }
+            ((DataGridViewComboBoxColumn)GVItems.Columns[0]).Sorted = true;
+            ((DataGridViewComboBoxColumn)GVNonItems.Columns[0]).Sorted = true;
+
+            foreach (string category in parent.itemCategories.getAllItems().Values)
+            {
+                cbCategory.Items.Add(category);
+                cbNonCategory.Items.Add(category);
+            }
+
             FillActionsComboBox();
 
             if (parent.isRoot(currentDialogID) && (!isAdd))
@@ -778,38 +792,49 @@ namespace StalkerOnlineQuesterEditor
             precondition.items.numOfItems = new List<int>();
             precondition.items.attrOfItems = new List<int>();
 
+            precondition.items.is_or = rbItemsOr.Checked;
+            precondition.itemsNone.is_or = rbNonItemsOr.Checked;
+
             if (rbCategory.Checked && cbCategory.SelectedIndex != -1)
             {
                 precondition.items.itemCategory = parent.itemCategories.getID(cbCategory.Text);
+                precondition.itemsNone.itemCategory = parent.itemCategories.getID(cbNonCategory.Text);
             }
             else
             {
                 precondition.items.itemCategory = -1;
-                foreach (DataGridViewRow row in GVItems.Rows)
+                precondition.itemsNone.itemCategory = -1;
+
+
+                List<object[]> obj = this.getItemsDataGrid(GVItems);
+                foreach (object[] tmp in obj)
                 {
-                    string typeName = row.Cells["itemType"].FormattedValue.ToString();
-                    if (!typeName.Equals(""))
-                    {
-                        int quantity = 0;
-                        float cond = 0;
-                        float.TryParse(row.Cells["itemCond"].FormattedValue.ToString().Replace(',','.'), NumberStyles.Float, CultureInfo.InvariantCulture, out cond);
-                        if ((int.TryParse(row.Cells["itemQuantity"].FormattedValue.ToString(), out quantity)) && (quantity >= 1))
-                        {
-                            int typeID = parent.itemConst.getIDOnDescription(typeName);
-                            string attrName = row.Cells["itemAttr"].FormattedValue.ToString();
-                            int attr;
-                            switch (attrName)
-                            {
-                                case "Квестовый": attr = 1; break;
-                                case "Авто": attr = 2; break;
-                                default: attr = 0; break;
-                            }
-                            precondition.items.typeOfItems.Add(typeID);
-                            precondition.items.numOfItems.Add(quantity);
-                            precondition.items.attrOfItems.Add(attr);
-                            precondition.items.condOfItems.Add(cond);
-                        }
-                    }
+                    int typeID, quantity, attr;
+                    float cond;
+                    typeID = Convert.ToInt32(tmp[0]);
+                    quantity = Convert.ToInt32(tmp[1]);
+                    attr = Convert.ToInt32(tmp[2]);
+                    cond = Convert.ToSingle(tmp[3]);
+
+                    precondition.items.typeOfItems.Add(typeID);
+                    precondition.items.numOfItems.Add(quantity);
+                    precondition.items.attrOfItems.Add(attr);
+                    precondition.items.condOfItems.Add(cond);
+                }
+                obj = this.getItemsDataGrid(GVNonItems);
+                foreach (object[] tmp in obj)
+                {
+                    int typeID, quantity, attr;
+                    float cond;
+                    typeID = Convert.ToInt32(tmp[0]);
+                    quantity = Convert.ToInt32(tmp[1]);
+                    attr = Convert.ToInt32(tmp[2]);
+                    cond = Convert.ToSingle(tmp[3]);
+
+                    precondition.itemsNone.typeOfItems.Add(typeID);
+                    precondition.itemsNone.numOfItems.Add(quantity);
+                    precondition.itemsNone.attrOfItems.Add(attr);
+                    precondition.itemsNone.condOfItems.Add(cond);
                 }
             }
 
@@ -837,6 +862,68 @@ namespace StalkerOnlineQuesterEditor
             parent.DialogSelected(true);
             parent.startEmulator(currentDialogID);
             this.Close();
+        }
+
+
+        private void setItemsInDataGrid(DialogPreconditionItem items, DataGridView dg)
+        {
+            for (int i = 0; i < items.typeOfItems.Count; i++)
+            {
+                int item_type = items.typeOfItems[i];
+                string item_name = parent.itemConst.getDescriptionOnID(item_type);
+                string item_attr;
+                switch (items.attrOfItems[i])
+                {
+                    case 1: item_attr = "Квестовый"; break;
+                    case 2: item_attr = "Авто"; break;
+                    default: item_attr = "Обычный"; break;
+                }
+                int count = items.numOfItems[i];
+                string cond;
+                try
+                {
+                    cond = items.condOfItems[i].ToString("G6", CultureInfo.InvariantCulture);
+                }
+                catch (Exception)
+                {
+                    cond = "0";
+                }
+                object[] row = { item_name, item_attr, count, cond };
+                dg.Rows.Add(row);
+            }
+        }
+
+        private List<object[]> getItemsDataGrid(DataGridView dg)
+        {
+            List<object[]> result = new List<object[]>();
+            foreach (DataGridViewRow row in dg.Rows)
+            {
+                string typeName = row.Cells[dg.Name + "_itemType"].FormattedValue.ToString();
+                if (!typeName.Equals(""))
+                {
+                    int quantity = 1;
+                    float cond = 0;
+
+                    float.TryParse(row.Cells[dg.Name + "_itemCond"].FormattedValue.ToString().Replace(',', '.'), NumberStyles.Float, CultureInfo.InvariantCulture, out cond);
+
+                    if ((int.TryParse(row.Cells[dg.Name + "_itemQuantity"].FormattedValue.ToString(), out quantity)) && (quantity >= 1))
+                    {
+                        int typeID = parent.itemConst.getIDOnDescription(typeName);
+                        string attrName = row.Cells[dg.Name + "_itemAttr"].FormattedValue.ToString();
+                        int attr;
+                        switch (attrName)
+                        {
+                            case "Квестовый": attr = 1; break;
+                            case "Авто": attr = 2; break;
+                            default: attr = 0; break;
+                        }
+
+                        object[] obj = { typeID, quantity, attr, cond };
+                        result.Add(obj);
+                    }
+                }
+            }
+            return result;
         }
 
         private void initSkillsTab()
@@ -1045,47 +1132,23 @@ namespace StalkerOnlineQuesterEditor
 
         private void initItemsTab()
         {
-            foreach (CItem item in parent.itemConst.getAllItems().Values)
-                ((DataGridViewComboBoxColumn)GVItems.Columns[0]).Items.Add(item.getDescription());
-            ((DataGridViewComboBoxColumn)GVItems.Columns[0]).Sorted = true;
 
-            foreach (string category in parent.itemCategories.getAllItems().Values)
-                cbCategory.Items.Add(category);
+            if (editPrecondition.items.is_or)
+                rbItemsOr.Checked = true;
+            if (editPrecondition.itemsNone.is_or)
+                rbNonItemsOr.Checked = true;
 
-            if (this.editPrecondition.items.itemCategory != -1)
+            if ((this.editPrecondition.items.itemCategory != -1) || (this.editPrecondition.itemsNone.itemCategory != -1))
             {
                 this.rbCategory.Checked = true;
-                this.cbCategory.SelectedIndex = this.editPrecondition.items.itemCategory;
+                this.cbCategory.SelectedItem = parent.itemCategories.getNameOnID(this.editPrecondition.items.itemCategory);
+                this.cbNonCategory.SelectedItem = parent.itemCategories.getNameOnID(this.editPrecondition.itemsNone.itemCategory);
             }
-            else if (this.editPrecondition.items.typeOfItems.Any())
+            else if (this.editPrecondition.items.typeOfItems.Any() || this.editPrecondition.itemsNone.typeOfItems.Any())
             {
                 this.rbItems.Checked = true;
-                for (int i = 0; i< this.editPrecondition.items.typeOfItems.Count; i++)
-                {
-                    int item_type = this.editPrecondition.items.typeOfItems[i];
-                    string item_name = parent.itemConst.getDescriptionOnID(item_type);
-                    string item_attr;
-                    switch (this.editPrecondition.items.attrOfItems[i])
-                    {
-                        case 1: item_attr = "Квестовый"; break;
-                        case 2: item_attr = "Авто"; break;
-                        default:item_attr = "Обычный"; break;
-                    }
-                    int count = this.editPrecondition.items.numOfItems[i];
-                    string cond;
-                    try
-                    {
-                        cond = this.editPrecondition.items.condOfItems[i].ToString("G6", CultureInfo.InvariantCulture);
-                    }
-                    catch(Exception)
-                    {
-                        cond = "0";
-                    }
-                   
-
-                    object[] row = { item_name, item_attr, count, cond};
-                    GVItems.Rows.Add(row);
-                }
+                setItemsInDataGrid(this.editPrecondition.items, GVItems);
+                setItemsInDataGrid(this.editPrecondition.itemsNone, GVNonItems);
             }
             checkItemsIndicates();
 
@@ -1360,12 +1423,33 @@ namespace StalkerOnlineQuesterEditor
 
         private void rbItems_CheckedChanged(object sender, EventArgs e)
         {
-            GVItems.Visible = rbItems.Checked;
+            panelItems.Visible = rbItems.Checked;
+            panel1.Visible = rbItems.Checked;
+            panel3.Visible = rbItems.Checked;
+            //GVNonItems.Visible = rbItems.Checked;
         }
 
         private void rbCategory_CheckedChanged(object sender, EventArgs e)
         {
             cbCategory.Visible = rbCategory.Checked;
+            cbNonCategory.Visible = rbCategory.Checked;
+        }
+
+        private void tabItems_SizeChanged(object sender, EventArgs e)
+        {
+            GVItems.Width = (sender as Panel).Width / 2;
+            GVNonItems.Width = (sender as Panel).Width / 2;
+            GVNonItems.Location = new Point((sender as Panel).Width / 2, GVNonItems.Location.Y);
+        }
+
+        private void rbOr_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbAnd_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

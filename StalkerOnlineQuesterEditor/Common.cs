@@ -12,10 +12,10 @@ namespace StalkerOnlineQuesterEditor
     public class Global
     {
         //! Возвращает список как строку со значениями через запятую
-        public static string GetListAsString(List<int> list, char separator = ',')
+        public static string GetListAsString<T>(List<T> list, char separator = ',')
         {
             string result = "";
-            foreach (int element in list)
+            foreach (T element in list)
             {
                 if (result.Equals(""))
                     result += element.ToString();
@@ -24,6 +24,8 @@ namespace StalkerOnlineQuesterEditor
             }
             return result;
         }
+
+
 
         public static string GetListAsString(List<float> list, char separator = ',')
         {

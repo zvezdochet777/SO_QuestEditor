@@ -22,7 +22,8 @@ namespace StalkerOnlineQuesterEditor
             }
             XDocument doc = XDocument.Load("source/ItemCategories.xml");
             foreach (XElement item in doc.Root.Elements())
-            {                try
+            {
+                try
                 {
                     items.Add(int.Parse(item.Element("id").Value.ToString()), item.Element("Name").Value.ToString());
                 }
@@ -35,6 +36,7 @@ namespace StalkerOnlineQuesterEditor
         }
         public string getNameOnID(int typeID)
         {
+            if (typeID == -1) return "";
             return items[typeID];
         }
 
@@ -88,6 +90,11 @@ namespace StalkerOnlineQuesterEditor
 
         public string getDescriptionOnID(int typeID)
         {
+            if (!items.ContainsKey(typeID))
+            {
+                System.Windows.Forms.MessageBox.Show("Предмета "+typeID.ToString() + " не существует", "Ошибка предмета");
+                return "";
+            }
             return items[typeID].getDescription();
         }
 

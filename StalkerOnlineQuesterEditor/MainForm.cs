@@ -1917,7 +1917,7 @@ namespace StalkerOnlineQuesterEditor
                         object[] row = { quest.Additional.Holder, quest.QuestID };
                         dgvReview.Rows.Add(row);
                     }
-                    if (((quest.Target.QuestType == 0) || (quest.Target.QuestType == 16)) && (quest.Target.ObjectType == targetItemID))
+                    if (((quest.Target.QuestType == СQuestConstants.TYPE_FARM) || (quest.Target.QuestType == СQuestConstants.TYPE_FARM_AUTO)) && (quest.Target.ObjectType == targetItemID))
                     {
                         object[] row = { quest.Additional.Holder, quest.QuestID };
                         dgvReview.Rows.Add(row);

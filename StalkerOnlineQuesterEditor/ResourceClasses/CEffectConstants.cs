@@ -79,7 +79,6 @@ namespace StalkerOnlineQuesterEditor
 
     public class CEffectConstants
     {
-
         public static string JSON_PATH = "../../../res/scripts/common/data/Effects.json";
         public static string OTHER_JSON_PATH = "source/Effects.json";
 

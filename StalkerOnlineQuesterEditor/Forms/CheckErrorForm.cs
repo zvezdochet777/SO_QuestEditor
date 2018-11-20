@@ -438,7 +438,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                     if (!on_test_list.Contains(quest.Key))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tимеет тип: \"" + this.parent.questConst.getDescription(quest.Value.Target.QuestType) + "\" и нигде не проверяется";
-                        if (quest.Value.Target.QuestType == 5)
+                        if (quest.Value.Target.QuestType == СQuestConstants.TYPE_MONEYBACK)
                         {
                             this.writeToLog(ERROR_QUEST_TYPE5, line, quest.Key);
                         }
@@ -448,7 +448,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                         }
                     }
                 }
-                if ((quest.Value.Target.QuestType == 0) || (quest.Value.Target.QuestType == 16) || (quest.Value.Target.QuestType == 7))
+                if ((quest.Value.Target.QuestType == СQuestConstants.TYPE_FARM) || (quest.Value.Target.QuestType == СQuestConstants.TYPE_FARM_AUTO) || (quest.Value.Target.QuestType == СQuestConstants.TYPE_QITEM_USE))
                 {
                     int item_id = quest.Value.Target.ObjectType;
                     if ((item_id != 0) && (!items.ContainsKey(item_id)))
@@ -458,7 +458,9 @@ namespace StalkerOnlineQuesterEditor.Forms
                         continue;
                     }
                 }
-                else if ((quest.Value.Target.QuestType == 4) || (quest.Value.Target.QuestType == 8))
+                else if ((quest.Value.Target.QuestType == СQuestConstants.TYPE_AREA_DISCOVER) || 
+                            (quest.Value.Target.QuestType == СQuestConstants.TYPE_AREA_LEAVE) ||
+                            (quest.Value.Target.QuestType == СQuestConstants.TYPE_IN_AREA))
                 {
                     string zone = quest.Value.Target.ObjectName;
                     if (zone_areas.ContainsKey(zone))
@@ -478,7 +480,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                             this.writeToLog(ERROR_QUEST, line, quest.Key);
                         }
                 }
-                else if (quest.Value.Target.QuestType == 6)
+                else if (quest.Value.Target.QuestType == СQuestConstants.TYPE_TRIGGER_ACTION)
                 {
                     string trigger_name = quest.Value.Target.ObjectType.ToString().Trim();
                     if (triggers.ContainsKey(trigger_name))
@@ -496,7 +498,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                         this.writeToLog(ERROR_QUEST, line, quest.Key);
                     }
                 }
-                else if ((quest.Value.Target.QuestType == 2) || (quest.Value.Target.QuestType == 3))
+                else if ((quest.Value.Target.QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (quest.Value.Target.QuestType == СQuestConstants.TYPE_KILLMOBS))
                 {
                     if (quest.Value.Target.AreaName.Any())
                         if (!this.parent.zoneMobConst.checkHaveArea(quest.Value.Target.AreaName))

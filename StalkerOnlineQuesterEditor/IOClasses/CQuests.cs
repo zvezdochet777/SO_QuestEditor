@@ -248,6 +248,14 @@ namespace StalkerOnlineQuesterEditor
                             if (!quest.Equals(""))
                                 reward.ChangeQuests.Add(int.Parse(quest.Split(':')[0]), int.Parse(quest.Split(':')[1]));
                     }
+                    if (item.Element("Reward").Element("blackBoxes") != null)
+                    {
+                        string black_boxes = item.Element("Reward").Element("blackBoxes").Value;
+                        foreach (string bb_name in black_boxes.Split(','))
+                        {
+                            reward.blackBoxes.Add(bb_name.Trim());
+                        }
+                    }
                     if (item.Element("Reward").Element("Effects") != null)
                         foreach (XElement effect in item.Element("Reward").Element("Effects").Elements())
                         {
@@ -630,6 +638,8 @@ namespace StalkerOnlineQuesterEditor
                     List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
                     if (EffectsXE.Any())
                         element.Element("Reward").Add(new XElement("Effects", EffectsXE));
+                    if (questValue.Reward.blackBoxes.Any())
+                        element.Element("Reward").Add(new XElement("blackBoxes", Global.GetListAsString(questValue.Reward.blackBoxes)));
                 }              
 
                 if (questValue.QuestPenalty.Any())

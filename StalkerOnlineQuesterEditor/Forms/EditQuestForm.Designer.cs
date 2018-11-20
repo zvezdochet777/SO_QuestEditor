@@ -30,41 +30,6 @@
         {
             this.QuestPanel = new System.Windows.Forms.Panel();
             this.groupQuestBox = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.rewardGroupBox = new System.Windows.Forms.GroupBox();
-            this.bRewardBlackBox = new System.Windows.Forms.Button();
-            this.bRewardQuests = new System.Windows.Forms.Button();
-            this.cbRewardWindow = new System.Windows.Forms.CheckBox();
-            this.lSupportSkills = new System.Windows.Forms.Label();
-            this.lSurvivalSkills = new System.Windows.Forms.Label();
-            this.tSupport = new System.Windows.Forms.TextBox();
-            this.tSurvival = new System.Windows.Forms.TextBox();
-            this.bRewardEffects = new System.Windows.Forms.Button();
-            this.bRewardReputation = new System.Windows.Forms.Button();
-            this.bRewardItem = new System.Windows.Forms.Button();
-            this.textBoxKarmaPK = new System.Windows.Forms.TextBox();
-            this.lKarmaPK = new System.Windows.Forms.Label();
-            this.bHideReward = new System.Windows.Forms.Button();
-            this.creditsTextBox = new System.Windows.Forms.TextBox();
-            this.lCredits = new System.Windows.Forms.Label();
-            this.tExperience = new System.Windows.Forms.TextBox();
-            this.lCombatSkills = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.bPenaltyQuests = new System.Windows.Forms.Button();
-            this.bPenaltyEffects = new System.Windows.Forms.Button();
-            this.bPenaltyReputation = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tbPenaltySupport = new System.Windows.Forms.TextBox();
-            this.tbPenaltySurvival = new System.Windows.Forms.TextBox();
-            this.bPenaltyItem = new System.Windows.Forms.Button();
-            this.tbPenaltyKarmaPK = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tbPenaltyCredits = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.tbPenaltyExperience = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.panelCreateMob = new System.Windows.Forms.Panel();
             this.cbMobInvul = new System.Windows.Forms.CheckBox();
             this.cbMobLevel = new System.Windows.Forms.ComboBox();
@@ -194,12 +159,43 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbPenaltyExperience = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbPenaltyCredits = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbPenaltyKarmaPK = new System.Windows.Forms.TextBox();
+            this.bPenaltyItem = new System.Windows.Forms.Button();
+            this.tbPenaltySurvival = new System.Windows.Forms.TextBox();
+            this.tbPenaltySupport = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.bPenaltyReputation = new System.Windows.Forms.Button();
+            this.bPenaltyEffects = new System.Windows.Forms.Button();
+            this.bPenaltyQuests = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.rewardGroupBox = new System.Windows.Forms.GroupBox();
+            this.lCombatSkills = new System.Windows.Forms.Label();
+            this.tExperience = new System.Windows.Forms.TextBox();
+            this.lCredits = new System.Windows.Forms.Label();
+            this.creditsTextBox = new System.Windows.Forms.TextBox();
+            this.bHideReward = new System.Windows.Forms.Button();
+            this.lKarmaPK = new System.Windows.Forms.Label();
+            this.textBoxKarmaPK = new System.Windows.Forms.TextBox();
+            this.bRewardItem = new System.Windows.Forms.Button();
+            this.bRewardReputation = new System.Windows.Forms.Button();
+            this.bRewardEffects = new System.Windows.Forms.Button();
+            this.tSurvival = new System.Windows.Forms.TextBox();
+            this.tSupport = new System.Windows.Forms.TextBox();
+            this.lSurvivalSkills = new System.Windows.Forms.Label();
+            this.lSupportSkills = new System.Windows.Forms.Label();
+            this.cbRewardWindow = new System.Windows.Forms.CheckBox();
+            this.bRewardQuests = new System.Windows.Forms.Button();
+            this.bRewardBlackBox = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.rewardGroupBox.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
@@ -218,6 +214,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.udState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).BeginInit();
             this.questInformationBox.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.rewardGroupBox.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // QuestPanel
@@ -244,359 +244,6 @@
             this.groupQuestBox.TabStop = false;
             this.groupQuestBox.Text = "Событие ID ";
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(0, 644);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(625, 164);
-            this.tabControl1.TabIndex = 27;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.rewardGroupBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(617, 138);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Награды";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // rewardGroupBox
-            // 
-            this.rewardGroupBox.Controls.Add(this.bRewardBlackBox);
-            this.rewardGroupBox.Controls.Add(this.bRewardQuests);
-            this.rewardGroupBox.Controls.Add(this.cbRewardWindow);
-            this.rewardGroupBox.Controls.Add(this.lSupportSkills);
-            this.rewardGroupBox.Controls.Add(this.lSurvivalSkills);
-            this.rewardGroupBox.Controls.Add(this.tSupport);
-            this.rewardGroupBox.Controls.Add(this.tSurvival);
-            this.rewardGroupBox.Controls.Add(this.bRewardEffects);
-            this.rewardGroupBox.Controls.Add(this.bRewardReputation);
-            this.rewardGroupBox.Controls.Add(this.bRewardItem);
-            this.rewardGroupBox.Controls.Add(this.textBoxKarmaPK);
-            this.rewardGroupBox.Controls.Add(this.lKarmaPK);
-            this.rewardGroupBox.Controls.Add(this.bHideReward);
-            this.rewardGroupBox.Controls.Add(this.creditsTextBox);
-            this.rewardGroupBox.Controls.Add(this.lCredits);
-            this.rewardGroupBox.Controls.Add(this.tExperience);
-            this.rewardGroupBox.Controls.Add(this.lCombatSkills);
-            this.rewardGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rewardGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rewardGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.rewardGroupBox.Name = "rewardGroupBox";
-            this.rewardGroupBox.Size = new System.Drawing.Size(611, 128);
-            this.rewardGroupBox.TabIndex = 5;
-            this.rewardGroupBox.TabStop = false;
-            this.rewardGroupBox.Text = "Награда";
-            // 
-            // bRewardBlackBox
-            // 
-            this.bRewardBlackBox.Enabled = false;
-            this.bRewardBlackBox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardBlackBox.Location = new System.Drawing.Point(330, 19);
-            this.bRewardBlackBox.Name = "bRewardBlackBox";
-            this.bRewardBlackBox.Size = new System.Drawing.Size(81, 23);
-            this.bRewardBlackBox.TabIndex = 43;
-            this.bRewardBlackBox.Text = "BlackBox";
-            this.bRewardBlackBox.UseVisualStyleBackColor = true;
-            this.bRewardBlackBox.Click += new System.EventHandler(this.bRewardBlackBox_Click);
-            // 
-            // bRewardQuests
-            // 
-            this.bRewardQuests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardQuests.Location = new System.Drawing.Point(250, 19);
-            this.bRewardQuests.Name = "bRewardQuests";
-            this.bRewardQuests.Size = new System.Drawing.Size(81, 23);
-            this.bRewardQuests.TabIndex = 42;
-            this.bRewardQuests.Text = "Квесты";
-            this.bRewardQuests.UseVisualStyleBackColor = true;
-            this.bRewardQuests.Click += new System.EventHandler(this.bRewardQuests_Click);
-            // 
-            // cbRewardWindow
-            // 
-            this.cbRewardWindow.AutoSize = true;
-            this.cbRewardWindow.Location = new System.Drawing.Point(423, 23);
-            this.cbRewardWindow.Name = "cbRewardWindow";
-            this.cbRewardWindow.Size = new System.Drawing.Size(98, 17);
-            this.cbRewardWindow.TabIndex = 41;
-            this.cbRewardWindow.Text = "Окно награды";
-            this.cbRewardWindow.UseVisualStyleBackColor = true;
-            // 
-            // lSupportSkills
-            // 
-            this.lSupportSkills.AutoSize = true;
-            this.lSupportSkills.Location = new System.Drawing.Point(429, 72);
-            this.lSupportSkills.Name = "lSupportSkills";
-            this.lSupportSkills.Size = new System.Drawing.Size(68, 13);
-            this.lSupportSkills.TabIndex = 40;
-            this.lSupportSkills.Text = "Поддержки:";
-            // 
-            // lSurvivalSkills
-            // 
-            this.lSurvivalSkills.AutoSize = true;
-            this.lSurvivalSkills.Location = new System.Drawing.Point(229, 72);
-            this.lSurvivalSkills.Name = "lSurvivalSkills";
-            this.lSurvivalSkills.Size = new System.Drawing.Size(69, 13);
-            this.lSurvivalSkills.TabIndex = 39;
-            this.lSurvivalSkills.Text = "Выживания:";
-            // 
-            // tSupport
-            // 
-            this.tSupport.Location = new System.Drawing.Point(503, 67);
-            this.tSupport.Name = "tSupport";
-            this.tSupport.Size = new System.Drawing.Size(100, 20);
-            this.tSupport.TabIndex = 34;
-            // 
-            // tSurvival
-            // 
-            this.tSurvival.Location = new System.Drawing.Point(304, 67);
-            this.tSurvival.Name = "tSurvival";
-            this.tSurvival.Size = new System.Drawing.Size(100, 20);
-            this.tSurvival.TabIndex = 33;
-            // 
-            // bRewardEffects
-            // 
-            this.bRewardEffects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardEffects.Location = new System.Drawing.Point(170, 19);
-            this.bRewardEffects.Name = "bRewardEffects";
-            this.bRewardEffects.Size = new System.Drawing.Size(81, 23);
-            this.bRewardEffects.TabIndex = 30;
-            this.bRewardEffects.Text = "Эффекты";
-            this.bRewardEffects.UseVisualStyleBackColor = true;
-            this.bRewardEffects.Click += new System.EventHandler(this.bRewardEffects_Click);
-            // 
-            // bRewardReputation
-            // 
-            this.bRewardReputation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardReputation.Location = new System.Drawing.Point(89, 19);
-            this.bRewardReputation.Name = "bRewardReputation";
-            this.bRewardReputation.Size = new System.Drawing.Size(81, 23);
-            this.bRewardReputation.TabIndex = 29;
-            this.bRewardReputation.Text = "Репутация";
-            this.bRewardReputation.UseVisualStyleBackColor = true;
-            this.bRewardReputation.Click += new System.EventHandler(this.bRewardReputation_Click);
-            // 
-            // bRewardItem
-            // 
-            this.bRewardItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardItem.Location = new System.Drawing.Point(8, 19);
-            this.bRewardItem.Name = "bRewardItem";
-            this.bRewardItem.Size = new System.Drawing.Size(81, 23);
-            this.bRewardItem.TabIndex = 28;
-            this.bRewardItem.Text = "Предметы";
-            this.bRewardItem.UseVisualStyleBackColor = true;
-            this.bRewardItem.Click += new System.EventHandler(this.bRewardItem_Click);
-            // 
-            // textBoxKarmaPK
-            // 
-            this.textBoxKarmaPK.Location = new System.Drawing.Point(119, 89);
-            this.textBoxKarmaPK.Name = "textBoxKarmaPK";
-            this.textBoxKarmaPK.Size = new System.Drawing.Size(100, 20);
-            this.textBoxKarmaPK.TabIndex = 36;
-            // 
-            // lKarmaPK
-            // 
-            this.lKarmaPK.AutoSize = true;
-            this.lKarmaPK.Location = new System.Drawing.Point(10, 92);
-            this.lKarmaPK.Name = "lKarmaPK";
-            this.lKarmaPK.Size = new System.Drawing.Size(58, 13);
-            this.lKarmaPK.TabIndex = 30;
-            this.lKarmaPK.Text = "Карма ПК";
-            // 
-            // bHideReward
-            // 
-            this.bHideReward.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bHideReward.Location = new System.Drawing.Point(527, 11);
-            this.bHideReward.Name = "bHideReward";
-            this.bHideReward.Size = new System.Drawing.Size(75, 23);
-            this.bHideReward.TabIndex = 19;
-            this.bHideReward.Text = "Скрыть";
-            this.bHideReward.UseVisualStyleBackColor = true;
-            // 
-            // creditsTextBox
-            // 
-            this.creditsTextBox.Location = new System.Drawing.Point(119, 45);
-            this.creditsTextBox.Name = "creditsTextBox";
-            this.creditsTextBox.Size = new System.Drawing.Size(100, 20);
-            this.creditsTextBox.TabIndex = 31;
-            // 
-            // lCredits
-            // 
-            this.lCredits.AutoSize = true;
-            this.lCredits.Location = new System.Drawing.Point(6, 47);
-            this.lCredits.Name = "lCredits";
-            this.lCredits.Size = new System.Drawing.Size(51, 13);
-            this.lCredits.TabIndex = 14;
-            this.lCredits.Text = "Кредиты";
-            // 
-            // tExperience
-            // 
-            this.tExperience.Location = new System.Drawing.Point(119, 67);
-            this.tExperience.Name = "tExperience";
-            this.tExperience.Size = new System.Drawing.Size(100, 20);
-            this.tExperience.TabIndex = 32;
-            // 
-            // lCombatSkills
-            // 
-            this.lCombatSkills.AutoSize = true;
-            this.lCombatSkills.Location = new System.Drawing.Point(7, 71);
-            this.lCombatSkills.Name = "lCombatSkills";
-            this.lCombatSkills.Size = new System.Drawing.Size(76, 13);
-            this.lCombatSkills.TabIndex = 8;
-            this.lCombatSkills.Text = "Опыт боевой:";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.bPenaltyQuests);
-            this.tabPage2.Controls.Add(this.bPenaltyEffects);
-            this.tabPage2.Controls.Add(this.bPenaltyReputation);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.tbPenaltySupport);
-            this.tabPage2.Controls.Add(this.tbPenaltySurvival);
-            this.tabPage2.Controls.Add(this.bPenaltyItem);
-            this.tabPage2.Controls.Add(this.tbPenaltyKarmaPK);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.tbPenaltyCredits);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.tbPenaltyExperience);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(617, 138);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Штрафы";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // bPenaltyQuests
-            // 
-            this.bPenaltyQuests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bPenaltyQuests.Location = new System.Drawing.Point(323, 13);
-            this.bPenaltyQuests.Name = "bPenaltyQuests";
-            this.bPenaltyQuests.Size = new System.Drawing.Size(94, 23);
-            this.bPenaltyQuests.TabIndex = 54;
-            this.bPenaltyQuests.Text = "Квесты";
-            this.bPenaltyQuests.UseVisualStyleBackColor = true;
-            this.bPenaltyQuests.Click += new System.EventHandler(this.bPenaltyQuests_Click);
-            // 
-            // bPenaltyEffects
-            // 
-            this.bPenaltyEffects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bPenaltyEffects.Location = new System.Drawing.Point(226, 13);
-            this.bPenaltyEffects.Name = "bPenaltyEffects";
-            this.bPenaltyEffects.Size = new System.Drawing.Size(94, 23);
-            this.bPenaltyEffects.TabIndex = 53;
-            this.bPenaltyEffects.Text = "Эффекты";
-            this.bPenaltyEffects.UseVisualStyleBackColor = true;
-            this.bPenaltyEffects.Click += new System.EventHandler(this.bPenaltyEffects_Click);
-            // 
-            // bPenaltyReputation
-            // 
-            this.bPenaltyReputation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bPenaltyReputation.Location = new System.Drawing.Point(118, 13);
-            this.bPenaltyReputation.Name = "bPenaltyReputation";
-            this.bPenaltyReputation.Size = new System.Drawing.Size(105, 23);
-            this.bPenaltyReputation.TabIndex = 52;
-            this.bPenaltyReputation.Text = "Репутация";
-            this.bPenaltyReputation.UseVisualStyleBackColor = true;
-            this.bPenaltyReputation.Click += new System.EventHandler(this.bPenaltyReputation_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(433, 66);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 51;
-            this.label5.Text = "Поддержки:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(233, 66);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 13);
-            this.label10.TabIndex = 50;
-            this.label10.Text = "Выживания:";
-            // 
-            // tbPenaltySupport
-            // 
-            this.tbPenaltySupport.Location = new System.Drawing.Point(507, 61);
-            this.tbPenaltySupport.Name = "tbPenaltySupport";
-            this.tbPenaltySupport.Size = new System.Drawing.Size(100, 20);
-            this.tbPenaltySupport.TabIndex = 48;
-            // 
-            // tbPenaltySurvival
-            // 
-            this.tbPenaltySurvival.Location = new System.Drawing.Point(308, 61);
-            this.tbPenaltySurvival.Name = "tbPenaltySurvival";
-            this.tbPenaltySurvival.Size = new System.Drawing.Size(100, 20);
-            this.tbPenaltySurvival.TabIndex = 47;
-            // 
-            // bPenaltyItem
-            // 
-            this.bPenaltyItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bPenaltyItem.Location = new System.Drawing.Point(12, 13);
-            this.bPenaltyItem.Name = "bPenaltyItem";
-            this.bPenaltyItem.Size = new System.Drawing.Size(104, 23);
-            this.bPenaltyItem.TabIndex = 43;
-            this.bPenaltyItem.Text = "Предметы";
-            this.bPenaltyItem.UseVisualStyleBackColor = true;
-            this.bPenaltyItem.Click += new System.EventHandler(this.bPenaltyItem_Click);
-            // 
-            // tbPenaltyKarmaPK
-            // 
-            this.tbPenaltyKarmaPK.Location = new System.Drawing.Point(168, 89);
-            this.tbPenaltyKarmaPK.Name = "tbPenaltyKarmaPK";
-            this.tbPenaltyKarmaPK.Size = new System.Drawing.Size(100, 20);
-            this.tbPenaltyKarmaPK.TabIndex = 49;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 92);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(146, 13);
-            this.label11.TabIndex = 44;
-            this.label11.Text = "Карма ПК (\"-\" -  вычитание)";
-            // 
-            // tbPenaltyCredits
-            // 
-            this.tbPenaltyCredits.Location = new System.Drawing.Point(123, 39);
-            this.tbPenaltyCredits.Name = "tbPenaltyCredits";
-            this.tbPenaltyCredits.Size = new System.Drawing.Size(100, 20);
-            this.tbPenaltyCredits.TabIndex = 45;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 41);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 13);
-            this.label12.TabIndex = 42;
-            this.label12.Text = "Кредиты";
-            // 
-            // tbPenaltyExperience
-            // 
-            this.tbPenaltyExperience.Location = new System.Drawing.Point(123, 61);
-            this.tbPenaltyExperience.Name = "tbPenaltyExperience";
-            this.tbPenaltyExperience.Size = new System.Drawing.Size(100, 20);
-            this.tbPenaltyExperience.TabIndex = 46;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 65);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 13);
-            this.label13.TabIndex = 41;
-            this.label13.Text = "Опыт боевой:";
-            // 
             // panelCreateMob
             // 
             this.panelCreateMob.Controls.Add(this.cbMobInvul);
@@ -613,9 +260,9 @@
             this.panelCreateMob.Controls.Add(this.lbScenType);
             this.panelCreateMob.Controls.Add(this.cbMobType);
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
-            this.panelCreateMob.Location = new System.Drawing.Point(3, 336);
+            this.panelCreateMob.Location = new System.Drawing.Point(3, 327);
             this.panelCreateMob.Name = "panelCreateMob";
-            this.panelCreateMob.Size = new System.Drawing.Size(622, 161);
+            this.panelCreateMob.Size = new System.Drawing.Size(622, 176);
             this.panelCreateMob.TabIndex = 17;
             this.panelCreateMob.Visible = false;
             // 
@@ -786,7 +433,7 @@
             this.panelCreateNPC.Controls.Add(this.lbDisplayName);
             this.panelCreateNPC.Location = new System.Drawing.Point(0, 337);
             this.panelCreateNPC.Name = "panelCreateNPC";
-            this.panelCreateNPC.Size = new System.Drawing.Size(622, 197);
+            this.panelCreateNPC.Size = new System.Drawing.Size(622, 180);
             this.panelCreateNPC.TabIndex = 25;
             this.panelCreateNPC.Visible = false;
             // 
@@ -1130,19 +777,16 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.debuglabel);
-            this.panel1.Controls.Add(this.debugTextBox);
-            this.panel1.Controls.Add(this.okButton);
-            this.panel1.Controls.Add(this.cancelButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 769);
+            this.panel1.Location = new System.Drawing.Point(3, 629);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(610, 38);
+            this.panel1.Size = new System.Drawing.Size(610, 178);
             this.panel1.TabIndex = 7;
             // 
             // debuglabel
             // 
             this.debuglabel.AutoSize = true;
-            this.debuglabel.Location = new System.Drawing.Point(5, 12);
+            this.debuglabel.Location = new System.Drawing.Point(3, 165);
             this.debuglabel.Name = "debuglabel";
             this.debuglabel.Size = new System.Drawing.Size(161, 13);
             this.debuglabel.TabIndex = 43;
@@ -1150,14 +794,14 @@
             // 
             // debugTextBox
             // 
-            this.debugTextBox.Location = new System.Drawing.Point(8, 28);
+            this.debugTextBox.Location = new System.Drawing.Point(19, 863);
             this.debugTextBox.Name = "debugTextBox";
             this.debugTextBox.Size = new System.Drawing.Size(147, 20);
             this.debugTextBox.TabIndex = 42;
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(445, 15);
+            this.okButton.Location = new System.Drawing.Point(370, 861);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 37;
@@ -1167,7 +811,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(528, 15);
+            this.cancelButton.Location = new System.Drawing.Point(452, 861);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 38;
@@ -1189,7 +833,7 @@
             this.lQuestRules.Dock = System.Windows.Forms.DockStyle.Top;
             this.lQuestRules.Location = new System.Drawing.Point(3, 486);
             this.lQuestRules.Name = "lQuestRules";
-            this.lQuestRules.Size = new System.Drawing.Size(610, 283);
+            this.lQuestRules.Size = new System.Drawing.Size(610, 143);
             this.lQuestRules.TabIndex = 3;
             this.lQuestRules.TabStop = false;
             this.lQuestRules.Text = "Правила квеста";
@@ -1978,13 +1622,368 @@
             this.eventLabel.TabIndex = 0;
             this.eventLabel.Text = "Тип события:";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.bPenaltyQuests);
+            this.tabPage2.Controls.Add(this.bPenaltyEffects);
+            this.tabPage2.Controls.Add(this.bPenaltyReputation);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.tbPenaltySupport);
+            this.tabPage2.Controls.Add(this.tbPenaltySurvival);
+            this.tabPage2.Controls.Add(this.tbPenaltyKarmaPK);
+            this.tabPage2.Controls.Add(this.tbPenaltyCredits);
+            this.tabPage2.Controls.Add(this.tbPenaltyExperience);
+            this.tabPage2.Controls.Add(this.bPenaltyItem);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(617, 138);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Штрафы";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 65);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 41;
+            this.label13.Text = "Опыт боевой:";
+            // 
+            // tbPenaltyExperience
+            // 
+            this.tbPenaltyExperience.Location = new System.Drawing.Point(123, 61);
+            this.tbPenaltyExperience.Name = "tbPenaltyExperience";
+            this.tbPenaltyExperience.Size = new System.Drawing.Size(100, 20);
+            this.tbPenaltyExperience.TabIndex = 46;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 41);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 13);
+            this.label12.TabIndex = 42;
+            this.label12.Text = "Кредиты";
+            // 
+            // tbPenaltyCredits
+            // 
+            this.tbPenaltyCredits.Location = new System.Drawing.Point(123, 39);
+            this.tbPenaltyCredits.Name = "tbPenaltyCredits";
+            this.tbPenaltyCredits.Size = new System.Drawing.Size(100, 20);
+            this.tbPenaltyCredits.TabIndex = 45;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(11, 92);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(146, 13);
+            this.label11.TabIndex = 44;
+            this.label11.Text = "Карма ПК (\"-\" -  вычитание)";
+            // 
+            // tbPenaltyKarmaPK
+            // 
+            this.tbPenaltyKarmaPK.Location = new System.Drawing.Point(168, 89);
+            this.tbPenaltyKarmaPK.Name = "tbPenaltyKarmaPK";
+            this.tbPenaltyKarmaPK.Size = new System.Drawing.Size(100, 20);
+            this.tbPenaltyKarmaPK.TabIndex = 49;
+            // 
+            // bPenaltyItem
+            // 
+            this.bPenaltyItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bPenaltyItem.Location = new System.Drawing.Point(12, 13);
+            this.bPenaltyItem.Name = "bPenaltyItem";
+            this.bPenaltyItem.Size = new System.Drawing.Size(104, 23);
+            this.bPenaltyItem.TabIndex = 43;
+            this.bPenaltyItem.Text = "Предметы";
+            this.bPenaltyItem.UseVisualStyleBackColor = true;
+            this.bPenaltyItem.Click += new System.EventHandler(this.bPenaltyItem_Click);
+            // 
+            // tbPenaltySurvival
+            // 
+            this.tbPenaltySurvival.Location = new System.Drawing.Point(308, 61);
+            this.tbPenaltySurvival.Name = "tbPenaltySurvival";
+            this.tbPenaltySurvival.Size = new System.Drawing.Size(100, 20);
+            this.tbPenaltySurvival.TabIndex = 47;
+            // 
+            // tbPenaltySupport
+            // 
+            this.tbPenaltySupport.Location = new System.Drawing.Point(507, 61);
+            this.tbPenaltySupport.Name = "tbPenaltySupport";
+            this.tbPenaltySupport.Size = new System.Drawing.Size(100, 20);
+            this.tbPenaltySupport.TabIndex = 48;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(233, 66);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(69, 13);
+            this.label10.TabIndex = 50;
+            this.label10.Text = "Выживания:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(433, 66);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 51;
+            this.label5.Text = "Поддержки:";
+            // 
+            // bPenaltyReputation
+            // 
+            this.bPenaltyReputation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bPenaltyReputation.Location = new System.Drawing.Point(118, 13);
+            this.bPenaltyReputation.Name = "bPenaltyReputation";
+            this.bPenaltyReputation.Size = new System.Drawing.Size(105, 23);
+            this.bPenaltyReputation.TabIndex = 52;
+            this.bPenaltyReputation.Text = "Репутация";
+            this.bPenaltyReputation.UseVisualStyleBackColor = true;
+            this.bPenaltyReputation.Click += new System.EventHandler(this.bPenaltyReputation_Click);
+            // 
+            // bPenaltyEffects
+            // 
+            this.bPenaltyEffects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bPenaltyEffects.Location = new System.Drawing.Point(226, 13);
+            this.bPenaltyEffects.Name = "bPenaltyEffects";
+            this.bPenaltyEffects.Size = new System.Drawing.Size(94, 23);
+            this.bPenaltyEffects.TabIndex = 53;
+            this.bPenaltyEffects.Text = "Эффекты";
+            this.bPenaltyEffects.UseVisualStyleBackColor = true;
+            this.bPenaltyEffects.Click += new System.EventHandler(this.bPenaltyEffects_Click);
+            // 
+            // bPenaltyQuests
+            // 
+            this.bPenaltyQuests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bPenaltyQuests.Location = new System.Drawing.Point(323, 13);
+            this.bPenaltyQuests.Name = "bPenaltyQuests";
+            this.bPenaltyQuests.Size = new System.Drawing.Size(94, 23);
+            this.bPenaltyQuests.TabIndex = 54;
+            this.bPenaltyQuests.Text = "Квесты";
+            this.bPenaltyQuests.UseVisualStyleBackColor = true;
+            this.bPenaltyQuests.Click += new System.EventHandler(this.bPenaltyQuests_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.rewardGroupBox);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(617, 138);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Награды";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // rewardGroupBox
+            // 
+            this.rewardGroupBox.Controls.Add(this.bRewardBlackBox);
+            this.rewardGroupBox.Controls.Add(this.bRewardQuests);
+            this.rewardGroupBox.Controls.Add(this.cbRewardWindow);
+            this.rewardGroupBox.Controls.Add(this.lSupportSkills);
+            this.rewardGroupBox.Controls.Add(this.lSurvivalSkills);
+            this.rewardGroupBox.Controls.Add(this.tSupport);
+            this.rewardGroupBox.Controls.Add(this.tSurvival);
+            this.rewardGroupBox.Controls.Add(this.bRewardEffects);
+            this.rewardGroupBox.Controls.Add(this.bRewardReputation);
+            this.rewardGroupBox.Controls.Add(this.bRewardItem);
+            this.rewardGroupBox.Controls.Add(this.textBoxKarmaPK);
+            this.rewardGroupBox.Controls.Add(this.lKarmaPK);
+            this.rewardGroupBox.Controls.Add(this.bHideReward);
+            this.rewardGroupBox.Controls.Add(this.creditsTextBox);
+            this.rewardGroupBox.Controls.Add(this.lCredits);
+            this.rewardGroupBox.Controls.Add(this.tExperience);
+            this.rewardGroupBox.Controls.Add(this.lCombatSkills);
+            this.rewardGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rewardGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rewardGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.rewardGroupBox.Name = "rewardGroupBox";
+            this.rewardGroupBox.Size = new System.Drawing.Size(611, 128);
+            this.rewardGroupBox.TabIndex = 5;
+            this.rewardGroupBox.TabStop = false;
+            this.rewardGroupBox.Text = "Награда";
+            // 
+            // lCombatSkills
+            // 
+            this.lCombatSkills.AutoSize = true;
+            this.lCombatSkills.Location = new System.Drawing.Point(7, 71);
+            this.lCombatSkills.Name = "lCombatSkills";
+            this.lCombatSkills.Size = new System.Drawing.Size(76, 13);
+            this.lCombatSkills.TabIndex = 8;
+            this.lCombatSkills.Text = "Опыт боевой:";
+            // 
+            // tExperience
+            // 
+            this.tExperience.Location = new System.Drawing.Point(119, 67);
+            this.tExperience.Name = "tExperience";
+            this.tExperience.Size = new System.Drawing.Size(100, 20);
+            this.tExperience.TabIndex = 32;
+            // 
+            // lCredits
+            // 
+            this.lCredits.AutoSize = true;
+            this.lCredits.Location = new System.Drawing.Point(6, 47);
+            this.lCredits.Name = "lCredits";
+            this.lCredits.Size = new System.Drawing.Size(51, 13);
+            this.lCredits.TabIndex = 14;
+            this.lCredits.Text = "Кредиты";
+            // 
+            // creditsTextBox
+            // 
+            this.creditsTextBox.Location = new System.Drawing.Point(119, 45);
+            this.creditsTextBox.Name = "creditsTextBox";
+            this.creditsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.creditsTextBox.TabIndex = 31;
+            // 
+            // bHideReward
+            // 
+            this.bHideReward.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bHideReward.Location = new System.Drawing.Point(527, 11);
+            this.bHideReward.Name = "bHideReward";
+            this.bHideReward.Size = new System.Drawing.Size(75, 23);
+            this.bHideReward.TabIndex = 19;
+            this.bHideReward.Text = "Скрыть";
+            this.bHideReward.UseVisualStyleBackColor = true;
+            // 
+            // lKarmaPK
+            // 
+            this.lKarmaPK.AutoSize = true;
+            this.lKarmaPK.Location = new System.Drawing.Point(10, 92);
+            this.lKarmaPK.Name = "lKarmaPK";
+            this.lKarmaPK.Size = new System.Drawing.Size(58, 13);
+            this.lKarmaPK.TabIndex = 30;
+            this.lKarmaPK.Text = "Карма ПК";
+            // 
+            // textBoxKarmaPK
+            // 
+            this.textBoxKarmaPK.Location = new System.Drawing.Point(119, 89);
+            this.textBoxKarmaPK.Name = "textBoxKarmaPK";
+            this.textBoxKarmaPK.Size = new System.Drawing.Size(100, 20);
+            this.textBoxKarmaPK.TabIndex = 36;
+            // 
+            // bRewardItem
+            // 
+            this.bRewardItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bRewardItem.Location = new System.Drawing.Point(8, 19);
+            this.bRewardItem.Name = "bRewardItem";
+            this.bRewardItem.Size = new System.Drawing.Size(81, 23);
+            this.bRewardItem.TabIndex = 28;
+            this.bRewardItem.Text = "Предметы";
+            this.bRewardItem.UseVisualStyleBackColor = true;
+            this.bRewardItem.Click += new System.EventHandler(this.bRewardItem_Click);
+            // 
+            // bRewardReputation
+            // 
+            this.bRewardReputation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bRewardReputation.Location = new System.Drawing.Point(89, 19);
+            this.bRewardReputation.Name = "bRewardReputation";
+            this.bRewardReputation.Size = new System.Drawing.Size(81, 23);
+            this.bRewardReputation.TabIndex = 29;
+            this.bRewardReputation.Text = "Репутация";
+            this.bRewardReputation.UseVisualStyleBackColor = true;
+            this.bRewardReputation.Click += new System.EventHandler(this.bRewardReputation_Click);
+            // 
+            // bRewardEffects
+            // 
+            this.bRewardEffects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bRewardEffects.Location = new System.Drawing.Point(170, 19);
+            this.bRewardEffects.Name = "bRewardEffects";
+            this.bRewardEffects.Size = new System.Drawing.Size(81, 23);
+            this.bRewardEffects.TabIndex = 30;
+            this.bRewardEffects.Text = "Эффекты";
+            this.bRewardEffects.UseVisualStyleBackColor = true;
+            this.bRewardEffects.Click += new System.EventHandler(this.bRewardEffects_Click);
+            // 
+            // tSurvival
+            // 
+            this.tSurvival.Location = new System.Drawing.Point(304, 67);
+            this.tSurvival.Name = "tSurvival";
+            this.tSurvival.Size = new System.Drawing.Size(100, 20);
+            this.tSurvival.TabIndex = 33;
+            // 
+            // tSupport
+            // 
+            this.tSupport.Location = new System.Drawing.Point(503, 67);
+            this.tSupport.Name = "tSupport";
+            this.tSupport.Size = new System.Drawing.Size(100, 20);
+            this.tSupport.TabIndex = 34;
+            // 
+            // lSurvivalSkills
+            // 
+            this.lSurvivalSkills.AutoSize = true;
+            this.lSurvivalSkills.Location = new System.Drawing.Point(229, 72);
+            this.lSurvivalSkills.Name = "lSurvivalSkills";
+            this.lSurvivalSkills.Size = new System.Drawing.Size(69, 13);
+            this.lSurvivalSkills.TabIndex = 39;
+            this.lSurvivalSkills.Text = "Выживания:";
+            // 
+            // lSupportSkills
+            // 
+            this.lSupportSkills.AutoSize = true;
+            this.lSupportSkills.Location = new System.Drawing.Point(429, 72);
+            this.lSupportSkills.Name = "lSupportSkills";
+            this.lSupportSkills.Size = new System.Drawing.Size(68, 13);
+            this.lSupportSkills.TabIndex = 40;
+            this.lSupportSkills.Text = "Поддержки:";
+            // 
+            // cbRewardWindow
+            // 
+            this.cbRewardWindow.AutoSize = true;
+            this.cbRewardWindow.Location = new System.Drawing.Point(423, 23);
+            this.cbRewardWindow.Name = "cbRewardWindow";
+            this.cbRewardWindow.Size = new System.Drawing.Size(98, 17);
+            this.cbRewardWindow.TabIndex = 41;
+            this.cbRewardWindow.Text = "Окно награды";
+            this.cbRewardWindow.UseVisualStyleBackColor = true;
+            // 
+            // bRewardQuests
+            // 
+            this.bRewardQuests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bRewardQuests.Location = new System.Drawing.Point(250, 19);
+            this.bRewardQuests.Name = "bRewardQuests";
+            this.bRewardQuests.Size = new System.Drawing.Size(81, 23);
+            this.bRewardQuests.TabIndex = 42;
+            this.bRewardQuests.Text = "Квесты";
+            this.bRewardQuests.UseVisualStyleBackColor = true;
+            this.bRewardQuests.Click += new System.EventHandler(this.bRewardQuests_Click);
+            // 
+            // bRewardBlackBox
+            // 
+            this.bRewardBlackBox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bRewardBlackBox.Location = new System.Drawing.Point(330, 19);
+            this.bRewardBlackBox.Name = "bRewardBlackBox";
+            this.bRewardBlackBox.Size = new System.Drawing.Size(81, 23);
+            this.bRewardBlackBox.TabIndex = 43;
+            this.bRewardBlackBox.Text = "BlackBox";
+            this.bRewardBlackBox.UseVisualStyleBackColor = true;
+            this.bRewardBlackBox.Click += new System.EventHandler(this.bRewardBlackBox_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(3, 682);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(625, 164);
+            this.tabControl1.TabIndex = 27;
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(622, 863);
+            this.ClientSize = new System.Drawing.Size(651, 898);
             this.Controls.Add(this.QuestPanel);
+            this.Controls.Add(this.okButton);
+            this.Controls.Add(this.debugTextBox);
+            this.Controls.Add(this.cancelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "EditQuestForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -1994,12 +1993,6 @@
             this.QuestPanel.ResumeLayout(false);
             this.groupQuestBox.ResumeLayout(false);
             this.groupQuestBox.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.rewardGroupBox.ResumeLayout(false);
-            this.rewardGroupBox.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.panelCreateMob.ResumeLayout(false);
             this.panelCreateMob.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).EndInit();
@@ -2027,7 +2020,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).EndInit();
             this.questInformationBox.ResumeLayout(false);
             this.questInformationBox.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.rewardGroupBox.ResumeLayout(false);
+            this.rewardGroupBox.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -2035,40 +2035,6 @@
 
         public System.Windows.Forms.Panel QuestPanel;
         private System.Windows.Forms.GroupBox groupQuestBox;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox rewardGroupBox;
-        private System.Windows.Forms.Button bRewardQuests;
-        private System.Windows.Forms.CheckBox cbRewardWindow;
-        private System.Windows.Forms.Label lSupportSkills;
-        private System.Windows.Forms.Label lSurvivalSkills;
-        private System.Windows.Forms.TextBox tSupport;
-        private System.Windows.Forms.TextBox tSurvival;
-        private System.Windows.Forms.Button bRewardEffects;
-        private System.Windows.Forms.Button bRewardReputation;
-        private System.Windows.Forms.Button bRewardItem;
-        private System.Windows.Forms.TextBox textBoxKarmaPK;
-        private System.Windows.Forms.Label lKarmaPK;
-        private System.Windows.Forms.Button bHideReward;
-        private System.Windows.Forms.TextBox creditsTextBox;
-        private System.Windows.Forms.Label lCredits;
-        private System.Windows.Forms.TextBox tExperience;
-        private System.Windows.Forms.Label lCombatSkills;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button bPenaltyQuests;
-        private System.Windows.Forms.Button bPenaltyEffects;
-        private System.Windows.Forms.Button bPenaltyReputation;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox tbPenaltySupport;
-        private System.Windows.Forms.TextBox tbPenaltySurvival;
-        private System.Windows.Forms.Button bPenaltyItem;
-        private System.Windows.Forms.TextBox tbPenaltyKarmaPK;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox tbPenaltyCredits;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox tbPenaltyExperience;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panelCreateMob;
         private System.Windows.Forms.CheckBox cbMobInvul;
         private System.Windows.Forms.ComboBox cbMobLevel;
@@ -2198,6 +2164,40 @@
         private System.Windows.Forms.CheckBox cbGetScreenMsg;
         private System.Windows.Forms.CheckBox cbFailScreenMsg;
         private System.Windows.Forms.CheckBox cbWonScreenMsg;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox rewardGroupBox;
         private System.Windows.Forms.Button bRewardBlackBox;
+        private System.Windows.Forms.Button bRewardQuests;
+        private System.Windows.Forms.CheckBox cbRewardWindow;
+        private System.Windows.Forms.Label lSupportSkills;
+        private System.Windows.Forms.Label lSurvivalSkills;
+        private System.Windows.Forms.TextBox tSupport;
+        private System.Windows.Forms.TextBox tSurvival;
+        private System.Windows.Forms.Button bRewardEffects;
+        private System.Windows.Forms.Button bRewardReputation;
+        private System.Windows.Forms.Button bRewardItem;
+        private System.Windows.Forms.TextBox textBoxKarmaPK;
+        private System.Windows.Forms.Label lKarmaPK;
+        private System.Windows.Forms.Button bHideReward;
+        private System.Windows.Forms.TextBox creditsTextBox;
+        private System.Windows.Forms.Label lCredits;
+        private System.Windows.Forms.TextBox tExperience;
+        private System.Windows.Forms.Label lCombatSkills;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button bPenaltyQuests;
+        private System.Windows.Forms.Button bPenaltyEffects;
+        private System.Windows.Forms.Button bPenaltyReputation;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbPenaltySupport;
+        private System.Windows.Forms.TextBox tbPenaltySurvival;
+        private System.Windows.Forms.TextBox tbPenaltyKarmaPK;
+        private System.Windows.Forms.TextBox tbPenaltyCredits;
+        private System.Windows.Forms.TextBox tbPenaltyExperience;
+        private System.Windows.Forms.Button bPenaltyItem;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

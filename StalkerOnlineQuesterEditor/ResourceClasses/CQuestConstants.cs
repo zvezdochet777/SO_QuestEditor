@@ -13,35 +13,67 @@ namespace StalkerOnlineQuesterEditor
         List<СQuestType> ierarchyQuestsType = new List<СQuestType>();
         List<СQuestType> simpleQuestsType = new List<СQuestType>();
 
+        public static int TYPE_FARM = 0; // собрать предметы
+        public static int TYPE_FARM_AUTO = 16; // собранные предметы автоматически исчезают
+        public static int TYPE_TALK = 1; // поговорить
+        public static int TYPE_KILLMOBS_WITH_ONTEST = 2; // убить мобов со здачей НИП
+        public static int TYPE_KILLMOBS = 3; // убить мобов
+        public static int TYPE_AREA_DISCOVER = 4; // войти в зону
+        public static int TYPE_MONEYBACK = 5; // заплатить НИП
+        public static int TYPE_TRIGGER_ACTION = 6; // взаимодействвать с триггером
+        public static int TYPE_QITEM_USE = 7; // использовать квестовый предмет
+        public static int TYPE_AREA_LEAVE = 8; // покинуть зону
+        public static int TYPE_TIMER = 9; // таймер
+        public static int TYPE_DIE = 17; // умереть (отправиться на респ)
+        public static int TYPE_GAME_EXIT = 18; // выйти из игры
+        public static int TYPE_ITEM_EQIP = 19; // экипировать предмет
+        public static int TYPE_ITEM_ADD = 20; // получить предмет
+        public static int TYPE_GIVE_EFFECT = 21; // получить эффект
+        public static int TYPE_REPUTATION = 22; // собрать количество репутации (со сдачей)
+        public static int TYPE_REPUTATION_AUTO = 23; // автоматически закрывается при количестве репутации
+        public static int TYPE_KILL = 24; // убить
+
+        public static int TYPE_ITEM_CATEGORY = 25; // Собрать количество предметов категории.
+        public static int TYPE_ITEM_CATEGORY_AUTO = 26; // Собрать количество предметов категории АВТО.
+        public static int TYPE_HAVE_EFFECT = 27; // Находиться под действием эффекта
+        public static int TYPE_IN_AREA = 28; // Находиться в зоне
+
+        public static int TYPE_CREATE_NPC = 51; // создать бегающего НИП
+        public static int TYPE_CREATE_MOB = 52; // создать моба
+        public static int TYPE_KILLNPC = 53; // убить НИП созданного квестом
+        public static int TYPE_KILLNPC_WITH_ONTEST = 54; // убить НИП со сдачей
+
         public СQuestConstants()
         {
-            simpleQuestsType.Add(new СQuestType(0, "0  Собрать необходимое количество предметов."));
-            simpleQuestsType.Add(new СQuestType(16,"16 Собрать необходимое количество предметов авто."));
-            simpleQuestsType.Add(new СQuestType(1, "1  Поговорить."));
-            simpleQuestsType.Add(new СQuestType(2, "2  Убийство мобов с обязательной сдачей евента."));
-            simpleQuestsType.Add(new СQuestType(3, "3  Убийство мобов."));
-            simpleQuestsType.Add(new СQuestType(4, "4  Посещение зоны."));
-            simpleQuestsType.Add(new СQuestType(5, "5  Сдача денег."));
-            simpleQuestsType.Add(new СQuestType(6, "6  Действие над триггером."));
-            simpleQuestsType.Add(new СQuestType(7, "7  Использовать предмет."));
-            simpleQuestsType.Add(new СQuestType(8, "8  Покинуть зону."));
-            simpleQuestsType.Add(new СQuestType(9, "9  Таймер."));
-            simpleQuestsType.Add(new СQuestType(17,"17 Умереть."));
-            simpleQuestsType.Add(new СQuestType(18,"18 Выйти из игры."));
-            simpleQuestsType.Add(new СQuestType(19,"19 Экипировка предмета."));
-            simpleQuestsType.Add(new СQuestType(20,"20 Добавление предмета."));
-            simpleQuestsType.Add(new СQuestType(21,"21 Получение эффекта."));
-            simpleQuestsType.Add(new СQuestType(22,"22 Необходимое количество репутации."));
-            simpleQuestsType.Add(new СQuestType(23,"23 Необходимое количество репутации АВТО."));
-            simpleQuestsType.Add(new СQuestType(24,"24 Убийство."));
-            simpleQuestsType.Add(new СQuestType(25,"25 Собрать количество предметов категории."));
-            simpleQuestsType.Add(new СQuestType(26,"26 Собрать количество предметов категории АВТО."));
+            simpleQuestsType.Add(new СQuestType(TYPE_FARM, "0  Собрать необходимое количество предметов."));
+            simpleQuestsType.Add(new СQuestType(TYPE_FARM_AUTO, "16 Собрать необходимое количество предметов авто."));
+            simpleQuestsType.Add(new СQuestType(TYPE_TALK, "1  Поговорить."));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLMOBS_WITH_ONTEST, "2  Убийство мобов с обязательной сдачей евента."));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLMOBS, "3  Убийство мобов."));
+            simpleQuestsType.Add(new СQuestType(TYPE_AREA_DISCOVER, "4  Посещение зоны."));
+            simpleQuestsType.Add(new СQuestType(TYPE_MONEYBACK, "5  Сдача денег."));
+            simpleQuestsType.Add(new СQuestType(TYPE_TRIGGER_ACTION, "6  Действие над триггером."));
+            simpleQuestsType.Add(new СQuestType(TYPE_QITEM_USE, "7  Использовать предмет."));
+            simpleQuestsType.Add(new СQuestType(TYPE_AREA_LEAVE, "8  Покинуть зону."));
+            simpleQuestsType.Add(new СQuestType(TYPE_TIMER, "9  Таймер."));
+            simpleQuestsType.Add(new СQuestType(TYPE_DIE, "17 Умереть."));
+            simpleQuestsType.Add(new СQuestType(TYPE_GAME_EXIT, "18 Выйти из игры."));
+            simpleQuestsType.Add(new СQuestType(TYPE_ITEM_EQIP, "19 Экипировка предмета."));
+            simpleQuestsType.Add(new СQuestType(TYPE_ITEM_ADD, "20 Добавление предмета."));
+            simpleQuestsType.Add(new СQuestType(TYPE_GIVE_EFFECT, "21 Получение эффекта."));
+            simpleQuestsType.Add(new СQuestType(TYPE_REPUTATION, "22 Необходимое количество репутации."));
+            simpleQuestsType.Add(new СQuestType(TYPE_REPUTATION_AUTO, "23 Необходимое количество репутации АВТО."));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILL, "24 Убийство."));
+            simpleQuestsType.Add(new СQuestType(TYPE_ITEM_CATEGORY, "25 Собрать количество предметов категории."));
+            simpleQuestsType.Add(new СQuestType(TYPE_ITEM_CATEGORY_AUTO, "26 Собрать количество предметов категории АВТО."));
+            simpleQuestsType.Add(new СQuestType(TYPE_HAVE_EFFECT, "27 Находиться под действием эффекта."));
+            simpleQuestsType.Add(new СQuestType(TYPE_IN_AREA, "28 Находиться в зоне."));
 
-            ierarchyQuestsType.Add(new СQuestType(50,"50 Игра против режиссера."));
-            simpleQuestsType.Add(new СQuestType(51,"51 Создать NPC."));
-            simpleQuestsType.Add(new СQuestType(52,"52 Создать Моба."));
-            simpleQuestsType.Add(new СQuestType(53,"53 Убийство NPC."));
-            simpleQuestsType.Add(new СQuestType(54,"54 Убийство NPC с обязательной сдачей евента."));
+            ierarchyQuestsType.Add(new СQuestType(50, "50 Игра против режиссера."));
+            simpleQuestsType.Add(new СQuestType(TYPE_CREATE_NPC, "51 Создать NPC."));
+            simpleQuestsType.Add(new СQuestType(TYPE_CREATE_MOB, "52 Создать Моба."));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC, "53 Убийство NPC."));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC_WITH_ONTEST, "54 Убийство NPC с обязательной сдачей евента."));
 
             ierarchyQuestsType.Add(new СQuestType(10,"10 Выполнение всех в любом порядке."));
             ierarchyQuestsType.Add(new СQuestType(11,"11 Выполнение всех по порядку."));

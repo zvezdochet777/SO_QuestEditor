@@ -1,4 +1,4 @@
-﻿namespace StalkerOnlineQuesterEditor.Forms
+﻿namespace StalkerOnlineQuesterEditor
 {
     partial class RewardBlackBoxDialog
     {
@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.itemGridView = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bCancel = new System.Windows.Forms.Button();
             this.bOk = new System.Windows.Forms.Button();
-            this.name = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +47,12 @@
             this.itemGridView.Size = new System.Drawing.Size(275, 258);
             this.itemGridView.TabIndex = 1;
             // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            this.name.Width = 150;
+            // 
             // bCancel
             // 
             this.bCancel.Location = new System.Drawing.Point(182, 264);
@@ -55,6 +61,7 @@
             this.bCancel.TabIndex = 3;
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
             // bOk
             // 
@@ -64,12 +71,7 @@
             this.bOk.TabIndex = 2;
             this.bOk.Text = "Ок";
             this.bOk.UseVisualStyleBackColor = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Name";
-            this.name.Name = "name";
-            this.name.Width = 150;
+            this.bOk.Click += new System.EventHandler(this.bOk_Click);
             // 
             // RewardBlackBoxDialog
             // 

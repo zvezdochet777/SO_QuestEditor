@@ -270,10 +270,26 @@ namespace StalkerOnlineQuesterEditor
                                 Precondition.items.itemCategory = int.Parse(dialog.Element("Precondition").Element("items").Element("itemCategory").Value);
                             else if (dialog.Element("Precondition").Element("items").Element("typeOfItems") != null)
                             {
+                                if (dialog.Element("Precondition").Element("items").Element("or") != null)
+                                    Precondition.items.is_or = true;
                                 AddDataToList(dialog.Element("Precondition"), "items", "typeOfItems", Precondition.items.typeOfItems);
                                 AddDataToList(dialog.Element("Precondition"), "items", "numOfItems", Precondition.items.numOfItems);
                                 AddDataToList(dialog.Element("Precondition"), "items", "attrOfItems", Precondition.items.attrOfItems);
                                 AddDataToList(dialog.Element("Precondition"), "items", "condOfItems", Precondition.items.condOfItems);
+                            }
+                        }
+                        if (dialog.Element("Precondition").Element("noneItems") != null)
+                        {
+                            if (dialog.Element("Precondition").Element("noneItems").Element("itemCategory") != null)
+                                Precondition.itemsNone.itemCategory = int.Parse(dialog.Element("Precondition").Element("noneItems").Element("itemCategory").Value);
+                            else if (dialog.Element("Precondition").Element("noneItems").Element("typeOfItems") != null)
+                            {
+                                if (dialog.Element("Precondition").Element("noneItems").Element("or") != null)
+                                    Precondition.itemsNone.is_or = true;
+                                AddDataToList(dialog.Element("Precondition"), "noneItems", "typeOfItems", Precondition.itemsNone.typeOfItems);
+                                AddDataToList(dialog.Element("Precondition"), "noneItems", "numOfItems", Precondition.itemsNone.numOfItems);
+                                AddDataToList(dialog.Element("Precondition"), "noneItems", "attrOfItems", Precondition.itemsNone.attrOfItems);
+                                AddDataToList(dialog.Element("Precondition"), "noneItems", "condOfItems", Precondition.itemsNone.condOfItems);
                             }
                         }
 
@@ -602,12 +618,30 @@ namespace StalkerOnlineQuesterEditor
                     else if (dialog.Precondition.items.typeOfItems.Any())
                     {
                         element.Element("Precondition").Add(new XElement("items", ""));
+                        if (dialog.Precondition.items.is_or)
+                            element.Element("Precondition").Element("items").Add(new XElement("or", "1"));
                         element.Element("Precondition").Element("items").Add(new XElement("typeOfItems", Global.GetListAsString(dialog.Precondition.items.typeOfItems)));
                         element.Element("Precondition").Element("items").Add(new XElement("numOfItems", Global.GetListAsString(dialog.Precondition.items.numOfItems)));
                         element.Element("Precondition").Element("items").Add(new XElement("attrOfItems", Global.GetListAsString(dialog.Precondition.items.attrOfItems)));
                         element.Element("Precondition").Element("items").Add(new XElement("condOfItems", Global.GetListAsString(dialog.Precondition.items.condOfItems)));
                         
                     }
+                    if (dialog.Precondition.itemsNone.itemCategory != -1)
+                    {
+                        element.Element("Precondition").Add(new XElement("noneItems", new XElement("itemCategory", dialog.Precondition.itemsNone.itemCategory.ToString())));
+                    }
+                    else if (dialog.Precondition.itemsNone.typeOfItems.Any())
+                    {
+                        element.Element("Precondition").Add(new XElement("noneItems", ""));
+                        if (dialog.Precondition.itemsNone.is_or)
+                            element.Element("Precondition").Element("noneItems").Add(new XElement("or", "1"));
+                        element.Element("Precondition").Element("noneItems").Add(new XElement("typeOfItems", Global.GetListAsString(dialog.Precondition.itemsNone.typeOfItems)));
+                        element.Element("Precondition").Element("noneItems").Add(new XElement("numOfItems", Global.GetListAsString(dialog.Precondition.itemsNone.numOfItems)));
+                        element.Element("Precondition").Element("noneItems").Add(new XElement("attrOfItems", Global.GetListAsString(dialog.Precondition.itemsNone.attrOfItems)));
+                        element.Element("Precondition").Element("noneItems").Add(new XElement("condOfItems", Global.GetListAsString(dialog.Precondition.itemsNone.condOfItems)));
+
+                    }
+
                     if (dialog.Actions.Any())
                     {
                         element.Add(new XElement("Actions", ""));
