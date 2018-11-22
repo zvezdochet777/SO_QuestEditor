@@ -40,6 +40,8 @@ namespace StalkerOnlineQuesterEditor.Forms
                 // если нет локализации совсем - берем за основу русский квест и обнуляем данные с полями текста
                 locale_quest = (CQuest)quest.Clone();
                 locale_quest.QuestInformation.Description = "";
+                locale_quest.QuestInformation.DescriptionClosed = "";
+                locale_quest.QuestInformation.DescriptionOnTest = "";
                 locale_quest.QuestInformation.onFailed = "";
                 locale_quest.QuestInformation.onWin = "";
                 locale_quest.QuestInformation.onGet = "";
@@ -57,6 +59,8 @@ namespace StalkerOnlineQuesterEditor.Forms
 
             titleTextBox.Text = quest.QuestInformation.Title;
             descriptionTextBox.Text = quest.QuestInformation.Description;
+            descriptionOnTestTextBox.Text = quest.QuestInformation.DescriptionOnTest;
+            descriptionClosedTextBox.Text = quest.QuestInformation.DescriptionClosed;
             onWonTextBox.Text = quest.QuestInformation.onWin;
             onGetTextBox.Text = quest.QuestInformation.onGet;
             onFailedTextBox.Text = quest.QuestInformation.onFailed;
@@ -68,6 +72,9 @@ namespace StalkerOnlineQuesterEditor.Forms
             {
                 localeLitleTextBox.Text = locale_quest.QuestInformation.Title;
                 localeDescriptionTextBox.Text = locale_quest.QuestInformation.Description;
+                localeDescriptionOnTestTextBox.Text = locale_quest.QuestInformation.DescriptionOnTest;
+                localeDescriptionClosedTextBox.Text = locale_quest.QuestInformation.DescriptionClosed;
+
                 localeOnWonTextBox.Text = locale_quest.QuestInformation.onWin;
                 localeOnFailedTextBox.Text = locale_quest.QuestInformation.onFailed;
                 localeOnGetTextBox.Text = locale_quest.QuestInformation.onGet;
@@ -114,6 +121,8 @@ namespace StalkerOnlineQuesterEditor.Forms
         {
             cur_locale_quest.QuestInformation.Title = localeLitleTextBox.Text;
             cur_locale_quest.QuestInformation.Description = localeDescriptionTextBox.Text;
+            cur_locale_quest.QuestInformation.DescriptionOnTest = localeDescriptionOnTestTextBox.Text;
+            cur_locale_quest.QuestInformation.DescriptionClosed = localeDescriptionClosedTextBox.Text;
             cur_locale_quest.QuestInformation.onWin = localeOnWonTextBox.Text;
             cur_locale_quest.QuestInformation.onGet = localeOnGetTextBox.Text;
             cur_locale_quest.QuestInformation.onFailed = localeOnFailedTextBox.Text;

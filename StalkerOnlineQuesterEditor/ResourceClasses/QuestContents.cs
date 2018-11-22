@@ -83,6 +83,8 @@ namespace StalkerOnlineQuesterEditor
     {
     	public string Title;
 		public string Description;
+        public string DescriptionOnTest;
+        public string DescriptionClosed;
         public string onWin;
         public string onFailed;
         public string onGet;
@@ -104,6 +106,8 @@ namespace StalkerOnlineQuesterEditor
         {
             this.Title = "";
             this.Description = "";
+            this.DescriptionOnTest = "";
+            this.DescriptionClosed = "";
             this.onFailed = "";
             this.onWin = "";
             this.onGet = "";

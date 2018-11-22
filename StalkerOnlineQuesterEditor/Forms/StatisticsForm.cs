@@ -170,16 +170,24 @@ namespace StalkerOnlineQuesterEditor
             {
                 countOfQuestTexts += quest.QuestInformation.Title.Length;
                 countOfQuestTexts += quest.QuestInformation.Description.Length;
+                countOfQuestTexts += quest.QuestInformation.DescriptionClosed.Length;
+                countOfQuestTexts += quest.QuestInformation.DescriptionOnTest.Length;
                 countOfQuestSpaceless += quest.QuestInformation.Title.Replace(" ","").Length;
                 countOfQuestSpaceless += quest.QuestInformation.Description.Replace(" ", "").Length;
+                countOfQuestSpaceless += quest.QuestInformation.DescriptionOnTest.Replace(" ", "").Length;
+                countOfQuestSpaceless += quest.QuestInformation.DescriptionClosed.Replace(" ", "").Length;
 
                 if (!locQuests.ContainsKey(quest.QuestID) || locQuests[quest.QuestID].Version < quest.Version)
                 {
                     locQuestCount++;
                     locQuestText += quest.QuestInformation.Title.Length;
                     locQuestText += quest.QuestInformation.Description.Length;
+                    locQuestText += quest.QuestInformation.DescriptionOnTest.Length;
+                    locQuestText += quest.QuestInformation.DescriptionClosed.Length;
                     locQuestSpaceless += quest.QuestInformation.Title.Replace(" ", "").Length;
                     locQuestSpaceless += quest.QuestInformation.Description.Replace(" ", "").Length;
+                    locQuestSpaceless += quest.QuestInformation.DescriptionOnTest.Replace(" ", "").Length;
+                    locQuestSpaceless += quest.QuestInformation.DescriptionClosed.Replace(" ", "").Length;
                 }
             }        
         }

@@ -2262,6 +2262,19 @@ namespace StalkerOnlineQuesterEditor
                         local.Version = quest.Version - 1;
                         desc++;
                     }
+                    if (quest.QuestInformation.DescriptionOnTest.Length > 0 && local.QuestInformation.DescriptionOnTest.Length == 0)
+                    {
+                        local.QuestInformation.DescriptionOnTest = quest.QuestInformation.DescriptionOnTest;
+                        local.Version = quest.Version - 1;
+                        desc++;
+                    }
+                    if (quest.QuestInformation.DescriptionClosed.Length > 0 && local.QuestInformation.DescriptionClosed.Length == 0)
+                    {
+                        local.QuestInformation.DescriptionClosed = quest.QuestInformation.DescriptionClosed;
+                        local.Version = quest.Version - 1;
+                        desc++;
+                    }
+
                     if (quest.QuestInformation.onWin.Length > 0 && local.QuestInformation.onWin.Length == 0)
                     {
                         local.QuestInformation.onWin = quest.QuestInformation.onWin;
@@ -2682,6 +2695,10 @@ namespace StalkerOnlineQuesterEditor
                     line = sr.ReadLine();
                     string Description = line.Replace("Description;", "").Replace(";\n", "");
                     line = sr.ReadLine();
+                    string DescriptionOnTest = line.Replace("DescriptionOnTest;", "").Replace(";\n", "");
+                    line = sr.ReadLine();
+                    string DescriptionClosed = line.Replace("DescriptionClosed;", "").Replace(";\n", "");
+                    line = sr.ReadLine();
                     string onGet = line.Replace("onGet;", "").Replace(";\n", "");
                     line = sr.ReadLine();
                     string onWin = line.Replace("onWin;", "").Replace(";\n", "");
@@ -2692,6 +2709,8 @@ namespace StalkerOnlineQuesterEditor
 
                     quest.QuestInformation.Title = Title;
                     quest.QuestInformation.Description = Description;
+                    quest.QuestInformation.DescriptionOnTest = DescriptionOnTest;
+                    quest.QuestInformation.DescriptionClosed = DescriptionClosed;
                     quest.QuestInformation.onWin = onWin;
                     quest.QuestInformation.onFailed = onFailed;
                     quest.QuestInformation.onGet = onGet;

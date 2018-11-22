@@ -80,19 +80,7 @@ namespace StalkerOnlineQuesterEditor
             ierarchyQuestsType.Add(new СQuestType(12,"12 Выполнение на выбор."));
             ierarchyQuestsType.Add(new СQuestType(13,"13 Выполнение всех в любом порядке со сдачей."));
             ierarchyQuestsType.Add(new СQuestType(14,"14 Выполнение всех по порядку со сдачей."));
-            ierarchyQuestsType.Add(new СQuestType(15,"15 Выполнение на выбор со сдачей."));
-
-            //Туториал
-            //simpleQuestsType.Add(new СQuestType(200,"200 _экипировка предмета."));
-            simpleQuestsType.Add(new СQuestType(201,"201 _выстрел."));
-            simpleQuestsType.Add(new СQuestType(202,"202 _лечение."));
-            simpleQuestsType.Add(new СQuestType(203,"203 _восстановление предмета."));
-            simpleQuestsType.Add(new СQuestType(204,"204 _фонарик."));
-            //simpleQuestsType.Add(new СQuestType(205,"205 _добавление предмета."));
-            simpleQuestsType.Add(new СQuestType(206,"206 _событие ГУИ."));
-
-
-
+            ierarchyQuestsType.Add(new СQuestType(15,"15 Выполнение на выбор со сдачей."));           
         }
         public bool isSimple(int questType)
         {

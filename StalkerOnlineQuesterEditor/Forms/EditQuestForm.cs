@@ -167,6 +167,8 @@ namespace StalkerOnlineQuesterEditor
                 eventComboBox.SelectedItem = parent.questConst.getDescription(quest.Target.QuestType);
                 titleTextBox.Text = quest.QuestInformation.Title;
                 descriptionTextBox.Text = quest.QuestInformation.Description;
+                descriptionOnTestTextBox.Text = quest.QuestInformation.DescriptionOnTest;
+                descriptionClosedTextBox.Text = quest.QuestInformation.DescriptionClosed;
 
                 onWonTextBox.Text = quest.QuestInformation.onWin;
                 cbWonScreenMsg.Checked = quest.Additional.screenMessageOnWin;
@@ -878,6 +880,9 @@ namespace StalkerOnlineQuesterEditor
             CQuestReward penalty = new CQuestReward();
 
             information.Description = descriptionTextBox.Text;
+            information.DescriptionClosed = descriptionClosedTextBox.Text;
+            information.DescriptionOnTest = descriptionOnTestTextBox.Text;
+
             information.Title = titleTextBox.Text;
             additional.Holder = parent.GetCurrentNPC();
             information.onWin = onWonTextBox.Text;
@@ -1312,7 +1317,7 @@ namespace StalkerOnlineQuesterEditor
         {
             lTitle.Visible = !lTitle.Visible;
             titleTextBox.Visible = !titleTextBox.Visible;
-            lDescription.Visible = !lDescription.Visible;
+            //lDescription.Visible = !lDescription.Visible;
             descriptionTextBox.Visible = !descriptionTextBox.Visible;
             showCloseCheckBox.Visible = !showCloseCheckBox.Visible;
             showJournalCheckBox.Visible = !showJournalCheckBox.Visible;

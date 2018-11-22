@@ -24,3 +24,5 @@ D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csproj.CoreCompileInputs.c
 D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csproj.CopyComplete
 D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.exe
 D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.pdb
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.csprojAssemblyReference.cache
+D:\SO_QuestEditor\SOHelpEditor\obj\Debug\SOHelpEditor.CreateCommentForm.resources

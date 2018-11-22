@@ -18,7 +18,7 @@ namespace SOHelpEditor
         HelpDataLoader dataLoader = new HelpDataLoader();
         Dictionary<int, List<Token>> data = new Dictionary<int, List<Token>>();
         int selectedIndex = -1;
-        enum STATUS { None, subTitle, Image, Text };
+        enum STATUS { None, subTitle, Image, Text, Pre };
         LittleCardForm little_card_form;
         InputForm input;
 
@@ -88,6 +88,40 @@ namespace SOHelpEditor
             rtbText.SelectionFont = old_font;
         }
 
+        public void pastePre(string text, bool in_end = false)
+        {
+            Clipboard.Clear();
+            rtbText.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            //rtbText.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+
+            Color old = rtbText.SelectionColor;
+            Font old_font = rtbText.SelectionFont;
+            Font subtitle_font = new Font(rtbText.SelectionFont.FontFamily, 14, FontStyle.Italic, GraphicsUnit.Pixel);
+            rtbText.SelectionFont = subtitle_font;
+            text = dataLoader.getText(text);
+            if (in_end)
+            {
+                rtbText.SelectionColor = Color.White;
+                rtbText.AppendText("\n<pre>");
+                rtbText.SelectionColor = old;
+                rtbText.AppendText(text);
+                rtbText.SelectionColor = Color.White;
+                rtbText.AppendText("</pre>\n\n");
+            }
+            else
+            {
+                rtbText.SelectionColor = Color.White;
+                Clipboard.SetText("\n<pre>"); rtbText.Paste();
+                rtbText.SelectionColor = old;
+                Clipboard.SetText(text); rtbText.Paste();
+                rtbText.SelectionColor = Color.White;
+                Clipboard.SetText("</pre>\n\n"); rtbText.Paste();
+            }
+            rtbText.SelectionColor = old;
+            rtbText.SelectionFont = old_font;
+            Clipboard.Clear();
+        }
+
         public void pasteSubTitle(string text, bool in_end = false)
         {
             rtbText.SelectionIndent = 0;
@@ -146,15 +180,14 @@ namespace SOHelpEditor
                     {
                         case "text":
                             string text = dataLoader.getText(token.value);
-                            rtbText.AppendText(text+"\n");
-                            break;
+                            rtbText.AppendText(text+"\n"); break;
                         case "image":
                             Image img = dataLoader.getImage(token.value);
-                            pasteImage(img);
-                            break;
+                            pasteImage(img); break;
                         case "subtitle":
-                            pasteSubTitle(token.value, true);
-                            break;
+                            pasteSubTitle(token.value, true); break;
+                        case "pre":
+                            pastePre(token.value, true); break;
                         default:
                             rtbText.AppendText(token.type + " " + token.value + "\n");
                             break;
@@ -223,9 +256,21 @@ namespace SOHelpEditor
             dataLoader.addText(local_path, local_name, text);
             string value = local_path;
             addToken(value, "text", current_id);
-
         }
-    
+
+        protected void onFoundPre(string text, ref int index)
+        {
+            index += 1;
+            int current_id = getCurrentNodeID();
+            string local_name = "Pre_" + index.ToString();
+            string local_path = "ID_" + current_id.ToString() + "." + local_name;
+
+            dataLoader.addText(local_path, local_name, text);
+            string value = local_path;
+            addToken(value, "pre", current_id);
+        }
+
+
         protected void onFoundSubTitles(string text, ref int index)
         {
             index += 1;
@@ -298,7 +343,24 @@ namespace SOHelpEditor
                 foreach (RtfTreeNode b in a.ChildNodes)
                 {
                     index += b.Text.Replace("\r", "").Length;
-                    if (b.Text.Contains("\n") && status != STATUS.Text)
+
+                    if (b.Text.Contains("<pre>"))
+                    {
+                        if ((current_text.Trim().Any()) && (status == STATUS.Text))
+                            onFoundText(current_text, ref text_count);
+                        status = STATUS.Pre;
+                        current_text = "";
+                        continue;
+                    }
+                    else if (b.Text.Contains("</pre>") && status == STATUS.Pre)
+                    {
+                        if (current_text.Trim().Any())
+                            onFoundPre(current_text, ref text_count);
+                        status = STATUS.Text;
+                        current_text = "";
+                        continue;
+                    }
+                    else if (b.Text.Contains("\n") && status != STATUS.Text)
                     {
                         if (status == STATUS.subTitle)
                         {
@@ -308,6 +370,7 @@ namespace SOHelpEditor
                             continue;
                         }
                     }
+                   
                     else if (b.Text.Contains("<S>"))
                     {
                         if ((current_text.Trim().Any()) && (status == STATUS.Text))
@@ -527,12 +590,22 @@ namespace SOHelpEditor
 
         private void rtbText_Leave(object sender, EventArgs e)
         {
-            setButtonsPasteEnabled(false);
+            //setButtonsPasteEnabled(false);
         }
 
         private void rtbText_Enter(object sender, EventArgs e)
         {
             setButtonsPasteEnabled(true);
+        }
+
+        private void btnAddComment_Click(object sender, EventArgs e)
+        {
+            CreateCommentForm form = new CreateCommentForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                pastePre(form.getText());
+            }
+            form.Close();
         }
     }
 }

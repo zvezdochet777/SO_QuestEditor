@@ -366,6 +366,10 @@ namespace StalkerOnlineQuesterEditor
                     target[QuestID].QuestInformation.Title = quest.Element("Title").Value;
                 if (quest.Element("Description") != null)
                     target[QuestID].QuestInformation.Description = quest.Element("Description").Value;
+                if (quest.Element("DesctiptionOnTest") != null)
+                    target[QuestID].QuestInformation.DescriptionOnTest = quest.Element("DesctiptionOnTest").Value;
+                if (quest.Element("DescriptionClosed") != null)
+                    target[QuestID].QuestInformation.DescriptionClosed = quest.Element("DescriptionClosed").Value;
                 if (quest.Element("onWin") != null)
                     target[QuestID].QuestInformation.onWin = quest.Element("onWin").Value;
                 if (quest.Element("onGet") != null)
@@ -504,6 +508,10 @@ namespace StalkerOnlineQuesterEditor
                     element.Add(new XElement("Title", questValue.QuestInformation.Title));
                 if (questValue.QuestInformation.Description != "")
                     element.Add(new XElement("Description", questValue.QuestInformation.Description));
+                if (questValue.QuestInformation.DescriptionOnTest != "")
+                    element.Add(new XElement("DescriptionOnTest", questValue.QuestInformation.DescriptionOnTest));
+                if (questValue.QuestInformation.DescriptionClosed != "")
+                    element.Add(new XElement("DescriptionClosed", questValue.QuestInformation.DescriptionClosed));
                 if (questValue.QuestInformation.onWin != "")
                     element.Add(new XElement("onWin", questValue.QuestInformation.onWin));
                 if (questValue.QuestInformation.onGet != "")
