@@ -140,6 +140,12 @@
   <data name="colRussianName.HeaderText" xml:space="preserve">
     <value>Русское имя</value>
   </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="menuSettings.Text" xml:space="preserve">
+    <value>Настройка оператора</value>
+  </data>
   <data name="splitDialogs.Panel1MinSize" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
@@ -155,14 +161,17 @@
   <data name="&gt;&gt;colText.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
   <data name="&gt;&gt;tabInfoNPC.Name" xml:space="preserve">
     <value>tabInfoNPC</value>
   </data>
+  <data name="&gt;&gt;labelSearchResult.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="bRemoveQuest.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
-  </data>
-  <data name="&gt;&gt;обновленияToolStripMenuItem.Name" xml:space="preserve">
-    <value>обновленияToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;tabReview.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -207,6 +216,9 @@
   <data name="lFindDialogID.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 5</value>
   </data>
+  <data name="rewardSurvive.HeaderText" xml:space="preserve">
+    <value>Награда опыт-выживание</value>
+  </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -228,9 +240,6 @@
   <data name="cbNumQuests.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;tbFindDialogID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;DialogShower.Name" xml:space="preserve">
     <value>DialogShower</value>
   </data>
@@ -246,8 +255,8 @@
   <data name="&gt;&gt;dgvSearch.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="colQuestsNum.HeaderText" xml:space="preserve">
+    <value>Квесты</value>
   </data>
   <data name="&gt;&gt;treeQuest.Parent" xml:space="preserve">
     <value>splitQuestsContainer.Panel1</value>
@@ -264,9 +273,6 @@
   <data name="&gt;&gt;bQuestDown.Name" xml:space="preserve">
     <value>bQuestDown</value>
   </data>
-  <data name="btnFilterNPC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, -3</value>
-  </data>
   <data name="&gt;&gt;splitQuestsContainer.Parent" xml:space="preserve">
     <value>tabQuests</value>
   </data>
@@ -279,8 +285,8 @@
   <data name="&gt;&gt;new_ver.Name" xml:space="preserve">
     <value>new_ver</value>
   </data>
-  <data name="&gt;&gt;bAddDialog.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
+  <data name="bRemoveQuest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 23</value>
   </data>
   <data name="&gt;&gt;bPasteEvents.Name" xml:space="preserve">
     <value>bPasteEvents</value>
@@ -290,6 +296,9 @@
   </data>
   <data name="&gt;&gt;bDelNPC.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="bFindNPCReputation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 66</value>
   </data>
   <data name="panelSelectQuest.Size" type="System.Drawing.Size, System.Drawing">
     <value>900, 45</value>
@@ -309,11 +318,8 @@
   <data name="&gt;&gt;bAddEvent.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="splitDialogsEmulator.Panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NPCBox.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;tabQuests.Parent" xml:space="preserve">
+    <value>CentralDock</value>
   </data>
   <data name="labelPhraseToSearch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -333,11 +339,14 @@
   <data name="bAddDialog.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;splitQuestsContainer.Panel1.Parent" xml:space="preserve">
-    <value>splitQuestsContainer</value>
+  <data name="&gt;&gt;rewardCredits.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnNextNPC.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;labelPhraseToSearch.Parent" xml:space="preserve">
     <value>panelSearchTools</value>
@@ -348,8 +357,8 @@
   <data name="&gt;&gt;EngText1.Name" xml:space="preserve">
     <value>EngText1</value>
   </data>
-  <data name="npcLinkShower.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="treeQuest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 192</value>
   </data>
   <data name="menuMainControl.Text" xml:space="preserve">
     <value>menuStrip1</value>
@@ -357,8 +366,11 @@
   <data name="&gt;&gt;labelXNode.Parent" xml:space="preserve">
     <value>panelDialogTools</value>
   </data>
-  <data name="&gt;&gt;EngText1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;menuMainControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;dialogID.Name" xml:space="preserve">
     <value>dialogID</value>
@@ -366,14 +378,14 @@
   <data name="&gt;&gt;cbLocation.Parent" xml:space="preserve">
     <value>gbNPCcheck</value>
   </data>
+  <data name="splitDialogsEmulator.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
   <data name="&gt;&gt;worked.Name" xml:space="preserve">
     <value>worked</value>
   </data>
   <data name="&gt;&gt;menuSaveAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;repeat.Name" xml:space="preserve">
-    <value>repeat</value>
   </data>
   <data name="labelChosenQuest.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -387,20 +399,26 @@
   <data name="cbOnlyOnLocation.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 17</value>
   </data>
+  <data name="bRemoveEvent.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="bFindQuest.Text" xml:space="preserve">
     <value>Найти квест</value>
   </data>
   <data name="&gt;&gt;bNpcLinkExecute.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="labelLessThan1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 50</value>
+  <data name="new_ver.HeaderText" xml:space="preserve">
+    <value>Новая версия</value>
   </data>
   <data name="gbDialogsEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="&gt;&gt;gbQuestCheck.Name" xml:space="preserve">
     <value>gbQuestCheck</value>
+  </data>
+  <data name="&gt;&gt;cbActualFinder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitQuestsContainer.Panel2.Name" xml:space="preserve">
     <value>splitQuestsContainer.Panel2</value>
@@ -411,6 +429,9 @@
   <data name="tabQuests.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
+  <data name="labelChosenNPC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 8</value>
+  </data>
   <data name="&gt;&gt;btnClearRecycle.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -420,11 +441,17 @@
   <data name="&gt;&gt;splitDialogsTreeAndCanvas.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;dgvSearch.Name" xml:space="preserve">
+    <value>dgvSearch</value>
+  </data>
   <data name="bTestButton.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;bDelNPC.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelSearchTools.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelItemTarget.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -444,11 +471,14 @@
   <data name="bEditDialog.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 30</value>
   </data>
-  <data name="bPasteEvents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 23</value>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bTestButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;cbNPCList.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;dgvManage.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="bCenterizeDialogShower.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 160</value>
@@ -462,9 +492,6 @@
   <data name="bStartSearch.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="bQuestDown.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -477,14 +504,23 @@
   <data name="&gt;&gt;splitDialogsTreeAndCanvas.Panel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="cbNPCList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 13</value>
+  </data>
   <data name="bNpcLinkExecute.Location" type="System.Drawing.Point, System.Drawing">
     <value>261, 15</value>
   </data>
-  <data name="bAddDialog.ToolTip" xml:space="preserve">
+  <data name="label2.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="cbItemTarget.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 21</value>
+  <data name="labelQuestTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 13</value>
+  </data>
+  <data name="gbEmulator.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;dgvLocaleDiff.Name" xml:space="preserve">
+    <value>dgvLocaleDiff</value>
   </data>
   <data name="tabReview.Size" type="System.Drawing.Size, System.Drawing">
     <value>906, 541</value>
@@ -504,8 +540,8 @@
   <data name="labelItemReward.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 16</value>
   </data>
-  <data name="labelItemTarget.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="&gt;&gt;panelSelectQuest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CentralDock.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 53</value>
@@ -513,11 +549,17 @@
   <data name="splitDialogsEmulator.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="labelChosenNPC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;bAddQuest.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panelDialogTools.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
+  </data>
+  <data name="bDelNPC.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;dgvSearch.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -530,6 +572,9 @@
   </data>
   <data name="&gt;&gt;парсерыToolStripMenuItem.Name" xml:space="preserve">
     <value>парсерыToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;labelChosenQuest.Parent" xml:space="preserve">
+    <value>panelSelectQuest</value>
   </data>
   <data name="&gt;&gt;colType.Name" xml:space="preserve">
     <value>colType</value>
@@ -558,9 +603,6 @@
   <data name="&gt;&gt;cbOnlyOnLocation.Parent" xml:space="preserve">
     <value>gbNPCcheck</value>
   </data>
-  <data name="labelSearchResult.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="&gt;&gt;labelLocalizeOuput.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -569,6 +611,15 @@
   </data>
   <data name="bNpcLinkExecute.Text" xml:space="preserve">
     <value>Посмотреть</value>
+  </data>
+  <data name="&gt;&gt;labelLessThan1.Name" xml:space="preserve">
+    <value>labelLessThan1</value>
+  </data>
+  <data name="cbNPCList.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="bEditDialog.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;btnClearRecycle.Name" xml:space="preserve">
     <value>btnClearRecycle</value>
@@ -585,8 +636,8 @@
   <data name="CentralDock.ItemSize" type="System.Drawing.Size, System.Drawing">
     <value>90, 18</value>
   </data>
-  <data name="tbPhraseToSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>417, 20</value>
+  <data name="&gt;&gt;btnFilterNPC.Parent" xml:space="preserve">
+    <value>panelSelectNPC</value>
   </data>
   <data name="btnClearRecycle.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -624,6 +675,12 @@
   <data name="QuestBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>293, 21</value>
   </data>
+  <data name="&gt;&gt;labelYNode.Name" xml:space="preserve">
+    <value>labelYNode</value>
+  </data>
+  <data name="&gt;&gt;bFindNPC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="cbNumDialogs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -657,8 +714,8 @@
   <data name="treeQuest.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tabInfoNPC.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;CentralDock.Name" xml:space="preserve">
+    <value>CentralDock</value>
   </data>
   <data name="labelDrawingTip.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -674,6 +731,9 @@
   </data>
   <data name="&gt;&gt;cbNumDialogs.Name" xml:space="preserve">
     <value>cbNumDialogs</value>
+  </data>
+  <data name="tabInfoNPC.Text" xml:space="preserve">
+    <value>Инфо NPC</value>
   </data>
   <data name="panelSelectNPC.ToolTip" xml:space="preserve">
     <value />
@@ -693,6 +753,9 @@
   <data name="&gt;&gt;panelSearchTools.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;splitDialogs.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;labelItemReward.Name" xml:space="preserve">
     <value>labelItemReward</value>
   </data>
@@ -705,14 +768,17 @@
   <data name="bAddEvent.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
   </data>
+  <data name="comboBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 13</value>
+  </data>
+  <data name="&gt;&gt;numQuests.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="numQuests.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 20</value>
   </data>
   <data name="tbFindDialogID.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 23</value>
-  </data>
-  <data name="tabQuests.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;rewardSurvive.Name" xml:space="preserve">
     <value>rewardSurvive</value>
@@ -741,9 +807,6 @@
   <data name="splitDialogs.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;cbIgnoreCase.Parent" xml:space="preserve">
-    <value>panelSearchTools</value>
-  </data>
   <data name="btnFilterNPC.ToolTip" xml:space="preserve">
     <value>Изменить фильтры NPC</value>
   </data>
@@ -753,14 +816,17 @@
   <data name="bAddNPC.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>panelReviewButtons</value>
+  </data>
   <data name="&gt;&gt;panel2.Name" xml:space="preserve">
     <value>panel2</value>
   </data>
   <data name="Description.HeaderText" xml:space="preserve">
     <value>Описание</value>
   </data>
-  <data name="bPasteEvents.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="bAddDialog.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="cbItemTarget.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -789,11 +855,11 @@
   <data name="menuSaveAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 20</value>
   </data>
-  <data name="tabTranslate.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="splitDialogsTreeAndCanvas.Size" type="System.Drawing.Size, System.Drawing">
     <value>693, 403</value>
+  </data>
+  <data name="panelSearchTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;panelDialogTools.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -803,9 +869,6 @@
   </data>
   <data name="bFindQuest.Location" type="System.Drawing.Point, System.Drawing">
     <value>365, 66</value>
-  </data>
-  <data name="&gt;&gt;btnBackNPC.Parent" xml:space="preserve">
-    <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;labelPhraseToSearch.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -825,17 +888,17 @@
   <data name="&gt;&gt;bAddNPC.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;author.Name" xml:space="preserve">
-    <value>author</value>
-  </data>
   <data name="&gt;&gt;colID.Name" xml:space="preserve">
     <value>colID</value>
+  </data>
+  <data name="tabDialogs.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="labelAdviceNpcLink.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 20</value>
   </data>
-  <data name="bNpcLinkExecute.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;bStartSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabQuests.ToolTip" xml:space="preserve">
     <value />
@@ -843,17 +906,14 @@
   <data name="&gt;&gt;bEditEvent.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="labelQuestTree.Text" xml:space="preserve">
+    <value>Дерево квеста:</value>
+  </data>
   <data name="cbLocation.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 21</value>
   </data>
-  <data name="panelDiffLocale.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="splitQuestsContainer.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="gbQuestCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 95</value>
   </data>
   <data name="colDialogsNum.HeaderText" xml:space="preserve">
     <value>Диалоги</value>
@@ -864,17 +924,14 @@
   <data name="bCenterizeDialogShower.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="colText.HeaderText" xml:space="preserve">
-    <value>Текст</value>
-  </data>
-  <data name="bStartSearch.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panelQuestTools.Location" type="System.Drawing.Point, System.Drawing">
     <value>705, 48</value>
   </data>
   <data name="&gt;&gt;tabManage.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="npcLinkShower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 52</value>
   </data>
   <data name="&gt;&gt;dgvManage.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -888,6 +945,9 @@
   <data name="&gt;&gt;menuMain.Name" xml:space="preserve">
     <value>menuMain</value>
   </data>
+  <data name="tbPhraseToSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>417, 20</value>
+  </data>
   <data name="cbItemReward.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -897,17 +957,14 @@
   <data name="&gt;&gt;panelSelectNPC.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="treeDialogs.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="panelDialogTools.Location" type="System.Drawing.Point, System.Drawing">
     <value>696, 16</value>
   </data>
   <data name="npcName.HeaderText" xml:space="preserve">
     <value>NPC</value>
   </data>
-  <data name="&gt;&gt;colCoordinates.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="menuExplorer.Text" xml:space="preserve">
     <value>Проводник</value>
@@ -927,6 +984,9 @@
   <data name="npcLinkShower.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="panelNpcLinkControls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
   <data name="&gt;&gt;tabManage.Name" xml:space="preserve">
     <value>tabManage</value>
   </data>
@@ -936,11 +996,11 @@
   <data name="bFindDialogDifference.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;repeatPeriod.Name" xml:space="preserve">
-    <value>repeatPeriod</value>
-  </data>
   <data name="labelXNode.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
+  </data>
+  <data name="btnBackNPC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, -3</value>
   </data>
   <data name="bFindNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 23</value>
@@ -956,7 +1016,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABC
-        FwAAAk1TRnQBSQFMAgEBBAEAASABAwFkAQMBFAEAARQBAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAFQ
+        FwAAAk1TRnQBSQFMAgEBBAEAASABAwGAAQMBFAEAARQBAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABKAMAAQEBAAEgBgABMv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8AUgABAQMAAQGIAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQc7AAH/
         AwAB/zsAAQEDLwFJAlIBUAGkAmABWgHeAmoBQQH5AmoBQQH5AmABWgHeAlIBUAGkAy8BSQMAAQF0AAM1
@@ -1127,6 +1187,9 @@
   <data name="panelReviewButtons.Size" type="System.Drawing.Size, System.Drawing">
     <value>906, 104</value>
   </data>
+  <data name="&gt;&gt;bCutEvents.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;id.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1139,8 +1202,8 @@
   <data name="&gt;&gt;cbNumDialogs.Parent" xml:space="preserve">
     <value>gbNPCcheck</value>
   </data>
-  <data name="labelLessThan1.Text" xml:space="preserve">
-    <value>меньше</value>
+  <data name="&gt;&gt;bPasteEvents.Parent" xml:space="preserve">
+    <value>panelQuestTools</value>
   </data>
   <data name="&gt;&gt;bQuestUp.Name" xml:space="preserve">
     <value>bQuestUp</value>
@@ -1150,6 +1213,12 @@
   </data>
   <data name="splitQuestsContainer.Panel2.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;comboBox2.Name" xml:space="preserve">
+    <value>comboBox2</value>
+  </data>
+  <data name="&gt;&gt;comboBox2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;DialogShower.Parent" xml:space="preserve">
     <value>splitDialogsTreeAndCanvas.Panel2</value>
@@ -1163,26 +1232,23 @@
   <data name="splitDialogs.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="panelSelectQuest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="&gt;&gt;colRussianName.Name" xml:space="preserve">
+    <value>colRussianName</value>
   </data>
-  <data name="&gt;&gt;gbNPCcheck.Name" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="bEditDialog.ToolTip" xml:space="preserve">
-    <value />
+  <data name="labelQuestTree.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="labelItemReward.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="&gt;&gt;splitQuestsContainer.Panel2.Parent" xml:space="preserve">
+    <value>splitQuestsContainer</value>
   </data>
   <data name="panelDialogTools.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;npcLinkShower.Type" xml:space="preserve">
     <value>UMD.HCIL.Piccolo.PCanvas, UMD.HCIL.Piccolo, Version=1.0.2165.24847, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;splitQuestsContainer.Panel1.Name" xml:space="preserve">
-    <value>splitQuestsContainer.Panel1</value>
   </data>
   <data name="btnNextNPC.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1193,9 +1259,6 @@
   <data name="panelSelectNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>914, 29</value>
   </data>
-  <data name="tabTranslate.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="&gt;&gt;bEditEvent.Name" xml:space="preserve">
     <value>bEditEvent</value>
   </data>
@@ -1205,8 +1268,8 @@
   <data name="&gt;&gt;bAddQuest.Parent" xml:space="preserve">
     <value>panelSelectQuest</value>
   </data>
-  <data name="panelQuestTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 490</value>
+  <data name="tabManage.Text" xml:space="preserve">
+    <value>Управление</value>
   </data>
   <data name="dgvReview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1217,20 +1280,17 @@
   <data name="&gt;&gt;panelReviewButtons.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="bFindDialogDifference.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 9</value>
-  </data>
-  <data name="labelLocalizeOuput.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="rewardBattle.HeaderText" xml:space="preserve">
     <value>Награда опыт-бой</value>
   </data>
   <data name="&gt;&gt;gbNPCcheck.Parent" xml:space="preserve">
     <value>panelReviewButtons</value>
   </data>
-  <data name="&gt;&gt;splitDialogs.Panel2.Name" xml:space="preserve">
-    <value>splitDialogs.Panel2</value>
+  <data name="&gt;&gt;bAddNPC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bDelNPC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
   </data>
   <data name="labelChosenQuest.ToolTip" xml:space="preserve">
     <value />
@@ -1250,6 +1310,9 @@
   <data name="&gt;&gt;bQuestUp.Parent" xml:space="preserve">
     <value>panelQuestTools</value>
   </data>
+  <data name="&gt;&gt;splitQuestsContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;bAddDialog.Name" xml:space="preserve">
     <value>bAddDialog</value>
   </data>
@@ -1258,12 +1321,6 @@
   </data>
   <data name="&gt;&gt;colDialogsNum.Name" xml:space="preserve">
     <value>colDialogsNum</value>
-  </data>
-  <data name="dgvReview.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLocalizeOuput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>693, 19</value>
   </data>
   <data name="bFindQuestDifference.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1274,14 +1331,14 @@
   <data name="dgvLocaleDiff.Size" type="System.Drawing.Size, System.Drawing">
     <value>906, 484</value>
   </data>
+  <data name="&gt;&gt;bFindNPCReputation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="lFindDialogID.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="gbQuestCheck.Text" xml:space="preserve">
-    <value>Квест</value>
-  </data>
-  <data name="&gt;&gt;new_ver.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
   </data>
   <data name="treeDialogs.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1306,6 +1363,9 @@
   </data>
   <data name="&gt;&gt;bSaveManage.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbItemReward.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelLessThan2.Parent" xml:space="preserve">
     <value>gbNPCcheck</value>
@@ -1358,11 +1418,8 @@
   <data name="cbIgnoreCase.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="dgvSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;panelReviewButtons.Parent" xml:space="preserve">
-    <value>tabReview</value>
+  <data name="panelDialogTools.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tabDialogs.ToolTip" xml:space="preserve">
     <value />
@@ -1379,8 +1436,8 @@
   <data name="gbEmulator.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;rewardCredits.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="comboBox2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;labelItemReward.Parent" xml:space="preserve">
     <value>gbQuestCheck</value>
@@ -1403,9 +1460,6 @@
   <data name="&gt;&gt;tabDialogs.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;changeLanguageToolStripMenuItem.Name" xml:space="preserve">
-    <value>changeLanguageToolStripMenuItem</value>
-  </data>
   <data name="&gt;&gt;bAddEvent.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
@@ -1424,11 +1478,11 @@
   <data name="&gt;&gt;gbEmulator.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tabSearch.Parent" xml:space="preserve">
+    <value>CentralDock</value>
+  </data>
   <data name="&gt;&gt;собратьЭдиторДляПередачиToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tbPhraseToSearch.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="panelDialogTools.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 403</value>
@@ -1472,23 +1526,20 @@
   <data name="splitDialogsEmulator.Size" type="System.Drawing.Size, System.Drawing">
     <value>894, 90</value>
   </data>
+  <data name="panelSearchTools.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="splitDialogsTreeAndCanvas.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="treeQuest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 192</value>
-  </data>
-  <data name="bAddQuest.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="cbIgnoreCase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>556, 7</value>
   </data>
   <data name="btnClearRecycle.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
   <data name="&gt;&gt;cbOutdatedFinder.Parent" xml:space="preserve">
     <value>panelDiffLocale</value>
+  </data>
+  <data name="&gt;&gt;gbEmulator.Parent" xml:space="preserve">
+    <value>splitDialogs.Panel2</value>
   </data>
   <data name="&gt;&gt;panelSearchTools.Parent" xml:space="preserve">
     <value>tabSearch</value>
@@ -1502,8 +1553,14 @@
   <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="labelItemReward.Text" xml:space="preserve">
+    <value>С наградой:</value>
+  </data>
   <data name="labelYNode.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
+  </data>
+  <data name="tabDialogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>906, 541</value>
   </data>
   <data name="cbNumDialogs.Text" xml:space="preserve">
     <value>Число диалогов</value>
@@ -1520,17 +1577,14 @@
   <data name="&gt;&gt;bRemoveEvent.Parent" xml:space="preserve">
     <value>panelQuestTools</value>
   </data>
-  <data name="&gt;&gt;cbItemReward.Parent" xml:space="preserve">
-    <value>gbQuestCheck</value>
-  </data>
   <data name="&gt;&gt;panelQuestTools.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="&gt;&gt;QuestBox.Name" xml:space="preserve">
     <value>QuestBox</value>
   </data>
-  <data name="tbPhraseToSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;cbNPCList.Name" xml:space="preserve">
+    <value>cbNPCList</value>
   </data>
   <data name="&gt;&gt;splitDialogs.Parent" xml:space="preserve">
     <value>tabDialogs</value>
@@ -1540,6 +1594,9 @@
   </data>
   <data name="cbItemTarget.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cbLocation.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1555,6 +1612,9 @@
   </data>
   <data name="&gt;&gt;labelAdviceNpcLink.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>903, 4</value>
   </data>
   <data name="labelLocalizeOuput.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 13</value>
@@ -1574,8 +1634,8 @@
   <data name="bRemoveQuest.Location" type="System.Drawing.Point, System.Drawing">
     <value>591, 12</value>
   </data>
-  <data name="cbNumQuests.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
+  <data name="&gt;&gt;splitDialogsEmulator.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="colCoordinates.Width" type="System.Int32, mscorlib">
     <value>150</value>
@@ -1586,6 +1646,12 @@
   <data name="&gt;&gt;данныеToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="btnClearRecycle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 58</value>
+  </data>
+  <data name="bQuestDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 152</value>
+  </data>
   <data name="bRemoveEvent.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 80</value>
   </data>
@@ -1594,6 +1660,9 @@
   </data>
   <data name="&gt;&gt;splitQuestsContainer.Panel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
+    <value>statusLabel</value>
   </data>
   <data name="CentralDock.ToolTip" xml:space="preserve">
     <value />
@@ -1613,20 +1682,11 @@
   <data name="DialogShower.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="bRemoveEvent.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="labelXNode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 351</value>
-  </data>
   <data name="labelChosenQuest.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>914, 642</value>
-  </data>
-  <data name="bFindQuest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
   </data>
   <data name="&gt;&gt;загрузитьПереводToolStripMenuItem.Name" xml:space="preserve">
     <value>загрузитьПереводToolStripMenuItem</value>
@@ -1637,11 +1697,11 @@
   <data name="&gt;&gt;colEngText.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="btnBackNPC.ToolTip" xml:space="preserve">
+    <value>Перейти к предыдущему NPC</value>
+  </data>
   <data name="&gt;&gt;bQuestUp.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="bCopyEvents.Text" xml:space="preserve">
-    <value>Копировать</value>
   </data>
   <data name="labelChosenQuest.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 13</value>
@@ -1661,8 +1721,11 @@
   <data name="&gt;&gt;bFindDialogDifference.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbItemTarget.Type" xml:space="preserve">
+  <data name="&gt;&gt;comboBox2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panelSelectNPC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;cbNumQuests.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1672,6 +1735,9 @@
   </data>
   <data name="&gt;&gt;NPCBox.Name" xml:space="preserve">
     <value>NPCBox</value>
+  </data>
+  <data name="&gt;&gt;colRussianName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="bTestButton.Text" xml:space="preserve">
     <value>ТестКнопка</value>
@@ -1685,20 +1751,20 @@
   <data name="tabInfoNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>906, 541</value>
   </data>
-  <data name="&gt;&gt;imageList.Name" xml:space="preserve">
-    <value>imageList</value>
+  <data name="QuestBox.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
   </data>
   <data name="labelChosenNPC.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;cbNumQuests.Name" xml:space="preserve">
+    <value>cbNumQuests</value>
   </data>
   <data name="&gt;&gt;bClearBuffer.Name" xml:space="preserve">
     <value>bClearBuffer</value>
   </data>
   <data name="&gt;&gt;dialogID.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="gbEmulator.Text" xml:space="preserve">
-    <value>Эмулятор</value>
   </data>
   <data name="splitDialogs.Panel1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1715,20 +1781,23 @@
   <data name="gbDialogsEditor.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="labelBuffer.Text" xml:space="preserve">
     <value>Буффер:</value>
   </data>
   <data name="dgvManage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitQuestsContainer.Panel2.Parent" xml:space="preserve">
-    <value>splitQuestsContainer</value>
+  <data name="npcLinkShower.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="btnBackNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
   </data>
-  <data name="&gt;&gt;bQuestDown.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
+  <data name="&gt;&gt;splitDialogsTreeAndCanvas.Panel1.Parent" xml:space="preserve">
+    <value>splitDialogsTreeAndCanvas</value>
   </data>
   <data name="парсерыToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 22</value>
@@ -1739,17 +1808,14 @@
   <data name="&gt;&gt;tabManage.Parent" xml:space="preserve">
     <value>CentralDock</value>
   </data>
-  <data name="&gt;&gt;квестовToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tabTranslate.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="квестовToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
   <data name="tabManage.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="&gt;&gt;rewardSupport.Name" xml:space="preserve">
-    <value>rewardSupport</value>
   </data>
   <data name="&gt;&gt;menuMain.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1766,17 +1832,29 @@
   <data name="treeQuestBuffer.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="gbEmulator.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;собратьЭдиторДляПередачиToolStripMenuItem.Name" xml:space="preserve">
+    <value>собратьЭдиторДляПередачиToolStripMenuItem</value>
+  </data>
   <data name="labelSearchResult.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;bRemoveDialog.Parent" xml:space="preserve">
     <value>panelDialogTools</value>
   </data>
+  <data name="labelYNode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 376</value>
+  </data>
   <data name="&gt;&gt;panelNpcLinkControls.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="btnNextNPC.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="labelBuffer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
   </data>
   <data name="&gt;&gt;dgvManage.Name" xml:space="preserve">
     <value>dgvManage</value>
@@ -1790,14 +1868,14 @@
   <data name="bRemoveDialog.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
+  <data name="bTestButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 38</value>
+  </data>
   <data name="panelReviewButtons.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;cbNumQuests.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelSelectQuest.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1811,8 +1889,8 @@
   <data name="&gt;&gt;bFindNPC.Parent" xml:space="preserve">
     <value>gbNPCcheck</value>
   </data>
-  <data name="splitDialogsEmulator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 16</value>
+  <data name="labelLessThan1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="tabSearch.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -1844,14 +1922,11 @@
   <data name="tabInfoNPC.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;Level.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panelSelectNPC.Name" xml:space="preserve">
+    <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;bFindQuest.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;tabInfoNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelAdviceNpcLink.Text" xml:space="preserve">
     <value>Выберете NPC в комбобоксе вверху и нажмите</value>
@@ -1865,14 +1940,23 @@
   <data name="&gt;&gt;cbItemReward.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="labelYNode.Text" xml:space="preserve">
+    <value>labelYNode</value>
+  </data>
+  <data name="menuMainControl.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="&gt;&gt;labelChosenQuest.Name" xml:space="preserve">
     <value>labelChosenQuest</value>
   </data>
   <data name="panelReviewButtons.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="splitDialogsEmulator.Panel2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="panelQuestTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;bFindNPCReputation.Name" xml:space="preserve">
+    <value>bFindNPCReputation</value>
   </data>
   <data name="&gt;&gt;gbDialogsEditor.Name" xml:space="preserve">
     <value>gbDialogsEditor</value>
@@ -1889,20 +1973,17 @@
   <data name="bAddDialog.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="panelNpcLinkControls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="panelSelectQuest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="bFindQuestDifference.ToolTip" xml:space="preserve">
-    <value />
+  <data name="labelItemTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 44</value>
   </data>
   <data name="bEditEvent.ImageKey" xml:space="preserve">
     <value>Edit.png</value>
   </data>
   <data name="bEditDialog.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
-  </data>
-  <data name="&gt;&gt;bDelNPC.Parent" xml:space="preserve">
-    <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;lFindDialogID.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1921,6 +2002,9 @@
   </data>
   <data name="&gt;&gt;englishToolStripMenuItem.Name" xml:space="preserve">
     <value>englishToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;colQuestsNum.Name" xml:space="preserve">
     <value>colQuestsNum</value>
@@ -1943,9 +2027,6 @@
   <data name="&gt;&gt;bDelNPC.Name" xml:space="preserve">
     <value>bDelNPC</value>
   </data>
-  <data name="numQuests.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="labelQuestTree.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -1955,14 +2036,8 @@
   <data name="menuSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 22</value>
   </data>
-  <data name="&gt;&gt;dgvReview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="panelSearchTools.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;bNpcLinkExecute.Name" xml:space="preserve">
-    <value>bNpcLinkExecute</value>
   </data>
   <data name="&gt;&gt;NPCBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2003,6 +2078,9 @@
   <data name="&gt;&gt;subevents.Name" xml:space="preserve">
     <value>subevents</value>
   </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="colLocation.HeaderText" xml:space="preserve">
     <value>Карта</value>
   </data>
@@ -2012,14 +2090,11 @@
   <data name="&gt;&gt;gbDialogsEditor.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lFindDialogID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;квестовToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="bAddEvent.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="проверкаОшибокToolStripMenuItem.Text" xml:space="preserve">
-    <value>Проверка Ошибок</value>
   </data>
   <data name="&gt;&gt;bCenterizeDialogShower.Name" xml:space="preserve">
     <value>bCenterizeDialogShower</value>
@@ -2042,6 +2117,9 @@
   <data name="&gt;&gt;bFindDialogDifference.Parent" xml:space="preserve">
     <value>panelDiffLocale</value>
   </data>
+  <data name="&gt;&gt;repeatPeriod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="colEngText.Width" type="System.Int32, mscorlib">
     <value>250</value>
   </data>
@@ -2051,8 +2129,8 @@
   <data name="&gt;&gt;tabManage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="bEditDialog.ImageKey" xml:space="preserve">
-    <value>Edit.png</value>
+  <data name="&gt;&gt;treeDialogs.Parent" xml:space="preserve">
+    <value>splitDialogsTreeAndCanvas.Panel1</value>
   </data>
   <data name="&gt;&gt;splitDialogsEmulator.Panel2.Parent" xml:space="preserve">
     <value>splitDialogsEmulator</value>
@@ -2063,8 +2141,8 @@
   <data name="bClearBuffer.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;panelSearchTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;bTestButton.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;splitQuestsContainer.Name" xml:space="preserve">
     <value>splitQuestsContainer</value>
@@ -2081,9 +2159,6 @@
   <data name="&gt;&gt;treeQuestBuffer.Name" xml:space="preserve">
     <value>treeQuestBuffer</value>
   </data>
-  <data name="&gt;&gt;colID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;colCoordinates.Name" xml:space="preserve">
     <value>colCoordinates</value>
   </data>
@@ -2093,14 +2168,14 @@
   <data name="tabTranslate.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;labelAdviceNpcLink.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="NPCBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 21</value>
   </data>
   <data name="labelXNode.Text" xml:space="preserve">
     <value>labelXNode</value>
   </data>
-  <data name="&gt;&gt;ColumnLocation.Name" xml:space="preserve">
-    <value>ColumnLocation</value>
+  <data name="treeQuestBuffer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 166</value>
   </data>
   <data name="&gt;&gt;splitDialogs.Panel1.Name" xml:space="preserve">
     <value>splitDialogs.Panel1</value>
@@ -2117,14 +2192,23 @@
   <data name="tabQuests.Text" xml:space="preserve">
     <value>Квесты</value>
   </data>
+  <data name="treeDialogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 399</value>
+  </data>
+  <data name="&gt;&gt;type.Name" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="labelLessThan2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="bEditEvent.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 44</value>
   </data>
-  <data name="&gt;&gt;bRemoveEvent.Name" xml:space="preserve">
-    <value>bRemoveEvent</value>
-  </data>
   <data name="&gt;&gt;bCopyEvents.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="&gt;&gt;lFindDialogID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numQuests.Location" type="System.Drawing.Point, System.Drawing">
     <value>175, 72</value>
@@ -2150,6 +2234,12 @@
   <data name="bRemoveQuest.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="&gt;&gt;rewardItems.Name" xml:space="preserve">
+    <value>rewardItems</value>
+  </data>
+  <data name="&gt;&gt;id.Name" xml:space="preserve">
+    <value>id</value>
+  </data>
   <data name="bTestButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 298</value>
   </data>
@@ -2162,17 +2252,11 @@
   <data name="&gt;&gt;CentralDock.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;rewardItems.Name" xml:space="preserve">
-    <value>rewardItems</value>
+  <data name="&gt;&gt;splitDialogs.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rewardSurvive.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelQuestTree.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bNpcLinkExecute.Parent" xml:space="preserve">
-    <value>panelNpcLinkControls</value>
   </data>
   <data name="labelXNode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2186,6 +2270,9 @@
   <data name="&gt;&gt;cbNumDialogs.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="bQuestDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 30</value>
+  </data>
   <data name="&gt;&gt;bCenterizeDialogShower.Parent" xml:space="preserve">
     <value>panelDialogTools</value>
   </data>
@@ -2198,8 +2285,8 @@
   <data name="repeatPeriod.HeaderText" xml:space="preserve">
     <value>Период повтора (часы)</value>
   </data>
-  <data name="subNPC.HeaderText" xml:space="preserve">
-    <value>Список NPC</value>
+  <data name="bEditDialog.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnClearRecycle.ToolTip" xml:space="preserve">
     <value />
@@ -2207,8 +2294,8 @@
   <data name="menuMainControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>914, 24</value>
   </data>
-  <data name="&gt;&gt;subNPC.Name" xml:space="preserve">
-    <value>subNPC</value>
+  <data name="&gt;&gt;rewardSupport.Name" xml:space="preserve">
+    <value>rewardSupport</value>
   </data>
   <data name="lFindDialogID.ToolTip" xml:space="preserve">
     <value />
@@ -2228,6 +2315,9 @@
   <data name="cbActualFinder.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 17</value>
   </data>
+  <data name="&gt;&gt;gbQuestCheck.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="tabReview.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -2242,6 +2332,9 @@
   </data>
   <data name="dgvSearch.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="&gt;&gt;panelNpcLinkControls.Parent" xml:space="preserve">
+    <value>tabInfoNPC</value>
   </data>
   <data name="btnNextNPC.Location" type="System.Drawing.Point, System.Drawing">
     <value>32, -3</value>
@@ -2258,8 +2351,11 @@
   <data name="bClearBuffer.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 23</value>
   </data>
-  <data name="&gt;&gt;menuMainControl.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="gbQuestCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;new_ver.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numQuests.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2273,6 +2369,9 @@
   <data name="&gt;&gt;tbPhraseToSearch.Name" xml:space="preserve">
     <value>tbPhraseToSearch</value>
   </data>
+  <data name="labelSearchResult.Text" xml:space="preserve">
+    <value>Найдено:</value>
+  </data>
   <data name="bSaveManage.Location" type="System.Drawing.Point, System.Drawing">
     <value>831, 0</value>
   </data>
@@ -2285,8 +2384,8 @@
   <data name="labelXNode.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="btnBackNPC.ToolTip" xml:space="preserve">
-    <value>Перейти к предыдущему NPC</value>
+  <data name="panelSelectNPC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
   </data>
   <data name="&gt;&gt;tabTranslate.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2294,14 +2393,17 @@
   <data name="tabQuests.Size" type="System.Drawing.Size, System.Drawing">
     <value>906, 541</value>
   </data>
-  <data name="labelXNode.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabSearch.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="&gt;&gt;bAddEvent.Name" xml:space="preserve">
     <value>bAddEvent</value>
+  </data>
+  <data name="QuestBox.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;русскийToolStripMenuItem.Name" xml:space="preserve">
     <value>русскийToolStripMenuItem</value>
@@ -2311,9 +2413,6 @@
   </data>
   <data name="&gt;&gt;menuMainControl.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="gbEmulator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>900, 109</value>
   </data>
   <data name="bEditEvent.ToolTip" xml:space="preserve">
     <value />
@@ -2351,14 +2450,17 @@
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>900, 680</value>
   </data>
+  <data name="&gt;&gt;rewardCredits.Name" xml:space="preserve">
+    <value>rewardCredits</value>
+  </data>
   <data name="&gt;&gt;npc_name.Name" xml:space="preserve">
     <value>npc_name</value>
   </data>
-  <data name="&gt;&gt;treeDialogs.Parent" xml:space="preserve">
-    <value>splitDialogsTreeAndCanvas.Panel1</value>
+  <data name="labelLocalizeOuput.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="bRemoveQuest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 23</value>
+  <data name="treeDialogs.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="bRemoveEvent.ImageKey" xml:space="preserve">
     <value>delete.png</value>
@@ -2372,9 +2474,6 @@
   <data name="&gt;&gt;panelReviewButtons.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="menuExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
   <data name="&gt;&gt;btnClearRecycle.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
@@ -2384,17 +2483,26 @@
   <data name="&gt;&gt;numDialogs.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 16</value>
+  </data>
   <data name="colID.HeaderText" xml:space="preserve">
     <value>ID</value>
   </data>
   <data name="&gt;&gt;QuestBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="bQuestDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 30</value>
+  <data name="&gt;&gt;bFindNPCReputation.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>906, 26</value>
+  <data name="&gt;&gt;splitDialogs.Panel2.Name" xml:space="preserve">
+    <value>splitDialogs.Panel2</value>
+  </data>
+  <data name="&gt;&gt;labelBuffer.Parent" xml:space="preserve">
+    <value>splitQuestsContainer.Panel1</value>
+  </data>
+  <data name="bPasteEvents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 23</value>
   </data>
   <data name="labelPhraseToSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 13</value>
@@ -2417,9 +2525,6 @@
   <data name="&gt;&gt;colType.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnNextNPC.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="bRemoveQuest.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2432,14 +2537,17 @@
   <data name="&gt;&gt;labelLocalizeOuput.Parent" xml:space="preserve">
     <value>panelDiffLocale</value>
   </data>
+  <data name="&gt;&gt;tabReview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;bClearBuffer.Parent" xml:space="preserve">
     <value>panelQuestTools</value>
   </data>
   <data name="&gt;&gt;NPCBox.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;btnFilterNPC.Parent" xml:space="preserve">
-    <value>panelSelectNPC</value>
+  <data name="собратьЭдиторДляПередачиToolStripMenuItem.Text" xml:space="preserve">
+    <value>Собрать эдитор для передачи</value>
   </data>
   <data name="colType.Width" type="System.Int32, mscorlib">
     <value>50</value>
@@ -2453,8 +2561,8 @@
   <data name="bQuestUp.Text" xml:space="preserve">
     <value>Вверх</value>
   </data>
-  <data name="labelLessThan1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="bFindDialogDifference.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 23</value>
   </data>
   <data name="bAddEvent.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -2465,8 +2573,8 @@
   <data name="&gt;&gt;labelDrawingTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="gbQuestCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="bPasteEvents.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
   <data name="menuExplorer.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 20</value>
@@ -2474,17 +2582,20 @@
   <data name="&gt;&gt;menuStatistics.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="rewardCredits.HeaderText" xml:space="preserve">
-    <value>Награда деньги</value>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabQuests.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;splitDialogsEmulator.Panel1.Name" xml:space="preserve">
     <value>splitDialogsEmulator.Panel1</value>
   </data>
-  <data name="panelSelectNPC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+  <data name="&gt;&gt;tabInfoNPC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="treeDialogs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 399</value>
+  <data name="&gt;&gt;bDelNPC.Parent" xml:space="preserve">
+    <value>panelSelectNPC</value>
   </data>
   <data name="dgvManage.ToolTip" xml:space="preserve">
     <value />
@@ -2507,11 +2618,11 @@
   <data name="&gt;&gt;bRemoveQuest.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;repeatPeriod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="splitQuestsContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;labelLessThan1.Name" xml:space="preserve">
-    <value>labelLessThan1</value>
+  <data name="&gt;&gt;changeLanguageToolStripMenuItem.Name" xml:space="preserve">
+    <value>changeLanguageToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;bQuestDown.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2519,17 +2630,17 @@
   <data name="&gt;&gt;splitDialogs.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;splitDialogs.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitDialogsTreeAndCanvas.Panel2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="rewardCredits.HeaderText" xml:space="preserve">
+    <value>Награда деньги</value>
   </data>
   <data name="&gt;&gt;labelLessThan1.Parent" xml:space="preserve">
     <value>gbNPCcheck</value>
   </data>
   <data name="CentralDock.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;panelDialogTools.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbActualFinder.Parent" xml:space="preserve">
     <value>panelDiffLocale</value>
@@ -2549,14 +2660,17 @@
   <data name="bAddQuest.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 23</value>
   </data>
-  <data name="&gt;&gt;dgvSearch.Parent" xml:space="preserve">
-    <value>tabSearch</value>
+  <data name="&gt;&gt;gbNPCcheck.Name" xml:space="preserve">
+    <value>gbNPCcheck</value>
   </data>
   <data name="&gt;&gt;labelDrawingTip.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="panelDialogTools.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;splitDialogsEmulator.Parent" xml:space="preserve">
+    <value>gbEmulator</value>
+  </data>
+  <data name="&gt;&gt;imageList.Name" xml:space="preserve">
+    <value>imageList</value>
   </data>
   <data name="&gt;&gt;btnFilterNPC.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2570,17 +2684,20 @@
   <data name="bAddDialog.Text" xml:space="preserve">
     <value>Добавить узел диалога</value>
   </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>906, 26</value>
+  </data>
   <data name="&gt;&gt;gbQuestCheck.Parent" xml:space="preserve">
     <value>panelReviewButtons</value>
-  </data>
-  <data name="&gt;&gt;subevents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="splitQuestsContainer.Panel1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numQuests.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="colNPC.HeaderText" xml:space="preserve">
+    <value>NPC</value>
+  </data>
+  <data name="tbPhraseToSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="labelAdviceNpcLink.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2591,8 +2708,8 @@
   <data name="splitQuestsContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;dgvSearch.Name" xml:space="preserve">
-    <value>dgvSearch</value>
+  <data name="&gt;&gt;repeat.Name" xml:space="preserve">
+    <value>repeat</value>
   </data>
   <data name="bFindNPC.ToolTip" xml:space="preserve">
     <value />
@@ -2603,8 +2720,8 @@
   <data name="&gt;&gt;cbActualFinder.Name" xml:space="preserve">
     <value>cbActualFinder</value>
   </data>
-  <data name="panelSelectQuest.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="labelItemTarget.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="labelLessThan2.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 13</value>
@@ -2630,11 +2747,14 @@
   <data name="&gt;&gt;splitDialogs.Panel1.Parent" xml:space="preserve">
     <value>splitDialogs</value>
   </data>
+  <data name="bAddQuest.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
   <data name="&gt;&gt;bSaveManage.Name" xml:space="preserve">
     <value>bSaveManage</value>
   </data>
-  <data name="tabDialogs.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;labelQuestTree.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="bFindQuestDifference.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 23</value>
@@ -2660,9 +2780,6 @@
   <data name="gbDialogsEditor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="labelLessThan2.Text" xml:space="preserve">
-    <value>меньше</value>
-  </data>
   <data name="cbNumDialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
   </data>
@@ -2672,11 +2789,11 @@
   <data name="colNPCName.HeaderText" xml:space="preserve">
     <value>Имя NPC</value>
   </data>
-  <data name="panelSelectQuest.ToolTip" xml:space="preserve">
-    <value />
+  <data name="panelReviewButtons.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="labelItemTarget.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 44</value>
+  <data name="&gt;&gt;tbFindDialogID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="splitDialogs.SplitterDistance" type="System.Int32, mscorlib">
     <value>422</value>
@@ -2693,19 +2810,22 @@
   <data name="&gt;&gt;panelSelectQuest.Parent" xml:space="preserve">
     <value>tabQuests</value>
   </data>
-  <data name="&gt;&gt;gbQuestCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="данныеToolStripMenuItem.Text" xml:space="preserve">
+    <value>Данные</value>
   </data>
   <data name="&gt;&gt;labelQuestTree.Parent" xml:space="preserve">
     <value>splitQuestsContainer.Panel1</value>
   </data>
+  <data name="загрузитьПереводToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 22</value>
+  </data>
   <data name="menuSaveAll.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
   </data>
-  <data name="&gt;&gt;colDialogsNum.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="treeDialogs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="bCenterizeDialogShower.ImageKey" xml:space="preserve">
@@ -2714,11 +2834,8 @@
   <data name="&gt;&gt;panel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="dgvLocaleDiff.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panelDialogTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnBackNPC.Parent" xml:space="preserve">
+    <value>panelSelectNPC</value>
   </data>
   <data name="splitDialogsTreeAndCanvas.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
@@ -2728,6 +2845,9 @@
   </data>
   <data name="&gt;&gt;panelQuestTools.Name" xml:space="preserve">
     <value>panelQuestTools</value>
+  </data>
+  <data name="bClearBuffer.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="tabReview.Text" xml:space="preserve">
     <value>Проверки</value>
@@ -2747,8 +2867,8 @@
   <data name="&gt;&gt;CentralDock.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;bRemoveEvent.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;cbItemTarget.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="author.HeaderText" xml:space="preserve">
     <value>Автор ( комментарий)</value>
@@ -2759,29 +2879,26 @@
   <data name="&gt;&gt;bRemoveQuest.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="bEditDialog.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="bFindNPCReputation.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelBuffer.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;bAddNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;author.Name" xml:space="preserve">
+    <value>author</value>
   </data>
   <data name="&gt;&gt;bFindQuest.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bCutEvents.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="bFindDialogDifference.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 9</value>
   </data>
   <data name="&gt;&gt;labelYNode.Parent" xml:space="preserve">
     <value>panelDialogTools</value>
   </data>
   <data name="cbOnlyOnLocation.Text" xml:space="preserve">
     <value>Только на локации:</value>
-  </data>
-  <data name="bCutEvents.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
   </data>
   <data name="&gt;&gt;cbOnlyOnLocation.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2794,6 +2911,12 @@
   </data>
   <data name="&gt;&gt;colLocation.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bClearBuffer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="gbDialogsEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>900, 422</value>
   </data>
   <data name="&gt;&gt;splitDialogs.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2828,29 +2951,26 @@
   <data name="&gt;&gt;menuMainControl.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="bDelNPC.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="&gt;&gt;labelAdviceNpcLink.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="bCenterizeDialogShower.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 30</value>
   </data>
-  <data name="bRemoveEvent.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="QuestBox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="&gt;&gt;ColumnLocation.Name" xml:space="preserve">
+    <value>ColumnLocation</value>
   </data>
   <data name="&gt;&gt;splitQuestsContainer.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 620</value>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 66</value>
   </data>
-  <data name="panelReviewButtons.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="cbItemTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>375, 21</value>
   </data>
-  <data name="bAddQuest.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="&gt;&gt;panelReviewButtons.Parent" xml:space="preserve">
+    <value>tabReview</value>
   </data>
   <data name="treeDialogs.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -2861,8 +2981,11 @@
   <data name="&gt;&gt;bFindNPC.Name" xml:space="preserve">
     <value>bFindNPC</value>
   </data>
-  <data name="&gt;&gt;splitDialogsTreeAndCanvas.Panel1.Parent" xml:space="preserve">
-    <value>splitDialogsTreeAndCanvas</value>
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;парсерыToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabTranslate.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -2873,14 +2996,14 @@
   <data name="labelItemTarget.Text" xml:space="preserve">
     <value>Или целью:</value>
   </data>
-  <data name="&gt;&gt;cbActualFinder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;обновленияToolStripMenuItem.Name" xml:space="preserve">
+    <value>обновленияToolStripMenuItem</value>
   </data>
   <data name="repeat.HeaderText" xml:space="preserve">
     <value>Повторяемый</value>
   </data>
-  <data name="&gt;&gt;вытащитьНепереведённыеТекстыToolStripMenuItem.Name" xml:space="preserve">
-    <value>вытащитьНепереведённыеТекстыToolStripMenuItem</value>
+  <data name="comboBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;bCenterizeDialogShower.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2897,8 +3020,8 @@
   <data name="&gt;&gt;labelLocalizeOuput.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="menuMainControl.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 620</value>
   </data>
   <data name="&gt;&gt;panelSearchTools.Name" xml:space="preserve">
     <value>panelSearchTools</value>
@@ -2906,8 +3029,8 @@
   <data name="bPasteEvents.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;panelNpcLinkControls.Parent" xml:space="preserve">
-    <value>tabInfoNPC</value>
+  <data name="splitDialogsTreeAndCanvas.Panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelLessThan2.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 73</value>
@@ -2933,6 +3056,9 @@
   <data name="&gt;&gt;numQuests.Parent" xml:space="preserve">
     <value>gbNPCcheck</value>
   </data>
+  <data name="&gt;&gt;cbNPCList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Legend.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -2951,14 +3077,17 @@
   <data name="bRemoveDialog.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;splitDialogsEmulator.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;colID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;id.Name" xml:space="preserve">
-    <value>id</value>
+  <data name="&gt;&gt;splitQuestsContainer.Panel1.Parent" xml:space="preserve">
+    <value>splitQuestsContainer</value>
   </data>
   <data name="labelAdviceNpcLink.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
   </data>
   <data name="btnClearRecycle.Text" xml:space="preserve">
     <value>Очистить корзину</value>
@@ -2999,14 +3128,14 @@
   <data name="splitQuestsContainer.SplitterDistance" type="System.Int32, mscorlib">
     <value>231</value>
   </data>
-  <data name="btnClearRecycle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 58</value>
+  <data name="&gt;&gt;Level.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelLessThan2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="labelLocalizeOuput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>693, 19</value>
   </data>
-  <data name="&gt;&gt;labelYNode.Name" xml:space="preserve">
-    <value>labelYNode</value>
+  <data name="QuestBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="cbItemTarget.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 39</value>
@@ -3020,8 +3149,8 @@
   <data name="&gt;&gt;bRemoveDialog.Name" xml:space="preserve">
     <value>bRemoveDialog</value>
   </data>
-  <data name="labelSearchResult.Text" xml:space="preserve">
-    <value>Найдено:</value>
+  <data name="menuExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
   </data>
   <data name="&gt;&gt;labelXNode.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -3035,9 +3164,6 @@
   <data name="btnNextNPC.ToolTip" xml:space="preserve">
     <value>Вернуться на следующего NPC</value>
   </data>
-  <data name="&gt;&gt;labelSearchResult.Name" xml:space="preserve">
-    <value>labelSearchResult</value>
-  </data>
   <data name="&gt;&gt;bNpcLinkExecute.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -3050,14 +3176,11 @@
   <data name="&gt;&gt;menuSaveAll.Name" xml:space="preserve">
     <value>menuSaveAll</value>
   </data>
-  <data name="загрузитьПереводToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 22</value>
+  <data name="bCopyEvents.Text" xml:space="preserve">
+    <value>Копировать</value>
   </data>
-  <data name="&gt;&gt;cbItemReward.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="bAddEvent.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="dgvManage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>906, 515</value>
   </data>
   <data name="bDelNPC.ToolTip" xml:space="preserve">
     <value />
@@ -3065,8 +3188,8 @@
   <data name="bCopyEvents.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="bRemoveEvent.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="NPCBox.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;DialogShower.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -3077,14 +3200,17 @@
   <data name="&gt;&gt;bStartSearch.Name" xml:space="preserve">
     <value>bStartSearch</value>
   </data>
+  <data name="&gt;&gt;numQuests.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;labelSearchResult.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="bEditEvent.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 30</value>
   </data>
-  <data name="&gt;&gt;splitQuestsContainer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="проверкаОшибокToolStripMenuItem.Text" xml:space="preserve">
+    <value>Проверка Ошибок</value>
   </data>
   <data name="&gt;&gt;btnFilterNPC.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3095,11 +3221,11 @@
   <data name="&gt;&gt;menuSynchronize.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="labelQuestTree.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;bAddDialog.Parent" xml:space="preserve">
+    <value>panelDialogTools</value>
   </data>
-  <data name="&gt;&gt;gbEmulator.Parent" xml:space="preserve">
-    <value>splitDialogs.Panel2</value>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="splitQuestsContainer.Size" type="System.Drawing.Size, System.Drawing">
     <value>702, 490</value>
@@ -3110,8 +3236,8 @@
   <data name="&gt;&gt;tabSearch.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="bAddEvent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 8</value>
+  <data name="colText.Width" type="System.Int32, mscorlib">
+    <value>250</value>
   </data>
   <data name="bRemoveDialog.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3119,20 +3245,20 @@
   <data name="&gt;&gt;cbNumDialogs.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="русскийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="&gt;&gt;btnNextNPC.Name" xml:space="preserve">
+    <value>btnNextNPC</value>
   </data>
-  <data name="colQuestsNum.HeaderText" xml:space="preserve">
-    <value>Квесты</value>
+  <data name="labelLessThan1.Text" xml:space="preserve">
+    <value>меньше</value>
   </data>
-  <data name="gbEmulator.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="&gt;&gt;bFindNPCReputation.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;colRussianName.Name" xml:space="preserve">
-    <value>colRussianName</value>
+  <data name="bFindQuestDifference.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="btnBackNPC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, -3</value>
+  <data name="splitDialogsEmulator.Panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;bStartSearch.Parent" xml:space="preserve">
     <value>panelSearchTools</value>
@@ -3143,8 +3269,8 @@
   <data name="&gt;&gt;panelNpcLinkControls.Name" xml:space="preserve">
     <value>panelNpcLinkControls</value>
   </data>
-  <data name="&gt;&gt;panelSelectQuest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;bRemoveEvent.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;ColumnLocation.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3152,11 +3278,8 @@
   <data name="bRemoveDialog.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;rewardCredits.Name" xml:space="preserve">
-    <value>rewardCredits</value>
-  </data>
-  <data name="gbQuestCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>428, 4</value>
+  <data name="subNPC.HeaderText" xml:space="preserve">
+    <value>Список NPC</value>
   </data>
   <data name="panelQuestTools.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3173,8 +3296,8 @@
   <data name="treeQuestBuffer.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="собратьЭдиторДляПередачиToolStripMenuItem.Text" xml:space="preserve">
-    <value>Собрать эдитор для передачи</value>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="panelSearchTools.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -3191,8 +3314,8 @@
   <data name="bAddQuest.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="bTestButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 38</value>
+  <data name="panelSelectQuest.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;rewardBattle.Name" xml:space="preserve">
     <value>rewardBattle</value>
@@ -3203,20 +3326,20 @@
   <data name="bSaveManage.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="splitDialogsTreeAndCanvas.SplitterDistance" type="System.Int32, mscorlib">
-    <value>143</value>
+  <data name="&gt;&gt;splitDialogs.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="bRemoveDialog.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="labelQuestTree.Text" xml:space="preserve">
-    <value>Дерево квеста:</value>
+  <data name="&gt;&gt;splitQuestsContainer.Panel1.Name" xml:space="preserve">
+    <value>splitQuestsContainer.Panel1</value>
   </data>
-  <data name="colNPC.HeaderText" xml:space="preserve">
-    <value>NPC</value>
+  <data name="&gt;&gt;EngText1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CentralDock.Name" xml:space="preserve">
-    <value>CentralDock</value>
+  <data name="numQuests.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;panelDiffLocale.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3245,35 +3368,38 @@
   <data name="cbItemReward.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 13</value>
   </data>
+  <data name="splitDialogs.Panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bEditEvent.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="tabTranslate.Size" type="System.Drawing.Size, System.Drawing">
     <value>906, 541</value>
   </data>
-  <data name="tabInfoNPC.Text" xml:space="preserve">
-    <value>Инфо NPC</value>
+  <data name="&gt;&gt;subNPC.Name" xml:space="preserve">
+    <value>subNPC</value>
   </data>
   <data name="labelItemTarget.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 13</value>
   </data>
-  <data name="QuestBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="gbEmulator.Text" xml:space="preserve">
+    <value>Эмулятор</value>
   </data>
-  <data name="menuSettings.Text" xml:space="preserve">
-    <value>Настройка оператора</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="cbIgnoreCase.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 17</value>
   </data>
-  <data name="gbEmulator.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;cbIgnoreCase.Parent" xml:space="preserve">
+    <value>panelSearchTools</value>
   </data>
   <data name="&gt;&gt;treeDialogs.Name" xml:space="preserve">
     <value>treeDialogs</value>
   </data>
-  <data name="bTestButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="labelXNode.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bFindNPC.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 19</value>
@@ -3287,8 +3413,8 @@
   <data name="cbItemReward.Size" type="System.Drawing.Size, System.Drawing">
     <value>375, 21</value>
   </data>
-  <data name="&gt;&gt;tabReview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="labelLessThan2.Text" xml:space="preserve">
+    <value>меньше</value>
   </data>
   <data name="&gt;&gt;tabTranslate.Parent" xml:space="preserve">
     <value>CentralDock</value>
@@ -3296,17 +3422,17 @@
   <data name="bAddDialog.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
-    <value>statusLabel</value>
+  <data name="labelItemTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
   <data name="Legend.HeaderText" xml:space="preserve">
     <value>Легенда ( комментарий)</value>
   </data>
-  <data name="bFindQuest.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>tabManage</value>
   </data>
-  <data name="&gt;&gt;labelItemReward.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="gbQuestCheck.Text" xml:space="preserve">
+    <value>Квест</value>
   </data>
   <data name="&gt;&gt;tbFindDialogID.Name" xml:space="preserve">
     <value>tbFindDialogID</value>
@@ -3323,8 +3449,8 @@
   <data name="&gt;&gt;диалоговToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabSearch.Parent" xml:space="preserve">
-    <value>CentralDock</value>
+  <data name="btnFilterNPC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>360, -3</value>
   </data>
   <data name="treeQuest.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3335,26 +3461,23 @@
   <data name="&gt;&gt;labelItemReward.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="bAddDialog.ImageKey" xml:space="preserve">
-    <value>add.png</value>
+  <data name="labelLessThan1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;numQuests.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelSearchResult.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="bRemoveEvent.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;rewardItems.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="bFindDialogDifference.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 23</value>
+  <data name="&gt;&gt;dgvSearch.Parent" xml:space="preserve">
+    <value>tabSearch</value>
   </data>
-  <data name="&gt;&gt;splitDialogsEmulator.Parent" xml:space="preserve">
-    <value>gbEmulator</value>
+  <data name="bFindQuest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 23</value>
   </data>
-  <data name="&gt;&gt;labelLocalizeOuput.Name" xml:space="preserve">
-    <value>labelLocalizeOuput</value>
+  <data name="cbNPCList.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numDialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 20</value>
@@ -3365,14 +3488,14 @@
   <data name="bPasteEvents.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 296</value>
   </data>
-  <data name="labelItemTarget.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;labelChosenNPC.Name" xml:space="preserve">
+    <value>labelChosenNPC</value>
   </data>
   <data name="cbActualFinder.Text" xml:space="preserve">
     <value>Актуальные</value>
   </data>
-  <data name="&gt;&gt;bClearBuffer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="bEditDialog.ImageKey" xml:space="preserve">
+    <value>Edit.png</value>
   </data>
   <data name="&gt;&gt;cbOnlyOnLocation.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3380,17 +3503,17 @@
   <data name="dgvLocaleDiff.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 57</value>
   </data>
-  <data name="new_ver.HeaderText" xml:space="preserve">
-    <value>Новая версия</value>
-  </data>
-  <data name="gbDialogsEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>900, 422</value>
+  <data name="&gt;&gt;dgvReview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="bSaveManage.Text" xml:space="preserve">
     <value>Сохранить</value>
   </data>
   <data name="&gt;&gt;bSaveManage.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="panelQuestTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 490</value>
   </data>
   <data name="bAddDialog.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 30</value>
@@ -3407,11 +3530,14 @@
   <data name="bAddEvent.ImageKey" xml:space="preserve">
     <value>add.png</value>
   </data>
-  <data name="panelQuestTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
+  <data name="&gt;&gt;cbItemReward.Parent" xml:space="preserve">
+    <value>gbQuestCheck</value>
   </data>
   <data name="диалоговToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;QuestBox.Parent" xml:space="preserve">
+    <value>panelSelectQuest</value>
   </data>
   <data name="&gt;&gt;labelBuffer.Name" xml:space="preserve">
     <value>labelBuffer</value>
@@ -3422,8 +3548,8 @@
   <data name="&gt;&gt;bRemoveDialog.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;cbNumQuests.Name" xml:space="preserve">
-    <value>cbNumQuests</value>
+  <data name="&gt;&gt;labelLessThan2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="вытащитьНепереведённыеТекстыToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>265, 22</value>
@@ -3431,14 +3557,14 @@
   <data name="&gt;&gt;colText.Name" xml:space="preserve">
     <value>colText</value>
   </data>
-  <data name="labelBuffer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 13</value>
+  <data name="&gt;&gt;bNpcLinkExecute.Name" xml:space="preserve">
+    <value>bNpcLinkExecute</value>
   </data>
   <data name="&gt;&gt;labelChosenNPC.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bFindNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="bNpcLinkExecute.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="DialogShower.ToolTip" xml:space="preserve">
     <value />
@@ -3446,26 +3572,23 @@
   <data name="bAddNPC.Text" xml:space="preserve">
     <value>Добавить</value>
   </data>
-  <data name="panelSearchTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="tabInfoNPC.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="splitDialogsTreeAndCanvas.Panel1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="labelLessThan1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="tabTranslate.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="bRemoveEvent.Text" xml:space="preserve">
     <value>Удалить событие</value>
   </data>
-  <data name="tabReview.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="dgvReview.Size" type="System.Drawing.Size, System.Drawing">
     <value>906, 437</value>
   </data>
-  <data name="labelYNode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 376</value>
+  <data name="bAddEvent.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;bAddQuest.Name" xml:space="preserve">
     <value>bAddQuest</value>
@@ -3473,8 +3596,8 @@
   <data name="обновленияToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 20</value>
   </data>
-  <data name="treeQuestBuffer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 166</value>
+  <data name="dgvSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;dgvLocaleDiff.Parent" xml:space="preserve">
     <value>tabTranslate</value>
@@ -3485,26 +3608,26 @@
   <data name="&gt;&gt;menuSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbItemTarget.ZOrder" xml:space="preserve">
+  <data name="dgvLocaleDiff.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="&gt;&gt;gbDialogsEditor.Parent" xml:space="preserve">
     <value>splitDialogs.Panel1</value>
   </data>
-  <data name="rewardSurvive.HeaderText" xml:space="preserve">
-    <value>Награда опыт-выживание</value>
+  <data name="&gt;&gt;btnNextNPC.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="tabDialogs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>906, 541</value>
+  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="labelYNode.Text" xml:space="preserve">
-    <value>labelYNode</value>
+  <data name="&gt;&gt;repeatPeriod.Name" xml:space="preserve">
+    <value>repeatPeriod</value>
   </data>
   <data name="&gt;&gt;menuMainControl.Name" xml:space="preserve">
     <value>menuMainControl</value>
   </data>
-  <data name="&gt;&gt;tabQuests.Parent" xml:space="preserve">
-    <value>CentralDock</value>
+  <data name="splitDialogsEmulator.Panel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnBackNPC.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -3524,47 +3647,44 @@
   <data name="splitDialogsTreeAndCanvas.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="labelQuestTree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 13</value>
+  <data name="bRemoveEvent.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;splitDialogs.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="bClearBuffer.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="&gt;&gt;labelItemReward.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;labelYNode.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="&gt;&gt;gbNPCcheck.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnNextNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
   </data>
-  <data name="&gt;&gt;panelSelectNPC.Name" xml:space="preserve">
-    <value>panelSelectNPC</value>
+  <data name="bFindQuest.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="panelSearchTools.ToolTip" xml:space="preserve">
-    <value />
+  <data name="bAddQuest.Text" xml:space="preserve">
+    <value>Добавить</value>
   </data>
-  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
-    <value>statusStrip</value>
+  <data name="&gt;&gt;bRemoveEvent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CentralDock.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="labelChosenNPC.ToolTip" xml:space="preserve">
+  <data name="tbPhraseToSearch.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="labelItemReward.Text" xml:space="preserve">
-    <value>С наградой:</value>
+  <data name="cbNumQuests.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 17</value>
   </data>
   <data name="&gt;&gt;labelBuffer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="dgvManage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>906, 515</value>
+  <data name="bTestButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="panelDiffLocale.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -3575,14 +3695,14 @@
   <data name="&gt;&gt;tabQuests.Name" xml:space="preserve">
     <value>tabQuests</value>
   </data>
-  <data name="colText.Width" type="System.Int32, mscorlib">
-    <value>250</value>
+  <data name="bAddEvent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 8</value>
   </data>
   <data name="splitQuestsContainer.Panel2.AutoScrollMargin" type="System.Drawing.Size, System.Drawing">
     <value>10, 10</value>
   </data>
-  <data name="labelLessThan2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="cbIgnoreCase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>556, 7</value>
   </data>
   <data name="tbFindDialogID.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 20</value>
@@ -3596,11 +3716,11 @@
   <data name="&gt;&gt;bEditDialog.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;bPasteEvents.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
+  <data name="splitDialogsEmulator.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
   </data>
-  <data name="данныеToolStripMenuItem.Text" xml:space="preserve">
-    <value>Данные</value>
+  <data name="&gt;&gt;subevents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbOutdatedFinder.Name" xml:space="preserve">
     <value>cbOutdatedFinder</value>
@@ -3608,8 +3728,8 @@
   <data name="menuMain.Text" xml:space="preserve">
     <value>Меню</value>
   </data>
-  <data name="&gt;&gt;labelBuffer.Parent" xml:space="preserve">
-    <value>splitQuestsContainer.Panel1</value>
+  <data name="&gt;&gt;gbQuestCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="bClearBuffer.Text" xml:space="preserve">
     <value>Очистить буфер</value>
@@ -3620,8 +3740,8 @@
   <data name="QuestBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>201, 12</value>
   </data>
-  <data name="&gt;&gt;bStartSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="bAddDialog.ImageKey" xml:space="preserve">
+    <value>add.png</value>
   </data>
   <data name="&gt;&gt;npcLinkShower.Parent" xml:space="preserve">
     <value>tabInfoNPC</value>
@@ -3635,26 +3755,26 @@
   <data name="&gt;&gt;menuExit.Name" xml:space="preserve">
     <value>menuExit</value>
   </data>
-  <data name="&gt;&gt;colRussianName.Type" xml:space="preserve">
+  <data name="&gt;&gt;colCoordinates.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="splitDialogsEmulator.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;cbItemTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnNextNPC.Name" xml:space="preserve">
-    <value>btnNextNPC</value>
+  <data name="panelDiffLocale.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="данныеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 20</value>
   </data>
-  <data name="&gt;&gt;labelChosenNPC.Name" xml:space="preserve">
-    <value>labelChosenNPC</value>
+  <data name="&gt;&gt;bNpcLinkExecute.Parent" xml:space="preserve">
+    <value>panelNpcLinkControls</value>
   </data>
   <data name="&gt;&gt;title.Name" xml:space="preserve">
     <value>title</value>
   </data>
-  <data name="npcLinkShower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 52</value>
+  <data name="labelXNode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 351</value>
   </data>
   <data name="&gt;&gt;panelSelectNPC.Parent" xml:space="preserve">
     <value>$this</value>
@@ -3662,23 +3782,23 @@
   <data name="&gt;&gt;panelSelectQuest.Name" xml:space="preserve">
     <value>panelSelectQuest</value>
   </data>
-  <data name="NPCBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 21</value>
+  <data name="&gt;&gt;labelSearchResult.Name" xml:space="preserve">
+    <value>labelSearchResult</value>
   </data>
-  <data name="&gt;&gt;парсерыToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="bStartSearch.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;dgvLocaleDiff.Name" xml:space="preserve">
-    <value>dgvLocaleDiff</value>
+  <data name="labelLessThan1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 50</value>
   </data>
   <data name="npcLinkShower.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tabManage.Text" xml:space="preserve">
-    <value>Управление</value>
+  <data name="&gt;&gt;cbNPCList.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="bDelNPC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+  <data name="bFindNPCReputation.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="dgvReview.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3692,14 +3812,17 @@
   <data name="bFindNPC.Text" xml:space="preserve">
     <value>Найти NPC</value>
   </data>
-  <data name="labelChosenNPC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 8</value>
+  <data name="labelSearchResult.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="splitDialogsTreeAndCanvas.SplitterDistance" type="System.Int32, mscorlib">
+    <value>143</value>
   </data>
   <data name="subevents.HeaderText" xml:space="preserve">
     <value>Вложенные события</value>
   </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>tabManage</value>
+  <data name="русскийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
   <data name="splitQuestsContainer.ToolTip" xml:space="preserve">
     <value />
@@ -3707,11 +3830,11 @@
   <data name="bSaveManage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;QuestBox.Parent" xml:space="preserve">
-    <value>panelSelectQuest</value>
+  <data name="&gt;&gt;bQuestDown.Parent" xml:space="preserve">
+    <value>panelQuestTools</value>
   </data>
-  <data name="QuestBox.ToolTip" xml:space="preserve">
-    <value />
+  <data name="gbQuestCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>428, 4</value>
   </data>
   <data name="&gt;&gt;tabSearch.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -3719,11 +3842,11 @@
   <data name="panelDialogTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="bQuestDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 152</value>
+  <data name="&gt;&gt;вытащитьНепереведённыеТекстыToolStripMenuItem.Name" xml:space="preserve">
+    <value>вытащитьНепереведённыеТекстыToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;type.Name" xml:space="preserve">
-    <value>type</value>
+  <data name="dgvReview.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bSaveManage.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 26</value>
@@ -3734,29 +3857,32 @@
   <data name="&gt;&gt;labelYNode.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;собратьЭдиторДляПередачиToolStripMenuItem.Name" xml:space="preserve">
-    <value>собратьЭдиторДляПередачиToolStripMenuItem</value>
+  <data name="panelSelectQuest.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="gbQuestCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 95</value>
+  <data name="gbEmulator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>900, 109</value>
   </data>
   <data name="&gt;&gt;menuExplorer.Name" xml:space="preserve">
     <value>menuExplorer</value>
   </data>
-  <data name="panelSelectNPC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="bCutEvents.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="treeQuest.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;gbQuestCheck.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="colText.HeaderText" xml:space="preserve">
+    <value>Текст</value>
   </data>
   <data name="&gt;&gt;labelLessThan1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;labelChosenQuest.Parent" xml:space="preserve">
-    <value>panelSelectQuest</value>
+  <data name="&gt;&gt;labelLocalizeOuput.Name" xml:space="preserve">
+    <value>labelLocalizeOuput</value>
+  </data>
+  <data name="&gt;&gt;bRemoveEvent.Name" xml:space="preserve">
+    <value>bRemoveEvent</value>
   </data>
   <data name="&gt;&gt;bCopyEvents.Name" xml:space="preserve">
     <value>bCopyEvents</value>
@@ -3764,22 +3890,19 @@
   <data name="&gt;&gt;bSaveManage.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;bRemoveEvent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;comboBox2.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="cbOutdatedFinder.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="splitDialogs.Panel1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabReview.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;dgvManage.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;colDialogsNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="npcName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="repeatPeriod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -3791,6 +3914,9 @@
   <metadata name="colCoordinates.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="subNPC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="title.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -3798,6 +3924,9 @@
     <value>True</value>
   </metadata>
   <metadata name="npc_name.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="EngText1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -3851,16 +3980,10 @@
   <metadata name="rewardItems.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="colRussianName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dialogID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="toolTipDialogs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>415, 17</value>
   </metadata>
-  <metadata name="subNPC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="dialogID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="colText.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -3870,6 +3993,9 @@
     <value>161, 17</value>
   </metadata>
   <metadata name="identif.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Level.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="repeat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -3884,7 +4010,7 @@
   <metadata name="Legend.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Level.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="colRussianName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="author.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -3902,7 +4028,7 @@
   <metadata name="colQuestsNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="repeatPeriod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
 </root>

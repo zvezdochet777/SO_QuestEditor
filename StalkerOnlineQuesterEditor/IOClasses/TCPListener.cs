@@ -60,9 +60,20 @@ namespace StalkerOnlineQuesterEditor.IOClasses
 
                         data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                         Console.WriteLine("Received: {0}", data);
-                        if (data.Contains("openNPC:"))
+                        try
                         {
-                            this.parent.openNPC(data.Replace("openNPC:", "").Trim());
+                            if (data.Contains("openNPC:"))
+                            {
+                                this.parent.openNPC(data.Replace("openNPC:", "").Trim());
+                            }
+                            else if (data.Contains("createNPC:"))
+                            {
+                                this.parent.addNewNPC(data.Replace("createNPC:", "").Trim());
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                            System.Windows.Forms.MessageBox.Show(e.Message, "Error");
                         }
                         data = data.ToUpper();
 
@@ -72,7 +83,7 @@ namespace StalkerOnlineQuesterEditor.IOClasses
                         Console.WriteLine("Sent: {0}", data);
                     }
                 }
-                catch
+                catch(System.IO.IOException err)
                 {
                    
                 }

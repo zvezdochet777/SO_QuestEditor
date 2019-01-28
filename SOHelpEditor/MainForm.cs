@@ -63,6 +63,7 @@ namespace SOHelpEditor
                         subNode.Tag = card.id;
                         node.Nodes.Add(subNode);
                         data.Add(card.id, new List<Token>());
+                        if (card.full_card == null) continue;
                         foreach (Token t in card.full_card)
                         {
                             Token tmp = new Token();

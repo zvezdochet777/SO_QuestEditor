@@ -149,13 +149,16 @@ namespace StalkerOnlineQuesterEditor
                 else
                     tutorialCheckBox.Checked = false;
             }
-
             fillPreconditiomForm();
+           
             fillQuestRulesForm();
             initCreateNPCPanel();
             initCreateMobPanel();
             if (iState != ADD_NEW)
+            {
                 fillTargetForm(quest.Target.QuestType);
+                fillChangedQuests();
+            }
 
             if (iState == EDIT || iState == EDIT_SUB)
             {
@@ -223,7 +226,30 @@ namespace StalkerOnlineQuesterEditor
                 repeatComboBox.SelectedIndex = 1;
             IsCounterCheckBox.Checked = quest.Precondition.omniCounter;
             takenPeriodTextBox.Text = quest.Precondition.TakenPeriod.ToString();
-        }       
+        }
+
+
+        void fillChangedQuests()
+        {
+            labelGiveQuestsOpened.Text = "";
+            labelGiveQuestsClosed.Text = "";
+            labelGiveQuestsFailed.Text = "";
+            labelGiveQuestsCanceled.Text = "";
+            if (CQuests.QuestParentList.ContainsKey(this.QuestID))
+            {
+                if (CQuests.QuestParentList[QuestID].ContainsKey(0))
+                    labelGiveQuestsOpened.Text = Global.GetListAsString(CQuests.QuestParentList[this.QuestID][0]);
+                if (CQuests.QuestParentList[QuestID].ContainsKey(1))
+                    labelGiveQuestsClosed.Text = Global.GetListAsString(CQuests.QuestParentList[this.QuestID][1]);
+                if (CQuests.QuestParentList[QuestID].ContainsKey(2))
+                    labelGiveQuestsFailed.Text = Global.GetListAsString(CQuests.QuestParentList[this.QuestID][2]);
+                if (CQuests.QuestParentList[QuestID].ContainsKey(3))
+                    labelGiveQuestsCanceled.Text = Global.GetListAsString(CQuests.QuestParentList[this.QuestID][3]);
+            }
+        }
+
+
+
         //! Настраивает форму на определенный тип квеста
         void fillTargetForm(int QuestType)
         {
@@ -1565,6 +1591,9 @@ namespace StalkerOnlineQuesterEditor
             return maxWidth;
         }
 
-
+        private void EditQuestForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.parent.QuestBox_SelectedIndexChanged(sender, e);
+        }
     }
 }

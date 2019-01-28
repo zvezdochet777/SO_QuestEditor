@@ -128,6 +128,7 @@ namespace StalkerOnlineQuesterEditor
             //fillNPCBox();
             fillLocationsBox();
             fillItemRewardsBox();
+            
             fillFractionsInManageTab();
             DialogShower.AddInputEventListener(Listener);
             DialogShower.AddInputEventListener(RectDrawer);
@@ -140,6 +141,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (string name in dialogs.getListOfNPC())
                 if (!npcConst.NPCs.Keys.Contains(name))
                     npcConst.NPCs.Add(name, new CNPCDescription(name));
+            fillRewardNPCReputationVox();
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
             this.billboardQuests = new BillboardQuests();
@@ -325,7 +327,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Сменили квест в комбобоксе, выводим дерево всех подквестов
-        private void QuestBox_SelectedIndexChanged(object sender, EventArgs e)
+        public void QuestBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (QuestBox.SelectedItem == null) return;
             splitQuestsContainer.Panel2.Controls.Clear();
@@ -345,53 +347,53 @@ namespace StalkerOnlineQuesterEditor
         //! Заполнение итемов в комбобоксе NPC
         void fillNPCBox()
         {
-            npcNames.Clear();
-            NPCBox.AutoCompleteCustomSource.Clear();
-            foreach (string holder in this.dialogs.dialogs.Keys)
-            {
-                string npcName = holder;
-                string space = "no map";
-                foreach (KeyValuePair<string, List<string>> mapData in ManagerNPC.mapToNPCList)
-                {
-                    foreach (string name in mapData.Value)
+                    npcNames.Clear();
+                    NPCBox.AutoCompleteCustomSource.Clear();
+
+                    foreach (string holder in this.dialogs.dialogs.Keys)
                     {
-                        if (name == npcName)
+                        string npcName = holder;
+                        string space = "no map";
+                        foreach (KeyValuePair<string, List<string>> mapData in ManagerNPC.mapToNPCList)
                         {
-                            space = mapData.Key;
+                            foreach (string name in mapData.Value)
+                            {
+                                if (name == npcName)
+                                {
+                                    space = mapData.Key;
+                                }
+                            }
                         }
+                        if (!npcFilters[space])
+                            continue;
+                        //InvalidOperationException
+                        string localName = "";
+                        if (ManagerNPC.NpcData.ContainsKey(holder))
+                        {
+                            if (settings.getMode() == settings.MODE_EDITOR)
+                                localName = ManagerNPC.NpcData[holder].rusName;
+                            else if (settings.getMode() == settings.MODE_LOCALIZATION)
+                                localName = ManagerNPC.NpcData[holder].engName;
+
+                            NPCBox.AutoCompleteCustomSource.Add(localName);
+                            npcName += " (" + localName + ")";
+                        }
+                        npcNames.Add(new NPCNameDataSourceObject(holder, npcName));
+                        NPCBox.AutoCompleteCustomSource.Add(npcName);
                     }
-                }
-                if (!npcFilters[space])
-                    continue;
-
-                string localName = "";
-                if (ManagerNPC.NpcData.ContainsKey(holder))
-                {
-                    if (settings.getMode() == settings.MODE_EDITOR)
-                        localName = ManagerNPC.NpcData[holder].rusName;
-                    else if (settings.getMode() == settings.MODE_LOCALIZATION)
-                        localName = ManagerNPC.NpcData[holder].engName;
-
-                    NPCBox.AutoCompleteCustomSource.Add(localName);
-                    npcName += " (" + localName + ")";
-                }
-                npcNames.Add(new NPCNameDataSourceObject(holder, npcName));
-                NPCBox.AutoCompleteCustomSource.Add(npcName);
-            }
-            npcNames.Sort();
-            NPCBox.DataSource = null;       // костыль для обновления данных в кмобобоксе NPC при добавлении/удалении
-            NPCBox.DisplayMember = "DisplayString";
-            NPCBox.ValueMember = "Value";
-            NPCBox.DataSource = npcNames;
-            if (npcNames.Count <= settings.getLastNpcIndex())
-                settings.setLastNpcIndex(npcNames.Count - 1);
-            NPCBox.SelectedIndex = settings.getLastNpcIndex();
-            NPCBox.AutoCompleteMode = AutoCompleteMode.Suggest;
-            NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-            QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
-            QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
+                    npcNames.Sort();
+                    NPCBox.DataSource = null;       // костыль для обновления данных в кмобобоксе NPC при добавлении/удалении
+                    NPCBox.DisplayMember = "DisplayString";
+                    NPCBox.ValueMember = "Value";
+                    NPCBox.DataSource = npcNames;
+                    if (npcNames.Count <= settings.getLastNpcIndex())
+                        settings.setLastNpcIndex(npcNames.Count - 1);
+                    NPCBox.SelectedIndex = settings.getLastNpcIndex();
+                    NPCBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
         }
 
         //! Блокировка компонентов и обновление данных при смене вкладки на форме
@@ -735,13 +737,14 @@ namespace StalkerOnlineQuesterEditor
         {
             CQuest curQuest = getQuestOnQuestID(currentQuest);
             treeQuest.BeginUpdate();
+            TreeNode curNode = null;
             if (!curQuest.Additional.IsSubQuest.Equals(0))
             {
                 TreeNode[] nodes = treeQuest.Nodes.Find(getQuestOnQuestID(curQuest.Additional.IsSubQuest).QuestID.ToString(), true);
                 if (nodes.Any())
                 {
                     TreeNode parent = nodes[0];
-                    parent.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
+                    curNode = parent.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                     int lastIndex = parent.Nodes.Count - 1;
                     if (curQuest.hidden)
                         parent.Nodes[lastIndex].BackColor = Color.CadetBlue;
@@ -753,20 +756,39 @@ namespace StalkerOnlineQuesterEditor
             }
             else
             {
-                treeQuest.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
-                int lastIndex = treeQuest.Nodes.Count - 1;
+                curNode = treeQuest.Nodes.Add(curQuest.QuestID.ToString(), curQuest.QuestID.ToString());
                 if (curQuest.hidden)
-                    treeQuest.Nodes[lastIndex].BackColor = Color.CadetBlue;
+                    curNode.BackColor = CQuests.QuestParentList.ContainsKey(currentQuest) ? Color.DodgerBlue : Color.CadetBlue;
                 else if (curQuest.Target.onFin == 1)
-                    treeQuest.Nodes[lastIndex].BackColor = Color.YellowGreen;
+                    curNode.BackColor = CQuests.QuestParentList.ContainsKey(currentQuest) ? Color.LightGreen : Color.YellowGreen;
                 else
-                    treeQuest.Nodes[lastIndex].BackColor = Color.Red;
+                    curNode.BackColor = CQuests.QuestParentList.ContainsKey(currentQuest) ? Color.IndianRed : Color.Red;
+            }
+            if (curQuest.Reward.ChangeQuests.Count > 0)
+            {
+                foreach (KeyValuePair<int, int> change_quest in curQuest.Reward.ChangeQuests)
+                {
+                    //if (change_quest.Value != 0) continue;
+                    int quest_id = change_quest.Key;
+                    int change_type = change_quest.Value;
+                    TreeNode reward_quest = curNode.Nodes.Add(quest_id.ToString(), quest_id.ToString());
+                    switch(change_quest.Value)
+                    {
+                        case 0: reward_quest.BackColor = Color.LightCyan; break;
+                        case 1: reward_quest.BackColor = Color.Pink; break;
+                        case 2: reward_quest.BackColor = Color.Gray; break;
+                        case 3: reward_quest.BackColor = Color.SandyBrown; break;
+                    }
+                    
+                }
+                curNode.Nodes.Add("", "");
             }
             //if (!questConst.isSimple(curQuest.Target.QuestType) && (curQuest.Additional.ListOfSubQuest.Any()))
             if ((!questConst.isSimple(curQuest.Target.QuestType) || settings.getMode() == settings.MODE_LOCALIZATION)
                     && (curQuest.Additional.ListOfSubQuest.Any()))
                 foreach (int subquest in curQuest.Additional.ListOfSubQuest)
                     addNodeOnTreeQuest(subquest);
+            
             treeQuest.EndUpdate();
             treeQuest.Refresh();
             treeQuest.Update();
@@ -912,29 +934,41 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие кнопки Добавить NPC - открывает форму с именем
         private void bAddNPC_Click(object sender, EventArgs e)
         {
-            NewNPC newNPC = new NewNPC(this);
-            newNPC.Visible = true;
+            MessageBox.Show("Добавление NPC сейчас происходит в NPCEditor", "Добавление NPC");
+            //NewNPC newNPC = new NewNPC(this);
+            //newNPC.Visible = true;
         }
+
+        delegate void addNewNPCDelegate(string Name);
         //! Добавляет нового NPC в систему
         public void addNewNPC(string Name)
         {
-            Dictionary<int, CDialog> firstDialog = new Dictionary<int, CDialog>();
-            int dialogID = getDialogsNewID();
-            NodeCoordinates nc = new NodeCoordinates(179, 125, true, true);
-            firstDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(), new List<int>(),
-                    dialogID, 0, nc));
+            if (NPCBox.InvokeRequired)
+            {
+                var _addNewNPC = new addNewNPCDelegate(addNewNPC);
+                NPCBox.Invoke(_addNewNPC, Name);
+            }
+            else
+            {
 
-            dialogs.dialogs.Add(Name, firstDialog);
-            // добавляем ТЗс в английскую локаль, делаем копию словаря
-            Dictionary<int, CDialog> engDialog = new Dictionary<int, CDialog>();
-            engDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(), new List<int>(),
-                    dialogID, 0, nc));
-            dialogs.locales[settings.getListLocales()[0]].Add(Name, engDialog);
+                Dictionary<int, CDialog> firstDialog = new Dictionary<int, CDialog>();
+                int dialogID = getDialogsNewID();
+                NodeCoordinates nc = new NodeCoordinates(179, 125, true, true);
+                firstDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(), new List<int>(),
+                        dialogID, 0, nc));
 
-            fillNPCBox();
-            NPCBox.SelectedValue = Name;
-            npcConst.NPCs.Add(Name, new CNPCDescription(Name));
+                dialogs.dialogs.Add(Name, firstDialog);
+                // добавляем ТЗс в английскую локаль, делаем копию словаря
+                Dictionary<int, CDialog> engDialog = new Dictionary<int, CDialog>();
+                engDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(), new List<int>(),
+                        dialogID, 0, nc));
+                dialogs.locales[settings.getListLocales()[0]].Add(Name, engDialog);
+                fillNPCBox();
+                NPCBox.SelectedValue = Name;
+                npcConst.NPCs.Add(Name, new CNPCDescription(Name));
+            }
         }
+
         //! Нажатие на кнопку Удаление Персонажа NPC
         private void bDelNPC_Click(object sender, EventArgs e)
         {
@@ -1824,6 +1858,13 @@ namespace StalkerOnlineQuesterEditor
             cbItemReward.Sorted = true;
             cbItemTarget.Sorted = true;
         }
+
+
+        void fillRewardNPCReputationVox()
+        {
+            foreach (string npc_name in this.npcConst.NPCs.Keys)
+                cbNPCList.Items.Add(npc_name);
+        }
         //! Устанавливает надписи в таблице вкладки Проверка для поиска нужны NPC
         void setNPCCheckEnvironment()
         {
@@ -1846,6 +1887,18 @@ namespace StalkerOnlineQuesterEditor
             dgvReview.Columns[4].Visible = false;
             dgvReview.Columns[5].Visible = false;
         }
+
+        //! Устанавливает надписи в таблице вкладки Проверка для поиска квестов дающих личную репутацию
+        void setNPCReputationCheckEnvironment()
+        {
+            dgvReview.Columns[0].HeaderText = "Квест";
+            dgvReview.Columns[1].HeaderText = "Название";
+            dgvReview.Columns[2].HeaderText = "NPC_name";
+            dgvReview.Columns[3].HeaderText = "Репутация";
+            dgvReview.Columns[4].Visible = false;
+            dgvReview.Columns[5].Visible = false;
+        }
+
 
         //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
         private void bFindNPC_Click(object sender, EventArgs e)
@@ -2759,6 +2812,27 @@ namespace StalkerOnlineQuesterEditor
             var text = res.GetString(String.Format("{0}.Text", control.Name));
             Console.WriteLine(control.Name + " " + text + "; " + control.Text);
             control.Text = text ?? control.Text;
+        }
+
+        private void bFindNPCReputation_Click(object sender, EventArgs e)
+        {
+            setNPCReputationCheckEnvironment();
+            dgvReview.Rows.Clear();
+            string NPC_name = cbNPCList.Text;
+            
+            foreach (CQuest quest in quests.quest.Values)
+            {
+                int questID = quest.QuestID;
+                foreach (KeyValuePair<string, int> keyValue in quest.Reward.NPCReputation)
+                {
+                    if (!NPC_name.Any()||NPC_name == keyValue.Key)
+                    {
+                        object[] row = { questID, quest.QuestInformation.Title, keyValue.Key, keyValue.Value };
+                        dgvReview.Rows.Add(row);
+                    }
+                }
+            }
+            statusLabel.Text = "Выведено: " + dgvReview.RowCount.ToString();
         }
     }
 }

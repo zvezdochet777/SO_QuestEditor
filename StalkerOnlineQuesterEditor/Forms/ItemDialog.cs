@@ -193,7 +193,7 @@ namespace StalkerOnlineQuesterEditor
                         description = parentForm.quest.QuestInformation.Items[typeID].description;
                         activation = parentForm.quest.QuestInformation.Items[typeID].activation;
                     }
-                    object[] row = { name, attr, quantity.ToString(),null, title, description, activation };
+                    object[] row = { name, attr, quantity.ToString(), null, title, description, activation };
                     itemGridView.Rows.Add(row);
                }
                 itemGridView.Columns[1].ReadOnly = true;
@@ -244,7 +244,7 @@ namespace StalkerOnlineQuesterEditor
                             activation = this.locale[typeID].activation;
                         }
                     }
-                    object[] row = { name, attr, quantity.ToString(), title, description, activation };
+                    object[] row = { name, attr, quantity.ToString(), null, title, description, activation };
                     itemGridView.Rows.Add(row);
 
                     for (int row_index = 0; row_index < itemGridView.Rows.Count; row_index ++ )
@@ -286,12 +286,16 @@ namespace StalkerOnlineQuesterEditor
                         }
                         else
                         {
+                            if (!this.locale.ContainsKey(typeID))
+                            {
+                                this.locale.Add(typeID, new QuestItemInfo());
+                            }
                             title = this.locale[typeID].title;
                             description = this.locale[typeID].description;
                             activation = this.locale[typeID].activation;
                         }
                     }
-                    object[] row = { name, attr, quantity.ToString(), title, description, activation };
+                    object[] row = { name, attr, quantity.ToString(), null, title, description, activation };
                     itemGridView.Rows.Add(row);
 
                 }
@@ -327,10 +331,10 @@ namespace StalkerOnlineQuesterEditor
         {
             foreach (DataGridViewRow row in itemGridView.Rows)
             {
-                string title = row.Cells[3].FormattedValue.ToString();
-                string description = row.Cells[4].FormattedValue.ToString();
-                string activation = row.Cells[5].FormattedValue.ToString();
-                string typeName = row.Cells[0].FormattedValue.ToString();
+                string title = row.Cells["itemTitle"].FormattedValue.ToString();
+                string description = row.Cells["itemDescription"].FormattedValue.ToString();
+                string activation = row.Cells["itemActivation"].FormattedValue.ToString();
+                string typeName = row.Cells["itemType"].FormattedValue.ToString();
                 int typeID = parent.itemConst.getIDOnDescription(typeName);
                 if (!this.locale.Keys.Contains(typeID))
                     this.locale.Add(typeID, new QuestItemInfo());

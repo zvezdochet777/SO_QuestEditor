@@ -310,7 +310,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                         }
                         if (complete_quest.Reward.Any())
                         {
-                            if (dia.Value.Actions.GetQuests.Contains(complete_quest_id))
+                            if (dia.Value.Actions.GetQuests.Contains(complete_quest_id) && !dia.Value.Actions.Exit)
                             {
                                 string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + complete_quest_id + " даётся и завершается в одном ноде диалога";
                                 this.writeToLog(ERROR_QUEST, line, complete_quest_id);

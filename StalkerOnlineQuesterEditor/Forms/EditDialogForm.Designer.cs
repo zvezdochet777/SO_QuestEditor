@@ -186,9 +186,23 @@
             this.cbAnimationNPC = new System.Windows.Forms.CheckBox();
             this.cbAnimationPlayer = new System.Windows.Forms.CheckBox();
             this.tabItems = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.rbNonItemsOr = new System.Windows.Forms.RadioButton();
+            this.rbNonItemsAnd = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rbItemsOr = new System.Windows.Forms.RadioButton();
+            this.rbItemsAnd = new System.Windows.Forms.RadioButton();
             this.panelItems = new System.Windows.Forms.Panel();
             this.GVNonItems = new System.Windows.Forms.DataGridView();
+            this.GVNonItems_itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GVNonItems_itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GVNonItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GVNonItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GVItems = new System.Windows.Forms.DataGridView();
+            this.GVItems_itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GVItems_itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GVItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GVItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cbNonCategory = new System.Windows.Forms.ComboBox();
@@ -213,20 +227,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.rbItemsOr = new System.Windows.Forms.RadioButton();
-            this.rbItemsAnd = new System.Windows.Forms.RadioButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.rbNonItemsOr = new System.Windows.Forms.RadioButton();
-            this.rbNonItemsAnd = new System.Windows.Forms.RadioButton();
-            this.GVItems_itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GVItems_itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GVItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GVItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GVNonItems_itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GVNonItems_itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GVNonItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GVNonItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
@@ -257,6 +257,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).BeginInit();
             this.tabActions.SuspendLayout();
             this.tabItems.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panelItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVNonItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).BeginInit();
@@ -264,8 +266,6 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -1873,6 +1873,72 @@
             this.tabItems.Text = "Предметы";
             this.tabItems.SizeChanged += new System.EventHandler(this.tabItems_SizeChanged);
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.rbNonItemsOr);
+            this.panel3.Controls.Add(this.rbNonItemsAnd);
+            this.panel3.Location = new System.Drawing.Point(510, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(88, 31);
+            this.panel3.TabIndex = 14;
+            this.panel3.Visible = false;
+            // 
+            // rbNonItemsOr
+            // 
+            this.rbNonItemsOr.AutoSize = true;
+            this.rbNonItemsOr.Location = new System.Drawing.Point(39, 7);
+            this.rbNonItemsOr.Name = "rbNonItemsOr";
+            this.rbNonItemsOr.Size = new System.Drawing.Size(49, 17);
+            this.rbNonItemsOr.TabIndex = 13;
+            this.rbNonItemsOr.Text = "ИЛИ";
+            this.rbNonItemsOr.UseVisualStyleBackColor = true;
+            // 
+            // rbNonItemsAnd
+            // 
+            this.rbNonItemsAnd.AutoSize = true;
+            this.rbNonItemsAnd.Checked = true;
+            this.rbNonItemsAnd.Location = new System.Drawing.Point(0, 7);
+            this.rbNonItemsAnd.Name = "rbNonItemsAnd";
+            this.rbNonItemsAnd.Size = new System.Drawing.Size(33, 17);
+            this.rbNonItemsAnd.TabIndex = 12;
+            this.rbNonItemsAnd.TabStop = true;
+            this.rbNonItemsAnd.Text = "И";
+            this.rbNonItemsAnd.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.rbItemsOr);
+            this.panel1.Controls.Add(this.rbItemsAnd);
+            this.panel1.Location = new System.Drawing.Point(194, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(88, 31);
+            this.panel1.TabIndex = 12;
+            this.panel1.Visible = false;
+            // 
+            // rbItemsOr
+            // 
+            this.rbItemsOr.AutoSize = true;
+            this.rbItemsOr.Location = new System.Drawing.Point(39, 7);
+            this.rbItemsOr.Name = "rbItemsOr";
+            this.rbItemsOr.Size = new System.Drawing.Size(49, 17);
+            this.rbItemsOr.TabIndex = 13;
+            this.rbItemsOr.Text = "ИЛИ";
+            this.rbItemsOr.UseVisualStyleBackColor = true;
+            // 
+            // rbItemsAnd
+            // 
+            this.rbItemsAnd.AutoSize = true;
+            this.rbItemsAnd.Checked = true;
+            this.rbItemsAnd.Location = new System.Drawing.Point(0, 7);
+            this.rbItemsAnd.Name = "rbItemsAnd";
+            this.rbItemsAnd.Size = new System.Drawing.Size(33, 17);
+            this.rbItemsAnd.TabIndex = 12;
+            this.rbItemsAnd.TabStop = true;
+            this.rbItemsAnd.Text = "И";
+            this.rbItemsAnd.UseVisualStyleBackColor = true;
+            // 
             // panelItems
             // 
             this.panelItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1899,6 +1965,36 @@
             this.GVNonItems.Size = new System.Drawing.Size(288, 191);
             this.GVNonItems.TabIndex = 7;
             // 
+            // GVNonItems_itemType
+            // 
+            this.GVNonItems_itemType.HeaderText = "Тип";
+            this.GVNonItems_itemType.Name = "GVNonItems_itemType";
+            this.GVNonItems_itemType.Width = 300;
+            // 
+            // GVNonItems_itemAttr
+            // 
+            this.GVNonItems_itemAttr.HeaderText = "Аттрибут";
+            this.GVNonItems_itemAttr.Items.AddRange(new object[] {
+            "Обычный",
+            "Квестовый",
+            "Авто"});
+            this.GVNonItems_itemAttr.Name = "GVNonItems_itemAttr";
+            this.GVNonItems_itemAttr.Width = 70;
+            // 
+            // GVNonItems_itemQuantity
+            // 
+            this.GVNonItems_itemQuantity.HeaderText = "Количество";
+            this.GVNonItems_itemQuantity.Name = "GVNonItems_itemQuantity";
+            this.GVNonItems_itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GVNonItems_itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GVNonItems_itemQuantity.Width = 75;
+            // 
+            // GVNonItems_ItemCond
+            // 
+            this.GVNonItems_ItemCond.HeaderText = "(%)Мин. прочность(%)";
+            this.GVNonItems_ItemCond.Name = "GVNonItems_ItemCond";
+            this.GVNonItems_ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // GVItems
             // 
             this.GVItems.AllowUserToOrderColumns = true;
@@ -1912,6 +2008,36 @@
             this.GVItems.Name = "GVItems";
             this.GVItems.Size = new System.Drawing.Size(282, 191);
             this.GVItems.TabIndex = 6;
+            // 
+            // GVItems_itemType
+            // 
+            this.GVItems_itemType.HeaderText = "Тип";
+            this.GVItems_itemType.Name = "GVItems_itemType";
+            this.GVItems_itemType.Width = 300;
+            // 
+            // GVItems_itemAttr
+            // 
+            this.GVItems_itemAttr.HeaderText = "Аттрибут";
+            this.GVItems_itemAttr.Items.AddRange(new object[] {
+            "Обычный",
+            "Квестовый",
+            "Авто"});
+            this.GVItems_itemAttr.Name = "GVItems_itemAttr";
+            this.GVItems_itemAttr.Width = 70;
+            // 
+            // GVItems_itemQuantity
+            // 
+            this.GVItems_itemQuantity.HeaderText = "Количество";
+            this.GVItems_itemQuantity.Name = "GVItems_itemQuantity";
+            this.GVItems_itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GVItems_itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GVItems_itemQuantity.Width = 75;
+            // 
+            // GVItems_ItemCond
+            // 
+            this.GVItems_ItemCond.HeaderText = "(%)Мин. прочность (%)";
+            this.GVItems_ItemCond.Name = "GVItems_ItemCond";
+            this.GVItems_ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label12
             // 
@@ -2127,9 +2253,9 @@
             // 
             this.autoPanel.Controls.Add(this.label6);
             this.autoPanel.Controls.Add(this.autoDefaultNode);
-            this.autoPanel.Location = new System.Drawing.Point(588, 85);
+            this.autoPanel.Location = new System.Drawing.Point(164, 62);
             this.autoPanel.Name = "autoPanel";
-            this.autoPanel.Size = new System.Drawing.Size(4, 42);
+            this.autoPanel.Size = new System.Drawing.Size(237, 46);
             this.autoPanel.TabIndex = 17;
             this.autoPanel.Visible = false;
             // 
@@ -2145,7 +2271,7 @@
             // autoDefaultNode
             // 
             this.autoDefaultNode.FormattingEnabled = true;
-            this.autoDefaultNode.Location = new System.Drawing.Point(131, 21);
+            this.autoDefaultNode.Location = new System.Drawing.Point(0, 3);
             this.autoDefaultNode.Name = "autoDefaultNode";
             this.autoDefaultNode.Size = new System.Drawing.Size(121, 21);
             this.autoDefaultNode.TabIndex = 0;
@@ -2160,132 +2286,6 @@
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.rbItemsOr);
-            this.panel1.Controls.Add(this.rbItemsAnd);
-            this.panel1.Location = new System.Drawing.Point(194, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(88, 31);
-            this.panel1.TabIndex = 12;
-            this.panel1.Visible = false;
-            // 
-            // rbItemsOr
-            // 
-            this.rbItemsOr.AutoSize = true;
-            this.rbItemsOr.Location = new System.Drawing.Point(39, 7);
-            this.rbItemsOr.Name = "rbItemsOr";
-            this.rbItemsOr.Size = new System.Drawing.Size(49, 17);
-            this.rbItemsOr.TabIndex = 13;
-            this.rbItemsOr.Text = "ИЛИ";
-            this.rbItemsOr.UseVisualStyleBackColor = true;
-            // 
-            // rbItemsAnd
-            // 
-            this.rbItemsAnd.AutoSize = true;
-            this.rbItemsAnd.Checked = true;
-            this.rbItemsAnd.Location = new System.Drawing.Point(0, 7);
-            this.rbItemsAnd.Name = "rbItemsAnd";
-            this.rbItemsAnd.Size = new System.Drawing.Size(33, 17);
-            this.rbItemsAnd.TabIndex = 12;
-            this.rbItemsAnd.TabStop = true;
-            this.rbItemsAnd.Text = "И";
-            this.rbItemsAnd.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.rbNonItemsOr);
-            this.panel3.Controls.Add(this.rbNonItemsAnd);
-            this.panel3.Location = new System.Drawing.Point(510, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(88, 31);
-            this.panel3.TabIndex = 14;
-            this.panel3.Visible = false;
-            // 
-            // rbNonItemsOr
-            // 
-            this.rbNonItemsOr.AutoSize = true;
-            this.rbNonItemsOr.Location = new System.Drawing.Point(39, 7);
-            this.rbNonItemsOr.Name = "rbNonItemsOr";
-            this.rbNonItemsOr.Size = new System.Drawing.Size(49, 17);
-            this.rbNonItemsOr.TabIndex = 13;
-            this.rbNonItemsOr.Text = "ИЛИ";
-            this.rbNonItemsOr.UseVisualStyleBackColor = true;
-            // 
-            // rbNonItemsAnd
-            // 
-            this.rbNonItemsAnd.AutoSize = true;
-            this.rbNonItemsAnd.Checked = true;
-            this.rbNonItemsAnd.Location = new System.Drawing.Point(0, 7);
-            this.rbNonItemsAnd.Name = "rbNonItemsAnd";
-            this.rbNonItemsAnd.Size = new System.Drawing.Size(33, 17);
-            this.rbNonItemsAnd.TabIndex = 12;
-            this.rbNonItemsAnd.TabStop = true;
-            this.rbNonItemsAnd.Text = "И";
-            this.rbNonItemsAnd.UseVisualStyleBackColor = true;
-            // 
-            // GVItems_itemType
-            // 
-            this.GVItems_itemType.HeaderText = "Тип";
-            this.GVItems_itemType.Name = "GVItems_itemType";
-            this.GVItems_itemType.Width = 300;
-            // 
-            // GVItems_itemAttr
-            // 
-            this.GVItems_itemAttr.HeaderText = "Аттрибут";
-            this.GVItems_itemAttr.Items.AddRange(new object[] {
-            "Обычный",
-            "Квестовый",
-            "Авто"});
-            this.GVItems_itemAttr.Name = "GVItems_itemAttr";
-            this.GVItems_itemAttr.Width = 70;
-            // 
-            // GVItems_itemQuantity
-            // 
-            this.GVItems_itemQuantity.HeaderText = "Количество";
-            this.GVItems_itemQuantity.Name = "GVItems_itemQuantity";
-            this.GVItems_itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.GVItems_itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.GVItems_itemQuantity.Width = 75;
-            // 
-            // GVItems_ItemCond
-            // 
-            this.GVItems_ItemCond.HeaderText = "(%)Мин. прочность (%)";
-            this.GVItems_ItemCond.Name = "GVItems_ItemCond";
-            this.GVItems_ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // GVNonItems_itemType
-            // 
-            this.GVNonItems_itemType.HeaderText = "Тип";
-            this.GVNonItems_itemType.Name = "GVNonItems_itemType";
-            this.GVNonItems_itemType.Width = 300;
-            // 
-            // GVNonItems_itemAttr
-            // 
-            this.GVNonItems_itemAttr.HeaderText = "Аттрибут";
-            this.GVNonItems_itemAttr.Items.AddRange(new object[] {
-            "Обычный",
-            "Квестовый",
-            "Авто"});
-            this.GVNonItems_itemAttr.Name = "GVNonItems_itemAttr";
-            this.GVNonItems_itemAttr.Width = 70;
-            // 
-            // GVNonItems_itemQuantity
-            // 
-            this.GVNonItems_itemQuantity.HeaderText = "Количество";
-            this.GVNonItems_itemQuantity.Name = "GVNonItems_itemQuantity";
-            this.GVNonItems_itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.GVNonItems_itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.GVNonItems_itemQuantity.Width = 75;
-            // 
-            // GVNonItems_ItemCond
-            // 
-            this.GVNonItems_ItemCond.HeaderText = "(%)Мин. прочность(%)";
-            this.GVNonItems_ItemCond.Name = "GVNonItems_ItemCond";
-            this.GVNonItems_ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // EditDialogForm
             // 
@@ -2342,6 +2342,10 @@
             this.tabActions.PerformLayout();
             this.tabItems.ResumeLayout(false);
             this.tabItems.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panelItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GVNonItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).EndInit();
@@ -2353,10 +2357,6 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

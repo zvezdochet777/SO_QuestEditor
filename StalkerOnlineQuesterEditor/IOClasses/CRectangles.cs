@@ -99,11 +99,11 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Добавляет новый прямоугольник в словарь
-        public int AddRectangle(string npc, PointF point, SizeF size)
+        public int AddRectangle(string npc, float x, float y, SizeF size)
         {
             SetCurrentNPC(npc);
             int newID = GetNewID();
-            CRectangle newRect = new CRectangle(newID, point, size);
+            CRectangle newRect = new CRectangle(newID, x, y, Convert.ToInt32(size.Width), Convert.ToInt32(size.Height), "", Color.Black);
             Rectangles[CurrentNPC].Add(newID, newRect);
             return newID;
         }
@@ -125,6 +125,7 @@ namespace StalkerOnlineQuesterEditor
         {
             Rectangles[npc][id].coordX = newX;
             Rectangles[npc][id].coordY = newY;
+            Console.WriteLine("ChangeCoordinates " + npc + " " + id + " " + newX + "," + newY);
         }
 
         public CRectangle GetSelectedRectangle()
@@ -172,17 +173,19 @@ namespace StalkerOnlineQuesterEditor
         {
             XDocument resultDoc = new XDocument(new XElement("root"));
             XElement npcElement;
+
             foreach (string npcName in Rectangles.Keys)
 	        {
                 if (Rectangles[npcName].Count == 0)
                     continue;
                 npcElement = new XElement("NPC", new XAttribute("NPC_Name", npcName));
                 foreach (CRectangle rectangle in Rectangles[npcName].Values)
-                {                    
+                {
+                    Console.WriteLine("coord " + rectangle.coordX + " " + rectangle.coordY);
                     npcElement.Add(new XElement("Rect",
                             new XAttribute("ID", rectangle.GetID()),
-                            new XElement("X", rectangle.coordX.ToString()),
-                            new XElement("Y", rectangle.coordY.ToString()),
+                            new XElement("X", Convert.ToString(rectangle.coordX)),
+                            new XElement("Y", Convert.ToString(rectangle.coordY)),
                             new XElement("width", rectangle.Width.ToString()),
                             new XElement("height", rectangle.Height.ToString()),
                             new XElement("Text", rectangle.GetText()),
@@ -225,6 +228,7 @@ namespace StalkerOnlineQuesterEditor
                     Color color = Color.Black;
                     if (rectangle.Descendants().Any(itm2 => itm2.Name == "Color"))
                         color = Color.FromName(rectangle.Element("Color").Value.ToString());
+                    Console.WriteLine(npcName + "____" + id.ToString() + " " + x.ToString() + " " + y.ToString());
                     Rectangles[npcName].Add(id, new CRectangle(id, x ,y, width, height, text, color));
                 }
             }

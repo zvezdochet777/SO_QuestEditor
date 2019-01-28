@@ -69,18 +69,19 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_HAVE_EFFECT, "27 Находиться под действием эффекта."));
             simpleQuestsType.Add(new СQuestType(TYPE_IN_AREA, "28 Находиться в зоне."));
 
-            ierarchyQuestsType.Add(new СQuestType(50, "50 Игра против режиссера."));
+            // ierarchyQuestsType.Add(new СQuestType(50, "50 Игра против режиссера."));
             simpleQuestsType.Add(new СQuestType(TYPE_CREATE_NPC, "51 Создать NPC."));
             simpleQuestsType.Add(new СQuestType(TYPE_CREATE_MOB, "52 Создать Моба."));
             simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC, "53 Убийство NPC."));
             simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC_WITH_ONTEST, "54 Убийство NPC с обязательной сдачей евента."));
 
-            ierarchyQuestsType.Add(new СQuestType(10,"10 Выполнение всех в любом порядке."));
-            ierarchyQuestsType.Add(new СQuestType(11,"11 Выполнение всех по порядку."));
-            ierarchyQuestsType.Add(new СQuestType(12,"12 Выполнение на выбор."));
-            ierarchyQuestsType.Add(new СQuestType(13,"13 Выполнение всех в любом порядке со сдачей."));
-            ierarchyQuestsType.Add(new СQuestType(14,"14 Выполнение всех по порядку со сдачей."));
-            ierarchyQuestsType.Add(new СQuestType(15,"15 Выполнение на выбор со сдачей."));           
+            ierarchyQuestsType.Add(new СQuestType(10,  "10 Выполнение всех в любом порядке."));
+            ierarchyQuestsType.Add(new СQuestType(11,  "11 Выполнение всех по порядку."));
+            ierarchyQuestsType.Add(new СQuestType(12,  "12 Выполнение на выбор."));
+            ierarchyQuestsType.Add(new СQuestType(13,  "13 Выполнение всех в любом порядке со сдачей."));
+            ierarchyQuestsType.Add(new СQuestType(14,  "14 Выполнение всех по порядку со сдачей."));
+            ierarchyQuestsType.Add(new СQuestType(15,  "15 Выполнение на выбор со сдачей."));
+            ierarchyQuestsType.Add(new СQuestType(100, "100 Проверить все дочерние квесты."));           
         }
         public bool isSimple(int questType)
         {

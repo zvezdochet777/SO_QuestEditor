@@ -61,7 +61,7 @@ namespace StalkerOnlineQuesterEditor
 
             int rectId;
             if (mainForm.RectManager.CheckIfRect(e.PickedNode.Tag, out rectId))
-                mainForm.RectManager.ChangeCoordinates(mainForm.GetCurrentNPC(), rectId, (int) x, (int) y);
+                mainForm.RectManager.ChangeCoordinates(mainForm.GetCurrentNPC(), rectId, x, y);
         }
 
         //! Клик мыши по узлу диалога или прямоугольнику - выделяем диалог и его потомков цветом, либо выделяем прямугольник

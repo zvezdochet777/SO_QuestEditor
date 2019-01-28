@@ -16,6 +16,9 @@ namespace StalkerOnlineQuesterEditor
     using QuestLocales = Dictionary<string, Dictionary<int, CQuest>>;
     //! Словарь из разностей версий диалогов русской версии и локализации
     using DifferenceDict = Dictionary<string, Dictionary<int, CDifference>>;
+    //! Словарь изменённых квестов (0 - открыто, 1 - закрыто, 2 - провалено, 3 - отменено)
+    using ChangedQuests = Dictionary<int, List<int>>;
+
 
     //! Класс обработки квестов
     public class CQuests
@@ -26,6 +29,8 @@ namespace StalkerOnlineQuesterEditor
         public int SHOW_JOURNAL = 8;
 
         public int last_quest_id = 0;
+
+        public static Dictionary<int, ChangedQuests> QuestParentList = new Dictionary<int, ChangedQuests>();
         //public Dictionary<string, NPCQuestDict> quest;
         //! Словарь <QuestID, CQuest> - основной, содержащий все квесты
         public NPCQuestDict quest;
@@ -246,7 +251,23 @@ namespace StalkerOnlineQuesterEditor
                             reward.randomQuest = true;
                         foreach (string quest in item.Element("Reward").Element("ChangeQuests").Value.Split(';'))
                             if (!quest.Equals(""))
-                                reward.ChangeQuests.Add(int.Parse(quest.Split(':')[0]), int.Parse(quest.Split(':')[1]));
+                            {
+                                int change_quest_id = int.Parse(quest.Split(':')[0]);
+                                int change_type = int.Parse(quest.Split(':')[1]);
+                                reward.ChangeQuests.Add(change_quest_id, change_type);
+
+                                if (!QuestParentList.ContainsKey(change_quest_id))
+                                    QuestParentList.Add(change_quest_id, new ChangedQuests());
+
+                                if (!QuestParentList[change_quest_id].ContainsKey(change_type))
+                                    QuestParentList[change_quest_id].Add(change_type, new List<int>());
+                                if (QuestParentList[change_quest_id][change_type].Contains(QuestID))
+                                {
+                                    //По какой-то причине квесты парсятся несколько раз
+                                    continue;
+                                }
+                                QuestParentList[change_quest_id][change_type].Add(QuestID);
+                            }             
                     }
                     if (item.Element("Reward").Element("blackBoxes") != null)
                     {

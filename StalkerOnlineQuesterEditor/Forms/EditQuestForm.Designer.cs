@@ -163,6 +163,13 @@
             this.targetComboBox = new System.Windows.Forms.ComboBox();
             this.lNameObject = new System.Windows.Forms.Label();
             this.questInformationBox = new System.Windows.Forms.GroupBox();
+            this.tcDescriptions = new System.Windows.Forms.TabControl();
+            this.tabOpen = new System.Windows.Forms.TabPage();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.tabOnTest = new System.Windows.Forms.TabPage();
+            this.descriptionOnTestTextBox = new System.Windows.Forms.TextBox();
+            this.tabClosed = new System.Windows.Forms.TabPage();
+            this.descriptionClosedTextBox = new System.Windows.Forms.TextBox();
             this.showGetCheckBox = new System.Windows.Forms.CheckBox();
             this.cbGetScreenMsg = new System.Windows.Forms.CheckBox();
             this.cbFailScreenMsg = new System.Windows.Forms.CheckBox();
@@ -183,22 +190,23 @@
             this.showTakeCheckBox = new System.Windows.Forms.CheckBox();
             this.showWinCheckBox = new System.Windows.Forms.CheckBox();
             this.showProgressCheckBox = new System.Windows.Forms.CheckBox();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.onFailedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.onWonTextBox = new System.Windows.Forms.MaskedTextBox();
             this.titleTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.eventLabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.tcDescriptions = new System.Windows.Forms.TabControl();
-            this.tabOpen = new System.Windows.Forms.TabPage();
-            this.tabOnTest = new System.Windows.Forms.TabPage();
-            this.descriptionOnTestTextBox = new System.Windows.Forms.TextBox();
-            this.tabClosed = new System.Windows.Forms.TabPage();
-            this.descriptionClosedTextBox = new System.Windows.Forms.TextBox();
-            this.lTitle = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.labelGiveQuestsOpened = new System.Windows.Forms.Label();
+            this.labelGiveQuestsClosed = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.labelGiveQuestsFailed = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.labelGiveQuestsCanceled = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -1685,6 +1693,81 @@
             this.questInformationBox.TabStop = false;
             this.questInformationBox.Text = "Информация";
             // 
+            // tcDescriptions
+            // 
+            this.tcDescriptions.Controls.Add(this.tabOpen);
+            this.tcDescriptions.Controls.Add(this.tabOnTest);
+            this.tcDescriptions.Controls.Add(this.tabClosed);
+            this.tcDescriptions.Location = new System.Drawing.Point(3, 30);
+            this.tcDescriptions.Name = "tcDescriptions";
+            this.tcDescriptions.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tcDescriptions.SelectedIndex = 0;
+            this.tcDescriptions.Size = new System.Drawing.Size(498, 82);
+            this.tcDescriptions.TabIndex = 43;
+            // 
+            // tabOpen
+            // 
+            this.tabOpen.Controls.Add(this.descriptionTextBox);
+            this.tabOpen.Location = new System.Drawing.Point(4, 22);
+            this.tabOpen.Name = "tabOpen";
+            this.tabOpen.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOpen.Size = new System.Drawing.Size(490, 56);
+            this.tabOpen.TabIndex = 0;
+            this.tabOpen.Text = "Open";
+            this.tabOpen.UseVisualStyleBackColor = true;
+            // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionTextBox.Location = new System.Drawing.Point(3, 3);
+            this.descriptionTextBox.Multiline = true;
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.descriptionTextBox.Size = new System.Drawing.Size(484, 50);
+            this.descriptionTextBox.TabIndex = 3;
+            // 
+            // tabOnTest
+            // 
+            this.tabOnTest.Controls.Add(this.descriptionOnTestTextBox);
+            this.tabOnTest.Location = new System.Drawing.Point(4, 22);
+            this.tabOnTest.Name = "tabOnTest";
+            this.tabOnTest.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOnTest.Size = new System.Drawing.Size(490, 56);
+            this.tabOnTest.TabIndex = 1;
+            this.tabOnTest.Text = "onTest";
+            this.tabOnTest.UseVisualStyleBackColor = true;
+            // 
+            // descriptionOnTestTextBox
+            // 
+            this.descriptionOnTestTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionOnTestTextBox.Location = new System.Drawing.Point(3, 3);
+            this.descriptionOnTestTextBox.Multiline = true;
+            this.descriptionOnTestTextBox.Name = "descriptionOnTestTextBox";
+            this.descriptionOnTestTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.descriptionOnTestTextBox.Size = new System.Drawing.Size(484, 50);
+            this.descriptionOnTestTextBox.TabIndex = 4;
+            // 
+            // tabClosed
+            // 
+            this.tabClosed.Controls.Add(this.descriptionClosedTextBox);
+            this.tabClosed.Location = new System.Drawing.Point(4, 22);
+            this.tabClosed.Name = "tabClosed";
+            this.tabClosed.Padding = new System.Windows.Forms.Padding(3);
+            this.tabClosed.Size = new System.Drawing.Size(490, 56);
+            this.tabClosed.TabIndex = 2;
+            this.tabClosed.Text = "Closed";
+            this.tabClosed.UseVisualStyleBackColor = true;
+            // 
+            // descriptionClosedTextBox
+            // 
+            this.descriptionClosedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionClosedTextBox.Location = new System.Drawing.Point(3, 3);
+            this.descriptionClosedTextBox.Multiline = true;
+            this.descriptionClosedTextBox.Name = "descriptionClosedTextBox";
+            this.descriptionClosedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.descriptionClosedTextBox.Size = new System.Drawing.Size(484, 50);
+            this.descriptionClosedTextBox.TabIndex = 5;
+            // 
             // showGetCheckBox
             // 
             this.showGetCheckBox.AutoSize = true;
@@ -1886,16 +1969,6 @@
             this.showProgressCheckBox.Text = "Показывать прогресс";
             this.showProgressCheckBox.UseVisualStyleBackColor = true;
             // 
-            // descriptionTextBox
-            // 
-            this.descriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionTextBox.Location = new System.Drawing.Point(3, 3);
-            this.descriptionTextBox.Multiline = true;
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionTextBox.Size = new System.Drawing.Size(484, 50);
-            this.descriptionTextBox.TabIndex = 3;
-            // 
             // onFailedTextBox
             // 
             this.onFailedTextBox.Location = new System.Drawing.Point(72, 215);
@@ -1916,6 +1989,17 @@
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(407, 20);
             this.titleTextBox.TabIndex = 1;
+            // 
+            // lTitle
+            // 
+            this.lTitle.AutoSize = true;
+            this.lTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lTitle.Location = new System.Drawing.Point(3, 16);
+            this.lTitle.Name = "lTitle";
+            this.lTitle.Size = new System.Drawing.Size(64, 13);
+            this.lTitle.TabIndex = 0;
+            this.lTitle.Text = "Заголовок:";
             // 
             // eventComboBox
             // 
@@ -1963,88 +2047,92 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // tcDescriptions
+            // label20
             // 
-            this.tcDescriptions.Controls.Add(this.tabOpen);
-            this.tcDescriptions.Controls.Add(this.tabOnTest);
-            this.tcDescriptions.Controls.Add(this.tabClosed);
-            this.tcDescriptions.Location = new System.Drawing.Point(3, 30);
-            this.tcDescriptions.Name = "tcDescriptions";
-            this.tcDescriptions.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tcDescriptions.SelectedIndex = 0;
-            this.tcDescriptions.Size = new System.Drawing.Size(498, 82);
-            this.tcDescriptions.TabIndex = 43;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(629, 6);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(122, 13);
+            this.label20.TabIndex = 43;
+            this.label20.Text = "Квест выдают квесты:";
             // 
-            // tabOpen
+            // labelGiveQuestsOpened
             // 
-            this.tabOpen.Controls.Add(this.descriptionTextBox);
-            this.tabOpen.Location = new System.Drawing.Point(4, 22);
-            this.tabOpen.Name = "tabOpen";
-            this.tabOpen.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOpen.Size = new System.Drawing.Size(490, 56);
-            this.tabOpen.TabIndex = 0;
-            this.tabOpen.Text = "Open";
-            this.tabOpen.UseVisualStyleBackColor = true;
+            this.labelGiveQuestsOpened.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGiveQuestsOpened.Location = new System.Drawing.Point(632, 19);
+            this.labelGiveQuestsOpened.Name = "labelGiveQuestsOpened";
+            this.labelGiveQuestsOpened.Size = new System.Drawing.Size(149, 34);
+            this.labelGiveQuestsOpened.TabIndex = 44;
             // 
-            // tabOnTest
+            // labelGiveQuestsClosed
             // 
-            this.tabOnTest.Controls.Add(this.descriptionOnTestTextBox);
-            this.tabOnTest.Location = new System.Drawing.Point(4, 22);
-            this.tabOnTest.Name = "tabOnTest";
-            this.tabOnTest.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOnTest.Size = new System.Drawing.Size(490, 56);
-            this.tabOnTest.TabIndex = 1;
-            this.tabOnTest.Text = "onTest";
-            this.tabOnTest.UseVisualStyleBackColor = true;
+            this.labelGiveQuestsClosed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGiveQuestsClosed.Location = new System.Drawing.Point(632, 66);
+            this.labelGiveQuestsClosed.Name = "labelGiveQuestsClosed";
+            this.labelGiveQuestsClosed.Size = new System.Drawing.Size(149, 34);
+            this.labelGiveQuestsClosed.TabIndex = 46;
             // 
-            // descriptionOnTestTextBox
+            // label22
             // 
-            this.descriptionOnTestTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionOnTestTextBox.Location = new System.Drawing.Point(3, 3);
-            this.descriptionOnTestTextBox.Multiline = true;
-            this.descriptionOnTestTextBox.Name = "descriptionOnTestTextBox";
-            this.descriptionOnTestTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionOnTestTextBox.Size = new System.Drawing.Size(484, 50);
-            this.descriptionOnTestTextBox.TabIndex = 4;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(629, 53);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(140, 13);
+            this.label22.TabIndex = 45;
+            this.label22.Text = "Квест закрывают квесты:";
             // 
-            // tabClosed
+            // labelGiveQuestsFailed
             // 
-            this.tabClosed.Controls.Add(this.descriptionClosedTextBox);
-            this.tabClosed.Location = new System.Drawing.Point(4, 22);
-            this.tabClosed.Name = "tabClosed";
-            this.tabClosed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClosed.Size = new System.Drawing.Size(490, 56);
-            this.tabClosed.TabIndex = 2;
-            this.tabClosed.Text = "Closed";
-            this.tabClosed.UseVisualStyleBackColor = true;
+            this.labelGiveQuestsFailed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGiveQuestsFailed.Location = new System.Drawing.Point(632, 115);
+            this.labelGiveQuestsFailed.Name = "labelGiveQuestsFailed";
+            this.labelGiveQuestsFailed.Size = new System.Drawing.Size(149, 34);
+            this.labelGiveQuestsFailed.TabIndex = 48;
             // 
-            // descriptionClosedTextBox
+            // label24
             // 
-            this.descriptionClosedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionClosedTextBox.Location = new System.Drawing.Point(3, 3);
-            this.descriptionClosedTextBox.Multiline = true;
-            this.descriptionClosedTextBox.Name = "descriptionClosedTextBox";
-            this.descriptionClosedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionClosedTextBox.Size = new System.Drawing.Size(484, 50);
-            this.descriptionClosedTextBox.TabIndex = 5;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(629, 102);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(150, 13);
+            this.label24.TabIndex = 47;
+            this.label24.Text = "Квест проваливают квесты:";
             // 
-            // lTitle
+            // labelGiveQuestsCanceled
             // 
-            this.lTitle.AutoSize = true;
-            this.lTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lTitle.Location = new System.Drawing.Point(3, 16);
-            this.lTitle.Name = "lTitle";
-            this.lTitle.Size = new System.Drawing.Size(64, 13);
-            this.lTitle.TabIndex = 0;
-            this.lTitle.Text = "Заголовок:";
+            this.labelGiveQuestsCanceled.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGiveQuestsCanceled.Location = new System.Drawing.Point(632, 165);
+            this.labelGiveQuestsCanceled.Name = "labelGiveQuestsCanceled";
+            this.labelGiveQuestsCanceled.Size = new System.Drawing.Size(149, 34);
+            this.labelGiveQuestsCanceled.TabIndex = 50;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(629, 152);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(133, 13);
+            this.label26.TabIndex = 49;
+            this.label26.Text = "Квест отменяют квесты:";
             // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(900, 898);
+            this.ClientSize = new System.Drawing.Size(785, 898);
+            this.Controls.Add(this.labelGiveQuestsCanceled);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.labelGiveQuestsFailed);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.labelGiveQuestsClosed);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.labelGiveQuestsOpened);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.QuestPanel);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.debugTextBox);
@@ -2055,6 +2143,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование события";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuestEditForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditQuestForm_FormClosed);
             this.QuestPanel.ResumeLayout(false);
             this.groupQuestBox.ResumeLayout(false);
             this.groupQuestBox.PerformLayout();
@@ -2276,5 +2365,13 @@
         private System.Windows.Forms.TabPage tabClosed;
         private System.Windows.Forms.TextBox descriptionClosedTextBox;
         private System.Windows.Forms.Label lTitle;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label labelGiveQuestsOpened;
+        private System.Windows.Forms.Label labelGiveQuestsClosed;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label labelGiveQuestsFailed;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label labelGiveQuestsCanceled;
+        private System.Windows.Forms.Label label26;
     }
 }
