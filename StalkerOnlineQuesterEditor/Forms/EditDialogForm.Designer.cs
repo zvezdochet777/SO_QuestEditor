@@ -57,6 +57,7 @@
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
             this.gbPrecondition = new System.Windows.Forms.GroupBox();
+            this.pictureTutorial = new System.Windows.Forms.PictureBox();
             this.pictureTransport = new System.Windows.Forms.PictureBox();
             this.pictureItems = new System.Windows.Forms.PictureBox();
             this.pictureAction = new System.Windows.Forms.PictureBox();
@@ -212,6 +213,8 @@
             this.tabTransport = new System.Windows.Forms.TabPage();
             this.cbNotInTransportList = new System.Windows.Forms.CheckBox();
             this.cbTransportInList = new System.Windows.Forms.CheckBox();
+            this.tabTutorial = new System.Windows.Forms.TabPage();
+            this.cbTutorialPhase = new System.Windows.Forms.ComboBox();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -227,9 +230,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTutorial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
@@ -263,6 +268,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVNonItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).BeginInit();
             this.tabTransport.SuspendLayout();
+            this.tabTutorial.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
@@ -274,7 +280,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tPlayerText.Location = new System.Drawing.Point(103, 46);
             this.tPlayerText.Name = "tPlayerText";
-            this.tPlayerText.Size = new System.Drawing.Size(479, 20);
+            this.tPlayerText.Size = new System.Drawing.Size(510, 20);
             this.tPlayerText.TabIndex = 0;
             this.tPlayerText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tPlayerText_KeyPress);
             // 
@@ -341,7 +347,7 @@
             this.gbActions.Enabled = false;
             this.gbActions.Location = new System.Drawing.Point(0, 546);
             this.gbActions.Name = "gbActions";
-            this.gbActions.Size = new System.Drawing.Size(614, 145);
+            this.gbActions.Size = new System.Drawing.Size(645, 145);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
             // 
@@ -546,7 +552,7 @@
             this.tReactionNPC.Multiline = true;
             this.tReactionNPC.Name = "tReactionNPC";
             this.tReactionNPC.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tReactionNPC.Size = new System.Drawing.Size(479, 88);
+            this.tReactionNPC.Size = new System.Drawing.Size(510, 88);
             this.tReactionNPC.TabIndex = 1;
             // 
             // tNodes
@@ -555,7 +561,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tNodes.Location = new System.Drawing.Point(103, 197);
             this.tNodes.Name = "tNodes";
-            this.tNodes.Size = new System.Drawing.Size(479, 20);
+            this.tNodes.Size = new System.Drawing.Size(510, 20);
             this.tNodes.TabIndex = 2;
             // 
             // lNodes
@@ -571,6 +577,7 @@
             // 
             this.gbPrecondition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbPrecondition.Controls.Add(this.pictureTutorial);
             this.gbPrecondition.Controls.Add(this.pictureTransport);
             this.gbPrecondition.Controls.Add(this.pictureItems);
             this.gbPrecondition.Controls.Add(this.actionsCheckBox);
@@ -585,10 +592,22 @@
             this.gbPrecondition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbPrecondition.Location = new System.Drawing.Point(0, 247);
             this.gbPrecondition.Name = "gbPrecondition";
-            this.gbPrecondition.Size = new System.Drawing.Size(614, 299);
+            this.gbPrecondition.Size = new System.Drawing.Size(645, 299);
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
+            // 
+            // pictureTutorial
+            // 
+            this.pictureTutorial.BackColor = System.Drawing.Color.Transparent;
+            this.pictureTutorial.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureTutorial.Location = new System.Drawing.Point(603, 10);
+            this.pictureTutorial.Name = "pictureTutorial";
+            this.pictureTutorial.Size = new System.Drawing.Size(10, 10);
+            this.pictureTutorial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureTutorial.TabIndex = 62;
+            this.pictureTutorial.TabStop = false;
+            this.pictureTutorial.Visible = false;
             // 
             // pictureTransport
             // 
@@ -712,11 +731,12 @@
             this.tabQuestsCircs.Controls.Add(this.tabActions);
             this.tabQuestsCircs.Controls.Add(this.tabItems);
             this.tabQuestsCircs.Controls.Add(this.tabTransport);
+            this.tabQuestsCircs.Controls.Add(this.tabTutorial);
             this.tabQuestsCircs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabQuestsCircs.Location = new System.Drawing.Point(4, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
             this.tabQuestsCircs.SelectedIndex = 0;
-            this.tabQuestsCircs.Size = new System.Drawing.Size(606, 256);
+            this.tabQuestsCircs.Size = new System.Drawing.Size(637, 256);
             this.tabQuestsCircs.TabIndex = 52;
             this.tabQuestsCircs.SelectedIndexChanged += new System.EventHandler(this.tabQuestsCircs_SelectedIndexChanged);
             // 
@@ -727,7 +747,7 @@
             this.tabQuests.Location = new System.Drawing.Point(4, 22);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(598, 230);
+            this.tabQuests.Size = new System.Drawing.Size(629, 230);
             this.tabQuests.TabIndex = 0;
             this.tabQuests.Text = "Квесты";
             // 
@@ -1110,7 +1130,7 @@
             this.tabReputation.Location = new System.Drawing.Point(4, 22);
             this.tabReputation.Name = "tabReputation";
             this.tabReputation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation.Size = new System.Drawing.Size(598, 230);
+            this.tabReputation.Size = new System.Drawing.Size(629, 230);
             this.tabReputation.TabIndex = 1;
             this.tabReputation.Text = "Репутация";
             // 
@@ -1134,7 +1154,7 @@
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation.Location = new System.Drawing.Point(3, 3);
             this.dataReputation.Name = "dataReputation";
-            this.dataReputation.Size = new System.Drawing.Size(592, 224);
+            this.dataReputation.Size = new System.Drawing.Size(623, 224);
             this.dataReputation.TabIndex = 3;
             // 
             // id
@@ -1174,7 +1194,7 @@
             this.tabKarma.Location = new System.Drawing.Point(4, 22);
             this.tabKarma.Name = "tabKarma";
             this.tabKarma.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKarma.Size = new System.Drawing.Size(598, 230);
+            this.tabKarma.Size = new System.Drawing.Size(629, 230);
             this.tabKarma.TabIndex = 2;
             this.tabKarma.Text = "Карма";
             // 
@@ -1184,7 +1204,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(3, 86);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(592, 141);
+            this.panel2.Size = new System.Drawing.Size(623, 141);
             this.panel2.TabIndex = 4;
             // 
             // labelDescription
@@ -1235,7 +1255,7 @@
             this.tabClan.Location = new System.Drawing.Point(4, 22);
             this.tabClan.Name = "tabClan";
             this.tabClan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClan.Size = new System.Drawing.Size(598, 230);
+            this.tabClan.Size = new System.Drawing.Size(629, 230);
             this.tabClan.TabIndex = 3;
             this.tabClan.Text = "Клановые";
             // 
@@ -1390,7 +1410,7 @@
             this.tabEffects.Location = new System.Drawing.Point(4, 22);
             this.tabEffects.Name = "tabEffects";
             this.tabEffects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEffects.Size = new System.Drawing.Size(598, 230);
+            this.tabEffects.Size = new System.Drawing.Size(629, 230);
             this.tabEffects.TabIndex = 4;
             this.tabEffects.Text = "Эффекты";
             this.tabEffects.UseVisualStyleBackColor = true;
@@ -1405,7 +1425,7 @@
             this.effectsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.effectsPanel.Location = new System.Drawing.Point(3, 3);
             this.effectsPanel.Name = "effectsPanel";
-            this.effectsPanel.Size = new System.Drawing.Size(592, 224);
+            this.effectsPanel.Size = new System.Drawing.Size(623, 224);
             this.effectsPanel.TabIndex = 17;
             // 
             // lMustNotEffects
@@ -1468,7 +1488,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.dataGridNotEffects.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridNotEffects.Location = new System.Drawing.Point(346, 0);
+            this.dataGridNotEffects.Location = new System.Drawing.Point(377, 0);
             this.dataGridNotEffects.Name = "dataGridNotEffects";
             this.dataGridNotEffects.Size = new System.Drawing.Size(246, 224);
             this.dataGridNotEffects.TabIndex = 6;
@@ -1511,7 +1531,7 @@
             this.tabLevel.Controls.Add(this.lPlayerLevel);
             this.tabLevel.Location = new System.Drawing.Point(4, 22);
             this.tabLevel.Name = "tabLevel";
-            this.tabLevel.Size = new System.Drawing.Size(598, 230);
+            this.tabLevel.Size = new System.Drawing.Size(629, 230);
             this.tabLevel.TabIndex = 5;
             this.tabLevel.Text = "Уровень";
             // 
@@ -1648,7 +1668,7 @@
             this.tabSkills.Location = new System.Drawing.Point(4, 22);
             this.tabSkills.Name = "tabSkills";
             this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSkills.Size = new System.Drawing.Size(598, 230);
+            this.tabSkills.Size = new System.Drawing.Size(629, 230);
             this.tabSkills.TabIndex = 6;
             this.tabSkills.Text = "Навыки";
             this.tabSkills.UseVisualStyleBackColor = true;
@@ -1666,7 +1686,7 @@
             this.dataSkill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataSkill.Location = new System.Drawing.Point(3, 3);
             this.dataSkill.Name = "dataSkill";
-            this.dataSkill.Size = new System.Drawing.Size(592, 224);
+            this.dataSkill.Size = new System.Drawing.Size(623, 224);
             this.dataSkill.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn4
@@ -1713,7 +1733,7 @@
             this.tabActions.Location = new System.Drawing.Point(4, 22);
             this.tabActions.Name = "tabActions";
             this.tabActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActions.Size = new System.Drawing.Size(598, 230);
+            this.tabActions.Size = new System.Drawing.Size(629, 230);
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
@@ -1868,7 +1888,7 @@
             this.tabItems.Location = new System.Drawing.Point(4, 22);
             this.tabItems.Name = "tabItems";
             this.tabItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tabItems.Size = new System.Drawing.Size(598, 230);
+            this.tabItems.Size = new System.Drawing.Size(629, 230);
             this.tabItems.TabIndex = 8;
             this.tabItems.Text = "Предметы";
             this.tabItems.SizeChanged += new System.EventHandler(this.tabItems_SizeChanged);
@@ -1878,7 +1898,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.rbNonItemsOr);
             this.panel3.Controls.Add(this.rbNonItemsAnd);
-            this.panel3.Location = new System.Drawing.Point(510, 6);
+            this.panel3.Location = new System.Drawing.Point(541, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(88, 31);
             this.panel3.TabIndex = 14;
@@ -1911,7 +1931,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.rbItemsOr);
             this.panel1.Controls.Add(this.rbItemsAnd);
-            this.panel1.Location = new System.Drawing.Point(194, 6);
+            this.panel1.Location = new System.Drawing.Point(225, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(88, 31);
             this.panel1.TabIndex = 12;
@@ -1947,7 +1967,7 @@
             this.panelItems.Controls.Add(this.GVItems);
             this.panelItems.Location = new System.Drawing.Point(0, 39);
             this.panelItems.Name = "panelItems";
-            this.panelItems.Size = new System.Drawing.Size(598, 191);
+            this.panelItems.Size = new System.Drawing.Size(629, 191);
             this.panelItems.TabIndex = 9;
             this.panelItems.Visible = false;
             // 
@@ -1960,7 +1980,7 @@
             this.GVNonItems_itemQuantity,
             this.GVNonItems_ItemCond});
             this.GVNonItems.Dock = System.Windows.Forms.DockStyle.Right;
-            this.GVNonItems.Location = new System.Drawing.Point(310, 0);
+            this.GVNonItems.Location = new System.Drawing.Point(341, 0);
             this.GVNonItems.Name = "GVNonItems";
             this.GVNonItems.Size = new System.Drawing.Size(288, 191);
             this.GVNonItems.TabIndex = 7;
@@ -2105,7 +2125,7 @@
             this.tabTransport.Location = new System.Drawing.Point(4, 22);
             this.tabTransport.Name = "tabTransport";
             this.tabTransport.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTransport.Size = new System.Drawing.Size(598, 230);
+            this.tabTransport.Size = new System.Drawing.Size(629, 230);
             this.tabTransport.TabIndex = 9;
             this.tabTransport.Text = "Перевоз";
             // 
@@ -2128,6 +2148,26 @@
             this.cbTransportInList.TabIndex = 0;
             this.cbTransportInList.Text = "в списке транспортировки";
             this.cbTransportInList.UseVisualStyleBackColor = true;
+            // 
+            // tabTutorial
+            // 
+            this.tabTutorial.Controls.Add(this.label13);
+            this.tabTutorial.Controls.Add(this.cbTutorialPhase);
+            this.tabTutorial.Location = new System.Drawing.Point(4, 22);
+            this.tabTutorial.Name = "tabTutorial";
+            this.tabTutorial.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTutorial.Size = new System.Drawing.Size(629, 230);
+            this.tabTutorial.TabIndex = 10;
+            this.tabTutorial.Text = "Туториал";
+            this.tabTutorial.UseVisualStyleBackColor = true;
+            // 
+            // cbTutorialPhase
+            // 
+            this.cbTutorialPhase.FormattingEnabled = true;
+            this.cbTutorialPhase.Location = new System.Drawing.Point(128, 16);
+            this.cbTutorialPhase.Name = "cbTutorialPhase";
+            this.cbTutorialPhase.Size = new System.Drawing.Size(166, 21);
+            this.cbTutorialPhase.TabIndex = 0;
             // 
             // bEditDialogOk
             // 
@@ -2169,7 +2209,7 @@
             this.pCommands.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pCommands.Location = new System.Drawing.Point(0, 691);
             this.pCommands.Name = "pCommands";
-            this.pCommands.Size = new System.Drawing.Size(614, 52);
+            this.pCommands.Size = new System.Drawing.Size(645, 52);
             this.pCommands.TabIndex = 13;
             // 
             // cbHidden
@@ -2227,7 +2267,7 @@
             this.gbTexts.Controls.Add(this.lReactionNPC);
             this.gbTexts.Location = new System.Drawing.Point(0, 0);
             this.gbTexts.Name = "gbTexts";
-            this.gbTexts.Size = new System.Drawing.Size(614, 247);
+            this.gbTexts.Size = new System.Drawing.Size(645, 247);
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
@@ -2237,7 +2277,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tCheckNodes.Location = new System.Drawing.Point(103, 221);
             this.tCheckNodes.Name = "tCheckNodes";
-            this.tCheckNodes.Size = new System.Drawing.Size(498, 20);
+            this.tCheckNodes.Size = new System.Drawing.Size(529, 20);
             this.tCheckNodes.TabIndex = 18;
             // 
             // lCheckNodes
@@ -2287,12 +2327,21 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(29, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(93, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Фаза туториала:";
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(614, 743);
+            this.ClientSize = new System.Drawing.Size(645, 743);
             this.Controls.Add(this.pCommands);
             this.Controls.Add(this.gbActions);
             this.Controls.Add(this.gbPrecondition);
@@ -2307,6 +2356,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).EndInit();
             this.gbPrecondition.ResumeLayout(false);
             this.gbPrecondition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTutorial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).EndInit();
@@ -2351,6 +2401,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).EndInit();
             this.tabTransport.ResumeLayout(false);
             this.tabTransport.PerformLayout();
+            this.tabTutorial.ResumeLayout(false);
+            this.tabTutorial.PerformLayout();
             this.pCommands.ResumeLayout(false);
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
@@ -2563,5 +2615,9 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn GVItems_itemAttr;
         private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_itemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_ItemCond;
+        private System.Windows.Forms.PictureBox pictureTutorial;
+        private System.Windows.Forms.TabPage tabTutorial;
+        private System.Windows.Forms.ComboBox cbTutorialPhase;
+        private System.Windows.Forms.Label label13;
     }
 }

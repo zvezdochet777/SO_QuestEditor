@@ -33,7 +33,6 @@
             this.treeChapters = new System.Windows.Forms.TreeView();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.changeLittleCard = new System.Windows.Forms.Button();
-            this.labelProgress = new System.Windows.Forms.Label();
             this.btnAddComment = new System.Windows.Forms.Button();
             this.btnLink = new System.Windows.Forms.Button();
             this.btnRename = new System.Windows.Forms.Button();
@@ -45,6 +44,12 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.labelProgress = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuStripItemCut = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripItemPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtbText
@@ -52,6 +57,7 @@
             this.rtbText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbText.ContextMenuStrip = this.contextMenuStrip1;
             this.rtbText.Location = new System.Drawing.Point(221, -1);
             this.rtbText.Name = "rtbText";
             this.rtbText.Size = new System.Drawing.Size(813, 537);
@@ -87,14 +93,6 @@
             this.toolTip.SetToolTip(this.changeLittleCard, "Редактировать текст всплывающей подсказки");
             this.changeLittleCard.UseVisualStyleBackColor = true;
             this.changeLittleCard.Click += new System.EventHandler(this.changeLittleCard_Click);
-            // 
-            // labelProgress
-            // 
-            this.labelProgress.AutoSize = true;
-            this.labelProgress.Location = new System.Drawing.Point(1368, 523);
-            this.labelProgress.Name = "labelProgress";
-            this.labelProgress.Size = new System.Drawing.Size(0, 13);
-            this.labelProgress.TabIndex = 10;
             // 
             // btnAddComment
             // 
@@ -236,6 +234,44 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // labelProgress
+            // 
+            this.labelProgress.AutoSize = true;
+            this.labelProgress.Location = new System.Drawing.Point(1368, 523);
+            this.labelProgress.Name = "labelProgress";
+            this.labelProgress.Size = new System.Drawing.Size(0, 13);
+            this.labelProgress.TabIndex = 10;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripItemCut,
+            this.menuStripItemCopy,
+            this.menuStripItemPaste});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            // 
+            // menuStripItemCut
+            // 
+            this.menuStripItemCut.Name = "menuStripItemCut";
+            this.menuStripItemCut.Size = new System.Drawing.Size(180, 22);
+            this.menuStripItemCut.Text = "Вырезать";
+            this.menuStripItemCut.Click += new System.EventHandler(this.menuStripItemCut_Click);
+            // 
+            // menuStripItemCopy
+            // 
+            this.menuStripItemCopy.Name = "menuStripItemCopy";
+            this.menuStripItemCopy.Size = new System.Drawing.Size(180, 22);
+            this.menuStripItemCopy.Text = "Копировать";
+            this.menuStripItemCopy.Click += new System.EventHandler(this.menuStripItemCopy_Click);
+            // 
+            // menuStripItemPaste
+            // 
+            this.menuStripItemPaste.Name = "menuStripItemPaste";
+            this.menuStripItemPaste.Size = new System.Drawing.Size(180, 22);
+            this.menuStripItemPaste.Text = "Вставить";
+            this.menuStripItemPaste.Click += new System.EventHandler(this.menuStripItemPaste_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,6 +295,7 @@
             this.Name = "MainForm";
             this.Text = "HelpEditor";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,6 +319,10 @@
         private System.Windows.Forms.Button btnRename;
         private System.Windows.Forms.Button btnLink;
         private System.Windows.Forms.Button btnAddComment;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuStripItemCut;
+        private System.Windows.Forms.ToolStripMenuItem menuStripItemCopy;
+        private System.Windows.Forms.ToolStripMenuItem menuStripItemPaste;
     }
 }
 

@@ -121,6 +121,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                 }
 
             }
+            reader.Close();
         }
 
         private void saveIgnoresIDs()

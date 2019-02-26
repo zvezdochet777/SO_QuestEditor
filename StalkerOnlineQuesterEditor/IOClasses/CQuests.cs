@@ -387,8 +387,8 @@ namespace StalkerOnlineQuesterEditor
                     target[QuestID].QuestInformation.Title = quest.Element("Title").Value;
                 if (quest.Element("Description") != null)
                     target[QuestID].QuestInformation.Description = quest.Element("Description").Value;
-                if (quest.Element("DesctiptionOnTest") != null)
-                    target[QuestID].QuestInformation.DescriptionOnTest = quest.Element("DesctiptionOnTest").Value;
+                if (quest.Element("DescriptionOnTest") != null)
+                    target[QuestID].QuestInformation.DescriptionOnTest = quest.Element("DescriptionOnTest").Value;
                 if (quest.Element("DescriptionClosed") != null)
                     target[QuestID].QuestInformation.DescriptionClosed = quest.Element("DescriptionClosed").Value;
                 if (quest.Element("onWin") != null)

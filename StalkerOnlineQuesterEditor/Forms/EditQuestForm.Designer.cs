@@ -248,7 +248,6 @@
             // groupQuestBox
             // 
             this.groupQuestBox.Controls.Add(this.tabControl1);
-            this.groupQuestBox.Controls.Add(this.panelCreateMob);
             this.groupQuestBox.Controls.Add(this.panelCreateNPC);
             this.groupQuestBox.Controls.Add(this.cbHidden);
             this.groupQuestBox.Controls.Add(this.filedIFtContentBox);
@@ -265,10 +264,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 682);
+            this.tabControl1.Location = new System.Drawing.Point(3, 692);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(625, 164);
+            this.tabControl1.Size = new System.Drawing.Size(625, 154);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPage1
@@ -277,7 +276,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(617, 138);
+            this.tabPage1.Size = new System.Drawing.Size(617, 128);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Награды";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -484,7 +483,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(617, 138);
+            this.tabPage2.Size = new System.Drawing.Size(602, 128);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Штрафы";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -629,9 +628,9 @@
             this.panelCreateMob.Controls.Add(this.lbScenType);
             this.panelCreateMob.Controls.Add(this.cbMobType);
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
-            this.panelCreateMob.Location = new System.Drawing.Point(3, 327);
+            this.panelCreateMob.Location = new System.Drawing.Point(3, 4);
             this.panelCreateMob.Name = "panelCreateMob";
-            this.panelCreateMob.Size = new System.Drawing.Size(622, 176);
+            this.panelCreateMob.Size = new System.Drawing.Size(622, 149);
             this.panelCreateMob.TabIndex = 17;
             this.panelCreateMob.Visible = false;
             // 
@@ -769,6 +768,7 @@
             // panelCreateNPC
             // 
             this.panelCreateNPC.Controls.Add(this.cbSecondaryWeapon);
+            this.panelCreateNPC.Controls.Add(this.panelCreateMob);
             this.panelCreateNPC.Controls.Add(this.label18);
             this.panelCreateNPC.Controls.Add(this.cbPrimary2Weapon);
             this.panelCreateNPC.Controls.Add(this.label17);
@@ -800,16 +800,16 @@
             this.panelCreateNPC.Controls.Add(this.lbFractionID);
             this.panelCreateNPC.Controls.Add(this.lbNPCName);
             this.panelCreateNPC.Controls.Add(this.lbDisplayName);
-            this.panelCreateNPC.Location = new System.Drawing.Point(0, 337);
+            this.panelCreateNPC.Location = new System.Drawing.Point(0, 328);
             this.panelCreateNPC.Name = "panelCreateNPC";
-            this.panelCreateNPC.Size = new System.Drawing.Size(622, 180);
+            this.panelCreateNPC.Size = new System.Drawing.Size(622, 153);
             this.panelCreateNPC.TabIndex = 25;
             this.panelCreateNPC.Visible = false;
             // 
             // cbSecondaryWeapon
             // 
             this.cbSecondaryWeapon.FormattingEnabled = true;
-            this.cbSecondaryWeapon.Location = new System.Drawing.Point(308, 71);
+            this.cbSecondaryWeapon.Location = new System.Drawing.Point(308, 64);
             this.cbSecondaryWeapon.Name = "cbSecondaryWeapon";
             this.cbSecondaryWeapon.Size = new System.Drawing.Size(155, 21);
             this.cbSecondaryWeapon.TabIndex = 52;
@@ -817,7 +817,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(230, 75);
+            this.label18.Location = new System.Drawing.Point(230, 68);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(65, 13);
             this.label18.TabIndex = 51;
@@ -826,7 +826,7 @@
             // cbPrimary2Weapon
             // 
             this.cbPrimary2Weapon.FormattingEnabled = true;
-            this.cbPrimary2Weapon.Location = new System.Drawing.Point(308, 49);
+            this.cbPrimary2Weapon.Location = new System.Drawing.Point(308, 42);
             this.cbPrimary2Weapon.Name = "cbPrimary2Weapon";
             this.cbPrimary2Weapon.Size = new System.Drawing.Size(155, 21);
             this.cbPrimary2Weapon.TabIndex = 50;
@@ -834,7 +834,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(230, 53);
+            this.label17.Location = new System.Drawing.Point(230, 46);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(82, 13);
             this.label17.TabIndex = 49;
@@ -843,7 +843,7 @@
             // cbPrimaryWeapon
             // 
             this.cbPrimaryWeapon.FormattingEnabled = true;
-            this.cbPrimaryWeapon.Location = new System.Drawing.Point(308, 28);
+            this.cbPrimaryWeapon.Location = new System.Drawing.Point(308, 21);
             this.cbPrimaryWeapon.Name = "cbPrimaryWeapon";
             this.cbPrimaryWeapon.Size = new System.Drawing.Size(155, 21);
             this.cbPrimaryWeapon.TabIndex = 48;
@@ -851,7 +851,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(230, 32);
+            this.label16.Location = new System.Drawing.Point(230, 25);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(76, 13);
             this.label16.TabIndex = 47;
@@ -859,7 +859,7 @@
             // 
             // tbCloth
             // 
-            this.tbCloth.Location = new System.Drawing.Point(308, 93);
+            this.tbCloth.Location = new System.Drawing.Point(308, 86);
             this.tbCloth.Name = "tbCloth";
             this.tbCloth.Size = new System.Drawing.Size(306, 20);
             this.tbCloth.TabIndex = 46;
@@ -872,7 +872,7 @@
             0,
             0,
             65536});
-            this.nupNPCShootRangeOnCreature.Location = new System.Drawing.Point(93, 146);
+            this.nupNPCShootRangeOnCreature.Location = new System.Drawing.Point(93, 131);
             this.nupNPCShootRangeOnCreature.Maximum = new decimal(new int[] {
             200,
             0,
@@ -890,7 +890,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 149);
+            this.label15.Location = new System.Drawing.Point(4, 134);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(92, 13);
             this.label15.TabIndex = 44;
@@ -904,7 +904,7 @@
             0,
             0,
             65536});
-            this.nupNPCShootRange.Location = new System.Drawing.Point(283, 145);
+            this.nupNPCShootRange.Location = new System.Drawing.Point(283, 130);
             this.nupNPCShootRange.Maximum = new decimal(new int[] {
             200,
             0,
@@ -922,7 +922,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(230, 148);
+            this.label14.Location = new System.Drawing.Point(230, 133);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(52, 13);
             this.label14.TabIndex = 42;
@@ -931,7 +931,7 @@
             // cbNPCIgnoreWAR
             // 
             this.cbNPCIgnoreWAR.AutoSize = true;
-            this.cbNPCIgnoreWAR.Location = new System.Drawing.Point(424, 148);
+            this.cbNPCIgnoreWAR.Location = new System.Drawing.Point(424, 133);
             this.cbNPCIgnoreWAR.Name = "cbNPCIgnoreWAR";
             this.cbNPCIgnoreWAR.Size = new System.Drawing.Size(82, 17);
             this.cbNPCIgnoreWAR.TabIndex = 41;
@@ -941,7 +941,7 @@
             // cbNPCMobNoAggr
             // 
             this.cbNPCMobNoAggr.AutoSize = true;
-            this.cbNPCMobNoAggr.Location = new System.Drawing.Point(509, 148);
+            this.cbNPCMobNoAggr.Location = new System.Drawing.Point(509, 133);
             this.cbNPCMobNoAggr.Name = "cbNPCMobNoAggr";
             this.cbNPCMobNoAggr.Size = new System.Drawing.Size(77, 17);
             this.cbNPCMobNoAggr.TabIndex = 40;
@@ -951,7 +951,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(229, 126);
+            this.label3.Location = new System.Drawing.Point(229, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 39;
@@ -965,7 +965,7 @@
             0,
             0,
             65536});
-            this.nupNPCSpeed.Location = new System.Drawing.Point(283, 122);
+            this.nupNPCSpeed.Location = new System.Drawing.Point(283, 107);
             this.nupNPCSpeed.Maximum = new decimal(new int[] {
             20,
             0,
@@ -978,7 +978,7 @@
             // cbNPCInvul
             // 
             this.cbNPCInvul.AutoSize = true;
-            this.cbNPCInvul.Location = new System.Drawing.Point(509, 125);
+            this.cbNPCInvul.Location = new System.Drawing.Point(509, 110);
             this.cbNPCInvul.Name = "cbNPCInvul";
             this.cbNPCInvul.Size = new System.Drawing.Size(96, 17);
             this.cbNPCInvul.TabIndex = 37;
@@ -988,7 +988,7 @@
             // cbUniqNPC
             // 
             this.cbUniqNPC.AutoSize = true;
-            this.cbUniqNPC.Location = new System.Drawing.Point(424, 125);
+            this.cbUniqNPC.Location = new System.Drawing.Point(424, 110);
             this.cbUniqNPC.Name = "cbUniqNPC";
             this.cbUniqNPC.Size = new System.Drawing.Size(90, 17);
             this.cbUniqNPC.TabIndex = 36;
@@ -998,7 +998,7 @@
             // lbArmor
             // 
             this.lbArmor.AutoSize = true;
-            this.lbArmor.Location = new System.Drawing.Point(232, 97);
+            this.lbArmor.Location = new System.Drawing.Point(232, 90);
             this.lbArmor.Name = "lbArmor";
             this.lbArmor.Size = new System.Drawing.Size(41, 13);
             this.lbArmor.TabIndex = 32;
@@ -1006,7 +1006,7 @@
             // 
             // tbNPCAnim
             // 
-            this.tbNPCAnim.Location = new System.Drawing.Point(92, 122);
+            this.tbNPCAnim.Location = new System.Drawing.Point(92, 111);
             this.tbNPCAnim.Name = "tbNPCAnim";
             this.tbNPCAnim.Size = new System.Drawing.Size(136, 20);
             this.tbNPCAnim.TabIndex = 31;
@@ -1014,7 +1014,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 125);
+            this.label2.Location = new System.Drawing.Point(5, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 26;
@@ -1023,7 +1023,7 @@
             // cbWeapon
             // 
             this.cbWeapon.FormattingEnabled = true;
-            this.cbWeapon.Location = new System.Drawing.Point(308, 7);
+            this.cbWeapon.Location = new System.Drawing.Point(308, 0);
             this.cbWeapon.Name = "cbWeapon";
             this.cbWeapon.Size = new System.Drawing.Size(155, 21);
             this.cbWeapon.TabIndex = 17;
@@ -1031,35 +1031,35 @@
             // cbFractionID
             // 
             this.cbFractionID.FormattingEnabled = true;
-            this.cbFractionID.Location = new System.Drawing.Point(92, 52);
+            this.cbFractionID.Location = new System.Drawing.Point(92, 45);
             this.cbFractionID.Name = "cbFractionID";
             this.cbFractionID.Size = new System.Drawing.Size(136, 21);
             this.cbFractionID.TabIndex = 12;
             // 
             // tbWay
             // 
-            this.tbWay.Location = new System.Drawing.Point(92, 96);
+            this.tbWay.Location = new System.Drawing.Point(92, 89);
             this.tbWay.Name = "tbWay";
             this.tbWay.Size = new System.Drawing.Size(136, 20);
             this.tbWay.TabIndex = 10;
             // 
             // tbReputation
             // 
-            this.tbReputation.Location = new System.Drawing.Point(92, 74);
+            this.tbReputation.Location = new System.Drawing.Point(92, 67);
             this.tbReputation.Name = "tbReputation";
             this.tbReputation.Size = new System.Drawing.Size(136, 20);
             this.tbReputation.TabIndex = 9;
             // 
             // tbNpcName
             // 
-            this.tbNpcName.Location = new System.Drawing.Point(92, 30);
+            this.tbNpcName.Location = new System.Drawing.Point(92, 23);
             this.tbNpcName.Name = "tbNpcName";
             this.tbNpcName.Size = new System.Drawing.Size(136, 20);
             this.tbNpcName.TabIndex = 7;
             // 
             // tbDisplayName
             // 
-            this.tbDisplayName.Location = new System.Drawing.Point(92, 8);
+            this.tbDisplayName.Location = new System.Drawing.Point(92, 1);
             this.tbDisplayName.Name = "tbDisplayName";
             this.tbDisplayName.Size = new System.Drawing.Size(136, 20);
             this.tbDisplayName.TabIndex = 6;
@@ -1067,7 +1067,7 @@
             // lbWay
             // 
             this.lbWay.AutoSize = true;
-            this.lbWay.Location = new System.Drawing.Point(5, 99);
+            this.lbWay.Location = new System.Drawing.Point(5, 92);
             this.lbWay.Name = "lbWay";
             this.lbWay.Size = new System.Drawing.Size(34, 13);
             this.lbWay.TabIndex = 5;
@@ -1076,7 +1076,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(230, 11);
+            this.label1.Location = new System.Drawing.Point(230, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 4;
@@ -1085,7 +1085,7 @@
             // lbReputation
             // 
             this.lbReputation.AutoSize = true;
-            this.lbReputation.Location = new System.Drawing.Point(5, 77);
+            this.lbReputation.Location = new System.Drawing.Point(5, 70);
             this.lbReputation.Name = "lbReputation";
             this.lbReputation.Size = new System.Drawing.Size(87, 13);
             this.lbReputation.TabIndex = 3;
@@ -1094,7 +1094,7 @@
             // lbFractionID
             // 
             this.lbFractionID.AutoSize = true;
-            this.lbFractionID.Location = new System.Drawing.Point(4, 54);
+            this.lbFractionID.Location = new System.Drawing.Point(4, 47);
             this.lbFractionID.Name = "lbFractionID";
             this.lbFractionID.Size = new System.Drawing.Size(57, 13);
             this.lbFractionID.TabIndex = 2;
@@ -1103,7 +1103,7 @@
             // lbNPCName
             // 
             this.lbNPCName.AutoSize = true;
-            this.lbNPCName.Location = new System.Drawing.Point(5, 32);
+            this.lbNPCName.Location = new System.Drawing.Point(5, 25);
             this.lbNPCName.Name = "lbNPCName";
             this.lbNPCName.Size = new System.Drawing.Size(32, 13);
             this.lbNPCName.TabIndex = 1;
@@ -1112,7 +1112,7 @@
             // lbDisplayName
             // 
             this.lbDisplayName.AutoSize = true;
-            this.lbDisplayName.Location = new System.Drawing.Point(5, 11);
+            this.lbDisplayName.Location = new System.Drawing.Point(5, 4);
             this.lbDisplayName.Name = "lbDisplayName";
             this.lbDisplayName.Size = new System.Drawing.Size(67, 13);
             this.lbDisplayName.TabIndex = 0;

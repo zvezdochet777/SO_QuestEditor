@@ -52,7 +52,7 @@ namespace StalkerOnlineQuesterEditor
             }
 
             FillActionsComboBox();
-
+            FillTutorialComboBox();
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
 
@@ -338,6 +338,7 @@ namespace StalkerOnlineQuesterEditor
             this.initActionTab();
             this.initItemsTab();
             this.initTransportTab();
+            this.initTutorialTab();
             checkClanOptionsIndicator();
         }
 
@@ -348,6 +349,13 @@ namespace StalkerOnlineQuesterEditor
                 textBox.Text += item;
             else
                 textBox.Text += ("," + item);
+        }
+
+        private void FillTutorialComboBox()
+        {
+            cbTutorialPhase.Items.Clear();
+            cbTutorialPhase.DataSource = parent.tutorialPhases.getAllNames();
+            cbTutorialPhase.SelectedItem = null;
         }
 
         private void FillActionsComboBox()
@@ -544,7 +552,26 @@ namespace StalkerOnlineQuesterEditor
 
             if (!tNodes.Text.Equals(""))
                 foreach (string node in tNodes.Text.Split(','))
+                {
+                    int node_id = int.Parse(node);
+                    if (!this.parent.getAllDialogsIDonCurrentNPC().Contains(node_id))
+                    {
+                        MessageBox.Show("Действие невозможно: диалог №"+ node_id.ToString() +" не существует у этого персонажа.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (this.parent.getDialogOnDialogID(node_id).Nodes.Contains(this.currentDialogID))
+                    {
+                        MessageBox.Show("Действие невозможно: диалог №" + node_id.ToString() + " уже сам ссылается на текущий диалог.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (node_id == this.currentDialogID)
+                    {
+                        MessageBox.Show("Действие невозможно: диалог №" + node_id.ToString() + " ссылается сам на себя.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     nodes.Add(int.Parse(node));
+                }
+                    
             if (!tCheckNodes.Text.Equals(""))
                 foreach (string node in tCheckNodes.Text.Split(','))
                     check_nodes.Add(int.Parse(node));
@@ -744,6 +771,8 @@ namespace StalkerOnlineQuesterEditor
 
             precondition.transport.inTransportList = cbTransportInList.Checked;
             precondition.transport.notInTransportList = cbNotInTransportList.Checked;
+            if (cbTutorialPhase.SelectedItem != null)
+                precondition.tutorialPhase = this.parent.tutorialPhases.getIDByName(cbTutorialPhase.SelectedItem.ToString());
 
             if (checkClanOptions())
             {
@@ -1130,6 +1159,16 @@ namespace StalkerOnlineQuesterEditor
             this.checkTransportIndicates();
         }
 
+        private void initTutorialTab()
+        {
+            if (this.curDialog.Precondition.tutorialPhase != -1)
+            {
+                this.cbTutorialPhase.SelectedItem = this.parent.tutorialPhases.getNameByID(this.curDialog.Precondition.tutorialPhase);
+            }
+            else { this.cbTutorialPhase.SelectedItem = null; }
+            this.checkTutorialIndicates();
+        }
+
         private void initItemsTab()
         {
 
@@ -1379,6 +1418,11 @@ namespace StalkerOnlineQuesterEditor
             pictureTransport.Visible = (cbNotInTransportList.Checked || cbTransportInList.Checked);
         }
 
+        private void checkTutorialIndicates()
+        {
+            pictureTutorial.Visible = (cbTutorialPhase.SelectedItem != null);
+        }
+
         private void tabQuestsCircs_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.checkClanOptionsIndicator();
@@ -1389,6 +1433,7 @@ namespace StalkerOnlineQuesterEditor
             this.checkActionIndicates();
             this.checkItemsIndicates();
             this.checkTransportIndicates();
+            this.checkTutorialIndicates();
         }
 
         private void digitTextBox_KeyPress(object sender, KeyPressEventArgs e)

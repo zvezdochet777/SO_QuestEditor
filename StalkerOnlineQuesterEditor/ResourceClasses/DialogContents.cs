@@ -141,6 +141,7 @@ namespace StalkerOnlineQuesterEditor
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
         public bool forDev;
         public bool hidden;
+        public int tutorialPhase = -1;
         public DialogPreconditionItem items = new DialogPreconditionItem();
         public DialogPreconditionItem itemsNone = new DialogPreconditionItem();
 
@@ -164,6 +165,7 @@ namespace StalkerOnlineQuesterEditor
             copy.forDev = this.forDev;
             copy.hidden = this.hidden;
             copy.transport = this.transport.Clone();
+            copy.tutorialPhase = tutorialPhase;
             return copy;
         }
 
@@ -191,14 +193,14 @@ namespace StalkerOnlineQuesterEditor
         public bool Exists()
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
-                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || forDev || hidden;
+                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || forDev || hidden || tutorialPhase >= 0;
         }
 
         public bool Any()
         {
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() ||
-                itemsNone.Any() || NPCReputation.Any() || transport.Any();
+                itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0;
         }
 
         public string GetAsString()

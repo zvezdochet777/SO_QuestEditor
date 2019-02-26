@@ -82,6 +82,7 @@ namespace StalkerOnlineQuesterEditor
         public CGUIConst gui;
         public CEffectConstants effects;
         public DialogEventsList dialogEvents;
+        public CTutorialConstants tutorialPhases;
         public int currentQuest;
         public Dictionary<string, bool> npcFilters;
         IOClasses.TCPListener tcpListener;
@@ -110,7 +111,7 @@ namespace StalkerOnlineQuesterEditor
             listSouds = new ListSounds();
             npcFilters = ManagerNPC.getSpaces();
             settings.checkMode();
-
+            tutorialPhases = new CTutorialConstants();
             tree = treeDialogs;
             questConst = new СQuestConstants();
             itemConst = new CItemConstants();
@@ -448,12 +449,13 @@ namespace StalkerOnlineQuesterEditor
                 {
                     if (!treeNode.Nodes.ContainsKey(subdialog.ToString()))
                     {
-                        treeNode.Nodes.Add(subdialog.ToString(), subdialog.ToString());
+                        
                         if (!dialogs.dialogs[currentNPC].ContainsKey(subdialog))
                         {
                             MessageBox.Show("Ошибка диалога, у NPC:" + currentNPC + " нет диалога №" + subdialog + ", а ссылка есть");
                             continue;
                         }
+                        treeNode.Nodes.Add(subdialog.ToString(), subdialog.ToString());
                         dialogs.dialogs[currentNPC][subdialog].coordinates.Active = true;
                     }
                 }
@@ -1506,6 +1508,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void treeQuest_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            if (!treeQuest.SelectedNode.Text.Any()) return;
             this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
 
             bCopyEvents.Enabled = true;
@@ -2548,12 +2551,32 @@ namespace StalkerOnlineQuesterEditor
             //Копировать effects.json
             try
             {
-                File.Copy(CEffectConstants.JSON_PATH, path + "\\source\\Effects.json", true);
+                File.Copy(CEffectConstants.getPath(), path + "\\source\\Effects.json", true);
             }
             catch (Exception)
             {
-                MessageBox.Show("Не удалось скопировать файл " + CEffectConstants.JSON_PATH + " в " + path + "\\source\\Effects.json", "Ошибка сохранения");
+                MessageBox.Show("Не удалось скопировать файл " + CEffectConstants.getPath() + " в " + path + "\\source\\Effects.json", "Ошибка сохранения");
             }
+
+            //Копировать blackbox
+            try
+            {
+                File.Copy(CBlackBoxConstants.getPath(), path + "\\source\\blackboxs.json", true);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось скопировать файл " + CBlackBoxConstants.getPath() + " в " + path + "\\source\\blackboxs.json", "Ошибка сохранения");
+            }
+            try
+            {
+                File.Copy(CTutorialConstants.getPath(), path + "\\source\\TutorialPhases.json", true);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось скопировать файл " + CTutorialConstants.getPath() + " в " + path + "\\source\\TutorialPhases.json", "Ошибка сохранения");
+            }
+            
+
             //Копировать QuestData и DialogData
 
             string data_path = path + "\\source\\Quests\\";
@@ -2722,6 +2745,7 @@ namespace StalkerOnlineQuesterEditor
                         }
                     }
                 }
+                sr.Close();
             }
         }
 
@@ -2769,6 +2793,7 @@ namespace StalkerOnlineQuesterEditor
                     quest.QuestInformation.onGet = onGet;
                     quest.Version = version;
                 }
+                sr.Close();
             }
         }
 

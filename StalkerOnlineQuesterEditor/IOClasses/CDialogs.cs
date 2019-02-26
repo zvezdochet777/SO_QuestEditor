@@ -192,6 +192,9 @@ namespace StalkerOnlineQuesterEditor
                             Precondition.forDev = true;
                         if (dialog.Element("Precondition").Element("hidden") != null)
                             Precondition.hidden = true;
+                        if (dialog.Element("Precondition").Element("tutorialPhase") != null)
+                            Precondition.tutorialPhase = int.Parse(dialog.Element("Precondition").Element("tutorialPhase").Value);
+
                         if (dialog.Element("Precondition").Element("Cabman") != null)
                         {
                             if (dialog.Element("Precondition").Element("Cabman").Element("inTransportList") != null)
@@ -609,6 +612,11 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Precondition").Element("Cabman").Add(new XElement("inTransportList", Global.GetBoolAsString(dialog.Precondition.transport.inTransportList)));
                         if (dialog.Precondition.transport.notInTransportList)
                             element.Element("Precondition").Element("Cabman").Add(new XElement("notInTransportList", Global.GetBoolAsString(dialog.Precondition.transport.notInTransportList)));
+                    }
+
+                    if (dialog.Precondition.tutorialPhase != -1)
+                    {
+                        element.Element("Precondition").Add(new XElement("tutorialPhase", dialog.Precondition.tutorialPhase.ToString()));
                     }
 
                     if (dialog.Precondition.items.itemCategory != -1)

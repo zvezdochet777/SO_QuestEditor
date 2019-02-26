@@ -17,11 +17,7 @@ namespace StalkerOnlineQuesterEditor
 
         public CBlackBoxConstants()
         {
-            string path;
-            if (File.Exists(CEffectConstants.JSON_PATH))
-                path = CBlackBoxConstants.JSON_PATH;
-            else
-                path = CBlackBoxConstants.OTHER_JSON_PATH;
+            string path = CBlackBoxConstants.getPath();
 
             reader = new JsonTextReader(new StreamReader(path, Encoding.UTF8));
             string name = "";
@@ -44,7 +40,15 @@ namespace StalkerOnlineQuesterEditor
                 }
                 
                
-            } 
+            }
+            reader.Close();
+        }
+
+        public static string getPath()
+        {
+            if (File.Exists(CEffectConstants.JSON_PATH))
+                return CBlackBoxConstants.JSON_PATH;
+            return CBlackBoxConstants.OTHER_JSON_PATH;
         }
 
         public List<string> getAll()

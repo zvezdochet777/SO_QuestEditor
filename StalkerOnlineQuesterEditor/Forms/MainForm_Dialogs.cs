@@ -111,6 +111,11 @@ namespace StalkerOnlineQuesterEditor
                 return null;
         }
 
+        public List<int> getAllDialogsIDonCurrentNPC()
+        {
+            return dialogs.dialogs[currentNPC].Keys.ToList<int>();
+        }
+
         //! Возвращает диалог по ID в зависимости от режима и локализации
         public CDialog getDialogOnIDConditional(int dialogID)
         {

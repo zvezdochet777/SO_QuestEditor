@@ -102,20 +102,20 @@ namespace SOHelpEditor
             text = dataLoader.getText(text);
             if (in_end)
             {
-                rtbText.SelectionColor = Color.White;
+                //rtbText.SelectionColor = Color.White;
                 rtbText.AppendText("\n<pre>");
                 rtbText.SelectionColor = old;
                 rtbText.AppendText(text);
-                rtbText.SelectionColor = Color.White;
+                //rtbText.SelectionColor = Color.White;
                 rtbText.AppendText("</pre>\n\n");
             }
             else
             {
-                rtbText.SelectionColor = Color.White;
+                //rtbText.SelectionColor = Color.White;
                 Clipboard.SetText("\n<pre>"); rtbText.Paste();
                 rtbText.SelectionColor = old;
                 Clipboard.SetText(text); rtbText.Paste();
-                rtbText.SelectionColor = Color.White;
+                //rtbText.SelectionColor = Color.White;
                 Clipboard.SetText("</pre>\n\n"); rtbText.Paste();
             }
             rtbText.SelectionColor = old;
@@ -133,14 +133,14 @@ namespace SOHelpEditor
 
             if (in_end)
             {
-                rtbText.SelectionColor = Color.White;
+                //rtbText.SelectionColor = Color.White;
                 rtbText.AppendText("\n<S>");
                 rtbText.SelectionColor = old_color;
                 rtbText.AppendText(dataLoader.getText(text) + "\n\n");
             }
             else
             {
-                rtbText.SelectionColor = Color.White;
+                //rtbText.SelectionColor = Color.White;
                 Clipboard.SetText("\n<S>");
                 rtbText.Paste();
                 rtbText.SelectionColor = old_color;
@@ -159,11 +159,16 @@ namespace SOHelpEditor
             {
                 rtbText.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
                 Color old = rtbText.SelectionColor;
-                rtbText.SelectionColor = Color.White;
-                rtbText.AppendText("<img>");
+                //rtbText.SelectionColor = Color.White;
+                Clipboard.SetText("\n <img>");
+                rtbText.Paste();
+                Clipboard.Clear();
+                //rtbText.AppendText("<img>");
+                Clipboard.SetImage(img);
                 rtbText.Paste(DataFormats.GetFormat(DataFormats.Bitmap));
                 rtbText.SelectionColor = old;
-                rtbText.AppendText("\n");
+                Clipboard.SetText("\n");
+                rtbText.Paste();
                 rtbText.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             }
             Clipboard.Clear();
@@ -382,6 +387,8 @@ namespace SOHelpEditor
                     }
                     else if (b.Text.Contains("<img>"))
                     {
+                        if ((current_text.Trim().Any()) && (status == STATUS.Text))
+                            onFoundText(current_text, ref text_count);
                         status = STATUS.Text;
                         current_text = "";
                         IDataObject data = Clipboard.GetDataObject();
@@ -607,6 +614,39 @@ namespace SOHelpEditor
                 pastePre(form.getText());
             }
             form.Close();
+        }
+
+        private void menuStripItemCut_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(rtbText.SelectedText);
+            rtbText.SelectedText = "";
+        }
+
+        private void menuStripItemCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(rtbText.SelectedText);
+        }
+
+        private void menuStripItemPaste_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsImage())
+            {
+                Image img = Clipboard.GetImage();
+                rtbText.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+                Color old = rtbText.SelectionColor;
+                //rtbText.SelectionColor = Color.White;
+                Clipboard.SetText("\n <img>");
+                rtbText.Paste();
+                Clipboard.Clear();
+                //rtbText.AppendText("<img>");
+                Clipboard.SetImage(img);
+                rtbText.Paste(DataFormats.GetFormat(DataFormats.Bitmap));
+                rtbText.SelectionColor = old;
+                Clipboard.SetText("\n");
+                rtbText.Paste();
+                rtbText.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            }
+            else rtbText.Paste();
         }
     }
 }

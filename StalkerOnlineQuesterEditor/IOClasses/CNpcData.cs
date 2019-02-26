@@ -59,8 +59,16 @@ namespace StalkerOnlineQuesterEditor
         {
             if (!File.Exists(fileName))
                 return;
-
-            XDocument doc = XDocument.Load(fileName);
+            XDocument doc;
+            try
+            {
+                doc = XDocument.Load(fileName);
+            }
+            catch
+            {
+                MessageBox.Show("Не могу прочитать файл npc_stat.xml", caption: "Ошибка чтения");
+                return;
+            }
             foreach (XElement item in doc.Root.Elements())
             {
                 string name = item.Element("Name").Value.ToString();

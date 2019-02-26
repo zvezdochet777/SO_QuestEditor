@@ -87,12 +87,8 @@ namespace StalkerOnlineQuesterEditor
 
         public CEffectConstants()
         {
-            string path;
-            if (File.Exists(CEffectConstants.JSON_PATH))
-                path = CEffectConstants.JSON_PATH;
-            else
-                path = CEffectConstants.OTHER_JSON_PATH;
-
+            string path = CEffectConstants.getPath();
+            
             reader = new JsonTextReader(new StreamReader(path, Encoding.UTF8));
             string name = "";
             bool inName = false;
@@ -114,8 +110,16 @@ namespace StalkerOnlineQuesterEditor
                         effects.Add(id, name);
                     }
             }
+            reader.Close();
         }
 
+        public static string getPath()
+        {
+            if (File.Exists(CEffectConstants.JSON_PATH))
+                return CEffectConstants.JSON_PATH;
+            else
+                return CEffectConstants.OTHER_JSON_PATH;
+        }
         public List<string> getAllDescriptions()
         {
             return effects.Values.ToList<string>();
