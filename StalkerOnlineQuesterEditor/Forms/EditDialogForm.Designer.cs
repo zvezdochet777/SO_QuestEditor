@@ -211,9 +211,13 @@
             this.rbItems = new System.Windows.Forms.RadioButton();
             this.rbCategory = new System.Windows.Forms.RadioButton();
             this.tabTransport = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbNotInBoatList = new System.Windows.Forms.CheckBox();
+            this.cbInBoatList = new System.Windows.Forms.CheckBox();
             this.cbNotInTransportList = new System.Windows.Forms.CheckBox();
             this.cbTransportInList = new System.Windows.Forms.CheckBox();
             this.tabTutorial = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
             this.cbTutorialPhase = new System.Windows.Forms.ComboBox();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
@@ -230,7 +234,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.cbIsBoatInTransit = new System.Windows.Forms.CheckBox();
+            this.cbIsBoatStopped = new System.Windows.Forms.CheckBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.boatName = new System.Windows.Forms.TextBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
@@ -2120,6 +2127,13 @@
             // tabTransport
             // 
             this.tabTransport.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabTransport.Controls.Add(this.boatName);
+            this.tabTransport.Controls.Add(this.label15);
+            this.tabTransport.Controls.Add(this.cbIsBoatInTransit);
+            this.tabTransport.Controls.Add(this.cbIsBoatStopped);
+            this.tabTransport.Controls.Add(this.label14);
+            this.tabTransport.Controls.Add(this.cbNotInBoatList);
+            this.tabTransport.Controls.Add(this.cbInBoatList);
             this.tabTransport.Controls.Add(this.cbNotInTransportList);
             this.tabTransport.Controls.Add(this.cbTransportInList);
             this.tabTransport.Location = new System.Drawing.Point(4, 22);
@@ -2128,6 +2142,35 @@
             this.tabTransport.Size = new System.Drawing.Size(629, 230);
             this.tabTransport.TabIndex = 9;
             this.tabTransport.Text = "Перевоз";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(17, 83);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(42, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Лодки:";
+            // 
+            // cbNotInBoatList
+            // 
+            this.cbNotInBoatList.AutoSize = true;
+            this.cbNotInBoatList.Location = new System.Drawing.Point(17, 125);
+            this.cbNotInBoatList.Name = "cbNotInBoatList";
+            this.cbNotInBoatList.Size = new System.Drawing.Size(180, 17);
+            this.cbNotInBoatList.TabIndex = 3;
+            this.cbNotInBoatList.Text = "НЕ в списке транспортировки";
+            this.cbNotInBoatList.UseVisualStyleBackColor = true;
+            // 
+            // cbInBoatList
+            // 
+            this.cbInBoatList.AutoSize = true;
+            this.cbInBoatList.Location = new System.Drawing.Point(17, 102);
+            this.cbInBoatList.Name = "cbInBoatList";
+            this.cbInBoatList.Size = new System.Drawing.Size(162, 17);
+            this.cbInBoatList.TabIndex = 2;
+            this.cbInBoatList.Text = "в списке транспортировки";
+            this.cbInBoatList.UseVisualStyleBackColor = true;
             // 
             // cbNotInTransportList
             // 
@@ -2160,6 +2203,15 @@
             this.tabTutorial.TabIndex = 10;
             this.tabTutorial.Text = "Туториал";
             this.tabTutorial.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(29, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(93, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Фаза туториала:";
             // 
             // cbTutorialPhase
             // 
@@ -2295,7 +2347,7 @@
             this.autoPanel.Controls.Add(this.autoDefaultNode);
             this.autoPanel.Location = new System.Drawing.Point(164, 62);
             this.autoPanel.Name = "autoPanel";
-            this.autoPanel.Size = new System.Drawing.Size(237, 46);
+            this.autoPanel.Size = new System.Drawing.Size(237, 45);
             this.autoPanel.TabIndex = 17;
             this.autoPanel.Visible = false;
             // 
@@ -2327,14 +2379,41 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // label13
+            // cbIsBoatInTransit
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(29, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Фаза туториала:";
+            this.cbIsBoatInTransit.AutoSize = true;
+            this.cbIsBoatInTransit.Location = new System.Drawing.Point(17, 181);
+            this.cbIsBoatInTransit.Name = "cbIsBoatInTransit";
+            this.cbIsBoatInTransit.Size = new System.Drawing.Size(66, 17);
+            this.cbIsBoatInTransit.TabIndex = 6;
+            this.cbIsBoatInTransit.Text = "плывёт ";
+            this.cbIsBoatInTransit.UseVisualStyleBackColor = true;
+            // 
+            // cbIsBoatStopped
+            // 
+            this.cbIsBoatStopped.AutoSize = true;
+            this.cbIsBoatStopped.Location = new System.Drawing.Point(17, 158);
+            this.cbIsBoatStopped.Name = "cbIsBoatStopped";
+            this.cbIsBoatStopped.Size = new System.Drawing.Size(82, 17);
+            this.cbIsBoatStopped.TabIndex = 5;
+            this.cbIsBoatStopped.Text = "на стоянке";
+            this.cbIsBoatStopped.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(108, 171);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 13);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Имя лодки:";
+            // 
+            // boatName
+            // 
+            this.boatName.Location = new System.Drawing.Point(170, 168);
+            this.boatName.Name = "boatName";
+            this.boatName.Size = new System.Drawing.Size(100, 20);
+            this.boatName.TabIndex = 8;
             // 
             // EditDialogForm
             // 
@@ -2619,5 +2698,12 @@
         private System.Windows.Forms.TabPage tabTutorial;
         private System.Windows.Forms.ComboBox cbTutorialPhase;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox cbNotInBoatList;
+        private System.Windows.Forms.CheckBox cbInBoatList;
+        private System.Windows.Forms.CheckBox cbIsBoatInTransit;
+        private System.Windows.Forms.CheckBox cbIsBoatStopped;
+        private System.Windows.Forms.TextBox boatName;
+        private System.Windows.Forms.Label label15;
     }
 }

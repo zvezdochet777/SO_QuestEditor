@@ -207,6 +207,7 @@ namespace SOHelpEditor
             btnUp.Enabled = (treeChapters.SelectedNode.PrevNode != null);
             btnDown.Enabled = (treeChapters.SelectedNode.NextNode != null);
             changeLittleCard.Enabled = (getCurrentNodeID() / 100 * 100 != getCurrentNodeID());
+            labelCurrentID.Text = getCurrentNodeID().ToString();
         }
 
         protected void setButtonsPasteEnabled(bool value)

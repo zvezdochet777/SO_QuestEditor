@@ -874,6 +874,7 @@ namespace StalkerOnlineQuesterEditor
         //! Выделение квеста в дереве квестов
         private void treeQuestSelected(object sender, EventArgs e)
         {
+            if (!treeQuest.SelectedNode.Text.Any()) return;
             this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
             //            int questID = int.Parse(treeQuest.SelectedNode.Text);
             checkQuestButton(getQuestOnQuestID(currentQuest).Target.QuestType, currentQuest);

@@ -195,12 +195,22 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("Precondition").Element("tutorialPhase") != null)
                             Precondition.tutorialPhase = int.Parse(dialog.Element("Precondition").Element("tutorialPhase").Value);
 
-                        if (dialog.Element("Precondition").Element("Cabman") != null)
+                        if (dialog.Element("Precondition").Element("Transport") != null)
                         {
-                            if (dialog.Element("Precondition").Element("Cabman").Element("inTransportList") != null)
+                            if (dialog.Element("Precondition").Element("Transport").Element("inTransportList") != null)
                                 Precondition.transport.inTransportList = true;
-                            if (dialog.Element("Precondition").Element("Cabman").Element("notInTransportList") != null)
+                            if (dialog.Element("Precondition").Element("Transport").Element("notInTransportList") != null)
                                 Precondition.transport.notInTransportList = true;
+                            if (dialog.Element("Precondition").Element("Transport").Element("inBoatList") != null)
+                                Precondition.transport.inBoatList = true;
+                            if (dialog.Element("Precondition").Element("Transport").Element("notInBoatList") != null)
+                                Precondition.transport.notInBoatList = true;
+                            if (dialog.Element("Precondition").Element("Transport").Element("boatInTransit") != null)
+                                Precondition.transport.boatInTransit = true;
+                            if (dialog.Element("Precondition").Element("Transport").Element("boatStopped") != null)
+                                Precondition.transport.boatStopped = true;
+                            if (dialog.Element("Precondition").Element("Transport").Element("boatName") != null)
+                                Precondition.transport.boatName = dialog.Element("Precondition").Element("Transport").Element("boatName").Value;
                         }
                         if (dialog.Element("Precondition").Element("clanOptions") != null)
                         {
@@ -607,11 +617,22 @@ namespace StalkerOnlineQuesterEditor
 
                     if (dialog.Precondition.transport.Any())
                     {
-                        element.Element("Precondition").Add(new XElement("Cabman"));
+                        element.Element("Precondition").Add(new XElement("Transport"));
                         if (dialog.Precondition.transport.inTransportList)
-                            element.Element("Precondition").Element("Cabman").Add(new XElement("inTransportList", Global.GetBoolAsString(dialog.Precondition.transport.inTransportList)));
+                            element.Element("Precondition").Element("Transport").Add(new XElement("inTransportList", Global.GetBoolAsString(dialog.Precondition.transport.inTransportList)));
                         if (dialog.Precondition.transport.notInTransportList)
-                            element.Element("Precondition").Element("Cabman").Add(new XElement("notInTransportList", Global.GetBoolAsString(dialog.Precondition.transport.notInTransportList)));
+                            element.Element("Precondition").Element("Transport").Add(new XElement("notInTransportList", Global.GetBoolAsString(dialog.Precondition.transport.notInTransportList)));
+                        if (dialog.Precondition.transport.inBoatList)
+                            element.Element("Precondition").Element("Transport").Add(new XElement("inBoatList", Global.GetBoolAsString(dialog.Precondition.transport.inBoatList)));
+                        if (dialog.Precondition.transport.notInBoatList)
+                            element.Element("Precondition").Element("Transport").Add(new XElement("notInBoatList", Global.GetBoolAsString(dialog.Precondition.transport.notInBoatList)));
+                        if (dialog.Precondition.transport.boatInTransit)
+                            element.Element("Precondition").Element("Transport").Add(new XElement("boatInTransit", Global.GetBoolAsString(dialog.Precondition.transport.boatInTransit)));
+                        if (dialog.Precondition.transport.boatStopped)
+                            element.Element("Precondition").Element("Transport").Add(new XElement("boatStopped", Global.GetBoolAsString(dialog.Precondition.transport.boatStopped)));
+                        if (dialog.Precondition.transport.boatName.Any())
+                            element.Element("Precondition").Element("Transport").Add(new XElement("boatName", dialog.Precondition.transport.boatName));
+
                     }
 
                     if (dialog.Precondition.tutorialPhase != -1)

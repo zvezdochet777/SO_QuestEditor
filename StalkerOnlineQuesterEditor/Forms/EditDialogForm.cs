@@ -771,7 +771,28 @@ namespace StalkerOnlineQuesterEditor
 
             precondition.transport.inTransportList = cbTransportInList.Checked;
             precondition.transport.notInTransportList = cbNotInTransportList.Checked;
-            if (cbTutorialPhase.SelectedItem != null)
+            precondition.transport.inBoatList = cbInBoatList.Checked;
+            precondition.transport.notInBoatList = cbNotInBoatList.Checked;
+            precondition.transport.boatInTransit = cbIsBoatInTransit.Checked;
+            precondition.transport.boatStopped = cbIsBoatStopped.Checked;
+
+            if (cbIsBoatInTransit.Checked && cbIsBoatStopped.Checked)
+            {
+                MessageBox.Show("Перевозки. Некорректные правила для лодок");
+                 return;
+            }
+
+            if (cbIsBoatInTransit.Checked || cbIsBoatStopped.Checked)
+            {
+                if (!boatName.Text.Any())
+                {
+                    MessageBox.Show("Перевозки. Не указано имя лодочника");
+                    return;
+                }
+                precondition.transport.boatName = boatName.Text;
+            }
+
+                if (cbTutorialPhase.SelectedItem != null)
                 precondition.tutorialPhase = this.parent.tutorialPhases.getIDByName(cbTutorialPhase.SelectedItem.ToString());
 
             if (checkClanOptions())
@@ -1156,6 +1177,12 @@ namespace StalkerOnlineQuesterEditor
             this.cbTransportInList.Checked = this.editPrecondition.transport.inTransportList;
             this.cbNotInTransportList.Checked = this.editPrecondition.transport.notInTransportList;
 
+            this.cbInBoatList.Checked = this.editPrecondition.transport.inBoatList;
+            this.cbNotInBoatList.Checked = this.editPrecondition.transport.notInBoatList;
+            this.cbIsBoatInTransit.Checked = this.editPrecondition.transport.boatInTransit;
+            this.cbIsBoatStopped.Checked = this.editPrecondition.transport.boatStopped;
+            this.boatName.Text = this.editPrecondition.transport.boatName;
+
             this.checkTransportIndicates();
         }
 
@@ -1415,7 +1442,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void checkTransportIndicates()
         {
-            pictureTransport.Visible = (cbNotInTransportList.Checked || cbTransportInList.Checked);
+            pictureTransport.Visible = (cbNotInTransportList.Checked || cbTransportInList.Checked || cbNotInBoatList.Checked || cbInBoatList.Checked ||
+                                        cbIsBoatInTransit.Checked || cbIsBoatStopped.Checked);
         }
 
         private void checkTutorialIndicates()

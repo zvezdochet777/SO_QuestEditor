@@ -65,6 +65,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.panelCreateNPC = new System.Windows.Forms.Panel();
+            this.cbSecondaryWeapon = new System.Windows.Forms.ComboBox();
             this.panelCreateMob = new System.Windows.Forms.Panel();
             this.cbMobInvul = new System.Windows.Forms.CheckBox();
             this.cbMobLevel = new System.Windows.Forms.ComboBox();
@@ -80,8 +82,6 @@
             this.lbScenType = new System.Windows.Forms.Label();
             this.cbMobType = new System.Windows.Forms.ComboBox();
             this.cbScenaryType = new System.Windows.Forms.ComboBox();
-            this.panelCreateNPC = new System.Windows.Forms.Panel();
-            this.cbSecondaryWeapon = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.cbPrimary2Weapon = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -213,9 +213,9 @@
             this.tabPage1.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panelCreateNPC.SuspendLayout();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
-            this.panelCreateNPC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).BeginInit();
@@ -248,7 +248,6 @@
             // groupQuestBox
             // 
             this.groupQuestBox.Controls.Add(this.tabControl1);
-            this.groupQuestBox.Controls.Add(this.panelCreateNPC);
             this.groupQuestBox.Controls.Add(this.cbHidden);
             this.groupQuestBox.Controls.Add(this.filedIFtContentBox);
             this.groupQuestBox.Controls.Add(this.eventComboBox);
@@ -483,7 +482,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(602, 128);
+            this.tabPage2.Size = new System.Drawing.Size(617, 128);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Штрафы";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -612,6 +611,54 @@
             this.label13.TabIndex = 41;
             this.label13.Text = "Опыт боевой:";
             // 
+            // panelCreateNPC
+            // 
+            this.panelCreateNPC.Controls.Add(this.cbSecondaryWeapon);
+            this.panelCreateNPC.Controls.Add(this.label18);
+            this.panelCreateNPC.Controls.Add(this.cbPrimary2Weapon);
+            this.panelCreateNPC.Controls.Add(this.label17);
+            this.panelCreateNPC.Controls.Add(this.cbPrimaryWeapon);
+            this.panelCreateNPC.Controls.Add(this.label16);
+            this.panelCreateNPC.Controls.Add(this.tbCloth);
+            this.panelCreateNPC.Controls.Add(this.nupNPCShootRangeOnCreature);
+            this.panelCreateNPC.Controls.Add(this.label15);
+            this.panelCreateNPC.Controls.Add(this.nupNPCShootRange);
+            this.panelCreateNPC.Controls.Add(this.label14);
+            this.panelCreateNPC.Controls.Add(this.cbNPCIgnoreWAR);
+            this.panelCreateNPC.Controls.Add(this.cbNPCMobNoAggr);
+            this.panelCreateNPC.Controls.Add(this.label3);
+            this.panelCreateNPC.Controls.Add(this.nupNPCSpeed);
+            this.panelCreateNPC.Controls.Add(this.cbNPCInvul);
+            this.panelCreateNPC.Controls.Add(this.cbUniqNPC);
+            this.panelCreateNPC.Controls.Add(this.lbArmor);
+            this.panelCreateNPC.Controls.Add(this.tbNPCAnim);
+            this.panelCreateNPC.Controls.Add(this.label2);
+            this.panelCreateNPC.Controls.Add(this.cbWeapon);
+            this.panelCreateNPC.Controls.Add(this.cbFractionID);
+            this.panelCreateNPC.Controls.Add(this.tbWay);
+            this.panelCreateNPC.Controls.Add(this.tbReputation);
+            this.panelCreateNPC.Controls.Add(this.tbNpcName);
+            this.panelCreateNPC.Controls.Add(this.tbDisplayName);
+            this.panelCreateNPC.Controls.Add(this.lbWay);
+            this.panelCreateNPC.Controls.Add(this.label1);
+            this.panelCreateNPC.Controls.Add(this.lbReputation);
+            this.panelCreateNPC.Controls.Add(this.lbFractionID);
+            this.panelCreateNPC.Controls.Add(this.lbNPCName);
+            this.panelCreateNPC.Controls.Add(this.lbDisplayName);
+            this.panelCreateNPC.Location = new System.Drawing.Point(7, 13);
+            this.panelCreateNPC.Name = "panelCreateNPC";
+            this.panelCreateNPC.Size = new System.Drawing.Size(622, 153);
+            this.panelCreateNPC.TabIndex = 25;
+            this.panelCreateNPC.Visible = false;
+            // 
+            // cbSecondaryWeapon
+            // 
+            this.cbSecondaryWeapon.FormattingEnabled = true;
+            this.cbSecondaryWeapon.Location = new System.Drawing.Point(308, 64);
+            this.cbSecondaryWeapon.Name = "cbSecondaryWeapon";
+            this.cbSecondaryWeapon.Size = new System.Drawing.Size(155, 21);
+            this.cbSecondaryWeapon.TabIndex = 52;
+            // 
             // panelCreateMob
             // 
             this.panelCreateMob.Controls.Add(this.cbMobInvul);
@@ -628,7 +675,7 @@
             this.panelCreateMob.Controls.Add(this.lbScenType);
             this.panelCreateMob.Controls.Add(this.cbMobType);
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
-            this.panelCreateMob.Location = new System.Drawing.Point(3, 4);
+            this.panelCreateMob.Location = new System.Drawing.Point(6, 13);
             this.panelCreateMob.Name = "panelCreateMob";
             this.panelCreateMob.Size = new System.Drawing.Size(622, 149);
             this.panelCreateMob.TabIndex = 17;
@@ -764,55 +811,6 @@
             this.cbScenaryType.Name = "cbScenaryType";
             this.cbScenaryType.Size = new System.Drawing.Size(136, 21);
             this.cbScenaryType.TabIndex = 20;
-            // 
-            // panelCreateNPC
-            // 
-            this.panelCreateNPC.Controls.Add(this.cbSecondaryWeapon);
-            this.panelCreateNPC.Controls.Add(this.panelCreateMob);
-            this.panelCreateNPC.Controls.Add(this.label18);
-            this.panelCreateNPC.Controls.Add(this.cbPrimary2Weapon);
-            this.panelCreateNPC.Controls.Add(this.label17);
-            this.panelCreateNPC.Controls.Add(this.cbPrimaryWeapon);
-            this.panelCreateNPC.Controls.Add(this.label16);
-            this.panelCreateNPC.Controls.Add(this.tbCloth);
-            this.panelCreateNPC.Controls.Add(this.nupNPCShootRangeOnCreature);
-            this.panelCreateNPC.Controls.Add(this.label15);
-            this.panelCreateNPC.Controls.Add(this.nupNPCShootRange);
-            this.panelCreateNPC.Controls.Add(this.label14);
-            this.panelCreateNPC.Controls.Add(this.cbNPCIgnoreWAR);
-            this.panelCreateNPC.Controls.Add(this.cbNPCMobNoAggr);
-            this.panelCreateNPC.Controls.Add(this.label3);
-            this.panelCreateNPC.Controls.Add(this.nupNPCSpeed);
-            this.panelCreateNPC.Controls.Add(this.cbNPCInvul);
-            this.panelCreateNPC.Controls.Add(this.cbUniqNPC);
-            this.panelCreateNPC.Controls.Add(this.lbArmor);
-            this.panelCreateNPC.Controls.Add(this.tbNPCAnim);
-            this.panelCreateNPC.Controls.Add(this.label2);
-            this.panelCreateNPC.Controls.Add(this.cbWeapon);
-            this.panelCreateNPC.Controls.Add(this.cbFractionID);
-            this.panelCreateNPC.Controls.Add(this.tbWay);
-            this.panelCreateNPC.Controls.Add(this.tbReputation);
-            this.panelCreateNPC.Controls.Add(this.tbNpcName);
-            this.panelCreateNPC.Controls.Add(this.tbDisplayName);
-            this.panelCreateNPC.Controls.Add(this.lbWay);
-            this.panelCreateNPC.Controls.Add(this.label1);
-            this.panelCreateNPC.Controls.Add(this.lbReputation);
-            this.panelCreateNPC.Controls.Add(this.lbFractionID);
-            this.panelCreateNPC.Controls.Add(this.lbNPCName);
-            this.panelCreateNPC.Controls.Add(this.lbDisplayName);
-            this.panelCreateNPC.Location = new System.Drawing.Point(0, 328);
-            this.panelCreateNPC.Name = "panelCreateNPC";
-            this.panelCreateNPC.Size = new System.Drawing.Size(622, 153);
-            this.panelCreateNPC.TabIndex = 25;
-            this.panelCreateNPC.Visible = false;
-            // 
-            // cbSecondaryWeapon
-            // 
-            this.cbSecondaryWeapon.FormattingEnabled = true;
-            this.cbSecondaryWeapon.Location = new System.Drawing.Point(308, 64);
-            this.cbSecondaryWeapon.Name = "cbSecondaryWeapon";
-            this.cbSecondaryWeapon.Size = new System.Drawing.Size(155, 21);
-            this.cbSecondaryWeapon.TabIndex = 52;
             // 
             // label18
             // 
@@ -1147,9 +1145,9 @@
             // 
             this.panel1.Controls.Add(this.debuglabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 629);
+            this.panel1.Location = new System.Drawing.Point(3, 655);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(610, 178);
+            this.panel1.Size = new System.Drawing.Size(610, 152);
             this.panel1.TabIndex = 7;
             // 
             // debuglabel
@@ -1173,7 +1171,7 @@
             this.lQuestRules.Controls.Add(this.labelScenarios);
             this.lQuestRules.Controls.Add(this.groupQuestRulesBox);
             this.lQuestRules.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lQuestRules.Location = new System.Drawing.Point(3, 486);
+            this.lQuestRules.Location = new System.Drawing.Point(3, 512);
             this.lQuestRules.Name = "lQuestRules";
             this.lQuestRules.Size = new System.Drawing.Size(610, 143);
             this.lQuestRules.TabIndex = 3;
@@ -1327,7 +1325,7 @@
             this.preconditionGroupBox.Controls.Add(this.repeatComboBox);
             this.preconditionGroupBox.Controls.Add(this.lRepeat);
             this.preconditionGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.preconditionGroupBox.Location = new System.Drawing.Point(3, 433);
+            this.preconditionGroupBox.Location = new System.Drawing.Point(3, 459);
             this.preconditionGroupBox.Name = "preconditionGroupBox";
             this.preconditionGroupBox.Size = new System.Drawing.Size(610, 53);
             this.preconditionGroupBox.TabIndex = 2;
@@ -1389,7 +1387,8 @@
             // targetBox
             // 
             this.targetBox.AutoSize = true;
-            this.targetBox.Controls.Add(this.resultComboBox);
+            this.targetBox.Controls.Add(this.panelCreateNPC);
+            this.targetBox.Controls.Add(this.panelCreateMob);
             this.targetBox.Controls.Add(this.cbReputationLow);
             this.targetBox.Controls.Add(this.cbState);
             this.targetBox.Controls.Add(this.lState);
@@ -1410,10 +1409,11 @@
             this.targetBox.Controls.Add(this.quantityUpDown);
             this.targetBox.Controls.Add(this.targetComboBox);
             this.targetBox.Controls.Add(this.lNameObject);
+            this.targetBox.Controls.Add(this.resultComboBox);
             this.targetBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.targetBox.Location = new System.Drawing.Point(3, 274);
             this.targetBox.Name = "targetBox";
-            this.targetBox.Size = new System.Drawing.Size(610, 159);
+            this.targetBox.Size = new System.Drawing.Size(610, 185);
             this.targetBox.TabIndex = 1;
             this.targetBox.TabStop = false;
             this.targetBox.Text = "Цель";
@@ -2062,7 +2062,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGiveQuestsOpened.Location = new System.Drawing.Point(632, 19);
             this.labelGiveQuestsOpened.Name = "labelGiveQuestsOpened";
-            this.labelGiveQuestsOpened.Size = new System.Drawing.Size(149, 34);
+            this.labelGiveQuestsOpened.Size = new System.Drawing.Size(0, 34);
             this.labelGiveQuestsOpened.TabIndex = 44;
             // 
             // labelGiveQuestsClosed
@@ -2071,7 +2071,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGiveQuestsClosed.Location = new System.Drawing.Point(632, 66);
             this.labelGiveQuestsClosed.Name = "labelGiveQuestsClosed";
-            this.labelGiveQuestsClosed.Size = new System.Drawing.Size(149, 34);
+            this.labelGiveQuestsClosed.Size = new System.Drawing.Size(0, 34);
             this.labelGiveQuestsClosed.TabIndex = 46;
             // 
             // label22
@@ -2089,7 +2089,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGiveQuestsFailed.Location = new System.Drawing.Point(632, 115);
             this.labelGiveQuestsFailed.Name = "labelGiveQuestsFailed";
-            this.labelGiveQuestsFailed.Size = new System.Drawing.Size(149, 34);
+            this.labelGiveQuestsFailed.Size = new System.Drawing.Size(0, 34);
             this.labelGiveQuestsFailed.TabIndex = 48;
             // 
             // label24
@@ -2107,7 +2107,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGiveQuestsCanceled.Location = new System.Drawing.Point(632, 165);
             this.labelGiveQuestsCanceled.Name = "labelGiveQuestsCanceled";
-            this.labelGiveQuestsCanceled.Size = new System.Drawing.Size(149, 34);
+            this.labelGiveQuestsCanceled.Size = new System.Drawing.Size(501, 34);
             this.labelGiveQuestsCanceled.TabIndex = 50;
             // 
             // label26
@@ -2153,11 +2153,11 @@
             this.rewardGroupBox.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panelCreateNPC.ResumeLayout(false);
+            this.panelCreateNPC.PerformLayout();
             this.panelCreateMob.ResumeLayout(false);
             this.panelCreateMob.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).EndInit();
-            this.panelCreateNPC.ResumeLayout(false);
-            this.panelCreateNPC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).EndInit();

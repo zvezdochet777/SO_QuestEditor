@@ -107,10 +107,15 @@ namespace StalkerOnlineQuesterEditor
     {
         public bool inTransportList;
         public bool notInTransportList;
+        public bool inBoatList;
+        public bool notInBoatList;
+        public bool boatStopped;
+        public bool boatInTransit;
+        public string boatName = "";
 
         public bool Any()
         {
-            return inTransportList || notInTransportList;
+            return inTransportList || notInTransportList || inBoatList || notInBoatList || boatStopped || boatInTransit;
         }
 
         public DialogPreconditionTransport Clone()
@@ -118,6 +123,10 @@ namespace StalkerOnlineQuesterEditor
             DialogPreconditionTransport result = new DialogPreconditionTransport();
             result.inTransportList = this.inTransportList;
             result.notInTransportList = this.notInTransportList;
+            result.inBoatList = this.inBoatList;
+            result.notInBoatList = this.notInBoatList;
+            result.boatStopped = this.boatStopped;
+            result.boatInTransit = this.boatInTransit;
             return result;
         }
     }
