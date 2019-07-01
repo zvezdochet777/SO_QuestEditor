@@ -216,6 +216,9 @@ namespace StalkerOnlineQuesterEditor
                         {
                             Precondition.clanOptions = dialog.Element("Precondition").Element("clanOptions").Value.ToString();
                         }
+
+                        if (dialog.Element("Precondition").Element("radioAvailable") != null)
+                            Precondition.radioAvailable = (RadioAvalible)Convert.ToInt32(dialog.Element("Precondition").Element("radioAvailable").Value);
                         if (dialog.Element("Precondition").Element("tests") != null)
                         {
                             tests = new List<int>();
@@ -587,8 +590,9 @@ namespace StalkerOnlineQuesterEditor
                     }
                     if (dialog.Precondition.clanOptions != "")
                         element.Element("Precondition").Add(new XElement("clanOptions", dialog.Precondition.clanOptions));
-                   
-                   
+                    if (dialog.Precondition.radioAvailable != RadioAvalible.None)
+                        element.Element("Precondition").Add(new XElement("radioAvailable", Convert.ToInt32(dialog.Precondition.radioAvailable).ToString()));
+
                     if (dialog.Precondition.MustNoEffects.Any())
                         element.Element("Precondition").Add(dialog.Precondition.getMustNoEffects());
                     if (dialog.Precondition.NecessaryEffects.Any())
@@ -632,7 +636,6 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Precondition").Element("Transport").Add(new XElement("boatStopped", Global.GetBoolAsString(dialog.Precondition.transport.boatStopped)));
                         if (dialog.Precondition.transport.boatName.Any())
                             element.Element("Precondition").Element("Transport").Add(new XElement("boatName", dialog.Precondition.transport.boatName));
-
                     }
 
                     if (dialog.Precondition.tutorialPhase != -1)

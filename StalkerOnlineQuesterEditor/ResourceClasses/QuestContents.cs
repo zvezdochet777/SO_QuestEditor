@@ -200,11 +200,13 @@ namespace StalkerOnlineQuesterEditor
        	public int Repeat;
         public double TakenPeriod;
         public bool omniCounter;
+        public bool isGroup;
         public CQuestPrecondition()
         {
             this.Repeat = new int();
             this.TakenPeriod = new double();
             this.omniCounter = false;
+            this.isGroup = false;
         }
 
         public object Clone()
@@ -213,11 +215,12 @@ namespace StalkerOnlineQuesterEditor
             copy.Repeat = this.Repeat;
             copy.TakenPeriod = this.TakenPeriod;
             copy.omniCounter = this.omniCounter;
+            copy.isGroup = this.isGroup;
             return copy;
         }
         public bool Any()
         {
-            return Repeat != 0 || TakenPeriod != 0 || omniCounter;
+            return Repeat != 0 || TakenPeriod != 0 || omniCounter || isGroup;
         }
     }
 
@@ -229,6 +232,7 @@ namespace StalkerOnlineQuesterEditor
         public List<int> Scenarios;
         public List<int> MassQuests;
         public string TeleportTo;
+        public bool dontTakeItems;
         public int MaxGroup;
         public int MinGroup;
         public int MaxMember;
@@ -254,12 +258,13 @@ namespace StalkerOnlineQuesterEditor
             copy.basePercent = this.basePercent;
             copy.npc = this.npc;
             copy.mobs = this.mobs;
+            copy.dontTakeItems = this.dontTakeItems;
             return copy;
         }
 
         public bool Any()
         {
-            return TypeOfItems.Any() || NumOfItems.Any() || AttrOfItems.Any() || Scenarios.Any() || MassQuests.Any() ||
+            return TypeOfItems.Any() || NumOfItems.Any() || AttrOfItems.Any() || Scenarios.Any() || MassQuests.Any() || dontTakeItems ||
                 MaxGroup != 0 || MinGroup != 0 || TeleportTo != "" || basePercent != 0 || MinMember != 0 || MaxMember != 0 || npc.Any() || mobs.Any();
 
         }
@@ -291,6 +296,7 @@ namespace StalkerOnlineQuesterEditor
             public bool uniq = false;
             public string questID = "";
             public bool invulnerable = false;
+
 
             public bool Any()
             {

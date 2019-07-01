@@ -390,9 +390,9 @@ namespace StalkerOnlineQuesterEditor
                     if (npcNames.Count <= settings.getLastNpcIndex())
                         settings.setLastNpcIndex(npcNames.Count - 1);
                     NPCBox.SelectedIndex = settings.getLastNpcIndex();
-                    NPCBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    NPCBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    QuestBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    QuestBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
                     QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
         }
@@ -2643,12 +2643,24 @@ namespace StalkerOnlineQuesterEditor
             Listener.SelectCurrentNode(finded_dialogID);
         }
 
+        private int count_the_words(string text)
+        {
+            int result = 0;
+            foreach (string word in text.Split())
+            {
+                if (word.Trim().Any()) result++;
+            }
+            return result;
+        }
+
         private void вытащитьНепереведённыеТекстыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SynchroToolStripMenuItem_Click(sender, e);
             string loc = settings.getCurrentLocale();
             string quest_path = "quests_" + loc + ".csv";
             string dialog_path = "dialog_" + loc + ".csv";
+            int all_words = 0;
+            int non_localcount_words = 0;
 
             using (FileStream fs = File.Create(dialog_path))
             {
@@ -2659,6 +2671,10 @@ namespace StalkerOnlineQuesterEditor
                         CDialog origin_d = value.Value;
                         if (origin_d.isAutoNode) continue;
                         CDialog local_d = this.dialogs.locales[loc][npc][value.Key];
+                        int count_words = 0;
+                        count_words += count_the_words(origin_d.Title);
+                        count_words += count_the_words(origin_d.Text);
+                        all_words += count_words;
                         if (origin_d.version != local_d.version)
                         {
                             Byte[] dialog_id = new UTF8Encoding(true).GetBytes("Dialog;" + value.Key + "_" + origin_d.version + "\n");
@@ -2669,6 +2685,7 @@ namespace StalkerOnlineQuesterEditor
                             fs.Write(dialog_text, 0, dialog_text.Length);
                             Byte[] tmp = new UTF8Encoding(true).GetBytes(";;\n");
                             fs.Write(tmp, 0, tmp.Length);
+                            non_localcount_words += count_words;
                         }
                     }
                 }
@@ -2682,32 +2699,48 @@ namespace StalkerOnlineQuesterEditor
                     if (quest.QuestInformation.Title.Any() || quest.QuestInformation.Description.Any() ||
                         quest.QuestInformation.onWin.Any() || quest.QuestInformation.onFailed.Any() ||
                             quest.QuestInformation.onGet.Any())
-                        if ((local.Version != quest.Version) && (quest.Additional.ShowProgress > 0) && (quest.Additional.ShowProgress != 64))
+                        if ((quest.Additional.ShowProgress > 0) && (quest.Additional.ShowProgress != 64))
                         {
-                            Byte[] quest_id = new UTF8Encoding(true).GetBytes("Quest;" + quest.QuestID + "_" + quest.Version + "\n");
-                            fs.Write(quest_id, 0, quest_id.Length);
+                            int count_words = 0;
+                            count_words += count_the_words(quest.QuestInformation.Title);
+                            count_words += count_the_words(quest.QuestInformation.Description);
+                            count_words += count_the_words(quest.QuestInformation.onGet);
+                            count_words += count_the_words(quest.QuestInformation.onWin);
+                            count_words += count_the_words(quest.QuestInformation.onFailed);
+                            all_words += count_words;
+                            if (local.Version != quest.Version)
+                            {
+                                non_localcount_words += count_words;
+                                Byte[] quest_id = new UTF8Encoding(true).GetBytes("Quest;" + quest.QuestID + "_" + quest.Version + "\n");
+                                fs.Write(quest_id, 0, quest_id.Length);
 
-                            Byte[] quest_title = new UTF8Encoding(true).GetBytes("Title;\"" + quest.QuestInformation.Title + "\"\n");
-                            fs.Write(quest_title, 0, quest_title.Length);
+                                Byte[] quest_title = new UTF8Encoding(true).GetBytes("Title;\"" + quest.QuestInformation.Title + "\"\n");
+                                fs.Write(quest_title, 0, quest_title.Length);
 
-                            Byte[] decription = new UTF8Encoding(true).GetBytes("Description;\"" + quest.QuestInformation.Description + "\"\n");
-                            fs.Write(decription, 0, decription.Length);
+                                Byte[] decription = new UTF8Encoding(true).GetBytes("Description;\"" + quest.QuestInformation.Description + "\"\n");
+                                fs.Write(decription, 0, decription.Length);
+                                
 
-                            Byte[] on_get = new UTF8Encoding(true).GetBytes("onGet;\"" + quest.QuestInformation.onGet + "\"\n");
-                            fs.Write(on_get, 0, on_get.Length);
+                                Byte[] on_get = new UTF8Encoding(true).GetBytes("onGet;\"" + quest.QuestInformation.onGet + "\"\n");
+                                fs.Write(on_get, 0, on_get.Length);
+                                
 
-                            Byte[] on_win = new UTF8Encoding(true).GetBytes("onWin;\"" + quest.QuestInformation.onWin + "\"\n");
-                            fs.Write(on_win, 0, on_win.Length);
+                                Byte[] on_win = new UTF8Encoding(true).GetBytes("onWin;\"" + quest.QuestInformation.onWin + "\"\n");
+                                fs.Write(on_win, 0, on_win.Length);
+                                
 
-                            Byte[] on_fail = new UTF8Encoding(true).GetBytes("onFailed;\"" + quest.QuestInformation.onFailed + "\"\n");
-                            fs.Write(on_fail, 0, on_fail.Length);
+                                Byte[] on_fail = new UTF8Encoding(true).GetBytes("onFailed;\"" + quest.QuestInformation.onFailed + "\"\n");
+                                fs.Write(on_fail, 0, on_fail.Length);
+                                
 
-                            Byte[] tmp = new UTF8Encoding(true).GetBytes(";;\n");
-                            fs.Write(tmp, 0, tmp.Length);
+                                Byte[] tmp = new UTF8Encoding(true).GetBytes(";;\n");
+                                fs.Write(tmp, 0, tmp.Length);
+                            }
                         }
-
                 }
             }
+
+            MessageBox.Show("Количество слов: " + all_words + ". Непереведённых: "+ non_localcount_words + "("+ Convert.ToDouble(non_localcount_words)/all_words*100 + "%)", "Итог");
         }
 
         private void диалоговToolStripMenuItem_Click(object sender, EventArgs e)

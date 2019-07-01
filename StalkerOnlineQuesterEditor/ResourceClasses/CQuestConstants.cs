@@ -37,6 +37,7 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_ITEM_CATEGORY_AUTO = 26; // Собрать количество предметов категории АВТО.
         public static int TYPE_HAVE_EFFECT = 27; // Находиться под действием эффекта
         public static int TYPE_IN_AREA = 28; // Находиться в зоне
+        public static int TYPE_QUEST_COUNTER = 29;
 
         public static int TYPE_CREATE_NPC = 51; // создать бегающего НИП
         public static int TYPE_CREATE_MOB = 52; // создать моба
@@ -68,6 +69,7 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_ITEM_CATEGORY_AUTO, "26 Собрать количество предметов категории АВТО."));
             simpleQuestsType.Add(new СQuestType(TYPE_HAVE_EFFECT, "27 Находиться под действием эффекта."));
             simpleQuestsType.Add(new СQuestType(TYPE_IN_AREA, "28 Находиться в зоне."));
+            simpleQuestsType.Add(new СQuestType(TYPE_QUEST_COUNTER, "29 Счетчик квестов."));
 
             // ierarchyQuestsType.Add(new СQuestType(50, "50 Игра против режиссера."));
             simpleQuestsType.Add(new СQuestType(TYPE_CREATE_NPC, "51 Создать NPC."));

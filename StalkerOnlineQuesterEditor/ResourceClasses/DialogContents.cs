@@ -8,6 +8,7 @@ using System.Xml.Linq;
 namespace StalkerOnlineQuesterEditor
 {
     using ListOfQuests = List<int>;
+    public enum RadioAvalible { None, OnlyRadio, Both };
 
     public class CDialogPreconditionQuests : ICloneable
     {
@@ -150,6 +151,7 @@ namespace StalkerOnlineQuesterEditor
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
         public bool forDev;
         public bool hidden;
+        public RadioAvalible radioAvailable = RadioAvalible.None;
         public int tutorialPhase = -1;
         public DialogPreconditionItem items = new DialogPreconditionItem();
         public DialogPreconditionItem itemsNone = new DialogPreconditionItem();
@@ -175,6 +177,7 @@ namespace StalkerOnlineQuesterEditor
             copy.hidden = this.hidden;
             copy.transport = this.transport.Clone();
             copy.tutorialPhase = tutorialPhase;
+            copy.radioAvailable = radioAvailable;
             return copy;
         }
 
@@ -195,6 +198,7 @@ namespace StalkerOnlineQuesterEditor
             this.MustNoEffects = new List<DialogEffect>();
             this.forDev = false;
             this.hidden = false;
+            this.radioAvailable = RadioAvalible.None;
             this.transport = new DialogPreconditionTransport();
 
         }
@@ -209,7 +213,7 @@ namespace StalkerOnlineQuesterEditor
         {
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() ||
-                itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0;
+                itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || RadioAvalible.None != radioAvailable;
         }
 
         public string GetAsString()

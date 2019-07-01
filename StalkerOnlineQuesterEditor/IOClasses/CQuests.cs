@@ -179,6 +179,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                     else
                         target.Time = 0.0f;
+
                 }
 
                 if (item.Element("Precondition") != null)
@@ -191,12 +192,16 @@ namespace StalkerOnlineQuesterEditor
 
                     if (item.Element("Precondition").Element("OmniCounter") != null)
                         precondition.omniCounter = item.Element("Precondition").Element("OmniCounter").Value.Trim().Equals("1");
+                    if (item.Element("Precondition").Element("isGroup") != null)
+                        precondition.isGroup = item.Element("Precondition").Element("isGroup").Value.Trim().Equals("1");
                 }
                 if (item.Element("QuestRules") != null)
                 {
                 
                     if (item.Element("QuestRules").Element("baseToCapturePercent") != null)
                         questRules.basePercent = float.Parse(item.Element("QuestRules").Element("baseToCapturePercent").Value, CultureInfo.InvariantCulture);
+                    if (item.Element("QuestRules").Element("dontTakeItems") != null)
+                        questRules.dontTakeItems = true;
                     CQuests.AddDataToList(item, "QuestRules", "NumOfItems", questRules.NumOfItems);
                     CQuests.AddDataToList(item, "QuestRules", "TypeOfItems", questRules.TypeOfItems);
                     CQuests.AddDataToList(item, "QuestRules", "AttrOfItems", questRules.AttrOfItems);
@@ -606,6 +611,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Precondition").Add(new XElement("Repeat", questValue.Precondition.Repeat));
                     if (questValue.Precondition.omniCounter)
                         element.Element("Precondition").Add(new XElement("OmniCounter", Global.GetBoolAsString(questValue.Precondition.omniCounter)));
+                    if (questValue.Precondition.isGroup)
+                        element.Element("Precondition").Add(new XElement("isGroup", Global.GetBoolAsString(questValue.Precondition.isGroup)));
                 }
 
                 if (questValue.QuestRules.Any())
@@ -631,6 +638,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("QuestRules").Add(new XElement("MassQuests", Global.GetListAsString(questValue.QuestRules.MassQuests)));
                     if (questValue.QuestRules.basePercent != 0)
                         element.Element("QuestRules").Add(new XElement("baseToCapturePercent", questValue.QuestRules.basePercent.ToString("G6", CultureInfo.InvariantCulture)));
+                    if (questValue.QuestRules.dontTakeItems)
+                        element.Element("QuestRules").Add(new XElement("dontTakeItems", "1"));
                     if (questValue.QuestRules.npc.Any())
                         element.Element("QuestRules").Add(questValue.QuestRules.npc.getXML());
                     if (questValue.QuestRules.mobs.Any())

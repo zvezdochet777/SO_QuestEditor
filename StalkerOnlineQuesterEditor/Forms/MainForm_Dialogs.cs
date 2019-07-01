@@ -346,7 +346,27 @@ namespace StalkerOnlineQuesterEditor
              else
              {
                  if (dialog.Precondition.Any())
-                     newNode = PPath.CreateRectangle(location.X, location.Y, size.Width, size.Height);
+                    if(dialog.Precondition.radioAvailable != RadioAvalible.None)
+                    {
+                        PointF[] listPoints = new PointF[8];
+                        int size_angle = 8;
+                        listPoints[0] = new PointF(location.X, location.Y + size_angle);
+                        listPoints[1] = new PointF(location.X + size_angle, location.Y);
+
+                        listPoints[2] = new PointF(location.X + size.Width - size_angle, location.Y);
+                        listPoints[3] = new PointF(location.X + size.Width, location.Y + size_angle);
+
+                        listPoints[4] = new PointF(location.X + size.Width, location.Y + size.Height - size_angle);
+                        listPoints[5] = new PointF(location.X + size.Width - size_angle, location.Y + size.Height);
+
+                        listPoints[6] = new PointF(location.X + size_angle, location.Y + size.Height);
+                        listPoints[7] = new PointF(location.X, location.Y + size.Height - size_angle);
+                        
+                        newNode = PPath.CreatePolygon(listPoints);
+                    }
+                        
+                    else
+                        newNode = PPath.CreateRectangle(location.X, location.Y, size.Width, size.Height);
                  else
                      newNode = PPath.CreateEllipse(location.X, location.Y, size.Width, size.Height);
                  text.X = newNode.X + 11;

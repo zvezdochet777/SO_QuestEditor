@@ -163,6 +163,7 @@
             this.lNameObject = new System.Windows.Forms.Label();
             this.resultComboBox = new System.Windows.Forms.ComboBox();
             this.questInformationBox = new System.Windows.Forms.GroupBox();
+            this.cbGroupQuest = new System.Windows.Forms.CheckBox();
             this.tcDescriptions = new System.Windows.Forms.TabControl();
             this.tabOpen = new System.Windows.Forms.TabPage();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
@@ -207,6 +208,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.labelGiveQuestsCanceled = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.cbDontTakeItems = new System.Windows.Forms.CheckBox();
             this.QuestPanel.SuspendLayout();
             this.groupQuestBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -656,6 +658,7 @@
             // 
             // lQuestRules
             // 
+            this.lQuestRules.Controls.Add(this.cbDontTakeItems);
             this.lQuestRules.Controls.Add(this.nBaseToCapturePercent);
             this.lQuestRules.Controls.Add(this.massQuestsTextBox);
             this.lQuestRules.Controls.Add(this.lPercent);
@@ -1660,6 +1663,7 @@
             // 
             // questInformationBox
             // 
+            this.questInformationBox.Controls.Add(this.cbGroupQuest);
             this.questInformationBox.Controls.Add(this.tcDescriptions);
             this.questInformationBox.Controls.Add(this.showGetCheckBox);
             this.questInformationBox.Controls.Add(this.cbGetScreenMsg);
@@ -1692,6 +1696,16 @@
             this.questInformationBox.TabIndex = 0;
             this.questInformationBox.TabStop = false;
             this.questInformationBox.Text = "Информация";
+            // 
+            // cbGroupQuest
+            // 
+            this.cbGroupQuest.AutoSize = true;
+            this.cbGroupQuest.Location = new System.Drawing.Point(465, 170);
+            this.cbGroupQuest.Name = "cbGroupQuest";
+            this.cbGroupQuest.Size = new System.Drawing.Size(79, 17);
+            this.cbGroupQuest.TabIndex = 44;
+            this.cbGroupQuest.Text = "Групповой";
+            this.cbGroupQuest.UseVisualStyleBackColor = true;
             // 
             // tcDescriptions
             // 
@@ -2119,6 +2133,17 @@
             this.label26.TabIndex = 49;
             this.label26.Text = "Квест отменяют квесты:";
             // 
+            // cbDontTakeItems
+            // 
+            this.cbDontTakeItems.AutoSize = true;
+            this.cbDontTakeItems.Location = new System.Drawing.Point(118, 23);
+            this.cbDontTakeItems.Name = "cbDontTakeItems";
+            this.cbDontTakeItems.Size = new System.Drawing.Size(161, 17);
+            this.cbDontTakeItems.TabIndex = 25;
+            this.cbDontTakeItems.Text = "Но не выдавать предметы";
+            this.cbDontTakeItems.UseVisualStyleBackColor = true;
+            this.cbDontTakeItems.CheckedChanged += new System.EventHandler(this.cbDontTakeItems_CheckedChanged);
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2373,5 +2398,7 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label labelGiveQuestsCanceled;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.CheckBox cbGroupQuest;
+        private System.Windows.Forms.CheckBox cbDontTakeItems;
     }
 }

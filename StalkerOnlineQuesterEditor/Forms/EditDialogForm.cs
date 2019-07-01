@@ -328,6 +328,8 @@ namespace StalkerOnlineQuesterEditor
             if (curDialog.Precondition.Skills.Any())
                 editPrecondition.Skills = curDialog.Precondition.Skills;
 
+            cbRadioNode.SelectedIndex = (int)curDialog.Precondition.radioAvailable;
+
             cbForDev.Checked = curDialog.Precondition.forDev;
             cbHidden.Checked = curDialog.Precondition.hidden;
             this.initReputationTab();
@@ -887,6 +889,8 @@ namespace StalkerOnlineQuesterEditor
                     precondition.itemsNone.condOfItems.Add(cond);
                 }
             }
+
+            precondition.radioAvailable = (RadioAvalible)cbRadioNode.SelectedIndex;
 
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;
@@ -1523,6 +1527,11 @@ namespace StalkerOnlineQuesterEditor
         private void rbAnd_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbRadioNode_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

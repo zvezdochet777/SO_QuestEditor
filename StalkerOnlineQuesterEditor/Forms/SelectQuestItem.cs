@@ -31,12 +31,12 @@ namespace StalkerOnlineQuesterEditor
             List<CQuest> wayIDs = new List<CQuest>();
             if (quest.Reward.AttrOfItems.Contains(1) || quest.QuestRules.AttrOfItems.Contains(1))
             {
-                foreach (CQuest q in wayIDs)
+                /*foreach (CQuest q in wayIDs)
                     if (q.QuestID == QuestID)
                     {
                         wayIDs.Remove(q);
                         break;
-                    }
+                    }*/
                 wayIDs.Add(quest);
             }
 
@@ -55,9 +55,14 @@ namespace StalkerOnlineQuesterEditor
 
             
             wayIDs.AddRange(getted);
-
-                    
-
+            bool flag = false;
+            foreach (CQuest q in wayIDs)
+                if (q.QuestID == QuestID)
+                {
+                    flag = true;
+                    break;
+                }
+            if (!flag) wayIDs.Add(quest);
             if (!wayIDs.Any())
             {
                 System.Console.WriteLine("Ways empty");
