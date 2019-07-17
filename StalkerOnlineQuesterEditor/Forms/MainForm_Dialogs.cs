@@ -12,6 +12,9 @@ using UMD.HCIL.Piccolo.Util;
 using UMD.HCIL.Piccolo.Event;
 using System.Collections;
 using System.Xml.Linq;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace StalkerOnlineQuesterEditor
 {
@@ -158,10 +161,36 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает ID для нового диалога
         public int getDialogsNewID()
         {
+
+            string html = string.Empty;
+            string url = @"http://hz-dev2.stalker.so:8011/getnextid?key=qdialog_id";
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+            }
+            try
+            {
+                JObject json = JObject.Parse(html);
+                int new_dialog_id = (int)json["qdialog_id"];
+                return new_dialog_id;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка получения нового ID диалога. Проверьте своё подключение к hz-dev", "Ошибка");
+            }
+            
+            //Старый способ, если не получилось подключиться
             List<int> availableID = new List<int>();
             foreach (Dictionary<int, CDialog> pairDialog in dialogs.dialogs.Values)
                 foreach (CDialog dial in pairDialog.Values)
                     availableID.Add(dial.DialogID);
+
             for (int i = 1; ; i++)
                 if (!availableID.Contains(i))
                     return i;

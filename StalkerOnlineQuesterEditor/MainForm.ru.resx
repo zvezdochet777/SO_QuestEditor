@@ -118,15 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="gbDialogsEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1127, 422</value>
-  </data>
-  <data name="gbEmulator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1127, 109</value>
-  </data>
-  <data name="splitDialogs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1127, 535</value>
-  </data>
   <data name="treeDialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 399</value>
   </data>
@@ -140,9 +131,6 @@
   <data name="splitDialogsTreeAndCanvas.SplitterDistance" type="System.Int32, mscorlib">
     <value>189</value>
   </data>
-  <data name="panelDialogTools.Location" type="System.Drawing.Point, System.Drawing">
-    <value>923, 16</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lFindDialogID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -153,15 +141,25 @@
   <data name="labelDrawingTip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelDrawingTip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 107</value>
+  </data>
+  <data name="labelDrawingTip.Text" xml:space="preserve">
+    <value>Для рисования прямоугольников удерживайте Shift и левую кнопку мыши. Кнопки Править и Удалить работают для диалогов и прямоугольников. Pan - правой кнопкой мыши. Zoom - колесиком мыши.
+Для перемещения зажмите Ctrl</value>
+  </data>
   <data name="bTestButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bTestButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 302</value>
   </data>
   <data name="imageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAw
-        FwAAAk1TRnQBSQFMAgEBBAEAAYABAwGAAQMBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAm
+        FwAAAk1TRnQBSQFMAgEBBAEAAZgBAwGYAQMBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABKAMAAQEBAAEgBgABMv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8AUgABAQMAAQGIAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQc7AAH/
         AwAB/zsAAQEDLwFJAlIBUAGkAmABWgHeAmoBQQH5AmoBQQH5AmABWgHeAlIBUAGkAy8BSQMAAQF0AAM1
@@ -177,31 +175,31 @@
         AawB/wIAAakB/wIAAaYB/wIAAaMB/wIAAZ8B/wIAAZwB/wIAAZkB/wIAAZgB/wIAAZwB/wIAAcAB/wJN
         AU4Bli8AAf8DAAH/AyMBMygAAx0BKgJnAVkB8gHlAbQBAAH/AeQBsQEAAf8B5AGxAQAB/wHkAbEBAAH/
         AeQBsgEAAf8B5AGyAQAB/wHkAbIBAAH/AeQBsgEAAf8B5AGxAQAB/wHkAbEBAAH/AeQBsQEAAf8B5QG0
-        AQAB/wJnAVkB8gMdASoMAAMLAQ8DZAHnAQEBowHGAf8BQAGBAagB/QNQAZ4DCAELAwYECAELAwoBDgMM
+        AQAB/wJnAVkB8gMdASoMAAMLAQ8DZAHnAQABowHGAf8BQAGBAagB/QNQAZ4DCAELAwYECAELAwoBDgMM
         ARADDQESAw8BFAMQARUDDwEUAw4BEwMKAQ4DBAEGAwABAQgAAzUBVgIAAccB/wIAAb8B/wIAAbkB/wIA
         AbYB/wIAAbMB/wIAAa8B/wIAAawB/wIAAakB/wIAAaYB/wIAAaMB/wIAAZ8B/wIAAZwB/wIAAZkB/wIA
         AZgB/wIAAZwB/wIAAcAB/wM1AVYrAAH/AwAB/wMjATMMAAMEAQUXAAEBA1sByAHnAbcBAAH/AeYBtAEA
         Af8B5gG0AQAB/wHmAbQBAAH/AeYBtAEAAf8B8QHWAZIB/wH3AeUBxgH/AfcB5QHGAf8B8gHXAZYB/wHm
         AbQBAAH/AeYBtAEAAf8B5gG0AQAB/wHmAbQBAAH/AecBtwEAAf8DWwHIAwABAQwAAzoBYAGLAc8B7AH/
-        AQABigHpAf8BAAEIAcwB/wFWAlgBvAMMARAXAAEBAwAEAQECAwABAQwAAwUBBwJdAWEB4gIAAcsB/wIA
+        AQABigHpAf8BAAEFAcwB/wFWAlgBvAMMARAXAAEBAwAEAQECAwABAQwAAwUBBwJdAWEB4gIAAcsB/wIA
         Ab8B/wIAAbwB/wIAAbkB/wIAAbYB/wIAAbMB/wIAAa8B/wIAAawB/wIAAakB/wIAAaYB/wIAAaMB/wIA
         AZ8B/wIAAZwB/wIAAZkB/wIAAZgB/wIAAakB/wJdAWEB4gMFAQcjAAH+AwAB/wMAAf8DAAH/AwAB/iAA
         Ay8BSQHqAb4BAAH/AecBuAEAAf8B5wG3AQAB/wHnAbcBAAH/AecBtwEAAf8B5wG3AQAB/wHyAdgBlwH/
         AfgB5wHKAf8B+AHnAcoB/wHzAdkBmwH/AecBtwEAAf8B5wG3AQAB/wHnAbcBAAH/AecBtwEAAf8B5wG4
-        AQAB/wHpAb0BAAH/Ay8BSQwAAwEBAgNYAbsBAAHDAfsB/wEAAZIB7AH/AQABCwHSAf8BXAJgAdQDFwEg
+        AQAB/wHpAb0BAAH/Ay8BSQwAAwEBAgNYAbsBAAHDAfsB/wEAAZIB7AH/AQABCAHSAf8BXAJgAdQDFwEg
         LAADNwFaAgABzAH/AgABxgH/AgABwwH/AgABvwH/AgABvAH/AgABuQH/AgABtgH/AgABswH/AgABrwH/
         AgABrAH/AgABqQH/AgABpgH/AgABowH/AgABnwH/AgABnAH/AgABmQH/AgABmAH/AgABvQH/AzcBWiAA
         AwwBEAMAAf8DAAH/AwAB/yQAAlIBUAGkAeoBvgEAAf8B6QG6AQAB/wHpAboBAAH/AekBugEAAf8B6QG6
         AQAB/wHpAboBAAH/AfQB2wGcAf8B+QHqAc8B/wH5AeoBzwH/AfQB3AGgAf8B6QG6AQAB/wHpAboBAAH/
         AekBugEAAf8B6QG6AQAB/wHpAboBAAH/AeoBvgEAAf8CUgFQAaQQAAMHAQkDVAGuAQABygH8Af8BAAGb
-        Ae8B/wEAARAB2AH/AVwCZAHnAyQBNigAAlQBVgGrAgAB2AH/AgABzQH/AgAByAH/AgABwwH/AgABvwH/
+        Ae8B/wEAAQ0B2AH/AVwCZAHnAyQBNigAAlQBVgGrAgAB2AH/AgABzQH/AgAByAH/AgABwwH/AgABvwH/
         AgABvAH/AgABuQH/AgABtgH/AgABswH/AgABrwH/AgABrAH/AgABqQH/AgABpgH/AgABowH/AgABnwH/
         AgABnAH/AgABmQH/AgABsgH/AlQBVgGrGwAB/wgAA1kB6wMAAf8DEAEVCwAB/xgAAmABWgHeAewBwAEA
         Af8B6wG+AQAB/wHrAb4BAAH/AfQB3AGcAf8B9AHcAZwB/wH0AdwBnAH/AfgB5wHEAf8B+gHtAdYB/wH6
         Ae0B1gH/AfgB6AHGAf8B9AHcAZwB/wH0AdwBnAH/AfQB3AGdAf8B6wG+AQAB/wHrAb4BAAH/AewBwAEA
         Af8CYAFaAd4UAAMCAQMDTgGVAQAB0AH+Af8BAAGkAfIB/wEAAYYB3gH/AUICWQH1AzIBUSQAA18B4AIA
         Ad0B/wIAAdQB/wIAAc8B/wGBAYgB4AH/AZIBmAHjAf8BkQGXAeIB/wGRAZcB4AH/AZABlgHfAf8BkAGV
-        Ad0B/wGPAZUB3AH/AY8BlAHaAf8BjgGUAdkB/wGNAZMB1wH/AY0BkgHWAf8BBQELAcsB/wIAAZ8B/wIA
+        Ad0B/wGPAZUB3AH/AY8BlAHaAf8BjgGUAdkB/wGNAZMB1wH/AY0BkgHWAf8BAgEIAcsB/wIAAZ8B/wIA
         AZwB/wIAAaUB/wNfAeAIAAMjATMDIwEzAyMBMwMjATMDAAH/AwAB/wgAA0EB+QsAAf8DAAH/FwABAQJq
         AUcB+QHtAcIBAAH/Ae0BwQEAAf8B7QHBAQAB/wH7AfAB3QH/AfsB8AHdAf8B+wHwAd0B/wH7AfAB3QH/
         AfsB8AHdAf8B+wHwAd0B/wH7AfAB3QH/AfsB8AHdAf8B+wHwAd0B/wH7AfAB3gH/Ae0BwgEAAf8B7QHB
@@ -211,56 +209,55 @@
         Af8DAAH/AwAB/wMAAf8DAAEBAmoBWgH5Ae8BxgEAAf8B7wHFAQAB/wHvAcUBAAH/AfsB8wHkAf8B+wHz
         AeUB/wH7AfMB5QH/AfsB8wHlAf8B+wHzAeUB/wH7AfMB5QH/AfsB8wHlAf8B+wHzAeUB/wH7AfMB5QH/
         AfsB8wHmAf8B7wHGAQAB/wHvAcUBAAH/Ae8BxgEAAf8CagFbAfkDAAEBHAADOgFgA00B+gEAAbYB9wH/
-        AQABmAHpAf8BAAEKAcgB/wNOAZQDAwEEGAADTQH6AQABBgHlAf8CAAHgAf8CAAHcAf8B4gHkAfkp/wHX
+        AQABmAHpAf8BAAEHAcgB/wNOAZQDAwEEGAADTQH6AQABAwHlAf8CAAHgAf8CAAHcAf8B4gHkAfkp/wHX
         AdkB8QH/AgABpgH/AgABowH/AgABoAH/A00B+gcAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DLgFH
         BAADUAGjBwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8EAANgAd4B8QHKAQAB/wHxAckBAAH/
         AfEByQEAAf8B+AHlAa8B/wH4AeUBsAH/AfgB5QGwAf8B+wHxAdkB/wH8AfcB7AH/AfwB9wHsAf8B+wHx
         AdoB/wH4AeUBsAH/AfgB5QGwAf8B+AHlAbAB/wHxAckBAAH/AfEByQEAAf8B8QHKAQAB/wNgAd4kAAMv
-        AUkBXQJfAfMBAAG+AfkB/wEAAaEB7gH/AQABDgHOAf8BVQJWAbQDCgENFAADXwHgAYsBkgHsAf8BAwEL
+        AUkBXQJfAfMBAAG+AfkB/wEAAaEB7gH/AQABCwHOAf8BVQJWAbQDCgENFAADXwHgAYsBkgHsAf8BAAEI
         AeYB/wIAAeIB/wGoAa0B7gH/AbQBuAHvAf8BrgGzAe0B/wGfAaQB6AH/AZcBnQHlAf8BlgGcAeQB/wGW
-        AZwB4gH/AZUBmwHhAf8BlQGaAd8B/wGUAZoB3gH/AZQBmQHdAf8BCwGAAdIB/wIAAakB/wIAAaYB/wIA
+        AZwB4gH/AZUBmwHhAf8BlQGaAd8B/wGUAZoB3gH/AZQBmQHdAf8BCAGAAdIB/wIAAakB/wIAAaYB/wIA
         Aa0B/wNfAeAbAAH/CAADMgFRAwAB/wM0AVUEAANZAckDAAH+GAADUgGkAfQBzwEAAf8B8wHMAQAB/wHz
         AcwBAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfkB6gHAAf8B/QH5AfMB/wH9AfkB8wH/AfkB6wHD
         Af8B8wHMAQAB/wHzAcwBAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfQBzwEAAf8DUgGkKAADJAE1
         A2IB6QEAAcUB+wH/AQABqwHyAf8BAAGDAdQB/wFcAl4BzgMUARsQAAJUAVYBqwGZAZ8B6gH/AYQBjAHr
-        Af8BCQGBAecB/wEAAQYB4wH/AgAB3wH/AgAB2gH/AgAB1AH/AgAByQH/AgABwwH/AgABvwH/AgABvAH/
+        Af8BBgGBAecB/wEAAQMB4wH/AgAB3wH/AgAB2gH/AgAB1AH/AgAByQH/AgABwwH/AgABvwH/AgABvAH/
         AgABuQH/AgABtgH/AgABswH/AgABrwH/AgABrAH/AgABqQH/AgABvAH/AlQBVgGrIwABAQMAAf8DAAH/
         AwAB/wMDAQQHAAEBGAADLwFJAfYB0gEAAf8B9QHQAQAB/wH1Ac8BAAH/AfUBzwEAAf8B9QHPAQAB/wH1
         Ac8BAAH/AfoB7QHGAf8B/gH8AfkB/wH+AfwB+QH/AfsB7gHKAf8B9QHPAQAB/wH1Ac8BAAH/AfUBzwEA
         Af8B9QHPAQAB/wH1AdABAAH/AfYB1AEAAf8DLwFJLAADGgEkA18B2wEAAcoB/AH/AQABswH1Af8BAAGL
-        AdoB/wFYAl8B4wMjATMMAAM3AVoBCAEQAdgB/wGXAZ0B7wH/AYsBkgHsAf8BEAGHAegB/wEEAQ0B5AH/
-        AQABAQHgAf8CAAHbAf8CAAHWAf8CAAHNAf8CAAHDAf8CAAG/Af8CAAG8Af8CAAG5Af8CAAG2Af8CAAGz
-        Af8CAAGvAf8CAAGsAf8CAAHCAf8DNwFaIwAB/wMAAf8DAAH/AwAB/wMAAf8jAAEBA1sByAH3AdUBAAH/
-        AfcB0wEAAf8B9wHTAQAB/wH3AdMBAAH/AfcB0wEAAf8B/AHvAcoC/wH9AfwC/wH9AfwB/wH8AfABzQH/
-        AfcB0wEAAf8B9wHTAQAB/wH3AdMBAAH/AfcB0wEAAf8B9wHVAQAB/wNbAcgDAAEBMAADEAEWA10BygEA
-        Ac4B/QH/AQABugHtAf8BpAGuAbkB/wNZAfUCNQE2AVgIAAMFAQcCXQFhAeIBrgGzAfIB/wGdAaQB8AH/
-        AZIBmQHtAf8BhgGNAekB/wELAYIB5QH/AQABBwHhAf8CAAHdAf8CAAHYAf8CAAHSAf8CAAHJAf8CAAHB
-        Af8CAAG8Af8CAAG5Af8CAAG2Af8CAAGzAf8CAAG8Af8CXQFhAeIDBQEHJAADTgGZAwAB/wNRAaEoAAMd
-        ASoDZwHyAfkB1wEAAf8B+QHWAQAB/wH5AdYBAAH/AfkB1gEAAf8B+AHWAQAB/wH4AdYBAAH/AfgB1gEA
-        Af8B+AHWAQAB/wH5AdYBAAH/AfkB1gEAAf8B+QHWAQAB/wH5AdcBAAH/A2cB8gMdASo4AAMJAQwDVgG2
-        AbIBzgHWAf8CAAGzAf8CiwGuAf8CQAGoAf0DQQFyCAADNQFWAQABBAHRAf8BsgG3AfQB/wGkAaoB8QH/
-        AZgBnwHuAf8BjAGUAesB/wGBAYgB5wH/AQUBDgHjAf8BAAECAd4B/wIAAdoB/wIAAdUB/wIAAc8B/wIA
-        AcgB/wIAAcIB/wIAAbwB/wIAAboB/wIAAcUB/wM1AVYoAANOAZkDAAH/A1EBoSwAAysBQgNnAfIB+gHa
-        AQcB/wH6AdkBAgH/AfoB2AEBAf8B+gHYAQAB/wH6AdgBAAH/AfoB2AEAAf8B+gHYAQAB/wH6AdgBAQH/
-        AfoB2QECAf8B+gHaAQcB/wNnAfIDKwFCQAADBAEFA1QBrAGjAZ4B1wH/AQ0BDAHdAf8CAwHdAf8CAQHd
-        Af8DPQFoCAACTQFOAZYBhQGMAdoB/wG4Ab0B9QH/AasBsAHyAf8BnwGlAe8B/wGTAZoB7AH/AYcBjgHo
-        Af8BDAGDAeQB/wEAAQgB4AH/AgAB2wH/AgAB1gH/AgAB0QH/AgABzAH/AgAByAH/AgABywH/Ak0BTgGW
-        LAADTgGZAwAB/wNRAaEwAAMdASoDWwHIAfsB3AEPAf8B+wHcAQwB/wH7AdwBCgH/AfsB2wEJAf8B+wHb
-        AQkB/wH7AdwBCgH/AfsB3AEMAf8B+wHcARAB/wNbAcgDHQEqSAADAgEDA00BkQKZAeoB/wKdAesB/wKc
-        AesB/wNOAZgIAAMCAQMCTQFOAZYBAAEGAdEB/wG+AcIB9AH/AbEBtgHzAf8BpgGrAfAB/wGaAaAB7QH/
-        AY4BlQHpAf8BggGJAeUB/wEHAQ8B4QH/AQABAwHdAf8CAAHYAf8BAAECAdgB/wIAAckB/wJNAU4BlgMC
-        AQMsAANIAYUDAAH/A04BlzcAAQEDLwFJA1IBowNgAd4DagH5A2oB+QNgAd4DUgGjAy8BSQMAAQFUAANB
-        AXIDWQH1A2AB1gMYASIQAAM1AVYCXQFhAeIBgQGIAdkB/wGyAbcB7gH/AbQBuQHzAf8BoQGnAe4B/wGV
-        AZwB6wH/AZUBmwHpAf8BjAGSAeMB/wEAAQEB0QH/Al0BYQHiAzUBVjQAA0UBfwMAAf8DRQF/RwABAQMA
-        AQFoAAMCAQMcAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQdkAAFCAU0BPgcA
-        AT4DAAEoAwABUAMAASgDAAEBAQABAQUAAeABARYAA//xAAH/AZ8D/wH4AQEB/wH5Af8CAAH4AQED/wHw
-        AQAB/wH4Af8CAAHwAQAB8AEAAQ8BwAEAAT8B+AH/AgAB4AEAAXABAAEDAcABAAE/AfgB/wIAAcABAAE4
-        AQABAQGAAQABHwH4Ae8CAAGAAQABHAEPAYcCAAEPAfABfwIAAYABAAEcAQcB/wIAAQ8B8AH/AgABgAEA
-        AR4BAwH/AgABDwHYAd8CAAGAAQABHwEBAf8CAAEMAQ0BnwQAAQ8BwAH/AgABCAECBQABDwHgAT8CAAEI
-        AQUDAAGAAQABHwHwAR8CAAEPAdgBnwIAAYABAAEfAfgBDwIAAQ8B8AFfAgABgAEAAR8B/AEHAgABDwHw
-        AX8CAAGAAQABHwH+AQMCAAEPAfgB/wIAAcABAAE/Af8BAQGAAQABHwH4Af8CAAHgAQABfwH/AYABwAEA
-        AT8B+AH/AgAB8AEAAv8CwAEAAT8B+AH/AgAB+AEBAv8C8AEAAf8B+AH/AgAB/wGfAv8B+wH4AQED/wIA
-        Cw==
+        AdoB/wFYAl8B4wMjATMMAAM3AVoBBQENAdgB/wGXAZ0B7wH/AYsBkgHsAf8BDQGHAegB/wEBAQoB5AH/
+        AgAB4AH/AgAB2wH/AgAB1gH/AgABzQH/AgABwwH/AgABvwH/AgABvAH/AgABuQH/AgABtgH/AgABswH/
+        AgABrwH/AgABrAH/AgABwgH/AzcBWiMAAf8DAAH/AwAB/wMAAf8DAAH/IwABAQNbAcgB9wHVAQAB/wH3
+        AdMBAAH/AfcB0wEAAf8B9wHTAQAB/wH3AdMBAAH/AfwB7wHKAv8B/QH8Av8B/QH8Af8B/AHwAc0B/wH3
+        AdMBAAH/AfcB0wEAAf8B9wHTAQAB/wH3AdMBAAH/AfcB1QEAAf8DWwHIAwABATAAAxABFgNdAcoBAAHO
+        Af0B/wEAAboB7QH/AaQBrgG5Af8DWQH1AjUBNgFYCAADBQEHAl0BYQHiAa4BswHyAf8BnQGkAfAB/wGS
+        AZkB7QH/AYYBjQHpAf8BCAGCAeUB/wEAAQQB4QH/AgAB3QH/AgAB2AH/AgAB0gH/AgAByQH/AgABwQH/
+        AgABvAH/AgABuQH/AgABtgH/AgABswH/AgABvAH/Al0BYQHiAwUBByQAA04BmQMAAf8DUQGhKAADHQEq
+        A2cB8gH5AdcBAAH/AfkB1gEAAf8B+QHWAQAB/wH5AdYBAAH/AfgB1gEAAf8B+AHWAQAB/wH4AdYBAAH/
+        AfgB1gEAAf8B+QHWAQAB/wH5AdYBAAH/AfkB1gEAAf8B+QHXAQAB/wNnAfIDHQEqOAADCQEMA1YBtgGy
+        Ac4B1gH/AgABswH/AosBrgH/AkABqAH9A0EBcggAAzUBVgEAAQEB0QH/AbIBtwH0Af8BpAGqAfEB/wGY
+        AZ8B7gH/AYwBlAHrAf8BgQGIAecB/wECAQsB4wH/AgAB3gH/AgAB2gH/AgAB1QH/AgABzwH/AgAByAH/
+        AgABwgH/AgABvAH/AgABugH/AgABxQH/AzUBVigAA04BmQMAAf8DUQGhLAADKwFCA2cB8gH6AdoBBAH/
+        AfoB2QEAAf8B+gHYAQAB/wH6AdgBAAH/AfoB2AEAAf8B+gHYAQAB/wH6AdgBAAH/AfoB2AEAAf8B+gHZ
+        AQAB/wH6AdoBBAH/A2cB8gMrAUJAAAMEAQUDVAGsAaMBngHXAf8BCgEJAd0B/wIAAd0B/wIAAd0B/wM9
+        AWgIAAJNAU4BlgGFAYwB2gH/AbgBvQH1Af8BqwGwAfIB/wGfAaUB7wH/AZMBmgHsAf8BhwGOAegB/wEJ
+        AYMB5AH/AQABBQHgAf8CAAHbAf8CAAHWAf8CAAHRAf8CAAHMAf8CAAHIAf8CAAHLAf8CTQFOAZYsAANO
+        AZkDAAH/A1EBoTAAAx0BKgNbAcgB+wHcAQwB/wH7AdwBCQH/AfsB3AEHAf8B+wHbAQYB/wH7AdsBBgH/
+        AfsB3AEHAf8B+wHcAQkB/wH7AdwBDQH/A1sByAMdASpIAAMCAQMDTQGRApkB6gH/Ap0B6wH/ApwB6wH/
+        A04BmAgAAwIBAwJNAU4BlgEAAQMB0QH/Ab4BwgH0Af8BsQG2AfMB/wGmAasB8AH/AZoBoAHtAf8BjgGV
+        AekB/wGCAYkB5QH/AQQBDAHhAf8CAAHdAf8CAAHYAf8CAAHYAf8CAAHJAf8CTQFOAZYDAgEDLAADSAGF
+        AwAB/wNOAZc3AAEBAy8BSQNSAaMDYAHeA2oB+QNqAfkDYAHeA1IBowMvAUkDAAEBVAADQQFyA1kB9QNg
+        AdYDGAEiEAADNQFWAl0BYQHiAYEBiAHZAf8BsgG3Ae4B/wG0AbkB8wH/AaEBpwHuAf8BlQGcAesB/wGV
+        AZsB6QH/AYwBkgHjAf8CAAHRAf8CXQFhAeIDNQFWNAADRQF/AwAB/wNFAX9HAAEBAwABAWgAAwIBAxwA
+        AwUBBwM2AVkDUwGqA18B4ANNAfoDTQH6A18B4ANTAaoDNgFZAwUBB2QAAUIBTQE+BwABPgMAASgDAAFQ
+        AwABKAMAAQEBAAEBBQAB4AEBFgAD//EAAf8BnwP/AfgBAQH/AfkB/wIAAfgBAQP/AfABAAH/AfgB/wIA
+        AfABAAHwAQABDwHAAQABPwH4Af8CAAHgAQABcAEAAQMBwAEAAT8B+AH/AgABwAEAATgBAAEBAYABAAEf
+        AfgB7wIAAYABAAEcAQ8BhwIAAQ8B8AF/AgABgAEAARwBBwH/AgABDwHwAf8CAAGAAQABHgEDAf8CAAEP
+        AdgB3wIAAYABAAEfAQEB/wIAAQwBDQGfBAABDwHAAf8CAAEIAQIFAAEPAeABPwIAAQgBBQMAAYABAAEf
+        AfABHwIAAQ8B2AGfAgABgAEAAR8B+AEPAgABDwHwAV8CAAGAAQABHwH8AQcCAAEPAfABfwIAAYABAAEf
+        Af4BAwIAAQ8B+AH/AgABwAEAAT8B/wEBAYABAAEfAfgB/wIAAeABAAF/Af8BgAHAAQABPwH4Af8CAAHw
+        AQAC/wLAAQABPwH4Af8CAAH4AQEC/wLwAQAB/wH4Af8CAAH/AZ8C/wH7AfgBAQP/AgAL
 </value>
   </data>
   <data name="bCenterizeDialogShower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -281,11 +278,23 @@
   <data name="bAddDialog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="panelDialogTools.Location" type="System.Drawing.Point, System.Drawing">
+    <value>923, 16</value>
+  </data>
+  <data name="gbDialogsEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1127, 422</value>
+  </data>
   <data name="splitDialogsEmulator.Size" type="System.Drawing.Size, System.Drawing">
     <value>1121, 90</value>
   </data>
   <data name="splitDialogsEmulator.SplitterDistance" type="System.Int32, mscorlib">
     <value>188</value>
+  </data>
+  <data name="gbEmulator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1127, 109</value>
+  </data>
+  <data name="splitDialogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1127, 535</value>
   </data>
   <data name="treeQuest.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 294</value>
@@ -308,17 +317,8 @@
   <data name="labelChosenNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="CentralDock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1141, 567</value>
-  </data>
   <data name="tabDialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
-  </data>
-  <data name="tabQuests.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1133, 541</value>
-  </data>
-  <data name="panelQuestTools.Location" type="System.Drawing.Point, System.Drawing">
-    <value>932, 48</value>
   </data>
   <data name="bClearBuffer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -347,8 +347,8 @@
   <data name="bAddEvent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="panelSelectQuest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1127, 45</value>
+  <data name="panelQuestTools.Location" type="System.Drawing.Point, System.Drawing">
+    <value>932, 48</value>
   </data>
   <data name="bRemoveQuest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -359,14 +359,14 @@
   <data name="labelChosenQuest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="tabInfoNPC.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelSelectQuest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1127, 45</value>
+  </data>
+  <data name="tabQuests.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
   <data name="npcLinkShower.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 489</value>
-  </data>
-  <data name="panelNpcLinkControls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1133, 52</value>
   </data>
   <data name="labelAdviceNpcLink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -374,20 +374,14 @@
   <data name="bNpcLinkExecute.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="tabReview.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelNpcLinkControls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1133, 52</value>
+  </data>
+  <data name="tabInfoNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
   <data name="dgvReview.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 437</value>
-  </data>
-  <data name="panelReviewButtons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1133, 104</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 95</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Личная репутация</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -412,6 +406,12 @@
   </data>
   <data name="bFindNPCReputation.Text" xml:space="preserve">
     <value>Найти квест</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 95</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Личная репутация</value>
   </data>
   <data name="cbOnlyOnLocation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -440,14 +440,14 @@
   <data name="bFindQuest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="tabManage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelReviewButtons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1133, 104</value>
+  </data>
+  <data name="tabReview.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
   <data name="dgvManage.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 515</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1133, 26</value>
   </data>
   <data name="bSaveManage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -455,14 +455,14 @@
   <data name="bSaveManage.Location" type="System.Drawing.Point, System.Drawing">
     <value>1058, 0</value>
   </data>
-  <data name="tabTranslate.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1133, 26</value>
+  </data>
+  <data name="tabManage.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
   <data name="dgvLocaleDiff.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 484</value>
-  </data>
-  <data name="panelDiffLocale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1133, 57</value>
   </data>
   <data name="labelLocalizeOuput.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -479,14 +479,14 @@
   <data name="bFindDialogDifference.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="tabSearch.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelDiffLocale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1133, 57</value>
+  </data>
+  <data name="tabTranslate.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
   <data name="dgvSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>1127, 476</value>
-  </data>
-  <data name="panelSearchTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1127, 59</value>
   </data>
   <data name="cbIgnoreCase.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -499,6 +499,15 @@
   </data>
   <data name="bStartSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="panelSearchTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1127, 59</value>
+  </data>
+  <data name="tabSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1133, 541</value>
+  </data>
+  <data name="CentralDock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1141, 567</value>
   </data>
   <data name="btnFilterNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -518,15 +527,6 @@
   <data name="panelSelectNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>1141, 29</value>
   </data>
-  <data name="menuMainControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1141, 24</value>
-  </data>
-  <data name="changeLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="changeLanguageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Сменить язык</value>
-  </data>
   <data name="русскийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 22</value>
   </data>
@@ -539,14 +539,17 @@
   <data name="englishToolStripMenuItem.Text" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="changeLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="changeLanguageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сменить язык</value>
+  </data>
   <data name="собратьЭдиторДляПередачиToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>265, 22</value>
   </data>
   <data name="вытащитьНепереведённыеТекстыToolStripMenuItem.Text" xml:space="preserve">
     <value>Вытащить непереведённые тексты</value>
-  </data>
-  <data name="загрузитьПереводToolStripMenuItem.Text" xml:space="preserve">
-    <value>Загрузить перевод</value>
   </data>
   <data name="диалоговToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
@@ -559,6 +562,12 @@
   </data>
   <data name="квестовToolStripMenuItem.Text" xml:space="preserve">
     <value>Квестов</value>
+  </data>
+  <data name="загрузитьПереводToolStripMenuItem.Text" xml:space="preserve">
+    <value>Загрузить перевод</value>
+  </data>
+  <data name="menuMainControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1141, 24</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1141, 22</value>

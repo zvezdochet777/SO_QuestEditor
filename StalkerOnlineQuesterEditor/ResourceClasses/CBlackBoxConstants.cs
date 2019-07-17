@@ -46,7 +46,7 @@ namespace StalkerOnlineQuesterEditor
 
         public static string getPath()
         {
-            if (File.Exists(CEffectConstants.JSON_PATH))
+            if (File.Exists(CBlackBoxConstants.JSON_PATH))
                 return CBlackBoxConstants.JSON_PATH;
             return CBlackBoxConstants.OTHER_JSON_PATH;
         }

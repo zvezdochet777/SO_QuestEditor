@@ -90,6 +90,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.cbGetScreenMsg = new System.Windows.Forms.CheckBox();
             this.cbFailScreenMsg = new System.Windows.Forms.CheckBox();
@@ -192,7 +193,9 @@
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.cbHidden = new System.Windows.Forms.CheckBox();
             this.debuglabel = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cbPriority = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
@@ -730,6 +733,7 @@
             // 
             // debugTextBox
             // 
+            this.debugTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.debugTextBox.Location = new System.Drawing.Point(169, 513);
             this.debugTextBox.Name = "debugTextBox";
             this.debugTextBox.Size = new System.Drawing.Size(147, 20);
@@ -885,6 +889,16 @@
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Информация";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label23.Location = new System.Drawing.Point(6, 197);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(154, 13);
+            this.label23.TabIndex = 66;
+            this.label23.Text = "Сообщения игроку в чат при:";
             // 
             // label21
             // 
@@ -1112,8 +1126,7 @@
             // 
             // tcDescriptions
             // 
-            this.tcDescriptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tcDescriptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tcDescriptions.Controls.Add(this.tabOpen);
             this.tcDescriptions.Controls.Add(this.tabOnTest);
@@ -1160,7 +1173,8 @@
             // 
             // descriptionOnTestTextBox
             // 
-            this.descriptionOnTestTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionOnTestTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionOnTestTextBox.Location = new System.Drawing.Point(3, 3);
             this.descriptionOnTestTextBox.Multiline = true;
             this.descriptionOnTestTextBox.Name = "descriptionOnTestTextBox";
@@ -1181,7 +1195,8 @@
             // 
             // descriptionClosedTextBox
             // 
-            this.descriptionClosedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionClosedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionClosedTextBox.Location = new System.Drawing.Point(3, 3);
             this.descriptionClosedTextBox.Multiline = true;
             this.descriptionClosedTextBox.Name = "descriptionClosedTextBox";
@@ -1588,6 +1603,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.label27);
             this.tabPage6.Controls.Add(this.bPenaltyQuests);
             this.tabPage6.Controls.Add(this.bPenaltyEffects);
             this.tabPage6.Controls.Add(this.bPenaltyReputation);
@@ -1938,6 +1954,7 @@
             // 
             // debuglabel
             // 
+            this.debuglabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.debuglabel.AutoSize = true;
             this.debuglabel.Location = new System.Drawing.Point(5, 516);
             this.debuglabel.Name = "debuglabel";
@@ -1945,15 +1962,32 @@
             this.debuglabel.TabIndex = 53;
             this.debuglabel.Text = "Для дебага(Стасу не трогать):";
             // 
-            // label23
+            // label25
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(6, 197);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(154, 13);
-            this.label23.TabIndex = 66;
-            this.label23.Text = "Сообщения игроку в чат при:";
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(462, 36);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(60, 13);
+            this.label25.TabIndex = 54;
+            this.label25.Text = "Важность:";
+            // 
+            // cbPriority
+            // 
+            this.cbPriority.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPriority.Location = new System.Drawing.Point(520, 32);
+            this.cbPriority.Name = "cbPriority";
+            this.cbPriority.Size = new System.Drawing.Size(116, 21);
+            this.cbPriority.TabIndex = 55;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(10, 131);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(61, 13);
+            this.label27.TabIndex = 69;
+            this.label27.Text = "ШТРАФЫ:";
             // 
             // EditQuestForm
             // 
@@ -1961,6 +1995,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(638, 579);
+            this.Controls.Add(this.cbPriority);
+            this.Controls.Add(this.label25);
             this.Controls.Add(this.debuglabel);
             this.Controls.Add(this.cbHidden);
             this.Controls.Add(this.eventComboBox);
@@ -2178,5 +2214,8 @@
         private System.Windows.Forms.Label lCombatSkills;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox cbPriority;
+        private System.Windows.Forms.Label label27;
     }
 }

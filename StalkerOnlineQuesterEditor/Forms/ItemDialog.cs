@@ -156,17 +156,20 @@ namespace StalkerOnlineQuesterEditor
                     }
                     string title = "";
                     string description = "";
+                    string content = "";
                     string activation = "";
                     string probability = "1";
+
                     if (parentForm.quest.QuestPenalty.Probability.Count > 0)
                         probability = parentForm.quest.QuestPenalty.Probability[i].ToString();
                     if (parentForm.quest.QuestInformation.Items.Keys.Contains(typeID))
                     {
                         title = parentForm.quest.QuestInformation.Items[typeID].title;
                         description = parentForm.quest.QuestInformation.Items[typeID].description;
+                        content = parentForm.quest.QuestInformation.Items[typeID].content;
                         activation = parentForm.quest.QuestInformation.Items[typeID].activation;
                     }
-                    object[] row = { name, attr, quantity.ToString(), probability, title, description, activation };
+                    object[] row = { name, attr, quantity.ToString(), probability, title, description, content, activation };
                     itemGridView.Rows.Add(row);
                 }
             }
@@ -186,14 +189,16 @@ namespace StalkerOnlineQuesterEditor
 
                     string title = "";
                     string description = "";
+                    string content = "";
                     string activation = "";
                     if (parentForm.quest.QuestInformation.Items.Keys.Contains(typeID))
                     {
                         title = parentForm.quest.QuestInformation.Items[typeID].title;
                         description = parentForm.quest.QuestInformation.Items[typeID].description;
+                        content = parentForm.quest.QuestInformation.Items[typeID].content;
                         activation = parentForm.quest.QuestInformation.Items[typeID].activation;
                     }
-                    object[] row = { name, attr, quantity.ToString(), null, title, description, activation };
+                    object[] row = { name, attr, quantity.ToString(), null, title, description, content, activation };
                     itemGridView.Rows.Add(row);
                }
                 itemGridView.Columns[1].ReadOnly = true;
@@ -275,6 +280,7 @@ namespace StalkerOnlineQuesterEditor
 
                     string title = "";
                     string description = "";
+                    string content = "";
                     string activation = "";
                     if (parentForm2.pub_quest.QuestInformation.Items.Keys.Contains(typeID))
                     {
@@ -292,10 +298,11 @@ namespace StalkerOnlineQuesterEditor
                             }
                             title = this.locale[typeID].title;
                             description = this.locale[typeID].description;
+                            content = this.locale[typeID].content;
                             activation = this.locale[typeID].activation;
                         }
                     }
-                    object[] row = { name, attr, quantity.ToString(), null, title, description, activation };
+                    object[] row = { name, attr, quantity.ToString(), null, title, description, content, activation };
                     itemGridView.Rows.Add(row);
 
                 }
@@ -383,6 +390,7 @@ namespace StalkerOnlineQuesterEditor
                         string title = row.Cells["itemTitle"].FormattedValue.ToString();
                         string description = row.Cells["itemDescription"].FormattedValue.ToString();
                         string activation = row.Cells["itemActivation"].FormattedValue.ToString();
+                        string content = row.Cells["itemContent"].FormattedValue.ToString();
                         float probability = checkFloatValue(row.Cells["itemProbability"].FormattedValue.ToString());
                         if (probability < 0)
                             return;
@@ -392,7 +400,7 @@ namespace StalkerOnlineQuesterEditor
                                 attr = 1;
                                 try
                                 {
-                                    itemsInfo.Add(typeID, new QuestItemInfo(title, description, activation));
+                                    itemsInfo.Add(typeID, new QuestItemInfo(title, description, activation, content));
                                 }
                                 catch
                                 {

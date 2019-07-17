@@ -55,7 +55,8 @@ namespace StalkerOnlineQuesterEditor
             FillTutorialComboBox();
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
-
+            cbRadioNode.SelectedIndex = 0;
+            
             if (!isAdd)
             {
                 fillDialogEditForm(currentDialogID);

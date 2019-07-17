@@ -29,17 +29,21 @@ namespace StalkerOnlineQuesterEditor
         //! Условие, при котором событие будет срабатывать - только левый клик, никаких зажатых кнопок на клавиатуре
         public override bool DoesAcceptEvent(PInputEventArgs e)
         {
-            return e.IsMouseEvent && e.Modifiers == Keys.None && e.Button == MouseButtons.Left;
+            return e.IsMouseEvent && e.Button == MouseButtons.Left;
         }
 
         //! Начало перетаскивания узлов диалога
         protected override void OnStartDrag(object sender, PInputEventArgs e)
         {
-            base.OnStartDrag(sender, e);
-            e.Handled = true;
-            
-            if (e.PickedNode.Tag != null)
-                e.PickedNode.MoveToFront();
+            if (e.IsMouseEvent && e.Modifiers == Keys.Control && e.Button == MouseButtons.Left)
+            {
+               
+                base.OnStartDrag(sender, e);
+                e.Handled = true;
+
+                if (e.PickedNode.Tag != null)
+                    e.PickedNode.MoveToFront();
+            }
         }
         //! Закончили перетаскивать узел диалога или прямоугольник. Сохраняем их координаты
         protected override void OnEndDrag(object sender, PInputEventArgs e)

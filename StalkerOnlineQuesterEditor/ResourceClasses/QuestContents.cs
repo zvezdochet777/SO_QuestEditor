@@ -14,6 +14,7 @@ namespace StalkerOnlineQuesterEditor
     {
         public int QuestID;
         public int Version;
+        public int Priority;
         public CQuestInformation QuestInformation;
         public CQuestTarget Target;
         public CQuestPrecondition Precondition;
@@ -27,6 +28,7 @@ namespace StalkerOnlineQuesterEditor
         {
             CQuest copy = new CQuest();
             copy.QuestID = this.QuestID;
+            copy.Priority = this.Priority;
             copy.Version = 0;
             copy.QuestInformation = (CQuestInformation)this.QuestInformation.Clone();
             copy.Precondition = (CQuestPrecondition)this.Precondition.Clone();
@@ -43,6 +45,7 @@ namespace StalkerOnlineQuesterEditor
         {
             this.QuestID = new int();
             this.Version = new int();
+            this.Priority = new int();
             this.QuestInformation = new CQuestInformation();
             this.Precondition = new CQuestPrecondition();
             this.QuestRules = new CQuestRules();
@@ -53,10 +56,11 @@ namespace StalkerOnlineQuesterEditor
             this.hidden = false;
         }
 
-        public CQuest(int questID, int Version, CQuestInformation questInformation, CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional, CQuestTarget target, CQuestReward penalty, bool hidden = false)
+        public CQuest(int questID, int Version, int Priority, CQuestInformation questInformation, CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional, CQuestTarget target, CQuestReward penalty, bool hidden = false)
         {
             this.QuestID = questID;
             this.Version = Version;
+            this.Priority = Priority;
             this.QuestInformation = questInformation;
             this.Precondition = precondition;
             this.QuestRules = questRules;
@@ -118,9 +122,9 @@ namespace StalkerOnlineQuesterEditor
         {
             return Items;
         }
-        public void addItem(int itemID, string title, string description, string activation)
+        public void addItem(int itemID, string title, string description, string activation, string content)
         {
-            this.Items.Add(itemID, new QuestItemInfo(title, description, activation));
+            this.Items.Add(itemID, new QuestItemInfo(title, description, activation, content));
         }
     }
 
@@ -711,6 +715,7 @@ namespace StalkerOnlineQuesterEditor
         public string title;
         public string description;
         public string activation;
+        public string content;
 
         public object Clone()
         {
@@ -719,6 +724,7 @@ namespace StalkerOnlineQuesterEditor
             copy.title = this.title;
             copy.description = this.description;
             copy.activation = this.activation;
+            copy.content = this.content;
             return copy;
         }
 
@@ -727,13 +733,15 @@ namespace StalkerOnlineQuesterEditor
             this.title = "";
             this.description = "";
             this.activation = "";
+            this.content = "";
         }
 
-        public QuestItemInfo(string title, string description, string activation)
+        public QuestItemInfo(string title, string description, string activation, string content)
         {
             this.title = title;
             this.description = description;
             this.activation = activation;
+            this.content = content;
         }
     }
 

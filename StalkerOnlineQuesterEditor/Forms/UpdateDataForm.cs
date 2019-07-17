@@ -66,39 +66,6 @@ namespace StalkerOnlineQuesterEditor.Forms
             MessageBox.Show("Complete");
         }
 
-        private void btnUpdateNPCStats_Click(object sender, EventArgs e)
-        {
-            string fileName = @"..\misc\developer_scripts\QuestEditorScripts\NPCparser.py";
-            run_cmd(fileName);
-            this.parent.ManagerNPC = new CManagerNPC();
-            MessageBox.Show("Complete");
-        }
-
-        private void btnUpdateTP_Click(object sender, EventArgs e)
-        {
-            string fileName = @"..\misc\developer_scripts\QuestEditorScripts\TeleportPointParser.py";
-            run_cmd(fileName);
-            this.parent.tpConst = new CTPConstants();
-            MessageBox.Show("Complete");
-        }
-
-        private void btnUpdateAreas_Click(object sender, EventArgs e)
-        {
-            string fileName = @"..\misc\developer_scripts\QuestEditorScripts\AllAreaParser.py";
-            run_cmd(fileName);
-            this.parent.zoneConst = new CZoneConstants();
-            this.parent.zoneMobConst = new CZoneMobConstants();
-            MessageBox.Show("Complete");
-        }
-
-        private void btnUpdateTriggers_Click(object sender, EventArgs e)
-        {
-            string fileName = @"..\misc\developer_scripts\QuestEditorScripts\TriggersParser.py";
-            run_cmd(fileName);
-            this.parent.triggerConst = new CTriggerConstants();
-            MessageBox.Show("Complete");
-        }
-
         private void btnUpdateMobs_Click(object sender, EventArgs e)
         {
             string fileName = @"..\misc\developer_scripts\QuestEditorScripts\MobsParser.py";
@@ -113,6 +80,24 @@ namespace StalkerOnlineQuesterEditor.Forms
             run_cmd(fileName);
             this.parent.billboardQuests = new BillboardQuests();
             MessageBox.Show("Complete");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string fileName = @"..\misc\developer_scripts\QuestEditorScripts\ObjectsParser.py";
+            run_cmd(fileName);
+            this.parent.triggerConst = new CTriggerConstants();
+            this.parent.zoneConst = new CZoneConstants();
+            this.parent.zoneMobConst = new CZoneMobConstants();
+            this.parent.tpConst = new CTPConstants();
+            this.parent.ManagerNPC = new CManagerNPC();
+            MessageBox.Show("Complete");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string fileName = @"..\misc\developer_scripts\QuestEditorScripts\DungeonParser.py";
+            run_cmd(fileName);
         }
     }
 }

@@ -20,6 +20,8 @@ namespace StalkerOnlineQuesterEditor
     using StalkerOnlineQuesterEditor.Forms;
     using System.IO;
     using System.Globalization;
+    using System.Net;
+    using Newtonsoft.Json.Linq;
 
     //! Главная форма программы, туча строк кода
     public partial class MainForm : Form
@@ -57,7 +59,7 @@ namespace StalkerOnlineQuesterEditor
         List<int> npc_history = new List<int>();
         int current_npc_history_index = -1;
 
-        public СQuestConstants questConst;
+        public CQuestConstants questConst;
         public CItemConstants itemConst;
         public CItemCategories itemCategories;
         public CNPCConstants npcConst;
@@ -66,6 +68,7 @@ namespace StalkerOnlineQuesterEditor
         public BillboardQuests billboardQuests;
         public CZoneMobConstants zoneMobConst;
         public CSpacesConstants spacesConst;
+        public CDungeonSpacesConstants dungeonConst;
         public CTriggerConstants triggerConst;
         public CTPConstants tpConst;
         public CommandConstants cmConst;
@@ -113,11 +116,12 @@ namespace StalkerOnlineQuesterEditor
             settings.checkMode();
             tutorialPhases = new CTutorialConstants();
             tree = treeDialogs;
-            questConst = new СQuestConstants();
+            questConst = new CQuestConstants();
             itemConst = new CItemConstants();
             itemCategories = new CItemCategories();
             npcConst = new CNPCConstants();
             spacesConst = new CSpacesConstants();
+            dungeonConst = new CDungeonSpacesConstants();
             triggerConst = new CTriggerConstants();
             manageNotes = new COperNotes("ManNotes.xml");
             fractions = new CFracConstants();
@@ -1034,6 +1038,30 @@ namespace StalkerOnlineQuesterEditor
 
         public int getQuestNewID()
         {
+            
+            string html = string.Empty;
+            string url = @"http://hz-dev2.stalker.so:8011/getnextid?key=quest_id";
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+            }
+            try
+            {
+                JObject json = JObject.Parse(html);
+                int new_quest_id = (int)json["quest_id"];
+                return new_quest_id;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Ошибка получения нового ID квеста. Проверьте своё подключение к hz-dev", "Ошибка");
+            }
+
             if (quests.last_quest_id != 0)
             {
                 return quests.last_quest_id;
@@ -1042,6 +1070,7 @@ namespace StalkerOnlineQuesterEditor
             for (int questi = iFirstQuestID; ; questi++)
                 if (!quests.quest.Keys.Contains(questi) && !quests.m_Buffer.Keys.Contains(questi) && !quests.deletedQuests.Contains(questi))
                     return questi;
+
         }
 
         //! Создает новый корневой квест у персонажа (не подквест, а именно новый)
@@ -1974,7 +2003,7 @@ namespace StalkerOnlineQuesterEditor
                         object[] row = { quest.Additional.Holder, quest.QuestID };
                         dgvReview.Rows.Add(row);
                     }
-                    if (((quest.Target.QuestType == СQuestConstants.TYPE_FARM) || (quest.Target.QuestType == СQuestConstants.TYPE_FARM_AUTO)) && (quest.Target.ObjectType == targetItemID))
+                    if (((quest.Target.QuestType == CQuestConstants.TYPE_FARM) || (quest.Target.QuestType == CQuestConstants.TYPE_FARM_AUTO)) && (quest.Target.ObjectType == targetItemID))
                     {
                         object[] row = { quest.Additional.Holder, quest.QuestID };
                         dgvReview.Rows.Add(row);
@@ -2576,8 +2605,15 @@ namespace StalkerOnlineQuesterEditor
             {
                 MessageBox.Show("Не удалось скопировать файл " + CTutorialConstants.getPath() + " в " + path + "\\source\\TutorialPhases.json", "Ошибка сохранения");
             }
-            
 
+            try
+            {
+                File.Copy(CDungeonSpacesConstants.getPath(), path + "\\source\\dungeon_data.json", true);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось скопировать файл " + CDungeonSpacesConstants.getPath() + " в " + path + "\\source\\dungeon_data.json", "Ошибка сохранения");
+            }
             //Копировать QuestData и DialogData
 
             string data_path = path + "\\source\\Quests\\";

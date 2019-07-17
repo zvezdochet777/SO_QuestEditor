@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Xml.Linq;
 
 namespace StalkerOnlineQuesterEditor
 {
     //! @todo: переделывать все нахер. 
     //! Класс констант квеста - типов. Лучше бы переделывать.
-    public class СQuestConstants
+    public class CQuestConstants
     {
         List<СQuestType> ierarchyQuestsType = new List<СQuestType>();
         List<СQuestType> simpleQuestsType = new List<СQuestType>();
@@ -38,13 +39,14 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_HAVE_EFFECT = 27; // Находиться под действием эффекта
         public static int TYPE_IN_AREA = 28; // Находиться в зоне
         public static int TYPE_QUEST_COUNTER = 29;
+        public static int TYPE_DUNGEON_EVENT = 30;
 
         public static int TYPE_CREATE_NPC = 51; // создать бегающего НИП
         public static int TYPE_CREATE_MOB = 52; // создать моба
         public static int TYPE_KILLNPC = 53; // убить НИП созданного квестом
         public static int TYPE_KILLNPC_WITH_ONTEST = 54; // убить НИП со сдачей
 
-        public СQuestConstants()
+        public CQuestConstants()
         {
             simpleQuestsType.Add(new СQuestType(TYPE_FARM, "0  Собрать необходимое количество предметов."));
             simpleQuestsType.Add(new СQuestType(TYPE_FARM_AUTO, "16 Собрать необходимое количество предметов авто."));
@@ -70,6 +72,7 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_HAVE_EFFECT, "27 Находиться под действием эффекта."));
             simpleQuestsType.Add(new СQuestType(TYPE_IN_AREA, "28 Находиться в зоне."));
             simpleQuestsType.Add(new СQuestType(TYPE_QUEST_COUNTER, "29 Счетчик квестов."));
+            simpleQuestsType.Add(new СQuestType(TYPE_DUNGEON_EVENT, "30 Событие данжа."));
 
             // ierarchyQuestsType.Add(new СQuestType(50, "50 Игра против режиссера."));
             simpleQuestsType.Add(new СQuestType(TYPE_CREATE_NPC, "51 Создать NPC."));
@@ -130,7 +133,6 @@ namespace StalkerOnlineQuesterEditor
         int QuestType;
         string Description;
 
-
         public СQuestType(int typeID, string Description)
         {
             this.QuestType = typeID;
@@ -146,7 +148,6 @@ namespace StalkerOnlineQuesterEditor
         {
             return QuestType;
         }
-
     }
 
     public class BillboardQuests
@@ -177,6 +178,53 @@ namespace StalkerOnlineQuesterEditor
         public List<int> getKeys()
         {
             return _constants;
+        }
+    }
+
+    public static class QuestPriorities
+    {
+        static Dictionary<int, string> priorities;
+
+        public static Dictionary<int, string> data()
+        {
+            if (priorities != null) return priorities;
+            priorities = new Dictionary<int, string>();
+            parseFractions("source/QuestPriority.xml");
+            return priorities;
+        }
+
+        static void parseFractions(string path)
+        {
+            XDocument doc = XDocument.Load(path);
+            foreach (XElement item in doc.Root.Elements())
+            {
+                int id = int.Parse(item.Element("id").Value);
+                string name = item.Element("name").Value.ToString();
+                priorities.Add(id, name);
+            }
+        }
+
+        public static int getIDByName(string name)
+        {
+            foreach (KeyValuePair<int, string> pair in data())
+            {
+                if (pair.Value == name) return pair.Key;
+            }
+            return 0;
+        }
+
+        public static string getNameByID(int frac_id)
+        {
+            foreach (KeyValuePair<int, string> pair in data())
+            {
+                if (pair.Key == frac_id) return pair.Value;
+            }
+            return "";
+        }
+
+        public static string[] getListNames()
+        {
+            return data().Values.ToArray();
         }
     }
 }

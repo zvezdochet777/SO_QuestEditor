@@ -123,6 +123,12 @@ namespace StalkerOnlineQuesterEditor
                 if (item.Element("hidden") != null)
                     hidden = true;
 
+                int priority = 0;
+                if (item.Element("Priority") != null)
+                {
+                    priority = int.Parse(item.Element("Priority").Value);
+                }
+
                 additional.Holder = item.Element("Additional").Element("Holder").Value.Trim();
 
                 if (item.Element("Target") != null)
@@ -363,7 +369,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
                 if (!dict_target.ContainsKey(QuestID))
-                    dict_target.Add(QuestID, new CQuest(QuestID, 0, information, precondition, questRules, reward, additional, target, penalty, hidden));
+                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, information, precondition, questRules, reward, additional, target, penalty, hidden));
             }
         }
         
@@ -410,11 +416,15 @@ namespace StalkerOnlineQuesterEditor
                 if (quest.Element("Items") != null)
                     foreach (XElement qitem in quest.Element("Items").Elements())
                     {
-                        string title = qitem.Element("title").Value;
-                        string description = qitem.Element("description").Value;
+                        string title = "", description = "", activation = "", content = "";
+                        if (qitem.Element("title") != null)
+                            title = qitem.Element("title").Value;
+                        if (qitem.Element("description") != null)
+                            description = qitem.Element("description").Value;
                         int itemID = int.Parse(qitem.Element("itemID").Value);
-                        string activation = qitem.Element("activation").Value;
-                        target[QuestID].QuestInformation.Items.Add(itemID, new QuestItemInfo(title, description, activation));
+                        if (qitem.Element("activation") != null) activation = qitem.Element("activation").Value;
+                        if (qitem.Element("content") != null) content = qitem.Element("content").Value;
+                        target[QuestID].QuestInformation.Items.Add(itemID, new QuestItemInfo(title, description, activation, content));
                     }
             }
         }
@@ -570,6 +580,8 @@ namespace StalkerOnlineQuesterEditor
                    new XElement("ID", questValue.QuestID));
                 if (questValue.hidden)
                     element.Add(new XElement("hidden", "1"));
+                if (questValue.Priority > 0)
+                    element.Add(new XElement("Priority", questValue.Priority.ToString()));
 
                 if (questValue.Target.Any())
                 {
@@ -764,11 +776,17 @@ namespace StalkerOnlineQuesterEditor
             List<XElement> ret = new List<XElement>();
             foreach (int key in items.Keys)
             {
-                ret.Add(new XElement("item",
-                    new XElement("itemID", key.ToString()),
-                    new XElement("title", items[key].title),
-                    new XElement("description", items[key].description),
-                    new XElement("activation", items[key].activation)));
+                XElement item = new XElement("item");
+                item.Add(new XElement("itemID", key.ToString()));
+                if (items[key].title.Any())
+                    item.Add(new XElement("title", items[key].title));
+                if (items[key].description.Any())
+                    item.Add(new XElement("description", items[key].description));
+                if (items[key].activation.Any())
+                    item.Add(new XElement("activation", items[key].activation));
+                if (items[key].content.Any())
+                    item.Add(new XElement("content", items[key].content));
+                ret.Add(item);
             }
             return ret;
         }

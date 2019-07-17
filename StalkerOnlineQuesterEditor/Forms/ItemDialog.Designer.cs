@@ -40,6 +40,7 @@
             this.itemProbability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemActivation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -56,6 +57,7 @@
             this.itemProbability,
             this.itemTitle,
             this.itemDescription,
+            this.itemContent,
             this.itemActivation});
             this.itemGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.itemGridView.Location = new System.Drawing.Point(0, 0);
@@ -146,6 +148,11 @@
             this.itemDescription.HeaderText = "Описание";
             this.itemDescription.Name = "itemDescription";
             // 
+            // itemContent
+            // 
+            this.itemContent.HeaderText = "Содержание";
+            this.itemContent.Name = "itemContent";
+            // 
             // itemActivation
             // 
             this.itemActivation.HeaderText = "Имя действия";
@@ -180,6 +187,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itemProbability;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemContent;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemActivation;
     }
 }

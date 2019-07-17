@@ -17,20 +17,14 @@ namespace StalkerOnlineQuesterEditor
         public CZoneConstants()
         {
             zones = new Dictionary<string, CZoneDescription>();
-            XDocument doc = XDocument.Load("source/Areas.xml");
-            foreach (XElement item in doc.Root.Elements())            
-            {
-                string id = item.Element("mark").Value.ToString().Trim();
-                string name = item.Element("description").Value.ToString().Trim();
-
-                zones.Add(id, new CZoneDescription(name));
-            }
-
-            // добавление неназванных зон из AllAreas.xml - создается парсером по всем chunk
+           
+            // добавление неназванных зон из AllAreas.xml - создается парсером по всем spaces
             XDocument allAreas = XDocument.Load("source/AllAreas.xml");
             foreach(XElement item in allAreas.Root.Elements())
             {
                 string id = item.Element("mark").Value.ToString().Trim();
+                string space = item.Element("space").Value.ToString().Trim();
+                string position = item.Element("position").Value.ToString().Trim();
                 List<int> quests = new List<int>();
                 string[] q;
                 if (item.Element("quests") != null)
@@ -43,11 +37,14 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
                 if (!zones.ContainsKey(id))
-                    zones.Add(id, new CZoneDescription(id, quests));
-                else { zones[id].setQuests(quests); }
-
+                {
+                    zones.Add(id, new CZoneDescription(id, quests, space, position));
+                }
+                else
+                {
+                    zones[id].addQuests(quests);
+                }
             }
-
         }
 
         public bool checkAreaGiveQuestByID(int quest_id)
@@ -57,6 +54,7 @@ namespace StalkerOnlineQuesterEditor
                 List<int> area_quest;
                 area_quest = area.getQuests();
                 if (area_quest == null) continue;
+                if (area_quest.Count == 0) continue;
                 if (area_quest.Contains(quest_id))
                     return true;
             }
@@ -73,6 +71,8 @@ namespace StalkerOnlineQuesterEditor
         {
             return zones;
         }
+
+
         //! Возвращает описание территории по-русски по ее ключу mark
         public CZoneDescription getDescriptionOnKey(string key)
         {
@@ -116,7 +116,7 @@ namespace StalkerOnlineQuesterEditor
                 }
                 if (!zones.ContainsKey(id))
                     zones.Add(id, new CZoneDescription(id, quests));
-                else { zones[id].setQuests(quests); }
+                else { zones[id].addQuests(quests); }
 
             }
 
@@ -126,12 +126,16 @@ namespace StalkerOnlineQuesterEditor
     public class CZoneDescription
     {
         string Name;
+        string space;
+        string position;
         List<int> quests;
 
-        public CZoneDescription(string name, List<int> quests = null)
+        public CZoneDescription(string name, List<int> quests = null, string space = "", string position = "")
         {
             this.Name = name;
             this.quests = quests;
+            this.position = position;
+            this.space = space; 
         }
 
         public string getName()
@@ -144,9 +148,13 @@ namespace StalkerOnlineQuesterEditor
             return quests;
         }
 
-        public void setQuests(List<int> value)
+        public void addQuests(List<int> value)
         {
-            quests = value;
+            foreach(int quest_id in value)
+            {
+                if (quests.Contains(quest_id)) continue;
+                quests.Add(quest_id);
+            }
         }
     }
 }
