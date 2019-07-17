@@ -157,6 +157,7 @@
             this.isClanCheckBox = new System.Windows.Forms.CheckBox();
             this.IsGroupCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
             this.bPenaltyQuests = new System.Windows.Forms.Button();
             this.bPenaltyEffects = new System.Windows.Forms.Button();
             this.bPenaltyReputation = new System.Windows.Forms.Button();
@@ -195,7 +196,6 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.cbPriority = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
@@ -235,7 +235,7 @@
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
             this.panelCreateMob.Location = new System.Drawing.Point(5, 3);
             this.panelCreateMob.Name = "panelCreateMob";
-            this.panelCreateMob.Size = new System.Drawing.Size(622, 149);
+            this.panelCreateMob.Size = new System.Drawing.Size(622, 153);
             this.panelCreateMob.TabIndex = 17;
             this.panelCreateMob.Visible = false;
             // 
@@ -1037,6 +1037,7 @@
             this.tutorialCheckBox.TabIndex = 53;
             this.tutorialCheckBox.Text = "Туториал";
             this.tutorialCheckBox.UseVisualStyleBackColor = true;
+            this.tutorialCheckBox.CheckedChanged += new System.EventHandler(this.tutorialCheckBox_CheckedChanged);
             // 
             // showJournalCheckBox
             // 
@@ -1256,6 +1257,7 @@
             this.cbState.TabIndex = 44;
             this.cbState.Text = "Учитывать состояние";
             this.cbState.UseVisualStyleBackColor = true;
+            this.cbState.CheckedChanged += new System.EventHandler(this.cbState_CheckedChanged);
             // 
             // lState
             // 
@@ -1289,6 +1291,7 @@
             this.bItemQID.TabIndex = 36;
             this.bItemQID.Text = "Квест";
             this.bItemQID.UseVisualStyleBackColor = true;
+            this.bItemQID.Click += new System.EventHandler(this.bItemQID_Click);
             // 
             // targetAttributeComboBox2
             // 
@@ -1321,6 +1324,7 @@
             this.bTargetClearDynamic.TabIndex = 31;
             this.bTargetClearDynamic.Text = "Очистить";
             this.bTargetClearDynamic.UseVisualStyleBackColor = true;
+            this.bTargetClearDynamic.Click += new System.EventHandler(this.bTargetClearDynamic_Click);
             // 
             // bTargetAddDynamic
             // 
@@ -1331,6 +1335,7 @@
             this.bTargetAddDynamic.TabIndex = 30;
             this.bTargetAddDynamic.Text = "Добавить";
             this.bTargetAddDynamic.UseVisualStyleBackColor = true;
+            this.bTargetAddDynamic.Click += new System.EventHandler(this.bTargetAddDynamic_Click);
             // 
             // dynamicCheckBox
             // 
@@ -1342,6 +1347,7 @@
             this.dynamicCheckBox.TabIndex = 33;
             this.dynamicCheckBox.Text = "Динамический";
             this.dynamicCheckBox.UseVisualStyleBackColor = true;
+            this.dynamicCheckBox.CheckedChanged += new System.EventHandler(this.dynamicCheckBox_CheckedChanged);
             // 
             // ltargetResult
             // 
@@ -1364,6 +1370,7 @@
             this.targetAttributeComboBox.Name = "targetAttributeComboBox";
             this.targetAttributeComboBox.Size = new System.Drawing.Size(121, 21);
             this.targetAttributeComboBox.TabIndex = 38;
+            this.targetAttributeComboBox.SelectedIndexChanged += new System.EventHandler(this.targetAttributeComboBox_SelectedIndexChanged);
             // 
             // labelTargetAttr
             // 
@@ -1410,6 +1417,7 @@
             this.targetComboBox.Size = new System.Drawing.Size(121, 21);
             this.targetComboBox.Sorted = true;
             this.targetComboBox.TabIndex = 37;
+            this.targetComboBox.SelectedIndexChanged += new System.EventHandler(this.targetComboBox_SelectedIndexChanged);
             // 
             // lNameObject
             // 
@@ -1468,6 +1476,7 @@
             this.cbDontTakeItems.TabIndex = 55;
             this.cbDontTakeItems.Text = "Но не выдавать предметы";
             this.cbDontTakeItems.UseVisualStyleBackColor = true;
+            this.cbDontTakeItems.CheckedChanged += new System.EventHandler(this.cbDontTakeItems_CheckedChanged);
             // 
             // nBaseToCapturePercent
             // 
@@ -1475,6 +1484,7 @@
             this.nBaseToCapturePercent.Name = "nBaseToCapturePercent";
             this.nBaseToCapturePercent.Size = new System.Drawing.Size(77, 20);
             this.nBaseToCapturePercent.TabIndex = 52;
+            this.nBaseToCapturePercent.ValueChanged += new System.EventHandler(this.nBaseToCapturePercent_ValueChanged);
             // 
             // massQuestsTextBox
             // 
@@ -1511,6 +1521,7 @@
             this.bItemQuestRules.TabIndex = 53;
             this.bItemQuestRules.Text = "Описания квестовых предметов";
             this.bItemQuestRules.UseVisualStyleBackColor = true;
+            this.bItemQuestRules.Click += new System.EventHandler(this.bItemQuestRules_Click);
             // 
             // scenariosTextBox
             // 
@@ -1626,6 +1637,15 @@
             this.tabPage6.Text = "Награды/Штрафы";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(10, 131);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(61, 13);
+            this.label27.TabIndex = 69;
+            this.label27.Text = "ШТРАФЫ:";
+            // 
             // bPenaltyQuests
             // 
             this.bPenaltyQuests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1635,6 +1655,7 @@
             this.bPenaltyQuests.TabIndex = 68;
             this.bPenaltyQuests.Text = "Квесты";
             this.bPenaltyQuests.UseVisualStyleBackColor = true;
+            this.bPenaltyQuests.Click += new System.EventHandler(this.bPenaltyQuests_Click);
             // 
             // bPenaltyEffects
             // 
@@ -1645,6 +1666,7 @@
             this.bPenaltyEffects.TabIndex = 67;
             this.bPenaltyEffects.Text = "Эффекты";
             this.bPenaltyEffects.UseVisualStyleBackColor = true;
+            this.bPenaltyEffects.Click += new System.EventHandler(this.bPenaltyEffects_Click);
             // 
             // bPenaltyReputation
             // 
@@ -1655,6 +1677,7 @@
             this.bPenaltyReputation.TabIndex = 66;
             this.bPenaltyReputation.Text = "Репутация";
             this.bPenaltyReputation.UseVisualStyleBackColor = true;
+            this.bPenaltyReputation.Click += new System.EventHandler(this.bPenaltyReputation_Click);
             // 
             // label5
             // 
@@ -1718,6 +1741,7 @@
             this.bPenaltyItem.TabIndex = 57;
             this.bPenaltyItem.Text = "Предметы";
             this.bPenaltyItem.UseVisualStyleBackColor = true;
+            this.bPenaltyItem.Click += new System.EventHandler(this.bPenaltyItem_Click);
             // 
             // label11
             // 
@@ -1782,6 +1806,7 @@
             this.bRewardBlackBox.TabIndex = 43;
             this.bRewardBlackBox.Text = "BlackBox";
             this.bRewardBlackBox.UseVisualStyleBackColor = true;
+            this.bRewardBlackBox.Click += new System.EventHandler(this.bRewardBlackBox_Click);
             // 
             // bRewardQuests
             // 
@@ -1792,6 +1817,7 @@
             this.bRewardQuests.TabIndex = 42;
             this.bRewardQuests.Text = "Квесты";
             this.bRewardQuests.UseVisualStyleBackColor = true;
+            this.bRewardQuests.Click += new System.EventHandler(this.bRewardQuests_Click);
             // 
             // cbRewardWindow
             // 
@@ -1844,6 +1870,7 @@
             this.bRewardEffects.TabIndex = 30;
             this.bRewardEffects.Text = "Эффекты";
             this.bRewardEffects.UseVisualStyleBackColor = true;
+            this.bRewardEffects.Click += new System.EventHandler(this.bRewardEffects_Click);
             // 
             // bRewardReputation
             // 
@@ -1854,6 +1881,7 @@
             this.bRewardReputation.TabIndex = 29;
             this.bRewardReputation.Text = "Репутация";
             this.bRewardReputation.UseVisualStyleBackColor = true;
+            this.bRewardReputation.Click += new System.EventHandler(this.bRewardReputation_Click);
             // 
             // bRewardItem
             // 
@@ -1864,6 +1892,7 @@
             this.bRewardItem.TabIndex = 28;
             this.bRewardItem.Text = "Предметы";
             this.bRewardItem.UseVisualStyleBackColor = true;
+            this.bRewardItem.Click += new System.EventHandler(this.bRewardItem_Click);
             // 
             // textBoxKarmaPK
             // 
@@ -1940,6 +1969,7 @@
             this.eventComboBox.Name = "eventComboBox";
             this.eventComboBox.Size = new System.Drawing.Size(478, 21);
             this.eventComboBox.TabIndex = 2;
+            this.eventComboBox.SelectedIndexChanged += new System.EventHandler(this.eventComboBox_SelectedIndexChanged);
             // 
             // cbHidden
             // 
@@ -1979,15 +2009,6 @@
             this.cbPriority.Name = "cbPriority";
             this.cbPriority.Size = new System.Drawing.Size(116, 21);
             this.cbPriority.TabIndex = 55;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(10, 131);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(61, 13);
-            this.label27.TabIndex = 69;
-            this.label27.Text = "ШТРАФЫ:";
             // 
             // EditQuestForm
             // 

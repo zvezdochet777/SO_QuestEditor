@@ -264,7 +264,7 @@ namespace StalkerOnlineQuesterEditor
             lState.Text = "Состояние";
             panelCreateNPC.Visible = QuestType == CQuestConstants.TYPE_CREATE_NPC;
             panelCreateNPC.Enabled = QuestType == CQuestConstants.TYPE_CREATE_NPC;
-            IsGroupCheckBox.Visible = (QuestType == CQuestConstants.TYPE_KILLMOBS) || (QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (QuestType == CQuestConstants.TYPE_TRIGGER_ACTION);
+            IsGroupCheckBox.Enabled = (QuestType == CQuestConstants.TYPE_KILLMOBS) || (QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (QuestType == CQuestConstants.TYPE_TRIGGER_ACTION);
 
             panelCreateMob.Visible = QuestType == 52;
             panelCreateMob.Enabled = QuestType == 52;
@@ -1358,61 +1358,7 @@ namespace StalkerOnlineQuesterEditor
                     resultComboBox.Items.Add(level);
             }
         }
-        //! Кнопка Скрыть информацию о квесте
-        private void bHideInformation_Click(object sender, EventArgs e)
-        {
-            lTitle.Visible = !lTitle.Visible;
-            titleTextBox.Visible = !titleTextBox.Visible;
-            //lDescription.Visible = !lDescription.Visible;
-            descriptionTextBox.Visible = !descriptionTextBox.Visible;
-            showCloseCheckBox.Visible = !showCloseCheckBox.Visible;
-            showJournalCheckBox.Visible = !showJournalCheckBox.Visible;
-            showProgressCheckBox.Visible = !showProgressCheckBox.Visible;
-            showTakeCheckBox.Visible = !showTakeCheckBox.Visible;
-        }
-        //! Кнопка Скрыть цели квеста
-        private void bHideTarget_Click(object sender, EventArgs e)
-        {
-            ltargetResult.Visible = !ltargetResult.Visible;
-            resultComboBox.Visible = !resultComboBox.Visible;
-            dynamicCheckBox.Visible = !dynamicCheckBox.Visible;
-            lQuantity.Visible = !lQuantity.Visible;
-            quantityUpDown.Visible = !quantityUpDown.Visible;
-            lNameObject.Visible = !lNameObject.Visible;
-            targetComboBox.Visible = !targetComboBox.Visible;
-            bTargetAddDynamic.Visible = !bTargetAddDynamic.Visible;
-            labelTargetAttr.Visible = !labelTargetAttr.Visible;
-            targetAttributeComboBox.Visible = !targetAttributeComboBox.Visible;
-            bTargetClearDynamic.Visible = !bTargetClearDynamic.Visible;
-            lTargetAttr1.Visible = !lTargetAttr1.Visible;
-            targetAttributeComboBox2.Visible = !targetAttributeComboBox2.Visible;
-            IsGroupCheckBox.Visible = !IsGroupCheckBox.Visible;
-            isClanCheckBox.Visible = !isClanCheckBox.Visible;
-
-        }
-        //! Кнопка Скрыть условия квеста
-        private void bHideRules_Click(object sender, EventArgs e)
-        {
-            bItemQuestRules.Visible = !bItemQuestRules.Visible;
-            labelScenarios.Visible = !labelScenarios.Visible;
-            scenariosTextBox.Visible = !scenariosTextBox.Visible;
-            massQuestsTextBox.Visible = !massQuestsTextBox.Visible;
-        }
-        //! Кнопка Скрыть Награду квеста
-        private void bHideReward_Click(object sender, EventArgs e)
-        {
-            lCredits.Visible = !lCredits.Visible;
-            creditsTextBox.Visible = !creditsTextBox.Visible;
-            lCombatSkills.Visible = !lCombatSkills.Visible;
-            tExperience.Visible = !tExperience.Visible;
-            lSurvivalSkills.Visible = !lSurvivalSkills.Visible;
-            tSurvival.Visible = !tSurvival.Visible;
-            lSupportSkills.Visible = !lSupportSkills.Visible;
-            tSupport.Visible = !tSupport.Visible;
-            lKarmaPK.Visible = !lKarmaPK.Visible;
-            textBoxKarmaPK.Visible = !textBoxKarmaPK.Visible;
-        }
-            
+                   
         private void QuestEditForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.parent.Enabled = true;
