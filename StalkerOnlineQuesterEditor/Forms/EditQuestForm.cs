@@ -92,15 +92,9 @@ namespace StalkerOnlineQuesterEditor
                 editTarget = quest.Target;
                 editInformation = quest.QuestInformation;
             }
-            groupQuestBox.Text += " " + this.QuestID.ToString();
+            this.Text += " " + this.QuestID.ToString();
             this.Text += (": " + this.QuestID.ToString() + "   Версия: " + this.quest.Version.ToString());
             fillForm();
-        }
-
-        void setDefaultTargetState()
-        {
-           foreach (Control control in targetBox.Controls)
-               control.Enabled = false;
         }
 
         void clearTargetContent()
@@ -227,7 +221,7 @@ namespace StalkerOnlineQuesterEditor
                 repeatComboBox.SelectedIndex = 1;
             IsCounterCheckBox.Checked = quest.Precondition.omniCounter;
             takenPeriodTextBox.Text = quest.Precondition.TakenPeriod.ToString();
-            cbGroupQuest.Checked = quest.Precondition.isGroup;
+            IsGroupCheckBox.Checked = quest.Precondition.isGroup;
         }
 
 
@@ -255,8 +249,7 @@ namespace StalkerOnlineQuesterEditor
         //! Настраивает форму на определенный тип квеста
         void fillTargetForm(int QuestType)
         {
-            this.QuestType = QuestType;
-            setDefaultTargetState();            
+            this.QuestType = QuestType;        
             dynamicCheckBox.Enabled = false;
             lTargetAttr1.Enabled = false;
             targetAttributeComboBox2.Enabled = false;
@@ -266,7 +259,7 @@ namespace StalkerOnlineQuesterEditor
             lState.Text = "Состояние";
             panelCreateNPC.Visible = QuestType == СQuestConstants.TYPE_CREATE_NPC;
             panelCreateNPC.Enabled = QuestType == СQuestConstants.TYPE_CREATE_NPC;
-            cbGroupQuest.Visible = (QuestType == СQuestConstants.TYPE_KILLMOBS) || (QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (QuestType == СQuestConstants.TYPE_TRIGGER_ACTION);
+            IsGroupCheckBox.Visible = (QuestType == СQuestConstants.TYPE_KILLMOBS) || (QuestType == СQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (QuestType == СQuestConstants.TYPE_TRIGGER_ACTION);
 
             panelCreateMob.Visible = QuestType == 52;
             panelCreateMob.Enabled = QuestType == 52;
@@ -807,9 +800,6 @@ namespace StalkerOnlineQuesterEditor
 
         void fillQuestRulesForm()
         {
-            foreach (string space in parent.spacesConst.getSpacesDescription())
-                instanceComboBox.Items.Add(space);
-
             nBaseToCapturePercent.Value = Convert.ToDecimal(quest.QuestRules.basePercent * 100);
             cbDontTakeItems.Checked = quest.QuestRules.dontTakeItems;
         }
@@ -938,7 +928,7 @@ namespace StalkerOnlineQuesterEditor
                 target.onFin = 0;
             else
                 target.onFin = 1;
-            precondition.isGroup = cbGroupQuest.Visible && cbGroupQuest.Checked;
+            precondition.isGroup = IsGroupCheckBox.Visible && IsGroupCheckBox.Checked;
             if ((target.QuestType == СQuestConstants.TYPE_FARM) || (target.QuestType == СQuestConstants.TYPE_FARM_AUTO) || (target.QuestType == СQuestConstants.TYPE_QITEM_USE))
             {
                 target.ObjectType = parent.itemConst.getIDOnDescription(targetComboBox.SelectedItem.ToString());
@@ -1373,18 +1363,6 @@ namespace StalkerOnlineQuesterEditor
             showJournalCheckBox.Visible = !showJournalCheckBox.Visible;
             showProgressCheckBox.Visible = !showProgressCheckBox.Visible;
             showTakeCheckBox.Visible = !showTakeCheckBox.Visible;
-
-            if (lTitle.Visible)
-            {
-                bHideInformation.Text = "Показать";
-                iInformationHeight = questInformationBox.Height;
-                questInformationBox.Height = 35;
-            }
-            else
-            {
-                bHideInformation.Text = "Скрыть";
-                questInformationBox.Height = iInformationHeight;
-            }
         }
         //! Кнопка Скрыть цели квеста
         private void bHideTarget_Click(object sender, EventArgs e)
@@ -1405,17 +1383,6 @@ namespace StalkerOnlineQuesterEditor
             IsGroupCheckBox.Visible = !IsGroupCheckBox.Visible;
             isClanCheckBox.Visible = !isClanCheckBox.Visible;
 
-            if (bHideTarget.Text == "Скрыть")
-            {
-                bHideTarget.Text = "Показать";
-                iTargetHeight = targetBox.Height;
-                targetBox.Height = 35;
-            }
-            else
-            {
-                bHideTarget.Text = "Скрыть";
-                targetBox.Height = iTargetHeight;
-            }
         }
         //! Кнопка Скрыть условия квеста
         private void bHideRules_Click(object sender, EventArgs e)
@@ -1424,19 +1391,6 @@ namespace StalkerOnlineQuesterEditor
             labelScenarios.Visible = !labelScenarios.Visible;
             scenariosTextBox.Visible = !scenariosTextBox.Visible;
             massQuestsTextBox.Visible = !massQuestsTextBox.Visible;
-            groupQuestRulesBox.Visible = !groupQuestRulesBox.Visible;
-
-            if (bHideRules.Text == "Скрыть")
-            {
-                bHideRules.Text = "Показать";
-                iRulesHeight = lQuestRules.Height;
-                lQuestRules.Height = 35;
-            }
-            else
-            {
-                lQuestRules.Height = iRulesHeight;
-                bHideRules.Text = "Скрыть";
-            }
         }
         //! Кнопка Скрыть Награду квеста
         private void bHideReward_Click(object sender, EventArgs e)
@@ -1451,18 +1405,6 @@ namespace StalkerOnlineQuesterEditor
             tSupport.Visible = !tSupport.Visible;
             lKarmaPK.Visible = !lKarmaPK.Visible;
             textBoxKarmaPK.Visible = !textBoxKarmaPK.Visible;
-
-            if (lCredits.Visible)
-            {
-                bHideReward.Text = "Показать";
-                iRewardHeight = rewardGroupBox.Height;
-                rewardGroupBox.Height = 35;
-            }
-            else
-            {
-                bHideReward.Text = "Скрыть";
-                rewardGroupBox.Height = iRewardHeight;
-            }
         }
             
         private void QuestEditForm_FormClosing(object sender, FormClosingEventArgs e)
