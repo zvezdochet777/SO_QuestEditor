@@ -108,7 +108,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (int key in items.Keys)
                 if (items[key].getDescription().Equals(description))
                     return key;
-            return 1000000;
+            return 0;
         }
     }
 

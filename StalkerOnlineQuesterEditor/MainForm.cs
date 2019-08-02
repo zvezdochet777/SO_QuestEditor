@@ -957,7 +957,6 @@ namespace StalkerOnlineQuesterEditor
             }
             else
             {
-
                 Dictionary<int, CDialog> firstDialog = new Dictionary<int, CDialog>();
                 int dialogID = getDialogsNewID();
                 NodeCoordinates nc = new NodeCoordinates(179, 125, true, true);
