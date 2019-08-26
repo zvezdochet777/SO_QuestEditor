@@ -284,14 +284,12 @@ namespace StalkerOnlineQuesterEditor
                         {
                             if (dialog.Element("Precondition").Element("items").Element("itemCategory") != null)
                                 Precondition.items.itemCategory = int.Parse(dialog.Element("Precondition").Element("items").Element("itemCategory").Value);
-                            else if (dialog.Element("Precondition").Element("items").Element("typeOfItems") != null)
+                            else 
+                            if (dialog.Element("Precondition").Element("items").Element("items") != null)
                             {
                                 if (dialog.Element("Precondition").Element("items").Element("or") != null)
                                     Precondition.items.is_or = true;
-                                AddDataToList(dialog.Element("Precondition"), "items", "typeOfItems", Precondition.items.typeOfItems);
-                                AddDataToList(dialog.Element("Precondition"), "items", "numOfItems", Precondition.items.numOfItems);
-                                AddDataToList(dialog.Element("Precondition"), "items", "attrOfItems", Precondition.items.attrOfItems);
-                                AddDataToList(dialog.Element("Precondition"), "items", "condOfItems", Precondition.items.condOfItems);
+                                CQuests.parceItems(dialog.Element("Precondition").Element("items").Element("items"), Precondition.items.items);
                             }
                         }
                         if (dialog.Element("Precondition").Element("noneItems") != null)
@@ -302,10 +300,7 @@ namespace StalkerOnlineQuesterEditor
                             {
                                 if (dialog.Element("Precondition").Element("noneItems").Element("or") != null)
                                     Precondition.itemsNone.is_or = true;
-                                AddDataToList(dialog.Element("Precondition"), "noneItems", "typeOfItems", Precondition.itemsNone.typeOfItems);
-                                AddDataToList(dialog.Element("Precondition"), "noneItems", "numOfItems", Precondition.itemsNone.numOfItems);
-                                AddDataToList(dialog.Element("Precondition"), "noneItems", "attrOfItems", Precondition.itemsNone.attrOfItems);
-                                AddDataToList(dialog.Element("Precondition"), "noneItems", "condOfItems", Precondition.itemsNone.condOfItems);
+                                CQuests.parceItems(dialog.Element("Precondition").Element("noneItems").Element("items"), Precondition.itemsNone.items);
                             }
                         }
 
@@ -647,31 +642,23 @@ namespace StalkerOnlineQuesterEditor
                     {
                         element.Element("Precondition").Add(new XElement("items", new XElement("itemCategory", dialog.Precondition.items.itemCategory.ToString())));
                     }
-                    else if (dialog.Precondition.items.typeOfItems.Any())
+                    else if (dialog.Precondition.items.items.Any())
                     {
                         element.Element("Precondition").Add(new XElement("items", ""));
                         if (dialog.Precondition.items.is_or)
                             element.Element("Precondition").Element("items").Add(new XElement("or", "1"));
-                        element.Element("Precondition").Element("items").Add(new XElement("typeOfItems", Global.GetListAsString(dialog.Precondition.items.typeOfItems)));
-                        element.Element("Precondition").Element("items").Add(new XElement("numOfItems", Global.GetListAsString(dialog.Precondition.items.numOfItems)));
-                        element.Element("Precondition").Element("items").Add(new XElement("attrOfItems", Global.GetListAsString(dialog.Precondition.items.attrOfItems)));
-                        element.Element("Precondition").Element("items").Add(new XElement("condOfItems", Global.GetListAsString(dialog.Precondition.items.condOfItems)));
-                        
+                        element.Element("Precondition").Element("items").Add(new XElement("items", CQuests.getItemsNode(dialog.Precondition.items.items)));                     
                     }
                     if (dialog.Precondition.itemsNone.itemCategory != -1)
                     {
                         element.Element("Precondition").Add(new XElement("noneItems", new XElement("itemCategory", dialog.Precondition.itemsNone.itemCategory.ToString())));
                     }
-                    else if (dialog.Precondition.itemsNone.typeOfItems.Any())
+                    else if (dialog.Precondition.itemsNone.items.Any())
                     {
                         element.Element("Precondition").Add(new XElement("noneItems", ""));
                         if (dialog.Precondition.itemsNone.is_or)
                             element.Element("Precondition").Element("noneItems").Add(new XElement("or", "1"));
-                        element.Element("Precondition").Element("noneItems").Add(new XElement("typeOfItems", Global.GetListAsString(dialog.Precondition.itemsNone.typeOfItems)));
-                        element.Element("Precondition").Element("noneItems").Add(new XElement("numOfItems", Global.GetListAsString(dialog.Precondition.itemsNone.numOfItems)));
-                        element.Element("Precondition").Element("noneItems").Add(new XElement("attrOfItems", Global.GetListAsString(dialog.Precondition.itemsNone.attrOfItems)));
-                        element.Element("Precondition").Element("noneItems").Add(new XElement("condOfItems", Global.GetListAsString(dialog.Precondition.itemsNone.condOfItems)));
-
+                        element.Element("Precondition").Element("noneItems").Add(new XElement("items", CQuests.getItemsNode(dialog.Precondition.itemsNone.items)));
                     }
 
                     if (dialog.Actions.Any())

@@ -89,18 +89,16 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
-    public class DialogPreconditionItem
+    public class DialogPreconditionItems
     {
-        public List<int> typeOfItems = new List<int>();
-        public List<int> numOfItems = new List<int>();
-        public List<int> attrOfItems = new List<int>();
-        public List<float> condOfItems = new List<float>();
+        
         public int itemCategory = -1;
         public bool is_or = false;
+        public List<QuestItem> items = new List<QuestItem>();
 
         public bool Any()
         {
-            return itemCategory > -1 || typeOfItems.Any() || is_or;
+            return itemCategory > -1 || items.Any();
         }
     }
 
@@ -153,8 +151,8 @@ namespace StalkerOnlineQuesterEditor
         public bool hidden;
         public RadioAvalible radioAvailable = RadioAvalible.None;
         public int tutorialPhase = -1;
-        public DialogPreconditionItem items = new DialogPreconditionItem();
-        public DialogPreconditionItem itemsNone = new DialogPreconditionItem();
+        public DialogPreconditionItems items = new DialogPreconditionItems();
+        public DialogPreconditionItems itemsNone = new DialogPreconditionItems();
 
 
         public object Clone()

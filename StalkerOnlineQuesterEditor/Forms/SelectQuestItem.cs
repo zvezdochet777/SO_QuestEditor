@@ -18,25 +18,20 @@ namespace StalkerOnlineQuesterEditor
             this.itemParent = itemParent;
             InitializeComponent();
             CQuest quest = new CQuest();
-            //try
-            //{
             quest = itemParent.getQuest();
-            //}
-            //catch
-            //{
-            //    itemParent.Visible = true;
-            //    this.Close();
-            //}
-
             List<CQuest> wayIDs = new List<CQuest>();
-            if (quest.Reward.AttrOfItems.Contains(1) || quest.QuestRules.AttrOfItems.Contains(1))
+            
+            if (QuestItem.hasQuestItem(quest.Reward.items) || QuestItem.hasQuestItem(quest.QuestRules.items))
             {
-                /*foreach (CQuest q in wayIDs)
+                /*
+                не надо убирать самого себя
+                foreach (CQuest q in wayIDs)
                     if (q.QuestID == QuestID)
                     {
                         wayIDs.Remove(q);
                         break;
-                    }*/
+                    }
+                */
                 wayIDs.Add(quest);
             }
 
@@ -104,28 +99,27 @@ namespace StalkerOnlineQuesterEditor
                     if (q != null)
                     {
                         lItems.Text += "Квест ID:" + q.QuestID.ToString() + "\n";
-                        if (q.Reward.AttrOfItems.Contains(1))
+                        if (QuestItem.hasQuestItem(q.Reward.items))
                         {
                             lItems.Text += "\tНаграда:\n";
-                            for (int index = 0; index < q.Reward.AttrOfItems.Count; ++index)
+                            foreach (QuestItem item in q.Reward.items) 
                             {
-                                if (q.Reward.AttrOfItems[index] == 1)
+                                if (item.attribute == ItemAttribute.QUEST)
                                 {
-                                    lItems.Text += q.Reward.NumOfItems[index].ToString() + " X " + itemParent.parent.itemConst.getDescriptionOnID(q.Reward.TypeOfItems[index]) + "\n";
+                                    lItems.Text += item.count.ToString() + " X " + itemParent.parent.itemConst.getDescriptionOnID(item.itemType) + "\n";
                                 }
 
                             }
                         }
-                        if (q.QuestRules.AttrOfItems.Contains(1))
+                        if (QuestItem.hasQuestItem(q.QuestRules.items))
                         {
                             lItems.Text += "\tПравила квеста:\n";
-                            for (int index = 0; index < q.QuestRules.AttrOfItems.Count; ++index)
+                            foreach (QuestItem item in q.QuestRules.items)
                             {
-                                if (q.QuestRules.AttrOfItems[index] == 1)
+                                if (item.attribute == ItemAttribute.QUEST)
                                 {
-                                    lItems.Text += q.QuestRules.NumOfItems[index].ToString() + " X " + itemParent.parent.itemConst.getDescriptionOnID(q.QuestRules.TypeOfItems[index]) + "\n";
+                                    lItems.Text += item.count.ToString() + " X " + itemParent.parent.itemConst.getDescriptionOnID(item.itemType) + "\n";
                                 }
-
                             }
                         }
                     }

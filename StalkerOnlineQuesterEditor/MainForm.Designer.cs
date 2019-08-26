@@ -43,7 +43,6 @@ namespace StalkerOnlineQuesterEditor
             this.tbFindDialogID = new System.Windows.Forms.TextBox();
             this.btnClearRecycle = new System.Windows.Forms.Button();
             this.labelDrawingTip = new System.Windows.Forms.Label();
-            this.bTestButton = new System.Windows.Forms.Button();
             this.bCenterizeDialogShower = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.labelYNode = new System.Windows.Forms.Label();
@@ -85,12 +84,6 @@ namespace StalkerOnlineQuesterEditor
             this.bNpcLinkExecute = new System.Windows.Forms.Button();
             this.tabReview = new System.Windows.Forms.TabPage();
             this.dgvReview = new System.Windows.Forms.DataGridView();
-            this.colNPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -192,6 +185,12 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
+            this.colNPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -313,7 +312,6 @@ namespace StalkerOnlineQuesterEditor
             this.panelDialogTools.Controls.Add(this.tbFindDialogID);
             this.panelDialogTools.Controls.Add(this.btnClearRecycle);
             this.panelDialogTools.Controls.Add(this.labelDrawingTip);
-            this.panelDialogTools.Controls.Add(this.bTestButton);
             this.panelDialogTools.Controls.Add(this.bCenterizeDialogShower);
             this.panelDialogTools.Controls.Add(this.labelYNode);
             this.panelDialogTools.Controls.Add(this.labelXNode);
@@ -349,15 +347,6 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.labelDrawingTip, "labelDrawingTip");
             this.labelDrawingTip.Name = "labelDrawingTip";
             this.toolTipDialogs.SetToolTip(this.labelDrawingTip, resources.GetString("labelDrawingTip.ToolTip"));
-            // 
-            // bTestButton
-            // 
-            resources.ApplyResources(this.bTestButton, "bTestButton");
-            this.bTestButton.Name = "bTestButton";
-            this.bTestButton.TabStop = false;
-            this.toolTipDialogs.SetToolTip(this.bTestButton, resources.GetString("bTestButton.ToolTip"));
-            this.bTestButton.UseVisualStyleBackColor = true;
-            this.bTestButton.Click += new System.EventHandler(this.bTestButton_Click);
             // 
             // bCenterizeDialogShower
             // 
@@ -748,37 +737,6 @@ namespace StalkerOnlineQuesterEditor
             this.colRussianName});
             this.dgvReview.Name = "dgvReview";
             this.toolTipDialogs.SetToolTip(this.dgvReview, resources.GetString("dgvReview.ToolTip"));
-            // 
-            // colNPCName
-            // 
-            resources.ApplyResources(this.colNPCName, "colNPCName");
-            this.colNPCName.Name = "colNPCName";
-            // 
-            // colDialogsNum
-            // 
-            resources.ApplyResources(this.colDialogsNum, "colDialogsNum");
-            this.colDialogsNum.Name = "colDialogsNum";
-            // 
-            // colQuestsNum
-            // 
-            resources.ApplyResources(this.colQuestsNum, "colQuestsNum");
-            this.colQuestsNum.Name = "colQuestsNum";
-            // 
-            // colLocation
-            // 
-            resources.ApplyResources(this.colLocation, "colLocation");
-            this.colLocation.Name = "colLocation";
-            // 
-            // colCoordinates
-            // 
-            resources.ApplyResources(this.colCoordinates, "colCoordinates");
-            this.colCoordinates.Name = "colCoordinates";
-            this.colCoordinates.ReadOnly = true;
-            // 
-            // colRussianName
-            // 
-            resources.ApplyResources(this.colRussianName, "colRussianName");
-            this.colRussianName.Name = "colRussianName";
             // 
             // panelReviewButtons
             // 
@@ -1549,6 +1507,37 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.Stretch = false;
             this.toolTipDialogs.SetToolTip(this.statusStrip, resources.GetString("statusStrip.ToolTip"));
             // 
+            // colNPCName
+            // 
+            resources.ApplyResources(this.colNPCName, "colNPCName");
+            this.colNPCName.Name = "colNPCName";
+            // 
+            // colDialogsNum
+            // 
+            resources.ApplyResources(this.colDialogsNum, "colDialogsNum");
+            this.colDialogsNum.Name = "colDialogsNum";
+            // 
+            // colQuestsNum
+            // 
+            resources.ApplyResources(this.colQuestsNum, "colQuestsNum");
+            this.colQuestsNum.Name = "colQuestsNum";
+            // 
+            // colLocation
+            // 
+            resources.ApplyResources(this.colLocation, "colLocation");
+            this.colLocation.Name = "colLocation";
+            // 
+            // colCoordinates
+            // 
+            resources.ApplyResources(this.colCoordinates, "colCoordinates");
+            this.colCoordinates.Name = "colCoordinates";
+            this.colCoordinates.ReadOnly = true;
+            // 
+            // colRussianName
+            // 
+            resources.ApplyResources(this.colRussianName, "colRussianName");
+            this.colRussianName.Name = "colRussianName";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1682,7 +1671,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.NumericUpDown numQuests;
         private System.Windows.Forms.Label labelLessThan2;
         private System.Windows.Forms.CheckBox cbNumQuests;
-        private System.Windows.Forms.Button bTestButton;
         private System.Windows.Forms.Panel panelNpcLinkControls;
         private System.Windows.Forms.Button bNpcLinkExecute;
         private System.Windows.Forms.Label labelAdviceNpcLink;
@@ -1735,12 +1723,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ToolStripMenuItem собратьЭдиторДляПередачиToolStripMenuItem;
         private System.Windows.Forms.Label lFindDialogID;
         private System.Windows.Forms.TextBox tbFindDialogID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDialogsNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQuestsNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCoordinates;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn subevents;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
@@ -1783,6 +1765,12 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbNPCList;
         private System.Windows.Forms.Button bFindNPCReputation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDialogsNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQuestsNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCoordinates;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
     }
 }
 

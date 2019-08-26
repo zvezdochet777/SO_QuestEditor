@@ -172,7 +172,7 @@ namespace StalkerOnlineQuesterEditor
             string cmd = Environment.CommandLine;
             if (cmd.IndexOf("/master") != -1)
             {
-                bTestButton.Visible = true;
+                //bTestButton.Visible = true;
                 labelXNode.Visible = true;
                 labelYNode.Visible = true;
             }
@@ -1124,7 +1124,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (getQuestOnQuestID(currentQuest).Additional.IsSubQuest == 0)
                 {
-                    //openQuestEditForm(false);
                     EditQuestForm questEditor = new EditQuestForm(this, currentQuest, 2);
                     questEditor.Visible = true;
                     this.Enabled = false;
@@ -1264,7 +1263,7 @@ namespace StalkerOnlineQuesterEditor
         {
             List<CQuest> ret = new List<CQuest>();
             CQuest quest = getQuestOnQuestID(questID);
-            if (quest.Reward.AttrOfItems.Contains(1) || quest.QuestRules.AttrOfItems.Contains(1))
+            if (QuestItem.hasQuestItem(quest.Reward.items) || QuestItem.hasQuestItem(quest.QuestRules.items))
                 ret.Add(quest);
             foreach (int subquestID in quest.Additional.ListOfSubQuest)
                 ret.AddRange(getTreeItemIDs(subquestID));
@@ -1332,13 +1331,11 @@ namespace StalkerOnlineQuesterEditor
 
                     rewardCredits += q.Reward.Credits;
 
-                    for (int index = 0; index < q.Reward.TypeOfItems.Count; ++index)
+                    foreach (QuestItem item in q.Reward.items)
                     {
-                        int type = q.Reward.TypeOfItems[index];
-                        int count = q.Reward.NumOfItems[index];
-                        int attr = 0;
-                        if (q.Reward.AttrOfItems.Any())
-                            attr = q.Reward.AttrOfItems[index];
+                        int type = item.itemType;
+                        int count = item.count;
+                        int attr = (int)item.attribute;
                         if (attr == 0)
                         {
                             if (rewardItems.Keys.Contains(type))
@@ -1997,7 +1994,10 @@ namespace StalkerOnlineQuesterEditor
                     targetItemID = itemConst.getIDOnDescription(cbItemTarget.SelectedItem.ToString());
                 foreach (CQuest quest in quests.quest.Values)
                 {
-                    if (quest.Reward.TypeOfItems.Contains(itemID))
+                    bool itemFound = false;
+                    foreach (QuestItem item in quest.Reward.items)
+                        if (item.itemType == itemID) { itemFound = true; break; } 
+                    if (itemFound)
                     {
                         object[] row = { quest.Additional.Holder, quest.QuestID };
                         dgvReview.Rows.Add(row);
@@ -2055,47 +2055,7 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
-        //! Тeстовая фукция "пробежать", пробегает всех NPC (для заполнения полей в тестовом режиме)
-        private void bTestButton_Click(object sender, EventArgs e)
-        {
-            PPath test;
-            test = PPath.CreateRectangle(50, 50, 100, 200);
-            drawingLayer.AddChild(test);
-            //System.IO.StreamWriter sw = new System.IO.StreamWriter("Reputation_Dialogs.txt");
-            //sw.WriteLine("List of reputations in So Dialogs (NPC name, dialog ID): ");
-            /*
-            //edgeLayer.AddChild(test);
-            foreach (string npc in dialogs.dialogs.Keys)
-            {
-                foreach (int dialogID in dialogs.dialogs[npc].Keys)
-                { 
-                    if (dialogs.dialogs[npc][dialogID].Precondition.getReputation() != "")
-                    {
-                        sw.WriteLine(npc + "\t" + dialogID.ToString() + "\t" + dialogs.dialogs[npc][dialogID].Precondition.getReputation());
-                    }
-                }
-            }
-
-            */
-            /*
-            var rand = new System.Random();
-            
-            foreach (CQuest quest in quests.quest.Values)
-            {
-                if (quest.Reward.Fractions.Count > 0)
-                {
-                    foreach (int fractionID in quest.Reward.Fractions)
-                        quest.Reward.Reputation[fractionID] = rand.Next(-50, 50);
-
-                    string sWriter = quest.Additional.Holder + " \t " + quest.QuestID.ToString();
-                    if (quest.Additional.IsSubQuest > 0)
-                        sWriter += " \t (parent quest: " + quest.Additional.IsSubQuest.ToString() + ")";
-                    //sw.WriteLine(sWriter);
-                }
-            }
-            */
-            //sw.Close();
-        }
+       
         private void bStartSearch_Click(object sender, EventArgs e)
         {
             int count = 0;

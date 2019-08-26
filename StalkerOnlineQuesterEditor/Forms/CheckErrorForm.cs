@@ -509,8 +509,10 @@ namespace StalkerOnlineQuesterEditor.Forms
                         }
                 }
 
-                foreach (int item_id in quest.Value.QuestRules.TypeOfItems)
+                foreach (QuestItem item in quest.Value.QuestRules.items)
                 {
+                    int item_id = item.itemType;
+                    if (item_id == 0) continue;
                     if (!items.ContainsKey(item_id))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tпредмета условия type:" + item_id + " не существует";
@@ -548,8 +550,10 @@ namespace StalkerOnlineQuesterEditor.Forms
                         continue;
                     }
                 }
-                foreach (int item_id in quest.Value.QuestPenalty.TypeOfItems)
+                foreach (QuestItem item in quest.Value.QuestPenalty.items)
                 {
+                    if (item.itemType == 0) continue;
+                    int item_id = item.itemType;
                     if (!items.ContainsKey(item_id))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tпредмета штрафа type:" + item_id + " не существует";
@@ -571,8 +575,10 @@ namespace StalkerOnlineQuesterEditor.Forms
                         continue;
                     }
                 }
-                foreach (int item_id in quest.Value.Reward.TypeOfItems)
+                foreach (QuestItem item in quest.Value.Reward.items)
                 {
+                    if (item.itemType == 0) continue;
+                    int item_id = item.itemType;
                     if (!items.ContainsKey(item_id))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tпредмета награды type:" + item_id + " не существует";

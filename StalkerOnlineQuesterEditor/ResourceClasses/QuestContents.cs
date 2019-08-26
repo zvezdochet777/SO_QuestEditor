@@ -230,9 +230,7 @@ namespace StalkerOnlineQuesterEditor
 
     public class CQuestRules : ICloneable
     {
-        public List<int> TypeOfItems;
-        public List<int> NumOfItems;
-        public List<int> AttrOfItems;
+        public List<QuestItem> items;
         public List<int> Scenarios;
         public List<int> MassQuests;
         public string TeleportTo;
@@ -249,9 +247,7 @@ namespace StalkerOnlineQuesterEditor
         {
             CQuestRules copy = new CQuestRules();
 
-            copy.TypeOfItems = new List<int>(this.TypeOfItems);
-            copy.NumOfItems = new List<int>(this.NumOfItems);
-            copy.AttrOfItems = new List<int>(this.AttrOfItems);
+            copy.items = new List<QuestItem>(this.items);
             copy.Scenarios = new List<int>(this.Scenarios);
             copy.MassQuests = new List<int>(this.MassQuests);
             copy.TeleportTo = (string)this.TeleportTo.Clone();
@@ -268,15 +264,13 @@ namespace StalkerOnlineQuesterEditor
 
         public bool Any()
         {
-            return TypeOfItems.Any() || NumOfItems.Any() || AttrOfItems.Any() || Scenarios.Any() || MassQuests.Any() || dontTakeItems ||
+            return items.Any() || Scenarios.Any() || MassQuests.Any() || dontTakeItems ||
                 MaxGroup != 0 || MinGroup != 0 || TeleportTo != "" || basePercent != 0 || MinMember != 0 || MaxMember != 0 || npc.Any() || mobs.Any();
 
         }
         public CQuestRules()
         {
-            this.TypeOfItems = new List<int>();
-            this.NumOfItems = new List<int>();
-            this.AttrOfItems = new List<int>();
+            this.items = new List<QuestItem>();
             this.Scenarios = new List<int>();
             this.MassQuests = new List<int>();
             this.MaxGroup = new int();
@@ -484,19 +478,36 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public enum ItemAttribute { NORMAL, QUEST, USE }
+    
+
+
+    public class QuestItem
+    {
+        public int itemType = 0;
+        public int count = 1;
+        public ItemAttribute attribute = 0;
+        public int questID = 0;
+        public float condition = new float();
+
+        public static bool hasQuestItem(List<QuestItem> list)
+        {
+            foreach (QuestItem item in list)
+                if (item.attribute == ItemAttribute.QUEST) return true;
+            return false;
+        }
+    }
+
+   
+
     //! Награда за успешное выполнение квеста
     public class CQuestReward : ICloneable
     {
         //! Опыт: боевой, выживания, поддержки
         public List<int> Experience;
-        //! Тип предмета: ID предметов
-        public List<int> TypeOfItems;
-        //! Кол-во предметов
-        public List<int> NumOfItems;
-        //! Атрибут предметов: 0 - обычный, 1 - квестовый
-        public List<int> AttrOfItems;
-        //! Вероятность выпадения предметов
-        public List<float> Probability;
+        // Предметы
+        public List<QuestItem> items;
+
         //! Денежное вознаграждение
         public float Credits;
         //! Словарь репутаций в награду, выглядит так <id фракции>:<значение награды>;
@@ -516,11 +527,8 @@ namespace StalkerOnlineQuesterEditor
         {
             CQuestReward copy = new CQuestReward();
             copy.Experience = new List<int>(this.Experience);
-            copy.TypeOfItems = new List<int>(this.TypeOfItems);
-            copy.NumOfItems = new List<int>(this.NumOfItems);
-            copy.AttrOfItems = new List<int>(this.AttrOfItems);
+            copy.items = new List<QuestItem>(this.items);
             copy.ChangeQuests = new Dictionary<int, int>(this.ChangeQuests);
-            copy.Probability = this.Probability;
             copy.Credits = this.Credits;
             copy.Reputation = new Dictionary<int, int>(this.Reputation);
             copy.NPCReputation = new Dictionary<string, int>(this.NPCReputation);
@@ -534,10 +542,7 @@ namespace StalkerOnlineQuesterEditor
         public CQuestReward()
         {
             this.Experience = new List<int>();
-            this.TypeOfItems = new List<int>();
-            this.NumOfItems = new List<int>();
-            this.AttrOfItems = new List<int>();
-            this.Probability = new List<float>();
+            this.items = new List<QuestItem>();
             this.Credits = new float();            
             this.Reputation = new Dictionary<int, int>();
             this.NPCReputation = new Dictionary<string, int>();
@@ -548,8 +553,7 @@ namespace StalkerOnlineQuesterEditor
         }
         public bool Any()
         {
-            return hasExperience() || TypeOfItems.Any() || NumOfItems.Any() ||
-                AttrOfItems.Any() || Probability.Any() || Credits != 0 || ReputationNotEmpty() ||
+            return hasExperience() || items.Any() || Credits != 0 || ReputationNotEmpty() ||
                 KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any() || NPCReputation.Any() || blackBoxes.Any();
         }
 

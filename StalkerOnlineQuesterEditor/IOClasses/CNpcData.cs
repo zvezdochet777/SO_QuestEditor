@@ -75,7 +75,7 @@ namespace StalkerOnlineQuesterEditor
                 string map = item.Element("map").Value.ToString();
                 string rusName = item.Element("npcLocal").Value.ToString();
                 string engName = item.Element("npcEngName").Value.ToString();
-                string coord = item.Element("chunk").Value.ToString();
+                string coord = item.Element("coord").Value.ToString();
                 if (!NpcData.ContainsKey(name))
                     NpcData.Add(name, new npc_data(rusName, engName, map, coord));
                 if (!mapToNPCList.ContainsKey(map))

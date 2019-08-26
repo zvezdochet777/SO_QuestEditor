@@ -119,7 +119,7 @@
             this.itemAttr.Items.AddRange(new object[] {
             "Обычный",
             "Квестовый",
-            "Авто"});
+            "Использовать"});
             this.itemAttr.Name = "itemAttr";
             // 
             // itemQuantity

@@ -148,12 +148,6 @@
     <value>Для рисования прямоугольников удерживайте Shift и левую кнопку мыши. Кнопки Править и Удалить работают для диалогов и прямоугольников. Pan - правой кнопкой мыши. Zoom - колесиком мыши.
 Для перемещения зажмите Ctrl</value>
   </data>
-  <data name="bTestButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bTestButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 302</value>
-  </data>
   <data name="imageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
@@ -379,6 +373,9 @@
   </data>
   <data name="tabInfoNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
+  </data>
+  <data name="colCoordinates.Width" type="System.Int32, mscorlib">
+    <value>220</value>
   </data>
   <data name="dgvReview.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 437</value>

@@ -806,7 +806,7 @@ namespace StalkerOnlineQuesterEditor
         void fillQuestRulesForm()
         {
             nBaseToCapturePercent.Value = Convert.ToDecimal(quest.QuestRules.basePercent * 100);
-            cbDontTakeItems.Checked = quest.QuestRules.dontTakeItems;
+            cbTakeItems.Checked = !quest.QuestRules.dontTakeItems;
         }
         //! Заполняет раздел Правила на форме - уровень игрока, сценарий... (???)
         void fillQuestRules()
@@ -830,12 +830,12 @@ namespace StalkerOnlineQuesterEditor
         //! Создает индикацию зеленым светом в графе Награда, если выдаются предметы, эффекты, или статус
         public void checkRewardIndicates()
         {
-            if (editQuestReward.TypeOfItems.Any())
+            if (editQuestReward.items.Any())
                 bRewardItem.Image = Properties.Resources.but_indicate;
             else
                 bRewardItem.Image = null;
 
-            if (editQuestPenalty.TypeOfItems.Any())
+            if (editQuestPenalty.items.Any())
                 bPenaltyItem.Image = Properties.Resources.but_indicate;
             else
                 bPenaltyItem.Image = null;
@@ -878,7 +878,7 @@ namespace StalkerOnlineQuesterEditor
         //! Создает индиикацию кнопки Предметы в графе Правила квеста
         public void checkQuestRulesIndicates()
         {
-            if (editQuestRules.TypeOfItems.Any())
+            if (editQuestRules.items.Any())
                 bItemQuestRules.Image = Properties.Resources.but_indicate;
         }
         //! Заполняет данные о награде - опыт, деньги, карму
@@ -927,7 +927,7 @@ namespace StalkerOnlineQuesterEditor
             information.onGet = onGotTextBox.Text;
             information.onFailed = onFailedTextBox.Text;
             rules.basePercent = Convert.ToSingle(nBaseToCapturePercent.Value) / 100;
-            rules.dontTakeItems = cbDontTakeItems.Checked;
+            rules.dontTakeItems = !cbTakeItems.Checked;
             target.QuestType = parent.questConst.getQuestTypeOnDescription(eventComboBox.SelectedItem.ToString());
             if (loseRButton.Checked)
                 target.onFin = 0;
@@ -1187,10 +1187,7 @@ namespace StalkerOnlineQuesterEditor
             additional.CantFail = cantFailCheckBox.Checked;
             CQuest retQuest;
 
-            reward.TypeOfItems = editQuestReward.TypeOfItems;
-            reward.NumOfItems = editQuestReward.NumOfItems;
-            reward.AttrOfItems = editQuestReward.AttrOfItems;
-            reward.Probability = editQuestReward.Probability;
+            reward.items = new List<QuestItem>(editQuestReward.items);
             reward.Reputation = editQuestReward.Reputation;
             reward.NPCReputation = editQuestReward.NPCReputation;
             reward.Effects = editQuestReward.Effects;
@@ -1198,19 +1195,14 @@ namespace StalkerOnlineQuesterEditor
             reward.randomQuest = editQuestReward.randomQuest;
             reward.blackBoxes = editQuestReward.blackBoxes;
 
-            penalty.TypeOfItems = editQuestPenalty.TypeOfItems;
-            penalty.NumOfItems = editQuestPenalty.NumOfItems;
-            penalty.AttrOfItems = editQuestPenalty.AttrOfItems;
-            penalty.Probability = editQuestPenalty.Probability;
+            penalty.items = new List<QuestItem>(editQuestPenalty.items);
             penalty.Reputation = editQuestPenalty.Reputation;
             penalty.NPCReputation = editQuestPenalty.NPCReputation;
             penalty.Effects = editQuestPenalty.Effects;
             penalty.ChangeQuests = editQuestPenalty.ChangeQuests;
             penalty.randomQuest = editQuestPenalty.randomQuest;
 
-            rules.TypeOfItems = editQuestRules.TypeOfItems;
-            rules.NumOfItems = editQuestRules.NumOfItems;
-            rules.AttrOfItems = editQuestRules.AttrOfItems;
+            rules.items = new List<QuestItem>(editQuestRules.items);
             rules.dontTakeItems = editQuestRules.dontTakeItems;
             information.Items = editInformation.Items;
 
@@ -1516,7 +1508,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void cbDontTakeItems_CheckedChanged(object sender, EventArgs e)
         {
-            editQuestRules.dontTakeItems = cbDontTakeItems.Checked;
+            editQuestRules.dontTakeItems = !cbTakeItems.Checked;
         }
     }
 }

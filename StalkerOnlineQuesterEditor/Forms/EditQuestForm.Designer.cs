@@ -140,7 +140,7 @@
             this.lNameObject = new System.Windows.Forms.Label();
             this.resultComboBox = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.cbDontTakeItems = new System.Windows.Forms.CheckBox();
+            this.cbTakeItems = new System.Windows.Forms.CheckBox();
             this.nBaseToCapturePercent = new System.Windows.Forms.NumericUpDown();
             this.massQuestsTextBox = new System.Windows.Forms.TextBox();
             this.lPercent = new System.Windows.Forms.Label();
@@ -233,7 +233,7 @@
             this.panelCreateMob.Controls.Add(this.lbScenType);
             this.panelCreateMob.Controls.Add(this.cbMobType);
             this.panelCreateMob.Controls.Add(this.cbScenaryType);
-            this.panelCreateMob.Location = new System.Drawing.Point(5, 3);
+            this.panelCreateMob.Location = new System.Drawing.Point(3, 1);
             this.panelCreateMob.Name = "panelCreateMob";
             this.panelCreateMob.Size = new System.Drawing.Size(622, 153);
             this.panelCreateMob.TabIndex = 17;
@@ -1208,6 +1208,7 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panelCreateMob);
+            this.tabPage4.Controls.Add(this.panelCreateNPC);
             this.tabPage4.Controls.Add(this.cbReputationLow);
             this.tabPage4.Controls.Add(this.cbState);
             this.tabPage4.Controls.Add(this.lState);
@@ -1223,7 +1224,6 @@
             this.tabPage4.Controls.Add(this.labelTargetAttr);
             this.tabPage4.Controls.Add(this.lQuantity);
             this.tabPage4.Controls.Add(this.quantityUpDown);
-            this.tabPage4.Controls.Add(this.panelCreateNPC);
             this.tabPage4.Controls.Add(this.targetComboBox);
             this.tabPage4.Controls.Add(this.lNameObject);
             this.tabPage4.Controls.Add(this.resultComboBox);
@@ -1444,7 +1444,7 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.cbDontTakeItems);
+            this.tabPage5.Controls.Add(this.cbTakeItems);
             this.tabPage5.Controls.Add(this.nBaseToCapturePercent);
             this.tabPage5.Controls.Add(this.massQuestsTextBox);
             this.tabPage5.Controls.Add(this.lPercent);
@@ -1467,16 +1467,16 @@
             this.tabPage5.Text = "Правила";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // cbDontTakeItems
+            // cbTakeItems
             // 
-            this.cbDontTakeItems.AutoSize = true;
-            this.cbDontTakeItems.Location = new System.Drawing.Point(242, 87);
-            this.cbDontTakeItems.Name = "cbDontTakeItems";
-            this.cbDontTakeItems.Size = new System.Drawing.Size(161, 17);
-            this.cbDontTakeItems.TabIndex = 55;
-            this.cbDontTakeItems.Text = "Но не выдавать предметы";
-            this.cbDontTakeItems.UseVisualStyleBackColor = true;
-            this.cbDontTakeItems.CheckedChanged += new System.EventHandler(this.cbDontTakeItems_CheckedChanged);
+            this.cbTakeItems.AutoSize = true;
+            this.cbTakeItems.Location = new System.Drawing.Point(231, 87);
+            this.cbTakeItems.Name = "cbTakeItems";
+            this.cbTakeItems.Size = new System.Drawing.Size(155, 17);
+            this.cbTakeItems.TabIndex = 55;
+            this.cbTakeItems.Text = "Выдать предметы игроку";
+            this.cbTakeItems.UseVisualStyleBackColor = true;
+            this.cbTakeItems.CheckedChanged += new System.EventHandler(this.cbDontTakeItems_CheckedChanged);
             // 
             // nBaseToCapturePercent
             // 
@@ -2184,7 +2184,7 @@
         private System.Windows.Forms.ComboBox targetComboBox;
         private System.Windows.Forms.Label lNameObject;
         private System.Windows.Forms.ComboBox resultComboBox;
-        private System.Windows.Forms.CheckBox cbDontTakeItems;
+        private System.Windows.Forms.CheckBox cbTakeItems;
         private System.Windows.Forms.NumericUpDown nBaseToCapturePercent;
         private System.Windows.Forms.TextBox massQuestsTextBox;
         private System.Windows.Forms.Label lPercent;

@@ -13,11 +13,11 @@ namespace StalkerOnlineQuesterEditor
 {
     public partial class ItemDialog : Form
     {
-        int ITEM_REWARD = 0;
-        int ITEM_QUESTRULES = 1;
-        int ITEM_LOCALIZATION_RULES = 2;
-        int ITEM_LOCALIZATION_REWARD = 3;
-        int ITEM_PENALTY = 4;
+        const int ITEM_REWARD = 0;
+        const int ITEM_QUESTRULES = 1;
+        const int ITEM_LOCALIZATION_RULES = 2;
+        const int ITEM_LOCALIZATION_REWARD = 3;
+        const int ITEM_PENALTY = 4;
 
         int questID;
         public MainForm parent;
@@ -33,7 +33,7 @@ namespace StalkerOnlineQuesterEditor
 
         void CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (formType == this.ITEM_QUESTRULES)
+            if (formType == ITEM_QUESTRULES)
             {
                 if (e.ColumnIndex == 1) // your combo column index 
                 {
@@ -59,10 +59,10 @@ namespace StalkerOnlineQuesterEditor
             foreach (CItem item in parent.itemConst.getAllItems().Values)
                 ((DataGridViewComboBoxColumn)itemGridView.Columns[0]).Items.Add(item.getDescription());
             ((DataGridViewComboBoxColumn)itemGridView.Columns[0]).Sorted = true;
-            if (formType == this.ITEM_LOCALIZATION_REWARD || formType == this.ITEM_LOCALIZATION_RULES)
+            if (formType == ITEM_LOCALIZATION_REWARD || formType == ITEM_LOCALIZATION_RULES)
             {
                 bTranslate.Enabled = true;
-                if (formType == this.ITEM_LOCALIZATION_REWARD)
+                if (formType == ITEM_LOCALIZATION_REWARD)
                 {
                     this.locale = parentForm2.cur_locale_quest.QuestInformation.Items;
                 }
@@ -77,175 +77,99 @@ namespace StalkerOnlineQuesterEditor
         private void fillItemGrid()
         {
             itemGridView.Rows.Clear();
-            if (formType == this.ITEM_REWARD)
+            List<int> EDIT_TYPES = new List<int> { ITEM_REWARD, ITEM_PENALTY, ITEM_QUESTRULES };
+            List<int> LOCALIZATE_TYPES = new List<int> { ITEM_LOCALIZATION_REWARD, ITEM_LOCALIZATION_RULES };
+            if (EDIT_TYPES.Contains(formType))
             {
-//                System.Console.WriteLine("formType::ITEM_REWARD");
-                this.Text += " Награда";
-                itemGridView.Columns["itemProbability"].Visible = true;
-                for (int i = 0; i < parentForm.editQuestReward.TypeOfItems.Count; ++i)
+                string formTitle = "";
+                List<QuestItem> items;
+                switch (formType)
                 {
-                    int typeID = parentForm.editQuestReward.TypeOfItems[i];
-                    int quantity = parentForm.editQuestReward.NumOfItems[i];
+                    case ITEM_REWARD:
+                        formTitle = " Награда"; items = parentForm.editQuestReward.items; break;
+                    case ITEM_PENALTY:
+                        formTitle = " Штраф"; items = parentForm.editQuestPenalty.items; break;
+                    case ITEM_QUESTRULES:
+                        formTitle = " Правила квеста"; items = parentForm.editQuestRules.items; break;
+                    default:
+                        return;
+                }
+                this.Text += formTitle;
+                foreach (QuestItem item in items)
+                {
+                    int typeID = item.itemType;
+                    int quantity = item.count;
                     string name = parent.itemConst.getDescriptionOnID(typeID);
                     string attr;
-                    try
+                    switch (item.attribute)
                     {
-                        switch (parentForm.editQuestReward.AttrOfItems[i])
-                        {
-                            case 1:
-                                attr = "Квестовый";
-                                break;
-                            case 2:
-                                attr = "Авто";
-                                break;
-                            default:
-                                attr = "Обычный";
-                                break;
-                        }
+                        case ItemAttribute.QUEST:
+                            attr = "Квестовый";
+                            break;
+                        case ItemAttribute.USE:
+                            attr = "Использовать";
+                            break;
+                        default:
+                            attr = "Обычный";
+                            break;
                     }
-                    catch
-                    {
-                        attr = "Обычный";
-                    }
+
                     string title = "";
                     string description = "";
                     string activation = "";
-                    string content = "";
-                    string probability = "1";
-                    if (parentForm.quest.Reward.Probability.Count > 0)
-                        probability = parentForm.quest.Reward.Probability[i].ToString();
+
                     if (parentForm.quest.QuestInformation.Items.Keys.Contains(typeID))
                     {
                         title = parentForm.quest.QuestInformation.Items[typeID].title;
                         description = parentForm.quest.QuestInformation.Items[typeID].description;
-                        content = parentForm.quest.QuestInformation.Items[typeID].content;
                         activation = parentForm.quest.QuestInformation.Items[typeID].activation;
                     }
-                    object[] row = { name, attr, quantity.ToString(), probability, title, description, content, activation };
+                    object[] row = { name, attr, quantity.ToString(), title, description, activation};
                     itemGridView.Rows.Add(row);
                 }
             }
-
-            else if (formType == this.ITEM_PENALTY)
+            else if (LOCALIZATE_TYPES.Contains(formType))
             {
-                //                System.Console.WriteLine("formType::ITEM_REWARD");
-                this.Text += " Награда";
-                itemGridView.Columns["itemProbability"].Visible = true;
-                for (int i = 0; i < parentForm.editQuestReward.TypeOfItems.Count; ++i)
+                string formTitle = "";
+                List<QuestItem> items;
+                switch (formType)
                 {
-                    int typeID = parentForm.editQuestPenalty.TypeOfItems[i];
-                    int quantity = parentForm.editQuestPenalty.NumOfItems[i];
-                    string name = parent.itemConst.getDescriptionOnID(typeID);
-                    string attr;
-                    try
-                    {
-                        switch (parentForm.editQuestPenalty.AttrOfItems[i])
-                        {
-                            case 1:
-                                attr = "Квестовый";
-                                break;
-                            case 2:
-                                attr = "Авто";
-                                break;
-                            default:
-                                attr = "Обычный";
-                                break;
-                        }
-                    }
-                    catch
-                    {
-                        attr = "Обычный";
-                    }
-                    string title = "";
-                    string description = "";
-                    string content = "";
-                    string activation = "";
-                    string probability = "1";
-
-                    if (parentForm.quest.QuestPenalty.Probability.Count > 0)
-                        probability = parentForm.quest.QuestPenalty.Probability[i].ToString();
-                    if (parentForm.quest.QuestInformation.Items.Keys.Contains(typeID))
-                    {
-                        title = parentForm.quest.QuestInformation.Items[typeID].title;
-                        description = parentForm.quest.QuestInformation.Items[typeID].description;
-                        content = parentForm.quest.QuestInformation.Items[typeID].content;
-                        activation = parentForm.quest.QuestInformation.Items[typeID].activation;
-                    }
-                    object[] row = { name, attr, quantity.ToString(), probability, title, description, content, activation };
-                    itemGridView.Rows.Add(row);
+                    case ITEM_LOCALIZATION_REWARD:
+                        formTitle = "Локализация награды"; items = parentForm2.pub_quest.Reward.items; break;
+                    case ITEM_LOCALIZATION_RULES:
+                        formTitle = "Локализация правил квеста"; items = parentForm2.pub_quest.QuestRules.items; break;
+                    default:
+                        return;
                 }
-            }
-
-            else if (formType == this.ITEM_QUESTRULES)
-            {
-//                System.Console.WriteLine("formType::ITEM_QUESTRULES");
-                this.Text += " Правила квеста";
-                itemGridView.Columns["itemProbability"].Visible = false;
-                for (int i = 0; i < parentForm.editQuestRules.TypeOfItems.Count; ++i)
+                this.Text = formTitle;
+                foreach (QuestItem item in items)
                 {
-                    int typeID = parentForm.editQuestRules.TypeOfItems[i];
-                    int quantity = parentForm.editQuestRules.NumOfItems[i];
-
-                    string name = parent.itemConst.getDescriptionOnID(typeID);
-                    string attr = "Квестовый";
-
-                    string title = "";
-                    string description = "";
-                    string content = "";
-                    string activation = "";
-                    if (parentForm.quest.QuestInformation.Items.Keys.Contains(typeID))
-                    {
-                        title = parentForm.quest.QuestInformation.Items[typeID].title;
-                        description = parentForm.quest.QuestInformation.Items[typeID].description;
-                        content = parentForm.quest.QuestInformation.Items[typeID].content;
-                        activation = parentForm.quest.QuestInformation.Items[typeID].activation;
-                    }
-                    object[] row = { name, attr, quantity.ToString(), null, title, description, content, activation };
-                    itemGridView.Rows.Add(row);
-               }
-                itemGridView.Columns[1].ReadOnly = true;
-            }
-            else if (formType == this.ITEM_LOCALIZATION_REWARD)
-            {
-//                System.Console.WriteLine("formType::ITEM_LOCALIZATION_REWARD");
-                this.Text = "Локализация награды";
-                for (int i = 0; i < parentForm2.pub_quest.Reward.TypeOfItems.Count; ++i)
-                {
-                    int typeID = parentForm2.pub_quest.Reward.TypeOfItems[i];
-                    int quantity = parentForm2.pub_quest.Reward.NumOfItems[i];
+                    int typeID = item.itemType;
+                    int quantity = item.count;
                     string name = parent.itemConst.getDescriptionOnID(typeID);
                     string attr;
-                    try
+                    switch (item.attribute)
                     {
-                        switch (parentForm2.pub_quest.Reward.AttrOfItems[i])
-                        {
-                            case 1:
-                                attr = "Квестовый";
-                                break;
-                            case 2:
-                                attr = "Авто";
-                                break;
-                            default:
-                                attr = "Обычный";
-                                break;
-                        }
-                    }
-                    catch
-                    {
-                        attr = "Обычный";
+                        case ItemAttribute.QUEST:
+                            attr = "Квестовый";
+                            break;
+                        case ItemAttribute.USE:
+                            attr = "Использовать";
+                            break;
+                        default:
+                            attr = "Обычный";
+                            break;
                     }
                     string title = "";
                     string description = "";
-                    string activation = "";
                     string content = "";
+                    string activation = "";
                     if (parentForm2.pub_quest.QuestInformation.Items.Keys.Contains(typeID))
                     {
                         if (this.translate == 0)
                         {
                             title = parentForm2.pub_quest.QuestInformation.Items[typeID].title;
                             description = parentForm2.pub_quest.QuestInformation.Items[typeID].description;
-                            content = parentForm2.pub_quest.QuestInformation.Items[typeID].content;
-                            activation = parentForm2.pub_quest.QuestInformation.Items[typeID].activation;
                         }
                         else
                         {
@@ -253,10 +177,10 @@ namespace StalkerOnlineQuesterEditor
                             description = this.locale[typeID].description;
                             content = this.locale[typeID].content;
                             activation = this.locale[typeID].activation;
-                            
                         }
                     }
-                    object[] row = { name, attr, quantity.ToString(), null, title, description, content, activation };
+
+                    object[] row = { name, attr, quantity.ToString(), title, description, activation };
                     itemGridView.Rows.Add(row);
 
                     for (int row_index = 0; row_index < itemGridView.Rows.Count; row_index ++ )
@@ -270,61 +194,6 @@ namespace StalkerOnlineQuesterEditor
                             else
                                 itemGridView.Rows[row_index].ReadOnly = true;
                         }
-                    }
-                }
-            }
-            else if (formType == this.ITEM_LOCALIZATION_RULES)
-            {
-                //System.Console.WriteLine("formType::ITEM_LOCALIZATION_RULES");
-                this.Text = "Локализация правил квеста";
-                for (int i = 0; i < parentForm2.pub_quest.QuestRules.TypeOfItems.Count; ++i)
-                {
-                    int typeID = parentForm2.pub_quest.QuestRules.TypeOfItems[i];
-                    int quantity = parentForm2.pub_quest.QuestRules.NumOfItems[i];
-
-                    string name = parent.itemConst.getDescriptionOnID(typeID);
-                    string attr = "Квестовый";
-
-                    string title = "";
-                    string description = "";
-                    string content = "";
-                    string activation = "";
-                    if (parentForm2.pub_quest.QuestInformation.Items.Keys.Contains(typeID))
-                    {
-
-                        if (this.translate == 0)
-                        {
-                            title = parentForm2.pub_quest.QuestInformation.Items[typeID].title;
-                            description = parentForm2.pub_quest.QuestInformation.Items[typeID].description;
-                            content = parentForm2.pub_quest.QuestInformation.Items[typeID].content;
-                            activation = parentForm2.pub_quest.QuestInformation.Items[typeID].activation;
-                        }
-                        else
-                        {
-                            if (!this.locale.ContainsKey(typeID))
-                            {
-                                this.locale.Add(typeID, new QuestItemInfo());
-                            }
-                            title = this.locale[typeID].title;
-                            description = this.locale[typeID].description;
-                            content = this.locale[typeID].content;
-                            activation = this.locale[typeID].activation;
-                        }
-                    }
-                    object[] row = { name, attr, quantity.ToString(), null, title, description, content, activation };
-                    itemGridView.Rows.Add(row);
-
-                }
-                for (int row_index = 0; row_index < itemGridView.Rows.Count; row_index++)
-                {
-                    if (translate == 1)
-                        itemGridView.Rows[row_index].ReadOnly = false;
-                    else
-                    {
-                        if (row_index != 4 && row_index != 5)
-                            itemGridView.Rows[row_index].ReadOnly = false;
-                        else
-                            itemGridView.Rows[row_index].ReadOnly = true;
                     }
                 }
             }
@@ -350,7 +219,6 @@ namespace StalkerOnlineQuesterEditor
                 string title = row.Cells["itemTitle"].FormattedValue.ToString();
                 string description = row.Cells["itemDescription"].FormattedValue.ToString();
                 string activation = row.Cells["itemActivation"].FormattedValue.ToString();
-                string content = row.Cells["itemContent"].FormattedValue.ToString();
                 string typeName = row.Cells["itemType"].FormattedValue.ToString();
                 int typeID = parent.itemConst.getIDOnDescription(typeName);
                 if (!this.locale.Keys.Contains(typeID))
@@ -358,7 +226,6 @@ namespace StalkerOnlineQuesterEditor
                 this.locale[typeID].description = description;
                 this.locale[typeID].title = title;
                 this.locale[typeID].activation = activation;
-                this.locale[typeID].content = content;
             }
         }
 
@@ -381,37 +248,32 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие ОК - проверка и сохранение данных, выход в форму редактирования квеста
         private void bOk_Click(object sender, EventArgs e)
         {
-            List<int> typeOfItems = new List<int>();
-            List<int> numOfItems = new List<int>();
-            List<int> attrOfItems = new List<int>();
-            List<float> probabilityOfItems = new List<float>();
+            List<QuestItem> items = new List<QuestItem>();
             Dictionary<int, QuestItemInfo> itemsInfo = new Dictionary<int, QuestItemInfo>();
 
             foreach (DataGridViewRow row in itemGridView.Rows)
             {
+                QuestItem item = new QuestItem();
                 string typeName = row.Cells["itemType"].FormattedValue.ToString();
                 if (!typeName.Equals(""))
                 {
                     int quantity = int.Parse(row.Cells["itemQuantity"].FormattedValue.ToString());
                     if (quantity >= 1)
                     {
-                        int typeID = parent.itemConst.getIDOnDescription(typeName);
+                        item.itemType = parent.itemConst.getIDOnDescription(typeName);
+                        item.count = quantity;
                         string attrName = row.Cells["itemAttr"].FormattedValue.ToString();
-                        int attr;
                         string title = row.Cells["itemTitle"].FormattedValue.ToString();
                         string description = row.Cells["itemDescription"].FormattedValue.ToString();
                         string activation = row.Cells["itemActivation"].FormattedValue.ToString();
                         string content = row.Cells["itemContent"].FormattedValue.ToString();
-                        float probability = checkFloatValue(row.Cells["itemProbability"].FormattedValue.ToString());
-                        if (probability < 0)
-                            return;
                         switch (attrName)
                         {
                             case "Квестовый":
-                                attr = 1;
+                                item.attribute = ItemAttribute.QUEST;
                                 try
                                 {
-                                    itemsInfo.Add(typeID, new QuestItemInfo(title, description, activation, content));
+                                    itemsInfo.Add(item.itemType, new QuestItemInfo(title, description, activation, content));
                                 }
                                 catch
                                 {
@@ -419,57 +281,32 @@ namespace StalkerOnlineQuesterEditor
                                     return;
                                 }
                                 break;
-                            case "Авто":
-                                attr = 2;
-                                break;
-                            default:
-                                attr = 0;
-                                break;
+                            case "Использовать": item.attribute = ItemAttribute.USE; break;
+                            default: item.attribute = ItemAttribute.NORMAL; break;
                         }
-
-                        probabilityOfItems.Add(probability);
-                        typeOfItems.Add(typeID);
-                        numOfItems.Add(quantity);
-                        attrOfItems.Add(attr);
+                        items.Add(item);
                     }
                 }
             }
 
-            if (formType == this.ITEM_QUESTRULES)
+            if (formType == ITEM_QUESTRULES)
             {
-                parentForm.editQuestRules.TypeOfItems.Clear();
-                parentForm.editQuestRules.TypeOfItems = typeOfItems;
-                parentForm.editQuestRules.NumOfItems.Clear();
-                parentForm.editQuestRules.NumOfItems = numOfItems;
-                parentForm.editQuestRules.AttrOfItems.Clear();
-                parentForm.editQuestRules.AttrOfItems = attrOfItems;
+                parentForm.editQuestRules.items.Clear();
+                parentForm.editQuestRules.items = items;
                 parentForm.checkQuestRulesIndicates();
             }
-            else if (formType == this.ITEM_REWARD)
+            else if (formType == ITEM_REWARD)
             {
-                parentForm.editQuestReward.TypeOfItems.Clear();
-                parentForm.editQuestReward.TypeOfItems = typeOfItems;
-                parentForm.editQuestReward.NumOfItems.Clear();
-                parentForm.editQuestReward.NumOfItems = numOfItems;
-                parentForm.editQuestReward.AttrOfItems.Clear();
-                parentForm.editQuestReward.AttrOfItems = attrOfItems;
-                parentForm.editQuestReward.Probability.Clear();
-                parentForm.editQuestReward.Probability = probabilityOfItems;
+                parentForm.editQuestReward.items.Clear();
+                parentForm.editQuestReward.items = items;
+            }
+            else if (formType == ITEM_PENALTY)
+            {
+                parentForm.editQuestPenalty.items.Clear();
+                parentForm.editQuestPenalty.items = items;
                 parentForm.checkRewardIndicates();
             }
-            else if (formType == this.ITEM_PENALTY)
-            {
-                parentForm.editQuestPenalty.TypeOfItems.Clear();
-                parentForm.editQuestPenalty.TypeOfItems = typeOfItems;
-                parentForm.editQuestPenalty.NumOfItems.Clear();
-                parentForm.editQuestPenalty.NumOfItems = numOfItems;
-                parentForm.editQuestPenalty.AttrOfItems.Clear();
-                parentForm.editQuestPenalty.AttrOfItems = attrOfItems;
-                parentForm.editQuestPenalty.Probability.Clear();
-                parentForm.editQuestPenalty.Probability = probabilityOfItems;
-                parentForm.checkRewardIndicates();
-            }
-            else if (formType == this.ITEM_LOCALIZATION_RULES || formType == this.ITEM_LOCALIZATION_REWARD)
+            else if (formType == ITEM_LOCALIZATION_RULES || formType == ITEM_LOCALIZATION_REWARD)
             {
                 if (this.translate == 1)
                     parseLocale();

@@ -2006,7 +2006,7 @@
             this.GVNonItems_itemAttr.Items.AddRange(new object[] {
             "Обычный",
             "Квестовый",
-            "Авто"});
+            "Использовать"});
             this.GVNonItems_itemAttr.Name = "GVNonItems_itemAttr";
             this.GVNonItems_itemAttr.Width = 70;
             // 
@@ -2050,7 +2050,7 @@
             this.GVItems_itemAttr.Items.AddRange(new object[] {
             "Обычный",
             "Квестовый",
-            "Авто"});
+            "Использовать"});
             this.GVItems_itemAttr.Name = "GVItems_itemAttr";
             this.GVItems_itemAttr.Width = 70;
             // 
