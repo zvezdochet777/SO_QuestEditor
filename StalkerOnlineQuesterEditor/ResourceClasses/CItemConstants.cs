@@ -76,7 +76,7 @@ namespace StalkerOnlineQuesterEditor
                 try
                 {
                     int type_id = int.Parse(item.Element("id").Value.ToString());
-                    items.Add(type_id, new CItem(item.Element("Name").Value.ToString() + " " + type_id.ToString(), deleted, converted));
+                    items.Add(type_id, new CItem(item.Element("Name").Value.ToString() + " " + type_id.ToString(), item.Element("Description").Value.ToString(), deleted, converted));
                 }
                 catch
                 {
@@ -88,14 +88,14 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
-        public string getDescriptionOnID(int typeID)
+        public string getItemName(int typeID)
         {
             if (!items.ContainsKey(typeID))
             {
                 System.Windows.Forms.MessageBox.Show("Предмета "+typeID.ToString() + " не существует", "Ошибка предмета");
                 return "";
             }
-            return items[typeID].getDescription();
+            return items[typeID].getName();
         }
 
         public Dictionary<int, CItem> getAllItems()
@@ -110,16 +110,26 @@ namespace StalkerOnlineQuesterEditor
                     return key;
             return 0;
         }
+
+        public int getIDOnName(string name)
+        {
+            foreach (int key in items.Keys)
+                if (items[key].getName().Equals(name))
+                    return key;
+            return 0;
+        }
     }
 
     public class CItem
     {
+        public string Name;
         public string Description;
         public bool deleted;
         public bool converted;
 
-        public CItem(string Description, bool deleted = false, bool converted = false)
+        public CItem(string Name, string Description, bool deleted = false, bool converted = false)
         {
+            this.Name = Name;
             this.Description = Description;
             this.deleted = deleted;
             this.converted = converted;
@@ -127,6 +137,11 @@ namespace StalkerOnlineQuesterEditor
         public string getDescription()
         {
             return Description;
+        }
+
+        public string getName()
+        {
+            return Name;
         }
     }
 }

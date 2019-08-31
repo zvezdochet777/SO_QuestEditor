@@ -57,7 +57,7 @@ namespace StalkerOnlineQuesterEditor
             locale = new Dictionary<int, QuestItemInfo>();
 
             foreach (CItem item in parent.itemConst.getAllItems().Values)
-                ((DataGridViewComboBoxColumn)itemGridView.Columns[0]).Items.Add(item.getDescription());
+                ((DataGridViewComboBoxColumn)itemGridView.Columns[0]).Items.Add(item.getName());
             ((DataGridViewComboBoxColumn)itemGridView.Columns[0]).Sorted = true;
             if (formType == ITEM_LOCALIZATION_REWARD || formType == ITEM_LOCALIZATION_RULES)
             {
@@ -99,7 +99,8 @@ namespace StalkerOnlineQuesterEditor
                 {
                     int typeID = item.itemType;
                     int quantity = item.count;
-                    string name = parent.itemConst.getDescriptionOnID(typeID);
+                    string name = parent.itemConst.getItemName(typeID);
+
                     string attr;
                     switch (item.attribute)
                     {
@@ -117,14 +118,16 @@ namespace StalkerOnlineQuesterEditor
                     string title = "";
                     string description = "";
                     string activation = "";
+                    string content = "";
 
                     if (parentForm.quest.QuestInformation.Items.Keys.Contains(typeID))
                     {
                         title = parentForm.quest.QuestInformation.Items[typeID].title;
                         description = parentForm.quest.QuestInformation.Items[typeID].description;
                         activation = parentForm.quest.QuestInformation.Items[typeID].activation;
+                        content = parentForm.quest.QuestInformation.Items[typeID].content;
                     }
-                    object[] row = { name, attr, quantity.ToString(), title, description, activation};
+                    object[] row = { name, attr, quantity.ToString(), title, description, content, activation };
                     itemGridView.Rows.Add(row);
                 }
             }
@@ -146,7 +149,7 @@ namespace StalkerOnlineQuesterEditor
                 {
                     int typeID = item.itemType;
                     int quantity = item.count;
-                    string name = parent.itemConst.getDescriptionOnID(typeID);
+                    string name = parent.itemConst.getItemName(typeID);
                     string attr;
                     switch (item.attribute)
                     {
@@ -180,7 +183,7 @@ namespace StalkerOnlineQuesterEditor
                         }
                     }
 
-                    object[] row = { name, attr, quantity.ToString(), title, description, activation };
+                    object[] row = { name, attr, quantity.ToString(), title, description, content, activation };
                     itemGridView.Rows.Add(row);
 
                     for (int row_index = 0; row_index < itemGridView.Rows.Count; row_index ++ )
@@ -220,7 +223,7 @@ namespace StalkerOnlineQuesterEditor
                 string description = row.Cells["itemDescription"].FormattedValue.ToString();
                 string activation = row.Cells["itemActivation"].FormattedValue.ToString();
                 string typeName = row.Cells["itemType"].FormattedValue.ToString();
-                int typeID = parent.itemConst.getIDOnDescription(typeName);
+                int typeID = parent.itemConst.getIDOnName(typeName);
                 if (!this.locale.Keys.Contains(typeID))
                     this.locale.Add(typeID, new QuestItemInfo());
                 this.locale[typeID].description = description;
@@ -260,7 +263,7 @@ namespace StalkerOnlineQuesterEditor
                     int quantity = int.Parse(row.Cells["itemQuantity"].FormattedValue.ToString());
                     if (quantity >= 1)
                     {
-                        item.itemType = parent.itemConst.getIDOnDescription(typeName);
+                        item.itemType = parent.itemConst.getIDOnName(typeName);
                         item.count = quantity;
                         string attrName = row.Cells["itemAttr"].FormattedValue.ToString();
                         string title = row.Cells["itemTitle"].FormattedValue.ToString();

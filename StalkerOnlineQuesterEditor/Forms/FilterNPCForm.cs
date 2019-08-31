@@ -14,10 +14,12 @@ namespace StalkerOnlineQuesterEditor
     {
         Dictionary<string, Boolean> filters;
         List<CheckBox> checkBoxes = new List<CheckBox>();
+        MainForm parent;
 
-        public FilterNPCForm(ref Dictionary<string, bool> filters)
+        public FilterNPCForm(ref Dictionary<string, bool> filters, MainForm parent)
         {
             this.filters = filters;
+            this.parent = parent;
             InitializeComponent();
         }
 
@@ -35,10 +37,10 @@ namespace StalkerOnlineQuesterEditor
             foreach( KeyValuePair<string, bool> val in filters)
             {
                 CheckBox cb = new CheckBox();
-                cb.Width = 150;
+                cb.Width = 250;
                 cb.Location = new Point(x, y);
                 
-                cb.Text = val.Key;
+                cb.Text = parent.spacesConst.getLocalName(val.Key);
                 cb.Checked = val.Value;
                 this.Controls.Add(cb);
                 this.checkBoxes.Add(cb);
@@ -48,7 +50,7 @@ namespace StalkerOnlineQuesterEditor
 
                     this.Height = y + 80;
                     y = 40;
-                    x += 150;
+                    x += cb.Width;
                     count = 0;
                 }
                 count++;

@@ -39,8 +39,8 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (CItem item in parent.itemConst.getAllItems().Values)
             {
-                ((DataGridViewComboBoxColumn)GVItems.Columns[0]).Items.Add(item.getDescription());
-                ((DataGridViewComboBoxColumn)GVNonItems.Columns[0]).Items.Add(item.getDescription());
+                ((DataGridViewComboBoxColumn)GVItems.Columns[0]).Items.Add(item.getName());
+                ((DataGridViewComboBoxColumn)GVNonItems.Columns[0]).Items.Add(item.getName());
             }
             ((DataGridViewComboBoxColumn)GVItems.Columns[0]).Sorted = true;
             ((DataGridViewComboBoxColumn)GVNonItems.Columns[0]).Sorted = true;
@@ -913,7 +913,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (QuestItem item in items)
             {
                 int item_type = item.itemType;
-                string item_name = parent.itemConst.getDescriptionOnID(item_type);
+                string item_name = parent.itemConst.getItemName(item_type);
                 string item_attr;
                 switch (item.attribute)
                 {
@@ -951,7 +951,7 @@ namespace StalkerOnlineQuesterEditor
 
                     if ((int.TryParse(row.Cells[dg.Name + "_itemQuantity"].FormattedValue.ToString(), out quantity)) && (quantity >= 1))
                     {
-                        int typeID = parent.itemConst.getIDOnDescription(typeName);
+                        int typeID = parent.itemConst.getIDOnName(typeName);
                         string attrName = row.Cells[dg.Name + "_itemAttr"].FormattedValue.ToString();
                         int attr;
                         switch (attrName)

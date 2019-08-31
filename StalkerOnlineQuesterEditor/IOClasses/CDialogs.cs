@@ -40,7 +40,7 @@ namespace StalkerOnlineQuesterEditor
         {
             this.parent = parent;
             ManagerNPC = managerNPC;
-            ParseNodeCoordinates("NodeCoordinates.xml");
+            ParseNodeCoordinates("NodeCoordinates/");
 
             ParseDialogsData(parent.settings.GetDialogDataPath(), this.dialogs, true);
             ParseDialogsTexts(parent.settings.GetDialogTextPath(), this.dialogs);
@@ -50,24 +50,25 @@ namespace StalkerOnlineQuesterEditor
                 if (!locales.Keys.Contains(locale))
                     locales.Add(locale, new NPCDicts());
                 ParseDialogsData(parent.settings.GetDialogDataPath(), this.locales[locale]);
-                ParseDialogsTexts(parent.settings.GetDialogLocaleTextPath(), this.locales[locale]);
+                ParseDialogsTexts(parent.settings.GetDialogTextPath(), this.locales[locale]);
             }
         }
-
+        
         //! Парсер xml - файла данных диалогов, записывает результат в target
-        private void ParseDialogsData(String DialogsXMLFile, NPCDicts target, bool findErrors = false)
+        private void ParseDialogsData(String dialogDataPath, NPCDicts target, bool findErrors = false)
         {
-            if (!File.Exists(DialogsXMLFile))
-                return;
-            List<int> tests;
-            doc = XDocument.Load(DialogsXMLFile);
-            dialogErrors = new Dictionary<int, List<string>>();
-            foreach (XElement npc in doc.Root.Elements())
+            string[] files = Directory.GetFiles(dialogDataPath, "*.xml");
+            foreach (string dialogFile in files)
             {
-                string npc_name = npc.Element("Name").Value.ToString().Trim();
+                if (!File.Exists(dialogFile))
+                    return;
+                List<int> tests;
+                doc = XDocument.Load(dialogFile);
+                dialogErrors = new Dictionary<int, List<string>>();
+                string npc_name = Path.GetFileNameWithoutExtension(dialogFile);
                 target.Add(npc_name, new Dictionary<int, CDialog>());
 
-                foreach (XElement dialog in npc.Elements("Dialog"))
+                foreach (XElement dialog in doc.Root.Elements("Dialog"))
                 {
                     int DialogID = int.Parse(dialog.Element("ID").Value);
                     if (findErrors)
@@ -99,11 +100,11 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Element("Actions") != null)
                     {
                         if (dialog.Element("Actions").Element("GoToCamera") != null)
-                           {
+                        {
                             Actions.actionCamera = dialog.Element("Actions").Element("GoToCamera").Value;
                             if (dialog.Element("Actions").Element("CameraSmoothly") == null)
                                 Actions.actionCameraSmoothly = false;
-                            }
+                        }
                         if (dialog.Element("Actions").Element("AnimationPlayer") != null)
                             Actions.actionAnimationPlayer = dialog.Element("Actions").Element("AnimationPlayer").Value;
                         if (dialog.Element("Actions").Element("AnimationNPC") != null)
@@ -122,20 +123,20 @@ namespace StalkerOnlineQuesterEditor
                             if (dialog.Element("Actions").Element("ChangeMoneyFailNode") != null)
                                 Actions.changeMoneyFailNode = int.Parse(dialog.Element("Actions").Element("ChangeMoneyFailNode").Value);
                         }
-                        if (dialog.Element("Actions").Element("Exit")!= null)
-                        Actions.Exit = dialog.Element("Actions").Element("Exit").Value == "1";
-                    Actions.ToDialog = ParseIntIfNotEmpty(dialog, "Actions", "ToDialog", 0);
-                    Actions.Event = parent.dialogEvents.GetEventFromID(ParseIntIfNotEmpty(dialog, "Actions", "Event", 0));
-                    if (dialog.Element("Actions").Element("Data") != null)
-                        Actions.Data = dialog.Element("Actions").Element("Data").Value;
+                        if (dialog.Element("Actions").Element("Exit") != null)
+                            Actions.Exit = dialog.Element("Actions").Element("Exit").Value == "1";
+                        Actions.ToDialog = ParseIntIfNotEmpty(dialog, "Actions", "ToDialog", 0);
+                        Actions.Event = parent.dialogEvents.GetEventFromID(ParseIntIfNotEmpty(dialog, "Actions", "Event", 0));
+                        if (dialog.Element("Actions").Element("Data") != null)
+                            Actions.Data = dialog.Element("Actions").Element("Data").Value;
 
-                    AddDataToList(dialog, "Actions", "GetQuest", Actions.GetQuests);
-                    AddDataToList(dialog, "Actions", "CompleteQuest", Actions.CompleteQuests);
-                    if (dialog.Element("Actions").Descendants().Any(item => item.Name =="CancelQuest"))
-                    {
-                        AddDataToList(dialog, "Actions", "CancelQuest", Actions.CancelQuests);
-                        AddDataToList(dialog, "Actions", "FailQuest", Actions.FailQuests);
-                    }
+                        AddDataToList(dialog, "Actions", "GetQuest", Actions.GetQuests);
+                        AddDataToList(dialog, "Actions", "CompleteQuest", Actions.CompleteQuests);
+                        if (dialog.Element("Actions").Descendants().Any(item => item.Name == "CancelQuest"))
+                        {
+                            AddDataToList(dialog, "Actions", "CancelQuest", Actions.CancelQuests);
+                            AddDataToList(dialog, "Actions", "FailQuest", Actions.FailQuests);
+                        }
                     }
                     if (dialog.Element("Precondition") != null)
                     {
@@ -148,7 +149,7 @@ namespace StalkerOnlineQuesterEditor
                             AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfCompletedQuests", Precondition.ListOfNecessaryQuests.ListOfCompletedQuests, ref Precondition.ListOfNecessaryQuests.conditionOfCompletedQuests);
                             AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOmniCounters", Precondition.ListOfNecessaryQuests.ListOfCounters, ref Precondition.ListOfNecessaryQuests.conditionOfCounterss);
                             AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfRepeat", Precondition.ListOfNecessaryQuests.ListOfRepeat, ref Precondition.ListOfNecessaryQuests.conditionOfRepeat);
-                            
+
                             if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests") != null)
                             {
                                 if (dialog.Element("Precondition").Element("ListOfNecessaryQuests").Element("listOfMassQuests").Value.Contains('|'))
@@ -167,7 +168,7 @@ namespace StalkerOnlineQuesterEditor
                             AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfCompletedQuests", Precondition.ListOfMustNoQuests.ListOfCompletedQuests, ref Precondition.ListOfMustNoQuests.conditionOfCompletedQuests);
                             AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOmniCounters", Precondition.ListOfMustNoQuests.ListOfCounters, ref Precondition.ListOfMustNoQuests.conditionOfCounterss);
                             AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfRepeat", Precondition.ListOfMustNoQuests.ListOfRepeat, ref Precondition.ListOfMustNoQuests.conditionOfRepeat);
-                        
+
                             if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests") != null)
                             {
                                 if (dialog.Element("Precondition").Element("ListOfMustNoQuests").Element("listOfMassQuests").Value.Contains('|'))
@@ -284,7 +285,7 @@ namespace StalkerOnlineQuesterEditor
                         {
                             if (dialog.Element("Precondition").Element("items").Element("itemCategory") != null)
                                 Precondition.items.itemCategory = int.Parse(dialog.Element("Precondition").Element("items").Element("itemCategory").Value);
-                            else 
+                            else
                             if (dialog.Element("Precondition").Element("items").Element("items") != null)
                             {
                                 if (dialog.Element("Precondition").Element("items").Element("or") != null)
@@ -323,13 +324,14 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Element("isAutoNode") != null)
                     {
                         isAutoNode = dialog.Element("isAutoNode").Value.Trim().Equals("1");
-                        if (dialog.Element("defaultNode") != null) defaultNode = dialog.Element("defaultNode").Value; 
+                        if (dialog.Element("defaultNode") != null) defaultNode = dialog.Element("defaultNode").Value;
 
                     }
                     if (!target[npc_name].Keys.Contains(DialogID))
                         target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, CheckNodes, DialogID, 0, nodeCoord, DebugData, isAutoNode, defaultNode));
                 }
             }
+
 
             foreach (KeyValuePair<int, List<string>> dialogError in dialogErrors)
             {
@@ -338,12 +340,11 @@ namespace StalkerOnlineQuesterEditor
                 {
                     npc_name_list += npc_name + ", ";
                 }
-                MessageBox.Show("Ошибка дублирования диалогов (Всего "+ dialogErrors.Count + ") (" + npc_name_list + ") "+ dialogError.Key + " => " + (dialogIDList.Keys.Max()+1));
+                MessageBox.Show("Ошибка дублирования диалогов (Всего " + dialogErrors.Count + ") (" + npc_name_list + ") " + dialogError.Key + " => " + (dialogIDList.Keys.Max() + 1));
                 throw new Exception("Ошибка дублирования диалогов " + dialogError.Key + " => " + (dialogIDList.Keys.Max() + 1));
             }
-            
         }
-
+      
         private void AddPreconditionQuests(XElement Element, String Name1, String Name2, List<int> list, ref char condition)
         {
             if (Element.Element("Precondition").Element(Name1).Element(Name2) == null)
@@ -410,28 +411,33 @@ namespace StalkerOnlineQuesterEditor
                 return int.Parse(Element.Element(Name1).Element(Name2).Value);
             return defaultValue;
         }
-
-        private void ParseDialogsTexts(String DialogsXMLFile, NPCDicts target)
+        
+        private void ParseDialogsTexts(String dataPath, NPCDicts target)
         {
-            try
+            string[] files = Directory.GetFiles(dataPath, "*.xml");
+            foreach (string dialogFile in files)
             {
-                doc = XDocument.Load(DialogsXMLFile);
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("Произошла ошибка при чтении файла: " + DialogsXMLFile + "\n" + e.Message, "Ошибка чтения");
-                return;
-            }
-            foreach (XElement npc in doc.Root.Elements())
-            {
-                string npc_name = npc.Element("Name").Value.ToString().Trim();
+                try
+                {
+                    doc = XDocument.Load(dialogFile);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Произошла ошибка при чтении файла: " + dialogFile + "\n" + e.Message, "Ошибка чтения");
+                    return;
+                }
+
+                string npc_name = Path.GetFileNameWithoutExtension(dialogFile);
                 if (!target.ContainsKey(npc_name))
                 {
                     MessageBox.Show("В DialogsData отсутствует NPC:" + npc_name, "Ошибка парсинга текстов");
                     continue;
                 }
-                foreach (XElement dialog in npc.Elements("Dialog"))
+
+                foreach (XElement dialog in doc.Root.Elements("Dialog"))
                 {
+                   
+
                     int DialogID = int.Parse(dialog.Element("ID").Value);
 
                     if (!target[npc_name].ContainsKey(DialogID))
@@ -442,26 +448,27 @@ namespace StalkerOnlineQuesterEditor
                         MessageBox.Show(msg, "Ошибка парсинга текстов");
                         continue;
                     }
-                   
+
                     if (dialog.Element("Title") != null)
                     {
-                       
+
                         target[npc_name][DialogID].Title = dialog.Element("Title").Value.Trim();
                     }
                     if (dialog.Element("Text") != null)
                         target[npc_name][DialogID].Text = dialog.Element("Text").Value.Trim();
                     int Version = 0;
-                    if (!dialog.Element("Version").Value.Equals(""))
+                    if ((dialog.Element("Version") != null) && (!dialog.Element("Version").Value.Equals("")))
                         Version = int.Parse(dialog.Element("Version").Value);
                     target[npc_name][DialogID].version = Version;
+
                 }
             }
         }
-
+   
         //! Сохранить все диалоги в xml файл
         public void SaveDialogs()
         {
-            SaveNodeCoordinates("NodeCoordinates.xml",this.dialogs);
+            SaveNodeCoordinates("NodeCoordinates/",this.dialogs);
             SaveDialogsTexts(parent.settings.GetDialogTextPath(), this.dialogs);
             SaveDialogsData(parent.settings.GetDialogDataPath(), this.dialogs);
         }
@@ -472,15 +479,15 @@ namespace StalkerOnlineQuesterEditor
             SaveDialogsTexts(parent.settings.GetDialogLocaleTextPath(), this.locales[parent.settings.getCurrentLocale()]);
         }
 
-        private void SaveDialogsTexts(string fileName, NPCDicts target)
+        private void SaveDialogsTexts(string filePath, NPCDicts target)
         {
-            XDocument resultDoc = new XDocument(new XElement("root"));
+            
             XElement element;
-            XElement npcElement;
 
             foreach (string npcName in target.Keys)
             {
-                npcElement = new XElement("NPC", new XElement("Name", npcName));
+                XDocument resultDoc = new XDocument(new XElement("root"));
+                //npcElement = new XElement("NPC", new XElement("Name", npcName));
                 NPCDialogDict Dictdialog = target[npcName];
                 foreach (CDialog dialog in Dictdialog.Values)
                 {
@@ -492,27 +499,27 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Text != "")
                         element.Add(new XElement("Text", dialog.Text));
 
-                    npcElement.Add(element);
+                    resultDoc.Root.Add(element);
                 }
-                resultDoc.Root.Add(npcElement);
+                string fileName = filePath + npcName + ".xml";
+                System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
+                using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
+                {
+                    resultDoc.Save(w);
+                }
             }
-            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
-            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
-            {
-                resultDoc.Save(w);
-            }
+           
         }
 
-        private void SaveDialogsData(string fileName, NPCDicts target)
-        {
-            XDocument resultDoc = new XDocument(new XElement("root"));
-            XElement element;
-            XElement npcElement;
-
+        private void SaveDialogsData(string data_path, NPCDicts target)
+        {  
+            //XElement npcElement;
             foreach (string npcName in target.Keys)
             {
-                npcElement = new XElement("NPC", new XElement("Name", npcName));
+                XDocument resultDoc = new XDocument(new XElement("root"));
+                //npcElement = new XElement("NPC", new XElement("Name", npcName));
                 NPCDialogDict Dictdialog = target[npcName];
+                XElement element;
                 foreach (CDialog dialog in Dictdialog.Values)
                 {
                     element = new XElement("Dialog",
@@ -707,7 +714,6 @@ namespace StalkerOnlineQuesterEditor
                                 element.Element("Actions").Add(new XElement("ChangeMoneyFailNode", Global.GetIntAsString(dialog.Actions.changeMoneyFailNode)));
                             }
                         }
-
                     }
 
                     if (dialog.Nodes.Any())
@@ -725,64 +731,65 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.defaultNode.Any()) element.Add(new XElement("defaultNode", dialog.defaultNode));
                     }
 
-                    npcElement.Add(element);
-
-                   
+                    resultDoc.Root.Add(element);
                 }
-                resultDoc.Root.Add(npcElement);
-            }
-            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
-            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
-            {
-                resultDoc.Save(w);
-            }        
+                System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
+                using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(data_path + "/" + npcName + ".xml", settings))
+                {
+                    resultDoc.Save(w);
+                }
+                //resultDoc.Root.Add(npcElement);
+            }       
         }
 
-        private void SaveNodeCoordinates(string fileName, NPCDicts target)
-        {
-            XDocument resultDoc = new XDocument(new XElement("root"));
-            XElement npc_element;
+        private void SaveNodeCoordinates(string data_path, NPCDicts target)
+        {    
+            //XElement npc_element;
             foreach (String NPC_Name in target.Keys)
             {
-                npc_element = new XElement("NPC", new XAttribute("NPC_Name", NPC_Name));
+                XDocument resultDoc = new XDocument(new XElement("root"));
+                //npc_element = new XElement("NPC", new XAttribute("NPC_Name", NPC_Name));
                 foreach (CDialog dialog in target[NPC_Name].Values)
                 {
-                    npc_element.Add(new XElement("Dialog", 
+                    resultDoc.Root.Add(new XElement("Dialog", 
                         new XAttribute("ID", dialog.DialogID.ToString()),
                         new XElement("X", Convert.ToString(dialog.coordinates.X)),
                         new XElement("Y", Convert.ToString(dialog.coordinates.Y))));                  
                 }
-                resultDoc.Root.Add(npc_element);
+                System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
+                using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(data_path + NPC_Name + ".xml", settings))
+                {
+                    resultDoc.Save(w);
+                }
+                //resultDoc.Root.Add(npc_element);
             }
-            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
-            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
-            {
-                resultDoc.Save(w);
-            }
+            
         }
 
-        private void ParseNodeCoordinates(string filename)
+        private void ParseNodeCoordinates(string data_path)
         {
-            if (!File.Exists(filename))
-                return;
-            try
+            string[] dirs = Directory.GetFiles(data_path, "*.xml");
+            foreach (string filename in dirs)
             {
-                doc = XDocument.Load(filename);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Произошла ошибка при чтении файла: " + filename + "\n" + e.Message, "Ошибка чтения");
-                return;
-            }
-            bool find_error = false;
-            foreach (XElement item in doc.Root.Elements())
-            {
-                string npc_name = item.Attribute("NPC_Name").Value.ToString();
-                if (!tempCoordinates.ContainsKey(npc_name))
-                    tempCoordinates.Add(npc_name, new Dictionary<int,NodeCoordinates>());
-                
-                foreach (XElement dialog in item.Elements())
+                try
                 {
+                    doc = XDocument.Load(filename);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Произошла ошибка при чтении файла: " + filename + "\n" + e.Message, "Ошибка чтения");
+                    continue;
+                }
+                bool find_error = false;
+
+                string npc_name = Path.GetFileNameWithoutExtension(filename);
+                if (!tempCoordinates.ContainsKey(npc_name))
+                    tempCoordinates.Add(npc_name, new Dictionary<int, NodeCoordinates>());
+
+                foreach (XElement dialog in doc.Root.Elements())
+                {
+                    
+
                     int id = int.Parse(dialog.Attribute("ID").Value);
                     float x = float.Parse(dialog.Element("X").Value);
                     float y = float.Parse(dialog.Element("Y").Value);
@@ -799,10 +806,11 @@ namespace StalkerOnlineQuesterEditor
                         }
                         continue;
                     }
+
                 }
             }
         }
-
+        
         //! Возвращает список всех NPC
         public List<string> getListOfNPC()
         {

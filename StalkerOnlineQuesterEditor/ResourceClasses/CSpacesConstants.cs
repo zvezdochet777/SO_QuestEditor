@@ -10,49 +10,107 @@ namespace StalkerOnlineQuesterEditor
 {
     public class CSpacesConstants
     {
-        Dictionary<string, CSpaceDescription> spaces;
+        List<CSpaceDescription> spaces;
         public CSpacesConstants()
         {
-            spaces = new Dictionary<string, CSpaceDescription>();
+            spaces = new List<CSpaceDescription>();
             XDocument doc = XDocument.Load("source/Spaces.xml");
             foreach (XElement item in doc.Root.Elements())
             {
                 try
                 {
-                    spaces.Add(item.Element("name").Value.ToString(), new CSpaceDescription(item.Element("dir").Value.ToString()));
+                    string name = item.Element("name").Value.ToString();
+                    string dir = item.Element("dir").Value.ToString();
+                    int id = Convert.ToInt32(item.Element("id").Value.ToString());
+                    spaces.Add(new CSpaceDescription(id, dir, name));
                 }
                 catch
                 {
-                    System.Console.WriteLine("Error with item id:" + item.Element("name").Value.ToString());
+                    System.Console.WriteLine("Error with space name:" + item.Element("dir").Value.ToString());
                 }
             }
         }
 
-        public List<string> getSpacesDescription()
+        public List<string> getSpacesNames()
         {
             List<string> ret = new List<string>();
-            foreach (string key in this.spaces.Keys)
-                ret.Add(key);
+            foreach (CSpaceDescription key in this.spaces)
+                ret.Add(key.id.ToString() + " " + key.name);
             return ret;
+        }
+
+        public string getSpaceByID(int id)
+        {
+            foreach (CSpaceDescription key in this.spaces)
+            {
+                if (key.id == id) return key.id.ToString() + " " + key.name;
+            }
+            return null;
+        } 
+        
+        public string getLocalName(string dir)
+        {
+            foreach (CSpaceDescription key in this.spaces)
+            {
+                if (key.dir == dir) return key.name;
+            }
+            return dir;
+        }
+
+        public string getSpaceNameByLocal(string name)
+        {
+            foreach (CSpaceDescription key in this.spaces)
+            {
+                if (key.name == name) return key.dir;
+            }
+            return name;
+        }
+
+        public int getSpaceID(string name)
+        {
+            foreach (CSpaceDescription key in this.spaces)
+            {
+                if (key.name == name) return key.id;
+            }
+            return 0;
+        }
+
+        public int getSpacesToInt(Dictionary<string, bool> spaces)
+        {
+            int result = 0;
+            foreach(KeyValuePair<string, bool> space in spaces)
+            {
+                if (space.Value)
+                {
+                    result = result | (1 << getSpaceID(space.Key));
+                }
+                else result = result & ~(1 << getSpaceID(space.Key));
+            }
+            return result;
+        }
+
+        public Dictionary<string, bool> getIntToSpaces(int number)
+        {
+            Dictionary<string, bool> result = new Dictionary<string, bool>();
+            foreach (CSpaceDescription key in this.spaces)
+            {
+                result.Add(key.name, Convert.ToBoolean(number & (1 << key.id)));
+            }
+            return result;
         }
     }
 
     public class CSpaceDescription
     {
-        public string sDir;
-        public CSpaceDescription()
-        {
-            this.sDir = "";
-        }
+        public string dir;
+        public string name;
+        public int id;
 
-        public CSpaceDescription(string sDir)
+        public CSpaceDescription(int id, string dir, string name)
         {
-            this.sDir = sDir;
-        }
-
-        public string getDir()
-        {
-            return this.sDir;
+            this.dir = dir;
+            this.name = name;
+            this.id = id;
         }
 
     }

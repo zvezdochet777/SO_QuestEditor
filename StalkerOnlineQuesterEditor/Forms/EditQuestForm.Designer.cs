@@ -196,6 +196,7 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.cbPriority = new System.Windows.Forms.ComboBox();
+            this.btnSpace = new System.Windows.Forms.Button();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
@@ -850,6 +851,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnSpace);
             this.tabPage3.Controls.Add(this.label23);
             this.tabPage3.Controls.Add(this.label21);
             this.tabPage3.Controls.Add(this.cbGetScreenMsg);
@@ -2010,6 +2012,16 @@
             this.cbPriority.Size = new System.Drawing.Size(116, 21);
             this.cbPriority.TabIndex = 55;
             // 
+            // btnSpace
+            // 
+            this.btnSpace.Location = new System.Drawing.Point(477, 172);
+            this.btnSpace.Name = "btnSpace";
+            this.btnSpace.Size = new System.Drawing.Size(141, 23);
+            this.btnSpace.TabIndex = 67;
+            this.btnSpace.Text = "Относится к карте";
+            this.btnSpace.UseVisualStyleBackColor = true;
+            this.btnSpace.Click += new System.EventHandler(this.btnSpace_Click);
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2238,5 +2250,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox cbPriority;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnSpace;
     }
 }

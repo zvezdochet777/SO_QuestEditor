@@ -106,7 +106,7 @@ namespace StalkerOnlineQuesterEditor
                             {
                                 if (item.attribute == ItemAttribute.QUEST)
                                 {
-                                    lItems.Text += item.count.ToString() + " X " + itemParent.parent.itemConst.getDescriptionOnID(item.itemType) + "\n";
+                                    lItems.Text += item.count.ToString() + " X " + itemParent.parent.itemConst.getItemName(item.itemType) + "\n";
                                 }
 
                             }
@@ -118,7 +118,7 @@ namespace StalkerOnlineQuesterEditor
                             {
                                 if (item.attribute == ItemAttribute.QUEST)
                                 {
-                                    lItems.Text += item.count.ToString() + " X " + itemParent.parent.itemConst.getDescriptionOnID(item.itemType) + "\n";
+                                    lItems.Text += item.count.ToString() + " X " + itemParent.parent.itemConst.getItemName(item.itemType) + "\n";
                                 }
                             }
                         }

@@ -92,7 +92,7 @@ namespace StalkerOnlineQuesterEditor
         public string onWin;
         public string onFailed;
         public string onGet;
-        public Dictionary<int,QuestItemInfo> Items;
+        public Dictionary<int, QuestItemInfo> Items;
 
         public object Clone()
         {
@@ -242,6 +242,7 @@ namespace StalkerOnlineQuesterEditor
         public float basePercent;
         public NPC npc;
         public Mob mobs;
+        public int space;
 
         public object Clone()
         {
@@ -259,13 +260,15 @@ namespace StalkerOnlineQuesterEditor
             copy.npc = this.npc;
             copy.mobs = this.mobs;
             copy.dontTakeItems = this.dontTakeItems;
+            copy.space = space;
             return copy;
         }
 
         public bool Any()
         {
             return items.Any() || Scenarios.Any() || MassQuests.Any() || dontTakeItems ||
-                MaxGroup != 0 || MinGroup != 0 || TeleportTo != "" || basePercent != 0 || MinMember != 0 || MaxMember != 0 || npc.Any() || mobs.Any();
+                MaxGroup != 0 || MinGroup != 0 || TeleportTo != "" || basePercent != 0 || 
+                MinMember != 0 || MaxMember != 0 || npc.Any() || mobs.Any() || space != 0;
 
         }
         public CQuestRules()
@@ -273,6 +276,7 @@ namespace StalkerOnlineQuesterEditor
             this.items = new List<QuestItem>();
             this.Scenarios = new List<int>();
             this.MassQuests = new List<int>();
+            this.space = 0;
             this.MaxGroup = new int();
             this.MinGroup = new int();
             this.MaxMember = new int();

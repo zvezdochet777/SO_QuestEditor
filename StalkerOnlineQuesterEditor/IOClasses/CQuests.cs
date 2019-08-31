@@ -210,6 +210,8 @@ namespace StalkerOnlineQuesterEditor
                         questRules.dontTakeItems = true;
                     if (item.Element("QuestRules").Element("Items") != null)
                         CQuests.parceItems(item.Element("QuestRules").Element("Items"), questRules.items);
+                    if (item.Element("QuestRules").Element("Spaces") != null)
+                        questRules.space = int.Parse(item.Element("QuestRules").Element("Spaces").Value);
                     CQuests.AddDataToList(item, "QuestRules", "Scenarios", questRules.Scenarios);
                     CQuests.AddDataToList(item, "QuestRules", "MassQuests", questRules.MassQuests);
 
@@ -676,7 +678,10 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("QuestRules").Add(questValue.QuestRules.npc.getXML());
                     if (questValue.QuestRules.mobs.Any())
                         element.Element("QuestRules").Add(questValue.QuestRules.mobs.getXML());
+                    if (questValue.QuestRules.space != 0)
+                        element.Element("QuestRules").Add(new XElement("Spaces", Global.GetIntAsString(questValue.QuestRules.space)));
                 }
+                
 
                 if (questValue.Reward.Any())
                 {
@@ -875,10 +880,10 @@ namespace StalkerOnlineQuesterEditor
                     result = "Триггер " + parent.triggerConst.getDescriptionOnId(quest.Target.ObjectType);
                     break;
                 case 7: case 19: case 20:
-                    result = "Предмет " + parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
+                    result = "Предмет " + parent.itemConst.getItemName(quest.Target.ObjectType);
                     break;
                 case 0: case 16:
-                    result = "Предмет " + parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
+                    result = "Предмет " + parent.itemConst.getItemName(quest.Target.ObjectType);
                     result += ", " + quest.Target.NumOfObjects + " штук";
                     break;
                 default:

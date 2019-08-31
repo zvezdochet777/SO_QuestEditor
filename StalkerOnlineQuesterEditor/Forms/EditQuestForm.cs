@@ -303,8 +303,8 @@ namespace StalkerOnlineQuesterEditor
                 if ((QuestType == CQuestConstants.TYPE_FARM) || (QuestType == CQuestConstants.TYPE_FARM_AUTO))
                 {
                     lNameObject.Text = "Тип предмета:";
-                    foreach (CItem description in parent.itemConst.getAllItems().Values)
-                        targetComboBox.Items.Add(description.getDescription());
+                    foreach (CItem item in parent.itemConst.getAllItems().Values)
+                        targetComboBox.Items.Add(item.getName());
                     targetAttributeComboBox.Items.Clear();
                     targetAttributeComboBox.Items.Add("Обычный.");
                     targetAttributeComboBox.Items.Add("Квестовый.");
@@ -329,8 +329,8 @@ namespace StalkerOnlineQuesterEditor
                 else if (QuestType == CQuestConstants.TYPE_QITEM_USE)
                 {
                     lNameObject.Text = "Тип предмета:";
-                    foreach (CItem description in parent.itemConst.getAllItems().Values)
-                        targetComboBox.Items.Add(description.getDescription());
+                    foreach (CItem item in parent.itemConst.getAllItems().Values)
+                        targetComboBox.Items.Add(item.getName());
                     targetAttributeComboBox.Items.Clear();
                     targetAttributeComboBox.Items.Add("Обычный.");
                     targetAttributeComboBox.Items.Add("Квестовый.");
@@ -424,8 +424,8 @@ namespace StalkerOnlineQuesterEditor
                 {
                     lNameObject.Text = "Тип предмета:";
                     targetComboBox.Items.Clear();
-                    foreach (CItem description in parent.itemConst.getAllItems().Values)
-                        targetComboBox.Items.Add(description.getDescription());
+                    foreach (CItem item in parent.itemConst.getAllItems().Values)
+                        targetComboBox.Items.Add(item.getName());
                     quantityUpDown.Enabled = false;
                     lQuantity.Enabled = false;
                 }
@@ -522,7 +522,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if ((quest.Target.QuestType == CQuestConstants.TYPE_FARM) || (quest.Target.QuestType == CQuestConstants.TYPE_FARM_AUTO) || (quest.Target.QuestType == CQuestConstants.TYPE_QITEM_USE))
             {
-                targetComboBox.SelectedItem = parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
+                targetComboBox.SelectedItem = parent.itemConst.getItemName(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
                 targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
                 if( (quest.Target.QuestType == CQuestConstants.TYPE_FARM || quest.Target.QuestType == CQuestConstants.TYPE_FARM_AUTO) && quest.Target.additional.Any())
@@ -628,7 +628,7 @@ namespace StalkerOnlineQuesterEditor
             else if (quest.Target.QuestType == CQuestConstants.TYPE_ITEM_EQIP || quest.Target.QuestType == CQuestConstants.TYPE_ITEM_ADD)
             {
                 //System.Console.WriteLine("getQuest: type" + quest.Target.QuestType.ToString());
-                targetComboBox.SelectedItem = parent.itemConst.getDescriptionOnID(quest.Target.ObjectType);
+                targetComboBox.SelectedItem = parent.itemConst.getItemName(quest.Target.ObjectType);
             }
             else if (quest.Target.QuestType == 206)
             {
@@ -874,12 +874,21 @@ namespace StalkerOnlineQuesterEditor
                 bPenaltyQuests.Image = Properties.Resources.but_indicate;
             else
                 bPenaltyQuests.Image = null;
+
+            
+
+
         }
         //! Создает индиикацию кнопки Предметы в графе Правила квеста
         public void checkQuestRulesIndicates()
         {
             if (editQuestRules.items.Any())
                 bItemQuestRules.Image = Properties.Resources.but_indicate;
+
+            if (editQuestRules.space != 0)
+                btnSpace.Image = Properties.Resources.but_indicate;
+            else
+                btnSpace.Image = null;
         }
         //! Заполняет данные о награде - опыт, деньги, карму
         void fillReward()
@@ -936,7 +945,7 @@ namespace StalkerOnlineQuesterEditor
             precondition.isGroup = IsGroupCheckBox.Visible && IsGroupCheckBox.Checked;
             if ((target.QuestType == CQuestConstants.TYPE_FARM) || (target.QuestType == CQuestConstants.TYPE_FARM_AUTO) || (target.QuestType == CQuestConstants.TYPE_QITEM_USE))
             {
-                target.ObjectType = parent.itemConst.getIDOnDescription(targetComboBox.SelectedItem.ToString());
+                target.ObjectType = parent.itemConst.getIDOnName(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
                 
                 if (target.NumOfObjects < 1)
@@ -1053,7 +1062,7 @@ namespace StalkerOnlineQuesterEditor
             else if ((target.QuestType == CQuestConstants.TYPE_ITEM_EQIP) || (target.QuestType == CQuestConstants.TYPE_ITEM_ADD))
             {
                 System.Console.WriteLine("QuestType == CQuestConstants.TYPE_ITEM_EQIP || 20");
-                target.ObjectType = parent.itemConst.getIDOnDescription(targetComboBox.SelectedItem.ToString());
+                target.ObjectType = parent.itemConst.getIDOnName(targetComboBox.SelectedItem.ToString());
             }
             else if (target.QuestType == 201 ||
                      target.QuestType == 202 ||
@@ -1204,6 +1213,7 @@ namespace StalkerOnlineQuesterEditor
 
             rules.items = new List<QuestItem>(editQuestRules.items);
             rules.dontTakeItems = editQuestRules.dontTakeItems;
+            rules.space = editQuestRules.space;
             information.Items = editInformation.Items;
 
             target.AObjectAttrs = editTarget.AObjectAttrs;
@@ -1509,6 +1519,15 @@ namespace StalkerOnlineQuesterEditor
         private void cbDontTakeItems_CheckedChanged(object sender, EventArgs e)
         {
             editQuestRules.dontTakeItems = !cbTakeItems.Checked;
+        }
+
+        private void btnSpace_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, bool> spaces = parent.spacesConst.getIntToSpaces(this.editQuestRules.space);
+            FilterNPCForm form = new FilterNPCForm( ref spaces, this.parent);
+            form.ShowDialog();
+            this.editQuestRules.space = parent.spacesConst.getSpacesToInt(spaces);
+            checkQuestRulesIndicates();
         }
     }
 }

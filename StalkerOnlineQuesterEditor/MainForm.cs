@@ -1431,7 +1431,7 @@ namespace StalkerOnlineQuesterEditor
 
                 foreach (int type in rewardItems.Keys)
                 {
-                    string itemName = itemConst.getDescriptionOnID(type);
+                    string itemName = itemConst.getItemName(type);
                     string count = rewardItems[type].ToString();
 
                     if (sRewardItem == "")
@@ -1879,10 +1879,10 @@ namespace StalkerOnlineQuesterEditor
 
         void fillItemRewardsBox()
         {
-            foreach (CItem description in itemConst.getAllItems().Values)
+            foreach (CItem item in itemConst.getAllItems().Values)
             {
-                cbItemReward.Items.Add(description.getDescription());
-                cbItemTarget.Items.Add(description.getDescription());
+                cbItemReward.Items.Add(item.getName());
+                cbItemTarget.Items.Add(item.getName());
             }
             cbItemReward.Sorted = true;
             cbItemTarget.Sorted = true;
@@ -1989,9 +1989,9 @@ namespace StalkerOnlineQuesterEditor
                 int itemID = -1;
                 int targetItemID = -1;
                 if (cbItemReward.SelectedIndex > -1)
-                    itemID = itemConst.getIDOnDescription(cbItemReward.SelectedItem.ToString());
+                    itemID = itemConst.getIDOnName(cbItemReward.SelectedItem.ToString());
                 if (cbItemTarget.SelectedIndex > -1)
-                    targetItemID = itemConst.getIDOnDescription(cbItemTarget.SelectedItem.ToString());
+                    targetItemID = itemConst.getIDOnName(cbItemTarget.SelectedItem.ToString());
                 foreach (CQuest quest in quests.quest.Values)
                 {
                     bool itemFound = false;
@@ -2451,7 +2451,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void btnFilterNPC_Click(object sender, EventArgs e)
         {
-            FilterNPCForm form = new FilterNPCForm(ref npcFilters);
+            FilterNPCForm form = new FilterNPCForm(ref npcFilters, this);
             form.ShowDialog();
             this.fillNPCBox();
             updateNPCButtons();
@@ -2575,8 +2575,9 @@ namespace StalkerOnlineQuesterEditor
             }
             //Копировать QuestData и DialogData
 
-            string data_path = path + "\\source\\Quests\\";
-            if (loadFiles(settings.pathQuestDataFiles, data_path) && loadFiles(settings.pathDialogsDataFiles, data_path))
+            string quest_data_path = path + "\\source\\Quests\\";
+            string data_path = path + "\\source\\DialogData\\";
+            if (loadFiles(settings.pathQuestDataFiles, quest_data_path) && loadFiles(settings.new_pathDialogsDataFiles, data_path))
                 MessageBox.Show("QuestEditor готов. Сохранён в " + path, "Успех");
         }
 

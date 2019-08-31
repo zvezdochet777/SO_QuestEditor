@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemGridView = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bTranslate = new System.Windows.Forms.Button();
@@ -37,7 +36,6 @@
             this.itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemProbability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +52,6 @@
             this.itemType,
             this.itemAttr,
             this.itemQuantity,
-            this.itemProbability,
             this.itemTitle,
             this.itemDescription,
             this.itemContent,
@@ -129,15 +126,6 @@
             this.itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // itemProbability
-            // 
-            dataGridViewCellStyle1.Format = "N3";
-            dataGridViewCellStyle1.NullValue = "0";
-            this.itemProbability.DefaultCellStyle = dataGridViewCellStyle1;
-            this.itemProbability.HeaderText = "Вероятность";
-            this.itemProbability.Name = "itemProbability";
-            this.itemProbability.Visible = false;
-            // 
             // itemTitle
             // 
             this.itemTitle.HeaderText = "Название";
@@ -184,7 +172,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn itemType;
         private System.Windows.Forms.DataGridViewComboBoxColumn itemAttr;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemProbability;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemContent;
