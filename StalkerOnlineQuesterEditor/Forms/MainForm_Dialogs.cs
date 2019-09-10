@@ -252,7 +252,7 @@ namespace StalkerOnlineQuesterEditor
             nodeLayer.Add(rootNode);
             if (!graphs.Keys.Contains(rootNode))
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
-            SaveCoordinates(root, rootNode, true);
+            //SaveCoordinates(root, rootNode, true);
             this.fillDialogSubgraphView(root, rootNode, 1, ref edgeLayer, ref nodeLayer, false);
 
             this.DialogShower.Camera.AddChildren(nodeLayer);            
@@ -310,7 +310,7 @@ namespace StalkerOnlineQuesterEditor
                         node = CreateNode(currentDialog, new PointF(x, y));
 
                     PrepareNodesForEdge(node, rootNode, ref edgeLayer);
-                    SaveCoordinates(currentDialog, node);  
+                    //SaveCoordinates(currentDialog, node);  
                     nodeLayer.Add(node);
                     if (!graphs.Keys.Contains(node))
                         graphs.Add(node, new GraphProperties(subdialogID));

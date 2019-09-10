@@ -401,7 +401,6 @@ namespace StalkerOnlineQuesterEditor
                 if (!quest.Element("Version").Value.Equals(""))
                     Version = int.Parse(quest.Element("Version").Value);
                 target[QuestID].Version = Version;
-
                 if (quest.Element("Items") != null)
                     foreach (XElement qitem in quest.Element("Items").Elements())
                     {
@@ -411,6 +410,7 @@ namespace StalkerOnlineQuesterEditor
                         if (qitem.Element("description") != null)
                             description = qitem.Element("description").Value;
                         int itemID = int.Parse(qitem.Element("itemID").Value);
+                       
                         if (qitem.Element("activation") != null) activation = qitem.Element("activation").Value;
                         if (qitem.Element("content") != null) content = qitem.Element("content").Value;
                         target[QuestID].QuestInformation.Items.Add(itemID, new QuestItemInfo(title, description, activation, content));
@@ -442,7 +442,7 @@ namespace StalkerOnlineQuesterEditor
         public static void parceItems(XElement element, List<QuestItem> list)
         {
             if (element == null) return;
-            foreach (XElement itemNode in element.Element("Items").Elements())
+            foreach (XElement itemNode in element.Elements())
             {
                 QuestItem item = new QuestItem();
                 if (itemNode.Element("itemType") == null) continue;
@@ -451,6 +451,8 @@ namespace StalkerOnlineQuesterEditor
                     item.attribute = (ItemAttribute)int.Parse(itemNode.Element("attribute").Value);
                 if (itemNode.Element("count") != null)
                     item.count = int.Parse(itemNode.Element("count").Value);
+                if (itemNode.Element("condition") != null)
+                    item.condition = float.Parse(itemNode.Element("condition").Value, System.Globalization.CultureInfo.InvariantCulture);
                 list.Add(item);
             }
         }
@@ -661,7 +663,7 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.QuestRules.TeleportTo != "")
                         element.Element("QuestRules").Add(new XElement("TeleportTo", questValue.QuestRules.TeleportTo));
                     if (questValue.QuestRules.items.Any())
-                        element.Element("QuestRules").Add(new XElement("Items", CQuests.getItemsNode(questValue.QuestRules.items)));
+                        element.Element("QuestRules").Add(CQuests.getItemsNode(questValue.QuestRules.items));
                     if (questValue.QuestRules.MinGroup != 0)
                         element.Element("QuestRules").Add(new XElement("MinGroup", Global.GetIntAsString(questValue.QuestRules.MinGroup)));
                     if (questValue.QuestRules.MaxGroup != 0)
@@ -689,7 +691,7 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.Reward.Experience.Any())
                         element.Element("Reward").Add(new XElement("Experience", Global.GetListAsString(questValue.Reward.Experience)));
                     if (questValue.Reward.items.Any())
-                        element.Element("Reward").Add(new XElement("Items", CQuests.getItemsNode(questValue.Reward.items)));
+                        element.Element("Reward").Add(CQuests.getItemsNode(questValue.Reward.items));
                     if (questValue.Reward.Credits != 0)
                         element.Element("Reward").Add( new XElement("Credits", questValue.Reward.Credits));
                     if (questValue.Reward.ReputationNotEmpty())
@@ -717,7 +719,7 @@ namespace StalkerOnlineQuesterEditor
                      if (questValue.QuestPenalty.Experience.Any())
                          element.Element("Penalty").Add(new XElement("Experience", Global.GetListAsString(questValue.QuestPenalty.Experience)));
                      if (questValue.QuestPenalty.items.Any())
-                         element.Element("Penalty").Add(new XElement("Items", CQuests.getItemsNode(questValue.QuestPenalty.items)));
+                         element.Element("Penalty").Add(CQuests.getItemsNode(questValue.QuestPenalty.items));
                      if (questValue.QuestPenalty.Credits != 0)
                          element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits.ToString("G6", CultureInfo.InvariantCulture)));
                      if (questValue.QuestPenalty.ReputationNotEmpty())

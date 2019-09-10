@@ -43,14 +43,14 @@ namespace StalkerOnlineQuesterEditor
             ParseNodeCoordinates("NodeCoordinates/");
 
             ParseDialogsData(parent.settings.GetDialogDataPath(), this.dialogs, true);
-            ParseDialogsTexts(parent.settings.GetDialogTextPath(), this.dialogs);
+            ParseDialogsTexts(parent.settings.GetDialogTextPath(parent.settings.ORIGINAL_PATH), this.dialogs);
 
             foreach (var locale in parent.settings.getListLocales())
             {
                 if (!locales.Keys.Contains(locale))
                     locales.Add(locale, new NPCDicts());
                 ParseDialogsData(parent.settings.GetDialogDataPath(), this.locales[locale]);
-                ParseDialogsTexts(parent.settings.GetDialogTextPath(), this.locales[locale]);
+                ParseDialogsTexts(parent.settings.GetDialogTextPath(locale), this.locales[locale]);
             }
         }
         
@@ -286,22 +286,22 @@ namespace StalkerOnlineQuesterEditor
                             if (dialog.Element("Precondition").Element("items").Element("itemCategory") != null)
                                 Precondition.items.itemCategory = int.Parse(dialog.Element("Precondition").Element("items").Element("itemCategory").Value);
                             else
-                            if (dialog.Element("Precondition").Element("items").Element("items") != null)
+                            if (dialog.Element("Precondition").Element("items") != null)
                             {
                                 if (dialog.Element("Precondition").Element("items").Element("or") != null)
                                     Precondition.items.is_or = true;
-                                CQuests.parceItems(dialog.Element("Precondition").Element("items").Element("items"), Precondition.items.items);
+                                CQuests.parceItems(dialog.Element("Precondition").Element("items").Element("Items"), Precondition.items.items);
                             }
                         }
                         if (dialog.Element("Precondition").Element("noneItems") != null)
                         {
                             if (dialog.Element("Precondition").Element("noneItems").Element("itemCategory") != null)
                                 Precondition.itemsNone.itemCategory = int.Parse(dialog.Element("Precondition").Element("noneItems").Element("itemCategory").Value);
-                            else if (dialog.Element("Precondition").Element("noneItems").Element("typeOfItems") != null)
+                            else if (dialog.Element("Precondition").Element("noneItems") != null)
                             {
                                 if (dialog.Element("Precondition").Element("noneItems").Element("or") != null)
                                     Precondition.itemsNone.is_or = true;
-                                CQuests.parceItems(dialog.Element("Precondition").Element("noneItems").Element("items"), Precondition.itemsNone.items);
+                                CQuests.parceItems(dialog.Element("Precondition").Element("noneItems").Element("Items"), Precondition.itemsNone.items);
                             }
                         }
 
@@ -414,7 +414,7 @@ namespace StalkerOnlineQuesterEditor
         
         private void ParseDialogsTexts(String dataPath, NPCDicts target)
         {
-            string[] files = Directory.GetFiles(dataPath, "*.xml");
+         string[] files = Directory.GetFiles(dataPath, "*.xml");
             foreach (string dialogFile in files)
             {
                 try
@@ -457,7 +457,7 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Element("Text") != null)
                         target[npc_name][DialogID].Text = dialog.Element("Text").Value.Trim();
                     int Version = 0;
-                    if ((dialog.Element("Version") != null) && (!dialog.Element("Version").Value.Equals("")))
+                    if ((!dialog.Element("Version").Value.Equals("")))
                         Version = int.Parse(dialog.Element("Version").Value);
                     target[npc_name][DialogID].version = Version;
 
@@ -469,7 +469,7 @@ namespace StalkerOnlineQuesterEditor
         public void SaveDialogs()
         {
             SaveNodeCoordinates("NodeCoordinates/",this.dialogs);
-            SaveDialogsTexts(parent.settings.GetDialogTextPath(), this.dialogs);
+            SaveDialogsTexts(parent.settings.GetDialogTextPath(parent.settings.ORIGINAL_PATH), this.dialogs);
             SaveDialogsData(parent.settings.GetDialogDataPath(), this.dialogs);
         }
 
@@ -654,7 +654,7 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Precondition").Add(new XElement("items", ""));
                         if (dialog.Precondition.items.is_or)
                             element.Element("Precondition").Element("items").Add(new XElement("or", "1"));
-                        element.Element("Precondition").Element("items").Add(new XElement("items", CQuests.getItemsNode(dialog.Precondition.items.items)));                     
+                        element.Element("Precondition").Element("items").Add(CQuests.getItemsNode(dialog.Precondition.items.items));                     
                     }
                     if (dialog.Precondition.itemsNone.itemCategory != -1)
                     {
@@ -665,7 +665,7 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Precondition").Add(new XElement("noneItems", ""));
                         if (dialog.Precondition.itemsNone.is_or)
                             element.Element("Precondition").Element("noneItems").Add(new XElement("or", "1"));
-                        element.Element("Precondition").Element("noneItems").Add(new XElement("items", CQuests.getItemsNode(dialog.Precondition.itemsNone.items)));
+                        element.Element("Precondition").Element("noneItems").Add(CQuests.getItemsNode(dialog.Precondition.itemsNone.items));
                     }
 
                     if (dialog.Actions.Any())

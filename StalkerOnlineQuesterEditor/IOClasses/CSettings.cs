@@ -34,7 +34,7 @@ namespace StalkerOnlineQuesterEditor
 
         string SETTINGS_PATH = "settings/";
         string SETTING_FILE = "Settings.xml";
-        string ORIGINAL_PATH = "Russian\\";
+        public string ORIGINAL_PATH = "Russian";
 
         private string dialogTextsXML = "DialogTexts.xml";
         private string dialogTextsDIR = "DialogTexts/";
@@ -239,9 +239,9 @@ namespace StalkerOnlineQuesterEditor
         {
             return Path.Combine(pathToLocalFiles, ORIGINAL_PATH, dialogTextsXML);
         }
-        public string GetDialogTextPath()
+        public string GetDialogTextPath(string local)
         {
-            return Path.Combine(pathToLocalFiles, ORIGINAL_PATH, dialogTextsDIR);
+            return Path.Combine(pathToLocalFiles, local, dialogTextsDIR);
         }
 
         public string GetQuestTextPath()

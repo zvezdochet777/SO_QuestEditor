@@ -2673,13 +2673,13 @@ namespace StalkerOnlineQuesterEditor
                         all_words += count_words;
                         if (origin_d.version != local_d.version)
                         {
-                            Byte[] dialog_id = new UTF8Encoding(true).GetBytes("Dialog;" + value.Key + "_" + origin_d.version + "\n");
+                            Byte[] dialog_id = new UTF8Encoding(true).GetBytes("Dialog\t" + value.Key + "_" + origin_d.version + "\n");
                             fs.Write(dialog_id, 0, dialog_id.Length);
-                            Byte[] dialog_title = new UTF8Encoding(true).GetBytes("Title;" + origin_d.Title + "\n");
+                            Byte[] dialog_title = new UTF8Encoding(true).GetBytes("Title\t" + origin_d.Title + "\n");
                             fs.Write(dialog_title, 0, dialog_title.Length);
-                            Byte[] dialog_text = new UTF8Encoding(true).GetBytes("Text;" + origin_d.Text + "\n");
+                            Byte[] dialog_text = new UTF8Encoding(true).GetBytes("Text\t" + origin_d.Text + "\n");
                             fs.Write(dialog_text, 0, dialog_text.Length);
-                            Byte[] tmp = new UTF8Encoding(true).GetBytes(";;\n");
+                            Byte[] tmp = new UTF8Encoding(true).GetBytes("\t\t\n");
                             fs.Write(tmp, 0, tmp.Length);
                             non_localcount_words += count_words;
                         }
@@ -2707,29 +2707,29 @@ namespace StalkerOnlineQuesterEditor
                             if (local.Version != quest.Version)
                             {
                                 non_localcount_words += count_words;
-                                Byte[] quest_id = new UTF8Encoding(true).GetBytes("Quest;" + quest.QuestID + "_" + quest.Version + "\n");
+                                Byte[] quest_id = new UTF8Encoding(true).GetBytes("Quest\t" + quest.QuestID + "_" + quest.Version + "\n");
                                 fs.Write(quest_id, 0, quest_id.Length);
 
-                                Byte[] quest_title = new UTF8Encoding(true).GetBytes("Title;\"" + quest.QuestInformation.Title + "\"\n");
+                                Byte[] quest_title = new UTF8Encoding(true).GetBytes("Title\t\"" + quest.QuestInformation.Title + "\"\n");
                                 fs.Write(quest_title, 0, quest_title.Length);
 
-                                Byte[] decription = new UTF8Encoding(true).GetBytes("Description;\"" + quest.QuestInformation.Description + "\"\n");
+                                Byte[] decription = new UTF8Encoding(true).GetBytes("Description\t\"" + quest.QuestInformation.Description + "\"\n");
                                 fs.Write(decription, 0, decription.Length);
                                 
 
-                                Byte[] on_get = new UTF8Encoding(true).GetBytes("onGet;\"" + quest.QuestInformation.onGet + "\"\n");
+                                Byte[] on_get = new UTF8Encoding(true).GetBytes("onGet\t\"" + quest.QuestInformation.onGet + "\"\n");
                                 fs.Write(on_get, 0, on_get.Length);
                                 
 
-                                Byte[] on_win = new UTF8Encoding(true).GetBytes("onWin;\"" + quest.QuestInformation.onWin + "\"\n");
+                                Byte[] on_win = new UTF8Encoding(true).GetBytes("onWin\t\"" + quest.QuestInformation.onWin + "\"\n");
                                 fs.Write(on_win, 0, on_win.Length);
                                 
 
-                                Byte[] on_fail = new UTF8Encoding(true).GetBytes("onFailed;\"" + quest.QuestInformation.onFailed + "\"\n");
+                                Byte[] on_fail = new UTF8Encoding(true).GetBytes("onFailed\t\"" + quest.QuestInformation.onFailed + "\"\n");
                                 fs.Write(on_fail, 0, on_fail.Length);
                                 
 
-                                Byte[] tmp = new UTF8Encoding(true).GetBytes(";;\n");
+                                Byte[] tmp = new UTF8Encoding(true).GetBytes("\t\t\n");
                                 fs.Write(tmp, 0, tmp.Length);
                             }
                         }
