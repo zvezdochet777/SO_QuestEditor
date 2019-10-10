@@ -28,7 +28,7 @@ namespace StalkerOnlineQuesterEditor.Forms
             lViewNpcName.Text = dialog.Holder;
             lViewDialogId.Text = dialog.DialogID.ToString();
             this.originalDialog = dialog;
-            localeDialog = parent.getLocaleDialog(dialog.DialogID, dialog.Holder);
+            localeDialog = CDialogs.getLocaleDialog(dialog.DialogID, parent.settings.getCurrentLocale(), dialog.Holder, parent.dialogs.locales);
 
             if (localeDialog != null)
             {

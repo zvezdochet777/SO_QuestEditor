@@ -54,9 +54,10 @@ namespace StalkerOnlineQuesterEditor
             float w = e.PickedNode.Bounds.Width;
             float h = e.PickedNode.Bounds.Height;
             string str = sender.ToString();
-
+            
             int dialogID = mainForm.getDialogIDOnNode(e.PickedNode);
-            CDialog dialog = mainForm.getDialogOnIDConditional(dialogID);
+            CDialog dialog = mainForm.getAnyDialogOnID(dialogID);
+
             if (dialog != null)
             {
                 mainForm.SaveCoordinates(dialog, e.PickedNode, dialog.coordinates.RootDialog);

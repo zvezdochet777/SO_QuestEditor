@@ -551,7 +551,7 @@ namespace StalkerOnlineQuesterEditor
             List<int> nodes = new List<int>();
             List<int> check_nodes = new List<int>();
             //List<string> holder = new List<string>();
-            string holder = parent.GetCurrentNPC();
+            string holder = parent.GetCurrentHolder();
 
             if (!tNodes.Text.Equals(""))
                 foreach (string node in tNodes.Text.Split(','))
@@ -886,8 +886,9 @@ namespace StalkerOnlineQuesterEditor
 
             if (isAdd)
             {
-                newID = parent.getDialogsNewID();
-                parent.addActiveDialog(newID, new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, check_nodes, newID, 1, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
+                newID = CDialogs.getDialogsNewID();
+                CDialog dialog = new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, check_nodes, newID, 1, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text);
+                parent.addActiveDialog(newID, dialog, currentDialogID);
             }
             else
             {

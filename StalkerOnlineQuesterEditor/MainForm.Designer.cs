@@ -77,6 +77,14 @@ namespace StalkerOnlineQuesterEditor
             this.bAddQuest = new System.Windows.Forms.Button();
             this.QuestBox = new System.Windows.Forms.ComboBox();
             this.labelChosenQuest = new System.Windows.Forms.Label();
+            this.tabFraction = new System.Windows.Forms.TabPage();
+            this.bRemoveFracDialog = new System.Windows.Forms.Button();
+            this.bEditFracDialog = new System.Windows.Forms.Button();
+            this.bAddFracDialog = new System.Windows.Forms.Button();
+            this.treeFractionDialogs = new System.Windows.Forms.TreeView();
+            this.fractionDialogShower = new UMD.HCIL.Piccolo.PCanvas();
+            this.label1 = new System.Windows.Forms.Label();
+            this.fractionBox = new System.Windows.Forms.ComboBox();
             this.tabInfoNPC = new System.Windows.Forms.TabPage();
             this.npcLinkShower = new UMD.HCIL.Piccolo.PCanvas();
             this.panelNpcLinkControls = new System.Windows.Forms.Panel();
@@ -84,6 +92,12 @@ namespace StalkerOnlineQuesterEditor
             this.bNpcLinkExecute = new System.Windows.Forms.Button();
             this.tabReview = new System.Windows.Forms.TabPage();
             this.dgvReview = new System.Windows.Forms.DataGridView();
+            this.colNPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -185,12 +199,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.colNPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDialogsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQuestsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -212,6 +220,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabQuests.SuspendLayout();
             this.panelQuestTools.SuspendLayout();
             this.panelSelectQuest.SuspendLayout();
+            this.tabFraction.SuspendLayout();
             this.tabInfoNPC.SuspendLayout();
             this.panelNpcLinkControls.SuspendLayout();
             this.tabReview.SuspendLayout();
@@ -505,6 +514,7 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.CentralDock, "CentralDock");
             this.CentralDock.Controls.Add(this.tabDialogs);
             this.CentralDock.Controls.Add(this.tabQuests);
+            this.CentralDock.Controls.Add(this.tabFraction);
             this.CentralDock.Controls.Add(this.tabInfoNPC);
             this.CentralDock.Controls.Add(this.tabReview);
             this.CentralDock.Controls.Add(this.tabManage);
@@ -669,6 +679,80 @@ namespace StalkerOnlineQuesterEditor
             this.labelChosenQuest.Name = "labelChosenQuest";
             this.toolTipDialogs.SetToolTip(this.labelChosenQuest, resources.GetString("labelChosenQuest.ToolTip"));
             // 
+            // tabFraction
+            // 
+            resources.ApplyResources(this.tabFraction, "tabFraction");
+            this.tabFraction.BackColor = System.Drawing.SystemColors.Control;
+            this.tabFraction.Controls.Add(this.bRemoveFracDialog);
+            this.tabFraction.Controls.Add(this.bEditFracDialog);
+            this.tabFraction.Controls.Add(this.bAddFracDialog);
+            this.tabFraction.Controls.Add(this.treeFractionDialogs);
+            this.tabFraction.Controls.Add(this.fractionDialogShower);
+            this.tabFraction.Controls.Add(this.label1);
+            this.tabFraction.Controls.Add(this.fractionBox);
+            this.tabFraction.Name = "tabFraction";
+            this.toolTipDialogs.SetToolTip(this.tabFraction, resources.GetString("tabFraction.ToolTip"));
+            // 
+            // bRemoveFracDialog
+            // 
+            resources.ApplyResources(this.bRemoveFracDialog, "bRemoveFracDialog");
+            this.bRemoveFracDialog.ImageList = this.imageList;
+            this.bRemoveFracDialog.Name = "bRemoveFracDialog";
+            this.toolTipDialogs.SetToolTip(this.bRemoveFracDialog, resources.GetString("bRemoveFracDialog.ToolTip"));
+            this.bRemoveFracDialog.UseVisualStyleBackColor = true;
+            this.bRemoveFracDialog.Click += new System.EventHandler(this.bRemoveFracDialog_Click);
+            // 
+            // bEditFracDialog
+            // 
+            resources.ApplyResources(this.bEditFracDialog, "bEditFracDialog");
+            this.bEditFracDialog.ImageList = this.imageList;
+            this.bEditFracDialog.Name = "bEditFracDialog";
+            this.toolTipDialogs.SetToolTip(this.bEditFracDialog, resources.GetString("bEditFracDialog.ToolTip"));
+            this.bEditFracDialog.UseVisualStyleBackColor = true;
+            this.bEditFracDialog.Click += new System.EventHandler(this.bEditDialog_Click);
+            // 
+            // bAddFracDialog
+            // 
+            resources.ApplyResources(this.bAddFracDialog, "bAddFracDialog");
+            this.bAddFracDialog.ImageList = this.imageList;
+            this.bAddFracDialog.Name = "bAddFracDialog";
+            this.toolTipDialogs.SetToolTip(this.bAddFracDialog, resources.GetString("bAddFracDialog.ToolTip"));
+            this.bAddFracDialog.UseVisualStyleBackColor = true;
+            this.bAddFracDialog.Click += new System.EventHandler(this.bAddFracDialog_Click);
+            // 
+            // treeFractionDialogs
+            // 
+            resources.ApplyResources(this.treeFractionDialogs, "treeFractionDialogs");
+            this.treeFractionDialogs.Name = "treeFractionDialogs";
+            this.treeFractionDialogs.TabStop = false;
+            this.toolTipDialogs.SetToolTip(this.treeFractionDialogs, resources.GetString("treeFractionDialogs.ToolTip"));
+            // 
+            // fractionDialogShower
+            // 
+            resources.ApplyResources(this.fractionDialogShower, "fractionDialogShower");
+            this.fractionDialogShower.AllowDrop = true;
+            this.fractionDialogShower.BackColor = System.Drawing.Color.White;
+            this.fractionDialogShower.GridFitText = false;
+            this.fractionDialogShower.Name = "fractionDialogShower";
+            this.fractionDialogShower.RegionManagement = true;
+            this.toolTipDialogs.SetToolTip(this.fractionDialogShower, resources.GetString("fractionDialogShower.ToolTip"));
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.toolTipDialogs.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
+            // 
+            // fractionBox
+            // 
+            resources.ApplyResources(this.fractionBox, "fractionBox");
+            this.fractionBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
+            this.fractionBox.DropDownWidth = 280;
+            this.fractionBox.FormattingEnabled = true;
+            this.fractionBox.Name = "fractionBox";
+            this.toolTipDialogs.SetToolTip(this.fractionBox, resources.GetString("fractionBox.ToolTip"));
+            this.fractionBox.SelectedIndexChanged += new System.EventHandler(this.fractionBox_SelectedIndexChanged);
+            // 
             // tabInfoNPC
             // 
             resources.ApplyResources(this.tabInfoNPC, "tabInfoNPC");
@@ -737,6 +821,37 @@ namespace StalkerOnlineQuesterEditor
             this.colRussianName});
             this.dgvReview.Name = "dgvReview";
             this.toolTipDialogs.SetToolTip(this.dgvReview, resources.GetString("dgvReview.ToolTip"));
+            // 
+            // colNPCName
+            // 
+            resources.ApplyResources(this.colNPCName, "colNPCName");
+            this.colNPCName.Name = "colNPCName";
+            // 
+            // colDialogsNum
+            // 
+            resources.ApplyResources(this.colDialogsNum, "colDialogsNum");
+            this.colDialogsNum.Name = "colDialogsNum";
+            // 
+            // colQuestsNum
+            // 
+            resources.ApplyResources(this.colQuestsNum, "colQuestsNum");
+            this.colQuestsNum.Name = "colQuestsNum";
+            // 
+            // colLocation
+            // 
+            resources.ApplyResources(this.colLocation, "colLocation");
+            this.colLocation.Name = "colLocation";
+            // 
+            // colCoordinates
+            // 
+            resources.ApplyResources(this.colCoordinates, "colCoordinates");
+            this.colCoordinates.Name = "colCoordinates";
+            this.colCoordinates.ReadOnly = true;
+            // 
+            // colRussianName
+            // 
+            resources.ApplyResources(this.colRussianName, "colRussianName");
+            this.colRussianName.Name = "colRussianName";
             // 
             // panelReviewButtons
             // 
@@ -1507,37 +1622,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.Stretch = false;
             this.toolTipDialogs.SetToolTip(this.statusStrip, resources.GetString("statusStrip.ToolTip"));
             // 
-            // colNPCName
-            // 
-            resources.ApplyResources(this.colNPCName, "colNPCName");
-            this.colNPCName.Name = "colNPCName";
-            // 
-            // colDialogsNum
-            // 
-            resources.ApplyResources(this.colDialogsNum, "colDialogsNum");
-            this.colDialogsNum.Name = "colDialogsNum";
-            // 
-            // colQuestsNum
-            // 
-            resources.ApplyResources(this.colQuestsNum, "colQuestsNum");
-            this.colQuestsNum.Name = "colQuestsNum";
-            // 
-            // colLocation
-            // 
-            resources.ApplyResources(this.colLocation, "colLocation");
-            this.colLocation.Name = "colLocation";
-            // 
-            // colCoordinates
-            // 
-            resources.ApplyResources(this.colCoordinates, "colCoordinates");
-            this.colCoordinates.Name = "colCoordinates";
-            this.colCoordinates.ReadOnly = true;
-            // 
-            // colRussianName
-            // 
-            resources.ApplyResources(this.colRussianName, "colRussianName");
-            this.colRussianName.Name = "colRussianName";
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1575,6 +1659,8 @@ namespace StalkerOnlineQuesterEditor
             this.panelQuestTools.ResumeLayout(false);
             this.panelSelectQuest.ResumeLayout(false);
             this.panelSelectQuest.PerformLayout();
+            this.tabFraction.ResumeLayout(false);
+            this.tabFraction.PerformLayout();
             this.tabInfoNPC.ResumeLayout(false);
             this.panelNpcLinkControls.ResumeLayout(false);
             this.panelNpcLinkControls.PerformLayout();
@@ -1617,13 +1703,13 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label labelChosenNPC;
         private System.Windows.Forms.TabPage tabDialogs;
         private System.Windows.Forms.TabPage tabQuests;
-        private PCanvas DialogShower;
+        public PCanvas DialogShower;
         private System.Windows.Forms.SplitContainer splitDialogs;
         private System.Windows.Forms.GroupBox gbDialogsEditor;
         private System.Windows.Forms.Panel panelSelectNPC;
         private System.Windows.Forms.Panel panelDialogTools;
         private System.Windows.Forms.SplitContainer splitDialogsTreeAndCanvas;
-        private System.Windows.Forms.TreeView treeDialogs;
+        public System.Windows.Forms.TreeView treeDialogs;
         private System.Windows.Forms.Button bAddDialog;
         private System.Windows.Forms.Button bEditDialog;
         private System.Windows.Forms.Button bRemoveDialog;
@@ -1771,6 +1857,14 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCoordinates;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRussianName;
+        private System.Windows.Forms.TabPage tabFraction;
+        private System.Windows.Forms.TreeView treeFractionDialogs;
+        private PCanvas fractionDialogShower;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox fractionBox;
+        private System.Windows.Forms.Button bRemoveFracDialog;
+        private System.Windows.Forms.Button bEditFracDialog;
+        private System.Windows.Forms.Button bAddFracDialog;
     }
 }
 

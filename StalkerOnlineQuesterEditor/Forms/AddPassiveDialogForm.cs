@@ -32,9 +32,10 @@ namespace StalkerOnlineQuesterEditor
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-                parent.Enabled = true;
-                parent.addPassiveDialog(int.Parse(attachToComboBox.SelectedItem.ToString()), this.dialogID);
-                this.Close();
+            parent.Enabled = true;
+            var dialogs = parent.getDialogDictionary(parent.GetCurrentNPC(), parent.dialogs.dialogs, parent.dialogs.locales);
+            parent.addPassiveDialog(int.Parse(attachToComboBox.SelectedItem.ToString()), this.dialogID, dialogs, parent.dialogs.locales, parent.DialogShower);
+            this.Close();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace StalkerOnlineQuesterEditor
 {
     //! Словарь <DialogID, CDialog> - используется для диалогов 1 персонажа NPC
     using DialogDict = Dictionary<int, CDialog>;
+    using NPCLocales = Dictionary<string, Dictionary<string, Dictionary<int, CDialog>>>;
     //! Тип выделенного элемента на экране
     public enum SelectedItemType
     { 
@@ -31,9 +32,8 @@ namespace StalkerOnlineQuesterEditor
     public partial class MainForm : Form
     {
         //! Возвращает вершину графа диалогов - корневую фразу
-        CDialog getRootDialog()
+        CDialog getRootDialog(DialogDict Dialogs)
         {
-            DialogDict Dialogs = getDialogDictionary(currentNPC); //this.dialogs.dialogs[currentNPC];
             CDialog result = null;
             foreach (CDialog dialog in Dialogs.Values)
             {
@@ -109,32 +109,53 @@ namespace StalkerOnlineQuesterEditor
         public CDialog getDialogOnDialogID(int dialogID)
         {
             if (dialogID != 0)
-                return dialogs.dialogs[currentNPC][dialogID];
-            else
-                return null;
+            {
+                if (dialogs.dialogs[currentNPC].ContainsKey(dialogID))
+                    return dialogs.dialogs[currentNPC][dialogID];
+                if (CFractionDialogs.dialogs[currentFraction].ContainsKey(dialogID))
+                    return CFractionDialogs.dialogs[currentFraction][dialogID];
+            }
+            return null;
         }
 
         public List<int> getAllDialogsIDonCurrentNPC()
         {
+            int index = CentralDock.SelectedIndex;  
+            if (index == 2)
+                return CFractionDialogs.dialogs[currentFraction].Keys.ToList<int>();
             return dialogs.dialogs[currentNPC].Keys.ToList<int>();
         }
 
+        //Возвращает какой-либо диалог, костыль
+        public CDialog getAnyDialogOnID(int dialogID)
+        {
+            if (dialogID == 0) return null;
+            if (settings.getMode() == settings.MODE_EDITOR)
+            {
+                if (dialogs.dialogs[currentNPC].ContainsKey(dialogID))
+                    return dialogs.dialogs[currentNPC][dialogID];
+                if (CFractionDialogs.dialogs[currentFraction].ContainsKey(dialogID))
+                    return CFractionDialogs.dialogs[currentFraction][dialogID];
+            }
+            return null;
+        }
+
         //! Возвращает диалог по ID в зависимости от режима и локализации
-        public CDialog getDialogOnIDConditional(int dialogID)
+        public CDialog getDialogOnIDConditional(int dialogID, DialogDict dialogs, NPCLocales locales)
         {
             if (dialogID != 0)
             {
                 if (settings.getMode() == settings.MODE_EDITOR)
-                    return dialogs.dialogs[currentNPC][dialogID];
+                    return dialogs[dialogID];
                 else
                 {
                     CDialog dd = new CDialog();
-                    dd = dialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC);
+                    dd = CDialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC, locales);
                     if (dd != null)
                         return dd;
                     else
                     {
-                        dd = (CDialog) dialogs.dialogs[currentNPC][dialogID].Clone();
+                        dd = (CDialog)dialogs[dialogID].Clone();
                         dd.version = 0;
                         return dd;
                     }
@@ -145,98 +166,60 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Возвращает словарь диалогов одного NPC в зависимости от локализации
-        private DialogDict getDialogDictionary(string NPCName)
+        public DialogDict getDialogDictionary(string key, Dictionary<string, DialogDict> dialogs, NPCLocales locales)
         {
             if (settings.getMode() == settings.MODE_EDITOR)
-                return dialogs.dialogs[NPCName];
+                return dialogs[key];
             else
             { 
-                if (dialogs.locales[ settings.getCurrentLocale() ].ContainsKey( NPCName ) )
-                    return dialogs.locales[ settings.getCurrentLocale() ][NPCName];
+                if (locales[ settings.getCurrentLocale() ].ContainsKey(key) )
+                    return locales[ settings.getCurrentLocale() ][key];
                 else
-                    return dialogs.dialogs[NPCName];
+                    return dialogs[key];
             }
-        }
-
-        //! Возвращает ID для нового диалога
-        public int getDialogsNewID()
-        {
-
-            string html = string.Empty;
-            string url = @"http://hz-dev2.stalker.so:8011/getnextid?key=qdialog_id";
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                html = reader.ReadToEnd();
-            }
-            try
-            {
-                JObject json = JObject.Parse(html);
-                int new_dialog_id = (int)json["qdialog_id"];
-                return new_dialog_id;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Ошибка получения нового ID диалога. Проверьте своё подключение к hz-dev", "Ошибка");
-            }
-            
-            //Старый способ, если не получилось подключиться
-            List<int> availableID = new List<int>();
-            foreach (Dictionary<int, CDialog> pairDialog in dialogs.dialogs.Values)
-                foreach (CDialog dial in pairDialog.Values)
-                    availableID.Add(dial.DialogID);
-
-            for (int i = 1; ; i++)
-                if (!availableID.Contains(i))
-                    return i;
         }
 
         //**********************WORK WITH FORM ****************************************************
 
-        private void fillDialogTree(CDialog root, DialogDict dialogs)
+        private void fillDialogTree(CDialog root, DialogDict dialogs, TreeView tree, NPCLocales locales)
         {
-            this.treeDialogs.Nodes.Clear();//tree clear
-            this.treeDialogs.Nodes.Add("Active", "Active");
-            this.treeDialogs.Nodes.Add("Recycle", "Recycle");
-            foreach (TreeNode treeNode in this.treeDialogs.Nodes.Find("Active", true))
+            tree.Nodes.Clear();//tree clear
+            tree.Nodes.Add("Active", "Active");
+            tree.Nodes.Add("Recycle", "Recycle");
+            foreach (TreeNode treeNode in tree.Nodes.Find("Active", true))
                 treeNode.Nodes.Add(root.DialogID.ToString(), root.DialogID.ToString());
-            this.fillNPCBoxSubquests(root);
+            this.fillNPCBoxSubquests(root, dialogs, tree);
 
-            TreeNode treeActiveNode = this.treeDialogs.Nodes.Find("Active", true)[0];
-            TreeNode treeRecycleNode = this.treeDialogs.Nodes.Find("Recycle", true)[0];
+            TreeNode treeActiveNode = tree.Nodes.Find("Active", true)[0];
+            TreeNode treeRecycleNode = tree.Nodes.Find("Recycle", true)[0];
             foreach (CDialog dialog in dialogs.Values)
                 if (!treeActiveNode.Nodes.ContainsKey(dialog.DialogID.ToString()))
                 {
                     treeRecycleNode.Nodes.Add(dialog.DialogID.ToString(), dialog.DialogID.ToString());
                     dialog.coordinates.Active = false;
-                    setNonActiveDialog(dialog.Holder, dialog.DialogID);
+                    setNonActiveDialog(dialog.Holder, dialog.DialogID, locales);
                 }
 
-            this.treeDialogs.ExpandAll();
+            tree.ExpandAll();
         }
         //! Удаляет диалог из локализаций при его удалении из русской части диалогов
-        private void setNonActiveDialog(string holder, int id)
+        private void setNonActiveDialog(string holder, int id, NPCLocales locales)
         {
-            dialogs.locales[settings.getListLocales()[0]][holder][id].coordinates.Active = false;
+            locales[settings.getListLocales()[0]][holder][id].coordinates.Active = false;
         }
 
         //! Заполняет граф диалога нужными узлами
-        private void fillDialogGraphView(CDialog root)
+        private void fillDialogGraphView(CDialog root, PCanvas dialogShower, DialogDict dialogs, NPCLocales locales)
         {
             // Initialize, and create a layer for the edges (always underneath the nodes)
-            this.DialogShower.Layer.RemoveAllChildren();
-            this.DialogShower.Camera.RemoveAllChildren();
+            dialogShower.Layer.RemoveAllChildren();
+            dialogShower.Camera.RemoveAllChildren();
             nodeLayer = new PNodeList();
             edgeLayer = new PLayer();
             drawingLayer = new PLayer();
 
-            DialogShower.Camera.AddChild(drawingLayer);                      
-            DialogShower.Camera.AddChild(edgeLayer);
+            dialogShower.Camera.AddChild(drawingLayer);
+            dialogShower.Camera.AddChild(edgeLayer);
             DrawRectangles();
 
             // Show root node
@@ -253,9 +236,9 @@ namespace StalkerOnlineQuesterEditor
             if (!graphs.Keys.Contains(rootNode))
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
             //SaveCoordinates(root, rootNode, true);
-            this.fillDialogSubgraphView(root, rootNode, 1, ref edgeLayer, ref nodeLayer, false);
+            this.fillDialogSubgraphView(root, rootNode, 1.0f, ref edgeLayer, ref nodeLayer, false, dialogShower, dialogs, locales);
 
-            this.DialogShower.Camera.AddChildren(nodeLayer);            
+            dialogShower.Camera.AddChildren(nodeLayer);            
         }
 
         //! @brief Отображает все дочерние узлы на графе диалогов 
@@ -265,7 +248,8 @@ namespace StalkerOnlineQuesterEditor
         //! @param edgeLayer
         //! @param nodeLayer
         //! @param stopAfterThat
-        private void fillDialogSubgraphView(CDialog root, PNode rootNode, float level, ref PLayer edgeLayer, ref PNodeList nodeLayer, bool stopAfterThat)
+        private void fillDialogSubgraphView(CDialog root, PNode rootNode, float level, ref PLayer edgeLayer, ref PNodeList nodeLayer, bool stopAfterThat, 
+                            PCanvas dialogShower, DialogDict dialogs, NPCLocales locales)
         {
             float ix = rootNode.X;
             float iy = rootNode.Y;
@@ -283,10 +267,12 @@ namespace StalkerOnlineQuesterEditor
                     {
                         if (!isRoot(root.Actions.ToDialog))
                         {
-                            if ( dialogs.dialogs[currentNPC][root.Actions.ToDialog].Nodes.Any() )
-                                this.fillDialogSubgraphView(this.dialogs.dialogs[currentNPC][root.Actions.ToDialog], toDialogNode, localLevel + 1, ref edgeLayer, ref nodeLayer, false);
-                            else if ( dialogs.dialogs[currentNPC][root.Actions.ToDialog].Actions.ToDialog != 0 )
-                                this.fillDialogSubgraphView(this.dialogs.dialogs[currentNPC][root.Actions.ToDialog], toDialogNode, localLevel, ref edgeLayer, ref nodeLayer, true);
+                            if (dialogs[root.Actions.ToDialog].Nodes.Any() )
+                                this.fillDialogSubgraphView(dialogs[root.Actions.ToDialog], toDialogNode, localLevel + 1, 
+                                    ref edgeLayer, ref nodeLayer, false, dialogShower, dialogs, locales);
+                            else if (dialogs[root.Actions.ToDialog].Actions.ToDialog != 0 )
+                                this.fillDialogSubgraphView(dialogs[root.Actions.ToDialog], toDialogNode, localLevel, 
+                                    ref edgeLayer, ref nodeLayer, true, dialogShower, dialogs, locales);
                         }
                     }
                 }
@@ -295,7 +281,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int subdialogID in root.Nodes)
                 {
                     PNode node = getNodeOnDialogID(subdialogID);
-                    CDialog currentDialog = getDialogOnIDConditional(subdialogID);
+                    CDialog currentDialog = getDialogOnIDConditional(subdialogID, dialogs, locales);
                     float x = currentDialog.coordinates.X;
                     float y = currentDialog.coordinates.Y;
 
@@ -317,15 +303,15 @@ namespace StalkerOnlineQuesterEditor
                     if (!stopAfterThat)
                     {
                         if ( currentDialog.Nodes.Any() )
-                            this.fillDialogSubgraphView(currentDialog, node, localLevel + 1, ref edgeLayer, ref nodeLayer, false);
+                            this.fillDialogSubgraphView(currentDialog, node, localLevel + 1, ref edgeLayer, ref nodeLayer, false, dialogShower, dialogs, locales);
                         else if ( currentDialog.Actions.ToDialog != 0 )
-                            this.fillDialogSubgraphView(currentDialog, node, localLevel, ref edgeLayer, ref nodeLayer, true);
+                            this.fillDialogSubgraphView(currentDialog, node, localLevel, ref edgeLayer, ref nodeLayer, true, dialogShower, dialogs, locales);
                     }
                 }
         }
 
         //! Добавляет узел на граф
-        private void addNodeOnDialogGraphView(int dialogID, int parentDialogID)
+        private void addNodeOnDialogGraphView(int dialogID, int parentDialogID, DialogDict dialogs, NPCLocales locales, PCanvas dialogShower)
         {
             PNode parentNode = getNodeOnDialogID(parentDialogID);
             CDialog currentDialog = getDialogOnDialogID(dialogID);
@@ -343,15 +329,16 @@ namespace StalkerOnlineQuesterEditor
                 PrepareNodesForEdge(newNode, target, ref edgeLayer);
             }
 
-            DialogShower.Layer.AddChildren(nodeLayer);
+            dialogShower.Layer.AddChildren(nodeLayer);
 
             if (!graphs.Keys.Contains(newNode))
                 graphs.Add(newNode, new GraphProperties(dialogID));
 
             if (currentDialog.Nodes.Any())
                 foreach (int subdialog in currentDialog.Nodes)
-                    addNodeOnDialogGraphView(subdialog, dialogID);
+                    addNodeOnDialogGraphView(subdialog, dialogID, dialogs, locales, dialogShower);
 
+           // DialogDict dialogs = getDialogDictionary(currentNPC, this.dialogs.dialogs, this.dialogs.locales);
             DialogSelected(false);
         }
 
@@ -401,6 +388,11 @@ namespace StalkerOnlineQuesterEditor
                  text.X = newNode.X + 11;
                  text.Y = newNode.Y + 10;
              }
+            if (dialog.CheckNodes.Any())
+            {
+                text.X = text.X - 3;
+                text.Text = "(!)" + text.Text;
+            }
             newNode.Tag = new ArrayList();
             newNode.AddChild(text);
 
@@ -424,6 +416,10 @@ namespace StalkerOnlineQuesterEditor
                 size = new SizeF(50, 30);
             else if (dialogId / 1000 > 0)
                 size = new SizeF(60, 40);
+            CDialog dialog = getDialogOnDialogID(dialogId);
+            if (dialog.CheckNodes.Any())
+                size.Width += 7;
+
             return size;
         }
 
@@ -466,11 +462,18 @@ namespace StalkerOnlineQuesterEditor
             if (settings.getMode() == settings.MODE_LOCALIZATION)
             {
                 string locale = settings.getCurrentLocale();
-                if (dialogs.locales[settings.getCurrentLocale()].ContainsKey(dialog.Holder))
+                string npc = dialog.Holder;
+                NPCLocales temp;
+                if (CentralDock.SelectedIndex == 2)
+                    temp = CFractionDialogs.locales;
+                else
+                    temp = dialogs.locales;
+
+                if (temp[settings.getCurrentLocale()].ContainsKey(dialog.Holder))
                 {
-                    string npc = dialog.Holder;
-                    if ( dialogs.locales[locale][npc].ContainsKey(dialog.DialogID) )
-                     dialogs.locales[locale][npc][dialog.DialogID].coordinates.RootDialog = isRoot;
+                   
+                    if (temp[locale][npc].ContainsKey(dialog.DialogID) )
+                        temp[locale][npc][dialog.DialogID].coordinates.RootDialog = isRoot;
                 }
             }
         }
@@ -480,15 +483,15 @@ namespace StalkerOnlineQuesterEditor
             SaveCoordinates(dialog, node, false);
         }
 
-        private void removeNodeFromDialogGraphView(int node)
+        private void removeNodeFromDialogGraphView(int node, TreeView tree, DialogDict dialogs, NPCLocales locales, PCanvas dialogShower)
         {
             bool haveBeenDeleted = false;
-            CDialog dialog = this.dialogs.dialogs[currentNPC][node];
+            CDialog dialog = dialogs[node];
 
-            foreach (KeyValuePair<int, CDialog> dial in dialogs.dialogs[currentNPC])
+            foreach (KeyValuePair<int, CDialog> dial in dialogs)
             {
                 dial.Value.Nodes.Remove(node);
-                dialogs.locales[settings.getListLocales()[0]][currentNPC][dial.Value.DialogID].Nodes.Remove(node);
+                locales[settings.getListLocales()[0]][GetCurrentHolder()][dial.Value.DialogID].Nodes.Remove(node);
             }
 
             PNode removedNode = getNodeOnDialogID(node);
@@ -509,33 +512,36 @@ namespace StalkerOnlineQuesterEditor
                 haveBeenDeleted = true;
             }
             if (haveBeenDeleted)
-                removePassiveNodeFromDialogGraphView();
+                removePassiveNodeFromDialogGraphView(tree, dialogs, locales, dialogShower);
         }
 
-        private void removePassiveNodeFromDialogGraphView()
+        private void removePassiveNodeFromDialogGraphView(TreeView tree, DialogDict dialogs, NPCLocales locales, PCanvas dialogShower)
         {
             DialogSelected(false);
 
             TreeNode treeNodes = treeDialogs.Nodes["Recycle"];
             foreach (TreeNode treeNode in treeNodes.Nodes)
-                removeNodeFromDialogGraphView(int.Parse(treeNode.Text));
+                removeNodeFromDialogGraphView(int.Parse(treeNode.Text), tree, dialogs, locales, dialogShower);
         }
 
         public void selectSubNodesDialogGraphView(int dialogID)
         {
             subNodes.Clear();
+            List<int> nodes = new List<int>();
+            CDialog d = getAnyDialogOnID(dialogID);
 
-            if (dialogs.dialogs[currentNPC][dialogID].Nodes.Any())
-                foreach (int sub in dialogs.dialogs[currentNPC][dialogID].Nodes)
+
+            if (nodes.Any())
+                foreach (int sub in d.Nodes)
                 {
                     PNode node = getNodeOnDialogID(sub);
                     if (node != null)
                         subNodes.Add(node);
                 }
 
-            if (dialogs.dialogs[currentNPC][dialogID].Actions.ToDialog != 0)
+            if (d.Actions.ToDialog != 0)
             {
-                PNode node = getNodeOnDialogID(dialogs.dialogs[currentNPC][dialogID].Actions.ToDialog);
+                PNode node = getNodeOnDialogID(d.Actions.ToDialog);
                 if (node != null)
                     subNodes.Add(node);
             }
@@ -555,39 +561,89 @@ namespace StalkerOnlineQuesterEditor
         //! Заменяет диалог с dialogID на dialog (используется в форме редактирования диалогов)
         public void replaceDialog(CDialog dialog, int dialogID)
         {
-            dialogs.dialogs[currentNPC][dialogID] = dialog;
-            dialogs.locales[settings.getListLocales()[0]][currentNPC][dialogID].InsertNonTextData(dialog);
+            int index = CentralDock.SelectedIndex;
+            if (index == 2)
+            {
+                CFractionDialogs.dialogs[currentFraction][dialogID] = dialog;
+                CFractionDialogs.locales[settings.getListLocales()[0]][currentFraction][dialogID].InsertNonTextData(dialog);
+            }
+            else
+            {
+                dialogs.dialogs[currentNPC][dialogID] = dialog;
+                dialogs.locales[settings.getListLocales()[0]][currentNPC][dialogID].InsertNonTextData(dialog);
+            }
+            
         }
         //! Добавляет диалог в ветку (используется при добавлении диалога в форме EditDialogForm)
         public void addActiveDialog(int newID, CDialog dialog, int parentID)
         {
             // добавляем в русский словарь персонажей
-            dialogs.dialogs[currentNPC].Add(newID, dialog);
-            dialogs.dialogs[currentNPC][parentID].Nodes.Add(newID);
+            
             // добавляем в английскую локаль
+            DialogDict dialogs;
+            NPCLocales locales;
+            PCanvas dialogShower;
             CDialog newDialog = (CDialog) dialog.Clone();
-            dialogs.locales[settings.getListLocales()[0]][currentNPC].Add(newID, newDialog);
-            dialogs.locales[settings.getListLocales()[0]][currentNPC][parentID].Nodes.Add(newID);
+            if (CentralDock.SelectedIndex == 2)
+            {
+                dialogs = getDialogDictionary(currentFraction, CFractionDialogs.dialogs, CFractionDialogs.locales);
+                locales = CFractionDialogs.locales;
+                locales[settings.getListLocales()[0]][currentFraction].Add(newID, newDialog);
+                locales[settings.getListLocales()[0]][currentFraction][parentID].Nodes.Add(newID);
+                dialogShower = fractionDialogShower;
+            }
+            else
+            {
+                dialogs = getDialogDictionary(GetCurrentNPC(), this.dialogs.dialogs, this.dialogs.locales);
+                locales = this.dialogs.locales;
+                locales[settings.getListLocales()[0]][currentNPC].Add(newID, newDialog);
+                locales[settings.getListLocales()[0]][currentNPC][parentID].Nodes.Add(newID);
+                dialogShower = DialogShower;
+            }
 
-            addNodeOnDialogGraphView(newID, parentID);
+            dialogs.Add(newID, dialog);
+            dialogs[parentID].Nodes.Add(newID);
+
+            addNodeOnDialogGraphView(newID, parentID, dialogs, locales, dialogShower);
         }
-        public void addPassiveDialog(int parentID, int dialogID)
+        public void addPassiveDialog(int parentID, int dialogID, DialogDict dialogs, NPCLocales locales, PCanvas dialogShower)
         {
-            this.dialogs.dialogs[currentNPC][parentID].Nodes.Add(dialogID);
-            addNodeOnDialogGraphView(dialogID, parentID);
+            if (CentralDock.SelectedIndex == 2)
+                CFractionDialogs.dialogs[currentFraction][parentID].Nodes.Add(dialogID);
+            else
+                this.dialogs.dialogs[currentNPC][parentID].Nodes.Add(dialogID);
+            addNodeOnDialogGraphView(dialogID, parentID, dialogs, locales, dialogShower);
         }
 
         public void DialogSelected(bool withGraph)
         {
             CDialog root = new CDialog();
-            DialogDict dialogs = getDialogDictionary(currentNPC);
-            root = getRootDialog();
-            root = getDialogOnIDConditional( root.DialogID );
-            fillDialogTree(root, dialogs);
+            DialogDict dialogs;
+            NPCLocales locales;
+            PCanvas dialogShower;
+            TreeView tree;
+            if (CentralDock.SelectedIndex == 2)
+            {
+                dialogs = CFractionDialogs.dialogs[currentFraction];
+                locales = CFractionDialogs.locales;
+                dialogShower = fractionDialogShower;
+                tree = treeFractionDialogs;
+            }
+            else
+            {
+                dialogs = this.dialogs.dialogs[currentNPC];
+                locales = this.dialogs.locales;
+                dialogShower = DialogShower;
+                tree = treeDialogs;
+            }
+
+                root = getRootDialog(dialogs);
+            root = getDialogOnIDConditional( root.DialogID, dialogs, locales);
+            fillDialogTree(root, dialogs, tree, locales);
             if (withGraph)
             {
                 graphs = new Dictionary<PNode, GraphProperties>();
-                this.fillDialogGraphView(root);
+                this.fillDialogGraphView(root, dialogShower, dialogs, locales);
             }
         }
 

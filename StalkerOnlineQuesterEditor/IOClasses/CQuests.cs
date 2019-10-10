@@ -6,7 +6,8 @@ using System.Xml.Linq;
 using System.IO;
 using System.Windows.Forms;
 using System.Globalization;
-
+using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace StalkerOnlineQuesterEditor
 {
@@ -384,19 +385,19 @@ namespace StalkerOnlineQuesterEditor
                     continue;
                 }
                 if (quest.Element("Title") != null)
-                    target[QuestID].QuestInformation.Title = quest.Element("Title").Value;
+                    target[QuestID].QuestInformation.Title = quest.Element("Title").Value.ToString();
                 if (quest.Element("Description") != null)
-                    target[QuestID].QuestInformation.Description = quest.Element("Description").Value;
+                    target[QuestID].QuestInformation.Description = quest.Element("Description").Value.ToString();
                 if (quest.Element("DescriptionOnTest") != null)
-                    target[QuestID].QuestInformation.DescriptionOnTest = quest.Element("DescriptionOnTest").Value;
+                    target[QuestID].QuestInformation.DescriptionOnTest = quest.Element("DescriptionOnTest").Value.ToString();
                 if (quest.Element("DescriptionClosed") != null)
-                    target[QuestID].QuestInformation.DescriptionClosed = quest.Element("DescriptionClosed").Value;
+                    target[QuestID].QuestInformation.DescriptionClosed = quest.Element("DescriptionClosed").Value.ToString();
                 if (quest.Element("onWin") != null)
-                    target[QuestID].QuestInformation.onWin = quest.Element("onWin").Value;
+                    target[QuestID].QuestInformation.onWin = quest.Element("onWin").Value.ToString();
                 if (quest.Element("onGet") != null)
-                    target[QuestID].QuestInformation.onGet = quest.Element("onGet").Value;
+                    target[QuestID].QuestInformation.onGet = quest.Element("onGet").Value.ToString();
                 if (quest.Element("onFailed") != null)
-                    target[QuestID].QuestInformation.onFailed = quest.Element("onFailed").Value;
+                    target[QuestID].QuestInformation.onFailed = quest.Element("onFailed").Value.ToString();
                 int Version = 0;
                 if (!quest.Element("Version").Value.Equals(""))
                     Version = int.Parse(quest.Element("Version").Value);
@@ -1047,7 +1048,7 @@ namespace StalkerOnlineQuesterEditor
                 quest.Additional.Holder = "";
 
             if (!cutQuests)
-                ChangeQuestsIDs(result, engResult);
+               ChangeQuestsIDs(result, engResult);
 
             setBuffer(result, m_Buffer);
             setBuffer(engResult, m_EngBuffer); 
@@ -1087,12 +1088,14 @@ namespace StalkerOnlineQuesterEditor
         private void ChangeQuestsIDs(List<CQuest> quests, List<CQuest> engQuests)
         {
             Dictionary<int, int> replace = new Dictionary<int, int>();
+            int new_quest_id = getQuestNewID(quests.Count);
             foreach (CQuest quest in quests)
             {
                 List<int> excepts = replace.Values.ToList();
                 excepts.AddRange(replace.Keys.ToList());
 
-                replace.Add(quest.QuestID, getQuestNewID(excepts));
+                replace.Add(quest.QuestID, new_quest_id);
+                new_quest_id++;
                 quest.QuestID = replace[quest.QuestID];               
             }
             foreach (CQuest quest in quests)
@@ -1122,18 +1125,40 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Возвращает ID для нового квеста без учета списка excepts 
-        private int getQuestNewID(List<int> exceptsList)
+        private int getQuestNewID(int count)
         {
+            string html = string.Empty;
+            string url = @"http://hz-dev2.stalker.so:8011/getnextidrange?key=quest_id&count=" + count;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+            }
+            try
+            {
+                JObject json = JObject.Parse(html);
+                string str = json["quest_id"].ToString().Replace("[", "").Replace("]", "");
+
+                string[] new_quest_ids = str.Split(',');
+                int new_quest_id = int.Parse(new_quest_ids[0]);
+                return new_quest_id;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка получения нового ID квеста. Проверьте своё подключение к hz-dev", "Ошибка");
+            }
             int iFirstQuestID = 1;
             if (last_quest_id != 0)
             {
                 last_quest_id++;
                 return last_quest_id - 1;
             }
-            for (int questi = iFirstQuestID; ; questi++)
-
-                if (!quest.Keys.Contains(questi) && !m_Buffer.Keys.Contains(questi) && !exceptsList.Contains(questi))
-                    return questi;
+            return 0;
         }
         //! Сохраняет квесты quests в буфер обмена destination
         private void setBuffer(List<CQuest> quests, NPCQuestDict destination)
@@ -1155,8 +1180,8 @@ namespace StalkerOnlineQuesterEditor
             foreach (CQuest q in m_EngBuffer.Values.ToList())
                 engBuffer.Add((CQuest)q.Clone());
 
-            if (!CutQuests)
-                ChangeQuestsIDs(buffer, engBuffer);
+            //if (!CutQuests)
+            //    ChangeQuestsIDs(buffer, engBuffer);
             
             HeadQuest.Additional.ListOfSubQuest.Add(buffer[0].QuestID);
             buffer[0].Additional.IsSubQuest = HeadQuest.QuestID;
@@ -1189,8 +1214,8 @@ namespace StalkerOnlineQuesterEditor
             foreach (CQuest q in m_EngBuffer.Values.ToList())
                 engBuffer.Add((CQuest)q.Clone());
 
-            if (!CutQuests)
-                ChangeQuestsIDs(buffer, engBuffer);
+            //if (!CutQuests)
+            //    ChangeQuestsIDs(buffer, engBuffer);
 
             String name = HeadQuest.Additional.Holder;
             int questID = HeadQuest.QuestID;
@@ -1214,6 +1239,11 @@ namespace StalkerOnlineQuesterEditor
             else
             {
                 int index = parentQuest.Additional.ListOfSubQuest.IndexOf(questID);
+                if (index == -1)
+                {
+                    MessageBox.Show("Ошибка вставки квеста", "Ошибка");
+                    return 0;
+                }
                 parentQuest.Additional.ListOfSubQuest.Remove(questID);
                 parentQuest.Additional.ListOfSubQuest.Insert(index, buffer[0].QuestID);
                 buffer[0].Additional.IsSubQuest = parentID;
