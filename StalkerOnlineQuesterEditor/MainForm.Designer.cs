@@ -501,6 +501,7 @@ namespace StalkerOnlineQuesterEditor
             this.NPCBox.Name = "NPCBox";
             this.toolTipDialogs.SetToolTip(this.NPCBox, resources.GetString("NPCBox.ToolTip"));
             this.NPCBox.SelectedIndexChanged += new System.EventHandler(this.NPCBox_SelectedIndexChanged);
+            this.NPCBox.TextChanged += new System.EventHandler(this.NPCBox_TextChanged);
             this.NPCBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NPCBox_KeyDown);
             // 
             // labelChosenNPC

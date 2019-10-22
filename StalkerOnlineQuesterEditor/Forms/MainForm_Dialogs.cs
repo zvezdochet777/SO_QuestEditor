@@ -137,6 +137,25 @@ namespace StalkerOnlineQuesterEditor
                 if (CFractionDialogs.dialogs[currentFraction].ContainsKey(dialogID))
                     return CFractionDialogs.dialogs[currentFraction][dialogID];
             }
+            else
+            {
+                CDialog dd = new CDialog();
+                if (CentralDock.SelectedIndex == 2)
+                    dd = CDialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentFraction, CFractionDialogs.locales);
+                else
+                    dd = CDialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC, dialogs.locales);
+                if (dd != null)
+                    return dd;
+                else
+                {
+                    if (CentralDock.SelectedIndex == 2)
+                        dd = (CDialog)CFractionDialogs.dialogs[currentFraction][dialogID].Clone();
+                    else
+                        dd = (CDialog)dialogs.dialogs[currentNPC][dialogID].Clone();
+                    dd.version = 0;
+                    return dd;
+                }
+            }
             return null;
         }
 

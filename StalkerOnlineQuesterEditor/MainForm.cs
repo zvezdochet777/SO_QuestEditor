@@ -329,7 +329,10 @@ namespace StalkerOnlineQuesterEditor
                     }
                 }
             }
+            //else
+            //    NPCBox.AutoCompleteCustomSource.Where(a => a.ToLower().Contains(NPCBox.Text.ToLower()));
         }
+
 
         //! Заполняет комбобокс со списком квестов у данного персонажа
         void fillQuestChangeBox(bool onlyDialogs)
@@ -3079,6 +3082,22 @@ namespace StalkerOnlineQuesterEditor
             if (rootDialog != null)
                 fillDialogTree(rootDialog, currentDialogs, this.treeFractionDialogs, CFractionDialogs.locales);
             DialogSelected(true);
+        }
+
+        private void NPCBox_TextChanged(object sender, EventArgs e)
+        {
+            /*
+            string[] a = new string[]();
+            var result = from v in NPCBox.Items.CopyTo(a, 0);
+           Where(a => a.ToLower().Contains(NPCBox.Text.ToLower()));
+            NPCBox.AutoCompleteCustomSource
+            return;
+            if (!result == null) return;
+            foreach (string find in result)
+            {
+                MessageBox.Show(find);
+            }
+            */
         }
     }
 }
