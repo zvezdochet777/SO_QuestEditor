@@ -468,6 +468,8 @@ namespace StalkerOnlineQuesterEditor
                     break;
                 case 2:
                     DialogSelected(true);
+                    Console.WriteLine("fractionDialogShower.Location = (" + fractionDialogShower.Location.X + " " + fractionDialogShower.Location.Y + ")");
+                    Console.WriteLine("fractionDialogShower.Size = (" + fractionDialogShower.Width + " " + fractionDialogShower.Height + ")");
                     break;
                 case 3: // Вкладка Связи NPC 
                     SetControlsAbility(false);

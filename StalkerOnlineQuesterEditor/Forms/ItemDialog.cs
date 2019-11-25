@@ -169,10 +169,12 @@ namespace StalkerOnlineQuesterEditor
                     string activation = "";
                     if (parentForm2.pub_quest.QuestInformation.Items.Keys.Contains(typeID))
                     {
-                        if (this.translate == 0)
+                        if (this.translate == 0 || !this.locale.ContainsKey(typeID))
                         {
                             title = parentForm2.pub_quest.QuestInformation.Items[typeID].title;
                             description = parentForm2.pub_quest.QuestInformation.Items[typeID].description;
+                            content = parentForm2.pub_quest.QuestInformation.Items[typeID].content;
+                            activation = parentForm2.pub_quest.QuestInformation.Items[typeID].activation;
                         }
                         else
                         {

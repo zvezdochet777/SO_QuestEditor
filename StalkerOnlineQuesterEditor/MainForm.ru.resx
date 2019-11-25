@@ -121,8 +121,20 @@
   <data name="treeDialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 399</value>
   </data>
+  <data name="treeDialogs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitDialogsTreeAndCanvas.Panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="DialogShower.Size" type="System.Drawing.Size, System.Drawing">
     <value>723, 399</value>
+  </data>
+  <data name="DialogShower.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitDialogsTreeAndCanvas.Panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="splitDialogsTreeAndCanvas.Size" type="System.Drawing.Size, System.Drawing">
     <value>920, 403</value>
@@ -131,12 +143,24 @@
   <data name="splitDialogsTreeAndCanvas.SplitterDistance" type="System.Int32, mscorlib">
     <value>189</value>
   </data>
+  <data name="splitDialogsTreeAndCanvas.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lFindDialogID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="lFindDialogID.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tbFindDialogID.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="btnClearRecycle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="btnClearRecycle.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelDrawingTip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -148,12 +172,15 @@
     <value>Для рисования прямоугольников удерживайте Shift и левую кнопку мыши. Кнопки Править и Удалить работают для диалогов и прямоугольников. Pan - правой кнопкой мыши. Zoom - колесиком мыши.
 Для перемещения зажмите Ctrl</value>
   </data>
+  <data name="labelDrawingTip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="imageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAC
-        FwAAAk1TRnQBSQFMAgEBBAEAAQgBBAEIAQQBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        FwAAAk1TRnQBSQFMAgEBBAEAASABBAEgAQQBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABKAMAAQEBAAEgBgABMv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8AUgABAQMAAQGIAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQc7AAH/
         AwAB/zsAAQEDLwFJAlIBUAGkAmABWgHeAmoBQQH5AmoBQQH5AmABWgHeAlIBUAGkAy8BSQMAAQF0AAM1
@@ -257,26 +284,59 @@
   <data name="bCenterizeDialogShower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bCenterizeDialogShower.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labelYNode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="labelYNode.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelXNode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelXNode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bRemoveDialog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bRemoveDialog.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bEditDialog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bEditDialog.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bAddDialog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bAddDialog.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="panelDialogTools.Location" type="System.Drawing.Point, System.Drawing">
     <value>923, 16</value>
   </data>
+  <data name="panelDialogTools.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="gbDialogsEditor.Size" type="System.Drawing.Size, System.Drawing">
     <value>1127, 422</value>
+  </data>
+  <data name="gbDialogsEditor.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitDialogs.Panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitDialogsEmulator.Panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitDialogsEmulator.Panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="splitDialogsEmulator.Size" type="System.Drawing.Size, System.Drawing">
     <value>1121, 90</value>
@@ -284,23 +344,53 @@
   <data name="splitDialogsEmulator.SplitterDistance" type="System.Int32, mscorlib">
     <value>188</value>
   </data>
+  <data name="splitDialogsEmulator.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="gbEmulator.Size" type="System.Drawing.Size, System.Drawing">
     <value>1127, 109</value>
+  </data>
+  <data name="gbEmulator.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitDialogs.Panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="splitDialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>1127, 535</value>
   </data>
+  <data name="splitDialogs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="treeQuest.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 294</value>
+  </data>
+  <data name="treeQuest.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelQuestTree.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelQuestTree.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="treeQuestBuffer.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 166</value>
   </data>
+  <data name="treeQuestBuffer.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labelBuffer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="labelBuffer.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitQuestsContainer.Panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitQuestsContainer.Panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="splitQuestsContainer.Size" type="System.Drawing.Size, System.Drawing">
     <value>929, 490</value>
@@ -308,56 +398,116 @@
   <data name="splitQuestsContainer.SplitterDistance" type="System.Int32, mscorlib">
     <value>305</value>
   </data>
+  <data name="splitQuestsContainer.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NPCBox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labelChosenNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="labelChosenNPC.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tabDialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
+  <data name="tabDialogs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bClearBuffer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bClearBuffer.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bCutEvents.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bCutEvents.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bPasteEvents.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bPasteEvents.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bCopyEvents.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bCopyEvents.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bQuestDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bQuestDown.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bQuestUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bQuestUp.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bRemoveEvent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bRemoveEvent.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bEditEvent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bEditEvent.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bAddEvent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bAddEvent.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="panelQuestTools.Location" type="System.Drawing.Point, System.Drawing">
     <value>932, 48</value>
   </data>
+  <data name="panelQuestTools.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bRemoveQuest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bRemoveQuest.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bAddQuest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bAddQuest.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="QuestBox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labelChosenQuest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="labelChosenQuest.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="panelSelectQuest.Size" type="System.Drawing.Size, System.Drawing">
     <value>1127, 45</value>
   </data>
+  <data name="panelSelectQuest.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tabQuests.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
+  </data>
+  <data name="tabQuests.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bRemoveFracDialog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -383,6 +533,9 @@
   <data name="bRemoveFracDialog.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
+  <data name="bRemoveFracDialog.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bEditFracDialog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -406,6 +559,9 @@
   </data>
   <data name="bEditFracDialog.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
+  </data>
+  <data name="bEditFracDialog.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bAddFracDialog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -431,11 +587,17 @@
   <data name="bAddFracDialog.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
+  <data name="bAddFracDialog.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="treeFractionDialogs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left</value>
   </data>
   <data name="treeFractionDialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 505</value>
+  </data>
+  <data name="treeFractionDialogs.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="fractionDialogShower.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -444,10 +606,10 @@
     <value>None</value>
   </data>
   <data name="fractionDialogShower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>732, 502</value>
+    <value>723, 502</value>
   </data>
-  <data name="fractionDialogShower.Text" xml:space="preserve">
-    <value>8</value>
+  <data name="fractionDialogShower.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -461,8 +623,14 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Выбранная Фракция:</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="fractionBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 21</value>
+  </data>
+  <data name="fractionBox.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tabFraction.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -473,26 +641,47 @@
   <data name="tabFraction.Text" xml:space="preserve">
     <value>Фракции</value>
   </data>
+  <data name="tabFraction.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="npcLinkShower.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 489</value>
+  </data>
+  <data name="npcLinkShower.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelAdviceNpcLink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelAdviceNpcLink.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bNpcLinkExecute.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bNpcLinkExecute.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="panelNpcLinkControls.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 52</value>
   </data>
+  <data name="panelNpcLinkControls.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tabInfoNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
+  </data>
+  <data name="tabInfoNPC.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="colCoordinates.Width" type="System.Int32, mscorlib">
     <value>220</value>
   </data>
   <data name="dgvReview.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 437</value>
+  </data>
+  <data name="dgvReview.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -506,8 +695,14 @@
   <data name="label2.Text" xml:space="preserve">
     <value>NPCName:</value>
   </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="cbNPCList.Size" type="System.Drawing.Size, System.Drawing">
     <value>375, 21</value>
+  </data>
+  <data name="cbNPCList.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bFindNPCReputation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -518,47 +713,110 @@
   <data name="bFindNPCReputation.Text" xml:space="preserve">
     <value>Найти квест</value>
   </data>
+  <data name="bFindNPCReputation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>469, 95</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Личная репутация</value>
   </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="cbOnlyOnLocation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="cbOnlyOnLocation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbLocation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numQuests.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelLessThan2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelLessThan2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="cbNumQuests.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="cbNumQuests.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numDialogs.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelLessThan1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelLessThan1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="cbNumDialogs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="cbNumDialogs.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bFindNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bFindNPC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="gbNPCcheck.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labelItemTarget.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="labelItemTarget.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbItemTarget.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelItemReward.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelItemReward.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbItemReward.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bFindQuest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bFindQuest.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="gbQuestCheck.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="panelReviewButtons.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 104</value>
   </data>
+  <data name="panelReviewButtons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tabReview.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
+  <data name="tabReview.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="dgvManage.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 515</value>
+  </data>
+  <data name="dgvManage.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bSaveManage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -566,59 +824,119 @@
   <data name="bSaveManage.Location" type="System.Drawing.Point, System.Drawing">
     <value>1058, 0</value>
   </data>
+  <data name="bSaveManage.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 26</value>
+  </data>
+  <data name="panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tabManage.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
+  <data name="tabManage.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="dgvLocaleDiff.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 484</value>
+  </data>
+  <data name="dgvLocaleDiff.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelLocalizeOuput.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelLocalizeOuput.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="cbActualFinder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="cbActualFinder.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="cbOutdatedFinder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="cbOutdatedFinder.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bFindQuestDifference.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bFindQuestDifference.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="bFindDialogDifference.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bFindDialogDifference.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="panelDiffLocale.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 57</value>
+  </data>
+  <data name="panelDiffLocale.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tabTranslate.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
+  <data name="tabTranslate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="dgvSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>1127, 476</value>
+  </data>
+  <data name="dgvSearch.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="cbIgnoreCase.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="cbIgnoreCase.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labelSearchResult.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="labelSearchResult.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelPhraseToSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelPhraseToSearch.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tbPhraseToSearch.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bStartSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="bStartSearch.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="panelSearchTools.Size" type="System.Drawing.Size, System.Drawing">
     <value>1127, 59</value>
   </data>
+  <data name="panelSearchTools.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tabSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>1133, 541</value>
   </data>
+  <data name="tabSearch.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="CentralDock.Size" type="System.Drawing.Size, System.Drawing">
     <value>1141, 567</value>
+  </data>
+  <data name="CentralDock.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnFilterNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -632,11 +950,20 @@
   <data name="bDelNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bDelNPC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="bAddNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="bAddNPC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="panelSelectNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>1141, 29</value>
+  </data>
+  <data name="panelSelectNPC.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="русскийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 22</value>
@@ -650,16 +977,13 @@
   <data name="englishToolStripMenuItem.Text" xml:space="preserve">
     <value>English</value>
   </data>
-  <data name="changeLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
   <data name="changeLanguageToolStripMenuItem.Text" xml:space="preserve">
     <value>Сменить язык</value>
   </data>
-  <data name="menuSaveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 20</value>
-  </data>
   <data name="собратьЭдиторДляПередачиToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 22</value>
+  </data>
+  <data name="вытащитьНепереведённыеТекстыToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>265, 22</value>
   </data>
   <data name="вытащитьНепереведённыеТекстыToolStripMenuItem.Text" xml:space="preserve">
@@ -677,16 +1001,28 @@
   <data name="квестовToolStripMenuItem.Text" xml:space="preserve">
     <value>Квестов</value>
   </data>
+  <data name="загрузитьПереводToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 22</value>
+  </data>
   <data name="загрузитьПереводToolStripMenuItem.Text" xml:space="preserve">
     <value>Загрузить перевод</value>
   </data>
   <data name="menuMainControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>1141, 24</value>
   </data>
+  <data name="menuMainControl.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1141, 22</value>
   </data>
+  <data name="statusStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1141, 642</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
