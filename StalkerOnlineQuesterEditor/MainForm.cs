@@ -93,7 +93,10 @@ namespace StalkerOnlineQuesterEditor
         public CTutorialConstants tutorialPhases;
         public int currentQuest;
         public Dictionary<string, bool> npcFilters;
+
+        public CKnowledgeConstans knowledgeCategory;
         IOClasses.TCPListener tcpListener;
+
 
         public MainForm(string[] args)
         {
@@ -135,6 +138,8 @@ namespace StalkerOnlineQuesterEditor
             skills = new SkillConstants();
             gui = new CGUIConst();
             effects = new CEffectConstants();
+
+            knowledgeCategory = new CKnowledgeConstans();
 
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             //fillNPCBox();
@@ -482,7 +487,10 @@ namespace StalkerOnlineQuesterEditor
                 case 7:     // Вкладки Проверка, Перевод, Баланс
                     SetControlsAbility(false);
                     break;
-                
+                case 8:     // Вкладка знания
+                    updateKnowledgeTab();
+                    break;
+
             }
         }
 
@@ -3086,6 +3094,17 @@ namespace StalkerOnlineQuesterEditor
             DialogSelected(true);
         }
 
+        private void updateKnowledgeTab()
+        {
+            cbKnowledgeCategory.Items.Clear();
+            cbKnowledgeCategory.Enabled = true;
+            cbKnowledgeCategory.Parent.Enabled = true;
+            foreach (KeyValuePair<int, string> i in this.knowledgeCategory.getAllItems())
+            {
+                cbKnowledgeCategory.Items.Add(i.Value);
+            }
+        }
+
         private void NPCBox_TextChanged(object sender, EventArgs e)
         {
             /*
@@ -3100,6 +3119,43 @@ namespace StalkerOnlineQuesterEditor
                 MessageBox.Show(find);
             }
             */
+        }
+
+        private void cbKnowledgeCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbKnowlegeTypeValue.Items.Clear();
+            int id = knowledgeCategory.getID(cbKnowledgeCategory.SelectedItem.ToString());
+            switch(id)
+            {
+                case 0:
+                    foreach (var i in this.ManagerNPC.NpcData.Values)
+                        cbKnowlegeTypeValue.Items.Add(i.rusName);
+                    break;
+                case 1:
+                    foreach (var i in this.fractions.getListOfFractions())
+                        cbKnowlegeTypeValue.Items.Add(i.Value);
+                    break;
+                case 2:
+                    foreach (var i in this.spacesConst.getSpacesNames())
+                        cbKnowlegeTypeValue.Items.Add(i);
+                    break;
+            }
+            cbKnowlegeTypeValue.SelectedIndex = 1;
+        }
+
+        private void cbKnowlegeTypeValue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            treeKnowladge.Nodes.Clear();
+            string key = cbKnowlegeTypeValue.SelectedItem.ToString();
+            TreeNode a = treeKnowladge.Nodes.Add(key, key);
+
+            a.Nodes.Add("true", "Обязательные знания");
+            a.Nodes.Add("false", "Дополнительные знания знания");
+        }
+
+        private void updateKnowladgeTree()
+        {
+
         }
     }
 }
