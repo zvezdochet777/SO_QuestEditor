@@ -473,6 +473,12 @@ namespace StalkerOnlineQuesterEditor
                     targetComboBox.Items.Add("1 Creature");
                     targetComboBox.Items.Add("2 Avatar");
                     targetComboBox.Items.Add("3 NPC");
+
+                    targetAttributeComboBox.Enabled = true;
+                    targetAttributeComboBox.Items.Clear();
+                    targetAttributeComboBox.Items.Add("0 не важно");
+                    targetAttributeComboBox.Items.Add("1 без трансформации");
+                    targetAttributeComboBox.Items.Add("2 только трансформ");
                 }
                 else if (QuestType == 53 || QuestType == 54)
                 {
@@ -655,6 +661,7 @@ namespace StalkerOnlineQuesterEditor
             else if (quest.Target.QuestType == CQuestConstants.TYPE_KILL)
             {
                 targetComboBox.SelectedIndex = quest.Target.ObjectType;
+                targetAttributeComboBox.SelectedIndex = quest.Target.ObjectAttr;
             }
             else if (quest.Target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY || quest.Target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
             {
@@ -1109,6 +1116,7 @@ namespace StalkerOnlineQuesterEditor
             else if (target.QuestType == CQuestConstants.TYPE_KILL)
             {
                 target.ObjectType = targetComboBox.SelectedIndex;
+                target.ObjectAttr = targetAttributeComboBox.SelectedIndex;
             }
             else if (target.QuestType == CQuestConstants.TYPE_CREATE_NPC)
             {
