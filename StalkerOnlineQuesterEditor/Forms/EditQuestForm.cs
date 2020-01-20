@@ -628,7 +628,7 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (quest.Target.QuestType == CQuestConstants.TYPE_QUEST_COUNTER)
             {
-                resultComboBox.Text = quest.Target.ObjectType.ToString();
+                resultComboBox.Text = quest.Target.ObjectName;
                 quantityUpDown.Value = quest.Target.NumOfObjects;
             }
             else if (quest.Target.QuestType == CQuestConstants.TYPE_ITEM_EQIP || quest.Target.QuestType == CQuestConstants.TYPE_ITEM_ADD)
@@ -1063,7 +1063,7 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (target.QuestType == CQuestConstants.TYPE_QUEST_COUNTER)
             {
-                target.ObjectType = int.Parse(resultComboBox.Text);
+                target.ObjectName = resultComboBox.Text;
                 target.NumOfObjects = Convert.ToInt32(quantityUpDown.Value);
             }
             else if ((target.QuestType == CQuestConstants.TYPE_ITEM_EQIP) || (target.QuestType == CQuestConstants.TYPE_ITEM_ADD))

@@ -2799,8 +2799,8 @@ namespace StalkerOnlineQuesterEditor
         {
             SynchroToolStripMenuItem_Click(sender, e);
             string loc = settings.getCurrentLocale();
-            string quest_path = "quests_" + loc + ".xls";
-            string dialog_path = "dialog_" + loc + ".xls";
+            string quest_path = "quests_" + loc + ".xlsx";
+            string dialog_path = "dialog_" + loc + ".xlsx";
             int all_words = 0;
             int non_localcount_words = 0;
             int row = 1;
@@ -2832,9 +2832,11 @@ namespace StalkerOnlineQuesterEditor
                         row++;
                         workSheet.Cells[row, 1] = "Title";
                         workSheet.Cells[row, 2] = origin_d.Title;
+                        workSheet.Cells[row, 3] = local_d.Title;
                         row++;
                         workSheet.Cells[row, 1] = "Text";
                         workSheet.Cells[row, 2] = origin_d.Text;
+                        workSheet.Cells[row, 3] = local_d.Text;
                         row++;
                         non_localcount_words += count_words;
                     }
@@ -2874,24 +2876,32 @@ namespace StalkerOnlineQuesterEditor
                                 row++;
                                 worKsheeT.Cells[row, 1] = "Title";
                                 worKsheeT.Cells[row, 2] = quest.QuestInformation.Title;
+                                worKsheeT.Cells[row, 3] = local.QuestInformation.Title;
+                                
                                 row++;
                                 worKsheeT.Cells[row, 1] = "Description";
                                 worKsheeT.Cells[row, 2] = quest.QuestInformation.Description;
+                                worKsheeT.Cells[row, 3] = local.QuestInformation.Description;
                                 row++;
                                 worKsheeT.Cells[row, 1] = "DescriptionClosed";
                                 worKsheeT.Cells[row, 2] = quest.QuestInformation.DescriptionClosed;
+                                worKsheeT.Cells[row, 3] = local.QuestInformation.DescriptionClosed;
                                 row++;
                                 worKsheeT.Cells[row, 1] = "DescriptionOnTest";
                                 worKsheeT.Cells[row, 2] = quest.QuestInformation.DescriptionOnTest;
+                                worKsheeT.Cells[row, 3] = local.QuestInformation.DescriptionOnTest;
                                 row++;
                                 worKsheeT.Cells[row, 1] = "onGet";
                                 worKsheeT.Cells[row, 2] = quest.QuestInformation.onGet;
+                                worKsheeT.Cells[row, 3] = local.QuestInformation.onGet;
                                 row++;
                                 worKsheeT.Cells[row, 1] = "onWin";
                                 worKsheeT.Cells[row, 2] = quest.QuestInformation.onWin;
+                                worKsheeT.Cells[row, 3] = local.QuestInformation.onWin;
                                 row++;
                                 worKsheeT.Cells[row, 1] = "onFailed";
                                 worKsheeT.Cells[row, 2] = quest.QuestInformation.onFailed;
+                                worKsheeT.Cells[row, 3] = local.QuestInformation.onFailed;
                                 row++;
                             }
                         }
@@ -2905,7 +2915,7 @@ namespace StalkerOnlineQuesterEditor
         private void диалоговToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Exel File(*.xls)|*.xls";
+            openFile.Filter = "Exel File(*.xlsx)|*.xlsx";
             if (DialogResult.OK != openFile.ShowDialog()) return;
             string locale = Path.GetFileNameWithoutExtension(openFile.FileName).Replace("dialog_", "");
 
@@ -2931,9 +2941,9 @@ namespace StalkerOnlineQuesterEditor
                 int dialog_id = int.Parse(tmp[0]);
                 int version = int.Parse(tmp[1]);
                 i++;
-                string Title = (string)(sheet.UsedRange.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
+                string Title = (string)(sheet.UsedRange.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2;
                 i++;
-                string Text = (string)(sheet.UsedRange.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
+                string Text = (string)(sheet.UsedRange.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2;
 
                 foreach (string npc in dialogs.locales[locale].Keys)
                 {
@@ -2957,7 +2967,7 @@ namespace StalkerOnlineQuesterEditor
         private void квестовToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Exel File(*.xls)|*.xls";
+            openFile.Filter = "Exel File(*.xlsx)|*.xlsx";
             if (DialogResult.OK != openFile.ShowDialog()) return;
             string locale = Path.GetFileNameWithoutExtension(openFile.FileName).Replace("quests_", "");
 
@@ -2983,19 +2993,19 @@ namespace StalkerOnlineQuesterEditor
                 int quest_id = int.Parse(tmp[0]);
                 int version = int.Parse(tmp[1]);
                 i++;
-                string Title = Convert.ToString((sheet.UsedRange.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2);
+                string Title = Convert.ToString((sheet.UsedRange.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2);
                 i++;
-                string Description = Convert.ToString((sheet.UsedRange.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2);
+                string Description = Convert.ToString((sheet.UsedRange.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2);
                 i++;
-                //string DescriptionOnTest = (string)(sheet.UsedRange.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
-                //i++;
-                //string DescriptionClosed = (string)(sheet.UsedRange.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
-                //i++;
-                string onGet = (string)(sheet.UsedRange.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
+                string DescriptionClosed = (string)(sheet.UsedRange.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2;
                 i++;
-                string onWin = (string)(sheet.UsedRange.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
+                string DescriptionOnTest = (string)(sheet.UsedRange.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2;
                 i++;
-                string onFailed = (string)(sheet.UsedRange.Cells[i, 2] as Microsoft.Office.Interop.Excel.Range).Value2;
+                string onGet = (string)(sheet.UsedRange.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2;
+                i++;
+                string onWin = (string)(sheet.UsedRange.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2;
+                i++;
+                string onFailed = (string)(sheet.UsedRange.Cells[i, 3] as Microsoft.Office.Interop.Excel.Range).Value2;
 
                 if (!quests.locales[locale].ContainsKey(quest_id))
                 {
@@ -3008,8 +3018,8 @@ namespace StalkerOnlineQuesterEditor
                 {
                     quest.QuestInformation.Title = Title;
                     quest.QuestInformation.Description = Description;
-                    //quest.QuestInformation.DescriptionOnTest = DescriptionOnTest;
-                    //quest.QuestInformation.DescriptionClosed = DescriptionClosed;
+                    quest.QuestInformation.DescriptionOnTest = DescriptionOnTest;
+                    quest.QuestInformation.DescriptionClosed = DescriptionClosed;
                     quest.QuestInformation.onWin = onWin;
                     quest.QuestInformation.onFailed = onFailed;
                     quest.QuestInformation.onGet = onGet;
