@@ -232,14 +232,15 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cbRadioNode = new System.Windows.Forms.ComboBox();
             this.tCheckNodes = new System.Windows.Forms.MaskedTextBox();
             this.lCheckNodes = new System.Windows.Forms.Label();
             this.autoPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.cbRadioNode = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.cbAllyance = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
@@ -1271,6 +1272,7 @@
             // gbClanOptions
             // 
             this.gbClanOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.gbClanOptions.Controls.Add(this.cbAllyance);
             this.gbClanOptions.Controls.Add(this.cbSecurNotExst);
             this.gbClanOptions.Controls.Add(this.cbSecurExst);
             this.gbClanOptions.Controls.Add(this.radioButtonOR);
@@ -1285,7 +1287,7 @@
             this.gbClanOptions.Controls.Add(this.cbSameClanOnly);
             this.gbClanOptions.Location = new System.Drawing.Point(6, 6);
             this.gbClanOptions.Name = "gbClanOptions";
-            this.gbClanOptions.Size = new System.Drawing.Size(414, 160);
+            this.gbClanOptions.Size = new System.Drawing.Size(414, 190);
             this.gbClanOptions.TabIndex = 50;
             this.gbClanOptions.TabStop = false;
             this.gbClanOptions.Text = "Клановые опции";
@@ -1293,7 +1295,7 @@
             // cbSecurNotExst
             // 
             this.cbSecurNotExst.AutoSize = true;
-            this.cbSecurNotExst.Location = new System.Drawing.Point(155, 128);
+            this.cbSecurNotExst.Location = new System.Drawing.Point(163, 128);
             this.cbSecurNotExst.Name = "cbSecurNotExst";
             this.cbSecurNotExst.Size = new System.Drawing.Size(83, 17);
             this.cbSecurNotExst.TabIndex = 27;
@@ -1303,7 +1305,7 @@
             // cbSecurExst
             // 
             this.cbSecurExst.AutoSize = true;
-            this.cbSecurExst.Location = new System.Drawing.Point(8, 128);
+            this.cbSecurExst.Location = new System.Drawing.Point(8, 151);
             this.cbSecurExst.Name = "cbSecurExst";
             this.cbSecurExst.Size = new System.Drawing.Size(87, 17);
             this.cbSecurExst.TabIndex = 26;
@@ -1336,7 +1338,7 @@
             // cbNotSameClanOnly
             // 
             this.cbNotSameClanOnly.AutoSize = true;
-            this.cbNotSameClanOnly.Location = new System.Drawing.Point(155, 45);
+            this.cbNotSameClanOnly.Location = new System.Drawing.Point(163, 45);
             this.cbNotSameClanOnly.Name = "cbNotSameClanOnly";
             this.cbNotSameClanOnly.Size = new System.Drawing.Size(101, 17);
             this.cbNotSameClanOnly.TabIndex = 23;
@@ -1346,7 +1348,7 @@
             // cbWarTime
             // 
             this.cbWarTime.AutoSize = true;
-            this.cbWarTime.Location = new System.Drawing.Point(155, 85);
+            this.cbWarTime.Location = new System.Drawing.Point(163, 88);
             this.cbWarTime.Name = "cbWarTime";
             this.cbWarTime.Size = new System.Drawing.Size(143, 17);
             this.cbWarTime.TabIndex = 22;
@@ -1356,7 +1358,7 @@
             // cbPeaceTime
             // 
             this.cbPeaceTime.AutoSize = true;
-            this.cbPeaceTime.Location = new System.Drawing.Point(8, 85);
+            this.cbPeaceTime.Location = new System.Drawing.Point(8, 108);
             this.cbPeaceTime.Name = "cbPeaceTime";
             this.cbPeaceTime.Size = new System.Drawing.Size(154, 17);
             this.cbPeaceTime.TabIndex = 21;
@@ -1366,7 +1368,7 @@
             // cbNotEnemy
             // 
             this.cbNotEnemy.AutoSize = true;
-            this.cbNotEnemy.Location = new System.Drawing.Point(155, 65);
+            this.cbNotEnemy.Location = new System.Drawing.Point(163, 65);
             this.cbNotEnemy.Name = "cbNotEnemy";
             this.cbNotEnemy.Size = new System.Drawing.Size(64, 17);
             this.cbNotEnemy.TabIndex = 20;
@@ -1376,7 +1378,7 @@
             // cbEnemy
             // 
             this.cbEnemy.AutoSize = true;
-            this.cbEnemy.Location = new System.Drawing.Point(8, 65);
+            this.cbEnemy.Location = new System.Drawing.Point(8, 88);
             this.cbEnemy.Name = "cbEnemy";
             this.cbEnemy.Size = new System.Drawing.Size(49, 17);
             this.cbEnemy.TabIndex = 19;
@@ -1386,7 +1388,7 @@
             // cbLonerOnly
             // 
             this.cbLonerOnly.AutoSize = true;
-            this.cbLonerOnly.Location = new System.Drawing.Point(155, 105);
+            this.cbLonerOnly.Location = new System.Drawing.Point(163, 108);
             this.cbLonerOnly.Name = "cbLonerOnly";
             this.cbLonerOnly.Size = new System.Drawing.Size(73, 17);
             this.cbLonerOnly.TabIndex = 18;
@@ -1396,7 +1398,7 @@
             // cbAnyClanOnly
             // 
             this.cbAnyClanOnly.AutoSize = true;
-            this.cbAnyClanOnly.Location = new System.Drawing.Point(8, 105);
+            this.cbAnyClanOnly.Location = new System.Drawing.Point(8, 128);
             this.cbAnyClanOnly.Name = "cbAnyClanOnly";
             this.cbAnyClanOnly.Size = new System.Drawing.Size(102, 17);
             this.cbAnyClanOnly.TabIndex = 17;
@@ -2363,6 +2365,27 @@
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(508, 12);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(47, 13);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "Доступ:";
+            // 
+            // cbRadioNode
+            // 
+            this.cbRadioNode.FormattingEnabled = true;
+            this.cbRadioNode.Items.AddRange(new object[] {
+            "Рядом",
+            "Только по радио",
+            "Любое расстояние"});
+            this.cbRadioNode.Location = new System.Drawing.Point(561, 9);
+            this.cbRadioNode.Name = "cbRadioNode";
+            this.cbRadioNode.Size = new System.Drawing.Size(121, 21);
+            this.cbRadioNode.TabIndex = 20;
+            // 
             // tCheckNodes
             // 
             this.tCheckNodes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -2419,26 +2442,15 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // cbRadioNode
+            // cbAllyance
             // 
-            this.cbRadioNode.FormattingEnabled = true;
-            this.cbRadioNode.Items.AddRange(new object[] {
-            "Рядом",
-            "Только по радио",
-            "Любое расстояние"});
-            this.cbRadioNode.Location = new System.Drawing.Point(561, 9);
-            this.cbRadioNode.Name = "cbRadioNode";
-            this.cbRadioNode.Size = new System.Drawing.Size(121, 21);
-            this.cbRadioNode.TabIndex = 20;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(508, 12);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(47, 13);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "Доступ:";
+            this.cbAllyance.AutoSize = true;
+            this.cbAllyance.Location = new System.Drawing.Point(8, 65);
+            this.cbAllyance.Name = "cbAllyance";
+            this.cbAllyance.Size = new System.Drawing.Size(70, 17);
+            this.cbAllyance.TabIndex = 28;
+            this.cbAllyance.Text = "союзник";
+            this.cbAllyance.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -2732,5 +2744,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cbRadioNode;
+        private System.Windows.Forms.CheckBox cbAllyance;
     }
 }

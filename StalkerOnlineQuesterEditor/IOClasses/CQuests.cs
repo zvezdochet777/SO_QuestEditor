@@ -132,6 +132,13 @@ namespace StalkerOnlineQuesterEditor
 
                 additional.Holder = item.Element("Additional").Element("Holder").Value.Trim();
 
+                if (!parent.dialogs.dialogs.ContainsKey(additional.Holder))
+                {
+                    Console.WriteLine("ЛИШНИЕ NPC " + additional.Holder);
+                    continue;
+                }
+
+
                 if (item.Element("Target") != null)
                 {
                     if (item.Element("Target").Element("QuestType") != null)

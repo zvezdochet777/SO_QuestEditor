@@ -110,6 +110,8 @@ namespace StalkerOnlineQuesterEditor
                 cbSecurExst.Checked = true;
             if (list.Contains(10))
                 cbSecurNotExst.Checked = true;
+            if (list.Contains(11))
+                cbAllyance.Checked = true;
         }
         //! Заполняет всю форму данными из CDialog
         void fillDialogEditForm(int dialogID)
@@ -381,7 +383,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if (cbSameClanOnly.Checked || cbAnyClanOnly.Checked || cbLonerOnly.Checked || cbWarTime.Checked ||
                 cbEnemy.Checked || cbNotEnemy.Checked || cbPeaceTime.Checked || cbNotSameClanOnly.Checked ||
-                cbSecurExst.Checked || cbSecurNotExst.Checked)
+                cbSecurExst.Checked || cbSecurNotExst.Checked || cbAllyance.Checked)
             {
                 return true;
             }
@@ -824,6 +826,8 @@ namespace StalkerOnlineQuesterEditor
                     precondition.clanOptions += ",9";
                 if (cbSecurNotExst.Checked)
                     precondition.clanOptions += ",10";
+                if (cbAllyance.Checked)
+                    precondition.clanOptions += ",11";
             }             
             if (checkLevel())
             {
