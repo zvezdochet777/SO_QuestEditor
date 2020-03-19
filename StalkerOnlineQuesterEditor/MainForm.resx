@@ -131,151 +131,6 @@
   <data name="splitDialogs.Panel1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="&gt;&gt;splitDialogsTreeAndCanvas.Name" xml:space="preserve">
-    <value>splitDialogsTreeAndCanvas</value>
-  </data>
-  <data name="&gt;&gt;splitDialogsTreeAndCanvas.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitDialogsTreeAndCanvas.Parent" xml:space="preserve">
-    <value>gbDialogsEditor</value>
-  </data>
-  <data name="&gt;&gt;splitDialogsTreeAndCanvas.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panelDialogTools.Name" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;panelDialogTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelDialogTools.Parent" xml:space="preserve">
-    <value>gbDialogsEditor</value>
-  </data>
-  <data name="&gt;&gt;panelDialogTools.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="gbDialogsEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="gbDialogsEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="gbDialogsEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1176, 422</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gbDialogsEditor.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="gbDialogsEditor.Text" xml:space="preserve">
-    <value>Правка диалогов</value>
-  </data>
-  <data name="&gt;&gt;gbDialogsEditor.Name" xml:space="preserve">
-    <value>gbDialogsEditor</value>
-  </data>
-  <data name="&gt;&gt;gbDialogsEditor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbDialogsEditor.Parent" xml:space="preserve">
-    <value>splitDialogs.Panel1</value>
-  </data>
-  <data name="&gt;&gt;gbDialogsEditor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Panel1.Name" xml:space="preserve">
-    <value>splitDialogs.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Panel1.Parent" xml:space="preserve">
-    <value>splitDialogs</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitDialogs.Panel1MinSize" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="gbEmulator.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;splitDialogsEmulator.Name" xml:space="preserve">
-    <value>splitDialogsEmulator</value>
-  </data>
-  <data name="&gt;&gt;splitDialogsEmulator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitDialogsEmulator.Parent" xml:space="preserve">
-    <value>gbEmulator</value>
-  </data>
-  <data name="&gt;&gt;splitDialogsEmulator.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="gbEmulator.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="gbEmulator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="gbEmulator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1176, 109</value>
-  </data>
-  <data name="gbEmulator.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="gbEmulator.Text" xml:space="preserve">
-    <value>Эмулятор</value>
-  </data>
-  <data name="&gt;&gt;gbEmulator.Name" xml:space="preserve">
-    <value>gbEmulator</value>
-  </data>
-  <data name="&gt;&gt;gbEmulator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbEmulator.Parent" xml:space="preserve">
-    <value>splitDialogs.Panel2</value>
-  </data>
-  <data name="&gt;&gt;gbEmulator.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Panel2.Name" xml:space="preserve">
-    <value>splitDialogs.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Panel2.Parent" xml:space="preserve">
-    <value>splitDialogs</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitDialogs.Panel2MinSize" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="splitDialogs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1176, 535</value>
-  </data>
-  <data name="splitDialogs.SplitterDistance" type="System.Int32, mscorlib">
-    <value>422</value>
-  </data>
-  <data name="splitDialogs.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Name" xml:space="preserve">
-    <value>splitDialogs</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.Parent" xml:space="preserve">
-    <value>tabDialogs</value>
-  </data>
-  <data name="&gt;&gt;splitDialogs.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="splitDialogsTreeAndCanvas.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -291,6 +146,7 @@
   <data name="treeDialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 399</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="treeDialogs.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -386,150 +242,6 @@
   </data>
   <data name="panelDialogTools.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
-  </data>
-  <data name="&gt;&gt;lFindDialogID.Name" xml:space="preserve">
-    <value>lFindDialogID</value>
-  </data>
-  <data name="&gt;&gt;lFindDialogID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lFindDialogID.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;lFindDialogID.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tbFindDialogID.Name" xml:space="preserve">
-    <value>tbFindDialogID</value>
-  </data>
-  <data name="&gt;&gt;tbFindDialogID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbFindDialogID.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;tbFindDialogID.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnClearRecycle.Name" xml:space="preserve">
-    <value>btnClearRecycle</value>
-  </data>
-  <data name="&gt;&gt;btnClearRecycle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClearRecycle.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;btnClearRecycle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;labelDrawingTip.Name" xml:space="preserve">
-    <value>labelDrawingTip</value>
-  </data>
-  <data name="&gt;&gt;labelDrawingTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelDrawingTip.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;labelDrawingTip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;bCenterizeDialogShower.Name" xml:space="preserve">
-    <value>bCenterizeDialogShower</value>
-  </data>
-  <data name="&gt;&gt;bCenterizeDialogShower.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bCenterizeDialogShower.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;bCenterizeDialogShower.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;labelYNode.Name" xml:space="preserve">
-    <value>labelYNode</value>
-  </data>
-  <data name="&gt;&gt;labelYNode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelYNode.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;labelYNode.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;labelXNode.Name" xml:space="preserve">
-    <value>labelXNode</value>
-  </data>
-  <data name="&gt;&gt;labelXNode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelXNode.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;labelXNode.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;bRemoveDialog.Name" xml:space="preserve">
-    <value>bRemoveDialog</value>
-  </data>
-  <data name="&gt;&gt;bRemoveDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bRemoveDialog.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;bRemoveDialog.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;bEditDialog.Name" xml:space="preserve">
-    <value>bEditDialog</value>
-  </data>
-  <data name="&gt;&gt;bEditDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bEditDialog.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;bEditDialog.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;bAddDialog.Name" xml:space="preserve">
-    <value>bAddDialog</value>
-  </data>
-  <data name="&gt;&gt;bAddDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bAddDialog.Parent" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;bAddDialog.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="panelDialogTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="panelDialogTools.Location" type="System.Drawing.Point, System.Drawing">
-    <value>972, 16</value>
-  </data>
-  <data name="panelDialogTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 403</value>
-  </data>
-  <data name="panelDialogTools.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;panelDialogTools.Name" xml:space="preserve">
-    <value>panelDialogTools</value>
-  </data>
-  <data name="&gt;&gt;panelDialogTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelDialogTools.Parent" xml:space="preserve">
-    <value>gbDialogsEditor</value>
-  </data>
-  <data name="&gt;&gt;panelDialogTools.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="lFindDialogID.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -646,8 +358,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAA2
-        FwAAAk1TRnQBSQFMAgEBBAEAATwBBAE8AQQBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAw
+        FwAAAk1TRnQBSQFMAgEBBAEAAVwBBAFcAQQBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABKAMAAQEBAAEgBgABMv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8AUgABAQMAAQGIAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQc7AAH/
         AwAB/zsAAQEDLwFJAlIBUAGkAmABWgHeAmoBQQH5AmoBQQH5AmABWgHeAlIBUAGkAy8BSQMAAQF0AAM1
@@ -663,31 +375,31 @@
         AawB/wIAAakB/wIAAaYB/wIAAaMB/wIAAZ8B/wIAAZwB/wIAAZkB/wIAAZgB/wIAAZwB/wIAAcAB/wJN
         AU4Bli8AAf8DAAH/AyMBMygAAx0BKgJnAVkB8gHlAbQBAAH/AeQBsQEAAf8B5AGxAQAB/wHkAbEBAAH/
         AeQBsgEAAf8B5AGyAQAB/wHkAbIBAAH/AeQBsgEAAf8B5AGxAQAB/wHkAbEBAAH/AeQBsQEAAf8B5QG0
-        AQAB/wJnAVkB8gMdASoMAAMLAQ8DZAHnAQUBowHGAf8BQAGBAagB/QNQAZ4DCAELAwYECAELAwoBDgMM
+        AQAB/wJnAVkB8gMdASoMAAMLAQ8DZAHnAQEBowHGAf8BQAGBAagB/QNQAZ4DCAELAwYECAELAwoBDgMM
         ARADDQESAw8BFAMQARUDDwEUAw4BEwMKAQ4DBAEGAwABAQgAAzUBVgIAAccB/wIAAb8B/wIAAbkB/wIA
         AbYB/wIAAbMB/wIAAa8B/wIAAawB/wIAAakB/wIAAaYB/wIAAaMB/wIAAZ8B/wIAAZwB/wIAAZkB/wIA
         AZgB/wIAAZwB/wIAAcAB/wM1AVYrAAH/AwAB/wMjATMMAAMEAQUXAAEBA1sByAHnAbcBAAH/AeYBtAEA
         Af8B5gG0AQAB/wHmAbQBAAH/AeYBtAEAAf8B8QHWAZIB/wH3AeUBxgH/AfcB5QHGAf8B8gHXAZYB/wHm
         AbQBAAH/AeYBtAEAAf8B5gG0AQAB/wHmAbQBAAH/AecBtwEAAf8DWwHIAwABAQwAAzoBYAGLAc8B7AH/
-        AQABigHpAf8BAAEMAcwB/wFWAlgBvAMMARAXAAEBAwAEAQECAwABAQwAAwUBBwJdAWEB4gIAAcsB/wIA
+        AQABigHpAf8BAAEIAcwB/wFWAlgBvAMMARAXAAEBAwAEAQECAwABAQwAAwUBBwJdAWEB4gIAAcsB/wIA
         Ab8B/wIAAbwB/wIAAbkB/wIAAbYB/wIAAbMB/wIAAa8B/wIAAawB/wIAAakB/wIAAaYB/wIAAaMB/wIA
         AZ8B/wIAAZwB/wIAAZkB/wIAAZgB/wIAAakB/wJdAWEB4gMFAQcjAAH+AwAB/wMAAf8DAAH/AwAB/iAA
         Ay8BSQHqAb4BAAH/AecBuAEAAf8B5wG3AQAB/wHnAbcBAAH/AecBtwEAAf8B5wG3AQAB/wHyAdgBlwH/
         AfgB5wHKAf8B+AHnAcoB/wHzAdkBmwH/AecBtwEAAf8B5wG3AQAB/wHnAbcBAAH/AecBtwEAAf8B5wG4
-        AQAB/wHpAb0BAAH/Ay8BSQwAAwEBAgNYAbsBAAHDAfsB/wEAAZIB7AH/AQABDwHSAf8BXAJgAdQDFwEg
+        AQAB/wHpAb0BAAH/Ay8BSQwAAwEBAgNYAbsBAAHDAfsB/wEAAZIB7AH/AQABCwHSAf8BXAJgAdQDFwEg
         LAADNwFaAgABzAH/AgABxgH/AgABwwH/AgABvwH/AgABvAH/AgABuQH/AgABtgH/AgABswH/AgABrwH/
         AgABrAH/AgABqQH/AgABpgH/AgABowH/AgABnwH/AgABnAH/AgABmQH/AgABmAH/AgABvQH/AzcBWiAA
         AwwBEAMAAf8DAAH/AwAB/yQAAlIBUAGkAeoBvgEAAf8B6QG6AQAB/wHpAboBAAH/AekBugEAAf8B6QG6
         AQAB/wHpAboBAAH/AfQB2wGcAf8B+QHqAc8B/wH5AeoBzwH/AfQB3AGgAf8B6QG6AQAB/wHpAboBAAH/
         AekBugEAAf8B6QG6AQAB/wHpAboBAAH/AeoBvgEAAf8CUgFQAaQQAAMHAQkDVAGuAQABygH8Af8BAAGb
-        Ae8B/wEAARQB2AH/AVwCZAHnAyQBNigAAlQBVgGrAgAB2AH/AgABzQH/AgAByAH/AgABwwH/AgABvwH/
+        Ae8B/wEAARAB2AH/AVwCZAHnAyQBNigAAlQBVgGrAgAB2AH/AgABzQH/AgAByAH/AgABwwH/AgABvwH/
         AgABvAH/AgABuQH/AgABtgH/AgABswH/AgABrwH/AgABrAH/AgABqQH/AgABpgH/AgABowH/AgABnwH/
         AgABnAH/AgABmQH/AgABsgH/AlQBVgGrGwAB/wgAA1kB6wMAAf8DEAEVCwAB/xgAAmABWgHeAewBwAEA
         Af8B6wG+AQAB/wHrAb4BAAH/AfQB3AGcAf8B9AHcAZwB/wH0AdwBnAH/AfgB5wHEAf8B+gHtAdYB/wH6
         Ae0B1gH/AfgB6AHGAf8B9AHcAZwB/wH0AdwBnAH/AfQB3AGdAf8B6wG+AQAB/wHrAb4BAAH/AewBwAEA
         Af8CYAFaAd4UAAMCAQMDTgGVAQAB0AH+Af8BAAGkAfIB/wEAAYYB3gH/AUICWQH1AzIBUSQAA18B4AIA
         Ad0B/wIAAdQB/wIAAc8B/wGBAYgB4AH/AZIBmAHjAf8BkQGXAeIB/wGRAZcB4AH/AZABlgHfAf8BkAGV
-        Ad0B/wGPAZUB3AH/AY8BlAHaAf8BjgGUAdkB/wGNAZMB1wH/AY0BkgHWAf8BCQEPAcsB/wIAAZ8B/wIA
+        Ad0B/wGPAZUB3AH/AY8BlAHaAf8BjgGUAdkB/wGNAZMB1wH/AY0BkgHWAf8BBQELAcsB/wIAAZ8B/wIA
         AZwB/wIAAaUB/wNfAeAIAAMjATMDIwEzAyMBMwMjATMDAAH/AwAB/wgAA0EB+QsAAf8DAAH/FwABAQJq
         AUcB+QHtAcIBAAH/Ae0BwQEAAf8B7QHBAQAB/wH7AfAB3QH/AfsB8AHdAf8B+wHwAd0B/wH7AfAB3QH/
         AfsB8AHdAf8B+wHwAd0B/wH7AfAB3QH/AfsB8AHdAf8B+wHwAd0B/wH7AfAB3gH/Ae0BwgEAAf8B7QHB
@@ -697,56 +409,56 @@
         Af8DAAH/AwAB/wMAAf8DAAEBAmoBWgH5Ae8BxgEAAf8B7wHFAQAB/wHvAcUBAAH/AfsB8wHkAf8B+wHz
         AeUB/wH7AfMB5QH/AfsB8wHlAf8B+wHzAeUB/wH7AfMB5QH/AfsB8wHlAf8B+wHzAeUB/wH7AfMB5QH/
         AfsB8wHmAf8B7wHGAQAB/wHvAcUBAAH/Ae8BxgEAAf8CagFbAfkDAAEBHAADOgFgA00B+gEAAbYB9wH/
-        AQABmAHpAf8BAAEOAcgB/wNOAZQDAwEEGAADTQH6AQEBCgHlAf8CAAHgAf8CAAHcAf8B4gHkAfkp/wHX
+        AQABmAHpAf8BAAEKAcgB/wNOAZQDAwEEGAADTQH6AQABBgHlAf8CAAHgAf8CAAHcAf8B4gHkAfkp/wHX
         AdkB8QH/AgABpgH/AgABowH/AgABoAH/A00B+gcAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DLgFH
         BAADUAGjBwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8EAANgAd4B8QHKAQAB/wHxAckBAAH/
         AfEByQEAAf8B+AHlAa8B/wH4AeUBsAH/AfgB5QGwAf8B+wHxAdkB/wH8AfcB7AH/AfwB9wHsAf8B+wHx
         AdoB/wH4AeUBsAH/AfgB5QGwAf8B+AHlAbAB/wHxAckBAAH/AfEByQEAAf8B8QHKAQAB/wNgAd4kAAMv
-        AUkBXQJfAfMBAAG+AfkB/wEAAaEB7gH/AQABEgHOAf8BVQJWAbQDCgENFAADXwHgAYsBkgHsAf8BBwEP
-        AeYB/wEAAQQB4gH/AagBrQHuAf8BtAG4Ae8B/wGuAbMB7QH/AZ8BpAHoAf8BlwGdAeUB/wGWAZwB5AH/
-        AZYBnAHiAf8BlQGbAeEB/wGVAZoB3wH/AZQBmgHeAf8BlAGZAd0B/wEPAYAB0gH/AgABqQH/AgABpgH/
-        AgABrQH/A18B4BsAAf8IAAMyAVEDAAH/AzQBVQQAA1kByQMAAf4YAANSAaQB9AHPAQAB/wHzAcwBAAH/
-        AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfMBzAEAAf8B+QHqAcAB/wH9AfkB8wH/Af0B+QHzAf8B+QHr
-        AcMB/wHzAcwBAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfMBzAEAAf8B9AHPAQAB/wNSAaQoAAMk
-        ATUDYgHpAQABxQH7Af8BAAGrAfIB/wEAAYMB1AH/AVwCXgHOAxQBGxAAAlQBVgGrAZkBnwHqAf8BhAGM
-        AesB/wENAYEB5wH/AQEBCgHjAf8CAAHfAf8CAAHaAf8CAAHUAf8CAAHJAf8CAAHDAf8CAAG/Af8CAAG8
-        Af8CAAG5Af8CAAG2Af8CAAGzAf8CAAGvAf8CAAGsAf8CAAGpAf8CAAG8Af8CVAFWAasjAAEBAwAB/wMA
-        Af8DAAH/AwMBBAcAAQEYAAMvAUkB9gHSAQAB/wH1AdABAAH/AfUBzwEAAf8B9QHPAQAB/wH1Ac8BAAH/
-        AfUBzwEAAf8B+gHtAcYB/wH+AfwB+QH/Af4B/AH5Af8B+wHuAcoB/wH1Ac8BAAH/AfUBzwEAAf8B9QHP
-        AQAB/wH1Ac8BAAH/AfUB0AEAAf8B9gHUAQAB/wMvAUksAAMaASQDXwHbAQABygH8Af8BAAGzAfUB/wEA
-        AYsB2gH/AVgCXwHjAyMBMwwAAzcBWgEMARQB2AH/AZcBnQHvAf8BiwGSAewB/wEUAYcB6AH/AQgBEQHk
-        Af8BAAEFAeAB/wIAAdsB/wIAAdYB/wIAAc0B/wIAAcMB/wIAAb8B/wIAAbwB/wIAAbkB/wIAAbYB/wIA
-        AbMB/wIAAa8B/wIAAawB/wIAAcIB/wM3AVojAAH/AwAB/wMAAf8DAAH/AwAB/yMAAQEDWwHIAfcB1QEA
-        Af8B9wHTAQAB/wH3AdMBAAH/AfcB0wEAAf8B9wHTAQAB/wH8Ae8BygL/Af0B/AL/Af0B/AH/AfwB8AHN
-        Af8B9wHTAQAB/wH3AdMBAAH/AfcB0wEAAf8B9wHTAQAB/wH3AdUBAAH/A1sByAMAAQEwAAMQARYDXQHK
-        AQABzgH9Af8BAAG6Ae0B/wGkAa4BuQH/A1kB9QI1ATYBWAgAAwUBBwJdAWEB4gGuAbMB8gH/AZ0BpAHw
-        Af8BkgGZAe0B/wGGAY0B6QH/AQ8BggHlAf8BAwELAeEB/wIAAd0B/wIAAdgB/wIAAdIB/wIAAckB/wIA
-        AcEB/wIAAbwB/wIAAbkB/wIAAbYB/wIAAbMB/wIAAbwB/wJdAWEB4gMFAQckAANOAZkDAAH/A1EBoSgA
-        Ax0BKgNnAfIB+QHXAQMB/wH5AdYBAAH/AfkB1gEAAf8B+QHWAQAB/wH4AdYBAAH/AfgB1gEAAf8B+AHW
-        AQAB/wH4AdYBAAH/AfkB1gEAAf8B+QHWAQAB/wH5AdYBAAH/AfkB1wEEAf8DZwHyAx0BKjgAAwkBDANW
-        AbYBsgHOAdYB/wEEAQABswH/AosBrgH/AkABqAH9A0EBcggAAzUBVgEAAQgB0QH/AbIBtwH0Af8BpAGq
-        AfEB/wGYAZ8B7gH/AYwBlAHrAf8BgQGIAecB/wEJARIB4wH/AQABBgHeAf8CAAHaAf8CAAHVAf8CAAHP
-        Af8CAAHIAf8CAAHCAf8CAAG8Af8CAAG6Af8CAAHFAf8DNQFWKAADTgGZAwAB/wNRAaEsAAMrAUIDZwHy
-        AfoB2gELAf8B+gHZAQYB/wH6AdgBBQH/AfoB2AEEAf8B+gHYAQQB/wH6AdgBBAH/AfoB2AEEAf8B+gHY
-        AQUB/wH6AdkBBgH/AfoB2gELAf8DZwHyAysBQkAAAwQBBQNUAawBowGeAdcB/wERARAB3QH/AgcB3QH/
-        AgUB3QH/Az0BaAgAAk0BTgGWAYUBjAHaAf8BuAG9AfUB/wGrAbAB8gH/AZ8BpQHvAf8BkwGaAewB/wGH
-        AY4B6AH/ARABgwHkAf8BBAEMAeAB/wEAAQEB2wH/AgAB1gH/AgAB0QH/AgABzAH/AgAByAH/AgABywH/
-        Ak0BTgGWLAADTgGZAwAB/wNRAaEwAAMdASoDWwHIAfsB3AETAf8B+wHcARAB/wH7AdwBDgH/AfsB2wEN
-        Af8B+wHbAQ0B/wH7AdwBDgH/AfsB3AEQAf8B+wHcARQB/wNbAcgDHQEqSAADAgEDA00BkQKZAeoB/wKd
-        AesB/wKcAesB/wNOAZgIAAMCAQMCTQFOAZYBAgEKAdEB/wG+AcIB9AH/AbEBtgHzAf8BpgGrAfAB/wGa
-        AaAB7QH/AY4BlQHpAf8BggGJAeUB/wELARMB4QH/AQABBwHdAf8CAAHYAf8BAAEGAdgB/wIAAckB/wJN
-        AU4BlgMCAQMsAANIAYUDAAH/A04BlzcAAQEDLwFJA1IBowNgAd4DagH5A2oB+QNgAd4DUgGjAy8BSQMA
-        AQFUAANBAXIDWQH1A2AB1gMYASIQAAM1AVYCXQFhAeIBgQGIAdkB/wGyAbcB7gH/AbQBuQHzAf8BoQGn
-        Ae4B/wGVAZwB6wH/AZUBmwHpAf8BjAGSAeMB/wEAAQUB0QH/Al0BYQHiAzUBVjQAA0UBfwMAAf8DRQF/
-        RwABAQMAAQFoAAMCAQMcAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQdkAAFC
-        AU0BPgcAAT4DAAEoAwABUAMAASgDAAEBAQABAQUAAeABARYAA//xAAH/AZ8D/wH4AQEB/wH5Af8CAAH4
-        AQED/wHwAQAB/wH4Af8CAAHwAQAB8AEAAQ8BwAEAAT8B+AH/AgAB4AEAAXABAAEDAcABAAE/AfgB/wIA
-        AcABAAE4AQABAQGAAQABHwH4Ae8CAAGAAQABHAEPAYcCAAEPAfABfwIAAYABAAEcAQcB/wIAAQ8B8AH/
-        AgABgAEAAR4BAwH/AgABDwHYAd8CAAGAAQABHwEBAf8CAAEMAQ0BnwQAAQ8BwAH/AgABCAECBQABDwHg
-        AT8CAAEIAQUDAAGAAQABHwHwAR8CAAEPAdgBnwIAAYABAAEfAfgBDwIAAQ8B8AFfAgABgAEAAR8B/AEH
-        AgABDwHwAX8CAAGAAQABHwH+AQMCAAEPAfgB/wIAAcABAAE/Af8BAQGAAQABHwH4Af8CAAHgAQABfwH/
-        AYABwAEAAT8B+AH/AgAB8AEAAv8CwAEAAT8B+AH/AgAB+AEBAv8C8AEAAf8B+AH/AgAB/wGfAv8B+wH4
-        AQED/wIACw==
+        AUkBXQJfAfMBAAG+AfkB/wEAAaEB7gH/AQABDgHOAf8BVQJWAbQDCgENFAADXwHgAYsBkgHsAf8BAwEL
+        AeYB/wIAAeIB/wGoAa0B7gH/AbQBuAHvAf8BrgGzAe0B/wGfAaQB6AH/AZcBnQHlAf8BlgGcAeQB/wGW
+        AZwB4gH/AZUBmwHhAf8BlQGaAd8B/wGUAZoB3gH/AZQBmQHdAf8BCwGAAdIB/wIAAakB/wIAAaYB/wIA
+        Aa0B/wNfAeAbAAH/CAADMgFRAwAB/wM0AVUEAANZAckDAAH+GAADUgGkAfQBzwEAAf8B8wHMAQAB/wHz
+        AcwBAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfkB6gHAAf8B/QH5AfMB/wH9AfkB8wH/AfkB6wHD
+        Af8B8wHMAQAB/wHzAcwBAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfQBzwEAAf8DUgGkKAADJAE1
+        A2IB6QEAAcUB+wH/AQABqwHyAf8BAAGDAdQB/wFcAl4BzgMUARsQAAJUAVYBqwGZAZ8B6gH/AYQBjAHr
+        Af8BCQGBAecB/wEAAQYB4wH/AgAB3wH/AgAB2gH/AgAB1AH/AgAByQH/AgABwwH/AgABvwH/AgABvAH/
+        AgABuQH/AgABtgH/AgABswH/AgABrwH/AgABrAH/AgABqQH/AgABvAH/AlQBVgGrIwABAQMAAf8DAAH/
+        AwAB/wMDAQQHAAEBGAADLwFJAfYB0gEAAf8B9QHQAQAB/wH1Ac8BAAH/AfUBzwEAAf8B9QHPAQAB/wH1
+        Ac8BAAH/AfoB7QHGAf8B/gH8AfkB/wH+AfwB+QH/AfsB7gHKAf8B9QHPAQAB/wH1Ac8BAAH/AfUBzwEA
+        Af8B9QHPAQAB/wH1AdABAAH/AfYB1AEAAf8DLwFJLAADGgEkA18B2wEAAcoB/AH/AQABswH1Af8BAAGL
+        AdoB/wFYAl8B4wMjATMMAAM3AVoBCAEQAdgB/wGXAZ0B7wH/AYsBkgHsAf8BEAGHAegB/wEEAQ0B5AH/
+        AQABAQHgAf8CAAHbAf8CAAHWAf8CAAHNAf8CAAHDAf8CAAG/Af8CAAG8Af8CAAG5Af8CAAG2Af8CAAGz
+        Af8CAAGvAf8CAAGsAf8CAAHCAf8DNwFaIwAB/wMAAf8DAAH/AwAB/wMAAf8jAAEBA1sByAH3AdUBAAH/
+        AfcB0wEAAf8B9wHTAQAB/wH3AdMBAAH/AfcB0wEAAf8B/AHvAcoC/wH9AfwC/wH9AfwB/wH8AfABzQH/
+        AfcB0wEAAf8B9wHTAQAB/wH3AdMBAAH/AfcB0wEAAf8B9wHVAQAB/wNbAcgDAAEBMAADEAEWA10BygEA
+        Ac4B/QH/AQABugHtAf8BpAGuAbkB/wNZAfUCNQE2AVgIAAMFAQcCXQFhAeIBrgGzAfIB/wGdAaQB8AH/
+        AZIBmQHtAf8BhgGNAekB/wELAYIB5QH/AQABBwHhAf8CAAHdAf8CAAHYAf8CAAHSAf8CAAHJAf8CAAHB
+        Af8CAAG8Af8CAAG5Af8CAAG2Af8CAAGzAf8CAAG8Af8CXQFhAeIDBQEHJAADTgGZAwAB/wNRAaEoAAMd
+        ASoDZwHyAfkB1wEAAf8B+QHWAQAB/wH5AdYBAAH/AfkB1gEAAf8B+AHWAQAB/wH4AdYBAAH/AfgB1gEA
+        Af8B+AHWAQAB/wH5AdYBAAH/AfkB1gEAAf8B+QHWAQAB/wH5AdcBAAH/A2cB8gMdASo4AAMJAQwDVgG2
+        AbIBzgHWAf8CAAGzAf8CiwGuAf8CQAGoAf0DQQFyCAADNQFWAQABBAHRAf8BsgG3AfQB/wGkAaoB8QH/
+        AZgBnwHuAf8BjAGUAesB/wGBAYgB5wH/AQUBDgHjAf8BAAECAd4B/wIAAdoB/wIAAdUB/wIAAc8B/wIA
+        AcgB/wIAAcIB/wIAAbwB/wIAAboB/wIAAcUB/wM1AVYoAANOAZkDAAH/A1EBoSwAAysBQgNnAfIB+gHa
+        AQcB/wH6AdkBAgH/AfoB2AEBAf8B+gHYAQAB/wH6AdgBAAH/AfoB2AEAAf8B+gHYAQAB/wH6AdgBAQH/
+        AfoB2QECAf8B+gHaAQcB/wNnAfIDKwFCQAADBAEFA1QBrAGjAZ4B1wH/AQ0BDAHdAf8CAwHdAf8CAQHd
+        Af8DPQFoCAACTQFOAZYBhQGMAdoB/wG4Ab0B9QH/AasBsAHyAf8BnwGlAe8B/wGTAZoB7AH/AYcBjgHo
+        Af8BDAGDAeQB/wEAAQgB4AH/AgAB2wH/AgAB1gH/AgAB0QH/AgABzAH/AgAByAH/AgABywH/Ak0BTgGW
+        LAADTgGZAwAB/wNRAaEwAAMdASoDWwHIAfsB3AEPAf8B+wHcAQwB/wH7AdwBCgH/AfsB2wEJAf8B+wHb
+        AQkB/wH7AdwBCgH/AfsB3AEMAf8B+wHcARAB/wNbAcgDHQEqSAADAgEDA00BkQKZAeoB/wKdAesB/wKc
+        AesB/wNOAZgIAAMCAQMCTQFOAZYBAAEGAdEB/wG+AcIB9AH/AbEBtgHzAf8BpgGrAfAB/wGaAaAB7QH/
+        AY4BlQHpAf8BggGJAeUB/wEHAQ8B4QH/AQABAwHdAf8CAAHYAf8BAAECAdgB/wIAAckB/wJNAU4BlgMC
+        AQMsAANIAYUDAAH/A04BlzcAAQEDLwFJA1IBowNgAd4DagH5A2oB+QNgAd4DUgGjAy8BSQMAAQFUAANB
+        AXIDWQH1A2AB1gMYASIQAAM1AVYCXQFhAeIBgQGIAdkB/wGyAbcB7gH/AbQBuQHzAf8BoQGnAe4B/wGV
+        AZwB6wH/AZUBmwHpAf8BjAGSAeMB/wEAAQEB0QH/Al0BYQHiAzUBVjQAA0UBfwMAAf8DRQF/RwABAQMA
+        AQFoAAMCAQMcAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQdkAAFCAU0BPgcA
+        AT4DAAEoAwABUAMAASgDAAEBAQABAQUAAeABARYAA//xAAH/AZ8D/wH4AQEB/wH5Af8CAAH4AQED/wHw
+        AQAB/wH4Af8CAAHwAQAB8AEAAQ8BwAEAAT8B+AH/AgAB4AEAAXABAAEDAcABAAE/AfgB/wIAAcABAAE4
+        AQABAQGAAQABHwH4Ae8CAAGAAQABHAEPAYcCAAEPAfABfwIAAYABAAEcAQcB/wIAAQ8B8AH/AgABgAEA
+        AR4BAwH/AgABDwHYAd8CAAGAAQABHwEBAf8CAAEMAQ0BnwQAAQ8BwAH/AgABCAECBQABDwHgAT8CAAEI
+        AQUDAAGAAQABHwHwAR8CAAEPAdgBnwIAAYABAAEfAfgBDwIAAQ8B8AFfAgABgAEAAR8B/AEHAgABDwHw
+        AX8CAAGAAQABHwH+AQMCAAEPAfgB/wIAAcABAAE/Af8BAQGAAQABHwH4Af8CAAHgAQABfwH/AYABwAEA
+        AT8B+AH/AgAB8AEAAv8CwAEAAT8B+AH/AgAB+AEBAv8C8AEAAf8B+AH/AgAB/wGfAv8B+wH4AQED/wIA
+        Cw==
 </value>
   </data>
   <data name="bCenterizeDialogShower.Location" type="System.Drawing.Point, System.Drawing">
@@ -947,6 +659,75 @@
   <data name="&gt;&gt;bAddDialog.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="panelDialogTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panelDialogTools.Location" type="System.Drawing.Point, System.Drawing">
+    <value>972, 16</value>
+  </data>
+  <data name="panelDialogTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 403</value>
+  </data>
+  <data name="panelDialogTools.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panelDialogTools.Name" xml:space="preserve">
+    <value>panelDialogTools</value>
+  </data>
+  <data name="&gt;&gt;panelDialogTools.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelDialogTools.Parent" xml:space="preserve">
+    <value>gbDialogsEditor</value>
+  </data>
+  <data name="&gt;&gt;panelDialogTools.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gbDialogsEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="gbDialogsEditor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gbDialogsEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1176, 422</value>
+  </data>
+  <data name="gbDialogsEditor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="gbDialogsEditor.Text" xml:space="preserve">
+    <value>Правка диалогов</value>
+  </data>
+  <data name="&gt;&gt;gbDialogsEditor.Name" xml:space="preserve">
+    <value>gbDialogsEditor</value>
+  </data>
+  <data name="&gt;&gt;gbDialogsEditor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbDialogsEditor.Parent" xml:space="preserve">
+    <value>splitDialogs.Panel1</value>
+  </data>
+  <data name="&gt;&gt;gbDialogsEditor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Panel1.Name" xml:space="preserve">
+    <value>splitDialogs.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Panel1.Parent" xml:space="preserve">
+    <value>splitDialogs</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitDialogs.Panel1MinSize" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="gbEmulator.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="splitDialogsEmulator.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -999,6 +780,69 @@
     <value>gbEmulator</value>
   </data>
   <data name="&gt;&gt;splitDialogsEmulator.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbEmulator.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="gbEmulator.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gbEmulator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1176, 109</value>
+  </data>
+  <data name="gbEmulator.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="gbEmulator.Text" xml:space="preserve">
+    <value>Эмулятор</value>
+  </data>
+  <data name="&gt;&gt;gbEmulator.Name" xml:space="preserve">
+    <value>gbEmulator</value>
+  </data>
+  <data name="&gt;&gt;gbEmulator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbEmulator.Parent" xml:space="preserve">
+    <value>splitDialogs.Panel2</value>
+  </data>
+  <data name="&gt;&gt;gbEmulator.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Panel2.Name" xml:space="preserve">
+    <value>splitDialogs.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Panel2.Parent" xml:space="preserve">
+    <value>splitDialogs</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitDialogs.Panel2MinSize" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="splitDialogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1176, 535</value>
+  </data>
+  <data name="splitDialogs.SplitterDistance" type="System.Int32, mscorlib">
+    <value>422</value>
+  </data>
+  <data name="splitDialogs.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Name" xml:space="preserve">
+    <value>splitDialogs</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.Parent" xml:space="preserve">
+    <value>tabDialogs</value>
+  </data>
+  <data name="&gt;&gt;splitDialogs.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="splitQuestsContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -1241,713 +1085,8 @@
   <data name="&gt;&gt;tabDialogs.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;panelQuestTools.Name" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;panelQuestTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelQuestTools.Parent" xml:space="preserve">
-    <value>tabQuests</value>
-  </data>
-  <data name="&gt;&gt;panelQuestTools.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panelSelectQuest.Name" xml:space="preserve">
-    <value>panelSelectQuest</value>
-  </data>
-  <data name="&gt;&gt;panelSelectQuest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelSelectQuest.Parent" xml:space="preserve">
-    <value>tabQuests</value>
-  </data>
-  <data name="&gt;&gt;panelSelectQuest.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabQuests.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabQuests.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabQuests.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 541</value>
-  </data>
-  <data name="tabQuests.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabQuests.Text" xml:space="preserve">
-    <value>Квесты</value>
-  </data>
-  <data name="&gt;&gt;tabQuests.Name" xml:space="preserve">
-    <value>tabQuests</value>
-  </data>
-  <data name="&gt;&gt;tabQuests.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabQuests.Parent" xml:space="preserve">
-    <value>CentralDock</value>
-  </data>
-  <data name="&gt;&gt;tabQuests.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;bRemoveFracDialog.Name" xml:space="preserve">
-    <value>bRemoveFracDialog</value>
-  </data>
-  <data name="&gt;&gt;bRemoveFracDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bRemoveFracDialog.Parent" xml:space="preserve">
-    <value>tabFraction</value>
-  </data>
-  <data name="&gt;&gt;bRemoveFracDialog.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;bEditFracDialog.Name" xml:space="preserve">
-    <value>bEditFracDialog</value>
-  </data>
-  <data name="&gt;&gt;bEditFracDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bEditFracDialog.Parent" xml:space="preserve">
-    <value>tabFraction</value>
-  </data>
-  <data name="&gt;&gt;bEditFracDialog.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;bAddFracDialog.Name" xml:space="preserve">
-    <value>bAddFracDialog</value>
-  </data>
-  <data name="&gt;&gt;bAddFracDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bAddFracDialog.Parent" xml:space="preserve">
-    <value>tabFraction</value>
-  </data>
-  <data name="&gt;&gt;bAddFracDialog.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;treeFractionDialogs.Name" xml:space="preserve">
-    <value>treeFractionDialogs</value>
-  </data>
-  <data name="&gt;&gt;treeFractionDialogs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;treeFractionDialogs.Parent" xml:space="preserve">
-    <value>tabFraction</value>
-  </data>
-  <data name="&gt;&gt;treeFractionDialogs.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;fractionDialogShower.Name" xml:space="preserve">
-    <value>fractionDialogShower</value>
-  </data>
-  <data name="&gt;&gt;fractionDialogShower.Type" xml:space="preserve">
-    <value>UMD.HCIL.Piccolo.PCanvas, UMD.HCIL.Piccolo, Version=1.0.2165.24847, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;fractionDialogShower.Parent" xml:space="preserve">
-    <value>tabFraction</value>
-  </data>
-  <data name="&gt;&gt;fractionDialogShower.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tabFraction</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;fractionBox.Name" xml:space="preserve">
-    <value>fractionBox</value>
-  </data>
-  <data name="&gt;&gt;fractionBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fractionBox.Parent" xml:space="preserve">
-    <value>tabFraction</value>
-  </data>
-  <data name="&gt;&gt;fractionBox.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="tabFraction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabFraction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 541</value>
-  </data>
-  <data name="tabFraction.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;tabFraction.Name" xml:space="preserve">
-    <value>tabFraction</value>
-  </data>
-  <data name="&gt;&gt;tabFraction.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabFraction.Parent" xml:space="preserve">
-    <value>CentralDock</value>
-  </data>
-  <data name="&gt;&gt;tabFraction.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;npcLinkShower.Name" xml:space="preserve">
-    <value>npcLinkShower</value>
-  </data>
-  <data name="&gt;&gt;npcLinkShower.Type" xml:space="preserve">
-    <value>UMD.HCIL.Piccolo.PCanvas, UMD.HCIL.Piccolo, Version=1.0.2165.24847, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;npcLinkShower.Parent" xml:space="preserve">
-    <value>tabInfoNPC</value>
-  </data>
-  <data name="&gt;&gt;npcLinkShower.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panelNpcLinkControls.Name" xml:space="preserve">
-    <value>panelNpcLinkControls</value>
-  </data>
-  <data name="&gt;&gt;panelNpcLinkControls.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelNpcLinkControls.Parent" xml:space="preserve">
-    <value>tabInfoNPC</value>
-  </data>
-  <data name="&gt;&gt;panelNpcLinkControls.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabInfoNPC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabInfoNPC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 541</value>
-  </data>
-  <data name="tabInfoNPC.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabInfoNPC.Text" xml:space="preserve">
-    <value>Инфо NPC</value>
-  </data>
-  <data name="&gt;&gt;tabInfoNPC.Name" xml:space="preserve">
-    <value>tabInfoNPC</value>
-  </data>
-  <data name="&gt;&gt;tabInfoNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabInfoNPC.Parent" xml:space="preserve">
-    <value>CentralDock</value>
-  </data>
-  <data name="&gt;&gt;tabInfoNPC.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;dgvReview.Name" xml:space="preserve">
-    <value>dgvReview</value>
-  </data>
-  <data name="&gt;&gt;dgvReview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvReview.Parent" xml:space="preserve">
-    <value>tabReview</value>
-  </data>
-  <data name="&gt;&gt;dgvReview.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panelReviewButtons.Name" xml:space="preserve">
-    <value>panelReviewButtons</value>
-  </data>
-  <data name="&gt;&gt;panelReviewButtons.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelReviewButtons.Parent" xml:space="preserve">
-    <value>tabReview</value>
-  </data>
-  <data name="&gt;&gt;panelReviewButtons.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabReview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabReview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 541</value>
-  </data>
-  <data name="tabReview.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tabReview.Text" xml:space="preserve">
-    <value>Проверки</value>
-  </data>
-  <data name="&gt;&gt;tabReview.Name" xml:space="preserve">
-    <value>tabReview</value>
-  </data>
-  <data name="&gt;&gt;tabReview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabReview.Parent" xml:space="preserve">
-    <value>CentralDock</value>
-  </data>
-  <data name="&gt;&gt;tabReview.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;dgvManage.Name" xml:space="preserve">
-    <value>dgvManage</value>
-  </data>
-  <data name="&gt;&gt;dgvManage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvManage.Parent" xml:space="preserve">
-    <value>tabManage</value>
-  </data>
-  <data name="&gt;&gt;dgvManage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>tabManage</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabManage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabManage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 541</value>
-  </data>
-  <data name="tabManage.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tabManage.Text" xml:space="preserve">
-    <value>Управление</value>
-  </data>
-  <data name="&gt;&gt;tabManage.Name" xml:space="preserve">
-    <value>tabManage</value>
-  </data>
-  <data name="&gt;&gt;tabManage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabManage.Parent" xml:space="preserve">
-    <value>CentralDock</value>
-  </data>
-  <data name="&gt;&gt;tabManage.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;dgvLocaleDiff.Name" xml:space="preserve">
-    <value>dgvLocaleDiff</value>
-  </data>
-  <data name="&gt;&gt;dgvLocaleDiff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvLocaleDiff.Parent" xml:space="preserve">
-    <value>tabTranslate</value>
-  </data>
-  <data name="&gt;&gt;dgvLocaleDiff.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panelDiffLocale.Name" xml:space="preserve">
-    <value>panelDiffLocale</value>
-  </data>
-  <data name="&gt;&gt;panelDiffLocale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelDiffLocale.Parent" xml:space="preserve">
-    <value>tabTranslate</value>
-  </data>
-  <data name="&gt;&gt;panelDiffLocale.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabTranslate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabTranslate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 541</value>
-  </data>
-  <data name="tabTranslate.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tabTranslate.Text" xml:space="preserve">
-    <value>Переводы</value>
-  </data>
-  <data name="&gt;&gt;tabTranslate.Name" xml:space="preserve">
-    <value>tabTranslate</value>
-  </data>
-  <data name="&gt;&gt;tabTranslate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabTranslate.Parent" xml:space="preserve">
-    <value>CentralDock</value>
-  </data>
-  <data name="&gt;&gt;tabTranslate.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;dgvSearch.Name" xml:space="preserve">
-    <value>dgvSearch</value>
-  </data>
-  <data name="&gt;&gt;dgvSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvSearch.Parent" xml:space="preserve">
-    <value>tabSearch</value>
-  </data>
-  <data name="&gt;&gt;dgvSearch.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panelSearchTools.Name" xml:space="preserve">
-    <value>panelSearchTools</value>
-  </data>
-  <data name="&gt;&gt;panelSearchTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelSearchTools.Parent" xml:space="preserve">
-    <value>tabSearch</value>
-  </data>
-  <data name="&gt;&gt;panelSearchTools.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabSearch.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 541</value>
-  </data>
-  <data name="tabSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tabSearch.Text" xml:space="preserve">
-    <value>Поиск</value>
-  </data>
-  <data name="&gt;&gt;tabSearch.Name" xml:space="preserve">
-    <value>tabSearch</value>
-  </data>
-  <data name="&gt;&gt;tabSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabSearch.Parent" xml:space="preserve">
-    <value>CentralDock</value>
-  </data>
-  <data name="&gt;&gt;tabSearch.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="treeKnowladge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="treeKnowladge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 38</value>
-  </data>
-  <data name="treeKnowladge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>317, 500</value>
-  </data>
-  <data name="treeKnowladge.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;treeKnowladge.Name" xml:space="preserve">
-    <value>treeKnowladge</value>
-  </data>
-  <data name="&gt;&gt;treeKnowladge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;treeKnowladge.Parent" xml:space="preserve">
-    <value>tabKnowledge</value>
-  </data>
-  <data name="&gt;&gt;treeKnowladge.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cbKnowlegeTypeValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>329, 11</value>
-  </data>
-  <data name="cbKnowlegeTypeValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 21</value>
-  </data>
-  <data name="cbKnowlegeTypeValue.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cbKnowlegeTypeValue.Name" xml:space="preserve">
-    <value>cbKnowlegeTypeValue</value>
-  </data>
-  <data name="&gt;&gt;cbKnowlegeTypeValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbKnowlegeTypeValue.Parent" xml:space="preserve">
-    <value>tabKnowledge</value>
-  </data>
-  <data name="&gt;&gt;cbKnowlegeTypeValue.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 14</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>NPC:</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>tabKnowledge</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 13</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Категория знаний:</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>tabKnowledge</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cbKnowledgeCategory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 11</value>
-  </data>
-  <data name="cbKnowledgeCategory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="cbKnowledgeCategory.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbKnowledgeCategory.Name" xml:space="preserve">
-    <value>cbKnowledgeCategory</value>
-  </data>
-  <data name="&gt;&gt;cbKnowledgeCategory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbKnowledgeCategory.Parent" xml:space="preserve">
-    <value>tabKnowledge</value>
-  </data>
-  <data name="&gt;&gt;cbKnowledgeCategory.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabKnowledge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabKnowledge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 541</value>
-  </data>
-  <data name="tabKnowledge.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="tabKnowledge.Text" xml:space="preserve">
-    <value>Знания</value>
-  </data>
-  <data name="&gt;&gt;tabKnowledge.Name" xml:space="preserve">
-    <value>tabKnowledge</value>
-  </data>
-  <data name="&gt;&gt;tabKnowledge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabKnowledge.Parent" xml:space="preserve">
-    <value>CentralDock</value>
-  </data>
-  <data name="&gt;&gt;tabKnowledge.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="CentralDock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="CentralDock.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>90, 18</value>
-  </data>
-  <data name="CentralDock.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 53</value>
-  </data>
-  <data name="CentralDock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1190, 567</value>
-  </data>
-  <data name="CentralDock.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;CentralDock.Name" xml:space="preserve">
-    <value>CentralDock</value>
-  </data>
-  <data name="&gt;&gt;CentralDock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CentralDock.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;CentralDock.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="panelQuestTools.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;bClearBuffer.Name" xml:space="preserve">
-    <value>bClearBuffer</value>
-  </data>
-  <data name="&gt;&gt;bClearBuffer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bClearBuffer.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;bClearBuffer.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;bCutEvents.Name" xml:space="preserve">
-    <value>bCutEvents</value>
-  </data>
-  <data name="&gt;&gt;bCutEvents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bCutEvents.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;bCutEvents.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;bPasteEvents.Name" xml:space="preserve">
-    <value>bPasteEvents</value>
-  </data>
-  <data name="&gt;&gt;bPasteEvents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bPasteEvents.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;bPasteEvents.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;bCopyEvents.Name" xml:space="preserve">
-    <value>bCopyEvents</value>
-  </data>
-  <data name="&gt;&gt;bCopyEvents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bCopyEvents.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;bCopyEvents.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;bQuestDown.Name" xml:space="preserve">
-    <value>bQuestDown</value>
-  </data>
-  <data name="&gt;&gt;bQuestDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bQuestDown.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;bQuestDown.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;bQuestUp.Name" xml:space="preserve">
-    <value>bQuestUp</value>
-  </data>
-  <data name="&gt;&gt;bQuestUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bQuestUp.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;bQuestUp.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;bRemoveEvent.Name" xml:space="preserve">
-    <value>bRemoveEvent</value>
-  </data>
-  <data name="&gt;&gt;bRemoveEvent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bRemoveEvent.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;bRemoveEvent.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;bEditEvent.Name" xml:space="preserve">
-    <value>bEditEvent</value>
-  </data>
-  <data name="&gt;&gt;bEditEvent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bEditEvent.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;bEditEvent.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;bAddEvent.Name" xml:space="preserve">
-    <value>bAddEvent</value>
-  </data>
-  <data name="&gt;&gt;bAddEvent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bAddEvent.Parent" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;bAddEvent.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="panelQuestTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="panelQuestTools.Location" type="System.Drawing.Point, System.Drawing">
-    <value>981, 48</value>
-  </data>
-  <data name="panelQuestTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 490</value>
-  </data>
-  <data name="panelQuestTools.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panelQuestTools.Name" xml:space="preserve">
-    <value>panelQuestTools</value>
-  </data>
-  <data name="&gt;&gt;panelQuestTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelQuestTools.Parent" xml:space="preserve">
-    <value>tabQuests</value>
-  </data>
-  <data name="&gt;&gt;panelQuestTools.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="bClearBuffer.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 327</value>
@@ -2219,77 +1358,29 @@
   <data name="&gt;&gt;bAddEvent.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;bRemoveQuest.Name" xml:space="preserve">
-    <value>bRemoveQuest</value>
+  <data name="panelQuestTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
   </data>
-  <data name="&gt;&gt;bRemoveQuest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="panelQuestTools.Location" type="System.Drawing.Point, System.Drawing">
+    <value>981, 48</value>
   </data>
-  <data name="&gt;&gt;bRemoveQuest.Parent" xml:space="preserve">
-    <value>panelSelectQuest</value>
+  <data name="panelQuestTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 490</value>
   </data>
-  <data name="&gt;&gt;bRemoveQuest.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;bAddQuest.Name" xml:space="preserve">
-    <value>bAddQuest</value>
-  </data>
-  <data name="&gt;&gt;bAddQuest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bAddQuest.Parent" xml:space="preserve">
-    <value>panelSelectQuest</value>
-  </data>
-  <data name="&gt;&gt;bAddQuest.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;QuestBox.Name" xml:space="preserve">
-    <value>QuestBox</value>
-  </data>
-  <data name="&gt;&gt;QuestBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;QuestBox.Parent" xml:space="preserve">
-    <value>panelSelectQuest</value>
-  </data>
-  <data name="&gt;&gt;QuestBox.ZOrder" xml:space="preserve">
+  <data name="panelQuestTools.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;labelChosenQuest.Name" xml:space="preserve">
-    <value>labelChosenQuest</value>
+  <data name="&gt;&gt;panelQuestTools.Name" xml:space="preserve">
+    <value>panelQuestTools</value>
   </data>
-  <data name="&gt;&gt;labelChosenQuest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelChosenQuest.Parent" xml:space="preserve">
-    <value>panelSelectQuest</value>
-  </data>
-  <data name="&gt;&gt;labelChosenQuest.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="panelSelectQuest.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panelSelectQuest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="panelSelectQuest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1176, 45</value>
-  </data>
-  <data name="panelSelectQuest.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;panelSelectQuest.Name" xml:space="preserve">
-    <value>panelSelectQuest</value>
-  </data>
-  <data name="&gt;&gt;panelSelectQuest.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelQuestTools.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panelSelectQuest.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelQuestTools.Parent" xml:space="preserve">
     <value>tabQuests</value>
   </data>
-  <data name="&gt;&gt;panelSelectQuest.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;panelQuestTools.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="bRemoveQuest.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2395,6 +1486,57 @@
   </data>
   <data name="&gt;&gt;labelChosenQuest.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="panelSelectQuest.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelSelectQuest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panelSelectQuest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1176, 45</value>
+  </data>
+  <data name="panelSelectQuest.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panelSelectQuest.Name" xml:space="preserve">
+    <value>panelSelectQuest</value>
+  </data>
+  <data name="&gt;&gt;panelSelectQuest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelSelectQuest.Parent" xml:space="preserve">
+    <value>tabQuests</value>
+  </data>
+  <data name="&gt;&gt;panelSelectQuest.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabQuests.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabQuests.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabQuests.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 541</value>
+  </data>
+  <data name="tabQuests.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabQuests.Text" xml:space="preserve">
+    <value>Квесты</value>
+  </data>
+  <data name="&gt;&gt;tabQuests.Name" xml:space="preserve">
+    <value>tabQuests</value>
+  </data>
+  <data name="&gt;&gt;tabQuests.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabQuests.Parent" xml:space="preserve">
+    <value>CentralDock</value>
+  </data>
+  <data name="&gt;&gt;tabQuests.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="bRemoveFracDialog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -2627,6 +1769,27 @@
   <data name="&gt;&gt;fractionBox.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="tabFraction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabFraction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 541</value>
+  </data>
+  <data name="tabFraction.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tabFraction.Name" xml:space="preserve">
+    <value>tabFraction</value>
+  </data>
+  <data name="&gt;&gt;tabFraction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabFraction.Parent" xml:space="preserve">
+    <value>CentralDock</value>
+  </data>
+  <data name="&gt;&gt;tabFraction.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="npcLinkShower.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -2656,54 +1819,6 @@
   </data>
   <data name="&gt;&gt;npcLinkShower.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;labelAdviceNpcLink.Name" xml:space="preserve">
-    <value>labelAdviceNpcLink</value>
-  </data>
-  <data name="&gt;&gt;labelAdviceNpcLink.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelAdviceNpcLink.Parent" xml:space="preserve">
-    <value>panelNpcLinkControls</value>
-  </data>
-  <data name="&gt;&gt;labelAdviceNpcLink.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;bNpcLinkExecute.Name" xml:space="preserve">
-    <value>bNpcLinkExecute</value>
-  </data>
-  <data name="&gt;&gt;bNpcLinkExecute.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bNpcLinkExecute.Parent" xml:space="preserve">
-    <value>panelNpcLinkControls</value>
-  </data>
-  <data name="&gt;&gt;bNpcLinkExecute.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panelNpcLinkControls.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panelNpcLinkControls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panelNpcLinkControls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 52</value>
-  </data>
-  <data name="panelNpcLinkControls.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panelNpcLinkControls.Name" xml:space="preserve">
-    <value>panelNpcLinkControls</value>
-  </data>
-  <data name="&gt;&gt;panelNpcLinkControls.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelNpcLinkControls.Parent" xml:space="preserve">
-    <value>tabInfoNPC</value>
-  </data>
-  <data name="&gt;&gt;panelNpcLinkControls.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="labelAdviceNpcLink.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2756,47 +1871,53 @@
   <data name="&gt;&gt;bNpcLinkExecute.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="colNPCName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colDialogsNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colQuestsNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colLocation.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colCoordinates.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colRussianName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dgvReview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="panelNpcLinkControls.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="dgvReview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 104</value>
+  <data name="panelNpcLinkControls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="dgvReview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 437</value>
+  <data name="panelNpcLinkControls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 52</value>
   </data>
-  <data name="dgvReview.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelNpcLinkControls.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelNpcLinkControls.Name" xml:space="preserve">
+    <value>panelNpcLinkControls</value>
+  </data>
+  <data name="&gt;&gt;panelNpcLinkControls.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelNpcLinkControls.Parent" xml:space="preserve">
+    <value>tabInfoNPC</value>
+  </data>
+  <data name="&gt;&gt;panelNpcLinkControls.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;dgvReview.Name" xml:space="preserve">
-    <value>dgvReview</value>
+  <data name="tabInfoNPC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;dgvReview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tabInfoNPC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 541</value>
   </data>
-  <data name="&gt;&gt;dgvReview.Parent" xml:space="preserve">
-    <value>tabReview</value>
+  <data name="tabInfoNPC.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;dgvReview.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="tabInfoNPC.Text" xml:space="preserve">
+    <value>Инфо NPC</value>
+  </data>
+  <data name="&gt;&gt;tabInfoNPC.Name" xml:space="preserve">
+    <value>tabInfoNPC</value>
+  </data>
+  <data name="&gt;&gt;tabInfoNPC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabInfoNPC.Parent" xml:space="preserve">
+    <value>CentralDock</value>
+  </data>
+  <data name="&gt;&gt;tabInfoNPC.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <metadata name="colNPCName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2840,121 +1961,28 @@
   <data name="colRussianName.Width" type="System.Int32, mscorlib">
     <value>150</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="dgvReview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="dgvReview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 104</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>panelReviewButtons</value>
+  <data name="dgvReview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 437</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;gbNPCcheck.Name" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;gbNPCcheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbNPCcheck.Parent" xml:space="preserve">
-    <value>panelReviewButtons</value>
-  </data>
-  <data name="&gt;&gt;gbNPCcheck.ZOrder" xml:space="preserve">
+  <data name="dgvReview.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;gbQuestCheck.Name" xml:space="preserve">
-    <value>gbQuestCheck</value>
+  <data name="&gt;&gt;dgvReview.Name" xml:space="preserve">
+    <value>dgvReview</value>
   </data>
-  <data name="&gt;&gt;gbQuestCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;dgvReview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;gbQuestCheck.Parent" xml:space="preserve">
-    <value>panelReviewButtons</value>
-  </data>
-  <data name="&gt;&gt;gbQuestCheck.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="panelReviewButtons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panelReviewButtons.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panelReviewButtons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 104</value>
-  </data>
-  <data name="panelReviewButtons.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panelReviewButtons.Name" xml:space="preserve">
-    <value>panelReviewButtons</value>
-  </data>
-  <data name="&gt;&gt;panelReviewButtons.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelReviewButtons.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dgvReview.Parent" xml:space="preserve">
     <value>tabReview</value>
   </data>
-  <data name="&gt;&gt;panelReviewButtons.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbNPCList.Name" xml:space="preserve">
-    <value>cbNPCList</value>
-  </data>
-  <data name="&gt;&gt;cbNPCList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbNPCList.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;cbNPCList.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;bFindNPCReputation.Name" xml:space="preserve">
-    <value>bFindNPCReputation</value>
-  </data>
-  <data name="&gt;&gt;bFindNPCReputation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bFindNPCReputation.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;bFindNPCReputation.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>903, 4</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 100</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>panelReviewButtons</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;dgvReview.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
@@ -3020,137 +2048,26 @@
   <data name="&gt;&gt;bFindNPCReputation.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;cbOnlyOnLocation.Name" xml:space="preserve">
-    <value>cbOnlyOnLocation</value>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>903, 4</value>
   </data>
-  <data name="&gt;&gt;cbOnlyOnLocation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 100</value>
   </data>
-  <data name="&gt;&gt;cbOnlyOnLocation.Parent" xml:space="preserve">
-    <value>gbNPCcheck</value>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
   </data>
-  <data name="&gt;&gt;cbOnlyOnLocation.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;cbLocation.Name" xml:space="preserve">
-    <value>cbLocation</value>
-  </data>
-  <data name="&gt;&gt;cbLocation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbLocation.Parent" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;cbLocation.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numQuests.Name" xml:space="preserve">
-    <value>numQuests</value>
-  </data>
-  <data name="&gt;&gt;numQuests.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numQuests.Parent" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;numQuests.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;labelLessThan2.Name" xml:space="preserve">
-    <value>labelLessThan2</value>
-  </data>
-  <data name="&gt;&gt;labelLessThan2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelLessThan2.Parent" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;labelLessThan2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cbNumQuests.Name" xml:space="preserve">
-    <value>cbNumQuests</value>
-  </data>
-  <data name="&gt;&gt;cbNumQuests.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbNumQuests.Parent" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;cbNumQuests.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;numDialogs.Name" xml:space="preserve">
-    <value>numDialogs</value>
-  </data>
-  <data name="&gt;&gt;numDialogs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numDialogs.Parent" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;numDialogs.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;labelLessThan1.Name" xml:space="preserve">
-    <value>labelLessThan1</value>
-  </data>
-  <data name="&gt;&gt;labelLessThan1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelLessThan1.Parent" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;labelLessThan1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cbNumDialogs.Name" xml:space="preserve">
-    <value>cbNumDialogs</value>
-  </data>
-  <data name="&gt;&gt;cbNumDialogs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbNumDialogs.Parent" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;cbNumDialogs.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;bFindNPC.Name" xml:space="preserve">
-    <value>bFindNPC</value>
-  </data>
-  <data name="&gt;&gt;bFindNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bFindNPC.Parent" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;bFindNPC.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="gbNPCcheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 4</value>
-  </data>
-  <data name="gbNPCcheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>419, 95</value>
-  </data>
-  <data name="gbNPCcheck.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="gbNPCcheck.Text" xml:space="preserve">
-    <value>NPC</value>
-  </data>
-  <data name="&gt;&gt;gbNPCcheck.Name" xml:space="preserve">
-    <value>gbNPCcheck</value>
-  </data>
-  <data name="&gt;&gt;gbNPCcheck.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;gbNPCcheck.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>panelReviewButtons</value>
   </data>
-  <data name="&gt;&gt;gbNPCcheck.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="cbOnlyOnLocation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3374,89 +2291,29 @@
   <data name="&gt;&gt;bFindNPC.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;labelItemTarget.Name" xml:space="preserve">
-    <value>labelItemTarget</value>
+  <data name="gbNPCcheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
   </data>
-  <data name="&gt;&gt;labelItemTarget.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="gbNPCcheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>419, 95</value>
   </data>
-  <data name="&gt;&gt;labelItemTarget.Parent" xml:space="preserve">
-    <value>gbQuestCheck</value>
-  </data>
-  <data name="&gt;&gt;labelItemTarget.ZOrder" xml:space="preserve">
+  <data name="gbNPCcheck.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;cbItemTarget.Name" xml:space="preserve">
-    <value>cbItemTarget</value>
+  <data name="gbNPCcheck.Text" xml:space="preserve">
+    <value>NPC</value>
   </data>
-  <data name="&gt;&gt;cbItemTarget.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;gbNPCcheck.Name" xml:space="preserve">
+    <value>gbNPCcheck</value>
   </data>
-  <data name="&gt;&gt;cbItemTarget.Parent" xml:space="preserve">
-    <value>gbQuestCheck</value>
-  </data>
-  <data name="&gt;&gt;cbItemTarget.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;labelItemReward.Name" xml:space="preserve">
-    <value>labelItemReward</value>
-  </data>
-  <data name="&gt;&gt;labelItemReward.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelItemReward.Parent" xml:space="preserve">
-    <value>gbQuestCheck</value>
-  </data>
-  <data name="&gt;&gt;labelItemReward.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;cbItemReward.Name" xml:space="preserve">
-    <value>cbItemReward</value>
-  </data>
-  <data name="&gt;&gt;cbItemReward.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbItemReward.Parent" xml:space="preserve">
-    <value>gbQuestCheck</value>
-  </data>
-  <data name="&gt;&gt;cbItemReward.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;bFindQuest.Name" xml:space="preserve">
-    <value>bFindQuest</value>
-  </data>
-  <data name="&gt;&gt;bFindQuest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bFindQuest.Parent" xml:space="preserve">
-    <value>gbQuestCheck</value>
-  </data>
-  <data name="&gt;&gt;bFindQuest.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="gbQuestCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>428, 4</value>
-  </data>
-  <data name="gbQuestCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 95</value>
-  </data>
-  <data name="gbQuestCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="gbQuestCheck.Text" xml:space="preserve">
-    <value>Квест</value>
-  </data>
-  <data name="&gt;&gt;gbQuestCheck.Name" xml:space="preserve">
-    <value>gbQuestCheck</value>
-  </data>
-  <data name="&gt;&gt;gbQuestCheck.Type" xml:space="preserve">
+  <data name="&gt;&gt;gbNPCcheck.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;gbQuestCheck.Parent" xml:space="preserve">
+  <data name="&gt;&gt;gbNPCcheck.Parent" xml:space="preserve">
     <value>panelReviewButtons</value>
   </data>
-  <data name="&gt;&gt;gbQuestCheck.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;gbNPCcheck.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="labelItemTarget.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3578,83 +2435,77 @@
   <data name="&gt;&gt;bFindQuest.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="subevents.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="title.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Description.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="npcName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="subNPC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dialogID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="rewardBattle.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="rewardSurvive.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="rewardSupport.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="rewardCredits.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="rewardItems.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="repeat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="repeatPeriod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Level.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="author.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Legend.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="worked.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dgvManage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="gbQuestCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>428, 4</value>
   </data>
-  <data name="dgvManage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="gbQuestCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 95</value>
+  </data>
+  <data name="gbQuestCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="gbQuestCheck.Text" xml:space="preserve">
+    <value>Квест</value>
+  </data>
+  <data name="&gt;&gt;gbQuestCheck.Name" xml:space="preserve">
+    <value>gbQuestCheck</value>
+  </data>
+  <data name="&gt;&gt;gbQuestCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbQuestCheck.Parent" xml:space="preserve">
+    <value>panelReviewButtons</value>
+  </data>
+  <data name="&gt;&gt;gbQuestCheck.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panelReviewButtons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelReviewButtons.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="dgvManage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 515</value>
+  <data name="panelReviewButtons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 104</value>
   </data>
-  <data name="dgvManage.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelReviewButtons.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;dgvManage.Name" xml:space="preserve">
-    <value>dgvManage</value>
+  <data name="&gt;&gt;panelReviewButtons.Name" xml:space="preserve">
+    <value>panelReviewButtons</value>
   </data>
-  <data name="&gt;&gt;dgvManage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panelReviewButtons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dgvManage.Parent" xml:space="preserve">
-    <value>tabManage</value>
+  <data name="&gt;&gt;panelReviewButtons.Parent" xml:space="preserve">
+    <value>tabReview</value>
   </data>
-  <data name="&gt;&gt;dgvManage.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;panelReviewButtons.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabReview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabReview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 541</value>
+  </data>
+  <data name="tabReview.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabReview.Text" xml:space="preserve">
+    <value>Проверки</value>
+  </data>
+  <data name="&gt;&gt;tabReview.Name" xml:space="preserve">
+    <value>tabReview</value>
+  </data>
+  <data name="&gt;&gt;tabReview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabReview.Parent" xml:space="preserve">
+    <value>CentralDock</value>
+  </data>
+  <data name="&gt;&gt;tabReview.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3764,6 +2615,45 @@
   <data name="worked.HeaderText" xml:space="preserve">
     <value>Рабочий</value>
   </data>
+  <data name="dgvManage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvManage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dgvManage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 515</value>
+  </data>
+  <data name="dgvManage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dgvManage.Name" xml:space="preserve">
+    <value>dgvManage</value>
+  </data>
+  <data name="&gt;&gt;dgvManage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvManage.Parent" xml:space="preserve">
+    <value>tabManage</value>
+  </data>
+  <data name="&gt;&gt;dgvManage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bSaveManage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="bSaveManage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1107, 0</value>
+  </data>
+  <data name="bSaveManage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 26</value>
+  </data>
+  <data name="bSaveManage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="bSaveManage.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
   <data name="&gt;&gt;bSaveManage.Name" xml:space="preserve">
     <value>bSaveManage</value>
   </data>
@@ -3800,80 +2690,29 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="bSaveManage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
+  <data name="tabManage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="bSaveManage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1107, 0</value>
+  <data name="tabManage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 541</value>
   </data>
-  <data name="bSaveManage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 26</value>
+  <data name="tabManage.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="bSaveManage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="tabManage.Text" xml:space="preserve">
+    <value>Управление</value>
   </data>
-  <data name="bSaveManage.Text" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="&gt;&gt;tabManage.Name" xml:space="preserve">
+    <value>tabManage</value>
   </data>
-  <data name="&gt;&gt;bSaveManage.Name" xml:space="preserve">
-    <value>bSaveManage</value>
+  <data name="&gt;&gt;tabManage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bSaveManage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tabManage.Parent" xml:space="preserve">
+    <value>CentralDock</value>
   </data>
-  <data name="&gt;&gt;bSaveManage.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;bSaveManage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="type.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="npc_name.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="identif.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cur_ver.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="new_ver.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ColumnLocation.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="RusText1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="EngText1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dgvLocaleDiff.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="dgvLocaleDiff.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 57</value>
-  </data>
-  <data name="dgvLocaleDiff.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 484</value>
-  </data>
-  <data name="dgvLocaleDiff.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;dgvLocaleDiff.Name" xml:space="preserve">
-    <value>dgvLocaleDiff</value>
-  </data>
-  <data name="&gt;&gt;dgvLocaleDiff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvLocaleDiff.Parent" xml:space="preserve">
-    <value>tabTranslate</value>
-  </data>
-  <data name="&gt;&gt;dgvLocaleDiff.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabManage.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <metadata name="type.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3923,89 +2762,29 @@
   <data name="EngText1.HeaderText" xml:space="preserve">
     <value>English1</value>
   </data>
-  <data name="&gt;&gt;labelLocalizeOuput.Name" xml:space="preserve">
-    <value>labelLocalizeOuput</value>
+  <data name="dgvLocaleDiff.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;labelLocalizeOuput.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="dgvLocaleDiff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 57</value>
   </data>
-  <data name="&gt;&gt;labelLocalizeOuput.Parent" xml:space="preserve">
-    <value>panelDiffLocale</value>
+  <data name="dgvLocaleDiff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 484</value>
   </data>
-  <data name="&gt;&gt;labelLocalizeOuput.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbActualFinder.Name" xml:space="preserve">
-    <value>cbActualFinder</value>
-  </data>
-  <data name="&gt;&gt;cbActualFinder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbActualFinder.Parent" xml:space="preserve">
-    <value>panelDiffLocale</value>
-  </data>
-  <data name="&gt;&gt;cbActualFinder.ZOrder" xml:space="preserve">
+  <data name="dgvLocaleDiff.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;cbOutdatedFinder.Name" xml:space="preserve">
-    <value>cbOutdatedFinder</value>
+  <data name="&gt;&gt;dgvLocaleDiff.Name" xml:space="preserve">
+    <value>dgvLocaleDiff</value>
   </data>
-  <data name="&gt;&gt;cbOutdatedFinder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;dgvLocaleDiff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbOutdatedFinder.Parent" xml:space="preserve">
-    <value>panelDiffLocale</value>
-  </data>
-  <data name="&gt;&gt;cbOutdatedFinder.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;bFindQuestDifference.Name" xml:space="preserve">
-    <value>bFindQuestDifference</value>
-  </data>
-  <data name="&gt;&gt;bFindQuestDifference.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bFindQuestDifference.Parent" xml:space="preserve">
-    <value>panelDiffLocale</value>
-  </data>
-  <data name="&gt;&gt;bFindQuestDifference.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;bFindDialogDifference.Name" xml:space="preserve">
-    <value>bFindDialogDifference</value>
-  </data>
-  <data name="&gt;&gt;bFindDialogDifference.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bFindDialogDifference.Parent" xml:space="preserve">
-    <value>panelDiffLocale</value>
-  </data>
-  <data name="&gt;&gt;bFindDialogDifference.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="panelDiffLocale.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panelDiffLocale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panelDiffLocale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 57</value>
-  </data>
-  <data name="panelDiffLocale.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panelDiffLocale.Name" xml:space="preserve">
-    <value>panelDiffLocale</value>
-  </data>
-  <data name="&gt;&gt;panelDiffLocale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelDiffLocale.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dgvLocaleDiff.Parent" xml:space="preserve">
     <value>tabTranslate</value>
   </data>
-  <data name="&gt;&gt;panelDiffLocale.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;dgvLocaleDiff.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="labelLocalizeOuput.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4133,44 +2912,53 @@
   <data name="&gt;&gt;bFindDialogDifference.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="colType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colNPC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colText.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colEngText.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dgvSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="panelDiffLocale.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="dgvSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 62</value>
+  <data name="panelDiffLocale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="dgvSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1176, 476</value>
+  <data name="panelDiffLocale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 57</value>
   </data>
-  <data name="dgvSearch.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelDiffLocale.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panelDiffLocale.Name" xml:space="preserve">
+    <value>panelDiffLocale</value>
+  </data>
+  <data name="&gt;&gt;panelDiffLocale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelDiffLocale.Parent" xml:space="preserve">
+    <value>tabTranslate</value>
+  </data>
+  <data name="&gt;&gt;panelDiffLocale.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;dgvSearch.Name" xml:space="preserve">
-    <value>dgvSearch</value>
+  <data name="tabTranslate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;dgvSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tabTranslate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 541</value>
   </data>
-  <data name="&gt;&gt;dgvSearch.Parent" xml:space="preserve">
-    <value>tabSearch</value>
+  <data name="tabTranslate.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;dgvSearch.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="tabTranslate.Text" xml:space="preserve">
+    <value>Переводы</value>
+  </data>
+  <data name="&gt;&gt;tabTranslate.Name" xml:space="preserve">
+    <value>tabTranslate</value>
+  </data>
+  <data name="&gt;&gt;tabTranslate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabTranslate.Parent" xml:space="preserve">
+    <value>CentralDock</value>
+  </data>
+  <data name="&gt;&gt;tabTranslate.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <metadata name="colType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -4214,89 +3002,29 @@
   <data name="colEngText.Width" type="System.Int32, mscorlib">
     <value>250</value>
   </data>
-  <data name="&gt;&gt;cbIgnoreCase.Name" xml:space="preserve">
-    <value>cbIgnoreCase</value>
+  <data name="dgvSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;cbIgnoreCase.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="dgvSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 62</value>
   </data>
-  <data name="&gt;&gt;cbIgnoreCase.Parent" xml:space="preserve">
-    <value>panelSearchTools</value>
+  <data name="dgvSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1176, 476</value>
   </data>
-  <data name="&gt;&gt;cbIgnoreCase.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;labelSearchResult.Name" xml:space="preserve">
-    <value>labelSearchResult</value>
-  </data>
-  <data name="&gt;&gt;labelSearchResult.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelSearchResult.Parent" xml:space="preserve">
-    <value>panelSearchTools</value>
-  </data>
-  <data name="&gt;&gt;labelSearchResult.ZOrder" xml:space="preserve">
+  <data name="dgvSearch.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;labelPhraseToSearch.Name" xml:space="preserve">
-    <value>labelPhraseToSearch</value>
+  <data name="&gt;&gt;dgvSearch.Name" xml:space="preserve">
+    <value>dgvSearch</value>
   </data>
-  <data name="&gt;&gt;labelPhraseToSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;dgvSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelPhraseToSearch.Parent" xml:space="preserve">
-    <value>panelSearchTools</value>
-  </data>
-  <data name="&gt;&gt;labelPhraseToSearch.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tbPhraseToSearch.Name" xml:space="preserve">
-    <value>tbPhraseToSearch</value>
-  </data>
-  <data name="&gt;&gt;tbPhraseToSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbPhraseToSearch.Parent" xml:space="preserve">
-    <value>panelSearchTools</value>
-  </data>
-  <data name="&gt;&gt;tbPhraseToSearch.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;bStartSearch.Name" xml:space="preserve">
-    <value>bStartSearch</value>
-  </data>
-  <data name="&gt;&gt;bStartSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bStartSearch.Parent" xml:space="preserve">
-    <value>panelSearchTools</value>
-  </data>
-  <data name="&gt;&gt;bStartSearch.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="panelSearchTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panelSearchTools.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="panelSearchTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1176, 59</value>
-  </data>
-  <data name="panelSearchTools.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panelSearchTools.Name" xml:space="preserve">
-    <value>panelSearchTools</value>
-  </data>
-  <data name="&gt;&gt;panelSearchTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelSearchTools.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dgvSearch.Parent" xml:space="preserve">
     <value>tabSearch</value>
   </data>
-  <data name="&gt;&gt;panelSearchTools.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;dgvSearch.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="cbIgnoreCase.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4424,93 +3152,231 @@
   <data name="&gt;&gt;bStartSearch.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;btnFilterNPC.Name" xml:space="preserve">
-    <value>btnFilterNPC</value>
-  </data>
-  <data name="&gt;&gt;btnFilterNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnFilterNPC.Parent" xml:space="preserve">
-    <value>panelSelectNPC</value>
-  </data>
-  <data name="&gt;&gt;btnFilterNPC.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnNextNPC.Name" xml:space="preserve">
-    <value>btnNextNPC</value>
-  </data>
-  <data name="&gt;&gt;btnNextNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnNextNPC.Parent" xml:space="preserve">
-    <value>panelSelectNPC</value>
-  </data>
-  <data name="&gt;&gt;btnNextNPC.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnBackNPC.Name" xml:space="preserve">
-    <value>btnBackNPC</value>
-  </data>
-  <data name="&gt;&gt;btnBackNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnBackNPC.Parent" xml:space="preserve">
-    <value>panelSelectNPC</value>
-  </data>
-  <data name="&gt;&gt;btnBackNPC.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;bDelNPC.Name" xml:space="preserve">
-    <value>bDelNPC</value>
-  </data>
-  <data name="&gt;&gt;bDelNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bDelNPC.Parent" xml:space="preserve">
-    <value>panelSelectNPC</value>
-  </data>
-  <data name="&gt;&gt;bDelNPC.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;bAddNPC.Name" xml:space="preserve">
-    <value>bAddNPC</value>
-  </data>
-  <data name="&gt;&gt;bAddNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bAddNPC.Parent" xml:space="preserve">
-    <value>panelSelectNPC</value>
-  </data>
-  <data name="&gt;&gt;bAddNPC.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="panelSelectNPC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelSearchTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="panelSelectNPC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+  <data name="panelSearchTools.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="panelSelectNPC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1190, 29</value>
+  <data name="panelSearchTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1176, 59</value>
   </data>
-  <data name="panelSelectNPC.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="panelSearchTools.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;panelSelectNPC.Name" xml:space="preserve">
-    <value>panelSelectNPC</value>
+  <data name="&gt;&gt;panelSearchTools.Name" xml:space="preserve">
+    <value>panelSearchTools</value>
   </data>
-  <data name="&gt;&gt;panelSelectNPC.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelSearchTools.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panelSelectNPC.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;panelSearchTools.Parent" xml:space="preserve">
+    <value>tabSearch</value>
   </data>
-  <data name="&gt;&gt;panelSelectNPC.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelSearchTools.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="toolTipDialogs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>415, 17</value>
-  </metadata>
+  <data name="tabSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabSearch.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 541</value>
+  </data>
+  <data name="tabSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tabSearch.Text" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="&gt;&gt;tabSearch.Name" xml:space="preserve">
+    <value>tabSearch</value>
+  </data>
+  <data name="&gt;&gt;tabSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabSearch.Parent" xml:space="preserve">
+    <value>CentralDock</value>
+  </data>
+  <data name="&gt;&gt;tabSearch.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="treeKnowladge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="treeKnowladge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 38</value>
+  </data>
+  <data name="treeKnowladge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>317, 500</value>
+  </data>
+  <data name="treeKnowladge.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;treeKnowladge.Name" xml:space="preserve">
+    <value>treeKnowladge</value>
+  </data>
+  <data name="&gt;&gt;treeKnowladge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;treeKnowladge.Parent" xml:space="preserve">
+    <value>tabKnowledge</value>
+  </data>
+  <data name="&gt;&gt;treeKnowladge.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbKnowlegeTypeValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>329, 11</value>
+  </data>
+  <data name="cbKnowlegeTypeValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 21</value>
+  </data>
+  <data name="cbKnowlegeTypeValue.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbKnowlegeTypeValue.Name" xml:space="preserve">
+    <value>cbKnowlegeTypeValue</value>
+  </data>
+  <data name="&gt;&gt;cbKnowlegeTypeValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbKnowlegeTypeValue.Parent" xml:space="preserve">
+    <value>tabKnowledge</value>
+  </data>
+  <data name="&gt;&gt;cbKnowlegeTypeValue.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>291, 14</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>NPC:</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabKnowledge</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 14</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 13</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Категория знаний:</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tabKnowledge</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbKnowledgeCategory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 11</value>
+  </data>
+  <data name="cbKnowledgeCategory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="cbKnowledgeCategory.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbKnowledgeCategory.Name" xml:space="preserve">
+    <value>cbKnowledgeCategory</value>
+  </data>
+  <data name="&gt;&gt;cbKnowledgeCategory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbKnowledgeCategory.Parent" xml:space="preserve">
+    <value>tabKnowledge</value>
+  </data>
+  <data name="&gt;&gt;cbKnowledgeCategory.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabKnowledge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabKnowledge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1182, 541</value>
+  </data>
+  <data name="tabKnowledge.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tabKnowledge.Text" xml:space="preserve">
+    <value>Знания</value>
+  </data>
+  <data name="&gt;&gt;tabKnowledge.Name" xml:space="preserve">
+    <value>tabKnowledge</value>
+  </data>
+  <data name="&gt;&gt;tabKnowledge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabKnowledge.Parent" xml:space="preserve">
+    <value>CentralDock</value>
+  </data>
+  <data name="&gt;&gt;tabKnowledge.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="CentralDock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="CentralDock.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>90, 18</value>
+  </data>
+  <data name="CentralDock.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 53</value>
+  </data>
+  <data name="CentralDock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1190, 567</value>
+  </data>
+  <data name="CentralDock.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;CentralDock.Name" xml:space="preserve">
+    <value>CentralDock</value>
+  </data>
+  <data name="&gt;&gt;CentralDock.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CentralDock.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CentralDock.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnFilterNPC.Location" type="System.Drawing.Point, System.Drawing">
     <value>360, -3</value>
   </data>
@@ -4520,6 +3386,9 @@
   <data name="btnFilterNPC.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
+  <metadata name="toolTipDialogs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>415, 17</value>
+  </metadata>
   <data name="btnFilterNPC.ToolTip" xml:space="preserve">
     <value>Изменить фильтры NPC</value>
   </data>
@@ -4637,9 +3506,150 @@
   <data name="&gt;&gt;bAddNPC.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="FakeNPCBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 4</value>
+  </data>
+  <data name="FakeNPCBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 21</value>
+  </data>
+  <data name="FakeNPCBox.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;FakeNPCBox.Name" xml:space="preserve">
+    <value>FakeNPCBox</value>
+  </data>
+  <data name="&gt;&gt;FakeNPCBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FakeNPCBox.Parent" xml:space="preserve">
+    <value>panelSelectNPC</value>
+  </data>
+  <data name="&gt;&gt;FakeNPCBox.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="panelSelectNPC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelSelectNPC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="panelSelectNPC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1190, 29</value>
+  </data>
+  <data name="panelSelectNPC.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelSelectNPC.Name" xml:space="preserve">
+    <value>panelSelectNPC</value>
+  </data>
+  <data name="&gt;&gt;panelSelectNPC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelSelectNPC.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelSelectNPC.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="menuMainControl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>161, 17</value>
   </metadata>
+  <data name="menuSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="menuSettings.Text" xml:space="preserve">
+    <value>Настройка оператора</value>
+  </data>
+  <data name="menuSynchronize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="menuSynchronize.Text" xml:space="preserve">
+    <value>Синхронизировать</value>
+  </data>
+  <data name="menuStatistics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="menuStatistics.Text" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="русскийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 22</value>
+  </data>
+  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 22</value>
+  </data>
+  <data name="changeLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="menuExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="menuExit.Text" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="menuMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="menuMain.Text" xml:space="preserve">
+    <value>Меню</value>
+  </data>
+  <data name="menuSaveAll.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+S</value>
+  </data>
+  <data name="menuSaveAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 20</value>
+  </data>
+  <data name="menuSaveAll.Text" xml:space="preserve">
+    <value>Сохранить все</value>
+  </data>
+  <data name="menuExplorer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 20</value>
+  </data>
+  <data name="menuExplorer.Text" xml:space="preserve">
+    <value>Проводник</value>
+  </data>
+  <data name="парсерыToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="парсерыToolStripMenuItem.Text" xml:space="preserve">
+    <value>Парсеры</value>
+  </data>
+  <data name="проверкаОшибокToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="проверкаОшибокToolStripMenuItem.Text" xml:space="preserve">
+    <value>Проверка Ошибок</value>
+  </data>
+  <data name="обновленияToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 20</value>
+  </data>
+  <data name="обновленияToolStripMenuItem.Text" xml:space="preserve">
+    <value>Обновления</value>
+  </data>
+  <data name="собратьЭдиторДляПередачиToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 22</value>
+  </data>
+  <data name="собратьЭдиторДляПередачиToolStripMenuItem.Text" xml:space="preserve">
+    <value>Собрать эдитор для передачи</value>
+  </data>
+  <data name="вытащитьНепереведённыеТекстыToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 22</value>
+  </data>
+  <data name="диалоговToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 22</value>
+  </data>
+  <data name="квестовToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 22</value>
+  </data>
+  <data name="загрузитьПереводToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 22</value>
+  </data>
+  <data name="данныеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 20</value>
+  </data>
+  <data name="данныеToolStripMenuItem.Text" xml:space="preserve">
+    <value>Данные</value>
+  </data>
   <data name="menuMainControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -4663,102 +3673,6 @@
   </data>
   <data name="&gt;&gt;menuMainControl.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="menuMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="menuMain.Text" xml:space="preserve">
-    <value>Меню</value>
-  </data>
-  <data name="menuSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="menuSettings.Text" xml:space="preserve">
-    <value>Настройка оператора</value>
-  </data>
-  <data name="menuSynchronize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="menuSynchronize.Text" xml:space="preserve">
-    <value>Синхронизировать</value>
-  </data>
-  <data name="menuStatistics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="menuStatistics.Text" xml:space="preserve">
-    <value>Статистика</value>
-  </data>
-  <data name="changeLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="русскийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
-  </data>
-  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
-  </data>
-  <data name="menuExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="menuExit.Text" xml:space="preserve">
-    <value>Выход</value>
-  </data>
-  <data name="menuSaveAll.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+S</value>
-  </data>
-  <data name="menuSaveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 20</value>
-  </data>
-  <data name="menuSaveAll.Text" xml:space="preserve">
-    <value>Сохранить все</value>
-  </data>
-  <data name="menuExplorer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 20</value>
-  </data>
-  <data name="menuExplorer.Text" xml:space="preserve">
-    <value>Проводник</value>
-  </data>
-  <data name="обновленияToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 20</value>
-  </data>
-  <data name="обновленияToolStripMenuItem.Text" xml:space="preserve">
-    <value>Обновления</value>
-  </data>
-  <data name="парсерыToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="парсерыToolStripMenuItem.Text" xml:space="preserve">
-    <value>Парсеры</value>
-  </data>
-  <data name="проверкаОшибокToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="проверкаОшибокToolStripMenuItem.Text" xml:space="preserve">
-    <value>Проверка Ошибок</value>
-  </data>
-  <data name="данныеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 20</value>
-  </data>
-  <data name="данныеToolStripMenuItem.Text" xml:space="preserve">
-    <value>Данные</value>
-  </data>
-  <data name="собратьЭдиторДляПередачиToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 22</value>
-  </data>
-  <data name="собратьЭдиторДляПередачиToolStripMenuItem.Text" xml:space="preserve">
-    <value>Собрать эдитор для передачи</value>
-  </data>
-  <data name="вытащитьНепереведённыеТекстыToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 22</value>
-  </data>
-  <data name="загрузитьПереводToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 22</value>
-  </data>
-  <data name="диалоговToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
-  </data>
-  <data name="квестовToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
   </data>
   <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 17</value>
@@ -4787,9 +3701,6 @@
   <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="toolTipDialogs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>415, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

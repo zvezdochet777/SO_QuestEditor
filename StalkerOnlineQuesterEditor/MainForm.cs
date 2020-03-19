@@ -308,6 +308,41 @@ namespace StalkerOnlineQuesterEditor
             tabQuests.Text = text + " (" + quests.getCountOfQuests(currentNPC) + ")";
         }
 
+
+        private void FakeNPCBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string open_npc_name = FakeNPCBox.SelectedItem.ToString();
+            for (int i = 0; i < NPCBox.Items.Count; i++)
+            {
+                string npc_name = (NPCBox.Items[i] as NPCNameDataSourceObject).DisplayString;
+                if (npc_name == open_npc_name)
+                {
+                     NPCBox.SelectedIndex = i;
+                }
+            }
+            //NPCBox.SelectedItem = FakeNPCBox.SelectedItem.ToString();
+        }
+
+        private void NPCBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
+                return;
+            NPCBox.DroppedDown = false;
+            string find_text = NPCBox.Text.ToLower();
+            List<string> result = new List<string>();
+            foreach (var item in npcNames)
+            {
+                if (item.DisplayString.ToLower().Contains(find_text))
+                {
+                    result.Add(item.DisplayString);
+                }
+            }
+            FakeNPCBox.Items.Clear();
+            FakeNPCBox.Items.AddRange(result.ToArray());
+            FakeNPCBox.DroppedDown = true;
+            //e.Handled = true;
+        }
+
         //! Поиск в комбобоксe NPC по имени общему, или локализованному русскому, английскому
         private void NPCBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -319,11 +354,16 @@ namespace StalkerOnlineQuesterEditor
                 string name = "";
                 if (settings.getMode() == settings.MODE_EDITOR)
                 {
+                    /*
                     if (ManagerNPC.rusNamesToNPC.ContainsKey(text))
                     {
                         name = ManagerNPC.rusNamesToNPC[text];
                         NPCBox.SelectedValue = name;
                     }
+                    */
+                    if (FakeNPCBox.Items.Count > 0)
+                        NPCBox.SelectedValue = FakeNPCBox.Items[0].ToString().Split('(')[0];
+                    FakeNPCBox.DroppedDown = false;
                 }
                 else if (settings.getMode() == settings.MODE_LOCALIZATION)
                 {
@@ -395,7 +435,7 @@ namespace StalkerOnlineQuesterEditor
         void fillNPCBox()
         {
                     npcNames.Clear();
-                    NPCBox.AutoCompleteCustomSource.Clear();
+                    //NPCBox.AutoCompleteCustomSource.Clear();
 
                     foreach (string holder in this.dialogs.dialogs.Keys)
                     {
@@ -423,11 +463,11 @@ namespace StalkerOnlineQuesterEditor
                             else if (settings.getMode() == settings.MODE_LOCALIZATION)
                                 localName = ManagerNPC.NpcData[holder].engName;
 
-                            NPCBox.AutoCompleteCustomSource.Add(localName);
+                            //NPCBox.AutoCompleteCustomSource.Add(localName);
                             npcName += " (" + localName + ")";
                         }
                         npcNames.Add(new NPCNameDataSourceObject(holder, npcName));
-                        NPCBox.AutoCompleteCustomSource.Add(npcName);
+                        //NPCBox.AutoCompleteCustomSource.Add(npcName);
                     }
                     npcNames.Sort();
                     NPCBox.DataSource = null;       // костыль для обновления данных в кмобобоксе NPC при добавлении/удалении
@@ -437,8 +477,8 @@ namespace StalkerOnlineQuesterEditor
                     if (npcNames.Count <= settings.getLastNpcIndex())
                         settings.setLastNpcIndex(npcNames.Count - 1);
                     NPCBox.SelectedIndex = settings.getLastNpcIndex();
-                    NPCBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                    NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    //NPCBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    //NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
                     QuestBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
                     QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
@@ -2523,10 +2563,10 @@ namespace StalkerOnlineQuesterEditor
                 }
             labelXNode.Text = "dupl = " + dupl.Count.ToString() + ", total=" + stup.ToString();
              */
-        }
+                }
 
-        //! Пункт главного меню - Cтатистика
-        private void StatisticsToolStripMenuItem_Click(object sender, EventArgs e)
+                //! Пункт главного меню - Cтатистика
+                private void StatisticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StatisticsForm sf = new StatisticsForm(this, NPCBox.Items.Count, quests, dialogs, ManagerNPC);
             sf.Show();
@@ -3117,18 +3157,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void NPCBox_TextChanged(object sender, EventArgs e)
         {
-            /*
-            string[] a = new string[]();
-            var result = from v in NPCBox.Items.CopyTo(a, 0);
-           Where(a => a.ToLower().Contains(NPCBox.Text.ToLower()));
-            NPCBox.AutoCompleteCustomSource
-            return;
-            if (!result == null) return;
-            foreach (string find in result)
-            {
-                MessageBox.Show(find);
-            }
-            */
+            
         }
 
         private void cbKnowledgeCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -3167,6 +3196,7 @@ namespace StalkerOnlineQuesterEditor
         {
 
         }
+
     }
 }
  

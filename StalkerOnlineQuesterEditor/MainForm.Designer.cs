@@ -171,6 +171,7 @@ namespace StalkerOnlineQuesterEditor
             this.tbPhraseToSearch = new System.Windows.Forms.TextBox();
             this.bStartSearch = new System.Windows.Forms.Button();
             this.tabKnowledge = new System.Windows.Forms.TabPage();
+            this.treeKnowladge = new System.Windows.Forms.TreeView();
             this.cbKnowlegeTypeValue = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -181,6 +182,7 @@ namespace StalkerOnlineQuesterEditor
             this.btnBackNPC = new System.Windows.Forms.Button();
             this.bDelNPC = new System.Windows.Forms.Button();
             this.bAddNPC = new System.Windows.Forms.Button();
+            this.FakeNPCBox = new System.Windows.Forms.ComboBox();
             this.menuMainControl = new System.Windows.Forms.MenuStrip();
             this.menuMain = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -204,7 +206,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.treeKnowladge = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -470,6 +471,7 @@ namespace StalkerOnlineQuesterEditor
             this.NPCBox.SelectedIndexChanged += new System.EventHandler(this.NPCBox_SelectedIndexChanged);
             this.NPCBox.TextChanged += new System.EventHandler(this.NPCBox_TextChanged);
             this.NPCBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NPCBox_KeyDown);
+            this.NPCBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NPCBox_KeyPress);
             // 
             // labelChosenNPC
             // 
@@ -1312,6 +1314,11 @@ namespace StalkerOnlineQuesterEditor
             this.tabKnowledge.Name = "tabKnowledge";
             this.tabKnowledge.UseVisualStyleBackColor = true;
             // 
+            // treeKnowladge
+            // 
+            resources.ApplyResources(this.treeKnowladge, "treeKnowladge");
+            this.treeKnowladge.Name = "treeKnowladge";
+            // 
             // cbKnowlegeTypeValue
             // 
             this.cbKnowlegeTypeValue.FormattingEnabled = true;
@@ -1346,6 +1353,7 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectNPC.Controls.Add(this.bAddNPC);
             this.panelSelectNPC.Controls.Add(this.labelChosenNPC);
             this.panelSelectNPC.Controls.Add(this.NPCBox);
+            this.panelSelectNPC.Controls.Add(this.FakeNPCBox);
             resources.ApplyResources(this.panelSelectNPC, "panelSelectNPC");
             this.panelSelectNPC.Name = "panelSelectNPC";
             // 
@@ -1389,6 +1397,15 @@ namespace StalkerOnlineQuesterEditor
             this.bAddNPC.Name = "bAddNPC";
             this.bAddNPC.UseVisualStyleBackColor = true;
             this.bAddNPC.Click += new System.EventHandler(this.bAddNPC_Click);
+            // 
+            // FakeNPCBox
+            // 
+            this.FakeNPCBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
+            this.FakeNPCBox.DropDownWidth = 280;
+            this.FakeNPCBox.FormattingEnabled = true;
+            resources.ApplyResources(this.FakeNPCBox, "FakeNPCBox");
+            this.FakeNPCBox.Name = "FakeNPCBox";
+            this.FakeNPCBox.SelectedIndexChanged += new System.EventHandler(this.FakeNPCBox_SelectedIndexChanged);
             // 
             // menuMainControl
             // 
@@ -1545,11 +1562,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
-            // 
-            // treeKnowladge
-            // 
-            resources.ApplyResources(this.treeKnowladge, "treeKnowladge");
-            this.treeKnowladge.Name = "treeKnowladge";
             // 
             // MainForm
             // 
@@ -1800,6 +1812,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbKnowledgeCategory;
         private System.Windows.Forms.TreeView treeKnowladge;
+        private System.Windows.Forms.ComboBox FakeNPCBox;
     }
 }
 

@@ -224,12 +224,14 @@ namespace StalkerOnlineQuesterEditor
                 string title = row.Cells["itemTitle"].FormattedValue.ToString();
                 string description = row.Cells["itemDescription"].FormattedValue.ToString();
                 string activation = row.Cells["itemActivation"].FormattedValue.ToString();
+                string content = row.Cells["itemContent"].FormattedValue.ToString();
                 string typeName = row.Cells["itemType"].FormattedValue.ToString();
                 int typeID = parent.itemConst.getIDOnName(typeName);
                 if (!this.locale.Keys.Contains(typeID))
                     this.locale.Add(typeID, new QuestItemInfo());
                 this.locale[typeID].description = description;
                 this.locale[typeID].title = title;
+                this.locale[typeID].content = content;
                 this.locale[typeID].activation = activation;
             }
         }
