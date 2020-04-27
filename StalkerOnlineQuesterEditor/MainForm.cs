@@ -51,7 +51,7 @@ namespace StalkerOnlineQuesterEditor
         public PLayer edgeLayer;
         public PLayer drawingLayer;
         public PNodeList nodeLayer;
-
+        public bool isDirty = false;
         Dictionary<PNode, GraphProperties> graphs = new Dictionary<PNode, GraphProperties>();
         Dictionary<Panel, int> panels = new Dictionary<Panel, int>();
 
@@ -1155,6 +1155,7 @@ namespace StalkerOnlineQuesterEditor
                 fillNPCBox();
                 NPCBox.SelectedValue = Name;
                 npcConst.NPCs.Add(Name, new CNPCDescription(Name));
+                this.isDirty = true;
             }
         }
 
@@ -1265,6 +1266,7 @@ namespace StalkerOnlineQuesterEditor
 
             QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
             QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
+            this.isDirty = true;
         }
 
         //! Добавление квеста в дерево квестов, вызывается из окна редактирования EditQuestForm
@@ -1282,6 +1284,7 @@ namespace StalkerOnlineQuesterEditor
             addNodeOnTreeQuest(quest.QuestID);
             treeQuest.ExpandAll();
             fillQuestPanel();
+            this.isDirty = true;
         }
         //! Заменяет данные квеста при редактировании
         public void replaceQuest(CQuest quest)
@@ -1292,6 +1295,7 @@ namespace StalkerOnlineQuesterEditor
             if (quests.quest.Keys.Contains(quest.QuestID))
                 quests.locales[settings.getListLocales()[0]][quest.QuestID].InsertNonTextData(quest);
             checkQuestButton(quest.Target.QuestType, quest.QuestID);
+            this.isDirty = true;
         }
         //! Нажатие на кнопку "Добавление квеста", вызов окна EditQuestForm
         private void bAddEvent_Click(object sender, EventArgs e)
@@ -1342,6 +1346,7 @@ namespace StalkerOnlineQuesterEditor
             Thread.Sleep(300);
             statusLabel.Text = "Данные успешно сохранены.";
             this.Enabled = true;
+            this.isDirty = false;
         }
         //! Нажатие на кнопку "Удаление квеста"
         private void bRemoveEvent_Click(object sender, EventArgs e)
@@ -2578,6 +2583,17 @@ namespace StalkerOnlineQuesterEditor
         }
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            DialogResult result;
+            if (this.isDirty)
+            {
+                result = MessageBox.Show("Сохранить изменения?", "Вы не сохранили", MessageBoxButtons.YesNoCancel);
+                switch(result)
+                {
+                    case DialogResult.Cancel: e.Cancel = true;  return;
+                    case DialogResult.Yes: this.saveData(); break;
+                    case DialogResult.No: break;
+                }
+            }
             settings.setLastNpcIndex(NPCBox.SelectedIndex);
             settings.saveSettings();
             tcpListener.stop();

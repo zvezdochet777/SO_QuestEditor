@@ -591,7 +591,9 @@ namespace StalkerOnlineQuesterEditor
                 dialogs.dialogs[currentNPC][dialogID] = dialog;
                 dialogs.locales[settings.getListLocales()[0]][currentNPC][dialogID].InsertNonTextData(dialog);
             }
-            
+            this.isDirty = true;
+
+
         }
         //! Добавляет диалог в ветку (используется при добавлении диалога в форме EditDialogForm)
         public void addActiveDialog(int newID, CDialog dialog, int parentID)
@@ -622,7 +624,7 @@ namespace StalkerOnlineQuesterEditor
 
             dialogs.Add(newID, dialog);
             dialogs[parentID].Nodes.Add(newID);
-
+            this.isDirty = true;
             addNodeOnDialogGraphView(newID, parentID, dialogs, locales, dialogShower);
         }
         public void addPassiveDialog(int parentID, int dialogID, DialogDict dialogs, NPCLocales locales, PCanvas dialogShower)

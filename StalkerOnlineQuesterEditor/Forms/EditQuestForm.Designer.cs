@@ -1453,6 +1453,7 @@
             this.resultComboBox.Size = new System.Drawing.Size(121, 21);
             this.resultComboBox.Sorted = true;
             this.resultComboBox.TabIndex = 46;
+            this.resultComboBox.SelectedIndexChanged += new System.EventHandler(this.resultComboBox_SelectedIndexChanged);
             // 
             // tabPage5
             // 

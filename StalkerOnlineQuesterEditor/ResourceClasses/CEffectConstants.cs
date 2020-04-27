@@ -80,7 +80,7 @@ namespace StalkerOnlineQuesterEditor
     public class CEffectConstants
     {
         public static string JSON_PATH = "../../../res/scripts/common/data/Effects.json";
-        public static string OTHER_JSON_PATH = "source/Effects.json";
+        public static string OTHER_JSON_PATH = "source/effects_names.json";
 
         JsonTextReader reader;
         public Dictionary<int, string> effects = new Dictionary<int, string>();

@@ -414,11 +414,25 @@ namespace StalkerOnlineQuesterEditor
                     labelTargetAttr.Enabled = false;
                     dynamicCheckBox.Enabled = true;
                 }
-                else if (QuestType == 201 ||
-                    QuestType == 202 ||
-                    QuestType == 203 ||
-                    QuestType == 204)
+                else if (QuestType == CQuestConstants.TYPE_DUNGEON_EVENT)
                 {
+                    ltargetResult.Text = "DungeonID";
+                    lNameObject.Text = "ID события";
+                    targetComboBox.Items.Clear();
+                    resultComboBox.Items.Clear();
+                    lQuantity.Enabled = false;
+                    quantityUpDown.Enabled = false;
+                    targetAttributeComboBox.Enabled = false;
+                    resultComboBox.Enabled = true;
+                    ltargetResult.Enabled = true;
+                    labelTargetAttr.Enabled = false;
+                    dynamicCheckBox.Enabled = false;
+                    foreach (string item in parent.dungeonConst.getAllSpaceNames())
+                        resultComboBox.Items.Add(item);
+                }
+                else if (QuestType == 201 || QuestType == 202 || QuestType == 203 || QuestType == 204)
+                {
+
                 }
                 else if (QuestType == CQuestConstants.TYPE_ITEM_EQIP || QuestType == CQuestConstants.TYPE_ITEM_ADD)
                 {
@@ -549,6 +563,11 @@ namespace StalkerOnlineQuesterEditor
             else if (quest.Target.QuestType == CQuestConstants.TYPE_TALK)
             {
                 targetComboBox.SelectedItem = parent.npcConst.getDescriptionOnKey(quest.Target.ObjectName).getName();
+            }
+            else if (quest.Target.QuestType == CQuestConstants.TYPE_DUNGEON_EVENT)
+            {
+                resultComboBox.SelectedItem = parent.dungeonConst.getNameByID(quest.Target.ObjectType);
+                targetComboBox.SelectedItem = parent.dungeonConst.getBossName(quest.Target.ObjectType, quest.Target.ObjectAttr);
             }
             else if ((quest.Target.QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (quest.Target.QuestType == CQuestConstants.TYPE_KILLMOBS))
             {
@@ -981,6 +1000,11 @@ namespace StalkerOnlineQuesterEditor
                     target.ObjectName = targetComboBox.SelectedItem.ToString();
                 else
                     target.ObjectName = key;
+            }
+            else if (target.QuestType == CQuestConstants.TYPE_DUNGEON_EVENT)
+            {
+                target.ObjectType = parent.dungeonConst.getIDByName(resultComboBox.SelectedItem.ToString());
+                target.ObjectAttr = parent.dungeonConst.getBossID(target.ObjectType, targetComboBox.SelectedItem.ToString());
             }
             else if ((target.QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (target.QuestType == CQuestConstants.TYPE_KILLMOBS))
             {
@@ -1536,6 +1560,20 @@ namespace StalkerOnlineQuesterEditor
             form.ShowDialog();
             this.editQuestRules.space = parent.spacesConst.getSpacesToInt(spaces);
             checkQuestRulesIndicates();
+        }
+
+        private void resultComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.QuestType == CQuestConstants.TYPE_DUNGEON_EVENT)
+            {
+                targetComboBox.Items.Clear();
+                int dungID = parent.dungeonConst.getIDByName(resultComboBox.SelectedItem.ToString());
+                
+                foreach (string boss_name in parent.dungeonConst.getBossesByDungID(dungID))
+                    targetComboBox.Items.Add(boss_name);
+
+                targetComboBox.SelectedIndex = 0;
+            }
         }
     }
 }
