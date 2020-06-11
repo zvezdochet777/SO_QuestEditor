@@ -125,6 +125,7 @@
             this.a = new System.Windows.Forms.Label();
             this.tabClan = new System.Windows.Forms.TabPage();
             this.gbClanOptions = new System.Windows.Forms.GroupBox();
+            this.cbAllyance = new System.Windows.Forms.CheckBox();
             this.cbSecurNotExst = new System.Windows.Forms.CheckBox();
             this.cbSecurExst = new System.Windows.Forms.CheckBox();
             this.radioButtonOR = new System.Windows.Forms.RadioButton();
@@ -240,7 +241,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.cbAllyance = new System.Windows.Forms.CheckBox();
+            this.nudDungeonEnterKey = new System.Windows.Forms.NumericUpDown();
+            this.labelEnterKey = new System.Windows.Forms.Label();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
@@ -282,6 +284,7 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -336,6 +339,8 @@
             this.gbActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbActions.AutoSize = true;
+            this.gbActions.Controls.Add(this.labelEnterKey);
+            this.gbActions.Controls.Add(this.nudDungeonEnterKey);
             this.gbActions.Controls.Add(this.tbChangeMoneyFailNode);
             this.gbActions.Controls.Add(this.label10);
             this.gbActions.Controls.Add(this.nupChangeMoney);
@@ -405,7 +410,7 @@
             // 
             // tbAvatarGoTo
             // 
-            this.tbAvatarGoTo.Location = new System.Drawing.Point(222, 77);
+            this.tbAvatarGoTo.Location = new System.Drawing.Point(222, 71);
             this.tbAvatarGoTo.Name = "tbAvatarGoTo";
             this.tbAvatarGoTo.Size = new System.Drawing.Size(147, 20);
             this.tbAvatarGoTo.TabIndex = 41;
@@ -422,7 +427,7 @@
             "Стой на месте",
             "Жри аптечку(не работает)",
             "Команда 1"});
-            this.commandsComboBox.Location = new System.Drawing.Point(222, 76);
+            this.commandsComboBox.Location = new System.Drawing.Point(222, 70);
             this.commandsComboBox.Name = "commandsComboBox";
             this.commandsComboBox.Size = new System.Drawing.Size(147, 21);
             this.commandsComboBox.TabIndex = 40;
@@ -430,7 +435,7 @@
             // cbFailQuests
             // 
             this.cbFailQuests.AutoSize = true;
-            this.cbFailQuests.Location = new System.Drawing.Point(296, 44);
+            this.cbFailQuests.Location = new System.Drawing.Point(296, 38);
             this.cbFailQuests.Name = "cbFailQuests";
             this.cbFailQuests.Size = new System.Drawing.Size(121, 17);
             this.cbFailQuests.TabIndex = 39;
@@ -441,7 +446,7 @@
             // cbCancelQuests
             // 
             this.cbCancelQuests.AutoSize = true;
-            this.cbCancelQuests.Location = new System.Drawing.Point(296, 24);
+            this.cbCancelQuests.Location = new System.Drawing.Point(296, 18);
             this.cbCancelQuests.Name = "cbCancelQuests";
             this.cbCancelQuests.Size = new System.Drawing.Size(116, 17);
             this.cbCancelQuests.TabIndex = 38;
@@ -452,7 +457,7 @@
             // tbFailQuests
             // 
             this.tbFailQuests.Enabled = false;
-            this.tbFailQuests.Location = new System.Drawing.Point(426, 44);
+            this.tbFailQuests.Location = new System.Drawing.Point(426, 38);
             this.tbFailQuests.Name = "tbFailQuests";
             this.tbFailQuests.Size = new System.Drawing.Size(147, 20);
             this.tbFailQuests.TabIndex = 37;
@@ -460,7 +465,7 @@
             // tbCancelQuests
             // 
             this.tbCancelQuests.Enabled = false;
-            this.tbCancelQuests.Location = new System.Drawing.Point(426, 22);
+            this.tbCancelQuests.Location = new System.Drawing.Point(426, 16);
             this.tbCancelQuests.Name = "tbCancelQuests";
             this.tbCancelQuests.Size = new System.Drawing.Size(147, 20);
             this.tbCancelQuests.TabIndex = 36;
@@ -469,7 +474,7 @@
             // 
             this.ActionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ActionsComboBox.FormattingEnabled = true;
-            this.ActionsComboBox.Location = new System.Drawing.Point(31, 76);
+            this.ActionsComboBox.Location = new System.Drawing.Point(31, 70);
             this.ActionsComboBox.Name = "ActionsComboBox";
             this.ActionsComboBox.Size = new System.Drawing.Size(160, 21);
             this.ActionsComboBox.TabIndex = 35;
@@ -481,7 +486,7 @@
             this.teleportComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.teleportComboBox.DropDownWidth = 250;
             this.teleportComboBox.FormattingEnabled = true;
-            this.teleportComboBox.Location = new System.Drawing.Point(222, 76);
+            this.teleportComboBox.Location = new System.Drawing.Point(222, 70);
             this.teleportComboBox.Name = "teleportComboBox";
             this.teleportComboBox.Size = new System.Drawing.Size(147, 21);
             this.teleportComboBox.TabIndex = 30;
@@ -489,7 +494,7 @@
             // tbCompleteQuests
             // 
             this.tbCompleteQuests.Enabled = false;
-            this.tbCompleteQuests.Location = new System.Drawing.Point(136, 44);
+            this.tbCompleteQuests.Location = new System.Drawing.Point(136, 38);
             this.tbCompleteQuests.Name = "tbCompleteQuests";
             this.tbCompleteQuests.Size = new System.Drawing.Size(147, 20);
             this.tbCompleteQuests.TabIndex = 28;
@@ -497,7 +502,7 @@
             // tbGetQuests
             // 
             this.tbGetQuests.Enabled = false;
-            this.tbGetQuests.Location = new System.Drawing.Point(136, 22);
+            this.tbGetQuests.Location = new System.Drawing.Point(136, 16);
             this.tbGetQuests.Name = "tbGetQuests";
             this.tbGetQuests.Size = new System.Drawing.Size(147, 20);
             this.tbGetQuests.TabIndex = 26;
@@ -505,7 +510,7 @@
             // ToDialogComboBox
             // 
             this.ToDialogComboBox.FormattingEnabled = true;
-            this.ToDialogComboBox.Location = new System.Drawing.Point(222, 76);
+            this.ToDialogComboBox.Location = new System.Drawing.Point(222, 70);
             this.ToDialogComboBox.Name = "ToDialogComboBox";
             this.ToDialogComboBox.Size = new System.Drawing.Size(147, 21);
             this.ToDialogComboBox.TabIndex = 18;
@@ -524,7 +529,7 @@
             // cbCompleteQuests
             // 
             this.cbCompleteQuests.AutoSize = true;
-            this.cbCompleteQuests.Location = new System.Drawing.Point(16, 44);
+            this.cbCompleteQuests.Location = new System.Drawing.Point(16, 38);
             this.cbCompleteQuests.Name = "cbCompleteQuests";
             this.cbCompleteQuests.Size = new System.Drawing.Size(119, 17);
             this.cbCompleteQuests.TabIndex = 27;
@@ -535,7 +540,7 @@
             // cbGetQuests
             // 
             this.cbGetQuests.AutoSize = true;
-            this.cbGetQuests.Location = new System.Drawing.Point(16, 22);
+            this.cbGetQuests.Location = new System.Drawing.Point(16, 16);
             this.cbGetQuests.Name = "cbGetQuests";
             this.cbGetQuests.Size = new System.Drawing.Size(96, 17);
             this.cbGetQuests.TabIndex = 25;
@@ -1291,6 +1296,16 @@
             this.gbClanOptions.TabIndex = 50;
             this.gbClanOptions.TabStop = false;
             this.gbClanOptions.Text = "Клановые опции";
+            // 
+            // cbAllyance
+            // 
+            this.cbAllyance.AutoSize = true;
+            this.cbAllyance.Location = new System.Drawing.Point(8, 65);
+            this.cbAllyance.Name = "cbAllyance";
+            this.cbAllyance.Size = new System.Drawing.Size(70, 17);
+            this.cbAllyance.TabIndex = 28;
+            this.cbAllyance.Text = "союзник";
+            this.cbAllyance.UseVisualStyleBackColor = true;
             // 
             // cbSecurNotExst
             // 
@@ -2442,15 +2457,26 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // cbAllyance
+            // nudDungeonEnterKey
             // 
-            this.cbAllyance.AutoSize = true;
-            this.cbAllyance.Location = new System.Drawing.Point(8, 65);
-            this.cbAllyance.Name = "cbAllyance";
-            this.cbAllyance.Size = new System.Drawing.Size(70, 17);
-            this.cbAllyance.TabIndex = 28;
-            this.cbAllyance.Text = "союзник";
-            this.cbAllyance.UseVisualStyleBackColor = true;
+            this.nudDungeonEnterKey.Location = new System.Drawing.Point(477, 70);
+            this.nudDungeonEnterKey.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nudDungeonEnterKey.Name = "nudDungeonEnterKey";
+            this.nudDungeonEnterKey.Size = new System.Drawing.Size(136, 20);
+            this.nudDungeonEnterKey.TabIndex = 46;
+            // 
+            // labelEnterKey
+            // 
+            this.labelEnterKey.AutoSize = true;
+            this.labelEnterKey.Location = new System.Drawing.Point(397, 73);
+            this.labelEnterKey.Name = "labelEnterKey";
+            this.labelEnterKey.Size = new System.Drawing.Size(76, 13);
+            this.labelEnterKey.TabIndex = 47;
+            this.labelEnterKey.Text = "Номер входа:";
             // 
             // EditDialogForm
             // 
@@ -2525,6 +2551,7 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2745,5 +2772,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cbRadioNode;
         private System.Windows.Forms.CheckBox cbAllyance;
+        private System.Windows.Forms.Label labelEnterKey;
+        private System.Windows.Forms.NumericUpDown nudDungeonEnterKey;
     }
 }

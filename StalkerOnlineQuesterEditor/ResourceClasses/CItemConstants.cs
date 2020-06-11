@@ -57,15 +57,20 @@ namespace StalkerOnlineQuesterEditor
     {
         Dictionary<int, CItem> items;
 
+        public virtual string get_file_path()
+        {
+            return "source/ItemStrings.xml";
+        }
+
         public CItemConstants()
         {
             items = new Dictionary<int, CItem>();
-            if (!File.Exists("source/ItemStrings.xml"))
+            if (!File.Exists(get_file_path()))
             {
                 System.Windows.Forms.MessageBox.Show("Отсуствует файл ItemStrings.xml, нужно распарсить предметы", "Ошибка");
                 return;
             }
-            XDocument doc = XDocument.Load("source/ItemStrings.xml");
+            XDocument doc = XDocument.Load(get_file_path());
             foreach (XElement item in doc.Root.Elements())
             {
                 bool deleted = false, converted = false;
@@ -83,7 +88,7 @@ namespace StalkerOnlineQuesterEditor
                     System.Console.WriteLine("Error with item id:" + item.Element("id").Value.ToString());
                 }
 
-                
+
             }
 
         }
@@ -92,7 +97,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if (!items.ContainsKey(typeID))
             {
-                System.Windows.Forms.MessageBox.Show("Предмета "+typeID.ToString() + " не существует", "Ошибка предмета");
+                System.Windows.Forms.MessageBox.Show("Предмета " + typeID.ToString() + " не существует", "Ошибка предмета");
                 return "";
             }
             return items[typeID].getName();
@@ -117,6 +122,15 @@ namespace StalkerOnlineQuesterEditor
                 if (items[key].getName().Equals(name))
                     return key;
             return 0;
+        }
+    }
+
+
+    public class CItemRecipes:CItemConstants
+        {
+        public override string get_file_path()
+        {
+            return "source/ItemRecipes.xml";
         }
     }
 

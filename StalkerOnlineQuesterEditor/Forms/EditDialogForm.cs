@@ -176,6 +176,14 @@ namespace StalkerOnlineQuesterEditor
                 }
                 if (ActionsComboBox.Text == "Перейти в точку")
                     tbAvatarGoTo.Text = curDialog.Actions.Data;
+                if (ActionsComboBox.Text == "Телепорт в подземелье")
+                {
+                    string[] data = curDialog.Actions.Data.Split();
+                    int dung_id = Convert.ToInt32(data[0]);
+                    int enter_key = Convert.ToInt32(data[1]);
+                    commandsComboBox.SelectedItem = parent.dungeonConst.getNameByID(dung_id);
+                    nudDungeonEnterKey.Value = enter_key;
+                }
                 
                 
                 if (curDialog.Actions.ToDialog != 0)
@@ -476,10 +484,14 @@ namespace StalkerOnlineQuesterEditor
             if (!int.TryParse(ActionsComboBox.SelectedValue.ToString(), out SelectedValue))
                 return;
 
+
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
-            commandsComboBox.Visible = (SelectedValue == 19) || (SelectedValue == 4) || (SelectedValue == 6);
+            commandsComboBox.Visible = (SelectedValue == 19) || (SelectedValue == 4) || (SelectedValue == 6) || (SelectedValue == 28); ;
             tbAvatarGoTo.Visible = (SelectedValue == 20) || (SelectedValue == 1) || (SelectedValue == 7);
+
+            
+
             if (SelectedValue == 19)
             {
                 commandsComboBox.Items.Clear();
@@ -490,6 +502,15 @@ namespace StalkerOnlineQuesterEditor
             {
                 commandsComboBox.Items.Clear();
                 foreach (string key in parent.rpConst.getKeys())
+                    commandsComboBox.Items.Add(key);
+            }
+
+            nudDungeonEnterKey.Visible = (SelectedValue == 28);
+            labelEnterKey.Visible = (SelectedValue == 28);
+            if (SelectedValue == 28)
+            {
+                commandsComboBox.Items.Clear();
+                foreach (string key in parent.dungeonConst.getAllSpaceNames())
                     commandsComboBox.Items.Add(key);
             }
 
@@ -605,6 +626,11 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Бартер (обмен)" || actions.Event.Display == "Торговля")
                     actions.Data = tbAvatarGoTo.Text;
+                if ((actions.Event.Display == "Телепорт в подземелье"))
+                {
+                    actions.Data = parent.dungeonConst.getIDByName(commandsComboBox.SelectedItem.ToString()).ToString() +
+                        " " + nudDungeonEnterKey.Value.ToString();
+                }
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))
                         actions.GetQuests.Add(int.Parse(quest));

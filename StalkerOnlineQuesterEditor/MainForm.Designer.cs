@@ -39,6 +39,7 @@ namespace StalkerOnlineQuesterEditor
             this.treeDialogs = new System.Windows.Forms.TreeView();
             this.DialogShower = new UMD.HCIL.Piccolo.PCanvas();
             this.panelDialogTools = new System.Windows.Forms.Panel();
+            this.bCopyDialogTree = new System.Windows.Forms.Button();
             this.lFindDialogID = new System.Windows.Forms.Label();
             this.tbFindDialogID = new System.Windows.Forms.TextBox();
             this.btnClearRecycle = new System.Windows.Forms.Button();
@@ -50,6 +51,10 @@ namespace StalkerOnlineQuesterEditor
             this.bRemoveDialog = new System.Windows.Forms.Button();
             this.bEditDialog = new System.Windows.Forms.Button();
             this.bAddDialog = new System.Windows.Forms.Button();
+            this.gbNPCWorkSpace = new System.Windows.Forms.GroupBox();
+            this.bWSDel = new System.Windows.Forms.Button();
+            this.bWSAdd = new System.Windows.Forms.Button();
+            this.lbWorkSpace = new System.Windows.Forms.ListBox();
             this.gbEmulator = new System.Windows.Forms.GroupBox();
             this.splitDialogsEmulator = new System.Windows.Forms.SplitContainer();
             this.splitQuestsContainer = new System.Windows.Forms.SplitContainer();
@@ -121,24 +126,6 @@ namespace StalkerOnlineQuesterEditor
             this.bFindQuest = new System.Windows.Forms.Button();
             this.tabManage = new System.Windows.Forms.TabPage();
             this.dgvManage = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subevents = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.npcName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subNPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dialogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardBattle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardSurvive = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardSupport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardCredits = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.repeat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.repeatPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Legend = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worked = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bSaveManage = new System.Windows.Forms.Button();
             this.tabTranslate = new System.Windows.Forms.TabPage();
@@ -206,6 +193,22 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subevents = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.npcName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subNPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dialogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardBattle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardCredits = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rewardItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.repeat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.repeatPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Legend = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worked = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -216,6 +219,7 @@ namespace StalkerOnlineQuesterEditor
             this.splitDialogsTreeAndCanvas.Panel2.SuspendLayout();
             this.splitDialogsTreeAndCanvas.SuspendLayout();
             this.panelDialogTools.SuspendLayout();
+            this.gbNPCWorkSpace.SuspendLayout();
             this.gbEmulator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogsEmulator)).BeginInit();
             this.splitDialogsEmulator.SuspendLayout();
@@ -266,6 +270,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // splitDialogs.Panel2
             // 
+            this.splitDialogs.Panel2.Controls.Add(this.gbNPCWorkSpace);
             this.splitDialogs.Panel2.Controls.Add(this.gbEmulator);
             this.splitDialogs.TabStop = false;
             // 
@@ -313,6 +318,7 @@ namespace StalkerOnlineQuesterEditor
             // panelDialogTools
             // 
             resources.ApplyResources(this.panelDialogTools, "panelDialogTools");
+            this.panelDialogTools.Controls.Add(this.bCopyDialogTree);
             this.panelDialogTools.Controls.Add(this.lFindDialogID);
             this.panelDialogTools.Controls.Add(this.tbFindDialogID);
             this.panelDialogTools.Controls.Add(this.btnClearRecycle);
@@ -324,6 +330,13 @@ namespace StalkerOnlineQuesterEditor
             this.panelDialogTools.Controls.Add(this.bEditDialog);
             this.panelDialogTools.Controls.Add(this.bAddDialog);
             this.panelDialogTools.Name = "panelDialogTools";
+            // 
+            // bCopyDialogTree
+            // 
+            resources.ApplyResources(this.bCopyDialogTree, "bCopyDialogTree");
+            this.bCopyDialogTree.Name = "bCopyDialogTree";
+            this.bCopyDialogTree.UseVisualStyleBackColor = true;
+            this.bCopyDialogTree.Click += new System.EventHandler(this.bCopyDialogTree_Click);
             // 
             // lFindDialogID
             // 
@@ -398,6 +411,36 @@ namespace StalkerOnlineQuesterEditor
             this.bAddDialog.Name = "bAddDialog";
             this.bAddDialog.UseVisualStyleBackColor = true;
             this.bAddDialog.Click += new System.EventHandler(this.bAddDialog_Click);
+            // 
+            // gbNPCWorkSpace
+            // 
+            resources.ApplyResources(this.gbNPCWorkSpace, "gbNPCWorkSpace");
+            this.gbNPCWorkSpace.Controls.Add(this.bWSDel);
+            this.gbNPCWorkSpace.Controls.Add(this.bWSAdd);
+            this.gbNPCWorkSpace.Controls.Add(this.lbWorkSpace);
+            this.gbNPCWorkSpace.Name = "gbNPCWorkSpace";
+            this.gbNPCWorkSpace.TabStop = false;
+            // 
+            // bWSDel
+            // 
+            resources.ApplyResources(this.bWSDel, "bWSDel");
+            this.bWSDel.Name = "bWSDel";
+            this.bWSDel.UseVisualStyleBackColor = true;
+            this.bWSDel.Click += new System.EventHandler(this.bWSDel_Click);
+            // 
+            // bWSAdd
+            // 
+            resources.ApplyResources(this.bWSAdd, "bWSAdd");
+            this.bWSAdd.Name = "bWSAdd";
+            this.bWSAdd.UseVisualStyleBackColor = true;
+            this.bWSAdd.Click += new System.EventHandler(this.bWSAdd_Click);
+            // 
+            // lbWorkSpace
+            // 
+            resources.ApplyResources(this.lbWorkSpace, "lbWorkSpace");
+            this.lbWorkSpace.FormattingEnabled = true;
+            this.lbWorkSpace.Name = "lbWorkSpace";
+            this.lbWorkSpace.SelectedIndexChanged += new System.EventHandler(this.lbWorkSpace_SelectedIndexChanged);
             // 
             // gbEmulator
             // 
@@ -967,8 +1010,6 @@ namespace StalkerOnlineQuesterEditor
             this.subNPC,
             this.dialogID,
             this.rewardBattle,
-            this.rewardSurvive,
-            this.rewardSupport,
             this.rewardCredits,
             this.rewardItems,
             this.repeat,
@@ -979,110 +1020,6 @@ namespace StalkerOnlineQuesterEditor
             this.worked});
             resources.ApplyResources(this.dgvManage, "dgvManage");
             this.dgvManage.Name = "dgvManage";
-            // 
-            // id
-            // 
-            resources.ApplyResources(this.id, "id");
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // subevents
-            // 
-            resources.ApplyResources(this.subevents, "subevents");
-            this.subevents.Name = "subevents";
-            this.subevents.ReadOnly = true;
-            // 
-            // title
-            // 
-            resources.ApplyResources(this.title, "title");
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
-            // 
-            // Description
-            // 
-            resources.ApplyResources(this.Description, "Description");
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // npcName
-            // 
-            resources.ApplyResources(this.npcName, "npcName");
-            this.npcName.Name = "npcName";
-            this.npcName.ReadOnly = true;
-            // 
-            // subNPC
-            // 
-            resources.ApplyResources(this.subNPC, "subNPC");
-            this.subNPC.Name = "subNPC";
-            this.subNPC.ReadOnly = true;
-            // 
-            // dialogID
-            // 
-            resources.ApplyResources(this.dialogID, "dialogID");
-            this.dialogID.Name = "dialogID";
-            this.dialogID.ReadOnly = true;
-            // 
-            // rewardBattle
-            // 
-            resources.ApplyResources(this.rewardBattle, "rewardBattle");
-            this.rewardBattle.Name = "rewardBattle";
-            this.rewardBattle.ReadOnly = true;
-            // 
-            // rewardSurvive
-            // 
-            resources.ApplyResources(this.rewardSurvive, "rewardSurvive");
-            this.rewardSurvive.Name = "rewardSurvive";
-            this.rewardSurvive.ReadOnly = true;
-            // 
-            // rewardSupport
-            // 
-            resources.ApplyResources(this.rewardSupport, "rewardSupport");
-            this.rewardSupport.Name = "rewardSupport";
-            this.rewardSupport.ReadOnly = true;
-            // 
-            // rewardCredits
-            // 
-            resources.ApplyResources(this.rewardCredits, "rewardCredits");
-            this.rewardCredits.Name = "rewardCredits";
-            this.rewardCredits.ReadOnly = true;
-            // 
-            // rewardItems
-            // 
-            resources.ApplyResources(this.rewardItems, "rewardItems");
-            this.rewardItems.Name = "rewardItems";
-            this.rewardItems.ReadOnly = true;
-            // 
-            // repeat
-            // 
-            resources.ApplyResources(this.repeat, "repeat");
-            this.repeat.Name = "repeat";
-            this.repeat.ReadOnly = true;
-            // 
-            // repeatPeriod
-            // 
-            resources.ApplyResources(this.repeatPeriod, "repeatPeriod");
-            this.repeatPeriod.Name = "repeatPeriod";
-            this.repeatPeriod.ReadOnly = true;
-            // 
-            // Level
-            // 
-            resources.ApplyResources(this.Level, "Level");
-            this.Level.Name = "Level";
-            // 
-            // author
-            // 
-            resources.ApplyResources(this.author, "author");
-            this.author.Name = "author";
-            // 
-            // Legend
-            // 
-            resources.ApplyResources(this.Legend, "Legend");
-            this.Legend.Name = "Legend";
-            // 
-            // worked
-            // 
-            resources.ApplyResources(this.worked, "worked");
-            this.worked.Name = "worked";
             // 
             // panel2
             // 
@@ -1563,6 +1500,98 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             // 
+            // id
+            // 
+            resources.ApplyResources(this.id, "id");
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // subevents
+            // 
+            resources.ApplyResources(this.subevents, "subevents");
+            this.subevents.Name = "subevents";
+            this.subevents.ReadOnly = true;
+            // 
+            // title
+            // 
+            resources.ApplyResources(this.title, "title");
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // Description
+            // 
+            resources.ApplyResources(this.Description, "Description");
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // npcName
+            // 
+            resources.ApplyResources(this.npcName, "npcName");
+            this.npcName.Name = "npcName";
+            this.npcName.ReadOnly = true;
+            // 
+            // subNPC
+            // 
+            resources.ApplyResources(this.subNPC, "subNPC");
+            this.subNPC.Name = "subNPC";
+            this.subNPC.ReadOnly = true;
+            // 
+            // dialogID
+            // 
+            resources.ApplyResources(this.dialogID, "dialogID");
+            this.dialogID.Name = "dialogID";
+            this.dialogID.ReadOnly = true;
+            // 
+            // rewardBattle
+            // 
+            resources.ApplyResources(this.rewardBattle, "rewardBattle");
+            this.rewardBattle.Name = "rewardBattle";
+            this.rewardBattle.ReadOnly = true;
+            // 
+            // rewardCredits
+            // 
+            resources.ApplyResources(this.rewardCredits, "rewardCredits");
+            this.rewardCredits.Name = "rewardCredits";
+            this.rewardCredits.ReadOnly = true;
+            // 
+            // rewardItems
+            // 
+            resources.ApplyResources(this.rewardItems, "rewardItems");
+            this.rewardItems.Name = "rewardItems";
+            this.rewardItems.ReadOnly = true;
+            // 
+            // repeat
+            // 
+            resources.ApplyResources(this.repeat, "repeat");
+            this.repeat.Name = "repeat";
+            this.repeat.ReadOnly = true;
+            // 
+            // repeatPeriod
+            // 
+            resources.ApplyResources(this.repeatPeriod, "repeatPeriod");
+            this.repeatPeriod.Name = "repeatPeriod";
+            this.repeatPeriod.ReadOnly = true;
+            // 
+            // Level
+            // 
+            resources.ApplyResources(this.Level, "Level");
+            this.Level.Name = "Level";
+            // 
+            // author
+            // 
+            resources.ApplyResources(this.author, "author");
+            this.author.Name = "author";
+            // 
+            // Legend
+            // 
+            resources.ApplyResources(this.Legend, "Legend");
+            this.Legend.Name = "Legend";
+            // 
+            // worked
+            // 
+            resources.ApplyResources(this.worked, "worked");
+            this.worked.Name = "worked";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1585,6 +1614,7 @@ namespace StalkerOnlineQuesterEditor
             this.splitDialogsTreeAndCanvas.ResumeLayout(false);
             this.panelDialogTools.ResumeLayout(false);
             this.panelDialogTools.PerformLayout();
+            this.gbNPCWorkSpace.ResumeLayout(false);
             this.gbEmulator.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogsEmulator)).EndInit();
             this.splitDialogsEmulator.ResumeLayout(false);
@@ -1750,24 +1780,6 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ToolStripMenuItem собратьЭдиторДляПередачиToolStripMenuItem;
         private System.Windows.Forms.Label lFindDialogID;
         private System.Windows.Forms.TextBox tbFindDialogID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subevents;
-        private System.Windows.Forms.DataGridViewTextBoxColumn title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn npcName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subNPC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dialogID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardBattle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardSurvive;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardSupport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardCredits;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rewardItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn repeat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn repeatPeriod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Level;
-        private System.Windows.Forms.DataGridViewTextBoxColumn author;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Legend;
-        private System.Windows.Forms.DataGridViewComboBoxColumn worked;
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn npc_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn identif;
@@ -1813,6 +1825,27 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ComboBox cbKnowledgeCategory;
         private System.Windows.Forms.TreeView treeKnowladge;
         private System.Windows.Forms.ComboBox FakeNPCBox;
+        private System.Windows.Forms.Button bCopyDialogTree;
+        private System.Windows.Forms.GroupBox gbNPCWorkSpace;
+        private System.Windows.Forms.ListBox lbWorkSpace;
+        private System.Windows.Forms.Button bWSDel;
+        private System.Windows.Forms.Button bWSAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subevents;
+        private System.Windows.Forms.DataGridViewTextBoxColumn title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn npcName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subNPC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dialogID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rewardBattle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rewardCredits;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rewardItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn repeat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn repeatPeriod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Level;
+        private System.Windows.Forms.DataGridViewTextBoxColumn author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Legend;
+        private System.Windows.Forms.DataGridViewComboBoxColumn worked;
     }
 }
 

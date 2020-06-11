@@ -43,8 +43,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void EditRectangle_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-                bOK_Click(sender, e);
+            //if (e.KeyCode == Keys.Enter)
+            //    bOK_Click(sender, e);
         }
 
         private void colorBox_ValueChanging(object sender, Telerik.WinControls.UI.ValueChangingEventArgs e)

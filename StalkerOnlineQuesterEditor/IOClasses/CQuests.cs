@@ -129,6 +129,12 @@ namespace StalkerOnlineQuesterEditor
                 {
                     priority = int.Parse(item.Element("Priority").Value);
                 }
+                int level = 0;
+                if (item.Element("Level") != null)
+                {
+                    level = int.Parse(item.Element("Level").Value);
+                }
+                
 
                 additional.Holder = item.Element("Additional").Element("Holder").Value.Trim();
 
@@ -242,7 +248,9 @@ namespace StalkerOnlineQuesterEditor
 
                 if (item.Element("Reward") != null)
                 {
-                    CQuests.AddDataToList(item, "Reward", "Experience", reward.Experience);
+                    CQuests.AddDataToInt(item, "Reward", "Experience", out reward.Experience);
+                    ParseIntIfNotEmpty(item, "Reward", "Exp", out reward.Experience, reward.Experience);
+
                     if (item.Element("Reward").Element("Items") != null)
                         CQuests.parceItems(item.Element("Reward").Element("Items"), reward.items);
 
@@ -305,7 +313,9 @@ namespace StalkerOnlineQuesterEditor
 
                 if (item.Element("Penalty") != null)
                 {
-                    CQuests.AddDataToList(item, "Penalty", "Experience", penalty.Experience);
+                    CQuests.AddDataToInt(item, "Penalty", "Experience", out penalty.Experience);
+                    ParseIntIfNotEmpty(item, "Penalty", "Exp", out penalty.Experience, penalty.Experience);
+
                     if (item.Element("Penalty").Element("Items") != null)
                         CQuests.parceItems(item.Element("Penalty").Element("Items"), penalty.items);
 
@@ -366,7 +376,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
                 if (!dict_target.ContainsKey(QuestID))
-                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, information, precondition, questRules, reward, additional, target, penalty, hidden));
+                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, level, information, precondition, questRules, reward, additional, target, penalty, hidden));
             }
         }
         
@@ -473,6 +483,16 @@ namespace StalkerOnlineQuesterEditor
             if (Element.Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
                     list.Add(int.Parse(quest));
+        }
+
+        public static void AddDataToInt(XElement Element, String Name1, String Name2, out int result)
+        {
+            result = 0;
+            if ((Element == null) || (Element.Element(Name1).Element(Name2) == null))
+                return;
+            if (Element.Element(Name1).Element(Name2).Value != "")
+                foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
+                    result += int.Parse(quest);
         }
 
         public static void AddDataToList(XElement Element, String Name1, List<int> list)
@@ -618,7 +638,8 @@ namespace StalkerOnlineQuesterEditor
                     element.Add(new XElement("hidden", "1"));
                 if (questValue.Priority > 0)
                     element.Add(new XElement("Priority", questValue.Priority.ToString()));
-
+                if (questValue.Level > 0)
+                    element.Add(new XElement("Level", questValue.Level.ToString()));
                 if (questValue.Target.Any())
                 {
                     element.Add(new XElement("Target"));
@@ -696,8 +717,8 @@ namespace StalkerOnlineQuesterEditor
                 if (questValue.Reward.Any())
                 {
                     element.Add(new XElement("Reward"));
-                    if (questValue.Reward.Experience.Any())
-                        element.Element("Reward").Add(new XElement("Experience", Global.GetListAsString(questValue.Reward.Experience)));
+                    if (questValue.Reward.Experience != 0)
+                        element.Element("Reward").Add(new XElement("Exp", Global.GetIntAsString(questValue.Reward.Experience)));
                     if (questValue.Reward.items.Any())
                         element.Element("Reward").Add(CQuests.getItemsNode(questValue.Reward.items));
                     if (questValue.Reward.Credits != 0)
@@ -724,8 +745,8 @@ namespace StalkerOnlineQuesterEditor
                 if (questValue.QuestPenalty.Any())
                 {
                      element.Add(new XElement("Penalty"));
-                     if (questValue.QuestPenalty.Experience.Any())
-                         element.Element("Penalty").Add(new XElement("Experience", Global.GetListAsString(questValue.QuestPenalty.Experience)));
+                     if (questValue.QuestPenalty.Experience != 0)
+                         element.Element("Penalty").Add(new XElement("Exp", Global.GetIntAsString(questValue.QuestPenalty.Experience)));
                      if (questValue.QuestPenalty.items.Any())
                          element.Element("Penalty").Add(CQuests.getItemsNode(questValue.QuestPenalty.items));
                      if (questValue.QuestPenalty.Credits != 0)

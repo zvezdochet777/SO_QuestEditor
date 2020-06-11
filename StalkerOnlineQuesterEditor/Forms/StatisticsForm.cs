@@ -26,9 +26,9 @@ namespace StalkerOnlineQuesterEditor
         int countOfQuests;
         int countHiddenQuests;
         int countOfAmountGold;
-        int[] countOfExQuests = { 0, 0, 0 };
-        List<int> lExperience;
-        float[] averageExp = { 0, 0, 0 };
+        int countOfExQuests = 0;
+        int lExperience;
+        float averageExp = 0;
 
         int countOfDialogs;
         int countOfTitleLetters;
@@ -82,13 +82,12 @@ namespace StalkerOnlineQuesterEditor
         //! Считает денежные вознаграждения и опыт
         void calcRewards()
         {
-            const int NumExp = 3;
             Credits = new double();
             countOfQuests = 0;
             countHiddenQuests = 0;
             countOfAmountGold = 0;
-            lExperience = new List<int>(3);
-            lExperience.Add(0); lExperience.Add(0); lExperience.Add(0);
+            lExperience = 0;
+            
             foreach (CQuest quest in quests.quest.Values)
             {
                 countOfQuests++;
@@ -97,21 +96,12 @@ namespace StalkerOnlineQuesterEditor
                     countHiddenQuests++;
                     continue;
                 }
-                if (quest.Reward.Experience.Any())
-                {
-                    for (int i = 0; i < NumExp; i++)
-                    {
-                        lExperience[i] += quest.Reward.Experience[i];
-                        if (quest.Reward.Experience[i] != 0)
-                            countOfExQuests[i]++;
-                    }
-                }
+                lExperience += quest.Reward.Experience;
                 //if (quest.Reward.Credits != 0)
                     countOfAmountGold++;
                 Credits += quest.Reward.Credits;
             }
-            for (int i = 0; i < NumExp; i++)
-                averageExp[i] = lExperience[i] / countOfExQuests[i];        
+             averageExp = lExperience / countOfExQuests;        
         }
         //! Считает число символов в диалогах и квестах (для расчета стоимости услуг локализации)
         private void calcSymbolsInDialogs()
@@ -268,16 +258,8 @@ namespace StalkerOnlineQuesterEditor
             rewards += "Общее количество денег:         ";
             rewards += (Credits.ToString() + " руб." + "   Среднее: " + (Credits / countOfAmountGold).ToString("F0") + " руб.\n");
             rewards += "   Общее количество опыта:\n";
-            rewards += "\aБоевого:         ";
-            if (countOfExQuests[0] != 0 || lExperience[0] != 0)
-                rewards += (lExperience[0].ToString() + "   Среднее: " + averageExp[0].ToString() + "\n");
-            rewards += "\aВыживания:         ";
-            if (countOfExQuests[1] != 0 || lExperience[1] != 0)
-                rewards += (lExperience[1].ToString() + "   Среднее: " + averageExp[1].ToString() + "\n");
-            rewards += "\aПоддержка:         ";
-            if (countOfExQuests[2] != 0 || lExperience[2] != 0)
-                rewards += (lExperience[2].ToString() + "   Среднее: " + averageExp[2].ToString() + "\n");
-
+            if (countOfExQuests != 0 || lExperience != 0)
+                rewards += (lExperience.ToString() + "   Среднее: " + averageExp.ToString() + "\n");
             lRewardInfo.Text = rewards;
                    
         }

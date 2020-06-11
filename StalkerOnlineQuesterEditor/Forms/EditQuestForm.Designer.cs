@@ -162,10 +162,6 @@
             this.bPenaltyQuests = new System.Windows.Forms.Button();
             this.bPenaltyEffects = new System.Windows.Forms.Button();
             this.bPenaltyReputation = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tbPenaltySupport = new System.Windows.Forms.TextBox();
-            this.tbPenaltySurvival = new System.Windows.Forms.TextBox();
             this.tbPenaltyKarmaPK = new System.Windows.Forms.TextBox();
             this.tbPenaltyCredits = new System.Windows.Forms.TextBox();
             this.tbPenaltyExperience = new System.Windows.Forms.TextBox();
@@ -177,10 +173,6 @@
             this.bRewardBlackBox = new System.Windows.Forms.Button();
             this.bRewardQuests = new System.Windows.Forms.Button();
             this.cbRewardWindow = new System.Windows.Forms.CheckBox();
-            this.lSupportSkills = new System.Windows.Forms.Label();
-            this.lSurvivalSkills = new System.Windows.Forms.Label();
-            this.tSupport = new System.Windows.Forms.TextBox();
-            this.tSurvival = new System.Windows.Forms.TextBox();
             this.bRewardEffects = new System.Windows.Forms.Button();
             this.bRewardReputation = new System.Windows.Forms.Button();
             this.bRewardItem = new System.Windows.Forms.Button();
@@ -197,6 +189,8 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.cbPriority = new System.Windows.Forms.ComboBox();
+            this.nudLevel = new System.Windows.Forms.NumericUpDown();
+            this.labelLevel = new System.Windows.Forms.Label();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
@@ -216,6 +210,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCreateMob
@@ -1631,10 +1626,6 @@
             this.tabPage6.Controls.Add(this.bPenaltyQuests);
             this.tabPage6.Controls.Add(this.bPenaltyEffects);
             this.tabPage6.Controls.Add(this.bPenaltyReputation);
-            this.tabPage6.Controls.Add(this.label5);
-            this.tabPage6.Controls.Add(this.label10);
-            this.tabPage6.Controls.Add(this.tbPenaltySupport);
-            this.tabPage6.Controls.Add(this.tbPenaltySurvival);
             this.tabPage6.Controls.Add(this.tbPenaltyKarmaPK);
             this.tabPage6.Controls.Add(this.tbPenaltyCredits);
             this.tabPage6.Controls.Add(this.tbPenaltyExperience);
@@ -1692,41 +1683,9 @@
             this.bPenaltyReputation.UseVisualStyleBackColor = true;
             this.bPenaltyReputation.Click += new System.EventHandler(this.bPenaltyReputation_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(429, 209);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 65;
-            this.label5.Text = "Поддержки:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(229, 209);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 13);
-            this.label10.TabIndex = 64;
-            this.label10.Text = "Выживания:";
-            // 
-            // tbPenaltySupport
-            // 
-            this.tbPenaltySupport.Location = new System.Drawing.Point(503, 204);
-            this.tbPenaltySupport.Name = "tbPenaltySupport";
-            this.tbPenaltySupport.Size = new System.Drawing.Size(100, 20);
-            this.tbPenaltySupport.TabIndex = 62;
-            // 
-            // tbPenaltySurvival
-            // 
-            this.tbPenaltySurvival.Location = new System.Drawing.Point(304, 204);
-            this.tbPenaltySurvival.Name = "tbPenaltySurvival";
-            this.tbPenaltySurvival.Size = new System.Drawing.Size(100, 20);
-            this.tbPenaltySurvival.TabIndex = 61;
-            // 
             // tbPenaltyKarmaPK
             // 
-            this.tbPenaltyKarmaPK.Location = new System.Drawing.Point(164, 232);
+            this.tbPenaltyKarmaPK.Location = new System.Drawing.Point(119, 226);
             this.tbPenaltyKarmaPK.Name = "tbPenaltyKarmaPK";
             this.tbPenaltyKarmaPK.Size = new System.Drawing.Size(100, 20);
             this.tbPenaltyKarmaPK.TabIndex = 63;
@@ -1759,7 +1718,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 235);
+            this.label11.Location = new System.Drawing.Point(10, 229);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(146, 13);
             this.label11.TabIndex = 58;
@@ -1768,7 +1727,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 184);
+            this.label12.Location = new System.Drawing.Point(10, 185);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 56;
@@ -1777,21 +1736,17 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 208);
+            this.label13.Location = new System.Drawing.Point(10, 207);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.Size = new System.Drawing.Size(37, 13);
             this.label13.TabIndex = 55;
-            this.label13.Text = "Опыт боевой:";
+            this.label13.Text = "Опыт:";
             // 
             // rewardGroupBox
             // 
             this.rewardGroupBox.Controls.Add(this.bRewardBlackBox);
             this.rewardGroupBox.Controls.Add(this.bRewardQuests);
             this.rewardGroupBox.Controls.Add(this.cbRewardWindow);
-            this.rewardGroupBox.Controls.Add(this.lSupportSkills);
-            this.rewardGroupBox.Controls.Add(this.lSurvivalSkills);
-            this.rewardGroupBox.Controls.Add(this.tSupport);
-            this.rewardGroupBox.Controls.Add(this.tSurvival);
             this.rewardGroupBox.Controls.Add(this.bRewardEffects);
             this.rewardGroupBox.Controls.Add(this.bRewardReputation);
             this.rewardGroupBox.Controls.Add(this.bRewardItem);
@@ -1842,38 +1797,6 @@
             this.cbRewardWindow.Text = "Окно награды";
             this.cbRewardWindow.UseVisualStyleBackColor = true;
             // 
-            // lSupportSkills
-            // 
-            this.lSupportSkills.AutoSize = true;
-            this.lSupportSkills.Location = new System.Drawing.Point(429, 72);
-            this.lSupportSkills.Name = "lSupportSkills";
-            this.lSupportSkills.Size = new System.Drawing.Size(68, 13);
-            this.lSupportSkills.TabIndex = 40;
-            this.lSupportSkills.Text = "Поддержки:";
-            // 
-            // lSurvivalSkills
-            // 
-            this.lSurvivalSkills.AutoSize = true;
-            this.lSurvivalSkills.Location = new System.Drawing.Point(229, 72);
-            this.lSurvivalSkills.Name = "lSurvivalSkills";
-            this.lSurvivalSkills.Size = new System.Drawing.Size(69, 13);
-            this.lSurvivalSkills.TabIndex = 39;
-            this.lSurvivalSkills.Text = "Выживания:";
-            // 
-            // tSupport
-            // 
-            this.tSupport.Location = new System.Drawing.Point(503, 67);
-            this.tSupport.Name = "tSupport";
-            this.tSupport.Size = new System.Drawing.Size(100, 20);
-            this.tSupport.TabIndex = 34;
-            // 
-            // tSurvival
-            // 
-            this.tSurvival.Location = new System.Drawing.Point(304, 67);
-            this.tSurvival.Name = "tSurvival";
-            this.tSurvival.Size = new System.Drawing.Size(100, 20);
-            this.tSurvival.TabIndex = 33;
-            // 
             // bRewardEffects
             // 
             this.bRewardEffects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1917,7 +1840,7 @@
             // lKarmaPK
             // 
             this.lKarmaPK.AutoSize = true;
-            this.lKarmaPK.Location = new System.Drawing.Point(10, 92);
+            this.lKarmaPK.Location = new System.Drawing.Point(6, 92);
             this.lKarmaPK.Name = "lKarmaPK";
             this.lKarmaPK.Size = new System.Drawing.Size(58, 13);
             this.lKarmaPK.TabIndex = 30;
@@ -1949,11 +1872,11 @@
             // lCombatSkills
             // 
             this.lCombatSkills.AutoSize = true;
-            this.lCombatSkills.Location = new System.Drawing.Point(7, 71);
+            this.lCombatSkills.Location = new System.Drawing.Point(7, 70);
             this.lCombatSkills.Name = "lCombatSkills";
-            this.lCombatSkills.Size = new System.Drawing.Size(76, 13);
+            this.lCombatSkills.Size = new System.Drawing.Size(37, 13);
             this.lCombatSkills.TabIndex = 8;
-            this.lCombatSkills.Text = "Опыт боевой:";
+            this.lCombatSkills.Text = "Опыт:";
             // 
             // titleTextBox
             // 
@@ -2009,11 +1932,11 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(462, 36);
+            this.label25.Location = new System.Drawing.Point(485, 35);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(60, 13);
+            this.label25.Size = new System.Drawing.Size(29, 13);
             this.label25.TabIndex = 54;
-            this.label25.Text = "Важность:";
+            this.label25.Text = "Тип:";
             // 
             // cbPriority
             // 
@@ -2023,12 +1946,36 @@
             this.cbPriority.Size = new System.Drawing.Size(116, 21);
             this.cbPriority.TabIndex = 55;
             // 
+            // nudLevel
+            // 
+            this.nudLevel.Location = new System.Drawing.Point(520, 59);
+            this.nudLevel.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudLevel.Name = "nudLevel";
+            this.nudLevel.Size = new System.Drawing.Size(115, 20);
+            this.nudLevel.TabIndex = 56;
+            // 
+            // labelLevel
+            // 
+            this.labelLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLevel.AutoSize = true;
+            this.labelLevel.Location = new System.Drawing.Point(460, 62);
+            this.labelLevel.Name = "labelLevel";
+            this.labelLevel.Size = new System.Drawing.Size(54, 13);
+            this.labelLevel.TabIndex = 57;
+            this.labelLevel.Text = "Уровень:";
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(638, 579);
+            this.Controls.Add(this.labelLevel);
+            this.Controls.Add(this.nudLevel);
             this.Controls.Add(this.cbPriority);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.debuglabel);
@@ -2077,6 +2024,7 @@
             this.tabPage6.PerformLayout();
             this.rewardGroupBox.ResumeLayout(false);
             this.rewardGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2218,10 +2166,6 @@
         private System.Windows.Forms.Button bPenaltyQuests;
         private System.Windows.Forms.Button bPenaltyEffects;
         private System.Windows.Forms.Button bPenaltyReputation;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox tbPenaltySupport;
-        private System.Windows.Forms.TextBox tbPenaltySurvival;
         private System.Windows.Forms.TextBox tbPenaltyKarmaPK;
         private System.Windows.Forms.TextBox tbPenaltyCredits;
         private System.Windows.Forms.TextBox tbPenaltyExperience;
@@ -2233,10 +2177,6 @@
         private System.Windows.Forms.Button bRewardBlackBox;
         private System.Windows.Forms.Button bRewardQuests;
         private System.Windows.Forms.CheckBox cbRewardWindow;
-        private System.Windows.Forms.Label lSupportSkills;
-        private System.Windows.Forms.Label lSurvivalSkills;
-        private System.Windows.Forms.TextBox tSupport;
-        private System.Windows.Forms.TextBox tSurvival;
         private System.Windows.Forms.Button bRewardEffects;
         private System.Windows.Forms.Button bRewardReputation;
         private System.Windows.Forms.Button bRewardItem;
@@ -2252,5 +2192,7 @@
         private System.Windows.Forms.ComboBox cbPriority;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button btnSpace;
+        private System.Windows.Forms.NumericUpDown nudLevel;
+        private System.Windows.Forms.Label labelLevel;
     }
 }

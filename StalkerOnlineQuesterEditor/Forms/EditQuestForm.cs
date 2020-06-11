@@ -117,12 +117,14 @@ namespace StalkerOnlineQuesterEditor
             cbPriority.Items.Clear();
             cbPriority.Items.AddRange(QuestPriorities.getListNames());
             cbPriority.SelectedItem = QuestPriorities.getNameByID(quest.Priority);
+            nudLevel.Value = quest.Level;
             showProgressCheckBox.Checked = true;
             showCloseCheckBox.Checked = true;
             showTakeCheckBox.Checked = true;
             showJournalCheckBox.Checked = true;
-
-            CQuest parentQuest =  new CQuest();
+            nudLevel.Visible = (quest.Additional.IsSubQuest == 0);
+            labelLevel.Visible = (quest.Additional.IsSubQuest == 0);
+            //CQuest parentQuest =  new CQuest();
             //if (iState == EDIT_SUB)
             //{
             //    parentQuest = parent.getQuestOnQuestID(quest.Additional.IsSubQuest);
@@ -317,6 +319,22 @@ namespace StalkerOnlineQuesterEditor
                     ltargetResult.Enabled = true;
                     dynamicCheckBox.Enabled = true;
                     cbState.Enabled = true;
+                }
+                else if (QuestType == CQuestConstants.TYPE_CRAFT_ITEM)
+                {
+                    lNameObject.Text = "Рецепт:";
+                    foreach (CItem item in parent.receptConst.getAllItems().Values)
+                        targetComboBox.Items.Add(item.getName());
+                    quantityUpDown.Enabled = true;
+                    targetAttributeComboBox.Items.Clear();
+                    labelTargetAttr.Enabled = true;
+                    ltargetResult.Enabled = true;
+                    targetAttributeComboBox.Enabled = true;
+                    targetAttributeComboBox2.Enabled = false;
+                    labelTargetAttr.Enabled = false;
+                    ltargetResult.Enabled = false;
+                    dynamicCheckBox.Enabled = false;
+                    cbState.Enabled = false;
                 }
                 else if (QuestType == CQuestConstants.TYPE_ITEM_CATEGORY || QuestType == CQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
                 {
@@ -554,6 +572,11 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else cbState.Checked = false;
 
+            }
+            else if(quest.Target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM)
+            {
+                targetComboBox.SelectedItem = parent.receptConst.getItemName(quest.Target.ObjectType);
+                quantityUpDown.Value = quest.Target.NumOfObjects;
             }
             else if (quest.Target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY || quest.Target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
             {
@@ -921,19 +944,8 @@ namespace StalkerOnlineQuesterEditor
         {
             checkRewardIndicates();
            
-            if (quest.Reward.Experience.Count == 3)
-            {
-                tExperience.Text = quest.Reward.Experience[0].ToString();
-                tSurvival.Text = quest.Reward.Experience[1].ToString();
-                tSupport.Text = quest.Reward.Experience[2].ToString();
-            }
-
-            if (quest.QuestPenalty.Experience.Count == 3)
-            {
-                tbPenaltyExperience.Text = quest.QuestPenalty.Experience[0].ToString();
-                tbPenaltySurvival.Text = quest.QuestPenalty.Experience[1].ToString();
-                tbPenaltySupport.Text = quest.QuestPenalty.Experience[2].ToString();
-            }
+            tExperience.Text = quest.Reward.Experience.ToString();
+            tbPenaltyExperience.Text = quest.QuestPenalty.Experience.ToString();
 
             cbRewardWindow.Checked = quest.Reward.RewardWindow;
             creditsTextBox.Text = quest.Reward.Credits.ToString();
@@ -988,6 +1000,11 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else target.usePercent = false;
             }
+            else if (target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM)
+            {
+                target.ObjectType = parent.receptConst.getIDOnName(targetComboBox.SelectedItem.ToString());
+                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
+            }
             else if (target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY || target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
             {
                 target.ObjectType = parent.itemCategories.getID(targetComboBox.SelectedItem.ToString());
@@ -1014,8 +1031,8 @@ namespace StalkerOnlineQuesterEditor
                     target.ObjectName = resultComboBox.Text;
                 else
                 {
-                    int level = ParseIntIfNotEmpty(resultComboBox.Text);
-                    target.ObjectAttr = level;
+                    int mob_level = ParseIntIfNotEmpty(resultComboBox.Text);
+                    target.ObjectAttr = mob_level;
 
                     target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
                     if ((target.NumOfObjects > 32000) || (target.NumOfObjects < 1))
@@ -1186,16 +1203,13 @@ namespace StalkerOnlineQuesterEditor
                 if (!item.Equals(""))
                     rules.MassQuests.Add(int.Parse(item));
 
-            reward.Experience.Add(ParseIntIfNotEmpty(tExperience.Text));
-            reward.Experience.Add(ParseIntIfNotEmpty(tSurvival.Text));
-            reward.Experience.Add(ParseIntIfNotEmpty(tSupport.Text));
+            reward.Experience = ParseIntIfNotEmpty(tExperience.Text);
+
             reward.Credits = ParseIntIfNotEmpty(creditsTextBox.Text);
             reward.KarmaPK = ParseIntIfNotEmpty(textBoxKarmaPK.Text);
             reward.RewardWindow = cbRewardWindow.Checked;
 
-            penalty.Experience.Add(ParseIntIfNotEmpty(tbPenaltyExperience.Text));
-            penalty.Experience.Add(ParseIntIfNotEmpty(tbPenaltySurvival.Text));
-            penalty.Experience.Add(ParseIntIfNotEmpty(tbPenaltySupport.Text));
+            penalty.Experience = ParseIntIfNotEmpty(tbPenaltyExperience.Text);
             penalty.Credits = ParseIntIfNotEmpty(tbPenaltyCredits.Text);
             penalty.KarmaPK = ParseIntIfNotEmpty(tbPenaltyKarmaPK.Text);
 
@@ -1252,11 +1266,14 @@ namespace StalkerOnlineQuesterEditor
             rules.basePercent = editQuestRules.basePercent;
             int priority = 0;
             if (cbPriority.SelectedItem != null) priority = QuestPriorities.getIDByName(cbPriority.SelectedItem.ToString());
+
+            int level = Convert.ToInt32(nudLevel.Value);
+
             if (iState == ADD_NEW || iState == ADD_SUB)
             {
                 if (iState == ADD_SUB)
                     additional.IsSubQuest = quest.QuestID;
-                retQuest = new CQuest(this.QuestID, 1, priority, information, precondition, rules, reward, additional, target, penalty);
+                retQuest = new CQuest(this.QuestID, 1, priority, level, information, precondition, rules, reward, additional, target, penalty);
                 parent.incQuestNewID();
             }
             else
@@ -1266,7 +1283,7 @@ namespace StalkerOnlineQuesterEditor
                         || quest.QuestInformation.onWin != information.onWin || quest.QuestInformation.onFailed != information.onFailed)
                     version++;
                  
-                retQuest = new CQuest(quest.QuestID, version, priority, information, precondition, rules, reward, additional, target, penalty, cbHidden.Checked);
+                retQuest = new CQuest(quest.QuestID, version, priority, level, information, precondition, rules, reward, additional, target, penalty, cbHidden.Checked);
             }
             return retQuest;
         }

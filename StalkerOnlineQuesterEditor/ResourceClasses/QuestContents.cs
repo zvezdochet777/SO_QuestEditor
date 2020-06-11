@@ -15,6 +15,7 @@ namespace StalkerOnlineQuesterEditor
         public int QuestID;
         public int Version;
         public int Priority;
+        public int Level;
         public CQuestInformation QuestInformation;
         public CQuestTarget Target;
         public CQuestPrecondition Precondition;
@@ -29,6 +30,7 @@ namespace StalkerOnlineQuesterEditor
             CQuest copy = new CQuest();
             copy.QuestID = this.QuestID;
             copy.Priority = this.Priority;
+            copy.Level = this.Level;
             copy.Version = 0;
             copy.QuestInformation = (CQuestInformation)this.QuestInformation.Clone();
             copy.Precondition = (CQuestPrecondition)this.Precondition.Clone();
@@ -46,6 +48,7 @@ namespace StalkerOnlineQuesterEditor
             this.QuestID = new int();
             this.Version = new int();
             this.Priority = new int();
+            this.Level = new int();
             this.QuestInformation = new CQuestInformation();
             this.Precondition = new CQuestPrecondition();
             this.QuestRules = new CQuestRules();
@@ -56,11 +59,12 @@ namespace StalkerOnlineQuesterEditor
             this.hidden = false;
         }
 
-        public CQuest(int questID, int Version, int Priority, CQuestInformation questInformation, CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional, CQuestTarget target, CQuestReward penalty, bool hidden = false)
+        public CQuest(int questID, int Version, int Priority, int Level, CQuestInformation questInformation, CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional, CQuestTarget target, CQuestReward penalty, bool hidden = false)
         {
             this.QuestID = questID;
             this.Version = Version;
             this.Priority = Priority;
+            this.Level = Level;
             this.QuestInformation = questInformation;
             this.Precondition = precondition;
             this.QuestRules = questRules;
@@ -507,8 +511,8 @@ namespace StalkerOnlineQuesterEditor
     //! Награда за успешное выполнение квеста
     public class CQuestReward : ICloneable
     {
-        //! Опыт: боевой, выживания, поддержки
-        public List<int> Experience;
+        //! Опыт:
+        public int Experience;
         // Предметы
         public List<QuestItem> items;
 
@@ -530,7 +534,7 @@ namespace StalkerOnlineQuesterEditor
         public object Clone()
         {
             CQuestReward copy = new CQuestReward();
-            copy.Experience = new List<int>(this.Experience);
+            copy.Experience = this.Experience;
             copy.items = new List<QuestItem>(this.items);
             copy.ChangeQuests = new Dictionary<int, int>(this.ChangeQuests);
             copy.Credits = this.Credits;
@@ -545,7 +549,7 @@ namespace StalkerOnlineQuesterEditor
 
         public CQuestReward()
         {
-            this.Experience = new List<int>();
+            this.Experience = new int();
             this.items = new List<QuestItem>();
             this.Credits = new float();            
             this.Reputation = new Dictionary<int, int>();
@@ -563,12 +567,7 @@ namespace StalkerOnlineQuesterEditor
 
         private bool hasExperience()
         {
-            int sum = 0;
-            foreach (int val in Experience)
-            {
-                sum += val;
-            }
-            return sum != 0;
+            return Experience != 0;
         }
 
         public string getReputation(bool is_npc = false)

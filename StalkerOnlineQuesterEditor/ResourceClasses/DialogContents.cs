@@ -500,7 +500,7 @@ namespace StalkerOnlineQuesterEditor
         {
             CDialog copy = new CDialog();
             copy.Actions = this.Actions;
-            copy.coordinates = this.coordinates;
+            copy.coordinates = new NodeCoordinates(coordinates.X, coordinates.Y, false, coordinates.Active);
             copy.DialogID = this.DialogID;
             copy.Holder = this.Holder;
             copy.Nodes = new List<int>(this.Nodes);

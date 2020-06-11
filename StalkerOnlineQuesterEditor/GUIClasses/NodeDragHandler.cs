@@ -78,7 +78,11 @@ namespace StalkerOnlineQuesterEditor
             if (mainForm.RectManager.CheckIfRect(e.PickedNode.Tag, out rectId))
                 SelectRectangle(e.PickedNode, rectId);
             else if (e.PickedNode.Tag != null)
+            {
+                mainForm.DeselectRectangles();
                 SelectCurrentNode(mainForm.getDialogIDOnNode(e.PickedNode));
+            }
+                
         }
 
         //! Вызываем форму редактирования для диалога или прямоугольника
@@ -87,6 +91,7 @@ namespace StalkerOnlineQuesterEditor
             e.Handled = true;
             int node = mainForm.getDialogIDOnNode(e.PickedNode);
             mainForm.bEditDialog_Click(sender, new EventArgs() );
+
         }
 
         //! При перетаскивании перерисовываем связи диалога. К прямоугольникам не относится

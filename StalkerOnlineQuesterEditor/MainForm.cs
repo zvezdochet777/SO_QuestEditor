@@ -66,6 +66,7 @@ namespace StalkerOnlineQuesterEditor
 
         public CQuestConstants questConst;
         public CItemConstants itemConst;
+        public CItemRecipes receptConst; 
         public CItemCategories itemCategories;
         public CNPCConstants npcConst;
         public CMobConstants mobConst;
@@ -129,6 +130,7 @@ namespace StalkerOnlineQuesterEditor
             tree = treeDialogs;
             questConst = new CQuestConstants();
             itemConst = new CItemConstants();
+            receptConst = new CItemRecipes();
             itemCategories = new CItemCategories();
             npcConst = new CNPCConstants();
             
@@ -225,7 +227,7 @@ namespace StalkerOnlineQuesterEditor
             for (int i = 0; i < NPCBox.Items.Count; i++)
             {
                 string npc_name = (NPCBox.Items[i] as NPCNameDataSourceObject).Value;
-                if (npc_name.Contains(open_npc_name))
+                if (npc_name == open_npc_name)
                 {
                     settings.setLastNpcIndex(index);
                     Console.WriteLine("NPC::" + index.ToString() + " " + npc_name);
@@ -295,6 +297,7 @@ namespace StalkerOnlineQuesterEditor
                 bAddDialog.Enabled = false;
                 bEditDialog.Enabled = false;
                 bRemoveDialog.Enabled = false;
+                bCopyDialogTree.Enabled = false;
                 splitDialogsEmulator.Panel2.Controls.Clear();
                 DialogSelected(true);
             }
@@ -379,6 +382,11 @@ namespace StalkerOnlineQuesterEditor
         }
 
 
+        public List<NPCNameDataSourceObject> getCopyNpcNames()
+        {
+            return npcNames.ToList();   
+        }
+
         //! Заполняет комбобокс со списком квестов у данного персонажа
         void fillQuestChangeBox(bool onlyDialogs)
         {
@@ -434,54 +442,55 @@ namespace StalkerOnlineQuesterEditor
         //! Заполнение итемов в комбобоксе NPC
         void fillNPCBox()
         {
-                    npcNames.Clear();
-                    //NPCBox.AutoCompleteCustomSource.Clear();
+            npcNames.Clear();
+            //NPCBox.AutoCompleteCustomSource.Clear();
 
-                    foreach (string holder in this.dialogs.dialogs.Keys)
+            foreach (string holder in this.dialogs.dialogs.Keys)
+            {
+                string npcName = holder;
+                string space = "no map";
+                foreach (KeyValuePair<string, List<string>> mapData in ManagerNPC.mapToNPCList)
+                {
+                    foreach (string name in mapData.Value)
                     {
-                        string npcName = holder;
-                        string space = "no map";
-                        foreach (KeyValuePair<string, List<string>> mapData in ManagerNPC.mapToNPCList)
+                        if (name == npcName)
                         {
-                            foreach (string name in mapData.Value)
-                            {
-                                if (name == npcName)
-                                {
-                                    space = mapData.Key;
-                                }
-                            }
+                            space = mapData.Key;
                         }
-                        string local_name = this.spacesConst.getLocalName(space);
-                        if ((npcFilters.ContainsKey(space) && !npcFilters[space]) || (npcFilters.ContainsKey(local_name) && !npcFilters[local_name]))
-                            continue;
-                        //InvalidOperationException
-                        string localName = "";
-                        if (ManagerNPC.NpcData.ContainsKey(holder))
-                        {
-                            if (settings.getMode() == settings.MODE_EDITOR)
-                                localName = ManagerNPC.NpcData[holder].rusName;
-                            else if (settings.getMode() == settings.MODE_LOCALIZATION)
-                                localName = ManagerNPC.NpcData[holder].engName;
-
-                            //NPCBox.AutoCompleteCustomSource.Add(localName);
-                            npcName += " (" + localName + ")";
-                        }
-                        npcNames.Add(new NPCNameDataSourceObject(holder, npcName));
-                        //NPCBox.AutoCompleteCustomSource.Add(npcName);
                     }
-                    npcNames.Sort();
-                    NPCBox.DataSource = null;       // костыль для обновления данных в кмобобоксе NPC при добавлении/удалении
-                    NPCBox.DisplayMember = "DisplayString";
-                    NPCBox.ValueMember = "Value";
-                    NPCBox.DataSource = npcNames;
-                    if (npcNames.Count <= settings.getLastNpcIndex())
-                        settings.setLastNpcIndex(npcNames.Count - 1);
-                    NPCBox.SelectedIndex = settings.getLastNpcIndex();
-                    //NPCBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                    //NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    QuestBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                    QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
+                }
+                string local_name = this.spacesConst.getLocalName(space);
+                if ((npcFilters.ContainsKey(space) && !npcFilters[space]) || (npcFilters.ContainsKey(local_name) && !npcFilters[local_name]))
+                    continue;
+                //InvalidOperationException
+                string localName = "";
+                if (ManagerNPC.NpcData.ContainsKey(holder))
+                {
+                    if (settings.getMode() == settings.MODE_EDITOR)
+                        localName = ManagerNPC.NpcData[holder].rusName;
+                    else if (settings.getMode() == settings.MODE_LOCALIZATION)
+                        localName = ManagerNPC.NpcData[holder].engName;
+
+                    //NPCBox.AutoCompleteCustomSource.Add(localName);
+                    npcName += " (" + localName + ")";
+                }
+                npcNames.Add(new NPCNameDataSourceObject(holder, npcName));
+                //NPCBox.AutoCompleteCustomSource.Add(npcName);
+            }
+            npcNames.Sort();
+            NPCBox.DataSource = null;       // костыль для обновления данных в кмобобоксе NPC при добавлении/удалении
+            NPCBox.DisplayMember = "DisplayString";
+            NPCBox.ValueMember = "Value";
+            NPCBox.DataSource = npcNames;
+            NPCBox.Update();
+            if (npcNames.Count <= settings.getLastNpcIndex())
+                settings.setLastNpcIndex(npcNames.Count - 1);
+            NPCBox.SelectedIndex = settings.getLastNpcIndex();
+            //NPCBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            QuestBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
         }
 
         //! Блокировка компонентов и обновление данных при смене вкладки на форме
@@ -568,13 +577,17 @@ namespace StalkerOnlineQuesterEditor
                     bEditFracDialog.Enabled = true;
                     if (!isRoot(dialogID))
                         bRemoveFracDialog.Enabled = true;
+                    bCopyDialogTree.Enabled = false;
                 }
                 else
                 {
                     bAddDialog.Enabled = true;
                     bEditDialog.Enabled = true;
+                    bCopyDialogTree.Enabled = true;
                     if (!isRoot(dialogID))
+                    {
                         bRemoveDialog.Enabled = true;
+                    }
                 }
             }
             else if (selectedItemType == SelectedItemType.rectangle)
@@ -584,12 +597,14 @@ namespace StalkerOnlineQuesterEditor
                     bAddFracDialog.Enabled = false;
                     bEditFracDialog.Enabled = true;
                     bRemoveFracDialog.Enabled = true;
+                    bCopyDialogTree.Enabled = false;
                 }
                 else
                 {
                     bAddDialog.Enabled = false;
                     bEditDialog.Enabled = true;
                     bRemoveDialog.Enabled = true;
+                    bCopyDialogTree.Enabled = true;
                 }
             }
         }
@@ -615,6 +630,7 @@ namespace StalkerOnlineQuesterEditor
         {
             bRemoveDialog.Enabled = false;
             bEditDialog.Enabled = false;
+            bCopyDialogTree.Enabled = false;
         }
         //! Удаление диалога в зависимости от статуса - в корзину или навсегда
         private void bRemoveDialog_Click(object sender, EventArgs e)
@@ -1497,9 +1513,8 @@ namespace StalkerOnlineQuesterEditor
                 //string id = quest.QuestID.ToString();
                 List<int> iSubIDS = getSubIDs(quest.QuestID);
                 List<string> sNPCLink = new List<string>();
-                int rewardExpBattle = 0;
-                int rewardExpSurvival = 0;
-                int rewardExpSupport = 0;
+                int rewardExp = 0;
+
                 float rewardCredits = 0;
                 int[] reputations = new int[1];
                 //чтоб ничего не сломалось, если кто-то захотел удалить/добавить фракцию
@@ -1511,14 +1526,7 @@ namespace StalkerOnlineQuesterEditor
                 foreach (int quid in iSubIDS)
                 {
                     CQuest q = getQuestOnQuestID(quid);
-
-                    if (q.Reward.Experience.Any())
-                    {
-                        rewardExpBattle += q.Reward.Experience[0];
-                        rewardExpSurvival += q.Reward.Experience[1];
-                        rewardExpSupport += q.Reward.Experience[2];
-                    }
-
+                    rewardExp += q.Reward.Experience;
                     rewardCredits += q.Reward.Credits;
 
                     foreach (QuestItem item in q.Reward.items)
@@ -1560,9 +1568,7 @@ namespace StalkerOnlineQuesterEditor
                     title = quest.QuestInformation.Title;
                 string description = quest.QuestInformation.Description;
                 string npcNe = quest.Additional.Holder;
-                string srewardExpBattle = rewardExpBattle.ToString();
-                string srewardSurvival = rewardExpSurvival.ToString();
-                string srewardExpSupport = rewardExpSupport.ToString();
+                string srewardExp = rewardExp.ToString();
                 string srewardCredits = rewardCredits.ToString();
                 string sRewardItem = "";
                 int sRepeat = quest.Precondition.Repeat;
@@ -1629,7 +1635,7 @@ namespace StalkerOnlineQuesterEditor
                     else
                         sRewardItem += "\n" + itemName + ":" + count.ToString();
                 }
-                object[] row = { quest.QuestID, subIDs, title, description, npcNe, npcLinks, getDialogs, rewardExpBattle, rewardExpSurvival, rewardExpSupport, rewardCredits, sRewardItem, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
+                object[] row = { quest.QuestID, subIDs, title, description, npcNe, npcLinks, getDialogs, rewardExp, rewardCredits, sRewardItem, sRepeat, sPeriod, sLevel, sAuthor, sLegend, sWorked };
                 int old_len = row.Count();
                 Array.Resize(ref row, old_len + reputations.Count());
                 for (int i = old_len, j = 0; i < row.Count(); i++, j++)
@@ -1656,10 +1662,10 @@ namespace StalkerOnlineQuesterEditor
         {
             dgvManage.Rows.Clear();
 
-            ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Clear();
-            ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Add("Да.");
-            ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Add("Нет.");
-            ((DataGridViewComboBoxColumn)dgvManage.Columns[17]).Items.Add("Правка.");
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[15]).Items.Clear();
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[15]).Items.Add("Да.");
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[15]).Items.Add("Нет.");
+            ((DataGridViewComboBoxColumn)dgvManage.Columns[15]).Items.Add("Правка.");
 
             foreach (string npcName in npcConst.NPCs.Keys)
                 foreach (CQuest quest in quests.quest.Values)
@@ -1676,10 +1682,10 @@ namespace StalkerOnlineQuesterEditor
                 try
                 {
                     int questID = int.Parse(row.Cells[0].FormattedValue.ToString());
-                    string level = row.Cells[15].FormattedValue.ToString();
-                    string author = row.Cells[16].FormattedValue.ToString();
-                    string history = row.Cells[17].FormattedValue.ToString();
-                    string worked = row.Cells[18].FormattedValue.ToString();
+                    string level = row.Cells[13].FormattedValue.ToString();
+                    string author = row.Cells[14].FormattedValue.ToString();
+                    string history = row.Cells[15].FormattedValue.ToString();
+                    string worked = row.Cells[16].FormattedValue.ToString();
 
                     int iWorked = 0;
                     if (worked == "Да.")
@@ -3213,6 +3219,121 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
+        bool can_copy_dialog_tree(NPCQuestDict source_dialogs, int source_dialogID, CDialog current_dialog, ref int count)
+        {
+            if (current_dialog.Nodes.Contains(source_dialogID))
+                return false;
+
+            foreach (int child_dialog_id in current_dialog.Nodes)
+            {
+                if (!source_dialogs.ContainsKey(child_dialog_id)) continue;
+                count++;
+                if (!can_copy_dialog_tree(source_dialogs, source_dialogID, source_dialogs[child_dialog_id], ref count))
+                    return false;
+            }
+
+            return true;
+        }
+
+        private void bCopyDialogTree_Click(object sender, EventArgs e)
+        {
+            CopyDialogsForm form = new CopyDialogsForm(this);
+            DialogResult result = form.ShowDialog();
+            if (result != DialogResult.OK) return;
+            if (form.current_dialogID == 0) return;
+            NPCQuestDict target_dialogs = this.dialogs.dialogs[form.current_npc];
+            CDialog target_dialog = target_dialogs[form.current_dialogID];
+
+            NPCQuestDict dialogs = this.dialogs.dialogs[currentNPC];
+            CDialog source_dialog = dialogs[selectedDialogID];
+            int count = 1;
+            if (!can_copy_dialog_tree(dialogs, selectedDialogID, source_dialog, ref count))
+            {
+                MessageBox.Show("Пошёл нахер, козёл");
+                return;
+            }
+            List<int> new_ids = CDialogs.getDialogNewIDs(count);
+            Dictionary<int, int> oldID_to_newID = new Dictionary<int, int>();
+
+            copy_dialog_tree(currentNPC, source_dialog, target_dialog, ref oldID_to_newID, ref new_ids);
+        }
+
+        private int get_new_id_for_copy(int old_id, ref Dictionary<int, int> oldID_to_newID, ref List<int> new_ids)
+        {
+            if (!oldID_to_newID.ContainsKey(old_id))
+            {
+                int new_id = new_ids[0];
+                new_ids.RemoveAt(0);
+                oldID_to_newID.Add(old_id, new_id);
+            }
+            return oldID_to_newID[old_id];
+        }
+
+        
+        private void copy_dialog_tree(string source_npc_name, CDialog source_dialog, CDialog target_dialog,
+                        ref Dictionary<int, int> oldID_to_newID, ref List<int> new_ids)
+        {
+
+            int new_id = get_new_id_for_copy(source_dialog.DialogID, ref oldID_to_newID, ref new_ids);
+            target_dialog.Nodes.Remove(source_dialog.DialogID);
+            target_dialog.Nodes.Add(new_id);
+            if (!this.dialogs.dialogs[target_dialog.Holder].ContainsKey(new_id))
+            {
+                CDialog new_dialog = (CDialog)source_dialog.Clone();
+                new_dialog.DialogID = new_id;
+                new_dialog.Holder = target_dialog.Holder;
+                NPCQuestDict dialogs = this.dialogs.dialogs[new_dialog.Holder];
+                dialogs.Add(new_id, new_dialog);
+                new_dialog.Actions.ToDialog = 0;
+
+            }
+            foreach (var i in this.dialogs.locales)
+            {
+                var locale_dialogs = i.Value;
+                string locale_name = i.Key;
+                CDialog locale_target_dialog = locale_dialogs[target_dialog.Holder][target_dialog.DialogID];
+                locale_target_dialog.Nodes.Remove(source_dialog.DialogID);
+                locale_target_dialog.Nodes.Add(new_id);
+
+                if (!locale_dialogs[target_dialog.Holder].ContainsKey(new_id))
+                {
+                    var copy_locale = (CDialog)locale_dialogs[source_npc_name][source_dialog.DialogID].Clone();
+                    copy_locale.DialogID = new_id;
+                    copy_locale.Holder = target_dialog.Holder;
+                    copy_locale.Actions.ToDialog = 0;
+                    locale_dialogs[target_dialog.Holder].Add(new_id, copy_locale);
+                }
+            }
+            foreach (int child_id in source_dialog.Nodes)
+            {
+                CDialog source_dialog_2 = this.dialogs.dialogs[target_dialog.Holder][new_id];
+                CDialog child_dialog = this.dialogs.dialogs[source_npc_name][child_id];
+                copy_dialog_tree(source_npc_name, child_dialog, source_dialog_2, ref oldID_to_newID, ref new_ids);
+            }
+
+
+        }
+
+        private void lbWorkSpace_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbWorkSpace.SelectedItem == null) return;
+            openNPC(lbWorkSpace.SelectedItem.ToString());
+        }
+
+        private void bWSAdd_Click(object sender, EventArgs e)
+        {
+            if (lbWorkSpace.Items.Contains(currentNPC))
+                return;
+            lbWorkSpace.Items.Add(currentNPC);
+            
+        }
+
+        private void bWSDel_Click(object sender, EventArgs e)
+        {
+            if (lbWorkSpace.SelectedItem == null) return;
+            string sel_npc = lbWorkSpace.SelectedItem.ToString();
+            lbWorkSpace.Items.Remove(sel_npc);
+        }
     }
 }
  

@@ -243,6 +243,39 @@
   <data name="panelDialogTools.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
+  <data name="bCopyDialogTree.ImageKey" xml:space="preserve">
+    <value>ArrowsBig.png</value>
+  </data>
+  <data name="bCopyDialogTree.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bCopyDialogTree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 161</value>
+  </data>
+  <data name="bCopyDialogTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 30</value>
+  </data>
+  <data name="bCopyDialogTree.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="bCopyDialogTree.Text" xml:space="preserve">
+    <value>Скопировать</value>
+  </data>
+  <data name="bCopyDialogTree.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;bCopyDialogTree.Name" xml:space="preserve">
+    <value>bCopyDialogTree</value>
+  </data>
+  <data name="&gt;&gt;bCopyDialogTree.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bCopyDialogTree.Parent" xml:space="preserve">
+    <value>panelDialogTools</value>
+  </data>
+  <data name="&gt;&gt;bCopyDialogTree.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="lFindDialogID.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -268,7 +301,7 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;lFindDialogID.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="tbFindDialogID.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 23</value>
@@ -289,7 +322,7 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;tbFindDialogID.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnClearRecycle.ImageKey" xml:space="preserve">
     <value>(отсутствует)</value>
@@ -322,10 +355,10 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;btnClearRecycle.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="labelDrawingTip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 197</value>
+    <value>9, 229</value>
   </data>
   <data name="labelDrawingTip.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 98</value>
@@ -346,7 +379,7 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;labelDrawingTip.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="bCenterizeDialogShower.ImageKey" xml:space="preserve">
     <value>ArrowsBig.png</value>
@@ -358,8 +391,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAw
-        FwAAAk1TRnQBSQFMAgEBBAEAAVwBBAFcAQQBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAW
+        FwAAAk1TRnQBSQFMAgEBBAEAAawBBAGsAQQBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABKAMAAQEBAAEgBgABMv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8AUgABAQMAAQGIAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQc7AAH/
         AwAB/zsAAQEDLwFJAlIBUAGkAmABWgHeAmoBQQH5AmoBQQH5AmABWgHeAlIBUAGkAy8BSQMAAQF0AAM1
@@ -375,94 +408,93 @@
         AawB/wIAAakB/wIAAaYB/wIAAaMB/wIAAZ8B/wIAAZwB/wIAAZkB/wIAAZgB/wIAAZwB/wIAAcAB/wJN
         AU4Bli8AAf8DAAH/AyMBMygAAx0BKgJnAVkB8gHlAbQBAAH/AeQBsQEAAf8B5AGxAQAB/wHkAbEBAAH/
         AeQBsgEAAf8B5AGyAQAB/wHkAbIBAAH/AeQBsgEAAf8B5AGxAQAB/wHkAbEBAAH/AeQBsQEAAf8B5QG0
-        AQAB/wJnAVkB8gMdASoMAAMLAQ8DZAHnAQEBowHGAf8BQAGBAagB/QNQAZ4DCAELAwYECAELAwoBDgMM
+        AQAB/wJnAVkB8gMdASoMAAMLAQ8DZAHnAQABowHGAf8BQAGBAagB/QNQAZ4DCAELAwYECAELAwoBDgMM
         ARADDQESAw8BFAMQARUDDwEUAw4BEwMKAQ4DBAEGAwABAQgAAzUBVgIAAccB/wIAAb8B/wIAAbkB/wIA
         AbYB/wIAAbMB/wIAAa8B/wIAAawB/wIAAakB/wIAAaYB/wIAAaMB/wIAAZ8B/wIAAZwB/wIAAZkB/wIA
         AZgB/wIAAZwB/wIAAcAB/wM1AVYrAAH/AwAB/wMjATMMAAMEAQUXAAEBA1sByAHnAbcBAAH/AeYBtAEA
         Af8B5gG0AQAB/wHmAbQBAAH/AeYBtAEAAf8B8QHWAZIB/wH3AeUBxgH/AfcB5QHGAf8B8gHXAZYB/wHm
         AbQBAAH/AeYBtAEAAf8B5gG0AQAB/wHmAbQBAAH/AecBtwEAAf8DWwHIAwABAQwAAzoBYAGLAc8B7AH/
-        AQABigHpAf8BAAEIAcwB/wFWAlgBvAMMARAXAAEBAwAEAQECAwABAQwAAwUBBwJdAWEB4gIAAcsB/wIA
-        Ab8B/wIAAbwB/wIAAbkB/wIAAbYB/wIAAbMB/wIAAa8B/wIAAawB/wIAAakB/wIAAaYB/wIAAaMB/wIA
-        AZ8B/wIAAZwB/wIAAZkB/wIAAZgB/wIAAakB/wJdAWEB4gMFAQcjAAH+AwAB/wMAAf8DAAH/AwAB/iAA
-        Ay8BSQHqAb4BAAH/AecBuAEAAf8B5wG3AQAB/wHnAbcBAAH/AecBtwEAAf8B5wG3AQAB/wHyAdgBlwH/
-        AfgB5wHKAf8B+AHnAcoB/wHzAdkBmwH/AecBtwEAAf8B5wG3AQAB/wHnAbcBAAH/AecBtwEAAf8B5wG4
-        AQAB/wHpAb0BAAH/Ay8BSQwAAwEBAgNYAbsBAAHDAfsB/wEAAZIB7AH/AQABCwHSAf8BXAJgAdQDFwEg
-        LAADNwFaAgABzAH/AgABxgH/AgABwwH/AgABvwH/AgABvAH/AgABuQH/AgABtgH/AgABswH/AgABrwH/
-        AgABrAH/AgABqQH/AgABpgH/AgABowH/AgABnwH/AgABnAH/AgABmQH/AgABmAH/AgABvQH/AzcBWiAA
-        AwwBEAMAAf8DAAH/AwAB/yQAAlIBUAGkAeoBvgEAAf8B6QG6AQAB/wHpAboBAAH/AekBugEAAf8B6QG6
-        AQAB/wHpAboBAAH/AfQB2wGcAf8B+QHqAc8B/wH5AeoBzwH/AfQB3AGgAf8B6QG6AQAB/wHpAboBAAH/
-        AekBugEAAf8B6QG6AQAB/wHpAboBAAH/AeoBvgEAAf8CUgFQAaQQAAMHAQkDVAGuAQABygH8Af8BAAGb
-        Ae8B/wEAARAB2AH/AVwCZAHnAyQBNigAAlQBVgGrAgAB2AH/AgABzQH/AgAByAH/AgABwwH/AgABvwH/
-        AgABvAH/AgABuQH/AgABtgH/AgABswH/AgABrwH/AgABrAH/AgABqQH/AgABpgH/AgABowH/AgABnwH/
-        AgABnAH/AgABmQH/AgABsgH/AlQBVgGrGwAB/wgAA1kB6wMAAf8DEAEVCwAB/xgAAmABWgHeAewBwAEA
-        Af8B6wG+AQAB/wHrAb4BAAH/AfQB3AGcAf8B9AHcAZwB/wH0AdwBnAH/AfgB5wHEAf8B+gHtAdYB/wH6
-        Ae0B1gH/AfgB6AHGAf8B9AHcAZwB/wH0AdwBnAH/AfQB3AGdAf8B6wG+AQAB/wHrAb4BAAH/AewBwAEA
-        Af8CYAFaAd4UAAMCAQMDTgGVAQAB0AH+Af8BAAGkAfIB/wEAAYYB3gH/AUICWQH1AzIBUSQAA18B4AIA
-        Ad0B/wIAAdQB/wIAAc8B/wGBAYgB4AH/AZIBmAHjAf8BkQGXAeIB/wGRAZcB4AH/AZABlgHfAf8BkAGV
-        Ad0B/wGPAZUB3AH/AY8BlAHaAf8BjgGUAdkB/wGNAZMB1wH/AY0BkgHWAf8BBQELAcsB/wIAAZ8B/wIA
-        AZwB/wIAAaUB/wNfAeAIAAMjATMDIwEzAyMBMwMjATMDAAH/AwAB/wgAA0EB+QsAAf8DAAH/FwABAQJq
-        AUcB+QHtAcIBAAH/Ae0BwQEAAf8B7QHBAQAB/wH7AfAB3QH/AfsB8AHdAf8B+wHwAd0B/wH7AfAB3QH/
-        AfsB8AHdAf8B+wHwAd0B/wH7AfAB3QH/AfsB8AHdAf8B+wHwAd0B/wH7AfAB3gH/Ae0BwgEAAf8B7QHB
-        AQAB/wHtAcIBAAH/AmoBRwH5AwABARgAA0QBegFMAn8B/gEAAa0B9AH/AQABjwHkAf8DKwH8A0ABcSAA
-        A00B+gIAAd8B/wIAAdoB/wIAAdYB/wHfAeEB+Cn/AdcB2QHwAf8CAAGjAf8CAAGfAf8CAAGdAf8DTQH6
-        BwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DMQFOBAADLAFEAwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAEBAmoBWgH5Ae8BxgEAAf8B7wHFAQAB/wHvAcUBAAH/AfsB8wHkAf8B+wHz
-        AeUB/wH7AfMB5QH/AfsB8wHlAf8B+wHzAeUB/wH7AfMB5QH/AfsB8wHlAf8B+wHzAeUB/wH7AfMB5QH/
-        AfsB8wHmAf8B7wHGAQAB/wHvAcUBAAH/Ae8BxgEAAf8CagFbAfkDAAEBHAADOgFgA00B+gEAAbYB9wH/
-        AQABmAHpAf8BAAEKAcgB/wNOAZQDAwEEGAADTQH6AQABBgHlAf8CAAHgAf8CAAHcAf8B4gHkAfkp/wHX
-        AdkB8QH/AgABpgH/AgABowH/AgABoAH/A00B+gcAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DLgFH
-        BAADUAGjBwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8EAANgAd4B8QHKAQAB/wHxAckBAAH/
-        AfEByQEAAf8B+AHlAa8B/wH4AeUBsAH/AfgB5QGwAf8B+wHxAdkB/wH8AfcB7AH/AfwB9wHsAf8B+wHx
-        AdoB/wH4AeUBsAH/AfgB5QGwAf8B+AHlAbAB/wHxAckBAAH/AfEByQEAAf8B8QHKAQAB/wNgAd4kAAMv
-        AUkBXQJfAfMBAAG+AfkB/wEAAaEB7gH/AQABDgHOAf8BVQJWAbQDCgENFAADXwHgAYsBkgHsAf8BAwEL
-        AeYB/wIAAeIB/wGoAa0B7gH/AbQBuAHvAf8BrgGzAe0B/wGfAaQB6AH/AZcBnQHlAf8BlgGcAeQB/wGW
-        AZwB4gH/AZUBmwHhAf8BlQGaAd8B/wGUAZoB3gH/AZQBmQHdAf8BCwGAAdIB/wIAAakB/wIAAaYB/wIA
-        Aa0B/wNfAeAbAAH/CAADMgFRAwAB/wM0AVUEAANZAckDAAH+GAADUgGkAfQBzwEAAf8B8wHMAQAB/wHz
-        AcwBAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfkB6gHAAf8B/QH5AfMB/wH9AfkB8wH/AfkB6wHD
-        Af8B8wHMAQAB/wHzAcwBAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfQBzwEAAf8DUgGkKAADJAE1
-        A2IB6QEAAcUB+wH/AQABqwHyAf8BAAGDAdQB/wFcAl4BzgMUARsQAAJUAVYBqwGZAZ8B6gH/AYQBjAHr
-        Af8BCQGBAecB/wEAAQYB4wH/AgAB3wH/AgAB2gH/AgAB1AH/AgAByQH/AgABwwH/AgABvwH/AgABvAH/
-        AgABuQH/AgABtgH/AgABswH/AgABrwH/AgABrAH/AgABqQH/AgABvAH/AlQBVgGrIwABAQMAAf8DAAH/
-        AwAB/wMDAQQHAAEBGAADLwFJAfYB0gEAAf8B9QHQAQAB/wH1Ac8BAAH/AfUBzwEAAf8B9QHPAQAB/wH1
-        Ac8BAAH/AfoB7QHGAf8B/gH8AfkB/wH+AfwB+QH/AfsB7gHKAf8B9QHPAQAB/wH1Ac8BAAH/AfUBzwEA
-        Af8B9QHPAQAB/wH1AdABAAH/AfYB1AEAAf8DLwFJLAADGgEkA18B2wEAAcoB/AH/AQABswH1Af8BAAGL
-        AdoB/wFYAl8B4wMjATMMAAM3AVoBCAEQAdgB/wGXAZ0B7wH/AYsBkgHsAf8BEAGHAegB/wEEAQ0B5AH/
-        AQABAQHgAf8CAAHbAf8CAAHWAf8CAAHNAf8CAAHDAf8CAAG/Af8CAAG8Af8CAAG5Af8CAAG2Af8CAAGz
-        Af8CAAGvAf8CAAGsAf8CAAHCAf8DNwFaIwAB/wMAAf8DAAH/AwAB/wMAAf8jAAEBA1sByAH3AdUBAAH/
-        AfcB0wEAAf8B9wHTAQAB/wH3AdMBAAH/AfcB0wEAAf8B/AHvAcoC/wH9AfwC/wH9AfwB/wH8AfABzQH/
-        AfcB0wEAAf8B9wHTAQAB/wH3AdMBAAH/AfcB0wEAAf8B9wHVAQAB/wNbAcgDAAEBMAADEAEWA10BygEA
-        Ac4B/QH/AQABugHtAf8BpAGuAbkB/wNZAfUCNQE2AVgIAAMFAQcCXQFhAeIBrgGzAfIB/wGdAaQB8AH/
-        AZIBmQHtAf8BhgGNAekB/wELAYIB5QH/AQABBwHhAf8CAAHdAf8CAAHYAf8CAAHSAf8CAAHJAf8CAAHB
-        Af8CAAG8Af8CAAG5Af8CAAG2Af8CAAGzAf8CAAG8Af8CXQFhAeIDBQEHJAADTgGZAwAB/wNRAaEoAAMd
-        ASoDZwHyAfkB1wEAAf8B+QHWAQAB/wH5AdYBAAH/AfkB1gEAAf8B+AHWAQAB/wH4AdYBAAH/AfgB1gEA
-        Af8B+AHWAQAB/wH5AdYBAAH/AfkB1gEAAf8B+QHWAQAB/wH5AdcBAAH/A2cB8gMdASo4AAMJAQwDVgG2
-        AbIBzgHWAf8CAAGzAf8CiwGuAf8CQAGoAf0DQQFyCAADNQFWAQABBAHRAf8BsgG3AfQB/wGkAaoB8QH/
-        AZgBnwHuAf8BjAGUAesB/wGBAYgB5wH/AQUBDgHjAf8BAAECAd4B/wIAAdoB/wIAAdUB/wIAAc8B/wIA
-        AcgB/wIAAcIB/wIAAbwB/wIAAboB/wIAAcUB/wM1AVYoAANOAZkDAAH/A1EBoSwAAysBQgNnAfIB+gHa
-        AQcB/wH6AdkBAgH/AfoB2AEBAf8B+gHYAQAB/wH6AdgBAAH/AfoB2AEAAf8B+gHYAQAB/wH6AdgBAQH/
-        AfoB2QECAf8B+gHaAQcB/wNnAfIDKwFCQAADBAEFA1QBrAGjAZ4B1wH/AQ0BDAHdAf8CAwHdAf8CAQHd
-        Af8DPQFoCAACTQFOAZYBhQGMAdoB/wG4Ab0B9QH/AasBsAHyAf8BnwGlAe8B/wGTAZoB7AH/AYcBjgHo
-        Af8BDAGDAeQB/wEAAQgB4AH/AgAB2wH/AgAB1gH/AgAB0QH/AgABzAH/AgAByAH/AgABywH/Ak0BTgGW
-        LAADTgGZAwAB/wNRAaEwAAMdASoDWwHIAfsB3AEPAf8B+wHcAQwB/wH7AdwBCgH/AfsB2wEJAf8B+wHb
-        AQkB/wH7AdwBCgH/AfsB3AEMAf8B+wHcARAB/wNbAcgDHQEqSAADAgEDA00BkQKZAeoB/wKdAesB/wKc
-        AesB/wNOAZgIAAMCAQMCTQFOAZYBAAEGAdEB/wG+AcIB9AH/AbEBtgHzAf8BpgGrAfAB/wGaAaAB7QH/
-        AY4BlQHpAf8BggGJAeUB/wEHAQ8B4QH/AQABAwHdAf8CAAHYAf8BAAECAdgB/wIAAckB/wJNAU4BlgMC
-        AQMsAANIAYUDAAH/A04BlzcAAQEDLwFJA1IBowNgAd4DagH5A2oB+QNgAd4DUgGjAy8BSQMAAQFUAANB
-        AXIDWQH1A2AB1gMYASIQAAM1AVYCXQFhAeIBgQGIAdkB/wGyAbcB7gH/AbQBuQHzAf8BoQGnAe4B/wGV
-        AZwB6wH/AZUBmwHpAf8BjAGSAeMB/wEAAQEB0QH/Al0BYQHiAzUBVjQAA0UBfwMAAf8DRQF/RwABAQMA
-        AQFoAAMCAQMcAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQdkAAFCAU0BPgcA
-        AT4DAAEoAwABUAMAASgDAAEBAQABAQUAAeABARYAA//xAAH/AZ8D/wH4AQEB/wH5Af8CAAH4AQED/wHw
-        AQAB/wH4Af8CAAHwAQAB8AEAAQ8BwAEAAT8B+AH/AgAB4AEAAXABAAEDAcABAAE/AfgB/wIAAcABAAE4
-        AQABAQGAAQABHwH4Ae8CAAGAAQABHAEPAYcCAAEPAfABfwIAAYABAAEcAQcB/wIAAQ8B8AH/AgABgAEA
-        AR4BAwH/AgABDwHYAd8CAAGAAQABHwEBAf8CAAEMAQ0BnwQAAQ8BwAH/AgABCAECBQABDwHgAT8CAAEI
-        AQUDAAGAAQABHwHwAR8CAAEPAdgBnwIAAYABAAEfAfgBDwIAAQ8B8AFfAgABgAEAAR8B/AEHAgABDwHw
-        AX8CAAGAAQABHwH+AQMCAAEPAfgB/wIAAcABAAE/Af8BAQGAAQABHwH4Af8CAAHgAQABfwH/AYABwAEA
-        AT8B+AH/AgAB8AEAAv8CwAEAAT8B+AH/AgAB+AEBAv8C8AEAAf8B+AH/AgAB/wGfAv8B+wH4AQED/wIA
-        Cw==
+        AQABigHpAf8CAAHMAf8BVgJYAbwDDAEQFwABAQMABAEBAgMAAQEMAAMFAQcCXQFhAeICAAHLAf8CAAG/
+        Af8CAAG8Af8CAAG5Af8CAAG2Af8CAAGzAf8CAAGvAf8CAAGsAf8CAAGpAf8CAAGmAf8CAAGjAf8CAAGf
+        Af8CAAGcAf8CAAGZAf8CAAGYAf8CAAGpAf8CXQFhAeIDBQEHIwAB/gMAAf8DAAH/AwAB/wMAAf4gAAMv
+        AUkB6gG+AQAB/wHnAbgBAAH/AecBtwEAAf8B5wG3AQAB/wHnAbcBAAH/AecBtwEAAf8B8gHYAZcB/wH4
+        AecBygH/AfgB5wHKAf8B8wHZAZsB/wHnAbcBAAH/AecBtwEAAf8B5wG3AQAB/wHnAbcBAAH/AecBuAEA
+        Af8B6QG9AQAB/wMvAUkMAAMBAQIDWAG7AQABwwH7Af8BAAGSAewB/wEAAQEB0gH/AVwCYAHUAxcBICwA
+        AzcBWgIAAcwB/wIAAcYB/wIAAcMB/wIAAb8B/wIAAbwB/wIAAbkB/wIAAbYB/wIAAbMB/wIAAa8B/wIA
+        AawB/wIAAakB/wIAAaYB/wIAAaMB/wIAAZ8B/wIAAZwB/wIAAZkB/wIAAZgB/wIAAb0B/wM3AVogAAMM
+        ARADAAH/AwAB/wMAAf8kAAJSAVABpAHqAb4BAAH/AekBugEAAf8B6QG6AQAB/wHpAboBAAH/AekBugEA
+        Af8B6QG6AQAB/wH0AdsBnAH/AfkB6gHPAf8B+QHqAc8B/wH0AdwBoAH/AekBugEAAf8B6QG6AQAB/wHp
+        AboBAAH/AekBugEAAf8B6QG6AQAB/wHqAb4BAAH/AlIBUAGkEAADBwEJA1QBrgEAAcoB/AH/AQABmwHv
+        Af8BAAEGAdgB/wFcAmQB5wMkATYoAAJUAVYBqwIAAdgB/wIAAc0B/wIAAcgB/wIAAcMB/wIAAb8B/wIA
+        AbwB/wIAAbkB/wIAAbYB/wIAAbMB/wIAAa8B/wIAAawB/wIAAakB/wIAAaYB/wIAAaMB/wIAAZ8B/wIA
+        AZwB/wIAAZkB/wIAAbIB/wJUAVYBqxsAAf8IAANZAesDAAH/AxABFQsAAf8YAAJgAVoB3gHsAcABAAH/
+        AesBvgEAAf8B6wG+AQAB/wH0AdwBnAH/AfQB3AGcAf8B9AHcAZwB/wH4AecBxAH/AfoB7QHWAf8B+gHt
+        AdYB/wH4AegBxgH/AfQB3AGcAf8B9AHcAZwB/wH0AdwBnQH/AesBvgEAAf8B6wG+AQAB/wHsAcABAAH/
+        AmABWgHeFAADAgEDA04BlQEAAdAB/gH/AQABpAHyAf8BAAGGAd4B/wFCAlkB9QMyAVEkAANfAeACAAHd
+        Af8CAAHUAf8CAAHPAf8BgQGIAeAB/wGSAZgB4wH/AZEBlwHiAf8BkQGXAeAB/wGQAZYB3wH/AZABlQHd
+        Af8BjwGVAdwB/wGPAZQB2gH/AY4BlAHZAf8BjQGTAdcB/wGNAZIB1gH/AQABAQHLAf8CAAGfAf8CAAGc
+        Af8CAAGlAf8DXwHgCAADIwEzAyMBMwMjATMDIwEzAwAB/wMAAf8IAANBAfkLAAH/AwAB/xcAAQECagFH
+        AfkB7QHCAQAB/wHtAcEBAAH/Ae0BwQEAAf8B+wHwAd0B/wH7AfAB3QH/AfsB8AHdAf8B+wHwAd0B/wH7
+        AfAB3QH/AfsB8AHdAf8B+wHwAd0B/wH7AfAB3QH/AfsB8AHdAf8B+wHwAd4B/wHtAcIBAAH/Ae0BwQEA
+        Af8B7QHCAQAB/wJqAUcB+QMAAQEYAANEAXoBTAJ/Af4BAAGtAfQB/wEAAY8B5AH/AysB/ANAAXEgAANN
+        AfoCAAHfAf8CAAHaAf8CAAHWAf8B3wHhAfgp/wHXAdkB8AH/AgABowH/AgABnwH/AgABnQH/A00B+gcA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AzEBTgQAAywBRAMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwABAQJqAVoB+QHvAcYBAAH/Ae8BxQEAAf8B7wHFAQAB/wH7AfMB5AH/AfsB8wHl
+        Af8B+wHzAeUB/wH7AfMB5QH/AfsB8wHlAf8B+wHzAeUB/wH7AfMB5QH/AfsB8wHlAf8B+wHzAeUB/wH7
+        AfMB5gH/Ae8BxgEAAf8B7wHFAQAB/wHvAcYBAAH/AmoBWwH5AwABARwAAzoBYANNAfoBAAG2AfcB/wEA
+        AZgB6QH/AgAByAH/A04BlAMDAQQYAANNAfoCAAHlAf8CAAHgAf8CAAHcAf8B4gHkAfkp/wHXAdkB8QH/
+        AgABpgH/AgABowH/AgABoAH/A00B+gcAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DLgFHBAADUAGj
+        BwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8EAANgAd4B8QHKAQAB/wHxAckBAAH/AfEByQEA
+        Af8B+AHlAa8B/wH4AeUBsAH/AfgB5QGwAf8B+wHxAdkB/wH8AfcB7AH/AfwB9wHsAf8B+wHxAdoB/wH4
+        AeUBsAH/AfgB5QGwAf8B+AHlAbAB/wHxAckBAAH/AfEByQEAAf8B8QHKAQAB/wNgAd4kAAMvAUkBXQJf
+        AfMBAAG+AfkB/wEAAaEB7gH/AQABBAHOAf8BVQJWAbQDCgENFAADXwHgAYsBkgHsAf8BAAEBAeYB/wIA
+        AeIB/wGoAa0B7gH/AbQBuAHvAf8BrgGzAe0B/wGfAaQB6AH/AZcBnQHlAf8BlgGcAeQB/wGWAZwB4gH/
+        AZUBmwHhAf8BlQGaAd8B/wGUAZoB3gH/AZQBmQHdAf8BAQGAAdIB/wIAAakB/wIAAaYB/wIAAa0B/wNf
+        AeAbAAH/CAADMgFRAwAB/wM0AVUEAANZAckDAAH+GAADUgGkAfQBzwEAAf8B8wHMAQAB/wHzAcwBAAH/
+        AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfkB6gHAAf8B/QH5AfMB/wH9AfkB8wH/AfkB6wHDAf8B8wHM
+        AQAB/wHzAcwBAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfQBzwEAAf8DUgGkKAADJAE1A2IB6QEA
+        AcUB+wH/AQABqwHyAf8BAAGDAdQB/wFcAl4BzgMUARsQAAJUAVYBqwGZAZ8B6gH/AYQBjAHrAf8BAAGB
+        AecB/wIAAeMB/wIAAd8B/wIAAdoB/wIAAdQB/wIAAckB/wIAAcMB/wIAAb8B/wIAAbwB/wIAAbkB/wIA
+        AbYB/wIAAbMB/wIAAa8B/wIAAawB/wIAAakB/wIAAbwB/wJUAVYBqyMAAQEDAAH/AwAB/wMAAf8DAwEE
+        BwABARgAAy8BSQH2AdIBAAH/AfUB0AEAAf8B9QHPAQAB/wH1Ac8BAAH/AfUBzwEAAf8B9QHPAQAB/wH6
+        Ae0BxgH/Af4B/AH5Af8B/gH8AfkB/wH7Ae4BygH/AfUBzwEAAf8B9QHPAQAB/wH1Ac8BAAH/AfUBzwEA
+        Af8B9QHQAQAB/wH2AdQBAAH/Ay8BSSwAAxoBJANfAdsBAAHKAfwB/wEAAbMB9QH/AQABiwHaAf8BWAJf
+        AeMDIwEzDAADNwFaAQABBgHYAf8BlwGdAe8B/wGLAZIB7AH/AQYBhwHoAf8BAAEDAeQB/wIAAeAB/wIA
+        AdsB/wIAAdYB/wIAAc0B/wIAAcMB/wIAAb8B/wIAAbwB/wIAAbkB/wIAAbYB/wIAAbMB/wIAAa8B/wIA
+        AawB/wIAAcIB/wM3AVojAAH/AwAB/wMAAf8DAAH/AwAB/yMAAQEDWwHIAfcB1QEAAf8B9wHTAQAB/wH3
+        AdMBAAH/AfcB0wEAAf8B9wHTAQAB/wH8Ae8BygL/Af0B/AL/Af0B/AH/AfwB8AHNAf8B9wHTAQAB/wH3
+        AdMBAAH/AfcB0wEAAf8B9wHTAQAB/wH3AdUBAAH/A1sByAMAAQEwAAMQARYDXQHKAQABzgH9Af8BAAG6
+        Ae0B/wGkAa4BuQH/A1kB9QI1ATYBWAgAAwUBBwJdAWEB4gGuAbMB8gH/AZ0BpAHwAf8BkgGZAe0B/wGG
+        AY0B6QH/AQEBggHlAf8CAAHhAf8CAAHdAf8CAAHYAf8CAAHSAf8CAAHJAf8CAAHBAf8CAAG8Af8CAAG5
+        Af8CAAG2Af8CAAGzAf8CAAG8Af8CXQFhAeIDBQEHJAADTgGZAwAB/wNRAaEoAAMdASoDZwHyAfkB1wEA
+        Af8B+QHWAQAB/wH5AdYBAAH/AfkB1gEAAf8B+AHWAQAB/wH4AdYBAAH/AfgB1gEAAf8B+AHWAQAB/wH5
+        AdYBAAH/AfkB1gEAAf8B+QHWAQAB/wH5AdcBAAH/A2cB8gMdASo4AAMJAQwDVgG2AbIBzgHWAf8CAAGz
+        Af8CiwGuAf8CQAGoAf0DQQFyCAADNQFWAgAB0QH/AbIBtwH0Af8BpAGqAfEB/wGYAZ8B7gH/AYwBlAHr
+        Af8BgQGIAecB/wEAAQQB4wH/AgAB3gH/AgAB2gH/AgAB1QH/AgABzwH/AgAByAH/AgABwgH/AgABvAH/
+        AgABugH/AgABxQH/AzUBVigAA04BmQMAAf8DUQGhLAADKwFCA2cB8gH6AdoBAAH/AfoB2QEAAf8B+gHY
+        AQAB/wH6AdgBAAH/AfoB2AEAAf8B+gHYAQAB/wH6AdgBAAH/AfoB2AEAAf8B+gHZAQAB/wH6AdoBAAH/
+        A2cB8gMrAUJAAAMEAQUDVAGsAaMBngHXAf8BAwECAd0B/wIAAd0B/wIAAd0B/wM9AWgIAAJNAU4BlgGF
+        AYwB2gH/AbgBvQH1Af8BqwGwAfIB/wGfAaUB7wH/AZMBmgHsAf8BhwGOAegB/wECAYMB5AH/AgAB4AH/
+        AgAB2wH/AgAB1gH/AgAB0QH/AgABzAH/AgAByAH/AgABywH/Ak0BTgGWLAADTgGZAwAB/wNRAaEwAAMd
+        ASoDWwHIAfsB3AEFAf8B+wHcAQIB/wH7AdwBAAH/AfsB2wEAAf8B+wHbAQAB/wH7AdwBAAH/AfsB3AEC
+        Af8B+wHcAQYB/wNbAcgDHQEqSAADAgEDA00BkQKZAeoB/wKdAesB/wKcAesB/wNOAZgIAAMCAQMCTQFO
+        AZYCAAHRAf8BvgHCAfQB/wGxAbYB8wH/AaYBqwHwAf8BmgGgAe0B/wGOAZUB6QH/AYIBiQHlAf8BAAEF
+        AeEB/wIAAd0B/wIAAdgB/wIAAdgB/wIAAckB/wJNAU4BlgMCAQMsAANIAYUDAAH/A04BlzcAAQEDLwFJ
+        A1IBowNgAd4DagH5A2oB+QNgAd4DUgGjAy8BSQMAAQFUAANBAXIDWQH1A2AB1gMYASIQAAM1AVYCXQFh
+        AeIBgQGIAdkB/wGyAbcB7gH/AbQBuQHzAf8BoQGnAe4B/wGVAZwB6wH/AZUBmwHpAf8BjAGSAeMB/wIA
+        AdEB/wJdAWEB4gM1AVY0AANFAX8DAAH/A0UBf0cAAQEDAAEBaAADAgEDHAADBQEHAzYBWQNTAaoDXwHg
+        A00B+gNNAfoDXwHgA1MBqgM2AVkDBQEHZAABQgFNAT4HAAE+AwABKAMAAVADAAEoAwABAQEAAQEFAAHg
+        AQEWAAP/8QAB/wGfA/8B+AEBAf8B+QH/AgAB+AEBA/8B8AEAAf8B+AH/AgAB8AEAAfABAAEPAcABAAE/
+        AfgB/wIAAeABAAFwAQABAwHAAQABPwH4Af8CAAHAAQABOAEAAQEBgAEAAR8B+AHvAgABgAEAARwBDwGH
+        AgABDwHwAX8CAAGAAQABHAEHAf8CAAEPAfAB/wIAAYABAAEeAQMB/wIAAQ8B2AHfAgABgAEAAR8BAQH/
+        AgABDAENAZ8EAAEPAcAB/wIAAQgBAgUAAQ8B4AE/AgABCAEFAwABgAEAAR8B8AEfAgABDwHYAZ8CAAGA
+        AQABHwH4AQ8CAAEPAfABXwIAAYABAAEfAfwBBwIAAQ8B8AF/AgABgAEAAR8B/gEDAgABDwH4Af8CAAHA
+        AQABPwH/AQEBgAEAAR8B+AH/AgAB4AEAAX8B/wGAAcABAAE/AfgB/wIAAfABAAL/AsABAAE/AfgB/wIA
+        AfgBAQL/AvABAAH/AfgB/wIAAf8BnwL/AfsB+AEBA/8CAAs=
 </value>
   </data>
   <data name="bCenterizeDialogShower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 160</value>
+    <value>6, 198</value>
   </data>
   <data name="bCenterizeDialogShower.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 30</value>
@@ -489,7 +521,7 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;bCenterizeDialogShower.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="labelYNode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -519,7 +551,7 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;labelYNode.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="labelXNode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -549,7 +581,7 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;labelXNode.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="bRemoveDialog.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -585,7 +617,7 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;bRemoveDialog.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="bEditDialog.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -621,7 +653,7 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;bEditDialog.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="bAddDialog.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -657,7 +689,7 @@
     <value>panelDialogTools</value>
   </data>
   <data name="&gt;&gt;bAddDialog.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="panelDialogTools.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -725,6 +757,111 @@
   <data name="splitDialogs.Panel1MinSize" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
+  <data name="gbNPCWorkSpace.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="bWSDel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bWSDel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 19</value>
+  </data>
+  <data name="bWSDel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 23</value>
+  </data>
+  <data name="bWSDel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="bWSDel.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;bWSDel.Name" xml:space="preserve">
+    <value>bWSDel</value>
+  </data>
+  <data name="&gt;&gt;bWSDel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bWSDel.Parent" xml:space="preserve">
+    <value>gbNPCWorkSpace</value>
+  </data>
+  <data name="&gt;&gt;bWSDel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bWSAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>165, 19</value>
+  </data>
+  <data name="bWSAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 23</value>
+  </data>
+  <data name="bWSAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="bWSAdd.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;bWSAdd.Name" xml:space="preserve">
+    <value>bWSAdd</value>
+  </data>
+  <data name="&gt;&gt;bWSAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bWSAdd.Parent" xml:space="preserve">
+    <value>gbNPCWorkSpace</value>
+  </data>
+  <data name="&gt;&gt;bWSAdd.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lbWorkSpace.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lbWorkSpace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="lbWorkSpace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 91</value>
+  </data>
+  <data name="lbWorkSpace.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lbWorkSpace.Name" xml:space="preserve">
+    <value>lbWorkSpace</value>
+  </data>
+  <data name="&gt;&gt;lbWorkSpace.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbWorkSpace.Parent" xml:space="preserve">
+    <value>gbNPCWorkSpace</value>
+  </data>
+  <data name="&gt;&gt;lbWorkSpace.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="gbNPCWorkSpace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 3</value>
+  </data>
+  <data name="gbNPCWorkSpace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 110</value>
+  </data>
+  <data name="gbNPCWorkSpace.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="gbNPCWorkSpace.Text" xml:space="preserve">
+    <value>Рабочая область NPC:</value>
+  </data>
+  <data name="&gt;&gt;gbNPCWorkSpace.Name" xml:space="preserve">
+    <value>gbNPCWorkSpace</value>
+  </data>
+  <data name="&gt;&gt;gbNPCWorkSpace.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbNPCWorkSpace.Parent" xml:space="preserve">
+    <value>splitDialogs.Panel2</value>
+  </data>
+  <data name="&gt;&gt;gbNPCWorkSpace.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbEmulator.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
   <data name="gbEmulator.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -762,10 +899,10 @@
     <value>1</value>
   </data>
   <data name="splitDialogsEmulator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1170, 90</value>
+    <value>962, 90</value>
   </data>
   <data name="splitDialogsEmulator.SplitterDistance" type="System.Int32, mscorlib">
-    <value>195</value>
+    <value>160</value>
   </data>
   <data name="splitDialogsEmulator.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -782,14 +919,11 @@
   <data name="&gt;&gt;splitDialogsEmulator.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="gbEmulator.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="gbEmulator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>208, 0</value>
   </data>
   <data name="gbEmulator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1176, 109</value>
+    <value>968, 109</value>
   </data>
   <data name="gbEmulator.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -807,7 +941,7 @@
     <value>splitDialogs.Panel2</value>
   </data>
   <data name="&gt;&gt;gbEmulator.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;splitDialogs.Panel2.Name" xml:space="preserve">
     <value>splitDialogs.Panel2</value>
@@ -2553,19 +2687,7 @@
     <value>True</value>
   </metadata>
   <data name="rewardBattle.HeaderText" xml:space="preserve">
-    <value>Награда опыт-бой</value>
-  </data>
-  <metadata name="rewardSurvive.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="rewardSurvive.HeaderText" xml:space="preserve">
-    <value>Награда опыт-выживание</value>
-  </data>
-  <metadata name="rewardSupport.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="rewardSupport.HeaderText" xml:space="preserve">
-    <value>Награда опыт-поддержка</value>
+    <value>Награда опыт</value>
   </data>
   <metadata name="rewardCredits.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3755,114 +3877,6 @@
   <data name="&gt;&gt;colRussianName.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;id.Name" xml:space="preserve">
-    <value>id</value>
-  </data>
-  <data name="&gt;&gt;id.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;subevents.Name" xml:space="preserve">
-    <value>subevents</value>
-  </data>
-  <data name="&gt;&gt;subevents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;title.Name" xml:space="preserve">
-    <value>title</value>
-  </data>
-  <data name="&gt;&gt;title.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Description.Name" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="&gt;&gt;Description.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;npcName.Name" xml:space="preserve">
-    <value>npcName</value>
-  </data>
-  <data name="&gt;&gt;npcName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;subNPC.Name" xml:space="preserve">
-    <value>subNPC</value>
-  </data>
-  <data name="&gt;&gt;subNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dialogID.Name" xml:space="preserve">
-    <value>dialogID</value>
-  </data>
-  <data name="&gt;&gt;dialogID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rewardBattle.Name" xml:space="preserve">
-    <value>rewardBattle</value>
-  </data>
-  <data name="&gt;&gt;rewardBattle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rewardSurvive.Name" xml:space="preserve">
-    <value>rewardSurvive</value>
-  </data>
-  <data name="&gt;&gt;rewardSurvive.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rewardSupport.Name" xml:space="preserve">
-    <value>rewardSupport</value>
-  </data>
-  <data name="&gt;&gt;rewardSupport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rewardCredits.Name" xml:space="preserve">
-    <value>rewardCredits</value>
-  </data>
-  <data name="&gt;&gt;rewardCredits.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rewardItems.Name" xml:space="preserve">
-    <value>rewardItems</value>
-  </data>
-  <data name="&gt;&gt;rewardItems.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;repeat.Name" xml:space="preserve">
-    <value>repeat</value>
-  </data>
-  <data name="&gt;&gt;repeat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;repeatPeriod.Name" xml:space="preserve">
-    <value>repeatPeriod</value>
-  </data>
-  <data name="&gt;&gt;repeatPeriod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Level.Name" xml:space="preserve">
-    <value>Level</value>
-  </data>
-  <data name="&gt;&gt;Level.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;author.Name" xml:space="preserve">
-    <value>author</value>
-  </data>
-  <data name="&gt;&gt;author.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Legend.Name" xml:space="preserve">
-    <value>Legend</value>
-  </data>
-  <data name="&gt;&gt;Legend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;worked.Name" xml:space="preserve">
-    <value>worked</value>
-  </data>
-  <data name="&gt;&gt;worked.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;type.Name" xml:space="preserve">
     <value>type</value>
   </data>
@@ -4066,6 +4080,102 @@
   </data>
   <data name="&gt;&gt;toolTipDialogs.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;id.Name" xml:space="preserve">
+    <value>id</value>
+  </data>
+  <data name="&gt;&gt;id.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;subevents.Name" xml:space="preserve">
+    <value>subevents</value>
+  </data>
+  <data name="&gt;&gt;subevents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;title.Name" xml:space="preserve">
+    <value>title</value>
+  </data>
+  <data name="&gt;&gt;title.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Description.Name" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="&gt;&gt;Description.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;npcName.Name" xml:space="preserve">
+    <value>npcName</value>
+  </data>
+  <data name="&gt;&gt;npcName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;subNPC.Name" xml:space="preserve">
+    <value>subNPC</value>
+  </data>
+  <data name="&gt;&gt;subNPC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dialogID.Name" xml:space="preserve">
+    <value>dialogID</value>
+  </data>
+  <data name="&gt;&gt;dialogID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rewardBattle.Name" xml:space="preserve">
+    <value>rewardBattle</value>
+  </data>
+  <data name="&gt;&gt;rewardBattle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rewardCredits.Name" xml:space="preserve">
+    <value>rewardCredits</value>
+  </data>
+  <data name="&gt;&gt;rewardCredits.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rewardItems.Name" xml:space="preserve">
+    <value>rewardItems</value>
+  </data>
+  <data name="&gt;&gt;rewardItems.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;repeat.Name" xml:space="preserve">
+    <value>repeat</value>
+  </data>
+  <data name="&gt;&gt;repeat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;repeatPeriod.Name" xml:space="preserve">
+    <value>repeatPeriod</value>
+  </data>
+  <data name="&gt;&gt;repeatPeriod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Level.Name" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="&gt;&gt;Level.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;author.Name" xml:space="preserve">
+    <value>author</value>
+  </data>
+  <data name="&gt;&gt;author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Legend.Name" xml:space="preserve">
+    <value>Legend</value>
+  </data>
+  <data name="&gt;&gt;Legend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;worked.Name" xml:space="preserve">
+    <value>worked</value>
+  </data>
+  <data name="&gt;&gt;worked.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

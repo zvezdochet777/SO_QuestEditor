@@ -136,8 +136,8 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("Actions").Descendants().Any(item => item.Name == "CancelQuest"))
                         {
                             AddDataToList(dialog, "Actions", "CancelQuest", Actions.CancelQuests);
-                            AddDataToList(dialog, "Actions", "FailQuest", Actions.FailQuests);
                         }
+                        AddDataToList(dialog, "Actions", "FailQuest", Actions.FailQuests);
                     }
                     if (dialog.Element("Precondition") != null)
                     {
@@ -899,6 +899,38 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
             return ret;
+        }
+
+        public static List<int> getDialogNewIDs(int count)
+        {
+            List<int> result = new List<int>();
+            if (count < 1)
+                return result;
+            string html = string.Empty;
+            string url = @"http://hz-dev2.stalker.so:8011/getnextidrange?key=qdialog_id&count=" + count.ToString();
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+            }
+            try
+            {
+                Newtonsoft.Json.Linq.JObject json = Newtonsoft.Json.Linq.JObject.Parse(html);
+                List<int> new_dialog_id = json["qdialog_id"].ToObject<List<int>>();
+                for (int i = new_dialog_id[0]; i < new_dialog_id[1]; i++)
+                    result.Add(i);
+                return result;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка получения нового ID диалога. Проверьте своё подключение к hz-dev", "Ошибка");
+                return new List<int>();
+            }
         }
 
         public static int getDialogsNewID()

@@ -53,16 +53,30 @@
             // 
             // lTextTip
             // 
+            this.lTextTip.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lTextTip.Location = new System.Drawing.Point(22, 25);
             this.lTextTip.Name = "lTextTip";
+            // 
+            // 
+            // 
+            this.lTextTip.RootElement.AccessibleDescription = null;
+            this.lTextTip.RootElement.AccessibleName = null;
+            this.lTextTip.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 100, 18);
             this.lTextTip.Size = new System.Drawing.Size(190, 18);
             this.lTextTip.TabIndex = 0;
             this.lTextTip.Text = "Введите текст для прямоугольника:";
             // 
             // bOK
             // 
+            this.bOK.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bOK.Location = new System.Drawing.Point(137, 202);
             this.bOK.Name = "bOK";
+            // 
+            // 
+            // 
+            this.bOK.RootElement.AccessibleDescription = null;
+            this.bOK.RootElement.AccessibleName = null;
+            this.bOK.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 110, 24);
             this.bOK.Size = new System.Drawing.Size(128, 24);
             this.bOK.TabIndex = 1;
             this.bOK.Text = "OK";
@@ -70,8 +84,15 @@
             // 
             // bCancel
             // 
+            this.bCancel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bCancel.Location = new System.Drawing.Point(271, 202);
             this.bCancel.Name = "bCancel";
+            // 
+            // 
+            // 
+            this.bCancel.RootElement.AccessibleDescription = null;
+            this.bCancel.RootElement.AccessibleName = null;
+            this.bCancel.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 110, 24);
             this.bCancel.Size = new System.Drawing.Size(128, 24);
             this.bCancel.TabIndex = 2;
             this.bCancel.Text = "Отмена";
@@ -79,15 +100,31 @@
             // 
             // tbRectText
             // 
-            this.tbRectText.Location = new System.Drawing.Point(22, 61);
+            this.tbRectText.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbRectText.Location = new System.Drawing.Point(20, 50);
+            this.tbRectText.Multiline = true;
             this.tbRectText.Name = "tbRectText";
-            this.tbRectText.Size = new System.Drawing.Size(377, 20);
+            // 
+            // 
+            // 
+            this.tbRectText.RootElement.AccessibleDescription = null;
+            this.tbRectText.RootElement.AccessibleName = null;
+            this.tbRectText.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 125, 20);
+            this.tbRectText.Size = new System.Drawing.Size(377, 40);
             this.tbRectText.TabIndex = 3;
             // 
             // colorBox
             // 
+            this.colorBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.colorBox.Location = new System.Drawing.Point(111, 102);
             this.colorBox.Name = "colorBox";
+            // 
+            // 
+            // 
+            this.colorBox.RootElement.AccessibleDescription = null;
+            this.colorBox.RootElement.AccessibleName = null;
+            this.colorBox.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 100, 20);
+            this.colorBox.RootElement.StretchVertically = true;
             this.colorBox.Size = new System.Drawing.Size(148, 20);
             this.colorBox.TabIndex = 4;
             this.colorBox.Text = "WTF";
@@ -96,30 +133,52 @@
             // 
             // lColorTip
             // 
+            this.lColorTip.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lColorTip.Location = new System.Drawing.Point(22, 102);
             this.lColorTip.Name = "lColorTip";
+            // 
+            // 
+            // 
+            this.lColorTip.RootElement.AccessibleDescription = null;
+            this.lColorTip.RootElement.AccessibleName = null;
+            this.lColorTip.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 100, 18);
             this.lColorTip.Size = new System.Drawing.Size(76, 18);
             this.lColorTip.TabIndex = 5;
             this.lColorTip.Text = "Задайте цвет:";
             // 
             // lWidthTip
             // 
+            this.lWidthTip.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lWidthTip.Location = new System.Drawing.Point(22, 135);
             this.lWidthTip.Name = "lWidthTip";
+            // 
+            // 
+            // 
+            this.lWidthTip.RootElement.AccessibleDescription = null;
+            this.lWidthTip.RootElement.AccessibleName = null;
+            this.lWidthTip.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 100, 18);
             this.lWidthTip.Size = new System.Drawing.Size(52, 18);
             this.lWidthTip.TabIndex = 6;
             this.lWidthTip.Text = "Ширина:";
             // 
             // lHeightTip
             // 
+            this.lHeightTip.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lHeightTip.Location = new System.Drawing.Point(22, 161);
             this.lHeightTip.Name = "lHeightTip";
+            // 
+            // 
+            // 
+            this.lHeightTip.RootElement.AccessibleDescription = null;
+            this.lHeightTip.RootElement.AccessibleName = null;
+            this.lHeightTip.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 100, 18);
             this.lHeightTip.Size = new System.Drawing.Size(45, 18);
             this.lHeightTip.TabIndex = 7;
             this.lHeightTip.Text = "Высота:";
             // 
             // spinWidth
             // 
+            this.spinWidth.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.spinWidth.Location = new System.Drawing.Point(111, 133);
             this.spinWidth.Maximum = new decimal(new int[] {
             10000,
@@ -127,7 +186,13 @@
             0,
             0});
             this.spinWidth.Name = "spinWidth";
-            this.spinWidth.Size = new System.Drawing.Size(100, 20);
+            // 
+            // 
+            // 
+            this.spinWidth.RootElement.AccessibleDescription = null;
+            this.spinWidth.RootElement.AccessibleName = null;
+            this.spinWidth.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 100, 20);
+            this.spinWidth.RootElement.StretchVertically = true;
             this.spinWidth.TabIndex = 8;
             this.spinWidth.TabStop = false;
             this.spinWidth.Value = new decimal(new int[] {
@@ -138,6 +203,7 @@
             // 
             // spinHeight
             // 
+            this.spinHeight.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.spinHeight.Location = new System.Drawing.Point(111, 159);
             this.spinHeight.Maximum = new decimal(new int[] {
             10000,
@@ -145,7 +211,13 @@
             0,
             0});
             this.spinHeight.Name = "spinHeight";
-            this.spinHeight.Size = new System.Drawing.Size(100, 20);
+            // 
+            // 
+            // 
+            this.spinHeight.RootElement.AccessibleDescription = null;
+            this.spinHeight.RootElement.AccessibleName = null;
+            this.spinHeight.RootElement.ControlBounds = new System.Drawing.Rectangle(0, 0, 100, 20);
+            this.spinHeight.RootElement.StretchVertically = true;
             this.spinHeight.TabIndex = 9;
             this.spinHeight.TabStop = false;
             // 
