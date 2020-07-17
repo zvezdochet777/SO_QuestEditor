@@ -530,6 +530,7 @@ namespace StalkerOnlineQuesterEditor
         public int KarmaPK;
         public List<CEffect> Effects;
         public bool RewardWindow;
+        public string teleportTo;
 
         public object Clone()
         {
@@ -544,6 +545,7 @@ namespace StalkerOnlineQuesterEditor
             copy.Effects = new List<CEffect>(this.Effects);
             copy.RewardWindow = this.RewardWindow;
             copy.blackBoxes = new List<string>(this.blackBoxes);
+            copy.teleportTo = teleportTo;
             return copy;
         }
 
@@ -558,10 +560,11 @@ namespace StalkerOnlineQuesterEditor
             this.KarmaPK = new int();
             this.Effects = new List<CEffect>();
             this.RewardWindow = false;
+            this.teleportTo = "";
         }
         public bool Any()
         {
-            return hasExperience() || items.Any() || Credits != 0 || ReputationNotEmpty() ||
+            return hasExperience() || items.Any() || Credits != 0 || ReputationNotEmpty() || teleportTo.Any() ||
                 KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any() || NPCReputation.Any() || blackBoxes.Any();
         }
 

@@ -259,6 +259,9 @@ namespace StalkerOnlineQuesterEditor
 
                     ParseIntIfNotEmpty(item, "Reward", "KarmaPK", out reward.KarmaPK, 0);
 
+                    if (item.Element("Reward").Element("Teleport") != null)
+                        reward.teleportTo = item.Element("Reward").Element("Teleport").Value;
+
                     if (item.Element("Reward").Element("Reputation") != null)
                         foreach (string fraction in item.Element("Reward").Element("Reputation").Value.Split(';'))
                             if (!fraction.Equals(""))
@@ -733,6 +736,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Reward").Add(new XElement("randomQuest", "1"));
                     if (questValue.Reward.KarmaPK != 0)
                         element.Element("Reward").Add(new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()));
+                    if (questValue.Reward.teleportTo.Any())
+                        element.Element("Reward").Add(new XElement("Teleport", questValue.Reward.teleportTo));
                     if (questValue.Reward.RewardWindow)
                         element.Element("Reward").Add(new XElement("RewardWindow", Global.GetBoolAsString(questValue.Reward.RewardWindow)));
                     List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);

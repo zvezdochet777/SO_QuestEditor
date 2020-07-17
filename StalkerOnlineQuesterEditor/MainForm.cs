@@ -72,6 +72,7 @@ namespace StalkerOnlineQuesterEditor
         public CMobConstants mobConst;
         public CZoneConstants zoneConst;
         public BillboardQuests billboardQuests;
+        public QuestsInMassQuestsReward massQuestRewards;
         public CZoneMobConstants zoneMobConst;
         public CSpacesConstants spacesConst;
         public CDungeonSpacesConstants dungeonConst;
@@ -174,6 +175,7 @@ namespace StalkerOnlineQuesterEditor
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
             this.billboardQuests = new BillboardQuests();
+            this.massQuestRewards = new QuestsInMassQuestsReward();
             this.zoneMobConst = new CZoneMobConstants();
             //SetMasterMode();
 
@@ -1194,6 +1196,7 @@ namespace StalkerOnlineQuesterEditor
             }
             dialogs.dialogs.Remove(currentNPC);
             dialogs.locales[settings.getListLocales()[0]].Remove(currentNPC);
+            dialogs.deleted_NPC.Add(currentNPC);
             currentNPC = "";
             fillNPCBox();
         }

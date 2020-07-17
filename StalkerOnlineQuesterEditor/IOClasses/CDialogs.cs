@@ -36,6 +36,8 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<int, string> dialogIDList = new Dictionary<int, string>();
         private Dictionary<int, List<string>> dialogErrors = new Dictionary<int, List<string>>();
 
+        public List<string> deleted_NPC = new List<string>();
+
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
         public CDialogs(MainForm parent, CManagerNPC managerNPC)
         {
@@ -144,6 +146,7 @@ namespace StalkerOnlineQuesterEditor
 
                         if (dialog.Element("Precondition").Element("ListOfNecessaryQuests") != null)
                         {
+                            CDialogs.AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfQuests", Precondition.ListOfNecessaryQuests.ListOfHaveQuests, ref Precondition.ListOfNecessaryQuests.conditionOfQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOpenedQuests", Precondition.ListOfNecessaryQuests.ListOfOpenedQuests, ref Precondition.ListOfNecessaryQuests.conditionOfOpenedQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfFailQuests", Precondition.ListOfNecessaryQuests.ListOfFailQuests, ref Precondition.ListOfNecessaryQuests.conditionOfFailQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests, ref Precondition.ListOfNecessaryQuests.conditionOfOnTestQuest);
@@ -163,6 +166,7 @@ namespace StalkerOnlineQuesterEditor
                         }
                         if (dialog.Element("Precondition").Element("ListOfMustNoQuests") != null)
                         {
+                            CDialogs.AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfQuests", Precondition.ListOfMustNoQuests.ListOfHaveQuests, ref Precondition.ListOfMustNoQuests.conditionOfQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOpenedQuests", Precondition.ListOfMustNoQuests.ListOfOpenedQuests, ref Precondition.ListOfMustNoQuests.conditionOfOpenedQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfFailQuests", Precondition.ListOfMustNoQuests.ListOfFailQuests, ref Precondition.ListOfMustNoQuests.conditionOfFailQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOnTestQuests", Precondition.ListOfMustNoQuests.ListOfOnTestQuests, ref Precondition.ListOfMustNoQuests.conditionOfOnTestQuest);
@@ -511,6 +515,12 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
 
+            foreach (string npc_name in deleted_NPC)
+            {
+                string path = filePath + npc_name + ".xml";
+                if (File.Exists(path)) File.Delete(path);
+            }
+
         }
 
         private void SaveDialogsData(string data_path, NPCDicts target)
@@ -537,6 +547,10 @@ namespace StalkerOnlineQuesterEditor
                                 element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfCompletedQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests,
                                                                     dialog.Precondition.ListOfNecessaryQuests.conditionOfCompletedQuests)));
+                            if (dialog.Precondition.ListOfNecessaryQuests.ListOfHaveQuests.Any())
+                                element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfQuests",
+                                              Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfHaveQuests,
+                                                                    dialog.Precondition.ListOfNecessaryQuests.conditionOfQuests)));
                             if (dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Any())
                                 element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOpenedQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests,
@@ -568,6 +582,10 @@ namespace StalkerOnlineQuesterEditor
                                 element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfCompletedQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests,
                                                                     dialog.Precondition.ListOfMustNoQuests.conditionOfCompletedQuests)));
+                            if (dialog.Precondition.ListOfMustNoQuests.ListOfHaveQuests.Any())
+                                element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfQuests",
+                                              Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfHaveQuests,
+                                                                    dialog.Precondition.ListOfMustNoQuests.conditionOfQuests)));
                             if (dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests.Any())
                                 element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOpenedQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests,
@@ -740,6 +758,12 @@ namespace StalkerOnlineQuesterEditor
                 {
                     resultDoc.Save(w);
                 }
+
+                foreach (string npc_name in deleted_NPC)
+                {
+                    string path = data_path + "/" + npc_name + ".xml";
+                    if (File.Exists(path)) File.Delete(path);
+                }
                 //resultDoc.Root.Add(npcElement);
             }
         }
@@ -764,6 +788,12 @@ namespace StalkerOnlineQuesterEditor
                     resultDoc.Save(w);
                 }
                 //resultDoc.Root.Add(npc_element);
+            }
+
+            foreach(string npc_name in deleted_NPC)
+            {
+                string path = data_path + npc_name + ".xml";
+                if (File.Exists(path)) File.Delete(path);
             }
 
         }

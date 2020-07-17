@@ -181,7 +181,7 @@ namespace StalkerOnlineQuesterEditor
                 npcElement = new XElement("NPC", new XAttribute("NPC_Name", npcName));
                 foreach (CRectangle rectangle in Rectangles[npcName].Values)
                 {
-                    Console.WriteLine("coord " + rectangle.coordX + " " + rectangle.coordY);
+                    //Console.WriteLine("coord " + rectangle.coordX + " " + rectangle.coordY);
                     npcElement.Add(new XElement("Rect",
                             new XAttribute("ID", rectangle.GetID()),
                             new XElement("X", Convert.ToString(rectangle.coordX)),

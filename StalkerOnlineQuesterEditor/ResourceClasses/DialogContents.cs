@@ -12,6 +12,8 @@ namespace StalkerOnlineQuesterEditor
 
     public class CDialogPreconditionQuests : ICloneable
     {
+        public ListOfQuests ListOfHaveQuests;
+        public char conditionOfQuests;
         public ListOfQuests ListOfCompletedQuests;
         public char conditionOfCompletedQuests;
         public ListOfQuests ListOfOpenedQuests;
@@ -34,7 +36,9 @@ namespace StalkerOnlineQuesterEditor
             this.ListOfOnTestQuests = new ListOfQuests();
             this.ListOfCounters = new ListOfQuests();
             this.ListOfRepeat = new ListOfQuests();
+            this.ListOfHaveQuests = new ListOfQuests();
             this.ListOfMassQuests = "";
+            this.conditionOfQuests = ',';
             this.conditionOfCompletedQuests = ',';
             this.conditionOfOpenedQuests = ',';
             this.conditionOfOnTestQuest = ',';
@@ -46,7 +50,8 @@ namespace StalkerOnlineQuesterEditor
         public bool Any()
         {
             if (ListOfCompletedQuests.Any() || ListOfOnTestQuests.Any() || ListOfOpenedQuests.Any() ||
-                ListOfFailQuests.Any() || ListOfCounters.Any() || ListOfMassQuests != "" || ListOfRepeat.Any())
+                ListOfFailQuests.Any() || ListOfCounters.Any() || ListOfMassQuests != "" || ListOfRepeat.Any() ||
+                    ListOfHaveQuests.Any())
                 return true;
             else
                 return false;

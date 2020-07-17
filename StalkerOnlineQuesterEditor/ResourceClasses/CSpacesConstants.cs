@@ -168,6 +168,7 @@ namespace StalkerOnlineQuesterEditor
                     level += 1;
                     continue;
                 }
+                
                 else if (reader.TokenType == JsonToken.EndObject)
                 {
                     level -= 1;

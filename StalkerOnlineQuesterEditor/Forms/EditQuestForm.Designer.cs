@@ -191,6 +191,8 @@
             this.cbPriority = new System.Windows.Forms.ComboBox();
             this.nudLevel = new System.Windows.Forms.NumericUpDown();
             this.labelLevel = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbRewardTeleport = new System.Windows.Forms.ComboBox();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
@@ -1744,6 +1746,8 @@
             // 
             // rewardGroupBox
             // 
+            this.rewardGroupBox.Controls.Add(this.cbRewardTeleport);
+            this.rewardGroupBox.Controls.Add(this.label5);
             this.rewardGroupBox.Controls.Add(this.bRewardBlackBox);
             this.rewardGroupBox.Controls.Add(this.bRewardQuests);
             this.rewardGroupBox.Controls.Add(this.cbRewardWindow);
@@ -1967,6 +1971,23 @@
             this.labelLevel.Size = new System.Drawing.Size(54, 13);
             this.labelLevel.TabIndex = 57;
             this.labelLevel.Text = "Уровень:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(254, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "Телепорт:";
+            // 
+            // cbRewardTeleport
+            // 
+            this.cbRewardTeleport.FormattingEnabled = true;
+            this.cbRewardTeleport.Location = new System.Drawing.Point(350, 44);
+            this.cbRewardTeleport.Name = "cbRewardTeleport";
+            this.cbRewardTeleport.Size = new System.Drawing.Size(121, 21);
+            this.cbRewardTeleport.TabIndex = 45;
             // 
             // EditQuestForm
             // 
@@ -2194,5 +2215,7 @@
         private System.Windows.Forms.Button btnSpace;
         private System.Windows.Forms.NumericUpDown nudLevel;
         private System.Windows.Forms.Label labelLevel;
+        private System.Windows.Forms.ComboBox cbRewardTeleport;
+        private System.Windows.Forms.Label label5;
     }
 }

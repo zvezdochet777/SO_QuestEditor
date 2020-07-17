@@ -220,7 +220,7 @@ namespace StalkerOnlineQuesterEditor
             }
             if (!System.IO.File.Exists("source/ItemWeapons.xml"))
             {
-                System.Windows.Forms.MessageBox.Show("Отсуствует файл ItemStrings.xml, нужно распарсить предметы", "Ошибка");
+                System.Windows.Forms.MessageBox.Show("Отсуствует файл ItemWeapons.xml, нужно распарсить предметы", "Ошибка");
                 return;
             }
             try

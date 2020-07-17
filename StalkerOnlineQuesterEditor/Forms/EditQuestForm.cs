@@ -943,10 +943,13 @@ namespace StalkerOnlineQuesterEditor
         void fillReward()
         {
             checkRewardIndicates();
-           
+
+            foreach (var i in parent.tpConst.getKeys())
+                cbRewardTeleport.Items.Add(i);
             tExperience.Text = quest.Reward.Experience.ToString();
             tbPenaltyExperience.Text = quest.QuestPenalty.Experience.ToString();
-
+            if (quest.Reward.teleportTo.Any())
+                cbRewardTeleport.SelectedItem = quest.Reward.teleportTo;
             cbRewardWindow.Checked = quest.Reward.RewardWindow;
             creditsTextBox.Text = quest.Reward.Credits.ToString();
             tbPenaltyCredits.Text = quest.QuestPenalty.Credits.ToString();
@@ -1032,6 +1035,8 @@ namespace StalkerOnlineQuesterEditor
                 else
                 {
                     int mob_level = ParseIntIfNotEmpty(resultComboBox.Text);
+                    //TODO Wolfgar
+                    //parent.mobConst.ge
                     target.ObjectAttr = mob_level;
 
                     target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
@@ -1208,6 +1213,8 @@ namespace StalkerOnlineQuesterEditor
             reward.Credits = ParseIntIfNotEmpty(creditsTextBox.Text);
             reward.KarmaPK = ParseIntIfNotEmpty(textBoxKarmaPK.Text);
             reward.RewardWindow = cbRewardWindow.Checked;
+            if (cbRewardTeleport.SelectedItem != null)
+                reward.teleportTo = cbRewardTeleport.SelectedItem.ToString();
 
             penalty.Experience = ParseIntIfNotEmpty(tbPenaltyExperience.Text);
             penalty.Credits = ParseIntIfNotEmpty(tbPenaltyCredits.Text);

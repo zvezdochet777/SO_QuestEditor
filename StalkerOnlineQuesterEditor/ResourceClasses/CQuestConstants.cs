@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.Xml.Linq;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace StalkerOnlineQuesterEditor
 {
@@ -181,6 +183,46 @@ namespace StalkerOnlineQuesterEditor
         public List<int> getKeys()
         {
             return _constants;
+        }
+    }
+
+    public class QuestsInMassQuestsReward
+    {
+        protected List<int> _quests = new List<int>();
+        public static string JSON_PATH = "../../../res/scripts/server_data/massquest_config.json";
+        JsonTextReader reader;
+
+        public Dictionary<int, string> effects = new Dictionary<int, string>();
+        public QuestsInMassQuestsReward()
+        {
+            reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
+            bool inName = false;
+
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    var name = reader.Value.ToString();
+                    if (name == "quest_open") inName = true;
+                }
+                else if (reader.TokenType == JsonToken.EndArray)
+                {
+                    if (inName) inName = false;
+                }
+                else if (reader.TokenType == JsonToken.Integer)
+                    if (inName)
+                    {
+                        inName = false;
+                        int id = Convert.ToInt32(reader.Value);
+                        if (!_quests.Contains(id))
+                            _quests.Add(id);
+                    }
+            }
+            reader.Close();
+        }
+        public List<int> getKeys()
+        {
+            return _quests;
         }
     }
 

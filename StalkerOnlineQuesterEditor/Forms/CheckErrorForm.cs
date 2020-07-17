@@ -162,7 +162,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                 this.writeToLog(ERROR_OTHER, line);
                 return true;
             }
-            if (quest.Additional.IsSubQuest != 0) return true;
+            if (quest.Additional.IsSubQuest != 0) return checkQuestIDOnGet(quest.Additional.IsSubQuest, npc_name, dialog_id);
 
             foreach (KeyValuePair<string, Dictionary<int, CDialog>> npc in dialogs.dialogs)
             {
@@ -189,7 +189,8 @@ namespace StalkerOnlineQuesterEditor.Forms
 
             if ((parent != null) && parent.zoneConst.checkAreaGiveQuestByID(quest_id))
                 return true;
-
+            if ((parent != null) && parent.massQuestRewards.getKeys().Contains(quest_id))
+                return true;
             if ((parent != null) && parent.billboardQuests.getKeys().Contains(quest_id))
                 return true;
 
@@ -263,17 +264,21 @@ namespace StalkerOnlineQuesterEditor.Forms
                 foreach (KeyValuePair<int, CDialog> dia in npc.Value)
                 {
                     List<int> check_list = new List<int>();
+                    check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfHaveQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfOpenedQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfFailQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfOnTestQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
 
+                    check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfHaveQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfFailQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
                     check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
+
+                    check_list.AddRange(dia.Value.CheckNodes);
 
                     on_test_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
 

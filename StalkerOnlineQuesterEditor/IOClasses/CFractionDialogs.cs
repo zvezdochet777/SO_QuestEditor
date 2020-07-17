@@ -140,6 +140,7 @@ namespace StalkerOnlineQuesterEditor
 
                         if (dialog.Element("Precondition").Element("ListOfNecessaryQuests") != null)
                         {
+                            CDialogs.AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfQuests", Precondition.ListOfNecessaryQuests.ListOfHaveQuests, ref Precondition.ListOfNecessaryQuests.conditionOfQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOpenedQuests", Precondition.ListOfNecessaryQuests.ListOfOpenedQuests, ref Precondition.ListOfNecessaryQuests.conditionOfOpenedQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfFailQuests", Precondition.ListOfNecessaryQuests.ListOfFailQuests, ref Precondition.ListOfNecessaryQuests.conditionOfFailQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfNecessaryQuests", "listOfOnTestQuests", Precondition.ListOfNecessaryQuests.ListOfOnTestQuests, ref Precondition.ListOfNecessaryQuests.conditionOfOnTestQuest);
@@ -159,6 +160,7 @@ namespace StalkerOnlineQuesterEditor
                         }
                         if (dialog.Element("Precondition").Element("ListOfMustNoQuests") != null)
                         {
+                            CDialogs.AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfQuests", Precondition.ListOfMustNoQuests.ListOfHaveQuests, ref Precondition.ListOfMustNoQuests.conditionOfQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOpenedQuests", Precondition.ListOfMustNoQuests.ListOfOpenedQuests, ref Precondition.ListOfMustNoQuests.conditionOfOpenedQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfFailQuests", Precondition.ListOfMustNoQuests.ListOfFailQuests, ref Precondition.ListOfMustNoQuests.conditionOfFailQuests);
                             CDialogs.AddPreconditionQuests(dialog, "ListOfMustNoQuests", "listOfOnTestQuests", Precondition.ListOfMustNoQuests.ListOfOnTestQuests, ref Precondition.ListOfMustNoQuests.conditionOfOnTestQuest);
@@ -464,6 +466,10 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfCompletedQuests",
                                           Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests, 
                                                                 dialog.Precondition.ListOfNecessaryQuests.conditionOfCompletedQuests)));
+                        if (dialog.Precondition.ListOfNecessaryQuests.ListOfHaveQuests.Any())
+                            element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfHaveQuests,
+                                                                dialog.Precondition.ListOfNecessaryQuests.conditionOfQuests)));
                         if (dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Any())
                             element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOpenedQuests",
                                           Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests,
@@ -495,6 +501,10 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfCompletedQuests",
                                           Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests,
                                                                 dialog.Precondition.ListOfMustNoQuests.conditionOfCompletedQuests)));
+                        if (dialog.Precondition.ListOfMustNoQuests.ListOfHaveQuests.Any())
+                            element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfQuests",
+                                          Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfHaveQuests,
+                                                                dialog.Precondition.ListOfMustNoQuests.conditionOfQuests)));
                         if (dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests.Any())
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOpenedQuests",
                                           Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests,
