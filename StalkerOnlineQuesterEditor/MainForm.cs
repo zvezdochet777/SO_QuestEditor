@@ -89,6 +89,7 @@ namespace StalkerOnlineQuesterEditor
         public COperNotes manageNotes;
         public CFracConstants fractions;
         public SkillConstants skills;
+        public PvPRanks pvPRanks;
         public CGUIConst gui;
         public CEffectConstants effects;
         public DialogEventsList dialogEvents;
@@ -139,6 +140,7 @@ namespace StalkerOnlineQuesterEditor
             manageNotes = new COperNotes("ManNotes.xml");
             fractions = new CFracConstants();
             skills = new SkillConstants();
+            pvPRanks = new PvPRanks();
             gui = new CGUIConst();
             effects = new CEffectConstants();
 
@@ -686,6 +688,8 @@ namespace StalkerOnlineQuesterEditor
                 return Brushes.Green;
             else if (node == Listener.SelectedNode)
                 return Brushes.Red;
+            else if (dialogs.getDialogToDoToolTip(getDialogIDOnNode(node)).Any())
+                return Brushes.DarkOrange;
             else if (subNodes.Contains(node))
                 return Brushes.Yellow;
             else
@@ -907,6 +911,9 @@ namespace StalkerOnlineQuesterEditor
             string tooltip = "";
             if (dialogs.dialogs[currentNPC].ContainsKey(dialogID))
                 tooltip = dialogs.dialogs[currentNPC][dialogID].GetNodeTooltip();
+            string todo = dialogs.getDialogToDoToolTip(dialogID);
+            if (todo.Any())
+                tooltip += "\n" + todo;
             toolTipDialogs.SetToolTip(DialogShower, tooltip);
         }
 
@@ -2484,7 +2491,7 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else
                 {
-                    local.QuestInformation.Items = quest.QuestInformation.Items;
+                    
                     local.Additional.ShowProgress = quest.Additional.ShowProgress;
                     local.Additional.ListOfSubQuest = quest.Additional.ListOfSubQuest;
                     local.Additional.IsSubQuest = quest.Additional.IsSubQuest;
@@ -2494,7 +2501,14 @@ namespace StalkerOnlineQuesterEditor
                     local.QuestRules = quest.QuestRules;
                     local.Reward = quest.Reward;
                     local.Target = quest.Target;
+
                     // копирование русских строчек вместо пустых
+                    foreach(var item in quest.QuestInformation.Items)
+                    {
+                        if (!local.QuestInformation.Items.ContainsKey(item.Key))
+                            local.QuestInformation.Items.Add(item.Key, item.Value);
+                    }
+                    
                     if (quest.QuestInformation.Title.Length > 0 && local.QuestInformation.Title.Length == 0)
                     {
                         local.QuestInformation.Title = quest.QuestInformation.Title;
@@ -3336,6 +3350,13 @@ namespace StalkerOnlineQuesterEditor
             if (lbWorkSpace.SelectedItem == null) return;
             string sel_npc = lbWorkSpace.SelectedItem.ToString();
             lbWorkSpace.Items.Remove(sel_npc);
+        }
+
+        private void btnCheckNPC_Click(object sender, EventArgs e)
+        {
+            if (!this.currentNPC.Any()) return;
+            CheckErrorForm cef = new CheckErrorForm(dialogs, quests, this, this.currentNPC);
+            cef.Show();
         }
     }
 }

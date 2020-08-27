@@ -250,10 +250,11 @@ namespace StalkerOnlineQuesterEditor
                 rooty = (float)this.ClientSize.Height / 5.0f;
             }
             PNode rootNode = CreateNode(root, new PointF(rootx, rooty));
-            rootNode.Brush = Brushes.Green;
+            
             nodeLayer.Add(rootNode);
             if (!graphs.Keys.Contains(rootNode))
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
+            rootNode.Brush = GetBrushForNode(rootNode);
             //SaveCoordinates(root, rootNode, true);
             this.fillDialogSubgraphView(root, rootNode, 1.0f, ref edgeLayer, ref nodeLayer, false, dialogShower, dialogs, locales);
 
@@ -313,12 +314,13 @@ namespace StalkerOnlineQuesterEditor
 
                     if (node == null)
                         node = CreateNode(currentDialog, new PointF(x, y));
-
+                    
                     PrepareNodesForEdge(node, rootNode, ref edgeLayer);
                     //SaveCoordinates(currentDialog, node);  
                     nodeLayer.Add(node);
                     if (!graphs.Keys.Contains(node))
                         graphs.Add(node, new GraphProperties(subdialogID));
+                    node.Brush = GetBrushForNode(node);
                     if (!stopAfterThat)
                     {
                         if ( currentDialog.Nodes.Any() )
@@ -352,7 +354,7 @@ namespace StalkerOnlineQuesterEditor
 
             if (!graphs.Keys.Contains(newNode))
                 graphs.Add(newNode, new GraphProperties(dialogID));
-
+            newNode.Brush = GetBrushForNode(newNode);
             if (currentDialog.Nodes.Any())
                 foreach (int subdialog in currentDialog.Nodes)
                     addNodeOnDialogGraphView(subdialog, dialogID, dialogs, locales, dialogShower);

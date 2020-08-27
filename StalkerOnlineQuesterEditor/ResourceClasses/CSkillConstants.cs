@@ -93,5 +93,41 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class PvPRanks: Constants
+    {
 
+        public PvPRanks()
+        {
+            string path = "../../../res/scripts/common/pvp_rating_config.py";
+
+            string name = "";
+            string rating = "0";
+
+            string local_name_path = "../../../res/local/Russian/pvp_rating_config.xml";
+            Dictionary<string, string> names = new Dictionary<string, string>();
+            doc = XDocument.Load(local_name_path);
+            foreach (XElement item in doc.Root.Elements("rank").Elements())
+            {
+                names.Add(item.Name.ToString(), item.Value);
+            }
+
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Contains("\"name\":"))
+                    {
+                        name = line.Split(':')[1].Split(',')[0].Replace("\"", "");
+                        name = names[name.Split('.').Last()];
+                    }
+                    else if (line.Contains("\"rating\":"))
+                    {
+                        rating = line.Split(':')[1].Split(',')[0].Replace("\"", "");
+                        _constants.Add(name, rating);
+                    }
+                }
+            }
+        }
+    }
 }

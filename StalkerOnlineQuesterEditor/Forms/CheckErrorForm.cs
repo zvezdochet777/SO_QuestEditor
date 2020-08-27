@@ -40,6 +40,8 @@ namespace StalkerOnlineQuesterEditor.Forms
         private MainForm parent;
         private List<int> deleted_quests_ids = new List<int>();
 
+        protected string targetNPCName = "";
+
         List<QuestError> currentDisplayErrors = new List<QuestError>();
 
         string JSON_PATH = "settings/ignore_ids.json";
@@ -54,15 +56,21 @@ namespace StalkerOnlineQuesterEditor.Forms
         const int ERROR_NO_ROOT = 4;
         const int ERROR_DIALOG = 5;
 
-        public CheckErrorForm(CDialogs dialogs, CQuests quests, MainForm parent)
+        public CheckErrorForm(CDialogs dialogs, CQuests quests, MainForm parent, string targetNPCName = "")
         {
             InitializeComponent();
             this.dialogs = dialogs;
             this.quests = quests;
             this.parent = parent;
+            this.targetNPCName = targetNPCName;
             readIgnoresIDs();
             readDeletedQuests();
+            if (targetNPCName.Any())
+            {
+                this.Text += " NPC:" + targetNPCName;
+                btnStart_Click(null, null);
 
+            }
             //lbLog.DataSource = lbLog.Items;
             //lbLog.DisplayMember = "text";
         }
@@ -261,6 +269,7 @@ namespace StalkerOnlineQuesterEditor.Forms
             {
                 i++;
                 doProgress(50 * Convert.ToInt32(Convert.ToDouble(i) / count));
+                if (targetNPCName.Any() && targetNPCName != npc.Key) continue;
                 foreach (KeyValuePair<int, CDialog> dia in npc.Value)
                 {
                     List<int> check_list = new List<int>();
@@ -358,7 +367,9 @@ namespace StalkerOnlineQuesterEditor.Forms
             doProgress(40);
             setLabel("Проверяем локализацию диалогов");
             foreach (string local in dialogs.locales.Keys)
-                foreach(string _npc_name in dialogs.locales[local].Keys)
+                foreach (string _npc_name in dialogs.locales[local].Keys)
+                {
+                    if (targetNPCName.Any() && targetNPCName != _npc_name) continue;
                     foreach (KeyValuePair<int, CDialog> _dialog in dialogs.locales[local][_npc_name])
                     {
                         string dialog_text = _dialog.Value.Text;
@@ -378,7 +389,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                             }
                         }
                     }
-
+                }
 
             count = quests.quest.Count;
             i = 0;
@@ -391,6 +402,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                 doProgress(50 + 40 * Convert.ToInt32(Convert.ToDouble(i) / count));
                 if (wasIgnoredQuestID(quest.Key))
                     continue;
+                if (targetNPCName.Any() && targetNPCName != quest.Value.Additional.Holder) continue;
                 int parent_quest_id = quest.Value.Additional.IsSubQuest;
                 //проверяет, знает ли родительский квест о текущем
                 if (parent_quest_id > 0)

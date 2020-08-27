@@ -159,7 +159,17 @@ namespace StalkerOnlineQuesterEditor
                         if (Target_ObjectAttr < 0)
                             Target_ObjectAttr = 0;
                         target.ObjectAttr = Target_ObjectAttr;
+                        if (target.QuestType == CQuestConstants.TYPE_KILLMOBS || target.QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST)
+                        {
+                            target.str_param = target.ObjectAttr.ToString();
+                        }
                     }
+
+                    if ((item.Element("Target").Element("str_param") != null) && (!item.Element("Target").Element("str_param").Value.Equals("")))
+                    {
+                        target.str_param = item.Element("Target").Element("str_param").Value;
+                    }
+
                     if (item.Element("Target").Element("AObjectAttrs") != null)
                         foreach (string at in item.Element("Target").Element("AObjectAttrs").Value.ToString().Split(','))
                             if (!at.Equals(""))
@@ -654,6 +664,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Target").Add(new XElement("ObjectType", Global.GetIntAsString(questValue.Target.ObjectType)));
                     if (questValue.Target.ObjectAttr != 0)
                         element.Element("Target").Add(new XElement("ObjectAttr", questValue.Target.ObjectAttr));
+                    if (questValue.Target.str_param.Any())
+                        element.Element("Target").Add(new XElement("str_param", questValue.Target.str_param));
                     if (questValue.Target.NumOfObjects != 0)
                         element.Element("Target").Add(new XElement("NumOfObjects", Global.GetIntAsString(questValue.Target.NumOfObjects)));
                     if (questValue.Target.ObjectName != "")

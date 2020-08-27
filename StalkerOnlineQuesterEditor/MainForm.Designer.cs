@@ -179,6 +179,16 @@ namespace StalkerOnlineQuesterEditor
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbKnowledgeCategory = new System.Windows.Forms.ComboBox();
+            this.tabAutoGen = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnDelTarget = new System.Windows.Forms.Button();
+            this.btnAddTarget = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBoxTarget = new System.Windows.Forms.ListBox();
+            this.listBoxQT = new System.Windows.Forms.ListBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelSelectNPC = new System.Windows.Forms.Panel();
             this.btnFilterNPC = new System.Windows.Forms.Button();
             this.btnNextNPC = new System.Windows.Forms.Button();
@@ -209,7 +219,7 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.tabAutoGen = new System.Windows.Forms.TabPage();
+            this.btnCheckNPC = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -253,6 +263,9 @@ namespace StalkerOnlineQuesterEditor
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).BeginInit();
             this.panelSearchTools.SuspendLayout();
             this.tabKnowledge.SuspendLayout();
+            this.tabAutoGen.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.panelSelectNPC.SuspendLayout();
             this.menuMainControl.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -1374,9 +1387,78 @@ namespace StalkerOnlineQuesterEditor
             this.cbKnowledgeCategory.Name = "cbKnowledgeCategory";
             this.cbKnowledgeCategory.SelectedIndexChanged += new System.EventHandler(this.cbKnowledgeCategory_SelectedIndexChanged);
             // 
+            // tabAutoGen
+            // 
+            this.tabAutoGen.Controls.Add(this.tabControl1);
+            resources.ApplyResources(this.tabAutoGen, "tabAutoGen");
+            this.tabAutoGen.Name = "tabAutoGen";
+            this.tabAutoGen.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.btnDelTarget);
+            this.tabPage1.Controls.Add(this.btnAddTarget);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.listBoxTarget);
+            this.tabPage1.Controls.Add(this.listBoxQT);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnDelTarget
+            // 
+            resources.ApplyResources(this.btnDelTarget, "btnDelTarget");
+            this.btnDelTarget.Name = "btnDelTarget";
+            this.btnDelTarget.UseVisualStyleBackColor = true;
+            // 
+            // btnAddTarget
+            // 
+            resources.ApplyResources(this.btnAddTarget, "btnAddTarget");
+            this.btnAddTarget.Name = "btnAddTarget";
+            this.btnAddTarget.UseVisualStyleBackColor = true;
+            this.btnAddTarget.Click += new System.EventHandler(this.btnAddTarget_Click);
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // listBoxTarget
+            // 
+            this.listBoxTarget.FormattingEnabled = true;
+            resources.ApplyResources(this.listBoxTarget, "listBoxTarget");
+            this.listBoxTarget.Name = "listBoxTarget";
+            // 
+            // listBoxQT
+            // 
+            this.listBoxQT.FormattingEnabled = true;
+            resources.ApplyResources(this.listBoxQT, "listBoxQT");
+            this.listBoxQT.Name = "listBoxQT";
+            // 
+            // tabPage2
+            // 
+            resources.ApplyResources(this.tabPage2, "tabPage2");
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // panelSelectNPC
             // 
             this.panelSelectNPC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelSelectNPC.Controls.Add(this.btnCheckNPC);
             this.panelSelectNPC.Controls.Add(this.btnFilterNPC);
             this.panelSelectNPC.Controls.Add(this.btnNextNPC);
             this.panelSelectNPC.Controls.Add(this.btnBackNPC);
@@ -1594,11 +1676,12 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             // 
-            // tabAutoGen
+            // btnCheckNPC
             // 
-            resources.ApplyResources(this.tabAutoGen, "tabAutoGen");
-            this.tabAutoGen.Name = "tabAutoGen";
-            this.tabAutoGen.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnCheckNPC, "btnCheckNPC");
+            this.btnCheckNPC.Name = "btnCheckNPC";
+            this.btnCheckNPC.UseVisualStyleBackColor = true;
+            this.btnCheckNPC.Click += new System.EventHandler(this.btnCheckNPC_Click);
             // 
             // MainForm
             // 
@@ -1665,6 +1748,10 @@ namespace StalkerOnlineQuesterEditor
             this.panelSearchTools.PerformLayout();
             this.tabKnowledge.ResumeLayout(false);
             this.tabKnowledge.PerformLayout();
+            this.tabAutoGen.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.panelSelectNPC.ResumeLayout(false);
             this.panelSelectNPC.PerformLayout();
             this.menuMainControl.ResumeLayout(false);
@@ -1855,6 +1942,16 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.DataGridViewTextBoxColumn Legend;
         private System.Windows.Forms.DataGridViewComboBoxColumn worked;
         private System.Windows.Forms.TabPage tabAutoGen;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button btnDelTarget;
+        private System.Windows.Forms.Button btnAddTarget;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBoxTarget;
+        private System.Windows.Forms.ListBox listBoxQT;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnCheckNPC;
     }
 }
 

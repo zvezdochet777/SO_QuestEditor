@@ -72,6 +72,11 @@
             this.tabQuestsCircs = new System.Windows.Forms.TabControl();
             this.tabQuests = new System.Windows.Forms.TabPage();
             this.gbQuestCondition = new System.Windows.Forms.GroupBox();
+            this.cbShouldntHaveQuests = new System.Windows.Forms.CheckBox();
+            this.cbMustHaveQuests = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tMustHaveQuests = new System.Windows.Forms.MaskedTextBox();
+            this.tShouldntHaveQuests = new System.Windows.Forms.MaskedTextBox();
             this.cbShouldntHaveFailQuests = new System.Windows.Forms.CheckBox();
             this.cbMustHaveFailQuests = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -235,6 +240,7 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.btnTODO = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.cbRadioNode = new System.Windows.Forms.ComboBox();
             this.tCheckNodes = new System.Windows.Forms.MaskedTextBox();
@@ -243,11 +249,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.cbShouldntHaveQuests = new System.Windows.Forms.CheckBox();
-            this.cbMustHaveQuests = new System.Windows.Forms.CheckBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.tMustHaveQuests = new System.Windows.Forms.MaskedTextBox();
-            this.tShouldntHaveQuests = new System.Windows.Forms.MaskedTextBox();
+            this.tabPVP = new System.Windows.Forms.TabPage();
+            this.picturePVP = new System.Windows.Forms.PictureBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbPVPRank1 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cbPVPRank2 = new System.Windows.Forms.ComboBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -290,6 +297,8 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
+            this.tabPVP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePVP)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -618,6 +627,7 @@
             // 
             this.gbPrecondition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbPrecondition.Controls.Add(this.picturePVP);
             this.gbPrecondition.Controls.Add(this.pictureTutorial);
             this.gbPrecondition.Controls.Add(this.pictureTransport);
             this.gbPrecondition.Controls.Add(this.pictureItems);
@@ -772,6 +782,7 @@
             this.tabQuestsCircs.Controls.Add(this.tabItems);
             this.tabQuestsCircs.Controls.Add(this.tabTransport);
             this.tabQuestsCircs.Controls.Add(this.tabTutorial);
+            this.tabQuestsCircs.Controls.Add(this.tabPVP);
             this.tabQuestsCircs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabQuestsCircs.Location = new System.Drawing.Point(4, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
@@ -843,6 +854,47 @@
             this.gbQuestCondition.TabIndex = 6;
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
+            // 
+            // cbShouldntHaveQuests
+            // 
+            this.cbShouldntHaveQuests.AutoSize = true;
+            this.cbShouldntHaveQuests.Location = new System.Drawing.Point(379, 49);
+            this.cbShouldntHaveQuests.Name = "cbShouldntHaveQuests";
+            this.cbShouldntHaveQuests.Size = new System.Drawing.Size(15, 14);
+            this.cbShouldntHaveQuests.TabIndex = 46;
+            this.cbShouldntHaveQuests.UseVisualStyleBackColor = true;
+            // 
+            // cbMustHaveQuests
+            // 
+            this.cbMustHaveQuests.AutoSize = true;
+            this.cbMustHaveQuests.Location = new System.Drawing.Point(146, 49);
+            this.cbMustHaveQuests.Name = "cbMustHaveQuests";
+            this.cbMustHaveQuests.Size = new System.Drawing.Size(15, 14);
+            this.cbMustHaveQuests.TabIndex = 45;
+            this.cbMustHaveQuests.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(10, 49);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 13);
+            this.label17.TabIndex = 43;
+            this.label17.Text = "Наличие квестов;";
+            // 
+            // tMustHaveQuests
+            // 
+            this.tMustHaveQuests.Location = new System.Drawing.Point(167, 46);
+            this.tMustHaveQuests.Name = "tMustHaveQuests";
+            this.tMustHaveQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveQuests.TabIndex = 42;
+            // 
+            // tShouldntHaveQuests
+            // 
+            this.tShouldntHaveQuests.Location = new System.Drawing.Point(273, 46);
+            this.tShouldntHaveQuests.Name = "tShouldntHaveQuests";
+            this.tShouldntHaveQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveQuests.TabIndex = 44;
             // 
             // cbShouldntHaveFailQuests
             // 
@@ -1789,7 +1841,7 @@
             this.tabActions.Location = new System.Drawing.Point(4, 22);
             this.tabActions.Name = "tabActions";
             this.tabActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActions.Size = new System.Drawing.Size(702, 230);
+            this.tabActions.Size = new System.Drawing.Size(702, 254);
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
@@ -1944,7 +1996,7 @@
             this.tabItems.Location = new System.Drawing.Point(4, 22);
             this.tabItems.Name = "tabItems";
             this.tabItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tabItems.Size = new System.Drawing.Size(702, 230);
+            this.tabItems.Size = new System.Drawing.Size(702, 254);
             this.tabItems.TabIndex = 8;
             this.tabItems.Text = "Предметы";
             this.tabItems.SizeChanged += new System.EventHandler(this.tabItems_SizeChanged);
@@ -2188,7 +2240,7 @@
             this.tabTransport.Location = new System.Drawing.Point(4, 22);
             this.tabTransport.Name = "tabTransport";
             this.tabTransport.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTransport.Size = new System.Drawing.Size(702, 230);
+            this.tabTransport.Size = new System.Drawing.Size(702, 254);
             this.tabTransport.TabIndex = 9;
             this.tabTransport.Text = "Перевоз";
             // 
@@ -2284,7 +2336,7 @@
             this.tabTutorial.Location = new System.Drawing.Point(4, 22);
             this.tabTutorial.Name = "tabTutorial";
             this.tabTutorial.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTutorial.Size = new System.Drawing.Size(702, 230);
+            this.tabTutorial.Size = new System.Drawing.Size(702, 254);
             this.tabTutorial.TabIndex = 10;
             this.tabTutorial.Text = "Туториал";
             this.tabTutorial.UseVisualStyleBackColor = true;
@@ -2389,6 +2441,7 @@
             // 
             this.gbTexts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbTexts.Controls.Add(this.btnTODO);
             this.gbTexts.Controls.Add(this.label16);
             this.gbTexts.Controls.Add(this.cbRadioNode);
             this.gbTexts.Controls.Add(this.tCheckNodes);
@@ -2409,6 +2462,16 @@
             this.gbTexts.Size = new System.Drawing.Size(714, 247);
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
+            // 
+            // btnTODO
+            // 
+            this.btnTODO.Location = new System.Drawing.Point(452, 6);
+            this.btnTODO.Name = "btnTODO";
+            this.btnTODO.Size = new System.Drawing.Size(50, 20);
+            this.btnTODO.TabIndex = 22;
+            this.btnTODO.Text = "ToDo:";
+            this.btnTODO.UseVisualStyleBackColor = true;
+            this.btnTODO.Click += new System.EventHandler(this.btnTODO_Click);
             // 
             // label16
             // 
@@ -2487,46 +2550,65 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // cbShouldntHaveQuests
+            // tabPVP
             // 
-            this.cbShouldntHaveQuests.AutoSize = true;
-            this.cbShouldntHaveQuests.Location = new System.Drawing.Point(379, 49);
-            this.cbShouldntHaveQuests.Name = "cbShouldntHaveQuests";
-            this.cbShouldntHaveQuests.Size = new System.Drawing.Size(15, 14);
-            this.cbShouldntHaveQuests.TabIndex = 46;
-            this.cbShouldntHaveQuests.UseVisualStyleBackColor = true;
+            this.tabPVP.Controls.Add(this.cbPVPRank2);
+            this.tabPVP.Controls.Add(this.label19);
+            this.tabPVP.Controls.Add(this.cbPVPRank1);
+            this.tabPVP.Controls.Add(this.label18);
+            this.tabPVP.Location = new System.Drawing.Point(4, 22);
+            this.tabPVP.Name = "tabPVP";
+            this.tabPVP.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPVP.Size = new System.Drawing.Size(702, 254);
+            this.tabPVP.TabIndex = 11;
+            this.tabPVP.Text = "PVP";
+            this.tabPVP.UseVisualStyleBackColor = true;
             // 
-            // cbMustHaveQuests
+            // picturePVP
             // 
-            this.cbMustHaveQuests.AutoSize = true;
-            this.cbMustHaveQuests.Location = new System.Drawing.Point(146, 49);
-            this.cbMustHaveQuests.Name = "cbMustHaveQuests";
-            this.cbMustHaveQuests.Size = new System.Drawing.Size(15, 14);
-            this.cbMustHaveQuests.TabIndex = 45;
-            this.cbMustHaveQuests.UseVisualStyleBackColor = true;
+            this.picturePVP.BackColor = System.Drawing.Color.Transparent;
+            this.picturePVP.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.picturePVP.Location = new System.Drawing.Point(654, 10);
+            this.picturePVP.Name = "picturePVP";
+            this.picturePVP.Size = new System.Drawing.Size(10, 10);
+            this.picturePVP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picturePVP.TabIndex = 63;
+            this.picturePVP.TabStop = false;
+            this.picturePVP.Visible = false;
             // 
-            // label17
+            // label18
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 49);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 13);
-            this.label17.TabIndex = 43;
-            this.label17.Text = "Наличие квестов;";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 18);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(68, 13);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Рейтинг:  от";
             // 
-            // tMustHaveQuests
+            // cbPVPRank1
             // 
-            this.tMustHaveQuests.Location = new System.Drawing.Point(167, 46);
-            this.tMustHaveQuests.Name = "tMustHaveQuests";
-            this.tMustHaveQuests.Size = new System.Drawing.Size(100, 20);
-            this.tMustHaveQuests.TabIndex = 42;
+            this.cbPVPRank1.FormattingEnabled = true;
+            this.cbPVPRank1.Location = new System.Drawing.Point(77, 15);
+            this.cbPVPRank1.Name = "cbPVPRank1";
+            this.cbPVPRank1.Size = new System.Drawing.Size(121, 21);
+            this.cbPVPRank1.TabIndex = 1;
             // 
-            // tShouldntHaveQuests
+            // label19
             // 
-            this.tShouldntHaveQuests.Location = new System.Drawing.Point(273, 46);
-            this.tShouldntHaveQuests.Name = "tShouldntHaveQuests";
-            this.tShouldntHaveQuests.Size = new System.Drawing.Size(100, 20);
-            this.tShouldntHaveQuests.TabIndex = 44;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(204, 18);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(19, 13);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "до";
+            // 
+            // cbPVPRank2
+            // 
+            this.cbPVPRank2.FormattingEnabled = true;
+            this.cbPVPRank2.Location = new System.Drawing.Point(229, 15);
+            this.cbPVPRank2.Name = "cbPVPRank2";
+            this.cbPVPRank2.Size = new System.Drawing.Size(121, 21);
+            this.cbPVPRank2.TabIndex = 3;
             // 
             // EditDialogForm
             // 
@@ -2602,6 +2684,9 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
+            this.tabPVP.ResumeLayout(false);
+            this.tabPVP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePVP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2829,5 +2914,12 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.MaskedTextBox tMustHaveQuests;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveQuests;
+        private System.Windows.Forms.Button btnTODO;
+        private System.Windows.Forms.PictureBox picturePVP;
+        private System.Windows.Forms.TabPage tabPVP;
+        private System.Windows.Forms.ComboBox cbPVPRank2;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cbPVPRank1;
+        private System.Windows.Forms.Label label18;
     }
 }

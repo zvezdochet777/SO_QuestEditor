@@ -391,8 +391,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAQ
-        FwAAAk1TRnQBSQFMAgEBBAEAAbQBBAG0AQQBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAG
+        FwAAAk1TRnQBSQFMAgEBBAEAAdQBBAHUAQQBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABKAMAAQEBAAEgBgABMv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8AUgABAQMAAQGIAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQc7AAH/
         AwAB/zsAAQEDLwFJAlIBUAGkAmABWgHeAmoBQQH5AmoBQQH5AmABWgHeAlIBUAGkAy8BSQMAAQF0AAM1
@@ -425,7 +425,7 @@
         AwAB/wMAAf8DAAH/JAACUgFQAaQB6gG+AQAB/wHpAboBAAH/AekBugEAAf8B6QG6AQAB/wHpAboBAAH/
         AekBugEAAf8B9AHbAZwB/wH5AeoBzwH/AfkB6gHPAf8B9AHcAaAB/wHpAboBAAH/AekBugEAAf8B6QG6
         AQAB/wHpAboBAAH/AekBugEAAf8B6gG+AQAB/wJSAVABpBAAAwcBCQNUAa4BAAHKAfwB/wEAAZsB7wH/
-        AQABBQHYAf8BXAJkAecDJAE2KAACVAFWAasCAAHYAf8CAAHNAf8CAAHIAf8CAAHDAf8CAAG/Af8CAAG8
+        AQABAQHYAf8BXAJkAecDJAE2KAACVAFWAasCAAHYAf8CAAHNAf8CAAHIAf8CAAHDAf8CAAG/Af8CAAG8
         Af8CAAG5Af8CAAG2Af8CAAGzAf8CAAGvAf8CAAGsAf8CAAGpAf8CAAGmAf8CAAGjAf8CAAGfAf8CAAGc
         Af8CAAGZAf8CAAGyAf8CVAFWAasbAAH/CAADWQHrAwAB/wMQARULAAH/GAACYAFaAd4B7AHAAQAB/wHr
         Ab4BAAH/AesBvgEAAf8B9AHcAZwB/wH0AdwBnAH/AfQB3AGcAf8B+AHnAcQB/wH6Ae0B1gH/AfoB7QHW
@@ -447,50 +447,50 @@
         AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wQAA2AB3gHxAcoBAAH/AfEByQEAAf8B8QHJAQAB/wH4
         AeUBrwH/AfgB5QGwAf8B+AHlAbAB/wH7AfEB2QH/AfwB9wHsAf8B/AH3AewB/wH7AfEB2gH/AfgB5QGw
         Af8B+AHlAbAB/wH4AeUBsAH/AfEByQEAAf8B8QHJAQAB/wHxAcoBAAH/A2AB3iQAAy8BSQFdAl8B8wEA
-        Ab4B+QH/AQABoQHuAf8BAAEDAc4B/wFVAlYBtAMKAQ0UAANfAeABiwGSAewB/wIAAeYB/wIAAeIB/wGo
-        Aa0B7gH/AbQBuAHvAf8BrgGzAe0B/wGfAaQB6AH/AZcBnQHlAf8BlgGcAeQB/wGWAZwB4gH/AZUBmwHh
-        Af8BlQGaAd8B/wGUAZoB3gH/AZQBmQHdAf8BAAGAAdIB/wIAAakB/wIAAaYB/wIAAa0B/wNfAeAbAAH/
-        CAADMgFRAwAB/wM0AVUEAANZAckDAAH+GAADUgGkAfQBzwEAAf8B8wHMAQAB/wHzAcwBAAH/AfMBzAEA
-        Af8B8wHMAQAB/wHzAcwBAAH/AfkB6gHAAf8B/QH5AfMB/wH9AfkB8wH/AfkB6wHDAf8B8wHMAQAB/wHz
-        AcwBAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/AfQBzwEAAf8DUgGkKAADJAE1A2IB6QEAAcUB+wH/
-        AQABqwHyAf8BAAGDAdQB/wFcAl4BzgMUARsQAAJUAVYBqwGZAZ8B6gH/AYQBjAHrAf8BAAGBAecB/wIA
-        AeMB/wIAAd8B/wIAAdoB/wIAAdQB/wIAAckB/wIAAcMB/wIAAb8B/wIAAbwB/wIAAbkB/wIAAbYB/wIA
-        AbMB/wIAAa8B/wIAAawB/wIAAakB/wIAAbwB/wJUAVYBqyMAAQEDAAH/AwAB/wMAAf8DAwEEBwABARgA
-        Ay8BSQH2AdIBAAH/AfUB0AEAAf8B9QHPAQAB/wH1Ac8BAAH/AfUBzwEAAf8B9QHPAQAB/wH6Ae0BxgH/
-        Af4B/AH5Af8B/gH8AfkB/wH7Ae4BygH/AfUBzwEAAf8B9QHPAQAB/wH1Ac8BAAH/AfUBzwEAAf8B9QHQ
-        AQAB/wH2AdQBAAH/Ay8BSSwAAxoBJANfAdsBAAHKAfwB/wEAAbMB9QH/AQABiwHaAf8BWAJfAeMDIwEz
-        DAADNwFaAQABBQHYAf8BlwGdAe8B/wGLAZIB7AH/AQUBhwHoAf8BAAECAeQB/wIAAeAB/wIAAdsB/wIA
-        AdYB/wIAAc0B/wIAAcMB/wIAAb8B/wIAAbwB/wIAAbkB/wIAAbYB/wIAAbMB/wIAAa8B/wIAAawB/wIA
-        AcIB/wM3AVojAAH/AwAB/wMAAf8DAAH/AwAB/yMAAQEDWwHIAfcB1QEAAf8B9wHTAQAB/wH3AdMBAAH/
-        AfcB0wEAAf8B9wHTAQAB/wH8Ae8BygL/Af0B/AL/Af0B/AH/AfwB8AHNAf8B9wHTAQAB/wH3AdMBAAH/
-        AfcB0wEAAf8B9wHTAQAB/wH3AdUBAAH/A1sByAMAAQEwAAMQARYDXQHKAQABzgH9Af8BAAG6Ae0B/wGk
-        Aa4BuQH/A1kB9QI1ATYBWAgAAwUBBwJdAWEB4gGuAbMB8gH/AZ0BpAHwAf8BkgGZAe0B/wGGAY0B6QH/
-        AQABggHlAf8CAAHhAf8CAAHdAf8CAAHYAf8CAAHSAf8CAAHJAf8CAAHBAf8CAAG8Af8CAAG5Af8CAAG2
-        Af8CAAGzAf8CAAG8Af8CXQFhAeIDBQEHJAADTgGZAwAB/wNRAaEoAAMdASoDZwHyAfkB1wEAAf8B+QHW
-        AQAB/wH5AdYBAAH/AfkB1gEAAf8B+AHWAQAB/wH4AdYBAAH/AfgB1gEAAf8B+AHWAQAB/wH5AdYBAAH/
-        AfkB1gEAAf8B+QHWAQAB/wH5AdcBAAH/A2cB8gMdASo4AAMJAQwDVgG2AbIBzgHWAf8CAAGzAf8CiwGu
-        Af8CQAGoAf0DQQFyCAADNQFWAgAB0QH/AbIBtwH0Af8BpAGqAfEB/wGYAZ8B7gH/AYwBlAHrAf8BgQGI
-        AecB/wEAAQMB4wH/AgAB3gH/AgAB2gH/AgAB1QH/AgABzwH/AgAByAH/AgABwgH/AgABvAH/AgABugH/
-        AgABxQH/AzUBVigAA04BmQMAAf8DUQGhLAADKwFCA2cB8gH6AdoBAAH/AfoB2QEAAf8B+gHYAQAB/wH6
-        AdgBAAH/AfoB2AEAAf8B+gHYAQAB/wH6AdgBAAH/AfoB2AEAAf8B+gHZAQAB/wH6AdoBAAH/A2cB8gMr
-        AUJAAAMEAQUDVAGsAaMBngHXAf8BAgEBAd0B/wIAAd0B/wIAAd0B/wM9AWgIAAJNAU4BlgGFAYwB2gH/
-        AbgBvQH1Af8BqwGwAfIB/wGfAaUB7wH/AZMBmgHsAf8BhwGOAegB/wEBAYMB5AH/AgAB4AH/AgAB2wH/
-        AgAB1gH/AgAB0QH/AgABzAH/AgAByAH/AgABywH/Ak0BTgGWLAADTgGZAwAB/wNRAaEwAAMdASoDWwHI
-        AfsB3AEEAf8B+wHcAQEB/wH7AdwBAAH/AfsB2wEAAf8B+wHbAQAB/wH7AdwBAAH/AfsB3AEBAf8B+wHc
-        AQUB/wNbAcgDHQEqSAADAgEDA00BkQKZAeoB/wKdAesB/wKcAesB/wNOAZgIAAMCAQMCTQFOAZYCAAHR
-        Af8BvgHCAfQB/wGxAbYB8wH/AaYBqwHwAf8BmgGgAe0B/wGOAZUB6QH/AYIBiQHlAf8BAAEEAeEB/wIA
-        Ad0B/wIAAdgB/wIAAdgB/wIAAckB/wJNAU4BlgMCAQMsAANIAYUDAAH/A04BlzcAAQEDLwFJA1IBowNg
-        Ad4DagH5A2oB+QNgAd4DUgGjAy8BSQMAAQFUAANBAXIDWQH1A2AB1gMYASIQAAM1AVYCXQFhAeIBgQGI
-        AdkB/wGyAbcB7gH/AbQBuQHzAf8BoQGnAe4B/wGVAZwB6wH/AZUBmwHpAf8BjAGSAeMB/wIAAdEB/wJd
-        AWEB4gM1AVY0AANFAX8DAAH/A0UBf0cAAQEDAAEBaAADAgEDHAADBQEHAzYBWQNTAaoDXwHgA00B+gNN
-        AfoDXwHgA1MBqgM2AVkDBQEHZAABQgFNAT4HAAE+AwABKAMAAVADAAEoAwABAQEAAQEFAAHgAQEWAAP/
-        8QAB/wGfA/8B+AEBAf8B+QH/AgAB+AEBA/8B8AEAAf8B+AH/AgAB8AEAAfABAAEPAcABAAE/AfgB/wIA
-        AeABAAFwAQABAwHAAQABPwH4Af8CAAHAAQABOAEAAQEBgAEAAR8B+AHvAgABgAEAARwBDwGHAgABDwHw
-        AX8CAAGAAQABHAEHAf8CAAEPAfAB/wIAAYABAAEeAQMB/wIAAQ8B2AHfAgABgAEAAR8BAQH/AgABDAEN
-        AZ8EAAEPAcAB/wIAAQgBAgUAAQ8B4AE/AgABCAEFAwABgAEAAR8B8AEfAgABDwHYAZ8CAAGAAQABHwH4
-        AQ8CAAEPAfABXwIAAYABAAEfAfwBBwIAAQ8B8AF/AgABgAEAAR8B/gEDAgABDwH4Af8CAAHAAQABPwH/
-        AQEBgAEAAR8B+AH/AgAB4AEAAX8B/wGAAcABAAE/AfgB/wIAAfABAAL/AsABAAE/AfgB/wIAAfgBAQL/
-        AvABAAH/AfgB/wIAAf8BnwL/AfsB+AEBA/8CAAs=
+        Ab4B+QH/AQABoQHuAf8CAAHOAf8BVQJWAbQDCgENFAADXwHgAYsBkgHsAf8CAAHmAf8CAAHiAf8BqAGt
+        Ae4B/wG0AbgB7wH/Aa4BswHtAf8BnwGkAegB/wGXAZ0B5QH/AZYBnAHkAf8BlgGcAeIB/wGVAZsB4QH/
+        AZUBmgHfAf8BlAGaAd4B/wGUAZkB3QH/AQABgAHSAf8CAAGpAf8CAAGmAf8CAAGtAf8DXwHgGwAB/wgA
+        AzIBUQMAAf8DNAFVBAADWQHJAwAB/hgAA1IBpAH0Ac8BAAH/AfMBzAEAAf8B8wHMAQAB/wHzAcwBAAH/
+        AfMBzAEAAf8B8wHMAQAB/wH5AeoBwAH/Af0B+QHzAf8B/QH5AfMB/wH5AesBwwH/AfMBzAEAAf8B8wHM
+        AQAB/wHzAcwBAAH/AfMBzAEAAf8B8wHMAQAB/wH0Ac8BAAH/A1IBpCgAAyQBNQNiAekBAAHFAfsB/wEA
+        AasB8gH/AQABgwHUAf8BXAJeAc4DFAEbEAACVAFWAasBmQGfAeoB/wGEAYwB6wH/AQABgQHnAf8CAAHj
+        Af8CAAHfAf8CAAHaAf8CAAHUAf8CAAHJAf8CAAHDAf8CAAG/Af8CAAG8Af8CAAG5Af8CAAG2Af8CAAGz
+        Af8CAAGvAf8CAAGsAf8CAAGpAf8CAAG8Af8CVAFWAasjAAEBAwAB/wMAAf8DAAH/AwMBBAcAAQEYAAMv
+        AUkB9gHSAQAB/wH1AdABAAH/AfUBzwEAAf8B9QHPAQAB/wH1Ac8BAAH/AfUBzwEAAf8B+gHtAcYB/wH+
+        AfwB+QH/Af4B/AH5Af8B+wHuAcoB/wH1Ac8BAAH/AfUBzwEAAf8B9QHPAQAB/wH1Ac8BAAH/AfUB0AEA
+        Af8B9gHUAQAB/wMvAUksAAMaASQDXwHbAQABygH8Af8BAAGzAfUB/wEAAYsB2gH/AVgCXwHjAyMBMwwA
+        AzcBWgEAAQEB2AH/AZcBnQHvAf8BiwGSAewB/wEBAYcB6AH/AgAB5AH/AgAB4AH/AgAB2wH/AgAB1gH/
+        AgABzQH/AgABwwH/AgABvwH/AgABvAH/AgABuQH/AgABtgH/AgABswH/AgABrwH/AgABrAH/AgABwgH/
+        AzcBWiMAAf8DAAH/AwAB/wMAAf8DAAH/IwABAQNbAcgB9wHVAQAB/wH3AdMBAAH/AfcB0wEAAf8B9wHT
+        AQAB/wH3AdMBAAH/AfwB7wHKAv8B/QH8Av8B/QH8Af8B/AHwAc0B/wH3AdMBAAH/AfcB0wEAAf8B9wHT
+        AQAB/wH3AdMBAAH/AfcB1QEAAf8DWwHIAwABATAAAxABFgNdAcoBAAHOAf0B/wEAAboB7QH/AaQBrgG5
+        Af8DWQH1AjUBNgFYCAADBQEHAl0BYQHiAa4BswHyAf8BnQGkAfAB/wGSAZkB7QH/AYYBjQHpAf8BAAGC
+        AeUB/wIAAeEB/wIAAd0B/wIAAdgB/wIAAdIB/wIAAckB/wIAAcEB/wIAAbwB/wIAAbkB/wIAAbYB/wIA
+        AbMB/wIAAbwB/wJdAWEB4gMFAQckAANOAZkDAAH/A1EBoSgAAx0BKgNnAfIB+QHXAQAB/wH5AdYBAAH/
+        AfkB1gEAAf8B+QHWAQAB/wH4AdYBAAH/AfgB1gEAAf8B+AHWAQAB/wH4AdYBAAH/AfkB1gEAAf8B+QHW
+        AQAB/wH5AdYBAAH/AfkB1wEAAf8DZwHyAx0BKjgAAwkBDANWAbYBsgHOAdYB/wIAAbMB/wKLAa4B/wJA
+        AagB/QNBAXIIAAM1AVYCAAHRAf8BsgG3AfQB/wGkAaoB8QH/AZgBnwHuAf8BjAGUAesB/wGBAYgB5wH/
+        AgAB4wH/AgAB3gH/AgAB2gH/AgAB1QH/AgABzwH/AgAByAH/AgABwgH/AgABvAH/AgABugH/AgABxQH/
+        AzUBVigAA04BmQMAAf8DUQGhLAADKwFCA2cB8gH6AdoBAAH/AfoB2QEAAf8B+gHYAQAB/wH6AdgBAAH/
+        AfoB2AEAAf8B+gHYAQAB/wH6AdgBAAH/AfoB2AEAAf8B+gHZAQAB/wH6AdoBAAH/A2cB8gMrAUJAAAME
+        AQUDVAGsAaMBngHXAf8CAAHdAf8CAAHdAf8CAAHdAf8DPQFoCAACTQFOAZYBhQGMAdoB/wG4Ab0B9QH/
+        AasBsAHyAf8BnwGlAe8B/wGTAZoB7AH/AYcBjgHoAf8BAAGDAeQB/wIAAeAB/wIAAdsB/wIAAdYB/wIA
+        AdEB/wIAAcwB/wIAAcgB/wIAAcsB/wJNAU4BliwAA04BmQMAAf8DUQGhMAADHQEqA1sByAH7AdwBAAH/
+        AfsB3AEAAf8B+wHcAQAB/wH7AdsBAAH/AfsB2wEAAf8B+wHcAQAB/wH7AdwBAAH/AfsB3AEBAf8DWwHI
+        Ax0BKkgAAwIBAwNNAZECmQHqAf8CnQHrAf8CnAHrAf8DTgGYCAADAgEDAk0BTgGWAgAB0QH/Ab4BwgH0
+        Af8BsQG2AfMB/wGmAasB8AH/AZoBoAHtAf8BjgGVAekB/wGCAYkB5QH/AgAB4QH/AgAB3QH/AgAB2AH/
+        AgAB2AH/AgAByQH/Ak0BTgGWAwIBAywAA0gBhQMAAf8DTgGXNwABAQMvAUkDUgGjA2AB3gNqAfkDagH5
+        A2AB3gNSAaMDLwFJAwABAVQAA0EBcgNZAfUDYAHWAxgBIhAAAzUBVgJdAWEB4gGBAYgB2QH/AbIBtwHu
+        Af8BtAG5AfMB/wGhAacB7gH/AZUBnAHrAf8BlQGbAekB/wGMAZIB4wH/AgAB0QH/Al0BYQHiAzUBVjQA
+        A0UBfwMAAf8DRQF/RwABAQMAAQFoAAMCAQMcAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGq
+        AzYBWQMFAQdkAAFCAU0BPgcAAT4DAAEoAwABUAMAASgDAAEBAQABAQUAAeABARYAA//xAAH/AZ8D/wH4
+        AQEB/wH5Af8CAAH4AQED/wHwAQAB/wH4Af8CAAHwAQAB8AEAAQ8BwAEAAT8B+AH/AgAB4AEAAXABAAED
+        AcABAAE/AfgB/wIAAcABAAE4AQABAQGAAQABHwH4Ae8CAAGAAQABHAEPAYcCAAEPAfABfwIAAYABAAEc
+        AQcB/wIAAQ8B8AH/AgABgAEAAR4BAwH/AgABDwHYAd8CAAGAAQABHwEBAf8CAAEMAQ0BnwQAAQ8BwAH/
+        AgABCAECBQABDwHgAT8CAAEIAQUDAAGAAQABHwHwAR8CAAEPAdgBnwIAAYABAAEfAfgBDwIAAQ8B8AFf
+        AgABgAEAAR8B/AEHAgABDwHwAX8CAAGAAQABHwH+AQMCAAEPAfgB/wIAAcABAAE/Af8BAQGAAQABHwH4
+        Af8CAAHgAQABfwH/AYABwAEAAT8B+AH/AgAB8AEAAv8CwAEAAT8B+AH/AgAB+AEBAv8C8AEAAf8B+AH/
+        AgAB/wGfAv8B+wH4AQED/wIACw==
 </value>
   </data>
   <data name="bCenterizeDialogShower.Location" type="System.Drawing.Point, System.Drawing">
@@ -1163,7 +1163,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;NPCBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="labelChosenNPC.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1190,7 +1190,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;labelChosenNPC.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="tabDialogs.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -3472,6 +3472,237 @@
   <data name="&gt;&gt;tabKnowledge.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="btnDelTarget.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnDelTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>249, 190</value>
+  </data>
+  <data name="btnDelTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="btnDelTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnDelTarget.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;btnDelTarget.Name" xml:space="preserve">
+    <value>btnDelTarget</value>
+  </data>
+  <data name="&gt;&gt;btnDelTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDelTarget.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;btnDelTarget.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnAddTarget.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAddTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>249, 161</value>
+  </data>
+  <data name="btnAddTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="btnAddTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnAddTarget.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;btnAddTarget.Name" xml:space="preserve">
+    <value>btnAddTarget</value>
+  </data>
+  <data name="&gt;&gt;btnAddTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAddTarget.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;btnAddTarget.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 145</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Target:</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>QuestType:</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="listBoxTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 161</value>
+  </data>
+  <data name="listBoxTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 342</value>
+  </data>
+  <data name="listBoxTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;listBoxTarget.Name" xml:space="preserve">
+    <value>listBoxTarget</value>
+  </data>
+  <data name="&gt;&gt;listBoxTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listBoxTarget.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;listBoxTarget.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="listBoxQT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 29</value>
+  </data>
+  <data name="listBoxQT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 95</value>
+  </data>
+  <data name="listBoxQT.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;listBoxQT.Name" xml:space="preserve">
+    <value>listBoxQT</value>
+  </data>
+  <data name="&gt;&gt;listBoxQT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listBoxQT.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;listBoxQT.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1168, 509</value>
+  </data>
+  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Quests</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1168, 509</value>
+  </data>
+  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Dialogs</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1176, 535</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>tabAutoGen</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tabAutoGen.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -3526,6 +3757,33 @@
   <data name="&gt;&gt;CentralDock.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btnCheckNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCheckNPC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>695, 3</value>
+  </data>
+  <data name="btnCheckNPC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="btnCheckNPC.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnCheckNPC.Text" xml:space="preserve">
+    <value>Проверить NPC</value>
+  </data>
+  <data name="&gt;&gt;btnCheckNPC.Name" xml:space="preserve">
+    <value>btnCheckNPC</value>
+  </data>
+  <data name="&gt;&gt;btnCheckNPC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCheckNPC.Parent" xml:space="preserve">
+    <value>panelSelectNPC</value>
+  </data>
+  <data name="&gt;&gt;btnCheckNPC.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnFilterNPC.Location" type="System.Drawing.Point, System.Drawing">
     <value>360, -3</value>
   </data>
@@ -3551,7 +3809,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;btnFilterNPC.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnNextNPC.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3578,7 +3836,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;btnNextNPC.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnBackNPC.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3605,7 +3863,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;btnBackNPC.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="bDelNPC.Location" type="System.Drawing.Point, System.Drawing">
     <value>498, 3</value>
@@ -3629,7 +3887,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;bDelNPC.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="bAddNPC.Location" type="System.Drawing.Point, System.Drawing">
     <value>394, 3</value>
@@ -3653,7 +3911,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;bAddNPC.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="FakeNPCBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 4</value>
@@ -3674,7 +3932,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;FakeNPCBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="panelSelectNPC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>

@@ -70,6 +70,7 @@
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -119,6 +120,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddListElementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddListElementForm.Designer.cs">
+      <DependentUpon>AddListElementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CopyDialogsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +155,12 @@
     </Compile>
     <Compile Include="Forms\EditRectangle.Designer.cs">
       <DependentUpon>EditRectangle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InputBox.Designer.cs">
+      <DependentUpon>InputBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LocaleDialogForm.cs">
       <SubType>Form</SubType>
@@ -181,6 +194,9 @@
     <Compile Include="IOClasses\CNpcData.cs" />
     <Compile Include="IOClasses\CRectangles.cs" />
     <Compile Include="IOClasses\TCPListener.cs" />
+    <Compile Include="MainForm_QuestGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ResourceClasses\CBlackBoxConstants.cs" />
     <Compile Include="ResourceClasses\CKnowledgeConstans.cs" />
     <Compile Include="ResourceClasses\CTutorialConstants.cs" />
@@ -288,6 +304,9 @@
       <DependentUpon>RewardQuestsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Forms\AddListElementForm.resx">
+      <DependentUpon>AddListElementForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CopyDialogsForm.resx">
       <DependentUpon>CopyDialogsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,6 +340,9 @@
     <EmbeddedResource Include="Forms\EffectDialog.resx">
       <DependentUpon>EffectDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ItemDialog.resx">
       <DependentUpon>ItemDialog.cs</DependentUpon>

@@ -37,6 +37,9 @@ namespace StalkerOnlineQuesterEditor
         private Dictionary<int, List<string>> dialogErrors = new Dictionary<int, List<string>>();
 
         public List<string> deleted_NPC = new List<string>();
+        Dictionary<int, string> todoTooltips = new Dictionary<int, string>();
+
+
 
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
         public CDialogs(MainForm parent, CManagerNPC managerNPC)
@@ -46,6 +49,7 @@ namespace StalkerOnlineQuesterEditor
             ParseNodeCoordinates("NodeCoordinates/");
 
             ParseDialogsData(parent.settings.GetDialogDataPath(), this.dialogs, true);
+            ParseDialogToolTips();
             ParseDialogsTexts(parent.settings.GetDialogTextPath(parent.settings.ORIGINAL_PATH), this.dialogs);
 
             foreach (var locale in parent.settings.getListLocales())
@@ -201,6 +205,15 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("Precondition").Element("tutorialPhase") != null)
                             Precondition.tutorialPhase = int.Parse(dialog.Element("Precondition").Element("tutorialPhase").Value);
 
+                        if (dialog.Element("Precondition").Element("pvpRank") != null)
+                        {
+                            string[] value = dialog.Element("Precondition").Element("pvpRank").Value.Split('-');
+                            for(int i=0;i<2;i++)
+                            {
+                                Precondition.PVPranks[i] = Convert.ToInt16(value[i]);
+                            }
+                        }
+
                         if (dialog.Element("Precondition").Element("Transport") != null)
                         {
                             if (dialog.Element("Precondition").Element("Transport").Element("inTransportList") != null)
@@ -351,6 +364,22 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        private void ParseDialogToolTips()
+        {
+            string todoFilePath = "ToDoToolTips.xml";
+            if (!File.Exists(todoFilePath))
+                return;
+
+            doc = XDocument.Load(todoFilePath);
+
+            foreach (XElement dialog in doc.Root.Elements("Dialog"))
+            {
+                int DialogID = int.Parse(dialog.Element("ID").Value);
+                todoTooltips.Add(DialogID, dialog.Element("Text").Value);
+            }
+        }
+
+
         public static void AddPreconditionQuests(XElement Element, String Name1, String Name2, List<int> list, ref char condition)
         {
             if (Element.Element("Precondition").Element(Name1).Element(Name2) == null)
@@ -477,6 +506,7 @@ namespace StalkerOnlineQuesterEditor
             SaveNodeCoordinates("NodeCoordinates/", this.dialogs);
             SaveDialogsTexts(parent.settings.GetDialogTextPath(parent.settings.ORIGINAL_PATH), this.dialogs);
             SaveDialogsData(parent.settings.GetDialogDataPath(), this.dialogs);
+            SaveToDoTooltips();
         }
 
         //! Сохраняет текущую локализацию диалогов в файл
@@ -521,6 +551,23 @@ namespace StalkerOnlineQuesterEditor
                 if (File.Exists(path)) File.Delete(path);
             }
 
+        }
+
+        private void SaveToDoTooltips()
+        {
+            XDocument resultDoc = new XDocument(new XElement("root"));
+            XElement element;
+            foreach (KeyValuePair<int, string> i in todoTooltips)
+            {
+                element = new XElement("Dialog",
+                         new XElement("ID", i.Key.ToString()),
+                         new XElement("Text", i.Value));
+                resultDoc.Root.Add(element);
+            }
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create("ToDoToolTips.xml"))
+            {
+                resultDoc.Save(w);
+            }
         }
 
         private void SaveDialogsData(string data_path, NPCDicts target)
@@ -663,6 +710,11 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Precondition.tutorialPhase != -1)
                     {
                         element.Element("Precondition").Add(new XElement("tutorialPhase", dialog.Precondition.tutorialPhase.ToString()));
+                    }
+
+                    if (dialog.Precondition.PVPranks.Sum() > 0)
+                    {
+                        element.Element("Precondition").Add(new XElement("pvpRank", dialog.Precondition.PVPranks[0].ToString() + "-" + dialog.Precondition.PVPranks[1].ToString()));
                     }
 
                     if (dialog.Precondition.items.itemCategory != -1)
@@ -929,6 +981,21 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
             return ret;
+        }
+
+        public string getDialogToDoToolTip(int dialogID)
+        {
+            if (todoTooltips.ContainsKey(dialogID))
+                return todoTooltips[dialogID];
+            return "";
+        }
+
+        public void setDialogToDoToolTip(int dialogID, string text)
+        {
+            if (todoTooltips.ContainsKey(dialogID))
+                todoTooltips[dialogID] = text;
+            else
+                todoTooltips.Add(dialogID, text);
         }
 
         public static List<int> getDialogNewIDs(int count)

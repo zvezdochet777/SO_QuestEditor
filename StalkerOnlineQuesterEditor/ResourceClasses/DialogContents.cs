@@ -156,6 +156,7 @@ namespace StalkerOnlineQuesterEditor
         public bool hidden;
         public RadioAvalible radioAvailable = RadioAvalible.None;
         public int tutorialPhase = -1;
+        public int[] PVPranks = new int[2];
         public DialogPreconditionItems items = new DialogPreconditionItems();
         public DialogPreconditionItems itemsNone = new DialogPreconditionItems();
 
@@ -181,6 +182,7 @@ namespace StalkerOnlineQuesterEditor
             copy.transport = this.transport.Clone();
             copy.tutorialPhase = tutorialPhase;
             copy.radioAvailable = radioAvailable;
+            copy.PVPranks = this.PVPranks.ToArray();
             return copy;
         }
 
@@ -209,14 +211,16 @@ namespace StalkerOnlineQuesterEditor
         public bool Exists()
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
-                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || forDev || hidden || tutorialPhase >= 0;
+                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || 
+                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 && PVPranks[1] > 0);
         }
 
         public bool Any()
         {
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() ||
-                itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || RadioAvalible.None != radioAvailable;
+                itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || RadioAvalible.None != radioAvailable ||
+                (PVPranks[0] > 0 && PVPranks[1] > 0);
         }
 
         public string GetAsString()
@@ -467,6 +471,7 @@ namespace StalkerOnlineQuesterEditor
         public string DebugData; //Для теста, пока фича не реализована в эдиторе, пользуются этой нодой
         public bool isAutoNode; //Диалог автоматически перебрасывает на рандомную ноду
         public string defaultNode; //Диалог по-умолчанию, если другие не подходят по условиям(для автопереходилки)
+        public string ToDoTooltip; //
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
                     Actions Actions, List<int> Nodes, List<int> CheckNodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false, string defaultNode = "")
@@ -500,6 +505,7 @@ namespace StalkerOnlineQuesterEditor
             this.isAutoNode = false;
             this.DebugData = "";
             this.defaultNode = "";
+            this.ToDoTooltip = "";
         }
         public object Clone()
         {

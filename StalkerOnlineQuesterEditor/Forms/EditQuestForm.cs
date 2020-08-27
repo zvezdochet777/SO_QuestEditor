@@ -370,7 +370,7 @@ namespace StalkerOnlineQuesterEditor
                 else if ((QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (QuestType == CQuestConstants.TYPE_KILLMOBS))
                 {
                     lNameObject.Text = "Тип моба:";
-                    ltargetResult.Text = "Уровень моба";
+                    ltargetResult.Text = "Подтип моба";
                     ltargetResult.Enabled = true;
                     lTargetAttr1.Enabled = true;
 
@@ -611,7 +611,14 @@ namespace StalkerOnlineQuesterEditor
                 //    targetAttributeComboBox2.SelectedIndex = 0;
                 //else
                 //    targetAttributeComboBox2.SelectedIndex = parent.mobConst.getDescriptionOnType(quest.Target.ObjectType).getIndexOnLevel(quest.Target.ObjectAttr);
-                resultComboBox.Text = quest.Target.ObjectAttr.ToString();
+                if (quest.Target.ObjectAttr != 0)
+                    quest.Target.str_param = quest.Target.ObjectAttr.ToString();
+                if (quest.Target.str_param.Any())
+                    resultComboBox.SelectedItem = quest.Target.str_param.ToString();
+                else
+                {
+                    resultComboBox.SelectedItem = quest.Target.ObjectName;
+                }
                 if (quest.Target.usePercent)
                 {
                     cbState.Checked = true;
@@ -1034,10 +1041,12 @@ namespace StalkerOnlineQuesterEditor
                     target.ObjectName = resultComboBox.Text;
                 else
                 {
-                    int mob_level = ParseIntIfNotEmpty(resultComboBox.Text);
-                    //TODO Wolfgar
-                    //parent.mobConst.ge
-                    target.ObjectAttr = mob_level;
+                    if (resultComboBox.SelectedItem == null)
+                    {
+                        MessageBox.Show("Не выбран подтип моба", "Ошибка");
+                        return null;
+                    }
+                    target.str_param = resultComboBox.SelectedItem.ToString();
 
                     target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
                     if ((target.NumOfObjects > 32000) || (target.NumOfObjects < 1))
@@ -1412,7 +1421,8 @@ namespace StalkerOnlineQuesterEditor
             if (this.QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST || this.QuestType == CQuestConstants.TYPE_KILLMOBS)
             {
                 resultComboBox.Items.Clear();
-                foreach (string level in parent.mobConst.getLevelsOnDescription(targetComboBox.SelectedItem.ToString()))
+                List<string> mob_subtypes = parent.mobConst.getLevelsOnDescription(targetComboBox.SelectedItem.ToString());
+                foreach (string level in mob_subtypes)
                     resultComboBox.Items.Add(level);
             }
         }
