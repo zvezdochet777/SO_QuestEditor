@@ -2563,6 +2563,8 @@
             this.tabPVP.TabIndex = 11;
             this.tabPVP.Text = "PVP";
             this.tabPVP.UseVisualStyleBackColor = true;
+            //
+            // tabPVP
             // 
             // picturePVP
             // 

@@ -204,6 +204,14 @@ namespace StalkerOnlineQuesterEditor
                             Precondition.hidden = true;
                         if (dialog.Element("Precondition").Element("tutorialPhase") != null)
                             Precondition.tutorialPhase = int.Parse(dialog.Element("Precondition").Element("tutorialPhase").Value);
+                        if (dialog.Element("Precondition").Element("pvpRank") != null)
+                        {
+                            string[] value = dialog.Element("Precondition").Element("pvpRank").Value.Split('-');
+                            for (int i = 0; i < 2; i++)
+                            {
+                                Precondition.PVPranks[i] = Convert.ToInt16(value[i]);
+                            }
+                        }
 
                         if (dialog.Element("Precondition").Element("pvpRank") != null)
                         {
@@ -585,13 +593,15 @@ namespace StalkerOnlineQuesterEditor
                        new XElement("ID", dialog.DialogID.ToString()));
                     if (dialog.Precondition.Exists())
                     {
-                        element.Add(new XElement("Precondition"));
+
+                        XElement prec = new XElement("Precondition");
+                        element.Add(prec);
 
                         if (dialog.Precondition.ListOfNecessaryQuests.Any())
                         {
-                            element.Element("Precondition").Add(new XElement("ListOfNecessaryQuests"));
+                            prec.Add(new XElement("ListOfNecessaryQuests"));
                             if (dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests.Any())
-                                element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfCompletedQuests",
+                                prec.Element("ListOfNecessaryQuests").Add(new XElement("listOfCompletedQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests,
                                                                     dialog.Precondition.ListOfNecessaryQuests.conditionOfCompletedQuests)));
                             if (dialog.Precondition.ListOfNecessaryQuests.ListOfHaveQuests.Any())
@@ -599,34 +609,34 @@ namespace StalkerOnlineQuesterEditor
                                               Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfHaveQuests,
                                                                     dialog.Precondition.ListOfNecessaryQuests.conditionOfQuests)));
                             if (dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests.Any())
-                                element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOpenedQuests",
+                                prec.Element("ListOfNecessaryQuests").Add(new XElement("listOfOpenedQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests,
                                                                     dialog.Precondition.ListOfNecessaryQuests.conditionOfOpenedQuests)));
                             if (dialog.Precondition.ListOfNecessaryQuests.ListOfFailQuests.Any())
-                                element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfFailQuests",
+                                prec.Element("ListOfNecessaryQuests").Add(new XElement("listOfFailQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfFailQuests,
                                                                     dialog.Precondition.ListOfNecessaryQuests.conditionOfFailQuests)));
                             if (dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests.Any())
-                                element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOnTestQuests",
+                                prec.Element("ListOfNecessaryQuests").Add(new XElement("listOfOnTestQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests,
                                                                     dialog.Precondition.ListOfNecessaryQuests.conditionOfOnTestQuest)));
                             if (dialog.Precondition.ListOfNecessaryQuests.ListOfCounters.Any())
-                                element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfOmniCounters",
+                                prec.Element("ListOfNecessaryQuests").Add(new XElement("listOfOmniCounters",
                                               Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfCounters,
                                                                     dialog.Precondition.ListOfNecessaryQuests.conditionOfCounterss)));
                             if (dialog.Precondition.ListOfNecessaryQuests.ListOfRepeat.Any())
-                                element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfRepeat",
+                                prec.Element("ListOfNecessaryQuests").Add(new XElement("listOfRepeat",
                                               Global.GetListAsString(dialog.Precondition.ListOfNecessaryQuests.ListOfRepeat,
                                                                     dialog.Precondition.ListOfNecessaryQuests.conditionOfRepeat)));
                             if (dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests != "")
-                                element.Element("Precondition").Element("ListOfNecessaryQuests").Add(new XElement("listOfMassQuests",
+                                prec.Element("ListOfNecessaryQuests").Add(new XElement("listOfMassQuests",
                                                                          dialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests.Replace(',', dialog.Precondition.ListOfNecessaryQuests.conditionOfMassQuests)));
                         }
                         if (dialog.Precondition.ListOfMustNoQuests.Any())
                         {
-                            element.Element("Precondition").Add(new XElement("ListOfMustNoQuests"));
+                            prec.Add(new XElement("ListOfMustNoQuests"));
                             if (dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests.Any())
-                                element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfCompletedQuests",
+                                prec.Element("ListOfMustNoQuests").Add(new XElement("listOfCompletedQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests,
                                                                     dialog.Precondition.ListOfMustNoQuests.conditionOfCompletedQuests)));
                             if (dialog.Precondition.ListOfMustNoQuests.ListOfHaveQuests.Any())
@@ -634,112 +644,112 @@ namespace StalkerOnlineQuesterEditor
                                               Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfHaveQuests,
                                                                     dialog.Precondition.ListOfMustNoQuests.conditionOfQuests)));
                             if (dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests.Any())
-                                element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOpenedQuests",
+                                prec.Element("ListOfMustNoQuests").Add(new XElement("listOfOpenedQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests,
                                                                     dialog.Precondition.ListOfMustNoQuests.conditionOfOpenedQuests)));
                             if (dialog.Precondition.ListOfMustNoQuests.ListOfFailQuests.Any())
-                                element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfFailQuests",
+                                prec.Element("ListOfMustNoQuests").Add(new XElement("listOfFailQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfFailQuests,
                                                                     dialog.Precondition.ListOfMustNoQuests.conditionOfFailQuests)));
                             if (dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests.Any())
-                                element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOnTestQuests",
+                                prec.Element("ListOfMustNoQuests").Add(new XElement("listOfOnTestQuests",
                                               Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests,
                                                                     dialog.Precondition.ListOfMustNoQuests.conditionOfOnTestQuest)));
                             if (dialog.Precondition.ListOfMustNoQuests.ListOfCounters.Any())
-                                element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfOmniCounters",
+                                prec.Element("ListOfMustNoQuests").Add(new XElement("listOfOmniCounters",
                                               Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfCounters,
                                                                     dialog.Precondition.ListOfMustNoQuests.conditionOfCounterss)));
                             if (dialog.Precondition.ListOfMustNoQuests.ListOfRepeat.Any())
-                                element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfRepeat",
+                                prec.Element("ListOfMustNoQuests").Add(new XElement("listOfRepeat",
                                               Global.GetListAsString(dialog.Precondition.ListOfMustNoQuests.ListOfRepeat,
                                                                     dialog.Precondition.ListOfMustNoQuests.conditionOfRepeat)));
                             if (dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests != "")
-                                element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
+                                prec.Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
                                                                          dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests.Replace(',', dialog.Precondition.ListOfMustNoQuests.conditionOfMassQuests)));
                         }
                         if (dialog.Precondition.clanOptions != "")
-                            element.Element("Precondition").Add(new XElement("clanOptions", dialog.Precondition.clanOptions));
+                            prec.Add(new XElement("clanOptions", dialog.Precondition.clanOptions));
                         if (dialog.Precondition.radioAvailable != RadioAvalible.None)
-                            element.Element("Precondition").Add(new XElement("radioAvailable", Convert.ToInt32(dialog.Precondition.radioAvailable).ToString()));
+                            prec.Add(new XElement("radioAvailable", Convert.ToInt32(dialog.Precondition.radioAvailable).ToString()));
 
                         if (dialog.Precondition.MustNoEffects.Any())
-                            element.Element("Precondition").Add(dialog.Precondition.getMustNoEffects());
+                            prec.Add(dialog.Precondition.getMustNoEffects());
                         if (dialog.Precondition.NecessaryEffects.Any())
-                            element.Element("Precondition").Add(dialog.Precondition.getNecessaryEffects());
+                            prec.Add(dialog.Precondition.getNecessaryEffects());
                         if (dialog.Precondition.Skills.Any())
-                            element.Element("Precondition").Add(dialog.Precondition.Skills.getSkills());
+                            prec.Add(dialog.Precondition.Skills.getSkills());
                         if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
-                            element.Element("Precondition").Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
+                            prec.Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
                         if (dialog.Precondition.playerCombatLvl != "" && dialog.Precondition.playerCombatLvl != ":")
-                            element.Element("Precondition").Add(new XElement("playerCombatLvl", dialog.Precondition.playerCombatLvl));
+                            prec.Add(new XElement("playerCombatLvl", dialog.Precondition.playerCombatLvl));
                         if (dialog.Precondition.playerSurvLvl != "" && dialog.Precondition.playerSurvLvl != ":")
-                            element.Element("Precondition").Add(new XElement("playerSurvLvl", dialog.Precondition.playerSurvLvl));
+                            prec.Add(new XElement("playerSurvLvl", dialog.Precondition.playerSurvLvl));
                         if (dialog.Precondition.playerOtherLvl != "" && dialog.Precondition.playerOtherLvl != ":")
-                            element.Element("Precondition").Add(new XElement("playerOtherLvl", dialog.Precondition.playerOtherLvl));
+                            prec.Add(new XElement("playerOtherLvl", dialog.Precondition.playerOtherLvl));
                         if (dialog.Precondition.getReputation() != "")
-                            element.Element("Precondition").Add(new XElement("Reputation", dialog.Precondition.getReputation()));
+                            prec.Add(new XElement("Reputation", dialog.Precondition.getReputation()));
                         if (dialog.Precondition.getNPCReputation() != "")
-                            element.Element("Precondition").Add(new XElement("NPCReputation", dialog.Precondition.getNPCReputation()));
+                            prec.Add(new XElement("NPCReputation", dialog.Precondition.getNPCReputation()));
                         if (dialog.Precondition.KarmaPK.Any())
-                            element.Element("Precondition").Add(new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK)));
-                    }
-                    if (dialog.Precondition.forDev)
-                        element.Element("Precondition").Add(new XElement("forDev", Global.GetBoolAsString(dialog.Precondition.forDev)));
-                    if (dialog.Precondition.hidden)
-                        element.Element("Precondition").Add(new XElement("hidden", Global.GetBoolAsString(dialog.Precondition.hidden)));
+                            prec.Add(new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK)));
 
-                    if (dialog.Precondition.transport.Any())
-                    {
-                        element.Element("Precondition").Add(new XElement("Transport"));
-                        if (dialog.Precondition.transport.inTransportList)
-                            element.Element("Precondition").Element("Transport").Add(new XElement("inTransportList", Global.GetBoolAsString(dialog.Precondition.transport.inTransportList)));
-                        if (dialog.Precondition.transport.notInTransportList)
-                            element.Element("Precondition").Element("Transport").Add(new XElement("notInTransportList", Global.GetBoolAsString(dialog.Precondition.transport.notInTransportList)));
-                        if (dialog.Precondition.transport.inBoatList)
-                            element.Element("Precondition").Element("Transport").Add(new XElement("inBoatList", Global.GetBoolAsString(dialog.Precondition.transport.inBoatList)));
-                        if (dialog.Precondition.transport.notInBoatList)
-                            element.Element("Precondition").Element("Transport").Add(new XElement("notInBoatList", Global.GetBoolAsString(dialog.Precondition.transport.notInBoatList)));
-                        if (dialog.Precondition.transport.boatInTransit)
-                            element.Element("Precondition").Element("Transport").Add(new XElement("boatInTransit", Global.GetBoolAsString(dialog.Precondition.transport.boatInTransit)));
-                        if (dialog.Precondition.transport.boatStopped)
-                            element.Element("Precondition").Element("Transport").Add(new XElement("boatStopped", Global.GetBoolAsString(dialog.Precondition.transport.boatStopped)));
-                        if (dialog.Precondition.transport.boatName.Any())
-                            element.Element("Precondition").Element("Transport").Add(new XElement("boatName", dialog.Precondition.transport.boatName));
-                    }
+                        if (dialog.Precondition.forDev)
+                            prec.Add(new XElement("forDev", Global.GetBoolAsString(dialog.Precondition.forDev)));
+                        if (dialog.Precondition.hidden)
+                            prec.Add(new XElement("hidden", Global.GetBoolAsString(dialog.Precondition.hidden)));
 
-                    if (dialog.Precondition.tutorialPhase != -1)
-                    {
-                        element.Element("Precondition").Add(new XElement("tutorialPhase", dialog.Precondition.tutorialPhase.ToString()));
-                    }
+                        if (dialog.Precondition.transport.Any())
+                        {
+                            prec.Add(new XElement("Transport"));
+                            if (dialog.Precondition.transport.inTransportList)
+                                prec.Element("Transport").Add(new XElement("inTransportList", Global.GetBoolAsString(dialog.Precondition.transport.inTransportList)));
+                            if (dialog.Precondition.transport.notInTransportList)
+                                prec.Element("Transport").Add(new XElement("notInTransportList", Global.GetBoolAsString(dialog.Precondition.transport.notInTransportList)));
+                            if (dialog.Precondition.transport.inBoatList)
+                                prec.Element("Transport").Add(new XElement("inBoatList", Global.GetBoolAsString(dialog.Precondition.transport.inBoatList)));
+                            if (dialog.Precondition.transport.notInBoatList)
+                                prec.Element("Transport").Add(new XElement("notInBoatList", Global.GetBoolAsString(dialog.Precondition.transport.notInBoatList)));
+                            if (dialog.Precondition.transport.boatInTransit)
+                                prec.Element("Transport").Add(new XElement("boatInTransit", Global.GetBoolAsString(dialog.Precondition.transport.boatInTransit)));
+                            if (dialog.Precondition.transport.boatStopped)
+                                prec.Element("Transport").Add(new XElement("boatStopped", Global.GetBoolAsString(dialog.Precondition.transport.boatStopped)));
+                            if (dialog.Precondition.transport.boatName.Any())
+                                prec.Element("Transport").Add(new XElement("boatName", dialog.Precondition.transport.boatName));
+                        }
 
-                    if (dialog.Precondition.PVPranks.Sum() > 0)
-                    {
-                        element.Element("Precondition").Add(new XElement("pvpRank", dialog.Precondition.PVPranks[0].ToString() + "-" + dialog.Precondition.PVPranks[1].ToString()));
-                    }
+                        if (dialog.Precondition.tutorialPhase != -1)
+                        {
+                            prec.Add(new XElement("tutorialPhase", dialog.Precondition.tutorialPhase.ToString()));
+                        }
 
-                    if (dialog.Precondition.items.itemCategory != -1)
-                    {
-                        element.Element("Precondition").Add(new XElement("items", new XElement("itemCategory", dialog.Precondition.items.itemCategory.ToString())));
-                    }
-                    else if (dialog.Precondition.items.items.Any())
-                    {
-                        element.Element("Precondition").Add(new XElement("items", ""));
-                        if (dialog.Precondition.items.is_or)
-                            element.Element("Precondition").Element("items").Add(new XElement("or", "1"));
-                        element.Element("Precondition").Element("items").Add(CQuests.getItemsNode(dialog.Precondition.items.items));
-                    }
-                    if (dialog.Precondition.itemsNone.itemCategory != -1)
-                    {
-                        element.Element("Precondition").Add(new XElement("noneItems", new XElement("itemCategory", dialog.Precondition.itemsNone.itemCategory.ToString())));
-                    }
-                    else if (dialog.Precondition.itemsNone.items.Any())
-                    {
-                        element.Element("Precondition").Add(new XElement("noneItems", ""));
-                        if (dialog.Precondition.itemsNone.is_or)
-                            element.Element("Precondition").Element("noneItems").Add(new XElement("or", "1"));
-                        element.Element("Precondition").Element("noneItems").Add(CQuests.getItemsNode(dialog.Precondition.itemsNone.items));
-                    }
+                        if (dialog.Precondition.PVPranks.Sum() > 0)
+                        {
+                            prec.Add(new XElement("pvpRank", dialog.Precondition.PVPranks[0].ToString() + "-" + dialog.Precondition.PVPranks[1].ToString()));
+                        }
 
+                        if (dialog.Precondition.items.itemCategory != -1)
+                        {
+                            prec.Add(new XElement("items", new XElement("itemCategory", dialog.Precondition.items.itemCategory.ToString())));
+                        }
+                        else if (dialog.Precondition.items.items.Any())
+                        {
+                            prec.Add(new XElement("items", ""));
+                            if (dialog.Precondition.items.is_or)
+                                prec.Element("items").Add(new XElement("or", "1"));
+                            prec.Element("items").Add(CQuests.getItemsNode(dialog.Precondition.items.items));
+                        }
+                        if (dialog.Precondition.itemsNone.itemCategory != -1)
+                        {
+                            prec.Add(new XElement("noneItems", new XElement("itemCategory", dialog.Precondition.itemsNone.itemCategory.ToString())));
+                        }
+                        else if (dialog.Precondition.itemsNone.items.Any())
+                        {
+                            prec.Add(new XElement("noneItems", ""));
+                            if (dialog.Precondition.itemsNone.is_or)
+                                prec.Element("noneItems").Add(new XElement("or", "1"));
+                            prec.Element("noneItems").Add(CQuests.getItemsNode(dialog.Precondition.itemsNone.items));
+                        }
+                    }
                     if (dialog.Actions.Any())
                     {
                         element.Add(new XElement("Actions", ""));

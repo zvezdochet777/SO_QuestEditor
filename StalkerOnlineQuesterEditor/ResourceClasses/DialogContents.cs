@@ -211,8 +211,8 @@ namespace StalkerOnlineQuesterEditor
         public bool Exists()
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
-                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || 
-                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 && PVPranks[1] > 0);
+                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() ||
+                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0);
         }
 
         public bool Any()
@@ -220,7 +220,7 @@ namespace StalkerOnlineQuesterEditor
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() ||
                 itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || RadioAvalible.None != radioAvailable ||
-                (PVPranks[0] > 0 && PVPranks[1] > 0);
+                (PVPranks[0] > 0 || PVPranks[1] > 0);
         }
 
         public string GetAsString()
