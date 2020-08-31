@@ -53,6 +53,7 @@ namespace StalkerOnlineQuesterEditor
 
             FillActionsComboBox();
             FillTutorialComboBox();
+            FillPVPComboBox();
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
             cbRadioNode.SelectedIndex = 0;
@@ -344,6 +345,7 @@ namespace StalkerOnlineQuesterEditor
             this.initItemsTab();
             this.initTransportTab();
             this.initTutorialTab();
+            this.initPVPTab();
             checkClanOptionsIndicator();
         }
 
@@ -361,6 +363,16 @@ namespace StalkerOnlineQuesterEditor
             cbTutorialPhase.Items.Clear();
             cbTutorialPhase.DataSource = parent.tutorialPhases.getAllNames();
             cbTutorialPhase.SelectedItem = null;
+        }
+
+        private void FillPVPComboBox()
+        {
+            cbPVPRank1.Items.Clear();
+            cbPVPRank2.Items.Clear();
+            cbPVPRank1.DataSource = parent.pvPRanks.getKeys();
+            cbPVPRank2.DataSource = parent.pvPRanks.getKeys();
+            cbPVPRank1.SelectedItem = null;
+            cbPVPRank2.SelectedItem = null;
         }
 
         private void FillActionsComboBox()
@@ -800,6 +812,11 @@ namespace StalkerOnlineQuesterEditor
                 if (cbTutorialPhase.SelectedItem != null)
                 precondition.tutorialPhase = this.parent.tutorialPhases.getIDByName(cbTutorialPhase.SelectedItem.ToString());
 
+            if (cbPVPRank1.SelectedIndex != -1)
+                precondition.PVPranks[0] = cbPVPRank1.SelectedIndex;
+            if (cbPVPRank2.SelectedIndex != -1)
+                precondition.PVPranks[1] = cbPVPRank2.SelectedIndex;
+
             if (checkClanOptions())
             {
                 if (radioButtonAND.Checked)
@@ -1194,6 +1211,13 @@ namespace StalkerOnlineQuesterEditor
             this.checkTutorialIndicates();
         }
 
+        private void initPVPTab()
+        {
+            this.cbPVPRank1.SelectedIndex = curDialog.Precondition.PVPranks[0];
+            this.cbPVPRank2.SelectedIndex = curDialog.Precondition.PVPranks[1];
+            this.checkPVPIndicates();
+        }
+
         private void initItemsTab()
         {
 
@@ -1447,6 +1471,11 @@ namespace StalkerOnlineQuesterEditor
         private void checkTutorialIndicates()
         {
             pictureTutorial.Visible = (cbTutorialPhase.SelectedItem != null);
+        }
+
+        private void checkPVPIndicates()
+        {
+            picturePVP.Visible = (cbPVPRank1.SelectedIndex > 0 || cbPVPRank2.SelectedIndex > 0);
         }
 
         private void tabQuestsCircs_SelectedIndexChanged(object sender, EventArgs e)
