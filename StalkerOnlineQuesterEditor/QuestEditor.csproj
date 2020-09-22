@@ -193,8 +193,9 @@
     <Compile Include="IOClasses\CFractionDialogs.cs" />
     <Compile Include="IOClasses\CNpcData.cs" />
     <Compile Include="IOClasses\CRectangles.cs" />
+    <Compile Include="IOClasses\QAutogenDatacs.cs" />
     <Compile Include="IOClasses\TCPListener.cs" />
-    <Compile Include="MainForm_QuestGenerator.cs">
+    <Compile Include="MainForm.QuestGenerator.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ResourceClasses\CBlackBoxConstants.cs" />

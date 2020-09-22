@@ -96,6 +96,7 @@ namespace StalkerOnlineQuesterEditor
         public CTutorialConstants tutorialPhases;
         public int currentQuest;
         public Dictionary<string, bool> npcFilters;
+        public Dictionary<string, Dictionary<string, AutoGenDialog>> autogenDialogs;
 
         public CKnowledgeConstans knowledgeCategory;
         IOClasses.TCPListener tcpListener;
@@ -104,6 +105,7 @@ namespace StalkerOnlineQuesterEditor
         public MainForm(string[] args)
         {
             InitializeComponent();
+            QAutogenDatacs.Load();
             spacesConst = new CSpacesConstants();
             dungeonConst = new CDungeonSpacesConstants();
             RectManager = new RectangleManager();
@@ -145,6 +147,7 @@ namespace StalkerOnlineQuesterEditor
             effects = new CEffectConstants();
 
             knowledgeCategory = new CKnowledgeConstans();
+            
 
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             //fillNPCBox();
@@ -154,6 +157,7 @@ namespace StalkerOnlineQuesterEditor
             fractionBox.SelectedIndex = 0;
 
             fillFractionsInManageTab();
+            fillAutogeneratorTab();
             DialogShower.AddInputEventListener(Listener);
             DialogShower.AddInputEventListener(RectDrawer);
             DialogShower.AddInputEventListener(PanHandler);
@@ -192,6 +196,8 @@ namespace StalkerOnlineQuesterEditor
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(settings.getLanguage());
             ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
             ApplyResourceToControl(resources, this);
+
+            //tmpMethod();
 
         }
         //! Set mode for me, if Command line has /master parameter, TestButton and some labels will be shown
@@ -313,6 +319,7 @@ namespace StalkerOnlineQuesterEditor
             ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
             var text = resources.GetString(String.Format("{0}.Text", tabQuests.Name));
             tabQuests.Text = text + " (" + quests.getCountOfQuests(currentNPC) + ")";
+            fillAutogeneratorTab();
         }
 
 
@@ -543,7 +550,7 @@ namespace StalkerOnlineQuesterEditor
                 case 8:     // Вкладка знания
                     updateKnowledgeTab();
                     break;
-
+                
             }
         }
 
@@ -1369,6 +1376,7 @@ namespace StalkerOnlineQuesterEditor
             CFractionDialogs.SaveLocales();
             quests.SaveLocales();
             RectManager.SaveData();
+            QAutogenDatacs.Save();
             Thread.Sleep(300);
             statusLabel.Text = "Данные успешно сохранены.";
             this.Enabled = true;
@@ -2991,6 +2999,115 @@ namespace StalkerOnlineQuesterEditor
             MessageBox.Show("Количество слов: " + all_words + ". Непереведённых: "+ non_localcount_words + "("+ Convert.ToDouble(non_localcount_words)/all_words*100 + "%)", "Итог");
         }
 
+        private List<int> get_subquests(int quest_id)
+        {
+            List<int> result = new List<int>();
+            List<int> subq = quests.quest[quest_id].Additional.ListOfSubQuest;
+            foreach(int subq_id in subq)
+            {
+                if (!result.Contains(subq_id)) result.Add(subq_id);
+                List<int> subq1 = get_subquests(subq_id);
+                foreach(int i in subq1)
+                {
+                    if (!result.Contains(i)) result.Add(i);
+                }
+            }
+            return result;
+        }
+
+        class table_item
+        {
+            public string questID = "";
+            public string listOfSubquests = "";
+            public string questType = "";
+            public string tupe = "";
+            public string repeat = "";
+            public string questName = "";
+            public string npcName = "";
+            public string spaceName = "";
+        }
+
+
+        /*
+        private void tmpMethod()
+        {
+           
+            List <string> spaces = new List<string>();
+
+            Dictionary<string, List<table_item>> r_quests = new Dictionary<string, List<table_item>>();
+
+            foreach (var quest in quests.quest)
+            {
+                table_item item = new table_item();
+                item.questID = quest.Key.ToString();
+                foreach(var z in get_subquests(quest.Key))
+                {
+                    item.listOfSubquests += z.ToString() + ", ";
+                }
+                item.questType = questConst.getDescription(quest.Value.Target.QuestType);
+                item.repeat = quest.Value.Precondition.Repeat.ToString();
+                item.questName = quest.Value.QuestInformation.Title;
+                item.npcName = quest.Value.Additional.Holder;
+                item.tupe = QuestPriorities.getNameByID(quest.Value.Priority);
+                string space = "no map";
+                foreach (KeyValuePair<string, List<string>> mapData in ManagerNPC.mapToNPCList)
+                {
+                    foreach (string name in mapData.Value)
+                    {
+                        if (name == item.npcName)
+                        {
+                            space = mapData.Key;
+                        }
+                    }
+                }
+                item.spaceName = this.spacesConst.getLocalName(space);
+
+                if (!r_quests.ContainsKey(item.spaceName)) r_quests.Add(item.spaceName, new List<table_item>());
+
+                r_quests[item.spaceName].Add(item);
+            }
+
+
+            Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+            app.Visible = true;
+            app.SheetsInNewWorkbook = r_quests.Count;
+            Microsoft.Office.Interop.Excel.Workbook workBook = app.Workbooks.Add(Type.Missing);
+            app.DisplayAlerts = false;
+            int index = 1;
+
+            List<string> titles = new List<string>() { "id квеста", "id подквестов", "тип квеста","тип", "повтор(повторное взятие/ нет повтора)", "название квеста", "кто выдает квест" };
+
+            foreach(var space in r_quests)
+            {
+                Microsoft.Office.Interop.Excel.Worksheet sheet = (Microsoft.Office.Interop.Excel.Worksheet)app.Worksheets.get_Item(index);
+                sheet.Name = space.Key;
+                for(int k = 1; k < titles.Count; k++)
+                {
+                    sheet.Cells[1, k + 1] = titles[k];
+                }
+
+                int i = 2;
+                foreach(var quest in space.Value)
+                {
+                    sheet.Cells[i, 1] = quest.questID;
+                    sheet.Cells[i, 2] = quest.listOfSubquests;
+                    sheet.Cells[i, 3] = quest.questType;
+                    sheet.Cells[i, 4] = quest.tupe;
+                    sheet.Cells[i, 5] = quest.repeat;
+                    sheet.Cells[i, 6] = quest.questName;
+                    sheet.Cells[i, 7] = quest.npcName;
+                    i++;
+
+                }
+                index++;
+            }
+
+            app.Application.ActiveWorkbook.SaveAs("doc.xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
+                             Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            
+
+        }
+        */
         private void диалоговToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
@@ -3327,8 +3444,6 @@ namespace StalkerOnlineQuesterEditor
                 CDialog child_dialog = this.dialogs.dialogs[source_npc_name][child_id];
                 copy_dialog_tree(source_npc_name, child_dialog, source_dialog_2, ref oldID_to_newID, ref new_ids);
             }
-
-
         }
 
         private void lbWorkSpace_SelectedIndexChanged(object sender, EventArgs e)

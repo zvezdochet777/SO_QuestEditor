@@ -454,6 +454,19 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class AGDialogList
+    {
+        public Dictionary<int, string> Titles = new Dictionary<int, string>();
+        public Dictionary<int, string> Text = new Dictionary<int, string>();
+    }
+
+    public class AutoGenDialog
+    {
+        public AGDialogList opened = new AGDialogList();
+        public AGDialogList ontest = new AGDialogList();
+        public AGDialogList failed = new AGDialogList();
+
+    }
 
     //! Класс диалога (одна ветка в xml файле)
     public class CDialog : ICloneable
@@ -472,6 +485,7 @@ namespace StalkerOnlineQuesterEditor
         public bool isAutoNode; //Диалог автоматически перебрасывает на рандомную ноду
         public string defaultNode; //Диалог по-умолчанию, если другие не подходят по условиям(для автопереходилки)
         public string ToDoTooltip; //
+
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
                     Actions Actions, List<int> Nodes, List<int> CheckNodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false, string defaultNode = "")
