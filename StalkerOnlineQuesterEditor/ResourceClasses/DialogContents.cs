@@ -152,6 +152,7 @@ namespace StalkerOnlineQuesterEditor
         public RadioAvalible radioAvailable = RadioAvalible.None;
         public int tutorialPhase = -1;
         public int[] PVPranks = new int[2];
+        public int PVPMode = -1;
         public DialogPreconditionItems items = new DialogPreconditionItems();
         public DialogPreconditionItems itemsNone = new DialogPreconditionItems();
 
@@ -178,6 +179,7 @@ namespace StalkerOnlineQuesterEditor
             copy.tutorialPhase = tutorialPhase;
             copy.radioAvailable = radioAvailable;
             copy.PVPranks = this.PVPranks.ToArray();
+            copy.PVPMode = this.PVPMode;
             return copy;
         }
 
@@ -207,7 +209,7 @@ namespace StalkerOnlineQuesterEditor
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
                 playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() ||
-                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0);
+                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0;
         }
 
         public bool Any()
@@ -215,7 +217,7 @@ namespace StalkerOnlineQuesterEditor
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() ||
                 itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || RadioAvalible.None != radioAvailable ||
-                (PVPranks[0] > 0 || PVPranks[1] > 0);
+                (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0;
         }
 
         public string GetAsString()

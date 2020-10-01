@@ -111,7 +111,7 @@ namespace StalkerOnlineQuesterEditor
 
         public void Add(int id, string name)
         {
-            if (!_constants.ContainsKey(id)) return;
+            if (_constants.ContainsKey(id)) return;
             _constants.Add(id, name);
         }
 

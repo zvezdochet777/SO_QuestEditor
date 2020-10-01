@@ -204,6 +204,8 @@ namespace StalkerOnlineQuesterEditor
                                 Precondition.PVPranks[i] = Convert.ToInt16(value[i]);
                             }
                         }
+                        if (dialog.Element("Precondition").Element("pvpMode") != null)
+                            Precondition.PVPMode = int.Parse(dialog.Element("Precondition").Element("pvpMode").Value);
 
                         if (dialog.Element("Precondition").Element("Transport") != null)
                         {
@@ -661,6 +663,9 @@ namespace StalkerOnlineQuesterEditor
                         {
                             prec.Add(new XElement("pvpRank", dialog.Precondition.PVPranks[0].ToString() + "-" + dialog.Precondition.PVPranks[1].ToString()));
                         }
+
+                        if (dialog.Precondition.PVPMode >= 0)
+                            prec.Add(new XElement("pvpMode", dialog.Precondition.PVPMode.ToString()));
 
                         if (dialog.Precondition.items.itemCategory != -1)
                         {

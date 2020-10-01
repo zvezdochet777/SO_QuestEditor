@@ -373,6 +373,10 @@ namespace StalkerOnlineQuesterEditor
             cbPVPRank2.DataSource = parent.pvPRanks.getKeys();
             cbPVPRank1.SelectedItem = null;
             cbPVPRank2.SelectedItem = null;
+
+            cbRatingPVPMode.Items.Clear();
+            cbRatingPVPMode.Items.Add("нет");
+            cbRatingPVPMode.Items.AddRange(CPVPConstans.getAllDescriptions().ToArray());
         }
 
         private void FillActionsComboBox()
@@ -816,7 +820,8 @@ namespace StalkerOnlineQuesterEditor
                 precondition.PVPranks[0] = cbPVPRank1.SelectedIndex;
             if (cbPVPRank2.SelectedIndex != -1)
                 precondition.PVPranks[1] = cbPVPRank2.SelectedIndex;
-
+            if (cbRatingPVPMode.SelectedIndex > 0)
+                precondition.PVPMode = CPVPConstans.getPVPModeIDByName(cbRatingPVPMode.SelectedItem.ToString());
             if (checkClanOptions())
             {
                 if (radioButtonAND.Checked)
@@ -1214,7 +1219,8 @@ namespace StalkerOnlineQuesterEditor
         private void initPVPTab()
         {
             this.cbPVPRank1.SelectedIndex = curDialog.Precondition.PVPranks[0];
-            this.cbPVPRank2.SelectedIndex = curDialog.Precondition.PVPranks[1];
+            this.cbPVPRank2.SelectedIndex = Math.Min(curDialog.Precondition.PVPranks[1], parent.pvPRanks.getKeys().Count - 1);
+            this.cbRatingPVPMode.SelectedItem = CPVPConstans.getPVPModeNameByID(curDialog.Precondition.PVPMode);
             this.checkPVPIndicates();
         }
 
@@ -1475,7 +1481,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void checkPVPIndicates()
         {
-            picturePVP.Visible = (cbPVPRank1.SelectedIndex > 0 || cbPVPRank2.SelectedIndex > 0);
+            picturePVP.Visible = (cbPVPRank1.SelectedIndex > 0 || cbPVPRank2.SelectedIndex > 0 || cbRatingPVPMode.SelectedIndex > -1);
         }
 
         private void tabQuestsCircs_SelectedIndexChanged(object sender, EventArgs e)

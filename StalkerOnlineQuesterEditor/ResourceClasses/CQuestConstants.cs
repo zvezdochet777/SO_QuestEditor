@@ -13,6 +13,7 @@ namespace StalkerOnlineQuesterEditor
     {
         List<СQuestType> ierarchyQuestsType = new List<СQuestType>();
         List<СQuestType> simpleQuestsType = new List<СQuestType>();
+        List<СQuestType> pvpQuestsType = new List<СQuestType>();
 
         public static int TYPE_FARM = 0; // собрать предметы
         public static int TYPE_FARM_AUTO = 16; // собранные предметы автоматически исчезают
@@ -40,6 +41,12 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_IN_AREA = 28; // Находиться в зоне
         public static int TYPE_QUEST_COUNTER = 29;
         public static int TYPE_DUNGEON_EVENT = 30;
+
+        //Эти квесты особые, у них есть доп условия
+        public static int TYPE_PVP_MAP_KILL = 40; //Убить во время пвп матча
+        public static int TYPE_PVP_MAP_CAPTURE_FLAG = 41; //Сделать что-то над флагом в пвп карте
+        public static int TYPE_PVP_MAP_SCORE = 42; //Сделать набрать очки в пвп карте
+
 
         public static int TYPE_CREATE_NPC = 51; // создать бегающего НИП
         public static int TYPE_CREATE_MOB = 52; // создать моба
@@ -80,6 +87,11 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC, "53 Убийство NPC."));
             simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC_WITH_ONTEST, "54 Убийство NPC с обязательной сдачей евента."));
 
+
+            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_KILL,         "40 Убить во время пвп матча"));
+            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_CAPTURE_FLAG, "41 Сделать что-то над флагом в пвп карте"));
+            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_SCORE,        "42 Набрать очки в пвп карте"));
+
             ierarchyQuestsType.Add(new СQuestType(10,  "10 Выполнение всех в любом порядке."));
             ierarchyQuestsType.Add(new СQuestType(11,  "11 Выполнение всех по порядку."));
             ierarchyQuestsType.Add(new СQuestType(12,  "12 Выполнение на выбор."));
@@ -93,6 +105,14 @@ namespace StalkerOnlineQuesterEditor
             foreach(СQuestType quest in simpleQuestsType)
                 if (quest.getType().Equals(questType))
                     return true;
+            return isPVPQuest(questType);
+        }
+
+        public bool isPVPQuest(int questType)
+        {
+            foreach (СQuestType quest in pvpQuestsType)
+                if (quest.getType() == questType)
+                    return true;
             return false;
         }
 
@@ -101,6 +121,11 @@ namespace StalkerOnlineQuesterEditor
             foreach (СQuestType quest in simpleQuestsType)
                 if (quest.getType().Equals(questType))
                     return quest.getDescription();
+
+            foreach (СQuestType quest in pvpQuestsType)
+                if (quest.getType().Equals(questType))
+                    return quest.getDescription();
+            
 
             foreach (СQuestType quest in ierarchyQuestsType)
                 if (quest.getType().Equals(questType))
@@ -113,12 +138,17 @@ namespace StalkerOnlineQuesterEditor
             List<СQuestType> ret = new List<СQuestType>();
             ret.AddRange(ierarchyQuestsType);
             ret.AddRange(simpleQuestsType);
+            ret.AddRange(pvpQuestsType);
             return ret;
         }
 
         public int getQuestTypeOnDescription(string description)
         {
             foreach (СQuestType type in simpleQuestsType)
+                if (type.getDescription().Equals(description))
+                    return type.getType();
+         
+            foreach (СQuestType type in pvpQuestsType)
                 if (type.getDescription().Equals(description))
                     return type.getType();
             foreach (СQuestType type in ierarchyQuestsType)
@@ -226,5 +256,71 @@ namespace StalkerOnlineQuesterEditor
         {
             return data().Values.ToArray();
         }
+    }
+
+
+
+    public static class QuestPVPConstance
+    {
+
+        public class Data
+        {
+            Dictionary<int, string> data = new Dictionary<int, string>();
+
+
+            public int getIDByName(string name)
+            {
+                foreach (KeyValuePair<int, string> pair in data)
+                {
+                    if (pair.Value == name) return pair.Key;
+                }
+                return 0;
+            }
+
+            public string getNameByID(int frac_id)
+            {
+                foreach (KeyValuePair<int, string> pair in data)
+                {
+                    if (pair.Key == frac_id) return pair.Value;
+                }
+                return "";
+            }
+
+            public string[] getListNames()
+            {
+                return data.Values.ToArray();
+            }
+
+            public void Add(int id, string name)
+            {
+                data.Add(id, name);
+            }
+        }
+
+        public static Data captureTheFlagTypes = new Data();
+        public static Data bestTypes = new Data();
+        public static Data targetCountTypes = new Data();
+
+        public static void parse()
+        {
+            string path = "source/QuestPVPParam.xml";
+
+            XDocument doc = XDocument.Load(path);
+            foreach (XElement item in doc.Root.Elements())
+            {
+                foreach(XElement item2 in item.Elements())
+                {
+                    int id = int.Parse(item2.Element("id").Value);
+                    string name = item2.Element("name").Value.ToString();
+                    switch (item.Name.ToString())
+                    {
+                        case "captureTheFlag": captureTheFlagTypes.Add(id, name); break;
+                        case "bestWin": bestTypes.Add(id, name); break;
+                        case "targetCount": targetCountTypes.Add(id, name); break;
+                    }
+                }  
+            }
+        }
+        
     }
 }
