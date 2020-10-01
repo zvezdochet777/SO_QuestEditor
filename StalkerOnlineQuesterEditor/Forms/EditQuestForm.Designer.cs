@@ -43,6 +43,15 @@
             this.lbScenType = new System.Windows.Forms.Label();
             this.cbMobType = new System.Windows.Forms.ComboBox();
             this.cbScenaryType = new System.Windows.Forms.ComboBox();
+            this.panelPVPQuests = new System.Windows.Forms.Panel();
+            this.cbPVPMode = new System.Windows.Forms.ComboBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.cbPVPtarget3 = new System.Windows.Forms.ComboBox();
+            this.cbPVPtarget2 = new System.Windows.Forms.ComboBox();
+            this.nupPVPCount = new System.Windows.Forms.NumericUpDown();
+            this.label29 = new System.Windows.Forms.Label();
+            this.lbPVPtarget = new System.Windows.Forms.Label();
+            this.cbPVPtarget = new System.Windows.Forms.ComboBox();
             this.panelCreateNPC = new System.Windows.Forms.Panel();
             this.cbSecondaryWeapon = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -88,7 +97,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.labelGiveQuestsCanceled = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnSpace = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
@@ -182,6 +191,15 @@
             this.lCredits = new System.Windows.Forms.Label();
             this.tExperience = new System.Windows.Forms.TextBox();
             this.lCombatSkills = new System.Windows.Forms.Label();
+            this.tabConditions = new System.Windows.Forms.TabPage();
+            this.nupConditionDead = new System.Windows.Forms.NumericUpDown();
+            this.cbConditionWeapon = new System.Windows.Forms.ComboBox();
+            this.cbConditionPVPTeam = new System.Windows.Forms.ComboBox();
+            this.cbConditionPVPTeamWin = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.titleTextBox = new System.Windows.Forms.MaskedTextBox();
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
@@ -195,11 +213,13 @@
             this.cbRewardTeleport = new System.Windows.Forms.ComboBox();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
+            this.panelPVPQuests.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupPVPCount)).BeginInit();
             this.panelCreateNPC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).BeginInit();
-            this.tabControl2.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tcDescriptions.SuspendLayout();
             this.tabOpen.SuspendLayout();
@@ -213,6 +233,8 @@
             this.tabPage6.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
+            this.tabConditions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCreateMob
@@ -367,6 +389,90 @@
             this.cbScenaryType.Name = "cbScenaryType";
             this.cbScenaryType.Size = new System.Drawing.Size(136, 21);
             this.cbScenaryType.TabIndex = 20;
+            // 
+            // panelPVPQuests
+            // 
+            this.panelPVPQuests.Controls.Add(this.cbPVPMode);
+            this.panelPVPQuests.Controls.Add(this.label33);
+            this.panelPVPQuests.Controls.Add(this.cbPVPtarget3);
+            this.panelPVPQuests.Controls.Add(this.cbPVPtarget2);
+            this.panelPVPQuests.Controls.Add(this.nupPVPCount);
+            this.panelPVPQuests.Controls.Add(this.label29);
+            this.panelPVPQuests.Controls.Add(this.lbPVPtarget);
+            this.panelPVPQuests.Controls.Add(this.cbPVPtarget);
+            this.panelPVPQuests.Location = new System.Drawing.Point(3, 1);
+            this.panelPVPQuests.Name = "panelPVPQuests";
+            this.panelPVPQuests.Size = new System.Drawing.Size(622, 153);
+            this.panelPVPQuests.TabIndex = 37;
+            this.panelPVPQuests.Visible = false;
+            // 
+            // cbPVPMode
+            // 
+            this.cbPVPMode.FormattingEnabled = true;
+            this.cbPVPMode.Location = new System.Drawing.Point(86, 11);
+            this.cbPVPMode.Name = "cbPVPMode";
+            this.cbPVPMode.Size = new System.Drawing.Size(136, 21);
+            this.cbPVPMode.TabIndex = 37;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(11, 15);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(45, 13);
+            this.label33.TabIndex = 36;
+            this.label33.Text = "Режим:";
+            // 
+            // cbPVPtarget3
+            // 
+            this.cbPVPtarget3.FormattingEnabled = true;
+            this.cbPVPtarget3.Location = new System.Drawing.Point(236, 38);
+            this.cbPVPtarget3.Name = "cbPVPtarget3";
+            this.cbPVPtarget3.Size = new System.Drawing.Size(136, 21);
+            this.cbPVPtarget3.TabIndex = 35;
+            this.cbPVPtarget3.SelectedIndexChanged += new System.EventHandler(this.cbPVPtarget3_SelectedIndexChanged);
+            // 
+            // cbPVPtarget2
+            // 
+            this.cbPVPtarget2.FormattingEnabled = true;
+            this.cbPVPtarget2.Location = new System.Drawing.Point(86, 65);
+            this.cbPVPtarget2.Name = "cbPVPtarget2";
+            this.cbPVPtarget2.Size = new System.Drawing.Size(136, 21);
+            this.cbPVPtarget2.TabIndex = 33;
+            // 
+            // nupPVPCount
+            // 
+            this.nupPVPCount.Location = new System.Drawing.Point(86, 66);
+            this.nupPVPCount.Name = "nupPVPCount";
+            this.nupPVPCount.Size = new System.Drawing.Size(136, 20);
+            this.nupPVPCount.TabIndex = 32;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(11, 68);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(69, 13);
+            this.label29.TabIndex = 28;
+            this.label29.Text = "Количество:";
+            // 
+            // lbPVPtarget
+            // 
+            this.lbPVPtarget.AutoSize = true;
+            this.lbPVPtarget.Location = new System.Drawing.Point(10, 38);
+            this.lbPVPtarget.Name = "lbPVPtarget";
+            this.lbPVPtarget.Size = new System.Drawing.Size(36, 13);
+            this.lbPVPtarget.TabIndex = 23;
+            this.lbPVPtarget.Text = "Цель:";
+            // 
+            // cbPVPtarget
+            // 
+            this.cbPVPtarget.FormattingEnabled = true;
+            this.cbPVPtarget.Location = new System.Drawing.Point(86, 38);
+            this.cbPVPtarget.Name = "cbPVPtarget";
+            this.cbPVPtarget.Size = new System.Drawing.Size(136, 21);
+            this.cbPVPtarget.TabIndex = 20;
+            this.cbPVPtarget.SelectedIndexChanged += new System.EventHandler(this.cbPVPtarget_SelectedIndexChanged);
             // 
             // panelCreateNPC
             // 
@@ -831,20 +937,21 @@
             this.label26.TabIndex = 49;
             this.label26.Text = "Квест отменяют квесты:";
             // 
-            // tabControl2
+            // tabControl
             // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl2.Controls.Add(this.tabPage3);
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Controls.Add(this.tabPage6);
-            this.tabControl2.Location = new System.Drawing.Point(0, 78);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(635, 435);
-            this.tabControl2.TabIndex = 51;
+            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Controls.Add(this.tabPage5);
+            this.tabControl.Controls.Add(this.tabPage6);
+            this.tabControl.Controls.Add(this.tabConditions);
+            this.tabControl.Location = new System.Drawing.Point(0, 78);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(635, 435);
+            this.tabControl.TabIndex = 51;
             // 
             // tabPage3
             // 
@@ -1216,6 +1323,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.panelPVPQuests);
             this.tabPage4.Controls.Add(this.panelCreateMob);
             this.tabPage4.Controls.Add(this.panelCreateNPC);
             this.tabPage4.Controls.Add(this.cbReputationLow);
@@ -1882,6 +1990,95 @@
             this.lCombatSkills.TabIndex = 8;
             this.lCombatSkills.Text = "Опыт:";
             // 
+            // tabConditions
+            // 
+            this.tabConditions.Controls.Add(this.nupConditionDead);
+            this.tabConditions.Controls.Add(this.cbConditionWeapon);
+            this.tabConditions.Controls.Add(this.cbConditionPVPTeam);
+            this.tabConditions.Controls.Add(this.cbConditionPVPTeamWin);
+            this.tabConditions.Controls.Add(this.label32);
+            this.tabConditions.Controls.Add(this.label31);
+            this.tabConditions.Controls.Add(this.label30);
+            this.tabConditions.Controls.Add(this.label28);
+            this.tabConditions.Location = new System.Drawing.Point(4, 22);
+            this.tabConditions.Name = "tabConditions";
+            this.tabConditions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabConditions.Size = new System.Drawing.Size(627, 409);
+            this.tabConditions.TabIndex = 4;
+            this.tabConditions.Text = "Дополнительные условия";
+            this.tabConditions.UseVisualStyleBackColor = true;
+            // 
+            // nupConditionDead
+            // 
+            this.nupConditionDead.Location = new System.Drawing.Point(165, 78);
+            this.nupConditionDead.Name = "nupConditionDead";
+            this.nupConditionDead.Size = new System.Drawing.Size(116, 20);
+            this.nupConditionDead.TabIndex = 60;
+            // 
+            // cbConditionWeapon
+            // 
+            this.cbConditionWeapon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbConditionWeapon.Location = new System.Drawing.Point(165, 9);
+            this.cbConditionWeapon.Name = "cbConditionWeapon";
+            this.cbConditionWeapon.Size = new System.Drawing.Size(288, 21);
+            this.cbConditionWeapon.TabIndex = 59;
+            // 
+            // cbConditionPVPTeam
+            // 
+            this.cbConditionPVPTeam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbConditionPVPTeam.Location = new System.Drawing.Point(165, 42);
+            this.cbConditionPVPTeam.Name = "cbConditionPVPTeam";
+            this.cbConditionPVPTeam.Size = new System.Drawing.Size(116, 21);
+            this.cbConditionPVPTeam.TabIndex = 58;
+            // 
+            // cbConditionPVPTeamWin
+            // 
+            this.cbConditionPVPTeamWin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbConditionPVPTeamWin.Location = new System.Drawing.Point(165, 113);
+            this.cbConditionPVPTeamWin.Name = "cbConditionPVPTeamWin";
+            this.cbConditionPVPTeamWin.Size = new System.Drawing.Size(116, 21);
+            this.cbConditionPVPTeamWin.TabIndex = 56;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label32.Location = new System.Drawing.Point(8, 116);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(152, 13);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "Набрать очков больше всех:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label31.Location = new System.Drawing.Point(8, 80);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(103, 13);
+            this.label31.TabIndex = 5;
+            this.label31.Text = "Умереть не более:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label30.Location = new System.Drawing.Point(8, 45);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(130, 13);
+            this.label30.TabIndex = 4;
+            this.label30.Text = "Победа команды в PVP:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label28.Location = new System.Drawing.Point(8, 12);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(49, 13);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "Оружие:";
+            // 
             // titleTextBox
             // 
             this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -2002,7 +2199,7 @@
             this.Controls.Add(this.debuglabel);
             this.Controls.Add(this.cbHidden);
             this.Controls.Add(this.eventComboBox);
-            this.Controls.Add(this.tabControl2);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.eventLabel);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.debugTextBox);
@@ -2019,12 +2216,15 @@
             this.panelCreateMob.ResumeLayout(false);
             this.panelCreateMob.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).EndInit();
+            this.panelPVPQuests.ResumeLayout(false);
+            this.panelPVPQuests.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupPVPCount)).EndInit();
             this.panelCreateNPC.ResumeLayout(false);
             this.panelCreateNPC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRangeOnCreature)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCShootRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNPCSpeed)).EndInit();
-            this.tabControl2.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tcDescriptions.ResumeLayout(false);
@@ -2046,6 +2246,9 @@
             this.rewardGroupBox.ResumeLayout(false);
             this.rewardGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
+            this.tabConditions.ResumeLayout(false);
+            this.tabConditions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2112,7 +2315,7 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label labelGiveQuestsCanceled;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.ComboBox eventComboBox;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
@@ -2217,5 +2420,23 @@
         private System.Windows.Forms.Label labelLevel;
         private System.Windows.Forms.ComboBox cbRewardTeleport;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panelPVPQuests;
+        private System.Windows.Forms.NumericUpDown nupPVPCount;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label lbPVPtarget;
+        private System.Windows.Forms.ComboBox cbPVPtarget;
+        private System.Windows.Forms.ComboBox cbPVPtarget2;
+        private System.Windows.Forms.ComboBox cbPVPtarget3;
+        private System.Windows.Forms.TabPage tabConditions;
+        private System.Windows.Forms.ComboBox cbConditionWeapon;
+        private System.Windows.Forms.ComboBox cbConditionPVPTeam;
+        private System.Windows.Forms.ComboBox cbConditionPVPTeamWin;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.NumericUpDown nupConditionDead;
+        private System.Windows.Forms.ComboBox cbPVPMode;
+        private System.Windows.Forms.Label label33;
     }
 }

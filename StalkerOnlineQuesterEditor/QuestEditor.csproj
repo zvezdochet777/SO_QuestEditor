@@ -200,6 +200,7 @@
     </Compile>
     <Compile Include="ResourceClasses\CBlackBoxConstants.cs" />
     <Compile Include="ResourceClasses\CKnowledgeConstans.cs" />
+    <Compile Include="ResourceClasses\CPVPConstans.cs" />
     <Compile Include="ResourceClasses\CTutorialConstants.cs" />
     <Compile Include="ResourceClasses\CEffectConstants.cs" />
     <Compile Include="ResourceClasses\CFracConstants.cs" />

@@ -23,6 +23,7 @@ namespace StalkerOnlineQuesterEditor
         public CQuestReward Reward;
         public CQuestReward QuestPenalty;
         public CQuestAdditional Additional;
+        public CQuestAdditionalConditions Conditions;
         public bool hidden;
 
         public object Clone()
@@ -39,6 +40,7 @@ namespace StalkerOnlineQuesterEditor
             copy.QuestPenalty = (CQuestReward)this.QuestPenalty.Clone();
             copy.Additional = (CQuestAdditional)this.Additional.Clone();
             copy.Target = (CQuestTarget)this.Target.Clone();
+            copy.Conditions = (CQuestAdditionalConditions)Conditions.Clone();
             copy.hidden = this.hidden;
             return copy;
         }
@@ -56,10 +58,13 @@ namespace StalkerOnlineQuesterEditor
             this.QuestPenalty = new CQuestReward();
             this.Additional = new CQuestAdditional();
             this.Target = new CQuestTarget();
+            this.Conditions = new CQuestAdditionalConditions();
             this.hidden = false;
         }
 
-        public CQuest(int questID, int Version, int Priority, int Level, CQuestInformation questInformation, CQuestPrecondition precondition, CQuestRules questRules, CQuestReward reward, CQuestAdditional additional, CQuestTarget target, CQuestReward penalty, bool hidden = false)
+        public CQuest(int questID, int Version, int Priority, int Level, CQuestInformation questInformation, CQuestPrecondition precondition, 
+                        CQuestRules questRules, CQuestReward reward, CQuestAdditional additional, CQuestTarget target, CQuestReward penalty, 
+                        CQuestAdditionalConditions conditions, bool hidden = false)
         {
             this.QuestID = questID;
             this.Version = Version;
@@ -72,6 +77,7 @@ namespace StalkerOnlineQuesterEditor
             this.Additional = additional;
             this.Target = target;
             this.QuestPenalty = penalty;
+            this.Conditions = conditions;
             this.hidden = hidden;
         }
 
@@ -664,6 +670,30 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class CQuestAdditionalConditions : ICloneable
+    {
+        public int useWeaponType;
+        public int pvpWinTeam;
+        public int notDieCount;
+        public int bePvpWinner; //0 - нет, 1 - среди своих, 2 - среди всех
+
+        public object Clone()
+        {
+            CQuestAdditionalConditions copy = new CQuestAdditionalConditions();
+            copy.useWeaponType = useWeaponType;
+            copy.pvpWinTeam = pvpWinTeam;
+            copy.notDieCount = notDieCount;
+            copy.bePvpWinner = bePvpWinner;
+
+            return copy;
+        }
+
+        public bool Any()
+        {
+            return (useWeaponType + pvpWinTeam + notDieCount + bePvpWinner) > 0;
+        }
+    }
+    
     public class CQuestAdditional : ICloneable
     {
         public int IsSubQuest;

@@ -59,6 +59,7 @@
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
             this.gbPrecondition = new System.Windows.Forms.GroupBox();
+            this.picturePVP = new System.Windows.Forms.PictureBox();
             this.pictureTutorial = new System.Windows.Forms.PictureBox();
             this.pictureTransport = new System.Windows.Forms.PictureBox();
             this.pictureItems = new System.Windows.Forms.PictureBox();
@@ -231,6 +232,11 @@
             this.tabTutorial = new System.Windows.Forms.TabPage();
             this.label13 = new System.Windows.Forms.Label();
             this.cbTutorialPhase = new System.Windows.Forms.ComboBox();
+            this.tabPVP = new System.Windows.Forms.TabPage();
+            this.cbPVPRank2 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cbPVPRank1 = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -249,6 +255,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
+			this.cbRatingPVPMode = new System.Windows.Forms.ComboBox();
             this.tabPVP = new System.Windows.Forms.TabPage();
             this.picturePVP = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -259,6 +266,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePVP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTutorial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).BeginInit();
@@ -294,6 +302,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).BeginInit();
             this.tabTransport.SuspendLayout();
             this.tabTutorial.SuspendLayout();
+            this.tabPVP.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
@@ -646,6 +655,18 @@
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
+            // 
+            // picturePVP
+            // 
+            this.picturePVP.BackColor = System.Drawing.Color.Transparent;
+            this.picturePVP.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.picturePVP.Location = new System.Drawing.Point(654, 10);
+            this.picturePVP.Name = "picturePVP";
+            this.picturePVP.Size = new System.Drawing.Size(10, 10);
+            this.picturePVP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picturePVP.TabIndex = 63;
+            this.picturePVP.TabStop = false;
+            this.picturePVP.Visible = false;
             // 
             // pictureTutorial
             // 
@@ -2358,6 +2379,56 @@
             this.cbTutorialPhase.Size = new System.Drawing.Size(166, 21);
             this.cbTutorialPhase.TabIndex = 0;
             // 
+            // tabPVP
+            // 
+            this.tabPVP.Controls.Add(this.cbRatingPVPMode);
+            this.tabPVP.Controls.Add(this.label17);
+            this.tabPVP.Controls.Add(this.cbPVPRank2);
+            this.tabPVP.Controls.Add(this.label19);
+            this.tabPVP.Controls.Add(this.cbPVPRank1);
+            this.tabPVP.Controls.Add(this.label18);
+            this.tabPVP.Location = new System.Drawing.Point(4, 22);
+            this.tabPVP.Name = "tabPVP";
+            this.tabPVP.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPVP.Size = new System.Drawing.Size(702, 230);
+            this.tabPVP.TabIndex = 11;
+            this.tabPVP.Text = "PVP";
+            this.tabPVP.UseVisualStyleBackColor = true;
+            // 
+            // cbPVPRank2
+            // 
+            this.cbPVPRank2.FormattingEnabled = true;
+            this.cbPVPRank2.Location = new System.Drawing.Point(229, 15);
+            this.cbPVPRank2.Name = "cbPVPRank2";
+            this.cbPVPRank2.Size = new System.Drawing.Size(121, 21);
+            this.cbPVPRank2.TabIndex = 3;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(204, 18);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(19, 13);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "до";
+            // 
+            // cbPVPRank1
+            // 
+            this.cbPVPRank1.FormattingEnabled = true;
+            this.cbPVPRank1.Location = new System.Drawing.Point(77, 15);
+            this.cbPVPRank1.Name = "cbPVPRank1";
+            this.cbPVPRank1.Size = new System.Drawing.Size(121, 21);
+            this.cbPVPRank1.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 18);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(68, 13);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Рейтинг:  от";
+            // 
             // bEditDialogOk
             // 
             this.bEditDialogOk.Location = new System.Drawing.Point(172, 5);
@@ -2612,6 +2683,14 @@
             this.cbPVPRank2.Size = new System.Drawing.Size(121, 21);
             this.cbPVPRank2.TabIndex = 3;
             // 
+            // cbRatingPVPMode
+            // 
+            this.cbRatingPVPMode.FormattingEnabled = true;
+            this.cbRatingPVPMode.Location = new System.Drawing.Point(87, 54);
+            this.cbRatingPVPMode.Name = "cbRatingPVPMode";
+            this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
+            this.cbRatingPVPMode.TabIndex = 5;
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2633,6 +2712,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).EndInit();
             this.gbPrecondition.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picturePVP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTutorial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).EndInit();
@@ -2680,6 +2760,8 @@
             this.tabTransport.PerformLayout();
             this.tabTutorial.ResumeLayout(false);
             this.tabTutorial.PerformLayout();
+            this.tabPVP.ResumeLayout(false);
+            this.tabPVP.PerformLayout();
             this.pCommands.ResumeLayout(false);
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
@@ -2923,5 +3005,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cbPVPRank1;
         private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.ComboBox cbRatingPVPMode;
     }
 }

@@ -55,6 +55,7 @@ namespace StalkerOnlineQuesterEditor
         Dictionary<PNode, GraphProperties> graphs = new Dictionary<PNode, GraphProperties>();
         Dictionary<Panel, int> panels = new Dictionary<Panel, int>();
 
+        
         List<int> rootElements = new List<int>();
         public TreeView tree;
         List<PNode> subNodes = new List<PNode>();
@@ -120,6 +121,7 @@ namespace StalkerOnlineQuesterEditor
             dialogEvents = new DialogEventsList();
             dialogs = new CDialogs(this, ManagerNPC);
             CFractionDialogs.load(this);
+            QuestPVPConstance.parse();
             quests = new CQuests(this);
             tpConst = new CTPConstants();
             cmConst = new CommandConstants();
@@ -145,7 +147,7 @@ namespace StalkerOnlineQuesterEditor
             pvPRanks = new PvPRanks();
             gui = new CGUIConst();
             effects = new CEffectConstants();
-
+            CPVPConstans.Load();
             knowledgeCategory = new CKnowledgeConstans();
             
 

@@ -120,6 +120,7 @@ namespace StalkerOnlineQuesterEditor
                 CQuestReward reward = new CQuestReward();
                 CQuestAdditional additional = new CQuestAdditional();
                 CQuestReward penalty = new CQuestReward();
+                CQuestAdditionalConditions conditions = new CQuestAdditionalConditions();
                 bool hidden = false;
                 if (item.Element("hidden") != null)
                     hidden = true;
@@ -200,7 +201,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                     if (item.Element("Target").Element("additional") != null)
                     {
-                        target.additional = "1";
+                        target.additional = item.Element("Target").Element("additional").Value; 
                     }
                     if ((item.Element("Target").Element("Time") != null) && (!item.Element("Target").Element("Time").Value.Equals("")))
                     {
@@ -361,6 +362,19 @@ namespace StalkerOnlineQuesterEditor
                         }
                 }
 
+                if (item.Element("Conditions") != null)
+                {
+                    if (item.Element("Conditions").Element("useWeaponType") != null)
+                        conditions.useWeaponType = int.Parse(item.Element("Conditions").Element("useWeaponType").Value);
+                    if (item.Element("Conditions").Element("notDieCount") != null)
+                        conditions.notDieCount = int.Parse(item.Element("Conditions").Element("notDieCount").Value);
+                    if (item.Element("Conditions").Element("pvpWinTeam") != null)
+                        conditions.pvpWinTeam = int.Parse(item.Element("Conditions").Element("pvpWinTeam").Value);
+                    if (item.Element("Conditions").Element("bePvpWinner") != null)
+                        conditions.bePvpWinner = int.Parse(item.Element("Conditions").Element("bePvpWinner").Value);
+
+                }
+
                 if (item.Element("Additional") != null)
                 {
                     if (item.Element("Additional").Element("ShowProgress") != null)
@@ -389,7 +403,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
                 if (!dict_target.ContainsKey(QuestID))
-                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, level, information, precondition, questRules, reward, additional, target, penalty, hidden));
+                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, level, information, precondition, questRules, reward, additional, target, penalty, conditions, hidden));
             }
         }
         
@@ -683,7 +697,7 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.Target.usePercent)
                         element.Element("Target").Add(new XElement("percent", questValue.Target.percent.ToString("G6", CultureInfo.InvariantCulture)));
                     if (questValue.Target.additional.Any())
-                        element.Element("Target").Add(new XElement("additional", "1"));
+                        element.Element("Target").Add(new XElement("additional", questValue.Target.additional));
                 }
 
                 if (questValue.Precondition.Any())
@@ -758,6 +772,19 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.Reward.blackBoxes.Any())
                         element.Element("Reward").Add(new XElement("blackBoxes", Global.GetListAsString(questValue.Reward.blackBoxes)));
                 }              
+
+                if (questValue.Conditions.Any())
+                {
+                    element.Add(new XElement("Conditions"));
+                    if (questValue.Conditions.useWeaponType != 0)
+                        element.Element("Conditions").Add(new XElement("useWeaponType", questValue.Conditions.useWeaponType.ToString()));
+                    if (questValue.Conditions.notDieCount != 0)
+                        element.Element("Conditions").Add(new XElement("notDieCount", questValue.Conditions.notDieCount.ToString()));
+                    if (questValue.Conditions.bePvpWinner != 0)
+                        element.Element("Conditions").Add(new XElement("bePvpWinner", questValue.Conditions.bePvpWinner.ToString()));
+                    if (questValue.Conditions.pvpWinTeam != 0)
+                        element.Element("Conditions").Add(new XElement("pvpWinTeam", questValue.Conditions.pvpWinTeam.ToString()));
+                }
 
                 if (questValue.QuestPenalty.Any())
                 {
