@@ -3024,7 +3024,9 @@ namespace StalkerOnlineQuesterEditor
             public string questType = "";
             public string tupe = "";
             public string repeat = "";
+            public string taken_period = "";
             public string questName = "";
+
             public string npcName = "";
             public string spaceName = "";
         }
@@ -3048,6 +3050,7 @@ namespace StalkerOnlineQuesterEditor
                 }
                 item.questType = questConst.getDescription(quest.Value.Target.QuestType);
                 item.repeat = quest.Value.Precondition.Repeat.ToString();
+                item.taken_period = quest.Value.Precondition.TakenPeriod.ToString();
                 item.questName = quest.Value.QuestInformation.Title;
                 item.npcName = quest.Value.Additional.Holder;
                 item.tupe = QuestPriorities.getNameByID(quest.Value.Priority);
@@ -3077,7 +3080,7 @@ namespace StalkerOnlineQuesterEditor
             app.DisplayAlerts = false;
             int index = 1;
 
-            List<string> titles = new List<string>() { "id квеста", "id подквестов", "тип квеста","тип", "повтор(повторное взятие/ нет повтора)", "название квеста", "кто выдает квест" };
+            List<string> titles = new List<string>() { "id квеста", "id подквестов", "тип квеста","тип", "повтор(повторное взятие/ нет повтора)", "время перевзятия", "название квеста", "кто выдает квест" };
 
             foreach(var space in r_quests)
             {
@@ -3096,8 +3099,9 @@ namespace StalkerOnlineQuesterEditor
                     sheet.Cells[i, 3] = quest.questType;
                     sheet.Cells[i, 4] = quest.tupe;
                     sheet.Cells[i, 5] = quest.repeat;
-                    sheet.Cells[i, 6] = quest.questName;
-                    sheet.Cells[i, 7] = quest.npcName;
+                    sheet.Cells[i, 6] = quest.taken_period;
+                    sheet.Cells[i, 7] = quest.questName;
+                    sheet.Cells[i, 8] = quest.npcName;
                     i++;
 
                 }
