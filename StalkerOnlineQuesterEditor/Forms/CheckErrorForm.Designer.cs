@@ -160,14 +160,13 @@
             // cbErrQuest5
             // 
             this.cbErrQuest5.AutoSize = true;
-            this.cbErrQuest5.Checked = true;
-            this.cbErrQuest5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbErrQuest5.Location = new System.Drawing.Point(174, 42);
+            this.cbErrQuest5.Location = new System.Drawing.Point(527, 42);
             this.cbErrQuest5.Name = "cbErrQuest5";
-            this.cbErrQuest5.Size = new System.Drawing.Size(132, 17);
+            this.cbErrQuest5.Size = new System.Drawing.Size(98, 17);
             this.cbErrQuest5.TabIndex = 8;
-            this.cbErrQuest5.Text = "Err. квест тип деньги";
+            this.cbErrQuest5.Text = "Для разрабов";
             this.cbErrQuest5.UseVisualStyleBackColor = true;
+            this.cbErrQuest5.Checked = false;
             this.cbErrQuest5.CheckedChanged += new System.EventHandler(this.cbError_CheckedChanged);
             // 
             // cbErrOther
@@ -175,7 +174,7 @@
             this.cbErrOther.AutoSize = true;
             this.cbErrOther.Checked = true;
             this.cbErrOther.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbErrOther.Location = new System.Drawing.Point(417, 42);
+            this.cbErrOther.Location = new System.Drawing.Point(378, 42);
             this.cbErrOther.Name = "cbErrOther";
             this.cbErrOther.Size = new System.Drawing.Size(79, 17);
             this.cbErrOther.TabIndex = 9;
@@ -188,7 +187,7 @@
             this.cbErrNoRoot.AutoSize = true;
             this.cbErrNoRoot.Checked = true;
             this.cbErrNoRoot.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbErrNoRoot.Location = new System.Drawing.Point(502, 42);
+            this.cbErrNoRoot.Location = new System.Drawing.Point(260, 42);
             this.cbErrNoRoot.Name = "cbErrNoRoot";
             this.cbErrNoRoot.Size = new System.Drawing.Size(112, 17);
             this.cbErrNoRoot.TabIndex = 10;
@@ -201,7 +200,7 @@
             this.cbErrDialogs.AutoSize = true;
             this.cbErrDialogs.Checked = true;
             this.cbErrDialogs.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbErrDialogs.Location = new System.Drawing.Point(312, 42);
+            this.cbErrDialogs.Location = new System.Drawing.Point(174, 42);
             this.cbErrDialogs.Name = "cbErrDialogs";
             this.cbErrDialogs.Size = new System.Drawing.Size(80, 17);
             this.cbErrDialogs.TabIndex = 11;
