@@ -436,7 +436,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                 }
                 if (quest_types.Contains(quest.Value.Target.QuestType))
                 {
-                    if (!on_test_list.Contains(quest.Key))
+                    if (!on_test_list.Contains(quest.Key) && !deleted_quests_ids.Contains(quest.Key))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tимеет тип: \"" + this.parent.questConst.getDescription(quest.Value.Target.QuestType) + "\" и нигде не проверяется";
                         if (quest.Value.Target.QuestType == CQuestConstants.TYPE_MONEYBACK)
@@ -467,7 +467,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                     if (zone_areas.ContainsKey(zone))
                     {
                         string line = "Квесты №:" + quest.Key.ToString() + " и " + zone_areas[zone] + "\tимеет в целях одинаковую зону: \"" + zone + "\"";
-                        this.writeToLog(ERROR_QUEST, line, quest.Key);
+                        this.writeToLog(ERROR_QUEST_TYPE5, line, quest.Key);
                     }
                     else
                     {
@@ -483,21 +483,34 @@ namespace StalkerOnlineQuesterEditor.Forms
                 }
                 else if (quest.Value.Target.QuestType == CQuestConstants.TYPE_TRIGGER_ACTION)
                 {
-                    string trigger_name = quest.Value.Target.ObjectType.ToString().Trim();
-                    if (triggers.ContainsKey(trigger_name))
-                    {
-                        string line = "Квесты №:" + quest.Key.ToString() + " и "+ triggers[trigger_name] + "\tимеет в целях одинаковый триггер: \"" + trigger_name + "\"";
-                        this.writeToLog(ERROR_QUEST, line, quest.Key);
-
-                    }
+                    string[] _triggers;
+                    if (quest.Value.Target.ObjectType > 0)
+                        _triggers = new string[] { quest.Value.Target.ObjectType.ToString().Trim() };
                     else
-                        triggers.Add(trigger_name, quest.Key);
+                        _triggers = quest.Value.Target.ObjectName.Split(',');
 
-                    if (parent.triggerConst.getDescriptionOnId(quest.Value.Target.ObjectType) == "")
+                    foreach (var trigger_name in _triggers)
                     {
-                        string line = "Квест №:" + quest.Key.ToString() + "\tимеет в целях триггер: \"" + quest.Value.Target.ObjectType.ToString() + "\", которого нет";
-                        this.writeToLog(ERROR_QUEST, line, quest.Key);
+                        if (triggers.ContainsKey(trigger_name))
+                        {
+                            string line = "Квесты №:" + quest.Key.ToString() + " и " + triggers[trigger_name] + "\tимеет в целях одинаковый триггер: \"" + trigger_name + "\"";
+                            this.writeToLog(ERROR_QUEST_TYPE5, line, quest.Key);
+
+                        }
+                        else
+                            triggers.Add(trigger_name, quest.Key);
+                        if (!trigger_name.Any())
+                        {
+                            string line = "Квест №:" + quest.Key.ToString() + "\tНЕ имеет в целях триггер";
+                            this.writeToLog(ERROR_QUEST, line, quest.Key);
+                        }
+                        else if (parent.triggerConst.getDescriptionOnId(Convert.ToInt32(trigger_name)) == "")
+                        {
+                            string line = "Квест №:" + quest.Key.ToString() + "\tимеет в целях триггер: \"" + quest.Value.Target.ObjectType.ToString() + "\", которого нет";
+                            this.writeToLog(ERROR_QUEST, line, quest.Key);
+                        }
                     }
+                   
                 }
                 else if ((quest.Value.Target.QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (quest.Value.Target.QuestType == CQuestConstants.TYPE_KILLMOBS))
                 {
