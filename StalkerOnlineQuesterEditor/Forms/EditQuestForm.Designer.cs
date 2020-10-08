@@ -179,6 +179,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.rewardGroupBox = new System.Windows.Forms.GroupBox();
+            this.cbRewardTeleport = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.bRewardBlackBox = new System.Windows.Forms.Button();
             this.bRewardQuests = new System.Windows.Forms.Button();
             this.cbRewardWindow = new System.Windows.Forms.CheckBox();
@@ -209,8 +211,6 @@
             this.cbPriority = new System.Windows.Forms.ComboBox();
             this.nudLevel = new System.Windows.Forms.NumericUpDown();
             this.labelLevel = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbRewardTeleport = new System.Windows.Forms.ComboBox();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -232,9 +232,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
             this.tabConditions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCreateMob
@@ -1877,6 +1877,23 @@
             this.rewardGroupBox.TabStop = false;
             this.rewardGroupBox.Text = "Награда";
             // 
+            // cbRewardTeleport
+            // 
+            this.cbRewardTeleport.FormattingEnabled = true;
+            this.cbRewardTeleport.Location = new System.Drawing.Point(350, 44);
+            this.cbRewardTeleport.Name = "cbRewardTeleport";
+            this.cbRewardTeleport.Size = new System.Drawing.Size(121, 21);
+            this.cbRewardTeleport.TabIndex = 45;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(254, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "Телепорт:";
+            // 
             // bRewardBlackBox
             // 
             this.bRewardBlackBox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2169,23 +2186,6 @@
             this.labelLevel.TabIndex = 57;
             this.labelLevel.Text = "Уровень:";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(254, 48);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "Телепорт:";
-            // 
-            // cbRewardTeleport
-            // 
-            this.cbRewardTeleport.FormattingEnabled = true;
-            this.cbRewardTeleport.Location = new System.Drawing.Point(350, 44);
-            this.cbRewardTeleport.Name = "cbRewardTeleport";
-            this.cbRewardTeleport.Size = new System.Drawing.Size(121, 21);
-            this.cbRewardTeleport.TabIndex = 45;
-            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2245,10 +2245,10 @@
             this.tabPage6.PerformLayout();
             this.rewardGroupBox.ResumeLayout(false);
             this.rewardGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
             this.tabConditions.ResumeLayout(false);
             this.tabConditions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
