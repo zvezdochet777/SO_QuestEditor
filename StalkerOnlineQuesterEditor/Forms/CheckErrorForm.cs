@@ -262,18 +262,24 @@ namespace StalkerOnlineQuesterEditor.Forms
                 doProgress(50 * Convert.ToInt32(Convert.ToDouble(i) / count));
                 foreach (KeyValuePair<int, CDialog> dia in npc.Value)
                 {
-                    List<int> check_list = new List<int>();
-                    check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
-                    check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfOpenedQuests);
-                    check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfFailQuests);
-                    check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfOnTestQuests);
-                    check_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
+                    List<int> check_quest_list = new List<int>();
+                    List<int> check_dialog_list = new List<int>();
 
-                    check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
-                    check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests);
-                    check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfFailQuests);
-                    check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
-                    check_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
+                    //check_quest_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfHaveQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfOpenedQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfFailQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfOnTestQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfMustNoQuests.ListOfCompletedQuests);
+
+                    //check_quest_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfHaveQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfFailQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
+                    check_quest_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests);
+
+                    check_dialog_list.AddRange(dia.Value.CheckNodes);
 
                     on_test_list.AddRange(dia.Value.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests);
 
@@ -282,9 +288,24 @@ namespace StalkerOnlineQuesterEditor.Forms
                         change_money_dialogs.Add(dia.Key);
                     }
                     
+                    foreach(int dialog_id in check_dialog_list)
+                    {
+                        bool dialog_exist = false;
+                        foreach (var _npc in dialogs.dialogs)
+                        {
+                            if (!_npc.Value.ContainsKey(dialog_id)) continue;
+                            dialog_exist = true;
+                            break;
+                        }
+                        if (!dialog_exist)
+                        {
+                            string line = "Диалог №:" + dialog_id.ToString() + "\tсодержит предпроверку от диалога №" + dia.Key.ToString();
+                            this.writeToLog(ERROR_DIALOG, line); this.writeToLog(ERROR_DIALOG, line, dialog_id);
+                        }
+                    }
                     //dialogs.locales
 
-                    foreach (int quest_id in check_list)
+                    foreach (int quest_id in check_quest_list)
                     {
                         if (wasIgnoredQuestID(quest_id))
                             continue;
@@ -506,7 +527,7 @@ namespace StalkerOnlineQuesterEditor.Forms
                         }
                         else if (parent.triggerConst.getDescriptionOnId(Convert.ToInt32(trigger_name)) == "")
                         {
-                            string line = "Квест №:" + quest.Key.ToString() + "\tимеет в целях триггер: \"" + quest.Value.Target.ObjectType.ToString() + "\", которого нет";
+                            string line = "Квест №:" + quest.Key.ToString() + "\tимеет в целях триггер: \"" + trigger_name + "\", которого нет";
                             this.writeToLog(ERROR_QUEST, line, quest.Key);
                         }
                     }
