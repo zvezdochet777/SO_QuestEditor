@@ -211,6 +211,7 @@
             this.cbPriority = new System.Windows.Forms.ComboBox();
             this.nudLevel = new System.Windows.Forms.NumericUpDown();
             this.labelLevel = new System.Windows.Forms.Label();
+            this.cbOldQuest = new System.Windows.Forms.CheckBox();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -2186,6 +2187,17 @@
             this.labelLevel.TabIndex = 57;
             this.labelLevel.Text = "Уровень:";
             // 
+            // cbOldQuest
+            // 
+            this.cbOldQuest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbOldQuest.AutoSize = true;
+            this.cbOldQuest.Location = new System.Drawing.Point(4, 554);
+            this.cbOldQuest.Name = "cbOldQuest";
+            this.cbOldQuest.Size = new System.Drawing.Size(269, 17);
+            this.cbOldQuest.TabIndex = 56;
+            this.cbOldQuest.Text = "Старый нужный квест (Исключить из проверок)";
+            this.cbOldQuest.UseVisualStyleBackColor = true;
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2194,6 +2206,7 @@
             this.ClientSize = new System.Drawing.Size(638, 579);
             this.Controls.Add(this.labelLevel);
             this.Controls.Add(this.nudLevel);
+            this.Controls.Add(this.cbOldQuest);
             this.Controls.Add(this.cbPriority);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.debuglabel);
@@ -2438,5 +2451,6 @@
         private System.Windows.Forms.NumericUpDown nupConditionDead;
         private System.Windows.Forms.ComboBox cbPVPMode;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.CheckBox cbOldQuest;
     }
 }
