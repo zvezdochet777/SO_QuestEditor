@@ -197,10 +197,34 @@ namespace StalkerOnlineQuesterEditor.Forms
         }
 
 
+        private bool find_quest_type100(int quest_id)
+        {
+            if (quest_id == 0) return false;
+            CQuest q = parent.getQuestOnQuestID(quest_id);
+            if (q.Target.QuestType == 100)
+                return true;
+            return find_quest_type100(q.Additional.IsSubQuest);
+        }
+
+        private int get_parent_quest(int quest_id)
+        {
+            CQuest q = parent.getQuestOnQuestID(quest_id);
+            if (q.Additional.IsSubQuest == 0) return quest_id;
+            return get_parent_quest(q.Additional.IsSubQuest);
+        }
+
+
+
         delegate void WriteToLogDelegate(int error_type, string message, int quest_id = 0);
 
         private void writeToLog(int error_type, string text, int quest_id = 0)
         {
+            if (quest_id > 0 && error_type == ERROR_QUEST)
+            {
+                CQuest q = parent.getQuestOnQuestID(quest_id);
+                if (q != null && q.isOld)
+                    error_type = ERROR_QUEST_TYPE5;
+            }
             if (lbLog.InvokeRequired)
             {
                 var _writeToLog = new WriteToLogDelegate(writeToLog);
@@ -457,12 +481,18 @@ namespace StalkerOnlineQuesterEditor.Forms
                 }
                 if (quest_types.Contains(quest.Value.Target.QuestType))
                 {
-                    if (!on_test_list.Contains(quest.Key) && !deleted_quests_ids.Contains(quest.Key))
+                    if (!on_test_list.Contains(quest.Key) && !deleted_quests_ids.Contains(quest.Key) && 
+                        !find_quest_type100(quest.Value.Additional.IsSubQuest) && !deleted_quests_ids.Contains(get_parent_quest(quest.Key)))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tимеет тип: \"" + this.parent.questConst.getDescription(quest.Value.Target.QuestType) + "\" и нигде не проверяется";
                         if (quest.Value.Target.QuestType == CQuestConstants.TYPE_MONEYBACK)
                         {
                             this.writeToLog(ERROR_QUEST_TYPE5, line, quest.Key);
+                        }
+                        else if (quest.Value.Target.QuestType == CQuestConstants.TYPE_FARM)
+                        {
+                            if (quest.Value.Target.additional != "1")
+                                this.writeToLog(ERROR_QUEST, line, quest.Key);
                         }
                         else
                         {

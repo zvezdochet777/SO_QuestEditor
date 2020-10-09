@@ -121,7 +121,7 @@ namespace StalkerOnlineQuesterEditor
             showCloseCheckBox.Checked = true;
             showTakeCheckBox.Checked = true;
             showJournalCheckBox.Checked = true;
-            
+           
             CQuest parentQuest =  new CQuest();
             //if (iState == EDIT_SUB)
             //{
@@ -157,7 +157,7 @@ namespace StalkerOnlineQuesterEditor
                 fillChangedQuests();
             }
 
-           
+            cbOldQuest.Checked = quest.isOld;
 
             if (iState == EDIT || iState == EDIT_SUB)
             {
@@ -1073,7 +1073,7 @@ namespace StalkerOnlineQuesterEditor
             CQuestTarget target = new CQuestTarget();
             CQuestReward penalty = new CQuestReward();
             CQuestAdditionalConditions conditions = new CQuestAdditionalConditions();
-
+           
             information.Description = descriptionTextBox.Text;
             information.DescriptionClosed = descriptionClosedTextBox.Text;
             information.DescriptionOnTest = descriptionOnTestTextBox.Text;
@@ -1090,6 +1090,7 @@ namespace StalkerOnlineQuesterEditor
                 target.onFin = 0;
             else
                 target.onFin = 1;
+
             precondition.isGroup = IsGroupCheckBox.Visible && IsGroupCheckBox.Checked;
             if ((target.QuestType == CQuestConstants.TYPE_FARM) || (target.QuestType == CQuestConstants.TYPE_FARM_AUTO) || (target.QuestType == CQuestConstants.TYPE_QITEM_USE))
             {
@@ -1413,7 +1414,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (iState == ADD_SUB)
                     additional.IsSubQuest = quest.QuestID;
-                retQuest = new CQuest(this.QuestID, 1, priority, information, precondition, rules, reward, additional, target, penalty, conditions);
+                retQuest = new CQuest(this.QuestID, 1, priority, information, precondition, rules, reward, additional, target, penalty, conditions, cbHidden.Checked, cbOldQuest.Checked);
                 parent.incQuestNewID();
             }
             else
@@ -1423,7 +1424,7 @@ namespace StalkerOnlineQuesterEditor
                         || quest.QuestInformation.onWin != information.onWin || quest.QuestInformation.onFailed != information.onFailed)
                     version++;
                  
-                retQuest = new CQuest(quest.QuestID, version, priority, information, precondition, rules, reward, additional, target, penalty, conditions, cbHidden.Checked);
+                retQuest = new CQuest(quest.QuestID, version, priority, information, precondition, rules, reward, additional, target, penalty, conditions, cbHidden.Checked, cbOldQuest.Checked);
             }
             return retQuest;
         }
