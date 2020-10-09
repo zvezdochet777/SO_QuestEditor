@@ -130,6 +130,18 @@ namespace StalkerOnlineQuesterEditor
                 {
                     priority = int.Parse(item.Element("Priority").Value);
                 }
+                int level = 0;
+                bool isOld = false;
+                if (item.Element("Level") != null)
+                {
+                    level = int.Parse(item.Element("Level").Value);
+                }
+
+                if (item.Element("isOld") != null)
+                {
+                    isOld = true;
+                }
+
 
                 additional.Holder = item.Element("Additional").Element("Holder").Value.Trim();
 
@@ -380,7 +392,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
                 if (!dict_target.ContainsKey(QuestID))
-                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, information, precondition, questRules, reward, additional, target, penalty, conditions, hidden));
+                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, level, information, precondition, questRules, reward, additional, target, penalty, conditions, hidden));
             }
         }
         
@@ -630,6 +642,8 @@ namespace StalkerOnlineQuesterEditor
                    new XElement("ID", questValue.QuestID));
                 if (questValue.hidden)
                     element.Add(new XElement("hidden", "1"));
+                if (questValue.isOld)
+                    element.Add(new XElement("isOld", "1"));
                 if (questValue.Priority > 0)
                     element.Add(new XElement("Priority", questValue.Priority.ToString()));
 
