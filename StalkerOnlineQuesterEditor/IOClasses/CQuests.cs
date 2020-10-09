@@ -392,7 +392,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
                 if (!dict_target.ContainsKey(QuestID))
-                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, level, information, precondition, questRules, reward, additional, target, penalty, conditions, hidden));
+                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, information, precondition, questRules, reward, additional, target, penalty, conditions, hidden));
             }
         }
         
