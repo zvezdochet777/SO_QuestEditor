@@ -456,20 +456,6 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
-    public class AGDialogList
-    {
-        public Dictionary<int, string> Titles = new Dictionary<int, string>();
-        public Dictionary<int, string> Text = new Dictionary<int, string>();
-    }
-
-    public class AutoGenDialog
-    {
-        public AGDialogList opened = new AGDialogList();
-        public AGDialogList ontest = new AGDialogList();
-        public AGDialogList failed = new AGDialogList();
-
-    }
-
     //! Класс диалога (одна ветка в xml файле)
     public class CDialog : ICloneable
     {

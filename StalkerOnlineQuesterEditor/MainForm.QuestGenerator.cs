@@ -14,10 +14,10 @@ namespace StalkerOnlineQuesterEditor
             listBoxQT.Items.Clear();
             listBoxTarget.Items.Clear();
 
-            if (!QAutogenDatacs.data.ContainsKey(this.currentNPC))
+            if (!QAutogenDatacs.data_quests.ContainsKey(this.currentNPC))
                 return;
 
-            foreach (var i in QAutogenDatacs.data[currentNPC].data)
+            foreach (var i in QAutogenDatacs.data_quests[currentNPC].data)
                 listBoxQT.Items.Add(i.name.ToString());
             if (listBoxQT.Items.Count > 0)
                 listBoxQT.SelectedIndex = old_index;

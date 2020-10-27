@@ -264,6 +264,9 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
+            this.btnDelKnowlege = new System.Windows.Forms.Button();
+            this.btnAddKnowlege = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -322,6 +325,7 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectNPC.SuspendLayout();
             this.menuMainControl.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitDialogs
@@ -1402,6 +1406,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // tabKnowledge
             // 
+            this.tabKnowledge.Controls.Add(this.groupBox7);
             this.tabKnowledge.Controls.Add(this.treeKnowladge);
             this.tabKnowledge.Controls.Add(this.cbKnowlegeTypeValue);
             this.tabKnowledge.Controls.Add(this.label4);
@@ -1488,6 +1493,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.btnAddReward, "btnAddReward");
             this.btnAddReward.Name = "btnAddReward";
+            this.toolTipDialogs.SetToolTip(this.btnAddReward, resources.GetString("btnAddReward.ToolTip"));
             this.btnAddReward.UseVisualStyleBackColor = true;
             this.btnAddReward.Click += new System.EventHandler(this.btnAddReward_Click);
             // 
@@ -1495,6 +1501,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.btnChangeReward, "btnChangeReward");
             this.btnChangeReward.Name = "btnChangeReward";
+            this.toolTipDialogs.SetToolTip(this.btnChangeReward, resources.GetString("btnChangeReward.ToolTip"));
             this.btnChangeReward.UseVisualStyleBackColor = true;
             this.btnChangeReward.Click += new System.EventHandler(this.btnChangeReward_Click);
             // 
@@ -1502,6 +1509,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.btnDelReward, "btnDelReward");
             this.btnDelReward.Name = "btnDelReward";
+            this.toolTipDialogs.SetToolTip(this.btnDelReward, resources.GetString("btnDelReward.ToolTip"));
             this.btnDelReward.UseVisualStyleBackColor = true;
             this.btnDelReward.Click += new System.EventHandler(this.btnDelReward_Click);
             // 
@@ -1536,6 +1544,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.btnAddTarget, "btnAddTarget");
             this.btnAddTarget.Name = "btnAddTarget";
+            this.toolTipDialogs.SetToolTip(this.btnAddTarget, resources.GetString("btnAddTarget.ToolTip"));
             this.btnAddTarget.UseVisualStyleBackColor = true;
             this.btnAddTarget.Click += new System.EventHandler(this.btnAddTarget_Click);
             // 
@@ -1548,6 +1557,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.btnDelTarget, "btnDelTarget");
             this.btnDelTarget.Name = "btnDelTarget";
+            this.toolTipDialogs.SetToolTip(this.btnDelTarget, resources.GetString("btnDelTarget.ToolTip"));
             this.btnDelTarget.UseVisualStyleBackColor = true;
             this.btnDelTarget.Click += new System.EventHandler(this.btnDelTarget_Click);
             // 
@@ -1561,6 +1571,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.btnChange, "btnChange");
             this.btnChange.Name = "btnChange";
+            this.toolTipDialogs.SetToolTip(this.btnChange, resources.GetString("btnChange.ToolTip"));
             this.btnChange.UseVisualStyleBackColor = true;
             this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
@@ -1574,6 +1585,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.btnDelQType, "btnDelQType");
             this.btnDelQType.Name = "btnDelQType";
+            this.toolTipDialogs.SetToolTip(this.btnDelQType, resources.GetString("btnDelQType.ToolTip"));
             this.btnDelQType.UseVisualStyleBackColor = true;
             this.btnDelQType.Click += new System.EventHandler(this.btnDelQType_Click);
             // 
@@ -1581,6 +1593,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.btnAddQType, "btnAddQType");
             this.btnAddQType.Name = "btnAddQType";
+            this.toolTipDialogs.SetToolTip(this.btnAddQType, resources.GetString("btnAddQType.ToolTip"));
             this.btnAddQType.UseVisualStyleBackColor = true;
             this.btnAddQType.Click += new System.EventHandler(this.btnAddQType_Click);
             // 
@@ -1625,18 +1638,21 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.button13, "button13");
             this.button13.Name = "button13";
+            this.toolTipDialogs.SetToolTip(this.button13, resources.GetString("button13.ToolTip"));
             this.button13.UseVisualStyleBackColor = true;
             // 
             // button14
             // 
             resources.ApplyResources(this.button14, "button14");
             this.button14.Name = "button14";
+            this.toolTipDialogs.SetToolTip(this.button14, resources.GetString("button14.ToolTip"));
             this.button14.UseVisualStyleBackColor = true;
             // 
             // button15
             // 
             resources.ApplyResources(this.button15, "button15");
             this.button15.Name = "button15";
+            this.toolTipDialogs.SetToolTip(this.button15, resources.GetString("button15.ToolTip"));
             this.button15.UseVisualStyleBackColor = true;
             // 
             // lbAGClosed2
@@ -1655,18 +1671,21 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.button16, "button16");
             this.button16.Name = "button16";
+            this.toolTipDialogs.SetToolTip(this.button16, resources.GetString("button16.ToolTip"));
             this.button16.UseVisualStyleBackColor = true;
             // 
             // button17
             // 
             resources.ApplyResources(this.button17, "button17");
             this.button17.Name = "button17";
+            this.toolTipDialogs.SetToolTip(this.button17, resources.GetString("button17.ToolTip"));
             this.button17.UseVisualStyleBackColor = true;
             // 
             // button18
             // 
             resources.ApplyResources(this.button18, "button18");
             this.button18.Name = "button18";
+            this.toolTipDialogs.SetToolTip(this.button18, resources.GetString("button18.ToolTip"));
             this.button18.UseVisualStyleBackColor = true;
             // 
             // groupBox5
@@ -1687,18 +1706,21 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.button7, "button7");
             this.button7.Name = "button7";
+            this.toolTipDialogs.SetToolTip(this.button7, resources.GetString("button7.ToolTip"));
             this.button7.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
             resources.ApplyResources(this.button8, "button8");
             this.button8.Name = "button8";
+            this.toolTipDialogs.SetToolTip(this.button8, resources.GetString("button8.ToolTip"));
             this.button8.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
             resources.ApplyResources(this.button9, "button9");
             this.button9.Name = "button9";
+            this.toolTipDialogs.SetToolTip(this.button9, resources.GetString("button9.ToolTip"));
             this.button9.UseVisualStyleBackColor = true;
             // 
             // lbAGOnTest2
@@ -1717,18 +1739,21 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.button10, "button10");
             this.button10.Name = "button10";
+            this.toolTipDialogs.SetToolTip(this.button10, resources.GetString("button10.ToolTip"));
             this.button10.UseVisualStyleBackColor = true;
             // 
             // button11
             // 
             resources.ApplyResources(this.button11, "button11");
             this.button11.Name = "button11";
+            this.toolTipDialogs.SetToolTip(this.button11, resources.GetString("button11.ToolTip"));
             this.button11.UseVisualStyleBackColor = true;
             // 
             // button12
             // 
             resources.ApplyResources(this.button12, "button12");
             this.button12.Name = "button12";
+            this.toolTipDialogs.SetToolTip(this.button12, resources.GetString("button12.ToolTip"));
             this.button12.UseVisualStyleBackColor = true;
             // 
             // groupBox4
@@ -1749,18 +1774,21 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.button4, "button4");
             this.button4.Name = "button4";
+            this.toolTipDialogs.SetToolTip(this.button4, resources.GetString("button4.ToolTip"));
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
             resources.ApplyResources(this.button5, "button5");
             this.button5.Name = "button5";
+            this.toolTipDialogs.SetToolTip(this.button5, resources.GetString("button5.ToolTip"));
             this.button5.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
             resources.ApplyResources(this.button6, "button6");
             this.button6.Name = "button6";
+            this.toolTipDialogs.SetToolTip(this.button6, resources.GetString("button6.ToolTip"));
             this.button6.UseVisualStyleBackColor = true;
             // 
             // lbAGOpened2
@@ -1779,18 +1807,21 @@ namespace StalkerOnlineQuesterEditor
             // 
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
+            this.toolTipDialogs.SetToolTip(this.button1, resources.GetString("button1.ToolTip"));
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
+            this.toolTipDialogs.SetToolTip(this.button2, resources.GetString("button2.ToolTip"));
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
             resources.ApplyResources(this.button3, "button3");
             this.button3.Name = "button3";
+            this.toolTipDialogs.SetToolTip(this.button3, resources.GetString("button3.ToolTip"));
             this.button3.UseVisualStyleBackColor = true;
             // 
             // comboBox1
@@ -2059,6 +2090,28 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             // 
+            // btnDelKnowlege
+            // 
+            resources.ApplyResources(this.btnDelKnowlege, "btnDelKnowlege");
+            this.btnDelKnowlege.ImageList = this.imageList;
+            this.btnDelKnowlege.Name = "btnDelKnowlege";
+            this.btnDelKnowlege.UseVisualStyleBackColor = true;
+            // 
+            // btnAddKnowlege
+            // 
+            resources.ApplyResources(this.btnAddKnowlege, "btnAddKnowlege");
+            this.btnAddKnowlege.ImageList = this.imageList;
+            this.btnAddKnowlege.Name = "btnAddKnowlege";
+            this.btnAddKnowlege.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnAddKnowlege);
+            this.groupBox7.Controls.Add(this.btnDelKnowlege);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -2146,6 +2199,7 @@ namespace StalkerOnlineQuesterEditor
             this.menuMainControl.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2384,6 +2438,9 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button btnAddKnowlege;
+        private System.Windows.Forms.Button btnDelKnowlege;
     }
 }
 

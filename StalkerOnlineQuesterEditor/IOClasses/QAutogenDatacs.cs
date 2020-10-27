@@ -10,14 +10,18 @@ namespace StalkerOnlineQuesterEditor
 {
     public static class QAutogenDatacs
     {
-        public static Dictionary<string, AutogenQuestData> data = new Dictionary<string, AutogenQuestData>();
+        public static Dictionary<string, AutogenQuestData> data_quests = new Dictionary<string, AutogenQuestData>();
+        public static AutogetDialogData data_dialogs = new AutogetDialogData();
+
         public static Dictionary<int, string> QuestTypes = new Dictionary<int, string>() { { 1, "Убить мобов" }, { 2, "Принести предметы" } };
 
-        static string JSON_PATH = "../../../res/scripts/common/data/Quests/QuestsAutogenerator/";
+        static string QUEST_JSON_PATH = "../../../res/scripts/common/data/Quests/QuestsAutogenerator/";
+        static string DIALOGS_DATA_JSON_PATH = "../../../res/scripts/common/data/DialogsAutogenerator.json";
+        static string DIALOGS_LOCAL_PATH = "../";
 
         public static void Load()
         {
-            string[] files = Directory.GetFiles(JSON_PATH, "*.json");
+            string[] files = Directory.GetFiles(QUEST_JSON_PATH, "*.json");
             foreach (string dialogFile in files)
             {
                 string npc_name = Path.GetFileNameWithoutExtension(dialogFile);
@@ -25,18 +29,24 @@ namespace StalkerOnlineQuesterEditor
                 {
                     string json_string = reader.ReadToEnd();
                     AutogenQuestData myDeserializedClass = JsonConvert.DeserializeObject<AutogenQuestData>(json_string);
-                    QAutogenDatacs.data.Add(npc_name, myDeserializedClass);
+                    QAutogenDatacs.data_quests.Add(npc_name, myDeserializedClass);
                     reader.Close();
                 }
+            }
+
+            using (StreamReader reader = new StreamReader(DIALOGS_DATA_JSON_PATH))
+            {
+                string json_string = reader.ReadToEnd();
+                data_dialogs = JsonConvert.DeserializeObject<AutogetDialogData>(json_string);
             }
         }
 
         public static void Save()
         {
-            foreach(var i in data)
+            foreach(var i in data_quests)
             {
                 string npc_name = i.Key;
-                string path = JSON_PATH + npc_name + ".json";
+                string path = QUEST_JSON_PATH + npc_name + ".json";
                 if (!i.Value.data.Any()) continue;
                 using (StreamWriter writer = new StreamWriter(path))
                 {
@@ -44,6 +54,13 @@ namespace StalkerOnlineQuesterEditor
                     writer.Write(json);
                     writer.Close();
                 }
+            }
+
+            using (StreamWriter writer = new StreamWriter(DIALOGS_DATA_JSON_PATH))
+            {
+                string json = JsonConvert.SerializeObject(data_dialogs, Formatting.Indented);
+                writer.Write(json);
+                writer.Close();
             }
         }
     }
@@ -157,5 +174,40 @@ namespace StalkerOnlineQuesterEditor
         }
 
     }
+
+
+    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+    public class DialogsOpened
+    {
+        public List<string> titles { get; set; }
+        public List<string> texts { get; set; }
+    }
+
+    public class DialogsOntest
+    {
+        public List<string> titles { get; set; }
+        public List<string> texts { get; set; }
+    }
+
+    public class DialogsClosed
+    {
+        public List<string> titles { get; set; }
+        public List<string> texts { get; set; }
+    }
+
+    public class Nature
+    {
+        public string name { get; set; }
+        public DialogsOpened dialogs_opened { get; set; }
+        public DialogsOntest dialogs_ontest { get; set; }
+        public DialogsClosed dialogs_closed { get; set; }
+    }
+
+    public class AutogetDialogData
+    {
+        public List<Nature> nature { get; set; }
+    }
+
+
 
 }
