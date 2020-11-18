@@ -11,48 +11,279 @@ namespace StalkerOnlineQuesterEditor
         {
             int old_index = listBoxQT.SelectedIndex >= 0 ? listBoxQT.SelectedIndex : 0;
             
-            listBoxQT.Items.Clear();
-            listBoxTarget.Items.Clear();
 
-            if (!QAutogenDatacs.data_quests.ContainsKey(this.currentNPC))
-                return;
+            //Вкладка диалоги
+            cbNPCNature.SelectedIndex = 0;
+            cbNPCNature_SelectedIndexChanged(null, null);
 
-            foreach (var i in QAutogenDatacs.data_quests[currentNPC].data)
-                listBoxQT.Items.Add(i.name.ToString());
+            //Вкладка квесты
+
+           
+                
+            List<ListBoxItem> list = new List<ListBoxItem>();
+
+            if (QAutogenDatacs.data_quests.ContainsKey(this.currentNPC))
+            {
+                foreach (var i in QAutogenDatacs.data_quests[currentNPC].data)
+                {
+                    string name = QAutogenDatacs.QuestTypes[i.id];
+                    list.Add(new ListBoxItem(i.id, name));
+                }
+            }
+            listBoxQT.DataSource = list;
             if (listBoxQT.Items.Count > 0)
                 listBoxQT.SelectedIndex = old_index;
 
-            AutoGenDialog dialogs = this.autogenDialogs[settings.getCurrentLocale()][this.currentNPC];
 
-            foreach (var i in new List<ListBox>() { lbAGOnTest, lbAGOnTest2, lbAGClosed, lbAGClosed2, lbAGOpened, lbAGOpened2 })
+            
+        }
+
+        private void AGInit()
+        {
+            btnAGOpenedChange.Click += (sender, e) => { onBtnAGChangeClick(sender, e, lbAGOpened, true, "opened");};
+            btnAGOnTestChange.Click += (sender, e) => { onBtnAGChangeClick(sender, e, lbAGOnTest, true, "on_test"); };
+            btnAGClosedChange.Click += (sender, e) => { onBtnAGChangeClick(sender, e, lbAGClosed, true, "closed"); };
+
+            btnAGOpened2Change.Click += (sender, e) => { onBtnAGChangeClick(sender, e, lbAGOpened2, false, "opened"); };
+            btnAGOnTest2Change.Click += (sender, e) => { onBtnAGChangeClick(sender, e, lbAGOnTest2, false, "on_test"); };
+            btnAGClosed2Change.Click += (sender, e) => { onBtnAGChangeClick(sender, e, lbAGClosed2, false, "closed"); };
+
+            btnAGOpenedAdd.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGOpened, true, "opened"); };
+            btnAGOnTestAdd.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGOnTest, true, "on_test"); };
+            btnAGClosedAdd.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGClosed, true, "closed"); };
+
+            btnAGOpened2Add.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGOpened2, false, "opened"); };
+            btnAGOnTest2Add.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGOnTest2, false, "on_test"); };
+            btnAGClosed2Add.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGClosed2, false, "closed"); };
+
+            btnAGOpenedDel.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGOpened, true, "opened"); };
+            btnAGOnTestDel.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGOnTest, true, "on_test"); };
+            btnAGClosedDel.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGClosed, true, "closed"); };
+
+            btnAGOpened2Del.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGOpened2, false, "opened"); };
+            btnAGOnTest2Del.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGOnTest2, false, "on_test"); };
+            btnAGClosed2Del.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGClosed2, false, "closed"); };
+
+            btnAGAcceptQuestChange.Click += (sender, e)  => { onBtnAGNChangeClick(sender, e, lbAGAcceptQuest, "yes"); };
+            btnAGAcceptQuestAdd.Click += (sender, e)     => { onBtnAGNAddClick(sender, e, lbAGAcceptQuest, "yes"); };
+            btnAGAcceptQuestDel.Click += (sender, e)     => { onBtnAGNDelClick(sender, e, lbAGAcceptQuest, "yes"); };
+
+            btnAGDeclineQuestChange.Click += (sender, e) => { onBtnAGNChangeClick(sender, e, lbAGDeclineQuest, "no"); };
+            btnAGDeclineQuestAdd.Click += (sender, e) => { onBtnAGNAddClick(sender, e, lbAGDeclineQuest, "no"); };
+            btnAGDeclineQuestDel.Click += (sender, e) => { onBtnAGNDelClick(sender, e, lbAGDeclineQuest, "no"); };
+
+            btnAGGetQuestChange.Click += (sender, e) => { onBtnAGNChangeClick(sender, e, lbAGGetQuest, "get"); };
+            btnAGGetQuestAdd.Click += (sender, e) => { onBtnAGNAddClick(sender, e, lbAGGetQuest, "get"); };
+            btnAGGetQuestDel.Click += (sender, e) => { onBtnAGNDelClick(sender, e, lbAGGetQuest, "get"); };
+
+            listBoxQT.DisplayMember = "Name";
+            listBoxQT.ValueMember = "id";
+            
+
+            listBoxTarget.DisplayMember = "Name";
+            listBoxTarget.ValueMember = "id";
+            fillAutogeneratorTab();
+        }
+
+        private void onBtnAGChangeClick(object sender, EventArgs e, ListBox list, bool is_title, string type_dialog)
+        {
+
+            if (list.SelectedItem == null)
+            {
+                MessageBox.Show("Не выделен диалог для изменения");
+                return;
+            }
+            string text = list.SelectedItem.ToString();
+            int nature_id = NPCNatures.getNatureByName(cbNPCNature.SelectedItem.ToString());
+
+            DialogLocal tmp = null;
+            List<DialogLocal> dialogs;
+            if (is_title)
+                dialogs = QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].titles;
+            else
+                dialogs = QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].texts;
+
+            foreach (var i in dialogs)
+            {
+                if (i.text == text) { tmp = i; break; };
+            }
+            if (tmp == null) return;
+            Forms.InputBox input = new Forms.InputBox("Change:", text);
+            DialogResult result = input.ShowDialog();
+            if (result != DialogResult.OK) return;
+            tmp.text = input.getResult();
+            tmp.version += 1;
+            isDirty = true;
+            cbNPCNature_SelectedIndexChanged(sender, e);
+        }
+
+        private void onBtnAGNChangeClick(object sender, EventArgs e, ListBox list, string type_dialog)
+        {
+            if (list.SelectedItem == null)
+            {
+                MessageBox.Show("Не выделен диалог для изменения");
+                return;
+            }
+            string text = list.SelectedItem.ToString();
+
+            DialogLocal tmp = null;
+            List<DialogLocal> dialogs;
+            dialogs = QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].titles;
+
+            foreach (var i in dialogs)
+            {
+                if (i.text == text) { tmp = i; break; };
+            }
+            if (tmp == null) return;
+            Forms.InputBox input = new Forms.InputBox("Change:", text);
+            DialogResult result = input.ShowDialog();
+            if (result != DialogResult.OK) return;
+            tmp.text = input.getResult();
+            tmp.version += 1;
+            isDirty = true;
+            cbNPCNature_SelectedIndexChanged(sender, e);
+        }
+
+        private void onBtnAGNAddClick(object sender, EventArgs e, ListBox list, string type)
+        {
+            Forms.InputBox input = new Forms.InputBox("Add:", "");
+            DialogResult result = input.ShowDialog();
+            if (result != DialogResult.OK) return;
+            isDirty = QAutogenDatacs.addDialog(0, input.getResult(), type, true);
+            cbNPCNature_SelectedIndexChanged(sender, e);
+        }
+
+        private void onBtnAGNDelClick(object sender, EventArgs e, ListBox list, string type)
+        {
+            if (list.SelectedItem == null)
+            {
+                MessageBox.Show("Не выделен диалог для удаления");
+                return;
+            }
+            string text = list.SelectedItem.ToString();
+            DialogResult result = MessageBox.Show("Вы уверены, что сейчас хотите удалить фразу? [" + text + "]", "Внимание", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes) return;
+
+            int frase_id = QAutogenDatacs.getFraseIDByText(text, true);
+            if (frase_id == -1)
+            {
+                MessageBox.Show("Ошибка удаления фразы");
+                return;
+            }
+            isDirty = QAutogenDatacs.removeDialog(0, frase_id, type, true);
+            if (!isDirty)
+            {
+                MessageBox.Show("Ошибка удаления фразы. Что-то пошло не так");
+            }
+            cbNPCNature_SelectedIndexChanged(sender, e);
+        }
+
+
+        private void onBtnAGAddClick(object sender, EventArgs e, ListBox list, bool is_title, string type)
+        {
+            if (cbNPCNature.SelectedItem == null)
+            {
+                MessageBox.Show("Не выбран характер");
+                return;
+            }
+            int nature_id = NPCNatures.getNatureByName(cbNPCNature.SelectedItem.ToString());
+            Forms.InputBox input = new Forms.InputBox("Add:", "");
+            DialogResult result = input.ShowDialog();
+            if (result != DialogResult.OK) return;
+            isDirty = QAutogenDatacs.addDialog(nature_id, input.getResult(), type, is_title);
+            if (!isDirty)
+            {
+                MessageBox.Show("Ошибка добавления фразы. Что-то пошло не так");
+            }
+            cbNPCNature_SelectedIndexChanged(sender, e);
+        }
+
+        private void onBtnAGDelClick(object sender, EventArgs e, ListBox list, bool is_title, string type)
+        {
+            if (list.SelectedItem == null)
+            {
+                MessageBox.Show("Не выделен диалог для удаления");
+                return;
+            }
+            string text = list.SelectedItem.ToString();
+            DialogResult result = MessageBox.Show("Вы уверены, что сейчас хотите удалить фразу? [" + text + "]", "Внимание", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes) return;
+
+            int nature_id = NPCNatures.getNatureByName(cbNPCNature.SelectedItem.ToString());
+            int frase_id = QAutogenDatacs.getFraseIDByText(text, is_title);
+            if (frase_id == -1)
+            {
+                MessageBox.Show("Ошибка удаления фразы");
+                return;
+            }
+            isDirty = QAutogenDatacs.removeDialog(nature_id, frase_id, type, is_title);
+            if (!isDirty)
+            {
+                MessageBox.Show("Ошибка удаления фразы. Что-то пошло не так");
+            }
+            cbNPCNature_SelectedIndexChanged(sender, e);
+        }
+
+
+
+        private void cbNPCNature_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var i in new List<ListBox>() { lbAGOnTest, lbAGOnTest2, lbAGClosed, lbAGClosed2, lbAGOpened, lbAGOpened2,
+                                                    lbAGAcceptQuest, lbAGDeclineQuest, lbAGGetQuest})
                 i.Items.Clear();
 
-            foreach(var i in dialogs.ontest.Text)
-                lbAGOnTest2.Items.Add(i.Key.ToString() + " " + i.Value);
-            foreach (var i in dialogs.ontest.Titles)
-                lbAGOnTest.Items.Add(i.Key.ToString() + " " + i.Value);
+            foreach (var i in QAutogenDatacs.data_dialogs.netral.yes)
+                lbAGAcceptQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+            foreach (var i in QAutogenDatacs.data_dialogs.netral.no)
+                lbAGDeclineQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+            foreach (var i in QAutogenDatacs.data_dialogs.netral.work)
+                lbAGGetQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
 
-            foreach (var i in dialogs.opened.Text)
-                lbAGOpened2.Items.Add(i.Key.ToString() + " " + i.Value);
-            foreach (var i in dialogs.opened.Titles)
-                lbAGOpened.Items.Add(i.Key.ToString() + " " + i.Value);
 
-            foreach (var i in dialogs.failed.Text)
-                lbAGClosed2.Items.Add(i.Key.ToString() + " " + i.Value);
-            foreach (var i in dialogs.failed.Titles)
-                lbAGClosed.Items.Add(i.Key.ToString() + " " + i.Value);
+            int nature_id = NPCNatures.getNatureByName(cbNPCNature.SelectedItem.ToString());
+            if (nature_id < 0)
+                return;
+            var _dialogs = QAutogenDatacs.data_dialogs.get_nature(nature_id);
 
+            
+
+            foreach (var i in _dialogs.dialogs_ontest.texts)
+                lbAGOnTest2.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTextByID(Convert.ToInt32(i)));
+            foreach (var i in _dialogs.dialogs_ontest.titles)
+                lbAGOnTest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+
+            foreach (var i in _dialogs.dialogs_opened.texts)
+                lbAGOpened2.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTextByID(Convert.ToInt32(i)));
+            foreach (var i in _dialogs.dialogs_opened.titles)
+                lbAGOpened.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+
+            foreach (var i in _dialogs.dialogs_closed.texts)
+                lbAGClosed2.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTextByID(Convert.ToInt32(i)));
+            foreach (var i in _dialogs.dialogs_closed.titles)
+                lbAGClosed.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+
+            
         }
 
         private void listBoxQT_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBoxTarget.Items.Clear();
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            foreach (var i in quest_type.targets)
-            {
-                listBoxTarget.Items.Add(i.name);
-            }
 
+            int id = (int)listBoxQT.SelectedValue;
+
+            
+
+            List<ListBoxItem> list = new List<ListBoxItem>();
+            if (QAutogenDatacs.data_quests.ContainsKey(currentNPC))
+            {
+                AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(id);
+                foreach (var i in quest_type.targets)
+                {
+                    string name = QAutogenDatacs.locals_quests[CSettings.getCurrentLocale()].getTextByID(currentNPC, id, i.id);
+                    list.Add(new ListBoxItem(i.id, name));
+                }
+            }
+            listBoxTarget.DataSource = list;
+            
             if (listBoxTarget.Items.Count > 0)
                 listBoxTarget.SelectedIndex = 0;
         }
@@ -61,35 +292,31 @@ namespace StalkerOnlineQuesterEditor
 
         private void btnChange_Click(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            int target_type = QAutogenDatacs.data[currentNPC].getQuestTargetByName(quest_type.id, listBoxTarget.SelectedItem.ToString());
-
-            AddListElementForm form = new AddListElementForm((ElementType)quest_type.id, quest_type.getTargetByType(target_type), this);
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            int target_type = (int)listBoxTarget.SelectedValue;
+            string name = QAutogenDatacs.locals_quests[CSettings.getCurrentLocale()].getTextByID(currentNPC, quest_type.id, target_type);
+            AddListElementForm form = new AddListElementForm((ElementType)quest_type.id, quest_type.getTargetByType(target_type), name, this);
             DialogResult result = form.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                quest_type.setTargetByType(target_type, form.getData());
-                isDirty = true;
+                isDirty = QAutogenDatacs.changeQuestTarget(currentNPC, quest_type.id, target_type, form.getName());               
             }
 
             fillAutogeneratorTab();
-
-
         }
 
         private void btnAddTarget_Click(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            AddListElementForm form = new AddListElementForm((ElementType)quest_type.id, null, this);
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            AddListElementForm form = new AddListElementForm((ElementType)quest_type.id, null, "", this);
             DialogResult result = form.ShowDialog();
 
             if (result == DialogResult.OK)
             {
                 var new_target = form.getData();
-                new_target.id = quest_type.getNewTargetID();
-                quest_type.setTargetByType(new_target.id, new_target);
-                isDirty = true;
+                var text = form.getName();
+                isDirty = QAutogenDatacs.addQuestTarget(currentNPC, (int)listBoxQT.SelectedValue, text, new_target);
             }
             fillAutogeneratorTab();
         }
@@ -99,24 +326,14 @@ namespace StalkerOnlineQuesterEditor
         {
             DialogResult result = MessageBox.Show("Вы уверены, что сейчас хотите удалить тип цели?", "Внимание", MessageBoxButtons.YesNo);
             if (result != DialogResult.Yes) return;
-
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            int target_type = QAutogenDatacs.data[currentNPC].getQuestTargetByName(quest_type.id, listBoxTarget.SelectedItem.ToString());
-            if (target_type == 0)
-            {
-                MessageBox.Show("Ошибка");
-                return;
-            }
-
-            quest_type.deleteTarget(target_type);
-            isDirty = true;
+            isDirty = QAutogenDatacs.deleteQuestTarget(currentNPC, (int)listBoxQT.SelectedValue, (int)listBoxTarget.SelectedValue);
             fillAutogeneratorTab();
         }
 
 
         private void btnAddQType_Click(object sender, EventArgs e)
         {
-            if (QAutogenDatacs.data.ContainsKey(currentNPC) && QAutogenDatacs.data[currentNPC].data.Count == QAutogenDatacs.QuestTypes.Count)
+            if (QAutogenDatacs.data_quests.ContainsKey(currentNPC) && QAutogenDatacs.data_quests[currentNPC].data.Count == QAutogenDatacs.QuestTypes.Count)
             {
                 MessageBox.Show("Все возможные типы уже добавлены", "Внимание");
                 return;
@@ -125,11 +342,11 @@ namespace StalkerOnlineQuesterEditor
             AutogenTarget data = new AutogenTarget();
             foreach(var i in QAutogenDatacs.QuestTypes.Keys)
                 data.counts.Add(i);
-            if (QAutogenDatacs.data.ContainsKey(currentNPC))
-                foreach (var i in QAutogenDatacs.data[currentNPC].data)
+            if (QAutogenDatacs.data_quests.ContainsKey(currentNPC))
+                foreach (var i in QAutogenDatacs.data_quests[currentNPC].data)
                     data.counts.Remove(i.id);
 
-            AddListElementForm form = new AddListElementForm(ElementType.None, data, this);
+            AddListElementForm form = new AddListElementForm(ElementType.None, data, "", this);
             DialogResult result = form.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -139,12 +356,10 @@ namespace StalkerOnlineQuesterEditor
                 {
                     AutogenQuestType new_type = new AutogenQuestType();
                     new_type.id = i;
-                    new_type.name = QAutogenDatacs.QuestTypes[i];
-
-                    if (!QAutogenDatacs.data.ContainsKey(currentNPC))
-                        QAutogenDatacs.data.Add(currentNPC, new AutogenQuestData());
-                    QAutogenDatacs.data[currentNPC].data.Add(new_type);
-
+                    
+                    if (!QAutogenDatacs.data_quests.ContainsKey(currentNPC))
+                        QAutogenDatacs.data_quests.Add(currentNPC, new AutogenQuestData());
+                    QAutogenDatacs.data_quests[currentNPC].data.Add(new_type);
                 }
                 isDirty = true;
             }
@@ -156,8 +371,8 @@ namespace StalkerOnlineQuesterEditor
             DialogResult result = MessageBox.Show("Вы уверены, что сейчас хотите удалить тип квеста?", "Внимание", MessageBoxButtons.YesNo);
             if (result != DialogResult.Yes) return;
 
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            QAutogenDatacs.data[currentNPC].data.Remove(quest_type);
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            QAutogenDatacs.data_quests[currentNPC].data.Remove(quest_type);
             fillAutogeneratorTab();
             isDirty = true;
         }
@@ -170,8 +385,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void listBoxTarget_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            int target_type = QAutogenDatacs.data[currentNPC].getQuestTargetByName(quest_type.id, listBoxTarget.SelectedItem.ToString());
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            int target_type = (int)listBoxTarget.SelectedValue;
 
             AutogenTarget t = quest_type.getTargetByType(target_type);
 
@@ -194,8 +409,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void nupFromTargetCount_ValueChanged(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            int target_type = QAutogenDatacs.data[currentNPC].getQuestTargetByName(quest_type.id, listBoxTarget.SelectedItem.ToString());
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            int target_type = (int)listBoxTarget.SelectedValue;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             isDirty = true;
             if (t.counts.Count < 1)
@@ -209,8 +424,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void nupToTargetCount_ValueChanged(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            int target_type = QAutogenDatacs.data[currentNPC].getQuestTargetByName(quest_type.id, listBoxTarget.SelectedItem.ToString());
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            int target_type = (int)listBoxTarget.SelectedValue;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             isDirty = true;
             if (t.counts.Count < 1)
@@ -224,15 +439,15 @@ namespace StalkerOnlineQuesterEditor
 
         private void btnAddReward_Click(object sender, EventArgs e)
         {
-            AddListElementForm form = new AddListElementForm(ElementType.Reward, null, this);
+            AddListElementForm form = new AddListElementForm(ElementType.Reward, null, "", this);
             DialogResult result = form.ShowDialog();
 
             if (result != DialogResult.OK)
             {
                 return;
             }
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            int target_type = QAutogenDatacs.data[currentNPC].getQuestTargetByName(quest_type.id, listBoxTarget.SelectedItem.ToString());
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            int target_type = (int)listBoxTarget.SelectedValue;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             isDirty = true;
             AutogenTarget a = form.getData();
@@ -245,8 +460,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void btnDelReward_Click(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            int target_type = QAutogenDatacs.data[currentNPC].getQuestTargetByName(quest_type.id, listBoxTarget.SelectedItem.ToString());
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            int target_type = (int)listBoxTarget.SelectedValue;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             t.rewards.RemoveAt(listBoxReward.SelectedIndex);
             isDirty = true;
@@ -255,8 +470,8 @@ namespace StalkerOnlineQuesterEditor
 
         private void btnChangeReward_Click(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data[currentNPC].getQuestTypeByName(listBoxQT.SelectedItem.ToString());
-            int target_type = QAutogenDatacs.data[currentNPC].getQuestTargetByName(quest_type.id, listBoxTarget.SelectedItem.ToString());
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            int target_type = (int)listBoxTarget.SelectedValue;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             Reward reward = t.rewards[listBoxReward.SelectedIndex];
 
@@ -264,7 +479,7 @@ namespace StalkerOnlineQuesterEditor
             a.id = reward.exp;
             a.int_param = reward.money;
             isDirty = true;
-            AddListElementForm form = new AddListElementForm(ElementType.Reward, a, this);
+            AddListElementForm form = new AddListElementForm(ElementType.Reward, a, "", this);
             DialogResult result = form.ShowDialog();
 
             if (result != DialogResult.OK)
@@ -279,5 +494,45 @@ namespace StalkerOnlineQuesterEditor
             listBoxTarget_SelectedIndexChanged(sender, e);
         }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbNPCNature_SelectedIndexChanged(sender, e);
+        }
+
+        protected class ListBoxItem
+        {
+            public int id;
+            public string name;
+
+            public ListBoxItem(int id, string name)
+            {
+                this.id = id; this.name = name;
+            }
+
+            public string Name
+            {
+                get
+                {
+                    return name;
+                }
+            }
+
+            public int Id
+            {
+
+                get
+                {
+                    return id;
+                }
+            }
+
+            public static explicit operator int(ListBoxItem x)
+            { 
+                return x.id;
+            }
+        }
+
     }
+
+    
 }

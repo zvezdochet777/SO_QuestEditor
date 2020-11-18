@@ -112,7 +112,7 @@ namespace StalkerOnlineQuesterEditor
             countOfTextNoSpaces = 0;
             countOfDialogs = 0;
 
-            loc = dialogs.locales[parent.settings.getCurrentLocale()];
+            loc = dialogs.locales[CSettings.getCurrentLocale()];
             locDialogs = 0;
             locTitle = 0;
             locText = 0;
@@ -154,7 +154,7 @@ namespace StalkerOnlineQuesterEditor
             locQuestCount = 0;
             locQuestText = 0;
             locQuestSpaceless = 0;
-            locQuests = quests.locales[parent.settings.getCurrentLocale()];
+            locQuests = quests.locales[CSettings.getCurrentLocale()];
             topLevelQuests = quests.getCountTopLevelQuests();
             foreach (CQuest quest in quests.quest.Values)
             {

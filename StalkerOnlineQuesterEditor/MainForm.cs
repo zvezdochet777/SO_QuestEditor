@@ -86,7 +86,6 @@ namespace StalkerOnlineQuesterEditor
         public ListSounds listSouds;
         public NPCItems npcItems;
 
-        public CSettings settings;
         public COperNotes manageNotes;
         public CFracConstants fractions;
         public SkillConstants skills;
@@ -97,7 +96,7 @@ namespace StalkerOnlineQuesterEditor
         public CTutorialConstants tutorialPhases;
         public int currentQuest;
         public Dictionary<string, bool> npcFilters;
-        public Dictionary<string, Dictionary<string, AutoGenDialog>> autogenDialogs;
+        //public Dictionary<string, Dictionary<string, AutoGenDialog>> autogenDialogs;
 
         public CKnowledgeConstans knowledgeCategory;
         IOClasses.TCPListener tcpListener;
@@ -106,7 +105,7 @@ namespace StalkerOnlineQuesterEditor
         public MainForm(string[] args)
         {
             InitializeComponent();
-            QAutogenDatacs.Load();
+            
             spacesConst = new CSpacesConstants();
             dungeonConst = new CDungeonSpacesConstants();
             RectManager = new RectangleManager();
@@ -116,7 +115,8 @@ namespace StalkerOnlineQuesterEditor
             ZoomHandler = new ZoomEventHandler();
             HoverHandler = new MouseHoverHandler(this, RectManager);
             RectManager.LoadData();
-            settings = new CSettings(this);
+            CSettings.init(this);
+            QAutogenDatacs.Load();
             ManagerNPC = new CManagerNPC();
             dialogEvents = new DialogEventsList();
             dialogs = new CDialogs(this, ManagerNPC);
@@ -131,7 +131,7 @@ namespace StalkerOnlineQuesterEditor
             npcItems = new NPCItems();
             listSouds = new ListSounds();
             npcFilters = ManagerNPC.getSpaces();
-            settings.checkMode();
+            CSettings.checkMode();
             tutorialPhases = new CTutorialConstants();
             tree = treeDialogs;
             questConst = new CQuestConstants();
@@ -149,8 +149,8 @@ namespace StalkerOnlineQuesterEditor
             effects = new CEffectConstants();
             CPVPConstans.Load();
             knowledgeCategory = new CKnowledgeConstans();
-            
 
+            
             treeQuest.AfterSelect += new TreeViewEventHandler(this.treeQuestSelected);
             //fillNPCBox();
             fillLocationsBox();
@@ -159,7 +159,8 @@ namespace StalkerOnlineQuesterEditor
             fractionBox.SelectedIndex = 0;
 
             fillFractionsInManageTab();
-            fillAutogeneratorTab();
+            AGInit();
+            
             DialogShower.AddInputEventListener(Listener);
             DialogShower.AddInputEventListener(RectDrawer);
             DialogShower.AddInputEventListener(PanHandler);
@@ -195,7 +196,7 @@ namespace StalkerOnlineQuesterEditor
                 Thread t = new Thread(() => this.openNPC(args[0].Replace("/", "")));
                 t.Start();
             }
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(settings.getLanguage());
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(CSettings.getLanguage());
             ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
             ApplyResourceToControl(resources, this);
 
@@ -241,7 +242,7 @@ namespace StalkerOnlineQuesterEditor
                 string npc_name = (NPCBox.Items[i] as NPCNameDataSourceObject).Value;
                 if (npc_name == open_npc_name)
                 {
-                    settings.setLastNpcIndex(index);
+                    CSettings.setLastNpcIndex(index);
                     Console.WriteLine("NPC::" + index.ToString() + " " + npc_name);
 
                     if (NPCBox.InvokeRequired)
@@ -368,7 +369,7 @@ namespace StalkerOnlineQuesterEditor
                 if (dialogs.dialogs.Keys.Contains(text))
                     return;
                 string name = "";
-                if (settings.getMode() == settings.MODE_EDITOR)
+                if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 {
                     /*
                     if (ManagerNPC.rusNamesToNPC.ContainsKey(text))
@@ -381,7 +382,7 @@ namespace StalkerOnlineQuesterEditor
                         NPCBox.SelectedValue = FakeNPCBox.Items[0].ToString().Split('(')[0];
                     FakeNPCBox.DroppedDown = false;
                 }
-                else if (settings.getMode() == settings.MODE_LOCALIZATION)
+                else if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
                 {
                     if (ManagerNPC.engNamesToNPC.ContainsKey(text))
                     {
@@ -407,14 +408,14 @@ namespace StalkerOnlineQuesterEditor
             QuestBox.Items.Clear();
             if (!onlyDialogs)
             {
-                if (settings.getMode() == settings.MODE_EDITOR)
+                if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 {
                     foreach (CQuest quest in quests.getQuestAndTitleOnNPCName(currentNPC))
                         QuestBox.Items.Add(quest.QuestID + ": " + quest.QuestInformation.Title);
                 }
-                else if (settings.getMode() == settings.MODE_LOCALIZATION)
+                else if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
                 {
-                    string locale = settings.getCurrentLocale();
+                    string locale = CSettings.getCurrentLocale();
                     foreach (CQuest quest in quests.getQuestAndTitleOnNPCName(currentNPC))
                     {
                         int id = quest.QuestID;
@@ -479,9 +480,9 @@ namespace StalkerOnlineQuesterEditor
                 string localName = "";
                 if (ManagerNPC.NpcData.ContainsKey(holder))
                 {
-                    if (settings.getMode() == settings.MODE_EDITOR)
+                    if (CSettings.getMode() == CSettings.MODE_EDITOR)
                         localName = ManagerNPC.NpcData[holder].rusName;
-                    else if (settings.getMode() == settings.MODE_LOCALIZATION)
+                    else if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
                         localName = ManagerNPC.NpcData[holder].engName;
 
                     //NPCBox.AutoCompleteCustomSource.Add(localName);
@@ -496,9 +497,9 @@ namespace StalkerOnlineQuesterEditor
             NPCBox.ValueMember = "Value";
             NPCBox.DataSource = npcNames;
             NPCBox.Update();
-            if (npcNames.Count <= settings.getLastNpcIndex())
-                settings.setLastNpcIndex(npcNames.Count - 1);
-            NPCBox.SelectedIndex = settings.getLastNpcIndex();
+            if (npcNames.Count <= CSettings.getLastNpcIndex())
+                CSettings.setLastNpcIndex(npcNames.Count - 1);
+            NPCBox.SelectedIndex = CSettings.getLastNpcIndex();
             //NPCBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             //NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
             QuestBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -552,7 +553,10 @@ namespace StalkerOnlineQuesterEditor
                 case 8:     // Вкладка знания
                     updateKnowledgeTab();
                     break;
-                
+                case 9:
+                    fillAutogeneratorTab();
+                    break;
+
             }
         }
 
@@ -648,7 +652,7 @@ namespace StalkerOnlineQuesterEditor
         //! Удаление диалога в зависимости от статуса - в корзину или навсегда
         private void bRemoveDialog_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
             {
                 if (selectedItemType == SelectedItemType.dialog)
                 {
@@ -668,7 +672,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bRemoveFracDialog_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
             {
                 if (selectedItemType == SelectedItemType.dialog)
                 {
@@ -731,7 +735,7 @@ namespace StalkerOnlineQuesterEditor
         //! Добавляет поддиалог к текущему диалогу
         private void bAddDialog_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
             {
                 if (!treeDialogs.SelectedNode.ToString().Equals("Recycle") && !treeDialogs.SelectedNode.ToString().Equals("Active"))
                 {
@@ -751,7 +755,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bAddFracDialog_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
             {
                 if (!treeFractionDialogs.SelectedNode.ToString().Equals("Recycle") && !treeFractionDialogs.SelectedNode.ToString().Equals("Active"))
                 {
@@ -782,7 +786,7 @@ namespace StalkerOnlineQuesterEditor
             if (selectedItemType == SelectedItemType.dialog)
             {
                 if (tree.SelectedNode == null) return;
-                if (settings.getMode() == settings.MODE_EDITOR)
+                if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 {
                     EditDialogForm editDialogForm = new EditDialogForm(false, this, int.Parse(tree.SelectedNode.Text));
                     editDialogForm.Visible = true;
@@ -809,8 +813,8 @@ namespace StalkerOnlineQuesterEditor
                 if (dialog.Actions.ToDialog == dialogID)
                     dialog.Actions.ToDialog = 0;
             // удаляем диалог из переводов
-            locales[settings.getListLocales()[0]][currentNPC].Remove(dialogID);
-            foreach (CDialog dialog in locales[settings.getListLocales()[0]][currentNPC].Values)
+            locales[CSettings.getListLocales()[0]][currentNPC].Remove(dialogID);
+            foreach (CDialog dialog in locales[CSettings.getListLocales()[0]][currentNPC].Values)
                 if (dialog.Actions.ToDialog == dialogID)
                     dialog.Actions.ToDialog = 0;
 
@@ -1007,7 +1011,7 @@ namespace StalkerOnlineQuesterEditor
                 curNode.Nodes.Add("", "");
             }
             //if (!questConst.isSimple(curQuest.Target.QuestType) && (curQuest.Additional.ListOfSubQuest.Any()))
-            if ((!questConst.isSimple(curQuest.Target.QuestType) || settings.getMode() == settings.MODE_LOCALIZATION)
+            if ((!questConst.isSimple(curQuest.Target.QuestType) || CSettings.getMode() == CSettings.MODE_LOCALIZATION)
                     && (curQuest.Additional.ListOfSubQuest.Any()))
                 foreach (int subquest in curQuest.Additional.ListOfSubQuest)
                     addNodeOnTreeQuest(subquest);
@@ -1132,7 +1136,7 @@ namespace StalkerOnlineQuesterEditor
             if (currentQuest == 0) return;
             bCopyEvents.Enabled = true;
 
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
             {
                 if (getQuestOnQuestID(currentQuest).Additional.IsSubQuest == 0)
                 {
@@ -1185,7 +1189,7 @@ namespace StalkerOnlineQuesterEditor
                 Dictionary<int, CDialog> engDialog = new Dictionary<int, CDialog>();
                 engDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(), new List<int>(),
                         dialogID, 0, nc));
-                dialogs.locales[settings.getListLocales()[0]].Add(Name, engDialog);
+                dialogs.locales[CSettings.getListLocales()[0]].Add(Name, engDialog);
                 fillNPCBox();
                 NPCBox.SelectedValue = Name;
                 npcConst.NPCs.Add(Name, new CNPCDescription(Name));
@@ -1208,10 +1212,10 @@ namespace StalkerOnlineQuesterEditor
             foreach (int item in removedQuests)
             {
                 quests.quest.Remove(item);
-                quests.locales[settings.getListLocales()[0]].Remove(item);
+                quests.locales[CSettings.getListLocales()[0]].Remove(item);
             }
             dialogs.dialogs.Remove(currentNPC);
-            dialogs.locales[settings.getListLocales()[0]].Remove(currentNPC);
+            dialogs.locales[CSettings.getListLocales()[0]].Remove(currentNPC);
             dialogs.deleted_NPC.Add(currentNPC);
             currentNPC = "";
             fillNPCBox();
@@ -1284,7 +1288,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 return quests.last_quest_id;
             }
-            int iFirstQuestID = 1 + this.settings.getOperatorNumber() * 400;
+            int iFirstQuestID = 1 + CSettings.getOperatorNumber() * 400;
             for (int questi = iFirstQuestID; ; questi++)
                 if (!quests.quest.Keys.Contains(questi) && !quests.m_Buffer.Keys.Contains(questi) && !quests.deletedQuests.Contains(questi))
                     return questi;
@@ -1297,7 +1301,7 @@ namespace StalkerOnlineQuesterEditor
             quests.quest.Add(newQuest.QuestID, newQuest);
             CQuest engQuest = new CQuest();
             engQuest = (CQuest)newQuest.Clone();
-            quests.locales[settings.getListLocales()[0]].Add(engQuest.QuestID, engQuest);
+            quests.locales[CSettings.getListLocales()[0]].Add(engQuest.QuestID, engQuest);
 
             QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
             QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
@@ -1312,8 +1316,8 @@ namespace StalkerOnlineQuesterEditor
 
             CQuest engQuest = new CQuest();
             engQuest = (CQuest)quest.Clone();
-            quests.locales[settings.getListLocales()[0]][parent].Additional.ListOfSubQuest.Add(engQuest.QuestID);
-            quests.locales[settings.getListLocales()[0]].Add(engQuest.QuestID, engQuest);
+            quests.locales[CSettings.getListLocales()[0]][parent].Additional.ListOfSubQuest.Add(engQuest.QuestID);
+            quests.locales[CSettings.getListLocales()[0]].Add(engQuest.QuestID, engQuest);
 
             checkQuestButton(quest.Target.QuestType, quest.QuestID);
             addNodeOnTreeQuest(quest.QuestID);
@@ -1328,7 +1332,7 @@ namespace StalkerOnlineQuesterEditor
             //quests.quest[quest.QuestID] = quest;
             quests.replaceQuest(quest);
             if (quests.quest.Keys.Contains(quest.QuestID))
-                quests.locales[settings.getListLocales()[0]][quest.QuestID].InsertNonTextData(quest);
+                quests.locales[CSettings.getListLocales()[0]][quest.QuestID].InsertNonTextData(quest);
             checkQuestButton(quest.Target.QuestType, quest.QuestID);
             this.isDirty = true;
         }
@@ -1342,7 +1346,7 @@ namespace StalkerOnlineQuesterEditor
         //! Правка квеста, в зависимости от режима вызывается окно правки или окно перевода
         private void bEditEvent_Click(object sender, EventArgs e)
         {
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
             {
                 if (getQuestOnQuestID(currentQuest).Additional.IsSubQuest == 0)
                 {
@@ -1368,7 +1372,7 @@ namespace StalkerOnlineQuesterEditor
         void saveData()
         {
             this.Enabled = false;
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
             {
                 dialogs.SaveDialogs();
                 CFractionDialogs.SaveDialogs();
@@ -1402,12 +1406,12 @@ namespace StalkerOnlineQuesterEditor
                     quests.quest[getQuestOnQuestID(questID).Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
 
             // удаляем квест из локализаций
-            CQuest english = quests.locales[settings.getListLocales()[0]][questID];
+            CQuest english = quests.locales[CSettings.getListLocales()[0]][questID];
             foreach (int subquest in english.Additional.ListOfSubQuest)
                 removeQuest(subquest, true);
             if (english.Additional.IsSubQuest != 0)
-                quests.locales[settings.getListLocales()[0]][english.Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
-            quests.locales[settings.getListLocales()[0]].Remove(questID);
+                quests.locales[CSettings.getListLocales()[0]][english.Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
+            quests.locales[CSettings.getListLocales()[0]].Remove(questID);
 
             treeQuest.Nodes.Find(questID.ToString(), true)[0].Remove();
             quests.addDeletedQuests(questID);
@@ -1435,7 +1439,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
             int id = parent.QuestID;
-            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
+            quests.locales[CSettings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
         }
         //! Перемещение квеста вниз по дереву квестов
         private void bQuestDown_Click(object sender, EventArgs e)
@@ -1458,7 +1462,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
             int id = parent.QuestID;
-            quests.locales[settings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
+            quests.locales[CSettings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
         }
 
         void findAndSelectNodeOnTreeQuest(int questID)
@@ -1917,24 +1921,24 @@ namespace StalkerOnlineQuesterEditor
 
         public CDialog getLocaleDialog(int dialogID, string npcName)
         {
-            var locale = settings.getCurrentLocale();
+            var locale = CSettings.getCurrentLocale();
             return CDialogs.getLocaleDialog(dialogID, locale, npcName, this.dialogs.locales);
         }
 
         public void addLocaleDialog(CDialog dialog)
         {
-            this.dialogs.addLocaleDialog(dialog, settings.getCurrentLocale());
+            this.dialogs.addLocaleDialog(dialog, CSettings.getCurrentLocale());
         }
 
         public CQuest getLocaleQuest(int questID)
         {
-            var locale = settings.getCurrentLocale();
+            var locale = CSettings.getCurrentLocale();
             return quests.getLocaleQuest(questID, locale);
         }
 
         public void addLocaleQuest(CQuest quest)
         {
-            var locale = settings.getCurrentLocale();
+            var locale = CSettings.getCurrentLocale();
             this.quests.addLocaleQuest(quest, locale);
         }
 
@@ -1942,7 +1946,7 @@ namespace StalkerOnlineQuesterEditor
         public void onChangeMode()
         {
             int currentNpcIndex = NPCBox.SelectedIndex;
-            if (settings.getMode() == settings.MODE_LOCALIZATION)
+            if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
             {
                 for (int i = 4; i < CentralDock.TabPages.Count; i++)
                 {
@@ -1977,8 +1981,8 @@ namespace StalkerOnlineQuesterEditor
             FindType findType = (FindType)(actual + (outdated << 1));
             this.translate_checker = 1;
             dgvLocaleDiff.Rows.Clear();
-            string loc = settings.getCurrentLocale();
-            var diff = dialogs.getDialogDifference(settings.getCurrentLocale(), findType);
+            string loc = CSettings.getCurrentLocale();
+            var diff = dialogs.getDialogDifference(CSettings.getCurrentLocale(), findType);
             var type = "Диалог";
             int count = 0;
 
@@ -2023,8 +2027,8 @@ namespace StalkerOnlineQuesterEditor
             FindType findType = (FindType)(actual + (outdated << 1));
             this.translate_checker = 2;
             dgvLocaleDiff.Rows.Clear();
-            string loc = settings.getCurrentLocale();
-            var diff = quests.getQuestDifference(settings.getCurrentLocale(), findType);
+            string loc = CSettings.getCurrentLocale();
+            var diff = quests.getQuestDifference(CSettings.getCurrentLocale(), findType);
             var type = "Квест";
             int count = 0;
 
@@ -2276,7 +2280,7 @@ namespace StalkerOnlineQuesterEditor
         private void bStartSearch_Click(object sender, EventArgs e)
         {
             int count = 0;
-            string locale = settings.getCurrentLocale();
+            string locale = CSettings.getCurrentLocale();
             string textToFind = tbPhraseToSearch.Text;
             string rusText = "";
             string engText = "";
@@ -2343,7 +2347,7 @@ namespace StalkerOnlineQuesterEditor
             string type = dgvSearch.Rows[index].Cells[0].Value.ToString();
             if (type == "Квест")
             {
-                if (settings.getMode() == settings.MODE_EDITOR)
+                if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 {
                     int mode = (quests.quest[id].Additional.IsSubQuest == 0) ? (2) : (3);
                     EditQuestForm editQuestForm = new EditQuestForm(this, id, mode);
@@ -2357,7 +2361,7 @@ namespace StalkerOnlineQuesterEditor
             }
             else if (type == "Диалог")
             {
-                if (settings.getMode() == settings.MODE_EDITOR)
+                if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 {
                     EditDialogForm editDialogForm = new EditDialogForm(false, this, id);
                     editDialogForm.Visible = true;
@@ -2374,7 +2378,7 @@ namespace StalkerOnlineQuesterEditor
         //! Пункт главного меню - открытие папки с данными 
         private void ExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String path = System.IO.Path.GetDirectoryName(settings.GetDialogDataPath());
+            String path = System.IO.Path.GetDirectoryName(CSettings.GetDialogDataPath());
             System.Diagnostics.Process.Start(path);
         }
         //! Пункт главного меню - сохранение всех данных
@@ -2393,7 +2397,7 @@ namespace StalkerOnlineQuesterEditor
         private void SynchroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //синхронизация диалогов
-            string loc = settings.getCurrentLocale();
+            string loc = CSettings.getCurrentLocale();
             int added = 0;
             int copied = 0;
             foreach (string npc in dialogs.dialogs.Keys)
@@ -2627,8 +2631,8 @@ namespace StalkerOnlineQuesterEditor
                     case DialogResult.No: break;
                 }
             }
-            settings.setLastNpcIndex(NPCBox.SelectedIndex);
-            settings.saveSettings();
+            CSettings.setLastNpcIndex(NPCBox.SelectedIndex);
+            CSettings.saveSettings();
             tcpListener.stop();
         }
 
@@ -2758,11 +2762,11 @@ namespace StalkerOnlineQuesterEditor
             }
 
             //Копировать локализацию
-            sourceParh = settings.pathToLocalFiles;
+            sourceParh = CSettings.pathToLocalFiles;
             string locale_path = path + "\\source\\" + "\\local";
             Directory.CreateDirectory(locale_path);
 
-            List<string> locales = new List<string>(settings.getListLocales());
+            List<string> locales = new List<string>(CSettings.getListLocales());
             locales.Add("Russian");
             foreach (string locale in locales)
             {
@@ -2812,7 +2816,7 @@ namespace StalkerOnlineQuesterEditor
 
             string quest_data_path = path + "\\source\\Quests\\";
             string data_path = path + "\\source\\DialogData\\";
-            if (loadFiles(settings.pathQuestDataFiles, quest_data_path) && loadFiles(settings.new_pathDialogsDataFiles, data_path))
+            if (loadFiles(CSettings.pathQuestDataFiles, quest_data_path) && loadFiles(CSettings.new_pathDialogsDataFiles, data_path))
                 MessageBox.Show("QuestEditor готов. Сохранён в " + path, "Успех");
         }
 
@@ -2853,13 +2857,9 @@ namespace StalkerOnlineQuesterEditor
 
         }
 
-        private void tbFindDialogID_TextChanged(object sender, EventArgs e)
+        public void findDialogByID(int finded_dialogID)
         {
-            string text = (sender as TextBox).Text;
-            int finded_dialogID;
             string finded_npcName = "";
-            if (!int.TryParse(text, out finded_dialogID))
-                return;
             foreach (int dialog_id in dialogs.dialogIDList.Keys)
             {
                 if (dialog_id == finded_dialogID)
@@ -2872,6 +2872,16 @@ namespace StalkerOnlineQuesterEditor
 
             openNPC(finded_npcName);
             Listener.SelectCurrentNode(finded_dialogID);
+        }
+
+        private void tbFindDialogID_TextChanged(object sender, EventArgs e)
+        {
+            string text = (sender as TextBox).Text;
+            int finded_dialogID;
+            
+            if (!int.TryParse(text, out finded_dialogID))
+                return;
+            findDialogByID(finded_dialogID);
         }
 
         private int count_the_words(string text)
@@ -2887,7 +2897,7 @@ namespace StalkerOnlineQuesterEditor
         private void вытащитьНепереведённыеТекстыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SynchroToolStripMenuItem_Click(sender, e);
-            string loc = settings.getCurrentLocale();
+            string loc = CSettings.getCurrentLocale();
             string quest_path = "quests_" + loc + ".xlsx";
             string dialog_path = "dialog_" + loc + ".xlsx";
             int all_words = 0;
@@ -3236,7 +3246,7 @@ namespace StalkerOnlineQuesterEditor
         private void русскийToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru-RU");
-            settings.setLanguage("ru-RU");
+            CSettings.setLanguage("ru-RU");
             ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
             ApplyResourceToControl(resources, this);
             ApplyResourceToControl(resources, this.menuMainControl);
@@ -3245,7 +3255,7 @@ namespace StalkerOnlineQuesterEditor
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
-            settings.setLanguage("en");
+            CSettings.setLanguage("en");
             ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
             ApplyResourceToControl(resources, this);
             ApplyResourceToControl(resources, this.menuMainControl);
@@ -3478,6 +3488,12 @@ namespace StalkerOnlineQuesterEditor
             if (!this.currentNPC.Any()) return;
             CheckErrorForm cef = new CheckErrorForm(dialogs, quests, this, this.currentNPC);
             cef.Show();
+        }
+
+        private void поискДиалоговПоQuestIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuestDialogFinderForm form = new QuestDialogFinderForm(this);
+            form.Show();
         }
     }
 }

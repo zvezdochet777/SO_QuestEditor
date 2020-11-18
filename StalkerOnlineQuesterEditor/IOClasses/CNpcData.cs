@@ -6,6 +6,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace StalkerOnlineQuesterEditor
 {
@@ -15,6 +16,7 @@ namespace StalkerOnlineQuesterEditor
         public string engName;
         public string location;
         public string coordinates;
+        public string nature; //характер персонажа
 
         public npc_data(string rn, string en, string loc, string cd)
         {
@@ -22,7 +24,79 @@ namespace StalkerOnlineQuesterEditor
             engName = en;
             location = loc;
             coordinates = cd;
+            nature = "";
         }
+    }
+
+    public static class NPCNatures
+    {
+        public static Dictionary<int, string> nature_id_to_name = new Dictionary<int, string>();
+        public static Dictionary<string, int> npc_natures = new Dictionary<string, int>();
+
+        public static void load_nature_types()
+        {
+            string JSON_PATH = "../../../res/scripts/common/data/AdditionalNPCParametersData.json";
+
+            XDocument doc = XDocument.Load("source/NPCNature.xml");
+            foreach (XElement item in doc.Root.Elements())
+            {
+                try
+                {
+                    nature_id_to_name.Add(int.Parse(item.Element("id").Value.ToString()), item.Element("name").Value.ToString());
+                }
+                catch
+                {
+                    System.Console.WriteLine("Error with item category:" + item.Element("id").Value.ToString());
+                }
+            }
+
+
+            JsonTextReader reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
+            bool inNPC = false;
+            bool is_nature = false;
+            var name = "";
+            int value = -1;
+           
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    if (!inNPC)
+                    {
+                        name = reader.Value.ToString();
+                        inNPC = true;
+                    }
+                    else if ("nature" == reader.Value.ToString())
+                        is_nature = true;
+                }
+                else if (reader.TokenType == JsonToken.EndObject)
+                {
+                    
+                    if (inNPC) inNPC = false;
+                    if (!name.Any()) continue;
+                    if (value < 0)
+                        value = npc_natures["!!default"];
+                    npc_natures.Add(name, value);
+                    name = "";
+
+                }
+                else if (reader.TokenType == JsonToken.Integer)
+                    if (is_nature)
+                    {
+                        is_nature = false;
+                        value = Convert.ToInt32(reader.Value);
+                    }
+            }
+            reader.Close();
+       }
+
+       public static int getNatureByName(string name)
+        {
+            foreach (var i in nature_id_to_name)
+                if (name == i.Value) return i.Key;
+            return -1;
+        }
+
     }
 
     public class CManagerNPC
@@ -37,9 +111,10 @@ namespace StalkerOnlineQuesterEditor
 
         //! Список всех локаций
         public List<string> locationNames = new List<string>();
-
         public CManagerNPC()
         {
+
+            NPCNatures.load_nature_types();
             parseNpcLocationFile("npc_stat.xml");
         }
 
@@ -76,6 +151,13 @@ namespace StalkerOnlineQuesterEditor
                 string rusName = item.Element("npcLocal").Value.ToString();
                 string engName = item.Element("npcEngName").Value.ToString();
                 string coord = item.Element("coord").Value.ToString();
+                string nature;
+                if (NPCNatures.npc_natures.ContainsKey(name))
+                {
+                    nature = NPCNatures.nature_id_to_name[NPCNatures.npc_natures[name]];
+                }
+                else nature = NPCNatures.nature_id_to_name[0];
+
                 if (!NpcData.ContainsKey(name))
                     NpcData.Add(name, new npc_data(rusName, engName, map, coord));
                 if (!mapToNPCList.ContainsKey(map))
@@ -91,7 +173,6 @@ namespace StalkerOnlineQuesterEditor
 
             }
         }
-
     }
 
     //! Класс объекта, хранящий данные о русском и английском имени NPC 

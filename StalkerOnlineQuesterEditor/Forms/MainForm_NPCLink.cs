@@ -109,9 +109,9 @@ namespace StalkerOnlineQuesterEditor
             PText rootText = new PText(name);
             rootText.Text += "\n" + NpcData.location;
             rootText.Text += ", " + NpcData.coordinates;
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 rootText.Text += "\n" + NpcData.rusName;
-            else if (settings.getMode() == settings.MODE_LOCALIZATION)
+            else if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
                 rootText.Text += "\n" + NpcData.engName;
             rootText.Pickable = false;
             rootText.X = Holder.X + 30;

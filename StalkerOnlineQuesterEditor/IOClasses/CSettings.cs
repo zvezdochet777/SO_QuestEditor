@@ -8,57 +8,57 @@ using System.IO;
 namespace StalkerOnlineQuesterEditor
 {
     //! Класс настроек проекта - задается в форме OperatorSettings и хранит все данные в settings.xml
-    public class CSettings
+    public static class CSettings
     {
-        MainForm parent;
+        static MainForm parent;
         //! Номер оператора (???) 
-        int iNumOperator;
+        static int iNumOperator;
         //! Режим - обычный (MODE_SIMPLE) или перевод (MODE_LOCALIZATION)
-        int mode = 0;
+        static int mode = 0;
         //! Путь, по которому копировать файлы результата - Dialogs.xml, Quests.xml etc.
-        public string old_pathDialogsDataFiles = @"..\..\..\res\scripts\server_data\Quests\";
-        public string new_pathDialogsDataFiles = @"..\..\..\res\scripts\server_data\DialogData\";
-        public string pathQuestDataFiles = @"..\..\..\res\scripts\common\data\Quests\";
-        public string pathToLocalFiles = @"..\..\..\res\local\";
+        public static string old_pathDialogsDataFiles = @"..\..\..\res\scripts\server_data\Quests\";
+        public static string new_pathDialogsDataFiles = @"..\..\..\res\scripts\server_data\DialogData\";
+        public static string pathQuestDataFiles = @"..\..\..\res\scripts\common\data\Quests\";
+        public static string pathToLocalFiles = @"..\..\..\res\local\";
 
         //! Список все локализаций English, GER etc.
-        List<string> locales = new List<string>();
+        static List<string> locales = new List<string>();
         //! Текущая локализация. Пока хранит 0 - видимо для русского языка
-        int currentLocale = 0;
-        int lastNpcIndex = 0;
+        static int currentLocale = 0;
+        static int lastNpcIndex = 0;
 
-        string appLang = "ru-RU";
+        static string appLang = "ru-RU";
 
-        public int MODE_EDITOR = 0;
-        public int MODE_LOCALIZATION = 1;       
+        public static int MODE_EDITOR = 0;
+        public static int MODE_LOCALIZATION = 1;
 
-        string SETTINGS_PATH = "settings/";
-        string SETTING_FILE = "Settings.xml";
-        public string ORIGINAL_PATH = "Russian";
+        static string SETTINGS_PATH = "settings/";
+        static string SETTING_FILE = "Settings.xml";
+        public static string ORIGINAL_PATH = "Russian";
 
-        private string dialogTextsXML = "DialogTexts.xml";
-        private string dialogTextsDIR = "DialogTexts/";
-        private string dialogDataXML = "DialogData.xml";
-        private string questTextsXML = "QuestTexts.xml";
-        private string questDataXML = "QuestData.xml";
-        private string deletedQuests = "DeletedQuests.txt";
-        private string lastQuestID = "lastQuestID.txt";
+        private static string dialogTextsXML = "DialogTexts.xml";
+        private static string dialogTextsDIR = "DialogTexts/";
+        private static string dialogDataXML = "DialogData.xml";
+        private static string questTextsXML = "QuestTexts.xml";
+        private static string questDataXML = "QuestData.xml";
+        private static string deletedQuests = "DeletedQuests.txt";
+        private static string lastQuestID = "lastQuestID.txt";
 
-        public CSettings(MainForm parent)
+        public static void init(MainForm parent)
         {
-            this.parent = parent;
+            CSettings.parent = parent;
             try
             {
                 XDocument doc = XDocument.Load(SETTINGS_PATH + SETTING_FILE);
 
-                this.iNumOperator = int.Parse(doc.Root.Element("operator").Value.ToString());
+                iNumOperator = int.Parse(doc.Root.Element("operator").Value.ToString());
                 foreach (string locale in doc.Root.Element("locales").Value.ToString().Split(','))
                 {
                     if (locale.Count() <= 3) continue;
                     locales.Add(locale);
                 }
-                this.mode = int.Parse(doc.Root.Element("mode").Value.ToString());
-                this.currentLocale = int.Parse(doc.Root.Element("current_locale").Value.ToString());
+                mode = int.Parse(doc.Root.Element("mode").Value.ToString());
+                currentLocale = int.Parse(doc.Root.Element("current_locale").Value.ToString());
                 if (Directory.Exists(doc.Root.Element("new_pathDialogsDataFiles").Value))
                     new_pathDialogsDataFiles = doc.Root.Element("new_pathDialogsDataFiles").Value;
                 if (Directory.Exists(doc.Root.Element("pathQuestDataFiles").Value))
@@ -101,7 +101,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Проверяет режим, и задает соответствующую надпись на главной форме
-        public void checkMode()
+        public static void checkMode()
         {
             if (getMode() == MODE_LOCALIZATION)
                 parent.Text = "QuestEditor@SO_Team НОВЫЙ ПЕРСОНАЖ. Режим перевода:" + getCurrentLocale();
@@ -111,30 +111,30 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Возврщает номер оператора
-        public int getOperatorNumber()
+        public static int getOperatorNumber()
         {
-            return this.iNumOperator;
+            return iNumOperator;
         }
 
-        public string getLanguage()
+        public static string getLanguage()
         {
             return appLang;
         }
 
-        public void setLanguage(string lang)
+        public static void setLanguage(string lang)
         {
             appLang = lang;
         }
 
-        public void setLocales(string locales)
+        public static void setLocales(string new_locales)
         {
-            this.locales.Clear();
-            foreach (string locale in locales.Split(','))
-                this.locales.Add(locale.Trim());
+            locales.Clear();
+            foreach (string locale in new_locales.Split(','))
+                locales.Add(locale.Trim());
         }
 
         //! Возвращает все локали в строке через запятую
-        public string getLocales()
+        public static string getLocales()
         {
             string ret = "";            
             foreach(string loc in locales)
@@ -146,41 +146,50 @@ namespace StalkerOnlineQuesterEditor
             return ret;
         }
 
+        // почему-то в обычном листе нет русского
+        public static List<string> getFullListLocales()
+        {
+            List<string> result = new List<string>();
+            result.Add(CSettings.ORIGINAL_PATH);
+            result.AddRange(locales);
+            return result;
+        }
+
         //! Возвращает список всех локалей в виде списка строк
-        public List<string> getListLocales()
+        public static List<string> getListLocales()
         {
             return locales;
         }
 
         //! Задает номер оператора
-        public void setOperatorNumber(int iNumOperator)
+        public static void setOperatorNumber(int _iNumOperator)
         {
-            this.iNumOperator = iNumOperator;
+            iNumOperator = _iNumOperator;
         }
 
-        public void setLastNpcIndex(int NpcIndex)
+        public static void setLastNpcIndex(int NpcIndex)
         {
             lastNpcIndex = NpcIndex;
         }
-        public int getLastNpcIndex()
+        public static int getLastNpcIndex()
         {
             return lastNpcIndex;
         }
 
         //! Сохраняет все настройки в файл settings.xml
-        public void saveSettings()
+        public static void saveSettings()
         {
             if (!Directory.Exists(SETTINGS_PATH))
                 Directory.CreateDirectory(SETTINGS_PATH);
             XDocument resultDoc = new XDocument(new XElement("root"));
             XElement oper = new XElement("operator", iNumOperator);
             XElement loc = new XElement("locales", getLocales());
-            XElement mode = new XElement("mode", this.mode.ToString());
-            XElement current_locale = new XElement("current_locale", this.currentLocale.ToString());
-            XElement lastNpcIndex = new XElement("LastNPcIndex", this.lastNpcIndex);
-            XElement path_quest = new XElement("pathQuestDataFiles", this.pathQuestDataFiles);
-            XElement path_dialog = new XElement("new_pathDialogsDataFiles", this.new_pathDialogsDataFiles);
-            XElement local_path = new XElement("pathToLocalFiles", this.pathToLocalFiles);
+            XElement mode = new XElement("mode", CSettings.mode.ToString());
+            XElement current_locale = new XElement("current_locale", currentLocale.ToString());
+            XElement lastNpcIndex = new XElement("LastNPcIndex", CSettings.lastNpcIndex);
+            XElement path_quest = new XElement("pathQuestDataFiles", pathQuestDataFiles);
+            XElement path_dialog = new XElement("new_pathDialogsDataFiles", new_pathDialogsDataFiles);
+            XElement local_path = new XElement("pathToLocalFiles", pathToLocalFiles);
             resultDoc.Root.Add(oper);
             resultDoc.Root.Add(loc);
             resultDoc.Root.Add(mode);
@@ -194,13 +203,13 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Устанавливает текущую локализацию по номеру в спике и возвращает true в случае успеха
-        public bool setLocale(int index_locale)
+        public static bool setLocale(int index_locale)
         {
             try
             {
-                string locale = this.locales[index_locale];
-                this.mode = this.MODE_LOCALIZATION;
-                this.currentLocale = index_locale;
+                string locale = locales[index_locale];
+                mode = MODE_LOCALIZATION;
+                currentLocale = index_locale;
                 checkMode();
                 return true;
             }
@@ -211,75 +220,75 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Устанавливает Обычный режим (корректировка текстов)
-        public void setEditorMode()
+        public static void setEditorMode()
         {
-            this.mode = this.MODE_EDITOR;
+            mode = MODE_EDITOR;
             checkMode();
         }
 
         //! Возвращает текущий режим (Simple или Localization)
-        public int getMode()
+        public static int getMode()
         {
             return mode;
         }
 
         //! Возвращает порядковый номер текущей локали
-        public int getCurrentIndexLocale()
+        public static int getCurrentIndexLocale()
         {
             return currentLocale;
         }
 
         //! Возвращает название текущей локали
-        public string getCurrentLocale()
+        public static string getCurrentLocale()
         {
             return locales[currentLocale];
         }
 
-        public string old_GetDialogTextPath()
+        public static string old_GetDialogTextPath()
         {
             return Path.Combine(pathToLocalFiles, ORIGINAL_PATH, dialogTextsXML);
         }
-        public string GetDialogTextPath(string local)
+        public static string GetDialogTextPath(string local)
         {
             return Path.Combine(pathToLocalFiles, local, dialogTextsDIR);
         }
 
-        public string GetQuestTextPath()
+        public static string GetQuestTextPath()
         {
             return Path.Combine(pathToLocalFiles, ORIGINAL_PATH, questTextsXML);
         }
 
-        public string GetDialogDataPath()
+        public static string GetDialogDataPath()
         {
             return new_pathDialogsDataFiles;
         }
 
-        public string old_GetDialogDataPath()
+        public static string old_GetDialogDataPath()
         {
             return Path.Combine(old_pathDialogsDataFiles, dialogDataXML);
         }
 
-        public string GetDeletedQuestsPath()
+        public static string GetDeletedQuestsPath()
         {
             return "source\\" + deletedQuests;
         }
 
-        public string GetQuestDataPath()
+        public static string GetQuestDataPath()
         {
             return Path.Combine(pathQuestDataFiles, questDataXML);
         }
 
-        public string GetDialogLocaleTextPath()
+        public static string GetDialogLocaleTextPath()
         {
             return Path.Combine(pathToLocalFiles, getCurrentLocale(), dialogTextsDIR);
         }
 
-        public string GetQuestLocaleTextPath()
+        public static string GetQuestLocaleTextPath()
         {
             return Path.Combine(pathToLocalFiles, getCurrentLocale(), questTextsXML);
         }
 
-        public string GetLastQuestIDPath()
+        public static string GetLastQuestIDPath()
         {
             return SETTINGS_PATH + lastQuestID;
         }

@@ -39,15 +39,15 @@ namespace StalkerOnlineQuesterEditor
 
             ParseNodeCoordinates("NodeCoordinates/FractionDialogs/");
 
-            ParseDialogsData(parent.settings.GetDialogDataPath() + "FractionDialogs\\", CFractionDialogs.dialogs, true);
-            ParseDialogsTexts(parent.settings.GetDialogTextPath(parent.settings.ORIGINAL_PATH) + "FractionDialogs\\", CFractionDialogs.dialogs);
+            ParseDialogsData(CSettings.GetDialogDataPath() + "FractionDialogs\\", CFractionDialogs.dialogs, true);
+            ParseDialogsTexts(CSettings.GetDialogTextPath(CSettings.ORIGINAL_PATH) + "FractionDialogs\\", CFractionDialogs.dialogs);
 
-            foreach (var locale in parent.settings.getListLocales())
+            foreach (var locale in CSettings.getListLocales())
             {
                 if (!locales.Keys.Contains(locale))
                     locales.Add(locale, new FractionDicts());
-                ParseDialogsData(parent.settings.GetDialogDataPath() + "FractionDialogs\\", CFractionDialogs.locales[locale]);
-                ParseDialogsTexts(parent.settings.GetDialogTextPath(locale) + "FractionDialogs\\", CFractionDialogs.locales[locale]);
+                ParseDialogsData(CSettings.GetDialogDataPath() + "FractionDialogs\\", CFractionDialogs.locales[locale]);
+                ParseDialogsTexts(CSettings.GetDialogTextPath(locale) + "FractionDialogs\\", CFractionDialogs.locales[locale]);
             }
         }
         
@@ -401,14 +401,14 @@ namespace StalkerOnlineQuesterEditor
         public static void SaveDialogs()
         {
             SaveNodeCoordinates("NodeCoordinates/FractionDialogs/", CFractionDialogs.dialogs);
-            SaveDialogsTexts(parent.settings.GetDialogTextPath(parent.settings.ORIGINAL_PATH) + "FractionDialogs/", CFractionDialogs.dialogs);
-            SaveDialogsData(parent.settings.GetDialogDataPath()+ "FractionDialogs/", CFractionDialogs.dialogs);
+            SaveDialogsTexts(CSettings.GetDialogTextPath(CSettings.ORIGINAL_PATH) + "FractionDialogs/", CFractionDialogs.dialogs);
+            SaveDialogsData(CSettings.GetDialogDataPath()+ "FractionDialogs/", CFractionDialogs.dialogs);
         }
 
         //! Сохраняет текущую локализацию диалогов в файл
         public static void SaveLocales()
         {
-            SaveDialogsTexts(parent.settings.GetDialogLocaleTextPath() + "FractionDialogs/", CFractionDialogs.locales[parent.settings.getCurrentLocale()]);
+            SaveDialogsTexts(CSettings.GetDialogLocaleTextPath() + "FractionDialogs/", CFractionDialogs.locales[CSettings.getCurrentLocale()]);
         }
 
         private static void SaveDialogsTexts(string filePath, FractionDicts target)

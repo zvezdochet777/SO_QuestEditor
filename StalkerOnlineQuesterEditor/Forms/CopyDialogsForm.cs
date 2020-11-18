@@ -72,13 +72,13 @@ namespace StalkerOnlineQuesterEditor.Forms
                 if (parent.dialogs.dialogs.Keys.Contains(text))
                     return;
                 string name = "";
-                if (parent.settings.getMode() == parent.settings.MODE_EDITOR)
+                if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 {
                     if (FakeNPCBox.Items.Count > 0)
                         NPCBox.SelectedValue = FakeNPCBox.Items[0].ToString().Split('(')[0];
                     FakeNPCBox.DroppedDown = false;
                 }
-                else if (parent.settings.getMode() == parent.settings.MODE_LOCALIZATION)
+                else if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
                 {
                     if (parent.ManagerNPC.engNamesToNPC.ContainsKey(text))
                     {

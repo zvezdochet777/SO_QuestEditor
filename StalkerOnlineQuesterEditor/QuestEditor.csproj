@@ -174,6 +174,12 @@
     <Compile Include="Forms\LocaleQuestForm.Designer.cs">
       <DependentUpon>LocaleQuestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\QuestDialogFinderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuestDialogFinderForm.Designer.cs">
+      <DependentUpon>QuestDialogFinderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RewardBlackBoxDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,6 +370,9 @@
     <EmbeddedResource Include="Forms\OperatorSettings.resx">
       <DependentUpon>OperatorSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuestDialogFinderForm.resx">
+      <DependentUpon>QuestDialogFinderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RewardBlackBoxDialog.resx">
       <DependentUpon>RewardBlackBoxDialog.cs</DependentUpon>

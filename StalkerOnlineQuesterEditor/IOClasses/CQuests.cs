@@ -50,17 +50,17 @@ namespace StalkerOnlineQuesterEditor
         {
             parent = form;
             this.quest = new NPCQuestDict();
-            ParseLastQuestID(parent.settings.GetLastQuestIDPath());
-            ParseQuestsData(parent.settings.GetQuestDataPath(), quest);
-            ParseQuestsTexts(parent.settings.GetQuestTextPath(), quest);
-            ParseDeletedQuest(parent.settings.GetDeletedQuestsPath(), deletedQuests);
+            ParseLastQuestID(CSettings.GetLastQuestIDPath());
+            ParseQuestsData(CSettings.GetQuestDataPath(), quest);
+            ParseQuestsTexts(CSettings.GetQuestTextPath(), quest);
+            ParseDeletedQuest(CSettings.GetDeletedQuestsPath(), deletedQuests);
 
-            foreach (var locale in parent.settings.getListLocales())
+            foreach (var locale in CSettings.getListLocales())
             {
                 if (!locales.Keys.Contains(locale))
                     locales.Add(locale, new NPCQuestDict());
-                ParseQuestsData(parent.settings.GetQuestDataPath(), this.locales[locale]);
-                ParseQuestsTexts(parent.settings.GetQuestLocaleTextPath(), this.locales[locale]);
+                ParseQuestsData(CSettings.GetQuestDataPath(), this.locales[locale]);
+                ParseQuestsTexts(CSettings.GetQuestLocaleTextPath(), this.locales[locale]);
             }
         }
 
@@ -82,7 +82,7 @@ namespace StalkerOnlineQuesterEditor
         public void addDeletedQuests(int questID)
         {
             deletedQuests.Add(questID);
-            string path = parent.settings.GetDeletedQuestsPath();
+            string path = CSettings.GetDeletedQuestsPath();
             System.IO.StreamWriter writer = new System.IO.StreamWriter(path, true);
             writer.WriteLine(questID.ToString());
             writer.Close();
@@ -601,20 +601,20 @@ namespace StalkerOnlineQuesterEditor
         //! Сохраняет данные по квестам в xml файл
         public void SaveQuests()
         {
-            string path = parent.settings.GetLastQuestIDPath();
+            string path = CSettings.GetLastQuestIDPath();
             FileStream fcreate = File.Open(path, FileMode.Create);
             System.IO.StreamWriter writer = new System.IO.StreamWriter(fcreate);
             writer.WriteLine(last_quest_id.ToString());
             writer.Close();
 
-            SaveQuestsTexts(parent.settings.GetQuestTextPath(), this.quest);
-            SaveQuestsData(parent.settings.GetQuestDataPath(), this.quest);
+            SaveQuestsTexts(CSettings.GetQuestTextPath(), this.quest);
+            SaveQuestsData(CSettings.GetQuestDataPath(), this.quest);
         }
 
         //! Сохраняет текущую локализацию квестов в файл
         public void SaveLocales()
         {
-            SaveQuestsTexts(parent.settings.GetQuestLocaleTextPath(), this.locales[parent.settings.getCurrentLocale()]);
+            SaveQuestsTexts(CSettings.GetQuestLocaleTextPath(), this.locales[CSettings.getCurrentLocale()]);
         }
 
         private void SaveQuestsTexts(string fileName, NPCQuestDict target)
@@ -924,11 +924,11 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает экземпляр CQuest  в зависимости от языка перевода
         public CQuest getQuestLocalized(int questID)
         {
-            if (parent.settings.getMode() == parent.settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 return getQuest(questID);
             else
             {
-                string locale = parent.settings.getCurrentLocale();
+                string locale = CSettings.getCurrentLocale();
                 if (locales[locale].ContainsKey(questID))
                     return locales[locale][questID];
                 else

@@ -174,6 +174,9 @@ namespace StalkerOnlineQuesterEditor
             this.tbPhraseToSearch = new System.Windows.Forms.TextBox();
             this.bStartSearch = new System.Windows.Forms.Button();
             this.tabKnowledge = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnAddKnowlege = new System.Windows.Forms.Button();
+            this.btnDelKnowlege = new System.Windows.Forms.Button();
             this.treeKnowladge = new System.Windows.Forms.TreeView();
             this.cbKnowlegeTypeValue = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -182,6 +185,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabAutoGen = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.listBoxReward = new System.Windows.Forms.ListBox();
             this.btnAddReward = new System.Windows.Forms.Button();
@@ -200,38 +204,59 @@ namespace StalkerOnlineQuesterEditor
             this.btnAddQType = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.listBoxQT = new System.Windows.Forms.ListBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageAGDialog = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnAGClosed2Add = new System.Windows.Forms.Button();
+            this.btnAGClosed2Change = new System.Windows.Forms.Button();
+            this.btnAGClosed2Del = new System.Windows.Forms.Button();
             this.lbAGClosed2 = new System.Windows.Forms.ListBox();
             this.lbAGClosed = new System.Windows.Forms.ListBox();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
+            this.btnAGClosedAdd = new System.Windows.Forms.Button();
+            this.btnAGClosedChange = new System.Windows.Forms.Button();
+            this.btnAGClosedDel = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnAGOnTest2Add = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnAGOnTest2Change = new System.Windows.Forms.Button();
+            this.btnAGOnTest2Del = new System.Windows.Forms.Button();
             this.lbAGOnTest2 = new System.Windows.Forms.ListBox();
             this.lbAGOnTest = new System.Windows.Forms.ListBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btnAGOnTestAdd = new System.Windows.Forms.Button();
+            this.btnAGOnTestChange = new System.Windows.Forms.Button();
+            this.btnAGOnTestDel = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnAGOpened2Add = new System.Windows.Forms.Button();
+            this.btnAGOpened2Change = new System.Windows.Forms.Button();
+            this.btnAGOpened2Del = new System.Windows.Forms.Button();
             this.lbAGOpened2 = new System.Windows.Forms.ListBox();
             this.lbAGOpened = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnAGOpenedAdd = new System.Windows.Forms.Button();
+            this.btnAGOpenedChange = new System.Windows.Forms.Button();
+            this.btnAGOpenedDel = new System.Windows.Forms.Button();
+            this.cbNPCNature = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lbAGDeclineQuest = new System.Windows.Forms.ListBox();
+            this.btnAGDeclineQuestAdd = new System.Windows.Forms.Button();
+            this.btnAGDeclineQuestChange = new System.Windows.Forms.Button();
+            this.btnAGDeclineQuestDel = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lbAGAcceptQuest = new System.Windows.Forms.ListBox();
+            this.btnAGAcceptQuestAdd = new System.Windows.Forms.Button();
+            this.btnAGAcceptQuestChange = new System.Windows.Forms.Button();
+            this.btnAGAcceptQuestDel = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lbAGGetQuest = new System.Windows.Forms.ListBox();
+            this.btnAGGetQuestAdd = new System.Windows.Forms.Button();
+            this.btnAGGetQuestChange = new System.Windows.Forms.Button();
+            this.btnAGGetQuestDel = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.panelSelectNPC = new System.Windows.Forms.Panel();
             this.btnCheckNPC = new System.Windows.Forms.Button();
@@ -264,9 +289,7 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.btnDelKnowlege = new System.Windows.Forms.Button();
-            this.btnAddKnowlege = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.поискДиалоговПоQuestIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -310,6 +333,7 @@ namespace StalkerOnlineQuesterEditor
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).BeginInit();
             this.panelSearchTools.SuspendLayout();
             this.tabKnowledge.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.tabAutoGen.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -317,7 +341,7 @@ namespace StalkerOnlineQuesterEditor
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupToTargetCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupFromTargetCount)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabPageAGDialog.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -325,7 +349,6 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectNPC.SuspendLayout();
             this.menuMainControl.SuspendLayout();
             this.statusStrip.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitDialogs
@@ -1416,6 +1439,28 @@ namespace StalkerOnlineQuesterEditor
             this.tabKnowledge.Name = "tabKnowledge";
             this.tabKnowledge.UseVisualStyleBackColor = true;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnAddKnowlege);
+            this.groupBox7.Controls.Add(this.btnDelKnowlege);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
+            // 
+            // btnAddKnowlege
+            // 
+            resources.ApplyResources(this.btnAddKnowlege, "btnAddKnowlege");
+            this.btnAddKnowlege.ImageList = this.imageList;
+            this.btnAddKnowlege.Name = "btnAddKnowlege";
+            this.btnAddKnowlege.UseVisualStyleBackColor = true;
+            // 
+            // btnDelKnowlege
+            // 
+            resources.ApplyResources(this.btnDelKnowlege, "btnDelKnowlege");
+            this.btnDelKnowlege.ImageList = this.imageList;
+            this.btnDelKnowlege.Name = "btnDelKnowlege";
+            this.btnDelKnowlege.UseVisualStyleBackColor = true;
+            // 
             // treeKnowladge
             // 
             resources.ApplyResources(this.treeKnowladge, "treeKnowladge");
@@ -1455,14 +1500,16 @@ namespace StalkerOnlineQuesterEditor
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPageAGDialog);
             this.tabControl1.Controls.Add(this.tabPage3);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.btnDelQType);
@@ -1472,6 +1519,11 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
             // 
             // groupBox3
             // 
@@ -1609,51 +1661,75 @@ namespace StalkerOnlineQuesterEditor
             this.listBoxQT.Name = "listBoxQT";
             this.listBoxQT.SelectedIndexChanged += new System.EventHandler(this.listBoxQT_SelectedIndexChanged);
             // 
-            // tabPage2
+            // tabPageAGDialog
             // 
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Controls.Add(this.groupBox6);
-            this.tabPage2.Controls.Add(this.groupBox5);
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.comboBox1);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.tabPageAGDialog, "tabPageAGDialog");
+            this.tabPageAGDialog.Controls.Add(this.label11);
+            this.tabPageAGDialog.Controls.Add(this.label17);
+            this.tabPageAGDialog.Controls.Add(this.groupBox6);
+            this.tabPageAGDialog.Controls.Add(this.groupBox5);
+            this.tabPageAGDialog.Controls.Add(this.groupBox4);
+            this.tabPageAGDialog.Controls.Add(this.cbNPCNature);
+            this.tabPageAGDialog.Controls.Add(this.label6);
+            this.tabPageAGDialog.Name = "tabPageAGDialog";
+            this.tabPageAGDialog.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.button13);
-            this.groupBox6.Controls.Add(this.button14);
-            this.groupBox6.Controls.Add(this.button15);
+            this.groupBox6.Controls.Add(this.label14);
+            this.groupBox6.Controls.Add(this.label15);
+            this.groupBox6.Controls.Add(this.btnAGClosed2Add);
+            this.groupBox6.Controls.Add(this.btnAGClosed2Change);
+            this.groupBox6.Controls.Add(this.btnAGClosed2Del);
             this.groupBox6.Controls.Add(this.lbAGClosed2);
             this.groupBox6.Controls.Add(this.lbAGClosed);
-            this.groupBox6.Controls.Add(this.button16);
-            this.groupBox6.Controls.Add(this.button17);
-            this.groupBox6.Controls.Add(this.button18);
+            this.groupBox6.Controls.Add(this.btnAGClosedAdd);
+            this.groupBox6.Controls.Add(this.btnAGClosedChange);
+            this.groupBox6.Controls.Add(this.btnAGClosedDel);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             // 
-            // button13
+            // label14
             // 
-            resources.ApplyResources(this.button13, "button13");
-            this.button13.Name = "button13";
-            this.toolTipDialogs.SetToolTip(this.button13, resources.GetString("button13.ToolTip"));
-            this.button13.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
             // 
-            // button14
+            // label15
             // 
-            resources.ApplyResources(this.button14, "button14");
-            this.button14.Name = "button14";
-            this.toolTipDialogs.SetToolTip(this.button14, resources.GetString("button14.ToolTip"));
-            this.button14.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
             // 
-            // button15
+            // btnAGClosed2Add
             // 
-            resources.ApplyResources(this.button15, "button15");
-            this.button15.Name = "button15";
-            this.toolTipDialogs.SetToolTip(this.button15, resources.GetString("button15.ToolTip"));
-            this.button15.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGClosed2Add, "btnAGClosed2Add");
+            this.btnAGClosed2Add.Name = "btnAGClosed2Add";
+            this.toolTipDialogs.SetToolTip(this.btnAGClosed2Add, resources.GetString("btnAGClosed2Add.ToolTip"));
+            this.btnAGClosed2Add.UseVisualStyleBackColor = true;
+            // 
+            // btnAGClosed2Change
+            // 
+            resources.ApplyResources(this.btnAGClosed2Change, "btnAGClosed2Change");
+            this.btnAGClosed2Change.Name = "btnAGClosed2Change";
+            this.toolTipDialogs.SetToolTip(this.btnAGClosed2Change, resources.GetString("btnAGClosed2Change.ToolTip"));
+            this.btnAGClosed2Change.UseVisualStyleBackColor = true;
+            // 
+            // btnAGClosed2Del
+            // 
+            resources.ApplyResources(this.btnAGClosed2Del, "btnAGClosed2Del");
+            this.btnAGClosed2Del.Name = "btnAGClosed2Del";
+            this.toolTipDialogs.SetToolTip(this.btnAGClosed2Del, resources.GetString("btnAGClosed2Del.ToolTip"));
+            this.btnAGClosed2Del.UseVisualStyleBackColor = true;
             // 
             // lbAGClosed2
             // 
@@ -1667,61 +1743,73 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.lbAGClosed, "lbAGClosed");
             this.lbAGClosed.Name = "lbAGClosed";
             // 
-            // button16
+            // btnAGClosedAdd
             // 
-            resources.ApplyResources(this.button16, "button16");
-            this.button16.Name = "button16";
-            this.toolTipDialogs.SetToolTip(this.button16, resources.GetString("button16.ToolTip"));
-            this.button16.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGClosedAdd, "btnAGClosedAdd");
+            this.btnAGClosedAdd.Name = "btnAGClosedAdd";
+            this.toolTipDialogs.SetToolTip(this.btnAGClosedAdd, resources.GetString("btnAGClosedAdd.ToolTip"));
+            this.btnAGClosedAdd.UseVisualStyleBackColor = true;
             // 
-            // button17
+            // btnAGClosedChange
             // 
-            resources.ApplyResources(this.button17, "button17");
-            this.button17.Name = "button17";
-            this.toolTipDialogs.SetToolTip(this.button17, resources.GetString("button17.ToolTip"));
-            this.button17.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGClosedChange, "btnAGClosedChange");
+            this.btnAGClosedChange.Name = "btnAGClosedChange";
+            this.toolTipDialogs.SetToolTip(this.btnAGClosedChange, resources.GetString("btnAGClosedChange.ToolTip"));
+            this.btnAGClosedChange.UseVisualStyleBackColor = true;
             // 
-            // button18
+            // btnAGClosedDel
             // 
-            resources.ApplyResources(this.button18, "button18");
-            this.button18.Name = "button18";
-            this.toolTipDialogs.SetToolTip(this.button18, resources.GetString("button18.ToolTip"));
-            this.button18.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGClosedDel, "btnAGClosedDel");
+            this.btnAGClosedDel.Name = "btnAGClosedDel";
+            this.toolTipDialogs.SetToolTip(this.btnAGClosedDel, resources.GetString("btnAGClosedDel.ToolTip"));
+            this.btnAGClosedDel.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.button7);
-            this.groupBox5.Controls.Add(this.button8);
-            this.groupBox5.Controls.Add(this.button9);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.btnAGOnTest2Add);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.btnAGOnTest2Change);
+            this.groupBox5.Controls.Add(this.btnAGOnTest2Del);
             this.groupBox5.Controls.Add(this.lbAGOnTest2);
             this.groupBox5.Controls.Add(this.lbAGOnTest);
-            this.groupBox5.Controls.Add(this.button10);
-            this.groupBox5.Controls.Add(this.button11);
-            this.groupBox5.Controls.Add(this.button12);
+            this.groupBox5.Controls.Add(this.btnAGOnTestAdd);
+            this.groupBox5.Controls.Add(this.btnAGOnTestChange);
+            this.groupBox5.Controls.Add(this.btnAGOnTestDel);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
-            // button7
+            // label12
             // 
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.toolTipDialogs.SetToolTip(this.button7, resources.GetString("button7.ToolTip"));
-            this.button7.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
             // 
-            // button8
+            // btnAGOnTest2Add
             // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.toolTipDialogs.SetToolTip(this.button8, resources.GetString("button8.ToolTip"));
-            this.button8.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGOnTest2Add, "btnAGOnTest2Add");
+            this.btnAGOnTest2Add.Name = "btnAGOnTest2Add";
+            this.toolTipDialogs.SetToolTip(this.btnAGOnTest2Add, resources.GetString("btnAGOnTest2Add.ToolTip"));
+            this.btnAGOnTest2Add.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // label13
             // 
-            resources.ApplyResources(this.button9, "button9");
-            this.button9.Name = "button9";
-            this.toolTipDialogs.SetToolTip(this.button9, resources.GetString("button9.ToolTip"));
-            this.button9.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // btnAGOnTest2Change
+            // 
+            resources.ApplyResources(this.btnAGOnTest2Change, "btnAGOnTest2Change");
+            this.btnAGOnTest2Change.Name = "btnAGOnTest2Change";
+            this.toolTipDialogs.SetToolTip(this.btnAGOnTest2Change, resources.GetString("btnAGOnTest2Change.ToolTip"));
+            this.btnAGOnTest2Change.UseVisualStyleBackColor = true;
+            // 
+            // btnAGOnTest2Del
+            // 
+            resources.ApplyResources(this.btnAGOnTest2Del, "btnAGOnTest2Del");
+            this.btnAGOnTest2Del.Name = "btnAGOnTest2Del";
+            this.toolTipDialogs.SetToolTip(this.btnAGOnTest2Del, resources.GetString("btnAGOnTest2Del.ToolTip"));
+            this.btnAGOnTest2Del.UseVisualStyleBackColor = true;
             // 
             // lbAGOnTest2
             // 
@@ -1735,61 +1823,67 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.lbAGOnTest, "lbAGOnTest");
             this.lbAGOnTest.Name = "lbAGOnTest";
             // 
-            // button10
+            // btnAGOnTestAdd
             // 
-            resources.ApplyResources(this.button10, "button10");
-            this.button10.Name = "button10";
-            this.toolTipDialogs.SetToolTip(this.button10, resources.GetString("button10.ToolTip"));
-            this.button10.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGOnTestAdd, "btnAGOnTestAdd");
+            this.btnAGOnTestAdd.Name = "btnAGOnTestAdd";
+            this.toolTipDialogs.SetToolTip(this.btnAGOnTestAdd, resources.GetString("btnAGOnTestAdd.ToolTip"));
+            this.btnAGOnTestAdd.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btnAGOnTestChange
             // 
-            resources.ApplyResources(this.button11, "button11");
-            this.button11.Name = "button11";
-            this.toolTipDialogs.SetToolTip(this.button11, resources.GetString("button11.ToolTip"));
-            this.button11.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGOnTestChange, "btnAGOnTestChange");
+            this.btnAGOnTestChange.Name = "btnAGOnTestChange";
+            this.toolTipDialogs.SetToolTip(this.btnAGOnTestChange, resources.GetString("btnAGOnTestChange.ToolTip"));
+            this.btnAGOnTestChange.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // btnAGOnTestDel
             // 
-            resources.ApplyResources(this.button12, "button12");
-            this.button12.Name = "button12";
-            this.toolTipDialogs.SetToolTip(this.button12, resources.GetString("button12.ToolTip"));
-            this.button12.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGOnTestDel, "btnAGOnTestDel");
+            this.btnAGOnTestDel.Name = "btnAGOnTestDel";
+            this.toolTipDialogs.SetToolTip(this.btnAGOnTestDel, resources.GetString("btnAGOnTestDel.ToolTip"));
+            this.btnAGOnTestDel.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button4);
-            this.groupBox4.Controls.Add(this.button5);
-            this.groupBox4.Controls.Add(this.button6);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.btnAGOpened2Add);
+            this.groupBox4.Controls.Add(this.btnAGOpened2Change);
+            this.groupBox4.Controls.Add(this.btnAGOpened2Del);
             this.groupBox4.Controls.Add(this.lbAGOpened2);
             this.groupBox4.Controls.Add(this.lbAGOpened);
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.btnAGOpenedAdd);
+            this.groupBox4.Controls.Add(this.btnAGOpenedChange);
+            this.groupBox4.Controls.Add(this.btnAGOpenedDel);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // button4
+            // label10
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.toolTipDialogs.SetToolTip(this.button4, resources.GetString("button4.ToolTip"));
-            this.button4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
             // 
-            // button5
+            // btnAGOpened2Add
             // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.toolTipDialogs.SetToolTip(this.button5, resources.GetString("button5.ToolTip"));
-            this.button5.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGOpened2Add, "btnAGOpened2Add");
+            this.btnAGOpened2Add.Name = "btnAGOpened2Add";
+            this.toolTipDialogs.SetToolTip(this.btnAGOpened2Add, resources.GetString("btnAGOpened2Add.ToolTip"));
+            this.btnAGOpened2Add.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnAGOpened2Change
             // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.toolTipDialogs.SetToolTip(this.button6, resources.GetString("button6.ToolTip"));
-            this.button6.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGOpened2Change, "btnAGOpened2Change");
+            this.btnAGOpened2Change.Name = "btnAGOpened2Change";
+            this.toolTipDialogs.SetToolTip(this.btnAGOpened2Change, resources.GetString("btnAGOpened2Change.ToolTip"));
+            this.btnAGOpened2Change.UseVisualStyleBackColor = true;
+            // 
+            // btnAGOpened2Del
+            // 
+            resources.ApplyResources(this.btnAGOpened2Del, "btnAGOpened2Del");
+            this.btnAGOpened2Del.Name = "btnAGOpened2Del";
+            this.toolTipDialogs.SetToolTip(this.btnAGOpened2Del, resources.GetString("btnAGOpened2Del.ToolTip"));
+            this.btnAGOpened2Del.UseVisualStyleBackColor = true;
             // 
             // lbAGOpened2
             // 
@@ -1803,36 +1897,37 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.lbAGOpened, "lbAGOpened");
             this.lbAGOpened.Name = "lbAGOpened";
             // 
-            // button1
+            // btnAGOpenedAdd
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.toolTipDialogs.SetToolTip(this.button1, resources.GetString("button1.ToolTip"));
-            this.button1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGOpenedAdd, "btnAGOpenedAdd");
+            this.btnAGOpenedAdd.Name = "btnAGOpenedAdd";
+            this.toolTipDialogs.SetToolTip(this.btnAGOpenedAdd, resources.GetString("btnAGOpenedAdd.ToolTip"));
+            this.btnAGOpenedAdd.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAGOpenedChange
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.toolTipDialogs.SetToolTip(this.button2, resources.GetString("button2.ToolTip"));
-            this.button2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGOpenedChange, "btnAGOpenedChange");
+            this.btnAGOpenedChange.Name = "btnAGOpenedChange";
+            this.toolTipDialogs.SetToolTip(this.btnAGOpenedChange, resources.GetString("btnAGOpenedChange.ToolTip"));
+            this.btnAGOpenedChange.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnAGOpenedDel
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.toolTipDialogs.SetToolTip(this.button3, resources.GetString("button3.ToolTip"));
-            this.button3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAGOpenedDel, "btnAGOpenedDel");
+            this.btnAGOpenedDel.Name = "btnAGOpenedDel";
+            this.toolTipDialogs.SetToolTip(this.btnAGOpenedDel, resources.GetString("btnAGOpenedDel.ToolTip"));
+            this.btnAGOpenedDel.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cbNPCNature
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            resources.GetString("comboBox1.Items"),
-            resources.GetString("comboBox1.Items1"),
-            resources.GetString("comboBox1.Items2")});
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
+            this.cbNPCNature.FormattingEnabled = true;
+            this.cbNPCNature.Items.AddRange(new object[] {
+            resources.GetString("cbNPCNature.Items"),
+            resources.GetString("cbNPCNature.Items1"),
+            resources.GetString("cbNPCNature.Items2")});
+            resources.ApplyResources(this.cbNPCNature, "cbNPCNature");
+            this.cbNPCNature.Name = "cbNPCNature";
+            this.cbNPCNature.SelectedIndexChanged += new System.EventHandler(this.cbNPCNature_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -1841,21 +1936,121 @@ namespace StalkerOnlineQuesterEditor
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.comboBox2);
+            this.tabPage3.Controls.Add(this.label20);
+            this.tabPage3.Controls.Add(this.lbAGDeclineQuest);
+            this.tabPage3.Controls.Add(this.btnAGDeclineQuestAdd);
+            this.tabPage3.Controls.Add(this.btnAGDeclineQuestChange);
+            this.tabPage3.Controls.Add(this.btnAGDeclineQuestDel);
+            this.tabPage3.Controls.Add(this.label19);
+            this.tabPage3.Controls.Add(this.lbAGAcceptQuest);
+            this.tabPage3.Controls.Add(this.btnAGAcceptQuestAdd);
+            this.tabPage3.Controls.Add(this.btnAGAcceptQuestChange);
+            this.tabPage3.Controls.Add(this.btnAGAcceptQuestDel);
+            this.tabPage3.Controls.Add(this.label18);
+            this.tabPage3.Controls.Add(this.lbAGGetQuest);
+            this.tabPage3.Controls.Add(this.btnAGGetQuestAdd);
+            this.tabPage3.Controls.Add(this.btnAGGetQuestChange);
+            this.tabPage3.Controls.Add(this.btnAGGetQuestDel);
             this.tabPage3.Controls.Add(this.label9);
             resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // label20
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            resources.GetString("comboBox2.Items"),
-            resources.GetString("comboBox2.Items1"),
-            resources.GetString("comboBox2.Items2")});
-            resources.ApplyResources(this.comboBox2, "comboBox2");
-            this.comboBox2.Name = "comboBox2";
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
+            // lbAGDeclineQuest
+            // 
+            this.lbAGDeclineQuest.FormattingEnabled = true;
+            resources.ApplyResources(this.lbAGDeclineQuest, "lbAGDeclineQuest");
+            this.lbAGDeclineQuest.Name = "lbAGDeclineQuest";
+            // 
+            // btnAGDeclineQuestAdd
+            // 
+            resources.ApplyResources(this.btnAGDeclineQuestAdd, "btnAGDeclineQuestAdd");
+            this.btnAGDeclineQuestAdd.Name = "btnAGDeclineQuestAdd";
+            this.toolTipDialogs.SetToolTip(this.btnAGDeclineQuestAdd, resources.GetString("btnAGDeclineQuestAdd.ToolTip"));
+            this.btnAGDeclineQuestAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnAGDeclineQuestChange
+            // 
+            resources.ApplyResources(this.btnAGDeclineQuestChange, "btnAGDeclineQuestChange");
+            this.btnAGDeclineQuestChange.Name = "btnAGDeclineQuestChange";
+            this.toolTipDialogs.SetToolTip(this.btnAGDeclineQuestChange, resources.GetString("btnAGDeclineQuestChange.ToolTip"));
+            this.btnAGDeclineQuestChange.UseVisualStyleBackColor = true;
+            // 
+            // btnAGDeclineQuestDel
+            // 
+            resources.ApplyResources(this.btnAGDeclineQuestDel, "btnAGDeclineQuestDel");
+            this.btnAGDeclineQuestDel.Name = "btnAGDeclineQuestDel";
+            this.toolTipDialogs.SetToolTip(this.btnAGDeclineQuestDel, resources.GetString("btnAGDeclineQuestDel.ToolTip"));
+            this.btnAGDeclineQuestDel.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            // 
+            // lbAGAcceptQuest
+            // 
+            this.lbAGAcceptQuest.FormattingEnabled = true;
+            resources.ApplyResources(this.lbAGAcceptQuest, "lbAGAcceptQuest");
+            this.lbAGAcceptQuest.Name = "lbAGAcceptQuest";
+            // 
+            // btnAGAcceptQuestAdd
+            // 
+            resources.ApplyResources(this.btnAGAcceptQuestAdd, "btnAGAcceptQuestAdd");
+            this.btnAGAcceptQuestAdd.Name = "btnAGAcceptQuestAdd";
+            this.toolTipDialogs.SetToolTip(this.btnAGAcceptQuestAdd, resources.GetString("btnAGAcceptQuestAdd.ToolTip"));
+            this.btnAGAcceptQuestAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnAGAcceptQuestChange
+            // 
+            resources.ApplyResources(this.btnAGAcceptQuestChange, "btnAGAcceptQuestChange");
+            this.btnAGAcceptQuestChange.Name = "btnAGAcceptQuestChange";
+            this.toolTipDialogs.SetToolTip(this.btnAGAcceptQuestChange, resources.GetString("btnAGAcceptQuestChange.ToolTip"));
+            this.btnAGAcceptQuestChange.UseVisualStyleBackColor = true;
+            // 
+            // btnAGAcceptQuestDel
+            // 
+            resources.ApplyResources(this.btnAGAcceptQuestDel, "btnAGAcceptQuestDel");
+            this.btnAGAcceptQuestDel.Name = "btnAGAcceptQuestDel";
+            this.toolTipDialogs.SetToolTip(this.btnAGAcceptQuestDel, resources.GetString("btnAGAcceptQuestDel.ToolTip"));
+            this.btnAGAcceptQuestDel.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            // 
+            // lbAGGetQuest
+            // 
+            this.lbAGGetQuest.FormattingEnabled = true;
+            resources.ApplyResources(this.lbAGGetQuest, "lbAGGetQuest");
+            this.lbAGGetQuest.Name = "lbAGGetQuest";
+            // 
+            // btnAGGetQuestAdd
+            // 
+            resources.ApplyResources(this.btnAGGetQuestAdd, "btnAGGetQuestAdd");
+            this.btnAGGetQuestAdd.Name = "btnAGGetQuestAdd";
+            this.toolTipDialogs.SetToolTip(this.btnAGGetQuestAdd, resources.GetString("btnAGGetQuestAdd.ToolTip"));
+            this.btnAGGetQuestAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnAGGetQuestChange
+            // 
+            resources.ApplyResources(this.btnAGGetQuestChange, "btnAGGetQuestChange");
+            this.btnAGGetQuestChange.Name = "btnAGGetQuestChange";
+            this.toolTipDialogs.SetToolTip(this.btnAGGetQuestChange, resources.GetString("btnAGGetQuestChange.ToolTip"));
+            this.btnAGGetQuestChange.UseVisualStyleBackColor = true;
+            // 
+            // btnAGGetQuestDel
+            // 
+            resources.ApplyResources(this.btnAGGetQuestDel, "btnAGGetQuestDel");
+            this.btnAGGetQuestDel.Name = "btnAGGetQuestDel";
+            this.toolTipDialogs.SetToolTip(this.btnAGGetQuestDel, resources.GetString("btnAGGetQuestDel.ToolTip"));
+            this.btnAGGetQuestDel.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -2019,7 +2214,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             this.обновленияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.парсерыToolStripMenuItem,
-            this.проверкаОшибокToolStripMenuItem});
+            this.проверкаОшибокToolStripMenuItem,
+            this.поискДиалоговПоQuestIDToolStripMenuItem});
             this.обновленияToolStripMenuItem.Name = "обновленияToolStripMenuItem";
             resources.ApplyResources(this.обновленияToolStripMenuItem, "обновленияToolStripMenuItem");
             // 
@@ -2090,27 +2286,11 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             // 
-            // btnDelKnowlege
+            // поискДиалоговПоQuestIDToolStripMenuItem
             // 
-            resources.ApplyResources(this.btnDelKnowlege, "btnDelKnowlege");
-            this.btnDelKnowlege.ImageList = this.imageList;
-            this.btnDelKnowlege.Name = "btnDelKnowlege";
-            this.btnDelKnowlege.UseVisualStyleBackColor = true;
-            // 
-            // btnAddKnowlege
-            // 
-            resources.ApplyResources(this.btnAddKnowlege, "btnAddKnowlege");
-            this.btnAddKnowlege.ImageList = this.imageList;
-            this.btnAddKnowlege.Name = "btnAddKnowlege";
-            this.btnAddKnowlege.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.btnAddKnowlege);
-            this.groupBox7.Controls.Add(this.btnDelKnowlege);
-            resources.ApplyResources(this.groupBox7, "groupBox7");
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.TabStop = false;
+            this.поискДиалоговПоQuestIDToolStripMenuItem.Name = "поискДиалоговПоQuestIDToolStripMenuItem";
+            resources.ApplyResources(this.поискДиалоговПоQuestIDToolStripMenuItem, "поискДиалоговПоQuestIDToolStripMenuItem");
+            this.поискДиалоговПоQuestIDToolStripMenuItem.Click += new System.EventHandler(this.поискДиалоговПоQuestIDToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -2177,6 +2357,7 @@ namespace StalkerOnlineQuesterEditor
             this.panelSearchTools.PerformLayout();
             this.tabKnowledge.ResumeLayout(false);
             this.tabKnowledge.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
             this.tabAutoGen.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -2186,11 +2367,14 @@ namespace StalkerOnlineQuesterEditor
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupToTargetCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupFromTargetCount)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabPageAGDialog.ResumeLayout(false);
+            this.tabPageAGDialog.PerformLayout();
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panelSelectNPC.ResumeLayout(false);
@@ -2199,7 +2383,6 @@ namespace StalkerOnlineQuesterEditor
             this.menuMainControl.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2391,7 +2574,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox listBoxTarget;
         private System.Windows.Forms.ListBox listBoxQT;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageAGDialog;
         private System.Windows.Forms.Button btnCheckNPC;
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnDelQType;
@@ -2407,40 +2590,63 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button btnChangeReward;
         private System.Windows.Forms.Button btnDelReward;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button btnAGClosed2Add;
+        private System.Windows.Forms.Button btnAGClosed2Change;
+        private System.Windows.Forms.Button btnAGClosed2Del;
         private System.Windows.Forms.ListBox lbAGClosed2;
         private System.Windows.Forms.ListBox lbAGClosed;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button btnAGClosedAdd;
+        private System.Windows.Forms.Button btnAGClosedChange;
+        private System.Windows.Forms.Button btnAGClosedDel;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnAGOnTest2Add;
+        private System.Windows.Forms.Button btnAGOnTest2Change;
+        private System.Windows.Forms.Button btnAGOnTest2Del;
         private System.Windows.Forms.ListBox lbAGOnTest2;
         private System.Windows.Forms.ListBox lbAGOnTest;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnAGOnTestAdd;
+        private System.Windows.Forms.Button btnAGOnTestChange;
+        private System.Windows.Forms.Button btnAGOnTestDel;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnAGOpened2Add;
+        private System.Windows.Forms.Button btnAGOpened2Change;
+        private System.Windows.Forms.Button btnAGOpened2Del;
         private System.Windows.Forms.ListBox lbAGOpened2;
         private System.Windows.Forms.ListBox lbAGOpened;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnAGOpenedAdd;
+        private System.Windows.Forms.Button btnAGOpenedChange;
+        private System.Windows.Forms.Button btnAGOpenedDel;
+        private System.Windows.Forms.ComboBox cbNPCNature;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnAddKnowlege;
         private System.Windows.Forms.Button btnDelKnowlege;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ListBox lbAGDeclineQuest;
+        private System.Windows.Forms.Button btnAGDeclineQuestAdd;
+        private System.Windows.Forms.Button btnAGDeclineQuestChange;
+        private System.Windows.Forms.Button btnAGDeclineQuestDel;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ListBox lbAGAcceptQuest;
+        private System.Windows.Forms.Button btnAGAcceptQuestAdd;
+        private System.Windows.Forms.Button btnAGAcceptQuestChange;
+        private System.Windows.Forms.Button btnAGAcceptQuestDel;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ListBox lbAGGetQuest;
+        private System.Windows.Forms.Button btnAGGetQuestAdd;
+        private System.Windows.Forms.Button btnAGGetQuestChange;
+        private System.Windows.Forms.Button btnAGGetQuestDel;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ToolStripMenuItem поискДиалоговПоQuestIDToolStripMenuItem;
     }
 }
 

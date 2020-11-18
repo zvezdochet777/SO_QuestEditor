@@ -53,7 +53,7 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.coordinates.RootDialog)
                     {
                         rootElements.Add(dialog.DialogID);
-                            string loc = settings.getCurrentLocale();
+                            string loc = CSettings.getCurrentLocale();
                             if (!dialogs.locales[loc].ContainsKey(currentNPC))
                             {
                                 CDialog toadd = new CDialog();
@@ -72,10 +72,10 @@ namespace StalkerOnlineQuesterEditor
                                 toadd.Text = "";
                                 toadd.Title = "";
                                 toadd.version = 0;
-                                dialogs.locales[settings.getCurrentLocale()][currentNPC].Add(toadd.DialogID, toadd);
+                                dialogs.locales[CSettings.getCurrentLocale()][currentNPC].Add(toadd.DialogID, toadd);
                             }
                             else
-                                dialogs.locales[settings.getCurrentLocale()][currentNPC][dialog.DialogID].coordinates.RootDialog = true;
+                                dialogs.locales[CSettings.getCurrentLocale()][currentNPC][dialog.DialogID].coordinates.RootDialog = true;
                         result = dialog;
                     }
                 }
@@ -130,7 +130,7 @@ namespace StalkerOnlineQuesterEditor
         public CDialog getAnyDialogOnID(int dialogID)
         {
             if (dialogID == 0) return null;
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
             {
                 if (dialogs.dialogs[currentNPC].ContainsKey(dialogID))
                     return dialogs.dialogs[currentNPC][dialogID];
@@ -141,9 +141,9 @@ namespace StalkerOnlineQuesterEditor
             {
                 CDialog dd = new CDialog();
                 if (CentralDock.SelectedIndex == 2)
-                    dd = CDialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentFraction, CFractionDialogs.locales);
+                    dd = CDialogs.getLocaleDialog(dialogID, CSettings.getCurrentLocale(), currentFraction, CFractionDialogs.locales);
                 else
-                    dd = CDialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC, dialogs.locales);
+                    dd = CDialogs.getLocaleDialog(dialogID, CSettings.getCurrentLocale(), currentNPC, dialogs.locales);
                 if (dd != null)
                     return dd;
                 else
@@ -164,12 +164,12 @@ namespace StalkerOnlineQuesterEditor
         {
             if (dialogID != 0)
             {
-                if (settings.getMode() == settings.MODE_EDITOR)
+                if (CSettings.getMode() == CSettings.MODE_EDITOR)
                     return dialogs[dialogID];
                 else
                 {
                     CDialog dd = new CDialog();
-                    dd = CDialogs.getLocaleDialog(dialogID, settings.getCurrentLocale(), currentNPC, locales);
+                    dd = CDialogs.getLocaleDialog(dialogID, CSettings.getCurrentLocale(), currentNPC, locales);
                     if (dd != null)
                         return dd;
                     else
@@ -187,12 +187,12 @@ namespace StalkerOnlineQuesterEditor
         //! Возвращает словарь диалогов одного NPC в зависимости от локализации
         public DialogDict getDialogDictionary(string key, Dictionary<string, DialogDict> dialogs, NPCLocales locales)
         {
-            if (settings.getMode() == settings.MODE_EDITOR)
+            if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 return dialogs[key];
             else
             { 
-                if (locales[ settings.getCurrentLocale() ].ContainsKey(key) )
-                    return locales[ settings.getCurrentLocale() ][key];
+                if (locales[CSettings.getCurrentLocale() ].ContainsKey(key) )
+                    return locales[CSettings.getCurrentLocale() ][key];
                 else
                     return dialogs[key];
             }
@@ -224,7 +224,7 @@ namespace StalkerOnlineQuesterEditor
         //! Удаляет диалог из локализаций при его удалении из русской части диалогов
         private void setNonActiveDialog(string holder, int id, NPCLocales locales)
         {
-            locales[settings.getListLocales()[0]][holder][id].coordinates.Active = false;
+            locales[CSettings.getListLocales()[0]][holder][id].coordinates.Active = false;
         }
 
         //! Заполняет граф диалога нужными узлами
@@ -480,9 +480,9 @@ namespace StalkerOnlineQuesterEditor
             dialog.coordinates.Y = node.FullBounds.Y;
             dialog.coordinates.RootDialog = isRoot;
             //! костылек
-            if (settings.getMode() == settings.MODE_LOCALIZATION)
+            if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
             {
-                string locale = settings.getCurrentLocale();
+                string locale = CSettings.getCurrentLocale();
                 string npc = dialog.Holder;
                 NPCLocales temp;
                 if (CentralDock.SelectedIndex == 2)
@@ -490,7 +490,7 @@ namespace StalkerOnlineQuesterEditor
                 else
                     temp = dialogs.locales;
 
-                if (temp[settings.getCurrentLocale()].ContainsKey(dialog.Holder))
+                if (temp[CSettings.getCurrentLocale()].ContainsKey(dialog.Holder))
                 {
                    
                     if (temp[locale][npc].ContainsKey(dialog.DialogID) )
@@ -512,7 +512,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (KeyValuePair<int, CDialog> dial in dialogs)
             {
                 dial.Value.Nodes.Remove(node);
-                locales[settings.getListLocales()[0]][GetCurrentHolder()][dial.Value.DialogID].Nodes.Remove(node);
+                locales[CSettings.getListLocales()[0]][GetCurrentHolder()][dial.Value.DialogID].Nodes.Remove(node);
             }
 
             PNode removedNode = getNodeOnDialogID(node);
@@ -586,12 +586,12 @@ namespace StalkerOnlineQuesterEditor
             if (index == 2)
             {
                 CFractionDialogs.dialogs[currentFraction][dialogID] = dialog;
-                CFractionDialogs.locales[settings.getListLocales()[0]][currentFraction][dialogID].InsertNonTextData(dialog);
+                CFractionDialogs.locales[CSettings.getListLocales()[0]][currentFraction][dialogID].InsertNonTextData(dialog);
             }
             else
             {
                 dialogs.dialogs[currentNPC][dialogID] = dialog;
-                dialogs.locales[settings.getListLocales()[0]][currentNPC][dialogID].InsertNonTextData(dialog);
+                dialogs.locales[CSettings.getListLocales()[0]][currentNPC][dialogID].InsertNonTextData(dialog);
             }
             this.isDirty = true;
 
@@ -611,16 +611,16 @@ namespace StalkerOnlineQuesterEditor
             {
                 dialogs = getDialogDictionary(currentFraction, CFractionDialogs.dialogs, CFractionDialogs.locales);
                 locales = CFractionDialogs.locales;
-                locales[settings.getListLocales()[0]][currentFraction].Add(newID, newDialog);
-                locales[settings.getListLocales()[0]][currentFraction][parentID].Nodes.Add(newID);
+                locales[CSettings.getListLocales()[0]][currentFraction].Add(newID, newDialog);
+                locales[CSettings.getListLocales()[0]][currentFraction][parentID].Nodes.Add(newID);
                 dialogShower = fractionDialogShower;
             }
             else
             {
                 dialogs = getDialogDictionary(GetCurrentNPC(), this.dialogs.dialogs, this.dialogs.locales);
                 locales = this.dialogs.locales;
-                locales[settings.getListLocales()[0]][currentNPC].Add(newID, newDialog);
-                locales[settings.getListLocales()[0]][currentNPC][parentID].Nodes.Add(newID);
+                locales[CSettings.getListLocales()[0]][currentNPC].Add(newID, newDialog);
+                locales[CSettings.getListLocales()[0]][currentNPC][parentID].Nodes.Add(newID);
                 dialogShower = DialogShower;
             }
 

@@ -25,20 +25,22 @@ namespace StalkerOnlineQuesterEditor
         MainForm parent;
 
         ElementType current_type;
-        int id;
 
-        public AddListElementForm(ElementType elementType, AutogenTarget data, MainForm parent)
+        public AddListElementForm(ElementType elementType, AutogenTarget data, string name, MainForm parent)
         {
             InitializeComponent();
             this.parent = parent;
             this.Text = data == null ? "Добавляем новую цель" : "Меняем цель";
-            setupUI(elementType, data);
+            setupUI(elementType, data, name);
         }
 
+        public string getName()
+        {
+            return tbText1.Text;
+        }
         public AutogenTarget getData()
         {
             AutogenTarget result = new AutogenTarget();
-            result.name = tbText1.Text;
             //result.id = id > 0 ? this.id : QAutogenDatacs.getNewTargetID();
             int int_param = 0;
 
@@ -70,7 +72,7 @@ namespace StalkerOnlineQuesterEditor
             return result;
         }
 
-        private void setupUI(ElementType elementType, AutogenTarget data)
+        private void setupUI(ElementType elementType, AutogenTarget data, string name)
         {
             current_type = elementType;
             this.tbText2.Visible = elementType == ElementType.Reward;
@@ -89,7 +91,7 @@ namespace StalkerOnlineQuesterEditor
                 }
                 if (data != null)
                 {
-                    tbText1.Text = data.name;
+                    tbText1.Text = name;
                     comboBox1.SelectedItem = mobs[data.int_param].getName();
                     comboBox2.SelectedItem = data.str_param;
                 }
@@ -99,7 +101,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 label1.Text = "Тип предмета";
                 comboBox1.Visible = true;
-                tbText1.Visible = false;
+                tbText1.Visible = true;
                 label2.Visible = false;
                 label3.Visible = false;
                 comboBox1.Items.Clear();
@@ -108,8 +110,9 @@ namespace StalkerOnlineQuesterEditor
                 {
                     comboBox1.Items.Add(i.Value.getName());
                 }
-
-                comboBox1.SelectedItem = parent.itemConst.getItemName(data.int_param);
+                if(data != null)
+                    comboBox1.SelectedItem = parent.itemConst.getItemName(data.int_param);
+                tbText1.Text = name;
             }
             else if (elementType == ElementType.None)
             {

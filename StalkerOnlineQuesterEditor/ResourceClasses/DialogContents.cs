@@ -92,6 +92,22 @@ namespace StalkerOnlineQuesterEditor
             else
                 return "";
         }
+
+        public bool hasQuest(int questID)
+        {
+            List<int> tmp = new List<int>();
+            foreach (string a in ListOfMassQuests.Split(','))
+            {
+                int q;
+                if (!int.TryParse(a, out q) || q == 0) continue;
+                tmp.Add(q);
+                }
+                
+
+            return (ListOfCompletedQuests.Contains(questID) || ListOfOnTestQuests.Contains(questID) || ListOfOpenedQuests.Contains(questID) ||
+                ListOfFailQuests.Contains(questID) || ListOfCounters.Contains(questID) || tmp.Contains(questID) || ListOfRepeat.Contains(questID) ||
+                    ListOfHaveQuests.Contains(questID));
+        }
     }
 
     public class DialogPreconditionItems

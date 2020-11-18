@@ -36,49 +36,49 @@ namespace StalkerOnlineQuesterEditor
             operatorSelectComboBox.Items.Add("Оператор 14");
             operatorSelectComboBox.Items.Add("Оператор 15");
             operatorSelectComboBox.Items.Add("Оператор 16");
-            if (parent.settings.getOperatorNumber() >= 9)
-                operatorSelectComboBox.SelectedIndex = parent.settings.getOperatorNumber() - 3;
+            if (CSettings.getOperatorNumber() >= 9)
+                operatorSelectComboBox.SelectedIndex = CSettings.getOperatorNumber() - 3;
             else
-                operatorSelectComboBox.SelectedIndex = parent.settings.getOperatorNumber();
+                operatorSelectComboBox.SelectedIndex = CSettings.getOperatorNumber();
 
-            localesTextBox.Text = parent.settings.getLocales();
+            localesTextBox.Text = CSettings.getLocales();
             foreach (string locale in localesTextBox.Text.Split(','))
                 localeComboBox.Items.Add(locale);
 
-            if (parent.settings.getMode() == parent.settings.MODE_LOCALIZATION)
+            if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
             {
                 localizeCheckBox.Checked = true;
-                localeComboBox.SelectedIndex = parent.settings.getCurrentIndexLocale();
+                localeComboBox.SelectedIndex = CSettings.getCurrentIndexLocale();
             }
-            tbAddressToCopyFiles.Text = parent.settings.pathQuestDataFiles;
+            tbAddressToCopyFiles.Text = CSettings.pathQuestDataFiles;
         }
 
         //! Нажатие ОК - магические действия с номером оператора и выход на главную
         private void bOK_Click(object sender, EventArgs e)
         {
             //operator settings
-            if (parent.settings.getOperatorNumber() != operatorSelectComboBox.SelectedIndex)
+            if (CSettings.getOperatorNumber() != operatorSelectComboBox.SelectedIndex)
             {
                 int operatorIndex = 0;
                 if (operatorSelectComboBox.SelectedIndex >= 6)
                     operatorIndex = operatorSelectComboBox.SelectedIndex + 3;
                 else
                     operatorIndex = operatorSelectComboBox.SelectedIndex;
-                parent.settings.setOperatorNumber(operatorIndex);
+                CSettings.setOperatorNumber(operatorIndex);
             }
 
             //locales settings
-            parent.settings.setLocales(localesTextBox.Text);
+            CSettings.setLocales(localesTextBox.Text);
             if (localizeCheckBox.Checked)
             {
-                if (!parent.settings.setLocale(localeComboBox.SelectedIndex))
+                if (!CSettings.setLocale(localeComboBox.SelectedIndex))
                     localizeCheckBox.Enabled = false;
             }
             else
-                parent.settings.setEditorMode();
+                CSettings.setEditorMode();
 
-            parent.settings.pathQuestDataFiles = tbAddressToCopyFiles.Text;
-            parent.settings.saveSettings();
+            CSettings.pathQuestDataFiles = tbAddressToCopyFiles.Text;
+            CSettings.saveSettings();
             this.Close();
         }
 
@@ -91,17 +91,17 @@ namespace StalkerOnlineQuesterEditor
         private void bLocaleRefresh_Click(object sender, EventArgs e)
         {
             localeComboBox.Items.Clear();
-            parent.settings.setLocales(localesTextBox.Text);
-            parent.settings.saveSettings();
+            CSettings.setLocales(localesTextBox.Text);
+            CSettings.saveSettings();
             localeComboBox.Items.Clear();
-            foreach (string locale in parent.settings.getLocales().Split(','))
+            foreach (string locale in CSettings.getLocales().Split(','))
                 localeComboBox.Items.Add(locale);
         }
 
         //! Клик по чекбоксу "локализация"
         private void localizeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (parent.settings.getLocales() == "")
+            if (CSettings.getLocales() == "")
                 localizeCheckBox.Checked = false;
             localeComboBox.Enabled = localizeCheckBox.Checked;
             localeComboBox.SelectedIndex = 0;

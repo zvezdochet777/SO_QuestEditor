@@ -48,16 +48,16 @@ namespace StalkerOnlineQuesterEditor
             ManagerNPC = managerNPC;
             ParseNodeCoordinates("NodeCoordinates/");
 
-            ParseDialogsData(parent.settings.GetDialogDataPath(), this.dialogs, true);
+            ParseDialogsData(CSettings.GetDialogDataPath(), this.dialogs, true);
             ParseDialogToolTips();
-            ParseDialogsTexts(parent.settings.GetDialogTextPath(parent.settings.ORIGINAL_PATH), this.dialogs);
+            ParseDialogsTexts(CSettings.GetDialogTextPath(CSettings.ORIGINAL_PATH), this.dialogs);
 
-            foreach (var locale in parent.settings.getListLocales())
+            foreach (var locale in CSettings.getListLocales())
             {
                 if (!locales.Keys.Contains(locale))
                     locales.Add(locale, new NPCDicts());
-                ParseDialogsData(parent.settings.GetDialogDataPath(), this.locales[locale]);
-                ParseDialogsTexts(parent.settings.GetDialogTextPath(locale), this.locales[locale]);
+                ParseDialogsData(CSettings.GetDialogDataPath(), this.locales[locale]);
+                ParseDialogsTexts(CSettings.GetDialogTextPath(locale), this.locales[locale]);
             }
         }
 
@@ -514,15 +514,15 @@ namespace StalkerOnlineQuesterEditor
         public void SaveDialogs()
         {
             SaveNodeCoordinates("NodeCoordinates/", this.dialogs);
-            SaveDialogsTexts(parent.settings.GetDialogTextPath(parent.settings.ORIGINAL_PATH), this.dialogs);
-            SaveDialogsData(parent.settings.GetDialogDataPath(), this.dialogs);
+            SaveDialogsTexts(CSettings.GetDialogTextPath(CSettings.ORIGINAL_PATH), this.dialogs);
+            SaveDialogsData(CSettings.GetDialogDataPath(), this.dialogs);
             SaveToDoTooltips();
         }
 
         //! Сохраняет текущую локализацию диалогов в файл
         public void SaveLocales()
         {
-            SaveDialogsTexts(parent.settings.GetDialogLocaleTextPath(), this.locales[parent.settings.getCurrentLocale()]);
+            SaveDialogsTexts(CSettings.GetDialogLocaleTextPath(), this.locales[CSettings.getCurrentLocale()]);
         }
 
         private void SaveDialogsTexts(string filePath, NPCDicts target)

@@ -231,8 +231,12 @@ namespace StalkerOnlineQuesterEditor.Forms
             if (quest_id > 0 && error_type == ERROR_QUEST)
             {
                 CQuest q = parent.getQuestOnQuestID(quest_id);
-                if (q != null && q.isOld)
-                    error_type = ERROR_QUEST_TYPE5;
+                if (q != null)
+                {
+                    CQuest q_p = parent.getQuestOnQuestID(get_parent_quest(quest_id));
+                    if (q_p != null && q_p.isOld)
+                        error_type = ERROR_QUEST_TYPE5;
+                }
             }
             if (lbLog.InvokeRequired)
             {
@@ -341,6 +345,12 @@ namespace StalkerOnlineQuesterEditor.Forms
 
                     foreach (int quest_id in check_quest_list)
                     {
+                        if (parent.getQuestOnQuestID(quest_id) == null)
+                        {
+                            string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + quest_id.ToString() + " не существует";
+                            this.writeToLog(ERROR_QUEST, line, quest_id);
+                            continue;
+                        };
                         if (wasIgnoredQuestID(quest_id))
                             continue;
                         if (deleted_quests_ids.Contains(quest_id))
@@ -348,7 +358,13 @@ namespace StalkerOnlineQuesterEditor.Forms
                             string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + quest_id.ToString() + " находится в списке автозавершения";
                             this.writeToLog(ERROR_QUEST, line, quest_id);
                         }
-                        if (!checkQuestIDOnGet(quest_id, npc.Key, dia.Key.ToString()))
+                        else if(deleted_quests_ids.Contains(get_parent_quest(quest_id)))
+                        {
+                            string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + quest_id.ToString() + " его родитель находится в списке автозавершения";
+                            this.writeToLog(ERROR_QUEST, line, quest_id);
+                        }
+
+                        if (!checkQuestIDOnGet(quest_id, npc.Key, dia.Key.ToString()) && !checkQuestIDOnGet(get_parent_quest(quest_id), npc.Key, dia.Key.ToString()))
                         {
                             string line = "NPC:" + npc.Key + "\t\tДиалогID: " + dia.Key.ToString() + "\t\tКвест №" + quest_id.ToString() + " не выдаётся";
                             //Thread.Sleep(100);
@@ -494,8 +510,8 @@ namespace StalkerOnlineQuesterEditor.Forms
                 }
                 if (quest_types.Contains(quest.Value.Target.QuestType))
                 {
-                    if (!on_test_list.Contains(quest.Key) && !deleted_quests_ids.Contains(quest.Key) && 
-                        !find_quest_type100(quest.Value.Additional.IsSubQuest) && !deleted_quests_ids.Contains(get_parent_quest(quest.Key)))
+                    if (!on_test_list.Contains(quest.Key) && (!deleted_quests_ids.Contains(quest.Key) || !deleted_quests_ids.Contains(get_parent_quest(quest.Key))) && 
+                        !find_quest_type100(quest.Value.Additional.IsSubQuest))
                     {
                         string line = "Квест №:" + quest.Key.ToString() + "\tимеет тип: \"" + this.parent.questConst.getDescription(quest.Value.Target.QuestType) + "\" и нигде не проверяется";
                         if (quest.Value.Target.QuestType == CQuestConstants.TYPE_MONEYBACK)
