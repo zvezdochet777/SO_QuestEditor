@@ -95,6 +95,7 @@ namespace StalkerOnlineQuesterEditor
         public int itemCategory = -1;
         public bool is_or = false;
         public List<QuestItem> items = new List<QuestItem>();
+        public bool equipped = false;
 
         public bool Any()
         {

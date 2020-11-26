@@ -892,6 +892,8 @@ namespace StalkerOnlineQuesterEditor
 
                     precondition.items.items.Add(item);
                 }
+
+                precondition.items.equipped = cbItemsEquipped.Checked;
                 obj = this.getItemsDataGrid(GVNonItems);
                 foreach (object[] tmp in obj)
                 {
@@ -1226,7 +1228,9 @@ namespace StalkerOnlineQuesterEditor
 
         private void initItemsTab()
         {
-
+            label20.Visible = false;
+            cbItemsEquipped.Visible = false;
+            cbItemsEquipped.Checked = false;
             if (editPrecondition.items.is_or)
                 rbItemsOr.Checked = true;
             if (editPrecondition.itemsNone.is_or)
@@ -1243,6 +1247,9 @@ namespace StalkerOnlineQuesterEditor
                 this.rbItems.Checked = true;
                 setItemsInDataGrid(this.editPrecondition.items.items, GVItems);
                 setItemsInDataGrid(this.editPrecondition.itemsNone.items, GVNonItems);
+                label20.Visible = true;
+                cbItemsEquipped.Visible = true;
+                cbItemsEquipped.Checked = editPrecondition.items.equipped;
             }
             checkItemsIndicates();
 
@@ -1532,6 +1539,9 @@ namespace StalkerOnlineQuesterEditor
             panelItems.Visible = rbItems.Checked;
             panel1.Visible = rbItems.Checked;
             panel3.Visible = rbItems.Checked;
+            label20.Visible = rbItems.Checked;
+            cbItemsEquipped.Visible = rbItems.Checked;
+            
             //GVNonItems.Visible = rbItems.Checked;
         }
 

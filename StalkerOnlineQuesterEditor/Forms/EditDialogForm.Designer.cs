@@ -226,6 +226,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.cbTutorialPhase = new System.Windows.Forms.ComboBox();
             this.tabPVP = new System.Windows.Forms.TabPage();
+            this.cbRatingPVPMode = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.cbPVPRank2 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cbPVPRank1 = new System.Windows.Forms.ComboBox();
@@ -247,8 +249,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cbRatingPVPMode = new System.Windows.Forms.ComboBox();
+            this.cbItemsEquipped = new System.Windows.Forms.CheckBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
@@ -2008,6 +2010,8 @@
             // 
             this.panelItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelItems.Controls.Add(this.label20);
+            this.panelItems.Controls.Add(this.cbItemsEquipped);
             this.panelItems.Controls.Add(this.GVNonItems);
             this.panelItems.Controls.Add(this.GVItems);
             this.panelItems.Location = new System.Drawing.Point(0, 39);
@@ -2311,6 +2315,23 @@
             this.tabPVP.Text = "PVP";
             this.tabPVP.UseVisualStyleBackColor = true;
             // 
+            // cbRatingPVPMode
+            // 
+            this.cbRatingPVPMode.FormattingEnabled = true;
+            this.cbRatingPVPMode.Location = new System.Drawing.Point(87, 54);
+            this.cbRatingPVPMode.Name = "cbRatingPVPMode";
+            this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
+            this.cbRatingPVPMode.TabIndex = 5;
+            // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(6, 39);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(75, 48);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "СЕГОДНЯ рейтинговый режим";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // cbPVPRank2
             // 
             this.cbPVPRank2.FormattingEnabled = true;
@@ -2526,22 +2547,24 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // label17
+            // cbItemsEquipped
             // 
-            this.label17.Location = new System.Drawing.Point(6, 39);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(75, 48);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "СЕГОДНЯ рейтинговый режим";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbItemsEquipped.AutoSize = true;
+            this.cbItemsEquipped.Location = new System.Drawing.Point(288, 82);
+            this.cbItemsEquipped.Name = "cbItemsEquipped";
+            this.cbItemsEquipped.Size = new System.Drawing.Size(93, 17);
+            this.cbItemsEquipped.TabIndex = 39;
+            this.cbItemsEquipped.Text = "Экипировано";
+            this.cbItemsEquipped.UseVisualStyleBackColor = true;
             // 
-            // cbRatingPVPMode
+            // label20
             // 
-            this.cbRatingPVPMode.FormattingEnabled = true;
-            this.cbRatingPVPMode.Location = new System.Drawing.Point(87, 54);
-            this.cbRatingPVPMode.Name = "cbRatingPVPMode";
-            this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
-            this.cbRatingPVPMode.TabIndex = 5;
+            this.label20.Location = new System.Drawing.Point(286, 102);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(100, 57);
+            this.label20.TabIndex = 40;
+            this.label20.Text = "Относится только\r\nк наличию\r\n<--";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EditDialogForm
             // 
@@ -2605,6 +2628,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelItems.ResumeLayout(false);
+            this.panelItems.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVNonItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).EndInit();
             this.tabTransport.ResumeLayout(false);
@@ -2847,5 +2871,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cbRatingPVPMode;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox cbItemsEquipped;
+        private System.Windows.Forms.Label label20;
     }
 }
