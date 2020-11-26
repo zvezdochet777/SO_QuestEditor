@@ -106,7 +106,10 @@ namespace StalkerOnlineQuesterEditor
                         inName = false;
                         int id = Convert.ToInt32(reader.Value);
                         if (effects.ContainsKey(id))
+                        {
                             System.Windows.Forms.MessageBox.Show("Ошибка парсинга эффектов. Повторяются ID в effects.json, ошибочный эффект - " + id.ToString(), "Ошибка");
+                            continue;
+                        }
                         effects.Add(id, name);
                     }
             }

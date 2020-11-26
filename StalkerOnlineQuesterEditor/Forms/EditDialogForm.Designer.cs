@@ -75,7 +75,6 @@
             this.gbQuestCondition = new System.Windows.Forms.GroupBox();
             this.cbShouldntHaveQuests = new System.Windows.Forms.CheckBox();
             this.cbMustHaveQuests = new System.Windows.Forms.CheckBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.tMustHaveQuests = new System.Windows.Forms.MaskedTextBox();
             this.tShouldntHaveQuests = new System.Windows.Forms.MaskedTextBox();
             this.cbShouldntHaveFailQuests = new System.Windows.Forms.CheckBox();
@@ -234,6 +233,7 @@
             this.cbTutorialPhase = new System.Windows.Forms.ComboBox();
             this.tabPVP = new System.Windows.Forms.TabPage();
             this.cbRatingPVPMode = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.cbPVPRank2 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cbPVPRank1 = new System.Windows.Forms.ComboBox();
@@ -256,6 +256,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
+            this.cbItemsEquipped = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -884,15 +885,6 @@
             this.cbMustHaveQuests.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveQuests.TabIndex = 45;
             this.cbMustHaveQuests.UseVisualStyleBackColor = true;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 49);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 13);
-            this.label17.TabIndex = 43;
-            this.label17.Text = "Наличие квестов;";
             // 
             // tMustHaveQuests
             // 
@@ -1996,6 +1988,7 @@
             // tabItems
             // 
             this.tabItems.BackColor = System.Drawing.SystemColors.Control;
+            this.tabItems.Controls.Add(this.cbItemsEquipped);
             this.tabItems.Controls.Add(this.panel3);
             this.tabItems.Controls.Add(this.panel1);
             this.tabItems.Controls.Add(this.panelItems);
@@ -2394,6 +2387,15 @@
             this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
             this.cbRatingPVPMode.TabIndex = 5;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(10, 49);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 13);
+            this.label17.TabIndex = 43;
+            this.label17.Text = "Наличие квестов;";
+            // 
             // cbPVPRank2
             // 
             this.cbPVPRank2.FormattingEnabled = true;
@@ -2619,6 +2621,16 @@
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
+            // 
+            // cbItemsEquipped
+            // 
+            this.cbItemsEquipped.AutoSize = true;
+            this.cbItemsEquipped.Location = new System.Drawing.Point(6, 235);
+            this.cbItemsEquipped.Name = "cbItemsEquipped";
+            this.cbItemsEquipped.Size = new System.Drawing.Size(164, 17);
+            this.cbItemsEquipped.TabIndex = 39;
+            this.cbItemsEquipped.Text = "Должно быть экипировано";
+            this.cbItemsEquipped.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -2932,5 +2944,6 @@
         private System.Windows.Forms.ComboBox cbPVPRank1;
         private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.ComboBox cbRatingPVPMode;
+        private System.Windows.Forms.CheckBox cbItemsEquipped;
     }
 }

@@ -894,7 +894,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 precondition.items.itemCategory = -1;
                 precondition.itemsNone.itemCategory = -1;
-
+                precondition.items.equipped = cbItemsEquipped.Checked;
 
                 List<object[]> obj = this.getItemsDataGrid(GVItems);
                 foreach (object[] tmp in obj)
@@ -1256,6 +1256,7 @@ namespace StalkerOnlineQuesterEditor
             else if (this.editPrecondition.items.Any() || this.editPrecondition.itemsNone.Any())
             {
                 this.rbItems.Checked = true;
+                cbItemsEquipped.Checked = editPrecondition.items.equipped;
                 setItemsInDataGrid(this.editPrecondition.items.items, GVItems);
                 setItemsInDataGrid(this.editPrecondition.itemsNone.items, GVNonItems);
             }
@@ -1547,6 +1548,7 @@ namespace StalkerOnlineQuesterEditor
             panelItems.Visible = rbItems.Checked;
             panel1.Visible = rbItems.Checked;
             panel3.Visible = rbItems.Checked;
+            cbItemsEquipped.Visible = rbItems.Checked;
             //GVNonItems.Visible = rbItems.Checked;
         }
 
