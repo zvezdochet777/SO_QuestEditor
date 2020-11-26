@@ -46,13 +46,13 @@ namespace StalkerOnlineQuesterEditor
 
             foreach (var a in CSettings.getFullListLocales())
             {
-                string path = (CSettings.pathToLocalFiles + CSettings.getCurrentLocale() + QUEST_LOCAL_PATH);
+                string path = (CSettings.pathToLocalFiles + a + QUEST_LOCAL_PATH);
                 ParseQuestTexts(path, a);
             }
 
             foreach (var a in CSettings.getFullListLocales())
             {
-                string path = (CSettings.pathToLocalFiles + CSettings.getCurrentLocale() + DIALOGS_LOCAL_PATH);
+                string path = (CSettings.pathToLocalFiles + a + DIALOGS_LOCAL_PATH);
                 ParseDialogsTexts(path, a);
             }
         }
@@ -77,9 +77,9 @@ namespace StalkerOnlineQuesterEditor
                 locals_quests[locale].data.Add(npcName, new Dictionary<string, QuestLocal>());
                 foreach(XElement quest in npc.Elements("quest"))
                 {
-                    string str_id = quest.Element("id").ToString();
+                    string str_id = quest.Element("id").Value.ToString();
                     int version = int.Parse(quest.Element("Version").Value);
-                    locals_quests[locale].data[npcName].Add(str_id, new QuestLocal(quest.Element("name").Value.ToString(), version));
+                    locals_quests[locale].data[npcName].Add(str_id, new QuestLocal(quest.Element("text").Value.ToString(), version));
                 }
             }
         }
@@ -97,6 +97,12 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("text", quest.Value.text),
                         new XElement("Version", quest.Value.version)));
                 }
+                resultDoc.Root.Add(npc_element);
+            }
+            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(dialogFile, settings))
+            {
+                resultDoc.Save(w);
             }
         }
        
@@ -204,7 +210,6 @@ namespace StalkerOnlineQuesterEditor
             {
                 string path = (CSettings.pathToLocalFiles + locale + DIALOGS_LOCAL_PATH);
                 SaveDialogsTexts(path, locale);
-                SaveQuestTexts(path, locale);
             }
         }
 
@@ -237,9 +242,9 @@ namespace StalkerOnlineQuesterEditor
             int frase_id = -1;
             List<DialogLocal> dialogs;
             if (isTitle)
-                dialogs = QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].titles;
+                dialogs = QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].titles;
             else
-                dialogs = QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].texts;
+                dialogs = QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].texts;
 
             foreach (var i in dialogs)
             {
@@ -265,8 +270,13 @@ namespace StalkerOnlineQuesterEditor
             foreach (var local in CSettings.getFullListLocales())
             {
                 int version = CSettings.ORIGINAL_PATH == local ? 1 : 0;
+                if (!locals_quests[local].data.ContainsKey(npcName))
+                    locals_quests[local].data.Add(npcName, new Dictionary<string, QuestLocal>());
                 if (!locals_quests[local].data[npcName].ContainsKey(str_id))
-                    return false;
+                {
+                    locals_quests[local].data[npcName].Add(str_id, new QuestLocal(text, version));
+                    continue;
+                }
                 locals_quests[local].data[npcName][str_id].text = text;
                 locals_quests[local].data[npcName][str_id].version = version;
             }
@@ -275,7 +285,7 @@ namespace StalkerOnlineQuesterEditor
 
         private static bool find_dublicate_target_names(string text)
         {
-            foreach(var npc in locals_quests[CSettings.getCurrentLocale()].data)
+            foreach(var npc in locals_quests[CSettings.ORIGINAL_PATH].data)
             {
                 foreach(var quest in npc.Value)
                 {

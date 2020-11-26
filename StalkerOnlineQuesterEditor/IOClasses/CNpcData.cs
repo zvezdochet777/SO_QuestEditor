@@ -56,7 +56,7 @@ namespace StalkerOnlineQuesterEditor
             bool is_nature = false;
             var name = "";
             int value = -1;
-           
+            npc_natures = new Dictionary<string, int>();
             while (reader.Read())
             {
                 if (reader.TokenType == JsonToken.PropertyName)

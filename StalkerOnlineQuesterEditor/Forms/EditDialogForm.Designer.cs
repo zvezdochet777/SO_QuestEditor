@@ -232,6 +232,8 @@
             this.tabTutorial = new System.Windows.Forms.TabPage();
             this.label13 = new System.Windows.Forms.Label();
             this.cbTutorialPhase = new System.Windows.Forms.ComboBox();
+            this.tabPVP = new System.Windows.Forms.TabPage();
+            this.cbRatingPVPMode = new System.Windows.Forms.ComboBox();
             this.cbPVPRank2 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cbPVPRank1 = new System.Windows.Forms.ComboBox();
@@ -254,8 +256,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-			this.cbRatingPVPMode = new System.Windows.Forms.ComboBox();
-            this.tabPVP = new System.Windows.Forms.TabPage();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -819,7 +819,6 @@
             // 
             this.gbQuestCondition.Controls.Add(this.cbShouldntHaveQuests);
             this.gbQuestCondition.Controls.Add(this.cbMustHaveQuests);
-            this.gbQuestCondition.Controls.Add(this.label17);
             this.gbQuestCondition.Controls.Add(this.tMustHaveQuests);
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveQuests);
             this.gbQuestCondition.Controls.Add(this.cbShouldntHaveFailQuests);
@@ -2052,7 +2051,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.rbItemsOr);
             this.panel1.Controls.Add(this.rbItemsAnd);
-            this.panel1.Location = new System.Drawing.Point(298, 6);
+            this.panel1.Location = new System.Drawing.Point(243, 8);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(88, 31);
             this.panel1.TabIndex = 12;
@@ -2101,9 +2100,9 @@
             this.GVNonItems_itemQuantity,
             this.GVNonItems_ItemCond});
             this.GVNonItems.Dock = System.Windows.Forms.DockStyle.Right;
-            this.GVNonItems.Location = new System.Drawing.Point(414, 0);
+            this.GVNonItems.Location = new System.Drawing.Point(389, 0);
             this.GVNonItems.Name = "GVNonItems";
-            this.GVNonItems.Size = new System.Drawing.Size(288, 191);
+            this.GVNonItems.Size = new System.Drawing.Size(313, 191);
             this.GVNonItems.TabIndex = 7;
             // 
             // GVNonItems_itemType
@@ -2147,7 +2146,7 @@
             this.GVItems.Dock = System.Windows.Forms.DockStyle.Left;
             this.GVItems.Location = new System.Drawing.Point(0, 0);
             this.GVItems.Name = "GVItems";
-            this.GVItems.Size = new System.Drawing.Size(282, 191);
+            this.GVItems.Size = new System.Drawing.Size(331, 191);
             this.GVItems.TabIndex = 6;
             // 
             // GVItems_itemType
@@ -2183,7 +2182,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(294, 26);
+            this.label12.Location = new System.Drawing.Point(389, 26);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 13);
             this.label12.TabIndex = 8;
@@ -2382,10 +2381,18 @@
             this.tabPVP.Location = new System.Drawing.Point(4, 22);
             this.tabPVP.Name = "tabPVP";
             this.tabPVP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPVP.Size = new System.Drawing.Size(702, 230);
+            this.tabPVP.Size = new System.Drawing.Size(702, 254);
             this.tabPVP.TabIndex = 11;
             this.tabPVP.Text = "PVP";
             this.tabPVP.UseVisualStyleBackColor = true;
+            // 
+            // cbRatingPVPMode
+            // 
+            this.cbRatingPVPMode.FormattingEnabled = true;
+            this.cbRatingPVPMode.Location = new System.Drawing.Point(87, 54);
+            this.cbRatingPVPMode.Name = "cbRatingPVPMode";
+            this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
+            this.cbRatingPVPMode.TabIndex = 5;
             // 
             // cbPVPRank2
             // 
@@ -2612,14 +2619,6 @@
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
-            // 
-            // cbRatingPVPMode
-            // 
-            this.cbRatingPVPMode.FormattingEnabled = true;
-            this.cbRatingPVPMode.Location = new System.Drawing.Point(87, 54);
-            this.cbRatingPVPMode.Name = "cbRatingPVPMode";
-            this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
-            this.cbRatingPVPMode.TabIndex = 5;
             // 
             // EditDialogForm
             // 

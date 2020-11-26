@@ -99,9 +99,9 @@ namespace StalkerOnlineQuesterEditor
             DialogLocal tmp = null;
             List<DialogLocal> dialogs;
             if (is_title)
-                dialogs = QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].titles;
+                dialogs = QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].titles;
             else
-                dialogs = QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].texts;
+                dialogs = QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].texts;
 
             foreach (var i in dialogs)
             {
@@ -128,7 +128,7 @@ namespace StalkerOnlineQuesterEditor
 
             DialogLocal tmp = null;
             List<DialogLocal> dialogs;
-            dialogs = QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].titles;
+            dialogs = QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].titles;
 
             foreach (var i in dialogs)
             {
@@ -233,11 +233,11 @@ namespace StalkerOnlineQuesterEditor
                 i.Items.Clear();
 
             foreach (var i in QAutogenDatacs.data_dialogs.netral.yes)
-                lbAGAcceptQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+                lbAGAcceptQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTitleByID(Convert.ToInt32(i)));
             foreach (var i in QAutogenDatacs.data_dialogs.netral.no)
-                lbAGDeclineQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+                lbAGDeclineQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTitleByID(Convert.ToInt32(i)));
             foreach (var i in QAutogenDatacs.data_dialogs.netral.work)
-                lbAGGetQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+                lbAGGetQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTitleByID(Convert.ToInt32(i)));
 
 
             int nature_id = NPCNatures.getNatureByName(cbNPCNature.SelectedItem.ToString());
@@ -248,28 +248,35 @@ namespace StalkerOnlineQuesterEditor
             
 
             foreach (var i in _dialogs.dialogs_ontest.texts)
-                lbAGOnTest2.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTextByID(Convert.ToInt32(i)));
+                lbAGOnTest2.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTextByID(Convert.ToInt32(i)));
             foreach (var i in _dialogs.dialogs_ontest.titles)
-                lbAGOnTest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+                lbAGOnTest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTitleByID(Convert.ToInt32(i)));
 
             foreach (var i in _dialogs.dialogs_opened.texts)
-                lbAGOpened2.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTextByID(Convert.ToInt32(i)));
+                lbAGOpened2.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTextByID(Convert.ToInt32(i)));
             foreach (var i in _dialogs.dialogs_opened.titles)
-                lbAGOpened.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+                lbAGOpened.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTitleByID(Convert.ToInt32(i)));
 
             foreach (var i in _dialogs.dialogs_closed.texts)
-                lbAGClosed2.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTextByID(Convert.ToInt32(i)));
+                lbAGClosed2.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTextByID(Convert.ToInt32(i)));
             foreach (var i in _dialogs.dialogs_closed.titles)
-                lbAGClosed.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.getCurrentLocale()].getTitleByID(Convert.ToInt32(i)));
+                lbAGClosed.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTitleByID(Convert.ToInt32(i)));
 
             
         }
 
         private void listBoxQT_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            int id = (int)listBoxQT.SelectedValue;
-
+            string tmp = listBoxQT.SelectedValue.ToString();
+            int id;
+            try
+            {
+                id = Convert.ToInt32(tmp);
+            }
+            catch
+            {
+                id = (listBoxQT.SelectedValue as ListBoxItem).id;
+            }
             
 
             List<ListBoxItem> list = new List<ListBoxItem>();
@@ -278,7 +285,7 @@ namespace StalkerOnlineQuesterEditor
                 AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(id);
                 foreach (var i in quest_type.targets)
                 {
-                    string name = QAutogenDatacs.locals_quests[CSettings.getCurrentLocale()].getTextByID(currentNPC, id, i.id);
+                    string name = QAutogenDatacs.locals_quests[CSettings.ORIGINAL_PATH].getTextByID(currentNPC, id, i.id);
                     list.Add(new ListBoxItem(i.id, name));
                 }
             }
@@ -294,7 +301,7 @@ namespace StalkerOnlineQuesterEditor
         {
             AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
             int target_type = (int)listBoxTarget.SelectedValue;
-            string name = QAutogenDatacs.locals_quests[CSettings.getCurrentLocale()].getTextByID(currentNPC, quest_type.id, target_type);
+            string name = QAutogenDatacs.locals_quests[CSettings.ORIGINAL_PATH].getTextByID(currentNPC, quest_type.id, target_type);
             AddListElementForm form = new AddListElementForm((ElementType)quest_type.id, quest_type.getTargetByType(target_type), name, this);
             DialogResult result = form.ShowDialog();
 
@@ -386,7 +393,15 @@ namespace StalkerOnlineQuesterEditor
         private void listBoxTarget_SelectedIndexChanged(object sender, EventArgs e)
         {
             AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
-            int target_type = (int)listBoxTarget.SelectedValue;
+            int target_type;
+            try
+            {
+                target_type = (int)listBoxTarget.SelectedValue;
+            }
+            catch
+            {
+                target_type = (listBoxTarget.SelectedValue as ListBoxItem).id;
+            }
 
             AutogenTarget t = quest_type.getTargetByType(target_type);
 
