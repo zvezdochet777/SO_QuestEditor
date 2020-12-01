@@ -55,6 +55,8 @@ namespace StalkerOnlineQuesterEditor
                 string path = (CSettings.pathToLocalFiles + a + DIALOGS_LOCAL_PATH);
                 ParseDialogsTexts(path, a);
             }
+
+            AGNPCMeta.init();
         }
 
         private static void ParseQuestTexts(string dialogFile, string locale)
@@ -211,6 +213,7 @@ namespace StalkerOnlineQuesterEditor
                 string path = (CSettings.pathToLocalFiles + locale + DIALOGS_LOCAL_PATH);
                 SaveDialogsTexts(path, locale);
             }
+            AGNPCMeta.save();
         }
 
         public static int getNewFraseID(bool isTitle)
@@ -315,11 +318,15 @@ namespace StalkerOnlineQuesterEditor
             {
                 int version = CSettings.ORIGINAL_PATH == local ? 1 : 0;
                 if (!locals_quests[local].data.ContainsKey(npcName))
+                {
                     locals_quests[local].data.Add(npcName, new Dictionary<string, QuestLocal>());
+                    AGNPCMeta.addNpc(npcName);
+                }
                 if (locals_quests[local].data[npcName].ContainsKey(str_id))
                     return false;
                 locals_quests[local].data[npcName].Add(str_id, new QuestLocal(text, version));
             }
+            AGNPCMeta.changeNPC(npcName);
             return true;
         }
 
@@ -333,7 +340,7 @@ namespace StalkerOnlineQuesterEditor
                 if (locals_quests[local].data[npcName].ContainsKey(str_id))
                     locals_quests[local].data[npcName].Remove(str_id);
             }
-            
+            AGNPCMeta.changeNPC(npcName);
             return true;
         }
 
@@ -655,6 +662,101 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public static class AGNPCMeta
+    {
+        public static string JSON_PATH = "../../../res/scripts/common/data/Quests/QuestsAutogenerator/_meta.json";
+        static JsonTextReader reader;
+        static List<string> changedNPC = new List<string>();
+        static Dictionary<string, int[]> data = new Dictionary<string, int[]>();
 
+        public static void addNpc(string npcName)
+        {
+            if (data.ContainsKey(npcName))
+                return;
+
+            int new_index = AGNPCMeta.getMaxID() + 1;
+            data.Add(npcName, new int[] { new_index, 0 });
+
+        }
+
+        public static void changeNPC(string npcName)
+        {
+            if (!data.ContainsKey(npcName))
+                return;
+            if (changedNPC.Contains(npcName)) return;
+            changedNPC.Add(npcName);
+        }
+
+        public static int getMaxID()
+        {
+            int max = -9999;
+            foreach (var i in data.Values)
+            {
+                if (i[0] > max) max = i[0];
+            }
+            return max;
+        }
+
+        public static void init()
+        {
+            reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
+            string npc_name = "";
+            bool flag = false;
+            int id = 0;
+            int ver = 0;
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonToken.StartArray)
+                {
+                    flag = true;
+                    continue;
+                }
+
+                if (reader.TokenType == JsonToken.Integer)
+                {
+                    if (flag)
+                    {
+                        id = Convert.ToInt32(reader.Value.ToString());
+                        flag = false;
+                    }
+                    else
+                    {
+                        ver = Convert.ToInt32(reader.Value.ToString());
+                        data.Add(npc_name, new int[2] { id, ver });
+                    }
+
+                }
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    npc_name = reader.Value.ToString();
+                }
+            }
+            reader.Close();
+        }
+
+        public static void save()
+        {
+            foreach(var name in changedNPC)
+                data[name][1]++;
+
+
+            using (JsonWriter writer = new JsonTextWriter(new StreamWriter(JSON_PATH)))
+            {
+                writer.Formatting = Formatting.Indented;
+                writer.WriteStartObject();
+                foreach (var val in data)
+                {
+                    writer.WritePropertyName(val.Key);
+                    writer.WriteStartArray();
+                    foreach (int id in val.Value)
+                    {
+                        writer.WriteValue(id);
+                    }
+                    writer.WriteEnd();
+                }
+                writer.WriteEndObject();
+            }
+        }
+    }
 
 }

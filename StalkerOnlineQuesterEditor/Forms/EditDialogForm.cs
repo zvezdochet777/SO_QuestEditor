@@ -895,7 +895,7 @@ namespace StalkerOnlineQuesterEditor
                 precondition.items.itemCategory = -1;
                 precondition.itemsNone.itemCategory = -1;
                 precondition.items.equipped = cbItemsEquipped.Checked;
-
+                precondition.itemsNone.equipped = cbItemsEquipped.Checked;
                 List<object[]> obj = this.getItemsDataGrid(GVItems);
                 foreach (object[] tmp in obj)
                 {

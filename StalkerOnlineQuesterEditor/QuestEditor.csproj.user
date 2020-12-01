@@ -20,18 +20,19 @@
     <StartArguments>/master</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>
-    </StartArguments>
+    <StartArguments>/master</StartArguments>
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
-    <RemoteDebugMachine>USTAS</RemoteDebugMachine>
+    <RemoteDebugMachine>EVGENIY</RemoteDebugMachine>
     <StartAction>Project</StartAction>
-    <StartWorkingDirectory>
-    </StartWorkingDirectory>
+    <StartWorkingDirectory>E:\Git\sys\tools\QuestEditor\</StartWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_Remote_Stas|AnyCPU'">
     <StartArguments>/master</StartArguments>
-    <RemoteDebugMachine>SERGEY-PC</RemoteDebugMachine>
+    <RemoteDebugMachine>EVGENIY</RemoteDebugMachine>
     <RemoteDebugEnabled>true</RemoteDebugEnabled>
-    <StartWorkingDirectory>\\SERGEY-PC\QuestEditor\</StartWorkingDirectory>
+    <StartWorkingDirectory>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\</StartWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
   </PropertyGroup>
 </Project>

@@ -379,8 +379,11 @@ namespace StalkerOnlineQuesterEditor
                     }
                     */
                     if (FakeNPCBox.Items.Count > 0)
+                    {
                         NPCBox.SelectedValue = FakeNPCBox.Items[0].ToString().Split('(')[0];
-                    FakeNPCBox.DroppedDown = false;
+                        FakeNPCBox.DroppedDown = false;
+                    }
+                    
                 }
                 else if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
                 {

@@ -20,7 +20,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
+    <Install>false</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
@@ -32,6 +32,7 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -58,12 +59,30 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_Remote_Stas|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>\\USTAS\QuestEditor\</OutputPath>
+    <OutputPath>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>D3F5EC758BBE7363A97E9D052E216D6DB563D186</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>QuestEditor_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -72,7 +91,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -93,30 +112,34 @@
     <Reference Include="Telerik.WinControls, Version=2013.1.220.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
+      <HintPath>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\Telerik.WinControls.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.WinControls.RadMarkupEditor, Version=2013.1.220.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
+      <HintPath>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\Telerik.WinControls.RadMarkupEditor.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.WinControls.UI, Version=2013.1.220.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
+      <HintPath>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\Telerik.WinControls.UI.dll</HintPath>
     </Reference>
     <Reference Include="TelerikCommon, Version=2013.1.220.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
+      <HintPath>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\TelerikCommon.dll</HintPath>
     </Reference>
     <Reference Include="UMD.HCIL.Piccolo, Version=1.0.2165.24847, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\lib\UMD.HCIL.Piccolo.dll</HintPath>
+      <HintPath>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\UMD.HCIL.Piccolo.dll</HintPath>
     </Reference>
     <Reference Include="UMD.HCIL.PiccoloDirect3D, Version=1.0.2165.24848, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\lib\UMD.HCIL.PiccoloDirect3D.dll</HintPath>
+      <HintPath>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\UMD.HCIL.PiccoloDirect3D.dll</HintPath>
     </Reference>
     <Reference Include="UMD.HCIL.PiccoloX, Version=1.0.2165.24848, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\lib\UMD.HCIL.PiccoloX.dll</HintPath>
+      <HintPath>\\EVGENIY\stalker-on-line_git\sys\tools\QuestEditor\UMD.HCIL.PiccoloX.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -425,6 +448,7 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -475,6 +499,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QuestEditor.sdm" />
+    <None Include="QuestEditor_TemporaryKey.pfx" />
     <None Include="Resources\filter_24.png" />
     <None Include="Resources\корзина_32х32.png" />
     <None Include="Resources\w256h2561347801471RecycleBinempty.png" />
@@ -517,6 +542,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -267,17 +267,9 @@ namespace StalkerOnlineQuesterEditor
 
         private void listBoxQT_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string tmp = listBoxQT.SelectedValue.ToString();
-            int id;
-            try
-            {
-                id = Convert.ToInt32(tmp);
-            }
-            catch
-            {
-                id = (listBoxQT.SelectedValue as ListBoxItem).id;
-            }
-            
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int id = (listBoxQT.SelectedItem as ListBoxItem).id;
 
             List<ListBoxItem> list = new List<ListBoxItem>();
             if (QAutogenDatacs.data_quests.ContainsKey(currentNPC))
@@ -299,7 +291,10 @@ namespace StalkerOnlineQuesterEditor
 
         private void btnChange_Click(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
             int target_type = (int)listBoxTarget.SelectedValue;
             string name = QAutogenDatacs.locals_quests[CSettings.ORIGINAL_PATH].getTextByID(currentNPC, quest_type.id, target_type);
             AddListElementForm form = new AddListElementForm((ElementType)quest_type.id, quest_type.getTargetByType(target_type), name, this);
@@ -315,7 +310,10 @@ namespace StalkerOnlineQuesterEditor
 
         private void btnAddTarget_Click(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
             AddListElementForm form = new AddListElementForm((ElementType)quest_type.id, null, "", this);
             DialogResult result = form.ShowDialog();
 
@@ -323,7 +321,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 var new_target = form.getData();
                 var text = form.getName();
-                isDirty = QAutogenDatacs.addQuestTarget(currentNPC, (int)listBoxQT.SelectedValue, text, new_target);
+                isDirty = QAutogenDatacs.addQuestTarget(currentNPC, qt_id, text, new_target);
             }
             fillAutogeneratorTab();
         }
@@ -333,10 +331,13 @@ namespace StalkerOnlineQuesterEditor
         {
             DialogResult result = MessageBox.Show("Вы уверены, что сейчас хотите удалить тип цели?", "Внимание", MessageBoxButtons.YesNo);
             if (result != DialogResult.Yes) return;
-            isDirty = QAutogenDatacs.deleteQuestTarget(currentNPC, (int)listBoxQT.SelectedValue, (int)listBoxTarget.SelectedValue);
+            int target_type = (listBoxTarget.SelectedItem as ListBoxItem).id;
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            isDirty = QAutogenDatacs.deleteQuestTarget(currentNPC, qt_id, target_type);
             fillAutogeneratorTab();
         }
-
 
         private void btnAddQType_Click(object sender, EventArgs e)
         {
@@ -377,8 +378,10 @@ namespace StalkerOnlineQuesterEditor
         {
             DialogResult result = MessageBox.Show("Вы уверены, что сейчас хотите удалить тип квеста?", "Внимание", MessageBoxButtons.YesNo);
             if (result != DialogResult.Yes) return;
-
-            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
             QAutogenDatacs.data_quests[currentNPC].data.Remove(quest_type);
             fillAutogeneratorTab();
             isDirty = true;
@@ -392,16 +395,11 @@ namespace StalkerOnlineQuesterEditor
 
         private void listBoxTarget_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
-            int target_type;
-            try
-            {
-                target_type = (int)listBoxTarget.SelectedValue;
-            }
-            catch
-            {
-                target_type = (listBoxTarget.SelectedValue as ListBoxItem).id;
-            }
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
+            int target_type = (listBoxTarget.SelectedItem as ListBoxItem).id;
 
             AutogenTarget t = quest_type.getTargetByType(target_type);
 
@@ -424,9 +422,13 @@ namespace StalkerOnlineQuesterEditor
 
         private void nupFromTargetCount_ValueChanged(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
-            int target_type = (int)listBoxTarget.SelectedValue;
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
+            int target_type = (listBoxTarget.SelectedItem as ListBoxItem).id;
             AutogenTarget t = quest_type.getTargetByType(target_type);
+
             isDirty = true;
             if (t.counts.Count < 1)
             {
@@ -439,8 +441,12 @@ namespace StalkerOnlineQuesterEditor
 
         private void nupToTargetCount_ValueChanged(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
-            int target_type = (int)listBoxTarget.SelectedValue;
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
+            int target_type = (listBoxTarget.SelectedItem as ListBoxItem).id;
+
             AutogenTarget t = quest_type.getTargetByType(target_type);
             isDirty = true;
             if (t.counts.Count < 1)
@@ -461,7 +467,10 @@ namespace StalkerOnlineQuesterEditor
             {
                 return;
             }
-            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
             int target_type = (int)listBoxTarget.SelectedValue;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             isDirty = true;
@@ -475,7 +484,10 @@ namespace StalkerOnlineQuesterEditor
 
         private void btnDelReward_Click(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
             int target_type = (int)listBoxTarget.SelectedValue;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             t.rewards.RemoveAt(listBoxReward.SelectedIndex);
@@ -485,7 +497,10 @@ namespace StalkerOnlineQuesterEditor
 
         private void btnChangeReward_Click(object sender, EventArgs e)
         {
-            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID((int)listBoxQT.SelectedValue);
+            if (listBoxQT.SelectedItem == null)
+                return;
+            int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
+            AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
             int target_type = (int)listBoxTarget.SelectedValue;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             Reward reward = t.rewards[listBoxReward.SelectedIndex];
@@ -544,6 +559,11 @@ namespace StalkerOnlineQuesterEditor
             public static explicit operator int(ListBoxItem x)
             { 
                 return x.id;
+            }
+
+            public override string ToString()
+            {
+                return name;
             }
         }
 
