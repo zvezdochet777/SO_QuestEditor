@@ -894,6 +894,7 @@ namespace StalkerOnlineQuesterEditor
                 }
 
                 precondition.items.equipped = cbItemsEquipped.Checked;
+                precondition.itemsNone.equipped = cbItemsEquipped.Checked;
                 obj = this.getItemsDataGrid(GVNonItems);
                 foreach (object[] tmp in obj)
                 {
