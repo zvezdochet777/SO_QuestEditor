@@ -1250,7 +1250,7 @@ namespace StalkerOnlineQuesterEditor
                 setItemsInDataGrid(this.editPrecondition.itemsNone.items, GVNonItems);
                 label20.Visible = true;
                 cbItemsEquipped.Visible = true;
-                cbItemsEquipped.Checked = editPrecondition.items.equipped;
+                cbItemsEquipped.Checked = editPrecondition.items.equipped || editPrecondition.itemsNone.equipped;
             }
             checkItemsIndicates();
 
