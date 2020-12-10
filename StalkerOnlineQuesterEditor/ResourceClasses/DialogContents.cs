@@ -454,7 +454,7 @@ namespace StalkerOnlineQuesterEditor
 
 
     //! Класс диалога (одна ветка в xml файле)
-    public class CDialog : ICloneable
+    public class CDialog
     {
         public int DialogID;
         public string Holder; //имя NPC
@@ -503,7 +503,7 @@ namespace StalkerOnlineQuesterEditor
             this.DebugData = "";
             this.defaultNode = "";
         }
-        public object Clone()
+        public CDialog Clone()
         {
             CDialog copy = new CDialog();
             copy.Actions = this.Actions;
