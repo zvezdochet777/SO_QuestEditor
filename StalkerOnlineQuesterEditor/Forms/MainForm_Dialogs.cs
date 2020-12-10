@@ -607,6 +607,7 @@ namespace StalkerOnlineQuesterEditor
             NPCLocales locales;
             PCanvas dialogShower;
             CDialog newDialog = (CDialog) dialog.Clone();
+            newDialog.version -= 1;
             if (CentralDock.SelectedIndex == 2)
             {
                 dialogs = getDialogDictionary(currentFraction, CFractionDialogs.dialogs, CFractionDialogs.locales);

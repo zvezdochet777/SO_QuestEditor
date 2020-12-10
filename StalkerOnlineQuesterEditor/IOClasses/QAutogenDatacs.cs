@@ -187,7 +187,11 @@ namespace StalkerOnlineQuesterEditor
             {
                 string npc_name = i.Key;
                 string path = QUEST_JSON_PATH + npc_name + ".json";
-                if (!i.Value.data.Any()) continue;
+                if (!i.Value.data.Any() && File.Exists(path))
+                {
+                    File.Delete(path);
+                    continue;
+                }
                 using (StreamWriter writer = new StreamWriter(path))
                 {
                     string json = JsonConvert.SerializeObject(i.Value, Formatting.Indented);
@@ -682,7 +686,7 @@ namespace StalkerOnlineQuesterEditor
         public static void changeNPC(string npcName)
         {
             if (!data.ContainsKey(npcName))
-                return;
+                addNpc(npcName);
             if (changedNPC.Contains(npcName)) return;
             changedNPC.Add(npcName);
         }
