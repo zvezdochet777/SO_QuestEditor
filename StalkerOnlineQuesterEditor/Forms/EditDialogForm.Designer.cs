@@ -195,6 +195,7 @@
             this.cbAnimationNPC = new System.Windows.Forms.CheckBox();
             this.cbAnimationPlayer = new System.Windows.Forms.CheckBox();
             this.tabItems = new System.Windows.Forms.TabPage();
+            this.cbItemsEquipped = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.rbNonItemsOr = new System.Windows.Forms.RadioButton();
             this.rbNonItemsAnd = new System.Windows.Forms.RadioButton();
@@ -256,7 +257,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.cbItemsEquipped = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -427,11 +427,6 @@
             0,
             0,
             0});
-            this.nupChangeMoney.Minimum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            -2147483648});
             this.nupChangeMoney.Name = "nupChangeMoney";
             this.nupChangeMoney.Size = new System.Drawing.Size(136, 20);
             this.nupChangeMoney.TabIndex = 43;
@@ -2006,6 +2001,16 @@
             this.tabItems.Text = "Предметы";
             this.tabItems.SizeChanged += new System.EventHandler(this.tabItems_SizeChanged);
             // 
+            // cbItemsEquipped
+            // 
+            this.cbItemsEquipped.AutoSize = true;
+            this.cbItemsEquipped.Location = new System.Drawing.Point(6, 235);
+            this.cbItemsEquipped.Name = "cbItemsEquipped";
+            this.cbItemsEquipped.Size = new System.Drawing.Size(164, 17);
+            this.cbItemsEquipped.TabIndex = 39;
+            this.cbItemsEquipped.Text = "Должно быть экипировано";
+            this.cbItemsEquipped.UseVisualStyleBackColor = true;
+            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2621,16 +2626,6 @@
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
-            // 
-            // cbItemsEquipped
-            // 
-            this.cbItemsEquipped.AutoSize = true;
-            this.cbItemsEquipped.Location = new System.Drawing.Point(6, 235);
-            this.cbItemsEquipped.Name = "cbItemsEquipped";
-            this.cbItemsEquipped.Size = new System.Drawing.Size(164, 17);
-            this.cbItemsEquipped.TabIndex = 39;
-            this.cbItemsEquipped.Text = "Должно быть экипировано";
-            this.cbItemsEquipped.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 

@@ -2396,8 +2396,64 @@ namespace StalkerOnlineQuesterEditor
             this.Enabled = false;
             fOperator.Show();
         }
-        //! Пункт главного меню - Синхронизация 
+
         private void SynchroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string origin = CSettings.ORIGINAL_PATH;
+            foreach (string ru_npc in dialogs.dialogs.Keys)
+            {
+                foreach (string locale in dialogs.locales.Keys)
+                {
+                    if (locale == origin) continue;
+                    if (!dialogs.locales[locale].ContainsKey(ru_npc))
+                    {
+                        dialogs.locales[locale].Add(ru_npc, new Dictionary<int, CDialog>());
+                    }
+                    Dictionary<int, CDialog> en_dialogs = dialogs.locales[locale][ru_npc];
+
+                    foreach (var ru_dialog in dialogs.dialogs[ru_npc])
+                    {
+                        CDialog eng;
+                        if (!dialogs.locales[locale][ru_npc].ContainsKey(ru_dialog.Key))
+                        {
+                            eng = ru_dialog.Value.Clone();
+                            dialogs.locales[locale][ru_npc].Add(ru_dialog.Key, eng);
+                            eng.version = ru_dialog.Value.version - 1;
+                        }
+                        else
+                            eng = dialogs.locales[locale][ru_npc][ru_dialog.Key];
+                        if (ru_dialog.Value.version > eng.version)
+                            eng.version = ru_dialog.Value.version - 1;
+                        else eng.version = ru_dialog.Value.version;
+                    }
+                }
+
+            }
+
+            foreach (var quest in quests.quest)
+            {
+                foreach (string locale in quests.locales.Keys)
+                {
+                    if (locale == origin) continue;
+                    CQuest eng;
+                    if (!quests.locales[locale].ContainsKey(quest.Key))
+                    {
+                        eng = (CQuest)quest.Value.Clone();
+                        eng.Version = quest.Value.Version - 1;
+                    }
+                    eng = quests.locales[locale][quest.Key];
+                    if (quest.Value.Version > eng.Version)
+                        eng.Version = quest.Value.Version - 1;
+                    else eng.Version = quest.Value.Version;
+                }
+
+            }
+
+
+        }
+
+        //! Пункт главного меню - Синхронизация 
+        private void SynchroToolStripMenuItem_Click_old(object sender, EventArgs e)
         {
             //синхронизация диалогов
             string loc = CSettings.getCurrentLocale();

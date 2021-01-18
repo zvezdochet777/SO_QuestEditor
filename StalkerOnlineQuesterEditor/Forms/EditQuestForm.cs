@@ -1166,12 +1166,15 @@ namespace StalkerOnlineQuesterEditor
                     target.ObjectName = resultComboBox.Text;
                 else
                 {
-                    if (resultComboBox.SelectedItem == null)
+                    if (resultComboBox.SelectedItem == null || !resultComboBox.SelectedItem.ToString().Any())
                     {
-                        MessageBox.Show("Не выбран подтип моба", "Ошибка");
-                        return null;
+                        DialogResult dr = MessageBox.Show("Не выбран подтип моба. Вы уверены что хотите продолжить?", "Внимание", MessageBoxButtons.YesNo);
+                        if (dr != DialogResult.Yes)
+                            return null;
+                        target.str_param = "";
                     }
-                    target.str_param = resultComboBox.SelectedItem.ToString();
+                    else
+                        target.str_param = resultComboBox.SelectedItem.ToString();
 
                     target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
                     if ((target.NumOfObjects > 32000) || (target.NumOfObjects < 1))
@@ -1582,6 +1585,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 resultComboBox.Items.Clear();
                 List<string> mob_subtypes = parent.mobConst.getLevelsOnDescription(targetComboBox.SelectedItem.ToString());
+                resultComboBox.Items.Add("");
                 foreach (string level in mob_subtypes)
                     resultComboBox.Items.Add(level);
             }
