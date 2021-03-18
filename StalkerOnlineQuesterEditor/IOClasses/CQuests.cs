@@ -825,6 +825,14 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Additional").Add(new XElement("IsSubQuest", Global.GetIntAsString(questValue.Additional.IsSubQuest)));
                     if (questValue.Additional.ListOfSubQuest.Any())
                         element.Element("Additional").Add(new XElement("ListOfSubQuest", Global.GetListAsString(questValue.Additional.ListOfSubQuest)));
+                    /*
+                    if ((questValue.Additional.ShowProgress & 8) > 0)
+                    {
+                        CQuestInformation qi = this.locales[CSettings.getCurrentLocale()][questValue.QuestID].QuestInformation;
+                        bool flag = qi.Title.Any() || qi.Description.Any() || qi.DescriptionClosed.Any() || qi.DescriptionOnTest.Any();
+                        if (!flag)
+                            questValue.Additional.ShowProgress &= ~8;
+                    }*/
                     if (questValue.Additional.ShowProgress != 0)
                         element.Element("Additional").Add(new XElement("ShowProgress", questValue.Additional.ShowProgress.ToString()));
                     if (questValue.Additional.screenMessageOnFailed)

@@ -52,6 +52,7 @@ namespace StalkerOnlineQuesterEditor
         public PLayer drawingLayer;
         public PNodeList nodeLayer;
         public bool isDirty = false;
+        int disabled = 0;
         Dictionary<PNode, GraphProperties> graphs = new Dictionary<PNode, GraphProperties>();
         Dictionary<Panel, int> panels = new Dictionary<Panel, int>();
 
@@ -3106,7 +3107,7 @@ namespace StalkerOnlineQuesterEditor
         {
            
             List <string> spaces = new List<string>();
-
+            Dictionary <int, string> qq = new Dictionary<int, string>();
             Dictionary<string, List<table_item>> r_quests = new Dictionary<string, List<table_item>>();
 
             foreach (var quest in quests.quest)
@@ -3134,6 +3135,13 @@ namespace StalkerOnlineQuesterEditor
                         }
                     }
                 }
+
+                if (!qq.ContainsKey(quest.Value.Priority))
+                {
+                    qq.Add(quest.Value.Priority, "тип " + item.tupe + ":\n");
+                }
+                if (quest.Value.Additional.IsSubQuest <= 0)
+                    qq[quest.Value.Priority] += "\t" + item.questID + " " + item.questName + "\n";
                 item.spaceName = this.spacesConst.getLocalName(space);
 
                 if (!r_quests.ContainsKey(item.spaceName)) r_quests.Add(item.spaceName, new List<table_item>());
@@ -3141,6 +3149,12 @@ namespace StalkerOnlineQuesterEditor
                 r_quests[item.spaceName].Add(item);
             }
 
+            StreamWriter writer = new StreamWriter("quests_sort_by_priority.txt");
+            for(int i = 0; i < qq.Keys.Count; i++)
+            {
+                writer.WriteLine(qq[i]);
+            }
+            writer.Close();
 
             Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
             app.Visible = true;
@@ -3181,8 +3195,8 @@ namespace StalkerOnlineQuesterEditor
                              Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             
 
-        }
-        */
+        }*/
+        
         private void диалоговToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
@@ -3553,6 +3567,20 @@ namespace StalkerOnlineQuesterEditor
         {
             QuestDialogFinderForm form = new QuestDialogFinderForm(this);
             form.Show();
+        }
+
+
+        public void setEnable()
+        {
+            disabled = Math.Max(0, disabled - 1);
+            if (disabled <= 0)
+                this.Enabled = true;
+        }
+
+        public void setDisable()
+        {
+            disabled++;
+            this.Enabled = false;
         }
     }
 }

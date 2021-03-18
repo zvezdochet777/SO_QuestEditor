@@ -23,15 +23,25 @@ namespace StalkerOnlineQuesterEditor
             InitializeComponent();
 
             foreach (KeyValuePair<int, string> pair in form.parent.fractions.getListOfFractions())
+                ((DataGridViewComboBoxColumn)dataFractions.Columns["Fractions"]).Items.Add(pair.Value);
+
+            foreach (KeyValuePair<string, int> pair in this.npc_reputations)
+            {
+                ((DataGridViewComboBoxColumn)dataFractions.Columns["Fractions"]).Items.Add(pair.Key);
+            }
+
+            foreach (KeyValuePair<int, string> pair in form.parent.fractions.getListOfFractions())
             {
                 string id = pair.Key.ToString();
                 string name = pair.Value;
                 int rewardValue = 0;
                 if (reputations.Keys.Contains(pair.Key))
                     rewardValue = reputations[pair.Key];
+                if (rewardValue == 0) continue;
                 object[] row = { id, name, rewardValue };
                 dataFractions.Rows.Add(row);
             }
+            
             foreach (KeyValuePair<string, int> pair in this.npc_reputations)
             {
                 string name = pair.Key;
@@ -39,6 +49,7 @@ namespace StalkerOnlineQuesterEditor
                 object[] row = { "", name, rewardValue };
                 dataFractions.Rows.Add(row);
             }
+            
         }
 
         private void RewardFractions_FormClosing(object sender, FormClosingEventArgs e)
@@ -64,13 +75,14 @@ namespace StalkerOnlineQuesterEditor
                 if (nValue == 0)
                     continue;
                 int id = -1;
-                if (int.TryParse(row.Cells[0].FormattedValue.ToString(), out id))
+                string name = row.Cells["Fractions"].FormattedValue.ToString();
+                id = form.parent.fractions.getFractionIDByDescr(name);
+                if (id >=0 )
                 {
                     reputations[id] = nValue;
                 }
                 else
                 {
-                    string name = row.Cells[1].FormattedValue.ToString();
                     npc_reputations[name] = nValue;
                 }
             }

@@ -33,7 +33,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (pair.Value == frac_name) return pair.Key;
             }
-            return 0;
+            return -1;
         }
 
         public string getFractionDesctByID(int frac_id)

@@ -19,6 +19,7 @@ namespace StalkerOnlineQuesterEditor
         public List<int> editKarmaPK = new List<int>();
         public CDialog curDialog;
         int currentDialogID;
+        ListLastDialogsForm listLastDialogsForm;
         bool isAdd;
         //! Максимальная длина ответа ГГ, при превышении которого выводится сообщение
         int MAX_SYMBOL_ANSWER = 48;
@@ -30,7 +31,9 @@ namespace StalkerOnlineQuesterEditor
             currentDialogID = selectedDialogID;
             this.isAdd = isAdd;
             this.parent = parent;
-            this.parent.Enabled = false;
+            //this.parent.Enabled = false;
+            parent.setDisable();
+            this.listLastDialogsForm = new ListLastDialogsForm(parent);
 
             curDialog = parent.getDialogOnDialogID(currentDialogID);
             lAttention.Text = "";
@@ -120,8 +123,7 @@ namespace StalkerOnlineQuesterEditor
         {
             cbAutoNode.Checked = curDialog.isAutoNode;
             autoDefaultNode.Text = curDialog.defaultNode;
-            foreach (CDialog dialog in parent.getDialogsWithDialogIDInNodes(dialogID))
-                    NPCSaidIs.Text+=(dialog.DialogID.ToString()+":\n"+dialog.Text);
+            
             // заполнение текста речевки и ответа ГГ
             tPlayerText.Text = curDialog.Title.Normalize();
             tReactionNPC.Text = curDialog.Text;
@@ -162,7 +164,7 @@ namespace StalkerOnlineQuesterEditor
                     string key = parent.tpConst.getName(curDialog.Actions.Data);
                     teleportComboBox.SelectedItem = key;
                 }
-                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Бартер (обмен)")
+                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Бартер (обмен)" || ActionsComboBox.Text == "Подземелье. активировать")
                 {
                     tbAvatarGoTo.Text = curDialog.Actions.Data;
                 }
@@ -387,7 +389,8 @@ namespace StalkerOnlineQuesterEditor
         //! Нажатие Отмена - выход без сохранения
         private void bEditDialogCancel_Click(object sender, EventArgs e)
         {
-            parent.Enabled = true;
+            //parent.Enabled = true;
+            parent.setEnable();
             this.Close();
         }
         //! Чекбокс действия - возможность добавить действия к узлу диалога
@@ -432,7 +435,9 @@ namespace StalkerOnlineQuesterEditor
 
         private void EditDialogForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.parent.Enabled = true;
+            //this.parent.Enabled = true;
+            parent.setEnable();
+            listLastDialogsForm.Close();
         }
         //! Задать цвет кнопки репутации, если репутация задана
         public void checkReputationIndicates()
@@ -473,7 +478,7 @@ namespace StalkerOnlineQuesterEditor
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
             commandsComboBox.Visible = (SelectedValue == 19) || (SelectedValue == 4) || (SelectedValue == 6) || (SelectedValue == 28); ;
-            tbAvatarGoTo.Visible = (SelectedValue == 20) || (SelectedValue == 1) || (SelectedValue == 7);
+            tbAvatarGoTo.Visible = (SelectedValue == 20) || (SelectedValue == 1) || (SelectedValue == 7) || (SelectedValue == 30);
 
             
 
@@ -609,13 +614,14 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if ((actions.Event.Display == "Починка") || (actions.Event.Display == "Комплексная починка"))
                     actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
-                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Бартер (обмен)" || actions.Event.Display == "Торговля")
+                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Бартер (обмен)" || actions.Event.Display == "Торговля" || actions.Event.Display == "Подземелье. активировать")
                     actions.Data = tbAvatarGoTo.Text;
                 if ((actions.Event.Display == "Телепорт в подземелье"))
                 {
                     actions.Data = parent.dungeonConst.getIDByName(commandsComboBox.SelectedItem.ToString()).ToString() +
                         " " + nudDungeonEnterKey.Value.ToString();
                 }
+                
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))
                         actions.GetQuests.Add(int.Parse(quest));
@@ -943,7 +949,8 @@ namespace StalkerOnlineQuesterEditor
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tReactionNPC.Text,
                     precondition, actions, nodes, check_nodes, currentDialogID, version, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
             }
-            parent.Enabled = true;
+            //parent.Enabled = true;
+            parent.setEnable();
             parent.DialogSelected(true);
             parent.startEmulator(currentDialogID);
             this.Close();
@@ -1081,6 +1088,15 @@ namespace StalkerOnlineQuesterEditor
         private void initReputationTab()
         {
             CFracConstants frac = this.parent.fractions;
+
+            foreach (KeyValuePair<int, string> pair in frac.getListOfFractions())
+                ((DataGridViewComboBoxColumn)dataReputation.Columns["Fractions"]).Items.Add(pair.Value);
+
+            foreach (KeyValuePair<string, List<double>> pair in this.editPrecondition.NPCReputation)
+            {
+                ((DataGridViewComboBoxColumn)dataReputation.Columns["Fractions"]).Items.Add(pair.Key);
+            }
+
             foreach (KeyValuePair<int, string> pair in frac.getListOfFractions())
             {
                 int id = pair.Key;
@@ -1105,6 +1121,7 @@ namespace StalkerOnlineQuesterEditor
                             b = this.editPrecondition.Reputation[id][1].ToString();
                     }
                 }
+                if (!(a.Any() || b.Any())) continue;
                 object[] row = { id, name, a, b };
                 dataReputation.Rows.Add(row);
             }
@@ -1128,6 +1145,7 @@ namespace StalkerOnlineQuesterEditor
                     if (this.editPrecondition.NPCReputation[pair.Key][1] != double.PositiveInfinity)
                         b = this.editPrecondition.NPCReputation[pair.Key][1].ToString();
                 }
+                if (!(a.Any() || b.Any())) continue;
                 object[] row = { "", name, a, b };
                 dataReputation.Rows.Add(row);
             }
@@ -1136,11 +1154,13 @@ namespace StalkerOnlineQuesterEditor
 
         private bool checkReputation()
         {
+
+            CFracConstants frac = this.parent.fractions;
             this.editPrecondition.Reputation.Clear();
             this.editPrecondition.NPCReputation.Clear();
             foreach (DataGridViewRow row in dataReputation.Rows)
             {
-                    string fractionName = row.Cells[1].FormattedValue.ToString();
+                    string fractionName = row.Cells["Fractions"].FormattedValue.ToString();
                     string stringA = row.Cells[2].FormattedValue.ToString().Replace('.', ',');
                     string stringB = row.Cells[3].FormattedValue.ToString().Replace('.', ',');
 
@@ -1158,8 +1178,10 @@ namespace StalkerOnlineQuesterEditor
                             return false;
                         }
 
-                        int fractionID = -1;
-                        if (int.TryParse(row.Cells[0].FormattedValue.ToString(), out fractionID))
+
+                    int fractionID = frac.getFractionIDByDescr(fractionName);
+                        
+                        if (fractionID >= 0)
                         {
                             this.editPrecondition.Reputation.Add(fractionID, new List<double>() { doubleA, doubleB });
                         }
@@ -1588,6 +1610,25 @@ namespace StalkerOnlineQuesterEditor
             DialogResult result =  input.ShowDialog();
             if (result != DialogResult.OK) return;
             parent.dialogs.setDialogToDoToolTip(currentDialogID, input.getResult());
+        }
+
+        private void btnLastNPCPhrase_Click(object sender, EventArgs e)
+        {
+            List<string> data = new List<string>();
+            if (isAdd)
+            {
+                CDialog dialog = parent.getAnyDialogOnID(currentDialogID);
+                data.Add(dialog.DialogID.ToString() + " :" + dialog.Text);
+            }
+            else
+                foreach (CDialog dialog in parent.getDialogsWithDialogIDInNodes(currentDialogID))
+                    data.Add(dialog.DialogID.ToString() + " :" + dialog.Text);
+
+            if (listLastDialogsForm.IsDisposed)
+                listLastDialogsForm = new ListLastDialogsForm(parent);
+            listLastDialogsForm.setListData(data);
+            listLastDialogsForm.Location = new Point(this.Location.X + this.Width + 10, this.Location.Y);
+            listLastDialogsForm.Show();
         }
     }
 }

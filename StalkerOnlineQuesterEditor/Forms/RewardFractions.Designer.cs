@@ -34,7 +34,7 @@
             this.bCancel = new System.Windows.Forms.Button();
             this.bOk = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fractions = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.nValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataFractions)).BeginInit();
             this.pButtons.SuspendLayout();
@@ -45,7 +45,7 @@
             this.dataFractions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataFractions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
-            this.sName,
+            this.Fractions,
             this.nValue});
             this.dataFractions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataFractions.Location = new System.Drawing.Point(0, 0);
@@ -99,13 +99,12 @@
             this.id.ReadOnly = true;
             this.id.Visible = false;
             // 
-            // sName
+            // Fractions
             // 
-            this.sName.HeaderText = "Имя фракции";
-            this.sName.Name = "sName";
-            this.sName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.sName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.sName.Width = 150;
+            this.Fractions.HeaderText = "Имя фракции";
+            this.Fractions.Name = "Fractions";
+            this.Fractions.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Fractions.Width = 150;
             // 
             // nValue
             // 
@@ -137,7 +136,7 @@
         private System.Windows.Forms.Button bOk;
         private System.Windows.Forms.Label lInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Fractions;
         private System.Windows.Forms.DataGridViewTextBoxColumn nValue;
     }
 }

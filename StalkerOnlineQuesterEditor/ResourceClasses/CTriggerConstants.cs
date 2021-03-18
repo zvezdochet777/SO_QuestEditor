@@ -17,11 +17,12 @@ namespace StalkerOnlineQuesterEditor
             {
                 try
                 {
-                    triggers.Add(item.Element("name").Value.ToString(), new CTriggerDescription(int.Parse(item.Element("id").Value.ToString())));
+                    int triggerID = int.Parse(item.Element("id").Value.ToString());
+                    triggers.Add(item.Element("name").Value.ToString() + " " + triggerID.ToString(), new CTriggerDescription(triggerID));
                 }
-                catch
+                catch (Exception e)
                 {
-                    System.Console.WriteLine("Error with item id:" + item.Element("name").Value.ToString());
+                    System.Console.WriteLine("Error with trigger id:" + item.Element("name").Value.ToString() + ". " + e.Message);
                 }
             }
         }

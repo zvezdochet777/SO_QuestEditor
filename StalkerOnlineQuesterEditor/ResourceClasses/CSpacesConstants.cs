@@ -8,13 +8,31 @@ using System.Xml.Linq;
 
 namespace StalkerOnlineQuesterEditor
 {
+
+    public class dialog_checker
+    {
+        public dialog_checker(MainForm main)
+        {
+            System.IO.StreamReader fileReader = new StreamReader("SpeakAreas.txt");
+            string line;
+            while ((line = fileReader.ReadLine()) != null)
+            {
+                if (!line.Any())
+                    continue;
+                CDialog dialog = main.getDialogOnDialogID(Convert.ToInt32(line));
+                if (!dialog.coordinates.RootDialog) System.Console.WriteLine(line);
+            }
+            fileReader.Close();
+        }
+    }
+
     public class CSpacesConstants
     {
         List<CSpaceDescription> spaces;
         public CSpacesConstants()
         {
             spaces = new List<CSpaceDescription>();
-            XDocument doc = XDocument.Load("source/Spaces.xml");
+            XDocument doc = XDocument.Load("../../../res/scripts/common/data/Spaces.xml");
             foreach (XElement item in doc.Root.Elements())
             {
                 try

@@ -120,7 +120,7 @@
             this.lInfo = new System.Windows.Forms.Label();
             this.dataReputation = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fractions = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabKarma = new System.Windows.Forms.TabPage();
@@ -257,6 +257,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
+            this.btnLastNPCPhrase = new System.Windows.Forms.Button();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -1244,7 +1245,7 @@
             this.dataReputation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataReputation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
-            this.name,
+            this.Fractions,
             this.dataGridViewTextBoxColumn1,
             this.b});
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1259,11 +1260,13 @@
             this.id.Name = "id";
             this.id.Visible = false;
             // 
-            // name
+            // Fractions
             // 
-            this.name.HeaderText = "Имя фракции";
-            this.name.Name = "name";
-            this.name.Width = 150;
+            this.Fractions.HeaderText = "Имя фракции";
+            this.Fractions.Name = "Fractions";
+            this.Fractions.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Fractions.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Fractions.Width = 150;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -2518,6 +2521,7 @@
             // 
             this.gbTexts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbTexts.Controls.Add(this.btnLastNPCPhrase);
             this.gbTexts.Controls.Add(this.btnTODO);
             this.gbTexts.Controls.Add(this.label16);
             this.gbTexts.Controls.Add(this.cbRadioNode);
@@ -2619,13 +2623,23 @@
             // cbAutoNode
             // 
             this.cbAutoNode.AutoSize = true;
-            this.cbAutoNode.Location = new System.Drawing.Point(103, 9);
+            this.cbAutoNode.Location = new System.Drawing.Point(103, 6);
             this.cbAutoNode.Name = "cbAutoNode";
             this.cbAutoNode.Size = new System.Drawing.Size(123, 17);
             this.cbAutoNode.TabIndex = 14;
             this.cbAutoNode.Text = "Автопереключалка";
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
+            // 
+            // btnLastNPCPhrase
+            // 
+            this.btnLastNPCPhrase.Location = new System.Drawing.Point(4, 3);
+            this.btnLastNPCPhrase.Name = "btnLastNPCPhrase";
+            this.btnLastNPCPhrase.Size = new System.Drawing.Size(97, 40);
+            this.btnLastNPCPhrase.TabIndex = 23;
+            this.btnLastNPCPhrase.Text = "Предыдущая фраза";
+            this.btnLastNPCPhrase.UseVisualStyleBackColor = true;
+            this.btnLastNPCPhrase.Click += new System.EventHandler(this.btnLastNPCPhrase_Click);
             // 
             // EditDialogForm
             // 
@@ -2877,10 +2891,6 @@
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.NumericUpDown nupChangeMoney;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn b;
         private System.Windows.Forms.TextBox tbAdditionalAction;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbChangeMoneyFailNode;
@@ -2940,5 +2950,10 @@
         private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.ComboBox cbRatingPVPMode;
         private System.Windows.Forms.CheckBox cbItemsEquipped;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Fractions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn b;
+        private System.Windows.Forms.Button btnLastNPCPhrase;
     }
 }
