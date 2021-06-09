@@ -392,7 +392,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAC
-        FwAAAk1TRnQBSQFMAgEBBAEAAYQBBQGEAQUBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        FwAAAk1TRnQBSQFMAgEBBAEAAYwBBQGMAQUBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABKAMAAQEBAAEgBgABMv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8AUgABAQMAAQGIAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQc7AAH/
         AwAB/zsAAQEDLwFJAlIBUAGkAmABWgHeAmoBQQH5AmoBQQH5AmABWgHeAlIBUAGkAy8BSQMAAQF0AAM1
@@ -2120,10 +2120,10 @@
     <value>0</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 16</value>
+    <value>12, 13</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>74, 23</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -2449,6 +2449,57 @@
   <data name="&gt;&gt;gbNPCcheck.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="cbQuestLocations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 66</value>
+  </data>
+  <data name="cbQuestLocations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 21</value>
+  </data>
+  <data name="cbQuestLocations.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;cbQuestLocations.Name" xml:space="preserve">
+    <value>cbQuestLocations</value>
+  </data>
+  <data name="&gt;&gt;cbQuestLocations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbQuestLocations.Parent" xml:space="preserve">
+    <value>gbQuestCheck</value>
+  </data>
+  <data name="&gt;&gt;cbQuestLocations.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbOnQuestLocation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbOnQuestLocation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbOnQuestLocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 69</value>
+  </data>
+  <data name="cbOnQuestLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
+  </data>
+  <data name="cbOnQuestLocation.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="cbOnQuestLocation.Text" xml:space="preserve">
+    <value>Только на локации:</value>
+  </data>
+  <data name="&gt;&gt;cbOnQuestLocation.Name" xml:space="preserve">
+    <value>cbOnQuestLocation</value>
+  </data>
+  <data name="&gt;&gt;cbOnQuestLocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbOnQuestLocation.Parent" xml:space="preserve">
+    <value>gbQuestCheck</value>
+  </data>
+  <data name="&gt;&gt;cbOnQuestLocation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="labelItemTarget.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2474,7 +2525,7 @@
     <value>gbQuestCheck</value>
   </data>
   <data name="&gt;&gt;labelItemTarget.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="cbItemTarget.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 39</value>
@@ -2495,7 +2546,7 @@
     <value>gbQuestCheck</value>
   </data>
   <data name="&gt;&gt;cbItemTarget.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="labelItemReward.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2522,7 +2573,7 @@
     <value>gbQuestCheck</value>
   </data>
   <data name="&gt;&gt;labelItemReward.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="cbItemReward.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 13</value>
@@ -2543,7 +2594,7 @@
     <value>gbQuestCheck</value>
   </data>
   <data name="&gt;&gt;cbItemReward.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="bFindQuest.Location" type="System.Drawing.Point, System.Drawing">
     <value>365, 66</value>
@@ -2567,7 +2618,7 @@
     <value>gbQuestCheck</value>
   </data>
   <data name="&gt;&gt;bFindQuest.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="gbQuestCheck.Location" type="System.Drawing.Point, System.Drawing">
     <value>428, 4</value>
@@ -6358,6 +6409,12 @@
   <data name="&gt;&gt;проверкаОшибокToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;поискДиалоговПоQuestIDToolStripMenuItem.Name" xml:space="preserve">
+    <value>поискДиалоговПоQuestIDToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;поискДиалоговПоQuestIDToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;данныеToolStripMenuItem.Name" xml:space="preserve">
     <value>данныеToolStripMenuItem</value>
   </data>
@@ -6405,12 +6462,6 @@
   </data>
   <data name="&gt;&gt;toolTipDialogs.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;поискДиалоговПоQuestIDToolStripMenuItem.Name" xml:space="preserve">
-    <value>поискДиалоговПоQuestIDToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;поискДиалоговПоQuestIDToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

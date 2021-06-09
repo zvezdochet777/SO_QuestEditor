@@ -12,17 +12,19 @@ namespace StalkerOnlineQuesterEditor
     public partial class RewardFractions : Form
     {
         EditQuestForm form;
-        Dictionary<int, int> reputations;
-        Dictionary<string, int> npc_reputations;
+        CFracConstants fractions;
+        public Dictionary<int, int> reputations;
+        public Dictionary<string, int> npc_reputations;
 
-        public RewardFractions(EditQuestForm form, ref Dictionary<int, int> reputations, ref Dictionary<string, int> npc_reputations)
+        public RewardFractions(EditQuestForm form, CFracConstants fractions, ref Dictionary<int, int> reputations, ref Dictionary<string, int> npc_reputations)
         {
             this.form = form;
+            this.fractions = fractions;
             this.reputations = reputations;
             this.npc_reputations = npc_reputations;
             InitializeComponent();
 
-            foreach (KeyValuePair<int, string> pair in form.parent.fractions.getListOfFractions())
+            foreach (KeyValuePair<int, string> pair in fractions.getListOfFractions())
                 ((DataGridViewComboBoxColumn)dataFractions.Columns["Fractions"]).Items.Add(pair.Value);
 
             foreach (KeyValuePair<string, int> pair in this.npc_reputations)
@@ -30,7 +32,7 @@ namespace StalkerOnlineQuesterEditor
                 ((DataGridViewComboBoxColumn)dataFractions.Columns["Fractions"]).Items.Add(pair.Key);
             }
 
-            foreach (KeyValuePair<int, string> pair in form.parent.fractions.getListOfFractions())
+            foreach (KeyValuePair<int, string> pair in fractions.getListOfFractions())
             {
                 string id = pair.Key.ToString();
                 string name = pair.Value;
@@ -76,7 +78,7 @@ namespace StalkerOnlineQuesterEditor
                     continue;
                 int id = -1;
                 string name = row.Cells["Fractions"].FormattedValue.ToString();
-                id = form.parent.fractions.getFractionIDByDescr(name);
+                id = this.fractions.getFractionIDByDescr(name);
                 if (id >=0 )
                 {
                     reputations[id] = nValue;

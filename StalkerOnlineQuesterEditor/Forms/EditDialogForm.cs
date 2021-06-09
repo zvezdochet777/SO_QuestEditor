@@ -164,7 +164,8 @@ namespace StalkerOnlineQuesterEditor
                     string key = parent.tpConst.getName(curDialog.Actions.Data);
                     teleportComboBox.SelectedItem = key;
                 }
-                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Бартер (обмен)" || ActionsComboBox.Text == "Подземелье. активировать")
+                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Бартер (обмен)" || ActionsComboBox.Text == "Подземелье. активировать" ||
+                    ActionsComboBox.Text == "Вертолёт")
                 {
                     tbAvatarGoTo.Text = curDialog.Actions.Data;
                 }
@@ -292,7 +293,16 @@ namespace StalkerOnlineQuesterEditor
                 
                 addItemToTextBox(curDialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests, tMustHaveMassQuests);
                 cbMustHaveMassQuests.Checked = curDialog.Precondition.ListOfNecessaryQuests.conditionOfMassQuests == '|';
-                
+
+
+                foreach (int knowlege in curDialog.Precondition.knowledges.mustKnowledge)
+                    addItemToTextBox(knowlege.ToString(), tMustHaveKnow);
+                cMustHaveKnow.Checked = curDialog.Precondition.knowledges.conditionMustKnowledge == '|';
+
+                foreach (int knowlege in curDialog.Precondition.knowledges.shouldntKnowledge)
+                    addItemToTextBox(knowlege.ToString(), tMustNoHaveKnow);
+                cbShouldntHaveKnow.Checked = curDialog.Precondition.knowledges.conditionShouldntKnowledge == '|';
+
             }
             if (curDialog.DebugData != "") debugTextBox.Text = curDialog.DebugData;
                    
@@ -310,12 +320,15 @@ namespace StalkerOnlineQuesterEditor
             }
             if (curDialog.Precondition.Skills.Any())
                 editPrecondition.Skills = curDialog.Precondition.Skills;
+            if (curDialog.Precondition.Perks.Any())
+                editPrecondition.Perks = curDialog.Precondition.Perks;
 
             cbRadioNode.SelectedIndex = (int)curDialog.Precondition.radioAvailable;
 
             cbForDev.Checked = curDialog.Precondition.forDev;
             cbHidden.Checked = curDialog.Precondition.hidden;
-            this.initReputationTab();
+            this.initReputationTab(dataReputation, parent.fractions, this.editPrecondition.Reputation, this.editPrecondition.NPCReputation);
+            this.initReputationTab(dataReputation2, parent.fractions2, this.editPrecondition.Reputation2, new Dictionary<string, List<double>>());
             this.initKarmaPKTab();
             this.initEffectsTab();
             this.initLevelTab();
@@ -326,6 +339,7 @@ namespace StalkerOnlineQuesterEditor
             this.initTutorialTab();
             this.initPVPTab();
             checkClanOptionsIndicator();
+            checkKnowlegeIndicates();
         }
 
         //! Антиговнокод-функция, добавление номера квеста в текстбокс
@@ -443,23 +457,23 @@ namespace StalkerOnlineQuesterEditor
         public void checkReputationIndicates()
         {
             pictureReputation.Visible = editPrecondition.Reputation.Any() || editPrecondition.NPCReputation.Any();
+            pictureReputation2.Visible = editPrecondition.Reputation2.Any();
         }
         //! Задать цвет кнопки кармы, если карма задана
         public void checkKarmaIndicates()
         {
-            if (editKarmaPK.Any())
-                pictureKarma.Visible = true;
-            else
-                pictureKarma.Visible = false;
+            pictureKarma.Visible = editKarmaPK.Any();
         }
 
         //! Задать цвет кнопки Клановой, если карма задана
         public void checkClanIndicates()
         {
-            if (editKarmaPK.Any())
-                pictureKarma.Visible = true;
-            else
-                pictureKarma.Visible = false;
+            pictureKarma.Visible = editKarmaPK.Any();
+        }
+
+        public void checkKnowlegeIndicates()
+        {
+            pictureKnowlege.Visible = (tMustNoHaveKnow.Text.Any() || tMustHaveKnow.Text.Any());
         }
 
         private void cbExit_Click(object sender, EventArgs e)
@@ -478,7 +492,7 @@ namespace StalkerOnlineQuesterEditor
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
             commandsComboBox.Visible = (SelectedValue == 19) || (SelectedValue == 4) || (SelectedValue == 6) || (SelectedValue == 28); ;
-            tbAvatarGoTo.Visible = (SelectedValue == 20) || (SelectedValue == 1) || (SelectedValue == 7) || (SelectedValue == 30);
+            tbAvatarGoTo.Visible = (SelectedValue == 20) || (SelectedValue == 1) || (SelectedValue == 7) || (SelectedValue == 30) || (SelectedValue == 31);
 
             
 
@@ -595,7 +609,10 @@ namespace StalkerOnlineQuesterEditor
             if (!CheckConditions())
                 return;
 
-            if(!this.checkReputation()) 
+
+            if (!this.checkReputation(dataReputation, parent.fractions, this.editPrecondition.Reputation, this.editPrecondition.NPCReputation)) 
+                return;
+            if (!this.checkReputation(dataReputation2, parent.fractions2, this.editPrecondition.Reputation2, new Dictionary<string, List<double>>()))
                 return;
             if (!this.checkSkills())
                 return;
@@ -614,14 +631,14 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if ((actions.Event.Display == "Починка") || (actions.Event.Display == "Комплексная починка"))
                     actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
-                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Бартер (обмен)" || actions.Event.Display == "Торговля" || actions.Event.Display == "Подземелье. активировать")
+                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Бартер (обмен)" || actions.Event.Display == "Торговля" ||
+                    actions.Event.Display == "Подземелье. активировать" || actions.Event.Display == "Вертолёт")
                     actions.Data = tbAvatarGoTo.Text;
                 if ((actions.Event.Display == "Телепорт в подземелье"))
                 {
                     actions.Data = parent.dungeonConst.getIDByName(commandsComboBox.SelectedItem.ToString()).ToString() +
                         " " + nudDungeonEnterKey.Value.ToString();
                 }
-                
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))
                         actions.GetQuests.Add(int.Parse(quest));
@@ -811,6 +828,25 @@ namespace StalkerOnlineQuesterEditor
                     precondition.ListOfMustNoQuests.ListOfRepeat.Add(int.Parse(quest));
             }
 
+            if (!tMustHaveKnow.Text.Equals(""))
+            {
+                if (cMustHaveKnow.Checked)
+                    precondition.knowledges.conditionMustKnowledge = '|';
+                else
+                    precondition.knowledges.conditionMustKnowledge = '&';
+                foreach (string knw in tMustHaveKnow.Text.Split(','))
+                    precondition.knowledges.mustKnowledge.Add(int.Parse(knw));
+            }
+            if (!tMustNoHaveKnow.Text.Equals(""))
+            {
+                if (cbShouldntHaveKnow.Checked)
+                    precondition.knowledges.conditionShouldntKnowledge = '|';
+                else
+                    precondition.knowledges.conditionShouldntKnowledge = '&';
+                foreach (string knw in tMustNoHaveKnow.Text.Split(','))
+                    precondition.knowledges.shouldntKnowledge.Add(int.Parse(knw));
+            }
+
             precondition.transport.inTransportList = cbTransportInList.Checked;
             precondition.transport.notInTransportList = cbNotInTransportList.Checked;
             precondition.transport.inBoatList = cbInBoatList.Checked;
@@ -880,11 +916,13 @@ namespace StalkerOnlineQuesterEditor
                 precondition.playerOtherLvl = tbOtherLvlMin.Text + ":" + tbOtherLvlMax.Text;
             }
             precondition.Reputation = editPrecondition.Reputation;
+            precondition.Reputation2 = editPrecondition.Reputation2;
             precondition.NPCReputation = editPrecondition.NPCReputation;
             precondition.KarmaPK = editKarmaPK;
             precondition.NecessaryEffects = editPrecondition.NecessaryEffects;
             precondition.MustNoEffects = editPrecondition.MustNoEffects;
             precondition.Skills = editPrecondition.Skills;
+            precondition.Perks = editPrecondition.Perks;
             precondition.forDev = cbForDev.Checked;
             precondition.hidden = cbHidden.Checked;
 
@@ -1037,12 +1075,25 @@ namespace StalkerOnlineQuesterEditor
                 dataSkill.Rows.Add(row);
                 id++;
             }
+
+            foreach (string item in parent.perks.getNames())
+                ((DataGridViewComboBoxColumn)dataPerks.Columns[1]).Items.Add(item);
+
+            id = 0;
+            foreach (int perkID in editPrecondition.Perks)
+            {
+                string name = parent.perks.getName(perkID);
+                object[] row = { id, name };
+                dataPerks.Rows.Add(row);
+                id++;
+            }
             this.checkSkills();
         }
 
         private bool checkSkills()
         {
             this.editPrecondition.Skills.Clear();
+            this.editPrecondition.Perks.Clear();
             foreach (DataGridViewRow row in dataSkill.Rows)
             {
                 if (row.Cells[0].FormattedValue.ToString() != "")
@@ -1072,95 +1123,102 @@ namespace StalkerOnlineQuesterEditor
                     this.editPrecondition.Skills.Add(skill_name, stringA, stringB);
                 }
             }
+
+            foreach (DataGridViewRow row in dataPerks.Rows)
+            {
+                int perkID = parent.perks.getID(row.Cells[1].FormattedValue.ToString());
+                if (perkID == 0) continue;
+                this.editPrecondition.Perks.Add(perkID);
+            }
+
             this.checkSkillIndicates();
             return true;
         }
 
         private void checkSkillIndicates()
         {
-            if (editPrecondition.Skills.Any())
+            if (editPrecondition.Skills.Any() || editPrecondition.Perks.Any())
                 pictureSkill.Visible = true;
             else
                 pictureSkill.Visible = false;
         }
             
 
-        private void initReputationTab()
+        private void initReputationTab(DataGridView dataReputation, CFracConstants fractions, 
+            Dictionary<int, List<double>> reputation, Dictionary<string, List<double>> npc_reputation)
         {
-            CFracConstants frac = this.parent.fractions;
-
-            foreach (KeyValuePair<int, string> pair in frac.getListOfFractions())
-                ((DataGridViewComboBoxColumn)dataReputation.Columns["Fractions"]).Items.Add(pair.Value);
+            foreach (KeyValuePair<int, string> pair in fractions.getListOfFractions())
+                ((DataGridViewComboBoxColumn)dataReputation.Columns[1]).Items.Add(pair.Value);
 
             foreach (KeyValuePair<string, List<double>> pair in this.editPrecondition.NPCReputation)
             {
-                ((DataGridViewComboBoxColumn)dataReputation.Columns["Fractions"]).Items.Add(pair.Key);
+                ((DataGridViewComboBoxColumn)dataReputation.Columns[1]).Items.Add(pair.Key);
             }
 
-            foreach (KeyValuePair<int, string> pair in frac.getListOfFractions())
+            foreach (KeyValuePair<int, string> pair in fractions.getListOfFractions())
             {
                 int id = pair.Key;
                 string name = pair.Value;
                 string a = "";
                 string b = "";
-                if (this.editPrecondition.Reputation.Keys.Contains(pair.Key))
+                if (reputation.Keys.Contains(pair.Key))
                 {
-                    if (this.editPrecondition.Reputation[id].Count == 3)         // костыль для старой версии, выжечт огнем позже
+                    if (reputation[id].Count == 3)         // костыль для старой версии, выжечт огнем позже
                     {
-                        double type = this.editPrecondition.Reputation[pair.Key][0];
+                        double type = reputation[pair.Key][0];
                         if (type == 0 || (type == 1))
-                            a = this.editPrecondition.Reputation[pair.Key][1].ToString();
+                            a = reputation[pair.Key][1].ToString();
                         if (type == 0 || (type == 2))
-                            b = this.editPrecondition.Reputation[pair.Key][2].ToString();
+                            b = reputation[pair.Key][2].ToString();
                     }
-                    else if (this.editPrecondition.Reputation[id].Count == 2)
+                    else if (reputation[id].Count == 2)
                     {
-                        if (this.editPrecondition.Reputation[id][0] != double.NegativeInfinity)
-                            a = this.editPrecondition.Reputation[id][0].ToString();
-                        if (this.editPrecondition.Reputation[id][1] != double.PositiveInfinity)
-                            b = this.editPrecondition.Reputation[id][1].ToString();
+                        if (reputation[id][0] != double.NegativeInfinity)
+                            a = reputation[id][0].ToString();
+                        if (reputation[id][1] != double.PositiveInfinity)
+                            b = reputation[id][1].ToString();
                     }
                 }
                 if (!(a.Any() || b.Any())) continue;
                 object[] row = { id, name, a, b };
                 dataReputation.Rows.Add(row);
             }
-            foreach(KeyValuePair<string, List<double>> pair in this.editPrecondition.NPCReputation)
+            foreach(KeyValuePair<string, List<double>> pair in npc_reputation)
             {
                 string name = pair.Key;
                 string a = "";
                 string b = "";
-                if (this.editPrecondition.NPCReputation[pair.Key].Count == 3)         // костыль для старой версии, выжечт огнем позже
+                if (npc_reputation[pair.Key].Count == 3)         // костыль для старой версии, выжечт огнем позже
                 {
-                    double type = this.editPrecondition.NPCReputation[pair.Key][0];
+                    double type = npc_reputation[pair.Key][0];
                     if (type == 0 || (type == 1))
-                        a = this.editPrecondition.NPCReputation[pair.Key][1].ToString();
+                        a = npc_reputation[pair.Key][1].ToString();
                     if (type == 0 || (type == 2))
-                        b = this.editPrecondition.NPCReputation[pair.Key][2].ToString();
+                        b = npc_reputation[pair.Key][2].ToString();
                 }
-                else if (this.editPrecondition.NPCReputation[pair.Key].Count == 2)
+                else if (npc_reputation[pair.Key].Count == 2)
                 {
-                    if (this.editPrecondition.NPCReputation[pair.Key][0] != double.NegativeInfinity)
-                        a = this.editPrecondition.NPCReputation[pair.Key][0].ToString();
-                    if (this.editPrecondition.NPCReputation[pair.Key][1] != double.PositiveInfinity)
-                        b = this.editPrecondition.NPCReputation[pair.Key][1].ToString();
+                    if (npc_reputation[pair.Key][0] != double.NegativeInfinity)
+                        a = npc_reputation[pair.Key][0].ToString();
+                    if (npc_reputation[pair.Key][1] != double.PositiveInfinity)
+                        b = npc_reputation[pair.Key][1].ToString();
                 }
                 if (!(a.Any() || b.Any())) continue;
                 object[] row = { "", name, a, b };
                 dataReputation.Rows.Add(row);
             }
-            this.checkReputation();
+            this.checkReputation(dataReputation, fractions, reputation, npc_reputation);
         }
 
-        private bool checkReputation()
+        private bool checkReputation(DataGridView dataReputation, CFracConstants fractions,
+            Dictionary<int, List<double>> reputation, Dictionary<string, List<double>> npc_reputation)
         {
 
-            CFracConstants frac = this.parent.fractions;
-            this.editPrecondition.Reputation.Clear();
-            this.editPrecondition.NPCReputation.Clear();
+            reputation.Clear();
+            npc_reputation.Clear();
             foreach (DataGridViewRow row in dataReputation.Rows)
             {
-                    string fractionName = row.Cells["Fractions"].FormattedValue.ToString();
+                    string fractionName = row.Cells[1].FormattedValue.ToString();
                     string stringA = row.Cells[2].FormattedValue.ToString().Replace('.', ',');
                     string stringB = row.Cells[3].FormattedValue.ToString().Replace('.', ',');
 
@@ -1179,18 +1237,16 @@ namespace StalkerOnlineQuesterEditor
                         }
 
 
-                    int fractionID = frac.getFractionIDByDescr(fractionName);
+                    int fractionID = fractions.getFractionIDByDescr(fractionName);
                         
                         if (fractionID >= 0)
                         {
-                            this.editPrecondition.Reputation.Add(fractionID, new List<double>() { doubleA, doubleB });
+                        reputation.Add(fractionID, new List<double>() { doubleA, doubleB });
                         }
                         else
                         {
-                            this.editPrecondition.NPCReputation.Add(fractionName.Trim(), new List<double>() { doubleA, doubleB });
+                        npc_reputation.Add(fractionName.Trim(), new List<double>() { doubleA, doubleB });
                         }
-
-                        
                     }
             }
             this.checkReputationIndicates();
@@ -1526,13 +1582,15 @@ namespace StalkerOnlineQuesterEditor
         {
             this.checkClanOptionsIndicator();
             this.checkKarmaPK();
-            this.checkReputation();
+            this.checkReputation(dataReputation, parent.fractions, this.editPrecondition.Reputation, this.editPrecondition.NPCReputation);
+            this.checkReputation(dataReputation2, parent.fractions2, this.editPrecondition.Reputation2, new Dictionary<string, List<double>>());
             this.checkEffects();
             this.checkSkills();
             this.checkActionIndicates();
             this.checkItemsIndicates();
             this.checkTransportIndicates();
             this.checkTutorialIndicates();
+            checkKnowlegeIndicates();
         }
 
         private void digitTextBox_KeyPress(object sender, KeyPressEventArgs e)

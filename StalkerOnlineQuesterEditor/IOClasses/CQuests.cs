@@ -142,6 +142,17 @@ namespace StalkerOnlineQuesterEditor
                     isOld = true;
                 }
 
+                int questLinkType = 0;
+                int questLink = 0;
+
+                if(item.Element("questLinkType") != null)
+                {
+                    questLinkType = int.Parse(item.Element("questLinkType").Value);
+                }
+                if (item.Element("questLink") != null)
+                {
+                    questLink = int.Parse(item.Element("questLink").Value);
+                }
 
                 additional.Holder = item.Element("Additional").Element("Holder").Value.Trim();
 
@@ -283,6 +294,10 @@ namespace StalkerOnlineQuesterEditor
                         foreach (string fraction in item.Element("Reward").Element("Reputation").Value.Split(';'))
                             if (!fraction.Equals(""))
                                 reward.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
+                    if (item.Element("Reward").Element("Reputation2") != null)
+                        foreach (string fraction in item.Element("Reward").Element("Reputation2").Value.Split(';'))
+                            if (!fraction.Equals(""))
+                                reward.Reputation2.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
                     if (item.Element("Reward").Element("NPCReputation") != null)
                         foreach (string fraction in item.Element("Reward").Element("NPCReputation").Value.Split(';'))
                             if (!fraction.Equals(""))
@@ -328,6 +343,13 @@ namespace StalkerOnlineQuesterEditor
 
                     if (item.Element("Reward").Element("RewardWindow") != null)
                         reward.RewardWindow = item.Element("Reward").Element("RewardWindow").Value.Trim().Equals("1");
+                    if (item.Element("Reward").Element("tradingPoints") != null)
+                    {
+                        string[] result = item.Element("Reward").Element("tradingPoints").Value.Split(':');
+                        reward.OTfraction = int.Parse(result[0]);
+                        reward.OTvalue = int.Parse(result[1]);
+                    }
+
                 }
 
 
@@ -348,6 +370,10 @@ namespace StalkerOnlineQuesterEditor
                         foreach (string fraction in item.Element("Penalty").Element("Reputation").Value.Split(';'))
                             if (!fraction.Equals(""))
                                 penalty.Reputation.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
+                    if (item.Element("Penalty").Element("Reputation2") != null)
+                        foreach (string fraction in item.Element("Penalty").Element("Reputation2").Value.Split(';'))
+                            if (!fraction.Equals(""))
+                                penalty.Reputation2.Add(int.Parse(fraction.Split(':')[0]), int.Parse(fraction.Split(':')[1]));
                     if (item.Element("Penalty").Element("NPCReputation") != null)
                         foreach (string fraction in item.Element("Penalty").Element("NPCReputation").Value.Split(';'))
                             if (!fraction.Equals(""))
@@ -406,10 +432,12 @@ namespace StalkerOnlineQuesterEditor
                     {
                         additional.DebugData = item.Element("Additional").Element("DebugData").Value.ToString();
                     }
+
+                    ParseIntIfNotEmpty(item, "Additional", "isFractionBonus", out additional.isFractionBonus, 0);
                 }
 
                 if (!dict_target.ContainsKey(QuestID))
-                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, level, information, precondition, questRules, reward, additional, target, penalty, conditions, hidden, isOld));
+                    dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, level, questLinkType, questLink, information, precondition, questRules, reward, additional, target, penalty, conditions, hidden, isOld));
             }
         }
         
@@ -671,6 +699,12 @@ namespace StalkerOnlineQuesterEditor
                     element.Add(new XElement("hidden", "1"));
                 if (questValue.isOld)
                     element.Add(new XElement("isOld", "1"));
+                if (questValue.questLinkType > 0)
+                {
+                    element.Add(new XElement("questLinkType", questValue.questLinkType));
+                    if (questValue.questLink > 0)
+                        element.Add(new XElement("questLink", questValue.questLink));
+                }
                 if (questValue.Priority > 0)
                     element.Add(new XElement("Priority", questValue.Priority.ToString()));
                 if (questValue.Level > 0)
@@ -762,6 +796,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Reward").Add( new XElement("Credits", questValue.Reward.Credits));
                     if (questValue.Reward.ReputationNotEmpty())
                         element.Element("Reward").Add(new XElement("Reputation", questValue.Reward.getReputation()));
+                    if (questValue.Reward.Reputation2NotEmpty())
+                        element.Element("Reward").Add(new XElement("Reputation2", questValue.Reward.getReputation2()));
                     if (questValue.Reward.ReputationNotEmpty(true))
                         element.Element("Reward").Add(new XElement("NPCReputation", questValue.Reward.getReputation(true)));
                     if (questValue.Reward.ChangeQuests.Any())
@@ -774,6 +810,10 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Reward").Add(new XElement("Teleport", questValue.Reward.teleportTo));
                     if (questValue.Reward.RewardWindow)
                         element.Element("Reward").Add(new XElement("RewardWindow", Global.GetBoolAsString(questValue.Reward.RewardWindow)));
+                    if (questValue.Reward.OTvalue > 0)
+                    {
+                        element.Element("Reward").Add(new XElement("tradingPoints", questValue.Reward.OTfraction.ToString() + ":" + questValue.Reward.OTvalue.ToString()));  
+                    }
                     List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
                     if (EffectsXE.Any())
                         element.Element("Reward").Add(new XElement("Effects", EffectsXE));
@@ -805,6 +845,8 @@ namespace StalkerOnlineQuesterEditor
                          element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits.ToString("G6", CultureInfo.InvariantCulture)));
                      if (questValue.QuestPenalty.ReputationNotEmpty())
                          element.Element("Penalty").Add(new XElement("Reputation", questValue.QuestPenalty.getReputation()));
+                    if (questValue.QuestPenalty.Reputation2NotEmpty())
+                        element.Element("Penalty").Add(new XElement("Reputation2", questValue.QuestPenalty.getReputation2()));
                     if (questValue.QuestPenalty.ReputationNotEmpty(true))
                         element.Element("Penalty").Add(new XElement("NPCReputation", questValue.QuestPenalty.getReputation(true)));
                     if (questValue.QuestPenalty.ChangeQuests.Any())
@@ -851,6 +893,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Additional").Add(new XElement("DebugData", questValue.Additional.DebugData));
                     if (!questValue.QuestInformation.Title.Any() && !questValue.QuestInformation.Description.Any())
                         element.Element("Additional").Add(new XElement("isEmpty", "1")); ;
+                    if (questValue.Additional.isFractionBonus != 0)
+                        element.Element("Additional").Add(new XElement("isFractionBonus", Global.GetIntAsString(questValue.Additional.isFractionBonus)));
 
                 }
 

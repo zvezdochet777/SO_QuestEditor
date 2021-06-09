@@ -98,6 +98,16 @@ namespace StalkerOnlineQuesterEditor.Forms
         {
             string fileName = @"..\misc\developer_scripts\QuestEditorScripts\DungeonParser.py";
             run_cmd(fileName);
+            this.parent.dungeonConst = new CDungeonSpacesConstants();
+            MessageBox.Show("Complete");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string fileName = @"..\misc\developer_scripts\QuestEditorScripts\PerksParser.py";
+            run_cmd(fileName);
+            this.parent.dungeonConst = new CDungeonSpacesConstants();
+            MessageBox.Show("Complete");
         }
     }
 }

@@ -56,7 +56,7 @@ namespace StalkerOnlineQuesterEditor
         Dictionary<PNode, GraphProperties> graphs = new Dictionary<PNode, GraphProperties>();
         Dictionary<Panel, int> panels = new Dictionary<Panel, int>();
 
-        
+        public List<int> questChapters = new List<int>();
         List<int> rootElements = new List<int>();
         public TreeView tree;
         List<PNode> subNodes = new List<PNode>();
@@ -89,7 +89,9 @@ namespace StalkerOnlineQuesterEditor
 
         public COperNotes manageNotes;
         public CFracConstants fractions;
+        public CFracConstants2 fractions2;
         public SkillConstants skills;
+        public PerksConstants perks;
         public PvPRanks pvPRanks;
         public CGUIConst gui;
         public CEffectConstants effects;
@@ -144,7 +146,9 @@ namespace StalkerOnlineQuesterEditor
             triggerConst = new CTriggerConstants();
             manageNotes = new COperNotes("ManNotes.xml");
             fractions = new CFracConstants();
+            fractions2 = new CFracConstants2();
             skills = new SkillConstants();
+            perks = new PerksConstants();
             pvPRanks = new PvPRanks();
             gui = new CGUIConst();
             effects = new CEffectConstants();
@@ -201,7 +205,12 @@ namespace StalkerOnlineQuesterEditor
             ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
             ApplyResourceToControl(resources, this);
 
+            foreach (CQuest quest in quests.quest.Values)
+                if (quest.questLinkType == 1)
+                    questChapters.Add(quest.QuestID);
+
             //tmpMethod();
+            //tmpMethod2();
 
         }
         //! Set mode for me, if Command line has /master parameter, TestButton and some labels will be shown
@@ -845,8 +854,10 @@ namespace StalkerOnlineQuesterEditor
             Label NPCText = new Label();
             NPCText.Text = rootDialog.Text;
             NPCText.ForeColor = (rootDialog.version != 0) ? (Color.Black) : (Color.Red);
+            NPCText.BackColor = Color.LightGray;
             NPCText.AutoSize = false;
-            NPCText.AutoEllipsis = true;
+            NPCText.Height = 30;
+            //NPCText.AutoEllipsis = true;
             NPCText.Dock = DockStyle.Top;
 
             foreach (int subdialogID in rootDialog.Nodes)
@@ -1019,7 +1030,28 @@ namespace StalkerOnlineQuesterEditor
                     && (curQuest.Additional.ListOfSubQuest.Any()))
                 foreach (int subquest in curQuest.Additional.ListOfSubQuest)
                     addNodeOnTreeQuest(subquest);
-            
+
+            List<int> list_children = new List<int>();
+            if (curQuest.Additional.IsSubQuest.Equals(0) && curQuest.questLinkType == 1)
+            {
+                foreach (CQuest quest in quests.quest.Values)
+                {
+                    if ((currentQuest > 0) && (quest.questLink == currentQuest))
+                        list_children.Add(quest.QuestID);
+                        //curNode = treeQuest.Nodes.Add(quest.QuestID.ToString(), quest.QuestID.ToString());
+                }
+
+                if (list_children.Any())
+                {
+                    treeQuest.Nodes.Add("", "");
+                    curNode = treeQuest.Nodes.Add("", "Подглавы:");
+                    foreach(int quest_id in list_children)
+                    {
+                        curNode.Nodes.Add("", quest_id.ToString());
+                    }
+                }
+            }
+
             treeQuest.EndUpdate();
             treeQuest.Refresh();
             treeQuest.Update();
@@ -1104,7 +1136,11 @@ namespace StalkerOnlineQuesterEditor
         private void treeQuestSelected(object sender, EventArgs e)
         {
             if (!treeQuest.SelectedNode.Text.Any()) return;
-            this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
+            try
+            {
+                this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
+            }
+            catch { return; }
             //            int questID = int.Parse(treeQuest.SelectedNode.Text);
             checkQuestButton(getQuestOnQuestID(currentQuest).Target.QuestType, currentQuest);
             fillQuestPanel();
@@ -1309,6 +1345,8 @@ namespace StalkerOnlineQuesterEditor
 
             QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
             QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
+            if ((newQuest.questLinkType == 1) && !questChapters.Contains(newQuest.QuestID))
+                questChapters.Add(newQuest.QuestID);
             this.isDirty = true;
         }
 
@@ -1327,6 +1365,8 @@ namespace StalkerOnlineQuesterEditor
             addNodeOnTreeQuest(quest.QuestID);
             treeQuest.ExpandAll();
             fillQuestPanel();
+            if ((quest.questLinkType == 1) && !questChapters.Contains(quest.QuestID))
+                questChapters.Add(quest.QuestID);
             this.isDirty = true;
         }
         //! Заменяет данные квеста при редактировании
@@ -1339,6 +1379,8 @@ namespace StalkerOnlineQuesterEditor
                 quests.locales[CSettings.getListLocales()[0]][quest.QuestID].InsertNonTextData(quest);
             checkQuestButton(quest.Target.QuestType, quest.QuestID);
             this.isDirty = true;
+            if ((quest.questLinkType == 1) && !questChapters.Contains(quest.QuestID))
+                questChapters.Add(quest.QuestID);
         }
         //! Нажатие на кнопку "Добавление квеста", вызов окна EditQuestForm
         private void bAddEvent_Click(object sender, EventArgs e)
@@ -1759,8 +1801,14 @@ namespace StalkerOnlineQuesterEditor
         private void treeQuest_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (!treeQuest.SelectedNode.Text.Any()) return;
-            this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
-
+            try
+            {
+                this.currentQuest = int.Parse(treeQuest.SelectedNode.Text);
+            }
+            catch
+            {
+                return;
+            }
             bCopyEvents.Enabled = true;
             if (this.quests.m_Buffer.Any())
                 bPasteEvents.Enabled = true;
@@ -2086,6 +2134,10 @@ namespace StalkerOnlineQuesterEditor
             cbLocation.Sorted = true;
             cbLocation.DataSource = null;
             cbLocation.DataSource = ManagerNPC.locationNames;
+
+            cbQuestLocations.Sorted = true;
+            cbQuestLocations.Items.Clear();
+            cbQuestLocations.Items.AddRange(this.spacesConst.getSpacesNames().ToArray());
         }
 
         //! добавляет в таблицу Управление столбцы фракций
@@ -2135,11 +2187,12 @@ namespace StalkerOnlineQuesterEditor
         void setQuestCheckEnvironment()
         {
             dgvReview.Columns[0].HeaderText = "Имя NPC";
-            dgvReview.Columns[1].HeaderText = "Квест";
-            dgvReview.Columns[2].HeaderText = "Открыт квест";
-            dgvReview.Columns[3].HeaderText = "Закрыт квест";
-            dgvReview.Columns[4].Visible = false;
+            dgvReview.Columns[1].HeaderText = "Название квеста";
+            dgvReview.Columns[2].HeaderText = "Квест";
+            dgvReview.Columns[3].HeaderText = "Открывается в диалогах";
+            dgvReview.Columns[4].HeaderText = "Закрывается в диалогах";
             dgvReview.Columns[5].Visible = false;
+            //dgvReview.Columns[5].Visible = false;
         }
 
         //! Устанавливает надписи в таблице вкладки Проверка для поиска квестов дающих личную репутацию
@@ -2193,20 +2246,27 @@ namespace StalkerOnlineQuesterEditor
                         continue;
 
                     int questID = quest.QuestID;
-                    int open = 0, close = 0;
+                    string title = quest.QuestInformation.Title;
+                    string open = "", close = "";
+
+                    if (cbOnQuestLocation.Checked && cbQuestLocations.SelectedItem != null)
+                    {
+                        int selected_space_id = Convert.ToInt32(cbQuestLocations.SelectedItem.ToString().Split()[0]);
+                        if (!Convert.ToBoolean(quest.QuestRules.space & (1 << selected_space_id)))
+                            continue;  
+                    }
+
                     foreach (string npc in dialogs.dialogs.Keys)
                         foreach (CDialog dialog in dialogs.dialogs[npc].Values)
                         {
                             if (dialog.Actions.GetQuests.Contains(questID))
-                                open = dialog.DialogID;
+                                open += dialog.DialogID.ToString() + ",";
                             if (dialog.Actions.CompleteQuests.Contains(questID))
-                                close = dialog.DialogID;
+                                close += dialog.DialogID.ToString() + ",";
                         }
-                    if (open == 0 || close == 0)
-                    {
-                        object[] row = { quest.Additional.Holder, questID, open, close };
-                        dgvReview.Rows.Add(row);
-                    }
+                    object[] row = { quest.Additional.Holder, title, questID, open, close };
+                    dgvReview.Rows.Add(row);
+                    
                 }
             }
             else
@@ -2219,17 +2279,25 @@ namespace StalkerOnlineQuesterEditor
                     targetItemID = itemConst.getIDOnName(cbItemTarget.SelectedItem.ToString());
                 foreach (CQuest quest in quests.quest.Values)
                 {
+                    if (cbOnQuestLocation.Checked && cbQuestLocations.SelectedItem != null)
+                    {
+                        int selected_space_id = Convert.ToInt32(cbQuestLocations.SelectedItem.ToString().Split()[0]);
+                        if (!Convert.ToBoolean(quest.QuestRules.space & (1 << selected_space_id)))
+                            continue;
+                    }
+
                     bool itemFound = false;
+                    string title = quest.QuestInformation.Title;
                     foreach (QuestItem item in quest.Reward.items)
                         if (item.itemType == itemID) { itemFound = true; break; } 
                     if (itemFound)
                     {
-                        object[] row = { quest.Additional.Holder, quest.QuestID };
+                        object[] row = { quest.Additional.Holder, title, quest.QuestID };
                         dgvReview.Rows.Add(row);
                     }
                     if (((quest.Target.QuestType == CQuestConstants.TYPE_FARM) || (quest.Target.QuestType == CQuestConstants.TYPE_FARM_AUTO)) && (quest.Target.ObjectType == targetItemID))
                     {
-                        object[] row = { quest.Additional.Holder, quest.QuestID };
+                        object[] row = { quest.Additional.Holder, title, quest.QuestID };
                         dgvReview.Rows.Add(row);
                     }
                 }
@@ -3101,6 +3169,28 @@ namespace StalkerOnlineQuesterEditor
             public string spaceName = "";
         }
 
+        private void tmpMethod2()
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            foreach (var quest in quests.quest)
+            {
+                foreach(var npc in quest.Value.Reward.NPCReputation)
+                {
+                    if(!result.ContainsKey(npc.Key))
+                    {
+                        result.Add(npc.Key, 0);
+                    }
+                    result[npc.Key] += npc.Value;
+                }
+            }
+
+            StreamWriter writer = new StreamWriter("npc_rep.txt");
+            foreach (var i in result)
+            {
+                writer.WriteLine(i.Key + " " + i.Value.ToString());
+            }
+            writer.Close();
+        }
 
         /*
         private void tmpMethod()
@@ -3196,7 +3286,7 @@ namespace StalkerOnlineQuesterEditor
             
 
         }*/
-        
+
         private void диалоговToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();

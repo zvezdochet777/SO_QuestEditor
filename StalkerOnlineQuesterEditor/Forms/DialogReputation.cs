@@ -12,33 +12,35 @@ namespace StalkerOnlineQuesterEditor
     public partial class DialogReputation : Form
     {
         EditDialogForm form;
-        public DialogReputation(EditDialogForm form)
+        Dictionary<int, List<double>> reputation;
+        public DialogReputation(EditDialogForm form, CFracConstants fractions, ref Dictionary<int, List<double>> reputation)
         {
             this.form = form;
+            this.reputation = reputation;
             InitializeComponent();
-            CFracConstants frac = form.parent.fractions;
-            foreach (KeyValuePair<int, string> pair in frac.getListOfFractions())
+            //CFracConstants frac = form.parent.fractions;
+            foreach (KeyValuePair<int, string> pair in fractions.getListOfFractions())
             {
                 int id = pair.Key;
                 string name = pair.Value;
                 string a = "";
                 string b = "";
-                if (form.editPrecondition.Reputation.Keys.Contains(pair.Key))
+                if (reputation.Keys.Contains(pair.Key))
                 {
-                    if (form.editPrecondition.Reputation[id].Count == 3)         // костыль для старой версии, выжечт огнем позже
+                    if (reputation[id].Count == 3)         // костыль для старой версии, выжечт огнем позже
                     {
-                        double type = form.editPrecondition.Reputation[pair.Key][0];
+                        double type = reputation[pair.Key][0];
                         if (type == 0 || (type == 1))
-                            a = form.editPrecondition.Reputation[pair.Key][1].ToString();
+                            a = reputation[pair.Key][1].ToString();
                         if (type == 0 || (type == 2))
-                            b = form.editPrecondition.Reputation[pair.Key][2].ToString();
+                            b = reputation[pair.Key][2].ToString();
                     }
-                    else if (form.editPrecondition.Reputation[id].Count == 2)
+                    else if (reputation[id].Count == 2)
                     {
-                        if (form.editPrecondition.Reputation[id][0] != double.NegativeInfinity)
-                            a = form.editPrecondition.Reputation[id][0].ToString();
-                        if (form.editPrecondition.Reputation[id][1] != double.PositiveInfinity)
-                            b = form.editPrecondition.Reputation[id][1].ToString();
+                        if (reputation[id][0] != double.NegativeInfinity)
+                            a = reputation[id][0].ToString();
+                        if (reputation[id][1] != double.PositiveInfinity)
+                            b = reputation[id][1].ToString();
                     }
                 }
                 object[] row = { id, name, a, b };
@@ -48,7 +50,7 @@ namespace StalkerOnlineQuesterEditor
 
         private void bOK_Click(object sender, EventArgs e)
         {
-            form.editPrecondition.Reputation.Clear();
+            this.reputation.Clear();
             foreach (DataGridViewRow row in dataReputation.Rows)
             {
                 if (row.Cells[0].FormattedValue.ToString() != "")
@@ -71,7 +73,7 @@ namespace StalkerOnlineQuesterEditor
                             MessageBox.Show("Неправильное условие по репутации! Значение А должно быть меньше B" , "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        form.editPrecondition.Reputation.Add( fractionID, new List<double>() {doubleA, doubleB} );
+                        this.reputation.Add( fractionID, new List<double>() {doubleA, doubleB} );
                     }
                 }
             }

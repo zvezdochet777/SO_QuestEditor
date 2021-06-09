@@ -152,6 +152,33 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class DialogKnowleges : ICloneable
+    {
+        public char conditionMustKnowledge;
+        public List<int> mustKnowledge = new List<int>();
+
+        public char conditionShouldntKnowledge;
+        public List<int> shouldntKnowledge = new List<int>();
+
+        public object Clone()
+        {
+            DialogKnowleges clone = new DialogKnowleges();
+            clone.conditionMustKnowledge = conditionMustKnowledge;
+            clone.conditionShouldntKnowledge = conditionShouldntKnowledge;
+
+            clone.mustKnowledge = mustKnowledge.ToList();
+            clone.shouldntKnowledge = shouldntKnowledge.ToList();
+            return clone;
+
+        }
+
+        public bool Any()
+        {
+            return mustKnowledge.Any() || shouldntKnowledge.Any();
+        }
+            
+    }
+
     //! Условия появления диалога в игре - открытые/закрытые/проваленные квесты, урвоень игрока, репутация у фракций, карма ПК
     public class CDialogPrecondition : ICloneable
     {
@@ -164,13 +191,16 @@ namespace StalkerOnlineQuesterEditor
         public string playerSurvLvl;
         public string playerOtherLvl;
         public ListDialogSkills Skills = new ListDialogSkills();
+        public List<int> Perks = new List<int>();
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
+        public Dictionary<int, List<double>> Reputation2 = new Dictionary<int, List<double>>();
         public Dictionary<string, List<double>> NPCReputation = new Dictionary<string, List<double>>();
         public List<int> KarmaPK = new List<int>();
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
         public bool forDev;
         public bool hidden;
+        public DialogKnowleges knowledges = new DialogKnowleges();
         public RadioAvalible radioAvailable = RadioAvalible.None;
         public int tutorialPhase = -1;
         public int[] PVPranks = new int[2];
@@ -186,6 +216,7 @@ namespace StalkerOnlineQuesterEditor
             copy.ListOfNecessaryQuests = (CDialogPreconditionQuests)this.ListOfNecessaryQuests.Clone();
             copy.ListOfMustNoQuests = (CDialogPreconditionQuests)this.ListOfMustNoQuests.Clone();
             copy.Reputation = this.Reputation;
+            copy.Reputation2 = this.Reputation2;
             copy.NPCReputation = this.NPCReputation;
             copy.Skills = this.Skills;
             copy.KarmaPK = this.KarmaPK;
@@ -202,6 +233,8 @@ namespace StalkerOnlineQuesterEditor
             copy.radioAvailable = radioAvailable;
             copy.PVPranks = this.PVPranks.ToArray();
             copy.PVPMode = this.PVPMode;
+            copy.knowledges = (DialogKnowleges)knowledges.Clone();
+            copy.Perks = Perks.ToList();
             return copy;
         }
 
@@ -211,8 +244,10 @@ namespace StalkerOnlineQuesterEditor
             this.ListOfMustNoQuests = new CDialogPreconditionQuests();
             this.clanOptions = "";
             this.Reputation = new Dictionary<int, List<double>>();
+            this.Reputation2 = new Dictionary<int, List<double>>();
             this.NPCReputation = new Dictionary<string, List<double>>();
             this.Skills = new ListDialogSkills();
+            this.Perks = new List<int>();
             this.KarmaPK = new List<int>();
             this.PlayerLevel = "";
             this.playerCombatLvl = "";
@@ -230,7 +265,7 @@ namespace StalkerOnlineQuesterEditor
         public bool Exists()
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
-                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() ||
+                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || Perks.Any() ||
                 forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0;
         }
 
@@ -239,7 +274,7 @@ namespace StalkerOnlineQuesterEditor
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() ||
                 itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || RadioAvalible.None != radioAvailable ||
-                (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0;
+                Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any();
         }
 
         public string GetAsString()
@@ -274,6 +309,37 @@ namespace StalkerOnlineQuesterEditor
                         result += ";";
                     double A = this.Reputation[key][1];
                     double B = this.Reputation[key][2];
+                    if (A == 0.0)
+                        A = double.NegativeInfinity;
+                    if (B == 0.0)
+                        B = double.PositiveInfinity;
+                    result = key.ToString() + ":";
+                    result += A.ToString(System.Globalization.CultureInfo.InvariantCulture) + ":";
+                    result += B.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                }
+            }
+            return result;
+        }
+
+        public string getReputation2()
+        {
+            string result = "";
+            foreach (int key in this.Reputation2.Keys)
+            {
+                if (this.Reputation2[key].Count == 2)
+                {
+                    if (result != "")
+                        result += ";";
+                    result += key.ToString() + ":";
+                    result += this.Reputation2[key][0].ToString(System.Globalization.CultureInfo.InvariantCulture) + ":";
+                    result += this.Reputation2[key][1].ToString(System.Globalization.CultureInfo.InvariantCulture);
+                }
+                else if (this.Reputation2[key].Count == 3)  //костыль для плавного перехода между старой и новой версией
+                {
+                    if (result != "")
+                        result += ";";
+                    double A = this.Reputation2[key][1];
+                    double B = this.Reputation2[key][2];
                     if (A == 0.0)
                         A = double.NegativeInfinity;
                     if (B == 0.0)

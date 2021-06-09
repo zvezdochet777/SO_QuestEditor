@@ -280,6 +280,7 @@ namespace StalkerOnlineQuesterEditor
             this.обновленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.парсерыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проверкаОшибокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поискДиалоговПоQuestIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.данныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.собратьЭдиторДляПередачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вытащитьНепереведённыеТекстыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -289,7 +290,8 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.поискДиалоговПоQuestIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbOnQuestLocation = new System.Windows.Forms.CheckBox();
+            this.cbQuestLocations = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -1047,6 +1049,8 @@ namespace StalkerOnlineQuesterEditor
             // 
             // gbQuestCheck
             // 
+            this.gbQuestCheck.Controls.Add(this.cbQuestLocations);
+            this.gbQuestCheck.Controls.Add(this.cbOnQuestLocation);
             this.gbQuestCheck.Controls.Add(this.labelItemTarget);
             this.gbQuestCheck.Controls.Add(this.cbItemTarget);
             this.gbQuestCheck.Controls.Add(this.labelItemReward);
@@ -2231,6 +2235,12 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.проверкаОшибокToolStripMenuItem, "проверкаОшибокToolStripMenuItem");
             this.проверкаОшибокToolStripMenuItem.Click += new System.EventHandler(this.проверкаОшибокToolStripMenuItem_Click);
             // 
+            // поискДиалоговПоQuestIDToolStripMenuItem
+            // 
+            this.поискДиалоговПоQuestIDToolStripMenuItem.Name = "поискДиалоговПоQuestIDToolStripMenuItem";
+            resources.ApplyResources(this.поискДиалоговПоQuestIDToolStripMenuItem, "поискДиалоговПоQuestIDToolStripMenuItem");
+            this.поискДиалоговПоQuestIDToolStripMenuItem.Click += new System.EventHandler(this.поискДиалоговПоQuestIDToolStripMenuItem_Click);
+            // 
             // данныеToolStripMenuItem
             // 
             this.данныеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2286,11 +2296,17 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             // 
-            // поискДиалоговПоQuestIDToolStripMenuItem
+            // cbOnQuestLocation
             // 
-            this.поискДиалоговПоQuestIDToolStripMenuItem.Name = "поискДиалоговПоQuestIDToolStripMenuItem";
-            resources.ApplyResources(this.поискДиалоговПоQuestIDToolStripMenuItem, "поискДиалоговПоQuestIDToolStripMenuItem");
-            this.поискДиалоговПоQuestIDToolStripMenuItem.Click += new System.EventHandler(this.поискДиалоговПоQuestIDToolStripMenuItem_Click);
+            resources.ApplyResources(this.cbOnQuestLocation, "cbOnQuestLocation");
+            this.cbOnQuestLocation.Name = "cbOnQuestLocation";
+            this.cbOnQuestLocation.UseVisualStyleBackColor = true;
+            // 
+            // cbQuestLocations
+            // 
+            this.cbQuestLocations.FormattingEnabled = true;
+            resources.ApplyResources(this.cbQuestLocations, "cbQuestLocations");
+            this.cbQuestLocations.Name = "cbQuestLocations";
             // 
             // MainForm
             // 
@@ -2647,6 +2663,8 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button btnAGGetQuestDel;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ToolStripMenuItem поискДиалоговПоQuestIDToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbQuestLocations;
+        private System.Windows.Forms.CheckBox cbOnQuestLocation;
     }
 }
 

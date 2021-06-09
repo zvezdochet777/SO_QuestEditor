@@ -7,6 +7,69 @@ using System.IO;
 
 namespace StalkerOnlineQuesterEditor
 {
+
+    public class PerksConstants
+    {
+
+        //! Конструктор, заполняет словарь на основе файлов xml
+        public PerksConstants()
+        { 
+            loadFile("source/perks.xml");
+            foreach (XElement item in doc.Root.Elements())
+            {
+                int cmID = Convert.ToInt32(item.Element("id").Value);
+                string name = item.Element("name").Value;
+                _constants.Add(cmID, name);
+            }
+
+        }
+
+        protected Dictionary<int, string> _constants = new Dictionary<int, string>();
+        protected XDocument doc = new XDocument();
+
+        //! Возвращает ID комманды
+        public int getID(string name)
+        {
+            int ret = 0;
+            foreach (KeyValuePair<int, string> value in _constants)
+                if (value.Value.Equals(name))
+                    ret = value.Key;
+            return ret;
+        }
+        //! Возвращает название по ID комманды
+        public string getName(int tpID)
+        {
+            return _constants[tpID];
+
+            
+        }
+        //! Возвращает список всех названий по-русски комманд
+        public List<string> getNames()
+        {
+            List<string> ret = new List<string>();
+            foreach (string key in _constants.Values)
+                ret.Add(key);
+            return ret;
+        }
+
+        protected void loadFile(string path)
+        {
+            try
+            {
+                doc = XDocument.Load(path);
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Не удалось загрузить файл:" + System.IO.Path.GetFullPath(path), "Ошибка");
+            }
+
+
+        }
+    }
+
+
+
+
     //! Класс, содержащий информацию о всех навыках
     public class SkillConstants: Constants
     {
@@ -23,6 +86,8 @@ namespace StalkerOnlineQuesterEditor
             }
                         
         }
+
+
     }
 
     public class DialogSkill

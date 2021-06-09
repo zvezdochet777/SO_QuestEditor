@@ -26,6 +26,8 @@ namespace StalkerOnlineQuesterEditor
         public CQuestAdditionalConditions Conditions;
         public bool hidden;
         public bool isOld;
+        public int questLink;
+        public int questLinkType;
 
         public object Clone()
         {
@@ -44,6 +46,8 @@ namespace StalkerOnlineQuesterEditor
             copy.Conditions = (CQuestAdditionalConditions)Conditions.Clone();
             copy.hidden = this.hidden;
             copy.isOld = this.isOld;
+            copy.questLinkType = this.questLinkType;
+            copy.questLink = this.questLink;
             return copy;
         }
 
@@ -63,9 +67,11 @@ namespace StalkerOnlineQuesterEditor
             this.Conditions = new CQuestAdditionalConditions();
             this.hidden = false;
             this.isOld = false;
+            questLinkType = 0;
+            questLink = 0;
         }
 
-        public CQuest(int questID, int Version, int Priority, int Level, CQuestInformation questInformation, CQuestPrecondition precondition,
+        public CQuest(int questID, int Version, int Priority, int Level, int questLinkType, int questLink, CQuestInformation questInformation, CQuestPrecondition precondition,
                         CQuestRules questRules, CQuestReward reward, CQuestAdditional additional, CQuestTarget target, CQuestReward penalty,
                         CQuestAdditionalConditions conditions, bool hidden = false, bool isOld = false)
         {
@@ -73,6 +79,8 @@ namespace StalkerOnlineQuesterEditor
             this.Version = Version;
             this.Priority = Priority;
             this.Level = Level;
+            this.questLinkType = questLinkType;
+            this.questLink = questLink;
             this.QuestInformation = questInformation;
             this.Precondition = precondition;
             this.QuestRules = questRules;
@@ -533,6 +541,7 @@ namespace StalkerOnlineQuesterEditor
         public float Credits;
         //! Словарь репутаций в награду, выглядит так <id фракции>:<значение награды>;
         public Dictionary<int, int> Reputation;
+        public Dictionary<int, int> Reputation2;
         //! Словарь личной репутаций NPC в награду, выглядит так <имя NPC квеста>:<установленный статус>;
         public Dictionary<string, int> NPCReputation;
         //! Словарь изменений квеста в награду, выглядит так <id квеста>:<установленный статус>;
@@ -544,6 +553,8 @@ namespace StalkerOnlineQuesterEditor
         public List<CEffect> Effects;
         public bool RewardWindow;
         public string teleportTo;
+        public int OTfraction;
+        public int OTvalue;
 
         public object Clone()
         {
@@ -553,6 +564,7 @@ namespace StalkerOnlineQuesterEditor
             copy.ChangeQuests = new Dictionary<int, int>(this.ChangeQuests);
             copy.Credits = this.Credits;
             copy.Reputation = new Dictionary<int, int>(this.Reputation);
+            copy.Reputation2 = new Dictionary<int, int>(this.Reputation2);
             copy.NPCReputation = new Dictionary<string, int>(this.NPCReputation);
             copy.KarmaPK = this.KarmaPK;
             copy.Effects = new List<CEffect>(this.Effects);
@@ -568,6 +580,7 @@ namespace StalkerOnlineQuesterEditor
             this.items = new List<QuestItem>();
             this.Credits = new float();            
             this.Reputation = new Dictionary<int, int>();
+            this.Reputation2 = new Dictionary<int, int>();
             this.NPCReputation = new Dictionary<string, int>();
             this.ChangeQuests = new Dictionary<int, int>();
             this.KarmaPK = new int();
@@ -577,8 +590,9 @@ namespace StalkerOnlineQuesterEditor
         }
         public bool Any()
         {
-            return hasExperience() || items.Any() || Credits != 0 || ReputationNotEmpty() || teleportTo.Any() ||
-                KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any() || NPCReputation.Any() || blackBoxes.Any();
+            return hasExperience() || items.Any() || Credits != 0 || ReputationNotEmpty() || teleportTo.Any() || OTvalue > 0 ||
+                KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any() || NPCReputation.Any() || blackBoxes.Any() ||
+                Reputation2NotEmpty();
         }
 
         private bool hasExperience()
@@ -617,6 +631,23 @@ namespace StalkerOnlineQuesterEditor
             return result;
         }
 
+        public string getReputation2()
+        {
+            string result = "";
+
+            foreach (int key in this.Reputation2.Keys)
+            {
+                if (this.Reputation2[key] == 0)
+                    continue;
+                if (!result.Equals(""))
+                    result += ";";
+                result += (key.ToString() + ":" + this.Reputation2[key].ToString());
+            }
+
+
+            return result;
+        }
+
         public string getChangeQuests()
         {
             string result = "";
@@ -637,6 +668,14 @@ namespace StalkerOnlineQuesterEditor
             List<int> values;
             values = is_npc ? new List<int>(this.NPCReputation.Values) : new List<int>(this.Reputation.Values);
             foreach (int Value in values)
+                if (Value != 0)
+                    return true;
+            return false;
+        }
+
+        public bool Reputation2NotEmpty()
+        {
+            foreach (int Value in this.Reputation2.Values)
                 if (Value != 0)
                     return true;
             return false;
@@ -710,6 +749,7 @@ namespace StalkerOnlineQuesterEditor
         public bool screenMessageOnWin;
         public bool screenMessageOnFailed;
         public bool screenMessageOnGet;
+        public int isFractionBonus;
 
         public object Clone()
         {
@@ -724,6 +764,7 @@ namespace StalkerOnlineQuesterEditor
             copy.screenMessageOnWin = this.screenMessageOnWin;
             copy.screenMessageOnFailed = this.screenMessageOnFailed;
             copy.screenMessageOnGet = this.screenMessageOnGet;
+            copy.isFractionBonus = this.isFractionBonus;
             return copy;
         }
 
@@ -753,7 +794,7 @@ namespace StalkerOnlineQuesterEditor
 
         public bool Any()
         {
-            return ListOfSubQuest.Any() || IsSubQuest != 0 || ShowProgress != 0 || CantCancel || Holder != "" || DebugData != "" || CantFail;
+            return ListOfSubQuest.Any() || IsSubQuest != 0 || ShowProgress != 0 || CantCancel || Holder != "" || DebugData != "" || CantFail || isFractionBonus > 0 ;
         }
     }
 

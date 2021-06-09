@@ -195,6 +195,11 @@ namespace StalkerOnlineQuesterEditor
 
                         if (dialog.Element("Precondition").Element("Skills") != null)
                             AddDialogSkillsToListSkills(dialog, "Precondition", "Skills", Precondition.Skills);
+
+                        Precondition.Perks = new List<int>();
+                        if (dialog.Element("Precondition").Element("Perks") != null)
+                            AddDataToList(dialog, "Precondition", "Perks", Precondition.Perks);
+
                         Precondition.KarmaPK = new List<int>();
 
                         AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
@@ -293,6 +298,21 @@ namespace StalkerOnlineQuesterEditor
                                 Precondition.Reputation[fractionID].Add(B);
                             }
                         }
+                        if (dialog.Element("Precondition").Element("Reputation2") != null)
+                        {
+                            foreach (string el in dialog.Element("Precondition").Element("Reputation2").Value.Split(';'))
+                            {
+                                if (el == "")
+                                    continue;
+                                string[] fr = el.Split(':');
+                                int fractionID = int.Parse(fr[0]);
+                                Precondition.Reputation2.Add(fractionID, new List<double>());
+                                double A = double.Parse(fr[1], System.Globalization.CultureInfo.InvariantCulture);
+                                double B = double.Parse(fr[2], System.Globalization.CultureInfo.InvariantCulture);
+                                Precondition.Reputation2[fractionID].Add(A);
+                                Precondition.Reputation2[fractionID].Add(B);
+                            }
+                        }
                         if (dialog.Element("Precondition").Element("NPCReputation") != null)
                         {
                             foreach (string el in dialog.Element("Precondition").Element("NPCReputation").Value.Split(';'))
@@ -335,6 +355,12 @@ namespace StalkerOnlineQuesterEditor
                                     Precondition.items.equipped = true;
                                 CQuests.parceItems(dialog.Element("Precondition").Element("noneItems").Element("Items"), Precondition.itemsNone.items);
                             }
+                        }
+
+                        if (dialog.Element("Precondition").Element("Knowledges") != null)
+                        {
+                            CDialogs.AddPreconditionQuests(dialog, "Knowledges", "mustKnowledge", Precondition.knowledges.mustKnowledge, ref Precondition.knowledges.conditionMustKnowledge);
+                            CDialogs.AddPreconditionQuests(dialog, "Knowledges", "shouldntKnowledge", Precondition.knowledges.shouldntKnowledge, ref Precondition.knowledges.conditionShouldntKnowledge);
                         }
 
                     }
@@ -393,6 +419,21 @@ namespace StalkerOnlineQuesterEditor
             }
         }
 
+        public static void AddPreconditionKnowlege(XElement Element, String Name1, List<int> list, ref char condition)
+        {
+            if (Element.Element("Precondition").Element(Name1) == null)
+                return;
+            if (Element.Element("Precondition").Element(Name1).Value != "")
+
+                if (Element.Element("Precondition").Element(Name1).Value.Contains('|'))
+                    condition = '|';
+                else if (Element.Element("Precondition").Element(Name1).Value.Contains('&'))
+                    condition = '&';
+                else
+                    condition = ',';
+            foreach (string quest in Element.Element("Precondition").Element(Name1).Value.Split(condition))
+                list.Add(int.Parse(quest));
+        }
 
         public static void AddPreconditionQuests(XElement Element, String Name1, String Name2, List<int> list, ref char condition)
         {
@@ -673,6 +714,18 @@ namespace StalkerOnlineQuesterEditor
                                 prec.Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
                                                                          dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests.Replace(',', dialog.Precondition.ListOfMustNoQuests.conditionOfMassQuests)));
                         }
+                        if (dialog.Precondition.knowledges.Any())
+                        {
+                            prec.Add(new XElement("Knowledges"));
+                            if (dialog.Precondition.knowledges.mustKnowledge.Any())
+                                prec.Element("Knowledges").Add(new XElement("mustKnowledge",
+                                              Global.GetListAsString(dialog.Precondition.knowledges.mustKnowledge,
+                                                                    dialog.Precondition.knowledges.conditionMustKnowledge)));
+                            if (dialog.Precondition.knowledges.shouldntKnowledge.Any())
+                                prec.Element("Knowledges").Add(new XElement("shouldntKnowledge",
+                                              Global.GetListAsString(dialog.Precondition.knowledges.shouldntKnowledge,
+                                                                    dialog.Precondition.knowledges.conditionShouldntKnowledge)));
+                        }
                         if (dialog.Precondition.clanOptions != "")
                             prec.Add(new XElement("clanOptions", dialog.Precondition.clanOptions));
                         if (dialog.Precondition.radioAvailable != RadioAvalible.None)
@@ -684,6 +737,8 @@ namespace StalkerOnlineQuesterEditor
                             prec.Add(dialog.Precondition.getNecessaryEffects());
                         if (dialog.Precondition.Skills.Any())
                             prec.Add(dialog.Precondition.Skills.getSkills());
+                        if (dialog.Precondition.Perks.Any())
+                            prec.Add(new XElement("Perks", Global.GetListAsString(dialog.Precondition.Perks)));
                         if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
                             prec.Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
                         if (dialog.Precondition.playerCombatLvl != "" && dialog.Precondition.playerCombatLvl != ":")
@@ -694,6 +749,8 @@ namespace StalkerOnlineQuesterEditor
                             prec.Add(new XElement("playerOtherLvl", dialog.Precondition.playerOtherLvl));
                         if (dialog.Precondition.getReputation() != "")
                             prec.Add(new XElement("Reputation", dialog.Precondition.getReputation()));
+                        if (dialog.Precondition.getReputation2() != "")
+                            prec.Add(new XElement("Reputation2", dialog.Precondition.getReputation2()));
                         if (dialog.Precondition.getNPCReputation() != "")
                             prec.Add(new XElement("NPCReputation", dialog.Precondition.getNPCReputation()));
                         if (dialog.Precondition.KarmaPK.Any())

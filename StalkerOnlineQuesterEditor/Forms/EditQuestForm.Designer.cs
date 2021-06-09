@@ -167,6 +167,7 @@
             this.isClanCheckBox = new System.Windows.Forms.CheckBox();
             this.IsGroupCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.bPenaltyReputation2 = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
             this.bPenaltyQuests = new System.Windows.Forms.Button();
             this.bPenaltyEffects = new System.Windows.Forms.Button();
@@ -179,6 +180,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.rewardGroupBox = new System.Windows.Forms.GroupBox();
+            this.tbRewardOTvalue = new System.Windows.Forms.TextBox();
+            this.cbRewardOT = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.bRewardReputation2 = new System.Windows.Forms.Button();
             this.cbRewardTeleport = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.bRewardBlackBox = new System.Windows.Forms.Button();
@@ -212,6 +217,11 @@
             this.nudLevel = new System.Windows.Forms.NumericUpDown();
             this.labelLevel = new System.Windows.Forms.Label();
             this.cbOldQuest = new System.Windows.Forms.CheckBox();
+            this.cbQuestLinkType = new System.Windows.Forms.ComboBox();
+            this.lbQuestLink = new System.Windows.Forms.Label();
+            this.cbQuestLink = new System.Windows.Forms.ComboBox();
+            this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -839,7 +849,7 @@
             // debugTextBox
             // 
             this.debugTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.debugTextBox.Location = new System.Drawing.Point(169, 513);
+            this.debugTextBox.Location = new System.Drawing.Point(169, 572);
             this.debugTextBox.Name = "debugTextBox";
             this.debugTextBox.Size = new System.Drawing.Size(147, 20);
             this.debugTextBox.TabIndex = 42;
@@ -847,7 +857,7 @@
             // okButton
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(472, 548);
+            this.okButton.Location = new System.Drawing.Point(472, 588);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 37;
@@ -858,7 +868,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(553, 548);
+            this.cancelButton.Location = new System.Drawing.Point(553, 588);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 38;
@@ -869,7 +879,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 290);
+            this.label20.Location = new System.Drawing.Point(6, 383);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(122, 13);
             this.label20.TabIndex = 43;
@@ -879,7 +889,7 @@
             // 
             this.labelGiveQuestsOpened.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGiveQuestsOpened.Location = new System.Drawing.Point(125, 290);
+            this.labelGiveQuestsOpened.Location = new System.Drawing.Point(125, 383);
             this.labelGiveQuestsOpened.Name = "labelGiveQuestsOpened";
             this.labelGiveQuestsOpened.Size = new System.Drawing.Size(499, 13);
             this.labelGiveQuestsOpened.TabIndex = 44;
@@ -888,7 +898,7 @@
             // 
             this.labelGiveQuestsClosed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGiveQuestsClosed.Location = new System.Drawing.Point(142, 303);
+            this.labelGiveQuestsClosed.Location = new System.Drawing.Point(142, 396);
             this.labelGiveQuestsClosed.Name = "labelGiveQuestsClosed";
             this.labelGiveQuestsClosed.Size = new System.Drawing.Size(482, 13);
             this.labelGiveQuestsClosed.TabIndex = 46;
@@ -896,7 +906,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 303);
+            this.label22.Location = new System.Drawing.Point(6, 396);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(140, 13);
             this.label22.TabIndex = 45;
@@ -906,7 +916,7 @@
             // 
             this.labelGiveQuestsFailed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGiveQuestsFailed.Location = new System.Drawing.Point(162, 316);
+            this.labelGiveQuestsFailed.Location = new System.Drawing.Point(162, 409);
             this.labelGiveQuestsFailed.Name = "labelGiveQuestsFailed";
             this.labelGiveQuestsFailed.Size = new System.Drawing.Size(462, 13);
             this.labelGiveQuestsFailed.TabIndex = 48;
@@ -914,7 +924,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 316);
+            this.label24.Location = new System.Drawing.Point(6, 409);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(150, 13);
             this.label24.TabIndex = 47;
@@ -924,7 +934,7 @@
             // 
             this.labelGiveQuestsCanceled.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGiveQuestsCanceled.Location = new System.Drawing.Point(142, 329);
+            this.labelGiveQuestsCanceled.Location = new System.Drawing.Point(142, 422);
             this.labelGiveQuestsCanceled.Name = "labelGiveQuestsCanceled";
             this.labelGiveQuestsCanceled.Size = new System.Drawing.Size(479, 13);
             this.labelGiveQuestsCanceled.TabIndex = 50;
@@ -932,7 +942,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 329);
+            this.label26.Location = new System.Drawing.Point(6, 422);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(133, 13);
             this.label26.TabIndex = 49;
@@ -948,10 +958,10 @@
             this.tabControl.Controls.Add(this.tabPage5);
             this.tabControl.Controls.Add(this.tabPage6);
             this.tabControl.Controls.Add(this.tabConditions);
-            this.tabControl.Location = new System.Drawing.Point(0, 78);
+            this.tabControl.Location = new System.Drawing.Point(0, 95);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(635, 435);
+            this.tabControl.Size = new System.Drawing.Size(635, 475);
             this.tabControl.TabIndex = 51;
             // 
             // tabPage3
@@ -992,14 +1002,14 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(627, 409);
+            this.tabPage3.Size = new System.Drawing.Size(627, 449);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Информация";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // btnSpace
             // 
-            this.btnSpace.Location = new System.Drawing.Point(477, 172);
+            this.btnSpace.Location = new System.Drawing.Point(477, 265);
             this.btnSpace.Name = "btnSpace";
             this.btnSpace.Size = new System.Drawing.Size(141, 23);
             this.btnSpace.TabIndex = 67;
@@ -1011,7 +1021,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(6, 197);
+            this.label23.Location = new System.Drawing.Point(6, 290);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(154, 13);
             this.label23.TabIndex = 66;
@@ -1031,7 +1041,7 @@
             // 
             this.cbGetScreenMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbGetScreenMsg.AutoSize = true;
-            this.cbGetScreenMsg.Location = new System.Drawing.Point(487, 258);
+            this.cbGetScreenMsg.Location = new System.Drawing.Point(487, 351);
             this.cbGetScreenMsg.Name = "cbGetScreenMsg";
             this.cbGetScreenMsg.Size = new System.Drawing.Size(131, 17);
             this.cbGetScreenMsg.TabIndex = 65;
@@ -1042,7 +1052,7 @@
             // 
             this.cbFailScreenMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFailScreenMsg.AutoSize = true;
-            this.cbFailScreenMsg.Location = new System.Drawing.Point(487, 236);
+            this.cbFailScreenMsg.Location = new System.Drawing.Point(487, 329);
             this.cbFailScreenMsg.Name = "cbFailScreenMsg";
             this.cbFailScreenMsg.Size = new System.Drawing.Size(131, 17);
             this.cbFailScreenMsg.TabIndex = 64;
@@ -1053,7 +1063,7 @@
             // 
             this.cbWonScreenMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbWonScreenMsg.AutoSize = true;
-            this.cbWonScreenMsg.Location = new System.Drawing.Point(487, 215);
+            this.cbWonScreenMsg.Location = new System.Drawing.Point(487, 308);
             this.cbWonScreenMsg.Name = "cbWonScreenMsg";
             this.cbWonScreenMsg.Size = new System.Drawing.Size(131, 17);
             this.cbWonScreenMsg.TabIndex = 63;
@@ -1063,7 +1073,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 259);
+            this.label19.Location = new System.Drawing.Point(3, 352);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(43, 13);
             this.label19.TabIndex = 61;
@@ -1073,7 +1083,7 @@
             // 
             this.onGotTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.onGotTextBox.Location = new System.Drawing.Point(75, 257);
+            this.onGotTextBox.Location = new System.Drawing.Point(75, 350);
             this.onGotTextBox.Name = "onGotTextBox";
             this.onGotTextBox.Size = new System.Drawing.Size(407, 20);
             this.onGotTextBox.TabIndex = 62;
@@ -1081,7 +1091,7 @@
             // lFailed
             // 
             this.lFailed.AutoSize = true;
-            this.lFailed.Location = new System.Drawing.Point(3, 237);
+            this.lFailed.Location = new System.Drawing.Point(3, 330);
             this.lFailed.Name = "lFailed";
             this.lFailed.Size = new System.Drawing.Size(60, 13);
             this.lFailed.TabIndex = 58;
@@ -1090,7 +1100,7 @@
             // lWin
             // 
             this.lWin.AutoSize = true;
-            this.lWin.Location = new System.Drawing.Point(3, 215);
+            this.lWin.Location = new System.Drawing.Point(3, 308);
             this.lWin.Name = "lWin";
             this.lWin.Size = new System.Drawing.Size(55, 13);
             this.lWin.TabIndex = 57;
@@ -1100,7 +1110,7 @@
             // 
             this.onFailedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.onFailedTextBox.Location = new System.Drawing.Point(75, 234);
+            this.onFailedTextBox.Location = new System.Drawing.Point(75, 327);
             this.onFailedTextBox.Name = "onFailedTextBox";
             this.onFailedTextBox.Size = new System.Drawing.Size(407, 20);
             this.onFailedTextBox.TabIndex = 60;
@@ -1109,7 +1119,7 @@
             // 
             this.onWonTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.onWonTextBox.Location = new System.Drawing.Point(75, 212);
+            this.onWonTextBox.Location = new System.Drawing.Point(75, 305);
             this.onWonTextBox.Name = "onWonTextBox";
             this.onWonTextBox.Size = new System.Drawing.Size(407, 20);
             this.onWonTextBox.TabIndex = 59;
@@ -1117,7 +1127,7 @@
             // showGetCheckBox
             // 
             this.showGetCheckBox.AutoSize = true;
-            this.showGetCheckBox.Location = new System.Drawing.Point(402, 134);
+            this.showGetCheckBox.Location = new System.Drawing.Point(402, 227);
             this.showGetCheckBox.Name = "showGetCheckBox";
             this.showGetCheckBox.Size = new System.Drawing.Size(138, 17);
             this.showGetCheckBox.TabIndex = 56;
@@ -1127,7 +1137,7 @@
             // cantFailCheckBox
             // 
             this.cantFailCheckBox.AutoSize = true;
-            this.cantFailCheckBox.Location = new System.Drawing.Point(402, 115);
+            this.cantFailCheckBox.Location = new System.Drawing.Point(402, 208);
             this.cantFailCheckBox.Name = "cantFailCheckBox";
             this.cantFailCheckBox.Size = new System.Drawing.Size(120, 17);
             this.cantFailCheckBox.TabIndex = 55;
@@ -1137,7 +1147,7 @@
             // cantCancelCheckBox
             // 
             this.cantCancelCheckBox.AutoSize = true;
-            this.cantCancelCheckBox.Location = new System.Drawing.Point(198, 172);
+            this.cantCancelCheckBox.Location = new System.Drawing.Point(198, 265);
             this.cantCancelCheckBox.Name = "cantCancelCheckBox";
             this.cantCancelCheckBox.Size = new System.Drawing.Size(115, 17);
             this.cantCancelCheckBox.TabIndex = 54;
@@ -1148,7 +1158,7 @@
             // 
             this.tutorialCheckBox.AutoSize = true;
             this.tutorialCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tutorialCheckBox.Location = new System.Drawing.Point(198, 153);
+            this.tutorialCheckBox.Location = new System.Drawing.Point(198, 246);
             this.tutorialCheckBox.Name = "tutorialCheckBox";
             this.tutorialCheckBox.Size = new System.Drawing.Size(81, 17);
             this.tutorialCheckBox.TabIndex = 53;
@@ -1159,7 +1169,7 @@
             // showJournalCheckBox
             // 
             this.showJournalCheckBox.AutoSize = true;
-            this.showJournalCheckBox.Location = new System.Drawing.Point(9, 172);
+            this.showJournalCheckBox.Location = new System.Drawing.Point(9, 265);
             this.showJournalCheckBox.Name = "showJournalCheckBox";
             this.showJournalCheckBox.Size = new System.Drawing.Size(144, 17);
             this.showJournalCheckBox.TabIndex = 50;
@@ -1169,7 +1179,7 @@
             // showCloseCheckBox
             // 
             this.showCloseCheckBox.AutoSize = true;
-            this.showCloseCheckBox.Location = new System.Drawing.Point(9, 153);
+            this.showCloseCheckBox.Location = new System.Drawing.Point(9, 246);
             this.showCloseCheckBox.Name = "showCloseCheckBox";
             this.showCloseCheckBox.Size = new System.Drawing.Size(179, 17);
             this.showCloseCheckBox.TabIndex = 49;
@@ -1179,7 +1189,7 @@
             // showFailedCheckBox
             // 
             this.showFailedCheckBox.AutoSize = true;
-            this.showFailedCheckBox.Location = new System.Drawing.Point(198, 134);
+            this.showFailedCheckBox.Location = new System.Drawing.Point(198, 227);
             this.showFailedCheckBox.Name = "showFailedCheckBox";
             this.showFailedCheckBox.Size = new System.Drawing.Size(143, 17);
             this.showFailedCheckBox.TabIndex = 52;
@@ -1189,7 +1199,7 @@
             // showTakeCheckBox
             // 
             this.showTakeCheckBox.AutoSize = true;
-            this.showTakeCheckBox.Location = new System.Drawing.Point(9, 134);
+            this.showTakeCheckBox.Location = new System.Drawing.Point(9, 227);
             this.showTakeCheckBox.Name = "showTakeCheckBox";
             this.showTakeCheckBox.Size = new System.Drawing.Size(165, 17);
             this.showTakeCheckBox.TabIndex = 48;
@@ -1199,7 +1209,7 @@
             // showWinCheckBox
             // 
             this.showWinCheckBox.AutoSize = true;
-            this.showWinCheckBox.Location = new System.Drawing.Point(198, 115);
+            this.showWinCheckBox.Location = new System.Drawing.Point(198, 208);
             this.showWinCheckBox.Name = "showWinCheckBox";
             this.showWinCheckBox.Size = new System.Drawing.Size(178, 17);
             this.showWinCheckBox.TabIndex = 51;
@@ -1209,7 +1219,7 @@
             // showProgressCheckBox
             // 
             this.showProgressCheckBox.AutoSize = true;
-            this.showProgressCheckBox.Location = new System.Drawing.Point(9, 115);
+            this.showProgressCheckBox.Location = new System.Drawing.Point(9, 208);
             this.showProgressCheckBox.Name = "showProgressCheckBox";
             this.showProgressCheckBox.Size = new System.Drawing.Size(139, 17);
             this.showProgressCheckBox.TabIndex = 47;
@@ -1249,77 +1259,78 @@
             this.tcDescriptions.Controls.Add(this.tabOpen);
             this.tcDescriptions.Controls.Add(this.tabOnTest);
             this.tcDescriptions.Controls.Add(this.tabClosed);
+            this.tcDescriptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tcDescriptions.Location = new System.Drawing.Point(0, 23);
             this.tcDescriptions.Name = "tcDescriptions";
             this.tcDescriptions.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tcDescriptions.SelectedIndex = 0;
-            this.tcDescriptions.Size = new System.Drawing.Size(540, 86);
+            this.tcDescriptions.Size = new System.Drawing.Size(540, 184);
             this.tcDescriptions.TabIndex = 44;
             // 
             // tabOpen
             // 
             this.tabOpen.Controls.Add(this.descriptionTextBox);
-            this.tabOpen.Location = new System.Drawing.Point(4, 22);
+            this.tabOpen.Location = new System.Drawing.Point(4, 24);
             this.tabOpen.Name = "tabOpen";
             this.tabOpen.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOpen.Size = new System.Drawing.Size(532, 60);
+            this.tabOpen.Size = new System.Drawing.Size(532, 156);
             this.tabOpen.TabIndex = 0;
             this.tabOpen.Text = "Open";
             this.tabOpen.UseVisualStyleBackColor = true;
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.descriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.descriptionTextBox.Location = new System.Drawing.Point(3, 3);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionTextBox.Size = new System.Drawing.Size(526, 54);
+            this.descriptionTextBox.Size = new System.Drawing.Size(526, 150);
             this.descriptionTextBox.TabIndex = 3;
             // 
             // tabOnTest
             // 
             this.tabOnTest.Controls.Add(this.descriptionOnTestTextBox);
-            this.tabOnTest.Location = new System.Drawing.Point(4, 22);
+            this.tabOnTest.Location = new System.Drawing.Point(4, 24);
             this.tabOnTest.Name = "tabOnTest";
             this.tabOnTest.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOnTest.Size = new System.Drawing.Size(532, 60);
+            this.tabOnTest.Size = new System.Drawing.Size(532, 156);
             this.tabOnTest.TabIndex = 1;
             this.tabOnTest.Text = "onTest";
             this.tabOnTest.UseVisualStyleBackColor = true;
             // 
             // descriptionOnTestTextBox
             // 
-            this.descriptionOnTestTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.descriptionOnTestTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionOnTestTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.descriptionOnTestTextBox.Location = new System.Drawing.Point(3, 3);
             this.descriptionOnTestTextBox.Multiline = true;
             this.descriptionOnTestTextBox.Name = "descriptionOnTestTextBox";
             this.descriptionOnTestTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionOnTestTextBox.Size = new System.Drawing.Size(526, 54);
+            this.descriptionOnTestTextBox.Size = new System.Drawing.Size(526, 150);
             this.descriptionOnTestTextBox.TabIndex = 4;
             // 
             // tabClosed
             // 
             this.tabClosed.Controls.Add(this.descriptionClosedTextBox);
-            this.tabClosed.Location = new System.Drawing.Point(4, 22);
+            this.tabClosed.Location = new System.Drawing.Point(4, 24);
             this.tabClosed.Name = "tabClosed";
             this.tabClosed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClosed.Size = new System.Drawing.Size(532, 60);
+            this.tabClosed.Size = new System.Drawing.Size(532, 156);
             this.tabClosed.TabIndex = 2;
             this.tabClosed.Text = "Closed";
             this.tabClosed.UseVisualStyleBackColor = true;
             // 
             // descriptionClosedTextBox
             // 
-            this.descriptionClosedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.descriptionClosedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionClosedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.descriptionClosedTextBox.Location = new System.Drawing.Point(3, 3);
             this.descriptionClosedTextBox.Multiline = true;
             this.descriptionClosedTextBox.Name = "descriptionClosedTextBox";
             this.descriptionClosedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionClosedTextBox.Size = new System.Drawing.Size(526, 54);
+            this.descriptionClosedTextBox.Size = new System.Drawing.Size(526, 150);
             this.descriptionClosedTextBox.TabIndex = 5;
             // 
             // tabPage4
@@ -1348,7 +1359,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(627, 409);
+            this.tabPage4.Size = new System.Drawing.Size(627, 449);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Цель";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1581,7 +1592,7 @@
             this.tabPage5.Controls.Add(this.IsGroupCheckBox);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(627, 409);
+            this.tabPage5.Size = new System.Drawing.Size(627, 449);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Правила";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1733,6 +1744,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.bPenaltyReputation2);
             this.tabPage6.Controls.Add(this.label27);
             this.tabPage6.Controls.Add(this.bPenaltyQuests);
             this.tabPage6.Controls.Add(this.bPenaltyEffects);
@@ -1747,10 +1759,21 @@
             this.tabPage6.Controls.Add(this.rewardGroupBox);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(627, 409);
+            this.tabPage6.Size = new System.Drawing.Size(627, 449);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Награды/Штрафы";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // bPenaltyReputation2
+            // 
+            this.bPenaltyReputation2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bPenaltyReputation2.Location = new System.Drawing.Point(221, 156);
+            this.bPenaltyReputation2.Name = "bPenaltyReputation2";
+            this.bPenaltyReputation2.Size = new System.Drawing.Size(105, 23);
+            this.bPenaltyReputation2.TabIndex = 70;
+            this.bPenaltyReputation2.Text = "Репутация2";
+            this.bPenaltyReputation2.UseVisualStyleBackColor = true;
+            this.bPenaltyReputation2.Click += new System.EventHandler(this.bPenaltyReputation2_Click);
             // 
             // label27
             // 
@@ -1764,7 +1787,7 @@
             // bPenaltyQuests
             // 
             this.bPenaltyQuests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bPenaltyQuests.Location = new System.Drawing.Point(319, 156);
+            this.bPenaltyQuests.Location = new System.Drawing.Point(425, 156);
             this.bPenaltyQuests.Name = "bPenaltyQuests";
             this.bPenaltyQuests.Size = new System.Drawing.Size(94, 23);
             this.bPenaltyQuests.TabIndex = 68;
@@ -1775,7 +1798,7 @@
             // bPenaltyEffects
             // 
             this.bPenaltyEffects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bPenaltyEffects.Location = new System.Drawing.Point(222, 156);
+            this.bPenaltyEffects.Location = new System.Drawing.Point(328, 156);
             this.bPenaltyEffects.Name = "bPenaltyEffects";
             this.bPenaltyEffects.Size = new System.Drawing.Size(94, 23);
             this.bPenaltyEffects.TabIndex = 67;
@@ -1855,6 +1878,10 @@
             // 
             // rewardGroupBox
             // 
+            this.rewardGroupBox.Controls.Add(this.tbRewardOTvalue);
+            this.rewardGroupBox.Controls.Add(this.cbRewardOT);
+            this.rewardGroupBox.Controls.Add(this.label10);
+            this.rewardGroupBox.Controls.Add(this.bRewardReputation2);
             this.rewardGroupBox.Controls.Add(this.cbRewardTeleport);
             this.rewardGroupBox.Controls.Add(this.label5);
             this.rewardGroupBox.Controls.Add(this.bRewardBlackBox);
@@ -1878,10 +1905,46 @@
             this.rewardGroupBox.TabStop = false;
             this.rewardGroupBox.Text = "Награда";
             // 
+            // tbRewardOTvalue
+            // 
+            this.tbRewardOTvalue.Location = new System.Drawing.Point(443, 71);
+            this.tbRewardOTvalue.Name = "tbRewardOTvalue";
+            this.tbRewardOTvalue.Size = new System.Drawing.Size(100, 20);
+            this.tbRewardOTvalue.TabIndex = 49;
+            this.tbRewardOTvalue.Text = "0";
+            // 
+            // cbRewardOT
+            // 
+            this.cbRewardOT.FormattingEnabled = true;
+            this.cbRewardOT.Location = new System.Drawing.Point(318, 70);
+            this.cbRewardOT.Name = "cbRewardOT";
+            this.cbRewardOT.Size = new System.Drawing.Size(121, 21);
+            this.cbRewardOT.TabIndex = 48;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(254, 74);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 13);
+            this.label10.TabIndex = 47;
+            this.label10.Text = "Очки торг:";
+            // 
+            // bRewardReputation2
+            // 
+            this.bRewardReputation2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bRewardReputation2.Location = new System.Drawing.Point(170, 19);
+            this.bRewardReputation2.Name = "bRewardReputation2";
+            this.bRewardReputation2.Size = new System.Drawing.Size(81, 23);
+            this.bRewardReputation2.TabIndex = 46;
+            this.bRewardReputation2.Text = "Репутация2";
+            this.bRewardReputation2.UseVisualStyleBackColor = true;
+            this.bRewardReputation2.Click += new System.EventHandler(this.bRewardReputation2_Click);
+            // 
             // cbRewardTeleport
             // 
             this.cbRewardTeleport.FormattingEnabled = true;
-            this.cbRewardTeleport.Location = new System.Drawing.Point(350, 44);
+            this.cbRewardTeleport.Location = new System.Drawing.Point(318, 44);
             this.cbRewardTeleport.Name = "cbRewardTeleport";
             this.cbRewardTeleport.Size = new System.Drawing.Size(121, 21);
             this.cbRewardTeleport.TabIndex = 45;
@@ -1898,7 +1961,7 @@
             // bRewardBlackBox
             // 
             this.bRewardBlackBox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardBlackBox.Location = new System.Drawing.Point(330, 19);
+            this.bRewardBlackBox.Location = new System.Drawing.Point(412, 19);
             this.bRewardBlackBox.Name = "bRewardBlackBox";
             this.bRewardBlackBox.Size = new System.Drawing.Size(81, 23);
             this.bRewardBlackBox.TabIndex = 43;
@@ -1909,7 +1972,7 @@
             // bRewardQuests
             // 
             this.bRewardQuests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardQuests.Location = new System.Drawing.Point(250, 19);
+            this.bRewardQuests.Location = new System.Drawing.Point(332, 19);
             this.bRewardQuests.Name = "bRewardQuests";
             this.bRewardQuests.Size = new System.Drawing.Size(81, 23);
             this.bRewardQuests.TabIndex = 42;
@@ -1920,7 +1983,7 @@
             // cbRewardWindow
             // 
             this.cbRewardWindow.AutoSize = true;
-            this.cbRewardWindow.Location = new System.Drawing.Point(423, 23);
+            this.cbRewardWindow.Location = new System.Drawing.Point(505, 23);
             this.cbRewardWindow.Name = "cbRewardWindow";
             this.cbRewardWindow.Size = new System.Drawing.Size(98, 17);
             this.cbRewardWindow.TabIndex = 41;
@@ -1930,7 +1993,7 @@
             // bRewardEffects
             // 
             this.bRewardEffects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bRewardEffects.Location = new System.Drawing.Point(170, 19);
+            this.bRewardEffects.Location = new System.Drawing.Point(252, 19);
             this.bRewardEffects.Name = "bRewardEffects";
             this.bRewardEffects.Size = new System.Drawing.Size(81, 23);
             this.bRewardEffects.TabIndex = 30;
@@ -2021,7 +2084,7 @@
             this.tabConditions.Location = new System.Drawing.Point(4, 22);
             this.tabConditions.Name = "tabConditions";
             this.tabConditions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConditions.Size = new System.Drawing.Size(627, 409);
+            this.tabConditions.Size = new System.Drawing.Size(627, 449);
             this.tabConditions.TabIndex = 4;
             this.tabConditions.Text = "Дополнительные условия";
             this.tabConditions.UseVisualStyleBackColor = true;
@@ -2141,7 +2204,7 @@
             // 
             this.debuglabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.debuglabel.AutoSize = true;
-            this.debuglabel.Location = new System.Drawing.Point(5, 516);
+            this.debuglabel.Location = new System.Drawing.Point(5, 576);
             this.debuglabel.Name = "debuglabel";
             this.debuglabel.Size = new System.Drawing.Size(161, 13);
             this.debuglabel.TabIndex = 53;
@@ -2191,22 +2254,76 @@
             // 
             this.cbOldQuest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbOldQuest.AutoSize = true;
-            this.cbOldQuest.Location = new System.Drawing.Point(4, 554);
+            this.cbOldQuest.Location = new System.Drawing.Point(4, 594);
             this.cbOldQuest.Name = "cbOldQuest";
             this.cbOldQuest.Size = new System.Drawing.Size(269, 17);
             this.cbOldQuest.TabIndex = 56;
             this.cbOldQuest.Text = "Старый нужный квест (Исключить из проверок)";
             this.cbOldQuest.UseVisualStyleBackColor = true;
             // 
+            // cbQuestLinkType
+            // 
+            this.cbQuestLinkType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbQuestLinkType.Items.AddRange(new object[] {
+            "нет",
+            "Глава",
+            "Подглава"});
+            this.cbQuestLinkType.Location = new System.Drawing.Point(79, 59);
+            this.cbQuestLinkType.Name = "cbQuestLinkType";
+            this.cbQuestLinkType.Size = new System.Drawing.Size(99, 21);
+            this.cbQuestLinkType.TabIndex = 55;
+            this.cbQuestLinkType.SelectedIndexChanged += new System.EventHandler(this.cbQuestLinkType_SelectedIndexChanged);
+            // 
+            // lbQuestLink
+            // 
+            this.lbQuestLink.AutoSize = true;
+            this.lbQuestLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbQuestLink.Location = new System.Drawing.Point(5, 62);
+            this.lbQuestLink.Name = "lbQuestLink";
+            this.lbQuestLink.Size = new System.Drawing.Size(41, 13);
+            this.lbQuestLink.TabIndex = 59;
+            this.lbQuestLink.Text = "Связь:";
+            // 
+            // cbQuestLink
+            // 
+            this.cbQuestLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbQuestLink.Location = new System.Drawing.Point(184, 59);
+            this.cbQuestLink.Name = "cbQuestLink";
+            this.cbQuestLink.Size = new System.Drawing.Size(273, 21);
+            this.cbQuestLink.TabIndex = 55;
+            // 
+            // cbFraction2Bonus
+            // 
+            this.cbFraction2Bonus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbFraction2Bonus.Location = new System.Drawing.Point(520, 85);
+            this.cbFraction2Bonus.Name = "cbFraction2Bonus";
+            this.cbFraction2Bonus.Size = new System.Drawing.Size(116, 21);
+            this.cbFraction2Bonus.TabIndex = 60;
+            // 
+            // label34
+            // 
+            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(437, 89);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(79, 13);
+            this.label34.TabIndex = 61;
+            this.label34.Text = "Бонус группы:";
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(638, 579);
+            this.ClientSize = new System.Drawing.Size(638, 619);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.cbFraction2Bonus);
+            this.Controls.Add(this.lbQuestLink);
             this.Controls.Add(this.labelLevel);
             this.Controls.Add(this.nudLevel);
             this.Controls.Add(this.cbOldQuest);
+            this.Controls.Add(this.cbQuestLink);
+            this.Controls.Add(this.cbQuestLinkType);
             this.Controls.Add(this.cbPriority);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.debuglabel);
@@ -2452,5 +2569,15 @@
         private System.Windows.Forms.ComboBox cbPVPMode;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.CheckBox cbOldQuest;
+        private System.Windows.Forms.ComboBox cbQuestLinkType;
+        private System.Windows.Forms.Label lbQuestLink;
+        private System.Windows.Forms.ComboBox cbQuestLink;
+        private System.Windows.Forms.Button bPenaltyReputation2;
+        private System.Windows.Forms.Button bRewardReputation2;
+        private System.Windows.Forms.ComboBox cbRewardOT;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbRewardOTvalue;
+        private System.Windows.Forms.ComboBox cbFraction2Bonus;
+        private System.Windows.Forms.Label label34;
     }
 }

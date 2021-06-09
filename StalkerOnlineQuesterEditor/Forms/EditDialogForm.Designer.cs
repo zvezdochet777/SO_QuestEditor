@@ -59,6 +59,8 @@
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
             this.gbPrecondition = new System.Windows.Forms.GroupBox();
+            this.pictureKnowlege = new System.Windows.Forms.PictureBox();
+            this.pictureReputation2 = new System.Windows.Forms.PictureBox();
             this.picturePVP = new System.Windows.Forms.PictureBox();
             this.pictureTutorial = new System.Windows.Forms.PictureBox();
             this.pictureTransport = new System.Windows.Forms.PictureBox();
@@ -73,6 +75,7 @@
             this.tabQuestsCircs = new System.Windows.Forms.TabControl();
             this.tabQuests = new System.Windows.Forms.TabPage();
             this.gbQuestCondition = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.cbShouldntHaveQuests = new System.Windows.Forms.CheckBox();
             this.cbMustHaveQuests = new System.Windows.Forms.CheckBox();
             this.tMustHaveQuests = new System.Windows.Forms.MaskedTextBox();
@@ -239,6 +242,24 @@
             this.label19 = new System.Windows.Forms.Label();
             this.cbPVPRank1 = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.tabReputation2 = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.dataReputation2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabKnowleges = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cbShouldntHaveKnow = new System.Windows.Forms.CheckBox();
+            this.cMustHaveKnow = new System.Windows.Forms.CheckBox();
+            this.tMustHaveKnow = new System.Windows.Forms.MaskedTextBox();
+            this.tMustNoHaveKnow = new System.Windows.Forms.MaskedTextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -248,6 +269,7 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.btnLastNPCPhrase = new System.Windows.Forms.Button();
             this.btnTODO = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.cbRadioNode = new System.Windows.Forms.ComboBox();
@@ -257,11 +279,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.btnLastNPCPhrase = new System.Windows.Forms.Button();
+            this.dataPerks = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureKnowlege)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureReputation2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePVP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTutorial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).BeginInit();
@@ -299,9 +325,14 @@
             this.tabTransport.SuspendLayout();
             this.tabTutorial.SuspendLayout();
             this.tabPVP.SuspendLayout();
+            this.tabReputation2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataReputation2)).BeginInit();
+            this.tabKnowleges.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataPerks)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -310,7 +341,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tPlayerText.Location = new System.Drawing.Point(103, 46);
             this.tPlayerText.Name = "tPlayerText";
-            this.tPlayerText.Size = new System.Drawing.Size(579, 20);
+            this.tPlayerText.Size = new System.Drawing.Size(699, 20);
             this.tPlayerText.TabIndex = 0;
             this.tPlayerText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tPlayerText_KeyPress);
             // 
@@ -379,7 +410,7 @@
             this.gbActions.Enabled = false;
             this.gbActions.Location = new System.Drawing.Point(0, 575);
             this.gbActions.Name = "gbActions";
-            this.gbActions.Size = new System.Drawing.Size(714, 145);
+            this.gbActions.Size = new System.Drawing.Size(815, 145);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
             // 
@@ -600,7 +631,7 @@
             this.tReactionNPC.Multiline = true;
             this.tReactionNPC.Name = "tReactionNPC";
             this.tReactionNPC.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tReactionNPC.Size = new System.Drawing.Size(579, 88);
+            this.tReactionNPC.Size = new System.Drawing.Size(699, 88);
             this.tReactionNPC.TabIndex = 1;
             // 
             // tNodes
@@ -609,7 +640,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tNodes.Location = new System.Drawing.Point(103, 197);
             this.tNodes.Name = "tNodes";
-            this.tNodes.Size = new System.Drawing.Size(579, 20);
+            this.tNodes.Size = new System.Drawing.Size(699, 20);
             this.tNodes.TabIndex = 2;
             // 
             // lNodes
@@ -625,6 +656,8 @@
             // 
             this.gbPrecondition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbPrecondition.Controls.Add(this.pictureKnowlege);
+            this.gbPrecondition.Controls.Add(this.pictureReputation2);
             this.gbPrecondition.Controls.Add(this.picturePVP);
             this.gbPrecondition.Controls.Add(this.pictureTutorial);
             this.gbPrecondition.Controls.Add(this.pictureTransport);
@@ -640,10 +673,34 @@
             this.gbPrecondition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbPrecondition.Location = new System.Drawing.Point(0, 247);
             this.gbPrecondition.Name = "gbPrecondition";
-            this.gbPrecondition.Size = new System.Drawing.Size(714, 299);
+            this.gbPrecondition.Size = new System.Drawing.Size(815, 299);
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
+            // 
+            // pictureKnowlege
+            // 
+            this.pictureKnowlege.BackColor = System.Drawing.Color.Transparent;
+            this.pictureKnowlege.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureKnowlege.Location = new System.Drawing.Point(771, 10);
+            this.pictureKnowlege.Name = "pictureKnowlege";
+            this.pictureKnowlege.Size = new System.Drawing.Size(10, 10);
+            this.pictureKnowlege.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureKnowlege.TabIndex = 65;
+            this.pictureKnowlege.TabStop = false;
+            this.pictureKnowlege.Visible = false;
+            // 
+            // pictureReputation2
+            // 
+            this.pictureReputation2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureReputation2.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureReputation2.Location = new System.Drawing.Point(712, 10);
+            this.pictureReputation2.Name = "pictureReputation2";
+            this.pictureReputation2.Size = new System.Drawing.Size(10, 10);
+            this.pictureReputation2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureReputation2.TabIndex = 64;
+            this.pictureReputation2.TabStop = false;
+            this.pictureReputation2.Visible = false;
             // 
             // picturePVP
             // 
@@ -793,11 +850,12 @@
             this.tabQuestsCircs.Controls.Add(this.tabTransport);
             this.tabQuestsCircs.Controls.Add(this.tabTutorial);
             this.tabQuestsCircs.Controls.Add(this.tabPVP);
-            this.tabQuestsCircs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.tabQuestsCircs.Controls.Add(this.tabReputation2);
+            this.tabQuestsCircs.Controls.Add(this.tabKnowleges);
             this.tabQuestsCircs.Location = new System.Drawing.Point(4, 19);
             this.tabQuestsCircs.Name = "tabQuestsCircs";
             this.tabQuestsCircs.SelectedIndex = 0;
-            this.tabQuestsCircs.Size = new System.Drawing.Size(710, 280);
+            this.tabQuestsCircs.Size = new System.Drawing.Size(805, 280);
             this.tabQuestsCircs.TabIndex = 52;
             this.tabQuestsCircs.SelectedIndexChanged += new System.EventHandler(this.tabQuestsCircs_SelectedIndexChanged);
             // 
@@ -808,12 +866,15 @@
             this.tabQuests.Location = new System.Drawing.Point(4, 22);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(702, 254);
+            this.tabQuests.Size = new System.Drawing.Size(797, 254);
             this.tabQuests.TabIndex = 0;
             this.tabQuests.Text = "Квесты";
             // 
             // gbQuestCondition
             // 
+            this.gbQuestCondition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbQuestCondition.Controls.Add(this.label21);
             this.gbQuestCondition.Controls.Add(this.cbShouldntHaveQuests);
             this.gbQuestCondition.Controls.Add(this.cbMustHaveQuests);
             this.gbQuestCondition.Controls.Add(this.tMustHaveQuests);
@@ -857,17 +918,26 @@
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveQuestsOnTest);
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveOpenQuests);
             this.gbQuestCondition.Controls.Add(this.tMustHaveCompletedQuests);
-            this.gbQuestCondition.Location = new System.Drawing.Point(6, 6);
+            this.gbQuestCondition.Location = new System.Drawing.Point(138, 4);
             this.gbQuestCondition.Name = "gbQuestCondition";
-            this.gbQuestCondition.Size = new System.Drawing.Size(495, 246);
+            this.gbQuestCondition.Size = new System.Drawing.Size(520, 246);
             this.gbQuestCondition.TabIndex = 6;
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(9, 49);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(80, 13);
+            this.label21.TabIndex = 47;
+            this.label21.Text = "Имеет квесты";
+            // 
             // cbShouldntHaveQuests
             // 
             this.cbShouldntHaveQuests.AutoSize = true;
-            this.cbShouldntHaveQuests.Location = new System.Drawing.Point(379, 49);
+            this.cbShouldntHaveQuests.Location = new System.Drawing.Point(420, 49);
             this.cbShouldntHaveQuests.Name = "cbShouldntHaveQuests";
             this.cbShouldntHaveQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveQuests.TabIndex = 46;
@@ -886,20 +956,20 @@
             // 
             this.tMustHaveQuests.Location = new System.Drawing.Point(167, 46);
             this.tMustHaveQuests.Name = "tMustHaveQuests";
-            this.tMustHaveQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveQuests.TabIndex = 42;
             // 
             // tShouldntHaveQuests
             // 
-            this.tShouldntHaveQuests.Location = new System.Drawing.Point(273, 46);
+            this.tShouldntHaveQuests.Location = new System.Drawing.Point(295, 46);
             this.tShouldntHaveQuests.Name = "tShouldntHaveQuests";
-            this.tShouldntHaveQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveQuests.TabIndex = 44;
             // 
             // cbShouldntHaveFailQuests
             // 
             this.cbShouldntHaveFailQuests.AutoSize = true;
-            this.cbShouldntHaveFailQuests.Location = new System.Drawing.Point(379, 148);
+            this.cbShouldntHaveFailQuests.Location = new System.Drawing.Point(420, 148);
             this.cbShouldntHaveFailQuests.Name = "cbShouldntHaveFailQuests";
             this.cbShouldntHaveFailQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveFailQuests.TabIndex = 41;
@@ -927,20 +997,20 @@
             // 
             this.tMustHaveFailQuests.Location = new System.Drawing.Point(167, 145);
             this.tMustHaveFailQuests.Name = "tMustHaveFailQuests";
-            this.tMustHaveFailQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveFailQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveFailQuests.TabIndex = 37;
             // 
             // tShouldntHaveFailQuests
             // 
-            this.tShouldntHaveFailQuests.Location = new System.Drawing.Point(273, 145);
+            this.tShouldntHaveFailQuests.Location = new System.Drawing.Point(295, 145);
             this.tShouldntHaveFailQuests.Name = "tShouldntHaveFailQuests";
-            this.tShouldntHaveFailQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveFailQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveFailQuests.TabIndex = 39;
             // 
             // cbShouldntHaveRepeat
             // 
             this.cbShouldntHaveRepeat.AutoSize = true;
-            this.cbShouldntHaveRepeat.Location = new System.Drawing.Point(379, 224);
+            this.cbShouldntHaveRepeat.Location = new System.Drawing.Point(420, 224);
             this.cbShouldntHaveRepeat.Name = "cbShouldntHaveRepeat";
             this.cbShouldntHaveRepeat.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveRepeat.TabIndex = 36;
@@ -957,16 +1027,16 @@
             // 
             // tShouldntHaveRepeat
             // 
-            this.tShouldntHaveRepeat.Location = new System.Drawing.Point(273, 221);
+            this.tShouldntHaveRepeat.Location = new System.Drawing.Point(295, 221);
             this.tShouldntHaveRepeat.Name = "tShouldntHaveRepeat";
-            this.tShouldntHaveRepeat.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveRepeat.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveRepeat.TabIndex = 33;
             // 
             // tMustHaveRepeat
             // 
             this.tMustHaveRepeat.Location = new System.Drawing.Point(167, 221);
             this.tMustHaveRepeat.Name = "tMustHaveRepeat";
-            this.tMustHaveRepeat.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveRepeat.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveRepeat.TabIndex = 32;
             // 
             // lRepeat
@@ -990,7 +1060,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(376, 26);
+            this.label4.Location = new System.Drawing.Point(417, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 13);
             this.label4.TabIndex = 30;
@@ -999,7 +1069,7 @@
             // cbShouldntHaveCounters
             // 
             this.cbShouldntHaveCounters.AutoSize = true;
-            this.cbShouldntHaveCounters.Location = new System.Drawing.Point(379, 198);
+            this.cbShouldntHaveCounters.Location = new System.Drawing.Point(420, 198);
             this.cbShouldntHaveCounters.Name = "cbShouldntHaveCounters";
             this.cbShouldntHaveCounters.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveCounters.TabIndex = 29;
@@ -1008,7 +1078,7 @@
             // cbShouldntHaveMassQuests
             // 
             this.cbShouldntHaveMassQuests.AutoSize = true;
-            this.cbShouldntHaveMassQuests.Location = new System.Drawing.Point(379, 173);
+            this.cbShouldntHaveMassQuests.Location = new System.Drawing.Point(420, 173);
             this.cbShouldntHaveMassQuests.Name = "cbShouldntHaveMassQuests";
             this.cbShouldntHaveMassQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveMassQuests.TabIndex = 28;
@@ -1017,7 +1087,7 @@
             // cbShouldntHaveCompletedQuests
             // 
             this.cbShouldntHaveCompletedQuests.AutoSize = true;
-            this.cbShouldntHaveCompletedQuests.Location = new System.Drawing.Point(379, 123);
+            this.cbShouldntHaveCompletedQuests.Location = new System.Drawing.Point(420, 123);
             this.cbShouldntHaveCompletedQuests.Name = "cbShouldntHaveCompletedQuests";
             this.cbShouldntHaveCompletedQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveCompletedQuests.TabIndex = 27;
@@ -1026,7 +1096,7 @@
             // cbShouldntHaveQuestsOnTest
             // 
             this.cbShouldntHaveQuestsOnTest.AutoSize = true;
-            this.cbShouldntHaveQuestsOnTest.Location = new System.Drawing.Point(379, 98);
+            this.cbShouldntHaveQuestsOnTest.Location = new System.Drawing.Point(420, 98);
             this.cbShouldntHaveQuestsOnTest.Name = "cbShouldntHaveQuestsOnTest";
             this.cbShouldntHaveQuestsOnTest.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveQuestsOnTest.TabIndex = 26;
@@ -1035,7 +1105,7 @@
             // cbShouldntHaveOpenQuests
             // 
             this.cbShouldntHaveOpenQuests.AutoSize = true;
-            this.cbShouldntHaveOpenQuests.Location = new System.Drawing.Point(379, 73);
+            this.cbShouldntHaveOpenQuests.Location = new System.Drawing.Point(420, 73);
             this.cbShouldntHaveOpenQuests.Name = "cbShouldntHaveOpenQuests";
             this.cbShouldntHaveOpenQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveOpenQuests.TabIndex = 25;
@@ -1061,16 +1131,16 @@
             // 
             // tShouldntHaveCounters
             // 
-            this.tShouldntHaveCounters.Location = new System.Drawing.Point(273, 195);
+            this.tShouldntHaveCounters.Location = new System.Drawing.Point(295, 195);
             this.tShouldntHaveCounters.Name = "tShouldntHaveCounters";
-            this.tShouldntHaveCounters.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveCounters.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveCounters.TabIndex = 18;
             // 
             // tMustHaveCounters
             // 
             this.tMustHaveCounters.Location = new System.Drawing.Point(167, 195);
             this.tMustHaveCounters.Name = "tMustHaveCounters";
-            this.tMustHaveCounters.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveCounters.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveCounters.TabIndex = 17;
             // 
             // cbMustHaveCompletedQuests
@@ -1120,22 +1190,22 @@
             // 
             // tShouldntHaveMassQuests
             // 
-            this.tShouldntHaveMassQuests.Location = new System.Drawing.Point(273, 170);
+            this.tShouldntHaveMassQuests.Location = new System.Drawing.Point(295, 170);
             this.tShouldntHaveMassQuests.Name = "tShouldntHaveMassQuests";
-            this.tShouldntHaveMassQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveMassQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveMassQuests.TabIndex = 15;
             // 
             // tMustHaveMassQuests
             // 
             this.tMustHaveMassQuests.Location = new System.Drawing.Point(167, 170);
             this.tMustHaveMassQuests.Name = "tMustHaveMassQuests";
-            this.tMustHaveMassQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveMassQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveMassQuests.TabIndex = 14;
             // 
             // lShouldntHaveQuests
             // 
             this.lShouldntHaveQuests.AutoSize = true;
-            this.lShouldntHaveQuests.Location = new System.Drawing.Point(266, 16);
+            this.lShouldntHaveQuests.Location = new System.Drawing.Point(307, 16);
             this.lShouldntHaveQuests.Name = "lShouldntHaveQuests";
             this.lShouldntHaveQuests.Size = new System.Drawing.Size(90, 13);
             this.lShouldntHaveQuests.TabIndex = 10;
@@ -1144,7 +1214,7 @@
             // lNecessaryQuests
             // 
             this.lNecessaryQuests.AutoSize = true;
-            this.lNecessaryQuests.Location = new System.Drawing.Point(179, 16);
+            this.lNecessaryQuests.Location = new System.Drawing.Point(184, 16);
             this.lNecessaryQuests.Name = "lNecessaryQuests";
             this.lNecessaryQuests.Size = new System.Drawing.Size(76, 13);
             this.lNecessaryQuests.TabIndex = 9;
@@ -1181,42 +1251,42 @@
             // 
             this.tMustHaveQuestsOnTest.Location = new System.Drawing.Point(167, 95);
             this.tMustHaveQuestsOnTest.Name = "tMustHaveQuestsOnTest";
-            this.tMustHaveQuestsOnTest.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveQuestsOnTest.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveQuestsOnTest.TabIndex = 4;
             // 
             // tShouldntHaveCompletedQuests
             // 
-            this.tShouldntHaveCompletedQuests.Location = new System.Drawing.Point(273, 120);
+            this.tShouldntHaveCompletedQuests.Location = new System.Drawing.Point(295, 120);
             this.tShouldntHaveCompletedQuests.Name = "tShouldntHaveCompletedQuests";
-            this.tShouldntHaveCompletedQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveCompletedQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveCompletedQuests.TabIndex = 9;
             // 
             // tMustHaveOpenQuests
             // 
             this.tMustHaveOpenQuests.Location = new System.Drawing.Point(167, 70);
             this.tMustHaveOpenQuests.Name = "tMustHaveOpenQuests";
-            this.tMustHaveOpenQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveOpenQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveOpenQuests.TabIndex = 3;
             // 
             // tShouldntHaveQuestsOnTest
             // 
-            this.tShouldntHaveQuestsOnTest.Location = new System.Drawing.Point(273, 95);
+            this.tShouldntHaveQuestsOnTest.Location = new System.Drawing.Point(295, 95);
             this.tShouldntHaveQuestsOnTest.Name = "tShouldntHaveQuestsOnTest";
-            this.tShouldntHaveQuestsOnTest.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveQuestsOnTest.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveQuestsOnTest.TabIndex = 8;
             // 
             // tShouldntHaveOpenQuests
             // 
-            this.tShouldntHaveOpenQuests.Location = new System.Drawing.Point(273, 70);
+            this.tShouldntHaveOpenQuests.Location = new System.Drawing.Point(295, 70);
             this.tShouldntHaveOpenQuests.Name = "tShouldntHaveOpenQuests";
-            this.tShouldntHaveOpenQuests.Size = new System.Drawing.Size(100, 20);
+            this.tShouldntHaveOpenQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveOpenQuests.TabIndex = 7;
             // 
             // tMustHaveCompletedQuests
             // 
             this.tMustHaveCompletedQuests.Location = new System.Drawing.Point(167, 120);
             this.tMustHaveCompletedQuests.Name = "tMustHaveCompletedQuests";
-            this.tMustHaveCompletedQuests.Size = new System.Drawing.Size(100, 20);
+            this.tMustHaveCompletedQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveCompletedQuests.TabIndex = 5;
             // 
             // tabReputation
@@ -1227,7 +1297,7 @@
             this.tabReputation.Location = new System.Drawing.Point(4, 22);
             this.tabReputation.Name = "tabReputation";
             this.tabReputation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation.Size = new System.Drawing.Size(702, 254);
+            this.tabReputation.Size = new System.Drawing.Size(797, 254);
             this.tabReputation.TabIndex = 1;
             this.tabReputation.Text = "Репутация";
             // 
@@ -1251,7 +1321,7 @@
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation.Location = new System.Drawing.Point(3, 3);
             this.dataReputation.Name = "dataReputation";
-            this.dataReputation.Size = new System.Drawing.Size(696, 248);
+            this.dataReputation.Size = new System.Drawing.Size(791, 248);
             this.dataReputation.TabIndex = 3;
             // 
             // id
@@ -1293,7 +1363,7 @@
             this.tabKarma.Location = new System.Drawing.Point(4, 22);
             this.tabKarma.Name = "tabKarma";
             this.tabKarma.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKarma.Size = new System.Drawing.Size(702, 254);
+            this.tabKarma.Size = new System.Drawing.Size(797, 254);
             this.tabKarma.TabIndex = 2;
             this.tabKarma.Text = "Карма";
             // 
@@ -1303,7 +1373,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(3, 110);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(696, 141);
+            this.panel2.Size = new System.Drawing.Size(791, 141);
             this.panel2.TabIndex = 4;
             // 
             // labelDescription
@@ -1354,7 +1424,7 @@
             this.tabClan.Location = new System.Drawing.Point(4, 22);
             this.tabClan.Name = "tabClan";
             this.tabClan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClan.Size = new System.Drawing.Size(702, 254);
+            this.tabClan.Size = new System.Drawing.Size(797, 254);
             this.tabClan.TabIndex = 3;
             this.tabClan.Text = "Клановые";
             // 
@@ -1520,7 +1590,7 @@
             this.tabEffects.Location = new System.Drawing.Point(4, 22);
             this.tabEffects.Name = "tabEffects";
             this.tabEffects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEffects.Size = new System.Drawing.Size(702, 254);
+            this.tabEffects.Size = new System.Drawing.Size(797, 254);
             this.tabEffects.TabIndex = 4;
             this.tabEffects.Text = "Эффекты";
             this.tabEffects.UseVisualStyleBackColor = true;
@@ -1535,7 +1605,7 @@
             this.effectsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.effectsPanel.Location = new System.Drawing.Point(3, 3);
             this.effectsPanel.Name = "effectsPanel";
-            this.effectsPanel.Size = new System.Drawing.Size(696, 248);
+            this.effectsPanel.Size = new System.Drawing.Size(791, 248);
             this.effectsPanel.TabIndex = 17;
             // 
             // lMustNotEffects
@@ -1598,7 +1668,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.dataGridNotEffects.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridNotEffects.Location = new System.Drawing.Point(450, 0);
+            this.dataGridNotEffects.Location = new System.Drawing.Point(545, 0);
             this.dataGridNotEffects.Name = "dataGridNotEffects";
             this.dataGridNotEffects.Size = new System.Drawing.Size(246, 248);
             this.dataGridNotEffects.TabIndex = 6;
@@ -1641,7 +1711,7 @@
             this.tabLevel.Controls.Add(this.lPlayerLevel);
             this.tabLevel.Location = new System.Drawing.Point(4, 22);
             this.tabLevel.Name = "tabLevel";
-            this.tabLevel.Size = new System.Drawing.Size(702, 254);
+            this.tabLevel.Size = new System.Drawing.Size(797, 254);
             this.tabLevel.TabIndex = 5;
             this.tabLevel.Text = "Уровень";
             // 
@@ -1774,11 +1844,12 @@
             // 
             // tabSkills
             // 
+            this.tabSkills.Controls.Add(this.dataPerks);
             this.tabSkills.Controls.Add(this.dataSkill);
             this.tabSkills.Location = new System.Drawing.Point(4, 22);
             this.tabSkills.Name = "tabSkills";
             this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSkills.Size = new System.Drawing.Size(702, 254);
+            this.tabSkills.Size = new System.Drawing.Size(797, 254);
             this.tabSkills.TabIndex = 6;
             this.tabSkills.Text = "Навыки";
             this.tabSkills.UseVisualStyleBackColor = true;
@@ -1793,10 +1864,9 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
-            this.dataSkill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataSkill.Location = new System.Drawing.Point(3, 3);
             this.dataSkill.Name = "dataSkill";
-            this.dataSkill.Size = new System.Drawing.Size(696, 248);
+            this.dataSkill.Size = new System.Drawing.Size(390, 248);
             this.dataSkill.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn4
@@ -1843,7 +1913,7 @@
             this.tabActions.Location = new System.Drawing.Point(4, 22);
             this.tabActions.Name = "tabActions";
             this.tabActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActions.Size = new System.Drawing.Size(702, 254);
+            this.tabActions.Size = new System.Drawing.Size(797, 254);
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
@@ -1999,7 +2069,7 @@
             this.tabItems.Location = new System.Drawing.Point(4, 22);
             this.tabItems.Name = "tabItems";
             this.tabItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tabItems.Size = new System.Drawing.Size(702, 254);
+            this.tabItems.Size = new System.Drawing.Size(797, 254);
             this.tabItems.TabIndex = 8;
             this.tabItems.Text = "Предметы";
             this.tabItems.SizeChanged += new System.EventHandler(this.tabItems_SizeChanged);
@@ -2019,7 +2089,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.rbNonItemsOr);
             this.panel3.Controls.Add(this.rbNonItemsAnd);
-            this.panel3.Location = new System.Drawing.Point(614, 6);
+            this.panel3.Location = new System.Drawing.Point(747, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(88, 31);
             this.panel3.TabIndex = 14;
@@ -2052,7 +2122,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.rbItemsOr);
             this.panel1.Controls.Add(this.rbItemsAnd);
-            this.panel1.Location = new System.Drawing.Point(243, 8);
+            this.panel1.Location = new System.Drawing.Point(376, 8);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(88, 31);
             this.panel1.TabIndex = 12;
@@ -2088,7 +2158,7 @@
             this.panelItems.Controls.Add(this.GVItems);
             this.panelItems.Location = new System.Drawing.Point(0, 39);
             this.panelItems.Name = "panelItems";
-            this.panelItems.Size = new System.Drawing.Size(702, 191);
+            this.panelItems.Size = new System.Drawing.Size(835, 191);
             this.panelItems.TabIndex = 9;
             this.panelItems.Visible = false;
             // 
@@ -2101,7 +2171,7 @@
             this.GVNonItems_itemQuantity,
             this.GVNonItems_ItemCond});
             this.GVNonItems.Dock = System.Windows.Forms.DockStyle.Right;
-            this.GVNonItems.Location = new System.Drawing.Point(389, 0);
+            this.GVNonItems.Location = new System.Drawing.Point(522, 0);
             this.GVNonItems.Name = "GVNonItems";
             this.GVNonItems.Size = new System.Drawing.Size(313, 191);
             this.GVNonItems.TabIndex = 7;
@@ -2253,7 +2323,7 @@
             this.tabTransport.Location = new System.Drawing.Point(4, 22);
             this.tabTransport.Name = "tabTransport";
             this.tabTransport.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTransport.Size = new System.Drawing.Size(702, 254);
+            this.tabTransport.Size = new System.Drawing.Size(797, 254);
             this.tabTransport.TabIndex = 9;
             this.tabTransport.Text = "Перевоз";
             // 
@@ -2349,7 +2419,7 @@
             this.tabTutorial.Location = new System.Drawing.Point(4, 22);
             this.tabTutorial.Name = "tabTutorial";
             this.tabTutorial.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTutorial.Size = new System.Drawing.Size(702, 254);
+            this.tabTutorial.Size = new System.Drawing.Size(797, 254);
             this.tabTutorial.TabIndex = 10;
             this.tabTutorial.Text = "Туториал";
             this.tabTutorial.UseVisualStyleBackColor = true;
@@ -2382,7 +2452,7 @@
             this.tabPVP.Location = new System.Drawing.Point(4, 22);
             this.tabPVP.Name = "tabPVP";
             this.tabPVP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPVP.Size = new System.Drawing.Size(702, 254);
+            this.tabPVP.Size = new System.Drawing.Size(797, 254);
             this.tabPVP.TabIndex = 11;
             this.tabPVP.Text = "PVP";
             this.tabPVP.UseVisualStyleBackColor = true;
@@ -2438,6 +2508,175 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "Рейтинг:  от";
             // 
+            // tabReputation2
+            // 
+            this.tabReputation2.Controls.Add(this.label20);
+            this.tabReputation2.Controls.Add(this.dataReputation2);
+            this.tabReputation2.Location = new System.Drawing.Point(4, 22);
+            this.tabReputation2.Name = "tabReputation2";
+            this.tabReputation2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReputation2.Size = new System.Drawing.Size(797, 254);
+            this.tabReputation2.TabIndex = 12;
+            this.tabReputation2.Text = "Репутация2";
+            this.tabReputation2.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.Location = new System.Drawing.Point(415, 4);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(132, 182);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Диалог будет доступен, если значение репутации игрока больше А и меньше В. Можно " +
+    "задать только одно из значений А или В, или оба сразу.";
+            // 
+            // dataReputation2
+            // 
+            this.dataReputation2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataReputation2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewComboBoxColumn3,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10});
+            this.dataReputation2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataReputation2.Location = new System.Drawing.Point(3, 3);
+            this.dataReputation2.Name = "dataReputation2";
+            this.dataReputation2.Size = new System.Drawing.Size(791, 248);
+            this.dataReputation2.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "id";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Visible = false;
+            // 
+            // dataGridViewComboBoxColumn3
+            // 
+            this.dataGridViewComboBoxColumn3.HeaderText = "Имя фракции";
+            this.dataGridViewComboBoxColumn3.Name = "dataGridViewComboBoxColumn3";
+            this.dataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewComboBoxColumn3.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.FillWeight = 110F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "A (A <= X <= B)";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.FillWeight = 110F;
+            this.dataGridViewTextBoxColumn10.HeaderText = "B (A <= X <= B)";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Width = 110;
+            // 
+            // tabKnowleges
+            // 
+            this.tabKnowleges.Controls.Add(this.groupBox1);
+            this.tabKnowleges.Location = new System.Drawing.Point(4, 22);
+            this.tabKnowleges.Name = "tabKnowleges";
+            this.tabKnowleges.Padding = new System.Windows.Forms.Padding(3);
+            this.tabKnowleges.Size = new System.Drawing.Size(797, 254);
+            this.tabKnowleges.TabIndex = 13;
+            this.tabKnowleges.Text = "Знания";
+            this.tabKnowleges.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.cbShouldntHaveKnow);
+            this.groupBox1.Controls.Add(this.cMustHaveKnow);
+            this.groupBox1.Controls.Add(this.tMustHaveKnow);
+            this.groupBox1.Controls.Add(this.tMustNoHaveKnow);
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.label26);
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.label30);
+            this.groupBox1.Location = new System.Drawing.Point(138, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(520, 246);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Состояния знаний";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(9, 49);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(79, 13);
+            this.label22.TabIndex = 47;
+            this.label22.Text = "Имеет знания";
+            // 
+            // cbShouldntHaveKnow
+            // 
+            this.cbShouldntHaveKnow.AutoSize = true;
+            this.cbShouldntHaveKnow.Location = new System.Drawing.Point(420, 49);
+            this.cbShouldntHaveKnow.Name = "cbShouldntHaveKnow";
+            this.cbShouldntHaveKnow.Size = new System.Drawing.Size(15, 14);
+            this.cbShouldntHaveKnow.TabIndex = 46;
+            this.cbShouldntHaveKnow.UseVisualStyleBackColor = true;
+            // 
+            // cMustHaveKnow
+            // 
+            this.cMustHaveKnow.AutoSize = true;
+            this.cMustHaveKnow.Location = new System.Drawing.Point(146, 49);
+            this.cMustHaveKnow.Name = "cMustHaveKnow";
+            this.cMustHaveKnow.Size = new System.Drawing.Size(15, 14);
+            this.cMustHaveKnow.TabIndex = 45;
+            this.cMustHaveKnow.UseVisualStyleBackColor = true;
+            // 
+            // tMustHaveKnow
+            // 
+            this.tMustHaveKnow.Location = new System.Drawing.Point(167, 46);
+            this.tMustHaveKnow.Name = "tMustHaveKnow";
+            this.tMustHaveKnow.Size = new System.Drawing.Size(120, 20);
+            this.tMustHaveKnow.TabIndex = 42;
+            // 
+            // tMustNoHaveKnow
+            // 
+            this.tMustNoHaveKnow.Location = new System.Drawing.Point(295, 46);
+            this.tMustNoHaveKnow.Name = "tMustNoHaveKnow";
+            this.tMustNoHaveKnow.Size = new System.Drawing.Size(120, 20);
+            this.tMustNoHaveKnow.TabIndex = 44;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(140, 26);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(25, 13);
+            this.label25.TabIndex = 31;
+            this.label25.Text = "или";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(417, 26);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(25, 13);
+            this.label26.TabIndex = 30;
+            this.label26.Text = "или";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(307, 16);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(90, 13);
+            this.label29.TabIndex = 10;
+            this.label29.Text = "Не должно быть";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(184, 16);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(76, 13);
+            this.label30.TabIndex = 9;
+            this.label30.Text = "Должно быть";
+            // 
             // bEditDialogOk
             // 
             this.bEditDialogOk.Location = new System.Drawing.Point(172, 5);
@@ -2478,7 +2717,7 @@
             this.pCommands.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pCommands.Location = new System.Drawing.Point(0, 751);
             this.pCommands.Name = "pCommands";
-            this.pCommands.Size = new System.Drawing.Size(714, 52);
+            this.pCommands.Size = new System.Drawing.Size(815, 52);
             this.pCommands.TabIndex = 13;
             // 
             // cbHidden
@@ -2540,13 +2779,23 @@
             this.gbTexts.Controls.Add(this.lReactionNPC);
             this.gbTexts.Location = new System.Drawing.Point(0, 0);
             this.gbTexts.Name = "gbTexts";
-            this.gbTexts.Size = new System.Drawing.Size(714, 247);
+            this.gbTexts.Size = new System.Drawing.Size(815, 247);
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
             // 
+            // btnLastNPCPhrase
+            // 
+            this.btnLastNPCPhrase.Location = new System.Drawing.Point(4, 3);
+            this.btnLastNPCPhrase.Name = "btnLastNPCPhrase";
+            this.btnLastNPCPhrase.Size = new System.Drawing.Size(97, 40);
+            this.btnLastNPCPhrase.TabIndex = 23;
+            this.btnLastNPCPhrase.Text = "Предыдущая фраза";
+            this.btnLastNPCPhrase.UseVisualStyleBackColor = true;
+            this.btnLastNPCPhrase.Click += new System.EventHandler(this.btnLastNPCPhrase_Click);
+            // 
             // btnTODO
             // 
-            this.btnTODO.Location = new System.Drawing.Point(452, 6);
+            this.btnTODO.Location = new System.Drawing.Point(602, 9);
             this.btnTODO.Name = "btnTODO";
             this.btnTODO.Size = new System.Drawing.Size(50, 20);
             this.btnTODO.TabIndex = 22;
@@ -2557,7 +2806,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(508, 12);
+            this.label16.Location = new System.Drawing.Point(658, 12);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(47, 13);
             this.label16.TabIndex = 21;
@@ -2570,7 +2819,7 @@
             "Рядом",
             "Только по радио",
             "Любое расстояние"});
-            this.cbRadioNode.Location = new System.Drawing.Point(561, 9);
+            this.cbRadioNode.Location = new System.Drawing.Point(711, 9);
             this.cbRadioNode.Name = "cbRadioNode";
             this.cbRadioNode.Size = new System.Drawing.Size(121, 21);
             this.cbRadioNode.TabIndex = 20;
@@ -2581,7 +2830,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tCheckNodes.Location = new System.Drawing.Point(103, 221);
             this.tCheckNodes.Name = "tCheckNodes";
-            this.tCheckNodes.Size = new System.Drawing.Size(598, 20);
+            this.tCheckNodes.Size = new System.Drawing.Size(699, 20);
             this.tCheckNodes.TabIndex = 18;
             // 
             // lCheckNodes
@@ -2631,22 +2880,36 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // btnLastNPCPhrase
+            // dataPerks
             // 
-            this.btnLastNPCPhrase.Location = new System.Drawing.Point(4, 3);
-            this.btnLastNPCPhrase.Name = "btnLastNPCPhrase";
-            this.btnLastNPCPhrase.Size = new System.Drawing.Size(97, 40);
-            this.btnLastNPCPhrase.TabIndex = 23;
-            this.btnLastNPCPhrase.Text = "Предыдущая фраза";
-            this.btnLastNPCPhrase.UseVisualStyleBackColor = true;
-            this.btnLastNPCPhrase.Click += new System.EventHandler(this.btnLastNPCPhrase_Click);
+            this.dataPerks.AllowUserToOrderColumns = true;
+            this.dataPerks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataPerks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn11,
+            this.Column1});
+            this.dataPerks.Location = new System.Drawing.Point(399, 3);
+            this.dataPerks.Name = "dataPerks";
+            this.dataPerks.Size = new System.Drawing.Size(395, 248);
+            this.dataPerks.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "id";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Название перка";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 300;
             // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(714, 803);
+            this.ClientSize = new System.Drawing.Size(815, 803);
             this.Controls.Add(this.pCommands);
             this.Controls.Add(this.gbActions);
             this.Controls.Add(this.gbPrecondition);
@@ -2662,6 +2925,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).EndInit();
             this.gbPrecondition.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureKnowlege)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureReputation2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePVP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTutorial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).EndInit();
@@ -2712,12 +2977,18 @@
             this.tabTutorial.PerformLayout();
             this.tabPVP.ResumeLayout(false);
             this.tabPVP.PerformLayout();
+            this.tabReputation2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataReputation2)).EndInit();
+            this.tabKnowleges.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.pCommands.ResumeLayout(false);
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataPerks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2786,7 +3057,6 @@
         private System.Windows.Forms.MaskedTextBox aTextBox;
         private System.Windows.Forms.Label a;
         private System.Windows.Forms.Label lInfo;
-        private System.Windows.Forms.DataGridView dataReputation;
         private System.Windows.Forms.CheckBox cbWarTime;
         private System.Windows.Forms.CheckBox cbPeaceTime;
         private System.Windows.Forms.CheckBox cbNotEnemy;
@@ -2950,10 +3220,35 @@
         private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.ComboBox cbRatingPVPMode;
         private System.Windows.Forms.CheckBox cbItemsEquipped;
+        private System.Windows.Forms.Button btnLastNPCPhrase;
+        private System.Windows.Forms.PictureBox pictureReputation2;
+        private System.Windows.Forms.DataGridView dataReputation;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewComboBoxColumn Fractions;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn b;
-        private System.Windows.Forms.Button btnLastNPCPhrase;
+        private System.Windows.Forms.TabPage tabReputation2;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridView dataReputation2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.PictureBox pictureKnowlege;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TabPage tabKnowleges;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox cbShouldntHaveKnow;
+        private System.Windows.Forms.CheckBox cMustHaveKnow;
+        private System.Windows.Forms.MaskedTextBox tMustHaveKnow;
+        private System.Windows.Forms.MaskedTextBox tMustNoHaveKnow;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.DataGridView dataPerks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
     }
 }
