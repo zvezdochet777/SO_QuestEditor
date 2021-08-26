@@ -192,6 +192,7 @@ namespace StalkerOnlineQuesterEditor
         public string playerOtherLvl;
         public ListDialogSkills Skills = new ListDialogSkills();
         public List<int> Perks = new List<int>();
+        public List<int> noPerks = new List<int>();
         public Dictionary<int, List<double>> Reputation = new Dictionary<int, List<double>>();
         public Dictionary<int, List<double>> Reputation2 = new Dictionary<int, List<double>>();
         public Dictionary<string, List<double>> NPCReputation = new Dictionary<string, List<double>>();
@@ -207,6 +208,7 @@ namespace StalkerOnlineQuesterEditor
         public int PVPMode = -1;
         public DialogPreconditionItems items = new DialogPreconditionItems();
         public DialogPreconditionItems itemsNone = new DialogPreconditionItems();
+        public int[] fracBonus = new int[2];
 
 
         public object Clone()
@@ -235,6 +237,7 @@ namespace StalkerOnlineQuesterEditor
             copy.PVPMode = this.PVPMode;
             copy.knowledges = (DialogKnowleges)knowledges.Clone();
             copy.Perks = Perks.ToList();
+            copy.fracBonus = fracBonus;
             return copy;
         }
 
@@ -260,13 +263,14 @@ namespace StalkerOnlineQuesterEditor
             this.radioAvailable = RadioAvalible.None;
             this.transport = new DialogPreconditionTransport();
 
+
         }
 
         public bool Exists()
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
-                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || Perks.Any() ||
-                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0;
+                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || Perks.Any() || noPerks.Any() ||
+                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || fracBonus[1] > 0;
         }
 
         public bool Any()
@@ -274,7 +278,7 @@ namespace StalkerOnlineQuesterEditor
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() ||
                 itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || RadioAvalible.None != radioAvailable ||
-                Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any();
+                Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any() || noPerks.Any() || knowledges.Any() || fracBonus[1] > 0;
         }
 
         public string GetAsString()
@@ -438,6 +442,7 @@ namespace StalkerOnlineQuesterEditor
         public ListOfQuests GetQuests;
         public ListOfQuests CancelQuests;
         public ListOfQuests FailQuests;
+        public ListOfQuests GetKnowleges;
         public string Data;
         public string actionCamera;
         public bool actionCameraSmoothly;
@@ -459,6 +464,7 @@ namespace StalkerOnlineQuesterEditor
             this.GetQuests = new ListOfQuests();
             this.CancelQuests = new ListOfQuests();
             this.FailQuests = new ListOfQuests();
+            this.GetKnowleges = new ListOfQuests();
             this.Data = "";
             this.actionCamera = "";
             this.actionCameraSmoothly = true;
@@ -477,12 +483,12 @@ namespace StalkerOnlineQuesterEditor
         {
             return GetQuests.Any() || CompleteQuests.Any() || CancelQuests.Any() || FailQuests.Any() || (Event != null && Event.Value != 0) || (ToDialog != 0) || Exit ||
                 actionCamera != "" || actionAnimationPlayer != "" || actionAnimationNPC != "" || actionActionNPC != 0 || actionAvatarPoint != "" || actionPlaySound != "" || 
-                (changeMoney != 0) || (changeMoneyFailNode != 0);
+                (changeMoney != 0) || (changeMoneyFailNode != 0) || GetKnowleges.Any();
         }
 
         public bool Exists()
         {
-            return (GetQuests.Count > 0 || CompleteQuests.Count > 0 || CancelQuests.Count > 0 || FailQuests.Count > 0 || (Event!= null && Event.Value != 0));
+            return (GetQuests.Count > 0 || CompleteQuests.Count > 0 || CancelQuests.Count > 0 || FailQuests.Count > 0 || GetKnowleges.Any() || (Event!= null && Event.Value != 0));
         }
 
         public bool CheckAndGetString(out string ActionString)
@@ -556,10 +562,12 @@ namespace StalkerOnlineQuesterEditor
         public bool isAutoNode; //Диалог автоматически перебрасывает на рандомную ноду
         public string defaultNode; //Диалог по-умолчанию, если другие не подходят по условиям(для автопереходилки)
         public string ToDoTooltip; //
+        public int nextDialog; // Пометка, что следующим диалогом по сюжету будет...
 
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
-                    Actions Actions, List<int> Nodes, List<int> CheckNodes, int DialogID, int version, NodeCoordinates Coordinates, string DebugData = "", bool isAutoNode = false, string defaultNode = "")
+                    Actions Actions, List<int> Nodes, List<int> CheckNodes, int DialogID, int version, 
+                    NodeCoordinates Coordinates, string DebugData = "", int nextDialog = 0, bool isAutoNode = false, string defaultNode = "")
         {
             this.Holder = Holder;
             this.Title = Title;
@@ -574,6 +582,7 @@ namespace StalkerOnlineQuesterEditor
             this.DebugData = DebugData;
             this.isAutoNode = isAutoNode;
             this.defaultNode = defaultNode;
+            this.nextDialog = nextDialog;
         }
         public CDialog()
         {
@@ -591,6 +600,7 @@ namespace StalkerOnlineQuesterEditor
             this.DebugData = "";
             this.defaultNode = "";
             this.ToDoTooltip = "";
+            nextDialog = 0;
         }
         public CDialog Clone()
         {
@@ -608,6 +618,7 @@ namespace StalkerOnlineQuesterEditor
             copy.DebugData = this.DebugData;
             copy.isAutoNode = this.isAutoNode;
             copy.defaultNode = this.defaultNode;
+            copy.nextDialog = nextDialog;
             return copy;
         }
         // Копирование всех нетекстовых полей (сделано для синхронизации данных, не изменяя перевода)

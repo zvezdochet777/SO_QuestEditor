@@ -66,6 +66,14 @@ namespace StalkerOnlineQuesterEditor
                 return "";
         }
 
+        public static void addItemToTextBox(string item, System.Windows.Forms.TextBoxBase textBox)
+        {
+            if (textBox.Text.Equals(""))
+                textBox.Text += item;
+            else
+                textBox.Text += ("," + item);
+        }
+
         public static System.Xml.XmlWriterSettings GetXmlSettings()
         {
             System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();

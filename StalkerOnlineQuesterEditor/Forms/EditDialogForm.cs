@@ -123,6 +123,7 @@ namespace StalkerOnlineQuesterEditor
         {
             cbAutoNode.Checked = curDialog.isAutoNode;
             autoDefaultNode.Text = curDialog.defaultNode;
+            tbNextDialog.Text = curDialog.nextDialog.ToString();
             
             // заполнение текста речевки и ответа ГГ
             tPlayerText.Text = curDialog.Title.Normalize();
@@ -202,28 +203,34 @@ namespace StalkerOnlineQuesterEditor
                 {
                     cbCompleteQuests.Checked = true;
                     foreach (int completeQuest in curDialog.Actions.CompleteQuests)
-                        addItemToTextBox(completeQuest.ToString(), tbCompleteQuests);
+                        Global.addItemToTextBox(completeQuest.ToString(), tbCompleteQuests);
                 }
 
                 if (curDialog.Actions.GetQuests.Any())
                 {
                     cbGetQuests.Checked = true;
                     foreach (int getQuest in curDialog.Actions.GetQuests)
-                        addItemToTextBox(getQuest.ToString(), tbGetQuests);
+                        Global.addItemToTextBox(getQuest.ToString(), tbGetQuests);
                 }
 
                 if (curDialog.Actions.CancelQuests.Any())
                 {
                     cbCancelQuests.Checked = true;
                     foreach (int cancelQuest in curDialog.Actions.CancelQuests)
-                        addItemToTextBox(cancelQuest.ToString(), tbCancelQuests);
+                        Global.addItemToTextBox(cancelQuest.ToString(), tbCancelQuests);
                 }
 
                 if (curDialog.Actions.FailQuests.Any())
                 {
                     cbFailQuests.Checked = true;
                     foreach (int failQuest in curDialog.Actions.FailQuests)
-                        addItemToTextBox(failQuest.ToString(), tbFailQuests);
+                        Global.addItemToTextBox(failQuest.ToString(), tbFailQuests);
+                }
+                if (curDialog.Actions.GetKnowleges.Any())
+                {
+                    cbGetKnowleges.Checked = true;
+                    foreach (int knowlege in curDialog.Actions.GetKnowleges)
+                        Global.addItemToTextBox(knowlege.ToString(), tbGetKnowleges);
                 }
                 
             }
@@ -233,74 +240,74 @@ namespace StalkerOnlineQuesterEditor
             {
 
                 foreach(int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfHaveQuests)
-                    addItemToTextBox(quest.ToString(), tShouldntHaveQuests);
+                    Global.addItemToTextBox(quest.ToString(), tShouldntHaveQuests);
                 cbShouldntHaveQuests.Checked = curDialog.Precondition.ListOfMustNoQuests.conditionOfQuests == '|';
 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfCompletedQuests)
-                    addItemToTextBox(quest.ToString(), tShouldntHaveCompletedQuests);
+                    Global.addItemToTextBox(quest.ToString(), tShouldntHaveCompletedQuests);
                 cbShouldntHaveCompletedQuests.Checked = (curDialog.Precondition.ListOfMustNoQuests.conditionOfCompletedQuests == '|');
 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfOpenedQuests)
-                    addItemToTextBox(quest.ToString(), tShouldntHaveOpenQuests);
+                    Global.addItemToTextBox(quest.ToString(), tShouldntHaveOpenQuests);
                 cbShouldntHaveOpenQuests.Checked = (curDialog.Precondition.ListOfMustNoQuests.conditionOfOpenedQuests == '|');
 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfFailQuests)
-                    addItemToTextBox(quest.ToString(), tShouldntHaveFailQuests);
+                    Global.addItemToTextBox(quest.ToString(), tShouldntHaveFailQuests);
                 cbShouldntHaveFailQuests.Checked = (curDialog.Precondition.ListOfMustNoQuests.conditionOfFailQuests == '|');
                 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfOnTestQuests)
-                    addItemToTextBox(quest.ToString(), tShouldntHaveQuestsOnTest);
+                    Global.addItemToTextBox(quest.ToString(), tShouldntHaveQuestsOnTest);
                 cbShouldntHaveQuestsOnTest.Checked = (curDialog.Precondition.ListOfMustNoQuests.conditionOfOnTestQuest == '|');
                 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfCounters)
-                    addItemToTextBox(quest.ToString(), tShouldntHaveCounters);
+                    Global.addItemToTextBox(quest.ToString(), tShouldntHaveCounters);
                 cbShouldntHaveCounters.Checked = (curDialog.Precondition.ListOfMustNoQuests.conditionOfCounterss == '|');
                 
                 foreach (int quest in curDialog.Precondition.ListOfMustNoQuests.ListOfRepeat)
-                    addItemToTextBox(quest.ToString(), tShouldntHaveRepeat);
+                    Global.addItemToTextBox(quest.ToString(), tShouldntHaveRepeat);
                 
-                addItemToTextBox(curDialog.Precondition.ListOfMustNoQuests.ListOfMassQuests, tShouldntHaveMassQuests);
+                Global.addItemToTextBox(curDialog.Precondition.ListOfMustNoQuests.ListOfMassQuests, tShouldntHaveMassQuests);
                 cbShouldntHaveMassQuests.Checked = curDialog.Precondition.ListOfMustNoQuests.conditionOfMassQuests == '|';
                 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfHaveQuests)
-                    addItemToTextBox(quest.ToString(), tMustHaveQuests);
+                    Global.addItemToTextBox(quest.ToString(), tMustHaveQuests);
                 cbMustHaveQuests.Checked = curDialog.Precondition.ListOfNecessaryQuests.conditionOfQuests == '|';
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCompletedQuests)
-                    addItemToTextBox(quest.ToString(), tMustHaveCompletedQuests);
+                    Global.addItemToTextBox(quest.ToString(), tMustHaveCompletedQuests);
                 cbMustHaveCompletedQuests.Checked = curDialog.Precondition.ListOfNecessaryQuests.conditionOfCompletedQuests == '|';
                
 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfOnTestQuests)
-                    addItemToTextBox(quest.ToString(), tMustHaveQuestsOnTest);
+                    Global.addItemToTextBox(quest.ToString(), tMustHaveQuestsOnTest);
                 cbMustHaveQuestsOnTest.Checked = curDialog.Precondition.ListOfNecessaryQuests.conditionOfOnTestQuest == '|';
                 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfOpenedQuests)
-                    addItemToTextBox(quest.ToString(), tMustHaveOpenQuests);
+                    Global.addItemToTextBox(quest.ToString(), tMustHaveOpenQuests);
                 cbMustHaveOpenQuests.Checked = curDialog.Precondition.ListOfNecessaryQuests.conditionOfOpenedQuests == '|';
                
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfFailQuests)
-                    addItemToTextBox(quest.ToString(), tMustHaveFailQuests);
+                    Global.addItemToTextBox(quest.ToString(), tMustHaveFailQuests);
                 cbMustHaveFailQuests.Checked = curDialog.Precondition.ListOfNecessaryQuests.conditionOfFailQuests == '|';
                 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfCounters)
-                    addItemToTextBox(quest.ToString(), tMustHaveCounters);
+                    Global.addItemToTextBox(quest.ToString(), tMustHaveCounters);
                 cbMustHaveCounters.Checked = curDialog.Precondition.ListOfNecessaryQuests.conditionOfCounterss == '|';
                 
                 foreach (int quest in curDialog.Precondition.ListOfNecessaryQuests.ListOfRepeat)
-                    addItemToTextBox(quest.ToString(), tMustHaveRepeat);
+                    Global.addItemToTextBox(quest.ToString(), tMustHaveRepeat);
                 cbMustHaveRepeat.Checked = curDialog.Precondition.ListOfNecessaryQuests.conditionOfRepeat == '|';
                 
-                addItemToTextBox(curDialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests, tMustHaveMassQuests);
+                Global.addItemToTextBox(curDialog.Precondition.ListOfNecessaryQuests.ListOfMassQuests, tMustHaveMassQuests);
                 cbMustHaveMassQuests.Checked = curDialog.Precondition.ListOfNecessaryQuests.conditionOfMassQuests == '|';
 
 
                 foreach (int knowlege in curDialog.Precondition.knowledges.mustKnowledge)
-                    addItemToTextBox(knowlege.ToString(), tMustHaveKnow);
+                    Global.addItemToTextBox(knowlege.ToString(), tMustHaveKnow);
                 cMustHaveKnow.Checked = curDialog.Precondition.knowledges.conditionMustKnowledge == '|';
 
                 foreach (int knowlege in curDialog.Precondition.knowledges.shouldntKnowledge)
-                    addItemToTextBox(knowlege.ToString(), tMustNoHaveKnow);
+                    Global.addItemToTextBox(knowlege.ToString(), tMustNoHaveKnow);
                 cbShouldntHaveKnow.Checked = curDialog.Precondition.knowledges.conditionShouldntKnowledge == '|';
 
             }
@@ -322,6 +329,8 @@ namespace StalkerOnlineQuesterEditor
                 editPrecondition.Skills = curDialog.Precondition.Skills;
             if (curDialog.Precondition.Perks.Any())
                 editPrecondition.Perks = curDialog.Precondition.Perks;
+            if (curDialog.Precondition.noPerks.Any())
+                editPrecondition.noPerks = curDialog.Precondition.noPerks;
 
             cbRadioNode.SelectedIndex = (int)curDialog.Precondition.radioAvailable;
 
@@ -329,6 +338,7 @@ namespace StalkerOnlineQuesterEditor
             cbHidden.Checked = curDialog.Precondition.hidden;
             this.initReputationTab(dataReputation, parent.fractions, this.editPrecondition.Reputation, this.editPrecondition.NPCReputation);
             this.initReputationTab(dataReputation2, parent.fractions2, this.editPrecondition.Reputation2, new Dictionary<string, List<double>>());
+            fillGroupBonuses();
             this.initKarmaPKTab();
             this.initEffectsTab();
             this.initLevelTab();
@@ -343,13 +353,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Антиговнокод-функция, добавление номера квеста в текстбокс
-        private void addItemToTextBox(string item, MaskedTextBox textBox)
-        {
-            if (textBox.Text.Equals(""))
-                textBox.Text += item;
-            else
-                textBox.Text += ("," + item);
-        }
+
 
         private void FillTutorialComboBox()
         {
@@ -417,6 +421,10 @@ namespace StalkerOnlineQuesterEditor
         {
             tbGetQuests.Enabled = cbGetQuests.Checked;
         }
+        private void cbGetKnowleges_CheckedChanged(object sender, EventArgs e)
+        {
+            tbGetKnowleges.Enabled = cbGetKnowleges.Checked;
+        }
         //! Блокировка комбобокса при клике на соответствующий чекбокс 
         private void cbCompleteQuests_CheckedChanged(object sender, EventArgs e)
         {
@@ -457,7 +465,7 @@ namespace StalkerOnlineQuesterEditor
         public void checkReputationIndicates()
         {
             pictureReputation.Visible = editPrecondition.Reputation.Any() || editPrecondition.NPCReputation.Any();
-            pictureReputation2.Visible = editPrecondition.Reputation2.Any();
+            pictureReputation2.Visible = editPrecondition.Reputation2.Any() || editPrecondition.fracBonus.Sum() > 0;
         }
         //! Задать цвет кнопки кармы, если карма задана
         public void checkKarmaIndicates()
@@ -616,6 +624,18 @@ namespace StalkerOnlineQuesterEditor
                 return;
             if (!this.checkSkills())
                 return;
+
+            if (cbFracBonus.SelectedItem != null)
+            {
+                int bonusID = CFracBonuses.getIDByName(cbFracBonus.SelectedItem.ToString());
+                if (bonusID > 0 && cbFracGroup.SelectedItem != null)
+                {
+                    int fracID = parent.fractions2.getFractionIDByDescr(cbFracGroup.SelectedItem.ToString());
+                    precondition.fracBonus = new int[2] { fracID, bonusID };
+                }
+            }
+
+
             this.checkKarmaPK();
             this.checkEffects();
             // заполняем действия диалога - торговля, бартер, починка, телепорт и т.д.
@@ -651,6 +671,9 @@ namespace StalkerOnlineQuesterEditor
                 if (cbFailQuests.Checked)
                     foreach (string quest in tbFailQuests.Text.Split(','))
                         actions.FailQuests.Add(int.Parse(quest));
+                if (cbGetKnowleges.Checked)
+                    foreach (string quest in tbGetKnowleges.Text.Split(','))
+                        actions.GetKnowleges.Add(int.Parse(quest));
             }
             else
                 actions.Event = parent.dialogEvents.GetEventFromID(0);
@@ -923,6 +946,7 @@ namespace StalkerOnlineQuesterEditor
             precondition.MustNoEffects = editPrecondition.MustNoEffects;
             precondition.Skills = editPrecondition.Skills;
             precondition.Perks = editPrecondition.Perks;
+            precondition.noPerks = editPrecondition.noPerks;
             precondition.forDev = cbForDev.Checked;
             precondition.hidden = cbHidden.Checked;
 
@@ -969,10 +993,14 @@ namespace StalkerOnlineQuesterEditor
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;
 
+            int nextDialog = 0;
+            int.TryParse(tbNextDialog.Text, out nextDialog);
+
             if (isAdd)
             {
                 newID = CDialogs.getDialogsNewID();
-                CDialog dialog = new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, check_nodes, newID, 1, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text);
+                CDialog dialog = new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, check_nodes, newID, 1,
+                                        coord, DebugData, nextDialog, cbAutoNode.Checked, autoDefaultNode.Text);
                 parent.addActiveDialog(newID, dialog, currentDialogID);
             }
             else
@@ -985,7 +1013,8 @@ namespace StalkerOnlineQuesterEditor
                 if (tPlayerText.Text != curDialog.Title || tReactionNPC.Text != curDialog.Text)
                     version++;
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tReactionNPC.Text,
-                    precondition, actions, nodes, check_nodes, currentDialogID, version, coord, DebugData, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
+                    precondition, actions, nodes, check_nodes, currentDialogID, version, 
+                                        coord, DebugData, nextDialog, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
             }
             //parent.Enabled = true;
             parent.setEnable();
@@ -1083,7 +1112,14 @@ namespace StalkerOnlineQuesterEditor
             foreach (int perkID in editPrecondition.Perks)
             {
                 string name = parent.perks.getName(perkID);
-                object[] row = { id, name };
+                object[] row = { id, name, "иметься должен " };
+                dataPerks.Rows.Add(row);
+                id++;
+            }
+            foreach (int perkID in editPrecondition.noPerks)
+            {
+                string name = parent.perks.getName(perkID);
+                object[] row = { id, name, "отсутствовать должен " };
                 dataPerks.Rows.Add(row);
                 id++;
             }
@@ -1094,6 +1130,7 @@ namespace StalkerOnlineQuesterEditor
         {
             this.editPrecondition.Skills.Clear();
             this.editPrecondition.Perks.Clear();
+            this.editPrecondition.noPerks.Clear();
             foreach (DataGridViewRow row in dataSkill.Rows)
             {
                 if (row.Cells[0].FormattedValue.ToString() != "")
@@ -1128,7 +1165,10 @@ namespace StalkerOnlineQuesterEditor
             {
                 int perkID = parent.perks.getID(row.Cells[1].FormattedValue.ToString());
                 if (perkID == 0) continue;
-                this.editPrecondition.Perks.Add(perkID);
+                if (row.Cells[2].FormattedValue.ToString() == "иметься должен ")
+                    this.editPrecondition.Perks.Add(perkID);
+                else
+                    this.editPrecondition.noPerks.Add(perkID);
             }
 
             this.checkSkillIndicates();
@@ -1137,12 +1177,29 @@ namespace StalkerOnlineQuesterEditor
 
         private void checkSkillIndicates()
         {
-            if (editPrecondition.Skills.Any() || editPrecondition.Perks.Any())
+            if (editPrecondition.Skills.Any() || editPrecondition.Perks.Any() || editPrecondition.noPerks.Any())
                 pictureSkill.Visible = true;
             else
                 pictureSkill.Visible = false;
         }
             
+        private void fillGroupBonuses()
+        {
+            cbFracBonus.Items.Clear();
+            cbFracBonus.Items.AddRange(CFracBonuses.getListNames());
+            
+            cbFracGroup.Items.Clear();
+            foreach (KeyValuePair<int, string> pair in parent.fractions2.getListOfFractions())
+            {
+                cbFracGroup.Items.Add(pair.Value);
+            }
+
+            int fracID = editPrecondition.fracBonus[0];
+            int bonusID = editPrecondition.fracBonus[1];
+
+            cbFracGroup.SelectedItem = parent.fractions2.getFractionDesctByID(fracID);
+            cbFracBonus.SelectedItem = CFracBonuses.getNameByID(bonusID);
+        }
 
         private void initReputationTab(DataGridView dataReputation, CFracConstants fractions, 
             Dictionary<int, List<double>> reputation, Dictionary<string, List<double>> npc_reputation)

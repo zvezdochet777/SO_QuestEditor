@@ -34,6 +34,8 @@
             this.lGreetNPC = new System.Windows.Forms.Label();
             this.lAttention = new System.Windows.Forms.Label();
             this.gbActions = new System.Windows.Forms.GroupBox();
+            this.cbGetKnowleges = new System.Windows.Forms.CheckBox();
+            this.tbGetKnowleges = new System.Windows.Forms.MaskedTextBox();
             this.labelEnterKey = new System.Windows.Forms.Label();
             this.nudDungeonEnterKey = new System.Windows.Forms.NumericUpDown();
             this.tbChangeMoneyFailNode = new System.Windows.Forms.TextBox();
@@ -176,6 +178,10 @@
             this.mtbPlayerLevelMax = new System.Windows.Forms.MaskedTextBox();
             this.lPlayerLevel = new System.Windows.Forms.Label();
             this.tabSkills = new System.Windows.Forms.TabPage();
+            this.dataPerks = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataSkill = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -243,6 +249,12 @@
             this.cbPVPRank1 = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.tabReputation2 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cbFracBonus = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.Uheg = new System.Windows.Forms.Label();
+            this.cbFracGroup = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.dataReputation2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -269,6 +281,8 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.tbNextDialog = new System.Windows.Forms.TextBox();
             this.btnLastNPCPhrase = new System.Windows.Forms.Button();
             this.btnTODO = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
@@ -279,9 +293,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
-            this.dataPerks = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -314,6 +325,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotEffects)).BeginInit();
             this.tabLevel.SuspendLayout();
             this.tabSkills.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataPerks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).BeginInit();
             this.tabActions.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -326,22 +338,23 @@
             this.tabTutorial.SuspendLayout();
             this.tabPVP.SuspendLayout();
             this.tabReputation2.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataReputation2)).BeginInit();
             this.tabKnowleges.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataPerks)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
             // 
             this.tPlayerText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tPlayerText.Location = new System.Drawing.Point(103, 46);
+            this.tPlayerText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tPlayerText.Location = new System.Drawing.Point(103, 39);
             this.tPlayerText.Name = "tPlayerText";
-            this.tPlayerText.Size = new System.Drawing.Size(699, 20);
+            this.tPlayerText.Size = new System.Drawing.Size(699, 26);
             this.tPlayerText.TabIndex = 0;
             this.tPlayerText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tPlayerText_KeyPress);
             // 
@@ -374,11 +387,10 @@
             // 
             // lAttention
             // 
-            this.lAttention.AutoSize = true;
             this.lAttention.ForeColor = System.Drawing.Color.DarkRed;
-            this.lAttention.Location = new System.Drawing.Point(107, 78);
+            this.lAttention.Location = new System.Drawing.Point(7, 87);
             this.lAttention.Name = "lAttention";
-            this.lAttention.Size = new System.Drawing.Size(51, 13);
+            this.lAttention.Size = new System.Drawing.Size(91, 104);
             this.lAttention.TabIndex = 13;
             this.lAttention.Text = "lAttention";
             // 
@@ -387,6 +399,8 @@
             this.gbActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbActions.AutoSize = true;
+            this.gbActions.Controls.Add(this.cbGetKnowleges);
+            this.gbActions.Controls.Add(this.tbGetKnowleges);
             this.gbActions.Controls.Add(this.labelEnterKey);
             this.gbActions.Controls.Add(this.nudDungeonEnterKey);
             this.gbActions.Controls.Add(this.tbChangeMoneyFailNode);
@@ -413,6 +427,25 @@
             this.gbActions.Size = new System.Drawing.Size(815, 145);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
+            // 
+            // cbGetKnowleges
+            // 
+            this.cbGetKnowleges.AutoSize = true;
+            this.cbGetKnowleges.Location = new System.Drawing.Point(572, 18);
+            this.cbGetKnowleges.Name = "cbGetKnowleges";
+            this.cbGetKnowleges.Size = new System.Drawing.Size(103, 17);
+            this.cbGetKnowleges.TabIndex = 49;
+            this.cbGetKnowleges.Text = "Выдать знания";
+            this.cbGetKnowleges.UseVisualStyleBackColor = true;
+            this.cbGetKnowleges.CheckedChanged += new System.EventHandler(this.cbGetKnowleges_CheckedChanged);
+            // 
+            // tbGetKnowleges
+            // 
+            this.tbGetKnowleges.Enabled = false;
+            this.tbGetKnowleges.Location = new System.Drawing.Point(675, 16);
+            this.tbGetKnowleges.Name = "tbGetKnowleges";
+            this.tbGetKnowleges.Size = new System.Drawing.Size(134, 20);
+            this.tbGetKnowleges.TabIndex = 48;
             // 
             // labelEnterKey
             // 
@@ -499,7 +532,7 @@
             // cbFailQuests
             // 
             this.cbFailQuests.AutoSize = true;
-            this.cbFailQuests.Location = new System.Drawing.Point(296, 38);
+            this.cbFailQuests.Location = new System.Drawing.Point(286, 38);
             this.cbFailQuests.Name = "cbFailQuests";
             this.cbFailQuests.Size = new System.Drawing.Size(121, 17);
             this.cbFailQuests.TabIndex = 39;
@@ -510,7 +543,7 @@
             // cbCancelQuests
             // 
             this.cbCancelQuests.AutoSize = true;
-            this.cbCancelQuests.Location = new System.Drawing.Point(296, 18);
+            this.cbCancelQuests.Location = new System.Drawing.Point(286, 18);
             this.cbCancelQuests.Name = "cbCancelQuests";
             this.cbCancelQuests.Size = new System.Drawing.Size(116, 17);
             this.cbCancelQuests.TabIndex = 38;
@@ -521,7 +554,7 @@
             // tbFailQuests
             // 
             this.tbFailQuests.Enabled = false;
-            this.tbFailQuests.Location = new System.Drawing.Point(426, 38);
+            this.tbFailQuests.Location = new System.Drawing.Point(416, 38);
             this.tbFailQuests.Name = "tbFailQuests";
             this.tbFailQuests.Size = new System.Drawing.Size(147, 20);
             this.tbFailQuests.TabIndex = 37;
@@ -529,7 +562,7 @@
             // tbCancelQuests
             // 
             this.tbCancelQuests.Enabled = false;
-            this.tbCancelQuests.Location = new System.Drawing.Point(426, 16);
+            this.tbCancelQuests.Location = new System.Drawing.Point(416, 16);
             this.tbCancelQuests.Name = "tbCancelQuests";
             this.tbCancelQuests.Size = new System.Drawing.Size(147, 20);
             this.tbCancelQuests.TabIndex = 36;
@@ -558,7 +591,7 @@
             // tbCompleteQuests
             // 
             this.tbCompleteQuests.Enabled = false;
-            this.tbCompleteQuests.Location = new System.Drawing.Point(136, 38);
+            this.tbCompleteQuests.Location = new System.Drawing.Point(126, 38);
             this.tbCompleteQuests.Name = "tbCompleteQuests";
             this.tbCompleteQuests.Size = new System.Drawing.Size(147, 20);
             this.tbCompleteQuests.TabIndex = 28;
@@ -566,7 +599,7 @@
             // tbGetQuests
             // 
             this.tbGetQuests.Enabled = false;
-            this.tbGetQuests.Location = new System.Drawing.Point(136, 16);
+            this.tbGetQuests.Location = new System.Drawing.Point(126, 16);
             this.tbGetQuests.Name = "tbGetQuests";
             this.tbGetQuests.Size = new System.Drawing.Size(147, 20);
             this.tbGetQuests.TabIndex = 26;
@@ -593,7 +626,7 @@
             // cbCompleteQuests
             // 
             this.cbCompleteQuests.AutoSize = true;
-            this.cbCompleteQuests.Location = new System.Drawing.Point(16, 38);
+            this.cbCompleteQuests.Location = new System.Drawing.Point(6, 38);
             this.cbCompleteQuests.Name = "cbCompleteQuests";
             this.cbCompleteQuests.Size = new System.Drawing.Size(119, 17);
             this.cbCompleteQuests.TabIndex = 27;
@@ -604,7 +637,7 @@
             // cbGetQuests
             // 
             this.cbGetQuests.AutoSize = true;
-            this.cbGetQuests.Location = new System.Drawing.Point(16, 16);
+            this.cbGetQuests.Location = new System.Drawing.Point(6, 16);
             this.cbGetQuests.Name = "cbGetQuests";
             this.cbGetQuests.Size = new System.Drawing.Size(96, 17);
             this.cbGetQuests.TabIndex = 25;
@@ -627,11 +660,12 @@
             // 
             this.tReactionNPC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tReactionNPC.Location = new System.Drawing.Point(103, 103);
+            this.tReactionNPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tReactionNPC.Location = new System.Drawing.Point(103, 71);
             this.tReactionNPC.Multiline = true;
             this.tReactionNPC.Name = "tReactionNPC";
             this.tReactionNPC.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tReactionNPC.Size = new System.Drawing.Size(699, 88);
+            this.tReactionNPC.Size = new System.Drawing.Size(699, 120);
             this.tReactionNPC.TabIndex = 1;
             // 
             // tNodes
@@ -1854,6 +1888,39 @@
             this.tabSkills.Text = "Навыки";
             this.tabSkills.UseVisualStyleBackColor = true;
             // 
+            // dataPerks
+            // 
+            this.dataPerks.AllowUserToOrderColumns = true;
+            this.dataPerks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataPerks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn11,
+            this.Column1,
+            this.Column2});
+            this.dataPerks.Location = new System.Drawing.Point(399, 3);
+            this.dataPerks.Name = "dataPerks";
+            this.dataPerks.Size = new System.Drawing.Size(395, 248);
+            this.dataPerks.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "id";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Название перка";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 280;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Присутствие";
+            this.Column2.Items.AddRange(new object[] {
+            "иметься должен ",
+            "отсутствовать должен "});
+            this.Column2.Name = "Column2";
+            // 
             // dataSkill
             // 
             this.dataSkill.AllowUserToAddRows = false;
@@ -2460,7 +2527,7 @@
             // cbRatingPVPMode
             // 
             this.cbRatingPVPMode.FormattingEnabled = true;
-            this.cbRatingPVPMode.Location = new System.Drawing.Point(87, 54);
+            this.cbRatingPVPMode.Location = new System.Drawing.Point(102, 39);
             this.cbRatingPVPMode.Name = "cbRatingPVPMode";
             this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
             this.cbRatingPVPMode.TabIndex = 5;
@@ -2468,7 +2535,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 49);
+            this.label17.Location = new System.Drawing.Point(6, 42);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 13);
             this.label17.TabIndex = 43;
@@ -2510,6 +2577,7 @@
             // 
             // tabReputation2
             // 
+            this.tabReputation2.Controls.Add(this.panel4);
             this.tabReputation2.Controls.Add(this.label20);
             this.tabReputation2.Controls.Add(this.dataReputation2);
             this.tabReputation2.Location = new System.Drawing.Point(4, 22);
@@ -2519,6 +2587,61 @@
             this.tabReputation2.TabIndex = 12;
             this.tabReputation2.Text = "Репутация2";
             this.tabReputation2.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.cbFracBonus);
+            this.panel4.Controls.Add(this.label27);
+            this.panel4.Controls.Add(this.label24);
+            this.panel4.Controls.Add(this.Uheg);
+            this.panel4.Controls.Add(this.cbFracGroup);
+            this.panel4.Location = new System.Drawing.Point(553, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(244, 249);
+            this.panel4.TabIndex = 8;
+            // 
+            // cbFracBonus
+            // 
+            this.cbFracBonus.FormattingEnabled = true;
+            this.cbFracBonus.Location = new System.Drawing.Point(58, 56);
+            this.cbFracBonus.Name = "cbFracBonus";
+            this.cbFracBonus.Size = new System.Drawing.Size(180, 21);
+            this.cbFracBonus.TabIndex = 11;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(8, 59);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(40, 13);
+            this.label27.TabIndex = 10;
+            this.label27.Text = "Бонус:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(25, 1);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(195, 13);
+            this.label24.TabIndex = 9;
+            this.label24.Text = "Проверяется наличие бонуса группы";
+            // 
+            // Uheg
+            // 
+            this.Uheg.AutoSize = true;
+            this.Uheg.Location = new System.Drawing.Point(7, 32);
+            this.Uheg.Name = "Uheg";
+            this.Uheg.Size = new System.Drawing.Size(45, 13);
+            this.Uheg.TabIndex = 8;
+            this.Uheg.Text = "Группа:";
+            // 
+            // cbFracGroup
+            // 
+            this.cbFracGroup.FormattingEnabled = true;
+            this.cbFracGroup.Location = new System.Drawing.Point(58, 29);
+            this.cbFracGroup.Name = "cbFracGroup";
+            this.cbFracGroup.Size = new System.Drawing.Size(180, 21);
+            this.cbFracGroup.TabIndex = 7;
             // 
             // label20
             // 
@@ -2700,7 +2823,7 @@
             // lReactionNPC
             // 
             this.lReactionNPC.AutoSize = true;
-            this.lReactionNPC.Location = new System.Drawing.Point(3, 105);
+            this.lReactionNPC.Location = new System.Drawing.Point(5, 71);
             this.lReactionNPC.Name = "lReactionNPC";
             this.lReactionNPC.Size = new System.Drawing.Size(75, 13);
             this.lReactionNPC.TabIndex = 6;
@@ -2760,6 +2883,8 @@
             // 
             this.gbTexts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbTexts.Controls.Add(this.label23);
+            this.gbTexts.Controls.Add(this.tbNextDialog);
             this.gbTexts.Controls.Add(this.btnLastNPCPhrase);
             this.gbTexts.Controls.Add(this.btnTODO);
             this.gbTexts.Controls.Add(this.label16);
@@ -2770,18 +2895,34 @@
             this.gbTexts.Controls.Add(this.cbAutoNode);
             this.gbTexts.Controls.Add(this.tNodes);
             this.gbTexts.Controls.Add(this.lNodes);
-            this.gbTexts.Controls.Add(this.tReactionNPC);
             this.gbTexts.Controls.Add(this.tPlayerText);
             this.gbTexts.Controls.Add(this.lAnswerText);
             this.gbTexts.Controls.Add(this.NPCSaidIs);
             this.gbTexts.Controls.Add(this.lGreetNPC);
             this.gbTexts.Controls.Add(this.lAttention);
             this.gbTexts.Controls.Add(this.lReactionNPC);
+            this.gbTexts.Controls.Add(this.tReactionNPC);
             this.gbTexts.Location = new System.Drawing.Point(0, 0);
             this.gbTexts.Name = "gbTexts";
             this.gbTexts.Size = new System.Drawing.Size(815, 247);
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(422, 12);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(122, 13);
+            this.label23.TabIndex = 25;
+            this.label23.Text = "Продолжение сюжета:";
+            // 
+            // tbNextDialog
+            // 
+            this.tbNextDialog.Location = new System.Drawing.Point(544, 9);
+            this.tbNextDialog.Name = "tbNextDialog";
+            this.tbNextDialog.Size = new System.Drawing.Size(52, 20);
+            this.tbNextDialog.TabIndex = 24;
             // 
             // btnLastNPCPhrase
             // 
@@ -2880,30 +3021,6 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
-            // dataPerks
-            // 
-            this.dataPerks.AllowUserToOrderColumns = true;
-            this.dataPerks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataPerks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn11,
-            this.Column1});
-            this.dataPerks.Location = new System.Drawing.Point(399, 3);
-            this.dataPerks.Name = "dataPerks";
-            this.dataPerks.Size = new System.Drawing.Size(395, 248);
-            this.dataPerks.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "id";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Название перка";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 300;
-            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2959,6 +3076,7 @@
             this.tabLevel.ResumeLayout(false);
             this.tabLevel.PerformLayout();
             this.tabSkills.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataPerks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).EndInit();
             this.tabActions.ResumeLayout(false);
             this.tabActions.PerformLayout();
@@ -2978,6 +3096,8 @@
             this.tabPVP.ResumeLayout(false);
             this.tabPVP.PerformLayout();
             this.tabReputation2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataReputation2)).EndInit();
             this.tabKnowleges.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -2988,7 +3108,6 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataPerks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3248,7 +3367,18 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.DataGridView dataPerks;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox tbNextDialog;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column2;
+        private System.Windows.Forms.CheckBox cbGetKnowleges;
+        private System.Windows.Forms.MaskedTextBox tbGetKnowleges;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox cbFracBonus;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label Uheg;
+        private System.Windows.Forms.ComboBox cbFracGroup;
     }
 }

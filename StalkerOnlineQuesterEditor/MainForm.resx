@@ -392,7 +392,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAC
-        FwAAAk1TRnQBSQFMAgEBBAEAAYwBBQGMAQUBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        FwAAAk1TRnQBSQFMAgEBBAEAAaQBBQGkAQUBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABKAMAAQEBAAEgBgABMv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8AUgABAQMAAQGIAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQc7AAH/
         AwAB/zsAAQEDLwFJAlIBUAGkAmABWgHeAmoBQQH5AmoBQQH5AmABWgHeAlIBUAGkAy8BSQMAAQF0AAM1
@@ -1163,7 +1163,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;NPCBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="labelChosenNPC.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1190,7 +1190,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;labelChosenNPC.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="tabDialogs.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -5854,30 +5854,6 @@
   <data name="&gt;&gt;btnBackNPC.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="bDelNPC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>498, 3</value>
-  </data>
-  <data name="bDelNPC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="bDelNPC.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="bDelNPC.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="&gt;&gt;bDelNPC.Name" xml:space="preserve">
-    <value>bDelNPC</value>
-  </data>
-  <data name="&gt;&gt;bDelNPC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bDelNPC.Parent" xml:space="preserve">
-    <value>panelSelectNPC</value>
-  </data>
-  <data name="&gt;&gt;bDelNPC.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="bAddNPC.Location" type="System.Drawing.Point, System.Drawing">
     <value>394, 3</value>
   </data>
@@ -5900,7 +5876,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;bAddNPC.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="FakeNPCBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 4</value>
@@ -5921,7 +5897,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;FakeNPCBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="panelSelectNPC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -6005,22 +5981,28 @@
     <value>Проводник</value>
   </data>
   <data name="парсерыToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
+    <value>229, 22</value>
   </data>
   <data name="парсерыToolStripMenuItem.Text" xml:space="preserve">
     <value>Парсеры</value>
   </data>
   <data name="проверкаОшибокToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
+    <value>229, 22</value>
   </data>
   <data name="проверкаОшибокToolStripMenuItem.Text" xml:space="preserve">
     <value>Проверка Ошибок</value>
   </data>
   <data name="поискДиалоговПоQuestIDToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
+    <value>229, 22</value>
   </data>
   <data name="поискДиалоговПоQuestIDToolStripMenuItem.Text" xml:space="preserve">
     <value>Поиск Диалогов по QuestID</value>
+  </data>
+  <data name="поискДиалоговПоЗнаниюToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 22</value>
+  </data>
+  <data name="поискДиалоговПоЗнаниюToolStripMenuItem.Text" xml:space="preserve">
+    <value>Поиск Диалогов по Знанию</value>
   </data>
   <data name="обновленияToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 20</value>
@@ -6413,6 +6395,12 @@
     <value>поискДиалоговПоQuestIDToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;поискДиалоговПоQuestIDToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;поискДиалоговПоЗнаниюToolStripMenuItem.Name" xml:space="preserve">
+    <value>поискДиалоговПоЗнаниюToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;поискДиалоговПоЗнаниюToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;данныеToolStripMenuItem.Name" xml:space="preserve">

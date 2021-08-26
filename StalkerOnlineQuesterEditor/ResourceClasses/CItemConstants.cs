@@ -73,15 +73,17 @@ namespace StalkerOnlineQuesterEditor
             XDocument doc = XDocument.Load(get_file_path());
             foreach (XElement item in doc.Root.Elements())
             {
-                bool deleted = false, converted = false;
+                bool deleted = false, converted = false, is_ingredient = false;
                 if (item.Element("deleted") != null)
                     deleted = true;
                 if (item.Element("converted") != null)
                     converted = true;
+                if (item.Element("is_ingredient") != null)
+                    is_ingredient = true;
                 try
                 {
                     int type_id = int.Parse(item.Element("id").Value.ToString());
-                    items.Add(type_id, new CItem(item.Element("Name").Value.ToString() + " " + type_id.ToString(), item.Element("Description").Value.ToString(), deleted, converted));
+                    items.Add(type_id, new CItem(item.Element("Name").Value.ToString() + " " + type_id.ToString(), item.Element("Description").Value.ToString(), deleted, converted, is_ingredient));
                 }
                 catch
                 {
@@ -101,6 +103,17 @@ namespace StalkerOnlineQuesterEditor
                 return "";
             }
             return items[typeID].getName();
+        }
+
+        public Dictionary<int, CItem> getCookItems()
+        {
+            Dictionary<int, CItem> result = new Dictionary<int, CItem>();
+            foreach (var i in items)
+            {
+                if (i.Value.is_ingredient) result.Add(i.Key, i.Value);
+            }
+            return result;
+
         }
 
         public Dictionary<int, CItem> getAllItems()
@@ -140,13 +153,15 @@ namespace StalkerOnlineQuesterEditor
         public string Description;
         public bool deleted;
         public bool converted;
+        public bool is_ingredient;
 
-        public CItem(string Name, string Description, bool deleted = false, bool converted = false)
+        public CItem(string Name, string Description, bool deleted = false, bool converted = false, bool is_ingredient = false)
         {
             this.Name = Name;
             this.Description = Description;
             this.deleted = deleted;
             this.converted = converted;
+            this.is_ingredient = is_ingredient;
         }
         public string getDescription()
         {

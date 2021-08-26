@@ -326,8 +326,11 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("defaultNode") != null) defaultNode = dialog.Element("defaultNode").Value;
 
                     }
+                    int nextDialog = 0;
+                    if (dialog.Element("nextDialog") != null) nextDialog = int.Parse(dialog.Element("nextDialog").Value);
                     if (!target[npc_name].Keys.Contains(DialogID))
-                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, CheckNodes, DialogID, 0, nodeCoord, DebugData, isAutoNode, defaultNode));
+                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, CheckNodes, DialogID, 0, 
+                                                        nodeCoord, DebugData, nextDialog, isAutoNode, defaultNode));
                 }
             }
 
@@ -669,6 +672,9 @@ namespace StalkerOnlineQuesterEditor
                         element.Add(new XElement("isAutoNode", Global.GetBoolAsString(dialog.isAutoNode)));
                         if (dialog.defaultNode.Any()) element.Add(new XElement("defaultNode", dialog.defaultNode));
                     }
+
+                    if (dialog.nextDialog > 0)
+                        element.Add(new XElement("nextDialog", dialog.nextDialog));
 
                     resultDoc.Root.Add(element);
                 }

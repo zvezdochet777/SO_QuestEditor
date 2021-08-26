@@ -54,12 +54,16 @@ namespace StalkerOnlineQuesterEditor
         public bool isDirty = false;
         int disabled = 0;
         Dictionary<PNode, GraphProperties> graphs = new Dictionary<PNode, GraphProperties>();
+        public Dictionary<string, PNode> fake_nodes = new Dictionary<string, PNode>();
+        public Dictionary<PNode, int> fake_node_to_dialog = new Dictionary<PNode, int>();
         Dictionary<Panel, int> panels = new Dictionary<Panel, int>();
 
         public List<int> questChapters = new List<int>();
         List<int> rootElements = new List<int>();
         public TreeView tree;
         List<PNode> subNodes = new List<PNode>();
+        List<PNode> subToNodes = new List<PNode>();
+        List<PNode> subNextNodes = new List<PNode>();
         Dictionary<LinkLabel, int> titles;
         List<NPCNameDataSourceObject> npcNames = new List<NPCNameDataSourceObject>();
 
@@ -135,6 +139,7 @@ namespace StalkerOnlineQuesterEditor
             listSouds = new ListSounds();
             npcFilters = ManagerNPC.getSpaces();
             CSettings.checkMode();
+            CFracBonuses.readBonuses();
             tutorialPhases = new CTutorialConstants();
             tree = treeDialogs;
             questConst = new CQuestConstants();
@@ -718,6 +723,10 @@ namespace StalkerOnlineQuesterEditor
                 return Brushes.DarkOrange;
             else if (subNodes.Contains(node))
                 return Brushes.Yellow;
+            else if (subToNodes.Contains(node))
+                return Brushes.LightBlue;
+            else if (subNextNodes.Contains(node))
+                return Brushes.LavenderBlush;
             else
                 return Brushes.White;
         }
@@ -962,7 +971,7 @@ namespace StalkerOnlineQuesterEditor
         {
             NPCBox.Enabled = enable;
             bAddNPC.Enabled = enable;
-            bDelNPC.Enabled = enable;
+            
             QuestBox.Enabled = enable;
             bRemoveQuest.Enabled = enable;
             bAddQuest.Enabled = enable;
@@ -1236,9 +1245,7 @@ namespace StalkerOnlineQuesterEditor
                 this.isDirty = true;
             }
         }
-
-        //! Нажатие на кнопку Удаление Персонажа NPC
-        private void bDelNPC_Click(object sender, EventArgs e)
+        public void delete_npc(string npc_name)
         {
             graphs.Clear();
             treeDialogs.Nodes.Clear();
@@ -1246,7 +1253,7 @@ namespace StalkerOnlineQuesterEditor
 
             List<int> removedQuests = new List<int>();
             foreach (CQuest quest in quests.quest.Values)
-                if (quest.Additional.Holder.Equals(currentNPC))
+                if (quest.Additional.Holder.Equals(npc_name))
                     removedQuests.Add(quest.QuestID);
 
             foreach (int item in removedQuests)
@@ -1254,11 +1261,16 @@ namespace StalkerOnlineQuesterEditor
                 quests.quest.Remove(item);
                 quests.locales[CSettings.getListLocales()[0]].Remove(item);
             }
-            dialogs.dialogs.Remove(currentNPC);
-            dialogs.locales[CSettings.getListLocales()[0]].Remove(currentNPC);
-            dialogs.deleted_NPC.Add(currentNPC);
+            dialogs.dialogs.Remove(npc_name);
+            dialogs.locales[CSettings.getListLocales()[0]].Remove(npc_name);
+            dialogs.deleted_NPC.Add(npc_name);
             currentNPC = "";
             fillNPCBox();
+        }
+        //! Нажатие на кнопку Удаление Персонажа NPC
+        private void bDelNPC_Click(object sender, EventArgs e)
+        {
+            delete_npc(currentNPC);
         }
         //! Устанавливает доступность средств работы с квестами
         public void checkQuestButton(int questType, int questID)
@@ -2827,13 +2839,11 @@ namespace StalkerOnlineQuesterEditor
         private void updateNPCButtons()
         {
             bAddNPC.Enabled = true;
-            bDelNPC.Enabled = true;
             foreach (KeyValuePair<string, bool> val in npcFilters)
             {
                 if (!val.Value)
                 {
                     bAddNPC.Enabled = false;
-                    bDelNPC.Enabled = false;
                     return;
                 }
             }
@@ -3655,10 +3665,11 @@ namespace StalkerOnlineQuesterEditor
 
         private void поискДиалоговПоQuestIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            QuestDialogFinderForm form = new QuestDialogFinderForm(this);
+            QuestDialogFinderForm form = new QuestDialogFinderForm(this, 0);
             form.Show();
         }
 
+         
 
         public void setEnable()
         {
@@ -3671,6 +3682,12 @@ namespace StalkerOnlineQuesterEditor
         {
             disabled++;
             this.Enabled = false;
+        }
+
+        private void поискДиалоговПоЗнаниюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuestDialogFinderForm form = new QuestDialogFinderForm(this, 1);
+            form.Show();
         }
     }
 }

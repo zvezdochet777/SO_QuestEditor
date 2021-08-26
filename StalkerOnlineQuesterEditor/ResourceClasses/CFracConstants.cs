@@ -10,7 +10,6 @@ namespace StalkerOnlineQuesterEditor
 {
     public class CFracConstants
     {
-
         protected Dictionary<int, string> fractions;
 
         public CFracConstants()
@@ -91,6 +90,66 @@ namespace StalkerOnlineQuesterEditor
             }
             
             reader.Close();
+        }
+    }
+
+
+    public static class CFracBonuses
+    {
+        static string PATH = "../../../res/scripts/common/rep_groups/events_data.pyson";
+        static Dictionary<int, string> bonuses = new Dictionary<int, string>();
+
+        public static void readBonuses()
+        {
+            if (!File.Exists(PATH))
+                return;
+
+            string line;
+            StreamReader reader = new StreamReader(PATH);
+            int id = 0;
+            string name = "";
+
+            bonuses.Add(id, "нет");
+
+            while ((line = reader.ReadLine()) != null)
+            {
+
+                if (!line.Any()) continue;
+                if (line.Contains("\"id\" :"))
+                {
+                    id = Convert.ToInt32(line.Replace("\"id\" :", "").Replace(',', ' '));
+                    continue;
+                }
+                if (line.Contains("\"name\" :"))
+                {
+                    name = line.Replace("\"name\" :", "").Replace(',', ' ').Replace('"', ' ').Replace('u', ' ').Trim();
+                    bonuses.Add(id, name);
+                }
+            }
+            reader.Close();
+        }
+
+        public static int getIDByName(string name)
+        {
+            foreach (KeyValuePair<int, string> pair in bonuses)
+            {
+                if (pair.Value == name) return pair.Key;
+            }
+            return 0;
+        }
+
+        public static string getNameByID(int frac_id)
+        {
+            foreach (KeyValuePair<int, string> pair in bonuses)
+            {
+                if (pair.Key == frac_id) return pair.Value;
+            }
+            return "";
+        }
+
+        public static string[] getListNames()
+        {
+            return bonuses.Values.ToArray();
         }
     }
 }

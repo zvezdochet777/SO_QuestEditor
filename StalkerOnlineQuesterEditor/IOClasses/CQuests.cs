@@ -264,6 +264,20 @@ namespace StalkerOnlineQuesterEditor
                     if (item.Element("QuestRules").Element("TeleportTo") != null)
                         questRules.TeleportTo = item.Element("QuestRules").Element("TeleportTo").Value.ToString();
 
+                    if (item.Element("QuestRules").Element("MapMarks") != null)
+                    {
+                        foreach(var e in item.Element("QuestRules").Element("MapMarks").Elements())
+                        {
+                            string coords, space; float radius = 0; 
+
+                            coords = e.Element("coordinates").Value.ToString();
+                            space = e.Element("space").Value.ToString();
+                            if (e.Element("radius") != null)
+                                radius = Convert.ToSingle(e.Element("radius").Value.ToString());
+                            questRules.mapMarks.Add(new MapMark(coords, radius, space));
+                        }
+                    }
+
                     if (item.Element("QuestRules").Element("npc") != null)
                     {
                         questRules.npc.setXML(item.Element("QuestRules").Element("npc"));
@@ -286,6 +300,7 @@ namespace StalkerOnlineQuesterEditor
                         reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value, System.Globalization.CultureInfo.InvariantCulture);
 
                     ParseIntIfNotEmpty(item, "Reward", "KarmaPK", out reward.KarmaPK, 0);
+                    AddDataToList(item, "Reward", "GetKnowleges", reward.GetKnowleges);
 
                     if (item.Element("Reward").Element("Teleport") != null)
                         reward.teleportTo = item.Element("Reward").Element("Teleport").Value;
@@ -365,7 +380,7 @@ namespace StalkerOnlineQuesterEditor
                         penalty.Credits = float.Parse(item.Element("Penalty").Element("Credits").Value, System.Globalization.CultureInfo.InvariantCulture);
 
                     ParseIntIfNotEmpty(item, "Penalty", "KarmaPK", out penalty.KarmaPK, 0);
-
+                    AddDataToList(item, "Penalty", "GetKnowleges", penalty.GetKnowleges);
                     if (item.Element("Penalty").Element("Reputation") != null)
                         foreach (string fraction in item.Element("Penalty").Element("Reputation").Value.Split(';'))
                             if (!fraction.Equals(""))
@@ -782,6 +797,21 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("QuestRules").Add(questValue.QuestRules.mobs.getXML());
                     if (questValue.QuestRules.space != 0)
                         element.Element("QuestRules").Add(new XElement("Spaces", Global.GetIntAsString(questValue.QuestRules.space)));
+                    if (questValue.QuestRules.mapMarks.Any())
+                    {
+                        XElement node_marks = new XElement("MapMarks");
+                        foreach(var i in questValue.QuestRules.mapMarks)
+                        {
+                            XElement node = new XElement("item");
+                            node.Add(new XElement("coordinates", i.coords));
+                            node.Add(new XElement("space", i.space));
+                            if (i.radius > 0)
+                                node.Add(new XElement("radius", i.radius.ToString()));
+                            node_marks.Add(node);
+                        }
+                        element.Element("QuestRules").Add(node_marks);
+                    }
+                        
                 }
                 
 
@@ -806,6 +836,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Reward").Add(new XElement("randomQuest", "1"));
                     if (questValue.Reward.KarmaPK != 0)
                         element.Element("Reward").Add(new XElement("KarmaPK", questValue.Reward.KarmaPK.ToString()));
+                    if (questValue.Reward.GetKnowleges.Any())
+                        element.Element("Reward").Add(new XElement("GetKnowleges", Global.GetListAsString(questValue.Reward.GetKnowleges)));
                     if (questValue.Reward.teleportTo.Any())
                         element.Element("Reward").Add(new XElement("Teleport", questValue.Reward.teleportTo));
                     if (questValue.Reward.RewardWindow)
@@ -855,7 +887,9 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Penalty").Add(new XElement("randomQuest", "1"));
                     if (questValue.QuestPenalty.KarmaPK != 0)
                          element.Element("Penalty").Add(new XElement("KarmaPK", questValue.QuestPenalty.KarmaPK.ToString()));
-                     List<XElement> EffectsXE = getEffectElements(questValue.QuestPenalty.Effects);
+                    if (questValue.QuestPenalty.GetKnowleges.Any())
+                        element.Element("Penalty").Add(new XElement("GetKnowleges", Global.GetListAsString(questValue.QuestPenalty.GetKnowleges)));
+                    List<XElement> EffectsXE = getEffectElements(questValue.QuestPenalty.Effects);
                      if (EffectsXE.Any())
                          element.Element("Penalty").Add(new XElement("Effects", EffectsXE));
                 }

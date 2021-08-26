@@ -54,15 +54,24 @@ namespace StalkerOnlineQuesterEditor
             float w = e.PickedNode.Bounds.Width;
             float h = e.PickedNode.Bounds.Height;
             string str = sender.ToString();
-            
-            int dialogID = mainForm.getDialogIDOnNode(e.PickedNode);
-            CDialog dialog = mainForm.getAnyDialogOnID(dialogID);
 
-            if (dialog != null)
+            if (mainForm.fake_nodes.ContainsValue(e.PickedNode))
             {
-                mainForm.SaveCoordinates(dialog, e.PickedNode, dialog.coordinates.RootDialog);
-                mainForm.setXYCoordinates(x, y, w, h);                
+                string key_id = mainForm.getKeyByFakeNode(e.PickedNode);
+                mainForm.SaveOtherCoordinates(key_id, e.PickedNode);
             }
+            else
+            {
+                int dialogID = mainForm.getDialogIDOnNode(e.PickedNode);
+                CDialog dialog = mainForm.getAnyDialogOnID(dialogID);
+
+                if (dialog != null)
+                {
+                    mainForm.SaveCoordinates(dialog, e.PickedNode, dialog.coordinates.RootDialog);
+                    mainForm.setXYCoordinates(x, y, w, h);
+                }
+            }
+            
 
             int rectId;
             if (mainForm.RectManager.CheckIfRect(e.PickedNode.Tag, out rectId))
@@ -89,6 +98,12 @@ namespace StalkerOnlineQuesterEditor
         public override void OnDoubleClick(object sender, PInputEventArgs e)
         {
             e.Handled = true;
+            if (mainForm.fake_nodes.ContainsValue(e.PickedNode))
+            {
+                string key_id = mainForm.getKeyByFakeNode(e.PickedNode);
+                mainForm.onClick_FakeNode(key_id, e.PickedNode);
+                return;
+            }
             int node = mainForm.getDialogIDOnNode(e.PickedNode);
             mainForm.bEditDialog_Click(sender, new EventArgs() );
 

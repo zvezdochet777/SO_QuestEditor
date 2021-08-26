@@ -319,4 +319,18 @@ namespace StalkerOnlineQuesterEditor
             return -1;
         }
     }
+
+    public class MapMark
+    {
+        public string coords;
+        public float radius;
+        public string space;
+
+        public MapMark(string coords, float radius, string space)
+        {
+            this.coords = coords;
+            this.radius = radius;
+            this.space = space;
+        }
+    }
 }

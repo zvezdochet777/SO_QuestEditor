@@ -112,7 +112,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (dialogs.dialogs[currentNPC].ContainsKey(dialogID))
                     return dialogs.dialogs[currentNPC][dialogID];
-                if (CFractionDialogs.dialogs[currentFraction].ContainsKey(dialogID))
+                if (currentFraction.Any() && CFractionDialogs.dialogs[currentFraction].ContainsKey(dialogID))
                     return CFractionDialogs.dialogs[currentFraction][dialogID];
             }
             return null;
@@ -250,7 +250,7 @@ namespace StalkerOnlineQuesterEditor
                 rooty = (float)this.ClientSize.Height / 5.0f;
             }
             PNode rootNode = CreateNode(root, new PointF(rootx, rooty));
-            
+
             nodeLayer.Add(rootNode);
             if (!graphs.Keys.Contains(rootNode))
                 graphs.Add(rootNode, new GraphProperties(root.DialogID));
@@ -271,6 +271,7 @@ namespace StalkerOnlineQuesterEditor
         private void fillDialogSubgraphView(CDialog root, PNode rootNode, float level, ref PLayer edgeLayer, ref PNodeList nodeLayer, bool stopAfterThat, 
                             PCanvas dialogShower, DialogDict dialogs, NPCLocales locales)
         {
+
             float ix = rootNode.X;
             float iy = rootNode.Y;
             float i = 1;//Number of elements in string
@@ -287,17 +288,42 @@ namespace StalkerOnlineQuesterEditor
                     {
                         if (!isRoot(root.Actions.ToDialog))
                         {
-                            if (dialogs[root.Actions.ToDialog].Nodes.Any() )
-                                this.fillDialogSubgraphView(dialogs[root.Actions.ToDialog], toDialogNode, localLevel + 1, 
+                            if (dialogs[root.Actions.ToDialog].Nodes.Any())
+                                this.fillDialogSubgraphView(dialogs[root.Actions.ToDialog], toDialogNode, localLevel + 1,
                                     ref edgeLayer, ref nodeLayer, false, dialogShower, dialogs, locales);
-                            else if (dialogs[root.Actions.ToDialog].Actions.ToDialog != 0 )
-                                this.fillDialogSubgraphView(dialogs[root.Actions.ToDialog], toDialogNode, localLevel, 
+                            else if (dialogs[root.Actions.ToDialog].Actions.ToDialog != 0)
+                                this.fillDialogSubgraphView(dialogs[root.Actions.ToDialog], toDialogNode, localLevel,
                                     ref edgeLayer, ref nodeLayer, true, dialogShower, dialogs, locales);
                         }
                     }
                 }
             }
+            else if (root.nextDialog > 0)
+            {
+                PNode node = null;
+                string str_id = currentNPC + root.nextDialog.ToString();
+                if (fake_nodes.ContainsKey(str_id))
+                    node = fake_nodes[str_id];
+                float _x = rootNode.X - 60;
+                float _y = rootNode.Y + 60;
+                if (this.dialogs.otherCoords.ContainsKey(str_id))
+                {
+                    _x = this.dialogs.otherCoords[str_id].X;
+                    _y = this.dialogs.otherCoords[str_id].Y;
+                }
+
+                if (node == null)
+                {
+                    node = CreateFakeNode(root.nextDialog.ToString(), str_id, new PointF(_x, _y));
+                    
+                }
+                nodeLayer.Add(node);
+                PrepareNodesForEdge(node, rootNode, ref edgeLayer);
+                node.Brush = GetBrushForNode(node);
+            }
             else
+            {
+
                 foreach (int subdialogID in root.Nodes)
                 {
                     PNode node = getNodeOnDialogID(subdialogID);
@@ -314,7 +340,7 @@ namespace StalkerOnlineQuesterEditor
 
                     if (node == null)
                         node = CreateNode(currentDialog, new PointF(x, y));
-                    
+
                     PrepareNodesForEdge(node, rootNode, ref edgeLayer);
                     //SaveCoordinates(currentDialog, node);  
                     nodeLayer.Add(node);
@@ -323,12 +349,17 @@ namespace StalkerOnlineQuesterEditor
                     node.Brush = GetBrushForNode(node);
                     if (!stopAfterThat)
                     {
-                        if ( currentDialog.Nodes.Any() )
+                        if (currentDialog.Nodes.Any())
                             this.fillDialogSubgraphView(currentDialog, node, localLevel + 1, ref edgeLayer, ref nodeLayer, false, dialogShower, dialogs, locales);
-                        else if ( currentDialog.Actions.ToDialog != 0 )
-                            this.fillDialogSubgraphView(currentDialog, node, localLevel, ref edgeLayer, ref nodeLayer, true, dialogShower, dialogs, locales);
+                        else
+                        {
+                            if (currentDialog.Actions.ToDialog != 0 || currentDialog.nextDialog > 0)
+                                this.fillDialogSubgraphView(currentDialog, node, localLevel, ref edgeLayer, ref nodeLayer, true, dialogShower, dialogs, locales);
+                        }
                     }
                 }
+
+            }
         }
 
         //! Добавляет узел на граф
@@ -340,9 +371,9 @@ namespace StalkerOnlineQuesterEditor
             float x = parentNode.X - 60;
             float y = parentNode.Y + 60;
             PNode newNode = CreateNode(currentDialog, new PointF(x, y));
-            
+
             PrepareNodesForEdge(newNode, parentNode, ref edgeLayer);
-            nodeLayer.Add(newNode);           
+            nodeLayer.Add(newNode);
 
             if (!currentDialog.Actions.Exit && currentDialog.Actions.ToDialog != 0)
             {
@@ -358,9 +389,27 @@ namespace StalkerOnlineQuesterEditor
             if (currentDialog.Nodes.Any())
                 foreach (int subdialog in currentDialog.Nodes)
                     addNodeOnDialogGraphView(subdialog, dialogID, dialogs, locales, dialogShower);
-
-           // DialogDict dialogs = getDialogDictionary(currentNPC, this.dialogs.dialogs, this.dialogs.locales);
+            
+            // DialogDict dialogs = getDialogDictionary(currentNPC, this.dialogs.dialogs, this.dialogs.locales);
             DialogSelected(false);
+        }
+
+        private PNode CreateFakeNode(string text, string id, PointF location)
+        {
+            PNode newNode;
+            int int_ind = 0;
+            int.TryParse(text, out int_ind);
+            SizeF size = CalcEllipsisSizeForNode(int_ind);
+            PText ptext = new PText(text);
+            newNode = PPath.CreateEllipse(location.X, location.Y, size.Height, size.Width);
+            ptext.X = newNode.X;
+            ptext.Y = newNode.Y + size.Height/2;
+            newNode.AddChild(ptext);
+            ptext.Pickable = false;
+            newNode.Tag = new ArrayList();
+            fake_nodes.Add(id, newNode);
+            fake_node_to_dialog.Add(newNode, int.Parse(text));
+            return newNode;
         }
 
         private PNode CreateNode(CDialog dialog, PointF location)
@@ -438,7 +487,7 @@ namespace StalkerOnlineQuesterEditor
             else if (dialogId / 1000 > 0)
                 size = new SizeF(60, 40);
             CDialog dialog = getDialogOnDialogID(dialogId);
-            if (dialog.CheckNodes.Any())
+            if (dialog != null && dialog.CheckNodes.Any())
                 size.Width += 7;
 
             return size;
@@ -498,6 +547,17 @@ namespace StalkerOnlineQuesterEditor
                 }
             }
         }
+
+        public void SaveOtherCoordinates(string key_id, PNode node)
+        {
+            if (!dialogs.otherCoords.ContainsKey(key_id))
+            {
+                dialogs.otherCoords.Add(key_id, new NodeCoordinates(0, 0, false, false));
+            }
+            dialogs.otherCoords[key_id].X = node.FullBounds.X;
+            dialogs.otherCoords[key_id].Y = node.FullBounds.Y;
+        }
+
         //! Сохраняет координаты узла со значением false для параметра isRoot
         public void SaveCoordinates(CDialog dialog, PNode node)
         {
@@ -548,28 +608,38 @@ namespace StalkerOnlineQuesterEditor
         public void selectSubNodesDialogGraphView(int dialogID)
         {
             subNodes.Clear();
-            List<int> nodes = new List<int>();
+            subToNodes.Clear();
+            subNextNodes.Clear();
+
             CDialog d = getAnyDialogOnID(dialogID);
-
-
-            if (nodes.Any())
-                foreach (int sub in d.Nodes)
+     
+            foreach (int sub in d.Nodes)
+            {
+                PNode node = getNodeOnDialogID(sub);
+                if (node != null)
                 {
-                    PNode node = getNodeOnDialogID(sub);
-                    if (node != null)
-                        subNodes.Add(node);
+                    subNodes.Add(node);
+                    node.Brush = GetBrushForNode(node);
                 }
+            }
 
             if (d.Actions.ToDialog != 0)
             {
                 PNode node = getNodeOnDialogID(d.Actions.ToDialog);
                 if (node != null)
-                    subNodes.Add(node);
+                {
+                    subToNodes.Add(node);
+                    node.Brush = GetBrushForNode(node);
+                }
             }
 
-            if (subNodes.Any())
-                foreach (PNode subNode in subNodes)
-                    subNode.Brush = GetBrushForNode(subNode);
+            if (d.nextDialog > 0)
+            {
+                string str_id = currentNPC + d.nextDialog.ToString();
+                subNextNodes.Add(fake_nodes[str_id]);
+                fake_nodes[str_id].Brush = GetBrushForNode(fake_nodes[str_id]);
+                
+            }
         }
 
         public void deselectSubNodesDialogGraphView()
@@ -642,6 +712,9 @@ namespace StalkerOnlineQuesterEditor
         public void DialogSelected(bool withGraph)
         {
             CDialog root = new CDialog();
+            int dialogID = 0;
+            if (Listener.SelectedNode != null)
+                dialogID = getDialogIDOnNode(Listener.SelectedNode);
             DialogDict dialogs;
             NPCLocales locales;
             PCanvas dialogShower;
@@ -669,6 +742,8 @@ namespace StalkerOnlineQuesterEditor
                 graphs = new Dictionary<PNode, GraphProperties>();
                 this.fillDialogGraphView(root, dialogShower, dialogs, locales);
             }
+            if (dialogID > 0)
+                Listener.SelectCurrentNode(dialogID);
         }
 
         public void DrawRectangles()
@@ -694,6 +769,22 @@ namespace StalkerOnlineQuesterEditor
             PNodeList rectList = drawingLayer.ChildrenReference;
             for (int i = 0; i < rectList.Count; i++)
                 rectList[i].Brush = Brushes.White;
+        }
+
+
+        public string getKeyByFakeNode(PNode node)
+        {
+            foreach(var i in fake_nodes)
+            {
+                if (i.Value == node) return i.Key;
+            }
+            return "";
+        }
+
+        public void onClick_FakeNode(string str_id, PNode node)
+        {
+            int dialogID = fake_node_to_dialog[node];
+            findDialogByID(dialogID);
         }
     }
 }

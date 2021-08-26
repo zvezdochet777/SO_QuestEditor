@@ -114,7 +114,7 @@
             this.showGetCheckBox = new System.Windows.Forms.CheckBox();
             this.cantFailCheckBox = new System.Windows.Forms.CheckBox();
             this.cantCancelCheckBox = new System.Windows.Forms.CheckBox();
-            this.tutorialCheckBox = new System.Windows.Forms.CheckBox();
+            this.availabilityCheckBox = new System.Windows.Forms.CheckBox();
             this.showJournalCheckBox = new System.Windows.Forms.CheckBox();
             this.showCloseCheckBox = new System.Windows.Forms.CheckBox();
             this.showFailedCheckBox = new System.Windows.Forms.CheckBox();
@@ -167,6 +167,8 @@
             this.isClanCheckBox = new System.Windows.Forms.CheckBox();
             this.IsGroupCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tbGetKnowlegesPenalty = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
             this.bPenaltyReputation2 = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
             this.bPenaltyQuests = new System.Windows.Forms.Button();
@@ -180,6 +182,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.rewardGroupBox = new System.Windows.Forms.GroupBox();
+            this.tbGetKnowleges = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.tbRewardOTvalue = new System.Windows.Forms.TextBox();
             this.cbRewardOT = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -222,6 +226,11 @@
             this.cbQuestLink = new System.Windows.Forms.ComboBox();
             this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.dataGridMapMark = new System.Windows.Forms.DataGridView();
+            this.coords = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radius = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Space = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -246,6 +255,7 @@
             this.tabConditions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMapMark)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCreateMob
@@ -989,7 +999,7 @@
             this.tabPage3.Controls.Add(this.cantFailCheckBox);
             this.tabPage3.Controls.Add(this.label20);
             this.tabPage3.Controls.Add(this.cantCancelCheckBox);
-            this.tabPage3.Controls.Add(this.tutorialCheckBox);
+            this.tabPage3.Controls.Add(this.availabilityCheckBox);
             this.tabPage3.Controls.Add(this.showJournalCheckBox);
             this.tabPage3.Controls.Add(this.showCloseCheckBox);
             this.tabPage3.Controls.Add(this.showFailedCheckBox);
@@ -1154,17 +1164,18 @@
             this.cantCancelCheckBox.Text = "Нельзя отменить";
             this.cantCancelCheckBox.UseVisualStyleBackColor = true;
             // 
-            // tutorialCheckBox
+            // availabilityCheckBox
             // 
-            this.tutorialCheckBox.AutoSize = true;
-            this.tutorialCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tutorialCheckBox.Location = new System.Drawing.Point(198, 246);
-            this.tutorialCheckBox.Name = "tutorialCheckBox";
-            this.tutorialCheckBox.Size = new System.Drawing.Size(81, 17);
-            this.tutorialCheckBox.TabIndex = 53;
-            this.tutorialCheckBox.Text = "Туториал";
-            this.tutorialCheckBox.UseVisualStyleBackColor = true;
-            this.tutorialCheckBox.CheckedChanged += new System.EventHandler(this.tutorialCheckBox_CheckedChanged);
+            this.availabilityCheckBox.AutoSize = true;
+            this.availabilityCheckBox.Checked = true;
+            this.availabilityCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.availabilityCheckBox.Location = new System.Drawing.Point(198, 246);
+            this.availabilityCheckBox.Name = "availabilityCheckBox";
+            this.availabilityCheckBox.Size = new System.Drawing.Size(154, 17);
+            this.availabilityCheckBox.TabIndex = 53;
+            this.availabilityCheckBox.Text = "Показывать в доступных";
+            this.availabilityCheckBox.UseVisualStyleBackColor = true;
+            this.availabilityCheckBox.CheckedChanged += new System.EventHandler(this.availabilityCheckBox_CheckedChanged);
             // 
             // showJournalCheckBox
             // 
@@ -1574,6 +1585,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.dataGridMapMark);
+            this.tabPage5.Controls.Add(this.label37);
             this.tabPage5.Controls.Add(this.cbTakeItems);
             this.tabPage5.Controls.Add(this.nBaseToCapturePercent);
             this.tabPage5.Controls.Add(this.massQuestsTextBox);
@@ -1744,6 +1757,8 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.tbGetKnowlegesPenalty);
+            this.tabPage6.Controls.Add(this.label36);
             this.tabPage6.Controls.Add(this.bPenaltyReputation2);
             this.tabPage6.Controls.Add(this.label27);
             this.tabPage6.Controls.Add(this.bPenaltyQuests);
@@ -1763,6 +1778,22 @@
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Награды/Штрафы";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tbGetKnowlegesPenalty
+            // 
+            this.tbGetKnowlegesPenalty.Location = new System.Drawing.Point(292, 226);
+            this.tbGetKnowlegesPenalty.Name = "tbGetKnowlegesPenalty";
+            this.tbGetKnowlegesPenalty.Size = new System.Drawing.Size(121, 20);
+            this.tbGetKnowlegesPenalty.TabIndex = 53;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(228, 229);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(44, 13);
+            this.label36.TabIndex = 52;
+            this.label36.Text = "Знания";
             // 
             // bPenaltyReputation2
             // 
@@ -1878,6 +1909,8 @@
             // 
             // rewardGroupBox
             // 
+            this.rewardGroupBox.Controls.Add(this.tbGetKnowleges);
+            this.rewardGroupBox.Controls.Add(this.label35);
             this.rewardGroupBox.Controls.Add(this.tbRewardOTvalue);
             this.rewardGroupBox.Controls.Add(this.cbRewardOT);
             this.rewardGroupBox.Controls.Add(this.label10);
@@ -1905,9 +1938,25 @@
             this.rewardGroupBox.TabStop = false;
             this.rewardGroupBox.Text = "Награда";
             // 
+            // tbGetKnowleges
+            // 
+            this.tbGetKnowleges.Location = new System.Drawing.Point(273, 89);
+            this.tbGetKnowleges.Name = "tbGetKnowleges";
+            this.tbGetKnowleges.Size = new System.Drawing.Size(121, 20);
+            this.tbGetKnowleges.TabIndex = 51;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(209, 92);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(44, 13);
+            this.label35.TabIndex = 50;
+            this.label35.Text = "Знания";
+            // 
             // tbRewardOTvalue
             // 
-            this.tbRewardOTvalue.Location = new System.Drawing.Point(443, 71);
+            this.tbRewardOTvalue.Location = new System.Drawing.Point(398, 68);
             this.tbRewardOTvalue.Name = "tbRewardOTvalue";
             this.tbRewardOTvalue.Size = new System.Drawing.Size(100, 20);
             this.tbRewardOTvalue.TabIndex = 49;
@@ -1916,7 +1965,7 @@
             // cbRewardOT
             // 
             this.cbRewardOT.FormattingEnabled = true;
-            this.cbRewardOT.Location = new System.Drawing.Point(318, 70);
+            this.cbRewardOT.Location = new System.Drawing.Point(273, 67);
             this.cbRewardOT.Name = "cbRewardOT";
             this.cbRewardOT.Size = new System.Drawing.Size(121, 21);
             this.cbRewardOT.TabIndex = 48;
@@ -1924,7 +1973,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(254, 74);
+            this.label10.Location = new System.Drawing.Point(209, 70);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 13);
             this.label10.TabIndex = 47;
@@ -1944,7 +1993,7 @@
             // cbRewardTeleport
             // 
             this.cbRewardTeleport.FormattingEnabled = true;
-            this.cbRewardTeleport.Location = new System.Drawing.Point(318, 44);
+            this.cbRewardTeleport.Location = new System.Drawing.Point(273, 44);
             this.cbRewardTeleport.Name = "cbRewardTeleport";
             this.cbRewardTeleport.Size = new System.Drawing.Size(121, 21);
             this.cbRewardTeleport.TabIndex = 45;
@@ -1952,7 +2001,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(254, 48);
+            this.label5.Location = new System.Drawing.Point(209, 48);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 44;
@@ -2025,9 +2074,9 @@
             // 
             // textBoxKarmaPK
             // 
-            this.textBoxKarmaPK.Location = new System.Drawing.Point(119, 89);
+            this.textBoxKarmaPK.Location = new System.Drawing.Point(74, 89);
             this.textBoxKarmaPK.Name = "textBoxKarmaPK";
-            this.textBoxKarmaPK.Size = new System.Drawing.Size(100, 20);
+            this.textBoxKarmaPK.Size = new System.Drawing.Size(121, 20);
             this.textBoxKarmaPK.TabIndex = 36;
             // 
             // lKarmaPK
@@ -2041,9 +2090,9 @@
             // 
             // creditsTextBox
             // 
-            this.creditsTextBox.Location = new System.Drawing.Point(119, 45);
+            this.creditsTextBox.Location = new System.Drawing.Point(74, 45);
             this.creditsTextBox.Name = "creditsTextBox";
-            this.creditsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.creditsTextBox.Size = new System.Drawing.Size(121, 20);
             this.creditsTextBox.TabIndex = 31;
             // 
             // lCredits
@@ -2057,9 +2106,9 @@
             // 
             // tExperience
             // 
-            this.tExperience.Location = new System.Drawing.Point(119, 67);
+            this.tExperience.Location = new System.Drawing.Point(74, 67);
             this.tExperience.Name = "tExperience";
-            this.tExperience.Size = new System.Drawing.Size(100, 20);
+            this.tExperience.Size = new System.Drawing.Size(121, 20);
             this.tExperience.TabIndex = 32;
             // 
             // lCombatSkills
@@ -2310,6 +2359,45 @@
             this.label34.TabIndex = 61;
             this.label34.Text = "Бонус группы:";
             // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(9, 207);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(89, 13);
+            this.label37.TabIndex = 58;
+            this.label37.Text = "Метки на карте:";
+            // 
+            // dataGridMapMark
+            // 
+            this.dataGridMapMark.AllowUserToOrderColumns = true;
+            this.dataGridMapMark.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridMapMark.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.coords,
+            this.radius,
+            this.Space});
+            this.dataGridMapMark.Location = new System.Drawing.Point(12, 224);
+            this.dataGridMapMark.Name = "dataGridMapMark";
+            this.dataGridMapMark.Size = new System.Drawing.Size(498, 150);
+            this.dataGridMapMark.TabIndex = 59;
+            // 
+            // coords
+            // 
+            this.coords.HeaderText = "кординаты";
+            this.coords.Name = "coords";
+            this.coords.Width = 200;
+            // 
+            // radius
+            // 
+            this.radius.HeaderText = "радиус";
+            this.radius.Name = "radius";
+            // 
+            // Space
+            // 
+            this.Space.HeaderText = "карта";
+            this.Space.Name = "Space";
+            this.Space.Width = 150;
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2379,6 +2467,7 @@
             this.tabConditions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMapMark)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2463,7 +2552,7 @@
         private System.Windows.Forms.CheckBox showGetCheckBox;
         private System.Windows.Forms.CheckBox cantFailCheckBox;
         private System.Windows.Forms.CheckBox cantCancelCheckBox;
-        private System.Windows.Forms.CheckBox tutorialCheckBox;
+        private System.Windows.Forms.CheckBox availabilityCheckBox;
         private System.Windows.Forms.CheckBox showJournalCheckBox;
         private System.Windows.Forms.CheckBox showCloseCheckBox;
         private System.Windows.Forms.CheckBox showFailedCheckBox;
@@ -2579,5 +2668,14 @@
         private System.Windows.Forms.TextBox tbRewardOTvalue;
         private System.Windows.Forms.ComboBox cbFraction2Bonus;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox tbGetKnowleges;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox tbGetKnowlegesPenalty;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.DataGridView dataGridMapMark;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coords;
+        private System.Windows.Forms.DataGridViewTextBoxColumn radius;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Space;
     }
 }

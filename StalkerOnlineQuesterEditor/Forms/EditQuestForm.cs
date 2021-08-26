@@ -19,7 +19,7 @@ namespace StalkerOnlineQuesterEditor
         int SHOW_JOURNAL = 8;
         int SHOW_ONWIN = 16;
         int SHOW_ONFAILED = 32;
-        int SHOW_TUTORIAL = 64;
+        int NOT_SHOW_AVAILABILITY = 64;
         int SHOW_ONGET = 128;
 
         const int ADD_NEW = 1;
@@ -75,8 +75,7 @@ namespace StalkerOnlineQuesterEditor
                 showCloseCheckBox.Enabled = false;
                 showCloseCheckBox.Checked = false;
                 showTakeCheckBox.Enabled = false;
-                showTakeCheckBox.Checked = false;
-                tutorialCheckBox.Enabled = false;              
+                showTakeCheckBox.Checked = false;           
             }
 
             if (iState == ADD_SUB)
@@ -133,25 +132,8 @@ namespace StalkerOnlineQuesterEditor
             //{
             //    parentQuest = parent.getQuestOnQuestID(quest.Additional.IsSubQuest);
             //}
-            if (iState == ADD_SUB)
-            {
-                if ((quest.Additional.ShowProgress & this.SHOW_TUTORIAL)> 0)
-                {
-                    tutorialCheckBox.Checked = true;
-                    showJournalCheckBox.Checked = false;
-                    showJournalCheckBox.Enabled = false;
-                }
-            }
-            else if (iState != ADD_NEW)
-            {
-                if ((quest.Additional.ShowProgress & this.SHOW_TUTORIAL) > 0)
-                {
-                    //System.Console.WriteLine("iState != ADD_NEW set tutorial true");
-                    tutorialCheckBox.Checked = true;
-                }
-                else
-                    tutorialCheckBox.Checked = false;
-            }
+
+            availabilityCheckBox.Checked = (quest.Additional.ShowProgress & this.NOT_SHOW_AVAILABILITY) == 0; 
             fillQuestLinks();
             fillPreconditiomForm();
             fillConditionsTab();
@@ -378,12 +360,13 @@ namespace StalkerOnlineQuesterEditor
                     dynamicCheckBox.Enabled = true;
                     cbState.Enabled = true;
                 }
-                else if (QuestType == CQuestConstants.TYPE_CRAFT_ITEM)
+                else if ((QuestType == CQuestConstants.TYPE_CRAFT_ITEM) || (QuestType == CQuestConstants.TYPE_CRAFT_ITEM_AUTO))
                 {
                     lNameObject.Text = "Рецепт:";
                     foreach (CItem item in parent.receptConst.getAllItems().Values)
                         targetComboBox.Items.Add(item.getName());
                     quantityUpDown.Enabled = true;
+                    lQuantity.Enabled = true;
                     targetAttributeComboBox.Items.Clear();
                     labelTargetAttr.Enabled = true;
                     ltargetResult.Enabled = true;
@@ -391,6 +374,35 @@ namespace StalkerOnlineQuesterEditor
                     targetAttributeComboBox2.Enabled = false;
                     labelTargetAttr.Enabled = false;
                     ltargetResult.Enabled = false;
+                    dynamicCheckBox.Enabled = false;
+                    cbState.Enabled = false;
+                }
+                else if ((QuestType == CQuestConstants.TYPE_COOK_ITEM) || (QuestType == CQuestConstants.TYPE_COOK_ITEM_AUTO))
+                {
+                    ltargetResult.Text = "Ингредиент 1";
+                    lNameObject.Text = "Ингредиент 2";
+                    labelTargetAttr.Text = "Ингредиент 3";
+
+                    resultComboBox.Items.Clear();
+                    targetComboBox.Items.Clear();
+                    targetAttributeComboBox.Items.Clear();
+
+                    foreach (CItem item in parent.itemConst.getCookItems().Values)
+                    {
+                        targetComboBox.Items.Add(item.getName());
+                        resultComboBox.Items.Add(item.getName());
+                        targetAttributeComboBox.Items.Add(item.getName());
+                    }
+                    quantityUpDown.Enabled = true;
+                    lQuantity.Enabled = true;
+                    lNameObject.Enabled = true;
+                    ltargetResult.Enabled = true;
+                    labelTargetAttr.Enabled = true;
+                    targetComboBox.Enabled = true;
+                    targetAttributeComboBox.Enabled = true;
+                    resultComboBox.Enabled = true;
+
+                    targetAttributeComboBox2.Enabled = false;
                     dynamicCheckBox.Enabled = false;
                     cbState.Enabled = false;
                 }
@@ -510,7 +522,7 @@ namespace StalkerOnlineQuesterEditor
                 {
 
                 }
-                else if (QuestType == CQuestConstants.TYPE_ITEM_EQIP || QuestType == CQuestConstants.TYPE_ITEM_ADD)
+                else if (QuestType == CQuestConstants.TYPE_ITEM_EQIP)
                 {
                     lNameObject.Text = "Тип предмета:";
                     targetComboBox.Items.Clear();
@@ -687,9 +699,20 @@ namespace StalkerOnlineQuesterEditor
                 else cbState.Checked = false;
 
             }
-            else if(quest.Target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM)
+            else if ((quest.Target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM) || (quest.Target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM_AUTO))
             {
                 targetComboBox.SelectedItem = parent.receptConst.getItemName(quest.Target.ObjectType);
+                quantityUpDown.Value = quest.Target.NumOfObjects;
+            }
+            else if ((quest.Target.QuestType == CQuestConstants.TYPE_COOK_ITEM) || (quest.Target.QuestType == CQuestConstants.TYPE_COOK_ITEM_AUTO))
+            {
+                List<int> result = new List<int>();
+                ComboBox[] list = { resultComboBox, targetComboBox, targetAttributeComboBox };
+                for (int i=0; i<quest.Target.AObjectAttrs.Count; i++)
+                {
+                    int itemType = quest.Target.AObjectAttrs[i];
+                    list[i].SelectedItem = parent.itemConst.getItemName(itemType);
+                }
                 quantityUpDown.Value = quest.Target.NumOfObjects;
             }
             else if (quest.Target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY || quest.Target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
@@ -794,7 +817,7 @@ namespace StalkerOnlineQuesterEditor
                 resultComboBox.Text = quest.Target.ObjectName;
                 quantityUpDown.Value = quest.Target.NumOfObjects;
             }
-            else if (quest.Target.QuestType == CQuestConstants.TYPE_ITEM_EQIP || quest.Target.QuestType == CQuestConstants.TYPE_ITEM_ADD)
+            else if (quest.Target.QuestType == CQuestConstants.TYPE_ITEM_EQIP)
             {
                 //System.Console.WriteLine("getQuest: type" + quest.Target.QuestType.ToString());
                 targetComboBox.SelectedItem = parent.itemConst.getItemName(quest.Target.ObjectType);
@@ -1014,6 +1037,17 @@ namespace StalkerOnlineQuesterEditor
         {
             nBaseToCapturePercent.Value = Convert.ToDecimal(quest.QuestRules.basePercent * 100);
             cbTakeItems.Checked = !quest.QuestRules.dontTakeItems;
+
+            foreach(var i in parent.spacesConst.getSpacesNames())
+                ((DataGridViewComboBoxColumn)dataGridMapMark.Columns[2]).Items.Add(i);
+
+            foreach (var mark in quest.QuestRules.mapMarks)
+            {
+                string space = parent.spacesConst.getLocalName(mark.space);
+                space = parent.spacesConst.getSpaceID(space).ToString() + " " + space;
+                object[] row = { mark.coords, mark.radius, space };
+                dataGridMapMark.Rows.Add(row);
+            }
         }
         //! Заполняет раздел Правила на форме - уровень игрока, сценарий... (???)
         void fillQuestRules()
@@ -1127,6 +1161,11 @@ namespace StalkerOnlineQuesterEditor
             tbPenaltyCredits.Text = quest.QuestPenalty.Credits.ToString();
             textBoxKarmaPK.Text = quest.Reward.KarmaPK.ToString();
             tbPenaltyKarmaPK.Text = quest.QuestPenalty.KarmaPK.ToString();
+            foreach (int knowlege in quest.Reward.GetKnowleges)
+                Global.addItemToTextBox(knowlege.ToString(), tbGetKnowleges);
+            foreach (int knowlege in quest.QuestPenalty.GetKnowleges)
+                Global.addItemToTextBox(knowlege.ToString(), tbGetKnowlegesPenalty);
+
         }
         //! Собирает данные с формы, и возвращает экземпляр CQuest с этими данными
         public CQuest getQuest()
@@ -1177,10 +1216,25 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else target.usePercent = false;
             }
-            else if (target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM)
+            else if ((target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM) || (target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM_AUTO))
             {
                 target.ObjectType = parent.receptConst.getIDOnName(targetComboBox.SelectedItem.ToString());
                 target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
+            }
+            else if ((target.QuestType == CQuestConstants.TYPE_COOK_ITEM) || (target.QuestType == CQuestConstants.TYPE_COOK_ITEM_AUTO))
+            {
+                List<int> result = new List<int>();
+                ComboBox[] list = { resultComboBox, targetComboBox, targetAttributeComboBox };
+                foreach(var i in list)
+                {
+                    if (i.SelectedItem == null) continue;
+                    int tmp = parent.itemConst.getIDOnName(i.SelectedItem.ToString());
+                    if (tmp > 0)
+                        result.Add(tmp);
+                }
+                editTarget.AObjectAttrs = result;
+                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
+
             }
             else if (target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY || target.QuestType == CQuestConstants.TYPE_ITEM_CATEGORY_AUTO)
             {
@@ -1291,7 +1345,7 @@ namespace StalkerOnlineQuesterEditor
                 target.ObjectName = resultComboBox.Text;
                 target.NumOfObjects = Convert.ToInt32(quantityUpDown.Value);
             }
-            else if ((target.QuestType == CQuestConstants.TYPE_ITEM_EQIP) || (target.QuestType == CQuestConstants.TYPE_ITEM_ADD))
+            else if ((target.QuestType == CQuestConstants.TYPE_ITEM_EQIP))
             {
                 System.Console.WriteLine("QuestType == CQuestConstants.TYPE_ITEM_EQIP || 20");
                 target.ObjectType = parent.itemConst.getIDOnName(targetComboBox.SelectedItem.ToString());
@@ -1415,6 +1469,9 @@ namespace StalkerOnlineQuesterEditor
             }
             reward.Credits = ParseIntIfNotEmpty(creditsTextBox.Text);
             reward.KarmaPK = ParseIntIfNotEmpty(textBoxKarmaPK.Text);
+            foreach (string knowlege in tbGetKnowleges.Text.Split(','))
+                if (knowlege.Trim().Any())
+                    reward.GetKnowleges.Add(int.Parse(knowlege));
             reward.RewardWindow = cbRewardWindow.Checked;
             if (cbRewardTeleport.SelectedItem != null)
                 reward.teleportTo = cbRewardTeleport.SelectedItem.ToString();
@@ -1422,6 +1479,9 @@ namespace StalkerOnlineQuesterEditor
             penalty.Experience = ParseIntIfNotEmpty(tbPenaltyExperience.Text);
             penalty.Credits = ParseIntIfNotEmpty(tbPenaltyCredits.Text);
             penalty.KarmaPK = ParseIntIfNotEmpty(tbPenaltyKarmaPK.Text);
+            foreach (string knowlege in tbGetKnowlegesPenalty.Text.Split(','))
+                if (knowlege.Trim().Any())
+                    penalty.GetKnowleges.Add(int.Parse(knowlege));
 
             int iProgressResult = 0;
             if (showCloseCheckBox.Checked)
@@ -1438,10 +1498,9 @@ namespace StalkerOnlineQuesterEditor
                 iProgressResult |= this.SHOW_ONFAILED;
             if (showGetCheckBox.Checked)
                 iProgressResult |= this.SHOW_ONGET;
-            if (tutorialCheckBox.Checked)
+            if (!availabilityCheckBox.Checked)
             {
-                System.Console.WriteLine("tutorialCheckBox.Checked != SHOW_TUTORIAL");
-                iProgressResult |= this.SHOW_TUTORIAL;
+                iProgressResult |= this.NOT_SHOW_AVAILABILITY;
             }
 
             additional.screenMessageOnWin = cbWonScreenMsg.Checked;
@@ -1471,9 +1530,17 @@ namespace StalkerOnlineQuesterEditor
             penalty.ChangeQuests = editQuestPenalty.ChangeQuests;
             penalty.randomQuest = editQuestPenalty.randomQuest;
 
+            editQuestRules.mapMarks = getMapMarks();
+            if (editQuestRules.mapMarks == null)
+            {
+                MessageBox.Show("Неверно указаны координаты/радиус в метках для карты", "Ошибка");
+                return null;
+            }
             rules.items = new List<QuestItem>(editQuestRules.items);
             rules.dontTakeItems = editQuestRules.dontTakeItems;
             rules.space = editQuestRules.space;
+            rules.mapMarks = new List<MapMark>(editQuestRules.mapMarks);
+
             information.Items = editInformation.Items;
 
             target.AObjectAttrs = editTarget.AObjectAttrs;
@@ -1524,6 +1591,35 @@ namespace StalkerOnlineQuesterEditor
             return retQuest;
         }
 
+        private List<MapMark> getMapMarks()
+        {
+            List<MapMark> result = new List<MapMark>();
+
+            foreach (DataGridViewRow row in dataGridMapMark.Rows)
+            {
+                if (row.IsNewRow) continue;
+                string s_coord = row.Cells[0].FormattedValue.ToString().Replace(',', ' ');
+                string s_radius = row.Cells[1].FormattedValue.ToString();
+                string space = parent.spacesConst.getSpaceNameByLocal(row.Cells[2].FormattedValue.ToString().Split(' ')[1]);
+                float radius = 0;
+                try
+                {
+                    radius = Convert.ToSingle(s_radius);
+                    foreach(var i in s_coord.Split(' '))
+                    {
+                        if (i.Any())
+                            Convert.ToSingle(i);
+                    }
+                }
+                catch
+                {
+                    return null;
+                }
+                result.Add(new MapMark(s_coord, radius, space));
+            }
+            return result;
+        }
+
         private int ParseIntIfNotEmpty(string text)
         {
             if (!text.Equals(""))
@@ -1560,7 +1656,7 @@ namespace StalkerOnlineQuesterEditor
                     parent.replaceQuest(result);
 
                 if (result.Additional.IsSubQuest == 0)
-                    parent.setTutorial(result.QuestID, (((result.Additional.ShowProgress & this.SHOW_TUTORIAL) > 0)));
+                    parent.setTutorial(result.QuestID, (((result.Additional.ShowProgress & this.NOT_SHOW_AVAILABILITY) > 0)));
                 if (debugTextBox.Text != "") { result.Additional.DebugData = debugTextBox.Text; }
                 parent.Enabled = true;
                 this.Close();
@@ -1675,10 +1771,9 @@ namespace StalkerOnlineQuesterEditor
             this.editQuestReward.Reputation2 = formFractions.reputations;
         }
         //! Изменение состояния квеста - Туториал или нет
-        private void tutorialCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void availabilityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            showJournalCheckBox.Checked = !tutorialCheckBox.Checked;
-            showJournalCheckBox.Enabled = !tutorialCheckBox.Checked;
+
         }
         //! Открывает окно редактирования эффектов (бафов)
         private void bRewardEffects_Click(object sender, EventArgs e)

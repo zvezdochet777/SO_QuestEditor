@@ -32,7 +32,7 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_DIE = 17; // умереть (отправиться на респ)
         public static int TYPE_GAME_EXIT = 18; // выйти из игры
         public static int TYPE_ITEM_EQIP = 19; // экипировать предмет
-        public static int TYPE_ITEM_ADD = 20; // получить предмет
+
         public static int TYPE_GIVE_EFFECT = 21; // получить эффект
         public static int TYPE_REPUTATION = 22; // собрать количество репутации (со сдачей)
         public static int TYPE_REPUTATION_AUTO = 23; // автоматически закрывается при количестве репутации
@@ -45,6 +45,10 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_QUEST_COUNTER = 29;
         public static int TYPE_DUNGEON_EVENT = 30; //Событие происходит внутри подземелья
         public static int TYPE_CRAFT_ITEM = 31; //Событие создать предмет при помощи крафта
+        public static int TYPE_CRAFT_ITEM_AUTO = 32; //Событие создать предмет при помощи крафта АВТО
+        public static int TYPE_COOK_ITEM = 33; //Событие создать предмет при помощи готовки в котле
+        public static int TYPE_COOK_ITEM_AUTO = 34; //Событие создать предмет при помощи  готовки в котле АВТО
+
 
         //Эти квесты особые, у них есть доп условия
         public static int TYPE_PVP_MAP_KILL = 40; //Убить во время пвп матча
@@ -73,7 +77,7 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_DIE, "17 Умереть."));
             simpleQuestsType.Add(new СQuestType(TYPE_GAME_EXIT, "18 Выйти из игры."));
             simpleQuestsType.Add(new СQuestType(TYPE_ITEM_EQIP, "19 Экипировка предмета."));
-            simpleQuestsType.Add(new СQuestType(TYPE_ITEM_ADD, "20 Добавление предмета."));
+            //simpleQuestsType.Add(new СQuestType(TYPE_ITEM_ADD, "20 Добавление предмета."));
             simpleQuestsType.Add(new СQuestType(TYPE_GIVE_EFFECT, "21 Получение эффекта."));
             simpleQuestsType.Add(new СQuestType(TYPE_REPUTATION, "22 Необходимое количество репутации."));
             simpleQuestsType.Add(new СQuestType(TYPE_REPUTATION_AUTO, "23 Необходимое количество репутации АВТО."));
@@ -85,6 +89,9 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_QUEST_COUNTER, "29 Счетчик квестов."));
             simpleQuestsType.Add(new СQuestType(TYPE_DUNGEON_EVENT, "30 Событие данжа."));
             simpleQuestsType.Add(new СQuestType(TYPE_CRAFT_ITEM, "31 Событие крафта."));
+            simpleQuestsType.Add(new СQuestType(TYPE_CRAFT_ITEM_AUTO, "32 Событие крафта АВТО."));
+            simpleQuestsType.Add(new СQuestType(TYPE_COOK_ITEM, "33 Событие готовки в котле."));
+            simpleQuestsType.Add(new СQuestType(TYPE_COOK_ITEM_AUTO, "34 Событие готовки в котле АВТО."));
 
             // ierarchyQuestsType.Add(new СQuestType(50, "50 Игра против режиссера."));
             simpleQuestsType.Add(new СQuestType(TYPE_CREATE_NPC, "51 Создать NPC."));

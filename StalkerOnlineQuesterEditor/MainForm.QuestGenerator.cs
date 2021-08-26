@@ -30,6 +30,7 @@ namespace StalkerOnlineQuesterEditor
                     list.Add(new ListBoxItem(i.id, name));
                 }
             }
+            listBoxQT.DataSource = null;
             listBoxQT.DataSource = list;
             if (listBoxQT.Items.Count > 0)
                 listBoxQT.SelectedIndex = old_index;

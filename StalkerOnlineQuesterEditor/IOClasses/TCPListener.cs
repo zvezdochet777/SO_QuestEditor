@@ -63,13 +63,11 @@ namespace StalkerOnlineQuesterEditor.IOClasses
                         try
                         {
                             if (data.Contains("openNPC:"))
-                            {
                                 this.parent.openNPC(data.Replace("openNPC:", "").Trim());
-                            }
+                            else if (data.Contains("deleteNPC:"))
+                                this.parent.delete_npc(data.Replace("deleteNPC:", "").Trim());
                             else if (data.Contains("createNPC:"))
-                            {
                                 this.parent.addNewNPC(data.Replace("createNPC:", "").Trim());
-                            }
                         }
                         catch(Exception e)
                         {

@@ -31,7 +31,8 @@ namespace StalkerOnlineQuesterEditor
         public NPCDicts dialogs = new NPCDicts();
         //! Словарь локалей
         public NPCLocales locales = new NPCLocales();
-        private CoordinatesDict tempCoordinates = new CoordinatesDict();
+        public CoordinatesDict tempCoordinates = new CoordinatesDict();
+        public Dictionary<string, NodeCoordinates> otherCoords = new Dictionary<string, NodeCoordinates>();
         private CManagerNPC ManagerNPC;
         public Dictionary<int, string> dialogIDList = new Dictionary<int, string>();
         private Dictionary<int, List<string>> dialogErrors = new Dictionary<int, List<string>>();
@@ -47,6 +48,7 @@ namespace StalkerOnlineQuesterEditor
             this.parent = parent;
             ManagerNPC = managerNPC;
             ParseNodeCoordinates("NodeCoordinates/");
+            ParseNodeCoordinatesOther();
 
             ParseDialogsData(CSettings.GetDialogDataPath(), this.dialogs, true);
             ParseDialogToolTips();
@@ -139,6 +141,7 @@ namespace StalkerOnlineQuesterEditor
 
                         AddDataToList(dialog, "Actions", "GetQuest", Actions.GetQuests);
                         AddDataToList(dialog, "Actions", "CompleteQuest", Actions.CompleteQuests);
+                        AddDataToList(dialog, "Actions", "GetKnowleges", Actions.GetKnowleges);
                         if (dialog.Element("Actions").Descendants().Any(item => item.Name == "CancelQuest"))
                         {
                             AddDataToList(dialog, "Actions", "CancelQuest", Actions.CancelQuests);
@@ -199,7 +202,9 @@ namespace StalkerOnlineQuesterEditor
                         Precondition.Perks = new List<int>();
                         if (dialog.Element("Precondition").Element("Perks") != null)
                             AddDataToList(dialog, "Precondition", "Perks", Precondition.Perks);
-
+                        Precondition.noPerks = new List<int>();
+                        if (dialog.Element("Precondition").Element("noPerks") != null)
+                            AddDataToList(dialog, "Precondition", "noPerks", Precondition.noPerks);
                         Precondition.KarmaPK = new List<int>();
 
                         AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
@@ -220,14 +225,15 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("Precondition").Element("pvpMode") != null)
                             Precondition.PVPMode = int.Parse(dialog.Element("Precondition").Element("pvpMode").Value);
 
-                        if (dialog.Element("Precondition").Element("pvpRank") != null)
+                        if (dialog.Element("Precondition").Element("groupBonus") != null)
                         {
-                            string[] value = dialog.Element("Precondition").Element("pvpRank").Value.Split('-');
-                            for(int i=0;i<2;i++)
+                            string[] value = dialog.Element("Precondition").Element("groupBonus").Value.Split(':');
+                            for (int i = 0; i < 2; i++)
                             {
-                                Precondition.PVPranks[i] = Convert.ToInt16(value[i]);
+                                Precondition.fracBonus[i] = Convert.ToInt16(value[i]);
                             }
                         }
+                        
 
                         if (dialog.Element("Precondition").Element("Transport") != null)
                         {
@@ -375,18 +381,20 @@ namespace StalkerOnlineQuesterEditor
                         nodeCoord.X = tempCoordinates[npc_name][DialogID].X;
                         nodeCoord.Y = tempCoordinates[npc_name][DialogID].Y;
                     }
-
-
+                    
                     if (dialog.Element("DebugData") != null)
                         DebugData = dialog.Element("DebugData").Value.ToString();
                     if (dialog.Element("isAutoNode") != null)
                     {
                         isAutoNode = dialog.Element("isAutoNode").Value.Trim().Equals("1");
                         if (dialog.Element("defaultNode") != null) defaultNode = dialog.Element("defaultNode").Value;
-
                     }
+                    int nextDialog = 0;
+                    if (dialog.Element("nextDialog") != null)
+                        int.TryParse(dialog.Element("nextDialog").Value.ToString(), out nextDialog);
                     if (!target[npc_name].Keys.Contains(DialogID))
-                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, CheckNodes, DialogID, 0, nodeCoord, DebugData, isAutoNode, defaultNode));
+                        target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, CheckNodes, DialogID, 0, 
+                            nodeCoord, DebugData, nextDialog, isAutoNode, defaultNode));
                 }
             }
 
@@ -559,6 +567,7 @@ namespace StalkerOnlineQuesterEditor
         public void SaveDialogs()
         {
             SaveNodeCoordinates("NodeCoordinates/", this.dialogs);
+            SaveNodeCoordinatesOther();
             SaveDialogsTexts(CSettings.GetDialogTextPath(CSettings.ORIGINAL_PATH), this.dialogs);
             SaveDialogsData(CSettings.GetDialogDataPath(), this.dialogs);
             SaveToDoTooltips();
@@ -739,6 +748,8 @@ namespace StalkerOnlineQuesterEditor
                             prec.Add(dialog.Precondition.Skills.getSkills());
                         if (dialog.Precondition.Perks.Any())
                             prec.Add(new XElement("Perks", Global.GetListAsString(dialog.Precondition.Perks)));
+                        if (dialog.Precondition.noPerks.Any())
+                            prec.Add(new XElement("noPerks", Global.GetListAsString(dialog.Precondition.noPerks)));
                         if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
                             prec.Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
                         if (dialog.Precondition.playerCombatLvl != "" && dialog.Precondition.playerCombatLvl != ":")
@@ -792,6 +803,10 @@ namespace StalkerOnlineQuesterEditor
 						if (dialog.Precondition.PVPMode >= 0)
                             prec.Add(new XElement("pvpMode", dialog.Precondition.PVPMode.ToString()));
 
+                        if (dialog.Precondition.fracBonus.Sum() > 0)
+                        {
+                            prec.Add(new XElement("groupBonus", dialog.Precondition.fracBonus[0].ToString() + ":" + dialog.Precondition.fracBonus[1].ToString()));
+                        }
                         if (dialog.Precondition.items.itemCategory != -1)
                         {
                             prec.Add(new XElement("items", new XElement("itemCategory", dialog.Precondition.items.itemCategory.ToString())));
@@ -839,6 +854,8 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Actions").Add(new XElement("CancelQuest", Global.GetListAsString(dialog.Actions.CancelQuests)));
                         if (dialog.Actions.FailQuests.Any())
                             element.Element("Actions").Add(new XElement("FailQuest", Global.GetListAsString(dialog.Actions.FailQuests)));
+                        if (dialog.Actions.GetKnowleges.Any())
+                            element.Element("Actions").Add(new XElement("GetKnowleges", Global.GetListAsString(dialog.Actions.GetKnowleges)));
                         if (dialog.Actions.actionCamera.Any())
                         {
                             element.Element("Actions").Add(new XElement("GoToCamera", dialog.Actions.actionCamera));
@@ -882,6 +899,9 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.defaultNode.Any()) element.Add(new XElement("defaultNode", dialog.defaultNode));
                     }
 
+                    if (dialog.nextDialog > 0)
+                        element.Add(new XElement("nextDialog", dialog.nextDialog));
+
                     resultDoc.Root.Add(element);
                 }
                 System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
@@ -898,6 +918,25 @@ namespace StalkerOnlineQuesterEditor
                 //resultDoc.Root.Add(npcElement);
             }
         }
+
+        private void SaveNodeCoordinatesOther()
+        {
+            XDocument resultDoc = new XDocument(new XElement("root"));
+            foreach (var key_id in otherCoords)
+            {
+                
+                     resultDoc.Root.Add(new XElement("Node",
+                        new XAttribute("ID", key_id.Key),
+                        new XElement("X", Convert.ToString(key_id.Value.X)),
+                        new XElement("Y", Convert.ToString(key_id.Value.Y))));
+            }
+            System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(".xml", settings))
+            {
+                resultDoc.Save("OtherNodes.xml");
+            }
+        }
+        
 
         private void SaveNodeCoordinates(string data_path, NPCDicts target)
         {
@@ -927,6 +966,19 @@ namespace StalkerOnlineQuesterEditor
                 if (File.Exists(path)) File.Delete(path);
             }
 
+        }
+
+        private void ParseNodeCoordinatesOther()
+        {
+            string filename = "OtherNodes.xml";
+            doc = XDocument.Load(filename);
+            foreach (XElement dialog in doc.Root.Elements())
+            {
+                string id = dialog.Attribute("ID").Value;
+                float x = float.Parse(dialog.Element("X").Value);
+                float y = float.Parse(dialog.Element("Y").Value);
+                otherCoords.Add(id, new NodeCoordinates(x, y, false, false));
+            }
         }
 
         private void ParseNodeCoordinates(string data_path)

@@ -258,6 +258,7 @@ namespace StalkerOnlineQuesterEditor
         public List<QuestItem> items;
         public List<int> Scenarios;
         public List<int> MassQuests;
+        public List<MapMark> mapMarks;
         public string TeleportTo;
         public bool dontTakeItems;
         public int MaxGroup;
@@ -286,6 +287,7 @@ namespace StalkerOnlineQuesterEditor
             copy.mobs = this.mobs;
             copy.dontTakeItems = this.dontTakeItems;
             copy.space = space;
+            copy.mapMarks = new List<MapMark>(this.mapMarks);
             return copy;
         }
 
@@ -293,7 +295,7 @@ namespace StalkerOnlineQuesterEditor
         {
             return items.Any() || Scenarios.Any() || MassQuests.Any() || dontTakeItems ||
                 MaxGroup != 0 || MinGroup != 0 || TeleportTo != "" || basePercent != 0 || 
-                MinMember != 0 || MaxMember != 0 || npc.Any() || mobs.Any() || space != 0;
+                MinMember != 0 || MaxMember != 0 || npc.Any() || mobs.Any() || space != 0 || mapMarks.Any();
 
         }
         public CQuestRules()
@@ -310,7 +312,7 @@ namespace StalkerOnlineQuesterEditor
             this.basePercent = new float();
             this.npc = new NPC();
             this.mobs = new Mob();
-           
+            this.mapMarks = new List<MapMark>();
         }
 
         public class Mob
@@ -546,7 +548,7 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<string, int> NPCReputation;
         //! Словарь изменений квеста в награду, выглядит так <id квеста>:<установленный статус>;
         public Dictionary<int, int> ChangeQuests;
-
+        public List<int> GetKnowleges = new List<int>();
         public List<string> blackBoxes = new List<string>();
         public bool randomQuest = false;
         public int KarmaPK;
@@ -570,6 +572,7 @@ namespace StalkerOnlineQuesterEditor
             copy.Effects = new List<CEffect>(this.Effects);
             copy.RewardWindow = this.RewardWindow;
             copy.blackBoxes = new List<string>(this.blackBoxes);
+            copy.GetKnowleges = new List<int>(GetKnowleges);
             copy.teleportTo = teleportTo;
             return copy;
         }
@@ -592,7 +595,7 @@ namespace StalkerOnlineQuesterEditor
         {
             return hasExperience() || items.Any() || Credits != 0 || ReputationNotEmpty() || teleportTo.Any() || OTvalue > 0 ||
                 KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any() || NPCReputation.Any() || blackBoxes.Any() ||
-                Reputation2NotEmpty();
+                Reputation2NotEmpty() || GetKnowleges.Any();
         }
 
         private bool hasExperience()
