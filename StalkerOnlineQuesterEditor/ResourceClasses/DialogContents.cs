@@ -187,9 +187,6 @@ namespace StalkerOnlineQuesterEditor
         public DialogPreconditionTransport transport;
         public string clanOptions;
         public string PlayerLevel;
-        public string playerCombatLvl;
-        public string playerSurvLvl;
-        public string playerOtherLvl;
         public ListDialogSkills Skills = new ListDialogSkills();
         public List<int> Perks = new List<int>();
         public List<int> noPerks = new List<int>();
@@ -208,7 +205,7 @@ namespace StalkerOnlineQuesterEditor
         public int PVPMode = -1;
         public DialogPreconditionItems items = new DialogPreconditionItems();
         public DialogPreconditionItems itemsNone = new DialogPreconditionItems();
-        public int[] fracBonus = new int[2];
+        public int[] fracBonus = new int[3];
 
 
         public object Clone()
@@ -223,9 +220,6 @@ namespace StalkerOnlineQuesterEditor
             copy.Skills = this.Skills;
             copy.KarmaPK = this.KarmaPK;
             copy.PlayerLevel = this.PlayerLevel;
-            copy.playerCombatLvl = this.playerCombatLvl;
-            copy.playerSurvLvl = this.playerSurvLvl;
-            copy.playerOtherLvl = this.playerOtherLvl;
             copy.NecessaryEffects = this.NecessaryEffects;
             copy.MustNoEffects = this.MustNoEffects;
             copy.forDev = this.forDev;
@@ -253,9 +247,6 @@ namespace StalkerOnlineQuesterEditor
             this.Perks = new List<int>();
             this.KarmaPK = new List<int>();
             this.PlayerLevel = "";
-            this.playerCombatLvl = "";
-            this.playerSurvLvl = "";
-            this.playerOtherLvl = "";
             this.NecessaryEffects = new List<DialogEffect>();
             this.MustNoEffects = new List<DialogEffect>();
             this.forDev = false;
@@ -268,17 +259,16 @@ namespace StalkerOnlineQuesterEditor
 
         public bool Exists()
         {
-            return this.Any() || KarmaPK.Any() || PlayerLevel != "" || playerCombatLvl != "" ||
-                playerSurvLvl != "" || playerOtherLvl != "" || this.clanOptions != "" || Skills.Any() || Perks.Any() || noPerks.Any() ||
+            return this.Any() || KarmaPK.Any() || PlayerLevel != "" || this.clanOptions != "" || Skills.Any() || Perks.Any() || noPerks.Any() ||
                 forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || fracBonus[1] > 0;
         }
 
         public bool Any()
         {
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
-                PlayerLevel != "" || playerCombatLvl != "" || playerSurvLvl != "" || playerOtherLvl != "" || Skills.Any() || items.Any() ||
-                itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || RadioAvalible.None != radioAvailable ||
-                Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any() || noPerks.Any() || knowledges.Any() || fracBonus[1] > 0;
+                PlayerLevel != "" || Skills.Any() || items.Any() || itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || 
+                RadioAvalible.None != radioAvailable || Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any() ||
+                noPerks.Any() || knowledges.Any() || fracBonus[1] > 0;
         }
 
         public string GetAsString()

@@ -693,7 +693,7 @@
     <value>60, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>NPCName:</value>
+    <value>Фракция2:</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value />
@@ -720,7 +720,7 @@
     <value>469, 95</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Личная репутация</value>
+    <value>Репутация2</value>
   </data>
   <data name="groupBox1.ToolTip" xml:space="preserve">
     <value />

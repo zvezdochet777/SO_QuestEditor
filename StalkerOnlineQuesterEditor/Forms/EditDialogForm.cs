@@ -165,8 +165,8 @@ namespace StalkerOnlineQuesterEditor
                     string key = parent.tpConst.getName(curDialog.Actions.Data);
                     teleportComboBox.SelectedItem = key;
                 }
-                if (ActionsComboBox.Text == "Торговля" || ActionsComboBox.Text == "Бартер (обмен)" || ActionsComboBox.Text == "Подземелье. активировать" ||
-                    ActionsComboBox.Text == "Вертолёт")
+                List<string> list = new List<string>() { "Перейти в точку", "Бартер (обмен)", "Торговля", "Подземелье. активировать", "Вертолёт"};
+                if (list.Contains(ActionsComboBox.Text))
                 {
                     tbAvatarGoTo.Text = curDialog.Actions.Data;
                 }
@@ -180,8 +180,6 @@ namespace StalkerOnlineQuesterEditor
                     string key = parent.rpConst.getName(curDialog.Actions.Data);
                     commandsComboBox.SelectedItem = key;
                 }
-                if (ActionsComboBox.Text == "Перейти в точку")
-                    tbAvatarGoTo.Text = curDialog.Actions.Data;
                 if (ActionsComboBox.Text == "Телепорт в подземелье")
                 {
                     string[] data = curDialog.Actions.Data.Split();
@@ -190,8 +188,14 @@ namespace StalkerOnlineQuesterEditor
                     commandsComboBox.SelectedItem = parent.dungeonConst.getNameByID(dung_id);
                     nudDungeonEnterKey.Value = enter_key;
                 }
-                
-                
+                if (ActionsComboBox.Text == "Запустить станок")
+                {
+                    string key = parent.workbenchTypes.getName(curDialog.Actions.Data);
+                    commandsComboBox.SelectedItem = key;
+                }
+
+
+
                 if (curDialog.Actions.ToDialog != 0)
                 {
                     ActionsComboBox.SelectedValue = 100;
@@ -499,10 +503,12 @@ namespace StalkerOnlineQuesterEditor
 
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
-            commandsComboBox.Visible = (SelectedValue == 19) || (SelectedValue == 4) || (SelectedValue == 6) || (SelectedValue == 28); ;
-            tbAvatarGoTo.Visible = (SelectedValue == 20) || (SelectedValue == 1) || (SelectedValue == 7) || (SelectedValue == 30) || (SelectedValue == 31);
 
-            
+            List<int> list = new List<int>() { 19, 4, 6, 28, 32 };
+            commandsComboBox.Visible = list.Contains(SelectedValue);
+    
+            list = new List<int>() { 20, 1, 7, 30, 31};
+            tbAvatarGoTo.Visible = list.Contains(SelectedValue);
 
             if (SelectedValue == 19)
             {
@@ -525,7 +531,12 @@ namespace StalkerOnlineQuesterEditor
                 foreach (string key in parent.dungeonConst.getAllSpaceNames())
                     commandsComboBox.Items.Add(key);
             }
-
+            if (SelectedValue == 32)
+            {
+                commandsComboBox.Items.Clear();
+                foreach (string key in parent.workbenchTypes.getKeys())
+                    commandsComboBox.Items.Add(key);
+            }
             switch (SelectedValue)
             { 
                 case 0:
@@ -631,7 +642,7 @@ namespace StalkerOnlineQuesterEditor
                 if (bonusID > 0 && cbFracGroup.SelectedItem != null)
                 {
                     int fracID = parent.fractions2.getFractionIDByDescr(cbFracGroup.SelectedItem.ToString());
-                    precondition.fracBonus = new int[2] { fracID, bonusID };
+                    precondition.fracBonus = new int[3] { fracID, bonusID, Convert.ToInt32(!cbFracNoMusthave.Checked) };
                 }
             }
 
@@ -651,14 +662,16 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if ((actions.Event.Display == "Починка") || (actions.Event.Display == "Комплексная починка"))
                     actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
-                if (actions.Event.Display == "Перейти в точку" || actions.Event.Display == "Бартер (обмен)" || actions.Event.Display == "Торговля" ||
-                    actions.Event.Display == "Подземелье. активировать" || actions.Event.Display == "Вертолёт")
+                List<string> list = new List<string>() { "Перейти в точку", "Бартер (обмен)", "Торговля", "Подземелье. активировать", "Вертолёт" };
+                if (list.Contains(actions.Event.Display))
                     actions.Data = tbAvatarGoTo.Text;
                 if ((actions.Event.Display == "Телепорт в подземелье"))
                 {
                     actions.Data = parent.dungeonConst.getIDByName(commandsComboBox.SelectedItem.ToString()).ToString() +
                         " " + nudDungeonEnterKey.Value.ToString();
                 }
+                if (actions.Event.Display == ("Запустить станок"))
+                    actions.Data = parent.workbenchTypes.getTtID(commandsComboBox.SelectedItem.ToString());
                 if (cbGetQuests.Checked)
                     foreach (string quest in tbGetQuests.Text.Split(','))
                         actions.GetQuests.Add(int.Parse(quest));
@@ -934,9 +947,6 @@ namespace StalkerOnlineQuesterEditor
             if (checkLevel())
             {
                 precondition.PlayerLevel = mtbPlayerLevelMin.Text + ":" + mtbPlayerLevelMax.Text;
-                precondition.playerCombatLvl = tbCombatLvlMin.Text + ":" + tbCombatLvlMax.Text;
-                precondition.playerSurvLvl = tbSurvLvlMin.Text + ":" + tbSurvLvlMax.Text;
-                precondition.playerOtherLvl = tbOtherLvlMin.Text + ":" + tbOtherLvlMax.Text;
             }
             precondition.Reputation = editPrecondition.Reputation;
             precondition.Reputation2 = editPrecondition.Reputation2;
@@ -1196,7 +1206,7 @@ namespace StalkerOnlineQuesterEditor
 
             int fracID = editPrecondition.fracBonus[0];
             int bonusID = editPrecondition.fracBonus[1];
-
+            cbFracNoMusthave.Checked = !Convert.ToBoolean(editPrecondition.fracBonus[2]);
             cbFracGroup.SelectedItem = parent.fractions2.getFractionDesctByID(fracID);
             cbFracBonus.SelectedItem = CFracBonuses.getNameByID(bonusID);
         }
@@ -1513,39 +1523,12 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else mtbPlayerLevelMin.Text = curDialog.Precondition.PlayerLevel.ToString();
             }
-
-            
-            tmp = curDialog.Precondition.playerCombatLvl.Split(':');
-            if (tmp.Any() && tmp.Length > 1)
-            {
-                tbCombatLvlMin.Text = tmp[0];
-                tbCombatLvlMax.Text = tmp[1];
-            }
-            tmp = curDialog.Precondition.playerSurvLvl.Split(':');
-            if (tmp.Any() && tmp.Length > 1)
-            {              
-                tbSurvLvlMin.Text = tmp[0];
-                tbSurvLvlMax.Text = tmp[1];
-            }
-            tmp = curDialog.Precondition.playerOtherLvl.Split(':');
-            if (tmp.Any() && tmp.Length > 1)
-            {               
-                tbOtherLvlMin.Text = tmp[0];
-                tbOtherLvlMax.Text = tmp[1];
-            }
             this.checkLevelIndicates();
 
         }
         private bool checkLevel()
         {
-            if ( 
-                mtbPlayerLevelMin.Text.Any() || mtbPlayerLevelMax.Text.Any() ||
-                tbCombatLvlMin.Text.Any() || tbCombatLvlMax.Text.Any() ||
-                tbSurvLvlMin.Text.Any() || tbSurvLvlMax.Text.Any() ||
-                tbOtherLvlMin.Text.Any() || tbOtherLvlMax.Text.Any()
-               )
-                return true;
-            else return false;
+            return mtbPlayerLevelMin.Text.Any() || mtbPlayerLevelMax.Text.Any();
         }
 
         private void checkLevelIndicates()

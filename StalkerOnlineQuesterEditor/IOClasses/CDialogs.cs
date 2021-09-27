@@ -39,7 +39,7 @@ namespace StalkerOnlineQuesterEditor
 
         public List<string> deleted_NPC = new List<string>();
         Dictionary<int, string> todoTooltips = new Dictionary<int, string>();
-
+        List<FileStream> fs_list = new List<FileStream>();
 
 
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
@@ -57,8 +57,8 @@ namespace StalkerOnlineQuesterEditor
             foreach (var locale in CSettings.getListLocales())
             {
                 if (!locales.Keys.Contains(locale))
-                    locales.Add(locale, new NPCDicts());
-                ParseDialogsData(CSettings.GetDialogDataPath(), this.locales[locale]);
+                    locales.Add(locale, new NPCDicts(this.dialogs));
+                //ParseDialogsData(CSettings.GetDialogDataPath(), this.locales[locale]);
                 ParseDialogsTexts(CSettings.GetDialogTextPath(locale), this.locales[locale]);
             }
         }
@@ -73,6 +73,7 @@ namespace StalkerOnlineQuesterEditor
                     return;
                 List<int> tests;
                 doc = XDocument.Load(dialogFile);
+                fs_list.Add(new FileStream(dialogFile, FileMode.Open, FileAccess.Read, FileShare.None));
                 dialogErrors = new Dictionary<int, List<string>>();
                 string npc_name = Path.GetFileNameWithoutExtension(dialogFile);
                 target.Add(npc_name, new Dictionary<int, CDialog>());
@@ -228,7 +229,7 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("Precondition").Element("groupBonus") != null)
                         {
                             string[] value = dialog.Element("Precondition").Element("groupBonus").Value.Split(':');
-                            for (int i = 0; i < 2; i++)
+                            for (int i = 0; i < 3; i++)
                             {
                                 Precondition.fracBonus[i] = Convert.ToInt16(value[i]);
                             }
@@ -276,18 +277,6 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("Precondition").Element("PlayerLevel") != null)
                         {
                             Precondition.PlayerLevel = dialog.Element("Precondition").Element("PlayerLevel").Value;
-                        }
-                        if (dialog.Element("Precondition").Element("playerCombatLvl") != null)
-                        {
-                            Precondition.playerCombatLvl = dialog.Element("Precondition").Element("playerCombatLvl").Value;
-                        }
-                        if (dialog.Element("Precondition").Element("playerSurvLvl") != null)
-                        {
-                            Precondition.playerSurvLvl = dialog.Element("Precondition").Element("playerSurvLvl").Value;
-                        }
-                        if (dialog.Element("Precondition").Element("playerOtherLvl") != null)
-                        {
-                            Precondition.playerOtherLvl = dialog.Element("Precondition").Element("playerOtherLvl").Value;
                         }
                         if (dialog.Element("Precondition").Element("Reputation") != null)
                         {
@@ -419,7 +408,7 @@ namespace StalkerOnlineQuesterEditor
                 return;
 
             doc = XDocument.Load(todoFilePath);
-
+            fs_list.Add(new FileStream(todoFilePath, FileMode.Open, FileAccess.Read, FileShare.None));
             foreach (XElement dialog in doc.Root.Elements("Dialog"))
             {
                 int DialogID = int.Parse(dialog.Element("ID").Value);
@@ -518,6 +507,7 @@ namespace StalkerOnlineQuesterEditor
                 try
                 {
                     doc = XDocument.Load(dialogFile);
+                    fs_list.Add(new FileStream(dialogFile, FileMode.Open, FileAccess.Read, FileShare.None));
                 }
                 catch (Exception e)
                 {
@@ -752,12 +742,6 @@ namespace StalkerOnlineQuesterEditor
                             prec.Add(new XElement("noPerks", Global.GetListAsString(dialog.Precondition.noPerks)));
                         if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
                             prec.Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
-                        if (dialog.Precondition.playerCombatLvl != "" && dialog.Precondition.playerCombatLvl != ":")
-                            prec.Add(new XElement("playerCombatLvl", dialog.Precondition.playerCombatLvl));
-                        if (dialog.Precondition.playerSurvLvl != "" && dialog.Precondition.playerSurvLvl != ":")
-                            prec.Add(new XElement("playerSurvLvl", dialog.Precondition.playerSurvLvl));
-                        if (dialog.Precondition.playerOtherLvl != "" && dialog.Precondition.playerOtherLvl != ":")
-                            prec.Add(new XElement("playerOtherLvl", dialog.Precondition.playerOtherLvl));
                         if (dialog.Precondition.getReputation() != "")
                             prec.Add(new XElement("Reputation", dialog.Precondition.getReputation()));
                         if (dialog.Precondition.getReputation2() != "")
@@ -805,7 +789,7 @@ namespace StalkerOnlineQuesterEditor
 
                         if (dialog.Precondition.fracBonus.Sum() > 0)
                         {
-                            prec.Add(new XElement("groupBonus", dialog.Precondition.fracBonus[0].ToString() + ":" + dialog.Precondition.fracBonus[1].ToString()));
+                            prec.Add(new XElement("groupBonus", string.Join(":", dialog.Precondition.fracBonus)));
                         }
                         if (dialog.Precondition.items.itemCategory != -1)
                         {
@@ -972,6 +956,7 @@ namespace StalkerOnlineQuesterEditor
         {
             string filename = "OtherNodes.xml";
             doc = XDocument.Load(filename);
+            fs_list.Add(new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.None));
             foreach (XElement dialog in doc.Root.Elements())
             {
                 string id = dialog.Attribute("ID").Value;

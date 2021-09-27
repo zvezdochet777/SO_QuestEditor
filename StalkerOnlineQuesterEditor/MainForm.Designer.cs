@@ -104,9 +104,14 @@ namespace StalkerOnlineQuesterEditor
             this.colCoordinates = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.bFindKnowledgeQuest = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbRepLocations = new System.Windows.Forms.ComboBox();
+            this.cbOnRepLocation = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbNPCList = new System.Windows.Forms.ComboBox();
+            this.cbRep2List = new System.Windows.Forms.ComboBox();
             this.bFindNPCReputation = new System.Windows.Forms.Button();
             this.gbNPCcheck = new System.Windows.Forms.GroupBox();
             this.cbOnlyOnLocation = new System.Windows.Forms.CheckBox();
@@ -292,6 +297,7 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
+            this.tbKnowledgeFind = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -320,6 +326,7 @@ namespace StalkerOnlineQuesterEditor
             this.tabReview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReview)).BeginInit();
             this.panelReviewButtons.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbNPCcheck.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuests)).BeginInit();
@@ -933,31 +940,67 @@ namespace StalkerOnlineQuesterEditor
             // panelReviewButtons
             // 
             this.panelReviewButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelReviewButtons.Controls.Add(this.groupBox8);
             this.panelReviewButtons.Controls.Add(this.groupBox1);
             this.panelReviewButtons.Controls.Add(this.gbNPCcheck);
             this.panelReviewButtons.Controls.Add(this.gbQuestCheck);
             resources.ApplyResources(this.panelReviewButtons, "panelReviewButtons");
             this.panelReviewButtons.Name = "panelReviewButtons";
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.tbKnowledgeFind);
+            this.groupBox8.Controls.Add(this.label21);
+            this.groupBox8.Controls.Add(this.bFindKnowledgeQuest);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
+            // bFindKnowledgeQuest
+            // 
+            resources.ApplyResources(this.bFindKnowledgeQuest, "bFindKnowledgeQuest");
+            this.bFindKnowledgeQuest.Name = "bFindKnowledgeQuest";
+            this.bFindKnowledgeQuest.UseVisualStyleBackColor = true;
+            this.bFindKnowledgeQuest.Click += new System.EventHandler(this.bFindKnowledgeQuest_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbRepLocations);
+            this.groupBox1.Controls.Add(this.cbOnRepLocation);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cbNPCList);
+            this.groupBox1.Controls.Add(this.cbRep2List);
             this.groupBox1.Controls.Add(this.bFindNPCReputation);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // cbRepLocations
+            // 
+            this.cbRepLocations.FormattingEnabled = true;
+            resources.ApplyResources(this.cbRepLocations, "cbRepLocations");
+            this.cbRepLocations.Name = "cbRepLocations";
+            // 
+            // cbOnRepLocation
+            // 
+            resources.ApplyResources(this.cbOnRepLocation, "cbOnRepLocation");
+            this.cbOnRepLocation.Name = "cbOnRepLocation";
+            this.cbOnRepLocation.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // cbNPCList
+            // cbRep2List
             // 
-            this.cbNPCList.FormattingEnabled = true;
-            resources.ApplyResources(this.cbNPCList, "cbNPCList");
-            this.cbNPCList.Name = "cbNPCList";
+            this.cbRep2List.FormattingEnabled = true;
+            resources.ApplyResources(this.cbRep2List, "cbRep2List");
+            this.cbRep2List.Name = "cbRep2List";
             // 
             // bFindNPCReputation
             // 
@@ -2307,6 +2350,11 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             // 
+            // tbKnowledgeFind
+            // 
+            resources.ApplyResources(this.tbKnowledgeFind, "tbKnowledgeFind");
+            this.tbKnowledgeFind.Name = "tbKnowledgeFind";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -2352,7 +2400,10 @@ namespace StalkerOnlineQuesterEditor
             this.tabReview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReview)).EndInit();
             this.panelReviewButtons.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.gbNPCcheck.ResumeLayout(false);
             this.gbNPCcheck.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuests)).EndInit();
@@ -2536,7 +2587,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbNPCList;
+        private System.Windows.Forms.ComboBox cbRep2List;
         private System.Windows.Forms.Button bFindNPCReputation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNPCName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDialogsNum;
@@ -2664,6 +2715,12 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ComboBox cbQuestLocations;
         private System.Windows.Forms.CheckBox cbOnQuestLocation;
         private System.Windows.Forms.ToolStripMenuItem поискДиалоговПоЗнаниюToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button bFindKnowledgeQuest;
+        private System.Windows.Forms.ComboBox cbRepLocations;
+        private System.Windows.Forms.CheckBox cbOnRepLocation;
+        private System.Windows.Forms.TextBox tbKnowledgeFind;
     }
 }
 

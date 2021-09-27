@@ -57,6 +57,15 @@ namespace StalkerOnlineQuesterEditor
             return ret;
         }
 
+        public string getSpaceNameByID(int id)
+        {
+            foreach (CSpaceDescription key in this.spaces)
+            {
+                if (key.id == id) return key.dir;
+            }
+            return null;
+        }
+
         public string getSpaceByID(int id)
         {
             foreach (CSpaceDescription key in this.spaces)

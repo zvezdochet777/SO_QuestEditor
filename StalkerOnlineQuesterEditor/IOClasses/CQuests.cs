@@ -44,6 +44,7 @@ namespace StalkerOnlineQuesterEditor
 
         public int bufferTop = 0;
         public bool CutQuests = false;
+        List<FileStream> fs_list = new List<FileStream>();
 
         //! Конструктор, заполняет словарь quest, парсит файлы
         public CQuests(MainForm form)
@@ -58,8 +59,8 @@ namespace StalkerOnlineQuesterEditor
             foreach (var locale in CSettings.getListLocales())
             {
                 if (!locales.Keys.Contains(locale))
-                    locales.Add(locale, new NPCQuestDict());
-                ParseQuestsData(CSettings.GetQuestDataPath(), this.locales[locale]);
+                    locales.Add(locale, new NPCQuestDict(quest));
+                //ParseQuestsData(CSettings.GetQuestDataPath(), this.locales[locale]);
                 ParseQuestsTexts(CSettings.GetQuestLocaleTextPath(), this.locales[locale]);
             }
         }
@@ -107,6 +108,7 @@ namespace StalkerOnlineQuesterEditor
         void ParseQuestsData(string sPath, NPCQuestDict dict_target)
         {
             doc = XDocument.Load(sPath);
+            fs_list.Add(new FileStream(sPath, FileMode.Open, FileAccess.Read, FileShare.None));
 
             foreach (XElement item in doc.Root.Elements())
             {
@@ -461,6 +463,7 @@ namespace StalkerOnlineQuesterEditor
             try
             {
                 doc = XDocument.Load(sPath);
+                fs_list.Add(new FileStream(sPath, FileMode.Open, FileAccess.Read, FileShare.None));
             }
             catch(Exception e)
             {
@@ -507,7 +510,15 @@ namespace StalkerOnlineQuesterEditor
                        
                         if (qitem.Element("activation") != null) activation = qitem.Element("activation").Value;
                         if (qitem.Element("content") != null) content = qitem.Element("content").Value;
-                        target[QuestID].QuestInformation.Items.Add(itemID, new QuestItemInfo(title, description, activation, content));
+                        if (target[QuestID].QuestInformation.Items.ContainsKey(itemID))
+                        {
+                            target[QuestID].QuestInformation.Items[itemID].title = title;
+                            target[QuestID].QuestInformation.Items[itemID].description = description;
+                            target[QuestID].QuestInformation.Items[itemID].activation = activation;
+                            target[QuestID].QuestInformation.Items[itemID].content = content;
+                        }
+                        else
+                            target[QuestID].QuestInformation.Items.Add(itemID, new QuestItemInfo(title, description, activation, content));
                     }
             }
         }

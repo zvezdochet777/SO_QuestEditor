@@ -88,6 +88,7 @@ namespace StalkerOnlineQuesterEditor
         public RepairConstants rpConst;
         public AvatarActions avAmin;
         public NPCActions npcActions;
+        public WorkbenchTypes workbenchTypes;
         public ListSounds listSouds;
         public NPCItems npcItems;
 
@@ -135,6 +136,7 @@ namespace StalkerOnlineQuesterEditor
             rpConst = new RepairConstants();
             avAmin = new AvatarActions();
             npcActions = new NPCActions();
+            workbenchTypes = new WorkbenchTypes();
             npcItems = new NPCItems();
             listSouds = new ListSounds();
             npcFilters = ManagerNPC.getSpaces();
@@ -190,7 +192,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (string name in dialogs.getListOfNPC())
                 if (!npcConst.NPCs.Keys.Contains(name))
                     npcConst.NPCs.Add(name, new CNPCDescription(name));
-            fillRewardNPCReputationVox();
+            fillRewardReputation2Box();
             this.mobConst = new CMobConstants();
             this.zoneConst = new CZoneConstants();
             this.billboardQuests = new BillboardQuests();
@@ -2178,10 +2180,14 @@ namespace StalkerOnlineQuesterEditor
         }
 
 
-        void fillRewardNPCReputationVox()
+        void fillRewardReputation2Box()
         {
-            foreach (string npc_name in this.npcConst.NPCs.Keys)
-                cbNPCList.Items.Add(npc_name);
+            foreach (var i in fractions2.getListOfFractions())
+                cbRep2List.Items.Add(i.Value);
+
+            cbRepLocations.Sorted = true;
+            cbRepLocations.Items.Clear();
+            cbRepLocations.Items.AddRange(this.spacesConst.getSpacesNames().ToArray());
         }
         //! Устанавливает надписи в таблице вкладки Проверка для поиска нужны NPC
         void setNPCCheckEnvironment()
@@ -2212,11 +2218,22 @@ namespace StalkerOnlineQuesterEditor
         {
             dgvReview.Columns[0].HeaderText = "Квест";
             dgvReview.Columns[1].HeaderText = "Название";
-            dgvReview.Columns[2].HeaderText = "NPC_name";
-            dgvReview.Columns[3].HeaderText = "Репутация";
+            dgvReview.Columns[2].HeaderText = "Фракция2";
+            dgvReview.Columns[3].HeaderText = "Количество репутации";
             dgvReview.Columns[4].Visible = false;
             dgvReview.Columns[5].Visible = false;
         }
+
+        void setKnowledgeCheckEnvironment()
+        {
+            dgvReview.Columns[0].HeaderText = "Квест";
+            dgvReview.Columns[1].HeaderText = "Название";
+            dgvReview.Columns[2].HeaderText = "Знание";
+            dgvReview.Columns[3].Visible = false;
+            dgvReview.Columns[4].Visible = false;
+            dgvReview.Columns[5].Visible = false;
+        }
+
 
 
         //! Нажатие "Найти NPC" на вкладке Проверка - поиск NPC с условием
@@ -3462,16 +3479,23 @@ namespace StalkerOnlineQuesterEditor
         {
             setNPCReputationCheckEnvironment();
             dgvReview.Rows.Clear();
-            string NPC_name = cbNPCList.Text;
+            string frac2_name = cbRep2List.Text;
+            int frac2_id = fractions2.getFractionIDByDescr(frac2_name);
             
             foreach (CQuest quest in quests.quest.Values)
             {
                 int questID = quest.QuestID;
-                foreach (KeyValuePair<string, int> keyValue in quest.Reward.NPCReputation)
+                if (cbOnRepLocation.Checked && cbRepLocations.SelectedItem != null)
                 {
-                    if (!NPC_name.Any()||NPC_name == keyValue.Key)
+                    int selected_space_id = Convert.ToInt32(cbRepLocations.SelectedItem.ToString().Split()[0]);
+                    if (!Convert.ToBoolean(quest.QuestRules.space & (1 << selected_space_id)))
+                        continue;
+                }
+                foreach (KeyValuePair<int, int> keyValue in quest.Reward.Reputation2)
+                {
+                    if (frac2_id > 0 && frac2_id == keyValue.Key)
                     {
-                        object[] row = { questID, quest.QuestInformation.Title, keyValue.Key, keyValue.Value };
+                        object[] row = { questID, quest.QuestInformation.Title, fractions2.getFractionDesctByID(keyValue.Key), keyValue.Value };
                         dgvReview.Rows.Add(row);
                     }
                 }
@@ -3688,6 +3712,32 @@ namespace StalkerOnlineQuesterEditor
         {
             QuestDialogFinderForm form = new QuestDialogFinderForm(this, 1);
             form.Show();
+        }
+
+        private void bFindKnowledgeQuest_Click(object sender, EventArgs e)
+        {
+            setKnowledgeCheckEnvironment();
+            dgvReview.Rows.Clear();
+            int know_id = 0;
+            if (!int.TryParse(tbKnowledgeFind.Text, out know_id))
+            {
+                MessageBox.Show("Ошибка, неверно задано ID знания");
+                return;
+            };
+
+            foreach (CQuest quest in quests.quest.Values)
+            {
+                int questID = quest.QuestID;
+                foreach (var keyValue in quest.Reward.GetKnowleges)
+                {
+                    if (know_id == keyValue)
+                    {
+                        object[] row = { questID, quest.QuestInformation.Title, keyValue };
+                        dgvReview.Rows.Add(row);
+                    }
+                }
+            }
+            statusLabel.Text = "Выведено: " + dgvReview.RowCount.ToString();
         }
     }
 }

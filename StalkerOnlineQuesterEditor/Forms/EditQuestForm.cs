@@ -1600,20 +1600,22 @@ namespace StalkerOnlineQuesterEditor
                 if (row.IsNewRow) continue;
                 string s_coord = row.Cells[0].FormattedValue.ToString().Replace(',', ' ');
                 string s_radius = row.Cells[1].FormattedValue.ToString();
-                string space = parent.spacesConst.getSpaceNameByLocal(row.Cells[2].FormattedValue.ToString().Split(' ')[1]);
+                string[] tmp = row.Cells[2].FormattedValue.ToString().Split(' ');
+                string space = parent.spacesConst.getSpaceNameByID(int.Parse(tmp[0]));
                 float radius = 0;
-                try
+                //try
                 {
                     radius = Convert.ToSingle(s_radius);
                     foreach(var i in s_coord.Split(' '))
                     {
                         if (i.Any())
-                            Convert.ToSingle(i);
+                            float.Parse(i.Trim(), System.Globalization.CultureInfo.InvariantCulture);
+                            //Convert.ToDouble(i);
                     }
                 }
-                catch
+                //catch
                 {
-                    return null;
+                //    return null;
                 }
                 result.Add(new MapMark(s_coord, radius, space));
             }

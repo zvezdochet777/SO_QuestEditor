@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelCreateMob = new System.Windows.Forms.Panel();
             this.cbMobInvul = new System.Windows.Forms.CheckBox();
             this.cbMobLevel = new System.Windows.Forms.ComboBox();
@@ -150,6 +151,8 @@
             this.lNameObject = new System.Windows.Forms.Label();
             this.resultComboBox = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.dataGridMapMark = new System.Windows.Forms.DataGridView();
+            this.label37 = new System.Windows.Forms.Label();
             this.cbTakeItems = new System.Windows.Forms.CheckBox();
             this.nBaseToCapturePercent = new System.Windows.Forms.NumericUpDown();
             this.massQuestsTextBox = new System.Windows.Forms.TextBox();
@@ -226,8 +229,6 @@
             this.cbQuestLink = new System.Windows.Forms.ComboBox();
             this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.dataGridMapMark = new System.Windows.Forms.DataGridView();
             this.coords = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radius = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Space = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -249,13 +250,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.udState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).BeginInit();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMapMark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
             this.tabConditions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridMapMark)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCreateMob
@@ -1610,6 +1611,28 @@
             this.tabPage5.Text = "Правила";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // dataGridMapMark
+            // 
+            this.dataGridMapMark.AllowUserToOrderColumns = true;
+            this.dataGridMapMark.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridMapMark.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.coords,
+            this.radius,
+            this.Space});
+            this.dataGridMapMark.Location = new System.Drawing.Point(12, 224);
+            this.dataGridMapMark.Name = "dataGridMapMark";
+            this.dataGridMapMark.Size = new System.Drawing.Size(498, 150);
+            this.dataGridMapMark.TabIndex = 59;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(9, 207);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(89, 13);
+            this.label37.TabIndex = 58;
+            this.label37.Text = "Метки на карте:";
+            // 
             // cbTakeItems
             // 
             this.cbTakeItems.AutoSize = true;
@@ -2359,28 +2382,6 @@
             this.label34.TabIndex = 61;
             this.label34.Text = "Бонус группы:";
             // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(9, 207);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(89, 13);
-            this.label37.TabIndex = 58;
-            this.label37.Text = "Метки на карте:";
-            // 
-            // dataGridMapMark
-            // 
-            this.dataGridMapMark.AllowUserToOrderColumns = true;
-            this.dataGridMapMark.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridMapMark.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.coords,
-            this.radius,
-            this.Space});
-            this.dataGridMapMark.Location = new System.Drawing.Point(12, 224);
-            this.dataGridMapMark.Name = "dataGridMapMark";
-            this.dataGridMapMark.Size = new System.Drawing.Size(498, 150);
-            this.dataGridMapMark.TabIndex = 59;
-            // 
             // coords
             // 
             this.coords.HeaderText = "кординаты";
@@ -2389,6 +2390,8 @@
             // 
             // radius
             // 
+            dataGridViewCellStyle1.NullValue = "0";
+            this.radius.DefaultCellStyle = dataGridViewCellStyle1;
             this.radius.HeaderText = "радиус";
             this.radius.Name = "radius";
             // 
@@ -2458,6 +2461,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMapMark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
@@ -2467,7 +2471,6 @@
             this.tabConditions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridMapMark)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
