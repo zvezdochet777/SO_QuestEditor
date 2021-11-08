@@ -49,6 +49,8 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_COOK_ITEM = 33; //Событие создать предмет при помощи готовки в котле
         public static int TYPE_COOK_ITEM_AUTO = 34; //Событие создать предмет при помощи  готовки в котле АВТО
 
+        public static int TYPE_ANOMALY = 35;
+        public static int TYPE_ANOMALY_AUTO = 36;
 
         //Эти квесты особые, у них есть доп условия
         public static int TYPE_PVP_MAP_KILL = 40; //Убить во время пвп матча
@@ -374,5 +376,52 @@ namespace StalkerOnlineQuesterEditor
             }
         }
         
+    }
+
+    public static class AnomalyTypes
+    {
+
+        public static void parse()
+        {
+            string JSON_PATH = "";
+
+            JsonTextReader reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
+            bool inNPC = false;
+            bool is_nature = false;
+            var name = "";
+            int value = -1;
+            Dictionary<string, int> npc_natures = new Dictionary<string, int>();
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    if (!inNPC)
+                    {
+                        name = reader.Value.ToString();
+                        inNPC = true;
+                    }
+                    else if ("nature" == reader.Value.ToString())
+                        is_nature = true;
+                }
+                else if (reader.TokenType == JsonToken.EndObject)
+                {
+
+                    if (inNPC) inNPC = false;
+                    if (!name.Any()) continue;
+                    if (value < 0)
+                        value = npc_natures["!!default"];
+                    npc_natures.Add(name, value);
+                    name = "";
+
+                }
+                else if (reader.TokenType == JsonToken.Integer)
+                    if (is_nature)
+                    {
+                        is_nature = false;
+                        value = Convert.ToInt32(reader.Value);
+                    }
+            }
+            reader.Close();
+        }
     }
 }

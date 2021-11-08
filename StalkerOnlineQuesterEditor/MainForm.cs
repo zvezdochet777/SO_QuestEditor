@@ -467,7 +467,7 @@ namespace StalkerOnlineQuesterEditor
         void fillFractionBox()
         {
             fractionBox.Items.Clear();
-            foreach (KeyValuePair<int, string> fract in this.fractions.getListOfFractions())
+            foreach (KeyValuePair<int, string> fract in this.fractions2.getListOfFractions())
             {
                 fractionBox.Items.Add(fract.Key.ToString() + " " + fract.Value);
             }
@@ -555,6 +555,7 @@ namespace StalkerOnlineQuesterEditor
                     QuestBox.Text = "Пожалуйста, выберите квест";
                     break;
                 case 2:
+                    
                     DialogSelected(true);
                     Console.WriteLine("fractionDialogShower.Location = (" + fractionDialogShower.Location.X + " " + fractionDialogShower.Location.Y + ")");
                     Console.WriteLine("fractionDialogShower.Size = (" + fractionDialogShower.Width + " " + fractionDialogShower.Height + ")");
@@ -1432,6 +1433,8 @@ namespace StalkerOnlineQuesterEditor
         void saveData()
         {
             this.Enabled = false;
+            dialogs.unlock_files();
+            quests.unlock_files();
             if (CSettings.getMode() == CSettings.MODE_EDITOR)
             {
                 dialogs.SaveDialogs();
@@ -1447,6 +1450,8 @@ namespace StalkerOnlineQuesterEditor
             statusLabel.Text = "Данные успешно сохранены.";
             this.Enabled = true;
             this.isDirty = false;
+            dialogs.lock_files();
+            quests.lock_files();
         }
         //! Нажатие на кнопку "Удаление квеста"
         private void bRemoveEvent_Click(object sender, EventArgs e)
@@ -2218,9 +2223,9 @@ namespace StalkerOnlineQuesterEditor
         {
             dgvReview.Columns[0].HeaderText = "Квест";
             dgvReview.Columns[1].HeaderText = "Название";
-            dgvReview.Columns[2].HeaderText = "Фракция2";
-            dgvReview.Columns[3].HeaderText = "Количество репутации";
-            dgvReview.Columns[4].Visible = false;
+            dgvReview.Columns[2].HeaderText = "Повторяемый";
+            dgvReview.Columns[3].HeaderText = "Фракция2";
+            dgvReview.Columns[4].HeaderText = "Количество репутации";
             dgvReview.Columns[5].Visible = false;
         }
 
@@ -3481,7 +3486,7 @@ namespace StalkerOnlineQuesterEditor
             dgvReview.Rows.Clear();
             string frac2_name = cbRep2List.Text;
             int frac2_id = fractions2.getFractionIDByDescr(frac2_name);
-            
+            int count = 0;
             foreach (CQuest quest in quests.quest.Values)
             {
                 int questID = quest.QuestID;
@@ -3491,21 +3496,58 @@ namespace StalkerOnlineQuesterEditor
                     if (!Convert.ToBoolean(quest.QuestRules.space & (1 << selected_space_id)))
                         continue;
                 }
-                foreach (KeyValuePair<int, int> keyValue in quest.Reward.Reputation2)
+                string repeat = "нет";
+                if (quest.Priority == 3)
+                    repeat = "да";
+                if (cbOnlyTradePoints.Checked)
                 {
-                    if (frac2_id > 0 && frac2_id == keyValue.Key)
-                    {
-                        object[] row = { questID, quest.QuestInformation.Title, fractions2.getFractionDesctByID(keyValue.Key), keyValue.Value };
-                        dgvReview.Rows.Add(row);
-                    }
+                    if (frac2_id != quest.Reward.OTfraction) continue;
+                    object[] row = { questID, quest.QuestInformation.Title, repeat, fractions2.getFractionDesctByID(frac2_id), quest.Reward.OTvalue };
+                    count += quest.Reward.OTvalue;
+                    dgvReview.Rows.Add(row);
                 }
+                else
+                    foreach (KeyValuePair<int, int> keyValue in quest.Reward.Reputation2)
+                    {
+                        if (frac2_id > 0 && frac2_id == keyValue.Key)
+                        {
+                            object[] row = { questID, quest.QuestInformation.Title, repeat, fractions2.getFractionDesctByID(keyValue.Key), keyValue.Value };
+                            count += keyValue.Value;
+                            dgvReview.Rows.Add(row);
+                        }
+                    }
             }
+            object[] row1 = { "", "", "", "Итог", count };
+            dgvReview.Rows.Add(row1);
             statusLabel.Text = "Выведено: " + dgvReview.RowCount.ToString();
         }
 
         private void fractionBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentFraction = fractionBox.SelectedItem.ToString().Split(' ')[0].Trim();
+            string new_fraction = fractionBox.SelectedItem.ToString().Split(' ')[0].Trim();
+            //currentFraction
+            if (!CFractionDialogs.dialogs.ContainsKey(new_fraction))
+            {
+                DialogResult result = MessageBox.Show("У выбранной фракции отсутствуют диалоги. Добавить новый?", "Внимание", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    CFractionDialogs.dialogs.Add(new_fraction, new NPCQuestDict());
+                    int new_dialogID = CDialogs.getDialogsNewID();
+                    CDialog new_rootDialog = new CDialog(fractions2.getFractionIDByDescr(new_fraction).ToString(), "", "", new CDialogPrecondition(), new Actions(), new List<int>(),
+                        new List<int>(), new_dialogID, 0, new NodeCoordinates());
+                    new_rootDialog.coordinates.RootDialog = true;
+                    CFractionDialogs.dialogs[new_fraction].Add(new_dialogID, new_rootDialog);
+                    CFractionDialogs.locales[CSettings.getListLocales()[0]].Add(new_fraction, new NPCQuestDict());
+                    CFractionDialogs.locales[CSettings.getListLocales()[0]][new_fraction].Add(new_dialogID, new_rootDialog);
+                }
+                else
+                {
+                    fractionBox.SelectedItem = currentFraction;
+                    return;
+                }
+            }
+
+            currentFraction = new_fraction;
             var currentDialogs = getDialogDictionary(currentFraction, CFractionDialogs.dialogs, CFractionDialogs.locales);
             CDialog rootDialog = getRootDialog(currentDialogs);
             if (rootDialog != null)

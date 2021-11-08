@@ -725,6 +725,11 @@ namespace StalkerOnlineQuesterEditor
                 locales = CFractionDialogs.locales;
                 dialogShower = fractionDialogShower;
                 tree = treeFractionDialogs;
+                if (dialogID > 0 && (!dialogs.ContainsKey(dialogID)))
+                {
+                    root = getRootDialog(dialogs);
+                    dialogID = root.DialogID;
+                }
             }
             else
             {
@@ -734,7 +739,7 @@ namespace StalkerOnlineQuesterEditor
                 tree = treeDialogs;
             }
 
-                root = getRootDialog(dialogs);
+            root = getRootDialog(dialogs);
             root = getDialogOnIDConditional( root.DialogID, dialogs, locales);
             fillDialogTree(root, dialogs, tree, locales);
             if (withGraph)

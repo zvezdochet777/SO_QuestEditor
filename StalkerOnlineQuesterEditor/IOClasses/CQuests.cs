@@ -44,7 +44,9 @@ namespace StalkerOnlineQuesterEditor
 
         public int bufferTop = 0;
         public bool CutQuests = false;
+
         List<FileStream> fs_list = new List<FileStream>();
+        List<string> lock_paths = new List<string>();
 
         //! Конструктор, заполняет словарь quest, парсит файлы
         public CQuests(MainForm form)
@@ -59,10 +61,14 @@ namespace StalkerOnlineQuesterEditor
             foreach (var locale in CSettings.getListLocales())
             {
                 if (!locales.Keys.Contains(locale))
-                    locales.Add(locale, new NPCQuestDict(quest));
+                {
+                    locales.Add(locale, new NPCQuestDict(quest.ToDictionary(entry => entry.Key, entry => (CQuest)entry.Value.Clone())));
+                }
+
                 //ParseQuestsData(CSettings.GetQuestDataPath(), this.locales[locale]);
                 ParseQuestsTexts(CSettings.GetQuestLocaleTextPath(), this.locales[locale]);
             }
+            lock_files();
         }
 
         void ParseDeletedQuest(string sPath, List<int> list_target)
@@ -108,7 +114,7 @@ namespace StalkerOnlineQuesterEditor
         void ParseQuestsData(string sPath, NPCQuestDict dict_target)
         {
             doc = XDocument.Load(sPath);
-            fs_list.Add(new FileStream(sPath, FileMode.Open, FileAccess.Read, FileShare.None));
+            lock_paths.Add(sPath);
 
             foreach (XElement item in doc.Root.Elements())
             {
@@ -147,7 +153,7 @@ namespace StalkerOnlineQuesterEditor
                 int questLinkType = 0;
                 int questLink = 0;
 
-                if(item.Element("questLinkType") != null)
+                if (item.Element("questLinkType") != null)
                 {
                     questLinkType = int.Parse(item.Element("questLinkType").Value);
                 }
@@ -171,9 +177,9 @@ namespace StalkerOnlineQuesterEditor
                         target.QuestType = int.Parse(item.Element("Target").Element("QuestType").Value);
                     if ((item.Element("Target").Element("ObjectType") != null) && (!item.Element("Target").Element("ObjectType").Value.Equals("")))
                         target.ObjectType = int.Parse(item.Element("Target").Element("ObjectType").Value);
-                    if ((item.Element("Target").Element("NumOfObjects") != null) &&(!item.Element("Target").Element("NumOfObjects").Value.Equals("")))
+                    if ((item.Element("Target").Element("NumOfObjects") != null) && (!item.Element("Target").Element("NumOfObjects").Value.Equals("")))
                         target.NumOfObjects = int.Parse(item.Element("Target").Element("NumOfObjects").Value);
-                    if((item.Element("Target").Element("ObjectAttr") != null) && (!item.Element("Target").Element("ObjectAttr").Value.Equals("")))
+                    if ((item.Element("Target").Element("ObjectAttr") != null) && (!item.Element("Target").Element("ObjectAttr").Value.Equals("")))
                     {
                         int Target_ObjectAttr = int.Parse(item.Element("Target").Element("ObjectAttr").Value);
                         if (Target_ObjectAttr < 0)
@@ -195,7 +201,7 @@ namespace StalkerOnlineQuesterEditor
                             if (!at.Equals(""))
                                 target.AObjectAttrs.Add(int.Parse(at));
                     if (item.Element("Target").Element("onFin") != null)
-                    {                
+                    {
                         if (!item.Element("Target").Element("onFin").Value.Equals(""))
                             target.onFin = int.Parse(item.Element("Target").Element("onFin").Value);
                         else
@@ -220,7 +226,7 @@ namespace StalkerOnlineQuesterEditor
                     }
                     if (item.Element("Target").Element("additional") != null)
                     {
-                        target.additional = item.Element("Target").Element("additional").Value; 
+                        target.additional = item.Element("Target").Element("additional").Value;
                     }
                     if ((item.Element("Target").Element("Time") != null) && (!item.Element("Target").Element("Time").Value.Equals("")))
                     {
@@ -247,7 +253,7 @@ namespace StalkerOnlineQuesterEditor
                 }
                 if (item.Element("QuestRules") != null)
                 {
-                
+
                     if (item.Element("QuestRules").Element("baseToCapturePercent") != null)
                         questRules.basePercent = float.Parse(item.Element("QuestRules").Element("baseToCapturePercent").Value, CultureInfo.InvariantCulture);
                     if (item.Element("QuestRules").Element("dontTakeItems") != null)
@@ -268,9 +274,9 @@ namespace StalkerOnlineQuesterEditor
 
                     if (item.Element("QuestRules").Element("MapMarks") != null)
                     {
-                        foreach(var e in item.Element("QuestRules").Element("MapMarks").Elements())
+                        foreach (var e in item.Element("QuestRules").Element("MapMarks").Elements())
                         {
-                            string coords, space; float radius = 0; 
+                            string coords, space; float radius = 0;
 
                             coords = e.Element("coordinates").Value.ToString();
                             space = e.Element("space").Value.ToString();
@@ -298,7 +304,7 @@ namespace StalkerOnlineQuesterEditor
                     if (item.Element("Reward").Element("Items") != null)
                         CQuests.parceItems(item.Element("Reward").Element("Items"), reward.items);
 
-                    if ((item.Element("Reward").Element("Credits") != null) &&(!item.Element("Reward").Element("Credits").Value.Equals("")))
+                    if ((item.Element("Reward").Element("Credits") != null) && (!item.Element("Reward").Element("Credits").Value.Equals("")))
                         reward.Credits = float.Parse(item.Element("Reward").Element("Credits").Value, System.Globalization.CultureInfo.InvariantCulture);
 
                     ParseIntIfNotEmpty(item, "Reward", "KarmaPK", out reward.KarmaPK, 0);
@@ -341,7 +347,7 @@ namespace StalkerOnlineQuesterEditor
                                     continue;
                                 }
                                 QuestParentList[change_quest_id][change_type].Add(QuestID);
-                            }             
+                            }
                     }
                     if (item.Element("Reward").Element("blackBoxes") != null)
                     {
@@ -457,15 +463,15 @@ namespace StalkerOnlineQuesterEditor
                     dict_target.Add(QuestID, new CQuest(QuestID, 0, priority, level, questLinkType, questLink, information, precondition, questRules, reward, additional, target, penalty, conditions, hidden, isOld));
             }
         }
-        
+
         void ParseQuestsTexts(string sPath, NPCQuestDict target)
         {
             try
             {
                 doc = XDocument.Load(sPath);
-                fs_list.Add(new FileStream(sPath, FileMode.Open, FileAccess.Read, FileShare.None));
+                lock_paths.Add(sPath);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show("Не удалось загрузить файл:" + sPath + "\n" + e.Message, "Ошибка чтения");
                 return;
@@ -507,7 +513,7 @@ namespace StalkerOnlineQuesterEditor
                         if (qitem.Element("description") != null)
                             description = qitem.Element("description").Value;
                         int itemID = int.Parse(qitem.Element("itemID").Value);
-                       
+
                         if (qitem.Element("activation") != null) activation = qitem.Element("activation").Value;
                         if (qitem.Element("content") != null) content = qitem.Element("content").Value;
                         if (target[QuestID].QuestInformation.Items.ContainsKey(itemID))
@@ -526,10 +532,10 @@ namespace StalkerOnlineQuesterEditor
         public static XElement getItemsNode(List<QuestItem> list)
         {
             if (!list.Any()) return null;
-            
+
             XElement items;
             items = new XElement("Items");
-            foreach(QuestItem item in list)
+            foreach (QuestItem item in list)
             {
                 XElement item_node = new XElement("item");
                 if (item.itemType == 0) continue;
@@ -565,7 +571,7 @@ namespace StalkerOnlineQuesterEditor
         public static void AddDataToList(XElement Element, String Name1, String Name2, List<int> list)
         {
 
-            if((Element == null) || (Element.Element(Name1).Element(Name2) == null) )
+            if ((Element == null) || (Element.Element(Name1).Element(Name2) == null))
                 return;
             if (Element.Element(Name1).Element(Name2).Value != "")
                 foreach (string quest in Element.Element(Name1).Element(Name2).Value.Split(','))
@@ -610,21 +616,21 @@ namespace StalkerOnlineQuesterEditor
             List<CQuest> retQuests = new List<CQuest>();
             foreach (CQuest quest in this.quest.Values)
             {
-                 //System.Console.WriteLine(NPCName + "vs" + quest.QuestInformation.NameOfHolder);
-                 if (quest.Additional.Holder.Equals(NPCName) && (quest.Additional.IsSubQuest==0))
-                     retQuests.Add(quest);
+                //System.Console.WriteLine(NPCName + "vs" + quest.QuestInformation.NameOfHolder);
+                if (quest.Additional.Holder.Equals(NPCName) && (quest.Additional.IsSubQuest == 0))
+                    retQuests.Add(quest);
             }
             return retQuests;
         }
         //! Возвращает число квестов у заданного NPC 
         public int getCountOfQuests(string NPCName)
-        { 
-            List<CQuest> quests = getQuestAndTitleOnNPCName(NPCName);            
+        {
+            List<CQuest> quests = getQuestAndTitleOnNPCName(NPCName);
             return (quests.Count);
         }
         //! Возвращает число квестов верхнего уровня (без субквестов)
         public int getCountTopLevelQuests()
-        { 
+        {
             int total = 0;
             foreach (int questID in quest.Keys)
                 if (quest[questID].Additional.IsSubQuest == 0)
@@ -646,7 +652,7 @@ namespace StalkerOnlineQuesterEditor
                     if (quest[questID].QuestInformation.Title != "")
                         array[i++] = quest[questID].QuestInformation.Title;
                     else
-                        array[i++] = "fuck";                    
+                        array[i++] = "fuck";
                 }
             }
             return array;
@@ -672,13 +678,13 @@ namespace StalkerOnlineQuesterEditor
         }
 
         private void SaveQuestsTexts(string fileName, NPCQuestDict target)
-        { 
-            XDocument resultDoc = new XDocument(new XDeclaration("1.0","utf-8",null), new XElement("root"));
+        {
+            XDocument resultDoc = new XDocument(new XDeclaration("1.0", "utf-8", null), new XElement("root"));
             XElement element;
 
             foreach (CQuest questValue in target.Values)
             {
-                
+
                 element = new XElement("Quest",
                    new XElement("ID", questValue.QuestID),
                    new XElement("NPC", questValue.Additional.Holder),
@@ -751,7 +757,7 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.Target.NumOfObjects != 0)
                         element.Element("Target").Add(new XElement("NumOfObjects", Global.GetIntAsString(questValue.Target.NumOfObjects)));
                     if (questValue.Target.ObjectName != "")
-                        element.Element("Target").Add( new XElement("ObjectName", questValue.Target.ObjectName));
+                        element.Element("Target").Add(new XElement("ObjectName", questValue.Target.ObjectName));
                     if (questValue.Target.AObjectAttrs.Any())
                         element.Element("Target").Add(new XElement("AObjectAttrs", Global.GetListAsString(questValue.Target.AObjectAttrs)));
                     if (questValue.Target.AreaName != "")
@@ -785,7 +791,7 @@ namespace StalkerOnlineQuesterEditor
                 {
                     element.Add(new XElement("QuestRules"));
                     if (questValue.QuestRules.Scenarios.Any())
-                         element.Element("QuestRules").Add(new XElement("Scenarios", Global.GetListAsString(questValue.QuestRules.Scenarios)));
+                        element.Element("QuestRules").Add(new XElement("Scenarios", Global.GetListAsString(questValue.QuestRules.Scenarios)));
                     if (questValue.QuestRules.TeleportTo != "")
                         element.Element("QuestRules").Add(new XElement("TeleportTo", questValue.QuestRules.TeleportTo));
                     if (questValue.QuestRules.items.Any())
@@ -811,7 +817,7 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.QuestRules.mapMarks.Any())
                     {
                         XElement node_marks = new XElement("MapMarks");
-                        foreach(var i in questValue.QuestRules.mapMarks)
+                        foreach (var i in questValue.QuestRules.mapMarks)
                         {
                             XElement node = new XElement("item");
                             node.Add(new XElement("coordinates", i.coords));
@@ -822,9 +828,9 @@ namespace StalkerOnlineQuesterEditor
                         }
                         element.Element("QuestRules").Add(node_marks);
                     }
-                        
+
                 }
-                
+
 
                 if (questValue.Reward.Any())
                 {
@@ -834,7 +840,7 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.Reward.items.Any())
                         element.Element("Reward").Add(CQuests.getItemsNode(questValue.Reward.items));
                     if (questValue.Reward.Credits != 0)
-                        element.Element("Reward").Add( new XElement("Credits", questValue.Reward.Credits));
+                        element.Element("Reward").Add(new XElement("Credits", questValue.Reward.Credits));
                     if (questValue.Reward.ReputationNotEmpty())
                         element.Element("Reward").Add(new XElement("Reputation", questValue.Reward.getReputation()));
                     if (questValue.Reward.Reputation2NotEmpty())
@@ -855,14 +861,14 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Reward").Add(new XElement("RewardWindow", Global.GetBoolAsString(questValue.Reward.RewardWindow)));
                     if (questValue.Reward.OTvalue > 0)
                     {
-                        element.Element("Reward").Add(new XElement("tradingPoints", questValue.Reward.OTfraction.ToString() + ":" + questValue.Reward.OTvalue.ToString()));  
+                        element.Element("Reward").Add(new XElement("tradingPoints", questValue.Reward.OTfraction.ToString() + ":" + questValue.Reward.OTvalue.ToString()));
                     }
                     List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
                     if (EffectsXE.Any())
                         element.Element("Reward").Add(new XElement("Effects", EffectsXE));
                     if (questValue.Reward.blackBoxes.Any())
                         element.Element("Reward").Add(new XElement("blackBoxes", Global.GetListAsString(questValue.Reward.blackBoxes)));
-                }              
+                }
 
                 if (questValue.Conditions.Any())
                 {
@@ -879,15 +885,15 @@ namespace StalkerOnlineQuesterEditor
 
                 if (questValue.QuestPenalty.Any())
                 {
-                     element.Add(new XElement("Penalty"));
-                     if (questValue.QuestPenalty.Experience != 0)
-                         element.Element("Penalty").Add(new XElement("Exp", Global.GetIntAsString(questValue.QuestPenalty.Experience)));
-                     if (questValue.QuestPenalty.items.Any())
-                         element.Element("Penalty").Add(CQuests.getItemsNode(questValue.QuestPenalty.items));
-                     if (questValue.QuestPenalty.Credits != 0)
-                         element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits.ToString("G6", CultureInfo.InvariantCulture)));
-                     if (questValue.QuestPenalty.ReputationNotEmpty())
-                         element.Element("Penalty").Add(new XElement("Reputation", questValue.QuestPenalty.getReputation()));
+                    element.Add(new XElement("Penalty"));
+                    if (questValue.QuestPenalty.Experience != 0)
+                        element.Element("Penalty").Add(new XElement("Exp", Global.GetIntAsString(questValue.QuestPenalty.Experience)));
+                    if (questValue.QuestPenalty.items.Any())
+                        element.Element("Penalty").Add(CQuests.getItemsNode(questValue.QuestPenalty.items));
+                    if (questValue.QuestPenalty.Credits != 0)
+                        element.Element("Penalty").Add(new XElement("Credits", questValue.QuestPenalty.Credits.ToString("G6", CultureInfo.InvariantCulture)));
+                    if (questValue.QuestPenalty.ReputationNotEmpty())
+                        element.Element("Penalty").Add(new XElement("Reputation", questValue.QuestPenalty.getReputation()));
                     if (questValue.QuestPenalty.Reputation2NotEmpty())
                         element.Element("Penalty").Add(new XElement("Reputation2", questValue.QuestPenalty.getReputation2()));
                     if (questValue.QuestPenalty.ReputationNotEmpty(true))
@@ -897,12 +903,12 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.QuestPenalty.randomQuest)
                         element.Element("Penalty").Add(new XElement("randomQuest", "1"));
                     if (questValue.QuestPenalty.KarmaPK != 0)
-                         element.Element("Penalty").Add(new XElement("KarmaPK", questValue.QuestPenalty.KarmaPK.ToString()));
+                        element.Element("Penalty").Add(new XElement("KarmaPK", questValue.QuestPenalty.KarmaPK.ToString()));
                     if (questValue.QuestPenalty.GetKnowleges.Any())
                         element.Element("Penalty").Add(new XElement("GetKnowleges", Global.GetListAsString(questValue.QuestPenalty.GetKnowleges)));
                     List<XElement> EffectsXE = getEffectElements(questValue.QuestPenalty.Effects);
-                     if (EffectsXE.Any())
-                         element.Element("Penalty").Add(new XElement("Effects", EffectsXE));
+                    if (EffectsXE.Any())
+                        element.Element("Penalty").Add(new XElement("Effects", EffectsXE));
                 }
 
                 if (questValue.Additional.Any())
@@ -1042,7 +1048,7 @@ namespace StalkerOnlineQuesterEditor
         {
             string result;
             switch (quest.Target.QuestType)
-            { 
+            {
                 case 1:
                     result = quest.Target.ObjectName;
                     break;
@@ -1123,7 +1129,7 @@ namespace StalkerOnlineQuesterEditor
             CQuest quest = getQuest(questID);
             if (quest.Additional.IsSubQuest == 0)
                 return questID;
-            else 
+            else
                 return getRoot(quest.Additional.IsSubQuest);
         }
 
@@ -1151,13 +1157,13 @@ namespace StalkerOnlineQuesterEditor
 
         public void addLocaleQuest(CQuest quest, string locale)
         {
-               if (!this.locales.Keys.Contains(locale))
-               {
-                   this.locales.Add(locale, new NPCQuestDict());
-               }
-               if (this.locales[locale].Keys.Contains(quest.QuestID))
-                    this.locales[locale].Remove(quest.QuestID);
-               this.locales[locale].Add(quest.QuestID, quest);
+            if (!this.locales.Keys.Contains(locale))
+            {
+                this.locales.Add(locale, new NPCQuestDict());
+            }
+            if (this.locales[locale].Keys.Contains(quest.QuestID))
+                this.locales[locale].Remove(quest.QuestID);
+            this.locales[locale].Add(quest.QuestID, quest);
         }
 
         //! Возвращает словарь из квестов для локализации (устаревшие, актуальные или все)
@@ -1178,10 +1184,10 @@ namespace StalkerOnlineQuesterEditor
             foreach (var cur_quest in quest.Values)
             {
                 if (!sorted_locale.Keys.Contains(cur_quest.Additional.Holder))
-                { 
+                {
                     NPCQuestDict dict = new NPCQuestDict();
                     dict.Add(cur_quest.QuestID, cur_quest);
-                    sorted_locale.Add(cur_quest.Additional.Holder,dict);
+                    sorted_locale.Add(cur_quest.Additional.Holder, dict);
                 }
                 CQuest locale_quest = new CQuest();
                 locale_quest.Version = 0;
@@ -1192,13 +1198,13 @@ namespace StalkerOnlineQuesterEditor
                 if (!ret.Keys.Contains(cur_quest.Additional.Holder))
                     ret.Add(cur_quest.Additional.Holder, new Dictionary<int, CDifference>());
                 switch (findType)
-                { 
+                {
                     case FindType.all:
                         ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version));
                         break;
                     case FindType.outdatedOnly:
                         if (cur_quest.Version != locale_quest.Version)
-                            ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version)); 
+                            ret[cur_quest.Additional.Holder].Add(cur_quest.QuestID, new CDifference(cur_quest.Version, locale_quest.Version));
                         break;
                     case FindType.actualOnly:
                         if (cur_quest.Version == locale_quest.Version)
@@ -1214,21 +1220,21 @@ namespace StalkerOnlineQuesterEditor
             List<CQuest> result = GetQuestWithSubs(questID);
             List<CQuest> engResult = GetLocalizedQuestWithSubs(questID);
             CutQuests = cutQuests;
-            if(cutQuests)
+            if (cutQuests)
                 removeQuestsWithLocals(questID, false);
 
             result[0].Additional.IsSubQuest = 0;
-            engResult[0].Additional.IsSubQuest = 0; 
+            engResult[0].Additional.IsSubQuest = 0;
             foreach (CQuest quest in result)
                 quest.Additional.Holder = "";
             foreach (CQuest quest in engResult)
                 quest.Additional.Holder = "";
 
             if (!cutQuests)
-               ChangeQuestsIDs(result, engResult);
+                ChangeQuestsIDs(result, engResult);
 
             setBuffer(result, m_Buffer);
-            setBuffer(engResult, m_EngBuffer); 
+            setBuffer(engResult, m_EngBuffer);
             bufferTop = result[0].QuestID;
         }
         //! Возвращает список всех подквестов для квеста questID
@@ -1273,7 +1279,7 @@ namespace StalkerOnlineQuesterEditor
 
                 replace.Add(quest.QuestID, new_quest_id);
                 new_quest_id++;
-                quest.QuestID = replace[quest.QuestID];               
+                quest.QuestID = replace[quest.QuestID];
             }
             foreach (CQuest quest in quests)
             {
@@ -1359,7 +1365,7 @@ namespace StalkerOnlineQuesterEditor
 
             //if (!CutQuests)
             //    ChangeQuestsIDs(buffer, engBuffer);
-            
+
             HeadQuest.Additional.ListOfSubQuest.Add(buffer[0].QuestID);
             buffer[0].Additional.IsSubQuest = HeadQuest.QuestID;
             foreach (CQuest bufQuest in buffer)
@@ -1377,7 +1383,7 @@ namespace StalkerOnlineQuesterEditor
                 locales["English"].Add(engQuest.QuestID, engQuest);
             }
             //if (cut_quest_mode)
-             //   clearQuestsBuffer();
+            //   clearQuestsBuffer();
         }
 
         public int ReplaceBuffer(int CurrentQuestID)
@@ -1440,7 +1446,7 @@ namespace StalkerOnlineQuesterEditor
                     if (engBuffer[0].Additional.ListOfSubQuest.Contains(subQuest.QuestID))
                         subQuest.Additional.IsSubQuest = questID;
                     subQuest.Additional.Holder = name;
-                    locales["English"].Add(subQuest.QuestID, subQuest);                    
+                    locales["English"].Add(subQuest.QuestID, subQuest);
                 }
                 parentID = questID;
             }
@@ -1460,7 +1466,22 @@ namespace StalkerOnlineQuesterEditor
             return getRoot(parentID);
 
             //if (cut_quest_mode)
-             //   clearQuestsBuffer();
+            //   clearQuestsBuffer();
+        }
+
+        public void lock_files()
+        {
+            foreach (var path in lock_paths)
+                fs_list.Add(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read));
+        }
+
+        public void unlock_files()
+        {
+            foreach(var file in fs_list)
+            {
+                file.Close();
+            }
+            fs_list.Clear();
         }
     }
 }

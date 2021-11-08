@@ -105,6 +105,7 @@ namespace StalkerOnlineQuesterEditor
             this.colRussianName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReviewButtons = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.tbKnowledgeFind = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.bFindKnowledgeQuest = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -297,7 +298,7 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.tbKnowledgeFind = new System.Windows.Forms.TextBox();
+            this.cbOnlyTradePoints = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -956,6 +957,11 @@ namespace StalkerOnlineQuesterEditor
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
             // 
+            // tbKnowledgeFind
+            // 
+            resources.ApplyResources(this.tbKnowledgeFind, "tbKnowledgeFind");
+            this.tbKnowledgeFind.Name = "tbKnowledgeFind";
+            // 
             // label21
             // 
             resources.ApplyResources(this.label21, "label21");
@@ -970,6 +976,7 @@ namespace StalkerOnlineQuesterEditor
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbOnlyTradePoints);
             this.groupBox1.Controls.Add(this.cbRepLocations);
             this.groupBox1.Controls.Add(this.cbOnRepLocation);
             this.groupBox1.Controls.Add(this.label2);
@@ -2350,10 +2357,11 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             // 
-            // tbKnowledgeFind
+            // cbOnlyTradePoints
             // 
-            resources.ApplyResources(this.tbKnowledgeFind, "tbKnowledgeFind");
-            this.tbKnowledgeFind.Name = "tbKnowledgeFind";
+            resources.ApplyResources(this.cbOnlyTradePoints, "cbOnlyTradePoints");
+            this.cbOnlyTradePoints.Name = "cbOnlyTradePoints";
+            this.cbOnlyTradePoints.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -2721,6 +2729,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.ComboBox cbRepLocations;
         private System.Windows.Forms.CheckBox cbOnRepLocation;
         private System.Windows.Forms.TextBox tbKnowledgeFind;
+        private System.Windows.Forms.CheckBox cbOnlyTradePoints;
     }
 }
 

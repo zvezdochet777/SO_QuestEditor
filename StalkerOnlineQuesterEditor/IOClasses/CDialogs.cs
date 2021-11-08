@@ -40,7 +40,7 @@ namespace StalkerOnlineQuesterEditor
         public List<string> deleted_NPC = new List<string>();
         Dictionary<int, string> todoTooltips = new Dictionary<int, string>();
         List<FileStream> fs_list = new List<FileStream>();
-
+        List<string> lock_paths = new List<string>();
 
         //! Конструктор - парсит текущий файл диалогов, ищет локализации и парсит их тоже
         public CDialogs(MainForm parent, CManagerNPC managerNPC)
@@ -57,10 +57,13 @@ namespace StalkerOnlineQuesterEditor
             foreach (var locale in CSettings.getListLocales())
             {
                 if (!locales.Keys.Contains(locale))
-                    locales.Add(locale, new NPCDicts(this.dialogs));
-                //ParseDialogsData(CSettings.GetDialogDataPath(), this.locales[locale]);
+                {
+                    //locales.Add(locale, new NPCDicts());
+                    locales.Add(locale, new NPCDicts(this.dialogs.ToDictionary(entry => entry.Key, entry => entry.Value.ToDictionary(a => a.Key, a => a.Value.Clone()))));
+                }
                 ParseDialogsTexts(CSettings.GetDialogTextPath(locale), this.locales[locale]);
             }
+            lock_files();
         }
 
         //! Парсер xml - файла данных диалогов, записывает результат в target
@@ -73,7 +76,8 @@ namespace StalkerOnlineQuesterEditor
                     return;
                 List<int> tests;
                 doc = XDocument.Load(dialogFile);
-                fs_list.Add(new FileStream(dialogFile, FileMode.Open, FileAccess.Read, FileShare.None));
+                lock_paths.Add(dialogFile);
+                
                 dialogErrors = new Dictionary<int, List<string>>();
                 string npc_name = Path.GetFileNameWithoutExtension(dialogFile);
                 target.Add(npc_name, new Dictionary<int, CDialog>());
@@ -408,7 +412,7 @@ namespace StalkerOnlineQuesterEditor
                 return;
 
             doc = XDocument.Load(todoFilePath);
-            fs_list.Add(new FileStream(todoFilePath, FileMode.Open, FileAccess.Read, FileShare.None));
+            lock_paths.Add(todoFilePath);
             foreach (XElement dialog in doc.Root.Elements("Dialog"))
             {
                 int DialogID = int.Parse(dialog.Element("ID").Value);
@@ -507,7 +511,7 @@ namespace StalkerOnlineQuesterEditor
                 try
                 {
                     doc = XDocument.Load(dialogFile);
-                    fs_list.Add(new FileStream(dialogFile, FileMode.Open, FileAccess.Read, FileShare.None));
+                    lock_paths.Add(dialogFile);
                 }
                 catch (Exception e)
                 {
@@ -595,7 +599,9 @@ namespace StalkerOnlineQuesterEditor
                 System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
                 using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
                 {
+
                     resultDoc.Save(w);
+
                 }
             }
 
@@ -956,7 +962,7 @@ namespace StalkerOnlineQuesterEditor
         {
             string filename = "OtherNodes.xml";
             doc = XDocument.Load(filename);
-            fs_list.Add(new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.None));
+            lock_paths.Add(filename);
             foreach (XElement dialog in doc.Root.Elements())
             {
                 string id = dialog.Attribute("ID").Value;
@@ -1172,6 +1178,21 @@ namespace StalkerOnlineQuesterEditor
                 MessageBox.Show("Ошибка получения нового ID диалога. Проверьте своё подключение к hz-dev", "Ошибка");
                 return 0;
             }
+        }
+
+        public void lock_files()
+        {
+            foreach (var path in lock_paths)
+                fs_list.Add(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read));
+        }
+
+        public void unlock_files()
+        {
+            foreach (var file in fs_list)
+            {
+                file.Close();
+            }
+            fs_list.Clear();
         }
     }
 }

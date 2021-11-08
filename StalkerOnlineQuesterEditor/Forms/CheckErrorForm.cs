@@ -163,21 +163,29 @@ namespace StalkerOnlineQuesterEditor.Forms
         private bool checkQuestIDOnGet(int quest_id, string npc_name, string dialog_id)
         {
             CQuest quest = quests.getQuest(quest_id);
+            bool debug = quest_id == 12359;
             if (quest == null)
             {
                 string line = "NPC:" + npc_name + "\t\tДиалогID: " + dialog_id + "\t\tКвест №" + quest_id.ToString() + " не существует, а проверяется";
-                //Thread.Sleep(100);
                 this.writeToLog(ERROR_OTHER, line);
                 return true;
             }
-            if (quest.Additional.IsSubQuest != 0) return checkQuestIDOnGet(quest.Additional.IsSubQuest, npc_name, dialog_id);
-
+            if (quest.Additional.IsSubQuest != 0)
+            {
+                return checkQuestIDOnGet(quest.Additional.IsSubQuest, npc_name, dialog_id);
+            }
+            if (quest.questLinkType == 1)
+            {
+                return true;
+            }
             foreach (KeyValuePair<string, Dictionary<int, CDialog>> npc in dialogs.dialogs)
             {
                 foreach (CDialog dia in npc.Value.Values)
                 {
                     if (dia.Actions.GetQuests.Contains(quest_id))
+                    {
                         return true;
+                    }
                 }
             }
             foreach (KeyValuePair<int, CQuest> item in quests.quest)
@@ -201,10 +209,18 @@ namespace StalkerOnlineQuesterEditor.Forms
                 return true;
             if ((parent != null) && parent.billboardQuests.getKeys().Contains(quest_id))
                 return true;
-
             return false; 
         }
 
+        private bool find_quest_space(CQuest quest)
+        {
+            if (quest == null) return false;
+            if (quest.QuestRules.space != 0) return true;
+            if (quest.Additional.IsSubQuest == 0)
+                return false;
+            CQuest q = parent.getQuestOnQuestID(quest.Additional.IsSubQuest);
+            return find_quest_space(q);
+        }
 
         private bool find_quest_type100(int quest_id)
         {
@@ -508,6 +524,18 @@ namespace StalkerOnlineQuesterEditor.Forms
                         }
                     }
                 }
+
+                if ((quest.Value.Priority > 0) && ((quest.Value.Additional.ShowProgress & 4) > 0))
+                {
+                    if(!find_quest_space(quest.Value))
+                    {
+                        string line = "Квест №:" + quest.Key.ToString() + "\tне настроена локация";
+                        this.writeToLog(ERROR_NO_ROOT, line, quest.Key);
+                    }
+
+                }
+                
+
                 if (quest_types.Contains(quest.Value.Target.QuestType))
                 {
                     if (!on_test_list.Contains(quest.Key) && (!deleted_quests_ids.Contains(quest.Key) || !deleted_quests_ids.Contains(get_parent_quest(quest.Key))) && 
