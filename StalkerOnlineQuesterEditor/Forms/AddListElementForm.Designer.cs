@@ -37,12 +37,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbText1 = new System.Windows.Forms.TextBox();
             this.tbText2 = new System.Windows.Forms.TextBox();
+            this.tbText3 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(337, 120);
+            this.btnOK.Location = new System.Drawing.Point(337, 137);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
@@ -53,7 +55,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(419, 120);
+            this.btnCancel.Location = new System.Drawing.Point(419, 137);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -120,11 +122,29 @@
             this.tbText2.Size = new System.Drawing.Size(270, 20);
             this.tbText2.TabIndex = 9;
             // 
+            // tbText3
+            // 
+            this.tbText3.Location = new System.Drawing.Point(216, 107);
+            this.tbText3.Name = "tbText3";
+            this.tbText3.Size = new System.Drawing.Size(270, 20);
+            this.tbText3.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Имя";
+            // 
             // AddListElementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 156);
+            this.ClientSize = new System.Drawing.Size(502, 173);
+            this.Controls.Add(this.tbText3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.tbText1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
@@ -153,5 +173,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbText1;
         private System.Windows.Forms.TextBox tbText2;
+        private System.Windows.Forms.TextBox tbText3;
+        private System.Windows.Forms.Label label4;
     }
 }

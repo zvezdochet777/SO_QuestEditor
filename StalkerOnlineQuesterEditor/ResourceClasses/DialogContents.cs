@@ -206,6 +206,7 @@ namespace StalkerOnlineQuesterEditor
         public DialogPreconditionItems items = new DialogPreconditionItems();
         public DialogPreconditionItems itemsNone = new DialogPreconditionItems();
         public int[] fracBonus = new int[3];
+        public WeatherData weather = new WeatherData();
 
 
         public object Clone()
@@ -232,6 +233,7 @@ namespace StalkerOnlineQuesterEditor
             copy.knowledges = (DialogKnowleges)knowledges.Clone();
             copy.Perks = Perks.ToList();
             copy.fracBonus = fracBonus;
+            copy.weather = new WeatherData(weather);
             return copy;
         }
 
@@ -260,7 +262,7 @@ namespace StalkerOnlineQuesterEditor
         public bool Exists()
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || this.clanOptions != "" || Skills.Any() || Perks.Any() || noPerks.Any() ||
-                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || fracBonus[1] > 0;
+                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || fracBonus[1] > 0 || weather.Any();
         }
 
         public bool Any()
@@ -268,7 +270,7 @@ namespace StalkerOnlineQuesterEditor
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || Skills.Any() || items.Any() || itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || 
                 RadioAvalible.None != radioAvailable || Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any() ||
-                noPerks.Any() || knowledges.Any() || fracBonus[1] > 0;
+                noPerks.Any() || knowledges.Any() || fracBonus[1] > 0 || weather.Any();
         }
 
         public string GetAsString()
@@ -422,6 +424,69 @@ namespace StalkerOnlineQuesterEditor
     }
 
 
+    public class WeatherData
+    {
+        public List<string> weathers = new List<string>();
+        public bool is_or = false;
+        public int space = 0;
+        public string timeStart = "00:00";
+        public string timeEnd = "00:00";
+        public bool only_no = false;
+
+        public WeatherData()
+        {
+
+        }
+
+        public WeatherData(int space, List<string> weathers, bool is_or, string timeStart, string timeEnd, bool only_no)
+        {
+            this.space = space;
+            this.weathers = new List<string>(weathers);
+            this.is_or = is_or;
+            this.timeStart = timeStart;
+            this.timeEnd = timeEnd;
+            this.only_no = only_no;
+        }
+
+        public WeatherData(WeatherData data)
+        {
+            this.space = data.space;
+            this.weathers = new List<string>(data.weathers);
+            this.is_or = data.is_or;
+            this.timeStart = data.timeStart;
+            this.timeEnd = data.timeEnd;
+            this.only_no = data.only_no;
+        }
+
+        public bool Any()
+        {
+            return space > 0 && (weathers.Any() || timeStart != timeEnd);
+        }
+
+        public XElement getXML()
+        {
+            XElement result = null;
+            if (!Any())
+                return null;
+            result = new XElement("TimeWeather", new XElement("space", space.ToString()));
+            if (weathers.Any())
+            {
+                result.Add(new XElement("weathers", string.Join(",", weathers)));
+            }
+            if (is_or)
+                result.Add(new XElement("or", "1"));
+            if (timeStart != timeEnd)
+            {
+                result.Add(new XElement("timeStart", timeStart));
+                result.Add(new XElement("timeEnd", timeEnd));
+            }
+            if (only_no)
+                result.Add(new XElement("only_no", "1"));
+            return result;
+        }
+        
+    }
+
     //! Действия диалога - торговля, починка, телепортация, окончание разговора и т.д.
     public class Actions
     {
@@ -554,10 +619,10 @@ namespace StalkerOnlineQuesterEditor
         public string ToDoTooltip; //
         public int nextDialog; // Пометка, что следующим диалогом по сюжету будет...
 
-
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
                     Actions Actions, List<int> Nodes, List<int> CheckNodes, int DialogID, int version, 
-                    NodeCoordinates Coordinates, string DebugData = "", int nextDialog = 0, bool isAutoNode = false, string defaultNode = "")
+                    NodeCoordinates Coordinates, string DebugData = "", int nextDialog = 0, 
+                    bool isAutoNode = false, string defaultNode = "")
         {
             this.Holder = Holder;
             this.Title = Title;

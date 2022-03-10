@@ -17,26 +17,46 @@ namespace StalkerOnlineQuesterEditor
             cbNPCNature_SelectedIndexChanged(null, null);
 
             //Вкладка квесты
-
-           
-                
             List<ListBoxItem> list = new List<ListBoxItem>();
 
             if (QAutogenDatacs.data_quests.ContainsKey(this.currentNPC))
             {
-                foreach (var i in QAutogenDatacs.data_quests[currentNPC].data)
+                if (QAutogenDatacs.data_quests[currentNPC].data.Count > 0)
+                    foreach (var i in QAutogenDatacs.data_quests[currentNPC].data)
+                    {
+                        string name = QAutogenDatacs.QuestTypes[i.id];
+                        list.Add(new ListBoxItem(i.id, name));
+                    }
+                else
                 {
-                    string name = QAutogenDatacs.QuestTypes[i.id];
-                    list.Add(new ListBoxItem(i.id, name));
+                    listBoxTarget.DataSource = null;
+                    //listBoxTarget.Items.Clear();
+                    //listBoxTarget.DataSource = new List<ListBoxItem>();
+                    listBoxTarget.Update();
+                    listBoxTarget.Refresh();
+                    listBoxReward.Items.Clear();
                 }
+            }
+            else
+            {
+                listBoxTarget.DataSource = null;
+                //listBoxTarget.Items.Clear();
+                //listBoxTarget.DataSource = new List<ListBoxItem>();
+                listBoxTarget.Update();
+                listBoxTarget.Refresh();
+                listBoxReward.Items.Clear();
             }
             listBoxQT.DataSource = null;
             listBoxQT.DataSource = list;
             if (listBoxQT.Items.Count > 0)
+            {
+                listBoxQT.SelectedIndex = 0;
                 listBoxQT.SelectedIndex = old_index;
+            }
+            listBoxQT.Update();
+            listBoxQT.Refresh();
 
-
-            
+            //Console.WriteLine("fillAutogeneratorTab:" + );
         }
 
         private void AGInit()
@@ -95,7 +115,7 @@ namespace StalkerOnlineQuesterEditor
                 return;
             }
             string text = list.SelectedItem.ToString();
-            int nature_id = NPCNatures.getNatureByName(cbNPCNature.SelectedItem.ToString());
+            int nature_id = NPCAdditionalData.getNatureByName(cbNPCNature.SelectedItem.ToString());
 
             DialogLocal tmp = null;
             List<DialogLocal> dialogs;
@@ -187,7 +207,7 @@ namespace StalkerOnlineQuesterEditor
                 MessageBox.Show("Не выбран характер");
                 return;
             }
-            int nature_id = NPCNatures.getNatureByName(cbNPCNature.SelectedItem.ToString());
+            int nature_id = NPCAdditionalData.getNatureByName(cbNPCNature.SelectedItem.ToString());
             Forms.InputBox input = new Forms.InputBox("Add:", "");
             DialogResult result = input.ShowDialog();
             if (result != DialogResult.OK) return;
@@ -210,7 +230,7 @@ namespace StalkerOnlineQuesterEditor
             DialogResult result = MessageBox.Show("Вы уверены, что сейчас хотите удалить фразу? [" + text + "]", "Внимание", MessageBoxButtons.YesNo);
             if (result != DialogResult.Yes) return;
 
-            int nature_id = NPCNatures.getNatureByName(cbNPCNature.SelectedItem.ToString());
+            int nature_id = NPCAdditionalData.getNatureByName(cbNPCNature.SelectedItem.ToString());
             int frase_id = QAutogenDatacs.getFraseIDByText(text, is_title);
             if (frase_id == -1)
             {
@@ -241,7 +261,7 @@ namespace StalkerOnlineQuesterEditor
                 lbAGGetQuest.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTitleByID(Convert.ToInt32(i)));
 
 
-            int nature_id = NPCNatures.getNatureByName(cbNPCNature.SelectedItem.ToString());
+            int nature_id = NPCAdditionalData.getNatureByName(cbNPCNature.SelectedItem.ToString());
             if (nature_id < 0)
                 return;
             var _dialogs = QAutogenDatacs.data_dialogs.get_nature(nature_id);
@@ -268,24 +288,30 @@ namespace StalkerOnlineQuesterEditor
 
         private void listBoxQT_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listBoxTarget.Items.Clear();
             if (listBoxQT.SelectedItem == null)
                 return;
             int id = (listBoxQT.SelectedItem as ListBoxItem).id;
-
-            List<ListBoxItem> list = new List<ListBoxItem>();
+            
+            // List<ListBoxItem> list = new List<ListBoxItem>();
             if (QAutogenDatacs.data_quests.ContainsKey(currentNPC))
             {
                 AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(id);
                 foreach (var i in quest_type.targets)
                 {
                     string name = QAutogenDatacs.locals_quests[CSettings.ORIGINAL_PATH].getTextByID(currentNPC, id, i.id);
-                    list.Add(new ListBoxItem(i.id, name));
+                    listBoxTarget.Items.Add(new ListBoxItem(i.id, name));
                 }
             }
-            listBoxTarget.DataSource = list;
+            //listBoxTarget.DataSource = null;
+            //listBoxTarget.DataSource = list;
             
             if (listBoxTarget.Items.Count > 0)
                 listBoxTarget.SelectedIndex = 0;
+            listBoxTarget.Refresh();
+            listBoxTarget.Update();
+            
+
         }
 
 
@@ -417,7 +443,10 @@ namespace StalkerOnlineQuesterEditor
             listBoxReward.Items.Clear();
             foreach (var i in t.rewards)
             {
-                listBoxReward.Items.Add("деньги:" + i.money.ToString() + " опыт:" + i.exp.ToString());
+                string title = "деньги:" + i.money.ToString() + " опыт:" + i.exp.ToString();
+                if (i.repGroup > 0 && i.repValue != 0)
+                    title += " реп:" + fractions2.getFractionDesctByID(i.repGroup);
+                listBoxReward.Items.Add(title);
             }
         }
 
@@ -479,6 +508,12 @@ namespace StalkerOnlineQuesterEditor
             Reward reward = new Reward();
             reward.exp = a.id;
             reward.money = a.int_param;
+            if (a.str_param != "" && a.str_param != null)
+            {
+                reward.repGroup = Convert.ToInt32(a.str_param.Split(':')[0]);
+                reward.repValue = Convert.ToInt32(a.str_param.Split(':')[1]);
+            }
+            
             t.rewards.Add(reward);
             listBoxTarget_SelectedIndexChanged(sender, e);
         }
@@ -509,6 +544,7 @@ namespace StalkerOnlineQuesterEditor
             AutogenTarget a = new AutogenTarget();
             a.id = reward.exp;
             a.int_param = reward.money;
+            a.str_param = reward.repGroup.ToString() + ":" + reward.repValue.ToString();
             isDirty = true;
             AddListElementForm form = new AddListElementForm(ElementType.Reward, a, "", this);
             DialogResult result = form.ShowDialog();
@@ -522,6 +558,12 @@ namespace StalkerOnlineQuesterEditor
             a = form.getData();
             reward.exp = a.id;
             reward.money = a.int_param;
+            if (a.str_param != null && a.str_param != "")
+            {
+                reward.repGroup = Convert.ToInt32(a.str_param.Split(':')[0]);
+                reward.repValue = Convert.ToInt32(a.str_param.Split(':')[1]);
+            }
+
             listBoxTarget_SelectedIndexChanged(sender, e);
         }
 

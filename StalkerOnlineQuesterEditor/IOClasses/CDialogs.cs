@@ -362,6 +362,24 @@ namespace StalkerOnlineQuesterEditor
                             CDialogs.AddPreconditionQuests(dialog, "Knowledges", "shouldntKnowledge", Precondition.knowledges.shouldntKnowledge, ref Precondition.knowledges.conditionShouldntKnowledge);
                         }
 
+                        if (dialog.Element("Precondition").Element("TimeWeather") != null)
+                        {
+                            WeatherData weather = new WeatherData();
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("space") != null)
+                                weather.space = Convert.ToInt32(dialog.Element("Precondition").Element("TimeWeather").Element("space").Value);
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("weathers") != null)
+                                weather.weathers = new List<string>(dialog.Element("Precondition").Element("TimeWeather").Element("weathers").Value.Split(','));
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("or") != null)
+                                weather.is_or = true;
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("timeStart") != null)
+                                weather.timeStart = dialog.Element("Precondition").Element("TimeWeather").Element("timeStart").Value;
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("timeEnd") != null)
+                                weather.timeEnd = dialog.Element("Precondition").Element("TimeWeather").Element("timeEnd").Value;
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("only_no") != null)
+                                weather.only_no = true;
+                            Precondition.weather = weather;
+                        }
+
                     }
                     NodeCoordinates nodeCoord = new NodeCoordinates();
                     if (dialog.Element("RootDialog") != null)
@@ -543,11 +561,12 @@ namespace StalkerOnlineQuesterEditor
 
                     if (dialog.Element("Title") != null)
                     {
-
                         target[npc_name][DialogID].Title = dialog.Element("Title").Value.Trim();
                     }
                     if (dialog.Element("Text") != null)
+                    {
                         target[npc_name][DialogID].Text = dialog.Element("Text").Value.Trim();
+                    }
                     int Version = 0;
                     if ((!dialog.Element("Version").Value.Equals("")))
                         Version = int.Parse(dialog.Element("Version").Value);
@@ -599,7 +618,7 @@ namespace StalkerOnlineQuesterEditor
                 System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
                 using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(fileName, settings))
                 {
-
+                    Console.WriteLine("PATH!:" + fileName);
                     resultDoc.Save(w);
 
                 }
@@ -756,6 +775,8 @@ namespace StalkerOnlineQuesterEditor
                             prec.Add(new XElement("NPCReputation", dialog.Precondition.getNPCReputation()));
                         if (dialog.Precondition.KarmaPK.Any())
                             prec.Add(new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK)));
+                        if (dialog.Precondition.weather.Any())
+                            prec.Add(dialog.Precondition.weather.getXML());
 
                         if (dialog.Precondition.forDev)
                             prec.Add(new XElement("forDev", Global.GetBoolAsString(dialog.Precondition.forDev)));
@@ -921,9 +942,9 @@ namespace StalkerOnlineQuesterEditor
                         new XElement("Y", Convert.ToString(key_id.Value.Y))));
             }
             System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
-            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(".xml", settings))
+            using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create("OtherNodes.xml", settings))
             {
-                resultDoc.Save("OtherNodes.xml");
+                resultDoc.Save(w);
             }
         }
         

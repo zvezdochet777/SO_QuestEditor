@@ -52,6 +52,9 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_ANOMALY = 35;
         public static int TYPE_ANOMALY_AUTO = 36;
 
+        public static int TYPE_KILLNPC = 37;
+        public static int TYPE_KILLNPC_WITH_ONTEST = 38;
+
         //Эти квесты особые, у них есть доп условия
         public static int TYPE_PVP_MAP_KILL = 40; //Убить во время пвп матча
         public static int TYPE_PVP_MAP_CAPTURE_FLAG = 41; //Сделать что-то над флагом в пвп карте
@@ -60,8 +63,8 @@ namespace StalkerOnlineQuesterEditor
 
         public static int TYPE_CREATE_NPC = 51; // создать бегающего НИП
         public static int TYPE_CREATE_MOB = 52; // создать моба
-        public static int TYPE_KILLNPC = 53; // убить НИП созданного квестом
-        public static int TYPE_KILLNPC_WITH_ONTEST = 54; // убить НИП со сдачей
+        public static int TYPE_KILLSCENARIONPC = 53; // убить НИП созданного квестом
+        public static int TYPE_KILLSCENARIONPC_WITH_ONTEST = 54; // убить НИП со сдачей
 
         public CQuestConstants()
         {
@@ -95,11 +98,17 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_COOK_ITEM, "33 Событие готовки в котле."));
             simpleQuestsType.Add(new СQuestType(TYPE_COOK_ITEM_AUTO, "34 Событие готовки в котле АВТО."));
 
+            simpleQuestsType.Add(new СQuestType(TYPE_ANOMALY, "35 Достать арт из аномалии."));
+            simpleQuestsType.Add(new СQuestType(TYPE_ANOMALY_AUTO, "36 Достать арт из аномалии АВТО."));
+
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC, "37 Убийство NPC."));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC_WITH_ONTEST, "38 Убийство NPC со сдачей"));
+
             // ierarchyQuestsType.Add(new СQuestType(50, "50 Игра против режиссера."));
             simpleQuestsType.Add(new СQuestType(TYPE_CREATE_NPC, "51 Создать NPC."));
             simpleQuestsType.Add(new СQuestType(TYPE_CREATE_MOB, "52 Создать Моба."));
-            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC, "53 Убийство NPC."));
-            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC_WITH_ONTEST, "54 Убийство NPC с обязательной сдачей евента."));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLSCENARIONPC, "53 Убийство NPC для сценария"));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLSCENARIONPC_WITH_ONTEST, "54 Убийство NPC со сдачей для сценария."));
 
 
             pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_KILL,         "40 Убить во время пвп матча"));
@@ -225,13 +234,51 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
+    public class QuestsOmnicounter
+    {
+        protected static List<int>  _quests = new List<int>();
+        public static string JSON_PATH = "../../../res/scripts/base/data/omnicounter.json";
+
+        public static void load()
+        {
+
+            JsonTextReader reader;
+            try
+            {
+                reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
+            }
+            catch
+            {
+                System.Windows.Forms.MessageBox.Show("Ошибка чтения файла: ../../../res/scripts/base/data/omnicounter.json", "Ошибка");
+                return;
+            }
+
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    var name = reader.Value.ToString();
+                    int quest_type;
+                    if (int.TryParse(name, out quest_type))
+                        _quests.Add(quest_type);
+                }
+            }
+
+        }
+
+        public static bool isOmni(int questId)
+        {
+            return _quests.Contains(questId);
+        }
+
+    }
+
     public class QuestsInMassQuestsReward
     {
         protected List<int> _quests = new List<int>();
         public static string JSON_PATH = "../../../res/scripts/server_data/massquest_config.json";
         JsonTextReader reader;
 
-        public Dictionary<int, string> effects = new Dictionary<int, string>();
         public QuestsInMassQuestsReward()
         {
             reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
@@ -381,47 +428,118 @@ namespace StalkerOnlineQuesterEditor
     public static class AnomalyTypes
     {
 
+        static Dictionary<string, string> anomalies = new Dictionary<string, string>();
+        static Dictionary<string, List<string>> categories = new Dictionary<string, List<string>>();
+        static Dictionary<string, List<int>> loot = new Dictionary<string, List<int>>();
+
         public static void parse()
         {
-            string JSON_PATH = "";
+            string JSON_PATH = "../../../res/scripts/common/data/Anomalies/__config__.json";
 
             JsonTextReader reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
-            bool inNPC = false;
-            bool is_nature = false;
-            var name = "";
-            int value = -1;
-            Dictionary<string, int> npc_natures = new Dictionary<string, int>();
+            bool init = false;
+            string key = "", name = "";
+            List<string> tmp = new List<string>();
+            while (reader.Read())
+            {
+
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    if (!init)
+                    {
+                        if ("category_types" == reader.Value.ToString())
+                            init = true;
+                        continue;
+                    }
+                    else
+                    {
+                        key = reader.Value.ToString();
+                    }
+                }
+                else if (reader.TokenType == JsonToken.EndObject)
+                {
+                    if (init) { init = false; break; }
+                }
+                else if (reader.TokenType == JsonToken.String)
+                {
+                    if (!init) continue;
+
+                    name = reader.Value.ToString();
+                    tmp.Add(name);
+                    
+                }
+                else if (reader.TokenType == JsonToken.EndArray)
+                {
+                    if (!init) continue;
+                    name = tmp[0].Split('_')[0];
+                    categories.Add(name, tmp);
+                    tmp = new List<string>();
+                    anomalies.Add(key, name);
+
+                }
+            }
+            reader.Close();
+
+            readLoot();
+        }
+
+        static void readLoot()
+        {
+            string JSON_PATH = "source/anomaly_loot.json";
+            JsonTextReader reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
+            string key = "";
+            List<int> items = new List<int>();
             while (reader.Read())
             {
                 if (reader.TokenType == JsonToken.PropertyName)
                 {
-                    if (!inNPC)
-                    {
-                        name = reader.Value.ToString();
-                        inNPC = true;
-                    }
-                    else if ("nature" == reader.Value.ToString())
-                        is_nature = true;
-                }
-                else if (reader.TokenType == JsonToken.EndObject)
-                {
-
-                    if (inNPC) inNPC = false;
-                    if (!name.Any()) continue;
-                    if (value < 0)
-                        value = npc_natures["!!default"];
-                    npc_natures.Add(name, value);
-                    name = "";
-
+                    if (key.Any())
+                        loot.Add(key, items);
+                    key = reader.Value.ToString();
+                    items = new List<int>();
                 }
                 else if (reader.TokenType == JsonToken.Integer)
-                    if (is_nature)
-                    {
-                        is_nature = false;
-                        value = Convert.ToInt32(reader.Value);
-                    }
+                {
+                    items.Add(Convert.ToInt32(reader.Value));
+                }
             }
-            reader.Close();
+        }
+
+        public static List<int> getAnomalyLoot(string name)
+        {
+            List<int> result = new List<int>();
+            foreach(var i in categories[name])
+            {
+                if (!loot.ContainsKey(i)) continue;
+                foreach(var item in loot[i])
+                {
+                    if (result.Contains(item)) continue;
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
+
+
+        public static string getIDByName(string name)
+        {
+            foreach (KeyValuePair<string, string> pair in anomalies)
+            {
+                if (pair.Value == name) return pair.Key;
+            }
+            return "";
+        }
+
+        public static string getNameByID(string key)
+        {
+            if (!anomalies.ContainsKey(key))
+                return "";
+            return anomalies[key];
+        }
+
+        public static string[] getListNames()
+        {
+            return anomalies.Values.ToArray();
         }
     }
 }

@@ -267,13 +267,13 @@ namespace StalkerOnlineQuesterEditor
                 System.Windows.Forms.MessageBox.Show("Произошла ошибка. Не указано имя цели: " + text + "\n", "Ошибка чтения");
                 return false;
             }
-            if (find_dublicate_target_names(text))
-            {
-                System.Windows.Forms.MessageBox.Show("Произошла ошибка. Цели с таким названием уже существуют: " + text + "\n", "Ошибка чтения");
-                return false;
-            }
 
             string str_id = quest_type.ToString() + "_" + target_type.ToString();
+
+            if (find_dublicate_target_names(text, str_id))
+            {
+                System.Windows.Forms.MessageBox.Show("Предупреждение. Цели с таким названием уже существуют(возможно у другого NPC): " + text + "\n", "Внимание");
+            }
             foreach (var local in CSettings.getFullListLocales())
             {
                 int version = CSettings.ORIGINAL_PATH == local ? 1 : 0;
@@ -290,13 +290,16 @@ namespace StalkerOnlineQuesterEditor
             return true;
         }
 
-        private static bool find_dublicate_target_names(string text)
+        private static bool find_dublicate_target_names(string text, string key_id)
         {
             foreach(var npc in locals_quests[CSettings.ORIGINAL_PATH].data)
             {
                 foreach(var quest in npc.Value)
                 {
-                    if (quest.Value.text == text) return true;
+                    if (quest.Key == key_id)
+                        continue;
+                    if (quest.Value.text == text)
+                        return true;
                 }
             }
             return false;
@@ -309,15 +312,15 @@ namespace StalkerOnlineQuesterEditor
                 System.Windows.Forms.MessageBox.Show("Произошла ошибка. Не указано имя цели: " + text + "\n", "Ошибка чтения");
                 return false;
             }
-            if (find_dublicate_target_names(text))
-            {
-                System.Windows.Forms.MessageBox.Show("Произошла ошибка. Цели с таким названием уже существуют: " + text + "\n" , "Ошибка чтения");
-                return false;
-            }
+
             AutogenQuestType quest = data_quests[npcName].getQuestTypeByID(quest_type);
             target.id = quest.getNewTargetID();
-            quest.targets.Add(target);
             string str_id = quest_type.ToString() + "_" + target.id.ToString();
+            if (find_dublicate_target_names(text, str_id))
+            {
+                System.Windows.Forms.MessageBox.Show("Предупреждение. Цели с таким названием уже существуют(возможно у другого NPC): " + text + "\n", "Внимание");
+            }
+            quest.targets.Add(target);
             foreach (var local in CSettings.getFullListLocales())
             {
                 int version = CSettings.ORIGINAL_PATH == local ? 1 : 0;
@@ -470,6 +473,8 @@ namespace StalkerOnlineQuesterEditor
     {
         public int money;
         public int exp;
+        public int repGroup;
+        public int repValue;
     }
 
     public class AutogenTarget

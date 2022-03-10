@@ -109,6 +109,7 @@ namespace StalkerOnlineQuesterEditor
             this.label21 = new System.Windows.Forms.Label();
             this.bFindKnowledgeQuest = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbOnlyTradePoints = new System.Windows.Forms.CheckBox();
             this.cbRepLocations = new System.Windows.Forms.ComboBox();
             this.cbOnRepLocation = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -267,6 +268,7 @@ namespace StalkerOnlineQuesterEditor
             this.btnAGGetQuestDel = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.panelSelectNPC = new System.Windows.Forms.Panel();
+            this.btnFilterGroupNPC = new System.Windows.Forms.Button();
             this.btnCheckNPC = new System.Windows.Forms.Button();
             this.btnFilterNPC = new System.Windows.Forms.Button();
             this.btnNextNPC = new System.Windows.Forms.Button();
@@ -298,7 +300,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.cbOnlyTradePoints = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -985,6 +986,12 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // cbOnlyTradePoints
+            // 
+            resources.ApplyResources(this.cbOnlyTradePoints, "cbOnlyTradePoints");
+            this.cbOnlyTradePoints.Name = "cbOnlyTradePoints";
+            this.cbOnlyTradePoints.UseVisualStyleBackColor = true;
             // 
             // cbRepLocations
             // 
@@ -2126,6 +2133,7 @@ namespace StalkerOnlineQuesterEditor
             // panelSelectNPC
             // 
             this.panelSelectNPC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelSelectNPC.Controls.Add(this.btnFilterGroupNPC);
             this.panelSelectNPC.Controls.Add(this.btnCheckNPC);
             this.panelSelectNPC.Controls.Add(this.btnFilterNPC);
             this.panelSelectNPC.Controls.Add(this.btnNextNPC);
@@ -2136,6 +2144,15 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectNPC.Controls.Add(this.FakeNPCBox);
             resources.ApplyResources(this.panelSelectNPC, "panelSelectNPC");
             this.panelSelectNPC.Name = "panelSelectNPC";
+            // 
+            // btnFilterGroupNPC
+            // 
+            this.btnFilterGroupNPC.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.filter_g_24;
+            resources.ApplyResources(this.btnFilterGroupNPC, "btnFilterGroupNPC");
+            this.btnFilterGroupNPC.Name = "btnFilterGroupNPC";
+            this.toolTipDialogs.SetToolTip(this.btnFilterGroupNPC, resources.GetString("btnFilterGroupNPC.ToolTip"));
+            this.btnFilterGroupNPC.UseVisualStyleBackColor = true;
+            this.btnFilterGroupNPC.Click += new System.EventHandler(this.btnFilterGroupNPC_Click);
             // 
             // btnCheckNPC
             // 
@@ -2356,12 +2373,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
-            // 
-            // cbOnlyTradePoints
-            // 
-            resources.ApplyResources(this.cbOnlyTradePoints, "cbOnlyTradePoints");
-            this.cbOnlyTradePoints.Name = "cbOnlyTradePoints";
-            this.cbOnlyTradePoints.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -2730,6 +2741,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.CheckBox cbOnRepLocation;
         private System.Windows.Forms.TextBox tbKnowledgeFind;
         private System.Windows.Forms.CheckBox cbOnlyTradePoints;
+        private System.Windows.Forms.Button btnFilterGroupNPC;
     }
 }
 

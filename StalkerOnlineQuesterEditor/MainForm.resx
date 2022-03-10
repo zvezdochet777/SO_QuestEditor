@@ -392,7 +392,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAC
-        FwAAAk1TRnQBSQFMAgEBBAEAAcQBBQHEAQUBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        FwAAAk1TRnQBSQFMAgEBBAEAAdQBBQHUAQUBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABKAMAAQEBAAEgBgABMv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8AUgABAQMAAQGIAAMFAQcDNgFZA1MBqgNfAeADTQH6A00B+gNfAeADUwGqAzYBWQMFAQc7AAH/
         AwAB/zsAAQEDLwFJAlIBUAGkAmABWgHeAmoBQQH5AmoBQQH5AmABWgHeAlIBUAGkAy8BSQMAAQF0AAM1
@@ -1163,7 +1163,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;NPCBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="labelChosenNPC.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1190,7 +1190,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;labelChosenNPC.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="tabDialogs.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -5929,6 +5929,33 @@
   <data name="&gt;&gt;CentralDock.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btnFilterGroupNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnFilterGroupNPC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>392, -3</value>
+  </data>
+  <data name="btnFilterGroupNPC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="btnFilterGroupNPC.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="btnFilterGroupNPC.ToolTip" xml:space="preserve">
+    <value>Изменить фильтры NPC по группе</value>
+  </data>
+  <data name="&gt;&gt;btnFilterGroupNPC.Name" xml:space="preserve">
+    <value>btnFilterGroupNPC</value>
+  </data>
+  <data name="&gt;&gt;btnFilterGroupNPC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFilterGroupNPC.Parent" xml:space="preserve">
+    <value>panelSelectNPC</value>
+  </data>
+  <data name="&gt;&gt;btnFilterGroupNPC.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnCheckNPC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -5954,7 +5981,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;btnCheckNPC.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnFilterNPC.Location" type="System.Drawing.Point, System.Drawing">
     <value>360, -3</value>
@@ -5978,7 +6005,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;btnFilterNPC.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnNextNPC.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -6005,7 +6032,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;btnNextNPC.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnBackNPC.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -6032,10 +6059,10 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;btnBackNPC.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="bAddNPC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>394, 3</value>
+    <value>430, 4</value>
   </data>
   <data name="bAddNPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
@@ -6056,7 +6083,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;bAddNPC.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="FakeNPCBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 4</value>
@@ -6077,7 +6104,7 @@
     <value>panelSelectNPC</value>
   </data>
   <data name="&gt;&gt;FakeNPCBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="panelSelectNPC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>

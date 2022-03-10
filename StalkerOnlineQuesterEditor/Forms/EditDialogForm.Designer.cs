@@ -264,6 +264,21 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.tabWeather = new System.Windows.Forms.TabPage();
+            this.cbWeatherOnlyNO = new System.Windows.Forms.CheckBox();
+            this.lbWeather = new System.Windows.Forms.CheckedListBox();
+            this.rbWeatherOr = new System.Windows.Forms.RadioButton();
+            this.rbWeatherAnd = new System.Windows.Forms.RadioButton();
+            this.label32 = new System.Windows.Forms.Label();
+            this.nupMin2 = new System.Windows.Forms.NumericUpDown();
+            this.nupHour2 = new System.Windows.Forms.NumericUpDown();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.nupMin1 = new System.Windows.Forms.NumericUpDown();
+            this.nupHour1 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbSpaceWeather = new System.Windows.Forms.ComboBox();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -334,6 +349,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataReputation2)).BeginInit();
             this.tabKnowleges.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabWeather.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMin2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupHour2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMin1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupHour1)).BeginInit();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
@@ -699,7 +719,7 @@
             this.gbPrecondition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbPrecondition.Location = new System.Drawing.Point(0, 247);
             this.gbPrecondition.Name = "gbPrecondition";
-            this.gbPrecondition.Size = new System.Drawing.Size(815, 299);
+            this.gbPrecondition.Size = new System.Drawing.Size(815, 307);
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
@@ -878,10 +898,13 @@
             this.tabQuestsCircs.Controls.Add(this.tabPVP);
             this.tabQuestsCircs.Controls.Add(this.tabReputation2);
             this.tabQuestsCircs.Controls.Add(this.tabKnowleges);
+            this.tabQuestsCircs.Controls.Add(this.tabWeather);
             this.tabQuestsCircs.Location = new System.Drawing.Point(4, 19);
+            this.tabQuestsCircs.Multiline = true;
             this.tabQuestsCircs.Name = "tabQuestsCircs";
+            this.tabQuestsCircs.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabQuestsCircs.SelectedIndex = 0;
-            this.tabQuestsCircs.Size = new System.Drawing.Size(805, 280);
+            this.tabQuestsCircs.Size = new System.Drawing.Size(805, 288);
             this.tabQuestsCircs.TabIndex = 52;
             this.tabQuestsCircs.SelectedIndexChanged += new System.EventHandler(this.tabQuestsCircs_SelectedIndexChanged);
             // 
@@ -889,10 +912,10 @@
             // 
             this.tabQuests.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabQuests.Controls.Add(this.gbQuestCondition);
-            this.tabQuests.Location = new System.Drawing.Point(4, 22);
+            this.tabQuests.Location = new System.Drawing.Point(4, 40);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(797, 254);
+            this.tabQuests.Size = new System.Drawing.Size(797, 244);
             this.tabQuests.TabIndex = 0;
             this.tabQuests.Text = "Квесты";
             // 
@@ -944,9 +967,9 @@
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveQuestsOnTest);
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveOpenQuests);
             this.gbQuestCondition.Controls.Add(this.tMustHaveCompletedQuests);
-            this.gbQuestCondition.Location = new System.Drawing.Point(138, 4);
+            this.gbQuestCondition.Location = new System.Drawing.Point(138, 1);
             this.gbQuestCondition.Name = "gbQuestCondition";
-            this.gbQuestCondition.Size = new System.Drawing.Size(520, 246);
+            this.gbQuestCondition.Size = new System.Drawing.Size(520, 255);
             this.gbQuestCondition.TabIndex = 6;
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
@@ -1320,10 +1343,10 @@
             this.tabReputation.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabReputation.Controls.Add(this.lInfo);
             this.tabReputation.Controls.Add(this.dataReputation);
-            this.tabReputation.Location = new System.Drawing.Point(4, 22);
+            this.tabReputation.Location = new System.Drawing.Point(4, 40);
             this.tabReputation.Name = "tabReputation";
             this.tabReputation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation.Size = new System.Drawing.Size(797, 254);
+            this.tabReputation.Size = new System.Drawing.Size(797, 244);
             this.tabReputation.TabIndex = 1;
             this.tabReputation.Text = "Репутация";
             // 
@@ -1347,7 +1370,7 @@
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation.Location = new System.Drawing.Point(3, 3);
             this.dataReputation.Name = "dataReputation";
-            this.dataReputation.Size = new System.Drawing.Size(791, 248);
+            this.dataReputation.Size = new System.Drawing.Size(791, 238);
             this.dataReputation.TabIndex = 3;
             // 
             // id
@@ -1386,10 +1409,10 @@
             this.tabKarma.Controls.Add(this.label1);
             this.tabKarma.Controls.Add(this.aTextBox);
             this.tabKarma.Controls.Add(this.a);
-            this.tabKarma.Location = new System.Drawing.Point(4, 22);
+            this.tabKarma.Location = new System.Drawing.Point(4, 40);
             this.tabKarma.Name = "tabKarma";
             this.tabKarma.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKarma.Size = new System.Drawing.Size(797, 254);
+            this.tabKarma.Size = new System.Drawing.Size(797, 244);
             this.tabKarma.TabIndex = 2;
             this.tabKarma.Text = "Карма";
             // 
@@ -1397,7 +1420,7 @@
             // 
             this.panel2.Controls.Add(this.labelDescription);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 110);
+            this.panel2.Location = new System.Drawing.Point(3, 100);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(791, 141);
             this.panel2.TabIndex = 4;
@@ -1447,10 +1470,10 @@
             // 
             this.tabClan.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabClan.Controls.Add(this.gbClanOptions);
-            this.tabClan.Location = new System.Drawing.Point(4, 22);
+            this.tabClan.Location = new System.Drawing.Point(4, 40);
             this.tabClan.Name = "tabClan";
             this.tabClan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClan.Size = new System.Drawing.Size(797, 254);
+            this.tabClan.Size = new System.Drawing.Size(797, 244);
             this.tabClan.TabIndex = 3;
             this.tabClan.Text = "Клановые";
             // 
@@ -1613,10 +1636,10 @@
             // tabEffects
             // 
             this.tabEffects.Controls.Add(this.effectsPanel);
-            this.tabEffects.Location = new System.Drawing.Point(4, 22);
+            this.tabEffects.Location = new System.Drawing.Point(4, 40);
             this.tabEffects.Name = "tabEffects";
             this.tabEffects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEffects.Size = new System.Drawing.Size(797, 254);
+            this.tabEffects.Size = new System.Drawing.Size(797, 244);
             this.tabEffects.TabIndex = 4;
             this.tabEffects.Text = "Эффекты";
             this.tabEffects.UseVisualStyleBackColor = true;
@@ -1631,7 +1654,7 @@
             this.effectsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.effectsPanel.Location = new System.Drawing.Point(3, 3);
             this.effectsPanel.Name = "effectsPanel";
-            this.effectsPanel.Size = new System.Drawing.Size(791, 248);
+            this.effectsPanel.Size = new System.Drawing.Size(791, 238);
             this.effectsPanel.TabIndex = 17;
             // 
             // lMustNotEffects
@@ -1664,7 +1687,7 @@
             this.dataGridEffects.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridEffects.Location = new System.Drawing.Point(0, 0);
             this.dataGridEffects.Name = "dataGridEffects";
-            this.dataGridEffects.Size = new System.Drawing.Size(246, 248);
+            this.dataGridEffects.Size = new System.Drawing.Size(246, 238);
             this.dataGridEffects.TabIndex = 2;
             // 
             // dataGridViewComboBoxColumn1
@@ -1696,7 +1719,7 @@
             this.dataGridNotEffects.Dock = System.Windows.Forms.DockStyle.Right;
             this.dataGridNotEffects.Location = new System.Drawing.Point(545, 0);
             this.dataGridNotEffects.Name = "dataGridNotEffects";
-            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 248);
+            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 238);
             this.dataGridNotEffects.TabIndex = 6;
             // 
             // dataGridViewComboBoxColumn2
@@ -1726,9 +1749,9 @@
             this.tabLevel.Controls.Add(this.lFrom);
             this.tabLevel.Controls.Add(this.mtbPlayerLevelMax);
             this.tabLevel.Controls.Add(this.lPlayerLevel);
-            this.tabLevel.Location = new System.Drawing.Point(4, 22);
+            this.tabLevel.Location = new System.Drawing.Point(4, 40);
             this.tabLevel.Name = "tabLevel";
-            this.tabLevel.Size = new System.Drawing.Size(797, 254);
+            this.tabLevel.Size = new System.Drawing.Size(797, 244);
             this.tabLevel.TabIndex = 5;
             this.tabLevel.Text = "Уровень";
             // 
@@ -1781,10 +1804,10 @@
             // 
             this.tabSkills.Controls.Add(this.dataPerks);
             this.tabSkills.Controls.Add(this.dataSkill);
-            this.tabSkills.Location = new System.Drawing.Point(4, 22);
+            this.tabSkills.Location = new System.Drawing.Point(4, 40);
             this.tabSkills.Name = "tabSkills";
             this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSkills.Size = new System.Drawing.Size(797, 254);
+            this.tabSkills.Size = new System.Drawing.Size(797, 244);
             this.tabSkills.TabIndex = 6;
             this.tabSkills.Text = "Навыки";
             this.tabSkills.UseVisualStyleBackColor = true;
@@ -1878,10 +1901,10 @@
             this.tabActions.Controls.Add(this.cbCamera);
             this.tabActions.Controls.Add(this.cbAnimationNPC);
             this.tabActions.Controls.Add(this.cbAnimationPlayer);
-            this.tabActions.Location = new System.Drawing.Point(4, 22);
+            this.tabActions.Location = new System.Drawing.Point(4, 40);
             this.tabActions.Name = "tabActions";
             this.tabActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActions.Size = new System.Drawing.Size(797, 254);
+            this.tabActions.Size = new System.Drawing.Size(797, 244);
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
@@ -2034,10 +2057,10 @@
             this.tabItems.Controls.Add(this.cbCategory);
             this.tabItems.Controls.Add(this.rbItems);
             this.tabItems.Controls.Add(this.rbCategory);
-            this.tabItems.Location = new System.Drawing.Point(4, 22);
+            this.tabItems.Location = new System.Drawing.Point(4, 40);
             this.tabItems.Name = "tabItems";
             this.tabItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tabItems.Size = new System.Drawing.Size(797, 254);
+            this.tabItems.Size = new System.Drawing.Size(797, 244);
             this.tabItems.TabIndex = 8;
             this.tabItems.Text = "Предметы";
             this.tabItems.SizeChanged += new System.EventHandler(this.tabItems_SizeChanged);
@@ -2288,10 +2311,10 @@
             this.tabTransport.Controls.Add(this.cbInBoatList);
             this.tabTransport.Controls.Add(this.cbNotInTransportList);
             this.tabTransport.Controls.Add(this.cbTransportInList);
-            this.tabTransport.Location = new System.Drawing.Point(4, 22);
+            this.tabTransport.Location = new System.Drawing.Point(4, 40);
             this.tabTransport.Name = "tabTransport";
             this.tabTransport.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTransport.Size = new System.Drawing.Size(797, 254);
+            this.tabTransport.Size = new System.Drawing.Size(797, 244);
             this.tabTransport.TabIndex = 9;
             this.tabTransport.Text = "Перевоз";
             // 
@@ -2384,10 +2407,10 @@
             // 
             this.tabTutorial.Controls.Add(this.label13);
             this.tabTutorial.Controls.Add(this.cbTutorialPhase);
-            this.tabTutorial.Location = new System.Drawing.Point(4, 22);
+            this.tabTutorial.Location = new System.Drawing.Point(4, 40);
             this.tabTutorial.Name = "tabTutorial";
             this.tabTutorial.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTutorial.Size = new System.Drawing.Size(797, 254);
+            this.tabTutorial.Size = new System.Drawing.Size(797, 244);
             this.tabTutorial.TabIndex = 10;
             this.tabTutorial.Text = "Туториал";
             this.tabTutorial.UseVisualStyleBackColor = true;
@@ -2417,10 +2440,10 @@
             this.tabPVP.Controls.Add(this.label19);
             this.tabPVP.Controls.Add(this.cbPVPRank1);
             this.tabPVP.Controls.Add(this.label18);
-            this.tabPVP.Location = new System.Drawing.Point(4, 22);
+            this.tabPVP.Location = new System.Drawing.Point(4, 40);
             this.tabPVP.Name = "tabPVP";
             this.tabPVP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPVP.Size = new System.Drawing.Size(797, 254);
+            this.tabPVP.Size = new System.Drawing.Size(797, 244);
             this.tabPVP.TabIndex = 11;
             this.tabPVP.Text = "PVP";
             this.tabPVP.UseVisualStyleBackColor = true;
@@ -2481,10 +2504,10 @@
             this.tabReputation2.Controls.Add(this.panel4);
             this.tabReputation2.Controls.Add(this.label20);
             this.tabReputation2.Controls.Add(this.dataReputation2);
-            this.tabReputation2.Location = new System.Drawing.Point(4, 22);
+            this.tabReputation2.Location = new System.Drawing.Point(4, 40);
             this.tabReputation2.Name = "tabReputation2";
             this.tabReputation2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation2.Size = new System.Drawing.Size(797, 254);
+            this.tabReputation2.Size = new System.Drawing.Size(797, 244);
             this.tabReputation2.TabIndex = 12;
             this.tabReputation2.Text = "Репутация2";
             this.tabReputation2.UseVisualStyleBackColor = true;
@@ -2575,7 +2598,7 @@
             this.dataReputation2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation2.Location = new System.Drawing.Point(3, 3);
             this.dataReputation2.Name = "dataReputation2";
-            this.dataReputation2.Size = new System.Drawing.Size(791, 248);
+            this.dataReputation2.Size = new System.Drawing.Size(791, 238);
             this.dataReputation2.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn8
@@ -2609,10 +2632,10 @@
             // tabKnowleges
             // 
             this.tabKnowleges.Controls.Add(this.groupBox1);
-            this.tabKnowleges.Location = new System.Drawing.Point(4, 22);
+            this.tabKnowleges.Location = new System.Drawing.Point(4, 40);
             this.tabKnowleges.Name = "tabKnowleges";
             this.tabKnowleges.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKnowleges.Size = new System.Drawing.Size(797, 254);
+            this.tabKnowleges.Size = new System.Drawing.Size(797, 244);
             this.tabKnowleges.TabIndex = 13;
             this.tabKnowleges.Text = "Знания";
             this.tabKnowleges.UseVisualStyleBackColor = true;
@@ -2711,6 +2734,176 @@
             this.label30.Size = new System.Drawing.Size(76, 13);
             this.label30.TabIndex = 9;
             this.label30.Text = "Должно быть";
+            // 
+            // tabWeather
+            // 
+            this.tabWeather.Controls.Add(this.cbWeatherOnlyNO);
+            this.tabWeather.Controls.Add(this.lbWeather);
+            this.tabWeather.Controls.Add(this.rbWeatherOr);
+            this.tabWeather.Controls.Add(this.rbWeatherAnd);
+            this.tabWeather.Controls.Add(this.label32);
+            this.tabWeather.Controls.Add(this.nupMin2);
+            this.tabWeather.Controls.Add(this.nupHour2);
+            this.tabWeather.Controls.Add(this.label31);
+            this.tabWeather.Controls.Add(this.label28);
+            this.tabWeather.Controls.Add(this.nupMin1);
+            this.tabWeather.Controls.Add(this.nupHour1);
+            this.tabWeather.Controls.Add(this.label3);
+            this.tabWeather.Controls.Add(this.label2);
+            this.tabWeather.Controls.Add(this.cbSpaceWeather);
+            this.tabWeather.Location = new System.Drawing.Point(4, 40);
+            this.tabWeather.Name = "tabWeather";
+            this.tabWeather.Padding = new System.Windows.Forms.Padding(3);
+            this.tabWeather.Size = new System.Drawing.Size(797, 244);
+            this.tabWeather.TabIndex = 14;
+            this.tabWeather.Text = "Погода";
+            this.tabWeather.UseVisualStyleBackColor = true;
+            // 
+            // cbWeatherOnlyNO
+            // 
+            this.cbWeatherOnlyNO.AutoSize = true;
+            this.cbWeatherOnlyNO.Location = new System.Drawing.Point(55, 149);
+            this.cbWeatherOnlyNO.Name = "cbWeatherOnlyNO";
+            this.cbWeatherOnlyNO.Size = new System.Drawing.Size(252, 17);
+            this.cbWeatherOnlyNO.TabIndex = 14;
+            this.cbWeatherOnlyNO.Text = "только не т.е. этих условий быть не должно)";
+            this.cbWeatherOnlyNO.UseVisualStyleBackColor = true;
+            // 
+            // lbWeather
+            // 
+            this.lbWeather.FormattingEnabled = true;
+            this.lbWeather.Location = new System.Drawing.Point(362, 6);
+            this.lbWeather.Name = "lbWeather";
+            this.lbWeather.Size = new System.Drawing.Size(208, 229);
+            this.lbWeather.TabIndex = 13;
+            // 
+            // rbWeatherOr
+            // 
+            this.rbWeatherOr.AutoSize = true;
+            this.rbWeatherOr.Location = new System.Drawing.Point(302, 103);
+            this.rbWeatherOr.Name = "rbWeatherOr";
+            this.rbWeatherOr.Size = new System.Drawing.Size(49, 17);
+            this.rbWeatherOr.TabIndex = 11;
+            this.rbWeatherOr.Text = "ИЛИ";
+            this.rbWeatherOr.UseVisualStyleBackColor = true;
+            // 
+            // rbWeatherAnd
+            // 
+            this.rbWeatherAnd.AutoSize = true;
+            this.rbWeatherAnd.Checked = true;
+            this.rbWeatherAnd.Location = new System.Drawing.Point(302, 80);
+            this.rbWeatherAnd.Name = "rbWeatherAnd";
+            this.rbWeatherAnd.Size = new System.Drawing.Size(33, 17);
+            this.rbWeatherAnd.TabIndex = 10;
+            this.rbWeatherAnd.TabStop = true;
+            this.rbWeatherAnd.Text = "И";
+            this.rbWeatherAnd.UseVisualStyleBackColor = true;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(236, 91);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(10, 13);
+            this.label32.TabIndex = 9;
+            this.label32.Text = ":";
+            // 
+            // nupMin2
+            // 
+            this.nupMin2.Location = new System.Drawing.Point(247, 89);
+            this.nupMin2.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.nupMin2.Name = "nupMin2";
+            this.nupMin2.Size = new System.Drawing.Size(48, 20);
+            this.nupMin2.TabIndex = 8;
+            // 
+            // nupHour2
+            // 
+            this.nupHour2.Location = new System.Drawing.Point(186, 89);
+            this.nupHour2.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.nupHour2.Name = "nupHour2";
+            this.nupHour2.Size = new System.Drawing.Size(48, 20);
+            this.nupHour2.TabIndex = 7;
+            this.nupHour2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nupHour2.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(170, 92);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(10, 13);
+            this.label31.TabIndex = 6;
+            this.label31.Text = "-";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(105, 91);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(10, 13);
+            this.label28.TabIndex = 5;
+            this.label28.Text = ":";
+            // 
+            // nupMin1
+            // 
+            this.nupMin1.Location = new System.Drawing.Point(116, 89);
+            this.nupMin1.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.nupMin1.Name = "nupMin1";
+            this.nupMin1.Size = new System.Drawing.Size(48, 20);
+            this.nupMin1.TabIndex = 4;
+            // 
+            // nupHour1
+            // 
+            this.nupHour1.Location = new System.Drawing.Point(55, 89);
+            this.nupHour1.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.nupHour1.Name = "nupHour1";
+            this.nupHour1.Size = new System.Drawing.Size(48, 20);
+            this.nupHour1.TabIndex = 3;
+            this.nupHour1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nupHour1.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Время:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Карта:";
+            // 
+            // cbSpaceWeather
+            // 
+            this.cbSpaceWeather.FormattingEnabled = true;
+            this.cbSpaceWeather.Location = new System.Drawing.Point(52, 11);
+            this.cbSpaceWeather.Name = "cbSpaceWeather";
+            this.cbSpaceWeather.Size = new System.Drawing.Size(146, 21);
+            this.cbSpaceWeather.TabIndex = 1;
+            this.cbSpaceWeather.SelectedIndexChanged += new System.EventHandler(this.cbSpaceWeather_SelectedIndexChanged);
             // 
             // bEditDialogOk
             // 
@@ -3014,6 +3207,12 @@
             this.tabKnowleges.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabWeather.ResumeLayout(false);
+            this.tabWeather.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMin2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupHour2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMin1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupHour1)).EndInit();
             this.pCommands.ResumeLayout(false);
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
@@ -3284,5 +3483,20 @@
         private System.Windows.Forms.Label Uheg;
         private System.Windows.Forms.ComboBox cbFracGroup;
         private System.Windows.Forms.CheckBox cbFracNoMusthave;
+        private System.Windows.Forms.TabPage tabWeather;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.NumericUpDown nupMin1;
+        private System.Windows.Forms.NumericUpDown nupHour1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbSpaceWeather;
+        private System.Windows.Forms.CheckedListBox lbWeather;
+        private System.Windows.Forms.RadioButton rbWeatherOr;
+        private System.Windows.Forms.RadioButton rbWeatherAnd;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.NumericUpDown nupMin2;
+        private System.Windows.Forms.NumericUpDown nupHour2;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.CheckBox cbWeatherOnlyNO;
     }
 }

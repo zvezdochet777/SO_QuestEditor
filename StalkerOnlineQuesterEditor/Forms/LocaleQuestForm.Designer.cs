@@ -29,6 +29,20 @@
         private void InitializeComponent()
         {
             this.questInformationBox = new System.Windows.Forms.GroupBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.localeDescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.localeDescriptionOnTestTextBox = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.localeDescriptionClosedTextBox = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabOpen = new System.Windows.Forms.TabPage();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.tabOnTest = new System.Windows.Forms.TabPage();
+            this.descriptionOnTestTextBox = new System.Windows.Forms.TextBox();
+            this.tabClosed = new System.Windows.Forms.TabPage();
+            this.descriptionClosedTextBox = new System.Windows.Forms.TextBox();
             this.localeOnGetTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.onGetTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -55,37 +69,35 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bCancel = new System.Windows.Forms.Button();
             this.bOK = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabOpen = new System.Windows.Forms.TabPage();
-            this.tabOnTest = new System.Windows.Forms.TabPage();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionOnTestTextBox = new System.Windows.Forms.TextBox();
-            this.tabClosed = new System.Windows.Forms.TabPage();
-            this.descriptionClosedTextBox = new System.Windows.Forms.TextBox();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.localeDescriptionOnTestTextBox = new System.Windows.Forms.TextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.localeDescriptionClosedTextBox = new System.Windows.Forms.TextBox();
-            this.localeDescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.localeOnTestTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.onTestTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.localeOnOpenTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.onOpenTextBox = new System.Windows.Forms.MaskedTextBox();
             this.questInformationBox.SuspendLayout();
-            this.rewardGroupBox.SuspendLayout();
-            this.lQuestRules.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabOpen.SuspendLayout();
-            this.tabOnTest.SuspendLayout();
-            this.tabClosed.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabOpen.SuspendLayout();
+            this.tabOnTest.SuspendLayout();
+            this.tabClosed.SuspendLayout();
+            this.rewardGroupBox.SuspendLayout();
+            this.lQuestRules.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // questInformationBox
             // 
             this.questInformationBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.questInformationBox.Controls.Add(this.localeOnOpenTextBox);
+            this.questInformationBox.Controls.Add(this.label6);
+            this.questInformationBox.Controls.Add(this.onOpenTextBox);
+            this.questInformationBox.Controls.Add(this.localeOnTestTextBox);
+            this.questInformationBox.Controls.Add(this.label5);
+            this.questInformationBox.Controls.Add(this.onTestTextBox);
             this.questInformationBox.Controls.Add(this.tabControl2);
             this.questInformationBox.Controls.Add(this.tabControl1);
             this.questInformationBox.Controls.Add(this.localeOnGetTextBox);
@@ -110,10 +122,152 @@
             this.questInformationBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.questInformationBox.Location = new System.Drawing.Point(0, 0);
             this.questInformationBox.Name = "questInformationBox";
-            this.questInformationBox.Size = new System.Drawing.Size(884, 281);
+            this.questInformationBox.Size = new System.Drawing.Size(884, 326);
             this.questInformationBox.TabIndex = 1;
             this.questInformationBox.TabStop = false;
             this.questInformationBox.Text = "Информация";
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage1);
+            this.tabControl2.Controls.Add(this.tabPage2);
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Location = new System.Drawing.Point(438, 97);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(410, 100);
+            this.tabControl2.TabIndex = 25;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.localeDescriptionTextBox);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(402, 74);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "open";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // localeDescriptionTextBox
+            // 
+            this.localeDescriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.localeDescriptionTextBox.Location = new System.Drawing.Point(3, 3);
+            this.localeDescriptionTextBox.Multiline = true;
+            this.localeDescriptionTextBox.Name = "localeDescriptionTextBox";
+            this.localeDescriptionTextBox.Size = new System.Drawing.Size(396, 68);
+            this.localeDescriptionTextBox.TabIndex = 15;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.localeDescriptionOnTestTextBox);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(402, 74);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "onTest";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // localeDescriptionOnTestTextBox
+            // 
+            this.localeDescriptionOnTestTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.localeDescriptionOnTestTextBox.Location = new System.Drawing.Point(3, 3);
+            this.localeDescriptionOnTestTextBox.Multiline = true;
+            this.localeDescriptionOnTestTextBox.Name = "localeDescriptionOnTestTextBox";
+            this.localeDescriptionOnTestTextBox.Size = new System.Drawing.Size(396, 68);
+            this.localeDescriptionOnTestTextBox.TabIndex = 5;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.localeDescriptionClosedTextBox);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(402, 74);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Closed";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // localeDescriptionClosedTextBox
+            // 
+            this.localeDescriptionClosedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.localeDescriptionClosedTextBox.Location = new System.Drawing.Point(3, 3);
+            this.localeDescriptionClosedTextBox.Multiline = true;
+            this.localeDescriptionClosedTextBox.Name = "localeDescriptionClosedTextBox";
+            this.localeDescriptionClosedTextBox.Size = new System.Drawing.Size(396, 68);
+            this.localeDescriptionClosedTextBox.TabIndex = 5;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabOpen);
+            this.tabControl1.Controls.Add(this.tabOnTest);
+            this.tabControl1.Controls.Add(this.tabClosed);
+            this.tabControl1.Location = new System.Drawing.Point(83, 97);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(353, 100);
+            this.tabControl1.TabIndex = 9;
+            // 
+            // tabOpen
+            // 
+            this.tabOpen.Controls.Add(this.descriptionTextBox);
+            this.tabOpen.Location = new System.Drawing.Point(4, 22);
+            this.tabOpen.Name = "tabOpen";
+            this.tabOpen.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOpen.Size = new System.Drawing.Size(345, 74);
+            this.tabOpen.TabIndex = 0;
+            this.tabOpen.Text = "open";
+            this.tabOpen.UseVisualStyleBackColor = true;
+            // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionTextBox.Location = new System.Drawing.Point(3, 3);
+            this.descriptionTextBox.Multiline = true;
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(339, 68);
+            this.descriptionTextBox.TabIndex = 4;
+            // 
+            // tabOnTest
+            // 
+            this.tabOnTest.Controls.Add(this.descriptionOnTestTextBox);
+            this.tabOnTest.Location = new System.Drawing.Point(4, 22);
+            this.tabOnTest.Name = "tabOnTest";
+            this.tabOnTest.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOnTest.Size = new System.Drawing.Size(345, 74);
+            this.tabOnTest.TabIndex = 1;
+            this.tabOnTest.Text = "onTest";
+            this.tabOnTest.UseVisualStyleBackColor = true;
+            // 
+            // descriptionOnTestTextBox
+            // 
+            this.descriptionOnTestTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionOnTestTextBox.Location = new System.Drawing.Point(3, 3);
+            this.descriptionOnTestTextBox.Multiline = true;
+            this.descriptionOnTestTextBox.Name = "descriptionOnTestTextBox";
+            this.descriptionOnTestTextBox.Size = new System.Drawing.Size(339, 68);
+            this.descriptionOnTestTextBox.TabIndex = 5;
+            // 
+            // tabClosed
+            // 
+            this.tabClosed.Controls.Add(this.descriptionClosedTextBox);
+            this.tabClosed.Location = new System.Drawing.Point(4, 22);
+            this.tabClosed.Name = "tabClosed";
+            this.tabClosed.Padding = new System.Windows.Forms.Padding(3);
+            this.tabClosed.Size = new System.Drawing.Size(345, 74);
+            this.tabClosed.TabIndex = 2;
+            this.tabClosed.Text = "Closed";
+            this.tabClosed.UseVisualStyleBackColor = true;
+            // 
+            // descriptionClosedTextBox
+            // 
+            this.descriptionClosedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionClosedTextBox.Location = new System.Drawing.Point(3, 3);
+            this.descriptionClosedTextBox.Multiline = true;
+            this.descriptionClosedTextBox.Name = "descriptionClosedTextBox";
+            this.descriptionClosedTextBox.Size = new System.Drawing.Size(339, 68);
+            this.descriptionClosedTextBox.TabIndex = 5;
             // 
             // localeOnGetTextBox
             // 
@@ -274,7 +428,7 @@
             // 
             this.rewardGroupBox.AutoSize = true;
             this.rewardGroupBox.Controls.Add(this.bItemReward);
-            this.rewardGroupBox.Location = new System.Drawing.Point(0, 353);
+            this.rewardGroupBox.Location = new System.Drawing.Point(0, 390);
             this.rewardGroupBox.Name = "rewardGroupBox";
             this.rewardGroupBox.Size = new System.Drawing.Size(884, 61);
             this.rewardGroupBox.TabIndex = 6;
@@ -295,7 +449,7 @@
             // lQuestRules
             // 
             this.lQuestRules.Controls.Add(this.bItemQuestRules);
-            this.lQuestRules.Location = new System.Drawing.Point(0, 295);
+            this.lQuestRules.Location = new System.Drawing.Point(0, 332);
             this.lQuestRules.Name = "lQuestRules";
             this.lQuestRules.Size = new System.Drawing.Size(884, 52);
             this.lQuestRules.TabIndex = 5;
@@ -319,7 +473,7 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.bCancel);
             this.groupBox1.Controls.Add(this.bOK);
-            this.groupBox1.Location = new System.Drawing.Point(0, 420);
+            this.groupBox1.Location = new System.Drawing.Point(0, 457);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(884, 61);
             this.groupBox1.TabIndex = 7;
@@ -345,154 +499,58 @@
             this.bOK.UseVisualStyleBackColor = true;
             this.bOK.Click += new System.EventHandler(this.bOK_Click);
             // 
-            // tabControl1
+            // localeOnTestTextBox
             // 
-            this.tabControl1.Controls.Add(this.tabOpen);
-            this.tabControl1.Controls.Add(this.tabOnTest);
-            this.tabControl1.Controls.Add(this.tabClosed);
-            this.tabControl1.Location = new System.Drawing.Point(83, 97);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(353, 100);
-            this.tabControl1.TabIndex = 9;
+            this.localeOnTestTextBox.Location = new System.Drawing.Point(438, 300);
+            this.localeOnTestTextBox.Name = "localeOnTestTextBox";
+            this.localeOnTestTextBox.Size = new System.Drawing.Size(407, 20);
+            this.localeOnTestTextBox.TabIndex = 28;
             // 
-            // tabOpen
+            // label5
             // 
-            this.tabOpen.Controls.Add(this.descriptionTextBox);
-            this.tabOpen.Location = new System.Drawing.Point(4, 22);
-            this.tabOpen.Name = "tabOpen";
-            this.tabOpen.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOpen.Size = new System.Drawing.Size(345, 74);
-            this.tabOpen.TabIndex = 0;
-            this.tabOpen.Text = "open";
-            this.tabOpen.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 303);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Тест";
             // 
-            // tabOnTest
+            // onTestTextBox
             // 
-            this.tabOnTest.Controls.Add(this.descriptionOnTestTextBox);
-            this.tabOnTest.Location = new System.Drawing.Point(4, 22);
-            this.tabOnTest.Name = "tabOnTest";
-            this.tabOnTest.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOnTest.Size = new System.Drawing.Size(345, 74);
-            this.tabOnTest.TabIndex = 1;
-            this.tabOnTest.Text = "onTest";
-            this.tabOnTest.UseVisualStyleBackColor = true;
+            this.onTestTextBox.Location = new System.Drawing.Point(83, 300);
+            this.onTestTextBox.Name = "onTestTextBox";
+            this.onTestTextBox.Size = new System.Drawing.Size(349, 20);
+            this.onTestTextBox.TabIndex = 26;
             // 
-            // descriptionTextBox
+            // localeOnOpenTextBox
             // 
-            this.descriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionTextBox.Location = new System.Drawing.Point(3, 3);
-            this.descriptionTextBox.Multiline = true;
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(339, 68);
-            this.descriptionTextBox.TabIndex = 4;
+            this.localeOnOpenTextBox.Location = new System.Drawing.Point(438, 274);
+            this.localeOnOpenTextBox.Name = "localeOnOpenTextBox";
+            this.localeOnOpenTextBox.Size = new System.Drawing.Size(407, 20);
+            this.localeOnOpenTextBox.TabIndex = 31;
             // 
-            // descriptionOnTestTextBox
+            // label6
             // 
-            this.descriptionOnTestTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionOnTestTextBox.Location = new System.Drawing.Point(3, 3);
-            this.descriptionOnTestTextBox.Multiline = true;
-            this.descriptionOnTestTextBox.Name = "descriptionOnTestTextBox";
-            this.descriptionOnTestTextBox.Size = new System.Drawing.Size(339, 68);
-            this.descriptionOnTestTextBox.TabIndex = 5;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 277);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Открытие";
             // 
-            // tabClosed
+            // onOpenTextBox
             // 
-            this.tabClosed.Controls.Add(this.descriptionClosedTextBox);
-            this.tabClosed.Location = new System.Drawing.Point(4, 22);
-            this.tabClosed.Name = "tabClosed";
-            this.tabClosed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClosed.Size = new System.Drawing.Size(345, 74);
-            this.tabClosed.TabIndex = 2;
-            this.tabClosed.Text = "Closed";
-            this.tabClosed.UseVisualStyleBackColor = true;
-            // 
-            // descriptionClosedTextBox
-            // 
-            this.descriptionClosedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionClosedTextBox.Location = new System.Drawing.Point(3, 3);
-            this.descriptionClosedTextBox.Multiline = true;
-            this.descriptionClosedTextBox.Name = "descriptionClosedTextBox";
-            this.descriptionClosedTextBox.Size = new System.Drawing.Size(339, 68);
-            this.descriptionClosedTextBox.TabIndex = 5;
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Controls.Add(this.tabPage1);
-            this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Controls.Add(this.tabPage3);
-            this.tabControl2.Location = new System.Drawing.Point(438, 97);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(410, 100);
-            this.tabControl2.TabIndex = 25;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.localeDescriptionTextBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(402, 74);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "open";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.localeDescriptionOnTestTextBox);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(402, 74);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "onTest";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // localeDescriptionOnTestTextBox
-            // 
-            this.localeDescriptionOnTestTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.localeDescriptionOnTestTextBox.Location = new System.Drawing.Point(3, 3);
-            this.localeDescriptionOnTestTextBox.Multiline = true;
-            this.localeDescriptionOnTestTextBox.Name = "localeDescriptionOnTestTextBox";
-            this.localeDescriptionOnTestTextBox.Size = new System.Drawing.Size(396, 68);
-            this.localeDescriptionOnTestTextBox.TabIndex = 5;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.localeDescriptionClosedTextBox);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(402, 74);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Closed";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // localeDescriptionClosedTextBox
-            // 
-            this.localeDescriptionClosedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.localeDescriptionClosedTextBox.Location = new System.Drawing.Point(3, 3);
-            this.localeDescriptionClosedTextBox.Multiline = true;
-            this.localeDescriptionClosedTextBox.Name = "localeDescriptionClosedTextBox";
-            this.localeDescriptionClosedTextBox.Size = new System.Drawing.Size(396, 68);
-            this.localeDescriptionClosedTextBox.TabIndex = 5;
-            // 
-            // localeDescriptionTextBox
-            // 
-            this.localeDescriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.localeDescriptionTextBox.Location = new System.Drawing.Point(3, 3);
-            this.localeDescriptionTextBox.Multiline = true;
-            this.localeDescriptionTextBox.Name = "localeDescriptionTextBox";
-            this.localeDescriptionTextBox.Size = new System.Drawing.Size(396, 68);
-            this.localeDescriptionTextBox.TabIndex = 15;
+            this.onOpenTextBox.Location = new System.Drawing.Point(83, 274);
+            this.onOpenTextBox.Name = "onOpenTextBox";
+            this.onOpenTextBox.Size = new System.Drawing.Size(349, 20);
+            this.onOpenTextBox.TabIndex = 29;
             // 
             // LocaleQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(884, 482);
+            this.ClientSize = new System.Drawing.Size(884, 517);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rewardGroupBox);
             this.Controls.Add(this.lQuestRules);
@@ -503,16 +561,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LocaleQuestForm_FormClosing);
             this.questInformationBox.ResumeLayout(false);
             this.questInformationBox.PerformLayout();
-            this.rewardGroupBox.ResumeLayout(false);
-            this.lQuestRules.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabOpen.ResumeLayout(false);
-            this.tabOpen.PerformLayout();
-            this.tabOnTest.ResumeLayout(false);
-            this.tabOnTest.PerformLayout();
-            this.tabClosed.ResumeLayout(false);
-            this.tabClosed.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -520,6 +568,16 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabOpen.ResumeLayout(false);
+            this.tabOpen.PerformLayout();
+            this.tabOnTest.ResumeLayout(false);
+            this.tabOnTest.PerformLayout();
+            this.tabClosed.ResumeLayout(false);
+            this.tabClosed.PerformLayout();
+            this.rewardGroupBox.ResumeLayout(false);
+            this.lQuestRules.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -568,5 +626,11 @@
         private System.Windows.Forms.TabPage tabClosed;
         private System.Windows.Forms.TextBox descriptionClosedTextBox;
         private System.Windows.Forms.TextBox localeDescriptionTextBox;
+        private System.Windows.Forms.MaskedTextBox localeOnOpenTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MaskedTextBox onOpenTextBox;
+        private System.Windows.Forms.MaskedTextBox localeOnTestTextBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.MaskedTextBox onTestTextBox;
     }
 }

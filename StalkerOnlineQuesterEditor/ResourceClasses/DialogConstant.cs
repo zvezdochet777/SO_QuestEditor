@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -309,6 +311,63 @@ namespace StalkerOnlineQuesterEditor
                 string name = item.Element("name").Value;
                 _constants.Add(name, cmID);
             }
+        }
+    }
+
+    public static class Weathers
+    {
+        static Dictionary<string, List<string>> _constants = new Dictionary<string, List<string>>();
+
+        public static void Load()
+        {
+            string JSON_PATH = "../../../res/scripts/common/data/space_weather.json";
+            JsonTextReader reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
+            int is_period = 0;
+            bool tmp = false;
+            var space = "";
+            int value = -1;
+            List<string> weathers = new List<string>();
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    if (!space.Any())
+                    {
+                        space = reader.Value.ToString().Replace("spaces/", "");
+                        continue;
+                    }
+                    if ("periods" == reader.Value.ToString())
+                        tmp = true;
+                }
+                else if (reader.TokenType == JsonToken.StartArray)
+                {
+                    is_period++;
+                }
+                else if (reader.TokenType == JsonToken.EndArray)
+                {
+                    is_period--;
+                }
+                else if (reader.TokenType == JsonToken.String && is_period > 0)
+                {
+                    string weather_name = reader.Value.ToString();
+                    if (weathers.Contains(weather_name))
+                        continue;
+                    
+                    weathers.Add(weather_name);
+                }
+                else if (reader.TokenType == JsonToken.EndObject && tmp)
+                {
+                    _constants.Add(space, weathers);
+                    space = "";
+                    tmp = false;
+                    weathers = new List<string>();
+                }
+            }
+        }
+
+        public static List<string> getWeathers(string spaceName)
+        {
+            return _constants[spaceName];
         }
     }
 

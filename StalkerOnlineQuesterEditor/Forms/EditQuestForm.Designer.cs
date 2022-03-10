@@ -100,6 +100,12 @@
             this.label26 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cbTestScreenMsg = new System.Windows.Forms.CheckBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.onTestTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.cbOpenScreenMsg = new System.Windows.Forms.CheckBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.onOpenTextBox = new System.Windows.Forms.MaskedTextBox();
             this.btnSpace = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -112,15 +118,12 @@
             this.lWin = new System.Windows.Forms.Label();
             this.onFailedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.onWonTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.showGetCheckBox = new System.Windows.Forms.CheckBox();
             this.cantFailCheckBox = new System.Windows.Forms.CheckBox();
             this.cantCancelCheckBox = new System.Windows.Forms.CheckBox();
             this.availabilityCheckBox = new System.Windows.Forms.CheckBox();
             this.showJournalCheckBox = new System.Windows.Forms.CheckBox();
             this.showCloseCheckBox = new System.Windows.Forms.CheckBox();
-            this.showFailedCheckBox = new System.Windows.Forms.CheckBox();
             this.showTakeCheckBox = new System.Windows.Forms.CheckBox();
-            this.showWinCheckBox = new System.Windows.Forms.CheckBox();
             this.showProgressCheckBox = new System.Windows.Forms.CheckBox();
             this.loseRButton = new System.Windows.Forms.RadioButton();
             this.winRButton = new System.Windows.Forms.RadioButton();
@@ -152,6 +155,9 @@
             this.resultComboBox = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dataGridMapMark = new System.Windows.Forms.DataGridView();
+            this.coords = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radius = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Space = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.label37 = new System.Windows.Forms.Label();
             this.cbTakeItems = new System.Windows.Forms.CheckBox();
             this.nBaseToCapturePercent = new System.Windows.Forms.NumericUpDown();
@@ -229,9 +235,6 @@
             this.cbQuestLink = new System.Windows.Forms.ComboBox();
             this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.coords = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radius = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Space = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -860,7 +863,7 @@
             // debugTextBox
             // 
             this.debugTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.debugTextBox.Location = new System.Drawing.Point(169, 572);
+            this.debugTextBox.Location = new System.Drawing.Point(169, 588);
             this.debugTextBox.Name = "debugTextBox";
             this.debugTextBox.Size = new System.Drawing.Size(147, 20);
             this.debugTextBox.TabIndex = 42;
@@ -868,7 +871,7 @@
             // okButton
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(472, 588);
+            this.okButton.Location = new System.Drawing.Point(472, 604);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 37;
@@ -879,7 +882,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(553, 588);
+            this.cancelButton.Location = new System.Drawing.Point(553, 604);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 38;
@@ -890,7 +893,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 383);
+            this.label20.Location = new System.Drawing.Point(6, 406);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(122, 13);
             this.label20.TabIndex = 43;
@@ -900,7 +903,7 @@
             // 
             this.labelGiveQuestsOpened.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGiveQuestsOpened.Location = new System.Drawing.Point(125, 383);
+            this.labelGiveQuestsOpened.Location = new System.Drawing.Point(125, 406);
             this.labelGiveQuestsOpened.Name = "labelGiveQuestsOpened";
             this.labelGiveQuestsOpened.Size = new System.Drawing.Size(499, 13);
             this.labelGiveQuestsOpened.TabIndex = 44;
@@ -909,7 +912,7 @@
             // 
             this.labelGiveQuestsClosed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGiveQuestsClosed.Location = new System.Drawing.Point(142, 396);
+            this.labelGiveQuestsClosed.Location = new System.Drawing.Point(142, 419);
             this.labelGiveQuestsClosed.Name = "labelGiveQuestsClosed";
             this.labelGiveQuestsClosed.Size = new System.Drawing.Size(482, 13);
             this.labelGiveQuestsClosed.TabIndex = 46;
@@ -917,7 +920,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 396);
+            this.label22.Location = new System.Drawing.Point(6, 419);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(140, 13);
             this.label22.TabIndex = 45;
@@ -927,7 +930,7 @@
             // 
             this.labelGiveQuestsFailed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGiveQuestsFailed.Location = new System.Drawing.Point(162, 409);
+            this.labelGiveQuestsFailed.Location = new System.Drawing.Point(162, 432);
             this.labelGiveQuestsFailed.Name = "labelGiveQuestsFailed";
             this.labelGiveQuestsFailed.Size = new System.Drawing.Size(462, 13);
             this.labelGiveQuestsFailed.TabIndex = 48;
@@ -935,7 +938,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 409);
+            this.label24.Location = new System.Drawing.Point(6, 432);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(150, 13);
             this.label24.TabIndex = 47;
@@ -945,7 +948,7 @@
             // 
             this.labelGiveQuestsCanceled.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGiveQuestsCanceled.Location = new System.Drawing.Point(142, 422);
+            this.labelGiveQuestsCanceled.Location = new System.Drawing.Point(142, 445);
             this.labelGiveQuestsCanceled.Name = "labelGiveQuestsCanceled";
             this.labelGiveQuestsCanceled.Size = new System.Drawing.Size(479, 13);
             this.labelGiveQuestsCanceled.TabIndex = 50;
@@ -953,7 +956,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 422);
+            this.label26.Location = new System.Drawing.Point(6, 445);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(133, 13);
             this.label26.TabIndex = 49;
@@ -972,11 +975,17 @@
             this.tabControl.Location = new System.Drawing.Point(0, 95);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(635, 475);
+            this.tabControl.Size = new System.Drawing.Size(635, 491);
             this.tabControl.TabIndex = 51;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.cbTestScreenMsg);
+            this.tabPage3.Controls.Add(this.label39);
+            this.tabPage3.Controls.Add(this.onTestTextBox);
+            this.tabPage3.Controls.Add(this.cbOpenScreenMsg);
+            this.tabPage3.Controls.Add(this.label38);
+            this.tabPage3.Controls.Add(this.onOpenTextBox);
             this.tabPage3.Controls.Add(this.btnSpace);
             this.tabPage3.Controls.Add(this.label23);
             this.tabPage3.Controls.Add(this.label21);
@@ -995,7 +1004,6 @@
             this.tabPage3.Controls.Add(this.labelGiveQuestsClosed);
             this.tabPage3.Controls.Add(this.onWonTextBox);
             this.tabPage3.Controls.Add(this.label22);
-            this.tabPage3.Controls.Add(this.showGetCheckBox);
             this.tabPage3.Controls.Add(this.labelGiveQuestsOpened);
             this.tabPage3.Controls.Add(this.cantFailCheckBox);
             this.tabPage3.Controls.Add(this.label20);
@@ -1003,9 +1011,7 @@
             this.tabPage3.Controls.Add(this.availabilityCheckBox);
             this.tabPage3.Controls.Add(this.showJournalCheckBox);
             this.tabPage3.Controls.Add(this.showCloseCheckBox);
-            this.tabPage3.Controls.Add(this.showFailedCheckBox);
             this.tabPage3.Controls.Add(this.showTakeCheckBox);
-            this.tabPage3.Controls.Add(this.showWinCheckBox);
             this.tabPage3.Controls.Add(this.showProgressCheckBox);
             this.tabPage3.Controls.Add(this.loseRButton);
             this.tabPage3.Controls.Add(this.winRButton);
@@ -1013,14 +1019,72 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(627, 449);
+            this.tabPage3.Size = new System.Drawing.Size(627, 465);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Информация";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cbTestScreenMsg
+            // 
+            this.cbTestScreenMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbTestScreenMsg.AutoSize = true;
+            this.cbTestScreenMsg.Location = new System.Drawing.Point(487, 379);
+            this.cbTestScreenMsg.Name = "cbTestScreenMsg";
+            this.cbTestScreenMsg.Size = new System.Drawing.Size(131, 17);
+            this.cbTestScreenMsg.TabIndex = 73;
+            this.cbTestScreenMsg.Text = "сообщение на экран";
+            this.cbTestScreenMsg.UseVisualStyleBackColor = true;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(6, 380);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(39, 13);
+            this.label39.TabIndex = 71;
+            this.label39.Text = "on test";
+            // 
+            // onTestTextBox
+            // 
+            this.onTestTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.onTestTextBox.Location = new System.Drawing.Point(75, 378);
+            this.onTestTextBox.Name = "onTestTextBox";
+            this.onTestTextBox.Size = new System.Drawing.Size(407, 20);
+            this.onTestTextBox.TabIndex = 72;
+            // 
+            // cbOpenScreenMsg
+            // 
+            this.cbOpenScreenMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbOpenScreenMsg.AutoSize = true;
+            this.cbOpenScreenMsg.Location = new System.Drawing.Point(487, 355);
+            this.cbOpenScreenMsg.Name = "cbOpenScreenMsg";
+            this.cbOpenScreenMsg.Size = new System.Drawing.Size(131, 17);
+            this.cbOpenScreenMsg.TabIndex = 70;
+            this.cbOpenScreenMsg.Text = "сообщение на экран";
+            this.cbOpenScreenMsg.UseVisualStyleBackColor = true;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(6, 356);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(57, 13);
+            this.label38.TabIndex = 68;
+            this.label38.Text = "Открытие";
+            // 
+            // onOpenTextBox
+            // 
+            this.onOpenTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.onOpenTextBox.Location = new System.Drawing.Point(75, 354);
+            this.onOpenTextBox.Name = "onOpenTextBox";
+            this.onOpenTextBox.Size = new System.Drawing.Size(407, 20);
+            this.onOpenTextBox.TabIndex = 69;
+            // 
             // btnSpace
             // 
-            this.btnSpace.Location = new System.Drawing.Point(477, 265);
+            this.btnSpace.Location = new System.Drawing.Point(477, 251);
             this.btnSpace.Name = "btnSpace";
             this.btnSpace.Size = new System.Drawing.Size(141, 23);
             this.btnSpace.TabIndex = 67;
@@ -1032,7 +1096,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(6, 290);
+            this.label23.Location = new System.Drawing.Point(6, 265);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(154, 13);
             this.label23.TabIndex = 66;
@@ -1052,7 +1116,7 @@
             // 
             this.cbGetScreenMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbGetScreenMsg.AutoSize = true;
-            this.cbGetScreenMsg.Location = new System.Drawing.Point(487, 351);
+            this.cbGetScreenMsg.Location = new System.Drawing.Point(487, 331);
             this.cbGetScreenMsg.Name = "cbGetScreenMsg";
             this.cbGetScreenMsg.Size = new System.Drawing.Size(131, 17);
             this.cbGetScreenMsg.TabIndex = 65;
@@ -1063,7 +1127,7 @@
             // 
             this.cbFailScreenMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFailScreenMsg.AutoSize = true;
-            this.cbFailScreenMsg.Location = new System.Drawing.Point(487, 329);
+            this.cbFailScreenMsg.Location = new System.Drawing.Point(487, 309);
             this.cbFailScreenMsg.Name = "cbFailScreenMsg";
             this.cbFailScreenMsg.Size = new System.Drawing.Size(131, 17);
             this.cbFailScreenMsg.TabIndex = 64;
@@ -1074,7 +1138,7 @@
             // 
             this.cbWonScreenMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbWonScreenMsg.AutoSize = true;
-            this.cbWonScreenMsg.Location = new System.Drawing.Point(487, 308);
+            this.cbWonScreenMsg.Location = new System.Drawing.Point(487, 288);
             this.cbWonScreenMsg.Name = "cbWonScreenMsg";
             this.cbWonScreenMsg.Size = new System.Drawing.Size(131, 17);
             this.cbWonScreenMsg.TabIndex = 63;
@@ -1084,7 +1148,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 352);
+            this.label19.Location = new System.Drawing.Point(6, 333);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(43, 13);
             this.label19.TabIndex = 61;
@@ -1094,7 +1158,7 @@
             // 
             this.onGotTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.onGotTextBox.Location = new System.Drawing.Point(75, 350);
+            this.onGotTextBox.Location = new System.Drawing.Point(75, 330);
             this.onGotTextBox.Name = "onGotTextBox";
             this.onGotTextBox.Size = new System.Drawing.Size(407, 20);
             this.onGotTextBox.TabIndex = 62;
@@ -1102,7 +1166,7 @@
             // lFailed
             // 
             this.lFailed.AutoSize = true;
-            this.lFailed.Location = new System.Drawing.Point(3, 330);
+            this.lFailed.Location = new System.Drawing.Point(6, 310);
             this.lFailed.Name = "lFailed";
             this.lFailed.Size = new System.Drawing.Size(60, 13);
             this.lFailed.TabIndex = 58;
@@ -1111,7 +1175,7 @@
             // lWin
             // 
             this.lWin.AutoSize = true;
-            this.lWin.Location = new System.Drawing.Point(3, 308);
+            this.lWin.Location = new System.Drawing.Point(6, 288);
             this.lWin.Name = "lWin";
             this.lWin.Size = new System.Drawing.Size(55, 13);
             this.lWin.TabIndex = 57;
@@ -1121,7 +1185,7 @@
             // 
             this.onFailedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.onFailedTextBox.Location = new System.Drawing.Point(75, 327);
+            this.onFailedTextBox.Location = new System.Drawing.Point(75, 307);
             this.onFailedTextBox.Name = "onFailedTextBox";
             this.onFailedTextBox.Size = new System.Drawing.Size(407, 20);
             this.onFailedTextBox.TabIndex = 60;
@@ -1130,20 +1194,10 @@
             // 
             this.onWonTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.onWonTextBox.Location = new System.Drawing.Point(75, 305);
+            this.onWonTextBox.Location = new System.Drawing.Point(75, 285);
             this.onWonTextBox.Name = "onWonTextBox";
             this.onWonTextBox.Size = new System.Drawing.Size(407, 20);
             this.onWonTextBox.TabIndex = 59;
-            // 
-            // showGetCheckBox
-            // 
-            this.showGetCheckBox.AutoSize = true;
-            this.showGetCheckBox.Location = new System.Drawing.Point(402, 227);
-            this.showGetCheckBox.Name = "showGetCheckBox";
-            this.showGetCheckBox.Size = new System.Drawing.Size(138, 17);
-            this.showGetCheckBox.TabIndex = 56;
-            this.showGetCheckBox.Text = "Показ. сообщ. взятия";
-            this.showGetCheckBox.UseVisualStyleBackColor = true;
             // 
             // cantFailCheckBox
             // 
@@ -1158,7 +1212,7 @@
             // cantCancelCheckBox
             // 
             this.cantCancelCheckBox.AutoSize = true;
-            this.cantCancelCheckBox.Location = new System.Drawing.Point(198, 265);
+            this.cantCancelCheckBox.Location = new System.Drawing.Point(402, 227);
             this.cantCancelCheckBox.Name = "cantCancelCheckBox";
             this.cantCancelCheckBox.Size = new System.Drawing.Size(115, 17);
             this.cantCancelCheckBox.TabIndex = 54;
@@ -1170,7 +1224,7 @@
             this.availabilityCheckBox.AutoSize = true;
             this.availabilityCheckBox.Checked = true;
             this.availabilityCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.availabilityCheckBox.Location = new System.Drawing.Point(198, 246);
+            this.availabilityCheckBox.Location = new System.Drawing.Point(197, 229);
             this.availabilityCheckBox.Name = "availabilityCheckBox";
             this.availabilityCheckBox.Size = new System.Drawing.Size(154, 17);
             this.availabilityCheckBox.TabIndex = 53;
@@ -1181,7 +1235,7 @@
             // showJournalCheckBox
             // 
             this.showJournalCheckBox.AutoSize = true;
-            this.showJournalCheckBox.Location = new System.Drawing.Point(9, 265);
+            this.showJournalCheckBox.Location = new System.Drawing.Point(197, 208);
             this.showJournalCheckBox.Name = "showJournalCheckBox";
             this.showJournalCheckBox.Size = new System.Drawing.Size(144, 17);
             this.showJournalCheckBox.TabIndex = 50;
@@ -1198,16 +1252,6 @@
             this.showCloseCheckBox.Text = "Показывать закрытие квеста";
             this.showCloseCheckBox.UseVisualStyleBackColor = true;
             // 
-            // showFailedCheckBox
-            // 
-            this.showFailedCheckBox.AutoSize = true;
-            this.showFailedCheckBox.Location = new System.Drawing.Point(198, 227);
-            this.showFailedCheckBox.Name = "showFailedCheckBox";
-            this.showFailedCheckBox.Size = new System.Drawing.Size(143, 17);
-            this.showFailedCheckBox.TabIndex = 52;
-            this.showFailedCheckBox.Text = "Показывать проигрыш";
-            this.showFailedCheckBox.UseVisualStyleBackColor = true;
-            // 
             // showTakeCheckBox
             // 
             this.showTakeCheckBox.AutoSize = true;
@@ -1217,16 +1261,6 @@
             this.showTakeCheckBox.TabIndex = 48;
             this.showTakeCheckBox.Text = "Показывать взятие квеста";
             this.showTakeCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // showWinCheckBox
-            // 
-            this.showWinCheckBox.AutoSize = true;
-            this.showWinCheckBox.Location = new System.Drawing.Point(198, 208);
-            this.showWinCheckBox.Name = "showWinCheckBox";
-            this.showWinCheckBox.Size = new System.Drawing.Size(178, 17);
-            this.showWinCheckBox.TabIndex = 51;
-            this.showWinCheckBox.Text = "Показывать сообщ. выигрыш";
-            this.showWinCheckBox.UseVisualStyleBackColor = true;
             // 
             // showProgressCheckBox
             // 
@@ -1371,7 +1405,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(627, 449);
+            this.tabPage4.Size = new System.Drawing.Size(627, 465);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Цель";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1606,7 +1640,7 @@
             this.tabPage5.Controls.Add(this.IsGroupCheckBox);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(627, 449);
+            this.tabPage5.Size = new System.Drawing.Size(627, 465);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Правила";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1623,6 +1657,25 @@
             this.dataGridMapMark.Name = "dataGridMapMark";
             this.dataGridMapMark.Size = new System.Drawing.Size(498, 150);
             this.dataGridMapMark.TabIndex = 59;
+            // 
+            // coords
+            // 
+            this.coords.HeaderText = "кординаты";
+            this.coords.Name = "coords";
+            this.coords.Width = 200;
+            // 
+            // radius
+            // 
+            dataGridViewCellStyle1.NullValue = "0";
+            this.radius.DefaultCellStyle = dataGridViewCellStyle1;
+            this.radius.HeaderText = "радиус";
+            this.radius.Name = "radius";
+            // 
+            // Space
+            // 
+            this.Space.HeaderText = "карта";
+            this.Space.Name = "Space";
+            this.Space.Width = 150;
             // 
             // label37
             // 
@@ -1797,7 +1850,7 @@
             this.tabPage6.Controls.Add(this.rewardGroupBox);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(627, 449);
+            this.tabPage6.Size = new System.Drawing.Size(627, 465);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Награды/Штрафы";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2156,7 +2209,7 @@
             this.tabConditions.Location = new System.Drawing.Point(4, 22);
             this.tabConditions.Name = "tabConditions";
             this.tabConditions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConditions.Size = new System.Drawing.Size(627, 449);
+            this.tabConditions.Size = new System.Drawing.Size(627, 465);
             this.tabConditions.TabIndex = 4;
             this.tabConditions.Text = "Дополнительные условия";
             this.tabConditions.UseVisualStyleBackColor = true;
@@ -2276,7 +2329,7 @@
             // 
             this.debuglabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.debuglabel.AutoSize = true;
-            this.debuglabel.Location = new System.Drawing.Point(5, 576);
+            this.debuglabel.Location = new System.Drawing.Point(5, 592);
             this.debuglabel.Name = "debuglabel";
             this.debuglabel.Size = new System.Drawing.Size(161, 13);
             this.debuglabel.TabIndex = 53;
@@ -2326,7 +2379,7 @@
             // 
             this.cbOldQuest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbOldQuest.AutoSize = true;
-            this.cbOldQuest.Location = new System.Drawing.Point(4, 594);
+            this.cbOldQuest.Location = new System.Drawing.Point(4, 610);
             this.cbOldQuest.Name = "cbOldQuest";
             this.cbOldQuest.Size = new System.Drawing.Size(269, 17);
             this.cbOldQuest.TabIndex = 56;
@@ -2382,31 +2435,12 @@
             this.label34.TabIndex = 61;
             this.label34.Text = "Бонус группы:";
             // 
-            // coords
-            // 
-            this.coords.HeaderText = "кординаты";
-            this.coords.Name = "coords";
-            this.coords.Width = 200;
-            // 
-            // radius
-            // 
-            dataGridViewCellStyle1.NullValue = "0";
-            this.radius.DefaultCellStyle = dataGridViewCellStyle1;
-            this.radius.HeaderText = "радиус";
-            this.radius.Name = "radius";
-            // 
-            // Space
-            // 
-            this.Space.HeaderText = "карта";
-            this.Space.Name = "Space";
-            this.Space.Width = 150;
-            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(638, 619);
+            this.ClientSize = new System.Drawing.Size(638, 635);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.cbFraction2Bonus);
             this.Controls.Add(this.lbQuestLink);
@@ -2552,15 +2586,12 @@
         private System.Windows.Forms.Label lWin;
         private System.Windows.Forms.MaskedTextBox onFailedTextBox;
         private System.Windows.Forms.MaskedTextBox onWonTextBox;
-        private System.Windows.Forms.CheckBox showGetCheckBox;
         private System.Windows.Forms.CheckBox cantFailCheckBox;
         private System.Windows.Forms.CheckBox cantCancelCheckBox;
         private System.Windows.Forms.CheckBox availabilityCheckBox;
         private System.Windows.Forms.CheckBox showJournalCheckBox;
         private System.Windows.Forms.CheckBox showCloseCheckBox;
-        private System.Windows.Forms.CheckBox showFailedCheckBox;
         private System.Windows.Forms.CheckBox showTakeCheckBox;
-        private System.Windows.Forms.CheckBox showWinCheckBox;
         private System.Windows.Forms.CheckBox showProgressCheckBox;
         private System.Windows.Forms.RadioButton loseRButton;
         private System.Windows.Forms.RadioButton winRButton;
@@ -2680,5 +2711,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn coords;
         private System.Windows.Forms.DataGridViewTextBoxColumn radius;
         private System.Windows.Forms.DataGridViewComboBoxColumn Space;
+        private System.Windows.Forms.CheckBox cbTestScreenMsg;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.MaskedTextBox onTestTextBox;
+        private System.Windows.Forms.CheckBox cbOpenScreenMsg;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.MaskedTextBox onOpenTextBox;
     }
 }

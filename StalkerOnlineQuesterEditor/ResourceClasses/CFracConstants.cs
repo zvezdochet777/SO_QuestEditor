@@ -91,6 +91,18 @@ namespace StalkerOnlineQuesterEditor
             
             reader.Close();
         }
+
+        public Dictionary<int, bool> getFractions2()
+        {
+            Dictionary<int, bool> result = new Dictionary<int, bool>();
+            result.Add(0, true);
+            foreach (var i in fractions.Keys)
+            {
+                result.Add(i, true);
+            }
+            return result;
+        }
+            
     }
 
 

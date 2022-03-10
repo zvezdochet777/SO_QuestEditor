@@ -28,12 +28,16 @@ namespace StalkerOnlineQuesterEditor
         }
     }
 
-    public static class NPCNatures
+    public static class NPCAdditionalData
     {
         public static Dictionary<int, string> nature_id_to_name = new Dictionary<int, string>();
         public static Dictionary<string, int> npc_natures = new Dictionary<string, int>();
 
-        public static void load_nature_types()
+        public static Dictionary<string, List<int>> npc_groups  = new Dictionary<string, List<int>>();
+
+        enum PropType { none = 0, nature = 1, group = 2 };
+
+        public static void load_data()
         {
             string JSON_PATH = "../../../res/scripts/common/data/AdditionalNPCParametersData.json";
 
@@ -53,10 +57,14 @@ namespace StalkerOnlineQuesterEditor
 
             JsonTextReader reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
             bool inNPC = false;
-            bool is_nature = false;
+
+            PropType it_is = PropType.none;
+
             var name = "";
             int value = -1;
             npc_natures = new Dictionary<string, int>();
+            npc_groups = new Dictionary<string, List<int>>();
+            List<int> groups = new List<int>();
             while (reader.Read())
             {
                 if (reader.TokenType == JsonToken.PropertyName)
@@ -67,11 +75,13 @@ namespace StalkerOnlineQuesterEditor
                         inNPC = true;
                     }
                     else if ("nature" == reader.Value.ToString())
-                        is_nature = true;
+                        it_is = PropType.nature;
+                    else if ("groups" == reader.Value.ToString())
+                        it_is = PropType.group;
                 }
                 else if (reader.TokenType == JsonToken.EndObject)
                 {
-                    
+
                     if (inNPC) inNPC = false;
                     if (!name.Any()) continue;
                     if (value < 0)
@@ -81,10 +91,21 @@ namespace StalkerOnlineQuesterEditor
 
                 }
                 else if (reader.TokenType == JsonToken.Integer)
-                    if (is_nature)
+                {
+                    if (it_is == PropType.nature)
                     {
-                        is_nature = false;
+                        it_is = PropType.none;
                         value = Convert.ToInt32(reader.Value);
+                    }
+                    if (it_is == PropType.group)
+                        groups.Add(Convert.ToInt32(reader.Value));
+                }
+                else if (reader.TokenType == JsonToken.EndArray)
+                    if (it_is == PropType.group)
+                    {
+                        it_is = PropType.none;
+                        npc_groups.Add(name, groups);
+                        groups = new List<int>();
                     }
             }
             reader.Close();
@@ -95,6 +116,13 @@ namespace StalkerOnlineQuesterEditor
             foreach (var i in nature_id_to_name)
                 if (name == i.Value) return i.Key;
             return -1;
+        }
+
+       public static List<int> getGroupsByName(string name)
+        {
+            if (npc_groups.ContainsKey(name))
+                return npc_groups[name];
+            return new List<int>();
         }
 
     }
@@ -114,7 +142,7 @@ namespace StalkerOnlineQuesterEditor
         public CManagerNPC()
         {
 
-            NPCNatures.load_nature_types();
+            NPCAdditionalData.load_data();
             parseNpcLocationFile("npc_stat.xml");
         }
 
@@ -152,11 +180,11 @@ namespace StalkerOnlineQuesterEditor
                 string engName = item.Element("npcEngName").Value.ToString();
                 string coord = item.Element("coord").Value.ToString();
                 string nature;
-                if (NPCNatures.npc_natures.ContainsKey(name))
+                if (NPCAdditionalData.npc_natures.ContainsKey(name))
                 {
-                    nature = NPCNatures.nature_id_to_name[NPCNatures.npc_natures[name]];
+                    nature = NPCAdditionalData.nature_id_to_name[NPCAdditionalData.npc_natures[name]];
                 }
-                else nature = NPCNatures.nature_id_to_name[0];
+                else nature = NPCAdditionalData.nature_id_to_name[0];
 
                 if (!NpcData.ContainsKey(name))
                     NpcData.Add(name, new npc_data(rusName, engName, map, coord));

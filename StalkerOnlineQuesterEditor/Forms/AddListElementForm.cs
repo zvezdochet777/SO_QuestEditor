@@ -43,6 +43,8 @@ namespace StalkerOnlineQuesterEditor
             AutogenTarget result = new AutogenTarget();
             //result.id = id > 0 ? this.id : QAutogenDatacs.getNewTargetID();
             int int_param = 0;
+            label3.Visible = false;
+            tbText3.Visible = false;
 
             if (current_type == ElementType.Creature)
             {
@@ -65,10 +67,31 @@ namespace StalkerOnlineQuesterEditor
             {
                 int_param = Convert.ToInt32(tbText1.Text);
                 result.id = Convert.ToInt32(tbText2.Text);
+
+                int fraction = 0; 
+                int repValue = 0;
+                if (comboBox2.SelectedItem != null)
+                    fraction = parent.fractions2.getFractionIDByDescr(comboBox2.SelectedItem.ToString());
+                try
+                {
+                    repValue = Convert.ToInt32(tbText3.Text);
+                }
+                catch
+                {
+                    if (fraction > 0)
+                    {
+                        MessageBox.Show("Количество репутации указано неверно");
+                        return null;
+                    }
+                }
+                if (fraction > 0 && repValue != 0)
+                    result.str_param = fraction.ToString() + ":" + repValue.ToString();
             }
-              
+            else
+                result.str_param = comboBox2.SelectedItem != null ? comboBox2.SelectedItem.ToString() : "";
+
             result.int_param = int_param;
-            result.str_param = comboBox2.SelectedItem != null ? comboBox2.SelectedItem.ToString() : "";
+           
             return result;
         }
 
@@ -77,6 +100,8 @@ namespace StalkerOnlineQuesterEditor
             current_type = elementType;
             this.tbText2.Visible = elementType == ElementType.Reward;
             this.comboBox2.Visible = elementType == ElementType.Creature;
+            label4.Visible = false;
+            tbText3.Visible = false;
             this.comboBox1.Visible = (new ElementType[] { ElementType.Creature, ElementType.Items, ElementType.None}).Contains(elementType);
 
             if (elementType == ElementType.Creature)
@@ -130,13 +155,23 @@ namespace StalkerOnlineQuesterEditor
             else if (elementType == ElementType.Reward)
             {
                 label1.Text = "Опыт:";
+                label2.Text = "Группа:";
                 label3.Text = "Деньги";
-                label2.Visible = false;
+                label4.Text = "Репутация";
+                label4.Visible = true;
+                tbText3.Visible = true;
+                //label2.Visible = false;
                 comboBox1.Visible = false;
-                comboBox2.Visible = false;
+                comboBox2.Visible = true;
 
                 tbText1.Text = data == null ? "0" : data.int_param.ToString();
                 tbText2.Text = data == null ? "0" : data.id.ToString();
+                int fraction = data == null ? 0 : Convert.ToInt32(data.str_param.Split(':')[0]);
+                
+                foreach (var i in parent.fractions2.getListOfFractions())
+                    comboBox2.Items.Add(i.Value);
+                comboBox2.SelectedItem = parent.fractions2.getFractionDesctByID(fraction);
+                tbText3.Text = data == null ? "0" : data.str_param.Split(':')[1];
             }
         }
 

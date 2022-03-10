@@ -32,7 +32,16 @@ namespace StalkerOnlineQuesterEditor
         public CSpacesConstants()
         {
             spaces = new List<CSpaceDescription>();
-            XDocument doc = XDocument.Load("../../../res/scripts/common/data/Spaces.xml");
+            XDocument doc = XDocument.Load("../../../res/scripts/common/data/Spaces.xml"); 
+            try
+            {
+                doc = XDocument.Load("../../../res/scripts/common/data/Spaces.xml");
+            }
+            catch
+            {
+                System.Windows.Forms.MessageBox.Show("Ошибка чтения файла: ../../../res/scripts/common/data/Spaces.xml", "Ошибка");
+                return;
+            }
             foreach (XElement item in doc.Root.Elements())
             {
                 try
@@ -102,26 +111,26 @@ namespace StalkerOnlineQuesterEditor
             return 0;
         }
 
-        public int getSpacesToInt(Dictionary<string, bool> spaces)
+        public long getSpacesToInt(Dictionary<string, bool> spaces)
         {
-            int result = 0;
+            long result = 0;
             foreach(KeyValuePair<string, bool> space in spaces)
             {
                 if (space.Value)
                 {
-                    result = result | (1 << getSpaceID(space.Key));
+                    result = result | (((long) 1) << getSpaceID(space.Key));
                 }
-                else result = result & ~(1 << getSpaceID(space.Key));
+                else result = result & ~(((long)1) << getSpaceID(space.Key));
             }
             return result;
         }
 
-        public Dictionary<string, bool> getIntToSpaces(int number)
+        public Dictionary<string, bool> getIntToSpaces(long number)
         {
             Dictionary<string, bool> result = new Dictionary<string, bool>();
             foreach (CSpaceDescription key in this.spaces)
             {
-                result.Add(key.name, Convert.ToBoolean(number & (1 << key.id)));
+                result.Add(key.name, Convert.ToBoolean(number & (((long)1) << key.id)));
             }
             return result;
         }
@@ -169,7 +178,7 @@ namespace StalkerOnlineQuesterEditor
 
     public class CDungeonSpacesConstants
     {
-        public static string JSON_PATH = "../../../res/scripts/server_data/dungeon_data.json";
+        public static string JSON_PATH = "../../../res/scripts/common/data/dungeon_data.json";
         public static string OTHER_JSON_PATH = "source/dungeon_data.json";
         public static string BOSSES_DATA_PATH = "source/dungeon_spaces.xml";
         JsonTextReader reader;

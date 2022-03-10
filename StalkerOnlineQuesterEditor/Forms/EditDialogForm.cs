@@ -34,7 +34,7 @@ namespace StalkerOnlineQuesterEditor
             //this.parent.Enabled = false;
             parent.setDisable();
             this.listLastDialogsForm = new ListLastDialogsForm(parent);
-
+            tPlayerText.SpellCheck.IsEnabled = true;
             curDialog = parent.getDialogOnDialogID(currentDialogID);
             lAttention.Text = "";
             teleportComboBox.Items.Clear();
@@ -352,6 +352,7 @@ namespace StalkerOnlineQuesterEditor
             this.initTransportTab();
             this.initTutorialTab();
             this.initPVPTab();
+            this.initWeatherTab();
             checkClanOptionsIndicator();
             checkKnowlegeIndicates();
         }
@@ -960,6 +961,16 @@ namespace StalkerOnlineQuesterEditor
             precondition.forDev = cbForDev.Checked;
             precondition.hidden = cbHidden.Checked;
 
+            if (cbSpaceWeather.SelectedItem != null)
+            {
+                precondition.weather.space = Convert.ToInt32(cbSpaceWeather.SelectedItem.ToString().Split(' ')[0]);
+                precondition.weather.is_or = rbWeatherOr.Checked;
+                foreach(var i in lbWeather.CheckedItems)
+                    precondition.weather.weathers.Add(i.ToString());
+                precondition.weather.timeStart = nupHour1.Value.ToString() + ":" + nupMin1.Value.ToString();
+                precondition.weather.timeEnd = nupHour2.Value.ToString() + ":" + nupMin2.Value.ToString();
+                precondition.weather.only_no = cbWeatherOnlyNO.Checked;
+            }
             precondition.items.is_or = rbItemsOr.Checked;
             precondition.itemsNone.is_or = rbNonItemsOr.Checked;
 
@@ -1384,6 +1395,41 @@ namespace StalkerOnlineQuesterEditor
             this.checkPVPIndicates();
         }
 
+        private void initWeatherTab()
+        {
+            cbSpaceWeather.Items.Clear();
+            foreach(var i in parent.spacesConst.getSpacesNames())
+            {
+                cbSpaceWeather.Items.Add(i);
+            }
+            string spaceName = parent.spacesConst.getSpaceNameByID(curDialog.Precondition.weather.space);
+            cbSpaceWeather.SelectedItem = parent.spacesConst.getSpaceByID(curDialog.Precondition.weather.space);
+            string[] a = curDialog.Precondition.weather.timeStart.Split(':');
+            nupHour1.Value = Convert.ToDecimal(a[0]);
+            nupMin1.Value = Convert.ToDecimal(a[1]);
+
+            a = curDialog.Precondition.weather.timeEnd.Split(':');
+            nupHour2.Value = Convert.ToDecimal(a[0]);
+            nupMin2.Value = Convert.ToDecimal(a[1]);
+            rbWeatherAnd.Checked = !curDialog.Precondition.weather.is_or;
+            rbWeatherOr.Checked = curDialog.Precondition.weather.is_or;
+            List<int> indexes = new List<int>();
+            
+            foreach(var w in curDialog.Precondition.weather.weathers)
+            {
+                int idx = Weathers.getWeathers(spaceName).IndexOf(w);
+                if (idx >= 0)
+                    indexes.Add(idx);
+            }
+  
+            foreach(var idx in indexes)
+            {
+                lbWeather.SetItemChecked(idx, true);
+            }
+
+            cbWeatherOnlyNO.Checked = curDialog.Precondition.weather.only_no;
+        }
+
         private void initItemsTab()
         {
 
@@ -1641,8 +1687,8 @@ namespace StalkerOnlineQuesterEditor
         private void cbAutoNode_CheckedChanged(object sender, EventArgs e)
         {
             bool check = !cbAutoNode.Checked;
-            tPlayerText.Enabled = check;
-            tReactionNPC.Enabled = check;
+            //tPlayerText.Enabled = check;
+            //tReactionNPC.Enabled = check;
             /*
             tNodes.Enabled = check;
             gbPrecondition.Enabled = check;
@@ -1650,8 +1696,8 @@ namespace StalkerOnlineQuesterEditor
             actionsCheckBox.Enabled = check;
             cbForDev.Enabled = check;
             */
-            tPlayerText.Visible = check;
-            tReactionNPC.Visible = check;
+            //tPlayerText.Visible = check;
+            //tReactionNPC.Visible = check;
             /*
             tNodes.Visible = check;
             gbPrecondition.Visible = check;
@@ -1727,6 +1773,18 @@ namespace StalkerOnlineQuesterEditor
             listLastDialogsForm.setListData(data);
             listLastDialogsForm.Location = new Point(this.Location.X + this.Width + 10, this.Location.Y);
             listLastDialogsForm.Show();
+        }
+
+        private void cbSpaceWeather_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string spaceName = cbSpaceWeather.SelectedItem.ToString();
+            spaceName = parent.spacesConst.getSpaceNameByID(Convert.ToInt32(spaceName.Split(' ')[0]));
+            lbWeather.Items.Clear();
+            foreach (var i in Weathers.getWeathers(spaceName))
+            {
+                lbWeather.Items.Add(i);
+            }
+            
         }
     }
 }

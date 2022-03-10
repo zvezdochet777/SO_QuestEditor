@@ -114,6 +114,8 @@ namespace StalkerOnlineQuesterEditor
         public string onWin;
         public string onFailed;
         public string onGet;
+        public string onOpen;
+        public string onTest;
         public Dictionary<int, QuestItemInfo> Items;
 
         public object Clone()
@@ -123,6 +125,9 @@ namespace StalkerOnlineQuesterEditor
             copy.Description = (string)this.Description.Clone();
             copy.onWin = (string)this.onWin.Clone();
             copy.onFailed = (string)this.onFailed.Clone();
+            copy.onGet = (string)this.onGet.Clone();
+            copy.onOpen = (string)this.onOpen.Clone();
+            copy.onTest = (string)this.onTest.Clone();
             foreach (KeyValuePair<int, QuestItemInfo> item in this.Items)
                 copy.Items.Add(item.Key, (QuestItemInfo)item.Value.Clone());
             return copy;
@@ -137,6 +142,8 @@ namespace StalkerOnlineQuesterEditor
             this.onFailed = "";
             this.onWin = "";
             this.onGet = "";
+            this.onOpen = "";
+            this.onTest = "";
             this.Items = new Dictionary<int, QuestItemInfo>();
         }
 
@@ -268,7 +275,7 @@ namespace StalkerOnlineQuesterEditor
         public float basePercent;
         public NPC npc;
         public Mob mobs;
-        public int space;
+        public long space;
 
         public object Clone()
         {
@@ -752,6 +759,8 @@ namespace StalkerOnlineQuesterEditor
         public bool screenMessageOnWin;
         public bool screenMessageOnFailed;
         public bool screenMessageOnGet;
+        public bool screenMessageOnOpen;
+        public bool screenMessageOnTest;
         public int isFractionBonus;
 
         public object Clone()
@@ -767,6 +776,8 @@ namespace StalkerOnlineQuesterEditor
             copy.screenMessageOnWin = this.screenMessageOnWin;
             copy.screenMessageOnFailed = this.screenMessageOnFailed;
             copy.screenMessageOnGet = this.screenMessageOnGet;
+            copy.screenMessageOnOpen = this.screenMessageOnOpen;
+            copy.screenMessageOnTest = this.screenMessageOnTest;
             copy.isFractionBonus = this.isFractionBonus;
             return copy;
         }
@@ -793,6 +804,8 @@ namespace StalkerOnlineQuesterEditor
             this.screenMessageOnWin = false;
             this.screenMessageOnFailed = false;
             this.screenMessageOnGet = false;
+            screenMessageOnOpen = false;
+            screenMessageOnTest = false;
     }
 
         public bool Any()

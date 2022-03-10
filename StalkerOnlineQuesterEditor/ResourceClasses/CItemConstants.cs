@@ -83,7 +83,7 @@ namespace StalkerOnlineQuesterEditor
                 try
                 {
                     int type_id = int.Parse(item.Element("id").Value.ToString());
-                    items.Add(type_id, new CItem(item.Element("Name").Value.ToString() + " " + type_id.ToString(), item.Element("Description").Value.ToString(), deleted, converted, is_ingredient));
+                    items.Add(type_id, new CItem(type_id.ToString() + " " + item.Element("Name").Value.ToString() , item.Element("Description").Value.ToString(), deleted, converted, is_ingredient));
                 }
                 catch
                 {

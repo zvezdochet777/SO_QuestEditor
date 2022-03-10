@@ -443,6 +443,8 @@ namespace StalkerOnlineQuesterEditor
                     if (item.Element("Additional").Element("screenMessageOnWin") != null) additional.screenMessageOnWin = true;
                     if (item.Element("Additional").Element("screenMessageOnFailed") != null) additional.screenMessageOnFailed = true;
                     if (item.Element("Additional").Element("screenMessageOnGet") != null) additional.screenMessageOnGet = true;
+                    if (item.Element("Additional").Element("screenMessageOnOpen") != null) additional.screenMessageOnOpen = true;
+                    if (item.Element("Additional").Element("screenMessageOnTest") != null) additional.screenMessageOnTest = true;
 
                     ParseIntIfNotEmpty(item, "Additional", "IsSubQuest", out additional.IsSubQuest, 0);
                     CQuests.AddDataToList(item, "Additional", "ListOfSubQuest", additional.ListOfSubQuest);
@@ -500,6 +502,10 @@ namespace StalkerOnlineQuesterEditor
                     target[QuestID].QuestInformation.onGet = quest.Element("onGet").Value.ToString();
                 if (quest.Element("onFailed") != null)
                     target[QuestID].QuestInformation.onFailed = quest.Element("onFailed").Value.ToString();
+                if (quest.Element("onOpen") != null)
+                    target[QuestID].QuestInformation.onOpen = quest.Element("onOpen").Value.ToString();
+                if (quest.Element("onTest") != null)
+                    target[QuestID].QuestInformation.onTest = quest.Element("onTest").Value.ToString();
                 int Version = 0;
                 if (!quest.Element("Version").Value.Equals(""))
                     Version = int.Parse(quest.Element("Version").Value);
@@ -704,6 +710,10 @@ namespace StalkerOnlineQuesterEditor
 
                 if (questValue.QuestInformation.onFailed != "")
                     element.Add(new XElement("onFailed", questValue.QuestInformation.onFailed));
+                if (questValue.QuestInformation.onOpen != "")
+                    element.Add(new XElement("onOpen", questValue.QuestInformation.onOpen));
+                if (questValue.QuestInformation.onTest != "")
+                    element.Add(new XElement("onTest", questValue.QuestInformation.onTest));
 
                 List<XElement> ItemsXE = getItemElements(questValue.QuestInformation.Items);
                 if (ItemsXE.Any())
@@ -813,7 +823,7 @@ namespace StalkerOnlineQuesterEditor
                     if (questValue.QuestRules.mobs.Any())
                         element.Element("QuestRules").Add(questValue.QuestRules.mobs.getXML());
                     if (questValue.QuestRules.space != 0)
-                        element.Element("QuestRules").Add(new XElement("Spaces", Global.GetIntAsString(questValue.QuestRules.space)));
+                        element.Element("QuestRules").Add(new XElement("Spaces", questValue.QuestRules.space.ToString()));
                     if (questValue.QuestRules.mapMarks.Any())
                     {
                         XElement node_marks = new XElement("MapMarks");
@@ -934,6 +944,10 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Additional").Add(new XElement("screenMessageOnGet", "1"));
                     if (questValue.Additional.screenMessageOnWin)
                         element.Element("Additional").Add(new XElement("screenMessageOnWin", "1"));
+                    if (questValue.Additional.screenMessageOnOpen)
+                        element.Element("Additional").Add(new XElement("screenMessageOnOpen", "1"));
+                    if (questValue.Additional.screenMessageOnTest)
+                        element.Element("Additional").Add(new XElement("screenMessageOnTest", "1"));
                     if (questValue.Additional.CantCancel)
                         element.Element("Additional").Add(new XElement("CantCancel", Global.GetBoolAsString(questValue.Additional.CantCancel)));
                     if (questValue.Additional.CantFail)
