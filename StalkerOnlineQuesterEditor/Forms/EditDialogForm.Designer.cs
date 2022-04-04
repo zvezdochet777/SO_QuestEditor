@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tPlayerText = new System.Windows.Forms.TextBox();
+            this.tPlayerText = new System.Windows.Forms.RichTextBox();
             this.lAnswerText = new System.Windows.Forms.Label();
             this.NPCSaidIs = new System.Windows.Forms.Label();
             this.lGreetNPC = new System.Windows.Forms.Label();
@@ -57,22 +57,20 @@
             this.cbCompleteQuests = new System.Windows.Forms.CheckBox();
             this.cbGetQuests = new System.Windows.Forms.CheckBox();
             this.actionsCheckBox = new System.Windows.Forms.CheckBox();
-            this.tReactionNPC = new System.Windows.Forms.TextBox();
             this.tNodes = new System.Windows.Forms.MaskedTextBox();
             this.lNodes = new System.Windows.Forms.Label();
             this.gbPrecondition = new System.Windows.Forms.GroupBox();
             this.pictureKnowlege = new System.Windows.Forms.PictureBox();
             this.pictureReputation2 = new System.Windows.Forms.PictureBox();
-            this.picturePVP = new System.Windows.Forms.PictureBox();
-            this.pictureTutorial = new System.Windows.Forms.PictureBox();
+            this.pictureWeather = new System.Windows.Forms.PictureBox();
+            this.pictureOther = new System.Windows.Forms.PictureBox();
             this.pictureTransport = new System.Windows.Forms.PictureBox();
             this.pictureItems = new System.Windows.Forms.PictureBox();
             this.pictureAction = new System.Windows.Forms.PictureBox();
             this.pictureSkill = new System.Windows.Forms.PictureBox();
-            this.pictureLevel = new System.Windows.Forms.PictureBox();
             this.pictureEffects = new System.Windows.Forms.PictureBox();
             this.pictureClan = new System.Windows.Forms.PictureBox();
-            this.pictureKarma = new System.Windows.Forms.PictureBox();
+            this.pictureAchievements = new System.Windows.Forms.PictureBox();
             this.pictureReputation = new System.Windows.Forms.PictureBox();
             this.tabQuestsCircs = new System.Windows.Forms.TabControl();
             this.tabQuests = new System.Windows.Forms.TabPage();
@@ -128,13 +126,6 @@
             this.Fractions = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabKarma = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labelDescription = new System.Windows.Forms.Label();
-            this.bTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.aTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.a = new System.Windows.Forms.Label();
             this.tabClan = new System.Windows.Forms.TabPage();
             this.gbClanOptions = new System.Windows.Forms.GroupBox();
             this.cbAllyance = new System.Windows.Forms.CheckBox();
@@ -162,12 +153,6 @@
             this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabLevel = new System.Windows.Forms.TabPage();
-            this.mtbPlayerLevelMin = new System.Windows.Forms.MaskedTextBox();
-            this.lBefore = new System.Windows.Forms.Label();
-            this.lFrom = new System.Windows.Forms.Label();
-            this.mtbPlayerLevelMax = new System.Windows.Forms.MaskedTextBox();
-            this.lPlayerLevel = new System.Windows.Forms.Label();
             this.tabSkills = new System.Windows.Forms.TabPage();
             this.dataPerks = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -229,16 +214,6 @@
             this.cbInBoatList = new System.Windows.Forms.CheckBox();
             this.cbNotInTransportList = new System.Windows.Forms.CheckBox();
             this.cbTransportInList = new System.Windows.Forms.CheckBox();
-            this.tabTutorial = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cbTutorialPhase = new System.Windows.Forms.ComboBox();
-            this.tabPVP = new System.Windows.Forms.TabPage();
-            this.cbRatingPVPMode = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cbPVPRank2 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cbPVPRank1 = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.tabReputation2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cbFracNoMusthave = new System.Windows.Forms.CheckBox();
@@ -279,6 +254,32 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbSpaceWeather = new System.Windows.Forms.ComboBox();
+            this.tabAchievements = new System.Windows.Forms.TabPage();
+            this.dataAchievements = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn4 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn5 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.tabOther = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbRatingPVPMode = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbPVPRank2 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cbPVPRank1 = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbTutorialPhase = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.mtbPlayerLevelMin = new System.Windows.Forms.MaskedTextBox();
+            this.lBefore = new System.Windows.Forms.Label();
+            this.lFrom = new System.Windows.Forms.Label();
+            this.mtbPlayerLevelMax = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelDescription = new System.Windows.Forms.Label();
+            this.bTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.aTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.a = new System.Windows.Forms.Label();
             this.bEditDialogOk = new System.Windows.Forms.Button();
             this.bEditDialogCancel = new System.Windows.Forms.Button();
             this.lReactionNPC = new System.Windows.Forms.Label();
@@ -288,6 +289,7 @@
             this.debuglabel = new System.Windows.Forms.Label();
             this.debugTextBox = new System.Windows.Forms.MaskedTextBox();
             this.gbTexts = new System.Windows.Forms.GroupBox();
+            this.btnFindError = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.tbNextDialog = new System.Windows.Forms.TextBox();
             this.btnLastNPCPhrase = new System.Windows.Forms.Button();
@@ -300,37 +302,34 @@
             this.label6 = new System.Windows.Forms.Label();
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
+            this.tReactionNPC = new System.Windows.Forms.RichTextBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
             this.gbPrecondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureKnowlege)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureReputation2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picturePVP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureTutorial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWeather)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureOther)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEffects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureKarma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAchievements)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureReputation)).BeginInit();
             this.tabQuestsCircs.SuspendLayout();
             this.tabQuests.SuspendLayout();
             this.gbQuestCondition.SuspendLayout();
             this.tabReputation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataReputation)).BeginInit();
-            this.tabKarma.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.tabClan.SuspendLayout();
             this.gbClanOptions.SuspendLayout();
             this.tabEffects.SuspendLayout();
             this.effectsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEffects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotEffects)).BeginInit();
-            this.tabLevel.SuspendLayout();
             this.tabSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataPerks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).BeginInit();
@@ -342,8 +341,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVNonItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).BeginInit();
             this.tabTransport.SuspendLayout();
-            this.tabTutorial.SuspendLayout();
-            this.tabPVP.SuspendLayout();
             this.tabReputation2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataReputation2)).BeginInit();
@@ -354,6 +351,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupHour2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupMin1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupHour1)).BeginInit();
+            this.tabAchievements.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataAchievements)).BeginInit();
+            this.tabOther.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
@@ -366,8 +370,9 @@
             this.tPlayerText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tPlayerText.Location = new System.Drawing.Point(103, 39);
             this.tPlayerText.Name = "tPlayerText";
-            this.tPlayerText.Size = new System.Drawing.Size(699, 26);
+            this.tPlayerText.Size = new System.Drawing.Size(702, 26);
             this.tPlayerText.TabIndex = 0;
+            this.tPlayerText.Text = "";
             this.tPlayerText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tPlayerText_KeyPress);
             // 
             // lAnswerText
@@ -436,7 +441,7 @@
             this.gbActions.Enabled = false;
             this.gbActions.Location = new System.Drawing.Point(0, 575);
             this.gbActions.Name = "gbActions";
-            this.gbActions.Size = new System.Drawing.Size(815, 145);
+            this.gbActions.Size = new System.Drawing.Size(818, 145);
             this.gbActions.TabIndex = 8;
             this.gbActions.TabStop = false;
             // 
@@ -668,25 +673,13 @@
             this.actionsCheckBox.UseVisualStyleBackColor = true;
             this.actionsCheckBox.CheckedChanged += new System.EventHandler(this.actionsCheckBox_CheckedChanged);
             // 
-            // tReactionNPC
-            // 
-            this.tReactionNPC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tReactionNPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tReactionNPC.Location = new System.Drawing.Point(103, 71);
-            this.tReactionNPC.Multiline = true;
-            this.tReactionNPC.Name = "tReactionNPC";
-            this.tReactionNPC.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tReactionNPC.Size = new System.Drawing.Size(699, 120);
-            this.tReactionNPC.TabIndex = 1;
-            // 
             // tNodes
             // 
             this.tNodes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tNodes.Location = new System.Drawing.Point(103, 197);
             this.tNodes.Name = "tNodes";
-            this.tNodes.Size = new System.Drawing.Size(699, 20);
+            this.tNodes.Size = new System.Drawing.Size(702, 20);
             this.tNodes.TabIndex = 2;
             // 
             // lNodes
@@ -704,22 +697,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbPrecondition.Controls.Add(this.pictureKnowlege);
             this.gbPrecondition.Controls.Add(this.pictureReputation2);
-            this.gbPrecondition.Controls.Add(this.picturePVP);
-            this.gbPrecondition.Controls.Add(this.pictureTutorial);
+            this.gbPrecondition.Controls.Add(this.pictureWeather);
+            this.gbPrecondition.Controls.Add(this.pictureOther);
             this.gbPrecondition.Controls.Add(this.pictureTransport);
             this.gbPrecondition.Controls.Add(this.pictureItems);
             this.gbPrecondition.Controls.Add(this.pictureAction);
             this.gbPrecondition.Controls.Add(this.pictureSkill);
-            this.gbPrecondition.Controls.Add(this.pictureLevel);
             this.gbPrecondition.Controls.Add(this.pictureEffects);
             this.gbPrecondition.Controls.Add(this.pictureClan);
-            this.gbPrecondition.Controls.Add(this.pictureKarma);
+            this.gbPrecondition.Controls.Add(this.pictureAchievements);
             this.gbPrecondition.Controls.Add(this.pictureReputation);
             this.gbPrecondition.Controls.Add(this.tabQuestsCircs);
             this.gbPrecondition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbPrecondition.Location = new System.Drawing.Point(0, 247);
             this.gbPrecondition.Name = "gbPrecondition";
-            this.gbPrecondition.Size = new System.Drawing.Size(815, 307);
+            this.gbPrecondition.Size = new System.Drawing.Size(818, 307);
             this.gbPrecondition.TabIndex = 4;
             this.gbPrecondition.TabStop = false;
             this.gbPrecondition.Text = "Условия активности узла";
@@ -728,7 +720,7 @@
             // 
             this.pictureKnowlege.BackColor = System.Drawing.Color.Transparent;
             this.pictureKnowlege.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureKnowlege.Location = new System.Drawing.Point(771, 10);
+            this.pictureKnowlege.Location = new System.Drawing.Point(572, 10);
             this.pictureKnowlege.Name = "pictureKnowlege";
             this.pictureKnowlege.Size = new System.Drawing.Size(10, 10);
             this.pictureKnowlege.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -740,7 +732,7 @@
             // 
             this.pictureReputation2.BackColor = System.Drawing.Color.Transparent;
             this.pictureReputation2.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureReputation2.Location = new System.Drawing.Point(712, 10);
+            this.pictureReputation2.Location = new System.Drawing.Point(507, 10);
             this.pictureReputation2.Name = "pictureReputation2";
             this.pictureReputation2.Size = new System.Drawing.Size(10, 10);
             this.pictureReputation2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -748,35 +740,35 @@
             this.pictureReputation2.TabStop = false;
             this.pictureReputation2.Visible = false;
             // 
-            // picturePVP
+            // pictureWeather
             // 
-            this.picturePVP.BackColor = System.Drawing.Color.Transparent;
-            this.picturePVP.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.picturePVP.Location = new System.Drawing.Point(654, 10);
-            this.picturePVP.Name = "picturePVP";
-            this.picturePVP.Size = new System.Drawing.Size(10, 10);
-            this.picturePVP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picturePVP.TabIndex = 63;
-            this.picturePVP.TabStop = false;
-            this.picturePVP.Visible = false;
+            this.pictureWeather.BackColor = System.Drawing.Color.Transparent;
+            this.pictureWeather.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureWeather.Location = new System.Drawing.Point(617, 10);
+            this.pictureWeather.Name = "pictureWeather";
+            this.pictureWeather.Size = new System.Drawing.Size(10, 10);
+            this.pictureWeather.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureWeather.TabIndex = 63;
+            this.pictureWeather.TabStop = false;
+            this.pictureWeather.Visible = false;
             // 
-            // pictureTutorial
+            // pictureOther
             // 
-            this.pictureTutorial.BackColor = System.Drawing.Color.Transparent;
-            this.pictureTutorial.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureTutorial.Location = new System.Drawing.Point(603, 10);
-            this.pictureTutorial.Name = "pictureTutorial";
-            this.pictureTutorial.Size = new System.Drawing.Size(10, 10);
-            this.pictureTutorial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureTutorial.TabIndex = 62;
-            this.pictureTutorial.TabStop = false;
-            this.pictureTutorial.Visible = false;
+            this.pictureOther.BackColor = System.Drawing.Color.Transparent;
+            this.pictureOther.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureOther.Location = new System.Drawing.Point(741, 10);
+            this.pictureOther.Name = "pictureOther";
+            this.pictureOther.Size = new System.Drawing.Size(10, 10);
+            this.pictureOther.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureOther.TabIndex = 62;
+            this.pictureOther.TabStop = false;
+            this.pictureOther.Visible = false;
             // 
             // pictureTransport
             // 
             this.pictureTransport.BackColor = System.Drawing.Color.Transparent;
             this.pictureTransport.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureTransport.Location = new System.Drawing.Point(544, 10);
+            this.pictureTransport.Location = new System.Drawing.Point(443, 10);
             this.pictureTransport.Name = "pictureTransport";
             this.pictureTransport.Size = new System.Drawing.Size(10, 10);
             this.pictureTransport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -788,7 +780,7 @@
             // 
             this.pictureItems.BackColor = System.Drawing.Color.Transparent;
             this.pictureItems.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureItems.Location = new System.Drawing.Point(486, 10);
+            this.pictureItems.Location = new System.Drawing.Point(380, 10);
             this.pictureItems.Name = "pictureItems";
             this.pictureItems.Size = new System.Drawing.Size(10, 10);
             this.pictureItems.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -800,7 +792,7 @@
             // 
             this.pictureAction.BackColor = System.Drawing.Color.Transparent;
             this.pictureAction.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureAction.Location = new System.Drawing.Point(426, 10);
+            this.pictureAction.Location = new System.Drawing.Point(326, 10);
             this.pictureAction.Name = "pictureAction";
             this.pictureAction.Size = new System.Drawing.Size(10, 10);
             this.pictureAction.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -812,7 +804,7 @@
             // 
             this.pictureSkill.BackColor = System.Drawing.Color.Transparent;
             this.pictureSkill.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureSkill.Location = new System.Drawing.Point(370, 10);
+            this.pictureSkill.Location = new System.Drawing.Point(263, 10);
             this.pictureSkill.Name = "pictureSkill";
             this.pictureSkill.Size = new System.Drawing.Size(10, 10);
             this.pictureSkill.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -820,23 +812,11 @@
             this.pictureSkill.TabStop = false;
             this.pictureSkill.Visible = false;
             // 
-            // pictureLevel
-            // 
-            this.pictureLevel.BackColor = System.Drawing.Color.Transparent;
-            this.pictureLevel.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureLevel.Location = new System.Drawing.Point(315, 10);
-            this.pictureLevel.Name = "pictureLevel";
-            this.pictureLevel.Size = new System.Drawing.Size(10, 10);
-            this.pictureLevel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureLevel.TabIndex = 57;
-            this.pictureLevel.TabStop = false;
-            this.pictureLevel.Visible = false;
-            // 
             // pictureEffects
             // 
             this.pictureEffects.BackColor = System.Drawing.Color.Transparent;
             this.pictureEffects.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureEffects.Location = new System.Drawing.Point(259, 10);
+            this.pictureEffects.Location = new System.Drawing.Point(199, 10);
             this.pictureEffects.Name = "pictureEffects";
             this.pictureEffects.Size = new System.Drawing.Size(10, 10);
             this.pictureEffects.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -848,7 +828,7 @@
             // 
             this.pictureClan.BackColor = System.Drawing.Color.Transparent;
             this.pictureClan.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureClan.Location = new System.Drawing.Point(196, 10);
+            this.pictureClan.Location = new System.Drawing.Point(145, 10);
             this.pictureClan.Name = "pictureClan";
             this.pictureClan.Size = new System.Drawing.Size(10, 10);
             this.pictureClan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -856,17 +836,17 @@
             this.pictureClan.TabStop = false;
             this.pictureClan.Visible = false;
             // 
-            // pictureKarma
+            // pictureAchievements
             // 
-            this.pictureKarma.BackColor = System.Drawing.Color.Transparent;
-            this.pictureKarma.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
-            this.pictureKarma.Location = new System.Drawing.Point(140, 10);
-            this.pictureKarma.Name = "pictureKarma";
-            this.pictureKarma.Size = new System.Drawing.Size(10, 10);
-            this.pictureKarma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureKarma.TabIndex = 54;
-            this.pictureKarma.TabStop = false;
-            this.pictureKarma.Visible = false;
+            this.pictureAchievements.BackColor = System.Drawing.Color.Transparent;
+            this.pictureAchievements.Image = global::StalkerOnlineQuesterEditor.Properties.Resources.but_indicate;
+            this.pictureAchievements.Location = new System.Drawing.Point(675, 10);
+            this.pictureAchievements.Name = "pictureAchievements";
+            this.pictureAchievements.Size = new System.Drawing.Size(10, 10);
+            this.pictureAchievements.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureAchievements.TabIndex = 54;
+            this.pictureAchievements.TabStop = false;
+            this.pictureAchievements.Visible = false;
             // 
             // pictureReputation
             // 
@@ -886,25 +866,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabQuestsCircs.Controls.Add(this.tabQuests);
             this.tabQuestsCircs.Controls.Add(this.tabReputation);
-            this.tabQuestsCircs.Controls.Add(this.tabKarma);
             this.tabQuestsCircs.Controls.Add(this.tabClan);
             this.tabQuestsCircs.Controls.Add(this.tabEffects);
-            this.tabQuestsCircs.Controls.Add(this.tabLevel);
             this.tabQuestsCircs.Controls.Add(this.tabSkills);
             this.tabQuestsCircs.Controls.Add(this.tabActions);
             this.tabQuestsCircs.Controls.Add(this.tabItems);
             this.tabQuestsCircs.Controls.Add(this.tabTransport);
-            this.tabQuestsCircs.Controls.Add(this.tabTutorial);
-            this.tabQuestsCircs.Controls.Add(this.tabPVP);
             this.tabQuestsCircs.Controls.Add(this.tabReputation2);
             this.tabQuestsCircs.Controls.Add(this.tabKnowleges);
             this.tabQuestsCircs.Controls.Add(this.tabWeather);
+            this.tabQuestsCircs.Controls.Add(this.tabAchievements);
+            this.tabQuestsCircs.Controls.Add(this.tabOther);
             this.tabQuestsCircs.Location = new System.Drawing.Point(4, 19);
             this.tabQuestsCircs.Multiline = true;
             this.tabQuestsCircs.Name = "tabQuestsCircs";
             this.tabQuestsCircs.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabQuestsCircs.SelectedIndex = 0;
-            this.tabQuestsCircs.Size = new System.Drawing.Size(805, 288);
+            this.tabQuestsCircs.Size = new System.Drawing.Size(808, 288);
             this.tabQuestsCircs.TabIndex = 52;
             this.tabQuestsCircs.SelectedIndexChanged += new System.EventHandler(this.tabQuestsCircs_SelectedIndexChanged);
             // 
@@ -912,10 +890,10 @@
             // 
             this.tabQuests.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabQuests.Controls.Add(this.gbQuestCondition);
-            this.tabQuests.Location = new System.Drawing.Point(4, 40);
+            this.tabQuests.Location = new System.Drawing.Point(4, 22);
             this.tabQuests.Name = "tabQuests";
             this.tabQuests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuests.Size = new System.Drawing.Size(797, 244);
+            this.tabQuests.Size = new System.Drawing.Size(800, 262);
             this.tabQuests.TabIndex = 0;
             this.tabQuests.Text = "Квесты";
             // 
@@ -969,7 +947,7 @@
             this.gbQuestCondition.Controls.Add(this.tMustHaveCompletedQuests);
             this.gbQuestCondition.Location = new System.Drawing.Point(138, 1);
             this.gbQuestCondition.Name = "gbQuestCondition";
-            this.gbQuestCondition.Size = new System.Drawing.Size(520, 255);
+            this.gbQuestCondition.Size = new System.Drawing.Size(523, 255);
             this.gbQuestCondition.TabIndex = 6;
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
@@ -1343,10 +1321,10 @@
             this.tabReputation.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabReputation.Controls.Add(this.lInfo);
             this.tabReputation.Controls.Add(this.dataReputation);
-            this.tabReputation.Location = new System.Drawing.Point(4, 40);
+            this.tabReputation.Location = new System.Drawing.Point(4, 22);
             this.tabReputation.Name = "tabReputation";
             this.tabReputation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation.Size = new System.Drawing.Size(797, 244);
+            this.tabReputation.Size = new System.Drawing.Size(800, 262);
             this.tabReputation.TabIndex = 1;
             this.tabReputation.Text = "Репутация";
             // 
@@ -1370,7 +1348,7 @@
             this.dataReputation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation.Location = new System.Drawing.Point(3, 3);
             this.dataReputation.Name = "dataReputation";
-            this.dataReputation.Size = new System.Drawing.Size(791, 238);
+            this.dataReputation.Size = new System.Drawing.Size(794, 256);
             this.dataReputation.TabIndex = 3;
             // 
             // id
@@ -1401,79 +1379,14 @@
             this.b.Name = "b";
             this.b.Width = 110;
             // 
-            // tabKarma
-            // 
-            this.tabKarma.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabKarma.Controls.Add(this.panel2);
-            this.tabKarma.Controls.Add(this.bTextBox);
-            this.tabKarma.Controls.Add(this.label1);
-            this.tabKarma.Controls.Add(this.aTextBox);
-            this.tabKarma.Controls.Add(this.a);
-            this.tabKarma.Location = new System.Drawing.Point(4, 40);
-            this.tabKarma.Name = "tabKarma";
-            this.tabKarma.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKarma.Size = new System.Drawing.Size(797, 244);
-            this.tabKarma.TabIndex = 2;
-            this.tabKarma.Text = "Карма";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.labelDescription);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 100);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(791, 141);
-            this.panel2.TabIndex = 4;
-            // 
-            // labelDescription
-            // 
-            this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(3, 10);
-            this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(90, 13);
-            this.labelDescription.TabIndex = 0;
-            this.labelDescription.Text = "Описание здесь";
-            // 
-            // bTextBox
-            // 
-            this.bTextBox.Location = new System.Drawing.Point(139, 21);
-            this.bTextBox.Name = "bTextBox";
-            this.bTextBox.Size = new System.Drawing.Size(100, 20);
-            this.bTextBox.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(183, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "B";
-            // 
-            // aTextBox
-            // 
-            this.aTextBox.Location = new System.Drawing.Point(33, 21);
-            this.aTextBox.Name = "aTextBox";
-            this.aTextBox.Size = new System.Drawing.Size(100, 20);
-            this.aTextBox.TabIndex = 6;
-            // 
-            // a
-            // 
-            this.a.AutoSize = true;
-            this.a.Location = new System.Drawing.Point(79, 5);
-            this.a.Name = "a";
-            this.a.Size = new System.Drawing.Size(14, 13);
-            this.a.TabIndex = 3;
-            this.a.Text = "A";
-            // 
             // tabClan
             // 
             this.tabClan.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabClan.Controls.Add(this.gbClanOptions);
-            this.tabClan.Location = new System.Drawing.Point(4, 40);
+            this.tabClan.Location = new System.Drawing.Point(4, 22);
             this.tabClan.Name = "tabClan";
             this.tabClan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClan.Size = new System.Drawing.Size(797, 244);
+            this.tabClan.Size = new System.Drawing.Size(800, 262);
             this.tabClan.TabIndex = 3;
             this.tabClan.Text = "Клановые";
             // 
@@ -1636,10 +1549,10 @@
             // tabEffects
             // 
             this.tabEffects.Controls.Add(this.effectsPanel);
-            this.tabEffects.Location = new System.Drawing.Point(4, 40);
+            this.tabEffects.Location = new System.Drawing.Point(4, 22);
             this.tabEffects.Name = "tabEffects";
             this.tabEffects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEffects.Size = new System.Drawing.Size(797, 244);
+            this.tabEffects.Size = new System.Drawing.Size(800, 262);
             this.tabEffects.TabIndex = 4;
             this.tabEffects.Text = "Эффекты";
             this.tabEffects.UseVisualStyleBackColor = true;
@@ -1654,7 +1567,7 @@
             this.effectsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.effectsPanel.Location = new System.Drawing.Point(3, 3);
             this.effectsPanel.Name = "effectsPanel";
-            this.effectsPanel.Size = new System.Drawing.Size(791, 238);
+            this.effectsPanel.Size = new System.Drawing.Size(794, 256);
             this.effectsPanel.TabIndex = 17;
             // 
             // lMustNotEffects
@@ -1687,7 +1600,7 @@
             this.dataGridEffects.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridEffects.Location = new System.Drawing.Point(0, 0);
             this.dataGridEffects.Name = "dataGridEffects";
-            this.dataGridEffects.Size = new System.Drawing.Size(246, 238);
+            this.dataGridEffects.Size = new System.Drawing.Size(246, 256);
             this.dataGridEffects.TabIndex = 2;
             // 
             // dataGridViewComboBoxColumn1
@@ -1717,9 +1630,9 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.dataGridNotEffects.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridNotEffects.Location = new System.Drawing.Point(545, 0);
+            this.dataGridNotEffects.Location = new System.Drawing.Point(548, 0);
             this.dataGridNotEffects.Name = "dataGridNotEffects";
-            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 238);
+            this.dataGridNotEffects.Size = new System.Drawing.Size(246, 256);
             this.dataGridNotEffects.TabIndex = 6;
             // 
             // dataGridViewComboBoxColumn2
@@ -1741,73 +1654,14 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Width = 50;
             // 
-            // tabLevel
-            // 
-            this.tabLevel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabLevel.Controls.Add(this.mtbPlayerLevelMin);
-            this.tabLevel.Controls.Add(this.lBefore);
-            this.tabLevel.Controls.Add(this.lFrom);
-            this.tabLevel.Controls.Add(this.mtbPlayerLevelMax);
-            this.tabLevel.Controls.Add(this.lPlayerLevel);
-            this.tabLevel.Location = new System.Drawing.Point(4, 40);
-            this.tabLevel.Name = "tabLevel";
-            this.tabLevel.Size = new System.Drawing.Size(797, 244);
-            this.tabLevel.TabIndex = 5;
-            this.tabLevel.Text = "Уровень";
-            // 
-            // mtbPlayerLevelMin
-            // 
-            this.mtbPlayerLevelMin.Location = new System.Drawing.Point(118, 33);
-            this.mtbPlayerLevelMin.Name = "mtbPlayerLevelMin";
-            this.mtbPlayerLevelMin.PromptChar = ' ';
-            this.mtbPlayerLevelMin.Size = new System.Drawing.Size(100, 20);
-            this.mtbPlayerLevelMin.TabIndex = 63;
-            this.mtbPlayerLevelMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
-            // 
-            // lBefore
-            // 
-            this.lBefore.AutoSize = true;
-            this.lBefore.Location = new System.Drawing.Point(260, 17);
-            this.lBefore.Name = "lBefore";
-            this.lBefore.Size = new System.Drawing.Size(19, 13);
-            this.lBefore.TabIndex = 62;
-            this.lBefore.Text = "до";
-            // 
-            // lFrom
-            // 
-            this.lFrom.AutoSize = true;
-            this.lFrom.Location = new System.Drawing.Point(154, 17);
-            this.lFrom.Name = "lFrom";
-            this.lFrom.Size = new System.Drawing.Size(18, 13);
-            this.lFrom.TabIndex = 61;
-            this.lFrom.Text = "от";
-            // 
-            // mtbPlayerLevelMax
-            // 
-            this.mtbPlayerLevelMax.Location = new System.Drawing.Point(224, 33);
-            this.mtbPlayerLevelMax.Name = "mtbPlayerLevelMax";
-            this.mtbPlayerLevelMax.PromptChar = ' ';
-            this.mtbPlayerLevelMax.Size = new System.Drawing.Size(100, 20);
-            this.mtbPlayerLevelMax.TabIndex = 51;
-            this.mtbPlayerLevelMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.digitTextBox_KeyPress);
-            // 
-            // lPlayerLevel
-            // 
-            this.lPlayerLevel.AutoSize = true;
-            this.lPlayerLevel.Location = new System.Drawing.Point(19, 36);
-            this.lPlayerLevel.Name = "lPlayerLevel";
-            this.lPlayerLevel.Size = new System.Drawing.Size(92, 13);
-            this.lPlayerLevel.TabIndex = 50;
-            this.lPlayerLevel.Text = "Уровень игрока:";
-            // 
             // tabSkills
             // 
             this.tabSkills.Controls.Add(this.dataPerks);
             this.tabSkills.Controls.Add(this.dataSkill);
-            this.tabSkills.Location = new System.Drawing.Point(4, 40);
+            this.tabSkills.Location = new System.Drawing.Point(4, 22);
             this.tabSkills.Name = "tabSkills";
             this.tabSkills.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSkills.Size = new System.Drawing.Size(797, 244);
+            this.tabSkills.Size = new System.Drawing.Size(800, 262);
             this.tabSkills.TabIndex = 6;
             this.tabSkills.Text = "Навыки";
             this.tabSkills.UseVisualStyleBackColor = true;
@@ -1901,10 +1755,10 @@
             this.tabActions.Controls.Add(this.cbCamera);
             this.tabActions.Controls.Add(this.cbAnimationNPC);
             this.tabActions.Controls.Add(this.cbAnimationPlayer);
-            this.tabActions.Location = new System.Drawing.Point(4, 40);
+            this.tabActions.Location = new System.Drawing.Point(4, 22);
             this.tabActions.Name = "tabActions";
             this.tabActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActions.Size = new System.Drawing.Size(797, 244);
+            this.tabActions.Size = new System.Drawing.Size(800, 262);
             this.tabActions.TabIndex = 7;
             this.tabActions.Text = "Действия";
             // 
@@ -2057,10 +1911,10 @@
             this.tabItems.Controls.Add(this.cbCategory);
             this.tabItems.Controls.Add(this.rbItems);
             this.tabItems.Controls.Add(this.rbCategory);
-            this.tabItems.Location = new System.Drawing.Point(4, 40);
+            this.tabItems.Location = new System.Drawing.Point(4, 22);
             this.tabItems.Name = "tabItems";
             this.tabItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tabItems.Size = new System.Drawing.Size(797, 244);
+            this.tabItems.Size = new System.Drawing.Size(800, 262);
             this.tabItems.TabIndex = 8;
             this.tabItems.Text = "Предметы";
             this.tabItems.SizeChanged += new System.EventHandler(this.tabItems_SizeChanged);
@@ -2080,7 +1934,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.rbNonItemsOr);
             this.panel3.Controls.Add(this.rbNonItemsAnd);
-            this.panel3.Location = new System.Drawing.Point(747, 6);
+            this.panel3.Location = new System.Drawing.Point(791, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(88, 31);
             this.panel3.TabIndex = 14;
@@ -2113,7 +1967,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.rbItemsOr);
             this.panel1.Controls.Add(this.rbItemsAnd);
-            this.panel1.Location = new System.Drawing.Point(376, 8);
+            this.panel1.Location = new System.Drawing.Point(420, 8);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(88, 31);
             this.panel1.TabIndex = 12;
@@ -2149,7 +2003,7 @@
             this.panelItems.Controls.Add(this.GVItems);
             this.panelItems.Location = new System.Drawing.Point(0, 39);
             this.panelItems.Name = "panelItems";
-            this.panelItems.Size = new System.Drawing.Size(835, 191);
+            this.panelItems.Size = new System.Drawing.Size(879, 191);
             this.panelItems.TabIndex = 9;
             this.panelItems.Visible = false;
             // 
@@ -2162,7 +2016,7 @@
             this.GVNonItems_itemQuantity,
             this.GVNonItems_ItemCond});
             this.GVNonItems.Dock = System.Windows.Forms.DockStyle.Right;
-            this.GVNonItems.Location = new System.Drawing.Point(522, 0);
+            this.GVNonItems.Location = new System.Drawing.Point(566, 0);
             this.GVNonItems.Name = "GVNonItems";
             this.GVNonItems.Size = new System.Drawing.Size(313, 191);
             this.GVNonItems.TabIndex = 7;
@@ -2311,10 +2165,10 @@
             this.tabTransport.Controls.Add(this.cbInBoatList);
             this.tabTransport.Controls.Add(this.cbNotInTransportList);
             this.tabTransport.Controls.Add(this.cbTransportInList);
-            this.tabTransport.Location = new System.Drawing.Point(4, 40);
+            this.tabTransport.Location = new System.Drawing.Point(4, 22);
             this.tabTransport.Name = "tabTransport";
             this.tabTransport.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTransport.Size = new System.Drawing.Size(797, 244);
+            this.tabTransport.Size = new System.Drawing.Size(800, 262);
             this.tabTransport.TabIndex = 9;
             this.tabTransport.Text = "Перевоз";
             // 
@@ -2403,111 +2257,15 @@
             this.cbTransportInList.Text = "в списке транспортировки";
             this.cbTransportInList.UseVisualStyleBackColor = true;
             // 
-            // tabTutorial
-            // 
-            this.tabTutorial.Controls.Add(this.label13);
-            this.tabTutorial.Controls.Add(this.cbTutorialPhase);
-            this.tabTutorial.Location = new System.Drawing.Point(4, 40);
-            this.tabTutorial.Name = "tabTutorial";
-            this.tabTutorial.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTutorial.Size = new System.Drawing.Size(797, 244);
-            this.tabTutorial.TabIndex = 10;
-            this.tabTutorial.Text = "Туториал";
-            this.tabTutorial.UseVisualStyleBackColor = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(29, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Фаза туториала:";
-            // 
-            // cbTutorialPhase
-            // 
-            this.cbTutorialPhase.FormattingEnabled = true;
-            this.cbTutorialPhase.Location = new System.Drawing.Point(128, 16);
-            this.cbTutorialPhase.Name = "cbTutorialPhase";
-            this.cbTutorialPhase.Size = new System.Drawing.Size(166, 21);
-            this.cbTutorialPhase.TabIndex = 0;
-            // 
-            // tabPVP
-            // 
-            this.tabPVP.Controls.Add(this.cbRatingPVPMode);
-            this.tabPVP.Controls.Add(this.label17);
-            this.tabPVP.Controls.Add(this.cbPVPRank2);
-            this.tabPVP.Controls.Add(this.label19);
-            this.tabPVP.Controls.Add(this.cbPVPRank1);
-            this.tabPVP.Controls.Add(this.label18);
-            this.tabPVP.Location = new System.Drawing.Point(4, 40);
-            this.tabPVP.Name = "tabPVP";
-            this.tabPVP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPVP.Size = new System.Drawing.Size(797, 244);
-            this.tabPVP.TabIndex = 11;
-            this.tabPVP.Text = "PVP";
-            this.tabPVP.UseVisualStyleBackColor = true;
-            // 
-            // cbRatingPVPMode
-            // 
-            this.cbRatingPVPMode.FormattingEnabled = true;
-            this.cbRatingPVPMode.Location = new System.Drawing.Point(102, 39);
-            this.cbRatingPVPMode.Name = "cbRatingPVPMode";
-            this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
-            this.cbRatingPVPMode.TabIndex = 5;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 42);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 13);
-            this.label17.TabIndex = 43;
-            this.label17.Text = "Наличие квестов;";
-            // 
-            // cbPVPRank2
-            // 
-            this.cbPVPRank2.FormattingEnabled = true;
-            this.cbPVPRank2.Location = new System.Drawing.Point(229, 15);
-            this.cbPVPRank2.Name = "cbPVPRank2";
-            this.cbPVPRank2.Size = new System.Drawing.Size(121, 21);
-            this.cbPVPRank2.TabIndex = 3;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(204, 18);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(19, 13);
-            this.label19.TabIndex = 2;
-            this.label19.Text = "до";
-            // 
-            // cbPVPRank1
-            // 
-            this.cbPVPRank1.FormattingEnabled = true;
-            this.cbPVPRank1.Location = new System.Drawing.Point(77, 15);
-            this.cbPVPRank1.Name = "cbPVPRank1";
-            this.cbPVPRank1.Size = new System.Drawing.Size(121, 21);
-            this.cbPVPRank1.TabIndex = 1;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 18);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 13);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Рейтинг:  от";
-            // 
             // tabReputation2
             // 
             this.tabReputation2.Controls.Add(this.panel4);
             this.tabReputation2.Controls.Add(this.label20);
             this.tabReputation2.Controls.Add(this.dataReputation2);
-            this.tabReputation2.Location = new System.Drawing.Point(4, 40);
+            this.tabReputation2.Location = new System.Drawing.Point(4, 22);
             this.tabReputation2.Name = "tabReputation2";
             this.tabReputation2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReputation2.Size = new System.Drawing.Size(797, 244);
+            this.tabReputation2.Size = new System.Drawing.Size(800, 262);
             this.tabReputation2.TabIndex = 12;
             this.tabReputation2.Text = "Репутация2";
             this.tabReputation2.UseVisualStyleBackColor = true;
@@ -2598,7 +2356,7 @@
             this.dataReputation2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReputation2.Location = new System.Drawing.Point(3, 3);
             this.dataReputation2.Name = "dataReputation2";
-            this.dataReputation2.Size = new System.Drawing.Size(791, 238);
+            this.dataReputation2.Size = new System.Drawing.Size(794, 256);
             this.dataReputation2.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn8
@@ -2632,10 +2390,10 @@
             // tabKnowleges
             // 
             this.tabKnowleges.Controls.Add(this.groupBox1);
-            this.tabKnowleges.Location = new System.Drawing.Point(4, 40);
+            this.tabKnowleges.Location = new System.Drawing.Point(4, 22);
             this.tabKnowleges.Name = "tabKnowleges";
             this.tabKnowleges.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKnowleges.Size = new System.Drawing.Size(797, 244);
+            this.tabKnowleges.Size = new System.Drawing.Size(800, 262);
             this.tabKnowleges.TabIndex = 13;
             this.tabKnowleges.Text = "Знания";
             this.tabKnowleges.UseVisualStyleBackColor = true;
@@ -2751,10 +2509,10 @@
             this.tabWeather.Controls.Add(this.label3);
             this.tabWeather.Controls.Add(this.label2);
             this.tabWeather.Controls.Add(this.cbSpaceWeather);
-            this.tabWeather.Location = new System.Drawing.Point(4, 40);
+            this.tabWeather.Location = new System.Drawing.Point(4, 22);
             this.tabWeather.Name = "tabWeather";
             this.tabWeather.Padding = new System.Windows.Forms.Padding(3);
-            this.tabWeather.Size = new System.Drawing.Size(797, 244);
+            this.tabWeather.Size = new System.Drawing.Size(800, 262);
             this.tabWeather.TabIndex = 14;
             this.tabWeather.Text = "Погода";
             this.tabWeather.UseVisualStyleBackColor = true;
@@ -2905,6 +2663,250 @@
             this.cbSpaceWeather.TabIndex = 1;
             this.cbSpaceWeather.SelectedIndexChanged += new System.EventHandler(this.cbSpaceWeather_SelectedIndexChanged);
             // 
+            // tabAchievements
+            // 
+            this.tabAchievements.Controls.Add(this.dataAchievements);
+            this.tabAchievements.Location = new System.Drawing.Point(4, 22);
+            this.tabAchievements.Name = "tabAchievements";
+            this.tabAchievements.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAchievements.Size = new System.Drawing.Size(800, 262);
+            this.tabAchievements.TabIndex = 15;
+            this.tabAchievements.Text = "Достижения";
+            this.tabAchievements.UseVisualStyleBackColor = true;
+            // 
+            // dataAchievements
+            // 
+            this.dataAchievements.AllowUserToOrderColumns = true;
+            this.dataAchievements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataAchievements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewComboBoxColumn4,
+            this.dataGridViewComboBoxColumn5});
+            this.dataAchievements.Location = new System.Drawing.Point(2, 3);
+            this.dataAchievements.Name = "dataAchievements";
+            this.dataAchievements.Size = new System.Drawing.Size(430, 248);
+            this.dataAchievements.TabIndex = 6;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "id";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Visible = false;
+            // 
+            // dataGridViewComboBoxColumn4
+            // 
+            this.dataGridViewComboBoxColumn4.HeaderText = "Название достижения";
+            this.dataGridViewComboBoxColumn4.Name = "dataGridViewComboBoxColumn4";
+            this.dataGridViewComboBoxColumn4.Width = 280;
+            // 
+            // dataGridViewComboBoxColumn5
+            // 
+            this.dataGridViewComboBoxColumn5.HeaderText = "Присутствие";
+            this.dataGridViewComboBoxColumn5.Items.AddRange(new object[] {
+            "иметься должен ",
+            "отсутствовать должен "});
+            this.dataGridViewComboBoxColumn5.Name = "dataGridViewComboBoxColumn5";
+            // 
+            // tabOther
+            // 
+            this.tabOther.Controls.Add(this.groupBox5);
+            this.tabOther.Controls.Add(this.groupBox4);
+            this.tabOther.Controls.Add(this.groupBox3);
+            this.tabOther.Controls.Add(this.groupBox2);
+            this.tabOther.Location = new System.Drawing.Point(4, 22);
+            this.tabOther.Name = "tabOther";
+            this.tabOther.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOther.Size = new System.Drawing.Size(800, 262);
+            this.tabOther.TabIndex = 10;
+            this.tabOther.Text = "Другое";
+            this.tabOther.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cbRatingPVPMode);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.cbPVPRank2);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.cbPVPRank1);
+            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Location = new System.Drawing.Point(4, 7);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(359, 81);
+            this.groupBox5.TabIndex = 71;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "PVP";
+            // 
+            // cbRatingPVPMode
+            // 
+            this.cbRatingPVPMode.FormattingEnabled = true;
+            this.cbRatingPVPMode.Location = new System.Drawing.Point(93, 42);
+            this.cbRatingPVPMode.Name = "cbRatingPVPMode";
+            this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
+            this.cbRatingPVPMode.TabIndex = 48;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(-3, 45);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 13);
+            this.label17.TabIndex = 49;
+            this.label17.Text = "Наличие квестов;";
+            // 
+            // cbPVPRank2
+            // 
+            this.cbPVPRank2.FormattingEnabled = true;
+            this.cbPVPRank2.Location = new System.Drawing.Point(220, 18);
+            this.cbPVPRank2.Name = "cbPVPRank2";
+            this.cbPVPRank2.Size = new System.Drawing.Size(121, 21);
+            this.cbPVPRank2.TabIndex = 47;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(195, 21);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(19, 13);
+            this.label19.TabIndex = 46;
+            this.label19.Text = "до";
+            // 
+            // cbPVPRank1
+            // 
+            this.cbPVPRank1.FormattingEnabled = true;
+            this.cbPVPRank1.Location = new System.Drawing.Point(68, 18);
+            this.cbPVPRank1.Name = "cbPVPRank1";
+            this.cbPVPRank1.Size = new System.Drawing.Size(121, 21);
+            this.cbPVPRank1.TabIndex = 45;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(-3, 21);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(68, 13);
+            this.label18.TabIndex = 44;
+            this.label18.Text = "Рейтинг:  от";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cbTutorialPhase);
+            this.groupBox4.Location = new System.Drawing.Point(318, 175);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(182, 81);
+            this.groupBox4.TabIndex = 70;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Фаза туториала";
+            // 
+            // cbTutorialPhase
+            // 
+            this.cbTutorialPhase.FormattingEnabled = true;
+            this.cbTutorialPhase.Location = new System.Drawing.Point(6, 19);
+            this.cbTutorialPhase.Name = "cbTutorialPhase";
+            this.cbTutorialPhase.Size = new System.Drawing.Size(166, 21);
+            this.cbTutorialPhase.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.mtbPlayerLevelMin);
+            this.groupBox3.Controls.Add(this.lBefore);
+            this.groupBox3.Controls.Add(this.lFrom);
+            this.groupBox3.Controls.Add(this.mtbPlayerLevelMax);
+            this.groupBox3.Location = new System.Drawing.Point(318, 94);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(182, 81);
+            this.groupBox3.TabIndex = 69;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Уровень игрока";
+            // 
+            // mtbPlayerLevelMin
+            // 
+            this.mtbPlayerLevelMin.Location = new System.Drawing.Point(5, 29);
+            this.mtbPlayerLevelMin.Name = "mtbPlayerLevelMin";
+            this.mtbPlayerLevelMin.PromptChar = ' ';
+            this.mtbPlayerLevelMin.Size = new System.Drawing.Size(84, 20);
+            this.mtbPlayerLevelMin.TabIndex = 72;
+            // 
+            // lBefore
+            // 
+            this.lBefore.AutoSize = true;
+            this.lBefore.Location = new System.Drawing.Point(117, 16);
+            this.lBefore.Name = "lBefore";
+            this.lBefore.Size = new System.Drawing.Size(19, 13);
+            this.lBefore.TabIndex = 71;
+            this.lBefore.Text = "до";
+            // 
+            // lFrom
+            // 
+            this.lFrom.AutoSize = true;
+            this.lFrom.Location = new System.Drawing.Point(30, 16);
+            this.lFrom.Name = "lFrom";
+            this.lFrom.Size = new System.Drawing.Size(18, 13);
+            this.lFrom.TabIndex = 70;
+            this.lFrom.Text = "от";
+            // 
+            // mtbPlayerLevelMax
+            // 
+            this.mtbPlayerLevelMax.Location = new System.Drawing.Point(94, 29);
+            this.mtbPlayerLevelMax.Name = "mtbPlayerLevelMax";
+            this.mtbPlayerLevelMax.PromptChar = ' ';
+            this.mtbPlayerLevelMax.Size = new System.Drawing.Size(76, 20);
+            this.mtbPlayerLevelMax.TabIndex = 69;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.labelDescription);
+            this.groupBox2.Controls.Add(this.bTextBox);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.aTextBox);
+            this.groupBox2.Controls.Add(this.a);
+            this.groupBox2.Location = new System.Drawing.Point(3, 94);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(314, 162);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Карма";
+            // 
+            // labelDescription
+            // 
+            this.labelDescription.AutoSize = true;
+            this.labelDescription.Location = new System.Drawing.Point(10, 65);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(90, 13);
+            this.labelDescription.TabIndex = 16;
+            this.labelDescription.Text = "Описание здесь";
+            // 
+            // bTextBox
+            // 
+            this.bTextBox.Location = new System.Drawing.Point(116, 32);
+            this.bTextBox.Name = "bTextBox";
+            this.bTextBox.Size = new System.Drawing.Size(100, 20);
+            this.bTextBox.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(160, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "B";
+            // 
+            // aTextBox
+            // 
+            this.aTextBox.Location = new System.Drawing.Point(10, 32);
+            this.aTextBox.Name = "aTextBox";
+            this.aTextBox.Size = new System.Drawing.Size(100, 20);
+            this.aTextBox.TabIndex = 15;
+            // 
+            // a
+            // 
+            this.a.AutoSize = true;
+            this.a.Location = new System.Drawing.Point(56, 16);
+            this.a.Name = "a";
+            this.a.Size = new System.Drawing.Size(14, 13);
+            this.a.TabIndex = 13;
+            this.a.Text = "A";
+            // 
             // bEditDialogOk
             // 
             this.bEditDialogOk.Location = new System.Drawing.Point(172, 5);
@@ -2945,7 +2947,7 @@
             this.pCommands.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pCommands.Location = new System.Drawing.Point(0, 751);
             this.pCommands.Name = "pCommands";
-            this.pCommands.Size = new System.Drawing.Size(815, 52);
+            this.pCommands.Size = new System.Drawing.Size(818, 52);
             this.pCommands.TabIndex = 13;
             // 
             // cbHidden
@@ -2988,6 +2990,7 @@
             // 
             this.gbTexts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbTexts.Controls.Add(this.btnFindError);
             this.gbTexts.Controls.Add(this.label23);
             this.gbTexts.Controls.Add(this.tbNextDialog);
             this.gbTexts.Controls.Add(this.btnLastNPCPhrase);
@@ -3009,14 +3012,24 @@
             this.gbTexts.Controls.Add(this.tReactionNPC);
             this.gbTexts.Location = new System.Drawing.Point(0, 0);
             this.gbTexts.Name = "gbTexts";
-            this.gbTexts.Size = new System.Drawing.Size(815, 247);
+            this.gbTexts.Size = new System.Drawing.Size(818, 247);
             this.gbTexts.TabIndex = 15;
             this.gbTexts.TabStop = false;
+            // 
+            // btnFindError
+            // 
+            this.btnFindError.Location = new System.Drawing.Point(10, 155);
+            this.btnFindError.Name = "btnFindError";
+            this.btnFindError.Size = new System.Drawing.Size(87, 36);
+            this.btnFindError.TabIndex = 26;
+            this.btnFindError.Text = "Поиск ошибок";
+            this.btnFindError.UseVisualStyleBackColor = true;
+            this.btnFindError.Click += new System.EventHandler(this.btnFindError_Click);
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(422, 12);
+            this.label23.Location = new System.Drawing.Point(394, 12);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(122, 13);
             this.label23.TabIndex = 25;
@@ -3024,7 +3037,7 @@
             // 
             // tbNextDialog
             // 
-            this.tbNextDialog.Location = new System.Drawing.Point(544, 9);
+            this.tbNextDialog.Location = new System.Drawing.Point(516, 9);
             this.tbNextDialog.Name = "tbNextDialog";
             this.tbNextDialog.Size = new System.Drawing.Size(52, 20);
             this.tbNextDialog.TabIndex = 24;
@@ -3041,7 +3054,7 @@
             // 
             // btnTODO
             // 
-            this.btnTODO.Location = new System.Drawing.Point(602, 9);
+            this.btnTODO.Location = new System.Drawing.Point(574, 9);
             this.btnTODO.Name = "btnTODO";
             this.btnTODO.Size = new System.Drawing.Size(50, 20);
             this.btnTODO.TabIndex = 22;
@@ -3052,7 +3065,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(658, 12);
+            this.label16.Location = new System.Drawing.Point(630, 12);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(47, 13);
             this.label16.TabIndex = 21;
@@ -3065,7 +3078,7 @@
             "Рядом",
             "Только по радио",
             "Любое расстояние"});
-            this.cbRadioNode.Location = new System.Drawing.Point(711, 9);
+            this.cbRadioNode.Location = new System.Drawing.Point(683, 9);
             this.cbRadioNode.Name = "cbRadioNode";
             this.cbRadioNode.Size = new System.Drawing.Size(121, 21);
             this.cbRadioNode.TabIndex = 20;
@@ -3076,7 +3089,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tCheckNodes.Location = new System.Drawing.Point(103, 221);
             this.tCheckNodes.Name = "tCheckNodes";
-            this.tCheckNodes.Size = new System.Drawing.Size(699, 20);
+            this.tCheckNodes.Size = new System.Drawing.Size(702, 20);
             this.tCheckNodes.TabIndex = 18;
             // 
             // lCheckNodes
@@ -3126,12 +3139,25 @@
             this.cbAutoNode.UseVisualStyleBackColor = true;
             this.cbAutoNode.CheckedChanged += new System.EventHandler(this.cbAutoNode_CheckedChanged);
             // 
+            // tReactionNPC
+            // 
+            this.tReactionNPC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tReactionNPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tReactionNPC.Location = new System.Drawing.Point(103, 71);
+            this.tReactionNPC.Name = "tReactionNPC";
+            this.tReactionNPC.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.tReactionNPC.Size = new System.Drawing.Size(702, 120);
+            this.tReactionNPC.TabIndex = 1;
+            this.tReactionNPC.Text = "";
+            this.tReactionNPC.TextChanged += new System.EventHandler(this.tReactionNPC_TextChanged);
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(815, 803);
+            this.ClientSize = new System.Drawing.Size(818, 803);
             this.Controls.Add(this.pCommands);
             this.Controls.Add(this.gbActions);
             this.Controls.Add(this.gbPrecondition);
@@ -3149,16 +3175,15 @@
             this.gbPrecondition.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureKnowlege)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureReputation2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picturePVP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureTutorial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWeather)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureOther)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTransport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSkill)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEffects)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureKarma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAchievements)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureReputation)).EndInit();
             this.tabQuestsCircs.ResumeLayout(false);
             this.tabQuests.ResumeLayout(false);
@@ -3166,10 +3191,6 @@
             this.gbQuestCondition.PerformLayout();
             this.tabReputation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataReputation)).EndInit();
-            this.tabKarma.ResumeLayout(false);
-            this.tabKarma.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.tabClan.ResumeLayout(false);
             this.gbClanOptions.ResumeLayout(false);
             this.gbClanOptions.PerformLayout();
@@ -3178,8 +3199,6 @@
             this.effectsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEffects)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotEffects)).EndInit();
-            this.tabLevel.ResumeLayout(false);
-            this.tabLevel.PerformLayout();
             this.tabSkills.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataPerks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).EndInit();
@@ -3196,10 +3215,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).EndInit();
             this.tabTransport.ResumeLayout(false);
             this.tabTransport.PerformLayout();
-            this.tabTutorial.ResumeLayout(false);
-            this.tabTutorial.PerformLayout();
-            this.tabPVP.ResumeLayout(false);
-            this.tabPVP.PerformLayout();
             this.tabReputation2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -3213,6 +3228,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupHour2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupMin1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupHour1)).EndInit();
+            this.tabAchievements.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataAchievements)).EndInit();
+            this.tabOther.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.pCommands.ResumeLayout(false);
             this.pCommands.PerformLayout();
             this.gbTexts.ResumeLayout(false);
@@ -3226,7 +3251,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox tPlayerText;
+        private System.Windows.Forms.RichTextBox tPlayerText;
         private System.Windows.Forms.Label lAnswerText;
         private System.Windows.Forms.Label NPCSaidIs;
         private System.Windows.Forms.Label lGreetNPC;
@@ -3239,7 +3264,6 @@
         private System.Windows.Forms.CheckBox cbExit;
         private System.Windows.Forms.CheckBox cbCompleteQuests;
         private System.Windows.Forms.CheckBox cbGetQuests;
-        private System.Windows.Forms.TextBox tReactionNPC;
         private System.Windows.Forms.MaskedTextBox tNodes;
         private System.Windows.Forms.Label lNodes;
         private System.Windows.Forms.CheckBox actionsCheckBox;
@@ -3278,14 +3302,7 @@
         private System.Windows.Forms.TabControl tabQuestsCircs;
         private System.Windows.Forms.TabPage tabQuests;
         private System.Windows.Forms.TabPage tabReputation;
-        private System.Windows.Forms.TabPage tabKarma;
         private System.Windows.Forms.TabPage tabClan;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label labelDescription;
-        private System.Windows.Forms.MaskedTextBox bTextBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox aTextBox;
-        private System.Windows.Forms.Label a;
         private System.Windows.Forms.Label lInfo;
         private System.Windows.Forms.CheckBox cbWarTime;
         private System.Windows.Forms.CheckBox cbPeaceTime;
@@ -3295,7 +3312,7 @@
         private System.Windows.Forms.RadioButton radioButtonOR;
         private System.Windows.Forms.RadioButton radioButtonAND;
         private System.Windows.Forms.PictureBox pictureReputation;
-        private System.Windows.Forms.PictureBox pictureKarma;
+        private System.Windows.Forms.PictureBox pictureAchievements;
         private System.Windows.Forms.PictureBox pictureClan;
         private System.Windows.Forms.PictureBox pictureEffects;
         private System.Windows.Forms.TabPage tabEffects;
@@ -3310,13 +3327,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.PictureBox pictureLevel;
-        private System.Windows.Forms.TabPage tabLevel;
-        private System.Windows.Forms.MaskedTextBox mtbPlayerLevelMax;
-        private System.Windows.Forms.Label lPlayerLevel;
-        private System.Windows.Forms.Label lBefore;
-        private System.Windows.Forms.Label lFrom;
-        private System.Windows.Forms.MaskedTextBox mtbPlayerLevelMin;
         private System.Windows.Forms.ComboBox commandsComboBox;
         private System.Windows.Forms.CheckBox cbSecurNotExst;
         private System.Windows.Forms.CheckBox cbSecurExst;
@@ -3411,10 +3421,9 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn GVItems_itemAttr;
         private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_itemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_ItemCond;
-        private System.Windows.Forms.PictureBox pictureTutorial;
-        private System.Windows.Forms.TabPage tabTutorial;
+        private System.Windows.Forms.PictureBox pictureOther;
+        private System.Windows.Forms.TabPage tabOther;
         private System.Windows.Forms.ComboBox cbTutorialPhase;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox cbNotInBoatList;
         private System.Windows.Forms.CheckBox cbInBoatList;
@@ -3429,17 +3438,10 @@
         private System.Windows.Forms.NumericUpDown nudDungeonEnterKey;
         private System.Windows.Forms.CheckBox cbShouldntHaveQuests;
         private System.Windows.Forms.CheckBox cbMustHaveQuests;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.MaskedTextBox tMustHaveQuests;
         private System.Windows.Forms.MaskedTextBox tShouldntHaveQuests;
         private System.Windows.Forms.Button btnTODO;
-        private System.Windows.Forms.PictureBox picturePVP;
-        private System.Windows.Forms.TabPage tabPVP;
-        private System.Windows.Forms.ComboBox cbPVPRank2;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox cbPVPRank1;
-        private System.Windows.Forms.Label label18;
-		private System.Windows.Forms.ComboBox cbRatingPVPMode;
+        private System.Windows.Forms.PictureBox pictureWeather;
         private System.Windows.Forms.CheckBox cbItemsEquipped;
         private System.Windows.Forms.Button btnLastNPCPhrase;
         private System.Windows.Forms.PictureBox pictureReputation2;
@@ -3498,5 +3500,31 @@
         private System.Windows.Forms.NumericUpDown nupHour2;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.CheckBox cbWeatherOnlyNO;
+        private System.Windows.Forms.RichTextBox tReactionNPC;
+        private System.Windows.Forms.Button btnFindError;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox cbRatingPVPMode;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cbPVPRank2;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cbPVPRank1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.MaskedTextBox mtbPlayerLevelMin;
+        private System.Windows.Forms.Label lBefore;
+        private System.Windows.Forms.Label lFrom;
+        private System.Windows.Forms.MaskedTextBox mtbPlayerLevelMax;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label labelDescription;
+        private System.Windows.Forms.MaskedTextBox bTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox aTextBox;
+        private System.Windows.Forms.Label a;
+        private System.Windows.Forms.TabPage tabAchievements;
+        private System.Windows.Forms.DataGridView dataAchievements;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn4;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn5;
     }
 }

@@ -21,6 +21,8 @@ namespace StalkerOnlineQuesterEditor
         public static string pathQuestDataFiles = @"..\..\..\res\scripts\common\data\Quests\";
         public static string pathToLocalFiles = @"..\..\..\res\local\";
 
+        public static bool errorFinder = false;
+
         //! Список все локализаций English, GER etc.
         static List<string> locales = new List<string>();
         //! Текущая локализация. Пока хранит 0 - видимо для русского языка
@@ -70,6 +72,8 @@ namespace StalkerOnlineQuesterEditor
                 {
                     appLang = doc.Root.Element("app_lang").Value.ToString();
                 }
+                if (doc.Root.Element("errorFinder") != null)
+                    errorFinder = Convert.ToBoolean(doc.Root.Element("errorFinder").Value);
 
             }
             catch
@@ -146,6 +150,16 @@ namespace StalkerOnlineQuesterEditor
             return ret;
         }
 
+        public static bool hasErrorFinder()
+        {
+            return errorFinder;
+        }
+
+        public static void setErrorFinder(bool value)
+        {
+            errorFinder = value;
+        }
+
         // почему-то в обычном листе нет русского
         public static List<string> getFullListLocales()
         {
@@ -182,23 +196,16 @@ namespace StalkerOnlineQuesterEditor
             if (!Directory.Exists(SETTINGS_PATH))
                 Directory.CreateDirectory(SETTINGS_PATH);
             XDocument resultDoc = new XDocument(new XElement("root"));
-            XElement oper = new XElement("operator", iNumOperator);
-            XElement loc = new XElement("locales", getLocales());
-            XElement mode = new XElement("mode", CSettings.mode.ToString());
-            XElement current_locale = new XElement("current_locale", currentLocale.ToString());
-            XElement lastNpcIndex = new XElement("LastNPcIndex", CSettings.lastNpcIndex);
-            XElement path_quest = new XElement("pathQuestDataFiles", pathQuestDataFiles);
-            XElement path_dialog = new XElement("new_pathDialogsDataFiles", new_pathDialogsDataFiles);
-            XElement local_path = new XElement("pathToLocalFiles", pathToLocalFiles);
-            resultDoc.Root.Add(oper);
-            resultDoc.Root.Add(loc);
-            resultDoc.Root.Add(mode);
-            resultDoc.Root.Add(current_locale);
-            resultDoc.Root.Add(lastNpcIndex);
-            resultDoc.Root.Add(path_quest);
-            resultDoc.Root.Add(path_dialog);
-            resultDoc.Root.Add(local_path);
+            resultDoc.Root.Add(new XElement("operator", iNumOperator));
+            resultDoc.Root.Add(new XElement("locales", getLocales()));
+            resultDoc.Root.Add(new XElement("mode", CSettings.mode.ToString()));
+            resultDoc.Root.Add(new XElement("current_locale", currentLocale.ToString()));
+            resultDoc.Root.Add(new XElement("LastNPcIndex", CSettings.lastNpcIndex));
+            resultDoc.Root.Add(new XElement("pathQuestDataFiles", pathQuestDataFiles));
+            resultDoc.Root.Add(new XElement("new_pathDialogsDataFiles", new_pathDialogsDataFiles));
+            resultDoc.Root.Add(new XElement("pathToLocalFiles", pathToLocalFiles));
             resultDoc.Root.Add(new XElement("app_lang", appLang));
+            resultDoc.Root.Add(new XElement("errorFinder", errorFinder));
             resultDoc.Save(SETTINGS_PATH + SETTING_FILE);
         }
 

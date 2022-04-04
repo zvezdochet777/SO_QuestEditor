@@ -212,6 +212,14 @@ namespace StalkerOnlineQuesterEditor
                             AddDataToList(dialog, "Precondition", "noPerks", Precondition.noPerks);
                         Precondition.KarmaPK = new List<int>();
 
+                        Precondition.Achievements = new List<int>();
+                        if (dialog.Element("Precondition").Element("Achievements") != null)
+                            AddDataToList(dialog, "Precondition", "Achievements", Precondition.Achievements);
+                        Precondition.noAchievements = new List<int>();
+                        if (dialog.Element("Precondition").Element("noAchievements") != null)
+                            AddDataToList(dialog, "Precondition", "noAchievements", Precondition.noAchievements);
+
+
                         AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
                         if (dialog.Element("Precondition").Element("forDev") != null)
                             Precondition.forDev = true;
@@ -765,6 +773,10 @@ namespace StalkerOnlineQuesterEditor
                             prec.Add(new XElement("Perks", Global.GetListAsString(dialog.Precondition.Perks)));
                         if (dialog.Precondition.noPerks.Any())
                             prec.Add(new XElement("noPerks", Global.GetListAsString(dialog.Precondition.noPerks)));
+                        if (dialog.Precondition.Achievements.Any())
+                            prec.Add(new XElement("Achievements", Global.GetListAsString(dialog.Precondition.Achievements)));
+                        if (dialog.Precondition.noAchievements.Any())
+                            prec.Add(new XElement("noAchievements", Global.GetListAsString(dialog.Precondition.noAchievements)));
                         if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
                             prec.Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
                         if (dialog.Precondition.getReputation() != "")

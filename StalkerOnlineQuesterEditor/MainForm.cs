@@ -148,6 +148,7 @@ namespace StalkerOnlineQuesterEditor
             npcGroupFilters = fractions2.getFractions2();
             CSettings.checkMode();
             CFracBonuses.readBonuses();
+            CAchivements.load();
             tutorialPhases = new CTutorialConstants();
             tree = treeDialogs;
             questConst = new CQuestConstants();
@@ -342,6 +343,8 @@ namespace StalkerOnlineQuesterEditor
                 fillQuestChangeBox(false);
                 QuestBox.Text = "Пожалуйста, выберите квест";
             }
+            else if (CentralDock.SelectedIndex == 2)
+                splitContainer1.Panel2.Controls.Clear();
             ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
             var text = resources.GetString(String.Format("{0}.Text", tabQuests.Name));
             tabQuests.Text = text + " (" + quests.getCountOfQuests(currentNPC) + ")";
@@ -882,6 +885,7 @@ namespace StalkerOnlineQuesterEditor
 
             selectedDialogID = dialogID;
             splitDialogsEmulator.Panel2.Controls.Clear();
+            splitContainer1.Panel2.Controls.Clear();
             titles = new Dictionary<LinkLabel, int>();
             Label NPCText = new Label();
             NPCText.Text = rootDialog.Text;
@@ -913,13 +917,20 @@ namespace StalkerOnlineQuesterEditor
                 dialogLink.Dock = DockStyle.Top;
                 dialogLink.Links.Add(0, 0, subdialogID);
                 titles.Add(dialogLink, subdialogID);
-                splitDialogsEmulator.Panel2.Controls.Add(dialogLink);
+                if (index == 2)
+                    splitContainer1.Panel2.Controls.Add(dialogLink);
+                else
+                    splitDialogsEmulator.Panel2.Controls.Add(dialogLink);
             }
-            splitDialogsEmulator.Panel2.Controls.Add(NPCText);
+            if (index == 2)
+                splitContainer1.Panel2.Controls.Add(NPCText);
+            else
+                splitDialogsEmulator.Panel2.Controls.Add(NPCText);
         }
 
         public bool isDialogActive(int dialogID)
         {
+            if (CentralDock.SelectedIndex == 2) return true;
             foreach (TreeNode node in treeDialogs.Nodes.Find("Active", true)[0].Nodes)
                 if (int.Parse(node.Name).Equals(dialogID))
                     return true;
@@ -930,7 +941,11 @@ namespace StalkerOnlineQuesterEditor
         private void dialogLink_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
             int choosenDialogID = (int)e.Link.LinkData;
-            CDialog choosenDialog = dialogs.dialogs[currentNPC][choosenDialogID];
+            CDialog choosenDialog;
+            if (CentralDock.SelectedIndex == 2)
+                choosenDialog = CFractionDialogs.dialogs[currentFraction][choosenDialogID];
+            else
+                choosenDialog = dialogs.dialogs[currentNPC][choosenDialogID];
             statusLabel.Text = "";
             String actionString = "";
             if (choosenDialog.Actions.CheckAndGetString(out actionString))
@@ -954,6 +969,7 @@ namespace StalkerOnlineQuesterEditor
                 statusLabel.Text += "\n";
             statusLabel.Text += text;
             splitDialogsEmulator.Panel2.Controls.Clear();
+            splitContainer1.Panel2.Controls.Clear();
             Listener.SelectCurrentNode(dialogID);
         }
         //! Выводит координаты узла как прямоугольника. Для отладки.

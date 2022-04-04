@@ -243,6 +243,7 @@
     <Compile Include="MainForm.QuestGenerator.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ResourceClasses\CAchivmentsConstants.cs" />
     <Compile Include="ResourceClasses\CBlackBoxConstants.cs" />
     <Compile Include="ResourceClasses\CKnowledgeConstans.cs" />
     <Compile Include="ResourceClasses\CPVPConstans.cs" />
@@ -351,6 +352,7 @@
       <DependentUpon>RewardQuestsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="TextUtils.cs" />
     <EmbeddedResource Include="Forms\AddListElementForm.resx">
       <DependentUpon>AddListElementForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -167,20 +167,30 @@ namespace StalkerOnlineQuesterEditor
 
                 eventComboBox.SelectedItem = parent.questConst.getDescription(quest.Target.QuestType);
                 titleTextBox.Text = quest.QuestInformation.Title;
+                update_errorFiner_btn();
+                TextUtils.findTextErrors(titleTextBox);
                 descriptionTextBox.Text = quest.QuestInformation.Description;
+                TextUtils.findTextErrors(descriptionTextBox);
                 descriptionOnTestTextBox.Text = quest.QuestInformation.DescriptionOnTest;
+                TextUtils.findTextErrors(descriptionOnTestTextBox);
                 descriptionClosedTextBox.Text = quest.QuestInformation.DescriptionClosed;
+                TextUtils.findTextErrors(descriptionClosedTextBox);
 
                 onWonTextBox.Text = quest.QuestInformation.onWin;
+                TextUtils.findTextErrors(onWonTextBox);
                 cbWonScreenMsg.Checked = quest.Additional.screenMessageOnWin;
                 onFailedTextBox.Text = quest.QuestInformation.onFailed;
+                TextUtils.findTextErrors(onFailedTextBox);
                 cbFailScreenMsg.Checked = quest.Additional.screenMessageOnFailed;
                 onGotTextBox.Text = quest.QuestInformation.onGet;
+                TextUtils.findTextErrors(onGotTextBox);
                 cbGetScreenMsg.Checked = quest.Additional.screenMessageOnGet;
 
                 onOpenTextBox.Text = quest.QuestInformation.onOpen;
+                TextUtils.findTextErrors(onOpenTextBox);
                 cbOpenScreenMsg.Checked = quest.Additional.screenMessageOnOpen;
                 onTestTextBox.Text = quest.QuestInformation.onTest;
+                TextUtils.findTextErrors(onTestTextBox);
                 cbTestScreenMsg.Checked = quest.Additional.screenMessageOnTest;
 
                 cantCancelCheckBox.Checked = quest.Additional.CantCancel;
@@ -2108,6 +2118,33 @@ namespace StalkerOnlineQuesterEditor
         private void cbQuestLinkType_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbQuestLink.Visible = (cbQuestLinkType.SelectedIndex == 2);
+        }
+
+        private void RichTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!CSettings.hasErrorFinder()) return;
+            TextUtils.findTextErrors(sender as RichTextBox);
+        }
+
+        private void update_errorFiner_btn()
+        {
+            btnFindError.FlatStyle = (CSettings.hasErrorFinder()) ? FlatStyle.Flat : FlatStyle.Standard;
+            btnFindError.Text = (CSettings.hasErrorFinder()) ? "Отключить поиск" : "Поиск ошибок";
+        }
+
+        private void btnFindError_Click(object sender, EventArgs e)
+        {
+            CSettings.setErrorFinder(!CSettings.hasErrorFinder());
+            update_errorFiner_btn();
+            TextUtils.findTextErrors(titleTextBox);
+            TextUtils.findTextErrors(descriptionTextBox);
+            TextUtils.findTextErrors(descriptionOnTestTextBox);
+            TextUtils.findTextErrors(descriptionClosedTextBox);
+            TextUtils.findTextErrors(onWonTextBox);
+            TextUtils.findTextErrors(onFailedTextBox);
+            TextUtils.findTextErrors(onGotTextBox);
+            TextUtils.findTextErrors(onOpenTextBox);
+            TextUtils.findTextErrors(onTestTextBox);
         }
     }
 }

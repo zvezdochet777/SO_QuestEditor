@@ -62,6 +62,7 @@ namespace StalkerOnlineQuesterEditor
             this.labelQuestTree = new System.Windows.Forms.Label();
             this.treeQuestBuffer = new System.Windows.Forms.TreeView();
             this.labelBuffer = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.NPCBox = new System.Windows.Forms.ComboBox();
             this.labelChosenNPC = new System.Windows.Forms.Label();
             this.CentralDock = new System.Windows.Forms.TabControl();
@@ -83,6 +84,7 @@ namespace StalkerOnlineQuesterEditor
             this.QuestBox = new System.Windows.Forms.ComboBox();
             this.labelChosenQuest = new System.Windows.Forms.Label();
             this.tabFraction = new System.Windows.Forms.TabPage();
+            this.gbEmul2 = new System.Windows.Forms.GroupBox();
             this.bRemoveFracDialog = new System.Windows.Forms.Button();
             this.bEditFracDialog = new System.Windows.Forms.Button();
             this.bAddFracDialog = new System.Windows.Forms.Button();
@@ -300,6 +302,7 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -317,12 +320,15 @@ namespace StalkerOnlineQuesterEditor
             ((System.ComponentModel.ISupportInitialize)(this.splitQuestsContainer)).BeginInit();
             this.splitQuestsContainer.Panel1.SuspendLayout();
             this.splitQuestsContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.SuspendLayout();
             this.CentralDock.SuspendLayout();
             this.tabDialogs.SuspendLayout();
             this.tabQuests.SuspendLayout();
             this.panelQuestTools.SuspendLayout();
             this.panelSelectQuest.SuspendLayout();
             this.tabFraction.SuspendLayout();
+            this.gbEmul2.SuspendLayout();
             this.tabInfoNPC.SuspendLayout();
             this.panelNpcLinkControls.SuspendLayout();
             this.tabReview.SuspendLayout();
@@ -360,6 +366,7 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectNPC.SuspendLayout();
             this.menuMainControl.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitDialogs
@@ -609,6 +616,16 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.labelBuffer, "labelBuffer");
             this.labelBuffer.Name = "labelBuffer";
             // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel2
+            // 
+            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
+            this.splitContainer1.TabStop = false;
+            // 
             // NPCBox
             // 
             this.NPCBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
@@ -783,15 +800,21 @@ namespace StalkerOnlineQuesterEditor
             // tabFraction
             // 
             this.tabFraction.BackColor = System.Drawing.SystemColors.Control;
-            this.tabFraction.Controls.Add(this.bRemoveFracDialog);
-            this.tabFraction.Controls.Add(this.bEditFracDialog);
-            this.tabFraction.Controls.Add(this.bAddFracDialog);
+            this.tabFraction.Controls.Add(this.panel1);
+            this.tabFraction.Controls.Add(this.gbEmul2);
             this.tabFraction.Controls.Add(this.treeFractionDialogs);
             this.tabFraction.Controls.Add(this.fractionDialogShower);
             this.tabFraction.Controls.Add(this.label1);
             this.tabFraction.Controls.Add(this.fractionBox);
             resources.ApplyResources(this.tabFraction, "tabFraction");
             this.tabFraction.Name = "tabFraction";
+            // 
+            // gbEmul2
+            // 
+            resources.ApplyResources(this.gbEmul2, "gbEmul2");
+            this.gbEmul2.Controls.Add(this.splitContainer1);
+            this.gbEmul2.Name = "gbEmul2";
+            this.gbEmul2.TabStop = false;
             // 
             // bRemoveFracDialog
             // 
@@ -2374,6 +2397,14 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.bAddFracDialog);
+            this.panel1.Controls.Add(this.bEditFracDialog);
+            this.panel1.Controls.Add(this.bRemoveFracDialog);
+            this.panel1.Name = "panel1";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -2404,6 +2435,8 @@ namespace StalkerOnlineQuesterEditor
             this.splitQuestsContainer.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitQuestsContainer)).EndInit();
             this.splitQuestsContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.CentralDock.ResumeLayout(false);
             this.tabDialogs.ResumeLayout(false);
             this.tabQuests.ResumeLayout(false);
@@ -2413,6 +2446,7 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectQuest.PerformLayout();
             this.tabFraction.ResumeLayout(false);
             this.tabFraction.PerformLayout();
+            this.gbEmul2.ResumeLayout(false);
             this.tabInfoNPC.ResumeLayout(false);
             this.panelNpcLinkControls.ResumeLayout(false);
             this.panelNpcLinkControls.PerformLayout();
@@ -2468,6 +2502,7 @@ namespace StalkerOnlineQuesterEditor
             this.menuMainControl.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2742,6 +2777,9 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.TextBox tbKnowledgeFind;
         private System.Windows.Forms.CheckBox cbOnlyTradePoints;
         private System.Windows.Forms.Button btnFilterGroupNPC;
+        private System.Windows.Forms.GroupBox gbEmul2;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

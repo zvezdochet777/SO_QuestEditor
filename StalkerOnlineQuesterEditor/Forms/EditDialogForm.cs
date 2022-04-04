@@ -34,7 +34,6 @@ namespace StalkerOnlineQuesterEditor
             //this.parent.Enabled = false;
             parent.setDisable();
             this.listLastDialogsForm = new ListLastDialogsForm(parent);
-            tPlayerText.SpellCheck.IsEnabled = true;
             curDialog = parent.getDialogOnDialogID(currentDialogID);
             lAttention.Text = "";
             teleportComboBox.Items.Clear();
@@ -128,6 +127,9 @@ namespace StalkerOnlineQuesterEditor
             // заполнение текста речевки и ответа ГГ
             tPlayerText.Text = curDialog.Title.Normalize();
             tReactionNPC.Text = curDialog.Text;
+            update_errorFiner_btn();
+            TextUtils.findTextErrors(tPlayerText);
+            TextUtils.findTextErrors(tReactionNPC);
 
             foreach (TreeNode active in parent.tree.Nodes.Find("Active",true))
                 foreach (TreeNode node in active.Nodes)
@@ -327,7 +329,7 @@ namespace StalkerOnlineQuesterEditor
             if (curDialog.Precondition.KarmaPK.Any())
             {
                 editKarmaPK = curDialog.Precondition.KarmaPK;
-                checkKarmaIndicates();
+                checkOtherIndicates();
             }
             if (curDialog.Precondition.Skills.Any())
                 editPrecondition.Skills = curDialog.Precondition.Skills;
@@ -335,6 +337,11 @@ namespace StalkerOnlineQuesterEditor
                 editPrecondition.Perks = curDialog.Precondition.Perks;
             if (curDialog.Precondition.noPerks.Any())
                 editPrecondition.noPerks = curDialog.Precondition.noPerks;
+
+            if (curDialog.Precondition.Achievements.Any())
+                editPrecondition.Achievements = curDialog.Precondition.Achievements;
+            if (curDialog.Precondition.noAchievements.Any())
+                editPrecondition.noAchievements = curDialog.Precondition.noAchievements;
 
             cbRadioNode.SelectedIndex = (int)curDialog.Precondition.radioAvailable;
 
@@ -346,6 +353,7 @@ namespace StalkerOnlineQuesterEditor
             this.initKarmaPKTab();
             this.initEffectsTab();
             this.initLevelTab();
+            this.initAchievementsTab();
             this.initSkillsTab();
             this.initActionTab();
             this.initItemsTab();
@@ -450,7 +458,12 @@ namespace StalkerOnlineQuesterEditor
         private void tPlayerText_KeyPress(object sender, KeyPressEventArgs e)
         {
             calcSymbolMaxAnswer();
+            if (!CSettings.hasErrorFinder()) return;
+            TextUtils.findTextErrors(tPlayerText);
         }
+
+
+
         //! Считает число символов в строке ответа ГГ и выводит предупреждение
         private void calcSymbolMaxAnswer()
         {
@@ -471,17 +484,6 @@ namespace StalkerOnlineQuesterEditor
         {
             pictureReputation.Visible = editPrecondition.Reputation.Any() || editPrecondition.NPCReputation.Any();
             pictureReputation2.Visible = editPrecondition.Reputation2.Any() || editPrecondition.fracBonus.Sum() > 0;
-        }
-        //! Задать цвет кнопки кармы, если карма задана
-        public void checkKarmaIndicates()
-        {
-            pictureKarma.Visible = editKarmaPK.Any();
-        }
-
-        //! Задать цвет кнопки Клановой, если карма задана
-        public void checkClanIndicates()
-        {
-            pictureKarma.Visible = editKarmaPK.Any();
         }
 
         public void checkKnowlegeIndicates()
@@ -636,6 +638,8 @@ namespace StalkerOnlineQuesterEditor
                 return;
             if (!this.checkSkills())
                 return;
+
+            this.checkAchievements();
 
             if (cbFracBonus.SelectedItem != null)
             {
@@ -958,6 +962,8 @@ namespace StalkerOnlineQuesterEditor
             precondition.Skills = editPrecondition.Skills;
             precondition.Perks = editPrecondition.Perks;
             precondition.noPerks = editPrecondition.noPerks;
+            precondition.Achievements = editPrecondition.Achievements;
+            precondition.noAchievements = editPrecondition.noAchievements;
             precondition.forDev = cbForDev.Checked;
             precondition.hidden = cbHidden.Checked;
 
@@ -1106,6 +1112,48 @@ namespace StalkerOnlineQuesterEditor
             return result;
         }
 
+        private void initAchievementsTab()
+        {
+            foreach (string item in CAchivements.getListNames())
+                ((DataGridViewComboBoxColumn)dataAchievements.Columns[1]).Items.Add(item);
+
+            int id = 0;
+            foreach (int perkID in editPrecondition.Achievements)
+            {
+                string name = CAchivements.getNameByID(perkID);
+                object[] row = { id, name, "иметься должен " };
+                dataAchievements.Rows.Add(row);
+                id++;
+            }
+            foreach (int perkID in editPrecondition.noAchievements)
+            {
+                string name = CAchivements.getNameByID(perkID);
+                object[] row = { id, name, "отсутствовать должен " };
+                dataAchievements.Rows.Add(row);
+                id++;
+            }
+            this.checkAchievements();
+        }
+
+        private bool checkAchievements()
+        {
+
+            this.editPrecondition.Achievements.Clear();
+            this.editPrecondition.noAchievements.Clear();
+            foreach (DataGridViewRow row in dataAchievements.Rows)
+            {
+                int perkID = CAchivements.getIDByName(row.Cells[1].FormattedValue.ToString());
+                if (perkID == 0) continue;
+                if (row.Cells[2].FormattedValue.ToString() == "иметься должен ")
+                    this.editPrecondition.Achievements.Add(perkID);
+                else
+                    this.editPrecondition.noAchievements.Add(perkID);
+            }
+
+            this.checkAchIndicates();
+            return true;
+        }
+
         private void initSkillsTab()
         {
             SkillConstants skills = this.parent.skills;
@@ -1203,7 +1251,12 @@ namespace StalkerOnlineQuesterEditor
             else
                 pictureSkill.Visible = false;
         }
-            
+
+        private void checkAchIndicates()
+        {
+            pictureAchievements.Visible = editPrecondition.Achievements.Any() || editPrecondition.noAchievements.Any();
+        }
+
         private void fillGroupBonuses()
         {
             cbFracBonus.Items.Clear();
@@ -1384,7 +1437,7 @@ namespace StalkerOnlineQuesterEditor
                 this.cbTutorialPhase.SelectedItem = this.parent.tutorialPhases.getNameByID(this.curDialog.Precondition.tutorialPhase);
             }
             else { this.cbTutorialPhase.SelectedItem = null; }
-            this.checkTutorialIndicates();
+            this.checkOtherIndicates();
         }
 
         private void initPVPTab()
@@ -1392,7 +1445,7 @@ namespace StalkerOnlineQuesterEditor
             this.cbPVPRank1.SelectedIndex = curDialog.Precondition.PVPranks[0];
             this.cbPVPRank2.SelectedIndex = Math.Min(curDialog.Precondition.PVPranks[1], parent.pvPRanks.getKeys().Count - 1);
             this.cbRatingPVPMode.SelectedItem = CPVPConstans.getPVPModeNameByID(curDialog.Precondition.PVPMode);
-            this.checkPVPIndicates();
+            this.checkOtherIndicates();
         }
 
         private void initWeatherTab()
@@ -1569,17 +1622,12 @@ namespace StalkerOnlineQuesterEditor
                 }
                 else mtbPlayerLevelMin.Text = curDialog.Precondition.PlayerLevel.ToString();
             }
-            this.checkLevelIndicates();
+            this.checkOtherIndicates();
 
         }
         private bool checkLevel()
         {
             return mtbPlayerLevelMin.Text.Any() || mtbPlayerLevelMax.Text.Any();
-        }
-
-        private void checkLevelIndicates()
-        {
-            pictureLevel.Visible = checkLevel();
         }
 
         private void initKarmaPKTab()
@@ -1628,7 +1676,7 @@ namespace StalkerOnlineQuesterEditor
                 this.editKarmaPK.Add(b);        // тот же костыль
                 this.editKarmaPK.Add(a);        // тот же костыль
             }
-            this.checkKarmaIndicates();
+            this.checkOtherIndicates();
         }
 
         private void checkActionIndicates()
@@ -1648,34 +1696,34 @@ namespace StalkerOnlineQuesterEditor
             pictureItems.Visible = (rbCategory.Checked && cbCategory.SelectedIndex != -1) || (rbItems.Checked && GVItems.Rows.Count > 0);
         }
 
+
+        public void checkOtherIndicates()
+        {
+            bool result = false;
+            result = result || (cbTutorialPhase.SelectedItem != null);
+            result = result || (cbPVPRank1.SelectedIndex > 0 || cbPVPRank2.SelectedIndex > 0 || cbRatingPVPMode.SelectedIndex > -1);
+            result = result || editKarmaPK.Any();
+            pictureOther.Visible = result;
+        }
+
         private void checkTransportIndicates()
         {
             pictureTransport.Visible = (cbNotInTransportList.Checked || cbTransportInList.Checked || cbNotInBoatList.Checked || cbInBoatList.Checked ||
                                         cbIsBoatInTransit.Checked || cbIsBoatStopped.Checked);
         }
 
-        private void checkTutorialIndicates()
-        {
-            pictureTutorial.Visible = (cbTutorialPhase.SelectedItem != null);
-        }
-
-        private void checkPVPIndicates()
-        {
-            picturePVP.Visible = (cbPVPRank1.SelectedIndex > 0 || cbPVPRank2.SelectedIndex > 0 || cbRatingPVPMode.SelectedIndex > -1);
-        }
-
         private void tabQuestsCircs_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.checkClanOptionsIndicator();
-            this.checkKarmaPK();
             this.checkReputation(dataReputation, parent.fractions, this.editPrecondition.Reputation, this.editPrecondition.NPCReputation);
             this.checkReputation(dataReputation2, parent.fractions2, this.editPrecondition.Reputation2, new Dictionary<string, List<double>>());
             this.checkEffects();
             this.checkSkills();
+            this.checkAchievements();
             this.checkActionIndicates();
             this.checkItemsIndicates();
             this.checkTransportIndicates();
-            this.checkTutorialIndicates();
+            this.checkOtherIndicates();
             checkKnowlegeIndicates();
         }
 
@@ -1785,6 +1833,26 @@ namespace StalkerOnlineQuesterEditor
                 lbWeather.Items.Add(i);
             }
             
+        }
+
+        private void tReactionNPC_TextChanged(object sender, EventArgs e)
+        {
+            if (!CSettings.hasErrorFinder()) return;
+            TextUtils.findTextErrors(tReactionNPC);
+        }
+
+        private void update_errorFiner_btn()
+        {
+            btnFindError.FlatStyle = (CSettings.hasErrorFinder()) ? FlatStyle.Flat : FlatStyle.Standard;
+            btnFindError.Text = (CSettings.hasErrorFinder()) ? "Отключить поиск" : "Поиск ошибок";
+        }
+
+        private void btnFindError_Click(object sender, EventArgs e)
+        {
+            CSettings.setErrorFinder(!CSettings.hasErrorFinder());
+            update_errorFiner_btn();
+            TextUtils.findTextErrors(tPlayerText);
+            TextUtils.findTextErrors(tReactionNPC);
         }
     }
 }

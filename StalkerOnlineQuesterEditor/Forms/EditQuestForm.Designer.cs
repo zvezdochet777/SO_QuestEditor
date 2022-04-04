@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelCreateMob = new System.Windows.Forms.Panel();
             this.cbMobInvul = new System.Windows.Forms.CheckBox();
             this.cbMobLevel = new System.Windows.Forms.ComboBox();
@@ -102,10 +102,10 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.cbTestScreenMsg = new System.Windows.Forms.CheckBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.onTestTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.onTestTextBox = new System.Windows.Forms.RichTextBox();
             this.cbOpenScreenMsg = new System.Windows.Forms.CheckBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.onOpenTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.onOpenTextBox = new System.Windows.Forms.RichTextBox();
             this.btnSpace = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -113,11 +113,11 @@
             this.cbFailScreenMsg = new System.Windows.Forms.CheckBox();
             this.cbWonScreenMsg = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.onGotTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.onGotTextBox = new System.Windows.Forms.RichTextBox();
             this.lFailed = new System.Windows.Forms.Label();
             this.lWin = new System.Windows.Forms.Label();
-            this.onFailedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.onWonTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.onFailedTextBox = new System.Windows.Forms.RichTextBox();
+            this.onWonTextBox = new System.Windows.Forms.RichTextBox();
             this.cantFailCheckBox = new System.Windows.Forms.CheckBox();
             this.cantCancelCheckBox = new System.Windows.Forms.CheckBox();
             this.availabilityCheckBox = new System.Windows.Forms.CheckBox();
@@ -129,11 +129,11 @@
             this.winRButton = new System.Windows.Forms.RadioButton();
             this.tcDescriptions = new System.Windows.Forms.TabControl();
             this.tabOpen = new System.Windows.Forms.TabPage();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionTextBox = new System.Windows.Forms.RichTextBox();
             this.tabOnTest = new System.Windows.Forms.TabPage();
-            this.descriptionOnTestTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionOnTestTextBox = new System.Windows.Forms.RichTextBox();
             this.tabClosed = new System.Windows.Forms.TabPage();
-            this.descriptionClosedTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionClosedTextBox = new System.Windows.Forms.RichTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.cbReputationLow = new System.Windows.Forms.CheckBox();
             this.cbState = new System.Windows.Forms.CheckBox();
@@ -220,7 +220,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.titleTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.titleTextBox = new System.Windows.Forms.RichTextBox();
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
             this.cbHidden = new System.Windows.Forms.CheckBox();
@@ -235,6 +235,7 @@
             this.cbQuestLink = new System.Windows.Forms.ComboBox();
             this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
+            this.btnFindError = new System.Windows.Forms.Button();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -980,6 +981,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnFindError);
             this.tabPage3.Controls.Add(this.cbTestScreenMsg);
             this.tabPage3.Controls.Add(this.label39);
             this.tabPage3.Controls.Add(this.onTestTextBox);
@@ -1052,6 +1054,8 @@
             this.onTestTextBox.Name = "onTestTextBox";
             this.onTestTextBox.Size = new System.Drawing.Size(407, 20);
             this.onTestTextBox.TabIndex = 72;
+            this.onTestTextBox.Text = "";
+            this.onTestTextBox.TextChanged += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
             // cbOpenScreenMsg
             // 
@@ -1081,6 +1085,8 @@
             this.onOpenTextBox.Name = "onOpenTextBox";
             this.onOpenTextBox.Size = new System.Drawing.Size(407, 20);
             this.onOpenTextBox.TabIndex = 69;
+            this.onOpenTextBox.Text = "";
+            this.onOpenTextBox.TextChanged += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
             // btnSpace
             // 
@@ -1162,6 +1168,8 @@
             this.onGotTextBox.Name = "onGotTextBox";
             this.onGotTextBox.Size = new System.Drawing.Size(407, 20);
             this.onGotTextBox.TabIndex = 62;
+            this.onGotTextBox.Text = "";
+            this.onGotTextBox.Validated += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
             // lFailed
             // 
@@ -1189,6 +1197,8 @@
             this.onFailedTextBox.Name = "onFailedTextBox";
             this.onFailedTextBox.Size = new System.Drawing.Size(407, 20);
             this.onFailedTextBox.TabIndex = 60;
+            this.onFailedTextBox.Text = "";
+            this.onFailedTextBox.TextChanged += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
             // onWonTextBox
             // 
@@ -1198,6 +1208,8 @@
             this.onWonTextBox.Name = "onWonTextBox";
             this.onWonTextBox.Size = new System.Drawing.Size(407, 20);
             this.onWonTextBox.TabIndex = 59;
+            this.onWonTextBox.Text = "";
+            this.onWonTextBox.TextChanged += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
             // cantFailCheckBox
             // 
@@ -1312,6 +1324,7 @@
             this.tcDescriptions.SelectedIndex = 0;
             this.tcDescriptions.Size = new System.Drawing.Size(540, 184);
             this.tcDescriptions.TabIndex = 44;
+            this.tcDescriptions.SelectedIndexChanged += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
             // tabOpen
             // 
@@ -1329,11 +1342,12 @@
             this.descriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.descriptionTextBox.Location = new System.Drawing.Point(3, 3);
-            this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.descriptionTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.descriptionTextBox.Size = new System.Drawing.Size(526, 150);
             this.descriptionTextBox.TabIndex = 3;
+            this.descriptionTextBox.Text = "";
+            this.descriptionTextBox.TextChanged += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
             // tabOnTest
             // 
@@ -1351,11 +1365,12 @@
             this.descriptionOnTestTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionOnTestTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.descriptionOnTestTextBox.Location = new System.Drawing.Point(3, 3);
-            this.descriptionOnTestTextBox.Multiline = true;
             this.descriptionOnTestTextBox.Name = "descriptionOnTestTextBox";
-            this.descriptionOnTestTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.descriptionOnTestTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.descriptionOnTestTextBox.Size = new System.Drawing.Size(526, 150);
             this.descriptionOnTestTextBox.TabIndex = 4;
+            this.descriptionOnTestTextBox.Text = "";
+            this.descriptionOnTestTextBox.TextChanged += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
             // tabClosed
             // 
@@ -1373,11 +1388,11 @@
             this.descriptionClosedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionClosedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.descriptionClosedTextBox.Location = new System.Drawing.Point(3, 3);
-            this.descriptionClosedTextBox.Multiline = true;
             this.descriptionClosedTextBox.Name = "descriptionClosedTextBox";
-            this.descriptionClosedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.descriptionClosedTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.descriptionClosedTextBox.Size = new System.Drawing.Size(526, 150);
             this.descriptionClosedTextBox.TabIndex = 5;
+            this.descriptionClosedTextBox.Text = "";
             // 
             // tabPage4
             // 
@@ -1666,8 +1681,8 @@
             // 
             // radius
             // 
-            dataGridViewCellStyle1.NullValue = "0";
-            this.radius.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.radius.DefaultCellStyle = dataGridViewCellStyle2;
             this.radius.HeaderText = "радиус";
             this.radius.Name = "radius";
             // 
@@ -2293,6 +2308,8 @@
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(378, 20);
             this.titleTextBox.TabIndex = 3;
+            this.titleTextBox.Text = "";
+            this.titleTextBox.TextChanged += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
             // lTitle
             // 
@@ -2435,6 +2452,16 @@
             this.label34.TabIndex = 61;
             this.label34.Text = "Бонус группы:";
             // 
+            // btnFindError
+            // 
+            this.btnFindError.Location = new System.Drawing.Point(539, 110);
+            this.btnFindError.Name = "btnFindError";
+            this.btnFindError.Size = new System.Drawing.Size(87, 36);
+            this.btnFindError.TabIndex = 74;
+            this.btnFindError.Text = "Поиск ошибок";
+            this.btnFindError.UseVisualStyleBackColor = true;
+            this.btnFindError.Click += new System.EventHandler(this.btnFindError_Click);
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2484,11 +2511,8 @@
             this.tabPage3.PerformLayout();
             this.tcDescriptions.ResumeLayout(false);
             this.tabOpen.ResumeLayout(false);
-            this.tabOpen.PerformLayout();
             this.tabOnTest.ResumeLayout(false);
-            this.tabOnTest.PerformLayout();
             this.tabClosed.ResumeLayout(false);
-            this.tabClosed.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udState)).EndInit();
@@ -2581,11 +2605,11 @@
         private System.Windows.Forms.CheckBox cbFailScreenMsg;
         private System.Windows.Forms.CheckBox cbWonScreenMsg;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.MaskedTextBox onGotTextBox;
+        private System.Windows.Forms.RichTextBox onGotTextBox;
         private System.Windows.Forms.Label lFailed;
         private System.Windows.Forms.Label lWin;
-        private System.Windows.Forms.MaskedTextBox onFailedTextBox;
-        private System.Windows.Forms.MaskedTextBox onWonTextBox;
+        private System.Windows.Forms.RichTextBox onFailedTextBox;
+        private System.Windows.Forms.RichTextBox onWonTextBox;
         private System.Windows.Forms.CheckBox cantFailCheckBox;
         private System.Windows.Forms.CheckBox cantCancelCheckBox;
         private System.Windows.Forms.CheckBox availabilityCheckBox;
@@ -2597,12 +2621,12 @@
         private System.Windows.Forms.RadioButton winRButton;
         private System.Windows.Forms.TabControl tcDescriptions;
         private System.Windows.Forms.TabPage tabOpen;
-        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.RichTextBox descriptionTextBox;
         private System.Windows.Forms.TabPage tabOnTest;
-        private System.Windows.Forms.TextBox descriptionOnTestTextBox;
+        private System.Windows.Forms.RichTextBox descriptionOnTestTextBox;
         private System.Windows.Forms.TabPage tabClosed;
-        private System.Windows.Forms.TextBox descriptionClosedTextBox;
-        private System.Windows.Forms.MaskedTextBox titleTextBox;
+        private System.Windows.Forms.RichTextBox descriptionClosedTextBox;
+        private System.Windows.Forms.RichTextBox titleTextBox;
         private System.Windows.Forms.Label lTitle;
         private System.Windows.Forms.CheckBox cbReputationLow;
         private System.Windows.Forms.CheckBox cbState;
@@ -2713,9 +2737,10 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn Space;
         private System.Windows.Forms.CheckBox cbTestScreenMsg;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.MaskedTextBox onTestTextBox;
+        private System.Windows.Forms.RichTextBox onTestTextBox;
         private System.Windows.Forms.CheckBox cbOpenScreenMsg;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.MaskedTextBox onOpenTextBox;
+        private System.Windows.Forms.RichTextBox onOpenTextBox;
+        private System.Windows.Forms.Button btnFindError;
     }
 }
