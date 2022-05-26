@@ -322,7 +322,7 @@ namespace StalkerOnlineQuesterEditor
                 return;
             int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
             AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
-            int target_type = (int)listBoxTarget.SelectedValue;
+            int target_type = (listBoxTarget.SelectedItem as ListBoxItem).id;
             string name = QAutogenDatacs.locals_quests[CSettings.ORIGINAL_PATH].getTextByID(currentNPC, quest_type.id, target_type);
             AddListElementForm form = new AddListElementForm((ElementType)quest_type.id, quest_type.getTargetByType(target_type), name, this);
             DialogResult result = form.ShowDialog();
@@ -443,9 +443,14 @@ namespace StalkerOnlineQuesterEditor
             listBoxReward.Items.Clear();
             foreach (var i in t.rewards)
             {
-                string title = "деньги:" + i.money.ToString() + " опыт:" + i.exp.ToString();
-                if (i.repGroup > 0 && i.repValue != 0)
-                    title += " реп:" + fractions2.getFractionDesctByID(i.repGroup);
+                string title = "деньги:" + i.money.ToString() + " опыт:" + i.exp.ToString() ;
+                if (i.repGroup > 0)
+                {
+                    if (i.repValue != 0)
+                        title += " реп:" + fractions2.getFractionDesctByID(i.repGroup);
+                    if (i.repOT != 0)
+                        title += " ОТ:" + fractions2.getFractionDesctByID(i.repGroup);
+                }
                 listBoxReward.Items.Add(title);
             }
         }
@@ -501,7 +506,7 @@ namespace StalkerOnlineQuesterEditor
                 return;
             int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
             AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
-            int target_type = (int)listBoxTarget.SelectedValue;
+            int target_type = (listBoxTarget.SelectedItem as ListBoxItem).id;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             isDirty = true;
             AutogenTarget a = form.getData();
@@ -512,6 +517,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 reward.repGroup = Convert.ToInt32(a.str_param.Split(':')[0]);
                 reward.repValue = Convert.ToInt32(a.str_param.Split(':')[1]);
+                reward.repOT = Convert.ToInt32(a.str_param.Split(':')[2]);
             }
             
             t.rewards.Add(reward);
@@ -524,7 +530,7 @@ namespace StalkerOnlineQuesterEditor
                 return;
             int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
             AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
-            int target_type = (int)listBoxTarget.SelectedValue;
+            int target_type = (listBoxTarget.SelectedItem as ListBoxItem).id;
             AutogenTarget t = quest_type.getTargetByType(target_type);
             t.rewards.RemoveAt(listBoxReward.SelectedIndex);
             isDirty = true;
@@ -537,14 +543,24 @@ namespace StalkerOnlineQuesterEditor
                 return;
             int qt_id = (listBoxQT.SelectedItem as ListBoxItem).id;
             AutogenQuestType quest_type = QAutogenDatacs.data_quests[currentNPC].getQuestTypeByID(qt_id);
-            int target_type = (int)listBoxTarget.SelectedValue;
+            int target_type;
+            try
+            {
+                target_type = (listBoxTarget.SelectedItem as ListBoxItem).id;
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так с Target");
+                return;
+            }
             AutogenTarget t = quest_type.getTargetByType(target_type);
+            if (listBoxReward.SelectedIndex == -1) return;
             Reward reward = t.rewards[listBoxReward.SelectedIndex];
 
             AutogenTarget a = new AutogenTarget();
             a.id = reward.exp;
             a.int_param = reward.money;
-            a.str_param = reward.repGroup.ToString() + ":" + reward.repValue.ToString();
+            a.str_param = reward.repGroup.ToString() + ":" + reward.repValue.ToString() + ":" + reward.repOT.ToString();
             isDirty = true;
             AddListElementForm form = new AddListElementForm(ElementType.Reward, a, "", this);
             DialogResult result = form.ShowDialog();
@@ -562,6 +578,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 reward.repGroup = Convert.ToInt32(a.str_param.Split(':')[0]);
                 reward.repValue = Convert.ToInt32(a.str_param.Split(':')[1]);
+                reward.repOT = Convert.ToInt32(a.str_param.Split(':')[2]);
             }
 
             listBoxTarget_SelectedIndexChanged(sender, e);

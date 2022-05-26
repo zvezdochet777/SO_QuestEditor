@@ -463,6 +463,20 @@ namespace StalkerOnlineQuesterEditor
                     quantityUpDown.Enabled = false;
 
                 }
+                else if ((QuestType == CQuestConstants.TYPE_ENTITY_SEEN) || (QuestType == CQuestConstants.TYPE_ENTITY_SEEN_AUTO))
+                {
+                    ltargetResult.Text = "Сущность:";
+                    ltargetResult.Enabled = true;
+                    resultComboBox.Items.Clear();
+                    resultComboBox.Enabled = true;
+
+                    List<string> entities = new List<string>() { "Creature", "QuestEntity", "TimeEntity" };
+
+                    foreach (var name in entities)
+                        resultComboBox.Items.Add(name);
+
+                    resultComboBox.SelectedIndex = 1;
+                }
                 else if ((QuestType == CQuestConstants.TYPE_ANOMALY) || (QuestType == CQuestConstants.TYPE_ANOMALY_AUTO))
                 {
                     lNameObject.Text = "Артефакт:" ;
@@ -522,18 +536,24 @@ namespace StalkerOnlineQuesterEditor
                     cbState.Enabled = true;
                     lState.Text = "Процент урона";
                     lQuantity.Text = "Количество:";
-                    labelTargetAttr.Text = "Зона:";
+                    lTargetAttr1.Text = "Зона";
+                    labelTargetAttr.Text = "mob_uniq_ID:";
+                    labelTargetAttr.Enabled = true;
                     targetAttributeComboBox.Items.Clear();
                     targetAttributeComboBox.Enabled = true;
                     targetAttributeComboBox.Items.Add("");
-                    //targetAttributeComboBox2.Items.Clear();
-                    //targetAttributeComboBox2.Enabled = true;
-                    //targetAttributeComboBox2.Items.Add("");
+                    targetAttributeComboBox2.Items.Clear();
+                    targetAttributeComboBox2.Enabled = true;
+                    targetAttributeComboBox2.Items.Add("");
 
                     foreach (CZoneDescription description in parent.zoneMobConst.getAllZones().Values)
                         targetAttributeComboBox.Items.Add(description.getName());
+
+                    foreach (CZoneDescription description in parent.zoneConst.getAllZones().Values)
+                        targetAttributeComboBox2.Items.Add(description.getName());
+
                     targetAttributeComboBox.SelectedIndex = 0;
-                    //targetAttributeComboBox2.SelectedIndex = 0;
+                    targetAttributeComboBox2.SelectedIndex = 0;
                     dynamicCheckBox.Enabled = true;
                 }
                 else if ((QuestType == CQuestConstants.TYPE_AREA_DISCOVER) || (QuestType == CQuestConstants.TYPE_AREA_LEAVE) ||
@@ -759,7 +779,7 @@ namespace StalkerOnlineQuesterEditor
                 if ((quest.Target.QuestType == CQuestConstants.TYPE_FARM || quest.Target.QuestType == CQuestConstants.TYPE_FARM_AUTO) && quest.Target.additional.Any())
                     targetAttributeComboBox2.SelectedIndex = 0;
                 if (quest.Target.QuestType == CQuestConstants.TYPE_QITEM_USE)
-                    targetAttributeComboBox2.SelectedItem = quest.Target.ObjectName;
+                    targetAttributeComboBox2.SelectedItem = quest.Target.AreaName;
                 if (quest.Target.usePercent)
                 {
                     cbState.Checked = true;
@@ -802,8 +822,26 @@ namespace StalkerOnlineQuesterEditor
             {
                 resultComboBox.SelectedItem  = AnomalyTypes.getNameByID(quest.Target.ObjectType.ToString());
                 targetComboBox.SelectedItem = parent.itemConst.getItemName(quest.Target.ObjectAttr);
-                targetAttributeComboBox2.SelectedItem = quest.Target.ObjectName;
+                targetAttributeComboBox2.SelectedItem = quest.Target.AreaName;
 
+            }
+            if (quest.Target.QuestType == CQuestConstants.TYPE_ENTITY_SEEN || quest.Target.QuestType == CQuestConstants.TYPE_ENTITY_SEEN_AUTO)
+            {
+                resultComboBox.SelectedItem = quest.Target.ObjectName;
+                switch(quest.Target.ObjectName)
+                {
+                    case "QuestEntity":
+                        targetAttributeComboBox.Text = quest.Target.str_param;
+                        break;
+                    case "Creature":
+                        targetComboBox.SelectedItem = parent.mobConst.getDescriptionOnType(quest.Target.ObjectType).getName();
+                        targetAttributeComboBox.SelectedItem = quest.Target.str_param;
+                        break;
+                    case "TimeEntity":
+                        targetComboBox.SelectedItem = quest.Target.AreaName;
+                        targetAttributeComboBox.Text = quest.Target.str_param;
+                        break;
+                }
             }
             else if ((quest.Target.QuestType == CQuestConstants.TYPE_KILLNPC) || (quest.Target.QuestType == CQuestConstants.TYPE_KILLNPC_WITH_ONTEST))
             {
@@ -821,18 +859,31 @@ namespace StalkerOnlineQuesterEditor
             else if ((quest.Target.QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (quest.Target.QuestType == CQuestConstants.TYPE_KILLMOBS))
             {
                 targetComboBox.SelectedItem = parent.mobConst.getDescriptionOnType(quest.Target.ObjectType).getName();
-                if (!quest.Target.AreaName.Equals(""))
+                if (!quest.Target.str_param2.Equals(""))
                 {
                     targetAttributeComboBox.Items.Clear();
-                    targetAttributeComboBox.Text = quest.Target.AreaName;
+                    targetAttributeComboBox.Text = quest.Target.str_param2;
                     // иначе чёрт знает как засунуть текст, который не в Items
                     foreach (CZoneDescription description in parent.zoneMobConst.getAllZones().Values)
                         targetAttributeComboBox.Items.Add(description.getName());
 
-                    string area = parent.zoneMobConst.getDescriptionOnKey(quest.Target.AreaName).getName();
+                    string area = parent.zoneMobConst.getDescriptionOnKey(quest.Target.str_param2).getName();
                     if (area.Any())
                         targetAttributeComboBox.SelectedItem = area;
                 }
+                if (!quest.Target.AreaName.Equals(""))
+                {
+                    targetAttributeComboBox2.Items.Clear();
+                    targetAttributeComboBox2.Text = quest.Target.AreaName;
+                    // иначе чёрт знает как засунуть текст, который не в Items
+                    foreach (CZoneDescription description in parent.zoneConst.getAllZones().Values)
+                        targetAttributeComboBox2.Items.Add(description.getName());
+
+                    string area = parent.zoneConst.getDescriptionOnKey(quest.Target.AreaName).getName();
+                    if (area.Any())
+                        targetAttributeComboBox2.SelectedItem = area;
+                }
+
                 //if (quest.Target.ObjectAttr < 0)
                 //    targetAttributeComboBox2.SelectedIndex = 0;
                 //else
@@ -872,11 +923,11 @@ namespace StalkerOnlineQuesterEditor
                 if (quest.Target.ObjectName.Contains(','))
                 {
                     dynamicCheckBox.Checked = true;
-                    resultComboBox.Text = quest.Target.ObjectName;
+                    resultComboBox.Text = quest.Target.AreaName;
                 }
                 else
                 {
-                    targetComboBox.SelectedItem = parent.zoneConst.getDescriptionOnKey(quest.Target.ObjectName).getName();
+                    targetComboBox.SelectedItem = parent.zoneConst.getDescriptionOnKey(quest.Target.AreaName).getName();
                 }
             }
             else if (quest.Target.QuestType == CQuestConstants.TYPE_MONEYBACK)
@@ -1309,7 +1360,7 @@ namespace StalkerOnlineQuesterEditor
 
                 if (target.QuestType == CQuestConstants.TYPE_QITEM_USE && targetAttributeComboBox2.SelectedItem != null)
                 {
-                    target.ObjectName = targetAttributeComboBox2.SelectedItem.ToString();
+                    target.AreaName = targetAttributeComboBox2.SelectedItem.ToString();
                 }
             }
             else if ((target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM) || (target.QuestType == CQuestConstants.TYPE_CRAFT_ITEM_AUTO))
@@ -1357,7 +1408,25 @@ namespace StalkerOnlineQuesterEditor
                    
                 }
                 target.ObjectAttr = parent.itemConst.getIDOnName(targetComboBox.SelectedItem.ToString());
-                if (targetAttributeComboBox2.SelectedItem != null) target.ObjectName = targetAttributeComboBox2.SelectedItem.ToString();
+                if (targetAttributeComboBox2.SelectedItem != null) target.AreaName = targetAttributeComboBox2.SelectedItem.ToString();
+            }
+            else if (target.QuestType == CQuestConstants.TYPE_ENTITY_SEEN || target.QuestType == CQuestConstants.TYPE_ENTITY_SEEN_AUTO)
+            {
+                target.ObjectName = resultComboBox.SelectedItem.ToString();
+                switch (target.ObjectName)
+                {
+                    case "QuestEntity":
+                        target.str_param = targetAttributeComboBox.Text;
+                        break;
+                    case "Creature":
+                        target.ObjectType = parent.mobConst.getTypeOnDescription(targetComboBox.SelectedItem.ToString());
+                        target.str_param = targetAttributeComboBox.SelectedItem.ToString();
+                        break;
+                    case "TimeEntity":
+                        target.AreaName = targetComboBox.SelectedItem.ToString();
+                        target.str_param = targetAttributeComboBox.Text;
+                        break;
+                }
             }
             else if ((target.QuestType == CQuestConstants.TYPE_KILLNPC) || (target.QuestType == CQuestConstants.TYPE_KILLNPC_WITH_ONTEST))
             {
@@ -1421,13 +1490,23 @@ namespace StalkerOnlineQuesterEditor
                 else target.usePercent = false;
 
                 if (targetAttributeComboBox.SelectedItem == null)
-                    target.AreaName = targetAttributeComboBox.Text;
+                    target.str_param2 = targetAttributeComboBox.Text;
                 else if (targetAttributeComboBox.SelectedItem.ToString().Equals(""))
-                    target.AreaName = "";
+                    target.str_param2 = "";
                 else
                 {
                     string area = parent.zoneMobConst.getKeyOnDescription(targetAttributeComboBox.SelectedItem.ToString());
-                    target.AreaName = area.Any() ? area : targetAttributeComboBox.Text;
+                    target.str_param2 = area.Any() ? area : targetAttributeComboBox.Text;
+                }
+
+                if (targetAttributeComboBox2.SelectedItem == null)
+                    target.AreaName = targetAttributeComboBox2.Text;
+                else if (targetAttributeComboBox2.SelectedItem.ToString().Equals(""))
+                    target.AreaName = "";
+                else
+                {
+                    string area = parent.zoneConst.getKeyOnDescription(targetAttributeComboBox2.SelectedItem.ToString());
+                    target.AreaName = area.Any() ? area : targetAttributeComboBox2.Text;
                 }
             }
             else if ((target.QuestType == CQuestConstants.TYPE_AREA_DISCOVER) || 
@@ -1435,14 +1514,14 @@ namespace StalkerOnlineQuesterEditor
                     (target.QuestType == CQuestConstants.TYPE_IN_AREA))
             {
                 if (dynamicCheckBox.Checked)
-                    target.ObjectName = resultComboBox.Text;
+                    target.AreaName = resultComboBox.Text;
                 else
                 {
                     string zone = parent.zoneConst.getKeyOnDescription(targetComboBox.SelectedItem.ToString());
                     if (zone.Equals(""))
-                        target.ObjectName = targetComboBox.SelectedItem.ToString();
+                        target.AreaName = targetComboBox.SelectedItem.ToString();
                     else
-                        target.ObjectName = zone;
+                        target.AreaName = zone;
                 }
             }
             else if (target.QuestType == CQuestConstants.TYPE_MONEYBACK)
@@ -1832,7 +1911,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (this.QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST || this.QuestType == CQuestConstants.TYPE_KILLMOBS)
                 {
-                    ltargetResult.Text = "Уровень моба";
+                    ltargetResult.Text = "Подтип моба";
                     resultComboBox.Enabled = true;
                 }
                 else
@@ -1891,6 +1970,30 @@ namespace StalkerOnlineQuesterEditor
                 resultComboBox.Items.Add("");
                 foreach (string level in mob_subtypes)
                     resultComboBox.Items.Add(level);
+            }
+            if (this.QuestType == CQuestConstants.TYPE_ENTITY_SEEN || this.QuestType == CQuestConstants.TYPE_ENTITY_SEEN_AUTO)
+            {
+                switch (resultComboBox.SelectedItem.ToString())
+                {
+                    case "QuestEntity":
+                        break;
+                    case "Creature":
+                        targetAttributeComboBox.Items.Clear();
+                        List<string> mob_subtypes = parent.mobConst.getLevelsOnDescription(targetComboBox.SelectedItem.ToString());
+                        targetAttributeComboBox.Items.Add("");
+                        foreach (string level in mob_subtypes)
+                            targetAttributeComboBox.Items.Add(level);
+                        break;
+                    case "TimeEntity":
+                        string cfgName = targetComboBox.SelectedItem.ToString();
+
+                        foreach(var i in TimeEntityModels.getModelsByConfig(cfgName))
+                        {
+                            targetAttributeComboBox.Items.Add(i);
+                        }
+                        targetAttributeComboBox.SelectedIndex = 0;
+                        break;
+                }
             }
         }
                    
@@ -2100,6 +2203,61 @@ namespace StalkerOnlineQuesterEditor
                 //targetComboBox.Items.Add("");
                 foreach (int item_type in items)
                     targetComboBox.Items.Add(parent.itemConst.getItemName(item_type));
+            }
+
+            if (this.QuestType == CQuestConstants.TYPE_ENTITY_SEEN || this.QuestType == CQuestConstants.TYPE_ENTITY_SEEN_AUTO)
+            {
+                switch(resultComboBox.SelectedItem.ToString())
+                {
+                    case "QuestEntity":
+                        lNameObject.Text = "";
+                        targetAttributeComboBox.Enabled = true;
+                        targetAttributeComboBox.Items.Clear();
+                        labelTargetAttr.Enabled = true;
+                        labelTargetAttr.Text = "Модель:";
+                        lTargetAttr1.Text = "";
+                        targetComboBox.Enabled = false;
+                        targetAttributeComboBox2.Enabled = false;
+                        break;
+                    case "Creature":
+                        lNameObject.Enabled = true;
+                        lNameObject.Text = "Тип моба:";
+                        targetComboBox.Enabled = true;
+                        targetComboBox.Items.Clear();
+                        foreach (CMobDescription description in parent.mobConst.getAllDescriptions().Values)
+                            targetComboBox.Items.Add(description.getName());
+                        
+                        targetComboBox.SelectedIndex = 0;
+                        labelTargetAttr.Enabled = true;
+                        labelTargetAttr.Text = "Подтип:";
+                        targetAttributeComboBox.Enabled = true;
+                        targetAttributeComboBox.SelectedIndex = 0;
+
+                        lTargetAttr1.Text = "";
+                        targetAttributeComboBox2.Enabled = false;
+                        break;
+                    case "TimeEntity": 
+                        lNameObject.Enabled = true;
+                        lNameObject.Text = "Имя конфига:";
+
+                        targetComboBox.Enabled = true;
+                        targetComboBox.Items.Clear();
+                        foreach (var cfgName in TimeEntityModels.getConfigNames())
+                            targetComboBox.Items.Add(cfgName);
+
+                        targetComboBox.SelectedIndex = 0;
+
+                        labelTargetAttr.Enabled = true;
+                        labelTargetAttr.Text = "Модель:";
+                        targetAttributeComboBox.Enabled = true;
+                        //targetAttributeComboBox.Items.Clear();
+                        targetComboBox.SelectedIndex = 0;
+
+                        lTargetAttr1.Text = "";
+                        targetAttributeComboBox2.Enabled = false;
+                        break;
+                }
+
             }
         }
 

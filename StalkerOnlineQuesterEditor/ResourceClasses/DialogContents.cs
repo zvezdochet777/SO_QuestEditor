@@ -196,6 +196,8 @@ namespace StalkerOnlineQuesterEditor
         public Dictionary<int, List<double>> Reputation2 = new Dictionary<int, List<double>>();
         public Dictionary<string, List<double>> NPCReputation = new Dictionary<string, List<double>>();
         public List<int> KarmaPK = new List<int>();
+        public List<float> playerCoords = new List<float>();
+        public int coordsRadius = 10;
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
         public bool forDev;
@@ -273,7 +275,7 @@ namespace StalkerOnlineQuesterEditor
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || Skills.Any() || items.Any() || itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || 
                 RadioAvalible.None != radioAvailable || Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any() ||
-                noPerks.Any() || knowledges.Any() || fracBonus[1] > 0 || weather.Any() || Achievements.Any() || noAchievements.Any();
+                noPerks.Any() || knowledges.Any() || fracBonus[1] > 0 || weather.Any() || Achievements.Any() || noAchievements.Any() || playerCoords.Any();
         }
 
         public string GetAsString()

@@ -174,6 +174,7 @@ namespace StalkerOnlineQuesterEditor
         public float percent;
         public bool usePercent;
         public string str_param;
+        public string str_param2;
 
         public object Clone()
         {
@@ -193,6 +194,7 @@ namespace StalkerOnlineQuesterEditor
             copy.percent = this.percent;
             copy.usePercent = this.usePercent;
             copy.str_param = this.str_param;
+            copy.str_param2 = this.str_param2;
             return copy;
         }
 
@@ -212,14 +214,14 @@ namespace StalkerOnlineQuesterEditor
             this.percent = new float();
             this.usePercent = false;
             this.str_param = "";
+            this.str_param2 = "";
         }
 
         public bool Any()
         {
             return QuestType != 0 || ObjectType != 0 || NumOfObjects != 0 || ObjectAttr != 0 || AreaName != "" ||
                     Time != 0.0f || IsGroup != 0 || IsClan || ObjectName != "" || AObjectAttrs.Any() ||
-                    onFin != 0 || percent != 0 || usePercent || str_param.Any();
-
+                    onFin != 0 || percent != 0 || usePercent || str_param.Any() || str_param2.Any();
         }
         public CQuestTarget(int QuestType)
         {

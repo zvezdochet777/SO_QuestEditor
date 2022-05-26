@@ -221,6 +221,10 @@ namespace StalkerOnlineQuesterEditor
 
 
                         AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
+                        AddDataToList(dialog, "Precondition", "playerCoords", Precondition.playerCoords);
+                        if (dialog.Element("Precondition").Element("coordsRadius") != null)
+                            Precondition.coordsRadius = int.Parse(dialog.Element("Precondition").Element("coordsRadius").Value);
+
                         if (dialog.Element("Precondition").Element("forDev") != null)
                             Precondition.forDev = true;
                         if (dialog.Element("Precondition").Element("hidden") != null)
@@ -787,6 +791,12 @@ namespace StalkerOnlineQuesterEditor
                             prec.Add(new XElement("NPCReputation", dialog.Precondition.getNPCReputation()));
                         if (dialog.Precondition.KarmaPK.Any())
                             prec.Add(new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK)));
+                        if (dialog.Precondition.playerCoords.Any())
+                        {
+                            prec.Add(new XElement("playerCoords", Global.GetListAsString(dialog.Precondition.playerCoords)));
+                            prec.Add(new XElement("coordsRadius", Global.GetIntAsString(dialog.Precondition.coordsRadius)));
+                        }
+
                         if (dialog.Precondition.weather.Any())
                             prec.Add(dialog.Precondition.weather.getXML());
 

@@ -331,6 +331,15 @@ namespace StalkerOnlineQuesterEditor
                 editKarmaPK = curDialog.Precondition.KarmaPK;
                 checkOtherIndicates();
             }
+
+            if (curDialog.Precondition.playerCoords.Any())
+            {
+                List<string> tmp = new List<string>();
+                foreach (var i in curDialog.Precondition.playerCoords)
+                    tmp.Add(i.ToString().Replace(',', '.'));
+                tbCoordinates.Text = string.Join(" ", tmp);
+            }
+            nupCoordRadius.Value = curDialog.Precondition.coordsRadius;
             if (curDialog.Precondition.Skills.Any())
                 editPrecondition.Skills = curDialog.Precondition.Skills;
             if (curDialog.Precondition.Perks.Any())
@@ -546,6 +555,7 @@ namespace StalkerOnlineQuesterEditor
                     cbExit.Checked = false;
                     cbExit.Enabled = true;
                     break;
+                case 35:
                 case 100:
                     cbExit.Checked = false;
                     cbExit.Enabled = false;
@@ -966,7 +976,21 @@ namespace StalkerOnlineQuesterEditor
             precondition.noAchievements = editPrecondition.noAchievements;
             precondition.forDev = cbForDev.Checked;
             precondition.hidden = cbHidden.Checked;
-
+            try
+            {
+                string s_coords = tbCoordinates.Text.Replace(',', ' ').Replace('(', ' ').Replace(')', ' ');
+                foreach (var i in s_coords.Split())
+                {
+                    if (!i.Trim().Any()) continue;
+                    precondition.playerCoords.Add(float.Parse(i, System.Globalization.CultureInfo.InvariantCulture));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка условия \"Другое\"=>Координаты игрока", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            precondition.coordsRadius = Convert.ToInt32(nupCoordRadius.Value);
             if (cbSpaceWeather.SelectedItem != null)
             {
                 precondition.weather.space = Convert.ToInt32(cbSpaceWeather.SelectedItem.ToString().Split(' ')[0]);
@@ -1701,8 +1725,11 @@ namespace StalkerOnlineQuesterEditor
         {
             bool result = false;
             result = result || (cbTutorialPhase.SelectedItem != null);
-            result = result || (cbPVPRank1.SelectedIndex > 0 || cbPVPRank2.SelectedIndex > 0 || cbRatingPVPMode.SelectedIndex > -1);
+            result = result || (cbPVPRank1.SelectedIndex > 0 || cbPVPRank2.SelectedIndex > 0 || cbRatingPVPMode.SelectedIndex > 0);
             result = result || editKarmaPK.Any();
+            result = result || tbCoordinates.Text.Any();
+            result = result || (mtbPlayerLevelMax.Text.Any() || mtbPlayerLevelMin.Text.Any());
+
             pictureOther.Visible = result;
         }
 

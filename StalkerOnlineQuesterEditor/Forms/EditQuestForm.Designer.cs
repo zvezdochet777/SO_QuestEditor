@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelCreateMob = new System.Windows.Forms.Panel();
             this.cbMobInvul = new System.Windows.Forms.CheckBox();
             this.cbMobLevel = new System.Windows.Forms.ComboBox();
@@ -100,6 +100,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnFindError = new System.Windows.Forms.Button();
             this.cbTestScreenMsg = new System.Windows.Forms.CheckBox();
             this.label39 = new System.Windows.Forms.Label();
             this.onTestTextBox = new System.Windows.Forms.RichTextBox();
@@ -235,7 +236,6 @@
             this.cbQuestLink = new System.Windows.Forms.ComboBox();
             this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.btnFindError = new System.Windows.Forms.Button();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -1026,6 +1026,16 @@
             this.tabPage3.Text = "Информация";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnFindError
+            // 
+            this.btnFindError.Location = new System.Drawing.Point(539, 110);
+            this.btnFindError.Name = "btnFindError";
+            this.btnFindError.Size = new System.Drawing.Size(87, 36);
+            this.btnFindError.TabIndex = 74;
+            this.btnFindError.Text = "Поиск ошибок";
+            this.btnFindError.UseVisualStyleBackColor = true;
+            this.btnFindError.Click += new System.EventHandler(this.btnFindError_Click);
+            // 
             // cbTestScreenMsg
             // 
             this.cbTestScreenMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1553,7 +1563,7 @@
             // 
             this.targetAttributeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.targetAttributeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.targetAttributeComboBox.DropDownWidth = 121;
+            this.targetAttributeComboBox.DropDownWidth = 200;
             this.targetAttributeComboBox.Enabled = false;
             this.targetAttributeComboBox.FormattingEnabled = true;
             this.targetAttributeComboBox.Location = new System.Drawing.Point(104, 70);
@@ -1681,8 +1691,8 @@
             // 
             // radius
             // 
-            dataGridViewCellStyle2.NullValue = "0";
-            this.radius.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.radius.DefaultCellStyle = dataGridViewCellStyle1;
             this.radius.HeaderText = "радиус";
             this.radius.Name = "radius";
             // 
@@ -2451,16 +2461,6 @@
             this.label34.Size = new System.Drawing.Size(79, 13);
             this.label34.TabIndex = 61;
             this.label34.Text = "Бонус группы:";
-            // 
-            // btnFindError
-            // 
-            this.btnFindError.Location = new System.Drawing.Point(539, 110);
-            this.btnFindError.Name = "btnFindError";
-            this.btnFindError.Size = new System.Drawing.Size(87, 36);
-            this.btnFindError.TabIndex = 74;
-            this.btnFindError.Text = "Поиск ошибок";
-            this.btnFindError.UseVisualStyleBackColor = true;
-            this.btnFindError.Click += new System.EventHandler(this.btnFindError_Click);
             // 
             // EditQuestForm
             // 

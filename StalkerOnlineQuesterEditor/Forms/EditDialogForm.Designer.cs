@@ -194,10 +194,6 @@
             this.GVNonItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GVNonItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GVItems = new System.Windows.Forms.DataGridView();
-            this.GVItems_itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GVItems_itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GVItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GVItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cbNonCategory = new System.Windows.Forms.ComboBox();
@@ -303,6 +299,15 @@
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
             this.tReactionNPC = new System.Windows.Forms.RichTextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tbCoordinates = new System.Windows.Forms.TextBox();
+            this.nupCoordRadius = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.GVItems_itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GVItems_itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GVItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GVItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -361,6 +366,8 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupCoordRadius)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -1902,8 +1909,8 @@
             // 
             this.tabItems.BackColor = System.Drawing.SystemColors.Control;
             this.tabItems.Controls.Add(this.cbItemsEquipped);
-            this.tabItems.Controls.Add(this.panel3);
             this.tabItems.Controls.Add(this.panel1);
+            this.tabItems.Controls.Add(this.panel3);
             this.tabItems.Controls.Add(this.panelItems);
             this.tabItems.Controls.Add(this.label12);
             this.tabItems.Controls.Add(this.label11);
@@ -1934,7 +1941,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.rbNonItemsOr);
             this.panel3.Controls.Add(this.rbNonItemsAnd);
-            this.panel3.Location = new System.Drawing.Point(791, 6);
+            this.panel3.Location = new System.Drawing.Point(671, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(88, 31);
             this.panel3.TabIndex = 14;
@@ -1967,7 +1974,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.rbItemsOr);
             this.panel1.Controls.Add(this.rbItemsAnd);
-            this.panel1.Location = new System.Drawing.Point(420, 8);
+            this.panel1.Location = new System.Drawing.Point(243, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(88, 31);
             this.panel1.TabIndex = 12;
@@ -1976,7 +1983,7 @@
             // rbItemsOr
             // 
             this.rbItemsOr.AutoSize = true;
-            this.rbItemsOr.Location = new System.Drawing.Point(39, 7);
+            this.rbItemsOr.Location = new System.Drawing.Point(39, 6);
             this.rbItemsOr.Name = "rbItemsOr";
             this.rbItemsOr.Size = new System.Drawing.Size(49, 17);
             this.rbItemsOr.TabIndex = 13;
@@ -1987,7 +1994,7 @@
             // 
             this.rbItemsAnd.AutoSize = true;
             this.rbItemsAnd.Checked = true;
-            this.rbItemsAnd.Location = new System.Drawing.Point(0, 7);
+            this.rbItemsAnd.Location = new System.Drawing.Point(4, 6);
             this.rbItemsAnd.Name = "rbItemsAnd";
             this.rbItemsAnd.Size = new System.Drawing.Size(33, 17);
             this.rbItemsAnd.TabIndex = 12;
@@ -2003,7 +2010,7 @@
             this.panelItems.Controls.Add(this.GVItems);
             this.panelItems.Location = new System.Drawing.Point(0, 39);
             this.panelItems.Name = "panelItems";
-            this.panelItems.Size = new System.Drawing.Size(879, 191);
+            this.panelItems.Size = new System.Drawing.Size(800, 191);
             this.panelItems.TabIndex = 9;
             this.panelItems.Visible = false;
             // 
@@ -2016,9 +2023,9 @@
             this.GVNonItems_itemQuantity,
             this.GVNonItems_ItemCond});
             this.GVNonItems.Dock = System.Windows.Forms.DockStyle.Right;
-            this.GVNonItems.Location = new System.Drawing.Point(566, 0);
+            this.GVNonItems.Location = new System.Drawing.Point(408, 0);
             this.GVNonItems.Name = "GVNonItems";
-            this.GVNonItems.Size = new System.Drawing.Size(313, 191);
+            this.GVNonItems.Size = new System.Drawing.Size(392, 191);
             this.GVNonItems.TabIndex = 7;
             // 
             // GVNonItems_itemType
@@ -2062,43 +2069,13 @@
             this.GVItems.Dock = System.Windows.Forms.DockStyle.Left;
             this.GVItems.Location = new System.Drawing.Point(0, 0);
             this.GVItems.Name = "GVItems";
-            this.GVItems.Size = new System.Drawing.Size(331, 191);
+            this.GVItems.Size = new System.Drawing.Size(393, 191);
             this.GVItems.TabIndex = 6;
-            // 
-            // GVItems_itemType
-            // 
-            this.GVItems_itemType.HeaderText = "Тип";
-            this.GVItems_itemType.Name = "GVItems_itemType";
-            this.GVItems_itemType.Width = 300;
-            // 
-            // GVItems_itemAttr
-            // 
-            this.GVItems_itemAttr.HeaderText = "Аттрибут";
-            this.GVItems_itemAttr.Items.AddRange(new object[] {
-            "Обычный",
-            "Квестовый",
-            "Использовать"});
-            this.GVItems_itemAttr.Name = "GVItems_itemAttr";
-            this.GVItems_itemAttr.Width = 70;
-            // 
-            // GVItems_itemQuantity
-            // 
-            this.GVItems_itemQuantity.HeaderText = "Количество";
-            this.GVItems_itemQuantity.Name = "GVItems_itemQuantity";
-            this.GVItems_itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.GVItems_itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.GVItems_itemQuantity.Width = 75;
-            // 
-            // GVItems_ItemCond
-            // 
-            this.GVItems_ItemCond.HeaderText = "(%)Мин. прочность (%)";
-            this.GVItems_ItemCond.Name = "GVItems_ItemCond";
-            this.GVItems_ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(389, 26);
+            this.label12.Location = new System.Drawing.Point(405, 23);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 13);
             this.label12.TabIndex = 8;
@@ -2709,6 +2686,7 @@
             // 
             // tabOther
             // 
+            this.tabOther.Controls.Add(this.groupBox6);
             this.tabOther.Controls.Add(this.groupBox5);
             this.tabOther.Controls.Add(this.groupBox4);
             this.tabOther.Controls.Add(this.groupBox3);
@@ -3152,6 +3130,86 @@
             this.tReactionNPC.Text = "";
             this.tReactionNPC.TextChanged += new System.EventHandler(this.tReactionNPC_TextChanged);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label33);
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.nupCoordRadius);
+            this.groupBox6.Controls.Add(this.tbCoordinates);
+            this.groupBox6.Location = new System.Drawing.Point(369, 7);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 81);
+            this.groupBox6.TabIndex = 72;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Координаты на карте(Игрок)";
+            // 
+            // tbCoordinates
+            // 
+            this.tbCoordinates.Location = new System.Drawing.Point(60, 18);
+            this.tbCoordinates.Name = "tbCoordinates";
+            this.tbCoordinates.Size = new System.Drawing.Size(134, 20);
+            this.tbCoordinates.TabIndex = 0;
+            // 
+            // nupCoordRadius
+            // 
+            this.nupCoordRadius.Location = new System.Drawing.Point(60, 43);
+            this.nupCoordRadius.Name = "nupCoordRadius";
+            this.nupCoordRadius.Size = new System.Drawing.Size(61, 20);
+            this.nupCoordRadius.TabIndex = 1;
+            this.nupCoordRadius.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 21);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 13);
+            this.label13.TabIndex = 50;
+            this.label13.Text = "Позиция:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(6, 45);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(46, 13);
+            this.label33.TabIndex = 51;
+            this.label33.Text = "Радиус:";
+            // 
+            // GVItems_itemType
+            // 
+            this.GVItems_itemType.HeaderText = "Тип";
+            this.GVItems_itemType.Name = "GVItems_itemType";
+            this.GVItems_itemType.Width = 250;
+            // 
+            // GVItems_itemAttr
+            // 
+            this.GVItems_itemAttr.HeaderText = "Аттрибут";
+            this.GVItems_itemAttr.Items.AddRange(new object[] {
+            "Обычный",
+            "Квестовый",
+            "Использовать"});
+            this.GVItems_itemAttr.Name = "GVItems_itemAttr";
+            this.GVItems_itemAttr.Width = 70;
+            // 
+            // GVItems_itemQuantity
+            // 
+            this.GVItems_itemQuantity.HeaderText = "Количество";
+            this.GVItems_itemQuantity.Name = "GVItems_itemQuantity";
+            this.GVItems_itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GVItems_itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GVItems_itemQuantity.Width = 75;
+            // 
+            // GVItems_ItemCond
+            // 
+            this.GVItems_ItemCond.HeaderText = "(%)Мин. прочность (%)";
+            this.GVItems_ItemCond.Name = "GVItems_ItemCond";
+            this.GVItems_ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3244,6 +3302,9 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupCoordRadius)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3417,10 +3478,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn GVNonItems_itemAttr;
         private System.Windows.Forms.DataGridViewTextBoxColumn GVNonItems_itemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn GVNonItems_ItemCond;
-        private System.Windows.Forms.DataGridViewComboBoxColumn GVItems_itemType;
-        private System.Windows.Forms.DataGridViewComboBoxColumn GVItems_itemAttr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_itemQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_ItemCond;
         private System.Windows.Forms.PictureBox pictureOther;
         private System.Windows.Forms.TabPage tabOther;
         private System.Windows.Forms.ComboBox cbTutorialPhase;
@@ -3526,5 +3583,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn4;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown nupCoordRadius;
+        private System.Windows.Forms.TextBox tbCoordinates;
+        private System.Windows.Forms.DataGridViewComboBoxColumn GVItems_itemType;
+        private System.Windows.Forms.DataGridViewComboBoxColumn GVItems_itemAttr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_itemQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_ItemCond;
     }
 }

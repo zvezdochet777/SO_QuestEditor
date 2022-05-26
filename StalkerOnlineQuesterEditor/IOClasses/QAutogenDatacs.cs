@@ -475,6 +475,7 @@ namespace StalkerOnlineQuesterEditor
         public int exp;
         public int repGroup;
         public int repValue;
+        public int repOT; //Очки торговли
     }
 
     public class AutogenTarget

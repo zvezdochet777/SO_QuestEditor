@@ -132,6 +132,7 @@ namespace StalkerOnlineQuesterEditor
             CFractionDialogs.load(this);
             QuestPVPConstance.parse();
             AnomalyTypes.parse();
+            TimeEntityModels.parse();
             QuestsOmnicounter.load();
             quests = new CQuests(this);
             tpConst = new CTPConstants();

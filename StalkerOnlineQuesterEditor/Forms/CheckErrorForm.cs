@@ -631,9 +631,15 @@ namespace StalkerOnlineQuesterEditor.Forms
                 else if ((quest.Value.Target.QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (quest.Value.Target.QuestType == CQuestConstants.TYPE_KILLMOBS))
                 {
                     if (quest.Value.Target.AreaName.Any())
-                        if (!this.parent.zoneMobConst.checkHaveArea(quest.Value.Target.AreaName))
+                        if (!this.parent.zoneConst.checkHaveArea(quest.Value.Target.AreaName))
                         {
                             string line = "Квест №:" + quest.Key.ToString() + "\tимеет зону: \"" + quest.Value.Target.AreaName + "\", которой нигде нет";
+                            this.writeToLog(ERROR_QUEST, line, quest.Key);
+                        }
+                    if (quest.Value.Target.str_param2.Any())
+                        if (!this.parent.zoneMobConst.checkHaveArea(quest.Value.Target.str_param2))
+                        {
+                            string line = "Квест №:" + quest.Key.ToString() + "\tимеет зону: \"" + quest.Value.Target.str_param2 + "\", которой нигде нет";
                             this.writeToLog(ERROR_QUEST, line, quest.Key);
                         }
                 }

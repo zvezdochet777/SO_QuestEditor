@@ -60,11 +60,13 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_PVP_MAP_CAPTURE_FLAG = 41; //Сделать что-то над флагом в пвп карте
         public static int TYPE_PVP_MAP_SCORE = 42; //Сделать набрать очки в пвп карте
 
-
         public static int TYPE_CREATE_NPC = 51; // создать бегающего НИП
         public static int TYPE_CREATE_MOB = 52; // создать моба
         public static int TYPE_KILLSCENARIONPC = 53; // убить НИП созданного квестом
         public static int TYPE_KILLSCENARIONPC_WITH_ONTEST = 54; // убить НИП со сдачей
+
+        public static int TYPE_ENTITY_SEEN = 55; // Увидеть сущность QuestEntity/TimeEntity/Creature
+        public static int TYPE_ENTITY_SEEN_AUTO = 56; // Увидеть сущность QuestEntity/TimeEntity/Creature
 
         public CQuestConstants()
         {
@@ -110,6 +112,8 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_KILLSCENARIONPC, "53 Убийство NPC для сценария"));
             simpleQuestsType.Add(new СQuestType(TYPE_KILLSCENARIONPC_WITH_ONTEST, "54 Убийство NPC со сдачей для сценария."));
 
+            simpleQuestsType.Add(new СQuestType(TYPE_ENTITY_SEEN, "55 Увидеть сущность."));
+            simpleQuestsType.Add(new СQuestType(TYPE_ENTITY_SEEN_AUTO, "56 Увидеть сущность АВТО.")); 
 
             pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_KILL,         "40 Убить во время пвп матча"));
             pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_CAPTURE_FLAG, "41 Сделать что-то над флагом в пвп карте"));
@@ -423,6 +427,64 @@ namespace StalkerOnlineQuesterEditor
             }
         }
         
+    }
+
+
+    public static class TimeEntityModels
+    {
+        static Dictionary<string, List<string>> _data = new Dictionary<string, List<string>>();
+        public static void parse()
+        {
+            string JSON_PATH = "../../../res/scripts/client/data/TimeEntitiesConfigs/";
+            string[] files = Directory.GetFiles(JSON_PATH, "*.json");
+            bool is_model = false;
+
+            foreach (string configFile in files)
+            {
+                if (!File.Exists(configFile))
+                    return;
+                string configName = Path.GetFileNameWithoutExtension(configFile);
+                List<string> modelsList = new List<string>();
+                JsonTextReader reader = new JsonTextReader(new StreamReader(configFile, Encoding.UTF8));
+                while (reader.Read())
+                {
+
+                    if (reader.TokenType == JsonToken.PropertyName)
+                    {
+                        if (reader.Value.ToString() == "model")
+                            is_model = true;
+                        else is_model = false;
+                    }
+
+                    if (reader.TokenType == JsonToken.String)
+                    {
+                        if (!is_model) continue;
+                        string modelPath = reader.Value.ToString().Trim();
+                        if (!modelPath.Any())
+                            continue;
+                        if (modelsList.Contains(modelPath)) continue;
+                        modelsList.Add(modelPath);
+
+                    }
+                }
+                _data.Add(configName, modelsList);
+            }
+        }
+
+        public static List<string> getModelsByConfig(string configName)
+        {
+            foreach (var pair in _data)
+            {
+                if (pair.Key == configName) return pair.Value;
+            }
+            return null;
+        }
+
+
+        public static string[] getConfigNames()
+        {
+            return _data.Keys.ToArray();
+        }
     }
 
     public static class AnomalyTypes

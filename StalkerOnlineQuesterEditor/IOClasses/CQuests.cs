@@ -192,9 +192,9 @@ namespace StalkerOnlineQuesterEditor
                     }
 
                     if ((item.Element("Target").Element("str_param") != null) && (!item.Element("Target").Element("str_param").Value.Equals("")))
-                    {
                         target.str_param = item.Element("Target").Element("str_param").Value;
-                    }
+                    if ((item.Element("Target").Element("str_param2") != null) && (!item.Element("Target").Element("str_param2").Value.Equals("")))
+                        target.str_param2 = item.Element("Target").Element("str_param2").Value;
 
                     if (item.Element("Target").Element("AObjectAttrs") != null)
                         foreach (string at in item.Element("Target").Element("AObjectAttrs").Value.ToString().Split(','))
@@ -212,7 +212,9 @@ namespace StalkerOnlineQuesterEditor
                         target.AreaName = item.Element("Target").Element("AreaName").Value;
 
                     if ((item.Element("Target").Element("ObjectName") != null) && (!item.Element("Target").Element("ObjectName").Value.Equals("")))
+                    {
                         target.ObjectName = item.Element("Target").Element("ObjectName").Value;
+                    }
 
                     ParseIntIfNotEmpty(item, "Target", "IsGroup", out target.IsGroup, 0);
                     if (item.Element("Target").Element("IsClan") != null)
@@ -261,7 +263,7 @@ namespace StalkerOnlineQuesterEditor
                     if (item.Element("QuestRules").Element("Items") != null)
                         CQuests.parceItems(item.Element("QuestRules").Element("Items"), questRules.items);
                     if (item.Element("QuestRules").Element("Spaces") != null)
-                        questRules.space = int.Parse(item.Element("QuestRules").Element("Spaces").Value);
+                        questRules.space = long.Parse(item.Element("QuestRules").Element("Spaces").Value);
                     CQuests.AddDataToList(item, "QuestRules", "Scenarios", questRules.Scenarios);
                     CQuests.AddDataToList(item, "QuestRules", "MassQuests", questRules.MassQuests);
 
@@ -764,6 +766,8 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Target").Add(new XElement("ObjectAttr", questValue.Target.ObjectAttr));
                     if (questValue.Target.str_param.Any())
                         element.Element("Target").Add(new XElement("str_param", questValue.Target.str_param));
+                    if (questValue.Target.str_param2.Any())
+                        element.Element("Target").Add(new XElement("str_param2", questValue.Target.str_param2));
                     if (questValue.Target.NumOfObjects != 0)
                         element.Element("Target").Add(new XElement("NumOfObjects", Global.GetIntAsString(questValue.Target.NumOfObjects)));
                     if (questValue.Target.ObjectName != "")

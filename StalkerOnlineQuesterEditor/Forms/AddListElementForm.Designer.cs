@@ -39,12 +39,14 @@
             this.tbText2 = new System.Windows.Forms.TextBox();
             this.tbText3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tbText4 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(337, 137);
+            this.btnOK.Location = new System.Drawing.Point(337, 161);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
@@ -55,7 +57,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(419, 137);
+            this.btnCancel.Location = new System.Drawing.Point(419, 161);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -138,11 +140,29 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Имя";
             // 
+            // tbText4
+            // 
+            this.tbText4.Location = new System.Drawing.Point(216, 133);
+            this.tbText4.Name = "tbText4";
+            this.tbText4.Size = new System.Drawing.Size(270, 20);
+            this.tbText4.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 136);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Имя";
+            // 
             // AddListElementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 173);
+            this.ClientSize = new System.Drawing.Size(502, 197);
+            this.Controls.Add(this.tbText4);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.tbText3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbText1);
@@ -175,5 +195,7 @@
         private System.Windows.Forms.TextBox tbText2;
         private System.Windows.Forms.TextBox tbText3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbText4;
+        private System.Windows.Forms.Label label5;
     }
 }
