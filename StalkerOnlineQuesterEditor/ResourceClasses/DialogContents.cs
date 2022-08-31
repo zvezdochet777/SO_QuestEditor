@@ -275,7 +275,8 @@ namespace StalkerOnlineQuesterEditor
             return ListOfMustNoQuests.Any() || ListOfNecessaryQuests.Any() || NecessaryEffects.Any() || MustNoEffects.Any() || Reputation.Any() ||
                 PlayerLevel != "" || Skills.Any() || items.Any() || itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || 
                 RadioAvalible.None != radioAvailable || Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any() ||
-                noPerks.Any() || knowledges.Any() || fracBonus[1] > 0 || weather.Any() || Achievements.Any() || noAchievements.Any() || playerCoords.Any();
+                noPerks.Any() || knowledges.Any() || fracBonus[1] > 0 || weather.Any() || Achievements.Any() || noAchievements.Any() || playerCoords.Any() ||
+                this.clanOptions != "";
         }
 
         public string GetAsString()
