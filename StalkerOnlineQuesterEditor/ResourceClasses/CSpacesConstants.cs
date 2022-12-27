@@ -234,7 +234,7 @@ namespace StalkerOnlineQuesterEditor
             CMobConstants mobs = new CMobConstants();
             foreach (XElement dungeon in doc.Root.Elements())
             {
-                try
+                //try
                 {
                     dung_id = int.Parse(dungeon.Element("id").Value.ToString());
                     DungeonSpace space = new DungeonSpace();
@@ -246,7 +246,7 @@ namespace StalkerOnlineQuesterEditor
                         string additional_data = boss_node.Element("data").Value.ToString();
                         if (type == "CreatureBoss")
                         {
-                            additional_data = boss_id.ToString() + " " + mobs.getDescriptionOnType(int.Parse(additional_data)).getName();
+                            additional_data = boss_id.ToString() + " " + mobs.getDescriptionOnType(int.Parse(additional_data.Split()[0])).getName();
                         }
                         DungeonBoss boss = new DungeonBoss();
                         boss.id = boss_id;
@@ -254,10 +254,11 @@ namespace StalkerOnlineQuesterEditor
                         boss.type = type;
                         space.bosses.Add(boss);
                     }
+                    Console.WriteLine("ADD DUNGEON " + dung_id.ToString() + " " + space.name);
                     dungeons.Add(dung_id, space);
 
                 }
-                catch
+                //catch
                 {
                     System.Console.WriteLine("Error with dung_id:" + dungeon.Element("id").Value.ToString());
                 }

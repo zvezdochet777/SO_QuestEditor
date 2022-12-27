@@ -84,10 +84,11 @@ namespace StalkerOnlineQuesterEditor
             this.QuestBox = new System.Windows.Forms.ComboBox();
             this.labelChosenQuest = new System.Windows.Forms.Label();
             this.tabFraction = new System.Windows.Forms.TabPage();
-            this.gbEmul2 = new System.Windows.Forms.GroupBox();
-            this.bRemoveFracDialog = new System.Windows.Forms.Button();
-            this.bEditFracDialog = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.bAddFracDialog = new System.Windows.Forms.Button();
+            this.bEditFracDialog = new System.Windows.Forms.Button();
+            this.bRemoveFracDialog = new System.Windows.Forms.Button();
+            this.gbEmul2 = new System.Windows.Forms.GroupBox();
             this.treeFractionDialogs = new System.Windows.Forms.TreeView();
             this.fractionDialogShower = new UMD.HCIL.Piccolo.PCanvas();
             this.label1 = new System.Windows.Forms.Label();
@@ -216,6 +217,15 @@ namespace StalkerOnlineQuesterEditor
             this.label5 = new System.Windows.Forms.Label();
             this.listBoxQT = new System.Windows.Forms.ListBox();
             this.tabPageAGDialog = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.lbAGHello = new System.Windows.Forms.ListBox();
+            this.btnAGHelloAdd = new System.Windows.Forms.Button();
+            this.btnAGHelloChange = new System.Windows.Forms.Button();
+            this.btnAGHelloDel = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -302,7 +312,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolTipDialogs = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitDialogs)).BeginInit();
             this.splitDialogs.Panel1.SuspendLayout();
             this.splitDialogs.Panel2.SuspendLayout();
@@ -328,6 +337,7 @@ namespace StalkerOnlineQuesterEditor
             this.panelQuestTools.SuspendLayout();
             this.panelSelectQuest.SuspendLayout();
             this.tabFraction.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.gbEmul2.SuspendLayout();
             this.tabInfoNPC.SuspendLayout();
             this.panelNpcLinkControls.SuspendLayout();
@@ -359,6 +369,7 @@ namespace StalkerOnlineQuesterEditor
             ((System.ComponentModel.ISupportInitialize)(this.nupToTargetCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupFromTargetCount)).BeginInit();
             this.tabPageAGDialog.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -366,7 +377,6 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectNPC.SuspendLayout();
             this.menuMainControl.SuspendLayout();
             this.statusStrip.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitDialogs
@@ -809,20 +819,21 @@ namespace StalkerOnlineQuesterEditor
             resources.ApplyResources(this.tabFraction, "tabFraction");
             this.tabFraction.Name = "tabFraction";
             // 
-            // gbEmul2
+            // panel1
             // 
-            resources.ApplyResources(this.gbEmul2, "gbEmul2");
-            this.gbEmul2.Controls.Add(this.splitContainer1);
-            this.gbEmul2.Name = "gbEmul2";
-            this.gbEmul2.TabStop = false;
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.bAddFracDialog);
+            this.panel1.Controls.Add(this.bEditFracDialog);
+            this.panel1.Controls.Add(this.bRemoveFracDialog);
+            this.panel1.Name = "panel1";
             // 
-            // bRemoveFracDialog
+            // bAddFracDialog
             // 
-            resources.ApplyResources(this.bRemoveFracDialog, "bRemoveFracDialog");
-            this.bRemoveFracDialog.ImageList = this.imageList;
-            this.bRemoveFracDialog.Name = "bRemoveFracDialog";
-            this.bRemoveFracDialog.UseVisualStyleBackColor = true;
-            this.bRemoveFracDialog.Click += new System.EventHandler(this.bRemoveFracDialog_Click);
+            resources.ApplyResources(this.bAddFracDialog, "bAddFracDialog");
+            this.bAddFracDialog.ImageList = this.imageList;
+            this.bAddFracDialog.Name = "bAddFracDialog";
+            this.bAddFracDialog.UseVisualStyleBackColor = true;
+            this.bAddFracDialog.Click += new System.EventHandler(this.bAddFracDialog_Click);
             // 
             // bEditFracDialog
             // 
@@ -832,13 +843,20 @@ namespace StalkerOnlineQuesterEditor
             this.bEditFracDialog.UseVisualStyleBackColor = true;
             this.bEditFracDialog.Click += new System.EventHandler(this.bEditDialog_Click);
             // 
-            // bAddFracDialog
+            // bRemoveFracDialog
             // 
-            resources.ApplyResources(this.bAddFracDialog, "bAddFracDialog");
-            this.bAddFracDialog.ImageList = this.imageList;
-            this.bAddFracDialog.Name = "bAddFracDialog";
-            this.bAddFracDialog.UseVisualStyleBackColor = true;
-            this.bAddFracDialog.Click += new System.EventHandler(this.bAddFracDialog_Click);
+            resources.ApplyResources(this.bRemoveFracDialog, "bRemoveFracDialog");
+            this.bRemoveFracDialog.ImageList = this.imageList;
+            this.bRemoveFracDialog.Name = "bRemoveFracDialog";
+            this.bRemoveFracDialog.UseVisualStyleBackColor = true;
+            this.bRemoveFracDialog.Click += new System.EventHandler(this.bRemoveFracDialog_Click);
+            // 
+            // gbEmul2
+            // 
+            resources.ApplyResources(this.gbEmul2, "gbEmul2");
+            this.gbEmul2.Controls.Add(this.splitContainer1);
+            this.gbEmul2.Name = "gbEmul2";
+            this.gbEmul2.TabStop = false;
             // 
             // treeFractionDialogs
             // 
@@ -1760,6 +1778,7 @@ namespace StalkerOnlineQuesterEditor
             // tabPageAGDialog
             // 
             resources.ApplyResources(this.tabPageAGDialog, "tabPageAGDialog");
+            this.tabPageAGDialog.Controls.Add(this.groupBox9);
             this.tabPageAGDialog.Controls.Add(this.label11);
             this.tabPageAGDialog.Controls.Add(this.label17);
             this.tabPageAGDialog.Controls.Add(this.groupBox6);
@@ -1769,6 +1788,73 @@ namespace StalkerOnlineQuesterEditor
             this.tabPageAGDialog.Controls.Add(this.label6);
             this.tabPageAGDialog.Name = "tabPageAGDialog";
             this.tabPageAGDialog.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label22);
+            this.groupBox9.Controls.Add(this.button1);
+            this.groupBox9.Controls.Add(this.button2);
+            this.groupBox9.Controls.Add(this.button3);
+            this.groupBox9.Controls.Add(this.lbAGHello);
+            this.groupBox9.Controls.Add(this.btnAGHelloAdd);
+            this.groupBox9.Controls.Add(this.btnAGHelloChange);
+            this.groupBox9.Controls.Add(this.btnAGHelloDel);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.TabStop = false;
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.toolTipDialogs.SetToolTip(this.button1, resources.GetString("button1.ToolTip"));
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.toolTipDialogs.SetToolTip(this.button2, resources.GetString("button2.ToolTip"));
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.toolTipDialogs.SetToolTip(this.button3, resources.GetString("button3.ToolTip"));
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // lbAGHello
+            // 
+            this.lbAGHello.FormattingEnabled = true;
+            resources.ApplyResources(this.lbAGHello, "lbAGHello");
+            this.lbAGHello.Name = "lbAGHello";
+            // 
+            // btnAGHelloAdd
+            // 
+            resources.ApplyResources(this.btnAGHelloAdd, "btnAGHelloAdd");
+            this.btnAGHelloAdd.Name = "btnAGHelloAdd";
+            this.toolTipDialogs.SetToolTip(this.btnAGHelloAdd, resources.GetString("btnAGHelloAdd.ToolTip"));
+            this.btnAGHelloAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnAGHelloChange
+            // 
+            resources.ApplyResources(this.btnAGHelloChange, "btnAGHelloChange");
+            this.btnAGHelloChange.Name = "btnAGHelloChange";
+            this.toolTipDialogs.SetToolTip(this.btnAGHelloChange, resources.GetString("btnAGHelloChange.ToolTip"));
+            this.btnAGHelloChange.UseVisualStyleBackColor = true;
+            // 
+            // btnAGHelloDel
+            // 
+            resources.ApplyResources(this.btnAGHelloDel, "btnAGHelloDel");
+            this.btnAGHelloDel.Name = "btnAGHelloDel";
+            this.toolTipDialogs.SetToolTip(this.btnAGHelloDel, resources.GetString("btnAGHelloDel.ToolTip"));
+            this.btnAGHelloDel.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -2397,14 +2483,6 @@ namespace StalkerOnlineQuesterEditor
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             // 
-            // panel1
-            // 
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Controls.Add(this.bAddFracDialog);
-            this.panel1.Controls.Add(this.bEditFracDialog);
-            this.panel1.Controls.Add(this.bRemoveFracDialog);
-            this.panel1.Name = "panel1";
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -2446,6 +2524,7 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectQuest.PerformLayout();
             this.tabFraction.ResumeLayout(false);
             this.tabFraction.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.gbEmul2.ResumeLayout(false);
             this.tabInfoNPC.ResumeLayout(false);
             this.panelNpcLinkControls.ResumeLayout(false);
@@ -2488,6 +2567,8 @@ namespace StalkerOnlineQuesterEditor
             ((System.ComponentModel.ISupportInitialize)(this.nupFromTargetCount)).EndInit();
             this.tabPageAGDialog.ResumeLayout(false);
             this.tabPageAGDialog.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -2502,7 +2583,6 @@ namespace StalkerOnlineQuesterEditor
             this.menuMainControl.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2780,6 +2860,15 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.GroupBox gbEmul2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListBox lbAGHello;
+        private System.Windows.Forms.Button btnAGHelloAdd;
+        private System.Windows.Forms.Button btnAGHelloChange;
+        private System.Windows.Forms.Button btnAGHelloDel;
     }
 }
 

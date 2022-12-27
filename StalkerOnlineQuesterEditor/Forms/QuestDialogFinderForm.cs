@@ -67,8 +67,8 @@ namespace StalkerOnlineQuesterEditor.Forms
             CQuest quest = this.parent.getQuestOnQuestID(questID);
             if (quest == null)
             {
-                onNotFoundQuest(questID);
-                return;
+                //onNotFoundQuest(questID);
+                //return;
             }
             List<int> checking = new List<int>();
             List<int> opening = new List<int>();

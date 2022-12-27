@@ -276,6 +276,10 @@ namespace StalkerOnlineQuesterEditor
 
                         if (dialog.Element("Precondition").Element("radioAvailable") != null)
                             Precondition.radioAvailable = (RadioAvalible)Convert.ToInt32(dialog.Element("Precondition").Element("radioAvailable").Value);
+                        if (dialog.Element("Precondition").Element("dungeonPhase") != null)
+                            Precondition.dungeonPhase = Convert.ToInt32(dialog.Element("Precondition").Element("dungeonPhase").Value);
+                        if (dialog.Element("Precondition").Element("dungeonNot") != null)
+                            Precondition.dungeonNot = true;
                         if (dialog.Element("Precondition").Element("tests") != null)
                         {
                             tests = new List<int>();
@@ -766,7 +770,10 @@ namespace StalkerOnlineQuesterEditor
                             prec.Add(new XElement("clanOptions", dialog.Precondition.clanOptions));
                         if (dialog.Precondition.radioAvailable != RadioAvalible.None)
                             prec.Add(new XElement("radioAvailable", Convert.ToInt32(dialog.Precondition.radioAvailable).ToString()));
-
+                        if (dialog.Precondition.dungeonPhase > 0)
+                            prec.Add(new XElement("dungeonPhase", Convert.ToInt32(dialog.Precondition.dungeonPhase).ToString()));
+                        if (dialog.Precondition.dungeonNot)
+                            prec.Add(new XElement("dungeonNot", "1"));
                         if (dialog.Precondition.MustNoEffects.Any())
                             prec.Add(dialog.Precondition.getMustNoEffects());
                         if (dialog.Precondition.NecessaryEffects.Any())

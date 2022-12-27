@@ -205,6 +205,8 @@ namespace StalkerOnlineQuesterEditor
         public DialogKnowleges knowledges = new DialogKnowleges();
         public RadioAvalible radioAvailable = RadioAvalible.None;
         public int tutorialPhase = -1;
+        public int dungeonPhase = 0;
+        public bool dungeonNot = false;
         public int[] PVPranks = new int[2];
         public int PVPMode = -1;
         public DialogPreconditionItems items = new DialogPreconditionItems();
@@ -267,7 +269,7 @@ namespace StalkerOnlineQuesterEditor
         {
             return this.Any() || KarmaPK.Any() || PlayerLevel != "" || this.clanOptions != "" || Skills.Any() || Perks.Any() || noPerks.Any() ||
                 forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || fracBonus[1] > 0 || weather.Any() ||
-                Achievements.Any() || noAchievements.Any();
+                Achievements.Any() || noAchievements.Any() || dungeonPhase > 0;
         }
 
         public bool Any()
@@ -276,7 +278,7 @@ namespace StalkerOnlineQuesterEditor
                 PlayerLevel != "" || Skills.Any() || items.Any() || itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || 
                 RadioAvalible.None != radioAvailable || Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any() ||
                 noPerks.Any() || knowledges.Any() || fracBonus[1] > 0 || weather.Any() || Achievements.Any() || noAchievements.Any() || playerCoords.Any() ||
-                this.clanOptions != "";
+                this.clanOptions != "" || dungeonPhase > 0; 
         }
 
         public string GetAsString()

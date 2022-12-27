@@ -605,6 +605,22 @@ namespace StalkerOnlineQuesterEditor
                     foreach (string item in parent.dungeonConst.getAllSpaceNames())
                         resultComboBox.Items.Add(item);
                 }
+                else if (QuestType == CQuestConstants.TYPE_DUNGEON_BOX_COUNTER)
+                {
+                    ltargetResult.Text = "DungeonID";
+                    lNameObject.Text = "";
+                    targetComboBox.Items.Clear();
+                    resultComboBox.Items.Clear();
+                    lQuantity.Enabled = true;
+                    quantityUpDown.Enabled = true;
+                    targetAttributeComboBox.Enabled = false;
+                    resultComboBox.Enabled = true;
+                    ltargetResult.Enabled = true;
+                    labelTargetAttr.Enabled = false;
+                    dynamicCheckBox.Enabled = false;
+                    foreach (string item in parent.dungeonConst.getAllSpaceNames())
+                        resultComboBox.Items.Add(item);
+                }
                 else if (QuestType == 201 || QuestType == 202 || QuestType == 203 || QuestType == 204)
                 {
 
@@ -817,6 +833,11 @@ namespace StalkerOnlineQuesterEditor
             {
                 resultComboBox.SelectedItem = parent.dungeonConst.getNameByID(quest.Target.ObjectType);
                 targetComboBox.SelectedItem = parent.dungeonConst.getBossName(quest.Target.ObjectType, quest.Target.ObjectAttr);
+            }
+            else if (quest.Target.QuestType == CQuestConstants.TYPE_DUNGEON_BOX_COUNTER)
+            {
+                resultComboBox.SelectedItem = parent.dungeonConst.getNameByID(quest.Target.ObjectType);
+                quantityUpDown.Value = quest.Target.NumOfObjects;
             }
             else if ((quest.Target.QuestType == CQuestConstants.TYPE_ANOMALY) || (quest.Target.QuestType == CQuestConstants.TYPE_ANOMALY_AUTO))
             {
@@ -1455,6 +1476,11 @@ namespace StalkerOnlineQuesterEditor
             {
                 target.ObjectType = parent.dungeonConst.getIDByName(resultComboBox.SelectedItem.ToString());
                 target.ObjectAttr = parent.dungeonConst.getBossID(target.ObjectType, targetComboBox.SelectedItem.ToString());
+            }
+            else if (target.QuestType == CQuestConstants.TYPE_DUNGEON_BOX_COUNTER)
+            {
+                target.ObjectType = parent.dungeonConst.getIDByName(resultComboBox.SelectedItem.ToString());
+                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
             }
             else if ((target.QuestType == CQuestConstants.TYPE_KILLMOBS_WITH_ONTEST) || (target.QuestType == CQuestConstants.TYPE_KILLMOBS))
             {

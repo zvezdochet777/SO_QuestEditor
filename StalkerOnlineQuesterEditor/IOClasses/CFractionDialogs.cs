@@ -129,11 +129,12 @@ namespace StalkerOnlineQuesterEditor
 
                         CDialogs.AddDataToList(dialog, "Actions", "GetQuest", Actions.GetQuests);
                         CDialogs.AddDataToList(dialog, "Actions", "CompleteQuest", Actions.CompleteQuests);
+                        CDialogs.AddDataToList(dialog, "Actions", "GetKnowleges", Actions.GetKnowleges);
                         if (dialog.Element("Actions").Descendants().Any(item => item.Name == "CancelQuest"))
                         {
                             CDialogs.AddDataToList(dialog, "Actions", "CancelQuest", Actions.CancelQuests);
-                            CDialogs.AddDataToList(dialog, "Actions", "FailQuest", Actions.FailQuests);
                         }
+                        CDialogs.AddDataToList(dialog, "Actions", "FailQuest", Actions.FailQuests);
                     }
                     if (dialog.Element("Precondition") != null)
                     {
@@ -187,7 +188,26 @@ namespace StalkerOnlineQuesterEditor
                             CDialogs.AddDialogSkillsToListSkills(dialog, "Precondition", "Skills", Precondition.Skills);
                         Precondition.KarmaPK = new List<int>();
 
+                        Precondition.Perks = new List<int>();
+                        if (dialog.Element("Precondition").Element("Perks") != null)
+                            CDialogs.AddDataToList(dialog, "Precondition", "Perks", Precondition.Perks);
+                        Precondition.noPerks = new List<int>();
+                        if (dialog.Element("Precondition").Element("noPerks") != null)
+                            CDialogs.AddDataToList(dialog, "Precondition", "noPerks", Precondition.noPerks);
+                        Precondition.KarmaPK = new List<int>();
+
+                        Precondition.Achievements = new List<int>();
+                        if (dialog.Element("Precondition").Element("Achievements") != null)
+                            CDialogs.AddDataToList(dialog, "Precondition", "Achievements", Precondition.Achievements);
+                        Precondition.noAchievements = new List<int>();
+                        if (dialog.Element("Precondition").Element("noAchievements") != null)
+                            CDialogs.AddDataToList(dialog, "Precondition", "noAchievements", Precondition.noAchievements);
+
                         CDialogs.AddDataToList(dialog, "Precondition", "KarmaPK", Precondition.KarmaPK);
+                        CDialogs.AddDataToList(dialog, "Precondition", "playerCoords", Precondition.playerCoords);
+                        if (dialog.Element("Precondition").Element("coordsRadius") != null)
+                            Precondition.coordsRadius = int.Parse(dialog.Element("Precondition").Element("coordsRadius").Value);
+
                         if (dialog.Element("Precondition").Element("forDev") != null)
                             Precondition.forDev = true;
                         if (dialog.Element("Precondition").Element("hidden") != null)
@@ -195,6 +215,25 @@ namespace StalkerOnlineQuesterEditor
                         if (dialog.Element("Precondition").Element("tutorialPhase") != null)
                             Precondition.tutorialPhase = int.Parse(dialog.Element("Precondition").Element("tutorialPhase").Value);
 
+                        if (dialog.Element("Precondition").Element("pvpRank") != null)
+                        {
+                            string[] value = dialog.Element("Precondition").Element("pvpRank").Value.Split('-');
+                            for (int i = 0; i < 2; i++)
+                            {
+                                Precondition.PVPranks[i] = Convert.ToInt16(value[i]);
+                            }
+                        }
+                        if (dialog.Element("Precondition").Element("pvpMode") != null)
+                            Precondition.PVPMode = int.Parse(dialog.Element("Precondition").Element("pvpMode").Value);
+
+                        if (dialog.Element("Precondition").Element("groupBonus") != null)
+                        {
+                            string[] value = dialog.Element("Precondition").Element("groupBonus").Value.Split(':');
+                            for (int i = 0; i < 3; i++)
+                            {
+                                Precondition.fracBonus[i] = Convert.ToInt16(value[i]);
+                            }
+                        }
                         if (dialog.Element("Precondition").Element("Transport") != null)
                         {
                             if (dialog.Element("Precondition").Element("Transport").Element("inTransportList") != null)
@@ -219,6 +258,10 @@ namespace StalkerOnlineQuesterEditor
 
                         if (dialog.Element("Precondition").Element("radioAvailable") != null)
                             Precondition.radioAvailable = (RadioAvalible)Convert.ToInt32(dialog.Element("Precondition").Element("radioAvailable").Value);
+                        if (dialog.Element("Precondition").Element("dungeonPhase") != null)
+                            Precondition.dungeonPhase = Convert.ToInt32(dialog.Element("Precondition").Element("dungeonPhase").Value);
+                        if (dialog.Element("Precondition").Element("dungeonNot") != null)
+                            Precondition.dungeonNot = true;
                         if (dialog.Element("Precondition").Element("tests") != null)
                         {
                             tests = new List<int>();
@@ -250,6 +293,21 @@ namespace StalkerOnlineQuesterEditor
                                 double B = double.Parse(fr[2], System.Globalization.CultureInfo.InvariantCulture);
                                 Precondition.Reputation[fractionID].Add(A);
                                 Precondition.Reputation[fractionID].Add(B);
+                            }
+                        }
+                        if (dialog.Element("Precondition").Element("Reputation2") != null)
+                        {
+                            foreach (string el in dialog.Element("Precondition").Element("Reputation2").Value.Split(';'))
+                            {
+                                if (el == "")
+                                    continue;
+                                string[] fr = el.Split(':');
+                                int fractionID = int.Parse(fr[0]);
+                                Precondition.Reputation2.Add(fractionID, new List<double>());
+                                double A = double.Parse(fr[1], System.Globalization.CultureInfo.InvariantCulture);
+                                double B = double.Parse(fr[2], System.Globalization.CultureInfo.InvariantCulture);
+                                Precondition.Reputation2[fractionID].Add(A);
+                                Precondition.Reputation2[fractionID].Add(B);
                             }
                         }
                         if (dialog.Element("Precondition").Element("NPCReputation") != null)
@@ -291,7 +349,29 @@ namespace StalkerOnlineQuesterEditor
                                 CQuests.parceItems(dialog.Element("Precondition").Element("noneItems").Element("Items"), Precondition.itemsNone.items);
                             }
                         }
+                        if (dialog.Element("Precondition").Element("Knowledges") != null)
+                        {
+                            CDialogs.AddPreconditionQuests(dialog, "Knowledges", "mustKnowledge", Precondition.knowledges.mustKnowledge, ref Precondition.knowledges.conditionMustKnowledge);
+                            CDialogs.AddPreconditionQuests(dialog, "Knowledges", "shouldntKnowledge", Precondition.knowledges.shouldntKnowledge, ref Precondition.knowledges.conditionShouldntKnowledge);
+                        }
 
+                        if (dialog.Element("Precondition").Element("TimeWeather") != null)
+                        {
+                            WeatherData weather = new WeatherData();
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("space") != null)
+                                weather.space = Convert.ToInt32(dialog.Element("Precondition").Element("TimeWeather").Element("space").Value);
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("weathers") != null)
+                                weather.weathers = new List<string>(dialog.Element("Precondition").Element("TimeWeather").Element("weathers").Value.Split(','));
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("or") != null)
+                                weather.is_or = true;
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("timeStart") != null)
+                                weather.timeStart = dialog.Element("Precondition").Element("TimeWeather").Element("timeStart").Value;
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("timeEnd") != null)
+                                weather.timeEnd = dialog.Element("Precondition").Element("TimeWeather").Element("timeEnd").Value;
+                            if (dialog.Element("Precondition").Element("TimeWeather").Element("only_no") != null)
+                                weather.only_no = true;
+                            Precondition.weather = weather;
+                        }
                     }
                     NodeCoordinates nodeCoord = new NodeCoordinates();
                     if (dialog.Element("RootDialog") != null)
@@ -520,26 +600,62 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Precondition").Element("ListOfMustNoQuests").Add(new XElement("listOfMassQuests",
                                                                      dialog.Precondition.ListOfMustNoQuests.ListOfMassQuests.Replace(',', dialog.Precondition.ListOfMustNoQuests.conditionOfMassQuests)));
                     }
+                        if (dialog.Precondition.knowledges.Any())
+                        {
+                            element.Element("Precondition").Add(new XElement("Knowledges"));
+                            if (dialog.Precondition.knowledges.mustKnowledge.Any())
+                                element.Element("Precondition").Element("Knowledges").Add(new XElement("mustKnowledge",
+                                              Global.GetListAsString(dialog.Precondition.knowledges.mustKnowledge,
+                                                                    dialog.Precondition.knowledges.conditionMustKnowledge)));
+                            if (dialog.Precondition.knowledges.shouldntKnowledge.Any())
+                                element.Element("Precondition").Element("Knowledges").Add(new XElement("shouldntKnowledge",
+                                              Global.GetListAsString(dialog.Precondition.knowledges.shouldntKnowledge,
+                                                                    dialog.Precondition.knowledges.conditionShouldntKnowledge)));
+                        }
                     if (dialog.Precondition.clanOptions != "")
                         element.Element("Precondition").Add(new XElement("clanOptions", dialog.Precondition.clanOptions));
                     if (dialog.Precondition.radioAvailable != RadioAvalible.None)
                         element.Element("Precondition").Add(new XElement("radioAvailable", Convert.ToInt32(dialog.Precondition.radioAvailable).ToString()));
-
+                    if (dialog.Precondition.dungeonPhase > 0)
+                        element.Element("Precondition").Add(new XElement("dungeonPhase", Convert.ToInt32(dialog.Precondition.dungeonPhase).ToString()));
+                    if (dialog.Precondition.dungeonNot)
+                        element.Element("Precondition").Add(new XElement("dungeonNot", "1"));
                     if (dialog.Precondition.MustNoEffects.Any())
                         element.Element("Precondition").Add(dialog.Precondition.getMustNoEffects());
                     if (dialog.Precondition.NecessaryEffects.Any())
                         element.Element("Precondition").Add(dialog.Precondition.getNecessaryEffects());
                     if (dialog.Precondition.Skills.Any())
                         element.Element("Precondition").Add(dialog.Precondition.Skills.getSkills());
+                        if (dialog.Precondition.Perks.Any())
+                            element.Element("Precondition").Add(new XElement("Perks", Global.GetListAsString(dialog.Precondition.Perks)));
+                        if (dialog.Precondition.noPerks.Any())
+                            element.Element("Precondition").Add(new XElement("noPerks", Global.GetListAsString(dialog.Precondition.noPerks)));
+                        if (dialog.Precondition.Achievements.Any())
+                            element.Element("Precondition").Add(new XElement("Achievements", Global.GetListAsString(dialog.Precondition.Achievements)));
+                        if (dialog.Precondition.noAchievements.Any())
+                            element.Element("Precondition").Add(new XElement("noAchievements", Global.GetListAsString(dialog.Precondition.noAchievements)));
+                        if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
                     if (dialog.Precondition.PlayerLevel != "" && dialog.Precondition.PlayerLevel != ":")
                         element.Element("Precondition").Add(new XElement("PlayerLevel", dialog.Precondition.PlayerLevel));
                     if (dialog.Precondition.getReputation() != "")
                         element.Element("Precondition").Add(new XElement("Reputation", dialog.Precondition.getReputation()));
+                    if (dialog.Precondition.getReputation2() != "")
+                        element.Element("Precondition").Add(new XElement("Reputation2", dialog.Precondition.getReputation2()));
                     if (dialog.Precondition.getNPCReputation() != "")
                         element.Element("Precondition").Add(new XElement("NPCReputation", dialog.Precondition.getNPCReputation()));
                     if (dialog.Precondition.KarmaPK.Any())
                         element.Element("Precondition").Add(new XElement("KarmaPK", Global.GetListAsString(dialog.Precondition.KarmaPK)));
                     }
+
+                    if (dialog.Precondition.playerCoords.Any())
+                    {
+                        element.Element("Precondition").Add(new XElement("playerCoords", Global.GetListAsString(dialog.Precondition.playerCoords)));
+                        element.Element("Precondition").Add(new XElement("coordsRadius", Global.GetIntAsString(dialog.Precondition.coordsRadius)));
+                    }
+
+                    if (dialog.Precondition.weather.Any())
+                        element.Element("Precondition").Add(dialog.Precondition.weather.getXML());
+
                     if (dialog.Precondition.forDev)
                         element.Element("Precondition").Add(new XElement("forDev", Global.GetBoolAsString(dialog.Precondition.forDev)));
                     if (dialog.Precondition.hidden)
@@ -567,6 +683,19 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Precondition.tutorialPhase != -1)
                     {
                         element.Element("Precondition").Add(new XElement("tutorialPhase", dialog.Precondition.tutorialPhase.ToString()));
+                    }
+
+                    if (dialog.Precondition.PVPranks.Sum() > 0)
+                    {
+                        element.Element("Precondition").Add(new XElement("pvpRank", dialog.Precondition.PVPranks[0].ToString() + "-" + dialog.Precondition.PVPranks[1].ToString()));
+                    }
+
+                    if (dialog.Precondition.PVPMode >= 0)
+                        element.Element("Precondition").Add(new XElement("pvpMode", dialog.Precondition.PVPMode.ToString()));
+
+                    if (dialog.Precondition.fracBonus.Sum() > 0)
+                    {
+                        element.Element("Precondition").Add(new XElement("groupBonus", string.Join(":", dialog.Precondition.fracBonus)));
                     }
 
                     if (dialog.Precondition.items.itemCategory != -1)
@@ -612,6 +741,8 @@ namespace StalkerOnlineQuesterEditor
                             element.Element("Actions").Add(new XElement("CancelQuest", Global.GetListAsString(dialog.Actions.CancelQuests)));
                         if (dialog.Actions.FailQuests.Any())
                             element.Element("Actions").Add( new XElement("FailQuest", Global.GetListAsString(dialog.Actions.FailQuests)));
+                        if (dialog.Actions.GetKnowleges.Any())
+                            element.Element("Actions").Add(new XElement("GetKnowleges", Global.GetListAsString(dialog.Actions.GetKnowleges)));
                         if (dialog.Actions.actionCamera.Any())
                         {
                             element.Element("Actions").Add(new XElement("GoToCamera", dialog.Actions.actionCamera));

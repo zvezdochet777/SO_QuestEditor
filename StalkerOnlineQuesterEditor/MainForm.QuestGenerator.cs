@@ -68,6 +68,7 @@ namespace StalkerOnlineQuesterEditor
             btnAGOpened2Change.Click += (sender, e) => { onBtnAGChangeClick(sender, e, lbAGOpened2, false, "opened"); };
             btnAGOnTest2Change.Click += (sender, e) => { onBtnAGChangeClick(sender, e, lbAGOnTest2, false, "on_test"); };
             btnAGClosed2Change.Click += (sender, e) => { onBtnAGChangeClick(sender, e, lbAGClosed2, false, "closed"); };
+            btnAGHelloChange.Click += (sender, e) =>   { onBtnAGChangeClick(sender, e, lbAGHello, false, "hello"); };
 
             btnAGOpenedAdd.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGOpened, true, "opened"); };
             btnAGOnTestAdd.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGOnTest, true, "on_test"); };
@@ -76,6 +77,7 @@ namespace StalkerOnlineQuesterEditor
             btnAGOpened2Add.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGOpened2, false, "opened"); };
             btnAGOnTest2Add.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGOnTest2, false, "on_test"); };
             btnAGClosed2Add.Click += (sender, e) => { onBtnAGAddClick(sender, e, lbAGClosed2, false, "closed"); };
+            btnAGHelloAdd.Click += (sender, e) =>   { onBtnAGAddClick(sender, e, lbAGHello, false, "hello"); };
 
             btnAGOpenedDel.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGOpened, true, "opened"); };
             btnAGOnTestDel.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGOnTest, true, "on_test"); };
@@ -84,6 +86,7 @@ namespace StalkerOnlineQuesterEditor
             btnAGOpened2Del.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGOpened2, false, "opened"); };
             btnAGOnTest2Del.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGOnTest2, false, "on_test"); };
             btnAGClosed2Del.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGClosed2, false, "closed"); };
+            btnAGHelloDel.Click += (sender, e) => { onBtnAGDelClick(sender, e, lbAGHello, false, "hello"); };
 
             btnAGAcceptQuestChange.Click += (sender, e)  => { onBtnAGNChangeClick(sender, e, lbAGAcceptQuest, "yes"); };
             btnAGAcceptQuestAdd.Click += (sender, e)     => { onBtnAGNAddClick(sender, e, lbAGAcceptQuest, "yes"); };
@@ -170,7 +173,7 @@ namespace StalkerOnlineQuesterEditor
             Forms.InputBox input = new Forms.InputBox("Add:", "");
             DialogResult result = input.ShowDialog();
             if (result != DialogResult.OK) return;
-            isDirty = QAutogenDatacs.addDialog(0, input.getResult(), type, true);
+            isDirty = QAutogenDatacs.addDialog(-1, input.getResult(), type, true);
             cbNPCNature_SelectedIndexChanged(sender, e);
         }
 
@@ -250,7 +253,7 @@ namespace StalkerOnlineQuesterEditor
         private void cbNPCNature_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (var i in new List<ListBox>() { lbAGOnTest, lbAGOnTest2, lbAGClosed, lbAGClosed2, lbAGOpened, lbAGOpened2,
-                                                    lbAGAcceptQuest, lbAGDeclineQuest, lbAGGetQuest})
+                                                    lbAGAcceptQuest, lbAGDeclineQuest, lbAGGetQuest, lbAGHello})
                 i.Items.Clear();
 
             foreach (var i in QAutogenDatacs.data_dialogs.netral.yes)
@@ -283,7 +286,11 @@ namespace StalkerOnlineQuesterEditor
             foreach (var i in _dialogs.dialogs_closed.titles)
                 lbAGClosed.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTitleByID(Convert.ToInt32(i)));
 
-            
+            if (_dialogs.dialogs_hello == null) _dialogs.dialogs_hello = new AGDialogs();
+            if (_dialogs.dialogs_hello.texts == null) _dialogs.dialogs_hello.texts = new List<int>();
+            foreach (var i in _dialogs.dialogs_hello.texts)
+                lbAGHello.Items.Add(QAutogenDatacs.locals_dialogs[CSettings.ORIGINAL_PATH].getTextByID(Convert.ToInt32(i)));
+
         }
 
         private void listBoxQT_SelectedIndexChanged(object sender, EventArgs e)

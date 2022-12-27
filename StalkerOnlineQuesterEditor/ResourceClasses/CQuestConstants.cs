@@ -60,6 +60,8 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_PVP_MAP_CAPTURE_FLAG = 41; //Сделать что-то над флагом в пвп карте
         public static int TYPE_PVP_MAP_SCORE = 42; //Сделать набрать очки в пвп карте
 
+
+        public static int TYPE_DUNGEON_BOX_COUNTER = 45; // собрать коробки внутри танка в данже
         public static int TYPE_CREATE_NPC = 51; // создать бегающего НИП
         public static int TYPE_CREATE_MOB = 52; // создать моба
         public static int TYPE_KILLSCENARIONPC = 53; // убить НИП созданного квестом
@@ -106,6 +108,12 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC, "37 Убийство NPC."));
             simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC_WITH_ONTEST, "38 Убийство NPC со сдачей"));
 
+            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_KILL, "40 Убить во время пвп матча"));
+            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_CAPTURE_FLAG, "41 Сделать что-то над флагом в пвп карте"));
+            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_SCORE, "42 Набрать очки в пвп карте"));
+
+            simpleQuestsType.Add(new СQuestType(TYPE_DUNGEON_BOX_COUNTER, "45 Cобрать коробки внутри танка в данже"));
+
             // ierarchyQuestsType.Add(new СQuestType(50, "50 Игра против режиссера."));
             simpleQuestsType.Add(new СQuestType(TYPE_CREATE_NPC, "51 Создать NPC."));
             simpleQuestsType.Add(new СQuestType(TYPE_CREATE_MOB, "52 Создать Моба."));
@@ -115,9 +123,9 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_ENTITY_SEEN, "55 Увидеть сущность."));
             simpleQuestsType.Add(new СQuestType(TYPE_ENTITY_SEEN_AUTO, "56 Увидеть сущность АВТО.")); 
 
-            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_KILL,         "40 Убить во время пвп матча"));
-            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_CAPTURE_FLAG, "41 Сделать что-то над флагом в пвп карте"));
-            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_SCORE,        "42 Набрать очки в пвп карте"));
+            
+
+
 
             ierarchyQuestsType.Add(new СQuestType(10,  "10 Выполнение всех в любом порядке."));
             ierarchyQuestsType.Add(new СQuestType(11,  "11 Выполнение всех по порядку."));

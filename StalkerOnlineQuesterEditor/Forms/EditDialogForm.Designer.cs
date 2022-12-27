@@ -181,12 +181,12 @@
             this.cbAnimationPlayer = new System.Windows.Forms.CheckBox();
             this.tabItems = new System.Windows.Forms.TabPage();
             this.cbItemsEquipped = new System.Windows.Forms.CheckBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.rbNonItemsOr = new System.Windows.Forms.RadioButton();
-            this.rbNonItemsAnd = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.rbItemsOr = new System.Windows.Forms.RadioButton();
             this.rbItemsAnd = new System.Windows.Forms.RadioButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.rbNonItemsOr = new System.Windows.Forms.RadioButton();
+            this.rbNonItemsAnd = new System.Windows.Forms.RadioButton();
             this.panelItems = new System.Windows.Forms.Panel();
             this.GVNonItems = new System.Windows.Forms.DataGridView();
             this.GVNonItems_itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -194,6 +194,10 @@
             this.GVNonItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GVNonItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GVItems = new System.Windows.Forms.DataGridView();
+            this.GVItems_itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GVItems_itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GVItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GVItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cbNonCategory = new System.Windows.Forms.ComboBox();
@@ -256,6 +260,13 @@
             this.dataGridViewComboBoxColumn4 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewComboBoxColumn5 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabOther = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cbDungeonPhase = new System.Windows.Forms.ComboBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.nupCoordRadius = new System.Windows.Forms.NumericUpDown();
+            this.tbCoordinates = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cbRatingPVPMode = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -299,15 +310,7 @@
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
             this.tReactionNPC = new System.Windows.Forms.RichTextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.tbCoordinates = new System.Windows.Forms.TextBox();
-            this.nupCoordRadius = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.GVItems_itemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GVItems_itemAttr = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GVItems_itemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GVItems_ItemCond = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbDungeonNon = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -340,8 +343,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataSkill)).BeginInit();
             this.tabActions.SuspendLayout();
             this.tabItems.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panelItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVNonItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).BeginInit();
@@ -359,6 +362,9 @@
             this.tabAchievements.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataAchievements)).BeginInit();
             this.tabOther.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupCoordRadius)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -366,8 +372,6 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupCoordRadius)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -1936,39 +1940,6 @@
             this.cbItemsEquipped.Text = "Должно быть экипировано";
             this.cbItemsEquipped.UseVisualStyleBackColor = true;
             // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.rbNonItemsOr);
-            this.panel3.Controls.Add(this.rbNonItemsAnd);
-            this.panel3.Location = new System.Drawing.Point(671, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(88, 31);
-            this.panel3.TabIndex = 14;
-            this.panel3.Visible = false;
-            // 
-            // rbNonItemsOr
-            // 
-            this.rbNonItemsOr.AutoSize = true;
-            this.rbNonItemsOr.Location = new System.Drawing.Point(39, 7);
-            this.rbNonItemsOr.Name = "rbNonItemsOr";
-            this.rbNonItemsOr.Size = new System.Drawing.Size(49, 17);
-            this.rbNonItemsOr.TabIndex = 13;
-            this.rbNonItemsOr.Text = "ИЛИ";
-            this.rbNonItemsOr.UseVisualStyleBackColor = true;
-            // 
-            // rbNonItemsAnd
-            // 
-            this.rbNonItemsAnd.AutoSize = true;
-            this.rbNonItemsAnd.Checked = true;
-            this.rbNonItemsAnd.Location = new System.Drawing.Point(0, 7);
-            this.rbNonItemsAnd.Name = "rbNonItemsAnd";
-            this.rbNonItemsAnd.Size = new System.Drawing.Size(33, 17);
-            this.rbNonItemsAnd.TabIndex = 12;
-            this.rbNonItemsAnd.TabStop = true;
-            this.rbNonItemsAnd.Text = "И";
-            this.rbNonItemsAnd.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2001,6 +1972,39 @@
             this.rbItemsAnd.TabStop = true;
             this.rbItemsAnd.Text = "И";
             this.rbItemsAnd.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.rbNonItemsOr);
+            this.panel3.Controls.Add(this.rbNonItemsAnd);
+            this.panel3.Location = new System.Drawing.Point(671, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(88, 31);
+            this.panel3.TabIndex = 14;
+            this.panel3.Visible = false;
+            // 
+            // rbNonItemsOr
+            // 
+            this.rbNonItemsOr.AutoSize = true;
+            this.rbNonItemsOr.Location = new System.Drawing.Point(39, 7);
+            this.rbNonItemsOr.Name = "rbNonItemsOr";
+            this.rbNonItemsOr.Size = new System.Drawing.Size(49, 17);
+            this.rbNonItemsOr.TabIndex = 13;
+            this.rbNonItemsOr.Text = "ИЛИ";
+            this.rbNonItemsOr.UseVisualStyleBackColor = true;
+            // 
+            // rbNonItemsAnd
+            // 
+            this.rbNonItemsAnd.AutoSize = true;
+            this.rbNonItemsAnd.Checked = true;
+            this.rbNonItemsAnd.Location = new System.Drawing.Point(0, 7);
+            this.rbNonItemsAnd.Name = "rbNonItemsAnd";
+            this.rbNonItemsAnd.Size = new System.Drawing.Size(33, 17);
+            this.rbNonItemsAnd.TabIndex = 12;
+            this.rbNonItemsAnd.TabStop = true;
+            this.rbNonItemsAnd.Text = "И";
+            this.rbNonItemsAnd.UseVisualStyleBackColor = true;
             // 
             // panelItems
             // 
@@ -2071,6 +2075,36 @@
             this.GVItems.Name = "GVItems";
             this.GVItems.Size = new System.Drawing.Size(393, 191);
             this.GVItems.TabIndex = 6;
+            // 
+            // GVItems_itemType
+            // 
+            this.GVItems_itemType.HeaderText = "Тип";
+            this.GVItems_itemType.Name = "GVItems_itemType";
+            this.GVItems_itemType.Width = 250;
+            // 
+            // GVItems_itemAttr
+            // 
+            this.GVItems_itemAttr.HeaderText = "Аттрибут";
+            this.GVItems_itemAttr.Items.AddRange(new object[] {
+            "Обычный",
+            "Квестовый",
+            "Использовать"});
+            this.GVItems_itemAttr.Name = "GVItems_itemAttr";
+            this.GVItems_itemAttr.Width = 70;
+            // 
+            // GVItems_itemQuantity
+            // 
+            this.GVItems_itemQuantity.HeaderText = "Количество";
+            this.GVItems_itemQuantity.Name = "GVItems_itemQuantity";
+            this.GVItems_itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GVItems_itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GVItems_itemQuantity.Width = 75;
+            // 
+            // GVItems_ItemCond
+            // 
+            this.GVItems_ItemCond.HeaderText = "(%)Мин. прочность (%)";
+            this.GVItems_ItemCond.Name = "GVItems_ItemCond";
+            this.GVItems_ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label12
             // 
@@ -2686,6 +2720,7 @@
             // 
             // tabOther
             // 
+            this.tabOther.Controls.Add(this.groupBox7);
             this.tabOther.Controls.Add(this.groupBox6);
             this.tabOther.Controls.Add(this.groupBox5);
             this.tabOther.Controls.Add(this.groupBox4);
@@ -2698,6 +2733,83 @@
             this.tabOther.TabIndex = 10;
             this.tabOther.Text = "Другое";
             this.tabOther.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.cbDungeonNon);
+            this.groupBox7.Controls.Add(this.cbDungeonPhase);
+            this.groupBox7.Location = new System.Drawing.Point(575, 7);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(219, 81);
+            this.groupBox7.TabIndex = 73;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Состояние данжа:";
+            // 
+            // cbDungeonPhase
+            // 
+            this.cbDungeonPhase.FormattingEnabled = true;
+            this.cbDungeonPhase.Items.AddRange(new object[] {
+            "нет фазы",
+            "фаза 1",
+            "фаза 2",
+            "фаза 3 ",
+            "фаза 4",
+            "фаза 5",
+            "фаза 6"});
+            this.cbDungeonPhase.Location = new System.Drawing.Point(6, 19);
+            this.cbDungeonPhase.Name = "cbDungeonPhase";
+            this.cbDungeonPhase.Size = new System.Drawing.Size(207, 21);
+            this.cbDungeonPhase.TabIndex = 46;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label33);
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.nupCoordRadius);
+            this.groupBox6.Controls.Add(this.tbCoordinates);
+            this.groupBox6.Location = new System.Drawing.Point(369, 7);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 81);
+            this.groupBox6.TabIndex = 72;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Координаты на карте(Игрок)";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(6, 45);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(46, 13);
+            this.label33.TabIndex = 51;
+            this.label33.Text = "Радиус:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 21);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 13);
+            this.label13.TabIndex = 50;
+            this.label13.Text = "Позиция:";
+            // 
+            // nupCoordRadius
+            // 
+            this.nupCoordRadius.Location = new System.Drawing.Point(60, 43);
+            this.nupCoordRadius.Name = "nupCoordRadius";
+            this.nupCoordRadius.Size = new System.Drawing.Size(61, 20);
+            this.nupCoordRadius.TabIndex = 1;
+            this.nupCoordRadius.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // tbCoordinates
+            // 
+            this.tbCoordinates.Location = new System.Drawing.Point(60, 18);
+            this.tbCoordinates.Name = "tbCoordinates";
+            this.tbCoordinates.Size = new System.Drawing.Size(134, 20);
+            this.tbCoordinates.TabIndex = 0;
             // 
             // groupBox5
             // 
@@ -3130,85 +3242,15 @@
             this.tReactionNPC.Text = "";
             this.tReactionNPC.TextChanged += new System.EventHandler(this.tReactionNPC_TextChanged);
             // 
-            // groupBox6
+            // cbDungeonNon
             // 
-            this.groupBox6.Controls.Add(this.label33);
-            this.groupBox6.Controls.Add(this.label13);
-            this.groupBox6.Controls.Add(this.nupCoordRadius);
-            this.groupBox6.Controls.Add(this.tbCoordinates);
-            this.groupBox6.Location = new System.Drawing.Point(369, 7);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(200, 81);
-            this.groupBox6.TabIndex = 72;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Координаты на карте(Игрок)";
-            // 
-            // tbCoordinates
-            // 
-            this.tbCoordinates.Location = new System.Drawing.Point(60, 18);
-            this.tbCoordinates.Name = "tbCoordinates";
-            this.tbCoordinates.Size = new System.Drawing.Size(134, 20);
-            this.tbCoordinates.TabIndex = 0;
-            // 
-            // nupCoordRadius
-            // 
-            this.nupCoordRadius.Location = new System.Drawing.Point(60, 43);
-            this.nupCoordRadius.Name = "nupCoordRadius";
-            this.nupCoordRadius.Size = new System.Drawing.Size(61, 20);
-            this.nupCoordRadius.TabIndex = 1;
-            this.nupCoordRadius.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 21);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(54, 13);
-            this.label13.TabIndex = 50;
-            this.label13.Text = "Позиция:";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(6, 45);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(46, 13);
-            this.label33.TabIndex = 51;
-            this.label33.Text = "Радиус:";
-            // 
-            // GVItems_itemType
-            // 
-            this.GVItems_itemType.HeaderText = "Тип";
-            this.GVItems_itemType.Name = "GVItems_itemType";
-            this.GVItems_itemType.Width = 250;
-            // 
-            // GVItems_itemAttr
-            // 
-            this.GVItems_itemAttr.HeaderText = "Аттрибут";
-            this.GVItems_itemAttr.Items.AddRange(new object[] {
-            "Обычный",
-            "Квестовый",
-            "Использовать"});
-            this.GVItems_itemAttr.Name = "GVItems_itemAttr";
-            this.GVItems_itemAttr.Width = 70;
-            // 
-            // GVItems_itemQuantity
-            // 
-            this.GVItems_itemQuantity.HeaderText = "Количество";
-            this.GVItems_itemQuantity.Name = "GVItems_itemQuantity";
-            this.GVItems_itemQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.GVItems_itemQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.GVItems_itemQuantity.Width = 75;
-            // 
-            // GVItems_ItemCond
-            // 
-            this.GVItems_ItemCond.HeaderText = "(%)Мин. прочность (%)";
-            this.GVItems_ItemCond.Name = "GVItems_ItemCond";
-            this.GVItems_ItemCond.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cbDungeonNon.AutoSize = true;
+            this.cbDungeonNon.Location = new System.Drawing.Point(6, 45);
+            this.cbDungeonNon.Name = "cbDungeonNon";
+            this.cbDungeonNon.Size = new System.Drawing.Size(136, 17);
+            this.cbDungeonNon.TabIndex = 47;
+            this.cbDungeonNon.Text = "все фазы кроме этой";
+            this.cbDungeonNon.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -3264,10 +3306,10 @@
             this.tabActions.PerformLayout();
             this.tabItems.ResumeLayout(false);
             this.tabItems.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panelItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GVNonItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVItems)).EndInit();
@@ -3289,6 +3331,11 @@
             this.tabAchievements.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataAchievements)).EndInit();
             this.tabOther.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupCoordRadius)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -3302,9 +3349,6 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupCoordRadius)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3592,5 +3636,8 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn GVItems_itemAttr;
         private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_itemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn GVItems_ItemCond;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.ComboBox cbDungeonPhase;
+        private System.Windows.Forms.CheckBox cbDungeonNon;
     }
 }

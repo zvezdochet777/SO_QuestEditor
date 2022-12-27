@@ -60,6 +60,7 @@ namespace StalkerOnlineQuesterEditor
             if (parent.isRoot(currentDialogID) && (!isAdd))
                 lReactionNPC.Text = "Приветствие:";
             cbRadioNode.SelectedIndex = 0;
+            cbDungeonPhase.SelectedIndex = 0;
             
             if (!isAdd)
             {
@@ -193,6 +194,12 @@ namespace StalkerOnlineQuesterEditor
                 if (ActionsComboBox.Text == "Запустить станок")
                 {
                     string key = parent.workbenchTypes.getName(curDialog.Actions.Data);
+                    commandsComboBox.SelectedItem = key;
+                }
+
+                if (ActionsComboBox.Text == "Списание репутации")
+                {
+                    string key = parent.fractions2.getFractionDesctByID(Convert.ToInt32(curDialog.Actions.Data));
                     commandsComboBox.SelectedItem = key;
                 }
 
@@ -353,7 +360,8 @@ namespace StalkerOnlineQuesterEditor
                 editPrecondition.noAchievements = curDialog.Precondition.noAchievements;
 
             cbRadioNode.SelectedIndex = (int)curDialog.Precondition.radioAvailable;
-
+            cbDungeonPhase.SelectedIndex = curDialog.Precondition.dungeonPhase;
+            cbDungeonNon.Checked = curDialog.Precondition.dungeonNot;
             cbForDev.Checked = curDialog.Precondition.forDev;
             cbHidden.Checked = curDialog.Precondition.hidden;
             this.initReputationTab(dataReputation, parent.fractions, this.editPrecondition.Reputation, this.editPrecondition.NPCReputation);
@@ -516,7 +524,7 @@ namespace StalkerOnlineQuesterEditor
             teleportComboBox.Visible = (SelectedValue == 5);
             ToDialogComboBox.Visible = (SelectedValue == 100);
 
-            List<int> list = new List<int>() { 19, 4, 6, 28, 32 };
+            List<int> list = new List<int>() { 19, 4, 6, 28, 32, 36 };
             commandsComboBox.Visible = list.Contains(SelectedValue);
     
             list = new List<int>() { 20, 1, 7, 30, 31};
@@ -548,6 +556,12 @@ namespace StalkerOnlineQuesterEditor
                 commandsComboBox.Items.Clear();
                 foreach (string key in parent.workbenchTypes.getKeys())
                     commandsComboBox.Items.Add(key);
+            }
+            if (SelectedValue == 36)
+            {
+                commandsComboBox.Items.Clear();
+                foreach (var key in parent.fractions2.getListOfFractions())
+                    commandsComboBox.Items.Add(key.Value);
             }
             switch (SelectedValue)
             { 
@@ -677,6 +691,8 @@ namespace StalkerOnlineQuesterEditor
                     actions.Data = parent.cmConst.getTtID(commandsComboBox.SelectedItem.ToString());
                 if ((actions.Event.Display == "Починка") || (actions.Event.Display == "Комплексная починка"))
                     actions.Data = parent.rpConst.getTtID(commandsComboBox.SelectedItem.ToString());
+                if (actions.Event.Display == "Списание репутации")
+                    actions.Data = parent.fractions2.getFractionIDByDescr(commandsComboBox.SelectedItem.ToString()).ToString();
                 List<string> list = new List<string>() { "Перейти в точку", "Бартер (обмен)", "Торговля", "Подземелье. активировать", "Вертолёт" };
                 if (list.Contains(actions.Event.Display))
                     actions.Data = tbAvatarGoTo.Text;
@@ -1040,6 +1056,8 @@ namespace StalkerOnlineQuesterEditor
             }
 
             precondition.radioAvailable = (RadioAvalible)cbRadioNode.SelectedIndex;
+            precondition.dungeonPhase = Math.Max(0, cbDungeonPhase.SelectedIndex);
+            precondition.dungeonNot = cbDungeonNon.Checked;
 
             if (debugTextBox.Text != "")
                 DebugData = debugTextBox.Text;

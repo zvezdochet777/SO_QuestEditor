@@ -354,7 +354,7 @@ namespace StalkerOnlineQuesterEditor
         public static bool addDialog(int natureID, string text, string type, bool isTitle)
         {
             int fraseID = 0;
-            if (natureID == 0)
+            if (natureID == -1)
             {
                 fraseID = getNewFraseID(true);
                 switch (type)
@@ -397,6 +397,10 @@ namespace StalkerOnlineQuesterEditor
                             dialog_data.dialogs_closed.titles.Add(fraseID);
                         else dialog_data.dialogs_closed.texts.Add(fraseID);
                         break;
+                    case "hello":
+                        dialog_data.dialogs_hello.texts.Add(fraseID);
+                        break;
+                        
                 }
             }
             foreach (var locale in CSettings.getFullListLocales())
@@ -450,6 +454,9 @@ namespace StalkerOnlineQuesterEditor
                         if (isTitle)
                             dialog_data.dialogs_closed.titles.Remove(fraseID);
                         else dialog_data.dialogs_closed.texts.Remove(fraseID);
+                        break;
+                    case "hello":
+                        dialog_data.dialogs_hello.texts.Remove(fraseID);
                         break;
                 }
             }
@@ -647,6 +654,7 @@ namespace StalkerOnlineQuesterEditor
         public AGDialogs dialogs_opened { get; set; }
         public AGDialogs dialogs_ontest { get; set; }
         public AGDialogs dialogs_closed { get; set; }
+        public AGDialogs dialogs_hello { get; set; }
     }
     
     public class Netural
