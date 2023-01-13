@@ -132,7 +132,7 @@ namespace StalkerOnlineQuesterEditor
             TextUtils.findTextErrors(tPlayerText);
             TextUtils.findTextErrors(tReactionNPC);
 
-            foreach (TreeNode active in parent.tree.Nodes.Find("Active",true))
+            foreach (TreeNode active in parent.GetCurrentTree().Nodes.Find("Active",true))
                 foreach (TreeNode node in active.Nodes)
                     ToDialogComboBox.Items.Add(node.Text);
             // заполнение текстбокса "Поддиалоги" (Nodes)

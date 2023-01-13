@@ -83,6 +83,7 @@ namespace StalkerOnlineQuesterEditor
             this.bAddQuest = new System.Windows.Forms.Button();
             this.QuestBox = new System.Windows.Forms.ComboBox();
             this.labelChosenQuest = new System.Windows.Forms.Label();
+            this.FakeQuestBox = new System.Windows.Forms.ComboBox();
             this.tabFraction = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bAddFracDialog = new System.Windows.Forms.Button();
@@ -776,6 +777,7 @@ namespace StalkerOnlineQuesterEditor
             this.panelSelectQuest.Controls.Add(this.bAddQuest);
             this.panelSelectQuest.Controls.Add(this.QuestBox);
             this.panelSelectQuest.Controls.Add(this.labelChosenQuest);
+            this.panelSelectQuest.Controls.Add(this.FakeQuestBox);
             resources.ApplyResources(this.panelSelectQuest, "panelSelectQuest");
             this.panelSelectQuest.Name = "panelSelectQuest";
             // 
@@ -801,11 +803,20 @@ namespace StalkerOnlineQuesterEditor
             this.QuestBox.Name = "QuestBox";
             this.QuestBox.SelectedIndexChanged += new System.EventHandler(this.QuestBox_SelectedIndexChanged);
             this.QuestBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuestBox_KeyDown);
+            this.QuestBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuestBox_KeyPress);
             // 
             // labelChosenQuest
             // 
             resources.ApplyResources(this.labelChosenQuest, "labelChosenQuest");
             this.labelChosenQuest.Name = "labelChosenQuest";
+            // 
+            // FakeQuestBox
+            // 
+            this.FakeQuestBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
+            this.FakeQuestBox.FormattingEnabled = true;
+            resources.ApplyResources(this.FakeQuestBox, "FakeQuestBox");
+            this.FakeQuestBox.Name = "FakeQuestBox";
+            this.FakeQuestBox.SelectedIndexChanged += new System.EventHandler(this.FakeQuestBox_SelectedIndexChanged);
             // 
             // tabFraction
             // 
@@ -821,10 +832,10 @@ namespace StalkerOnlineQuesterEditor
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.bAddFracDialog);
             this.panel1.Controls.Add(this.bEditFracDialog);
             this.panel1.Controls.Add(this.bRemoveFracDialog);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // bAddFracDialog
@@ -2869,6 +2880,7 @@ namespace StalkerOnlineQuesterEditor
         private System.Windows.Forms.Button btnAGHelloAdd;
         private System.Windows.Forms.Button btnAGHelloChange;
         private System.Windows.Forms.Button btnAGHelloDel;
+        private System.Windows.Forms.ComboBox FakeQuestBox;
     }
 }
 

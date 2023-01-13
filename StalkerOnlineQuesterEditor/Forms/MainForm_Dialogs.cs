@@ -756,6 +756,7 @@ namespace StalkerOnlineQuesterEditor
             Dictionary<int, CRectangle> rects = new Dictionary<int, CRectangle>();
             rects = RectManager.GetRectanglesForNpc(GetCurrentNPC());
             drawingLayer.RemoveAllChildren();
+            if (CentralDock.SelectedIndex == 2) return;
             foreach (CRectangle rect in rects.Values)
             {
                 PPath newRect = PPath.CreateRectangle(rect.coordX, rect.coordY, rect.Width, rect.Height);

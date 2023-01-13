@@ -261,6 +261,7 @@
             this.dataGridViewComboBoxColumn5 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabOther = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cbDungeonNon = new System.Windows.Forms.CheckBox();
             this.cbDungeonPhase = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label33 = new System.Windows.Forms.Label();
@@ -310,7 +311,6 @@
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
             this.tReactionNPC = new System.Windows.Forms.RichTextBox();
-            this.cbDungeonNon = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -1583,9 +1583,10 @@
             // 
             // lMustNotEffects
             // 
+            this.lMustNotEffects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lMustNotEffects.AutoSize = true;
             this.lMustNotEffects.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lMustNotEffects.Location = new System.Drawing.Point(312, 2);
+            this.lMustNotEffects.Location = new System.Drawing.Point(550, 2);
             this.lMustNotEffects.Name = "lMustNotEffects";
             this.lMustNotEffects.Size = new System.Drawing.Size(94, 13);
             this.lMustNotEffects.TabIndex = 5;
@@ -1595,7 +1596,7 @@
             // 
             this.lMustEffect.AutoSize = true;
             this.lMustEffect.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lMustEffect.Location = new System.Drawing.Point(3, 2);
+            this.lMustEffect.Location = new System.Drawing.Point(0, 2);
             this.lMustEffect.Name = "lMustEffect";
             this.lMustEffect.Size = new System.Drawing.Size(76, 13);
             this.lMustEffect.TabIndex = 4;
@@ -2745,6 +2746,16 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Состояние данжа:";
             // 
+            // cbDungeonNon
+            // 
+            this.cbDungeonNon.AutoSize = true;
+            this.cbDungeonNon.Location = new System.Drawing.Point(6, 45);
+            this.cbDungeonNon.Name = "cbDungeonNon";
+            this.cbDungeonNon.Size = new System.Drawing.Size(136, 17);
+            this.cbDungeonNon.TabIndex = 47;
+            this.cbDungeonNon.Text = "все фазы кроме этой";
+            this.cbDungeonNon.UseVisualStyleBackColor = true;
+            // 
             // cbDungeonPhase
             // 
             this.cbDungeonPhase.FormattingEnabled = true;
@@ -3241,16 +3252,6 @@
             this.tReactionNPC.TabIndex = 1;
             this.tReactionNPC.Text = "";
             this.tReactionNPC.TextChanged += new System.EventHandler(this.tReactionNPC_TextChanged);
-            // 
-            // cbDungeonNon
-            // 
-            this.cbDungeonNon.AutoSize = true;
-            this.cbDungeonNon.Location = new System.Drawing.Point(6, 45);
-            this.cbDungeonNon.Name = "cbDungeonNon";
-            this.cbDungeonNon.Size = new System.Drawing.Size(136, 17);
-            this.cbDungeonNon.TabIndex = 47;
-            this.cbDungeonNon.Text = "все фазы кроме этой";
-            this.cbDungeonNon.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 

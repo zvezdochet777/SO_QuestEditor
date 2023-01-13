@@ -111,6 +111,8 @@ namespace StalkerOnlineQuesterEditor
         IOClasses.TCPListener tcpListener;
 
 
+
+
         public MainForm(string[] args)
         {
             InitializeComponent();
@@ -249,6 +251,12 @@ namespace StalkerOnlineQuesterEditor
         {
             if (CentralDock.SelectedIndex == 2) return currentFraction;
             return currentNPC;
+        }
+
+        public TreeView GetCurrentTree()
+        {
+            if (CentralDock.SelectedIndex == 2) return treeFractionDialogs;
+            return tree;
         }
 
         //! Очищает данные о квестах - дерево квестов, комбобокс, подквесты
@@ -473,6 +481,14 @@ namespace StalkerOnlineQuesterEditor
             treeQuest.ExpandAll();
         }
 
+        private void FakeQuestBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string quest_name = FakeQuestBox.SelectedItem.ToString();
+            int questID = int.Parse(quest_name.Split(':')[0]);
+            NPCBox.SelectedValue = quests.quest[questID].Additional.Holder;
+            QuestBox.SelectedItem = quest_name;
+        }
+
         //! Заполнение итемов в комбобоксе NPC
         void fillFractionBox()
         {
@@ -546,9 +562,9 @@ namespace StalkerOnlineQuesterEditor
             NPCBox.SelectedIndex = CSettings.getLastNpcIndex();
             //NPCBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             //NPCBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            QuestBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
+            //QuestBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //QuestBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //QuestBox.AutoCompleteCustomSource.AddRange(quests.getQuestsIDasString());
         }
 
         //! Блокировка компонентов и обновление данных при смене вкладки на форме
@@ -2380,6 +2396,7 @@ namespace StalkerOnlineQuesterEditor
         //! Поиск по номеру квеста в комбобоксе квеста и вывод информации
         private void QuestBox_KeyDown(object sender, KeyEventArgs e)
         {
+            QuestBox.DroppedDown = false;
             if (e.KeyCode == Keys.Enter)
             {
                 string text = QuestBox.Text;
@@ -2399,11 +2416,12 @@ namespace StalkerOnlineQuesterEditor
                         QuestBox.SelectedItem = qtext;
                     }
                 }
+                /*
                 else    // вводят название квеста
                 {
                     int questNum = 0;
                     foreach (int questID in quests.quest.Keys)
-                        if (quests.quest[questID].QuestInformation.Title == text)
+                        if (quests.quest[questID].QuestInformation.Title.ToLower().Contains(text.ToLower()))
                         {
                             questNum = questID;
                             break;
@@ -2415,11 +2433,43 @@ namespace StalkerOnlineQuesterEditor
                         NPCBox.SelectedValue = quests.quest[questNum].Additional.Holder;
                         QuestBox.SelectedItem = qtext;
                     }
-                }
+                }*/
             }
+            QuestBox.DroppedDown = false;
         }
 
-       
+
+        private void QuestBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            QuestBox.DroppedDown = false;
+            string find_text = QuestBox.Text.ToLower();
+            List<string> result = new List<string>();
+            foreach (int questID in quests.quest.Keys)
+            {
+                string quest_statring = questID.ToString() + " " + quests.quest[questID].QuestInformation.Title.ToLower();
+                if (quest_statring.Contains(find_text.ToLower()))
+                {
+                    if (CSettings.getMode() == CSettings.MODE_EDITOR)
+                    {
+                        result.Add(questID + ": " + quests.quest[questID].QuestInformation.Title);
+                    }
+                    else if (CSettings.getMode() == CSettings.MODE_LOCALIZATION)
+                    {
+                        string locale = CSettings.getCurrentLocale();
+                        result.Add(questID + ": " + quests.locales[locale][questID].QuestInformation.Title);
+                    }
+
+                }
+            }
+            FakeQuestBox.Items.Clear();
+            FakeQuestBox.Items.AddRange(result.ToArray());
+            FakeQuestBox.DroppedDown = true;
+            QuestBox.DroppedDown = false;
+            //e.Handled = true;
+        }
+
+
         private void bStartSearch_Click(object sender, EventArgs e)
         {
             int count = 0;

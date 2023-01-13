@@ -74,6 +74,7 @@ namespace StalkerOnlineQuesterEditor
         private const string RectFilename = "Rectangles.xml";
         private const string RectFlag = "rect";
         private Dictionary<string, NPCRectangles> Rectangles;
+        private Dictionary<int, NPCRectangles> fractionRectangles;
         private string CurrentNPC;
         private int SelectedRectID;
 
