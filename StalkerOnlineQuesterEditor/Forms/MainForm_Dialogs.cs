@@ -126,6 +126,17 @@ namespace StalkerOnlineQuesterEditor
             return dialogs.dialogs[currentNPC].Keys.ToList<int>();
         }
 
+        public bool isLocaledDialog(int dialogID)
+        {
+            if (dialogID == 0) return false;
+            CDialog dialog;
+            if (CentralDock.SelectedIndex == 2)
+                dialog = CDialogs.getLocaleDialog(dialogID, "English", currentFraction, CFractionDialogs.locales);
+            else dialog = CDialogs.getLocaleDialog(dialogID, "English", currentNPC, dialogs.locales);
+            return dialog.Text.Any() || dialog.Title.Any();
+
+        }
+
         //Возвращает какой-либо диалог, костыль
         public CDialog getAnyDialogOnID(int dialogID)
         {
@@ -426,7 +437,22 @@ namespace StalkerOnlineQuesterEditor
                  listPoints[2] = new PointF(location.X + 2 * size.Height, location.Y + size.Height);
                  listPoints[3] = new PointF(location.X + size.Height, location.Y + 2*size.Height);                 
                  newNode = PPath.CreatePolygon(listPoints);
-                 text.X = newNode.X + 20;
+
+                if (dialog.Precondition.hidden)
+                {
+                    float sw = size.Width;
+                    float sh = size.Height * 2;
+                    PNode child = PPath.CreateLine(location.X, location.Y, location.X + sh, location.Y + sh);
+                    child.Pickable = false;
+                    newNode.AddChild(child);
+                    child = PPath.CreateLine(location.X, location.Y + sh, location.X + sh, location.Y);
+                    child.Pickable = false;
+                    newNode.AddChild(child);
+
+                }
+
+
+                text.X = newNode.X + 20;
                  text.Y = newNode.Y + 20;
              }
              else
@@ -455,9 +481,22 @@ namespace StalkerOnlineQuesterEditor
                         newNode = PPath.CreateRectangle(location.X, location.Y, size.Width, size.Height);
                  else
                      newNode = PPath.CreateEllipse(location.X, location.Y, size.Width, size.Height);
-                 text.X = newNode.X + 11;
+                if (dialog.Precondition.hidden)
+                {
+                    float sw = size.Width;
+                    float sh = size.Height;
+                    PNode child = PPath.CreateLine(location.X, location.Y, location.X + sw, location.Y + sh);
+                    child.Pickable = false;
+                    newNode.AddChild(child);
+                    child = PPath.CreateLine(location.X, location.Y + sh, location.X + sw, location.Y);
+                    child.Pickable = false;
+                    newNode.AddChild(child);
+
+                }
+                text.X = newNode.X + 11;
                  text.Y = newNode.Y + 10;
              }
+
             if (dialog.CheckNodes.Any())
             {
                 text.X = text.X - 3;

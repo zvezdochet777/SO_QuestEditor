@@ -66,6 +66,21 @@ namespace StalkerOnlineQuesterEditor
             return ret;
         }
 
+        public List<string> getSpacesNamesWithoutInstances()
+        {
+            List<string> ret = new List<string>();
+            CDungeonSpacesConstants dungeonConst = new CDungeonSpacesConstants();
+            List<string> exs = new List<string>() { "start_station", "start_station_sewers" };
+            foreach (CSpaceDescription key in this.spaces)
+            {
+                if (key.dir.StartsWith("inst")) continue;
+                if (dungeonConst.getAllSpaceNames().Contains("spaces/" + key.dir)) continue;
+                if (exs.Contains(key.dir)) continue;
+                ret.Add(key.id.ToString() + " " + key.name);
+            }
+            return ret;
+        }
+
         public string getSpaceNameByID(int id)
         {
             foreach (CSpaceDescription key in this.spaces)
@@ -234,8 +249,8 @@ namespace StalkerOnlineQuesterEditor
             CMobConstants mobs = new CMobConstants();
             foreach (XElement dungeon in doc.Root.Elements())
             {
-                //try
-                {
+                
+                try{
                     dung_id = int.Parse(dungeon.Element("id").Value.ToString());
                     DungeonSpace space = new DungeonSpace();
                     space.name = dungeons_tmp[dung_id];
@@ -258,7 +273,7 @@ namespace StalkerOnlineQuesterEditor
                     dungeons.Add(dung_id, space);
 
                 }
-                //catch
+                catch
                 {
                     System.Console.WriteLine("Error with dung_id:" + dungeon.Element("id").Value.ToString());
                 }

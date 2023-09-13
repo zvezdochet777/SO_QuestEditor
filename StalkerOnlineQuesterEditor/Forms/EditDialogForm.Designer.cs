@@ -143,6 +143,12 @@
             this.cbSameClanOnly = new System.Windows.Forms.CheckBox();
             this.tabEffects = new System.Windows.Forms.TabPage();
             this.effectsPanel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.rbNoEffectsOr = new System.Windows.Forms.RadioButton();
+            this.rbNoEffectsAnd = new System.Windows.Forms.RadioButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.rbEffectsOr = new System.Windows.Forms.RadioButton();
+            this.rbEffectsAnd = new System.Windows.Forms.RadioButton();
             this.lMustNotEffects = new System.Windows.Forms.Label();
             this.lMustEffect = new System.Windows.Forms.Label();
             this.dataGridEffects = new System.Windows.Forms.DataGridView();
@@ -311,6 +317,11 @@
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
             this.tReactionNPC = new System.Windows.Forms.RichTextBox();
+            this.clanLevelFrom = new System.Windows.Forms.NumericUpDown();
+            this.clanLevelTo = new System.Windows.Forms.NumericUpDown();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -336,6 +347,8 @@
             this.gbClanOptions.SuspendLayout();
             this.tabEffects.SuspendLayout();
             this.effectsPanel.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEffects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotEffects)).BeginInit();
             this.tabSkills.SuspendLayout();
@@ -372,6 +385,8 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clanLevelFrom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clanLevelTo)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -1393,6 +1408,11 @@
             // tabClan
             // 
             this.tabClan.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabClan.Controls.Add(this.label36);
+            this.tabClan.Controls.Add(this.label35);
+            this.tabClan.Controls.Add(this.label34);
+            this.tabClan.Controls.Add(this.clanLevelTo);
+            this.tabClan.Controls.Add(this.clanLevelFrom);
             this.tabClan.Controls.Add(this.gbClanOptions);
             this.tabClan.Location = new System.Drawing.Point(4, 22);
             this.tabClan.Name = "tabClan";
@@ -1571,6 +1591,8 @@
             // effectsPanel
             // 
             this.effectsPanel.BackColor = System.Drawing.Color.DarkGray;
+            this.effectsPanel.Controls.Add(this.panel5);
+            this.effectsPanel.Controls.Add(this.panel2);
             this.effectsPanel.Controls.Add(this.lMustNotEffects);
             this.effectsPanel.Controls.Add(this.lMustEffect);
             this.effectsPanel.Controls.Add(this.dataGridEffects);
@@ -1580,6 +1602,70 @@
             this.effectsPanel.Name = "effectsPanel";
             this.effectsPanel.Size = new System.Drawing.Size(794, 256);
             this.effectsPanel.TabIndex = 17;
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.rbNoEffectsOr);
+            this.panel5.Controls.Add(this.rbNoEffectsAnd);
+            this.panel5.Location = new System.Drawing.Point(454, 14);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(88, 31);
+            this.panel5.TabIndex = 14;
+            // 
+            // rbNoEffectsOr
+            // 
+            this.rbNoEffectsOr.AutoSize = true;
+            this.rbNoEffectsOr.Location = new System.Drawing.Point(39, 6);
+            this.rbNoEffectsOr.Name = "rbNoEffectsOr";
+            this.rbNoEffectsOr.Size = new System.Drawing.Size(49, 17);
+            this.rbNoEffectsOr.TabIndex = 13;
+            this.rbNoEffectsOr.Text = "ИЛИ";
+            this.rbNoEffectsOr.UseVisualStyleBackColor = true;
+            // 
+            // rbNoEffectsAnd
+            // 
+            this.rbNoEffectsAnd.AutoSize = true;
+            this.rbNoEffectsAnd.Checked = true;
+            this.rbNoEffectsAnd.Location = new System.Drawing.Point(4, 6);
+            this.rbNoEffectsAnd.Name = "rbNoEffectsAnd";
+            this.rbNoEffectsAnd.Size = new System.Drawing.Size(33, 17);
+            this.rbNoEffectsAnd.TabIndex = 12;
+            this.rbNoEffectsAnd.TabStop = true;
+            this.rbNoEffectsAnd.Text = "И";
+            this.rbNoEffectsAnd.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.rbEffectsOr);
+            this.panel2.Controls.Add(this.rbEffectsAnd);
+            this.panel2.Location = new System.Drawing.Point(252, 14);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(88, 31);
+            this.panel2.TabIndex = 13;
+            // 
+            // rbEffectsOr
+            // 
+            this.rbEffectsOr.AutoSize = true;
+            this.rbEffectsOr.Location = new System.Drawing.Point(39, 6);
+            this.rbEffectsOr.Name = "rbEffectsOr";
+            this.rbEffectsOr.Size = new System.Drawing.Size(49, 17);
+            this.rbEffectsOr.TabIndex = 13;
+            this.rbEffectsOr.Text = "ИЛИ";
+            this.rbEffectsOr.UseVisualStyleBackColor = true;
+            // 
+            // rbEffectsAnd
+            // 
+            this.rbEffectsAnd.AutoSize = true;
+            this.rbEffectsAnd.Checked = true;
+            this.rbEffectsAnd.Location = new System.Drawing.Point(4, 6);
+            this.rbEffectsAnd.Name = "rbEffectsAnd";
+            this.rbEffectsAnd.Size = new System.Drawing.Size(33, 17);
+            this.rbEffectsAnd.TabIndex = 12;
+            this.rbEffectsAnd.TabStop = true;
+            this.rbEffectsAnd.Text = "И";
+            this.rbEffectsAnd.UseVisualStyleBackColor = true;
             // 
             // lMustNotEffects
             // 
@@ -3253,6 +3339,48 @@
             this.tReactionNPC.Text = "";
             this.tReactionNPC.TextChanged += new System.EventHandler(this.tReactionNPC_TextChanged);
             // 
+            // clanLevelFrom
+            // 
+            this.clanLevelFrom.Location = new System.Drawing.Point(448, 26);
+            this.clanLevelFrom.Name = "clanLevelFrom";
+            this.clanLevelFrom.Size = new System.Drawing.Size(44, 20);
+            this.clanLevelFrom.TabIndex = 51;
+            // 
+            // clanLevelTo
+            // 
+            this.clanLevelTo.Location = new System.Drawing.Point(515, 26);
+            this.clanLevelTo.Name = "clanLevelTo";
+            this.clanLevelTo.Size = new System.Drawing.Size(44, 20);
+            this.clanLevelTo.TabIndex = 52;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(428, 10);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(84, 13);
+            this.label34.TabIndex = 53;
+            this.label34.Text = "Уровень клана";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(429, 28);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(18, 13);
+            this.label35.TabIndex = 54;
+            this.label35.Text = "от";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Location = new System.Drawing.Point(495, 28);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(19, 13);
+            this.label36.TabIndex = 55;
+            this.label36.Text = "до";
+            // 
             // EditDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3293,11 +3421,16 @@
             this.tabReputation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataReputation)).EndInit();
             this.tabClan.ResumeLayout(false);
+            this.tabClan.PerformLayout();
             this.gbClanOptions.ResumeLayout(false);
             this.gbClanOptions.PerformLayout();
             this.tabEffects.ResumeLayout(false);
             this.effectsPanel.ResumeLayout(false);
             this.effectsPanel.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEffects)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotEffects)).EndInit();
             this.tabSkills.ResumeLayout(false);
@@ -3350,6 +3483,8 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clanLevelFrom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clanLevelTo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3640,5 +3775,16 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox cbDungeonPhase;
         private System.Windows.Forms.CheckBox cbDungeonNon;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton rbEffectsOr;
+        private System.Windows.Forms.RadioButton rbEffectsAnd;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.RadioButton rbNoEffectsOr;
+        private System.Windows.Forms.RadioButton rbNoEffectsAnd;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.NumericUpDown clanLevelTo;
+        private System.Windows.Forms.NumericUpDown clanLevelFrom;
     }
 }

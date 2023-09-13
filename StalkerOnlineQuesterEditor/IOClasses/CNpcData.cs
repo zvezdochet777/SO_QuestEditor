@@ -118,6 +118,11 @@ namespace StalkerOnlineQuesterEditor
             return -1;
         }
 
+
+        public static string[] getNatures()
+        {
+            return nature_id_to_name.Values.ToArray();
+        }
        public static List<int> getGroupsByName(string name)
         {
             if (npc_groups.ContainsKey(name))

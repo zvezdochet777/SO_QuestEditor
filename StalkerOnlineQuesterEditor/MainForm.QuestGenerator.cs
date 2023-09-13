@@ -10,8 +10,9 @@ namespace StalkerOnlineQuesterEditor
         private void fillAutogeneratorTab()
         {
             int old_index = listBoxQT.SelectedIndex >= 0 ? listBoxQT.SelectedIndex : 0;
-            
 
+            cbNPCNature.Items.Clear();
+            cbNPCNature.Items.AddRange(NPCAdditionalData.getNatures());
             //Вкладка диалоги
             cbNPCNature.SelectedIndex = 0;
             cbNPCNature_SelectedIndexChanged(null, null);

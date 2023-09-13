@@ -369,6 +369,18 @@ namespace StalkerOnlineQuesterEditor
         {
             return _constants[spaceName];
         }
+
+        public static List<string> getAllWeathers()
+        {
+            List<string> weathers = new List<string>();
+            foreach (var i in _constants.Values)
+                foreach(var weather in i)
+                {
+                    if (!weathers.Contains(weather)) weathers.Add(weather);
+                }
+            weathers.Sort();
+            return weathers;
+        }
     }
 
 

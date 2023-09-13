@@ -1312,6 +1312,7 @@ namespace StalkerOnlineQuesterEditor
             foreach (var i in parent.fractions2.getListOfFractions())
                 cbRewardOT.Items.Add(i.Value);
             tbRewardOTvalue.Text = quest.Reward.OTvalue.ToString();
+            clanPointsValue.Value = quest.Reward.clanPoints;
             cbRewardOT.SelectedItem = parent.fractions2.getFractionDesctByID(quest.Reward.OTfraction);
             tExperience.Text = quest.Reward.Experience.ToString();
             tbPenaltyExperience.Text = quest.QuestPenalty.Experience.ToString();
@@ -1705,6 +1706,7 @@ namespace StalkerOnlineQuesterEditor
                 reward.OTfraction = parent.fractions2.getFractionIDByDescr(cbRewardOT.SelectedItem.ToString());
                 reward.OTvalue = ParseIntIfNotEmpty(tbRewardOTvalue.Text);
             }
+            reward.clanPoints = Convert.ToInt32(clanPointsValue.Value);
             reward.Credits = ParseIntIfNotEmpty(creditsTextBox.Text);
             reward.KarmaPK = ParseIntIfNotEmpty(textBoxKarmaPK.Text);
             foreach (string knowlege in tbGetKnowleges.Text.Split(','))
@@ -1837,7 +1839,13 @@ namespace StalkerOnlineQuesterEditor
                         || quest.QuestInformation.onWin != information.onWin || quest.QuestInformation.onFailed != information.onFailed
                         || quest.QuestInformation.onGet != information.onGet || quest.QuestInformation.onOpen != information.onOpen
                         || quest.QuestInformation.onTest != information.onTest)
-                    version++;
+                    if (parent.isLocaledQuest(quest.QuestID))
+                    {
+                        DialogResult dr = MessageBox.Show("Текст был изменён, нужно переводить?", "Внимание, ньюанс с переводами", MessageBoxButtons.YesNo);
+                        if (dr == DialogResult.Yes)
+                            version++;
+                    }
+                    else version++;
                  
                 retQuest = new CQuest(quest.QuestID, version, priority, level, qLinkType, qLink, information, precondition, rules, reward, additional, target, penalty, conditions, cbHidden.Checked, cbOldQuest.Checked);
             }

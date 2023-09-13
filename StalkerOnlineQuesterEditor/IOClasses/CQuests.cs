@@ -374,6 +374,8 @@ namespace StalkerOnlineQuesterEditor
                         reward.OTfraction = int.Parse(result[0]);
                         reward.OTvalue = int.Parse(result[1]);
                     }
+                    if (item.Element("Reward").Element("clanPoints") != null)
+                        reward.clanPoints = int.Parse(item.Element("Reward").Element("clanPoints").Value);
 
                 }
 
@@ -877,6 +879,8 @@ namespace StalkerOnlineQuesterEditor
                     {
                         element.Element("Reward").Add(new XElement("tradingPoints", questValue.Reward.OTfraction.ToString() + ":" + questValue.Reward.OTvalue.ToString()));
                     }
+                    if (questValue.Reward.clanPoints > 0)
+                        element.Element("Reward").Add(new XElement("clanPoints", questValue.Reward.clanPoints.ToString()));
                     List<XElement> EffectsXE = getEffectElements(questValue.Reward.Effects);
                     if (EffectsXE.Any())
                         element.Element("Reward").Add(new XElement("Effects", EffectsXE));
@@ -1033,7 +1037,7 @@ namespace StalkerOnlineQuesterEditor
         }
 
         //! Возвращает экземпляр класса CQuest с указанным ID
-        private CQuest getQuestFromLocale(int questID, String locale)
+        public CQuest getQuestFromLocale(int questID, String locale)
         {
             if (locales.ContainsKey(locale) && locales[locale].ContainsKey(questID))
                 return locales[locale][questID];

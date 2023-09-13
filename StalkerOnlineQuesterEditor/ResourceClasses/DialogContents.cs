@@ -81,12 +81,14 @@ namespace StalkerOnlineQuesterEditor
             if (Any())
             {
                 string result = "\n";
+                result += Global.GetNamedList(" Иметься: ", ListOfHaveQuests);
                 result += Global.GetNamedList(" Открыто: ", ListOfOpenedQuests);
                 result += Global.GetNamedList(" На проверке: ", ListOfOnTestQuests);
                 result += Global.GetNamedList(" Провалено: ", ListOfFailQuests);
                 result += Global.GetNamedList(" Закрыто: ", ListOfCompletedQuests);
                 result += Global.GetNamedList(" Счётчики: ", ListOfCounters);
-                result += " Массовые: " + ListOfMassQuests;
+                if (ListOfMassQuests.Any())
+                    result += " Массовые: " + ListOfMassQuests;
                 return result;
             }
             else
@@ -200,6 +202,8 @@ namespace StalkerOnlineQuesterEditor
         public int coordsRadius = 10;
         public List<DialogEffect> NecessaryEffects = new List<DialogEffect>();
         public List<DialogEffect> MustNoEffects = new List<DialogEffect>();
+        public bool nec_effects_is_or = false;
+        public bool must_no_effects_is_or = false;
         public bool forDev;
         public bool hidden;
         public DialogKnowleges knowledges = new DialogKnowleges();
@@ -213,6 +217,7 @@ namespace StalkerOnlineQuesterEditor
         public DialogPreconditionItems itemsNone = new DialogPreconditionItems();
         public int[] fracBonus = new int[3];
         public WeatherData weather = new WeatherData();
+        public List<int> clanLevel = new List<int>();
 
 
         public object Clone()
@@ -240,6 +245,7 @@ namespace StalkerOnlineQuesterEditor
             copy.Perks = Perks.ToList();
             copy.fracBonus = fracBonus;
             copy.weather = new WeatherData(weather);
+            copy.clanLevel = new List<int>(clanLevel);
             return copy;
         }
 
@@ -267,9 +273,7 @@ namespace StalkerOnlineQuesterEditor
 
         public bool Exists()
         {
-            return this.Any() || KarmaPK.Any() || PlayerLevel != "" || this.clanOptions != "" || Skills.Any() || Perks.Any() || noPerks.Any() ||
-                forDev || hidden || tutorialPhase >= 0 || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || fracBonus[1] > 0 || weather.Any() ||
-                Achievements.Any() || noAchievements.Any() || dungeonPhase > 0;
+            return this.Any() || forDev || hidden;
         }
 
         public bool Any()
@@ -278,7 +282,7 @@ namespace StalkerOnlineQuesterEditor
                 PlayerLevel != "" || Skills.Any() || items.Any() || itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || 
                 RadioAvalible.None != radioAvailable || Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any() ||
                 noPerks.Any() || knowledges.Any() || fracBonus[1] > 0 || weather.Any() || Achievements.Any() || noAchievements.Any() || playerCoords.Any() ||
-                this.clanOptions != "" || dungeonPhase > 0; 
+                this.clanOptions != "" || dungeonPhase > 0 || KarmaPK.Any() || clanLevel.Sum() > 0; 
         }
 
         public string GetAsString()
@@ -405,7 +409,8 @@ namespace StalkerOnlineQuesterEditor
                                                                     new XElement("id", effect.getID()),
                                                                     new XElement("stack", effect.getStacks())));
             }
-
+            if (this.nec_effects_is_or)
+                effects.Add(new XElement("is_or", 1));
             return effects;
 
         }
@@ -426,6 +431,8 @@ namespace StalkerOnlineQuesterEditor
                                                       new XElement("id", effect.getID()),
                                                       new XElement("stack", effect.getStacks())));
             }
+            if (this.must_no_effects_is_or)
+                effects.Add(new XElement("is_or", 1));
             return effects;
 
         }
@@ -468,7 +475,7 @@ namespace StalkerOnlineQuesterEditor
 
         public bool Any()
         {
-            return space > 0 && (weathers.Any() || timeStart != timeEnd);
+            return space != 0 && (weathers.Any() || timeStart != timeEnd);
         }
 
         public XElement getXML()

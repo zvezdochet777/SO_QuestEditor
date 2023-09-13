@@ -566,6 +566,7 @@ namespace StalkerOnlineQuesterEditor
         public string teleportTo;
         public int OTfraction;
         public int OTvalue;
+        public int clanPoints;
 
         public object Clone()
         {
@@ -604,7 +605,7 @@ namespace StalkerOnlineQuesterEditor
         {
             return hasExperience() || items.Any() || Credits != 0 || ReputationNotEmpty() || teleportTo.Any() || OTvalue > 0 ||
                 KarmaPK != 0 || Effects.Any() || RewardWindow || ChangeQuests.Any() || NPCReputation.Any() || blackBoxes.Any() ||
-                Reputation2NotEmpty() || GetKnowleges.Any();
+                Reputation2NotEmpty() || GetKnowleges.Any() || clanPoints != 0;
         }
 
         private bool hasExperience()

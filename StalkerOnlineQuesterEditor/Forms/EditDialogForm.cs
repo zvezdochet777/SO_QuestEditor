@@ -431,7 +431,6 @@ namespace StalkerOnlineQuesterEditor
                 return true;
             }
             else return false;
-             
         }
 
         //! Нажатие Отмена - выход без сохранения
@@ -979,12 +978,15 @@ namespace StalkerOnlineQuesterEditor
             {
                 precondition.PlayerLevel = mtbPlayerLevelMin.Text + ":" + mtbPlayerLevelMax.Text;
             }
+            precondition.clanLevel = new List<int>(editPrecondition.clanLevel);
             precondition.Reputation = editPrecondition.Reputation;
             precondition.Reputation2 = editPrecondition.Reputation2;
             precondition.NPCReputation = editPrecondition.NPCReputation;
             precondition.KarmaPK = editKarmaPK;
             precondition.NecessaryEffects = editPrecondition.NecessaryEffects;
+            precondition.nec_effects_is_or = editPrecondition.nec_effects_is_or;
             precondition.MustNoEffects = editPrecondition.MustNoEffects;
+            precondition.must_no_effects_is_or = editPrecondition.must_no_effects_is_or;
             precondition.Skills = editPrecondition.Skills;
             precondition.Perks = editPrecondition.Perks;
             precondition.noPerks = editPrecondition.noPerks;
@@ -1080,7 +1082,15 @@ namespace StalkerOnlineQuesterEditor
                 coord.Active = curDialog.coordinates.Active;
                 int version = curDialog.version;
                 if (tPlayerText.Text != curDialog.Title || tReactionNPC.Text != curDialog.Text)
-                    version++;
+                {
+                    if (parent.isLocaledDialog(currentDialogID))
+                    {
+                        DialogResult dr = MessageBox.Show("Текст был изменён, нужно переводить?", "Внимание, ньюанс с переводами", MessageBoxButtons.YesNo);
+                        if (dr == DialogResult.Yes)
+                            version++;
+                    }
+                    else version++;
+                }
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tReactionNPC.Text,
                     precondition, actions, nodes, check_nodes, currentDialogID, version, 
                                         coord, DebugData, nextDialog, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
@@ -1453,7 +1463,8 @@ namespace StalkerOnlineQuesterEditor
                     this.editPrecondition.NecessaryEffects.Add(new DialogEffect(id, stack_from, stack_before));
                 }
             }
-
+            editPrecondition.nec_effects_is_or = rbEffectsOr.Checked;
+            editPrecondition.must_no_effects_is_or = rbNoEffectsOr.Checked;
             this.checkEffectsIndicates();
             return true;
         }
@@ -1493,12 +1504,16 @@ namespace StalkerOnlineQuesterEditor
         private void initWeatherTab()
         {
             cbSpaceWeather.Items.Clear();
-            foreach(var i in parent.spacesConst.getSpacesNames())
+            cbSpaceWeather.Items.Add("-1 Карта игрока");
+            foreach (var i in parent.spacesConst.getSpacesNamesWithoutInstances())
             {
                 cbSpaceWeather.Items.Add(i);
             }
             string spaceName = parent.spacesConst.getSpaceNameByID(curDialog.Precondition.weather.space);
-            cbSpaceWeather.SelectedItem = parent.spacesConst.getSpaceByID(curDialog.Precondition.weather.space);
+            if (curDialog.Precondition.weather.space < 0)
+                cbSpaceWeather.SelectedItem = "-1 Карта игрока";
+            else
+                cbSpaceWeather.SelectedItem = parent.spacesConst.getSpaceByID(curDialog.Precondition.weather.space);
             string[] a = curDialog.Precondition.weather.timeStart.Split(':');
             nupHour1.Value = Convert.ToDecimal(a[0]);
             nupMin1.Value = Convert.ToDecimal(a[1]);
@@ -1509,10 +1524,16 @@ namespace StalkerOnlineQuesterEditor
             rbWeatherAnd.Checked = !curDialog.Precondition.weather.is_or;
             rbWeatherOr.Checked = curDialog.Precondition.weather.is_or;
             List<int> indexes = new List<int>();
-            
-            foreach(var w in curDialog.Precondition.weather.weathers)
+
+            List<string> weathers;
+            if (curDialog.Precondition.weather.space < 0)
+                weathers = Weathers.getAllWeathers();
+            else
+                weathers = Weathers.getWeathers(spaceName);
+
+            foreach (var w in curDialog.Precondition.weather.weathers)
             {
-                int idx = Weathers.getWeathers(spaceName).IndexOf(w);
+                int idx = weathers.IndexOf(w);
                 if (idx >= 0)
                     indexes.Add(idx);
             }
@@ -1581,6 +1602,10 @@ namespace StalkerOnlineQuesterEditor
                 dataGridEffects.Rows.Add(row);
             }
             this.checkEffectsIndicates();
+
+            if (editPrecondition.nec_effects_is_or)
+                rbEffectsOr.Checked = true;
+            if (editPrecondition.must_no_effects_is_or) rbNoEffectsOr.Checked = true;
 
         }
 
@@ -1871,13 +1896,22 @@ namespace StalkerOnlineQuesterEditor
         private void cbSpaceWeather_SelectedIndexChanged(object sender, EventArgs e)
         {
             string spaceName = cbSpaceWeather.SelectedItem.ToString();
-            spaceName = parent.spacesConst.getSpaceNameByID(Convert.ToInt32(spaceName.Split(' ')[0]));
-            lbWeather.Items.Clear();
-            foreach (var i in Weathers.getWeathers(spaceName))
-            {
-                lbWeather.Items.Add(i);
-            }
+            int space_id = Convert.ToInt32(spaceName.Split(' ')[0]);
             
+            lbWeather.Items.Clear();
+            if (space_id < 0)
+                foreach (var i in Weathers.getAllWeathers())
+                {
+                    lbWeather.Items.Add(i);
+                }
+            else
+            {
+                spaceName = parent.spacesConst.getSpaceNameByID(space_id);
+                foreach (var i in Weathers.getWeathers(spaceName))
+                {
+                    lbWeather.Items.Add(i);
+                }
+            }
         }
 
         private void tReactionNPC_TextChanged(object sender, EventArgs e)

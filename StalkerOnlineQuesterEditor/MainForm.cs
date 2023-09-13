@@ -485,8 +485,11 @@ namespace StalkerOnlineQuesterEditor
         {
             string quest_name = FakeQuestBox.SelectedItem.ToString();
             int questID = int.Parse(quest_name.Split(':')[0]);
+            selectQuestByID(questID);
+            /*
             NPCBox.SelectedValue = quests.quest[questID].Additional.Holder;
             QuestBox.SelectedItem = quest_name;
+            */
         }
 
         //! Заполнение итемов в комбобоксе NPC
@@ -762,10 +765,10 @@ namespace StalkerOnlineQuesterEditor
                 return Brushes.Green;
             else if (node == Listener.SelectedNode)
                 return Brushes.Red;
-            else if (dialogs.getDialogToDoToolTip(getDialogIDOnNode(node)).Any())
-                return Brushes.DarkOrange;
             else if (subNodes.Contains(node))
                 return Brushes.Yellow;
+            else if (dialogs.getDialogToDoToolTip(getDialogIDOnNode(node)).Any())
+                return Brushes.DarkOrange;
             else if (subToNodes.Contains(node))
                 return Brushes.LightBlue;
             else if (subNextNodes.Contains(node))
@@ -1402,6 +1405,15 @@ namespace StalkerOnlineQuesterEditor
                     return questi;
 
         }
+
+        public bool isLocaledQuest(int questID)
+        {
+            if (questID == 0) return false;
+            CQuest quest = quests.getQuestFromLocale(questID, "English");
+            return quest.QuestInformation.Title.Any() || quest.QuestInformation.Description.Any() || quest.QuestInformation.onWin.Any() || quest.QuestInformation.onFailed.Any() || quest.QuestInformation.onGet.Any() || quest.QuestInformation.onOpen.Any() || quest.QuestInformation.onTest.Any();
+
+        }
+
 
         //! Создает новый корневой квест у персонажа (не подквест, а именно новый)
         public void createNewQuest(CQuest newQuest)

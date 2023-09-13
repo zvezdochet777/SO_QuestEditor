@@ -236,6 +236,8 @@
             this.cbQuestLink = new System.Windows.Forms.ComboBox();
             this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.clanPointsValue = new System.Windows.Forms.NumericUpDown();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -261,6 +263,7 @@
             this.tabConditions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clanPointsValue)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCreateMob
@@ -2010,6 +2013,8 @@
             // 
             // rewardGroupBox
             // 
+            this.rewardGroupBox.Controls.Add(this.clanPointsValue);
+            this.rewardGroupBox.Controls.Add(this.label40);
             this.rewardGroupBox.Controls.Add(this.tbGetKnowleges);
             this.rewardGroupBox.Controls.Add(this.label35);
             this.rewardGroupBox.Controls.Add(this.tbRewardOTvalue);
@@ -2462,6 +2467,22 @@
             this.label34.TabIndex = 61;
             this.label34.Text = "Бонус группы:";
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(400, 47);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(68, 13);
+            this.label40.TabIndex = 52;
+            this.label40.Text = "Очки клана:";
+            // 
+            // clanPointsValue
+            // 
+            this.clanPointsValue.Location = new System.Drawing.Point(468, 44);
+            this.clanPointsValue.Name = "clanPointsValue";
+            this.clanPointsValue.Size = new System.Drawing.Size(120, 20);
+            this.clanPointsValue.TabIndex = 53;
+            // 
             // EditQuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2529,6 +2550,7 @@
             this.tabConditions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clanPointsValue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2742,5 +2764,7 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.RichTextBox onOpenTextBox;
         private System.Windows.Forms.Button btnFindError;
+        private System.Windows.Forms.NumericUpDown clanPointsValue;
+        private System.Windows.Forms.Label label40;
     }
 }

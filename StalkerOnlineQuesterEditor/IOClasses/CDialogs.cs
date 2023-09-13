@@ -197,9 +197,10 @@ namespace StalkerOnlineQuesterEditor
                             }
                         }
                         if (dialog.Element("Precondition").Element("NecessaryEffects") != null)
-                            CDialogs.AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.NecessaryEffects);
+                            CDialogs.AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.NecessaryEffects, ref Precondition.nec_effects_is_or);
+                        
                         if (dialog.Element("Precondition").Element("MustNoEffects") != null)
-                            CDialogs.AddDialogEffectsToList(dialog, "Precondition", "MustNoEffects", Precondition.MustNoEffects);
+                            CDialogs.AddDialogEffectsToList(dialog, "Precondition", "MustNoEffects", Precondition.MustNoEffects, ref Precondition.must_no_effects_is_or);
 
                         if (dialog.Element("Precondition").Element("Skills") != null)
                             AddDialogSkillsToListSkills(dialog, "Precondition", "Skills", Precondition.Skills);
@@ -485,13 +486,18 @@ namespace StalkerOnlineQuesterEditor
             foreach (string quest in Element.Element("Precondition").Element(Name1).Element(Name2).Value.Split(condition))
                 list.Add(int.Parse(quest));
         }
-        public static void AddDialogEffectsToList(XElement Element, String Name1, String Name2, List<DialogEffect> list)
+        public static void AddDialogEffectsToList(XElement Element, String Name1, String Name2, List<DialogEffect> list, ref bool is_or)
         {
             if (Element.Element(Name1).Element(Name2) == null)
                 return;
 
             foreach (XElement effect in Element.Element(Name1).Element(Name2).Elements())
             {
+                if (effect.Name == "is_or")
+                {
+                    is_or = true;
+                    continue;
+                }
                 int ID = int.Parse(effect.Element("id").Value);
                 string stack = effect.Element("stack").Value;
                 list.Add(new DialogEffect(ID, stack));

@@ -180,9 +180,9 @@ namespace StalkerOnlineQuesterEditor
                             }
                         }
                         if (dialog.Element("Precondition").Element("NecessaryEffects") != null)
-                            CDialogs.AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.NecessaryEffects);
+                            CDialogs.AddDialogEffectsToList(dialog, "Precondition", "NecessaryEffects", Precondition.NecessaryEffects, ref Precondition.nec_effects_is_or);
                         if (dialog.Element("Precondition").Element("MustNoEffects") != null)
-                            CDialogs.AddDialogEffectsToList(dialog, "Precondition", "MustNoEffects", Precondition.MustNoEffects);
+                            CDialogs.AddDialogEffectsToList(dialog, "Precondition", "MustNoEffects", Precondition.MustNoEffects, ref Precondition.must_no_effects_is_or);
 
                         if (dialog.Element("Precondition").Element("Skills") != null)
                             CDialogs.AddDialogSkillsToListSkills(dialog, "Precondition", "Skills", Precondition.Skills);

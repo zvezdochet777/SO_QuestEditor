@@ -646,15 +646,29 @@ namespace StalkerOnlineQuesterEditor
     {
         public List<int> titles { get; set; }
         public List<int> texts { get; set; }
+
+        public AGDialogs()
+        {
+            titles = new List<int>();
+            texts = new List<int>();
+        }
     }
 
     public class Nature
     {
         public int id { get; set; }
-        public AGDialogs dialogs_opened { get; set; }
+        public AGDialogs dialogs_opened  { get; set; }
         public AGDialogs dialogs_ontest { get; set; }
         public AGDialogs dialogs_closed { get; set; }
         public AGDialogs dialogs_hello { get; set; }
+
+        public Nature()
+        {
+            dialogs_opened = new AGDialogs();
+            dialogs_ontest = new AGDialogs();
+            dialogs_closed = new AGDialogs();
+            dialogs_hello = new AGDialogs();
+        }
     }
     
     public class Netural
@@ -674,10 +688,14 @@ namespace StalkerOnlineQuesterEditor
             foreach(var a in nature)
             {
                 if (id == a.id) return a;
-
             }
-            return null;
+            Nature created_nature = new Nature();
+            created_nature.id = id;
+            nature.Add(created_nature);
+            return created_nature;
         }
+
+
     }
 
     public static class AGNPCMeta
