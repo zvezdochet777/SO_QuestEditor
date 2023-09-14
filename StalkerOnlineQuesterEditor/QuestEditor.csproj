@@ -159,6 +159,12 @@
     <Compile Include="Forms\AddListElementForm.Designer.cs">
       <DependentUpon>AddListElementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ChangeZones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeZones.Designer.cs">
+      <DependentUpon>ChangeZones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CopyDialogsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -355,6 +361,9 @@
     <Compile Include="TextUtils.cs" />
     <EmbeddedResource Include="Forms\AddListElementForm.resx">
       <DependentUpon>AddListElementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeZones.resx">
+      <DependentUpon>ChangeZones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CopyDialogsForm.resx">
       <DependentUpon>CopyDialogsForm.cs</DependentUpon>

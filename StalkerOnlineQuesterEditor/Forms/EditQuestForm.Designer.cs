@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelCreateMob = new System.Windows.Forms.Panel();
             this.cbMobInvul = new System.Windows.Forms.CheckBox();
             this.cbMobLevel = new System.Windows.Forms.ComboBox();
@@ -192,6 +192,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.rewardGroupBox = new System.Windows.Forms.GroupBox();
+            this.clanPointsValue = new System.Windows.Forms.NumericUpDown();
+            this.label40 = new System.Windows.Forms.Label();
             this.tbGetKnowleges = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.tbRewardOTvalue = new System.Windows.Forms.TextBox();
@@ -236,8 +238,7 @@
             this.cbQuestLink = new System.Windows.Forms.ComboBox();
             this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.clanPointsValue = new System.Windows.Forms.NumericUpDown();
+            this.btnChangeQuestZones = new System.Windows.Forms.Button();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -260,10 +261,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nBaseToCapturePercent)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.rewardGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clanPointsValue)).BeginInit();
             this.tabConditions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clanPointsValue)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCreateMob
@@ -1430,6 +1431,7 @@
             this.tabPage4.Controls.Add(this.targetComboBox);
             this.tabPage4.Controls.Add(this.lNameObject);
             this.tabPage4.Controls.Add(this.resultComboBox);
+            this.tabPage4.Controls.Add(this.btnChangeQuestZones);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -1694,8 +1696,8 @@
             // 
             // radius
             // 
-            dataGridViewCellStyle1.NullValue = "0";
-            this.radius.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.NullValue = "0";
+            this.radius.DefaultCellStyle = dataGridViewCellStyle5;
             this.radius.HeaderText = "радиус";
             this.radius.Name = "radius";
             // 
@@ -2043,6 +2045,22 @@
             this.rewardGroupBox.TabIndex = 6;
             this.rewardGroupBox.TabStop = false;
             this.rewardGroupBox.Text = "Награда";
+            // 
+            // clanPointsValue
+            // 
+            this.clanPointsValue.Location = new System.Drawing.Point(468, 44);
+            this.clanPointsValue.Name = "clanPointsValue";
+            this.clanPointsValue.Size = new System.Drawing.Size(120, 20);
+            this.clanPointsValue.TabIndex = 53;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(400, 47);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(68, 13);
+            this.label40.TabIndex = 52;
+            this.label40.Text = "Очки клана:";
             // 
             // tbGetKnowleges
             // 
@@ -2467,21 +2485,16 @@
             this.label34.TabIndex = 61;
             this.label34.Text = "Бонус группы:";
             // 
-            // label40
+            // btnChangeQuestZones
             // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(400, 47);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(68, 13);
-            this.label40.TabIndex = 52;
-            this.label40.Text = "Очки клана:";
-            // 
-            // clanPointsValue
-            // 
-            this.clanPointsValue.Location = new System.Drawing.Point(468, 44);
-            this.clanPointsValue.Name = "clanPointsValue";
-            this.clanPointsValue.Size = new System.Drawing.Size(120, 20);
-            this.clanPointsValue.TabIndex = 53;
+            this.btnChangeQuestZones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChangeQuestZones.Location = new System.Drawing.Point(241, 96);
+            this.btnChangeQuestZones.Name = "btnChangeQuestZones";
+            this.btnChangeQuestZones.Size = new System.Drawing.Size(106, 23);
+            this.btnChangeQuestZones.TabIndex = 47;
+            this.btnChangeQuestZones.Text = "Несколько зон";
+            this.btnChangeQuestZones.UseVisualStyleBackColor = true;
+            this.btnChangeQuestZones.Click += new System.EventHandler(this.btnChangeQuestZones_Click);
             // 
             // EditQuestForm
             // 
@@ -2546,11 +2559,11 @@
             this.tabPage6.PerformLayout();
             this.rewardGroupBox.ResumeLayout(false);
             this.rewardGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clanPointsValue)).EndInit();
             this.tabConditions.ResumeLayout(false);
             this.tabConditions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clanPointsValue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2766,5 +2779,6 @@
         private System.Windows.Forms.Button btnFindError;
         private System.Windows.Forms.NumericUpDown clanPointsValue;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button btnChangeQuestZones;
     }
 }

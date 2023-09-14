@@ -336,6 +336,7 @@ namespace StalkerOnlineQuesterEditor
                 cbState.Enabled = false;
                 cbReputationLow.Enabled = false;
                 cbReputationLow.Visible = false;
+                btnChangeQuestZones.Visible = false;
                 quantityUpDown.Minimum = 0;
                 //quantityUpDown.Maximum = 32000;
 
@@ -524,7 +525,7 @@ namespace StalkerOnlineQuesterEditor
                     ltargetResult.Text = "Подтип моба";
                     ltargetResult.Enabled = true;
                     lTargetAttr1.Enabled = true;
-
+                    btnChangeQuestZones.Visible = true;
                     resultComboBox.Enabled = true;
                     targetComboBox.Items.Clear();
                     foreach (CMobDescription description in parent.mobConst.getAllDescriptions().Values)
@@ -2337,6 +2338,13 @@ namespace StalkerOnlineQuesterEditor
             TextUtils.findTextErrors(onGotTextBox);
             TextUtils.findTextErrors(onOpenTextBox);
             TextUtils.findTextErrors(onTestTextBox);
+        }
+
+        private void btnChangeQuestZones_Click(object sender, EventArgs e)
+        {
+            Forms.ChangeZones form = new Forms.ChangeZones(parent, targetAttributeComboBox2.Text);
+            form.ShowDialog();
+            targetAttributeComboBox2.Text = form.getZones();
         }
     }
 }
