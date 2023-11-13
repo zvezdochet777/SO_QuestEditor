@@ -431,6 +431,8 @@ namespace StalkerOnlineQuesterEditor
                         conditions.pvpWinTeam = int.Parse(item.Element("Conditions").Element("pvpWinTeam").Value);
                     if (item.Element("Conditions").Element("bePvpWinner") != null)
                         conditions.bePvpWinner = int.Parse(item.Element("Conditions").Element("bePvpWinner").Value);
+                    if (item.Element("Conditions").Element("duration") != null)
+                        conditions.duration = int.Parse(item.Element("Conditions").Element("duration").Value);
 
                 }
 
@@ -899,6 +901,9 @@ namespace StalkerOnlineQuesterEditor
                         element.Element("Conditions").Add(new XElement("bePvpWinner", questValue.Conditions.bePvpWinner.ToString()));
                     if (questValue.Conditions.pvpWinTeam != 0)
                         element.Element("Conditions").Add(new XElement("pvpWinTeam", questValue.Conditions.pvpWinTeam.ToString()));
+                    if (questValue.Conditions.duration != 0)
+                        element.Element("Conditions").Add(new XElement("duration", questValue.Conditions.duration.ToString()));
+                    
                 }
 
                 if (questValue.QuestPenalty.Any())

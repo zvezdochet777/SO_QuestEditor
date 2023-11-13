@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelCreateMob = new System.Windows.Forms.Panel();
             this.cbMobInvul = new System.Windows.Forms.CheckBox();
             this.cbMobLevel = new System.Windows.Forms.ComboBox();
@@ -154,6 +154,7 @@
             this.targetComboBox = new System.Windows.Forms.ComboBox();
             this.lNameObject = new System.Windows.Forms.Label();
             this.resultComboBox = new System.Windows.Forms.ComboBox();
+            this.btnChangeQuestZones = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dataGridMapMark = new System.Windows.Forms.DataGridView();
             this.coords = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -215,14 +216,16 @@
             this.tExperience = new System.Windows.Forms.TextBox();
             this.lCombatSkills = new System.Windows.Forms.Label();
             this.tabConditions = new System.Windows.Forms.TabPage();
+            this.nupb2ctime = new System.Windows.Forms.NumericUpDown();
+            this.label41 = new System.Windows.Forms.Label();
             this.nupConditionDead = new System.Windows.Forms.NumericUpDown();
             this.cbConditionWeapon = new System.Windows.Forms.ComboBox();
             this.cbConditionPVPTeam = new System.Windows.Forms.ComboBox();
             this.cbConditionPVPTeamWin = new System.Windows.Forms.ComboBox();
-            this.label32 = new System.Windows.Forms.Label();
+            this.labelPVPPoints = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.labelPVPTeam = new System.Windows.Forms.Label();
+            this.labelPVPWeapon = new System.Windows.Forms.Label();
             this.titleTextBox = new System.Windows.Forms.RichTextBox();
             this.lTitle = new System.Windows.Forms.Label();
             this.eventComboBox = new System.Windows.Forms.ComboBox();
@@ -238,7 +241,8 @@
             this.cbQuestLink = new System.Windows.Forms.ComboBox();
             this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.btnChangeQuestZones = new System.Windows.Forms.Button();
+            this.cbPVPAdditional = new System.Windows.Forms.ComboBox();
+            this.labelPVPAdditional = new System.Windows.Forms.Label();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -263,6 +267,7 @@
             this.rewardGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clanPointsValue)).BeginInit();
             this.tabConditions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupb2ctime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
             this.SuspendLayout();
@@ -422,6 +427,8 @@
             // 
             // panelPVPQuests
             // 
+            this.panelPVPQuests.Controls.Add(this.labelPVPAdditional);
+            this.panelPVPQuests.Controls.Add(this.cbPVPAdditional);
             this.panelPVPQuests.Controls.Add(this.cbPVPMode);
             this.panelPVPQuests.Controls.Add(this.label33);
             this.panelPVPQuests.Controls.Add(this.cbPVPtarget3);
@@ -447,7 +454,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(11, 15);
+            this.label33.Location = new System.Drawing.Point(11, 13);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(45, 13);
             this.label33.TabIndex = 36;
@@ -480,7 +487,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(11, 68);
+            this.label29.Location = new System.Drawing.Point(9, 68);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(69, 13);
             this.label29.TabIndex = 28;
@@ -489,7 +496,7 @@
             // lbPVPtarget
             // 
             this.lbPVPtarget.AutoSize = true;
-            this.lbPVPtarget.Location = new System.Drawing.Point(10, 38);
+            this.lbPVPtarget.Location = new System.Drawing.Point(10, 44);
             this.lbPVPtarget.Name = "lbPVPtarget";
             this.lbPVPtarget.Size = new System.Drawing.Size(36, 13);
             this.lbPVPtarget.TabIndex = 23;
@@ -1648,6 +1655,17 @@
             this.resultComboBox.TabIndex = 46;
             this.resultComboBox.SelectedIndexChanged += new System.EventHandler(this.resultComboBox_SelectedIndexChanged);
             // 
+            // btnChangeQuestZones
+            // 
+            this.btnChangeQuestZones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChangeQuestZones.Location = new System.Drawing.Point(241, 96);
+            this.btnChangeQuestZones.Name = "btnChangeQuestZones";
+            this.btnChangeQuestZones.Size = new System.Drawing.Size(106, 23);
+            this.btnChangeQuestZones.TabIndex = 47;
+            this.btnChangeQuestZones.Text = "Несколько зон";
+            this.btnChangeQuestZones.UseVisualStyleBackColor = true;
+            this.btnChangeQuestZones.Click += new System.EventHandler(this.btnChangeQuestZones_Click);
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.dataGridMapMark);
@@ -1696,8 +1714,8 @@
             // 
             // radius
             // 
-            dataGridViewCellStyle5.NullValue = "0";
-            this.radius.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.radius.DefaultCellStyle = dataGridViewCellStyle1;
             this.radius.HeaderText = "радиус";
             this.radius.Name = "radius";
             // 
@@ -2049,6 +2067,11 @@
             // clanPointsValue
             // 
             this.clanPointsValue.Location = new System.Drawing.Point(468, 44);
+            this.clanPointsValue.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
             this.clanPointsValue.Name = "clanPointsValue";
             this.clanPointsValue.Size = new System.Drawing.Size(120, 20);
             this.clanPointsValue.TabIndex = 53;
@@ -2246,14 +2269,16 @@
             // 
             // tabConditions
             // 
+            this.tabConditions.Controls.Add(this.nupb2ctime);
+            this.tabConditions.Controls.Add(this.label41);
             this.tabConditions.Controls.Add(this.nupConditionDead);
             this.tabConditions.Controls.Add(this.cbConditionWeapon);
             this.tabConditions.Controls.Add(this.cbConditionPVPTeam);
             this.tabConditions.Controls.Add(this.cbConditionPVPTeamWin);
-            this.tabConditions.Controls.Add(this.label32);
+            this.tabConditions.Controls.Add(this.labelPVPPoints);
             this.tabConditions.Controls.Add(this.label31);
-            this.tabConditions.Controls.Add(this.label30);
-            this.tabConditions.Controls.Add(this.label28);
+            this.tabConditions.Controls.Add(this.labelPVPTeam);
+            this.tabConditions.Controls.Add(this.labelPVPWeapon);
             this.tabConditions.Location = new System.Drawing.Point(4, 22);
             this.tabConditions.Name = "tabConditions";
             this.tabConditions.Padding = new System.Windows.Forms.Padding(3);
@@ -2261,6 +2286,30 @@
             this.tabConditions.TabIndex = 4;
             this.tabConditions.Text = "Дополнительные условия";
             this.tabConditions.UseVisualStyleBackColor = true;
+            // 
+            // nupb2ctime
+            // 
+            this.nupb2ctime.Enabled = false;
+            this.nupb2ctime.Location = new System.Drawing.Point(165, 149);
+            this.nupb2ctime.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.nupb2ctime.Name = "nupb2ctime";
+            this.nupb2ctime.Size = new System.Drawing.Size(116, 20);
+            this.nupb2ctime.TabIndex = 62;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Enabled = false;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label41.Location = new System.Drawing.Point(8, 151);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(40, 13);
+            this.label41.TabIndex = 61;
+            this.label41.Text = "Время";
             // 
             // nupConditionDead
             // 
@@ -2293,15 +2342,15 @@
             this.cbConditionPVPTeamWin.Size = new System.Drawing.Size(116, 21);
             this.cbConditionPVPTeamWin.TabIndex = 56;
             // 
-            // label32
+            // labelPVPPoints
             // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label32.Location = new System.Drawing.Point(8, 116);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(152, 13);
-            this.label32.TabIndex = 6;
-            this.label32.Text = "Набрать очков больше всех:";
+            this.labelPVPPoints.AutoSize = true;
+            this.labelPVPPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPVPPoints.Location = new System.Drawing.Point(8, 116);
+            this.labelPVPPoints.Name = "labelPVPPoints";
+            this.labelPVPPoints.Size = new System.Drawing.Size(152, 13);
+            this.labelPVPPoints.TabIndex = 6;
+            this.labelPVPPoints.Text = "Набрать очков больше всех:";
             // 
             // label31
             // 
@@ -2313,25 +2362,25 @@
             this.label31.TabIndex = 5;
             this.label31.Text = "Умереть не более:";
             // 
-            // label30
+            // labelPVPTeam
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(8, 45);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(130, 13);
-            this.label30.TabIndex = 4;
-            this.label30.Text = "Победа команды в PVP:";
+            this.labelPVPTeam.AutoSize = true;
+            this.labelPVPTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPVPTeam.Location = new System.Drawing.Point(8, 45);
+            this.labelPVPTeam.Name = "labelPVPTeam";
+            this.labelPVPTeam.Size = new System.Drawing.Size(130, 13);
+            this.labelPVPTeam.TabIndex = 4;
+            this.labelPVPTeam.Text = "Победа команды в PVP:";
             // 
-            // label28
+            // labelPVPWeapon
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(8, 12);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(49, 13);
-            this.label28.TabIndex = 3;
-            this.label28.Text = "Оружие:";
+            this.labelPVPWeapon.AutoSize = true;
+            this.labelPVPWeapon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPVPWeapon.Location = new System.Drawing.Point(8, 12);
+            this.labelPVPWeapon.Name = "labelPVPWeapon";
+            this.labelPVPWeapon.Size = new System.Drawing.Size(49, 13);
+            this.labelPVPWeapon.TabIndex = 3;
+            this.labelPVPWeapon.Text = "Оружие:";
             // 
             // titleTextBox
             // 
@@ -2485,16 +2534,22 @@
             this.label34.TabIndex = 61;
             this.label34.Text = "Бонус группы:";
             // 
-            // btnChangeQuestZones
+            // cbPVPAdditional
             // 
-            this.btnChangeQuestZones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChangeQuestZones.Location = new System.Drawing.Point(241, 96);
-            this.btnChangeQuestZones.Name = "btnChangeQuestZones";
-            this.btnChangeQuestZones.Size = new System.Drawing.Size(106, 23);
-            this.btnChangeQuestZones.TabIndex = 47;
-            this.btnChangeQuestZones.Text = "Несколько зон";
-            this.btnChangeQuestZones.UseVisualStyleBackColor = true;
-            this.btnChangeQuestZones.Click += new System.EventHandler(this.btnChangeQuestZones_Click);
+            this.cbPVPAdditional.FormattingEnabled = true;
+            this.cbPVPAdditional.Location = new System.Drawing.Point(86, 92);
+            this.cbPVPAdditional.Name = "cbPVPAdditional";
+            this.cbPVPAdditional.Size = new System.Drawing.Size(136, 21);
+            this.cbPVPAdditional.TabIndex = 38;
+            // 
+            // labelPVPAdditional
+            // 
+            this.labelPVPAdditional.AutoSize = true;
+            this.labelPVPAdditional.Location = new System.Drawing.Point(11, 95);
+            this.labelPVPAdditional.Name = "labelPVPAdditional";
+            this.labelPVPAdditional.Size = new System.Drawing.Size(69, 13);
+            this.labelPVPAdditional.TabIndex = 39;
+            this.labelPVPAdditional.Text = "Количество:";
             // 
             // EditQuestForm
             // 
@@ -2562,6 +2617,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.clanPointsValue)).EndInit();
             this.tabConditions.ResumeLayout(false);
             this.tabConditions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupb2ctime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupConditionDead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
             this.ResumeLayout(false);
@@ -2743,10 +2799,10 @@
         private System.Windows.Forms.ComboBox cbConditionWeapon;
         private System.Windows.Forms.ComboBox cbConditionPVPTeam;
         private System.Windows.Forms.ComboBox cbConditionPVPTeamWin;
-        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label labelPVPPoints;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label labelPVPTeam;
+        private System.Windows.Forms.Label labelPVPWeapon;
         private System.Windows.Forms.NumericUpDown nupConditionDead;
         private System.Windows.Forms.ComboBox cbPVPMode;
         private System.Windows.Forms.Label label33;
@@ -2780,5 +2836,9 @@
         private System.Windows.Forms.NumericUpDown clanPointsValue;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Button btnChangeQuestZones;
+        private System.Windows.Forms.NumericUpDown nupb2ctime;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label labelPVPAdditional;
+        private System.Windows.Forms.ComboBox cbPVPAdditional;
     }
 }

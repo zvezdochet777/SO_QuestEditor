@@ -73,7 +73,7 @@ namespace StalkerOnlineQuesterEditor
         void fillClanOptions(string options)
         {
             List<int> list = new List<int>();
-            if (options == "")
+            if ((options == "") || (options == "&") || (options == "|"))
                 return;
             switch(options[0])
                 
@@ -156,6 +156,10 @@ namespace StalkerOnlineQuesterEditor
                         tCheckNodes.Text += ("," + node.ToString());
                 }
             this.fillClanOptions(curDialog.Precondition.clanOptions);
+
+            clanLevelFrom.Value = curDialog.Precondition.clanLevel[0];
+            clanLevelTo.Value = curDialog.Precondition.clanLevel[1];
+            
 
             if (curDialog.Actions.Any())
             {
@@ -426,7 +430,7 @@ namespace StalkerOnlineQuesterEditor
         {
             if (cbSameClanOnly.Checked || cbAnyClanOnly.Checked || cbLonerOnly.Checked || cbWarTime.Checked ||
                 cbEnemy.Checked || cbNotEnemy.Checked || cbPeaceTime.Checked || cbNotSameClanOnly.Checked ||
-                cbSecurExst.Checked || cbSecurNotExst.Checked || cbAllyance.Checked)
+                cbSecurExst.Checked || cbSecurNotExst.Checked || cbAllyance.Checked || (clanLevelTo.Value + clanLevelFrom.Value > 0))
             {
                 return true;
             }
@@ -569,6 +573,7 @@ namespace StalkerOnlineQuesterEditor
                     cbExit.Enabled = true;
                     break;
                 case 35:
+                case 37:
                 case 100:
                     cbExit.Checked = false;
                     cbExit.Enabled = false;
@@ -947,10 +952,8 @@ namespace StalkerOnlineQuesterEditor
                 precondition.PVPMode = CPVPConstans.getPVPModeIDByName(cbRatingPVPMode.SelectedItem.ToString());
             if (checkClanOptions())
             {
-                if (radioButtonAND.Checked)
-                    precondition.clanOptions = "&";
-                if (radioButtonOR.Checked)
-                    precondition.clanOptions = "|";
+                precondition.clanOptions = "";
+              
                 if (cbSameClanOnly.Checked)
                     precondition.clanOptions += ",1";
                 if (cbNotSameClanOnly.Checked)
@@ -973,12 +976,20 @@ namespace StalkerOnlineQuesterEditor
                     precondition.clanOptions += ",10";
                 if (cbAllyance.Checked)
                     precondition.clanOptions += ",11";
+                if (precondition.clanOptions.Any())
+                {
+                    if (radioButtonAND.Checked)
+                        precondition.clanOptions = "&" + precondition.clanOptions;
+                    else if (radioButtonOR.Checked)
+                        precondition.clanOptions = "|" + precondition.clanOptions;
+                }
+
             }             
             if (checkLevel())
             {
                 precondition.PlayerLevel = mtbPlayerLevelMin.Text + ":" + mtbPlayerLevelMax.Text;
             }
-            precondition.clanLevel = new List<int>(editPrecondition.clanLevel);
+            precondition.clanLevel = new List<int>() { Convert.ToInt32(clanLevelFrom.Value), Convert.ToInt32(clanLevelTo.Value) };
             precondition.Reputation = editPrecondition.Reputation;
             precondition.Reputation2 = editPrecondition.Reputation2;
             precondition.NPCReputation = editPrecondition.NPCReputation;
@@ -1022,7 +1033,7 @@ namespace StalkerOnlineQuesterEditor
             precondition.items.is_or = rbItemsOr.Checked;
             precondition.itemsNone.is_or = rbNonItemsOr.Checked;
 
-            if (rbCategory.Checked && cbCategory.SelectedIndex != -1)
+            if (rbCategory.Checked && (cbCategory.SelectedIndex != -1) || (cbNonCategory.SelectedIndex != -1))
             {
                 precondition.items.itemCategory = parent.itemCategories.getID(cbCategory.Text);
                 precondition.itemsNone.itemCategory = parent.itemCategories.getID(cbNonCategory.Text);

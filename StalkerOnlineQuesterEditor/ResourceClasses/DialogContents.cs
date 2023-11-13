@@ -217,7 +217,7 @@ namespace StalkerOnlineQuesterEditor
         public DialogPreconditionItems itemsNone = new DialogPreconditionItems();
         public int[] fracBonus = new int[3];
         public WeatherData weather = new WeatherData();
-        public List<int> clanLevel = new List<int>();
+        public List<int> clanLevel = new List<int>() {0, 0};
 
 
         public object Clone()
@@ -282,7 +282,7 @@ namespace StalkerOnlineQuesterEditor
                 PlayerLevel != "" || Skills.Any() || items.Any() || itemsNone.Any() || NPCReputation.Any() || transport.Any() || tutorialPhase >= 0 || 
                 RadioAvalible.None != radioAvailable || Reputation2.Any() || (PVPranks[0] > 0 || PVPranks[1] > 0) || PVPMode >= 0 || Perks.Any() ||
                 noPerks.Any() || knowledges.Any() || fracBonus[1] > 0 || weather.Any() || Achievements.Any() || noAchievements.Any() || playerCoords.Any() ||
-                this.clanOptions != "" || dungeonPhase > 0 || KarmaPK.Any() || clanLevel.Sum() > 0; 
+                clanOptions != ""  || dungeonPhase > 0 || KarmaPK.Any() || clanLevel.Sum() > 0; 
         }
 
         public string GetAsString()

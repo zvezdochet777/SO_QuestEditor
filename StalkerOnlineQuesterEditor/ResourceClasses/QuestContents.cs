@@ -732,6 +732,7 @@ namespace StalkerOnlineQuesterEditor
         public int pvpWinTeam;
         public int notDieCount;
         public int bePvpWinner; //0 - нет, 1 - среди своих, 2 - среди всех
+        public int duration;
 
         public object Clone()
         {
@@ -740,13 +741,13 @@ namespace StalkerOnlineQuesterEditor
             copy.pvpWinTeam = pvpWinTeam;
             copy.notDieCount = notDieCount;
             copy.bePvpWinner = bePvpWinner;
-
+            copy.duration = duration;
             return copy;
         }
 
         public bool Any()
         {
-            return (useWeaponType + pvpWinTeam + notDieCount + bePvpWinner) > 0;
+            return (useWeaponType + pvpWinTeam + notDieCount + bePvpWinner + duration) > 0;
         }
     }
     

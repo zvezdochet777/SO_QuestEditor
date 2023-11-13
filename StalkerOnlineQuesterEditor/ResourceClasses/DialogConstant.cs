@@ -324,11 +324,18 @@ namespace StalkerOnlineQuesterEditor
             JsonTextReader reader = new JsonTextReader(new StreamReader(JSON_PATH, Encoding.UTF8));
             int is_period = 0;
             bool tmp = false;
+            bool s = false;
+            bool def_weather = false;
             var space = "";
             int value = -1;
             List<string> weathers = new List<string>();
+            Dictionary<string, string> sync = new Dictionary<string, string>();
             while (reader.Read())
             {
+                if (reader.TokenType == JsonToken.String)
+                {
+                    Console.WriteLine(reader.Value.ToString());
+                }
                 if (reader.TokenType == JsonToken.PropertyName)
                 {
                     if (!space.Any())
@@ -338,6 +345,12 @@ namespace StalkerOnlineQuesterEditor
                     }
                     if ("periods" == reader.Value.ToString())
                         tmp = true;
+                    if ("sync" == reader.Value.ToString())
+                    {
+                        s = true;
+                    }
+                    if ("default_weather" == reader.Value.ToString())
+                        def_weather = true;
                 }
                 else if (reader.TokenType == JsonToken.StartArray)
                 {
@@ -347,22 +360,37 @@ namespace StalkerOnlineQuesterEditor
                 {
                     is_period--;
                 }
-                else if (reader.TokenType == JsonToken.String && is_period > 0)
+                else if (reader.TokenType == JsonToken.String && s)
+                {
+                    sync.Add(space, reader.Value.ToString().Replace("spaces/", ""));
+                    s = false;
+                }
+                else if (reader.TokenType == JsonToken.String && (is_period > 0 || def_weather))
                 {
                     string weather_name = reader.Value.ToString();
+                    def_weather = false;
                     if (weathers.Contains(weather_name))
                         continue;
-                    
+
                     weathers.Add(weather_name);
                 }
-                else if (reader.TokenType == JsonToken.EndObject && tmp)
+                else if (reader.TokenType == JsonToken.EndObject && (tmp || s))
                 {
                     _constants.Add(space, weathers);
                     space = "";
+                    is_period = 0;
                     tmp = false;
+                    s = false;
+                    def_weather = false;
                     weathers = new List<string>();
                 }
             }
+
+            foreach(var i in sync)
+            {
+                _constants[i.Value] = new List<string>(_constants[i.Key]);
+            }
+
         }
 
         public static List<string> getWeathers(string spaceName)
@@ -388,24 +416,23 @@ namespace StalkerOnlineQuesterEditor
     {
         protected List<string> _constants;
 
+        protected string path = "../../../res/audio/Metadata/fmod_sounds.txt";
+
         public ListSounds()
         {
             _constants = new List<string>();
-            XDocument doc;
-            try
+
+            if (!File.Exists(path))
+                System.Windows.Forms.MessageBox.Show("Не удалось загрузить файл:" + System.IO.Path.GetFullPath(path), "Ошибка");
+            System.IO.StreamReader fileReader = new StreamReader(path);
+            string line;
+            while ((line = fileReader.ReadLine()) != null)
             {
-                doc = XDocument.Load("source/Sounds.xml");
+                if (!line.Any())
+                    continue;
+                _constants.Add(line.Replace("event:", "").Replace("snapshot:", ""));
             }
-            catch (Exception)
-            {
-                System.Windows.Forms.MessageBox.Show("Не удалось загрузить файл:" + System.IO.Path.GetFullPath("source/Sounds.xml"), "Ошибка");
-                return;
-            }
-            foreach (XElement item in doc.Root.Elements())
-            {
-                string name = item.Value;
-                _constants.Add(name);
-            }
+            fileReader.Close();
         }
 
         public List<string> getKeys()

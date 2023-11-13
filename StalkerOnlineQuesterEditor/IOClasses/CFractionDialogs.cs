@@ -256,6 +256,13 @@ namespace StalkerOnlineQuesterEditor
                             Precondition.clanOptions = dialog.Element("Precondition").Element("clanOptions").Value.ToString();
                         }
 
+                        if (dialog.Element("Precondition").Element("clanLevel") != null)
+                        {
+                            Precondition.clanLevel = new List<int>();
+                            string tmp = dialog.Element("Precondition").Element("clanLevel").Value.ToString();
+                            foreach (var i in tmp.Split(','))
+                                Precondition.clanLevel.Add(Convert.ToInt32(i));
+                        }
                         if (dialog.Element("Precondition").Element("radioAvailable") != null)
                             Precondition.radioAvailable = (RadioAvalible)Convert.ToInt32(dialog.Element("Precondition").Element("radioAvailable").Value);
                         if (dialog.Element("Precondition").Element("dungeonPhase") != null)
@@ -614,6 +621,8 @@ namespace StalkerOnlineQuesterEditor
                         }
                     if (dialog.Precondition.clanOptions != "")
                         element.Element("Precondition").Add(new XElement("clanOptions", dialog.Precondition.clanOptions));
+                    if (dialog.Precondition.clanLevel.Sum() > 0)
+                        element.Element("Precondition").Add(new XElement("clanLevel", string.Join(",", dialog.Precondition.clanLevel)));
                     if (dialog.Precondition.radioAvailable != RadioAvalible.None)
                         element.Element("Precondition").Add(new XElement("radioAvailable", Convert.ToInt32(dialog.Precondition.radioAvailable).ToString()));
                     if (dialog.Precondition.dungeonPhase > 0)

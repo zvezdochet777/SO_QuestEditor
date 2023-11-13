@@ -318,6 +318,13 @@ namespace StalkerOnlineQuesterEditor
                     cbConditionWeapon.SelectedItem = result;
                 else
                     cbConditionWeapon.SelectedItem = parent.npcItems.primaryWeapons.getNameByID(quest.Conditions.useWeaponType);
+                nupb2ctime.Value = quest.Conditions.duration;
+
+                if ((QuestType == CQuestConstants.TYPE_B2C_FLAG) || (QuestType == CQuestConstants.TYPE_B2C_KILL) || (QuestType == CQuestConstants.TYPE_B2C_REVIVE))
+                {
+                    labelPVPPoints.Visible = false; labelPVPTeam.Visible = false; labelPVPWeapon.Visible = false;
+                    cbConditionPVPTeam.Visible = false; cbConditionWeapon.Visible = false; cbConditionPVPTeamWin.Visible = false;
+                }
             }
             else
             {
@@ -338,6 +345,14 @@ namespace StalkerOnlineQuesterEditor
                 cbReputationLow.Visible = false;
                 btnChangeQuestZones.Visible = false;
                 quantityUpDown.Minimum = 0;
+
+                cbPVPMode.Visible = false;
+                cbPVPtarget.Visible = false;
+                cbPVPtarget2.Visible = false;
+                cbPVPtarget3.Visible = false;
+                lbPVPtarget.Visible = false;
+                cbPVPAdditional.Visible = false;
+                labelPVPAdditional.Visible = false;
                 //quantityUpDown.Maximum = 32000;
 
                 targetComboBox.SelectedItem = null;
@@ -705,10 +720,7 @@ namespace StalkerOnlineQuesterEditor
                 else if (QuestType == CQuestConstants.TYPE_PVP_MAP_KILL)
                 {
                     cbPVPMode.Visible = true;
-                    cbPVPtarget.Visible = false;
-                    cbPVPtarget2.Visible = false;
-                    cbPVPtarget3.Visible = false;
-                    lbPVPtarget.Visible = false;
+                    
                     cbPVPMode.Items.Clear();
                     cbPVPMode.Items.AddRange(CPVPConstans.getAllDescriptions().ToArray());
                     cbPVPMode.SelectedIndex = 0;
@@ -718,9 +730,6 @@ namespace StalkerOnlineQuesterEditor
                 {
                     cbPVPMode.Visible = true;
                     cbPVPtarget.Visible = true;
-                    cbPVPtarget2.Visible = false;
-                    cbPVPtarget3.Visible = false;
-                    lbPVPtarget.Visible = false;
 
                     cbPVPtarget.Items.Clear();
                     cbPVPtarget.Items.AddRange(QuestPVPConstance.captureTheFlagTypes.getListNames().ToArray());
@@ -744,7 +753,6 @@ namespace StalkerOnlineQuesterEditor
                     cbPVPtarget.Visible = true;
                     cbPVPtarget2.Visible = true;
                     lbPVPtarget.Visible = true;
-                    cbPVPtarget3.Visible = false;
 
                     cbPVPtarget.Items.Clear();
                     cbPVPtarget.Items.AddRange(QuestPVPConstance.targetCountTypes.getListNames().ToArray());
@@ -757,6 +765,46 @@ namespace StalkerOnlineQuesterEditor
                     cbPVPMode.Items.Clear();
                     cbPVPMode.Items.AddRange(CPVPConstans.getAllDescriptions().ToArray());
                     cbPVPMode.SelectedIndex = 0;
+                }
+                else if (QuestType == CQuestConstants.TYPE_B2C_KILL)
+                {
+                    cbPVPMode.Visible = true;
+                    cbPVPMode.Items.Clear();
+                    cbPVPMode.Items.Add("2 Защита");
+                    cbPVPMode.Items.Add("3 Атака");
+                    
+                    cbPVPMode.SelectedIndex = 0;
+                    
+                    cbPVPtarget.Visible = true;
+                    cbPVPtarget.Items.Clear();
+                    cbPVPtarget.Items.Add("2 Игрок");
+                    cbPVPtarget.Items.Add("3 Охранник");
+                    cbPVPtarget.SelectedIndex = 0;
+                    nupPVPCount.Visible = true;
+
+                    cbPVPAdditional.Visible = true;
+                    cbPVPAdditional.Items.Clear();
+                    cbPVPAdditional.Items.Add("Нет");
+                    cbPVPAdditional.Items.Add("Да");
+                    cbPVPAdditional.SelectedIndex = 0;
+
+                    labelPVPAdditional.Visible = true;
+                    labelPVPAdditional.Text = "Добить";
+                }
+                else if ((QuestType == CQuestConstants.TYPE_B2C_FLAG) || (QuestType == CQuestConstants.TYPE_B2C_REVIVE))
+                {
+                    cbPVPMode.Visible = false;
+                    cbPVPtarget.Visible = false;
+                    cbPVPtarget2.Visible = false;
+                    lbPVPtarget.Visible = false;
+                    cbPVPtarget3.Visible = false;
+
+                    cbPVPMode.Visible = true;
+                    cbPVPMode.Items.Clear();
+                    cbPVPMode.Items.Add("2 Защита");
+                    cbPVPMode.Items.Add("3 Атака");
+                    cbPVPMode.SelectedIndex = 0;
+                    nupPVPCount.Visible = true;
                 }
 
             }
@@ -900,10 +948,10 @@ namespace StalkerOnlineQuesterEditor
                     // иначе чёрт знает как засунуть текст, который не в Items
                     foreach (CZoneDescription description in parent.zoneConst.getAllZones().Values)
                         targetAttributeComboBox2.Items.Add(description.getName());
-
-                    string area = parent.zoneConst.getDescriptionOnKey(quest.Target.AreaName).getName();
+                    string area = quest.Target.AreaName;
+                    //string area = parent.zoneConst.getDescriptionOnKey(quest.Target.AreaName).getName();
                     if (area.Any())
-                        targetAttributeComboBox2.SelectedItem = area;
+                        targetAttributeComboBox2.Text = area;
                 }
 
                 //if (quest.Target.ObjectAttr < 0)
@@ -1043,6 +1091,18 @@ namespace StalkerOnlineQuesterEditor
                 cbPVPtarget.SelectedItem = QuestPVPConstance.targetCountTypes.getNameByID(quest.Target.ObjectType);
                 cbPVPtarget2.SelectedItem = QuestPVPConstance.bestTypes.getNameByID(quest.Target.ObjectAttr);
                 cbPVPMode.SelectedItem = CPVPConstans.getPVPModeNameByID(Convert.ToInt32(quest.Target.additional));
+            }
+            else if (quest.Target.QuestType == CQuestConstants.TYPE_B2C_KILL)
+            {
+                nupPVPCount.Value = quest.Target.NumOfObjects;
+                cbPVPMode.SelectedIndex = Math.Max(0, Convert.ToInt32(quest.Target.additional) - 2);
+                cbPVPtarget.SelectedIndex = Math.Max(0, quest.Target.ObjectType - 2);
+                cbPVPAdditional.SelectedIndex = quest.Target.ObjectAttr;
+            }
+            else if ((quest.Target.QuestType == CQuestConstants.TYPE_B2C_FLAG) || (QuestType == CQuestConstants.TYPE_B2C_REVIVE))
+            {
+                nupPVPCount.Value = quest.Target.NumOfObjects;
+                cbPVPMode.SelectedIndex = Math.Max(0, Convert.ToInt32(quest.Target.additional) - 2); ;
             }
             else if ((quest.Target.QuestType == 53) || (quest.Target.QuestType == 54))
             {
@@ -1527,7 +1587,7 @@ namespace StalkerOnlineQuesterEditor
                     target.str_param2 = area.Any() ? area : targetAttributeComboBox.Text;
                 }
 
-                if (targetAttributeComboBox2.SelectedItem == null)
+                if (targetAttributeComboBox2.Text.Any())
                     target.AreaName = targetAttributeComboBox2.Text;
                 else if (targetAttributeComboBox2.SelectedItem.ToString().Equals(""))
                     target.AreaName = "";
@@ -1665,6 +1725,18 @@ namespace StalkerOnlineQuesterEditor
                 target.ObjectAttr = QuestPVPConstance.bestTypes.getIDByName(cbPVPtarget2.SelectedItem.ToString());
                 target.additional = CPVPConstans.getPVPModeIDByName(cbPVPMode.SelectedItem.ToString()).ToString();
             }
+            else if (target.QuestType == CQuestConstants.TYPE_B2C_KILL)
+            {
+                target.NumOfObjects = Convert.ToInt32(nupPVPCount.Value);
+                target.additional = (cbPVPMode.SelectedIndex + 2).ToString();
+                target.ObjectType = cbPVPtarget.SelectedIndex + 2;
+                target.ObjectAttr = cbPVPAdditional.SelectedIndex;
+            }
+            else if ((target.QuestType == CQuestConstants.TYPE_B2C_FLAG) || (QuestType == CQuestConstants.TYPE_B2C_REVIVE))
+            {
+                target.NumOfObjects = Convert.ToInt32(nupPVPCount.Value);
+                target.additional = (cbPVPMode.SelectedIndex + 2).ToString();
+            }
             else if ((target.QuestType == 53) || (target.QuestType == 54))
             {
                 if (cbState.Checked && cbState.Enabled)
@@ -1799,6 +1871,7 @@ namespace StalkerOnlineQuesterEditor
                 conditions.bePvpWinner = cbConditionPVPTeam.SelectedIndex;
                 conditions.pvpWinTeam = cbConditionPVPTeamWin.SelectedIndex;
                 conditions.notDieCount = Convert.ToInt32(nupConditionDead.Value);
+                conditions.duration = Convert.ToInt32(nupb2ctime.Value);
 
                 int weapon_type = parent.npcItems.secondaryyWeapons.getIDByName(cbConditionWeapon.SelectedItem.ToString());
                 if (weapon_type == 0)

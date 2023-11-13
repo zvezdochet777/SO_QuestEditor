@@ -59,7 +59,9 @@ namespace StalkerOnlineQuesterEditor
         public static int TYPE_PVP_MAP_KILL = 40; //Убить во время пвп матча
         public static int TYPE_PVP_MAP_CAPTURE_FLAG = 41; //Сделать что-то над флагом в пвп карте
         public static int TYPE_PVP_MAP_SCORE = 42; //Сделать набрать очки в пвп карте
-
+        public static int TYPE_B2C_KILL = 43; //Убить во время захвата базы
+        public static int TYPE_B2C_FLAG = 44; //Захватить флаг во время захвата базы
+        public static int TYPE_B2C_REVIVE = 46; //Оживить игрока во время захвата
 
         public static int TYPE_DUNGEON_BOX_COUNTER = 45; // собрать коробки внутри танка в данже
         public static int TYPE_CREATE_NPC = 51; // создать бегающего НИП
@@ -111,6 +113,9 @@ namespace StalkerOnlineQuesterEditor
             pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_KILL, "40 Убить во время пвп матча"));
             pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_CAPTURE_FLAG, "41 Сделать что-то над флагом в пвп карте"));
             pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_SCORE, "42 Набрать очки в пвп карте"));
+            pvpQuestsType.Add(new СQuestType(TYPE_B2C_KILL, "43 Убить во время захвата баз"));
+            pvpQuestsType.Add(new СQuestType(TYPE_B2C_FLAG, "44 Звахватить флаг во время захвата баз"));
+            pvpQuestsType.Add(new СQuestType(TYPE_B2C_REVIVE, "46 Оживить игрока во время захвата баз"));
 
             simpleQuestsType.Add(new СQuestType(TYPE_DUNGEON_BOX_COUNTER, "45 Cобрать коробки внутри танка в данже"));
 
