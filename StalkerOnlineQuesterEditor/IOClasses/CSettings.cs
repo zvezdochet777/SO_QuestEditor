@@ -35,7 +35,8 @@ namespace StalkerOnlineQuesterEditor
         public static int MODE_LOCALIZATION = 1;
 
         static string SETTINGS_PATH = "settings/";
-        static string SETTING_FILE = "Settings.xml";
+        public static string SETTING_FILE = "Settings.xml";
+        public static string MAIN_SETTING_FILE = "MainSettings.xml";
         public static string ORIGINAL_PATH = "Russian";
 
         private static string dialogTextsXML = "DialogTexts.xml";
@@ -51,14 +52,17 @@ namespace StalkerOnlineQuesterEditor
             CSettings.parent = parent;
             try
             {
-                XDocument doc = XDocument.Load(SETTINGS_PATH + SETTING_FILE);
-
-                iNumOperator = int.Parse(doc.Root.Element("operator").Value.ToString());
+                XDocument doc = XDocument.Load(SETTINGS_PATH + MAIN_SETTING_FILE);
                 foreach (string locale in doc.Root.Element("locales").Value.ToString().Split(','))
                 {
                     if (locale.Count() <= 3) continue;
                     locales.Add(locale);
                 }
+                
+                doc = XDocument.Load(SETTINGS_PATH + SETTING_FILE);
+
+                iNumOperator = int.Parse(doc.Root.Element("operator").Value.ToString());
+                
                 mode = int.Parse(doc.Root.Element("mode").Value.ToString());
                 currentLocale = int.Parse(doc.Root.Element("current_locale").Value.ToString());
                 if (Directory.Exists(doc.Root.Element("new_pathDialogsDataFiles").Value))
@@ -285,14 +289,14 @@ namespace StalkerOnlineQuesterEditor
             return Path.Combine(pathQuestDataFiles, questDataXML);
         }
 
-        public static string GetDialogLocaleTextPath()
+        public static string GetDialogLocaleTextPath(string locale)
         {
-            return Path.Combine(pathToLocalFiles, getCurrentLocale(), dialogTextsDIR);
+            return Path.Combine(pathToLocalFiles, locale, dialogTextsDIR);
         }
 
-        public static string GetQuestLocaleTextPath()
+        public static string GetQuestLocaleTextPath(string locale)
         {
-            return Path.Combine(pathToLocalFiles, getCurrentLocale(), questTextsXML);
+            return Path.Combine(pathToLocalFiles, locale, questTextsXML);
         }
 
         public static string GetLastQuestIDPath()

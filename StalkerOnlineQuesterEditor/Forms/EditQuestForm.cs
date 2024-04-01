@@ -671,21 +671,6 @@ namespace StalkerOnlineQuesterEditor
                     lNameObject.Enabled = true;
                     lQuantity.Enabled = false;
                 }
-                else if ((QuestType == CQuestConstants.TYPE_REPUTATION) || (QuestType == CQuestConstants.TYPE_REPUTATION_AUTO))
-                {
-                    lNameObject.Text = "Репутация";
-                    targetComboBox.Items.Clear();
-                    foreach (KeyValuePair<int, string> pair in parent.fractions.getListOfFractions())
-                        targetComboBox.Items.Add(pair.Value);
-                    quantityUpDown.Enabled = true;
-                    targetComboBox.Enabled = true;
-                    lNameObject.Enabled = true;
-                    lQuantity.Enabled = false;
-                    quantityUpDown.Minimum = -1000000;
-                    cbReputationLow.Visible = true;
-                    cbReputationLow.Enabled = true;
-
-                }
                 else if (QuestType == CQuestConstants.TYPE_KILL)
                 {
                     lNameObject.Text = "Тип убийства:";
@@ -1042,18 +1027,6 @@ namespace StalkerOnlineQuesterEditor
                 targetComboBox.SelectedItem = parent.effects.getDescriptionOnID(quest.Target.ObjectType);
                 quantityUpDown.Value = quest.Target.NumOfObjects;
             }
-            else if (quest.Target.QuestType == CQuestConstants.TYPE_REPUTATION || quest.Target.QuestType == CQuestConstants.TYPE_REPUTATION_AUTO)
-            {
-                int factID = 0;
-                if (int.TryParse(quest.Target.ObjectName, out factID))
-                    targetComboBox.SelectedItem = parent.fractions.getFractionDesctByID(factID);
-                else
-                {
-                    targetComboBox.Text = quest.Target.ObjectName;
-                }
-                quantityUpDown.Value = quest.Target.NumOfObjects;
-                cbReputationLow.Checked = quest.Target.ObjectAttr != 0;
-            }
             else if (quest.Target.QuestType == CQuestConstants.TYPE_KILL)
             {
                 targetComboBox.SelectedIndex = quest.Target.ObjectType;
@@ -1127,7 +1100,7 @@ namespace StalkerOnlineQuesterEditor
             npc.way = tbWay.Text;
             npc.animation = tbNPCAnim.Text;
 
-            npc.fraction = cbFractionID.SelectedItem == null ? 0 : parent.fractions.getFractionIDByDescr(cbFractionID.SelectedItem.ToString());
+            npc.fraction = cbFractionID.SelectedItem == null ? 0 : parent.fractions2.getFractionIDByDescr(cbFractionID.SelectedItem.ToString());
             npc.npcWeapon = cbWeapon.SelectedIndex == -1 ? 0 : cbWeapon.SelectedIndex;
             npc.npcWeaponPrimary = cbPrimaryWeapon.SelectedItem == null ? 0 : parent.npcItems.primaryWeapons.getIDByName(cbPrimaryWeapon.SelectedItem.ToString());
 
@@ -1188,7 +1161,7 @@ namespace StalkerOnlineQuesterEditor
 
             tbWay.Text = quest.QuestRules.npc.way;
             tbNPCAnim.Text = quest.QuestRules.npc.animation;
-            cbFractionID.SelectedItem = parent.fractions.getFractionDesctByID(quest.QuestRules.npc.fraction);
+            cbFractionID.SelectedItem = parent.fractions2.getFractionDesctByID(quest.QuestRules.npc.fraction);
             
             cbWeapon.SelectedIndex = quest.QuestRules.npc.npcWeapon;
             cbPrimaryWeapon.SelectedItem = parent.npcItems.primaryWeapons.getNameByID(quest.QuestRules.npc.npcWeaponPrimary);
@@ -1220,7 +1193,7 @@ namespace StalkerOnlineQuesterEditor
         void initCreateNPCPanel()
         {
             cbFractionID.Items.Clear();
-            cbFractionID.Items.AddRange(parent.fractions.getListOfFractions().Values.ToArray());
+            cbFractionID.Items.AddRange(parent.fractions2.getListOfFractions().Values.ToArray());
 
             cbWeapon.Items.Clear();
             cbWeapon.Items.Add("пусто"); cbWeapon.Items.Add("Перв. оруж"); cbWeapon.Items.Add("Перв2. оруж"); cbWeapon.Items.Add("Втор. оруж");
@@ -1393,6 +1366,14 @@ namespace StalkerOnlineQuesterEditor
         //! Собирает данные с формы, и возвращает экземпляр CQuest с этими данными
         public CQuest getQuest()
         {
+            Action<List<string>, string> loggingPaths = (List<string> x, string a) => 
+            {
+                foreach (string i in x) Console.WriteLine(i, a);
+            };
+
+            loggingPaths(new List<string>(), "");
+
+
             CQuestAdditional additional = new CQuestAdditional();
             CQuestInformation information = new CQuestInformation();
             CQuestPrecondition precondition = new CQuestPrecondition();
@@ -1671,27 +1652,6 @@ namespace StalkerOnlineQuesterEditor
                     return null;
                 }
             }
-            else if (target.QuestType == CQuestConstants.TYPE_REPUTATION || target.QuestType == CQuestConstants.TYPE_REPUTATION_AUTO)
-            {
-                if (targetComboBox.SelectedItem == null)
-                {
-                    if (!targetComboBox.Text.Trim().Any())
-                    {
-                        MessageBox.Show("Цель->Репутация - некорректное значение", "Ошибка");
-                        return null;
-                    }
-                    target.ObjectName = targetComboBox.Text;
-                }  
-                else
-                    target.ObjectName = parent.fractions.getFractionIDByDescr(targetComboBox.SelectedItem.ToString()).ToString();
-                target.NumOfObjects = int.Parse(quantityUpDown.Value.ToString());
-                target.ObjectAttr = Convert.ToInt16(cbReputationLow.Checked);
-                if (target.NumOfObjects < 1)
-                {
-                    MessageBox.Show("Цель->Количество - некорректное значение", "Ошибка");
-                    return null;
-                }
-            }
             else if (target.QuestType == CQuestConstants.TYPE_KILL)
             {
                 target.ObjectType = targetComboBox.SelectedIndex;
@@ -1909,10 +1869,11 @@ namespace StalkerOnlineQuesterEditor
             else
             {
                 int version = quest.Version;
-                if (quest.QuestInformation.Title != information.Title || quest.QuestInformation.Description != information.Description 
+                if (quest.QuestInformation.Title != information.Title || quest.QuestInformation.Description != information.Description
+                    || quest.QuestInformation.DescriptionOnTest != information.DescriptionOnTest || quest.QuestInformation.DescriptionClosed != information.DescriptionClosed
                         || quest.QuestInformation.onWin != information.onWin || quest.QuestInformation.onFailed != information.onFailed
                         || quest.QuestInformation.onGet != information.onGet || quest.QuestInformation.onOpen != information.onOpen
-                        || quest.QuestInformation.onTest != information.onTest)
+                        || quest.QuestInformation.onTest != information.onTest )
                     if (parent.isLocaledQuest(quest.QuestID))
                     {
                         DialogResult dr = MessageBox.Show("Текст был изменён, нужно переводить?", "Внимание, ньюанс с переводами", MessageBoxButtons.YesNo);

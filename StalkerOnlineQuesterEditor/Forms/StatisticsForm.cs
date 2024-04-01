@@ -96,9 +96,11 @@ namespace StalkerOnlineQuesterEditor
                     countHiddenQuests++;
                     continue;
                 }
+                if (quest.Reward.Experience != 0)
+                    countOfExQuests++;
                 lExperience += quest.Reward.Experience;
                 //if (quest.Reward.Credits != 0)
-                    countOfAmountGold++;
+                countOfAmountGold++;
                 Credits += quest.Reward.Credits;
             }
              averageExp = lExperience / countOfExQuests;        
@@ -184,6 +186,7 @@ namespace StalkerOnlineQuesterEditor
         //! Считает статистику по бонусам и штрафам к репутации у каждой фракции и заполняет табличку
         void calcReputation()
         {
+            return;
             Dictionary<int, RepData> RepStats = new Dictionary<int,RepData>();
             foreach (KeyValuePair<int, string> fraction in parent.fractions.getListOfFractions())
             {

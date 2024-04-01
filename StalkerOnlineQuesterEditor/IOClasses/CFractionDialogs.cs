@@ -395,6 +395,9 @@ namespace StalkerOnlineQuesterEditor
 
                     if (dialog.Element("DebugData") != null)
                         DebugData = dialog.Element("DebugData").Value.ToString();
+                    bool noLocale = false;
+                    if (dialog.Element("noLocale") != null)
+                        noLocale = true;
                     if (dialog.Element("isAutoNode") != null)
                     {
                         isAutoNode = dialog.Element("isAutoNode").Value.Trim().Equals("1");
@@ -405,7 +408,7 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.Element("nextDialog") != null) nextDialog = int.Parse(dialog.Element("nextDialog").Value);
                     if (!target[npc_name].Keys.Contains(DialogID))
                         target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, CheckNodes, DialogID, 0, 
-                                                        nodeCoord, DebugData, nextDialog, isAutoNode, defaultNode));
+                                                        nodeCoord, DebugData, noLocale, nextDialog, isAutoNode, defaultNode));
                 }
             }
 
@@ -486,7 +489,8 @@ namespace StalkerOnlineQuesterEditor
         //! Сохраняет текущую локализацию диалогов в файл
         public static void SaveLocales()
         {
-            SaveDialogsTexts(CSettings.GetDialogLocaleTextPath() + "FractionDialogs/", CFractionDialogs.locales[CSettings.getCurrentLocale()]);
+            foreach(var locale in CSettings.getListLocales())
+                SaveDialogsTexts(CSettings.GetDialogLocaleTextPath(locale) + "FractionDialogs/", CFractionDialogs.locales[locale]);
         }
 
         private static void SaveDialogsTexts(string filePath, FractionDicts target)
@@ -789,6 +793,7 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.coordinates.Active)
                         element.Add(new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active)));
                     if (dialog.DebugData != "") element.Add(new XElement("DebugData",dialog.DebugData ));
+                    if (dialog.noLocale) element.Add(new XElement("noLocale", "1"));
                     if (dialog.isAutoNode)
                     {
                         element.Add(new XElement("isAutoNode", Global.GetBoolAsString(dialog.isAutoNode)));
@@ -859,8 +864,8 @@ namespace StalkerOnlineQuesterEditor
                     
 
                     int id = int.Parse(dialog.Attribute("ID").Value);
-                    float x = float.Parse(dialog.Element("X").Value);
-                    float y = float.Parse(dialog.Element("Y").Value);
+                    float x = float.Parse(dialog.Element("X").Value, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"));
+                    float y = float.Parse(dialog.Element("Y").Value, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"));
                     try
                     {
                         tempCoordinates[npc_name].Add(id, new NodeCoordinates(x, y, false, false));

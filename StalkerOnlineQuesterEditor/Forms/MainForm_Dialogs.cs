@@ -126,14 +126,24 @@ namespace StalkerOnlineQuesterEditor
             return dialogs.dialogs[currentNPC].Keys.ToList<int>();
         }
 
-        public bool isLocaledDialog(int dialogID)
+        public bool isEmptyLocaledDialog(int dialogID)
         {
-            if (dialogID == 0) return false;
+            if (dialogID == 0) return true;
             CDialog dialog;
-            if (CentralDock.SelectedIndex == 2)
-                dialog = CDialogs.getLocaleDialog(dialogID, "English", currentFraction, CFractionDialogs.locales);
-            else dialog = CDialogs.getLocaleDialog(dialogID, "English", currentNPC, dialogs.locales);
-            return dialog.Text.Any() || dialog.Title.Any();
+
+            List<string> langs = CSettings.getListLocales();
+
+            foreach(var lang in langs)
+            {
+                if (lang == "Russian") continue;
+                if (CentralDock.SelectedIndex == 2)
+                    dialog = CDialogs.getLocaleDialog(dialogID, lang, currentFraction, CFractionDialogs.locales);
+                else
+                    dialog = CDialogs.getLocaleDialog(dialogID, lang, currentNPC, dialogs.locales);
+                if (dialog.Text.Any() || dialog.Title.Any()) return false;
+            }
+
+            return true;
 
         }
 
@@ -235,7 +245,8 @@ namespace StalkerOnlineQuesterEditor
         //! Удаляет диалог из локализаций при его удалении из русской части диалогов
         private void setNonActiveDialog(string holder, int id, NPCLocales locales)
         {
-            locales[CSettings.getListLocales()[0]][holder][id].coordinates.Active = false;
+            foreach(var i in CSettings.getListLocales())
+                locales[i][holder][id].coordinates.Active = false;
         }
 
         //! Заполняет граф диалога нужными узлами
@@ -611,7 +622,8 @@ namespace StalkerOnlineQuesterEditor
             foreach (KeyValuePair<int, CDialog> dial in dialogs)
             {
                 dial.Value.Nodes.Remove(node);
-                locales[CSettings.getListLocales()[0]][GetCurrentHolder()][dial.Value.DialogID].Nodes.Remove(node);
+                foreach (var i in CSettings.getListLocales())
+                    locales[i][GetCurrentHolder()][dial.Value.DialogID].Nodes.Remove(node);
             }
 
             PNode removedNode = getNodeOnDialogID(node);
@@ -695,12 +707,14 @@ namespace StalkerOnlineQuesterEditor
             if (index == 2)
             {
                 CFractionDialogs.dialogs[currentFraction][dialogID] = dialog;
-                CFractionDialogs.locales[CSettings.getListLocales()[0]][currentFraction][dialogID].InsertNonTextData(dialog);
+                foreach (var i in CSettings.getListLocales())
+                    CFractionDialogs.locales[i][currentFraction][dialogID].InsertNonTextData(dialog);
             }
             else
             {
                 dialogs.dialogs[currentNPC][dialogID] = dialog;
-                dialogs.locales[CSettings.getListLocales()[0]][currentNPC][dialogID].InsertNonTextData(dialog);
+                foreach (var i in CSettings.getListLocales())
+                    dialogs.locales[i][currentNPC][dialogID].InsertNonTextData(dialog);
             }
             this.isDirty = true;
 
@@ -721,16 +735,22 @@ namespace StalkerOnlineQuesterEditor
             {
                 dialogs = getDialogDictionary(currentFraction, CFractionDialogs.dialogs, CFractionDialogs.locales);
                 locales = CFractionDialogs.locales;
-                locales[CSettings.getListLocales()[0]][currentFraction].Add(newID, newDialog);
-                locales[CSettings.getListLocales()[0]][currentFraction][parentID].Nodes.Add(newID);
+                foreach (var i in CSettings.getListLocales())
+                {
+                    locales[i][currentFraction].Add(newID, newDialog);
+                    locales[i][currentFraction][parentID].Nodes.Add(newID);
+                }
                 dialogShower = fractionDialogShower;
             }
             else
             {
                 dialogs = getDialogDictionary(GetCurrentNPC(), this.dialogs.dialogs, this.dialogs.locales);
                 locales = this.dialogs.locales;
-                locales[CSettings.getListLocales()[0]][currentNPC].Add(newID, newDialog);
-                locales[CSettings.getListLocales()[0]][currentNPC][parentID].Nodes.Add(newID);
+                foreach (var i in CSettings.getListLocales())
+                {
+                    locales[i][currentNPC].Add(newID, newDialog);
+                    locales[i][currentNPC][parentID].Nodes.Add(newID);
+                }
                 dialogShower = DialogShower;
             }
 

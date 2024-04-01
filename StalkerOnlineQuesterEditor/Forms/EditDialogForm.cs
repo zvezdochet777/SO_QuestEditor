@@ -329,7 +329,9 @@ namespace StalkerOnlineQuesterEditor
 
             }
             if (curDialog.DebugData != "") debugTextBox.Text = curDialog.DebugData;
-                   
+            cbNoLocale.Checked = curDialog.noLocale;
+
+
             calcSymbolMaxAnswer();
 
 
@@ -1082,7 +1084,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 newID = CDialogs.getDialogsNewID();
                 CDialog dialog = new CDialog(holder, tPlayerText.Text, tReactionNPC.Text, precondition, actions, nodes, check_nodes, newID, 1,
-                                        coord, DebugData, nextDialog, cbAutoNode.Checked, autoDefaultNode.Text);
+                                        coord, DebugData, cbNoLocale.Checked, nextDialog, cbAutoNode.Checked, autoDefaultNode.Text);
                 parent.addActiveDialog(newID, dialog, currentDialogID);
             }
             else
@@ -1094,7 +1096,7 @@ namespace StalkerOnlineQuesterEditor
                 int version = curDialog.version;
                 if (tPlayerText.Text != curDialog.Title || tReactionNPC.Text != curDialog.Text)
                 {
-                    if (parent.isLocaledDialog(currentDialogID))
+                    if (!parent.isEmptyLocaledDialog(currentDialogID))
                     {
                         DialogResult dr = MessageBox.Show("Текст был изменён, нужно переводить?", "Внимание, ньюанс с переводами", MessageBoxButtons.YesNo);
                         if (dr == DialogResult.Yes)
@@ -1104,7 +1106,7 @@ namespace StalkerOnlineQuesterEditor
                 }
                 parent.replaceDialog(new CDialog(holder, tPlayerText.Text, tReactionNPC.Text,
                     precondition, actions, nodes, check_nodes, currentDialogID, version, 
-                                        coord, DebugData, nextDialog, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
+                                        coord, DebugData, cbNoLocale.Checked, nextDialog, cbAutoNode.Checked, autoDefaultNode.Text), currentDialogID);
             }
             //parent.Enabled = true;
             parent.setEnable();

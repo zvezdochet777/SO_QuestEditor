@@ -185,8 +185,8 @@ namespace StalkerOnlineQuesterEditor
                     //Console.WriteLine("coord " + rectangle.coordX + " " + rectangle.coordY);
                     npcElement.Add(new XElement("Rect",
                             new XAttribute("ID", rectangle.GetID()),
-                            new XElement("X", Convert.ToString(rectangle.coordX)),
-                            new XElement("Y", Convert.ToString(rectangle.coordY)),
+                            new XElement("X", Convert.ToString(rectangle.coordX, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"))),
+                            new XElement("Y", Convert.ToString(rectangle.coordY, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"))),
                             new XElement("width", rectangle.Width.ToString()),
                             new XElement("height", rectangle.Height.ToString()),
                             new XElement("Text", rectangle.GetText()),
@@ -221,8 +221,8 @@ namespace StalkerOnlineQuesterEditor
                 foreach (XElement rectangle in item.Elements())
                 {
                     int id = int.Parse(rectangle.Attribute("ID").Value);
-                    float x = float.Parse(rectangle.Element("X").Value);
-                    float y = float.Parse(rectangle.Element("Y").Value);
+                    float x = float.Parse(rectangle.Element("X").Value, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"));
+                    float y = float.Parse(rectangle.Element("Y").Value, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"));
                     int width = int.Parse(rectangle.Element("width").Value);
                     int height = int.Parse(rectangle.Element("height").Value);
                     string text = rectangle.Element("Text").Value.ToString();

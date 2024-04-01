@@ -430,7 +430,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 if (!line.Any())
                     continue;
-                _constants.Add(line.Replace("event:", "").Replace("snapshot:", ""));
+                _constants.Add(line.Replace("event:/", "").Replace("snapshot:/", ""));
             }
             fileReader.Close();
         }

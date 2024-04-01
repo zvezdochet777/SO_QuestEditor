@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelCreateMob = new System.Windows.Forms.Panel();
             this.cbMobInvul = new System.Windows.Forms.CheckBox();
             this.cbMobLevel = new System.Windows.Forms.ComboBox();
@@ -45,6 +45,8 @@
             this.cbMobType = new System.Windows.Forms.ComboBox();
             this.cbScenaryType = new System.Windows.Forms.ComboBox();
             this.panelPVPQuests = new System.Windows.Forms.Panel();
+            this.labelPVPAdditional = new System.Windows.Forms.Label();
+            this.cbPVPAdditional = new System.Windows.Forms.ComboBox();
             this.cbPVPMode = new System.Windows.Forms.ComboBox();
             this.label33 = new System.Windows.Forms.Label();
             this.cbPVPtarget3 = new System.Windows.Forms.ComboBox();
@@ -241,8 +243,6 @@
             this.cbQuestLink = new System.Windows.Forms.ComboBox();
             this.cbFraction2Bonus = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.cbPVPAdditional = new System.Windows.Forms.ComboBox();
-            this.labelPVPAdditional = new System.Windows.Forms.Label();
             this.panelCreateMob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMobCount)).BeginInit();
             this.panelPVPQuests.SuspendLayout();
@@ -442,6 +442,23 @@
             this.panelPVPQuests.Size = new System.Drawing.Size(622, 153);
             this.panelPVPQuests.TabIndex = 37;
             this.panelPVPQuests.Visible = false;
+            // 
+            // labelPVPAdditional
+            // 
+            this.labelPVPAdditional.AutoSize = true;
+            this.labelPVPAdditional.Location = new System.Drawing.Point(11, 95);
+            this.labelPVPAdditional.Name = "labelPVPAdditional";
+            this.labelPVPAdditional.Size = new System.Drawing.Size(69, 13);
+            this.labelPVPAdditional.TabIndex = 39;
+            this.labelPVPAdditional.Text = "Количество:";
+            // 
+            // cbPVPAdditional
+            // 
+            this.cbPVPAdditional.FormattingEnabled = true;
+            this.cbPVPAdditional.Location = new System.Drawing.Point(86, 92);
+            this.cbPVPAdditional.Name = "cbPVPAdditional";
+            this.cbPVPAdditional.Size = new System.Drawing.Size(136, 21);
+            this.cbPVPAdditional.TabIndex = 38;
             // 
             // cbPVPMode
             // 
@@ -1714,8 +1731,8 @@
             // 
             // radius
             // 
-            dataGridViewCellStyle1.NullValue = "0";
-            this.radius.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.radius.DefaultCellStyle = dataGridViewCellStyle2;
             this.radius.HeaderText = "радиус";
             this.radius.Name = "radius";
             // 
@@ -2438,11 +2455,11 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(485, 35);
+            this.label25.Location = new System.Drawing.Point(460, 35);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(29, 13);
+            this.label25.Size = new System.Drawing.Size(63, 13);
             this.label25.TabIndex = 54;
-            this.label25.Text = "Тип:";
+            this.label25.Text = "Категория:";
             // 
             // cbPriority
             // 
@@ -2533,23 +2550,6 @@
             this.label34.Size = new System.Drawing.Size(79, 13);
             this.label34.TabIndex = 61;
             this.label34.Text = "Бонус группы:";
-            // 
-            // cbPVPAdditional
-            // 
-            this.cbPVPAdditional.FormattingEnabled = true;
-            this.cbPVPAdditional.Location = new System.Drawing.Point(86, 92);
-            this.cbPVPAdditional.Name = "cbPVPAdditional";
-            this.cbPVPAdditional.Size = new System.Drawing.Size(136, 21);
-            this.cbPVPAdditional.TabIndex = 38;
-            // 
-            // labelPVPAdditional
-            // 
-            this.labelPVPAdditional.AutoSize = true;
-            this.labelPVPAdditional.Location = new System.Drawing.Point(11, 95);
-            this.labelPVPAdditional.Name = "labelPVPAdditional";
-            this.labelPVPAdditional.Size = new System.Drawing.Size(69, 13);
-            this.labelPVPAdditional.TabIndex = 39;
-            this.labelPVPAdditional.Text = "Количество:";
             // 
             // EditQuestForm
             // 

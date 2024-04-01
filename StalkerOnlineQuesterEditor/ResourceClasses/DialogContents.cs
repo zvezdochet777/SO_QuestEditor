@@ -629,6 +629,7 @@ namespace StalkerOnlineQuesterEditor
         public int version; //Версия для перевода
         public NodeCoordinates coordinates;
         public string DebugData; //Для теста, пока фича не реализована в эдиторе, пользуются этой нодой
+        public bool noLocale;
         public bool isAutoNode; //Диалог автоматически перебрасывает на рандомную ноду
         public string defaultNode; //Диалог по-умолчанию, если другие не подходят по условиям(для автопереходилки)
         public string ToDoTooltip; //
@@ -636,7 +637,7 @@ namespace StalkerOnlineQuesterEditor
 
         public CDialog(string Holder, string Title, string Text, CDialogPrecondition Precondition,
                     Actions Actions, List<int> Nodes, List<int> CheckNodes, int DialogID, int version, 
-                    NodeCoordinates Coordinates, string DebugData = "", int nextDialog = 0, 
+                    NodeCoordinates Coordinates, string DebugData = "", bool noLocale = false, int nextDialog = 0, 
                     bool isAutoNode = false, string defaultNode = "")
         {
             this.Holder = Holder;
@@ -650,6 +651,7 @@ namespace StalkerOnlineQuesterEditor
             this.version = version;
             this.coordinates = Coordinates;
             this.DebugData = DebugData;
+            this.noLocale = noLocale;
             this.isAutoNode = isAutoNode;
             this.defaultNode = defaultNode;
             this.nextDialog = nextDialog;
@@ -668,6 +670,7 @@ namespace StalkerOnlineQuesterEditor
             coordinates = new NodeCoordinates();
             this.isAutoNode = false;
             this.DebugData = "";
+            noLocale = false;
             this.defaultNode = "";
             this.ToDoTooltip = "";
             nextDialog = 0;
@@ -689,6 +692,7 @@ namespace StalkerOnlineQuesterEditor
             copy.isAutoNode = this.isAutoNode;
             copy.defaultNode = this.defaultNode;
             copy.nextDialog = nextDialog;
+            copy.noLocale = noLocale;
             return copy;
         }
         // Копирование всех нетекстовых полей (сделано для синхронизации данных, не изменяя перевода)

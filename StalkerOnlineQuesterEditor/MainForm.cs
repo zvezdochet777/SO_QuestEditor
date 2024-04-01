@@ -854,9 +854,14 @@ namespace StalkerOnlineQuesterEditor
             if (selectedItemType == SelectedItemType.dialog)
             {
                 if (tree.SelectedNode == null) return;
+                int quest_id = 0;
+                int.TryParse(tree.SelectedNode.Text, out quest_id);
+                if (quest_id == 0) return;
                 if (CSettings.getMode() == CSettings.MODE_EDITOR)
                 {
-                    EditDialogForm editDialogForm = new EditDialogForm(false, this, int.Parse(tree.SelectedNode.Text));
+                    
+                    
+                    EditDialogForm editDialogForm = new EditDialogForm(false, this, quest_id);
                     editDialogForm.Visible = true;
                 }
                 else
@@ -881,11 +886,17 @@ namespace StalkerOnlineQuesterEditor
                 if (dialog.Actions.ToDialog == dialogID)
                     dialog.Actions.ToDialog = 0;
             // удаляем диалог из переводов
-            locales[CSettings.getListLocales()[0]][currentNPC].Remove(dialogID);
-            foreach (CDialog dialog in locales[CSettings.getListLocales()[0]][currentNPC].Values)
-                if (dialog.Actions.ToDialog == dialogID)
-                    dialog.Actions.ToDialog = 0;
-
+            foreach (var i in CSettings.getListLocales())
+            {
+                bool result = locales[i][currentNPC].Remove(dialogID);
+                if (!result)
+                {
+                    Console.WriteLine("not found dialog " + dialogID.ToString() + " in lang:" + i);
+                }
+                foreach (CDialog dialog in locales[i][currentNPC].Values)
+                    if (dialog.Actions.ToDialog == dialogID)
+                        dialog.Actions.ToDialog = 0;
+            }
             CDialog rootDialog = getRootDialog(dialogs);
             if (rootDialog != null)
                 fillDialogTree(rootDialog, dialogs, tree, locales);
@@ -1297,7 +1308,8 @@ namespace StalkerOnlineQuesterEditor
                 Dictionary<int, CDialog> engDialog = new Dictionary<int, CDialog>();
                 engDialog.Add(dialogID, new CDialog(Name, "", "", new CDialogPrecondition(), new Actions(), new List<int>(), new List<int>(),
                         dialogID, 0, nc));
-                dialogs.locales[CSettings.getListLocales()[0]].Add(Name, engDialog);
+                foreach (var i in CSettings.getListLocales())
+                    dialogs.locales[i].Add(Name, engDialog);
                 fillNPCBox();
                 NPCBox.SelectedValue = Name;
                 npcConst.NPCs.Add(Name, new CNPCDescription(Name));
@@ -1318,10 +1330,12 @@ namespace StalkerOnlineQuesterEditor
             foreach (int item in removedQuests)
             {
                 quests.quest.Remove(item);
-                quests.locales[CSettings.getListLocales()[0]].Remove(item);
+                foreach(var i in CSettings.getListLocales())
+                    quests.locales[i].Remove(item);
             }
             dialogs.dialogs.Remove(npc_name);
-            dialogs.locales[CSettings.getListLocales()[0]].Remove(npc_name);
+            foreach (var i in CSettings.getListLocales())
+                dialogs.locales[i].Remove(npc_name);
             dialogs.deleted_NPC.Add(npc_name);
             currentNPC = "";
             fillNPCBox();
@@ -1421,7 +1435,8 @@ namespace StalkerOnlineQuesterEditor
             quests.quest.Add(newQuest.QuestID, newQuest);
             CQuest engQuest = new CQuest();
             engQuest = (CQuest)newQuest.Clone();
-            quests.locales[CSettings.getListLocales()[0]].Add(engQuest.QuestID, engQuest);
+            foreach (var i in CSettings.getListLocales())
+                quests.locales[i].Add(engQuest.QuestID, engQuest);
 
             QuestBox.Items.Add(newQuest.QuestID.ToString() + ": " + newQuest.QuestInformation.Title);
             QuestBox.SelectedIndex = QuestBox.Items.Count - 1;
@@ -1438,9 +1453,11 @@ namespace StalkerOnlineQuesterEditor
 
             CQuest engQuest = new CQuest();
             engQuest = (CQuest)quest.Clone();
-            quests.locales[CSettings.getListLocales()[0]][parent].Additional.ListOfSubQuest.Add(engQuest.QuestID);
-            quests.locales[CSettings.getListLocales()[0]].Add(engQuest.QuestID, engQuest);
-
+            foreach (var i in CSettings.getListLocales())
+            {
+                quests.locales[i][parent].Additional.ListOfSubQuest.Add(engQuest.QuestID);
+                quests.locales[i].Add(engQuest.QuestID, engQuest);
+            }
             checkQuestButton(quest.Target.QuestType, quest.QuestID);
             addNodeOnTreeQuest(quest.QuestID);
             treeQuest.ExpandAll();
@@ -1456,7 +1473,8 @@ namespace StalkerOnlineQuesterEditor
             //quests.quest[quest.QuestID] = quest;
             quests.replaceQuest(quest);
             if (quests.quest.Keys.Contains(quest.QuestID))
-                quests.locales[CSettings.getListLocales()[0]][quest.QuestID].InsertNonTextData(quest);
+                foreach (var i in CSettings.getListLocales())
+                    quests.locales[i][quest.QuestID].InsertNonTextData(quest);
             checkQuestButton(quest.Target.QuestType, quest.QuestID);
             this.isDirty = true;
             if ((quest.questLinkType == 1) && !questChapters.Contains(quest.QuestID))
@@ -1536,13 +1554,15 @@ namespace StalkerOnlineQuesterEditor
                     quests.quest[getQuestOnQuestID(questID).Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
 
             // удаляем квест из локализаций
-            CQuest english = quests.locales[CSettings.getListLocales()[0]][questID];
-            foreach (int subquest in english.Additional.ListOfSubQuest)
-                removeQuest(subquest, true);
-            if (english.Additional.IsSubQuest != 0)
-                quests.locales[CSettings.getListLocales()[0]][english.Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
-            quests.locales[CSettings.getListLocales()[0]].Remove(questID);
-
+            foreach (var i in CSettings.getListLocales())
+            {
+                CQuest english = quests.locales[i][questID];
+                foreach (int subquest in english.Additional.ListOfSubQuest)
+                    removeQuest(subquest, true);
+                if (english.Additional.IsSubQuest != 0)
+                    quests.locales[i][english.Additional.IsSubQuest].Additional.ListOfSubQuest.Remove(questID);
+                quests.locales[i].Remove(questID);
+            }
             treeQuest.Nodes.Find(questID.ToString(), true)[0].Remove();
             quests.addDeletedQuests(questID);
             quests.quest.Remove(questID);
@@ -1569,7 +1589,8 @@ namespace StalkerOnlineQuesterEditor
                 }
 
             int id = parent.QuestID;
-            quests.locales[CSettings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
+            foreach (var i in CSettings.getListLocales())
+                quests.locales[i][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
         }
         //! Перемещение квеста вниз по дереву квестов
         private void bQuestDown_Click(object sender, EventArgs e)
@@ -1592,7 +1613,8 @@ namespace StalkerOnlineQuesterEditor
                 }
 
             int id = parent.QuestID;
-            quests.locales[CSettings.getListLocales()[0]][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
+            foreach (var i in CSettings.getListLocales())
+                quests.locales[i][id].Additional.ListOfSubQuest = new List<int>(parent.Additional.ListOfSubQuest);
         }
 
         void findAndSelectNodeOnTreeQuest(int questID)
@@ -2041,7 +2063,7 @@ namespace StalkerOnlineQuesterEditor
         public void clearQuestsBuffer()
         {
             quests.m_Buffer.Clear();
-            quests.m_EngBuffer.Clear();
+            quests.m_LocBuffer.Clear();
             treeQuestBuffer.Nodes.Clear();
             quests.bufferTop = 0;
             bPasteEvents.Enabled = false;
@@ -3049,7 +3071,7 @@ namespace StalkerOnlineQuesterEditor
             {
                 try
                 {
-                    if (Path.GetFileName(newPath) == "Settings.xml") continue;
+                    if (Path.GetFileName(newPath) == CSettings.SETTING_FILE) continue;
                     File.Copy(newPath, newPath.Replace(sourceParh, path), true);
                 }
                 catch (Exception)
@@ -3704,8 +3726,11 @@ namespace StalkerOnlineQuesterEditor
                         new List<int>(), new_dialogID, 0, new NodeCoordinates());
                     new_rootDialog.coordinates.RootDialog = true;
                     CFractionDialogs.dialogs[new_fraction].Add(new_dialogID, new_rootDialog);
-                    CFractionDialogs.locales[CSettings.getListLocales()[0]].Add(new_fraction, new NPCQuestDict());
-                    CFractionDialogs.locales[CSettings.getListLocales()[0]][new_fraction].Add(new_dialogID, new_rootDialog);
+                    foreach (var i in CSettings.getListLocales())
+                    {
+                        CFractionDialogs.locales[i].Add(new_fraction, new NPCQuestDict());
+                        CFractionDialogs.locales[i][new_fraction].Add(new_dialogID, new_rootDialog);
+                    }
                 }
                 else
                 {

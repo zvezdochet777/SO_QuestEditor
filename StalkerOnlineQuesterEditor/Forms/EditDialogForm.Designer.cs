@@ -127,6 +127,11 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabClan = new System.Windows.Forms.TabPage();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.clanLevelTo = new System.Windows.Forms.NumericUpDown();
+            this.clanLevelFrom = new System.Windows.Forms.NumericUpDown();
             this.gbClanOptions = new System.Windows.Forms.GroupBox();
             this.cbAllyance = new System.Windows.Forms.CheckBox();
             this.cbSecurNotExst = new System.Windows.Forms.CheckBox();
@@ -317,11 +322,7 @@
             this.autoDefaultNode = new System.Windows.Forms.ComboBox();
             this.cbAutoNode = new System.Windows.Forms.CheckBox();
             this.tReactionNPC = new System.Windows.Forms.RichTextBox();
-            this.clanLevelFrom = new System.Windows.Forms.NumericUpDown();
-            this.clanLevelTo = new System.Windows.Forms.NumericUpDown();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
+            this.cbNoLocale = new System.Windows.Forms.CheckBox();
             this.gbActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDungeonEnterKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupChangeMoney)).BeginInit();
@@ -344,6 +345,8 @@
             this.tabReputation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataReputation)).BeginInit();
             this.tabClan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clanLevelTo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clanLevelFrom)).BeginInit();
             this.gbClanOptions.SuspendLayout();
             this.tabEffects.SuspendLayout();
             this.effectsPanel.SuspendLayout();
@@ -385,8 +388,6 @@
             this.pCommands.SuspendLayout();
             this.gbTexts.SuspendLayout();
             this.autoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clanLevelFrom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clanLevelTo)).BeginInit();
             this.SuspendLayout();
             // 
             // tPlayerText
@@ -971,9 +972,9 @@
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveQuestsOnTest);
             this.gbQuestCondition.Controls.Add(this.tShouldntHaveOpenQuests);
             this.gbQuestCondition.Controls.Add(this.tMustHaveCompletedQuests);
-            this.gbQuestCondition.Location = new System.Drawing.Point(138, 1);
+            this.gbQuestCondition.Location = new System.Drawing.Point(110, 1);
             this.gbQuestCondition.Name = "gbQuestCondition";
-            this.gbQuestCondition.Size = new System.Drawing.Size(523, 255);
+            this.gbQuestCondition.Size = new System.Drawing.Size(551, 255);
             this.gbQuestCondition.TabIndex = 6;
             this.gbQuestCondition.TabStop = false;
             this.gbQuestCondition.Text = "Состояния квестов";
@@ -983,14 +984,14 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(9, 49);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(80, 13);
+            this.label21.Size = new System.Drawing.Size(143, 13);
             this.label21.TabIndex = 47;
-            this.label21.Text = "Имеет квесты";
+            this.label21.Text = "Имеет квесты (has_quests)";
             // 
             // cbShouldntHaveQuests
             // 
             this.cbShouldntHaveQuests.AutoSize = true;
-            this.cbShouldntHaveQuests.Location = new System.Drawing.Point(420, 49);
+            this.cbShouldntHaveQuests.Location = new System.Drawing.Point(446, 49);
             this.cbShouldntHaveQuests.Name = "cbShouldntHaveQuests";
             this.cbShouldntHaveQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveQuests.TabIndex = 46;
@@ -999,7 +1000,7 @@
             // cbMustHaveQuests
             // 
             this.cbMustHaveQuests.AutoSize = true;
-            this.cbMustHaveQuests.Location = new System.Drawing.Point(146, 49);
+            this.cbMustHaveQuests.Location = new System.Drawing.Point(172, 49);
             this.cbMustHaveQuests.Name = "cbMustHaveQuests";
             this.cbMustHaveQuests.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveQuests.TabIndex = 45;
@@ -1007,14 +1008,14 @@
             // 
             // tMustHaveQuests
             // 
-            this.tMustHaveQuests.Location = new System.Drawing.Point(167, 46);
+            this.tMustHaveQuests.Location = new System.Drawing.Point(193, 46);
             this.tMustHaveQuests.Name = "tMustHaveQuests";
             this.tMustHaveQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveQuests.TabIndex = 42;
             // 
             // tShouldntHaveQuests
             // 
-            this.tShouldntHaveQuests.Location = new System.Drawing.Point(295, 46);
+            this.tShouldntHaveQuests.Location = new System.Drawing.Point(321, 46);
             this.tShouldntHaveQuests.Name = "tShouldntHaveQuests";
             this.tShouldntHaveQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveQuests.TabIndex = 44;
@@ -1022,7 +1023,7 @@
             // cbShouldntHaveFailQuests
             // 
             this.cbShouldntHaveFailQuests.AutoSize = true;
-            this.cbShouldntHaveFailQuests.Location = new System.Drawing.Point(420, 148);
+            this.cbShouldntHaveFailQuests.Location = new System.Drawing.Point(446, 148);
             this.cbShouldntHaveFailQuests.Name = "cbShouldntHaveFailQuests";
             this.cbShouldntHaveFailQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveFailQuests.TabIndex = 41;
@@ -1031,7 +1032,7 @@
             // cbMustHaveFailQuests
             // 
             this.cbMustHaveFailQuests.AutoSize = true;
-            this.cbMustHaveFailQuests.Location = new System.Drawing.Point(146, 148);
+            this.cbMustHaveFailQuests.Location = new System.Drawing.Point(172, 148);
             this.cbMustHaveFailQuests.Name = "cbMustHaveFailQuests";
             this.cbMustHaveFailQuests.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveFailQuests.TabIndex = 40;
@@ -1040,22 +1041,22 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 148);
+            this.label7.Location = new System.Drawing.Point(9, 148);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 13);
+            this.label7.Size = new System.Drawing.Size(154, 13);
             this.label7.TabIndex = 38;
-            this.label7.Text = "Проваленные квесты:";
+            this.label7.Text = "Проваленные квесты (Failed)";
             // 
             // tMustHaveFailQuests
             // 
-            this.tMustHaveFailQuests.Location = new System.Drawing.Point(167, 145);
+            this.tMustHaveFailQuests.Location = new System.Drawing.Point(193, 145);
             this.tMustHaveFailQuests.Name = "tMustHaveFailQuests";
             this.tMustHaveFailQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveFailQuests.TabIndex = 37;
             // 
             // tShouldntHaveFailQuests
             // 
-            this.tShouldntHaveFailQuests.Location = new System.Drawing.Point(295, 145);
+            this.tShouldntHaveFailQuests.Location = new System.Drawing.Point(321, 145);
             this.tShouldntHaveFailQuests.Name = "tShouldntHaveFailQuests";
             this.tShouldntHaveFailQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveFailQuests.TabIndex = 39;
@@ -1063,7 +1064,7 @@
             // cbShouldntHaveRepeat
             // 
             this.cbShouldntHaveRepeat.AutoSize = true;
-            this.cbShouldntHaveRepeat.Location = new System.Drawing.Point(420, 224);
+            this.cbShouldntHaveRepeat.Location = new System.Drawing.Point(446, 224);
             this.cbShouldntHaveRepeat.Name = "cbShouldntHaveRepeat";
             this.cbShouldntHaveRepeat.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveRepeat.TabIndex = 36;
@@ -1072,7 +1073,7 @@
             // cbMustHaveRepeat
             // 
             this.cbMustHaveRepeat.AutoSize = true;
-            this.cbMustHaveRepeat.Location = new System.Drawing.Point(146, 224);
+            this.cbMustHaveRepeat.Location = new System.Drawing.Point(172, 224);
             this.cbMustHaveRepeat.Name = "cbMustHaveRepeat";
             this.cbMustHaveRepeat.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveRepeat.TabIndex = 35;
@@ -1080,14 +1081,14 @@
             // 
             // tShouldntHaveRepeat
             // 
-            this.tShouldntHaveRepeat.Location = new System.Drawing.Point(295, 221);
+            this.tShouldntHaveRepeat.Location = new System.Drawing.Point(321, 221);
             this.tShouldntHaveRepeat.Name = "tShouldntHaveRepeat";
             this.tShouldntHaveRepeat.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveRepeat.TabIndex = 33;
             // 
             // tMustHaveRepeat
             // 
-            this.tMustHaveRepeat.Location = new System.Drawing.Point(167, 221);
+            this.tMustHaveRepeat.Location = new System.Drawing.Point(193, 221);
             this.tMustHaveRepeat.Name = "tMustHaveRepeat";
             this.tMustHaveRepeat.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveRepeat.TabIndex = 32;
@@ -1095,7 +1096,7 @@
             // lRepeat
             // 
             this.lRepeat.AutoSize = true;
-            this.lRepeat.Location = new System.Drawing.Point(10, 224);
+            this.lRepeat.Location = new System.Drawing.Point(9, 224);
             this.lRepeat.Name = "lRepeat";
             this.lRepeat.Size = new System.Drawing.Size(100, 13);
             this.lRepeat.TabIndex = 34;
@@ -1104,7 +1105,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(140, 26);
+            this.label5.Location = new System.Drawing.Point(166, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(25, 13);
             this.label5.TabIndex = 31;
@@ -1113,7 +1114,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(417, 26);
+            this.label4.Location = new System.Drawing.Point(443, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 13);
             this.label4.TabIndex = 30;
@@ -1122,7 +1123,7 @@
             // cbShouldntHaveCounters
             // 
             this.cbShouldntHaveCounters.AutoSize = true;
-            this.cbShouldntHaveCounters.Location = new System.Drawing.Point(420, 198);
+            this.cbShouldntHaveCounters.Location = new System.Drawing.Point(446, 198);
             this.cbShouldntHaveCounters.Name = "cbShouldntHaveCounters";
             this.cbShouldntHaveCounters.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveCounters.TabIndex = 29;
@@ -1131,7 +1132,7 @@
             // cbShouldntHaveMassQuests
             // 
             this.cbShouldntHaveMassQuests.AutoSize = true;
-            this.cbShouldntHaveMassQuests.Location = new System.Drawing.Point(420, 173);
+            this.cbShouldntHaveMassQuests.Location = new System.Drawing.Point(446, 173);
             this.cbShouldntHaveMassQuests.Name = "cbShouldntHaveMassQuests";
             this.cbShouldntHaveMassQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveMassQuests.TabIndex = 28;
@@ -1140,7 +1141,7 @@
             // cbShouldntHaveCompletedQuests
             // 
             this.cbShouldntHaveCompletedQuests.AutoSize = true;
-            this.cbShouldntHaveCompletedQuests.Location = new System.Drawing.Point(420, 123);
+            this.cbShouldntHaveCompletedQuests.Location = new System.Drawing.Point(446, 123);
             this.cbShouldntHaveCompletedQuests.Name = "cbShouldntHaveCompletedQuests";
             this.cbShouldntHaveCompletedQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveCompletedQuests.TabIndex = 27;
@@ -1149,7 +1150,7 @@
             // cbShouldntHaveQuestsOnTest
             // 
             this.cbShouldntHaveQuestsOnTest.AutoSize = true;
-            this.cbShouldntHaveQuestsOnTest.Location = new System.Drawing.Point(420, 98);
+            this.cbShouldntHaveQuestsOnTest.Location = new System.Drawing.Point(446, 98);
             this.cbShouldntHaveQuestsOnTest.Name = "cbShouldntHaveQuestsOnTest";
             this.cbShouldntHaveQuestsOnTest.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveQuestsOnTest.TabIndex = 26;
@@ -1158,7 +1159,7 @@
             // cbShouldntHaveOpenQuests
             // 
             this.cbShouldntHaveOpenQuests.AutoSize = true;
-            this.cbShouldntHaveOpenQuests.Location = new System.Drawing.Point(420, 73);
+            this.cbShouldntHaveOpenQuests.Location = new System.Drawing.Point(446, 73);
             this.cbShouldntHaveOpenQuests.Name = "cbShouldntHaveOpenQuests";
             this.cbShouldntHaveOpenQuests.Size = new System.Drawing.Size(15, 14);
             this.cbShouldntHaveOpenQuests.TabIndex = 25;
@@ -1167,7 +1168,7 @@
             // cbMustHaveCounters
             // 
             this.cbMustHaveCounters.AutoSize = true;
-            this.cbMustHaveCounters.Location = new System.Drawing.Point(146, 198);
+            this.cbMustHaveCounters.Location = new System.Drawing.Point(172, 198);
             this.cbMustHaveCounters.Name = "cbMustHaveCounters";
             this.cbMustHaveCounters.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveCounters.TabIndex = 24;
@@ -1176,7 +1177,7 @@
             // cbMustHaveMassQuests
             // 
             this.cbMustHaveMassQuests.AutoSize = true;
-            this.cbMustHaveMassQuests.Location = new System.Drawing.Point(146, 173);
+            this.cbMustHaveMassQuests.Location = new System.Drawing.Point(172, 173);
             this.cbMustHaveMassQuests.Name = "cbMustHaveMassQuests";
             this.cbMustHaveMassQuests.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveMassQuests.TabIndex = 23;
@@ -1184,14 +1185,14 @@
             // 
             // tShouldntHaveCounters
             // 
-            this.tShouldntHaveCounters.Location = new System.Drawing.Point(295, 195);
+            this.tShouldntHaveCounters.Location = new System.Drawing.Point(321, 195);
             this.tShouldntHaveCounters.Name = "tShouldntHaveCounters";
             this.tShouldntHaveCounters.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveCounters.TabIndex = 18;
             // 
             // tMustHaveCounters
             // 
-            this.tMustHaveCounters.Location = new System.Drawing.Point(167, 195);
+            this.tMustHaveCounters.Location = new System.Drawing.Point(193, 195);
             this.tMustHaveCounters.Name = "tMustHaveCounters";
             this.tMustHaveCounters.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveCounters.TabIndex = 17;
@@ -1199,7 +1200,7 @@
             // cbMustHaveCompletedQuests
             // 
             this.cbMustHaveCompletedQuests.AutoSize = true;
-            this.cbMustHaveCompletedQuests.Location = new System.Drawing.Point(146, 123);
+            this.cbMustHaveCompletedQuests.Location = new System.Drawing.Point(172, 123);
             this.cbMustHaveCompletedQuests.Name = "cbMustHaveCompletedQuests";
             this.cbMustHaveCompletedQuests.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveCompletedQuests.TabIndex = 22;
@@ -1208,7 +1209,7 @@
             // cbMustHaveQuestsOnTest
             // 
             this.cbMustHaveQuestsOnTest.AutoSize = true;
-            this.cbMustHaveQuestsOnTest.Location = new System.Drawing.Point(146, 98);
+            this.cbMustHaveQuestsOnTest.Location = new System.Drawing.Point(172, 98);
             this.cbMustHaveQuestsOnTest.Name = "cbMustHaveQuestsOnTest";
             this.cbMustHaveQuestsOnTest.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveQuestsOnTest.TabIndex = 21;
@@ -1217,7 +1218,7 @@
             // cbMustHaveOpenQuests
             // 
             this.cbMustHaveOpenQuests.AutoSize = true;
-            this.cbMustHaveOpenQuests.Location = new System.Drawing.Point(146, 73);
+            this.cbMustHaveOpenQuests.Location = new System.Drawing.Point(172, 73);
             this.cbMustHaveOpenQuests.Name = "cbMustHaveOpenQuests";
             this.cbMustHaveOpenQuests.Size = new System.Drawing.Size(15, 14);
             this.cbMustHaveOpenQuests.TabIndex = 20;
@@ -1226,31 +1227,31 @@
             // lConuters
             // 
             this.lConuters.AutoSize = true;
-            this.lConuters.Location = new System.Drawing.Point(10, 198);
+            this.lConuters.Location = new System.Drawing.Point(9, 198);
             this.lConuters.Name = "lConuters";
-            this.lConuters.Size = new System.Drawing.Size(53, 13);
+            this.lConuters.Size = new System.Drawing.Size(157, 13);
             this.lConuters.TabIndex = 19;
-            this.lConuters.Text = "Счётчики";
+            this.lConuters.Text = "Статус Счетчика (omnicounter)";
             // 
             // lMassQuests
             // 
             this.lMassQuests.AutoSize = true;
-            this.lMassQuests.Location = new System.Drawing.Point(10, 173);
+            this.lMassQuests.Location = new System.Drawing.Point(9, 173);
             this.lMassQuests.Name = "lMassQuests";
-            this.lMassQuests.Size = new System.Drawing.Size(100, 13);
+            this.lMassQuests.Size = new System.Drawing.Size(163, 13);
             this.lMassQuests.TabIndex = 16;
-            this.lMassQuests.Text = "Массовые квесты";
+            this.lMassQuests.Text = "Статус Состязания (massquest)";
             // 
             // tShouldntHaveMassQuests
             // 
-            this.tShouldntHaveMassQuests.Location = new System.Drawing.Point(295, 170);
+            this.tShouldntHaveMassQuests.Location = new System.Drawing.Point(321, 170);
             this.tShouldntHaveMassQuests.Name = "tShouldntHaveMassQuests";
             this.tShouldntHaveMassQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveMassQuests.TabIndex = 15;
             // 
             // tMustHaveMassQuests
             // 
-            this.tMustHaveMassQuests.Location = new System.Drawing.Point(167, 170);
+            this.tMustHaveMassQuests.Location = new System.Drawing.Point(193, 170);
             this.tMustHaveMassQuests.Name = "tMustHaveMassQuests";
             this.tMustHaveMassQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveMassQuests.TabIndex = 14;
@@ -1258,7 +1259,7 @@
             // lShouldntHaveQuests
             // 
             this.lShouldntHaveQuests.AutoSize = true;
-            this.lShouldntHaveQuests.Location = new System.Drawing.Point(307, 16);
+            this.lShouldntHaveQuests.Location = new System.Drawing.Point(333, 16);
             this.lShouldntHaveQuests.Name = "lShouldntHaveQuests";
             this.lShouldntHaveQuests.Size = new System.Drawing.Size(90, 13);
             this.lShouldntHaveQuests.TabIndex = 10;
@@ -1267,7 +1268,7 @@
             // lNecessaryQuests
             // 
             this.lNecessaryQuests.AutoSize = true;
-            this.lNecessaryQuests.Location = new System.Drawing.Point(184, 16);
+            this.lNecessaryQuests.Location = new System.Drawing.Point(210, 16);
             this.lNecessaryQuests.Name = "lNecessaryQuests";
             this.lNecessaryQuests.Size = new System.Drawing.Size(76, 13);
             this.lNecessaryQuests.TabIndex = 9;
@@ -1276,68 +1277,68 @@
             // lCompletedQuests
             // 
             this.lCompletedQuests.AutoSize = true;
-            this.lCompletedQuests.Location = new System.Drawing.Point(10, 123);
+            this.lCompletedQuests.Location = new System.Drawing.Point(9, 123);
             this.lCompletedQuests.Name = "lCompletedQuests";
-            this.lCompletedQuests.Size = new System.Drawing.Size(99, 13);
+            this.lCompletedQuests.Size = new System.Drawing.Size(140, 13);
             this.lCompletedQuests.TabIndex = 8;
-            this.lCompletedQuests.Text = "Закрытые квесты";
+            this.lCompletedQuests.Text = "Закрытые квесты (Closed)";
             // 
             // lOnTestQuests
             // 
             this.lOnTestQuests.AutoSize = true;
-            this.lOnTestQuests.Location = new System.Drawing.Point(10, 98);
+            this.lOnTestQuests.Location = new System.Drawing.Point(9, 98);
             this.lOnTestQuests.Name = "lOnTestQuests";
-            this.lOnTestQuests.Size = new System.Drawing.Size(115, 13);
+            this.lOnTestQuests.Size = new System.Drawing.Size(157, 13);
             this.lOnTestQuests.TabIndex = 7;
-            this.lOnTestQuests.Text = "Квесты \"к проверке\"";
+            this.lOnTestQuests.Text = "Квесты “к проверке” (OnTest)";
             // 
             // lOpenedQuests
             // 
             this.lOpenedQuests.AutoSize = true;
-            this.lOpenedQuests.Location = new System.Drawing.Point(10, 73);
+            this.lOpenedQuests.Location = new System.Drawing.Point(9, 73);
             this.lOpenedQuests.Name = "lOpenedQuests";
-            this.lOpenedQuests.Size = new System.Drawing.Size(99, 13);
+            this.lOpenedQuests.Size = new System.Drawing.Size(146, 13);
             this.lOpenedQuests.TabIndex = 6;
-            this.lOpenedQuests.Text = "Открытые квесты";
+            this.lOpenedQuests.Text = "Открытые квесты (Opened)";
             // 
             // tMustHaveQuestsOnTest
             // 
-            this.tMustHaveQuestsOnTest.Location = new System.Drawing.Point(167, 95);
+            this.tMustHaveQuestsOnTest.Location = new System.Drawing.Point(193, 95);
             this.tMustHaveQuestsOnTest.Name = "tMustHaveQuestsOnTest";
             this.tMustHaveQuestsOnTest.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveQuestsOnTest.TabIndex = 4;
             // 
             // tShouldntHaveCompletedQuests
             // 
-            this.tShouldntHaveCompletedQuests.Location = new System.Drawing.Point(295, 120);
+            this.tShouldntHaveCompletedQuests.Location = new System.Drawing.Point(321, 120);
             this.tShouldntHaveCompletedQuests.Name = "tShouldntHaveCompletedQuests";
             this.tShouldntHaveCompletedQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveCompletedQuests.TabIndex = 9;
             // 
             // tMustHaveOpenQuests
             // 
-            this.tMustHaveOpenQuests.Location = new System.Drawing.Point(167, 70);
+            this.tMustHaveOpenQuests.Location = new System.Drawing.Point(193, 70);
             this.tMustHaveOpenQuests.Name = "tMustHaveOpenQuests";
             this.tMustHaveOpenQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveOpenQuests.TabIndex = 3;
             // 
             // tShouldntHaveQuestsOnTest
             // 
-            this.tShouldntHaveQuestsOnTest.Location = new System.Drawing.Point(295, 95);
+            this.tShouldntHaveQuestsOnTest.Location = new System.Drawing.Point(321, 95);
             this.tShouldntHaveQuestsOnTest.Name = "tShouldntHaveQuestsOnTest";
             this.tShouldntHaveQuestsOnTest.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveQuestsOnTest.TabIndex = 8;
             // 
             // tShouldntHaveOpenQuests
             // 
-            this.tShouldntHaveOpenQuests.Location = new System.Drawing.Point(295, 70);
+            this.tShouldntHaveOpenQuests.Location = new System.Drawing.Point(321, 70);
             this.tShouldntHaveOpenQuests.Name = "tShouldntHaveOpenQuests";
             this.tShouldntHaveOpenQuests.Size = new System.Drawing.Size(120, 20);
             this.tShouldntHaveOpenQuests.TabIndex = 7;
             // 
             // tMustHaveCompletedQuests
             // 
-            this.tMustHaveCompletedQuests.Location = new System.Drawing.Point(167, 120);
+            this.tMustHaveCompletedQuests.Location = new System.Drawing.Point(193, 120);
             this.tMustHaveCompletedQuests.Name = "tMustHaveCompletedQuests";
             this.tMustHaveCompletedQuests.Size = new System.Drawing.Size(120, 20);
             this.tMustHaveCompletedQuests.TabIndex = 5;
@@ -1420,6 +1421,48 @@
             this.tabClan.Size = new System.Drawing.Size(800, 262);
             this.tabClan.TabIndex = 3;
             this.tabClan.Text = "Клановые";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Location = new System.Drawing.Point(495, 28);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(19, 13);
+            this.label36.TabIndex = 55;
+            this.label36.Text = "до";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(429, 28);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(18, 13);
+            this.label35.TabIndex = 54;
+            this.label35.Text = "от";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(428, 10);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(84, 13);
+            this.label34.TabIndex = 53;
+            this.label34.Text = "Уровень клана";
+            // 
+            // clanLevelTo
+            // 
+            this.clanLevelTo.Location = new System.Drawing.Point(515, 26);
+            this.clanLevelTo.Name = "clanLevelTo";
+            this.clanLevelTo.Size = new System.Drawing.Size(44, 20);
+            this.clanLevelTo.TabIndex = 52;
+            // 
+            // clanLevelFrom
+            // 
+            this.clanLevelFrom.Location = new System.Drawing.Point(448, 26);
+            this.clanLevelFrom.Name = "clanLevelFrom";
+            this.clanLevelFrom.Size = new System.Drawing.Size(44, 20);
+            this.clanLevelFrom.TabIndex = 51;
             // 
             // gbClanOptions
             // 
@@ -2926,7 +2969,7 @@
             // cbRatingPVPMode
             // 
             this.cbRatingPVPMode.FormattingEnabled = true;
-            this.cbRatingPVPMode.Location = new System.Drawing.Point(93, 42);
+            this.cbRatingPVPMode.Location = new System.Drawing.Point(109, 43);
             this.cbRatingPVPMode.Name = "cbRatingPVPMode";
             this.cbRatingPVPMode.Size = new System.Drawing.Size(121, 21);
             this.cbRatingPVPMode.TabIndex = 48;
@@ -2936,9 +2979,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(-3, 45);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 13);
+            this.label17.Size = new System.Drawing.Size(111, 13);
             this.label17.TabIndex = 49;
-            this.label17.Text = "Наличие квестов;";
+            this.label17.Text = "Режим с рейтингом;";
             // 
             // cbPVPRank2
             // 
@@ -3125,6 +3168,7 @@
             // 
             // pCommands
             // 
+            this.pCommands.Controls.Add(this.cbNoLocale);
             this.pCommands.Controls.Add(this.cbHidden);
             this.pCommands.Controls.Add(this.cbForDev);
             this.pCommands.Controls.Add(this.debuglabel);
@@ -3339,47 +3383,15 @@
             this.tReactionNPC.Text = "";
             this.tReactionNPC.TextChanged += new System.EventHandler(this.tReactionNPC_TextChanged);
             // 
-            // clanLevelFrom
+            // cbNoLocale
             // 
-            this.clanLevelFrom.Location = new System.Drawing.Point(448, 26);
-            this.clanLevelFrom.Name = "clanLevelFrom";
-            this.clanLevelFrom.Size = new System.Drawing.Size(44, 20);
-            this.clanLevelFrom.TabIndex = 51;
-            // 
-            // clanLevelTo
-            // 
-            this.clanLevelTo.Location = new System.Drawing.Point(515, 26);
-            this.clanLevelTo.Name = "clanLevelTo";
-            this.clanLevelTo.Size = new System.Drawing.Size(44, 20);
-            this.clanLevelTo.TabIndex = 52;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(428, 10);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(84, 13);
-            this.label34.TabIndex = 53;
-            this.label34.Text = "Уровень клана";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(429, 28);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(18, 13);
-            this.label35.TabIndex = 54;
-            this.label35.Text = "от";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.Transparent;
-            this.label36.Location = new System.Drawing.Point(495, 28);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(19, 13);
-            this.label36.TabIndex = 55;
-            this.label36.Text = "до";
+            this.cbNoLocale.AutoSize = true;
+            this.cbNoLocale.Location = new System.Drawing.Point(572, 4);
+            this.cbNoLocale.Name = "cbNoLocale";
+            this.cbNoLocale.Size = new System.Drawing.Size(102, 17);
+            this.cbNoLocale.TabIndex = 44;
+            this.cbNoLocale.Text = "Не переводить";
+            this.cbNoLocale.UseVisualStyleBackColor = true;
             // 
             // EditDialogForm
             // 
@@ -3422,6 +3434,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataReputation)).EndInit();
             this.tabClan.ResumeLayout(false);
             this.tabClan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clanLevelTo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clanLevelFrom)).EndInit();
             this.gbClanOptions.ResumeLayout(false);
             this.gbClanOptions.PerformLayout();
             this.tabEffects.ResumeLayout(false);
@@ -3483,8 +3497,6 @@
             this.gbTexts.PerformLayout();
             this.autoPanel.ResumeLayout(false);
             this.autoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clanLevelFrom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clanLevelTo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3786,5 +3798,6 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.NumericUpDown clanLevelTo;
         private System.Windows.Forms.NumericUpDown clanLevelFrom;
+        private System.Windows.Forms.CheckBox cbNoLocale;
     }
 }

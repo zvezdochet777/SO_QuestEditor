@@ -74,11 +74,11 @@ namespace StalkerOnlineQuesterEditor
 
         public CQuestConstants()
         {
-            simpleQuestsType.Add(new СQuestType(TYPE_FARM, "0  Собрать необходимое количество предметов."));
-            simpleQuestsType.Add(new СQuestType(TYPE_FARM_AUTO, "16 Собрать необходимое количество предметов авто."));
+            simpleQuestsType.Add(new СQuestType(TYPE_FARM, "0  Собрать нужное кол-во предметов (--> OnTest)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_FARM_AUTO, "16 Собрать нужное кол-во предметов (--> Close)"));
             simpleQuestsType.Add(new СQuestType(TYPE_TALK, "1  Поговорить."));
-            simpleQuestsType.Add(new СQuestType(TYPE_KILLMOBS_WITH_ONTEST, "2  Убийство мобов с обязательной сдачей евента."));
-            simpleQuestsType.Add(new СQuestType(TYPE_KILLMOBS, "3  Убийство мобов."));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLMOBS_WITH_ONTEST, "2  Убить нужное кол-во мобов (--> OnTest)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLMOBS, "3  Убить нужное кол-во мобов (--> Close)"));
             simpleQuestsType.Add(new СQuestType(TYPE_AREA_DISCOVER, "4  Посещение зоны."));
             simpleQuestsType.Add(new СQuestType(TYPE_MONEYBACK, "5  Сдача денег."));
             simpleQuestsType.Add(new СQuestType(TYPE_TRIGGER_ACTION, "6  Действие над триггером."));
@@ -90,54 +90,54 @@ namespace StalkerOnlineQuesterEditor
             simpleQuestsType.Add(new СQuestType(TYPE_ITEM_EQIP, "19 Экипировка предмета."));
             //simpleQuestsType.Add(new СQuestType(TYPE_ITEM_ADD, "20 Добавление предмета."));
             simpleQuestsType.Add(new СQuestType(TYPE_GIVE_EFFECT, "21 Получение эффекта."));
-            simpleQuestsType.Add(new СQuestType(TYPE_REPUTATION, "22 Необходимое количество репутации."));
-            simpleQuestsType.Add(new СQuestType(TYPE_REPUTATION_AUTO, "23 Необходимое количество репутации АВТО."));
+            //simpleQuestsType.Add(new СQuestType(TYPE_REPUTATION, "22 Необходимое количество репутации."));
+            //simpleQuestsType.Add(new СQuestType(TYPE_REPUTATION_AUTO, "23 Необходимое количество репутации АВТО."));
             simpleQuestsType.Add(new СQuestType(TYPE_KILL, "24 Убийство."));
-            simpleQuestsType.Add(new СQuestType(TYPE_ITEM_CATEGORY, "25 Собрать количество предметов категории."));
-            simpleQuestsType.Add(new СQuestType(TYPE_ITEM_CATEGORY_AUTO, "26 Собрать количество предметов категории АВТО."));
-            simpleQuestsType.Add(new СQuestType(TYPE_HAVE_EFFECT, "27 Находиться под действием эффекта."));
-            simpleQuestsType.Add(new СQuestType(TYPE_IN_AREA, "28 Находиться в зоне."));
+            //simpleQuestsType.Add(new СQuestType(TYPE_ITEM_CATEGORY, "25 Собрать количество предметов категории."));
+            //simpleQuestsType.Add(new СQuestType(TYPE_ITEM_CATEGORY_AUTO, "26 Собрать количество предметов категории АВТО."));
+            simpleQuestsType.Add(new СQuestType(TYPE_HAVE_EFFECT, "27 Находиться под действием эффекта (Open <--> OnTest)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_IN_AREA, "28 Находиться в зоне (Open <--> OnTest)"));
             simpleQuestsType.Add(new СQuestType(TYPE_QUEST_COUNTER, "29 Счетчик квестов."));
-            simpleQuestsType.Add(new СQuestType(TYPE_DUNGEON_EVENT, "30 Событие данжа."));
-            simpleQuestsType.Add(new СQuestType(TYPE_CRAFT_ITEM, "31 Событие крафта."));
-            simpleQuestsType.Add(new СQuestType(TYPE_CRAFT_ITEM_AUTO, "32 Событие крафта АВТО."));
-            simpleQuestsType.Add(new СQuestType(TYPE_COOK_ITEM, "33 Событие готовки в котле."));
-            simpleQuestsType.Add(new СQuestType(TYPE_COOK_ITEM_AUTO, "34 Событие готовки в котле АВТО."));
+            simpleQuestsType.Add(new СQuestType(TYPE_DUNGEON_EVENT, "30 [Данж] Завершить фазу данжа"));
+            simpleQuestsType.Add(new СQuestType(TYPE_CRAFT_ITEM, "31 Событие крафта (--> OnTest)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_CRAFT_ITEM_AUTO, "32 Событие крафта (--> Close)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_COOK_ITEM, "33 Событие готовки в котле (--> OnTest)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_COOK_ITEM_AUTO, "34 Событие готовки в котле (--> Close)"));
 
-            simpleQuestsType.Add(new СQuestType(TYPE_ANOMALY, "35 Достать арт из аномалии."));
-            simpleQuestsType.Add(new СQuestType(TYPE_ANOMALY_AUTO, "36 Достать арт из аномалии АВТО."));
+            simpleQuestsType.Add(new СQuestType(TYPE_ANOMALY, "35 Достать арт из аномалии (--> OnTest)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_ANOMALY_AUTO, "36 Достать арт из аномалии (--> Close)"));
 
-            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC, "37 Убийство NPC."));
-            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC_WITH_ONTEST, "38 Убийство NPC со сдачей"));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC, "37 Убить нужное кол-во NPC (--> Close)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLNPC_WITH_ONTEST, "38 Убить нужное кол-во NPC (--> OnTest)"));
 
-            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_KILL, "40 Убить во время пвп матча"));
-            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_CAPTURE_FLAG, "41 Сделать что-то над флагом в пвп карте"));
-            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_SCORE, "42 Набрать очки в пвп карте"));
-            pvpQuestsType.Add(new СQuestType(TYPE_B2C_KILL, "43 Убить во время захвата баз"));
-            pvpQuestsType.Add(new СQuestType(TYPE_B2C_FLAG, "44 Звахватить флаг во время захвата баз"));
-            pvpQuestsType.Add(new СQuestType(TYPE_B2C_REVIVE, "46 Оживить игрока во время захвата баз"));
+            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_KILL, "40 [ПВП-арена] Убить игроков"));
+            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_CAPTURE_FLAG, "41 [ПВП-арена] Действие с флагом"));
+            pvpQuestsType.Add(new СQuestType(TYPE_PVP_MAP_SCORE, "42 [ПВП-арена] Заработать очки"));
+            pvpQuestsType.Add(new СQuestType(TYPE_B2C_KILL, "43 [Захват баз] Убить противников"));
+            pvpQuestsType.Add(new СQuestType(TYPE_B2C_FLAG, "44 [Захват баз] Поднять флаги"));
+            pvpQuestsType.Add(new СQuestType(TYPE_B2C_REVIVE, "46 [Захват баз] Оживить союзников"));
 
-            simpleQuestsType.Add(new СQuestType(TYPE_DUNGEON_BOX_COUNTER, "45 Cобрать коробки внутри танка в данже"));
+            simpleQuestsType.Add(new СQuestType(TYPE_DUNGEON_BOX_COUNTER, "45 [Данж] Погрузить нужное кол-во коробок"));
 
             // ierarchyQuestsType.Add(new СQuestType(50, "50 Игра против режиссера."));
-            simpleQuestsType.Add(new СQuestType(TYPE_CREATE_NPC, "51 Создать NPC."));
-            simpleQuestsType.Add(new СQuestType(TYPE_CREATE_MOB, "52 Создать Моба."));
-            simpleQuestsType.Add(new СQuestType(TYPE_KILLSCENARIONPC, "53 Убийство NPC для сценария"));
-            simpleQuestsType.Add(new СQuestType(TYPE_KILLSCENARIONPC_WITH_ONTEST, "54 Убийство NPC со сдачей для сценария."));
+            simpleQuestsType.Add(new СQuestType(TYPE_CREATE_NPC, "51 [Сценарий] Создать NPC"));
+            simpleQuestsType.Add(new СQuestType(TYPE_CREATE_MOB, "52 [Сценарий] Создать моба"));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLSCENARIONPC, "53 [Сценарий] Убить созданного NPC (--> Close)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_KILLSCENARIONPC_WITH_ONTEST, "54 [Сценарий] Убить созданного NPC (--> OnTest)"));
 
-            simpleQuestsType.Add(new СQuestType(TYPE_ENTITY_SEEN, "55 Увидеть сущность."));
-            simpleQuestsType.Add(new СQuestType(TYPE_ENTITY_SEEN_AUTO, "56 Увидеть сущность АВТО.")); 
+            simpleQuestsType.Add(new СQuestType(TYPE_ENTITY_SEEN, "55 Увидеть сущность (--> OnTest)"));
+            simpleQuestsType.Add(new СQuestType(TYPE_ENTITY_SEEN_AUTO, "56 Увидеть сущность (--> Close)")); 
 
             
 
 
 
-            ierarchyQuestsType.Add(new СQuestType(10,  "10 Выполнение всех в любом порядке."));
-            ierarchyQuestsType.Add(new СQuestType(11,  "11 Выполнение всех по порядку."));
-            ierarchyQuestsType.Add(new СQuestType(12,  "12 Выполнение на выбор."));
-            ierarchyQuestsType.Add(new СQuestType(13,  "13 Выполнение всех в любом порядке со сдачей."));
-            ierarchyQuestsType.Add(new СQuestType(14,  "14 Выполнение всех по порядку со сдачей."));
-            ierarchyQuestsType.Add(new СQuestType(15,  "15 Выполнение на выбор со сдачей."));
+            ierarchyQuestsType.Add(new СQuestType(10,  "10 Выполнить подквесты в любом порядке (--> Close)"));
+            ierarchyQuestsType.Add(new СQuestType(11,  "11 Выполнить подквесты по порядку (--> Close)"));
+            ierarchyQuestsType.Add(new СQuestType(12, "12 Выполнить один подквест на выбор (--> Close)"));
+            ierarchyQuestsType.Add(new СQuestType(13, "13  Выполнить подквесты в любом порядке (--> OnTest)"));
+            ierarchyQuestsType.Add(new СQuestType(14, "14 Выполнить подквесты по порядку (--> OnTest)"));
+            ierarchyQuestsType.Add(new СQuestType(15, "15 Выполнить один подквест на выбор (--> OnTest)"));
             ierarchyQuestsType.Add(new СQuestType(100, "100 Проверить все дочерние квесты."));           
         }
         public bool isSimple(int questType)

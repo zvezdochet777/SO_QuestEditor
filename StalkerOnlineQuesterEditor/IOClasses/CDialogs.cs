@@ -419,6 +419,10 @@ namespace StalkerOnlineQuesterEditor
                     
                     if (dialog.Element("DebugData") != null)
                         DebugData = dialog.Element("DebugData").Value.ToString();
+
+                    bool noLocale = false;
+                    if (dialog.Element("noLocale") != null)
+                        noLocale = true;
                     if (dialog.Element("isAutoNode") != null)
                     {
                         isAutoNode = dialog.Element("isAutoNode").Value.Trim().Equals("1");
@@ -429,7 +433,7 @@ namespace StalkerOnlineQuesterEditor
                         int.TryParse(dialog.Element("nextDialog").Value.ToString(), out nextDialog);
                     if (!target[npc_name].Keys.Contains(DialogID))
                         target[npc_name].Add(DialogID, new CDialog(npc_name, "", "", Precondition, Actions, Nodes, CheckNodes, DialogID, 0, 
-                            nodeCoord, DebugData, nextDialog, isAutoNode, defaultNode));
+                            nodeCoord, DebugData, noLocale, nextDialog, isAutoNode, defaultNode));
                 }
             }
 
@@ -618,7 +622,8 @@ namespace StalkerOnlineQuesterEditor
         //! Сохраняет текущую локализацию диалогов в файл
         public void SaveLocales()
         {
-            SaveDialogsTexts(CSettings.GetDialogLocaleTextPath(), this.locales[CSettings.getCurrentLocale()]);
+            foreach(string locale in CSettings.getListLocales() )
+                SaveDialogsTexts(CSettings.GetDialogTextPath(locale), this.locales[locale]);
         }
 
         private void SaveDialogsTexts(string filePath, NPCDicts target)
@@ -948,6 +953,7 @@ namespace StalkerOnlineQuesterEditor
                     if (dialog.coordinates.Active)
                         element.Add(new XElement("Active", Global.GetBoolAsString(dialog.coordinates.Active)));
                     if (dialog.DebugData != "") element.Add(new XElement("DebugData", dialog.DebugData));
+                    if (dialog.noLocale) element.Add(new XElement("noLocale", "1"));
                     if (dialog.isAutoNode)
                     {
                         element.Add(new XElement("isAutoNode", Global.GetBoolAsString(dialog.isAutoNode)));
@@ -982,8 +988,8 @@ namespace StalkerOnlineQuesterEditor
                 
                      resultDoc.Root.Add(new XElement("Node",
                         new XAttribute("ID", key_id.Key),
-                        new XElement("X", Convert.ToString(key_id.Value.X)),
-                        new XElement("Y", Convert.ToString(key_id.Value.Y))));
+                        new XElement("X", Convert.ToString(key_id.Value.X, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"))),
+                        new XElement("Y", Convert.ToString(key_id.Value.Y, System.Globalization.CultureInfo.GetCultureInfo("ru-RU")))));
             }
             System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
             using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create("OtherNodes.xml", settings))
@@ -1004,8 +1010,8 @@ namespace StalkerOnlineQuesterEditor
                 {
                     resultDoc.Root.Add(new XElement("Dialog",
                         new XAttribute("ID", dialog.DialogID.ToString()),
-                        new XElement("X", Convert.ToString(dialog.coordinates.X)),
-                        new XElement("Y", Convert.ToString(dialog.coordinates.Y))));
+                        new XElement("X", Convert.ToString(dialog.coordinates.X, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"))),
+                        new XElement("Y", Convert.ToString(dialog.coordinates.Y, System.Globalization.CultureInfo.GetCultureInfo("ru-RU")))));
                 }
                 System.Xml.XmlWriterSettings settings = Global.GetXmlSettings();
                 using (System.Xml.XmlWriter w = System.Xml.XmlWriter.Create(data_path + NPC_Name + ".xml", settings))
@@ -1031,8 +1037,8 @@ namespace StalkerOnlineQuesterEditor
             foreach (XElement dialog in doc.Root.Elements())
             {
                 string id = dialog.Attribute("ID").Value;
-                float x = float.Parse(dialog.Element("X").Value);
-                float y = float.Parse(dialog.Element("Y").Value);
+                float x = float.Parse(dialog.Element("X").Value, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"));
+                float y = float.Parse(dialog.Element("Y").Value, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"));
                 otherCoords.Add(id, new NodeCoordinates(x, y, false, false));
             }
         }
@@ -1062,8 +1068,9 @@ namespace StalkerOnlineQuesterEditor
 
 
                     int id = int.Parse(dialog.Attribute("ID").Value);
-                    float x = float.Parse(dialog.Element("X").Value);
-                    float y = float.Parse(dialog.Element("Y").Value);
+
+                    float x = float.Parse(dialog.Element("X").Value, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"));
+                    float y = float.Parse(dialog.Element("Y").Value, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"));
                     try
                     {
                         tempCoordinates[npc_name].Add(id, new NodeCoordinates(x, y, false, false));
